@@ -1,3 +1,19 @@
+2024-06-05 Version: 2.2.2
+- Update API CreateFileset: add param DeletionProtection.
+- Update API CreateFileset: update response param.
+- Update API DescribeAutoSnapshotPolicies: update param FileSystemType.
+- Update API DescribeAutoSnapshotPolicies: update response param.
+- Update API DescribeDirQuotas: update response param.
+- Update API DescribeFilesets: update response param.
+- Update API DescribeLogAnalysis: add param FileSystemType.
+- Update API DescribeSnapshots: update param FileSystemType.
+- Update API DescribeSnapshots: update response param.
+- Update API ModifyDataFlow: update param Throughput.
+- Update API ModifyDataFlow: update response param.
+- Update API ModifyFileset: add param DeletionProtection.
+- Update API ModifyFileset: update response param.
+
+
 2024-03-25 Version: 2.2.1
 - Update API CreateLifecyclePolicy: update param LifecycleRuleName.
 - Update API CreateLifecyclePolicy: update param StorageType.

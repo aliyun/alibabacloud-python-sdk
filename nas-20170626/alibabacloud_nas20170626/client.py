@@ -52,7 +52,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.AddClientToBlackListResponse:
         """
-        The API operation is available only for CPFS file systems.
+        @description The API operation is available only for CPFS file systems.
         
         @param request: AddClientToBlackListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -93,7 +93,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.AddClientToBlackListResponse:
         """
-        The API operation is available only for CPFS file systems.
+        @description The API operation is available only for CPFS file systems.
         
         @param request: AddClientToBlackListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -133,7 +133,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.AddClientToBlackListRequest,
     ) -> nas20170626_models.AddClientToBlackListResponse:
         """
-        The API operation is available only for CPFS file systems.
+        @description The API operation is available only for CPFS file systems.
         
         @param request: AddClientToBlackListRequest
         @return: AddClientToBlackListResponse
@@ -146,7 +146,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.AddClientToBlackListRequest,
     ) -> nas20170626_models.AddClientToBlackListResponse:
         """
-        The API operation is available only for CPFS file systems.
+        @description The API operation is available only for CPFS file systems.
         
         @param request: AddClientToBlackListRequest
         @return: AddClientToBlackListResponse
@@ -160,14 +160,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.AddTagsResponse:
         """
-        ## Limits
-        *   Each tag includes a TagKey and a TagValue.
-        *   Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
-        *   You must specify a TagKey. You can leave a TagValue empty.
-        *   A TagKey and TagValue are not case-sensitive.
-        *   A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
-        *   You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
-        *   If you remove a tag from all linked file systems, the tag is automatically deleted.
+        @description ## Limits
+        Each tag includes a TagKey and a TagValue.
+        Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
+        You must specify a TagKey. You can leave a TagValue empty.
+        A TagKey and TagValue are not case-sensitive.
+        A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
+        You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
+        If you remove a tag from all linked file systems, the tag is automatically deleted.
         
         @param request: AddTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -204,14 +204,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.AddTagsResponse:
         """
-        ## Limits
-        *   Each tag includes a TagKey and a TagValue.
-        *   Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
-        *   You must specify a TagKey. You can leave a TagValue empty.
-        *   A TagKey and TagValue are not case-sensitive.
-        *   A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
-        *   You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
-        *   If you remove a tag from all linked file systems, the tag is automatically deleted.
+        @description ## Limits
+        Each tag includes a TagKey and a TagValue.
+        Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
+        You must specify a TagKey. You can leave a TagValue empty.
+        A TagKey and TagValue are not case-sensitive.
+        A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
+        You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
+        If you remove a tag from all linked file systems, the tag is automatically deleted.
         
         @param request: AddTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -247,14 +247,14 @@ class Client(OpenApiClient):
         request: nas20170626_models.AddTagsRequest,
     ) -> nas20170626_models.AddTagsResponse:
         """
-        ## Limits
-        *   Each tag includes a TagKey and a TagValue.
-        *   Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
-        *   You must specify a TagKey. You can leave a TagValue empty.
-        *   A TagKey and TagValue are not case-sensitive.
-        *   A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
-        *   You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
-        *   If you remove a tag from all linked file systems, the tag is automatically deleted.
+        @description ## Limits
+        Each tag includes a TagKey and a TagValue.
+        Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
+        You must specify a TagKey. You can leave a TagValue empty.
+        A TagKey and TagValue are not case-sensitive.
+        A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
+        You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
+        If you remove a tag from all linked file systems, the tag is automatically deleted.
         
         @param request: AddTagsRequest
         @return: AddTagsResponse
@@ -267,14 +267,14 @@ class Client(OpenApiClient):
         request: nas20170626_models.AddTagsRequest,
     ) -> nas20170626_models.AddTagsResponse:
         """
-        ## Limits
-        *   Each tag includes a TagKey and a TagValue.
-        *   Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
-        *   You must specify a TagKey. You can leave a TagValue empty.
-        *   A TagKey and TagValue are not case-sensitive.
-        *   A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
-        *   You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
-        *   If you remove a tag from all linked file systems, the tag is automatically deleted.
+        @description ## Limits
+        Each tag includes a TagKey and a TagValue.
+        Placeholders at the start and end of each TagKey and TagValue are automatically removed. These placeholders include the spacebar ( ), tab (\\t), line break (\\n), and carriage return (\\r).
+        You must specify a TagKey. You can leave a TagValue empty.
+        A TagKey and TagValue are not case-sensitive.
+        A TagKey can be a maximum of 64 characters in length. A TagValue can be a maximum of 128 characters in length.
+        You can add a maximum of 10 tags to a file system at a time. If you add two tags with the same TagKey, the new tag added will overwrite the existing tag.
+        If you remove a tag from all linked file systems, the tag is automatically deleted.
         
         @param request: AddTagsRequest
         @return: AddTagsResponse
@@ -288,11 +288,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ApplyAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   You can apply only one automatic snapshot policy to each file system.
-        *   Each automatic snapshot policy can be applied to multiple file systems.
-        *   If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
+        @summary Applies an automatic snapshot policy to one or more file systems.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
+        You can apply only one automatic snapshot policy to each file system.
+        Each automatic snapshot policy can be applied to multiple file systems.
+        If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
         
         @param request: ApplyAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -329,11 +331,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ApplyAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   You can apply only one automatic snapshot policy to each file system.
-        *   Each automatic snapshot policy can be applied to multiple file systems.
-        *   If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
+        @summary Applies an automatic snapshot policy to one or more file systems.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
+        You can apply only one automatic snapshot policy to each file system.
+        Each automatic snapshot policy can be applied to multiple file systems.
+        If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
         
         @param request: ApplyAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -369,11 +373,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ApplyAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.ApplyAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   You can apply only one automatic snapshot policy to each file system.
-        *   Each automatic snapshot policy can be applied to multiple file systems.
-        *   If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
+        @summary Applies an automatic snapshot policy to one or more file systems.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
+        You can apply only one automatic snapshot policy to each file system.
+        Each automatic snapshot policy can be applied to multiple file systems.
+        If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
         
         @param request: ApplyAutoSnapshotPolicyRequest
         @return: ApplyAutoSnapshotPolicyResponse
@@ -386,11 +392,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ApplyAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.ApplyAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   You can apply only one automatic snapshot policy to each file system.
-        *   Each automatic snapshot policy can be applied to multiple file systems.
-        *   If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
+        @summary Applies an automatic snapshot policy to one or more file systems.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
+        You can apply only one automatic snapshot policy to each file system.
+        Each automatic snapshot policy can be applied to multiple file systems.
+        If an automatic snapshot policy is applied to a file system, you can call the ApplyAutoSnapshotPolicy operation to change the automatic snapshot policy.
         
         @param request: ApplyAutoSnapshotPolicyRequest
         @return: ApplyAutoSnapshotPolicyResponse
@@ -404,17 +412,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ApplyDataFlowAutoRefreshResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
-        *   You can add a maximum of five AutoRefresh configurations to a dataflow.
-        *   It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](~~336901~~) operation to query the dataflow status.
-        *   AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](~~182246~~).
-        **\
-        **Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
-        *   The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-        *   After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-        *   AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+        @summary Adds AutoRefresh configurations to a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
+        You can add a maximum of five AutoRefresh configurations to a dataflow.
+        It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the dataflow status.
+        AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+        *\
+        *Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+        The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+        After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+        AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
         
         @param request: ApplyDataFlowAutoRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -461,17 +471,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ApplyDataFlowAutoRefreshResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
-        *   You can add a maximum of five AutoRefresh configurations to a dataflow.
-        *   It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](~~336901~~) operation to query the dataflow status.
-        *   AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](~~182246~~).
-        **\
-        **Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
-        *   The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-        *   After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-        *   AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+        @summary Adds AutoRefresh configurations to a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
+        You can add a maximum of five AutoRefresh configurations to a dataflow.
+        It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the dataflow status.
+        AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+        *\
+        *Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+        The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+        After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+        AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
         
         @param request: ApplyDataFlowAutoRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -517,17 +529,19 @@ class Client(OpenApiClient):
         request: nas20170626_models.ApplyDataFlowAutoRefreshRequest,
     ) -> nas20170626_models.ApplyDataFlowAutoRefreshResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
-        *   You can add a maximum of five AutoRefresh configurations to a dataflow.
-        *   It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](~~336901~~) operation to query the dataflow status.
-        *   AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](~~182246~~).
-        **\
-        **Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
-        *   The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-        *   After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-        *   AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+        @summary Adds AutoRefresh configurations to a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
+        You can add a maximum of five AutoRefresh configurations to a dataflow.
+        It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the dataflow status.
+        AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+        *\
+        *Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+        The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+        After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+        AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
         
         @param request: ApplyDataFlowAutoRefreshRequest
         @return: ApplyDataFlowAutoRefreshResponse
@@ -540,17 +554,19 @@ class Client(OpenApiClient):
         request: nas20170626_models.ApplyDataFlowAutoRefreshRequest,
     ) -> nas20170626_models.ApplyDataFlowAutoRefreshResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
-        *   You can add a maximum of five AutoRefresh configurations to a dataflow.
-        *   It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](~~336901~~) operation to query the dataflow status.
-        *   AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](~~182246~~).
-        **\
-        **Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
-        *   The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-        *   After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-        *   AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+        @summary Adds AutoRefresh configurations to a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can add AutoRefresh configurations only to the dataflows that are in the `Running` state.
+        You can add a maximum of five AutoRefresh configurations to a dataflow.
+        It generally takes 2 to 5 minutes to create an AutoRefresh configuration. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the dataflow status.
+        AutoRefresh depends on the object modification events collected by EventBridge from the source Object Storage Service (OSS) bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+        *\
+        *Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly.
+        The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+        After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+        AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes Misconfigured. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
         
         @param request: ApplyDataFlowAutoRefreshRequest
         @return: ApplyDataFlowAutoRefreshResponse
@@ -564,8 +580,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Removes automatic snapshot policies from one or more file systems.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: CancelAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -600,8 +618,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Removes automatic snapshot policies from one or more file systems.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: CancelAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -635,8 +655,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.CancelAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Removes automatic snapshot policies from one or more file systems.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: CancelAutoSnapshotPolicyRequest
         @return: CancelAutoSnapshotPolicyResponse
@@ -649,8 +671,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.CancelAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Removes automatic snapshot policies from one or more file systems.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: CancelAutoSnapshotPolicyRequest
         @return: CancelAutoSnapshotPolicyResponse
@@ -664,10 +688,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelDataFlowAutoRefreshResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
-        *   It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](~~336901~~) operation to query the status of the AutoRefresh tasks.
+        @summary Cancels the AutoRefresh configuration for a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+        It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the AutoRefresh tasks.
         
         @param request: CancelDataFlowAutoRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -710,10 +736,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelDataFlowAutoRefreshResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
-        *   It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](~~336901~~) operation to query the status of the AutoRefresh tasks.
+        @summary Cancels the AutoRefresh configuration for a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+        It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the AutoRefresh tasks.
         
         @param request: CancelDataFlowAutoRefreshRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -755,10 +783,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelDataFlowAutoRefreshRequest,
     ) -> nas20170626_models.CancelDataFlowAutoRefreshResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
-        *   It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](~~336901~~) operation to query the status of the AutoRefresh tasks.
+        @summary Cancels the AutoRefresh configuration for a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+        It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the AutoRefresh tasks.
         
         @param request: CancelDataFlowAutoRefreshRequest
         @return: CancelDataFlowAutoRefreshResponse
@@ -771,10 +801,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelDataFlowAutoRefreshRequest,
     ) -> nas20170626_models.CancelDataFlowAutoRefreshResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
-        *   It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](~~336901~~) operation to query the status of the AutoRefresh tasks.
+        @summary Cancels the AutoRefresh configuration for a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can cancel AutoRefresh configurations only for the dataflows that are in the `Running` or `Stopped` state.
+        It generally takes 2 to 5 minutes to cancel the AutoRefresh configurations. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the AutoRefresh tasks.
         
         @param request: CancelDataFlowAutoRefreshRequest
         @return: CancelDataFlowAutoRefreshResponse
@@ -788,10 +820,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelDataFlowTaskResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflow tasks. You can view the version information on the file system details page in the console.
-        *   You can cancel only the dataflow tasks that are in the `Pending` and `Executing` states.
-        *   It generally takes 5 to 10 minutes to cancel a dataflow task. You can query the task execution status by calling the [DescribeDataFlowTasks](~~2402275~~) operation.
+        @summary Cancels a dataflow task that is not running.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflow tasks. You can view the version information on the file system details page in the console.
+        You can cancel only the dataflow tasks that are in the `Pending` and `Executing` states.
+        It generally takes 5 to 10 minutes to cancel a dataflow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation.
         
         @param request: CancelDataFlowTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -834,10 +868,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelDataFlowTaskResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflow tasks. You can view the version information on the file system details page in the console.
-        *   You can cancel only the dataflow tasks that are in the `Pending` and `Executing` states.
-        *   It generally takes 5 to 10 minutes to cancel a dataflow task. You can query the task execution status by calling the [DescribeDataFlowTasks](~~2402275~~) operation.
+        @summary Cancels a dataflow task that is not running.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflow tasks. You can view the version information on the file system details page in the console.
+        You can cancel only the dataflow tasks that are in the `Pending` and `Executing` states.
+        It generally takes 5 to 10 minutes to cancel a dataflow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation.
         
         @param request: CancelDataFlowTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -879,10 +915,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelDataFlowTaskRequest,
     ) -> nas20170626_models.CancelDataFlowTaskResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflow tasks. You can view the version information on the file system details page in the console.
-        *   You can cancel only the dataflow tasks that are in the `Pending` and `Executing` states.
-        *   It generally takes 5 to 10 minutes to cancel a dataflow task. You can query the task execution status by calling the [DescribeDataFlowTasks](~~2402275~~) operation.
+        @summary Cancels a dataflow task that is not running.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflow tasks. You can view the version information on the file system details page in the console.
+        You can cancel only the dataflow tasks that are in the `Pending` and `Executing` states.
+        It generally takes 5 to 10 minutes to cancel a dataflow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation.
         
         @param request: CancelDataFlowTaskRequest
         @return: CancelDataFlowTaskResponse
@@ -895,10 +933,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelDataFlowTaskRequest,
     ) -> nas20170626_models.CancelDataFlowTaskResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflow tasks. You can view the version information on the file system details page in the console.
-        *   You can cancel only the dataflow tasks that are in the `Pending` and `Executing` states.
-        *   It generally takes 5 to 10 minutes to cancel a dataflow task. You can query the task execution status by calling the [DescribeDataFlowTasks](~~2402275~~) operation.
+        @summary Cancels a dataflow task that is not running.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflow tasks. You can view the version information on the file system details page in the console.
+        You can cancel only the dataflow tasks that are in the `Pending` and `Executing` states.
+        It generally takes 5 to 10 minutes to cancel a dataflow task. You can query the task execution status by calling the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2402275.html) operation.
         
         @param request: CancelDataFlowTaskRequest
         @return: CancelDataFlowTaskResponse
@@ -912,7 +952,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelDirQuotaResponse:
         """
-        Only General-purpose file systems support the directory quota feature.
+        @summary Cancels the directory quota of a file system.
+        
+        @description Only General-purpose file systems support the directory quota feature.
         
         @param request: CancelDirQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -953,7 +995,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelDirQuotaResponse:
         """
-        Only General-purpose file systems support the directory quota feature.
+        @summary Cancels the directory quota of a file system.
+        
+        @description Only General-purpose file systems support the directory quota feature.
         
         @param request: CancelDirQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -993,7 +1037,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelDirQuotaRequest,
     ) -> nas20170626_models.CancelDirQuotaResponse:
         """
-        Only General-purpose file systems support the directory quota feature.
+        @summary Cancels the directory quota of a file system.
+        
+        @description Only General-purpose file systems support the directory quota feature.
         
         @param request: CancelDirQuotaRequest
         @return: CancelDirQuotaResponse
@@ -1006,7 +1052,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelDirQuotaRequest,
     ) -> nas20170626_models.CancelDirQuotaResponse:
         """
-        Only General-purpose file systems support the directory quota feature.
+        @summary Cancels the directory quota of a file system.
+        
+        @description Only General-purpose file systems support the directory quota feature.
         
         @param request: CancelDirQuotaRequest
         @return: CancelDirQuotaResponse
@@ -1020,7 +1068,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Cancels a running data retrieval task.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: CancelLifecycleRetrieveJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1055,7 +1105,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Cancels a running data retrieval task.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: CancelLifecycleRetrieveJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1089,7 +1141,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelLifecycleRetrieveJobRequest,
     ) -> nas20170626_models.CancelLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Cancels a running data retrieval task.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: CancelLifecycleRetrieveJobRequest
         @return: CancelLifecycleRetrieveJobResponse
@@ -1102,7 +1156,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelLifecycleRetrieveJobRequest,
     ) -> nas20170626_models.CancelLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Cancels a running data retrieval task.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: CancelLifecycleRetrieveJobRequest
         @return: CancelLifecycleRetrieveJobResponse
@@ -1116,10 +1172,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelRecycleBinJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
-        *   If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
-        *   If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
+        @summary Cancels a running job of the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
+        If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
+        If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
         
         @param request: CancelRecycleBinJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1152,10 +1210,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CancelRecycleBinJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
-        *   If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
-        *   If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
+        @summary Cancels a running job of the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
+        If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
+        If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
         
         @param request: CancelRecycleBinJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1187,10 +1247,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelRecycleBinJobRequest,
     ) -> nas20170626_models.CancelRecycleBinJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
-        *   If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
-        *   If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
+        @summary Cancels a running job of the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
+        If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
+        If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
         
         @param request: CancelRecycleBinJobRequest
         @return: CancelRecycleBinJobResponse
@@ -1203,10 +1265,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.CancelRecycleBinJobRequest,
     ) -> nas20170626_models.CancelRecycleBinJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
-        *   If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
-        *   If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
+        @summary Cancels a running job of the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can cancel only jobs that are in the Running state. You cannot cancel jobs that are in the PartialSuccess, Success, Fail, or Cancelled state.
+        If you cancel a running job that permanently deletes files, you cannot restore the files that are already permanently deleted.
+        If you cancel a running job that restores files, you can query the restored files from the file system, and query the unrestored files from the recycle bin.
         
         @param request: CancelRecycleBinJobRequest
         @return: CancelRecycleBinJobResponse
@@ -1219,6 +1283,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -1253,6 +1324,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -1286,6 +1364,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ChangeResourceGroupRequest,
     ) -> nas20170626_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -1293,6 +1377,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ChangeResourceGroupRequest,
     ) -> nas20170626_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -1301,6 +1391,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateAccessGroupResponse:
+        """
+        @summary Creates a permission group.
+        
+        @param request: CreateAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -1335,6 +1432,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateAccessGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateAccessGroupResponse:
+        """
+        @summary Creates a permission group.
+        
+        @param request: CreateAccessGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -1368,6 +1472,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateAccessGroupRequest,
     ) -> nas20170626_models.CreateAccessGroupResponse:
+        """
+        @summary Creates a permission group.
+        
+        @param request: CreateAccessGroupRequest
+        @return: CreateAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_group_with_options(request, runtime)
 
@@ -1375,6 +1485,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateAccessGroupRequest,
     ) -> nas20170626_models.CreateAccessGroupResponse:
+        """
+        @summary Creates a permission group.
+        
+        @param request: CreateAccessGroupRequest
+        @return: CreateAccessGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_group_with_options_async(request, runtime)
 
@@ -1383,6 +1499,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateAccessPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateAccessPointResponse:
+        """
+        @summary 创建接入点
+        
+        @param request: CreateAccessPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group):
@@ -1435,6 +1558,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateAccessPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateAccessPointResponse:
+        """
+        @summary 创建接入点
+        
+        @param request: CreateAccessPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group):
@@ -1486,6 +1616,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateAccessPointRequest,
     ) -> nas20170626_models.CreateAccessPointResponse:
+        """
+        @summary 创建接入点
+        
+        @param request: CreateAccessPointRequest
+        @return: CreateAccessPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_point_with_options(request, runtime)
 
@@ -1493,6 +1629,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateAccessPointRequest,
     ) -> nas20170626_models.CreateAccessPointResponse:
+        """
+        @summary 创建接入点
+        
+        @param request: CreateAccessPointRequest
+        @return: CreateAccessPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_point_with_options_async(request, runtime)
 
@@ -1501,6 +1643,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateAccessRuleResponse:
+        """
+        @summary Creates a rule for a permission group.
+        
+        @param request: CreateAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -1541,6 +1690,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateAccessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateAccessRuleResponse:
+        """
+        @summary Creates a rule for a permission group.
+        
+        @param request: CreateAccessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -1580,6 +1736,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateAccessRuleRequest,
     ) -> nas20170626_models.CreateAccessRuleResponse:
+        """
+        @summary Creates a rule for a permission group.
+        
+        @param request: CreateAccessRuleRequest
+        @return: CreateAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_rule_with_options(request, runtime)
 
@@ -1587,6 +1749,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateAccessRuleRequest,
     ) -> nas20170626_models.CreateAccessRuleResponse:
+        """
+        @summary Creates a rule for a permission group.
+        
+        @param request: CreateAccessRuleRequest
+        @return: CreateAccessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_rule_with_options_async(request, runtime)
 
@@ -1596,16 +1764,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
-        *   If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
-        *   A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
-        *   If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
-        *   If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
-        *   You can only apply automatic snapshot policies to a file system that is in the Running state.
-        *   All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
-        *   After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
+        @summary Creates an automatic snapshot policy.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
+        If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
+        A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
+        If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
+        If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
+        You can only apply automatic snapshot policies to a file system that is in the Running state.
+        All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
+        After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
         
         @param request: CreateAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1648,16 +1818,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
-        *   If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
-        *   A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
-        *   If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
-        *   If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
-        *   You can only apply automatic snapshot policies to a file system that is in the Running state.
-        *   All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
-        *   After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
+        @summary Creates an automatic snapshot policy.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
+        If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
+        A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
+        If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
+        If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
+        You can only apply automatic snapshot policies to a file system that is in the Running state.
+        All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
+        After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
         
         @param request: CreateAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1699,16 +1871,18 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.CreateAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
-        *   If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
-        *   A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
-        *   If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
-        *   If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
-        *   You can only apply automatic snapshot policies to a file system that is in the Running state.
-        *   All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
-        *   After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
+        @summary Creates an automatic snapshot policy.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
+        If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
+        A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
+        If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
+        If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
+        You can only apply automatic snapshot policies to a file system that is in the Running state.
+        All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
+        After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
         
         @param request: CreateAutoSnapshotPolicyRequest
         @return: CreateAutoSnapshotPolicyResponse
@@ -1721,16 +1895,18 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.CreateAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
-        *   If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
-        *   A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
-        *   If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
-        *   If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
-        *   You can only apply automatic snapshot policies to a file system that is in the Running state.
-        *   All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
-        *   After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
+        @summary Creates an automatic snapshot policy.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        You can create a maximum of 100 automatic snapshot policies in each region for an Alibaba Cloud account.
+        If an auto snapshot is being created when the scheduled time for a new auto snapshot arrives, the creation of the new snapshot is skipped. This occurs if the file system stores a large volume of data. For example, you have scheduled auto snapshots to be created at 09:00:00, 10:00:00, 11:00:00, and 12:00:00 for a file system. The system starts to create an auto snapshot at 09:00:00 and does not complete the process until 10:20:00. The process takes 80 minutes because the file system has a large volume of data. In this case, the system does not create an auto snapshot at 10:00:00, but creates an auto snapshot at 11:00:00.
+        A maximum of 128 auto snapshots can be created for a file system. If the upper limit is reached, the earliest auto snapshot is deleted. This rule does not apply to manual snapshots.
+        If you modify the retention period of an automatic snapshot policy, the modification applies only to subsequent snapshots, but not to the existing snapshots.
+        If an auto snapshot is being created for a file system, you cannot create a manual snapshot for the file system. You must wait after the auto snapshot is created.
+        You can only apply automatic snapshot policies to a file system that is in the Running state.
+        All auto snapshots are named in the `auto_yyyyMMdd_X` format, where: `auto` indicates that the snapshot is created based on an automatic snapshot policy. `yyyyMMdd` indicates the date on which the snapshot is created. `y` indicates the year. `M` indicates the month. `d` indicates the day. `X` indicates the ordinal number of the snapshot on the current day. For example, `auto_20201018_1` indicates the first auto snapshot that was created on October 18, 2020.
+        After an automatic snapshot policy is created, you can call the ApplyAutoSnapshotPolicy operation to apply the policy to a file system and call the ModifyAutoSnapshotPolicy operation to modify the policy.
         
         @param request: CreateAutoSnapshotPolicyRequest
         @return: CreateAutoSnapshotPolicyResponse
@@ -1744,41 +1920,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateDataFlowResponse:
         """
-        Billing
-        *   If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](~~111858~~).
-        *   When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](~~163752~~).
-        *   Dataflow specifications
-        *   The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-        *   When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
-        *   Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-        *   Fileset
-        *   The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
-        *   When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
-        *   A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
-        **\
-        **Note** If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
-        *   Source storage
-        *   The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
-        *   CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
-        *   If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
-        *   Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
-        **\
-        **Note** Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
-        *   AutoRefresh
-        *   After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-        *   AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](~~182246~~).
-        *   The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
-        *   AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
-        *   When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-        **\
-        **Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
-        *   Permissions
-        When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](~~185138~~).
-        *   Basic operations
-        *   Only CPFS V2.2.0 and later support dataflows.
-        *   You can create a dataflow only if the CPFS file system is in the Running state.
-        *   A maximum of 10 dataflows can be created for a CPFS file system.
-        *   It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
+        @summary Creates a dataflow for a Cloud Parallel File Storage (CPFS) file system and source storage.
+        
+        @description    Billing
+        If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
+        When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
+        Dataflow specifications
+        The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
+        When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
+        Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+        Fileset
+        The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
+        When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
+        A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
+        *\
+        *Note** If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
+        Source storage
+        The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
+        CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+        If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
+        Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+        *\
+        *Note** Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
+        AutoRefresh
+        After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+        AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+        The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
+        AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+        When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+        *\
+        *Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
+        Permissions
+        When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
+        Basic operations
+        Only CPFS V2.2.0 and later support dataflows.
+        You can create a dataflow only if the CPFS file system is in the Running state.
+        A maximum of 10 dataflows can be created for a CPFS file system.
+        It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
         
         @param request: CreateDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1837,41 +2015,43 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateDataFlowResponse:
         """
-        Billing
-        *   If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](~~111858~~).
-        *   When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](~~163752~~).
-        *   Dataflow specifications
-        *   The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-        *   When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
-        *   Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-        *   Fileset
-        *   The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
-        *   When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
-        *   A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
-        **\
-        **Note** If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
-        *   Source storage
-        *   The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
-        *   CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
-        *   If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
-        *   Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
-        **\
-        **Note** Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
-        *   AutoRefresh
-        *   After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-        *   AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](~~182246~~).
-        *   The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
-        *   AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
-        *   When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-        **\
-        **Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
-        *   Permissions
-        When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](~~185138~~).
-        *   Basic operations
-        *   Only CPFS V2.2.0 and later support dataflows.
-        *   You can create a dataflow only if the CPFS file system is in the Running state.
-        *   A maximum of 10 dataflows can be created for a CPFS file system.
-        *   It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
+        @summary Creates a dataflow for a Cloud Parallel File Storage (CPFS) file system and source storage.
+        
+        @description    Billing
+        If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
+        When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
+        Dataflow specifications
+        The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
+        When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
+        Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+        Fileset
+        The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
+        When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
+        A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
+        *\
+        *Note** If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
+        Source storage
+        The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
+        CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+        If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
+        Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+        *\
+        *Note** Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
+        AutoRefresh
+        After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+        AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+        The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
+        AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+        When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+        *\
+        *Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
+        Permissions
+        When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
+        Basic operations
+        Only CPFS V2.2.0 and later support dataflows.
+        You can create a dataflow only if the CPFS file system is in the Running state.
+        A maximum of 10 dataflows can be created for a CPFS file system.
+        It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
         
         @param request: CreateDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1929,41 +2109,43 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateDataFlowRequest,
     ) -> nas20170626_models.CreateDataFlowResponse:
         """
-        Billing
-        *   If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](~~111858~~).
-        *   When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](~~163752~~).
-        *   Dataflow specifications
-        *   The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-        *   When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
-        *   Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-        *   Fileset
-        *   The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
-        *   When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
-        *   A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
-        **\
-        **Note** If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
-        *   Source storage
-        *   The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
-        *   CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
-        *   If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
-        *   Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
-        **\
-        **Note** Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
-        *   AutoRefresh
-        *   After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-        *   AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](~~182246~~).
-        *   The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
-        *   AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
-        *   When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-        **\
-        **Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
-        *   Permissions
-        When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](~~185138~~).
-        *   Basic operations
-        *   Only CPFS V2.2.0 and later support dataflows.
-        *   You can create a dataflow only if the CPFS file system is in the Running state.
-        *   A maximum of 10 dataflows can be created for a CPFS file system.
-        *   It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
+        @summary Creates a dataflow for a Cloud Parallel File Storage (CPFS) file system and source storage.
+        
+        @description    Billing
+        If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
+        When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
+        Dataflow specifications
+        The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
+        When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
+        Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+        Fileset
+        The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
+        When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
+        A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
+        *\
+        *Note** If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
+        Source storage
+        The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
+        CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+        If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
+        Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+        *\
+        *Note** Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
+        AutoRefresh
+        After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+        AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+        The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
+        AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+        When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+        *\
+        *Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
+        Permissions
+        When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
+        Basic operations
+        Only CPFS V2.2.0 and later support dataflows.
+        You can create a dataflow only if the CPFS file system is in the Running state.
+        A maximum of 10 dataflows can be created for a CPFS file system.
+        It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
         
         @param request: CreateDataFlowRequest
         @return: CreateDataFlowResponse
@@ -1976,41 +2158,43 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateDataFlowRequest,
     ) -> nas20170626_models.CreateDataFlowResponse:
         """
-        Billing
-        *   If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](~~111858~~).
-        *   When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](~~163752~~).
-        *   Dataflow specifications
-        *   The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-        *   When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
-        *   Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-        *   Fileset
-        *   The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
-        *   When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
-        *   A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
-        **\
-        **Note** If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
-        *   Source storage
-        *   The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
-        *   CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
-        *   If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
-        *   Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
-        **\
-        **Note** Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
-        *   AutoRefresh
-        *   After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
-        *   AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](~~182246~~).
-        *   The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
-        *   AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
-        *   When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
-        **\
-        **Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
-        *   Permissions
-        When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](~~185138~~).
-        *   Basic operations
-        *   Only CPFS V2.2.0 and later support dataflows.
-        *   You can create a dataflow only if the CPFS file system is in the Running state.
-        *   A maximum of 10 dataflows can be created for a CPFS file system.
-        *   It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
+        @summary Creates a dataflow for a Cloud Parallel File Storage (CPFS) file system and source storage.
+        
+        @description    Billing
+        If you create a dataflow, you are charged for using the dataflow throughput. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
+        When you configure the AutoRefresh feature for a dataflow, CPFS must use EventBridge to collect object modification events from the source Object Storage Service (OSS) bucket. Event fees are incurred. For more information, see [Billing of EventBridge](https://help.aliyun.com/document_detail/163752.html).
+        Dataflow specifications
+        The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
+        When you create a dataflow, the vSwitch IP addresses used by a CPFS mount target are consumed. Make sure that the vSwitch can provide sufficient IP addresses.
+        Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+        Fileset
+        The destination for a dataflow is a fileset in the CPFS file system. A fileset is a new directory tree structure (a small file directory) in a CPFS file system. Each fileset independently manages an inode space.
+        When you create a dataflow, the related fileset must already exist and cannot be nested with other filesets. Only one dataflow can be created in a fileset, which corresponds to one source storage.
+        A fileset supports a maximum of one million files. If the number of files imported from an OSS bucket into the fileset exceeds the upper limit, the `no space` error message is returned when you add new files.
+        *\
+        *Note** If data already exists in the fileset, after you create a dataflow, the existing data in the fileset is cleared and replaced with the data synchronized from the OSS bucket.
+        Source storage
+        The source storage is an OSS bucket. SourceStorage for a dataflow must be an OSS bucket. The prefix of an OSS bucket is not supported.
+        CPFS dataflows support both encrypted and unencrypted access to OSS. If you select SSL-encrypted access to OSS, make sure that encryption in transit for OSS buckets supports encrypted access.
+        If dataflows for multiple CPFS file systems or multiple dataflows for the same CPFS file system are stored in the same OSS bucket, you must enable versioning for the OSS bucket to prevent data conflicts caused by data export from multiple CPFS file systems to one OSS bucket.
+        Dataflows are not supported for OSS buckets across regions. The OSS bucket must reside in the same region as the CPFS file system.
+        *\
+        *Note** Before you create a dataflow, you must configure a tag (key: cpfs-dataflow, value: true) for the source OSS bucket. This way, the created dataflow can access the data in the OSS bucket. When a dataflow is being used, do not delete or modify the tag. Otherwise, the dataflow for CPFS cannot access the data in the OSS bucket.
+        AutoRefresh
+        After AutoRefresh is configured, if the data in the source OSS bucket is updated, the updated metadata is automatically synchronized to the CPFS file system. You can load the updated data when you access files, or run a dataflow task to load the updated data.
+        AutoRefresh depends on the object modification events collected by EventBridge from the source OSS bucket. You must first [activate EventBridge](https://help.aliyun.com/document_detail/182246.html).
+        The AutoRefresh configuration applies only to the prefix and is specified by the RefreshPath parameter. You can configure a maximum of five AutoRefresh directories for a dataflow.
+        AutoRefreshInterval refers to the interval at which CPFS checks whether data is updated in the prefix of the source OSS bucket. If data is updated, CPFS runs an AutoRefresh task. If the frequency of triggering the object modification event in the source OSS bucket exceeds the processing capability of the CPFS dataflow, AutoRefresh tasks are accumulated, metadata updates are delayed, and the dataflow status becomes `Misconfigured`. To resolve these issues, you can increase the dataflow specifications or reduce the frequency of triggering the object modification event.
+        When you add an AutoRefresh configuration to the prefix for a CPFS dataflow, an event bus is created at the user side and an event rule is created for the prefix of the source OSS bucket. When an object is modified in the prefix of the source OSS bucket, an OSS event is generated in the EventBridge console. The event is processed by the CPFS dataflow.
+        *\
+        *Note** The event buses and event rules created for CPFS in the EventBridge console contain the `Create for cpfs auto refresh` description. The event buses and event rules cannot be modified or deleted. Otherwise, AutoRefresh cannot work properly
+        Permissions
+        When you create a dataflow, CPFS obtains two service-linked roles: `AliyunServiceRoleForNasOssDataflow` and `AliyunServiceRoleForNasEventNotification`. For more information, see [CPFS service-linked roles](https://help.aliyun.com/document_detail/185138.html).
+        Basic operations
+        Only CPFS V2.2.0 and later support dataflows.
+        You can create a dataflow only if the CPFS file system is in the Running state.
+        A maximum of 10 dataflows can be created for a CPFS file system.
+        It generally takes 2 to 5 minutes to create a dataflow. You can call the DescribeDataFlows operation to check whether the dataflow has been created.
         
         @param request: CreateDataFlowRequest
         @return: CreateDataFlowResponse
@@ -2024,11 +2208,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateDataFlowTaskResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
-        *   You can create a dataflow task only for a dataflow that is in the Running state.
-        *   Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](~~336914~~) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
-        *   When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+        @summary Creates a dataflow task.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+        You can create a dataflow task only for a dataflow that is in the Running state.
+        Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+        When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
         
         @param request: CreateDataFlowTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2081,11 +2267,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateDataFlowTaskResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
-        *   You can create a dataflow task only for a dataflow that is in the Running state.
-        *   Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](~~336914~~) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
-        *   When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+        @summary Creates a dataflow task.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+        You can create a dataflow task only for a dataflow that is in the Running state.
+        Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+        When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
         
         @param request: CreateDataFlowTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2137,11 +2325,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateDataFlowTaskRequest,
     ) -> nas20170626_models.CreateDataFlowTaskResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
-        *   You can create a dataflow task only for a dataflow that is in the Running state.
-        *   Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](~~336914~~) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
-        *   When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+        @summary Creates a dataflow task.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+        You can create a dataflow task only for a dataflow that is in the Running state.
+        Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+        When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
         
         @param request: CreateDataFlowTaskRequest
         @return: CreateDataFlowTaskResponse
@@ -2154,11 +2344,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateDataFlowTaskRequest,
     ) -> nas20170626_models.CreateDataFlowTaskResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
-        *   You can create a dataflow task only for a dataflow that is in the Running state.
-        *   Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](~~336914~~) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
-        *   When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+        @summary Creates a dataflow task.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Dataflow tasks can be created only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+        You can create a dataflow task only for a dataflow that is in the Running state.
+        Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/336914.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+        When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
         
         @param request: CreateDataFlowTaskRequest
         @return: CreateDataFlowTaskResponse
@@ -2171,6 +2363,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateDirRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateDirResponse:
+        """
+        @summary 创建目录
+        
+        @param request: CreateDirRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDirResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -2209,6 +2408,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateDirRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateDirResponse:
+        """
+        @summary 创建目录
+        
+        @param request: CreateDirRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDirResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -2246,6 +2452,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateDirRequest,
     ) -> nas20170626_models.CreateDirResponse:
+        """
+        @summary 创建目录
+        
+        @param request: CreateDirRequest
+        @return: CreateDirResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dir_with_options(request, runtime)
 
@@ -2253,6 +2465,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateDirRequest,
     ) -> nas20170626_models.CreateDirResponse:
+        """
+        @summary 创建目录
+        
+        @param request: CreateDirRequest
+        @return: CreateDirResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dir_with_options_async(request, runtime)
 
@@ -2262,8 +2480,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateFileResponse:
         """
-        This operation is only available to some users.
-        *   This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
+        @summary Creates a directory or file.
+        
+        @description    This operation is only available to some users.
+        This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
         
         @param request: CreateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2306,8 +2526,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateFileResponse:
         """
-        This operation is only available to some users.
-        *   This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
+        @summary Creates a directory or file.
+        
+        @description    This operation is only available to some users.
+        This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
         
         @param request: CreateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2349,8 +2571,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateFileRequest,
     ) -> nas20170626_models.CreateFileResponse:
         """
-        This operation is only available to some users.
-        *   This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
+        @summary Creates a directory or file.
+        
+        @description    This operation is only available to some users.
+        This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
         
         @param request: CreateFileRequest
         @return: CreateFileResponse
@@ -2363,8 +2587,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateFileRequest,
     ) -> nas20170626_models.CreateFileResponse:
         """
-        This operation is only available to some users.
-        *   This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
+        @summary Creates a directory or file.
+        
+        @description    This operation is only available to some users.
+        This operation supports only General-purpose NAS file systems that use the Server Message Block (SMB) protocol and have Resource Access Management (RAM) enabled.
         
         @param request: CreateFileRequest
         @return: CreateFileResponse
@@ -2378,9 +2604,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateFileSystemResponse:
         """
-        Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](~~178365~~) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
-        *   Before you create a file system, you must complete real-name verification.
-        *   When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](~~208530~~).
+        @summary Creates a file system.
+        
+        @description    Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+        Before you create a file system, you must complete real-name verification.
+        When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
         
         @param request: CreateFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2447,9 +2675,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateFileSystemResponse:
         """
-        Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](~~178365~~) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
-        *   Before you create a file system, you must complete real-name verification.
-        *   When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](~~208530~~).
+        @summary Creates a file system.
+        
+        @description    Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+        Before you create a file system, you must complete real-name verification.
+        When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
         
         @param request: CreateFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2515,9 +2745,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateFileSystemRequest,
     ) -> nas20170626_models.CreateFileSystemResponse:
         """
-        Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](~~178365~~) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
-        *   Before you create a file system, you must complete real-name verification.
-        *   When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](~~208530~~).
+        @summary Creates a file system.
+        
+        @description    Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+        Before you create a file system, you must complete real-name verification.
+        When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
         
         @param request: CreateFileSystemRequest
         @return: CreateFileSystemResponse
@@ -2530,9 +2762,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateFileSystemRequest,
     ) -> nas20170626_models.CreateFileSystemResponse:
         """
-        Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](~~178365~~) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
-        *   Before you create a file system, you must complete real-name verification.
-        *   When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](~~208530~~).
+        @summary Creates a file system.
+        
+        @description    Before you call this operation, you must understand the billing and pricing of Apsara File Storage NAS. For more information, see [Billing](https://help.aliyun.com/document_detail/178365.html) and [Pricing](https://www.alibabacloud.com/product/nas/pricing).
+        Before you create a file system, you must complete real-name verification.
+        When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
         
         @param request: CreateFileSystemRequest
         @return: CreateFileSystemResponse
@@ -2546,12 +2780,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
-        *   A maximum of 10 filesets can be created for a CPFS file system.
-        *   The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
-        *   Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
-        *   A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
+        @summary Creates a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
+        A maximum of 10 filesets can be created for a CPFS file system.
+        The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
+        Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
+        A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
         
         @param request: CreateFilesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2561,6 +2797,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
@@ -2594,12 +2832,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
-        *   A maximum of 10 filesets can be created for a CPFS file system.
-        *   The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
-        *   Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
-        *   A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
+        @summary Creates a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
+        A maximum of 10 filesets can be created for a CPFS file system.
+        The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
+        Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
+        A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
         
         @param request: CreateFilesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2609,6 +2849,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
@@ -2641,12 +2883,14 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateFilesetRequest,
     ) -> nas20170626_models.CreateFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
-        *   A maximum of 10 filesets can be created for a CPFS file system.
-        *   The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
-        *   Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
-        *   A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
+        @summary Creates a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
+        A maximum of 10 filesets can be created for a CPFS file system.
+        The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
+        Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
+        A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
         
         @param request: CreateFilesetRequest
         @return: CreateFilesetResponse
@@ -2659,12 +2903,14 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateFilesetRequest,
     ) -> nas20170626_models.CreateFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
-        *   A maximum of 10 filesets can be created for a CPFS file system.
-        *   The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
-        *   Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
-        *   A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
+        @summary Creates a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset creation. You can view the version information on the file system details page in the console.
+        A maximum of 10 filesets can be created for a CPFS file system.
+        The maximum depth supported by a fileset is eight levels. The depth of the root directory / is 0 levels. For example, the /test/aaa/ccc/ fileset has three levels.
+        Nested filesets are not supported. If a fileset is specified as a parent directory, its subdirectory cannot be a fileset.
+        A fileset supports a maximum of one million files. If the number of files exceeds the upper limit, the `no space` error message is returned when you add new files.
         
         @param request: CreateFilesetRequest
         @return: CreateFilesetResponse
@@ -2677,6 +2923,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateLDAPConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateLDAPConfigResponse:
+        """
+        @summary Creates LDAP configurations.
+        
+        @param request: CreateLDAPConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLDAPConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bind_dn):
@@ -2711,6 +2964,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateLDAPConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateLDAPConfigResponse:
+        """
+        @summary Creates LDAP configurations.
+        
+        @param request: CreateLDAPConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLDAPConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bind_dn):
@@ -2744,6 +3004,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateLDAPConfigRequest,
     ) -> nas20170626_models.CreateLDAPConfigResponse:
+        """
+        @summary Creates LDAP configurations.
+        
+        @param request: CreateLDAPConfigRequest
+        @return: CreateLDAPConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ldapconfig_with_options(request, runtime)
 
@@ -2751,6 +3017,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateLDAPConfigRequest,
     ) -> nas20170626_models.CreateLDAPConfigResponse:
+        """
+        @summary Creates LDAP configurations.
+        
+        @param request: CreateLDAPConfigRequest
+        @return: CreateLDAPConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ldapconfig_with_options_async(request, runtime)
 
@@ -2760,8 +3032,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateLifecyclePolicyResponse:
         """
-        You can create lifecycle policies only for General-purpose NAS file systems.
-        *   You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
+        @summary Creates a lifecycle policy.
+        
+        @description    You can create lifecycle policies only for General-purpose NAS file systems.
+        You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
         
         @param request: CreateLifecyclePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2806,8 +3080,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateLifecyclePolicyResponse:
         """
-        You can create lifecycle policies only for General-purpose NAS file systems.
-        *   You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
+        @summary Creates a lifecycle policy.
+        
+        @description    You can create lifecycle policies only for General-purpose NAS file systems.
+        You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
         
         @param request: CreateLifecyclePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2851,8 +3127,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateLifecyclePolicyRequest,
     ) -> nas20170626_models.CreateLifecyclePolicyResponse:
         """
-        You can create lifecycle policies only for General-purpose NAS file systems.
-        *   You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
+        @summary Creates a lifecycle policy.
+        
+        @description    You can create lifecycle policies only for General-purpose NAS file systems.
+        You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
         
         @param request: CreateLifecyclePolicyRequest
         @return: CreateLifecyclePolicyResponse
@@ -2865,8 +3143,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateLifecyclePolicyRequest,
     ) -> nas20170626_models.CreateLifecyclePolicyResponse:
         """
-        You can create lifecycle policies only for General-purpose NAS file systems.
-        *   You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
+        @summary Creates a lifecycle policy.
+        
+        @description    You can create lifecycle policies only for General-purpose NAS file systems.
+        You can create up to 20 lifecycle policies in each region within an Alibaba Cloud account.
         
         @param request: CreateLifecyclePolicyRequest
         @return: CreateLifecyclePolicyResponse
@@ -2880,8 +3160,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
+        @summary Creates a data retrieval task.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
         
         @param request: CreateLifecycleRetrieveJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2920,8 +3202,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
+        @summary Creates a data retrieval task.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
         
         @param request: CreateLifecycleRetrieveJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2959,8 +3243,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateLifecycleRetrieveJobRequest,
     ) -> nas20170626_models.CreateLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
+        @summary Creates a data retrieval task.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
         
         @param request: CreateLifecycleRetrieveJobRequest
         @return: CreateLifecycleRetrieveJobResponse
@@ -2973,8 +3259,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateLifecycleRetrieveJobRequest,
     ) -> nas20170626_models.CreateLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
+        @summary Creates a data retrieval task.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can run a maximum of 20 data retrieval tasks in each region within an Alibaba Cloud account.
         
         @param request: CreateLifecycleRetrieveJobRequest
         @return: CreateLifecycleRetrieveJobResponse
@@ -2987,6 +3275,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateLogAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateLogAnalysisResponse:
+        """
+        @summary Dumps the logs of a General-purpose NAS file system to Simple Log Service.
+        
+        @param request: CreateLogAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogAnalysisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -3017,6 +3312,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateLogAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateLogAnalysisResponse:
+        """
+        @summary Dumps the logs of a General-purpose NAS file system to Simple Log Service.
+        
+        @param request: CreateLogAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogAnalysisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -3046,6 +3348,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateLogAnalysisRequest,
     ) -> nas20170626_models.CreateLogAnalysisResponse:
+        """
+        @summary Dumps the logs of a General-purpose NAS file system to Simple Log Service.
+        
+        @param request: CreateLogAnalysisRequest
+        @return: CreateLogAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_log_analysis_with_options(request, runtime)
 
@@ -3053,6 +3361,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.CreateLogAnalysisRequest,
     ) -> nas20170626_models.CreateLogAnalysisResponse:
+        """
+        @summary Dumps the logs of a General-purpose NAS file system to Simple Log Service.
+        
+        @param request: CreateLogAnalysisRequest
+        @return: CreateLogAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_log_analysis_with_options_async(request, runtime)
 
@@ -3062,8 +3376,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateMountTargetResponse:
         """
-        After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active** state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
-        *   When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](~~208530~~).
+        @summary Creates a mount target.
+        
+        @description    After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active** state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+        When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
         
         @param request: CreateMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3112,8 +3428,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateMountTargetResponse:
         """
-        After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active** state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
-        *   When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](~~208530~~).
+        @summary Creates a mount target.
+        
+        @description    After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active** state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+        When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
         
         @param request: CreateMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3161,8 +3479,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateMountTargetRequest,
     ) -> nas20170626_models.CreateMountTargetResponse:
         """
-        After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active** state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
-        *   When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](~~208530~~).
+        @summary Creates a mount target.
+        
+        @description    After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active** state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+        When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
         
         @param request: CreateMountTargetRequest
         @return: CreateMountTargetResponse
@@ -3175,8 +3495,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateMountTargetRequest,
     ) -> nas20170626_models.CreateMountTargetResponse:
         """
-        After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active** state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
-        *   When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](~~208530~~).
+        @summary Creates a mount target.
+        
+        @description    After you call the CreateMountTarget operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the **Active** state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+        When you call this operation, a service-linked role of NAS is automatically created. For more information, see [Manage the service-linked roles of NAS](https://help.aliyun.com/document_detail/208530.html).
         
         @param request: CreateMountTargetRequest
         @return: CreateMountTargetResponse
@@ -3190,14 +3512,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Prerequisites
+        @summary Creates an export directory for a protocol service.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Prerequisites
         A protocol service is created.
-        *   Others
-        *   The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
-        *   The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
-        *   You can create a maximum of 10 export directories for a protocol service.
-        *   When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
+        Others
+        The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
+        The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
+        You can create a maximum of 10 export directories for a protocol service.
+        When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
         
         @param request: CreateProtocolMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3250,14 +3574,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Prerequisites
+        @summary Creates an export directory for a protocol service.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Prerequisites
         A protocol service is created.
-        *   Others
-        *   The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
-        *   The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
-        *   You can create a maximum of 10 export directories for a protocol service.
-        *   When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
+        Others
+        The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
+        The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
+        You can create a maximum of 10 export directories for a protocol service.
+        When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
         
         @param request: CreateProtocolMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3309,14 +3635,16 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateProtocolMountTargetRequest,
     ) -> nas20170626_models.CreateProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Prerequisites
+        @summary Creates an export directory for a protocol service.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Prerequisites
         A protocol service is created.
-        *   Others
-        *   The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
-        *   The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
-        *   You can create a maximum of 10 export directories for a protocol service.
-        *   When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
+        Others
+        The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
+        The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
+        You can create a maximum of 10 export directories for a protocol service.
+        When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
         
         @param request: CreateProtocolMountTargetRequest
         @return: CreateProtocolMountTargetResponse
@@ -3329,14 +3657,16 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateProtocolMountTargetRequest,
     ) -> nas20170626_models.CreateProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Prerequisites
+        @summary Creates an export directory for a protocol service.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Prerequisites
         A protocol service is created.
-        *   Others
-        *   The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
-        *   The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
-        *   You can create a maximum of 10 export directories for a protocol service.
-        *   When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
+        Others
+        The virtual private cloud (VPC) CIDR block of the export directory for the protocol service cannot overlap with the VPC CIDR block of the file system.
+        The VPC CIDR blocks of multiple export directories of a protocol service cannot overlap.
+        You can create a maximum of 10 export directories for a protocol service.
+        When you create export directories for a protocol service, a maximum of 32 IP addresses that are allocated by the specified vSwitch are used. Make sure that the vSwitch can provide sufficient IP addresses.
         
         @param request: CreateProtocolMountTargetRequest
         @return: CreateProtocolMountTargetResponse
@@ -3350,18 +3680,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateProtocolServiceResponse:
         """
-        This operation is available only to CPFS file systems on the China site (aliyun.com).
-        *   Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
-        *   Protocol service types
+        @summary Creates a protocol service for a Cloud Parallel File Storage (CPFS) file system. The creation takes about 5 to 10 minutes.
+        
+        @description    This operation is available only to CPFS file systems on the China site (aliyun.com).
+        Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
+        Protocol service types
         Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
-        *   General-purpose protocol services: provide NFS access and [directory-level mount targets](~~427175~~) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
-        *   Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
-        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](~~111858~~). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
-        *   Protocol type
+        General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
+        Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
+        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+        Protocol type
         Only NFSv3 is supported.
-        *   Others
-        *   Only one protocol service can be created for a CPFS file system.
-        *   A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
+        Others
+        Only one protocol service can be created for a CPFS file system.
+        A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
         
         @param request: CreateProtocolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3412,18 +3744,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateProtocolServiceResponse:
         """
-        This operation is available only to CPFS file systems on the China site (aliyun.com).
-        *   Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
-        *   Protocol service types
+        @summary Creates a protocol service for a Cloud Parallel File Storage (CPFS) file system. The creation takes about 5 to 10 minutes.
+        
+        @description    This operation is available only to CPFS file systems on the China site (aliyun.com).
+        Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
+        Protocol service types
         Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
-        *   General-purpose protocol services: provide NFS access and [directory-level mount targets](~~427175~~) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
-        *   Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
-        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](~~111858~~). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
-        *   Protocol type
+        General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
+        Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
+        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+        Protocol type
         Only NFSv3 is supported.
-        *   Others
-        *   Only one protocol service can be created for a CPFS file system.
-        *   A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
+        Others
+        Only one protocol service can be created for a CPFS file system.
+        A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
         
         @param request: CreateProtocolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3473,18 +3807,20 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateProtocolServiceRequest,
     ) -> nas20170626_models.CreateProtocolServiceResponse:
         """
-        This operation is available only to CPFS file systems on the China site (aliyun.com).
-        *   Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
-        *   Protocol service types
+        @summary Creates a protocol service for a Cloud Parallel File Storage (CPFS) file system. The creation takes about 5 to 10 minutes.
+        
+        @description    This operation is available only to CPFS file systems on the China site (aliyun.com).
+        Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
+        Protocol service types
         Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
-        *   General-purpose protocol services: provide NFS access and [directory-level mount targets](~~427175~~) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
-        *   Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
-        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](~~111858~~). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
-        *   Protocol type
+        General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
+        Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
+        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+        Protocol type
         Only NFSv3 is supported.
-        *   Others
-        *   Only one protocol service can be created for a CPFS file system.
-        *   A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
+        Others
+        Only one protocol service can be created for a CPFS file system.
+        A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
         
         @param request: CreateProtocolServiceRequest
         @return: CreateProtocolServiceResponse
@@ -3497,18 +3833,20 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateProtocolServiceRequest,
     ) -> nas20170626_models.CreateProtocolServiceResponse:
         """
-        This operation is available only to CPFS file systems on the China site (aliyun.com).
-        *   Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
-        *   Protocol service types
+        @summary Creates a protocol service for a Cloud Parallel File Storage (CPFS) file system. The creation takes about 5 to 10 minutes.
+        
+        @description    This operation is available only to CPFS file systems on the China site (aliyun.com).
+        Only CPFS V2.3.0 and later support protocol services. You can query the version information of the file system by calling the [DescribeFileSystems](~~2402188.~~) operation.
+        Protocol service types
         Protocol services are classified into general-purpose protocol services and cache protocol services. Different from general-purpose protocol services, cache protocol services can cache hot data. If data exists in the cache, the bandwidth of the cache protocol service may exceed the bandwidth of the CPFS file system, reaching the maximum bandwidth specified for the protocol service.
-        *   General-purpose protocol services: provide NFS access and [directory-level mount targets](~~427175~~) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
-        *   Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
-        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](~~111858~~). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
-        *   Protocol type
+        General-purpose protocol services: provide NFS access and [directory-level mount targets](https://help.aliyun.com/document_detail/427175.html) for CPFS file systems. You do not need to configure a POSIX client to manage clusters. General-purpose protocol services are provided free of charge.
+        Cache protocol services: provide the server memory cache based on the least recently used (LRU) policy. When data is cached in the memory, CPFS provides higher internal bandwidth. Cache protocol services are divided into Cache L1 and Cache L2 specifications. The differences are the internal bandwidth size and memory cache size.
+        >   Note You are charged for using cache protocol services, which are in invitational preview. For more information about the billing method of cache protocol services, see [Billable items](https://help.aliyun.com/document_detail/111858.html). If you have any feedback or questions, you can join the DingTalk group (group number: 31045006299).
+        Protocol type
         Only NFSv3 is supported.
-        *   Others
-        *   Only one protocol service can be created for a CPFS file system.
-        *   A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
+        Others
+        Only one protocol service can be created for a CPFS file system.
+        A protocol service can use a maximum of 32 IP addresses that are allocated by a specified vSwitch. Make sure that the vSwitch can provide sufficient IP addresses.
         
         @param request: CreateProtocolServiceRequest
         @return: CreateProtocolServiceResponse
@@ -3522,9 +3860,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateRecycleBinDeleteJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   If you permanently delete a directory, the files in the directory are recursively cleared.
-        *   You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
+        @summary Creates a job to permanently delete a file or directory from the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        If you permanently delete a directory, the files in the directory are recursively cleared.
+        You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
         
         @param request: CreateRecycleBinDeleteJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3557,9 +3897,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateRecycleBinDeleteJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   If you permanently delete a directory, the files in the directory are recursively cleared.
-        *   You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
+        @summary Creates a job to permanently delete a file or directory from the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        If you permanently delete a directory, the files in the directory are recursively cleared.
+        You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
         
         @param request: CreateRecycleBinDeleteJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3591,9 +3933,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateRecycleBinDeleteJobRequest,
     ) -> nas20170626_models.CreateRecycleBinDeleteJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   If you permanently delete a directory, the files in the directory are recursively cleared.
-        *   You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
+        @summary Creates a job to permanently delete a file or directory from the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        If you permanently delete a directory, the files in the directory are recursively cleared.
+        You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
         
         @param request: CreateRecycleBinDeleteJobRequest
         @return: CreateRecycleBinDeleteJobResponse
@@ -3606,9 +3950,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateRecycleBinDeleteJobRequest,
     ) -> nas20170626_models.CreateRecycleBinDeleteJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   If you permanently delete a directory, the files in the directory are recursively cleared.
-        *   You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
+        @summary Creates a job to permanently delete a file or directory from the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        If you permanently delete a directory, the files in the directory are recursively cleared.
+        You can run only one job at a time for a single file system to permanently delete the files from the file system. You cannot create a restoration or deletion job when a file or directory is being deleted.
         
         @param request: CreateRecycleBinDeleteJobRequest
         @return: CreateRecycleBinDeleteJobResponse
@@ -3622,11 +3968,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateRecycleBinRestoreJobResponse:
         """
-        ### Usage notes
-        *   Only General-purpose NAS file systems support this operation.
-        *   You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
-        *   You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
-        *   After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
+        @summary Restores a file or directory from the recycle bin.
+        
+        @description ### Usage notes
+        Only General-purpose NAS file systems support this operation.
+        You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
+        You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
+        After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
         
         @param request: CreateRecycleBinRestoreJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3659,11 +4007,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateRecycleBinRestoreJobResponse:
         """
-        ### Usage notes
-        *   Only General-purpose NAS file systems support this operation.
-        *   You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
-        *   You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
-        *   After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
+        @summary Restores a file or directory from the recycle bin.
+        
+        @description ### Usage notes
+        Only General-purpose NAS file systems support this operation.
+        You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
+        You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
+        After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
         
         @param request: CreateRecycleBinRestoreJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3695,11 +4045,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateRecycleBinRestoreJobRequest,
     ) -> nas20170626_models.CreateRecycleBinRestoreJobResponse:
         """
-        ### Usage notes
-        *   Only General-purpose NAS file systems support this operation.
-        *   You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
-        *   You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
-        *   After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
+        @summary Restores a file or directory from the recycle bin.
+        
+        @description ### Usage notes
+        Only General-purpose NAS file systems support this operation.
+        You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
+        You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
+        After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
         
         @param request: CreateRecycleBinRestoreJobRequest
         @return: CreateRecycleBinRestoreJobResponse
@@ -3712,11 +4064,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateRecycleBinRestoreJobRequest,
     ) -> nas20170626_models.CreateRecycleBinRestoreJobResponse:
         """
-        ### Usage notes
-        *   Only General-purpose NAS file systems support this operation.
-        *   You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
-        *   You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
-        *   After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
+        @summary Restores a file or directory from the recycle bin.
+        
+        @description ### Usage notes
+        Only General-purpose NAS file systems support this operation.
+        You can run only one job at a time for a single file system to restore files to or clear files from the file system. You cannot create a restore or cleanup job when files are being restored from the recycle bin.
+        You can restore only one file or directory in a single restore job. If you restore a specified directory, all files in the directory are recursively restored.
+        After files are restored, the data of the files is defragmented. When the data is being defragmented, the read performance is slightly degraded.
         
         @param request: CreateRecycleBinRestoreJobRequest
         @return: CreateRecycleBinRestoreJobResponse
@@ -3730,15 +4084,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateSnapshotResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support the snapshot feature.
-        *   You can create a maximum of 128 snapshots for a file system.
-        *   The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
-        *   You can create only one snapshot for a file system at a time.
-        *   If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
-        *   When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
-        *   A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
-        *   Manually created snapshots will not be deleted until 15 days after the service is suspended due to an overdue payment. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
+        @summary Creates a snapshot.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        You can create a maximum of 128 snapshots for a file system.
+        The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
+        You can create only one snapshot for a file system at a time.
+        If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
+        When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
+        A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
+        Manually created snapshots will not be deleted until 15 days after the service is suspended due to overdue payments. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
         
         @param request: CreateSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3779,15 +4135,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.CreateSnapshotResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support the snapshot feature.
-        *   You can create a maximum of 128 snapshots for a file system.
-        *   The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
-        *   You can create only one snapshot for a file system at a time.
-        *   If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
-        *   When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
-        *   A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
-        *   Manually created snapshots will not be deleted until 15 days after the service is suspended due to an overdue payment. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
+        @summary Creates a snapshot.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        You can create a maximum of 128 snapshots for a file system.
+        The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
+        You can create only one snapshot for a file system at a time.
+        If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
+        When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
+        A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
+        Manually created snapshots will not be deleted until 15 days after the service is suspended due to overdue payments. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
         
         @param request: CreateSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3827,15 +4185,17 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateSnapshotRequest,
     ) -> nas20170626_models.CreateSnapshotResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support the snapshot feature.
-        *   You can create a maximum of 128 snapshots for a file system.
-        *   The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
-        *   You can create only one snapshot for a file system at a time.
-        *   If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
-        *   When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
-        *   A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
-        *   Manually created snapshots will not be deleted until 15 days after the service is suspended due to an overdue payment. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
+        @summary Creates a snapshot.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        You can create a maximum of 128 snapshots for a file system.
+        The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
+        You can create only one snapshot for a file system at a time.
+        If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
+        When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
+        A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
+        Manually created snapshots will not be deleted until 15 days after the service is suspended due to overdue payments. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
         
         @param request: CreateSnapshotRequest
         @return: CreateSnapshotResponse
@@ -3848,15 +4208,17 @@ class Client(OpenApiClient):
         request: nas20170626_models.CreateSnapshotRequest,
     ) -> nas20170626_models.CreateSnapshotResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support the snapshot feature.
-        *   You can create a maximum of 128 snapshots for a file system.
-        *   The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
-        *   You can create only one snapshot for a file system at a time.
-        *   If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
-        *   When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
-        *   A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
-        *   Manually created snapshots will not be deleted until 15 days after the service is suspended due to an overdue payment. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
+        @summary Creates a snapshot.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/zh/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        You can create a maximum of 128 snapshots for a file system.
+        The compute node on which a file system is mounted must function as expected. Otherwise, you cannot create a snapshot for the file system.
+        You can create only one snapshot for a file system at a time.
+        If the file system expires when a snapshot is being created, the file system is released and the snapshot is deleted.
+        When you create a snapshot for a file system, the I/O performance of the file system may be degraded for a short period of time. We recommend that you create snapshots during off-peak hours.
+        A snapshot is a backup of a file system at a specific point in time. After you create a snapshot, incremental data that is generated in the file system will not be synchronized to the snapshot.
+        Manually created snapshots will not be deleted until 15 days after the service is suspended due to overdue payments. We recommend that you delete unnecessary snapshots at regular intervals to prevent extra fees incurred by the snapshots.
         
         @param request: CreateSnapshotRequest
         @return: CreateSnapshotResponse
@@ -3870,7 +4232,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteAccessGroupResponse:
         """
-        The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
+        @summary Deletes a permission group.
+        
+        @description The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
         
         @param request: DeleteAccessGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3907,7 +4271,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteAccessGroupResponse:
         """
-        The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
+        @summary Deletes a permission group.
+        
+        @description The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
         
         @param request: DeleteAccessGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3943,7 +4309,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteAccessGroupRequest,
     ) -> nas20170626_models.DeleteAccessGroupResponse:
         """
-        The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
+        @summary Deletes a permission group.
+        
+        @description The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
         
         @param request: DeleteAccessGroupRequest
         @return: DeleteAccessGroupResponse
@@ -3956,7 +4324,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteAccessGroupRequest,
     ) -> nas20170626_models.DeleteAccessGroupResponse:
         """
-        The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
+        @summary Deletes a permission group.
+        
+        @description The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
         
         @param request: DeleteAccessGroupRequest
         @return: DeleteAccessGroupResponse
@@ -3969,6 +4339,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteAccessPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteAccessPointResponse:
+        """
+        @summary 删除接入点
+        
+        @param request: DeleteAccessPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_point_id):
@@ -3999,6 +4376,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteAccessPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteAccessPointResponse:
+        """
+        @summary 删除接入点
+        
+        @param request: DeleteAccessPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_point_id):
@@ -4028,6 +4412,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DeleteAccessPointRequest,
     ) -> nas20170626_models.DeleteAccessPointResponse:
+        """
+        @summary 删除接入点
+        
+        @param request: DeleteAccessPointRequest
+        @return: DeleteAccessPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_access_point_with_options(request, runtime)
 
@@ -4035,6 +4425,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DeleteAccessPointRequest,
     ) -> nas20170626_models.DeleteAccessPointResponse:
+        """
+        @summary 删除接入点
+        
+        @param request: DeleteAccessPointRequest
+        @return: DeleteAccessPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_point_with_options_async(request, runtime)
 
@@ -4044,7 +4440,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteAccessRuleResponse:
         """
-        Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
+        @summary Deletes a rule from a permission group.
+        
+        @description Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
         
         @param request: DeleteAccessRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4083,7 +4481,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteAccessRuleResponse:
         """
-        Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
+        @summary Deletes a rule from a permission group.
+        
+        @description Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
         
         @param request: DeleteAccessRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4121,7 +4521,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteAccessRuleRequest,
     ) -> nas20170626_models.DeleteAccessRuleResponse:
         """
-        Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
+        @summary Deletes a rule from a permission group.
+        
+        @description Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
         
         @param request: DeleteAccessRuleRequest
         @return: DeleteAccessRuleResponse
@@ -4134,7 +4536,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteAccessRuleRequest,
     ) -> nas20170626_models.DeleteAccessRuleResponse:
         """
-        Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
+        @summary Deletes a rule from a permission group.
+        
+        @description Rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be deleted.
         
         @param request: DeleteAccessRuleRequest
         @return: DeleteAccessRuleResponse
@@ -4148,9 +4552,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
+        @summary Deletes an automatic snapshot policy.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
         
         @param request: DeleteAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4185,9 +4591,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
+        @summary Deletes an automatic snapshot policy.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
         
         @param request: DeleteAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4221,9 +4629,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.DeleteAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
+        @summary Deletes an automatic snapshot policy.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
         
         @param request: DeleteAutoSnapshotPolicyRequest
         @return: DeleteAutoSnapshotPolicyResponse
@@ -4236,9 +4646,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.DeleteAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
+        @summary Deletes an automatic snapshot policy.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
+        If you delete an automatic snapshot policy that is applied to a file system, snapshots for the file system are no longer created based on the policy.
         
         @param request: DeleteAutoSnapshotPolicyRequest
         @return: DeleteAutoSnapshotPolicyResponse
@@ -4252,10 +4664,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   You can create filesets only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
-        *   You can delete the dataflows that are only in the `Running` or `Stopped` state.
-        *   After a dataflow is deleted, the resources related to the dataflow are released and cannot be restored. You must create a dataflow again if required.
+        @summary Deletes a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        You can create filesets only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+        You can delete the dataflows that are only in the `Running` or `Stopped` state.
+        After a dataflow is deleted, the resources related to the dataflow are released and cannot be restored. You must create a dataflow again if required.
         
         @param request: DeleteDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4296,10 +4710,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   You can create filesets only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
-        *   You can delete the dataflows that are only in the `Running` or `Stopped` state.
-        *   After a dataflow is deleted, the resources related to the dataflow are released and cannot be restored. You must create a dataflow again if required.
+        @summary Deletes a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        You can create filesets only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+        You can delete the dataflows that are only in the `Running` or `Stopped` state.
+        After a dataflow is deleted, the resources related to the dataflow are released and cannot be restored. You must create a dataflow again if required.
         
         @param request: DeleteDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4339,10 +4755,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteDataFlowRequest,
     ) -> nas20170626_models.DeleteDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   You can create filesets only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
-        *   You can delete the dataflows that are only in the `Running` or `Stopped` state.
-        *   After a dataflow is deleted, the resources related to the dataflow are released and cannot be restored. You must create a dataflow again if required.
+        @summary Deletes a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        You can create filesets only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+        You can delete the dataflows that are only in the `Running` or `Stopped` state.
+        After a dataflow is deleted, the resources related to the dataflow are released and cannot be restored. You must create a dataflow again if required.
         
         @param request: DeleteDataFlowRequest
         @return: DeleteDataFlowResponse
@@ -4355,10 +4773,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteDataFlowRequest,
     ) -> nas20170626_models.DeleteDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   You can create filesets only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
-        *   You can delete the dataflows that are only in the `Running` or `Stopped` state.
-        *   After a dataflow is deleted, the resources related to the dataflow are released and cannot be restored. You must create a dataflow again if required.
+        @summary Deletes a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        You can create filesets only in CPFS V2.2.0 and later. You can view the version information on the file system details page in the console.
+        You can delete the dataflows that are only in the `Running` or `Stopped` state.
+        After a dataflow is deleted, the resources related to the dataflow are released and cannot be restored. You must create a dataflow again if required.
         
         @param request: DeleteDataFlowRequest
         @return: DeleteDataFlowResponse
@@ -4372,9 +4792,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteFileSystemResponse:
         """
-        Before you delete a file system, you must delete all mount targets of the file system.
-        *   Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
-        *   After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
+        @summary Deletes a file system.
+        
+        @description    Before you delete a file system, you must delete all mount targets of the file system.
+        Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
+        After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
         
         @param request: DeleteFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4409,9 +4831,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteFileSystemResponse:
         """
-        Before you delete a file system, you must delete all mount targets of the file system.
-        *   Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
-        *   After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
+        @summary Deletes a file system.
+        
+        @description    Before you delete a file system, you must delete all mount targets of the file system.
+        Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
+        After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
         
         @param request: DeleteFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4445,9 +4869,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteFileSystemRequest,
     ) -> nas20170626_models.DeleteFileSystemResponse:
         """
-        Before you delete a file system, you must delete all mount targets of the file system.
-        *   Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
-        *   After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
+        @summary Deletes a file system.
+        
+        @description    Before you delete a file system, you must delete all mount targets of the file system.
+        Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
+        After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
         
         @param request: DeleteFileSystemRequest
         @return: DeleteFileSystemResponse
@@ -4460,9 +4886,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteFileSystemRequest,
     ) -> nas20170626_models.DeleteFileSystemResponse:
         """
-        Before you delete a file system, you must delete all mount targets of the file system.
-        *   Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
-        *   After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
+        @summary Deletes a file system.
+        
+        @description    Before you delete a file system, you must delete all mount targets of the file system.
+        Before you delete a file system, you must make sure that no lifecycle policy is created for the file system.
+        After a file system is deleted, the data on the file system cannot be restored. Proceed with caution.
         
         @param request: DeleteFileSystemRequest
         @return: DeleteFileSystemResponse
@@ -4476,8 +4904,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+        @summary Deletes a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
         
         @param request: DeleteFilesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4518,8 +4948,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+        @summary Deletes a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
         
         @param request: DeleteFilesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4559,8 +4991,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteFilesetRequest,
     ) -> nas20170626_models.DeleteFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+        @summary Deletes a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
         
         @param request: DeleteFilesetRequest
         @return: DeleteFilesetResponse
@@ -4573,8 +5007,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteFilesetRequest,
     ) -> nas20170626_models.DeleteFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
+        @summary Deletes a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset deletion. After you delete a fileset, all data in the fileset is deleted and cannot be restored. Proceed with caution.
         
         @param request: DeleteFilesetRequest
         @return: DeleteFilesetResponse
@@ -4587,6 +5023,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteLDAPConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteLDAPConfigResponse:
+        """
+        @param request: DeleteLDAPConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLDAPConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -4615,6 +5056,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteLDAPConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteLDAPConfigResponse:
+        """
+        @param request: DeleteLDAPConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLDAPConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -4642,6 +5088,10 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DeleteLDAPConfigRequest,
     ) -> nas20170626_models.DeleteLDAPConfigResponse:
+        """
+        @param request: DeleteLDAPConfigRequest
+        @return: DeleteLDAPConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ldapconfig_with_options(request, runtime)
 
@@ -4649,6 +5099,10 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DeleteLDAPConfigRequest,
     ) -> nas20170626_models.DeleteLDAPConfigResponse:
+        """
+        @param request: DeleteLDAPConfigRequest
+        @return: DeleteLDAPConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ldapconfig_with_options_async(request, runtime)
 
@@ -4658,7 +5112,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteLifecyclePolicyResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Deletes a lifecycle policy.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: DeleteLifecyclePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4695,7 +5151,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteLifecyclePolicyResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Deletes a lifecycle policy.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: DeleteLifecyclePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4731,7 +5189,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteLifecyclePolicyRequest,
     ) -> nas20170626_models.DeleteLifecyclePolicyResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Deletes a lifecycle policy.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: DeleteLifecyclePolicyRequest
         @return: DeleteLifecyclePolicyResponse
@@ -4744,7 +5204,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteLifecyclePolicyRequest,
     ) -> nas20170626_models.DeleteLifecyclePolicyResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Deletes a lifecycle policy.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: DeleteLifecyclePolicyRequest
         @return: DeleteLifecyclePolicyResponse
@@ -4757,6 +5219,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteLogAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteLogAnalysisResponse:
+        """
+        @summary Disables log dumping for a General-purpose NAS file system.
+        
+        @param request: DeleteLogAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogAnalysisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -4787,6 +5256,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteLogAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteLogAnalysisResponse:
+        """
+        @summary Disables log dumping for a General-purpose NAS file system.
+        
+        @param request: DeleteLogAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogAnalysisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -4816,6 +5292,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DeleteLogAnalysisRequest,
     ) -> nas20170626_models.DeleteLogAnalysisResponse:
+        """
+        @summary Disables log dumping for a General-purpose NAS file system.
+        
+        @param request: DeleteLogAnalysisRequest
+        @return: DeleteLogAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_log_analysis_with_options(request, runtime)
 
@@ -4823,6 +5305,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DeleteLogAnalysisRequest,
     ) -> nas20170626_models.DeleteLogAnalysisResponse:
+        """
+        @summary Disables log dumping for a General-purpose NAS file system.
+        
+        @param request: DeleteLogAnalysisRequest
+        @return: DeleteLogAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_log_analysis_with_options_async(request, runtime)
 
@@ -4832,7 +5320,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteMountTargetResponse:
         """
-        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        @summary Deletes a mount target.
+        
+        @description After you delete a mount target, the mount target cannot be restored. Proceed with caution.
         
         @param request: DeleteMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4869,7 +5359,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteMountTargetResponse:
         """
-        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        @summary Deletes a mount target.
+        
+        @description After you delete a mount target, the mount target cannot be restored. Proceed with caution.
         
         @param request: DeleteMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4905,7 +5397,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteMountTargetRequest,
     ) -> nas20170626_models.DeleteMountTargetResponse:
         """
-        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        @summary Deletes a mount target.
+        
+        @description After you delete a mount target, the mount target cannot be restored. Proceed with caution.
         
         @param request: DeleteMountTargetRequest
         @return: DeleteMountTargetResponse
@@ -4918,7 +5412,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteMountTargetRequest,
     ) -> nas20170626_models.DeleteMountTargetResponse:
         """
-        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        @summary Deletes a mount target.
+        
+        @description After you delete a mount target, the mount target cannot be restored. Proceed with caution.
         
         @param request: DeleteMountTargetRequest
         @return: DeleteMountTargetResponse
@@ -4932,7 +5428,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Deletes an export directory of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DeleteProtocolMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4975,7 +5473,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Deletes an export directory of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DeleteProtocolMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5017,7 +5517,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteProtocolMountTargetRequest,
     ) -> nas20170626_models.DeleteProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Deletes an export directory of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DeleteProtocolMountTargetRequest
         @return: DeleteProtocolMountTargetResponse
@@ -5030,7 +5532,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteProtocolMountTargetRequest,
     ) -> nas20170626_models.DeleteProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Deletes an export directory of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DeleteProtocolMountTargetRequest
         @return: DeleteProtocolMountTargetResponse
@@ -5044,8 +5548,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteProtocolServiceResponse:
         """
-        This operation is available only to CPFS file systems on the China site (aliyun.com).
-        *   When you delete a protocol service, the export directories in the protocol service are also deleted.
+        @summary Deletes a protocol service of a Cloud Parallel File Storage (CPFS) file system.
+        
+        @description    This operation is available only to CPFS file systems on the China site (aliyun.com).
+        When you delete a protocol service, the export directories in the protocol service are also deleted.
         
         @param request: DeleteProtocolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5086,8 +5592,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteProtocolServiceResponse:
         """
-        This operation is available only to CPFS file systems on the China site (aliyun.com).
-        *   When you delete a protocol service, the export directories in the protocol service are also deleted.
+        @summary Deletes a protocol service of a Cloud Parallel File Storage (CPFS) file system.
+        
+        @description    This operation is available only to CPFS file systems on the China site (aliyun.com).
+        When you delete a protocol service, the export directories in the protocol service are also deleted.
         
         @param request: DeleteProtocolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5127,8 +5635,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteProtocolServiceRequest,
     ) -> nas20170626_models.DeleteProtocolServiceResponse:
         """
-        This operation is available only to CPFS file systems on the China site (aliyun.com).
-        *   When you delete a protocol service, the export directories in the protocol service are also deleted.
+        @summary Deletes a protocol service of a Cloud Parallel File Storage (CPFS) file system.
+        
+        @description    This operation is available only to CPFS file systems on the China site (aliyun.com).
+        When you delete a protocol service, the export directories in the protocol service are also deleted.
         
         @param request: DeleteProtocolServiceRequest
         @return: DeleteProtocolServiceResponse
@@ -5141,8 +5651,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteProtocolServiceRequest,
     ) -> nas20170626_models.DeleteProtocolServiceResponse:
         """
-        This operation is available only to CPFS file systems on the China site (aliyun.com).
-        *   When you delete a protocol service, the export directories in the protocol service are also deleted.
+        @summary Deletes a protocol service of a Cloud Parallel File Storage (CPFS) file system.
+        
+        @description    This operation is available only to CPFS file systems on the China site (aliyun.com).
+        When you delete a protocol service, the export directories in the protocol service are also deleted.
         
         @param request: DeleteProtocolServiceRequest
         @return: DeleteProtocolServiceResponse
@@ -5156,8 +5668,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteSnapshotResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Deletes a snapshot or cancels a snapshot that is being created.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DeleteSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5192,8 +5706,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DeleteSnapshotResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Deletes a snapshot or cancels a snapshot that is being created.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DeleteSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5227,8 +5743,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteSnapshotRequest,
     ) -> nas20170626_models.DeleteSnapshotResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Deletes a snapshot or cancels a snapshot that is being created.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DeleteSnapshotRequest
         @return: DeleteSnapshotResponse
@@ -5241,8 +5759,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DeleteSnapshotRequest,
     ) -> nas20170626_models.DeleteSnapshotResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Deletes a snapshot or cancels a snapshot that is being created.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DeleteSnapshotRequest
         @return: DeleteSnapshotResponse
@@ -5255,6 +5775,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAccessGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAccessGroupsResponse:
+        """
+        @summary Queries permission groups.
+        
+        @param request: DescribeAccessGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -5291,6 +5818,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAccessGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAccessGroupsResponse:
+        """
+        @summary Queries permission groups.
+        
+        @param request: DescribeAccessGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -5326,6 +5860,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeAccessGroupsRequest,
     ) -> nas20170626_models.DescribeAccessGroupsResponse:
+        """
+        @summary Queries permission groups.
+        
+        @param request: DescribeAccessGroupsRequest
+        @return: DescribeAccessGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_groups_with_options(request, runtime)
 
@@ -5333,6 +5873,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeAccessGroupsRequest,
     ) -> nas20170626_models.DescribeAccessGroupsResponse:
+        """
+        @summary Queries permission groups.
+        
+        @param request: DescribeAccessGroupsRequest
+        @return: DescribeAccessGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_groups_with_options_async(request, runtime)
 
@@ -5341,6 +5887,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAccessPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAccessPointResponse:
+        """
+        @summary 接入点详情页
+        
+        @param request: DescribeAccessPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_point_id):
@@ -5371,6 +5924,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAccessPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAccessPointResponse:
+        """
+        @summary 接入点详情页
+        
+        @param request: DescribeAccessPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_point_id):
@@ -5400,6 +5960,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeAccessPointRequest,
     ) -> nas20170626_models.DescribeAccessPointResponse:
+        """
+        @summary 接入点详情页
+        
+        @param request: DescribeAccessPointRequest
+        @return: DescribeAccessPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_point_with_options(request, runtime)
 
@@ -5407,6 +5973,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeAccessPointRequest,
     ) -> nas20170626_models.DescribeAccessPointResponse:
+        """
+        @summary 接入点详情页
+        
+        @param request: DescribeAccessPointRequest
+        @return: DescribeAccessPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_point_with_options_async(request, runtime)
 
@@ -5415,6 +5987,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAccessPointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAccessPointsResponse:
+        """
+        @summary 查询接入点信息
+        
+        @param request: DescribeAccessPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessPointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group):
@@ -5449,6 +6028,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAccessPointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAccessPointsResponse:
+        """
+        @summary 查询接入点信息
+        
+        @param request: DescribeAccessPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessPointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group):
@@ -5482,6 +6068,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeAccessPointsRequest,
     ) -> nas20170626_models.DescribeAccessPointsResponse:
+        """
+        @summary 查询接入点信息
+        
+        @param request: DescribeAccessPointsRequest
+        @return: DescribeAccessPointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_points_with_options(request, runtime)
 
@@ -5489,6 +6081,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeAccessPointsRequest,
     ) -> nas20170626_models.DescribeAccessPointsResponse:
+        """
+        @summary 查询接入点信息
+        
+        @param request: DescribeAccessPointsRequest
+        @return: DescribeAccessPointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_points_with_options_async(request, runtime)
 
@@ -5497,6 +6095,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAccessRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAccessRulesResponse:
+        """
+        @summary Queries the information about rules in a permission group.
+        
+        @param request: DescribeAccessRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -5533,6 +6138,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAccessRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAccessRulesResponse:
+        """
+        @summary Queries the information about rules in a permission group.
+        
+        @param request: DescribeAccessRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -5568,6 +6180,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeAccessRulesRequest,
     ) -> nas20170626_models.DescribeAccessRulesResponse:
+        """
+        @summary Queries the information about rules in a permission group.
+        
+        @param request: DescribeAccessRulesRequest
+        @return: DescribeAccessRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_rules_with_options(request, runtime)
 
@@ -5575,6 +6193,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeAccessRulesRequest,
     ) -> nas20170626_models.DescribeAccessRulesResponse:
+        """
+        @summary Queries the information about rules in a permission group.
+        
+        @param request: DescribeAccessRulesRequest
+        @return: DescribeAccessRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_rules_with_options_async(request, runtime)
 
@@ -5584,8 +6208,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAutoSnapshotPoliciesResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries automatic snapshot policies.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DescribeAutoSnapshotPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5626,8 +6252,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAutoSnapshotPoliciesResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries automatic snapshot policies.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DescribeAutoSnapshotPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5667,8 +6295,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAutoSnapshotPoliciesRequest,
     ) -> nas20170626_models.DescribeAutoSnapshotPoliciesResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries automatic snapshot policies.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DescribeAutoSnapshotPoliciesRequest
         @return: DescribeAutoSnapshotPoliciesResponse
@@ -5681,8 +6311,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAutoSnapshotPoliciesRequest,
     ) -> nas20170626_models.DescribeAutoSnapshotPoliciesResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries automatic snapshot policies.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DescribeAutoSnapshotPoliciesRequest
         @return: DescribeAutoSnapshotPoliciesResponse
@@ -5696,8 +6328,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAutoSnapshotTasksResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries automatic snapshot tasks.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
         
         @param request: DescribeAutoSnapshotTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5740,8 +6374,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeAutoSnapshotTasksResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries automatic snapshot tasks.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
         
         @param request: DescribeAutoSnapshotTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5783,8 +6419,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAutoSnapshotTasksRequest,
     ) -> nas20170626_models.DescribeAutoSnapshotTasksResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries automatic snapshot tasks.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
         
         @param request: DescribeAutoSnapshotTasksRequest
         @return: DescribeAutoSnapshotTasksResponse
@@ -5797,8 +6435,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeAutoSnapshotTasksRequest,
     ) -> nas20170626_models.DescribeAutoSnapshotTasksResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries automatic snapshot tasks.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support the snapshot feature.
         
         @param request: DescribeAutoSnapshotTasksRequest
         @return: DescribeAutoSnapshotTasksResponse
@@ -5812,7 +6452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeBlackListClientsResponse:
         """
-        The API operation is available only for CPFS file systems.
+        @description The API operation is available only for CPFS file systems.
         
         @param request: DescribeBlackListClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5851,7 +6491,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeBlackListClientsResponse:
         """
-        The API operation is available only for CPFS file systems.
+        @description The API operation is available only for CPFS file systems.
         
         @param request: DescribeBlackListClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5889,7 +6529,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeBlackListClientsRequest,
     ) -> nas20170626_models.DescribeBlackListClientsResponse:
         """
-        The API operation is available only for CPFS file systems.
+        @description The API operation is available only for CPFS file systems.
         
         @param request: DescribeBlackListClientsRequest
         @return: DescribeBlackListClientsResponse
@@ -5902,7 +6542,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeBlackListClientsRequest,
     ) -> nas20170626_models.DescribeBlackListClientsResponse:
         """
-        The API operation is available only for CPFS file systems.
+        @description The API operation is available only for CPFS file systems.
         
         @param request: DescribeBlackListClientsRequest
         @return: DescribeBlackListClientsResponse
@@ -5916,9 +6556,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeDataFlowTasksResponse:
         """
-        ###
-        *\
-        *\
+        @summary 查询数据流动任务
+        
+        @description ###
+        
+        
         
         @param request: DescribeDataFlowTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5959,9 +6601,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeDataFlowTasksResponse:
         """
-        ###
-        *\
-        *\
+        @summary 查询数据流动任务
+        
+        @description ###
+        
+        
         
         @param request: DescribeDataFlowTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6001,9 +6645,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeDataFlowTasksRequest,
     ) -> nas20170626_models.DescribeDataFlowTasksResponse:
         """
-        ###
-        *\
-        *\
+        @summary 查询数据流动任务
+        
+        @description ###
+        
+        
         
         @param request: DescribeDataFlowTasksRequest
         @return: DescribeDataFlowTasksResponse
@@ -6016,9 +6662,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeDataFlowTasksRequest,
     ) -> nas20170626_models.DescribeDataFlowTasksResponse:
         """
-        ###
-        *\
-        *\
+        @summary 查询数据流动任务
+        
+        @description ###
+        
+        
         
         @param request: DescribeDataFlowTasksRequest
         @return: DescribeDataFlowTasksResponse
@@ -6032,10 +6680,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeDataFlowsResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
-        *   Combined query is supported.
+        @summary Queries the dataflows of a CPFS file system.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
+        Combined query is supported.
         
         @param request: DescribeDataFlowsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6076,10 +6726,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeDataFlowsResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
-        *   Combined query is supported.
+        @summary Queries the dataflows of a CPFS file system.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
+        Combined query is supported.
         
         @param request: DescribeDataFlowsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6119,10 +6771,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeDataFlowsRequest,
     ) -> nas20170626_models.DescribeDataFlowsResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
-        *   Combined query is supported.
+        @summary Queries the dataflows of a CPFS file system.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
+        Combined query is supported.
         
         @param request: DescribeDataFlowsRequest
         @return: DescribeDataFlowsResponse
@@ -6135,10 +6789,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeDataFlowsRequest,
     ) -> nas20170626_models.DescribeDataFlowsResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
-        *   Combined query is supported.
+        @summary Queries the dataflows of a CPFS file system.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        In Filters, FsetIds, DataFlowlds, SourceStorage, ThroughputList, and Status support exact match only. FileSystemPath and Description support fuzzy match.
+        Combined query is supported.
         
         @param request: DescribeDataFlowsRequest
         @return: DescribeDataFlowsResponse
@@ -6152,7 +6808,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeDirQuotasResponse:
         """
-        Only General-purpose NAS file systems support the directory quota feature.
+        @summary Queries the directory quotas of a file system.
+        
+        @description Only General-purpose NAS file systems support the directory quota feature.
         
         @param request: DescribeDirQuotasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6193,7 +6851,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeDirQuotasResponse:
         """
-        Only General-purpose NAS file systems support the directory quota feature.
+        @summary Queries the directory quotas of a file system.
+        
+        @description Only General-purpose NAS file systems support the directory quota feature.
         
         @param request: DescribeDirQuotasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6233,7 +6893,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeDirQuotasRequest,
     ) -> nas20170626_models.DescribeDirQuotasResponse:
         """
-        Only General-purpose NAS file systems support the directory quota feature.
+        @summary Queries the directory quotas of a file system.
+        
+        @description Only General-purpose NAS file systems support the directory quota feature.
         
         @param request: DescribeDirQuotasRequest
         @return: DescribeDirQuotasResponse
@@ -6246,7 +6908,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeDirQuotasRequest,
     ) -> nas20170626_models.DescribeDirQuotasResponse:
         """
-        Only General-purpose NAS file systems support the directory quota feature.
+        @summary Queries the directory quotas of a file system.
+        
+        @description Only General-purpose NAS file systems support the directory quota feature.
         
         @param request: DescribeDirQuotasRequest
         @return: DescribeDirQuotasResponse
@@ -6259,6 +6923,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeFileSystemStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeFileSystemStatisticsResponse:
+        """
+        @summary Queries the statistics of file systems that are owned by the current account.
+        
+        @param request: DescribeFileSystemStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFileSystemStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6289,6 +6960,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeFileSystemStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeFileSystemStatisticsResponse:
+        """
+        @summary Queries the statistics of file systems that are owned by the current account.
+        
+        @param request: DescribeFileSystemStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFileSystemStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6318,6 +6996,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeFileSystemStatisticsRequest,
     ) -> nas20170626_models.DescribeFileSystemStatisticsResponse:
+        """
+        @summary Queries the statistics of file systems that are owned by the current account.
+        
+        @param request: DescribeFileSystemStatisticsRequest
+        @return: DescribeFileSystemStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_file_system_statistics_with_options(request, runtime)
 
@@ -6325,6 +7009,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeFileSystemStatisticsRequest,
     ) -> nas20170626_models.DescribeFileSystemStatisticsResponse:
+        """
+        @summary Queries the statistics of file systems that are owned by the current account.
+        
+        @param request: DescribeFileSystemStatisticsRequest
+        @return: DescribeFileSystemStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_file_system_statistics_with_options_async(request, runtime)
 
@@ -6333,6 +7023,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeFileSystemsResponse:
+        """
+        @summary Queries file systems.
+        
+        @param request: DescribeFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -6373,6 +7070,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeFileSystemsResponse:
+        """
+        @summary Queries file systems.
+        
+        @param request: DescribeFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -6412,6 +7116,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeFileSystemsRequest,
     ) -> nas20170626_models.DescribeFileSystemsResponse:
+        """
+        @summary Queries file systems.
+        
+        @param request: DescribeFileSystemsRequest
+        @return: DescribeFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_file_systems_with_options(request, runtime)
 
@@ -6419,6 +7129,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeFileSystemsRequest,
     ) -> nas20170626_models.DescribeFileSystemsResponse:
+        """
+        @summary Queries file systems.
+        
+        @param request: DescribeFileSystemsRequest
+        @return: DescribeFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_file_systems_with_options_async(request, runtime)
 
@@ -6428,10 +7144,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeFilesetsResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
-        *   In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
-        *   Combined query is supported.
+        @summary Queries the information about created filesets.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
+        In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
+        Combined query is supported.
         
         @param request: DescribeFilesetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6472,10 +7190,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeFilesetsResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
-        *   In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
-        *   Combined query is supported.
+        @summary Queries the information about created filesets.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
+        In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
+        Combined query is supported.
         
         @param request: DescribeFilesetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6515,10 +7235,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeFilesetsRequest,
     ) -> nas20170626_models.DescribeFilesetsResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
-        *   In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
-        *   Combined query is supported.
+        @summary Queries the information about created filesets.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
+        In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
+        Combined query is supported.
         
         @param request: DescribeFilesetsRequest
         @return: DescribeFilesetsResponse
@@ -6531,10 +7253,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeFilesetsRequest,
     ) -> nas20170626_models.DescribeFilesetsResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
-        *   In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
-        *   Combined query is supported.
+        @summary Queries the information about created filesets.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support filesets. You can view the version information on the file system details page in the console.
+        In Filters, FsetIds supports exact match only. FileSystemPath and Description support fuzzy match.
+        Combined query is supported.
         
         @param request: DescribeFilesetsRequest
         @return: DescribeFilesetsResponse
@@ -6548,7 +7272,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeLifecyclePoliciesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries lifecycle policies.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: DescribeLifecyclePoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6581,7 +7307,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeLifecyclePoliciesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries lifecycle policies.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: DescribeLifecyclePoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6613,7 +7341,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeLifecyclePoliciesRequest,
     ) -> nas20170626_models.DescribeLifecyclePoliciesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries lifecycle policies.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: DescribeLifecyclePoliciesRequest
         @return: DescribeLifecyclePoliciesResponse
@@ -6626,7 +7356,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeLifecyclePoliciesRequest,
     ) -> nas20170626_models.DescribeLifecyclePoliciesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries lifecycle policies.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: DescribeLifecyclePoliciesRequest
         @return: DescribeLifecyclePoliciesResponse
@@ -6639,8 +7371,17 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeLogAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeLogAnalysisResponse:
+        """
+        @summary Queries the log dump information configured in log analysis.
+        
+        @param request: DescribeLogAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogAnalysisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.file_system_type):
+            query['FileSystemType'] = request.file_system_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6671,8 +7412,17 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeLogAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeLogAnalysisResponse:
+        """
+        @summary Queries the log dump information configured in log analysis.
+        
+        @param request: DescribeLogAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogAnalysisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.file_system_type):
+            query['FileSystemType'] = request.file_system_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6702,6 +7452,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeLogAnalysisRequest,
     ) -> nas20170626_models.DescribeLogAnalysisResponse:
+        """
+        @summary Queries the log dump information configured in log analysis.
+        
+        @param request: DescribeLogAnalysisRequest
+        @return: DescribeLogAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_log_analysis_with_options(request, runtime)
 
@@ -6709,6 +7465,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeLogAnalysisRequest,
     ) -> nas20170626_models.DescribeLogAnalysisResponse:
+        """
+        @summary Queries the log dump information configured in log analysis.
+        
+        @param request: DescribeLogAnalysisRequest
+        @return: DescribeLogAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_analysis_with_options_async(request, runtime)
 
@@ -6717,6 +7479,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeMountTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeMountTargetsResponse:
+        """
+        @summary Queries mount targets.
+        
+        @param request: DescribeMountTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMountTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dual_stack_mount_target_domain):
@@ -6753,6 +7522,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeMountTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeMountTargetsResponse:
+        """
+        @summary Queries mount targets.
+        
+        @param request: DescribeMountTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMountTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dual_stack_mount_target_domain):
@@ -6788,6 +7564,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeMountTargetsRequest,
     ) -> nas20170626_models.DescribeMountTargetsResponse:
+        """
+        @summary Queries mount targets.
+        
+        @param request: DescribeMountTargetsRequest
+        @return: DescribeMountTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_mount_targets_with_options(request, runtime)
 
@@ -6795,6 +7577,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeMountTargetsRequest,
     ) -> nas20170626_models.DescribeMountTargetsResponse:
+        """
+        @summary Queries mount targets.
+        
+        @param request: DescribeMountTargetsRequest
+        @return: DescribeMountTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_mount_targets_with_options_async(request, runtime)
 
@@ -6804,8 +7592,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeMountedClientsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
+        @summary Queries the clients on which a file system is mounted.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
         
         @param request: DescribeMountedClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6850,8 +7640,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeMountedClientsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
+        @summary Queries the clients on which a file system is mounted.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
         
         @param request: DescribeMountedClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6895,8 +7687,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeMountedClientsRequest,
     ) -> nas20170626_models.DescribeMountedClientsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
+        @summary Queries the clients on which a file system is mounted.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
         
         @param request: DescribeMountedClientsRequest
         @return: DescribeMountedClientsResponse
@@ -6909,8 +7703,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeMountedClientsRequest,
     ) -> nas20170626_models.DescribeMountedClientsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
+        @summary Queries the clients on which a file system is mounted.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        This operation returns the clients that have accessed the specified file system within the last minute. If the file system is mounted on a client but the client did not access the file system within the last minute, the client is not included in the returned information.
         
         @param request: DescribeMountedClientsRequest
         @return: DescribeMountedClientsResponse
@@ -6923,6 +7719,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeNfsAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeNfsAclResponse:
+        """
+        @summary Queries whether the NFS ACL feature is enabled for a file system.
+        
+        @param request: DescribeNfsAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNfsAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -6951,6 +7754,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeNfsAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeNfsAclResponse:
+        """
+        @summary Queries whether the NFS ACL feature is enabled for a file system.
+        
+        @param request: DescribeNfsAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNfsAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -6978,6 +7788,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeNfsAclRequest,
     ) -> nas20170626_models.DescribeNfsAclResponse:
+        """
+        @summary Queries whether the NFS ACL feature is enabled for a file system.
+        
+        @param request: DescribeNfsAclRequest
+        @return: DescribeNfsAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_nfs_acl_with_options(request, runtime)
 
@@ -6985,6 +7801,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeNfsAclRequest,
     ) -> nas20170626_models.DescribeNfsAclResponse:
+        """
+        @summary Queries whether the NFS ACL feature is enabled for a file system.
+        
+        @param request: DescribeNfsAclRequest
+        @return: DescribeNfsAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_nfs_acl_with_options_async(request, runtime)
 
@@ -6994,7 +7816,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Queries the export directories of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DescribeProtocolMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7037,7 +7861,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Queries the export directories of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DescribeProtocolMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7079,7 +7905,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeProtocolMountTargetRequest,
     ) -> nas20170626_models.DescribeProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Queries the export directories of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DescribeProtocolMountTargetRequest
         @return: DescribeProtocolMountTargetResponse
@@ -7092,7 +7920,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeProtocolMountTargetRequest,
     ) -> nas20170626_models.DescribeProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Queries the export directories of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DescribeProtocolMountTargetRequest
         @return: DescribeProtocolMountTargetResponse
@@ -7106,7 +7936,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeProtocolServiceResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Queries the information about protocol services.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DescribeProtocolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7153,7 +7985,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeProtocolServiceResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Queries the information about protocol services.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DescribeProtocolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7199,7 +8033,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeProtocolServiceRequest,
     ) -> nas20170626_models.DescribeProtocolServiceResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Queries the information about protocol services.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DescribeProtocolServiceRequest
         @return: DescribeProtocolServiceResponse
@@ -7212,7 +8048,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeProtocolServiceRequest,
     ) -> nas20170626_models.DescribeProtocolServiceResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Queries the information about protocol services.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: DescribeProtocolServiceRequest
         @return: DescribeProtocolServiceResponse
@@ -7225,6 +8063,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions in which Apsara File Storage NAS is available.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_type):
@@ -7257,6 +8102,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions in which Apsara File Storage NAS is available.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_type):
@@ -7288,6 +8140,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeRegionsRequest,
     ) -> nas20170626_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions in which Apsara File Storage NAS is available.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -7295,6 +8153,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeRegionsRequest,
     ) -> nas20170626_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions in which Apsara File Storage NAS is available.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -7303,6 +8167,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeSmbAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeSmbAclResponse:
+        """
+        @summary Queries the information about the access control list (ACL) feature of a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: DescribeSmbAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSmbAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -7331,6 +8202,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeSmbAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeSmbAclResponse:
+        """
+        @summary Queries the information about the access control list (ACL) feature of a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: DescribeSmbAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSmbAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -7358,6 +8236,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeSmbAclRequest,
     ) -> nas20170626_models.DescribeSmbAclResponse:
+        """
+        @summary Queries the information about the access control list (ACL) feature of a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: DescribeSmbAclRequest
+        @return: DescribeSmbAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_smb_acl_with_options(request, runtime)
 
@@ -7365,6 +8249,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeSmbAclRequest,
     ) -> nas20170626_models.DescribeSmbAclResponse:
+        """
+        @summary Queries the information about the access control list (ACL) feature of a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: DescribeSmbAclRequest
+        @return: DescribeSmbAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_smb_acl_with_options_async(request, runtime)
 
@@ -7374,8 +8264,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeSnapshotsResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries the information about one or more snapshots of a file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DescribeSnapshotsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7424,8 +8316,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeSnapshotsResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries the information about one or more snapshots of a file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DescribeSnapshotsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7473,8 +8367,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeSnapshotsRequest,
     ) -> nas20170626_models.DescribeSnapshotsResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries the information about one or more snapshots of a file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DescribeSnapshotsRequest
         @return: DescribeSnapshotsResponse
@@ -7487,8 +8383,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeSnapshotsRequest,
     ) -> nas20170626_models.DescribeSnapshotsResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary Queries the information about one or more snapshots of a file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: DescribeSnapshotsRequest
         @return: DescribeSnapshotsResponse
@@ -7501,6 +8399,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeStoragePackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeStoragePackagesResponse:
+        """
+        @summary You can call the DescribeStoragePackages operation to query the list of storage plans.
+        
+        @param request: DescribeStoragePackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStoragePackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7535,6 +8440,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeStoragePackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeStoragePackagesResponse:
+        """
+        @summary You can call the DescribeStoragePackages operation to query the list of storage plans.
+        
+        @param request: DescribeStoragePackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStoragePackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7568,6 +8480,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeStoragePackagesRequest,
     ) -> nas20170626_models.DescribeStoragePackagesResponse:
+        """
+        @summary You can call the DescribeStoragePackages operation to query the list of storage plans.
+        
+        @param request: DescribeStoragePackagesRequest
+        @return: DescribeStoragePackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_storage_packages_with_options(request, runtime)
 
@@ -7575,6 +8493,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeStoragePackagesRequest,
     ) -> nas20170626_models.DescribeStoragePackagesResponse:
+        """
+        @summary You can call the DescribeStoragePackages operation to query the list of storage plans.
+        
+        @param request: DescribeStoragePackagesRequest
+        @return: DescribeStoragePackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_storage_packages_with_options_async(request, runtime)
 
@@ -7583,6 +8507,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeZonesResponse:
+        """
+        @summary Queries all zones in a region and the file system types that are supported in each zone.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_type):
@@ -7613,6 +8544,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DescribeZonesResponse:
+        """
+        @summary Queries all zones in a region and the file system types that are supported in each zone.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_type):
@@ -7642,6 +8580,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeZonesRequest,
     ) -> nas20170626_models.DescribeZonesResponse:
+        """
+        @summary Queries all zones in a region and the file system types that are supported in each zone.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -7649,6 +8593,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DescribeZonesRequest,
     ) -> nas20170626_models.DescribeZonesResponse:
+        """
+        @summary Queries all zones in a region and the file system types that are supported in each zone.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -7658,9 +8608,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DisableAndCleanRecycleBinResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   If you disable the recycle bin, all files in the recycle bin are permanently deleted.
-        *   If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
+        @summary Disables and empties the recycle bin of a General-purpose NAS file system.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        If you disable the recycle bin, all files in the recycle bin are permanently deleted.
+        If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
         
         @param request: DisableAndCleanRecycleBinRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7693,9 +8645,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DisableAndCleanRecycleBinResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   If you disable the recycle bin, all files in the recycle bin are permanently deleted.
-        *   If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
+        @summary Disables and empties the recycle bin of a General-purpose NAS file system.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        If you disable the recycle bin, all files in the recycle bin are permanently deleted.
+        If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
         
         @param request: DisableAndCleanRecycleBinRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7727,9 +8681,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DisableAndCleanRecycleBinRequest,
     ) -> nas20170626_models.DisableAndCleanRecycleBinResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   If you disable the recycle bin, all files in the recycle bin are permanently deleted.
-        *   If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
+        @summary Disables and empties the recycle bin of a General-purpose NAS file system.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        If you disable the recycle bin, all files in the recycle bin are permanently deleted.
+        If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
         
         @param request: DisableAndCleanRecycleBinRequest
         @return: DisableAndCleanRecycleBinResponse
@@ -7742,9 +8698,11 @@ class Client(OpenApiClient):
         request: nas20170626_models.DisableAndCleanRecycleBinRequest,
     ) -> nas20170626_models.DisableAndCleanRecycleBinResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   If you disable the recycle bin, all files in the recycle bin are permanently deleted.
-        *   If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
+        @summary Disables and empties the recycle bin of a General-purpose NAS file system.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        If you disable the recycle bin, all files in the recycle bin are permanently deleted.
+        If you disable and then enable the recycle bin, the recycle bin is empty. You cannot retrieve the deleted files.
         
         @param request: DisableAndCleanRecycleBinRequest
         @return: DisableAndCleanRecycleBinResponse
@@ -7757,6 +8715,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DisableNfsAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DisableNfsAclResponse:
+        """
+        @summary Disables the NFS ACL feature for a file system.
+        
+        @param request: DisableNfsAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableNfsAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -7785,6 +8750,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DisableNfsAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DisableNfsAclResponse:
+        """
+        @summary Disables the NFS ACL feature for a file system.
+        
+        @param request: DisableNfsAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableNfsAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -7812,6 +8784,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DisableNfsAclRequest,
     ) -> nas20170626_models.DisableNfsAclResponse:
+        """
+        @summary Disables the NFS ACL feature for a file system.
+        
+        @param request: DisableNfsAclRequest
+        @return: DisableNfsAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_nfs_acl_with_options(request, runtime)
 
@@ -7819,6 +8797,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DisableNfsAclRequest,
     ) -> nas20170626_models.DisableNfsAclResponse:
+        """
+        @summary Disables the NFS ACL feature for a file system.
+        
+        @param request: DisableNfsAclRequest
+        @return: DisableNfsAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_nfs_acl_with_options_async(request, runtime)
 
@@ -7827,6 +8811,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DisableSmbAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DisableSmbAclResponse:
+        """
+        @summary Disables the access control list (ACL) feature for a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: DisableSmbAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableSmbAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -7855,6 +8846,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.DisableSmbAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.DisableSmbAclResponse:
+        """
+        @summary Disables the access control list (ACL) feature for a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: DisableSmbAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableSmbAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -7882,6 +8880,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DisableSmbAclRequest,
     ) -> nas20170626_models.DisableSmbAclResponse:
+        """
+        @summary Disables the access control list (ACL) feature for a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: DisableSmbAclRequest
+        @return: DisableSmbAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_smb_acl_with_options(request, runtime)
 
@@ -7889,6 +8893,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.DisableSmbAclRequest,
     ) -> nas20170626_models.DisableSmbAclResponse:
+        """
+        @summary Disables the access control list (ACL) feature for a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: DisableSmbAclRequest
+        @return: DisableSmbAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_smb_acl_with_options_async(request, runtime)
 
@@ -7897,6 +8907,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.EnableNfsAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.EnableNfsAclResponse:
+        """
+        @summary Enables the NFS ACL feature for a file system.
+        
+        @param request: EnableNfsAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableNfsAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -7925,6 +8942,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.EnableNfsAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.EnableNfsAclResponse:
+        """
+        @summary Enables the NFS ACL feature for a file system.
+        
+        @param request: EnableNfsAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableNfsAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -7952,6 +8976,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.EnableNfsAclRequest,
     ) -> nas20170626_models.EnableNfsAclResponse:
+        """
+        @summary Enables the NFS ACL feature for a file system.
+        
+        @param request: EnableNfsAclRequest
+        @return: EnableNfsAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_nfs_acl_with_options(request, runtime)
 
@@ -7959,6 +8989,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.EnableNfsAclRequest,
     ) -> nas20170626_models.EnableNfsAclResponse:
+        """
+        @summary Enables the NFS ACL feature for a file system.
+        
+        @param request: EnableNfsAclRequest
+        @return: EnableNfsAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_nfs_acl_with_options_async(request, runtime)
 
@@ -7968,7 +9004,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.EnableRecycleBinResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Enables the recycle bin feature for a file system.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: EnableRecycleBinRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8005,7 +9043,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.EnableRecycleBinResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Enables the recycle bin feature for a file system.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: EnableRecycleBinRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8041,7 +9081,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.EnableRecycleBinRequest,
     ) -> nas20170626_models.EnableRecycleBinResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Enables the recycle bin feature for a file system.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: EnableRecycleBinRequest
         @return: EnableRecycleBinResponse
@@ -8054,7 +9096,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.EnableRecycleBinRequest,
     ) -> nas20170626_models.EnableRecycleBinResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Enables the recycle bin feature for a file system.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: EnableRecycleBinRequest
         @return: EnableRecycleBinResponse
@@ -8067,6 +9111,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.EnableSmbAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.EnableSmbAclResponse:
+        """
+        @summary Enables the access control list (ACL) feature for a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: EnableSmbAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSmbAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -8099,6 +9150,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.EnableSmbAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.EnableSmbAclResponse:
+        """
+        @summary Enables the access control list (ACL) feature for a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: EnableSmbAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSmbAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -8130,6 +9188,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.EnableSmbAclRequest,
     ) -> nas20170626_models.EnableSmbAclResponse:
+        """
+        @summary Enables the access control list (ACL) feature for a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: EnableSmbAclRequest
+        @return: EnableSmbAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_smb_acl_with_options(request, runtime)
 
@@ -8137,6 +9201,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.EnableSmbAclRequest,
     ) -> nas20170626_models.EnableSmbAclResponse:
+        """
+        @summary Enables the access control list (ACL) feature for a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: EnableSmbAclRequest
+        @return: EnableSmbAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_smb_acl_with_options_async(request, runtime)
 
@@ -8146,7 +9216,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.GetDirectoryOrFilePropertiesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: GetDirectoryOrFilePropertiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8183,7 +9255,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.GetDirectoryOrFilePropertiesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: GetDirectoryOrFilePropertiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8219,7 +9293,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.GetDirectoryOrFilePropertiesRequest,
     ) -> nas20170626_models.GetDirectoryOrFilePropertiesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: GetDirectoryOrFilePropertiesRequest
         @return: GetDirectoryOrFilePropertiesResponse
@@ -8232,7 +9308,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.GetDirectoryOrFilePropertiesRequest,
     ) -> nas20170626_models.GetDirectoryOrFilePropertiesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: GetDirectoryOrFilePropertiesRequest
         @return: GetDirectoryOrFilePropertiesResponse
@@ -8245,6 +9323,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.GetRecycleBinAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.GetRecycleBinAttributeResponse:
+        """
+        @summary Queries the recycle bin configurations of a General-purpose NAS file system.
+        
+        @param request: GetRecycleBinAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRecycleBinAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8271,6 +9356,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.GetRecycleBinAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.GetRecycleBinAttributeResponse:
+        """
+        @summary Queries the recycle bin configurations of a General-purpose NAS file system.
+        
+        @param request: GetRecycleBinAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRecycleBinAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8296,6 +9388,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.GetRecycleBinAttributeRequest,
     ) -> nas20170626_models.GetRecycleBinAttributeResponse:
+        """
+        @summary Queries the recycle bin configurations of a General-purpose NAS file system.
+        
+        @param request: GetRecycleBinAttributeRequest
+        @return: GetRecycleBinAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_recycle_bin_attribute_with_options(request, runtime)
 
@@ -8303,6 +9401,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.GetRecycleBinAttributeRequest,
     ) -> nas20170626_models.GetRecycleBinAttributeResponse:
+        """
+        @summary Queries the recycle bin configurations of a General-purpose NAS file system.
+        
+        @param request: GetRecycleBinAttributeRequest
+        @return: GetRecycleBinAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_recycle_bin_attribute_with_options_async(request, runtime)
 
@@ -8312,7 +9416,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListDirectoriesAndFilesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries the infrequently-accessed files in a specified directory of a General-purpose NAS file system and the subdirectories that contain the files.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListDirectoriesAndFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8357,7 +9463,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListDirectoriesAndFilesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries the infrequently-accessed files in a specified directory of a General-purpose NAS file system and the subdirectories that contain the files.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListDirectoriesAndFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8401,7 +9509,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListDirectoriesAndFilesRequest,
     ) -> nas20170626_models.ListDirectoriesAndFilesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries the infrequently-accessed files in a specified directory of a General-purpose NAS file system and the subdirectories that contain the files.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListDirectoriesAndFilesRequest
         @return: ListDirectoriesAndFilesResponse
@@ -8414,7 +9524,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListDirectoriesAndFilesRequest,
     ) -> nas20170626_models.ListDirectoriesAndFilesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries the infrequently-accessed files in a specified directory of a General-purpose NAS file system and the subdirectories that contain the files.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListDirectoriesAndFilesRequest
         @return: ListDirectoriesAndFilesResponse
@@ -8428,7 +9540,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListLifecycleRetrieveJobsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries data retrieval tasks.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListLifecycleRetrieveJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8471,7 +9585,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListLifecycleRetrieveJobsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries data retrieval tasks.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListLifecycleRetrieveJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8513,7 +9629,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListLifecycleRetrieveJobsRequest,
     ) -> nas20170626_models.ListLifecycleRetrieveJobsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries data retrieval tasks.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListLifecycleRetrieveJobsRequest
         @return: ListLifecycleRetrieveJobsResponse
@@ -8526,7 +9644,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListLifecycleRetrieveJobsRequest,
     ) -> nas20170626_models.ListLifecycleRetrieveJobsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries data retrieval tasks.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListLifecycleRetrieveJobsRequest
         @return: ListLifecycleRetrieveJobsResponse
@@ -8540,7 +9660,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListRecentlyRecycledDirectoriesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries the directories that are recently deleted.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListRecentlyRecycledDirectoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8573,7 +9695,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListRecentlyRecycledDirectoriesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries the directories that are recently deleted.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListRecentlyRecycledDirectoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8605,7 +9729,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListRecentlyRecycledDirectoriesRequest,
     ) -> nas20170626_models.ListRecentlyRecycledDirectoriesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries the directories that are recently deleted.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListRecentlyRecycledDirectoriesRequest
         @return: ListRecentlyRecycledDirectoriesResponse
@@ -8618,7 +9744,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListRecentlyRecycledDirectoriesRequest,
     ) -> nas20170626_models.ListRecentlyRecycledDirectoriesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries the directories that are recently deleted.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListRecentlyRecycledDirectoriesRequest
         @return: ListRecentlyRecycledDirectoriesResponse
@@ -8632,8 +9760,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListRecycleBinJobsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can query a maximum of 50 jobs that are recently executed.
+        @summary Queries the jobs of the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can query a maximum of 50 jobs that are recently executed.
         
         @param request: ListRecycleBinJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8666,8 +9796,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListRecycleBinJobsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can query a maximum of 50 jobs that are recently executed.
+        @summary Queries the jobs of the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can query a maximum of 50 jobs that are recently executed.
         
         @param request: ListRecycleBinJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8699,8 +9831,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListRecycleBinJobsRequest,
     ) -> nas20170626_models.ListRecycleBinJobsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can query a maximum of 50 jobs that are recently executed.
+        @summary Queries the jobs of the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can query a maximum of 50 jobs that are recently executed.
         
         @param request: ListRecycleBinJobsRequest
         @return: ListRecycleBinJobsResponse
@@ -8713,8 +9847,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListRecycleBinJobsRequest,
     ) -> nas20170626_models.ListRecycleBinJobsResponse:
         """
-        Only General-purpose NAS file systems support this operation.
-        *   You can query a maximum of 50 jobs that are recently executed.
+        @summary Queries the jobs of the recycle bin.
+        
+        @description    Only General-purpose NAS file systems support this operation.
+        You can query a maximum of 50 jobs that are recently executed.
         
         @param request: ListRecycleBinJobsRequest
         @return: ListRecycleBinJobsResponse
@@ -8728,7 +9864,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListRecycledDirectoriesAndFilesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries deleted files or directories.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListRecycledDirectoriesAndFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8761,7 +9899,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListRecycledDirectoriesAndFilesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries deleted files or directories.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListRecycledDirectoriesAndFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8793,7 +9933,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListRecycledDirectoriesAndFilesRequest,
     ) -> nas20170626_models.ListRecycledDirectoriesAndFilesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries deleted files or directories.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListRecycledDirectoriesAndFilesRequest
         @return: ListRecycledDirectoriesAndFilesResponse
@@ -8806,7 +9948,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListRecycledDirectoriesAndFilesRequest,
     ) -> nas20170626_models.ListRecycledDirectoriesAndFilesResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Queries deleted files or directories.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ListRecycledDirectoriesAndFilesRequest
         @return: ListRecycledDirectoriesAndFilesResponse
@@ -8819,6 +9963,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -8853,6 +10004,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -8886,6 +10044,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ListTagResourcesRequest,
     ) -> nas20170626_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -8893,6 +10057,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ListTagResourcesRequest,
     ) -> nas20170626_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -8902,7 +10072,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyAccessGroupResponse:
         """
-        The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
+        @summary Modifies a permission group.
+        
+        @description The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
         
         @param request: ModifyAccessGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8941,7 +10113,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyAccessGroupResponse:
         """
-        The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
+        @summary Modifies a permission group.
+        
+        @description The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
         
         @param request: ModifyAccessGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8979,7 +10153,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyAccessGroupRequest,
     ) -> nas20170626_models.ModifyAccessGroupResponse:
         """
-        The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
+        @summary Modifies a permission group.
+        
+        @description The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
         
         @param request: ModifyAccessGroupRequest
         @return: ModifyAccessGroupResponse
@@ -8992,7 +10168,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyAccessGroupRequest,
     ) -> nas20170626_models.ModifyAccessGroupResponse:
         """
-        The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
+        @summary Modifies a permission group.
+        
+        @description The default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
         
         @param request: ModifyAccessGroupRequest
         @return: ModifyAccessGroupResponse
@@ -9005,6 +10183,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyAccessPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyAccessPointResponse:
+        """
+        @summary 修改接入点信息
+        
+        @param request: ModifyAccessPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccessPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group):
@@ -9041,6 +10226,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyAccessPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyAccessPointResponse:
+        """
+        @summary 修改接入点信息
+        
+        @param request: ModifyAccessPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccessPointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group):
@@ -9076,6 +10268,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifyAccessPointRequest,
     ) -> nas20170626_models.ModifyAccessPointResponse:
+        """
+        @summary 修改接入点信息
+        
+        @param request: ModifyAccessPointRequest
+        @return: ModifyAccessPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_access_point_with_options(request, runtime)
 
@@ -9083,6 +10281,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifyAccessPointRequest,
     ) -> nas20170626_models.ModifyAccessPointResponse:
+        """
+        @summary 修改接入点信息
+        
+        @param request: ModifyAccessPointRequest
+        @return: ModifyAccessPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_access_point_with_options_async(request, runtime)
 
@@ -9092,7 +10296,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyAccessRuleResponse:
         """
-        The rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
+        @summary Modifies a rule in a permission group.
+        
+        @description The rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
         
         @param request: ModifyAccessRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9141,7 +10347,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyAccessRuleResponse:
         """
-        The rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
+        @summary Modifies a rule in a permission group.
+        
+        @description The rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
         
         @param request: ModifyAccessRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9189,7 +10397,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyAccessRuleRequest,
     ) -> nas20170626_models.ModifyAccessRuleResponse:
         """
-        The rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
+        @summary Modifies a rule in a permission group.
+        
+        @description The rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
         
         @param request: ModifyAccessRuleRequest
         @return: ModifyAccessRuleResponse
@@ -9202,7 +10412,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyAccessRuleRequest,
     ) -> nas20170626_models.ModifyAccessRuleResponse:
         """
-        The rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
+        @summary Modifies a rule in a permission group.
+        
+        @description The rules in the default permission group (DEFAULT_VPC_GROUP_NAME) cannot be modified.
         
         @param request: ModifyAccessRuleRequest
         @return: ModifyAccessRuleResponse
@@ -9216,8 +10428,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary An automatic snapshot policy is modified. After you modify an automatic snapshot policy that is applied to a file system, the modification immediately applies to subsequent snapshots that are created for the file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: ModifyAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9260,8 +10474,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary An automatic snapshot policy is modified. After you modify an automatic snapshot policy that is applied to a file system, the modification immediately applies to subsequent snapshots that are created for the file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: ModifyAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9303,8 +10519,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.ModifyAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary An automatic snapshot policy is modified. After you modify an automatic snapshot policy that is applied to a file system, the modification immediately applies to subsequent snapshots that are created for the file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: ModifyAutoSnapshotPolicyRequest
         @return: ModifyAutoSnapshotPolicyResponse
@@ -9317,8 +10535,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyAutoSnapshotPolicyRequest,
     ) -> nas20170626_models.ModifyAutoSnapshotPolicyResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
+        @summary An automatic snapshot policy is modified. After you modify an automatic snapshot policy that is applied to a file system, the modification immediately applies to subsequent snapshots that are created for the file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
         
         @param request: ModifyAutoSnapshotPolicyRequest
         @return: ModifyAutoSnapshotPolicyResponse
@@ -9332,15 +10552,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows.
-        *   You can modify the attributes only of the dataflows that are in the `Running` state.
-        *   It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](~~336901~~) operation to query the status of the dataflow to be modified.
-        *   Data flow specifications:
-        *   The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-        *   Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-        *   Billing
-        Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](~~111858~~).
+        @summary Modifies the attributes of a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows.
+        You can modify the attributes only of the dataflows that are in the `Running` state.
+        It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the dataflow to be modified.
+        Data flow specifications:
+        The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
+        Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+        Billing
+        Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
         
         @param request: ModifyDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9385,15 +10607,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows.
-        *   You can modify the attributes only of the dataflows that are in the `Running` state.
-        *   It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](~~336901~~) operation to query the status of the dataflow to be modified.
-        *   Data flow specifications:
-        *   The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-        *   Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-        *   Billing
-        Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](~~111858~~).
+        @summary Modifies the attributes of a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows.
+        You can modify the attributes only of the dataflows that are in the `Running` state.
+        It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the dataflow to be modified.
+        Data flow specifications:
+        The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
+        Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+        Billing
+        Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
         
         @param request: ModifyDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9437,15 +10661,17 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyDataFlowRequest,
     ) -> nas20170626_models.ModifyDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows.
-        *   You can modify the attributes only of the dataflows that are in the `Running` state.
-        *   It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](~~336901~~) operation to query the status of the dataflow to be modified.
-        *   Data flow specifications:
-        *   The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-        *   Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-        *   Billing
-        Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](~~111858~~).
+        @summary Modifies the attributes of a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows.
+        You can modify the attributes only of the dataflows that are in the `Running` state.
+        It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the dataflow to be modified.
+        Data flow specifications:
+        The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
+        Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+        Billing
+        Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
         
         @param request: ModifyDataFlowRequest
         @return: ModifyDataFlowResponse
@@ -9458,15 +10684,17 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyDataFlowRequest,
     ) -> nas20170626_models.ModifyDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows.
-        *   You can modify the attributes only of the dataflows that are in the `Running` state.
-        *   It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](~~336901~~) operation to query the status of the dataflow to be modified.
-        *   Data flow specifications:
-        *   The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
-        *   Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
-        *   Billing
-        Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](~~111858~~).
+        @summary Modifies the attributes of a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows.
+        You can modify the attributes only of the dataflows that are in the `Running` state.
+        It generally takes 2 to 5 minutes to modify the attributes of a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/336901.html) operation to query the status of the dataflow to be modified.
+        Data flow specifications:
+        The dataflow throughput supports the following specifications: 600 MB/s, 1,200 MB/s, and 1,500 MB/s. The dataflow throughput is the maximum transmission bandwidth that can be reached when data is imported or exported for a dataflow.
+        Inventory query: If you set the DryRun parameter to true, you can check whether the resources for the dataflow whose throughput is changed meet the requirements.
+        Billing
+        Changing the dataflow throughput involves the billing of dataflow bandwidth. We recommend that you understand CPFS billing methods in advance. For more information, see [Billing methods and billable items of CPFS](https://help.aliyun.com/document_detail/111858.html).
         
         @param request: ModifyDataFlowRequest
         @return: ModifyDataFlowResponse
@@ -9479,6 +10707,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyDataFlowAutoRefreshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyDataFlowAutoRefreshResponse:
+        """
+        @summary 修改数据流动中的自动更新配置
+        
+        @param request: ModifyDataFlowAutoRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataFlowAutoRefreshResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_refresh_interval):
@@ -9517,6 +10752,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyDataFlowAutoRefreshRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyDataFlowAutoRefreshResponse:
+        """
+        @summary 修改数据流动中的自动更新配置
+        
+        @param request: ModifyDataFlowAutoRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataFlowAutoRefreshResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_refresh_interval):
@@ -9554,6 +10796,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifyDataFlowAutoRefreshRequest,
     ) -> nas20170626_models.ModifyDataFlowAutoRefreshResponse:
+        """
+        @summary 修改数据流动中的自动更新配置
+        
+        @param request: ModifyDataFlowAutoRefreshRequest
+        @return: ModifyDataFlowAutoRefreshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_data_flow_auto_refresh_with_options(request, runtime)
 
@@ -9561,6 +10809,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifyDataFlowAutoRefreshRequest,
     ) -> nas20170626_models.ModifyDataFlowAutoRefreshResponse:
+        """
+        @summary 修改数据流动中的自动更新配置
+        
+        @param request: ModifyDataFlowAutoRefreshRequest
+        @return: ModifyDataFlowAutoRefreshResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_data_flow_auto_refresh_with_options_async(request, runtime)
 
@@ -9569,6 +10823,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyFileSystemResponse:
+        """
+        @summary Modifies the description of a file system.
+        
+        @param request: ModifyFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -9599,6 +10860,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyFileSystemResponse:
+        """
+        @summary Modifies the description of a file system.
+        
+        @param request: ModifyFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -9628,6 +10896,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifyFileSystemRequest,
     ) -> nas20170626_models.ModifyFileSystemResponse:
+        """
+        @summary Modifies the description of a file system.
+        
+        @param request: ModifyFileSystemRequest
+        @return: ModifyFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_file_system_with_options(request, runtime)
 
@@ -9635,6 +10909,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifyFileSystemRequest,
     ) -> nas20170626_models.ModifyFileSystemResponse:
+        """
+        @summary Modifies the description of a file system.
+        
+        @param request: ModifyFileSystemRequest
+        @return: ModifyFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_file_system_with_options_async(request, runtime)
 
@@ -9644,8 +10924,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset modification.
+        @summary Modifies a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset modification.
         
         @param request: ModifyFilesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9655,6 +10937,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
@@ -9688,8 +10972,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset modification.
+        @summary Modifies a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset modification.
         
         @param request: ModifyFilesetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9699,6 +10985,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
@@ -9731,8 +11019,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyFilesetRequest,
     ) -> nas20170626_models.ModifyFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset modification.
+        @summary Modifies a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset modification.
         
         @param request: ModifyFilesetRequest
         @return: ModifyFilesetResponse
@@ -9745,8 +11035,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyFilesetRequest,
     ) -> nas20170626_models.ModifyFilesetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support fileset modification.
+        @summary Modifies a fileset.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support fileset modification.
         
         @param request: ModifyFilesetRequest
         @return: ModifyFilesetResponse
@@ -9760,7 +11052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyLDAPConfigResponse:
         """
-        #
+        @description #
         
         @param request: ModifyLDAPConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9801,7 +11093,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyLDAPConfigResponse:
         """
-        #
+        @description #
         
         @param request: ModifyLDAPConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9841,7 +11133,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyLDAPConfigRequest,
     ) -> nas20170626_models.ModifyLDAPConfigResponse:
         """
-        #
+        @description #
         
         @param request: ModifyLDAPConfigRequest
         @return: ModifyLDAPConfigResponse
@@ -9854,7 +11146,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyLDAPConfigRequest,
     ) -> nas20170626_models.ModifyLDAPConfigResponse:
         """
-        #
+        @description #
         
         @param request: ModifyLDAPConfigRequest
         @return: ModifyLDAPConfigResponse
@@ -9868,7 +11160,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyLifecyclePolicyResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Modifies a lifecycle policy.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ModifyLifecyclePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9911,7 +11205,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyLifecyclePolicyResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Modifies a lifecycle policy.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ModifyLifecyclePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9953,7 +11249,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyLifecyclePolicyRequest,
     ) -> nas20170626_models.ModifyLifecyclePolicyResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Modifies a lifecycle policy.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ModifyLifecyclePolicyRequest
         @return: ModifyLifecyclePolicyResponse
@@ -9966,7 +11264,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyLifecyclePolicyRequest,
     ) -> nas20170626_models.ModifyLifecyclePolicyResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Modifies a lifecycle policy.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: ModifyLifecyclePolicyRequest
         @return: ModifyLifecyclePolicyResponse
@@ -9979,6 +11279,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyMountTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyMountTargetResponse:
+        """
+        @summary Modifies a mount target.
+        
+        @param request: ModifyMountTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMountTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -10015,6 +11322,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyMountTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyMountTargetResponse:
+        """
+        @summary Modifies a mount target.
+        
+        @param request: ModifyMountTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMountTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_group_name):
@@ -10050,6 +11364,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifyMountTargetRequest,
     ) -> nas20170626_models.ModifyMountTargetResponse:
+        """
+        @summary Modifies a mount target.
+        
+        @param request: ModifyMountTargetRequest
+        @return: ModifyMountTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_mount_target_with_options(request, runtime)
 
@@ -10057,6 +11377,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifyMountTargetRequest,
     ) -> nas20170626_models.ModifyMountTargetResponse:
+        """
+        @summary Modifies a mount target.
+        
+        @param request: ModifyMountTargetRequest
+        @return: ModifyMountTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_mount_target_with_options_async(request, runtime)
 
@@ -10066,7 +11392,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Modifies the export directory parameters of a protocol service. Only the description can be modified. The virtual private cloud (VPC) ID and vSwitch ID cannot be changed. To change these IDs, you must delete the export directory and create a new one.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: ModifyProtocolMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10111,7 +11439,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Modifies the export directory parameters of a protocol service. Only the description can be modified. The virtual private cloud (VPC) ID and vSwitch ID cannot be changed. To change these IDs, you must delete the export directory and create a new one.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: ModifyProtocolMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10155,7 +11485,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyProtocolMountTargetRequest,
     ) -> nas20170626_models.ModifyProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Modifies the export directory parameters of a protocol service. Only the description can be modified. The virtual private cloud (VPC) ID and vSwitch ID cannot be changed. To change these IDs, you must delete the export directory and create a new one.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: ModifyProtocolMountTargetRequest
         @return: ModifyProtocolMountTargetResponse
@@ -10168,7 +11500,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyProtocolMountTargetRequest,
     ) -> nas20170626_models.ModifyProtocolMountTargetResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Modifies the export directory parameters of a protocol service. Only the description can be modified. The virtual private cloud (VPC) ID and vSwitch ID cannot be changed. To change these IDs, you must delete the export directory and create a new one.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: ModifyProtocolMountTargetRequest
         @return: ModifyProtocolMountTargetResponse
@@ -10182,7 +11516,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyProtocolServiceResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Modifies a protocol service. You can modify the description of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: ModifyProtocolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10225,7 +11561,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyProtocolServiceResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Modifies a protocol service. You can modify the description of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: ModifyProtocolServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10267,7 +11605,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyProtocolServiceRequest,
     ) -> nas20170626_models.ModifyProtocolServiceResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Modifies a protocol service. You can modify the description of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: ModifyProtocolServiceRequest
         @return: ModifyProtocolServiceResponse
@@ -10280,7 +11620,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifyProtocolServiceRequest,
     ) -> nas20170626_models.ModifyProtocolServiceResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        @summary Modifies a protocol service. You can modify the description of a protocol service.
+        
+        @description This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
         
         @param request: ModifyProtocolServiceRequest
         @return: ModifyProtocolServiceResponse
@@ -10293,6 +11635,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifySmbAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifySmbAclResponse:
+        """
+        @summary Updates the information about the access control list (ACL) feature of a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: ModifySmbAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySmbAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_anonymous_access):
@@ -10335,6 +11684,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.ModifySmbAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifySmbAclResponse:
+        """
+        @summary Updates the information about the access control list (ACL) feature of a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: ModifySmbAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySmbAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_anonymous_access):
@@ -10376,6 +11732,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifySmbAclRequest,
     ) -> nas20170626_models.ModifySmbAclResponse:
+        """
+        @summary Updates the information about the access control list (ACL) feature of a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: ModifySmbAclRequest
+        @return: ModifySmbAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_smb_acl_with_options(request, runtime)
 
@@ -10383,6 +11745,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.ModifySmbAclRequest,
     ) -> nas20170626_models.ModifySmbAclResponse:
+        """
+        @summary Updates the information about the access control list (ACL) feature of a Server Message Block (SMB) file system that resides in an Active Directory (AD) domain.
+        
+        @param request: ModifySmbAclRequest
+        @return: ModifySmbAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_smb_acl_with_options_async(request, runtime)
 
@@ -10390,6 +11758,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.OpenNASServiceResponse:
+        """
+        @summary Activates Apsara File Storage NAS.
+        
+        @param request: OpenNASServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenNASServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenNASService',
@@ -10411,6 +11786,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.OpenNASServiceResponse:
+        """
+        @summary Activates Apsara File Storage NAS.
+        
+        @param request: OpenNASServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenNASServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenNASService',
@@ -10429,10 +11811,20 @@ class Client(OpenApiClient):
         )
 
     def open_nasservice(self) -> nas20170626_models.OpenNASServiceResponse:
+        """
+        @summary Activates Apsara File Storage NAS.
+        
+        @return: OpenNASServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_nasservice_with_options(runtime)
 
     async def open_nasservice_async(self) -> nas20170626_models.OpenNASServiceResponse:
+        """
+        @summary Activates Apsara File Storage NAS.
+        
+        @return: OpenNASServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_nasservice_with_options_async(runtime)
 
@@ -10442,7 +11834,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.RemoveClientFromBlackListResponse:
         """
-        The IP address of a client to remove from the blacklist.
+        @description The IP address of a client to remove from the blacklist.
         
         @param request: RemoveClientFromBlackListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10483,7 +11875,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.RemoveClientFromBlackListResponse:
         """
-        The IP address of a client to remove from the blacklist.
+        @description The IP address of a client to remove from the blacklist.
         
         @param request: RemoveClientFromBlackListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10523,7 +11915,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.RemoveClientFromBlackListRequest,
     ) -> nas20170626_models.RemoveClientFromBlackListResponse:
         """
-        The IP address of a client to remove from the blacklist.
+        @description The IP address of a client to remove from the blacklist.
         
         @param request: RemoveClientFromBlackListRequest
         @return: RemoveClientFromBlackListResponse
@@ -10536,7 +11928,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.RemoveClientFromBlackListRequest,
     ) -> nas20170626_models.RemoveClientFromBlackListResponse:
         """
-        The IP address of a client to remove from the blacklist.
+        @description The IP address of a client to remove from the blacklist.
         
         @param request: RemoveClientFromBlackListRequest
         @return: RemoveClientFromBlackListResponse
@@ -10550,7 +11942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.RemoveTagsResponse:
         """
-        A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
+        @description A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
         
         @param request: RemoveTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10587,7 +11979,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.RemoveTagsResponse:
         """
-        A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
+        @description A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
         
         @param request: RemoveTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10623,7 +12015,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.RemoveTagsRequest,
     ) -> nas20170626_models.RemoveTagsResponse:
         """
-        A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
+        @description A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
         
         @param request: RemoveTagsRequest
         @return: RemoveTagsResponse
@@ -10636,7 +12028,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.RemoveTagsRequest,
     ) -> nas20170626_models.RemoveTagsResponse:
         """
-        A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
+        @description A request ID is returned even if the tag that you want to remove or the associated file system does not exist. For example, if the associated file system does not exist, or the TagKey and TagValue cannot be found, a request ID is returned.
         
         @param request: RemoveTagsRequest
         @return: RemoveTagsResponse
@@ -10650,10 +12042,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ResetFileSystemResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   The file system must be in the Running state.
-        *   To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
+        @summary Rolls back a file system to a snapshot of the file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
+        The file system must be in the Running state.
+        To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
         
         @param request: ResetFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10690,10 +12084,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ResetFileSystemResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   The file system must be in the Running state.
-        *   To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
+        @summary Rolls back a file system to a snapshot of the file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
+        The file system must be in the Running state.
+        To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
         
         @param request: ResetFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10729,10 +12125,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.ResetFileSystemRequest,
     ) -> nas20170626_models.ResetFileSystemResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   The file system must be in the Running state.
-        *   To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
+        @summary Rolls back a file system to a snapshot of the file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
+        The file system must be in the Running state.
+        To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
         
         @param request: ResetFileSystemRequest
         @return: ResetFileSystemResponse
@@ -10745,10 +12143,12 @@ class Client(OpenApiClient):
         request: nas20170626_models.ResetFileSystemRequest,
     ) -> nas20170626_models.ResetFileSystemResponse:
         """
-        The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
-        *   Only advanced Extreme NAS file systems support this feature.
-        *   The file system must be in the Running state.
-        *   To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
+        @summary Rolls back a file system to a snapshot of the file system.
+        
+        @description    The snapshot feature is in public preview and is provided free of charge. [Apsara File Storage NAS Service Level Agreement (SLA)](https://www.alibabacloud.com/help/legal/latest/network-attached-storage-service-level-agreement) is not guaranteed in public preview.
+        Only advanced Extreme NAS file systems support this feature.
+        The file system must be in the Running state.
+        To roll back a file system to a snapshot, you must specify the ID of the snapshot that is created from the file system.
         
         @param request: ResetFileSystemRequest
         @return: ResetFileSystemResponse
@@ -10762,7 +12162,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.RetryLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Retries failed a data retrieval task.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: RetryLifecycleRetrieveJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10797,7 +12199,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.RetryLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Retries failed a data retrieval task.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: RetryLifecycleRetrieveJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10831,7 +12235,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.RetryLifecycleRetrieveJobRequest,
     ) -> nas20170626_models.RetryLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Retries failed a data retrieval task.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: RetryLifecycleRetrieveJobRequest
         @return: RetryLifecycleRetrieveJobResponse
@@ -10844,7 +12250,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.RetryLifecycleRetrieveJobRequest,
     ) -> nas20170626_models.RetryLifecycleRetrieveJobResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Retries failed a data retrieval task.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: RetryLifecycleRetrieveJobRequest
         @return: RetryLifecycleRetrieveJobResponse
@@ -10858,7 +12266,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.SetDirQuotaResponse:
         """
-        Only General-purpose NFS file systems support the directory quota feature.
+        @summary Creates a directory quota for a file system.
+        
+        @description Only General-purpose NFS file systems support the directory quota feature.
         
         @param request: SetDirQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10905,7 +12315,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.SetDirQuotaResponse:
         """
-        Only General-purpose NFS file systems support the directory quota feature.
+        @summary Creates a directory quota for a file system.
+        
+        @description Only General-purpose NFS file systems support the directory quota feature.
         
         @param request: SetDirQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10951,7 +12363,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.SetDirQuotaRequest,
     ) -> nas20170626_models.SetDirQuotaResponse:
         """
-        Only General-purpose NFS file systems support the directory quota feature.
+        @summary Creates a directory quota for a file system.
+        
+        @description Only General-purpose NFS file systems support the directory quota feature.
         
         @param request: SetDirQuotaRequest
         @return: SetDirQuotaResponse
@@ -10964,7 +12378,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.SetDirQuotaRequest,
     ) -> nas20170626_models.SetDirQuotaResponse:
         """
-        Only General-purpose NFS file systems support the directory quota feature.
+        @summary Creates a directory quota for a file system.
+        
+        @description Only General-purpose NFS file systems support the directory quota feature.
         
         @param request: SetDirQuotaRequest
         @return: SetDirQuotaResponse
@@ -10978,11 +12394,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.StartDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can enable the dataflows that are only in the `Stopped` state.
-        *   If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified dataflow. If the resources are insufficient, the dataflow cannot be enabled.
-        *   It generally takes 2 to 5 minutes to enable a dataflow. You can query the dataflow status by calling the [DescribeDataFlows](~~2402270~~) operation.
+        @summary Enables a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can enable the dataflows that are only in the `Stopped` state.
+        If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified dataflow. If the resources are insufficient, the dataflow cannot be enabled.
+        It generally takes 2 to 5 minutes to enable a dataflow. You can query the dataflow status by calling the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation.
         
         @param request: StartDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11023,11 +12441,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.StartDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can enable the dataflows that are only in the `Stopped` state.
-        *   If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified dataflow. If the resources are insufficient, the dataflow cannot be enabled.
-        *   It generally takes 2 to 5 minutes to enable a dataflow. You can query the dataflow status by calling the [DescribeDataFlows](~~2402270~~) operation.
+        @summary Enables a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can enable the dataflows that are only in the `Stopped` state.
+        If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified dataflow. If the resources are insufficient, the dataflow cannot be enabled.
+        It generally takes 2 to 5 minutes to enable a dataflow. You can query the dataflow status by calling the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation.
         
         @param request: StartDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11067,11 +12487,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.StartDataFlowRequest,
     ) -> nas20170626_models.StartDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can enable the dataflows that are only in the `Stopped` state.
-        *   If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified dataflow. If the resources are insufficient, the dataflow cannot be enabled.
-        *   It generally takes 2 to 5 minutes to enable a dataflow. You can query the dataflow status by calling the [DescribeDataFlows](~~2402270~~) operation.
+        @summary Enables a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can enable the dataflows that are only in the `Stopped` state.
+        If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified dataflow. If the resources are insufficient, the dataflow cannot be enabled.
+        It generally takes 2 to 5 minutes to enable a dataflow. You can query the dataflow status by calling the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation.
         
         @param request: StartDataFlowRequest
         @return: StartDataFlowResponse
@@ -11084,11 +12506,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.StartDataFlowRequest,
     ) -> nas20170626_models.StartDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can enable the dataflows that are only in the `Stopped` state.
-        *   If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified dataflow. If the resources are insufficient, the dataflow cannot be enabled.
-        *   It generally takes 2 to 5 minutes to enable a dataflow. You can query the dataflow status by calling the [DescribeDataFlows](~~2402270~~) operation.
+        @summary Enables a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can enable the dataflows that are only in the `Stopped` state.
+        If the value of DryRun is `true`, you can check whether sufficient resources are available to enable the specified dataflow. If the resources are insufficient, the dataflow cannot be enabled.
+        It generally takes 2 to 5 minutes to enable a dataflow. You can query the dataflow status by calling the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402270.html) operation.
         
         @param request: StartDataFlowRequest
         @return: StartDataFlowResponse
@@ -11102,12 +12526,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.StopDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can disable only the dataflows that are in the `Running` state.
-        *   After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
-        *   After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
-        *   It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](~~2402271~~) operation to query the dataflow status.
+        @summary Disables a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can disable only the dataflows that are in the `Running` state.
+        After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
+        After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
+        It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402271.html) operation to query the dataflow status.
         
         @param request: StopDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11148,12 +12574,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.StopDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can disable only the dataflows that are in the `Running` state.
-        *   After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
-        *   After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
-        *   It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](~~2402271~~) operation to query the dataflow status.
+        @summary Disables a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can disable only the dataflows that are in the `Running` state.
+        After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
+        After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
+        It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402271.html) operation to query the dataflow status.
         
         @param request: StopDataFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11193,12 +12621,14 @@ class Client(OpenApiClient):
         request: nas20170626_models.StopDataFlowRequest,
     ) -> nas20170626_models.StopDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can disable only the dataflows that are in the `Running` state.
-        *   After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
-        *   After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
-        *   It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](~~2402271~~) operation to query the dataflow status.
+        @summary Disables a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can disable only the dataflows that are in the `Running` state.
+        After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
+        After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
+        It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402271.html) operation to query the dataflow status.
         
         @param request: StopDataFlowRequest
         @return: StopDataFlowResponse
@@ -11211,12 +12641,14 @@ class Client(OpenApiClient):
         request: nas20170626_models.StopDataFlowRequest,
     ) -> nas20170626_models.StopDataFlowResponse:
         """
-        This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
-        *   Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
-        *   You can disable only the dataflows that are in the `Running` state.
-        *   After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
-        *   After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
-        *   It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](~~2402271~~) operation to query the dataflow status.
+        @summary Disables a dataflow.
+        
+        @description    This operation is available only to Cloud Parallel File Storage (CPFS) file systems on the China site (aliyun.com).
+        Only CPFS V2.2.0 and later support dataflows. You can view the version information on the file system details page in the console.
+        You can disable only the dataflows that are in the `Running` state.
+        After a dataflow is disabled, you cannot create a dataflow task for the dataflow. If AutoRefresh is configured, source data updates are not synchronized to CPFS.
+        After a dataflow is disabled, the dataflow throughput is no longer billed because resources are reclaimed. However, the dataflow may fail to be restarted due to insufficient resources.
+        It generally takes 2 to 5 minutes to disable a dataflow. You can call the [DescribeDataFlows](https://help.aliyun.com/document_detail/2402271.html) operation to query the dataflow status.
         
         @param request: StopDataFlowRequest
         @return: StopDataFlowResponse
@@ -11229,6 +12661,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.TagResourcesResponse:
+        """
+        @summary Creates tags and binds the tags to file systems.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -11261,6 +12700,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.TagResourcesResponse:
+        """
+        @summary Creates tags and binds the tags to file systems.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -11292,6 +12738,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.TagResourcesRequest,
     ) -> nas20170626_models.TagResourcesResponse:
+        """
+        @summary Creates tags and binds the tags to file systems.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -11299,6 +12751,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.TagResourcesRequest,
     ) -> nas20170626_models.TagResourcesResponse:
+        """
+        @summary Creates tags and binds the tags to file systems.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -11307,6 +12765,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a file system.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -11341,6 +12806,13 @@ class Client(OpenApiClient):
         request: nas20170626_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a file system.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -11374,6 +12846,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.UntagResourcesRequest,
     ) -> nas20170626_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a file system.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -11381,6 +12859,12 @@ class Client(OpenApiClient):
         self,
         request: nas20170626_models.UntagResourcesRequest,
     ) -> nas20170626_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a file system.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -11390,7 +12874,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.UpdateRecycleBinAttributeResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Modifies the retention period of data in the recycle bin of a file system.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: UpdateRecycleBinAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11423,7 +12909,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.UpdateRecycleBinAttributeResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Modifies the retention period of data in the recycle bin of a file system.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: UpdateRecycleBinAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11455,7 +12943,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.UpdateRecycleBinAttributeRequest,
     ) -> nas20170626_models.UpdateRecycleBinAttributeResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Modifies the retention period of data in the recycle bin of a file system.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: UpdateRecycleBinAttributeRequest
         @return: UpdateRecycleBinAttributeResponse
@@ -11468,7 +12958,9 @@ class Client(OpenApiClient):
         request: nas20170626_models.UpdateRecycleBinAttributeRequest,
     ) -> nas20170626_models.UpdateRecycleBinAttributeResponse:
         """
-        Only General-purpose NAS file systems support this operation.
+        @summary Modifies the retention period of data in the recycle bin of a file system.
+        
+        @description Only General-purpose NAS file systems support this operation.
         
         @param request: UpdateRecycleBinAttributeRequest
         @return: UpdateRecycleBinAttributeResponse
@@ -11482,8 +12974,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.UpgradeFileSystemResponse:
         """
-        Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
-        *   A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
+        @summary Scales up an Extreme NAS file system or a Cloud Parallel File Storage (CPFS) file system.
+        
+        @description    Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
+        A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
         
         @param request: UpgradeFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11524,8 +13018,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.UpgradeFileSystemResponse:
         """
-        Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
-        *   A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
+        @summary Scales up an Extreme NAS file system or a Cloud Parallel File Storage (CPFS) file system.
+        
+        @description    Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
+        A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
         
         @param request: UpgradeFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11565,8 +13061,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.UpgradeFileSystemRequest,
     ) -> nas20170626_models.UpgradeFileSystemResponse:
         """
-        Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
-        *   A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
+        @summary Scales up an Extreme NAS file system or a Cloud Parallel File Storage (CPFS) file system.
+        
+        @description    Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
+        A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
         
         @param request: UpgradeFileSystemRequest
         @return: UpgradeFileSystemResponse
@@ -11579,8 +13077,10 @@ class Client(OpenApiClient):
         request: nas20170626_models.UpgradeFileSystemRequest,
     ) -> nas20170626_models.UpgradeFileSystemResponse:
         """
-        Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
-        *   A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
+        @summary Scales up an Extreme NAS file system or a Cloud Parallel File Storage (CPFS) file system.
+        
+        @description    Only Extreme NAS file systems and CPFS file systems can be scaled up. CPFS file systems are available only on the China site (aliyun.com).
+        A General-purpose NAS file system is automatically scaled up. You do not need to call this operation to scale up a General-purpose NAS file system.
         
         @param request: UpgradeFileSystemRequest
         @return: UpgradeFileSystemResponse

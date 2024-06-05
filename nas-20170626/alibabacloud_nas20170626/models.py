@@ -13,14 +13,22 @@ class AddClientToBlackListRequest(TeaModel):
         region_id: str = None,
     ):
         # The IP address of the client to add.
+        # 
+        # This parameter is required.
         self.client_ip = client_ip
         # This parameter ensures the idempotency of each request. A ClientToken is generated for each client. Make sure that each ClientToken is unique between different requests. The parameter can be a maximum of 64 characters in length and contain ASCII characters.
         # 
         # For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/doc-detail/25693.htm).
+        # 
+        # This parameter is required.
         self.client_token = client_token
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the region where the file system resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -166,7 +174,10 @@ class AddTagsRequest(TeaModel):
         tag: List[AddTagsRequestTag] = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -277,10 +288,14 @@ class ApplyAutoSnapshotPolicyRequest(TeaModel):
         file_system_ids: str = None,
     ):
         # The ID of the automatic snapshot policy.
+        # 
+        # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # The IDs of advanced Extreme NAS file systems.
         # 
         # You can specify a maximum of 100 file system IDs at a time. If you want to apply an automatic snapshot policy to multiple file systems, separate the file system IDs with commas (,).
+        # 
+        # This parameter is required.
         self.file_system_ids = file_system_ids
 
     def validate(self):
@@ -390,6 +405,8 @@ class ApplyDataFlowAutoRefreshRequestAutoRefreshs(TeaModel):
         # *   The directory must start and end with a forward slash (/).
         # 
         # >  The directory must be an existing directory in the CPFS file system and must be in a fileset where the dataflow is enabled.
+        # 
+        # This parameter is required.
         self.refresh_path = refresh_path
 
     def validate(self):
@@ -433,14 +450,18 @@ class ApplyDataFlowAutoRefreshRequest(TeaModel):
         # *   ImportChanged: Updated data in the source storage is automatically imported into the CPFS file system.
         self.auto_refresh_policy = auto_refresh_policy
         # The automatic update configurations.
+        # 
+        # This parameter is required.
         self.auto_refreshs = auto_refreshs
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
         # The dataflow ID.
+        # 
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         # Specifies whether to perform a dry run.
         # 
@@ -452,6 +473,8 @@ class ApplyDataFlowAutoRefreshRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -583,6 +606,8 @@ class CancelAutoSnapshotPolicyRequest(TeaModel):
         # The IDs of file systems.
         # 
         # You can specify a maximum of 100 file system IDs. If you want to remove automatic snapshot policies from multiple file systems, separate the file system IDs with commas (,).
+        # 
+        # This parameter is required.
         self.file_system_ids = file_system_ids
 
     def validate(self):
@@ -687,11 +712,13 @@ class CancelDataFlowAutoRefreshRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
         # The dataflow ID.
+        # 
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         # Specifies whether to perform a dry run.
         # 
@@ -703,6 +730,8 @@ class CancelDataFlowAutoRefreshRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The directory for which you want to cancel AutoRefresh configurations.
         # 
@@ -713,6 +742,8 @@ class CancelDataFlowAutoRefreshRequest(TeaModel):
         # *   The directory must start and end with a forward slash (/).
         # 
         # >  The directory must be an existing directory in the CPFS file system and must be in a fileset where the dataflow is enabled.
+        # 
+        # This parameter is required.
         self.refresh_path = refresh_path
 
     def validate(self):
@@ -831,11 +862,13 @@ class CancelDataFlowTaskRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The dataflow ID.
+        # 
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         # Specifies whether to perform only a dry run, without performing the actual request.
         # 
@@ -847,8 +880,12 @@ class CancelDataFlowTaskRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the specified dataflow task is canceled.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the dataflow task.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -965,8 +1002,12 @@ class CancelDirQuotaRequest(TeaModel):
         user_type: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The absolute path of a directory.
+        # 
+        # This parameter is required.
         self.path = path
         # The UID or GID of a user for whom you want to cancel the directory quota.
         # 
@@ -984,6 +1025,8 @@ class CancelDirQuotaRequest(TeaModel):
         # *   Uid: user ID
         # *   Gid: user group ID
         # *   AllUsers: all users
+        # 
+        # This parameter is required.
         self.user_type = user_type
 
     def validate(self):
@@ -1105,6 +1148,8 @@ class CancelLifecycleRetrieveJobRequest(TeaModel):
         job_id: str = None,
     ):
         # The ID of the data retrieval task.
+        # 
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -1202,6 +1247,8 @@ class CancelRecycleBinJobRequest(TeaModel):
         job_id: str = None,
     ):
         # The job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -1301,9 +1348,12 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1419,12 +1469,16 @@ class CreateAccessGroupRequest(TeaModel):
         # Limits:
         # 
         # *   The name must be 3 to 64 characters in length.
-        # *   The name must start with a letter and can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
         # *   The name must be different from the name of the default permission group.
         # 
         # The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
+        # 
+        # This parameter is required.
         self.access_group_name = access_group_name
         # The network type of the permission group. Valid value: **Vpc**.
+        # 
+        # This parameter is required.
         self.access_group_type = access_group_type
         # The description of the permission group.
         # 
@@ -1432,7 +1486,7 @@ class CreateAccessGroupRequest(TeaModel):
         # 
         # *   By default, the description of a permission group is the same as the name of the permission group. The description must be 2 to 128 characters in length.
         # *   The name must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # The type of the file system.
         # 
@@ -1567,9 +1621,11 @@ class CreateAccessPointRequest(TeaModel):
         vpc_id: str = None,
         vsw_id: str = None,
     ):
+        # This parameter is required.
         self.access_group = access_group
         self.access_point_name = access_point_name
         self.enabled_ram = enabled_ram
+        # This parameter is required.
         self.file_system_id = file_system_id
         self.owner_group_id = owner_group_id
         self.owner_user_id = owner_user_id
@@ -1578,7 +1634,9 @@ class CreateAccessPointRequest(TeaModel):
         self.posix_secondary_group_ids = posix_secondary_group_ids
         self.posix_user_id = posix_user_id
         self.root_directory = root_directory
+        # This parameter is required.
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.vsw_id = vsw_id
 
     def validate(self):
@@ -1770,6 +1828,8 @@ class CreateAccessRuleRequest(TeaModel):
         user_access_type: str = None,
     ):
         # The name of the permission group.
+        # 
+        # This parameter is required.
         self.access_group_name = access_group_name
         # The type of the file system.
         # 
@@ -1951,12 +2011,14 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         # 
         # *   The name must be 2 to 128 characters in length.
         # *   The name must start with a letter.
-        # *   The name can contain digits, colons (:), underscores (\_), and hyphens (-). It cannot start with `http://` or `https://`.
+        # *   The name can contain digits, colons (:), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         # *   This parameter is empty by default.
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
         # The type of the file system.
         # 
         # Valid value: extreme, which indicates Extreme NAS file systems.
+        # 
+        # This parameter is required.
         self.file_system_type = file_system_type
         # The days of a week on which to create automatic snapshots.
         # 
@@ -1965,6 +2027,8 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         # Valid values: 1 to 7. The values from 1 to 7 indicate the seven days in a week from Monday to Sunday.
         # 
         # If you want to create multiple auto snapshots within a week, you can specify multiple days from Monday to Sunday and separate the days with commas (,). You can specify a maximum of seven days.
+        # 
+        # This parameter is required.
         self.repeat_weekdays = repeat_weekdays
         # The retention period of auto snapshots.
         # 
@@ -1972,7 +2036,7 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   \-1 (default). Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
+        # *   \\-1 (default). Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         # *   1 to 65536: Auto snapshots are retained for the specified days. After the retention period of auto snapshots expires, the auto snapshots are automatically deleted.
         self.retention_days = retention_days
         # The points in time at which auto snapshots were created.
@@ -1982,6 +2046,8 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         # Valid values: 0 to 23. The values from 0 to 23 indicate a total of 24 hours from 00:00 to 23:00. For example, the value 1 indicates 01:00.
         # 
         # If you want to create multiple auto snapshots within a day, you can specify multiple points in time and separate the points in time with commas (,). You can specify a maximum of 24 points in time.
+        # 
+        # This parameter is required.
         self.time_points = time_points
 
     def validate(self):
@@ -2163,7 +2229,7 @@ class CreateDataFlowRequest(TeaModel):
         self.auto_refreshs = auto_refreshs
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
@@ -2173,7 +2239,7 @@ class CreateDataFlowRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter but cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform a dry run.
         # 
@@ -2185,6 +2251,8 @@ class CreateDataFlowRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         self.file_system_path = file_system_path
         # The fileset ID.
@@ -2208,6 +2276,8 @@ class CreateDataFlowRequest(TeaModel):
         #     *   The name cannot start with `http://` or `https://`.
         # 
         # >  The OSS bucket must be an existing bucket in the region.
+        # 
+        # This parameter is required.
         self.source_storage = source_storage
         self.source_storage_path = source_storage_path
         # The maximum dataflow throughput. Unit: MB/s. Valid values:
@@ -2387,12 +2457,14 @@ class CreateDataFlowTaskRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
         self.conflict_policy = conflict_policy
         # The dataflow ID.
+        # 
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         # The type of data on which operations are performed by the dataflow task.
         # 
@@ -2430,6 +2502,8 @@ class CreateDataFlowTaskRequest(TeaModel):
         # *   If the source storage is Object Storage Service (OSS), the list name must comply with the naming conventions of OSS objects.
         self.entry_list = entry_list
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # If you specify SrcTaskId, the configurations of the TaskAction, DataType, and EntryList parameters are copied from the desired dataflow task. You do not need to specify them.
         self.src_task_id = src_task_id
@@ -2585,11 +2659,16 @@ class CreateDirRequest(TeaModel):
         recursion: bool = None,
         root_directory: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.owner_group_id = owner_group_id
+        # This parameter is required.
         self.owner_user_id = owner_user_id
+        # This parameter is required.
         self.permission = permission
         self.recursion = recursion
+        # This parameter is required.
         self.root_directory = root_directory
 
     def validate(self):
@@ -2710,6 +2789,8 @@ class CreateFileRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the portable account. The ID must be a 16-digit string. The string can contain digits and lowercase letters.
         self.owner = owner
@@ -2722,11 +2803,15 @@ class CreateFileRequest(TeaModel):
         # > *   The permissions on a directory can be inherited by the owner. The owner has read and write permissions on the subdirectories and subfiles created in the directory, even if they are created by others.
         self.owner_access_inheritable = owner_access_inheritable
         # The absolute path of the directory or file. The path must start and end with a forward slash (/) and must be 2 to 1024 characters in length.
+        # 
+        # This parameter is required.
         self.path = path
         # The type of the object. Valid values:
         # 
         # *   File
         # *   Directory
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2876,7 +2961,7 @@ class CreateFileSystemRequest(TeaModel):
         # *   PayAsYouGo (default): pay-as-you-go
         # *   Subscription: subscription
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -2886,7 +2971,7 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform a dry run.
         # 
@@ -2933,6 +3018,8 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # *   If the FileSystemType parameter is set to standard, you can set the ProtocolType parameter to NFS or SMB.
         # *   If the FileSystemType parameter is set to extreme, you can set the ProtocolType parameter to NFS.
+        # 
+        # This parameter is required.
         self.protocol_type = protocol_type
         self.resource_group_id = resource_group_id
         # The snapshot ID.
@@ -2945,6 +3032,8 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # *   If the FileSystemType parameter is set to standard, you can set the StorageType parameter to Performance or Capacity.
         # *   If the FileSystemType parameter is set to extreme, you can set the StorageType parameter to standard or advance.
+        # 
+        # This parameter is required.
         self.storage_type = storage_type
         # The ID of the vSwitch.
         # 
@@ -3130,6 +3219,7 @@ class CreateFilesetRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        deletion_protection: bool = None,
         description: str = None,
         dry_run: bool = None,
         file_system_id: str = None,
@@ -3137,15 +3227,16 @@ class CreateFilesetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        self.deletion_protection = deletion_protection
         # The description of the fileset.
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter but cannot start with http:// or https://.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform a dry run.
         # 
@@ -3157,12 +3248,16 @@ class CreateFilesetRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a fileset is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The absolute path of the fileset.
         # 
         # *   The parent directory of the path that you specify must be an existing directory in the file system.
         # *   The path must be 2 to 1,024 characters in length.
         # *   The path must start and end with a forward slash (/).
+        # 
+        # This parameter is required.
         self.file_system_path = file_system_path
 
     def validate(self):
@@ -3176,6 +3271,8 @@ class CreateFilesetRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.description is not None:
             result['Description'] = self.description
         if self.dry_run is not None:
@@ -3190,6 +3287,8 @@ class CreateFilesetRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DryRun') is not None:
@@ -3288,10 +3387,16 @@ class CreateLDAPConfigRequest(TeaModel):
         # An LDAP entry.
         self.bind_dn = bind_dn
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # An LDAP search base.
+        # 
+        # This parameter is required.
         self.search_base = search_base
         # An LDAP URI.
+        # 
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -3406,17 +3511,23 @@ class CreateLifecyclePolicyRequest(TeaModel):
         storage_type: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
-        # The name of the lifecycle policy. The name must be 3 to 64 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name of the lifecycle policy. The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # 
+        # This parameter is required.
         self.lifecycle_policy_name = lifecycle_policy_name
         # The management rule that is associated with the lifecycle policy.
         # 
         # Valid values:
         # 
-        # *   DEFAULT_ATIME\_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+        # 
+        # This parameter is required.
         self.lifecycle_rule_name = lifecycle_rule_name
         # The absolute path of the directory that is associated with the lifecycle policy.
         # 
@@ -3431,6 +3542,8 @@ class CreateLifecyclePolicyRequest(TeaModel):
         # The storage type of the data that is dumped to the IA storage medium.
         # 
         # Default value: InfrequentAccess (IA).
+        # 
+        # This parameter is required.
         self.storage_type = storage_type
 
     def validate(self):
@@ -3562,8 +3675,12 @@ class CreateLifecycleRetrieveJobRequest(TeaModel):
         storage_type: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The directories or files that you want to retrieve. You can specify a maximum of 10 paths.
+        # 
+        # This parameter is required.
         self.paths = paths
         self.storage_type = storage_type
 
@@ -3678,8 +3795,12 @@ class CreateLogAnalysisRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3811,13 +3932,17 @@ class CreateMountTargetRequest(TeaModel):
         self.enable_ipv_6 = enable_ipv_6
         # The ID of the file system.
         # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\*\*\*\*.
-        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\*\*\*\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\*\*\*\*.
+        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
+        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
+        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The network type of the mount target. Valid value: **Vpc**.
+        # 
+        # This parameter is required.
         self.network_type = network_type
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -4011,7 +4136,7 @@ class CreateProtocolMountTargetRequest(TeaModel):
         self.access_group_name = access_group_name
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -4021,7 +4146,7 @@ class CreateProtocolMountTargetRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter but cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform a dry run. The dry run checks parameter validity and prerequisites. The dry run does not create an export directory or incur fees.
         # 
@@ -4031,6 +4156,8 @@ class CreateProtocolMountTargetRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, an export directory is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the fileset that you want to export.
         # 
@@ -4055,10 +4182,16 @@ class CreateProtocolMountTargetRequest(TeaModel):
         # *   The path must start and end with a forward slash (/). The root directory is `/`.
         self.path = path
         # The ID of the protocol service.
+        # 
+        # This parameter is required.
         self.protocol_service_id = protocol_service_id
         # The vSwitch ID of the export directory for the protocol service.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The VPC ID of the export directory for the protocol service.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4208,7 +4341,7 @@ class CreateProtocolServiceRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -4218,7 +4351,7 @@ class CreateProtocolServiceRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform a dry run.
         # 
@@ -4230,6 +4363,8 @@ class CreateProtocolServiceRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a protocol service is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The specification of the protocol service.
         # 
@@ -4240,18 +4375,26 @@ class CreateProtocolServiceRequest(TeaModel):
         # *   CL2
         # *   General
         # *   CL1
+        # 
+        # This parameter is required.
         self.protocol_spec = protocol_spec
         # The protocol type of the protocol service.
         # 
         # Valid value: NFS (default). Only NFSv3 is supported.
+        # 
+        # This parameter is required.
         self.protocol_type = protocol_type
         # The throughput of the protocol service.
         # 
         # Unit: MB/s.
         self.throughput = throughput
         # The vSwitch ID of the protocol service.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The virtual private cloud (VPC) ID of the protocol service. The VPC ID of the protocol service must be the same as the VPC ID of the file system.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4391,15 +4534,19 @@ class CreateRecycleBinDeleteJobRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The ID of the file or directory that you want to permanently delete.
         # 
-        # You can call the [ListRecycledDirectoriesAndFiles](~~264193~~) operation to query the value of the FileId parameter.
+        # You can call the [ListRecycledDirectoriesAndFiles](https://help.aliyun.com/document_detail/264193.html) operation to query the value of the FileId parameter.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -4516,17 +4663,23 @@ class CreateRecycleBinRestoreJobRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
         # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The ID of the file or directory that you want to restore.
         # 
-        # You can call the [ListRecycleBinJobs](~~264192~~) operation to query the value of the FileId parameter.
+        # You can call the [ListRecycleBinJobs](https://help.aliyun.com/document_detail/264192.html) operation to query the value of the FileId parameter.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the directory to which the file is restored.
+        # 
+        # This parameter is required.
         self.target_file_id = target_file_id
 
     def validate(self):
@@ -4654,6 +4807,8 @@ class CreateSnapshotRequest(TeaModel):
         # *   This parameter is empty by default.
         self.description = description
         # The ID of the advanced Extreme NAS file system. The value must start with `extreme-`, for example, `extreme-01dd****`.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The retention period of the snapshot.
         # 
@@ -4661,7 +4816,7 @@ class CreateSnapshotRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   \-1 (default). Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
+        # *   \\-1 (default). Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         # *   1 to 65536: Auto snapshots are retained for the specified days. After the retention period of auto snapshots expires, the auto snapshots are automatically deleted.
         self.retention_days = retention_days
         # The snapshot name.
@@ -4669,7 +4824,7 @@ class CreateSnapshotRequest(TeaModel):
         # Limits:
         # 
         # *   The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`.
-        # *   The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         # *   The name cannot start with auto because snapshots whose names start with auto are recognized as auto snapshots.
         self.snapshot_name = snapshot_name
 
@@ -4788,6 +4943,8 @@ class DeleteAccessGroupRequest(TeaModel):
         file_system_type: str = None,
     ):
         # The name of the permission group to be deleted.
+        # 
+        # This parameter is required.
         self.access_group_name = access_group_name
         # The type of the file system.
         # 
@@ -4896,7 +5053,9 @@ class DeleteAccessPointRequest(TeaModel):
         access_point_id: str = None,
         file_system_id: str = None,
     ):
+        # This parameter is required.
         self.access_point_id = access_point_id
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -4999,8 +5158,12 @@ class DeleteAccessRuleRequest(TeaModel):
         file_system_type: str = None,
     ):
         # The name of the permission group.
+        # 
+        # This parameter is required.
         self.access_group_name = access_group_name
         # The rule ID.
+        # 
+        # This parameter is required.
         self.access_rule_id = access_rule_id
         # The type of the file system.
         # 
@@ -5114,7 +5277,9 @@ class DeleteAutoSnapshotPolicyRequest(TeaModel):
     ):
         # The ID of the automatic snapshot policy.
         # 
-        # You can call the [DescribeAutoSnapshotPolicies](~~126583~~) operation to view available automatic snapshot policies.
+        # You can call the [DescribeAutoSnapshotPolicies](https://help.aliyun.com/document_detail/126583.html) operation to view available automatic snapshot policies.
+        # 
+        # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
 
     def validate(self):
@@ -5218,11 +5383,13 @@ class DeleteDataFlowRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
         # The dataflow ID.
+        # 
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         # Specifies whether to perform a dry run.
         # 
@@ -5234,6 +5401,8 @@ class DeleteDataFlowRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -5344,11 +5513,13 @@ class DeleteFileSystemRequest(TeaModel):
     ):
         # The ID of the file system that you want to delete.
         # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\*\*\*\*.
-        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\*\*\*\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-00cb6fa094ca\*\*\*\*.
+        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
+        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
+        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-00cb6fa094ca\\*\\*\\*\\*.
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -5450,7 +5621,7 @@ class DeleteFilesetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -5464,8 +5635,12 @@ class DeleteFilesetRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a fileset is deleted.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The fileset ID.
+        # 
+        # This parameter is required.
         self.fset_id = fset_id
 
     def validate(self):
@@ -5575,6 +5750,8 @@ class DeleteLDAPConfigRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -5673,8 +5850,12 @@ class DeleteLifecyclePolicyRequest(TeaModel):
         lifecycle_policy_name: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The name of the lifecycle policy.
+        # 
+        # This parameter is required.
         self.lifecycle_policy_name = lifecycle_policy_name
 
     def validate(self):
@@ -5709,12 +5890,12 @@ class DeleteLifecyclePolicyResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         # 
         # Valid values:
         # 
         # *   true
-        # *   false: The request failed.
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5789,8 +5970,12 @@ class DeleteLogAnalysisRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5894,13 +6079,17 @@ class DeleteMountTargetRequest(TeaModel):
     ):
         # The ID of the file system.
         # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\*\*\*\*.
-        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\*\*\*\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\*\*\*\*.
+        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
+        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
+        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The domain name of the mount target.
+        # 
+        # This parameter is required.
         self.mount_target_domain = mount_target_domain
 
     def validate(self):
@@ -6007,7 +6196,7 @@ class DeleteProtocolMountTargetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -6019,10 +6208,16 @@ class DeleteProtocolMountTargetRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the specified export directory is deleted.
         self.dry_run = dry_run
         # The ID of the export directory.
+        # 
+        # This parameter is required.
         self.export_id = export_id
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the protocol service.
+        # 
+        # This parameter is required.
         self.protocol_service_id = protocol_service_id
 
     def validate(self):
@@ -6140,7 +6335,7 @@ class DeleteProtocolServiceRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -6152,8 +6347,12 @@ class DeleteProtocolServiceRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the specified protocol service is deleted.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the protocol service.
+        # 
+        # This parameter is required.
         self.protocol_service_id = protocol_service_id
 
     def validate(self):
@@ -6263,6 +6462,8 @@ class DeleteSnapshotRequest(TeaModel):
         snapshot_id: str = None,
     ):
         # The snapshot ID.
+        # 
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -6370,7 +6571,7 @@ class DescribeAccessGroupsRequest(TeaModel):
         # Limits:
         # 
         # *   The name must be 3 to 64 characters in length.
-        # *   The name must start with a letter and can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
         self.access_group_name = access_group_name
         # The type of the file system.
         # 
@@ -6651,7 +6852,9 @@ class DescribeAccessPointRequest(TeaModel):
         access_point_id: str = None,
         file_system_id: str = None,
     ):
+        # This parameter is required.
         self.access_point_id = access_point_id
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -6891,6 +7094,7 @@ class DescribeAccessPointResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.access_point = access_point
+        # This parameter is required.
         self.request_id = request_id
 
     def validate(self):
@@ -7215,6 +7419,7 @@ class DescribeAccessPointsResponseBody(TeaModel):
     ):
         self.access_points = access_points
         self.next_token = next_token
+        # This parameter is required.
         self.request_id = request_id
         self.total_count = total_count
 
@@ -7309,6 +7514,8 @@ class DescribeAccessRulesRequest(TeaModel):
         page_size: int = None,
     ):
         # The name of the permission group.
+        # 
+        # This parameter is required.
         self.access_group_name = access_group_name
         # The ID of the rule.
         self.access_rule_id = access_rule_id
@@ -7662,6 +7869,7 @@ class DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         auto_snapshot_policy_name: str = None,
         create_time: str = None,
         file_system_nums: int = None,
+        file_system_type: str = None,
         region_id: str = None,
         repeat_weekdays: str = None,
         retention_days: int = None,
@@ -7678,6 +7886,7 @@ class DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         self.create_time = create_time
         # The number of file systems to which the automatic snapshot policy applies.
         self.file_system_nums = file_system_nums
+        self.file_system_type = file_system_type
         # The region ID of the automatic snapshot policy.
         self.region_id = region_id
         # The days of a week on which auto snapshots are created.
@@ -7692,7 +7901,7 @@ class DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         # 
         # Valid values:
         # 
-        # *   \-1: Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
+        # *   \\-1: Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         # *   1 to 65536: Auto snapshots are retained for the specified days. After the retention period of auto snapshots expires, the auto snapshots are automatically deleted.
         self.retention_days = retention_days
         # The status of the automatic snapshot policy.
@@ -7726,6 +7935,8 @@ class DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
             result['CreateTime'] = self.create_time
         if self.file_system_nums is not None:
             result['FileSystemNums'] = self.file_system_nums
+        if self.file_system_type is not None:
+            result['FileSystemType'] = self.file_system_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.repeat_weekdays is not None:
@@ -7748,6 +7959,8 @@ class DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
             self.create_time = m.get('CreateTime')
         if m.get('FileSystemNums') is not None:
             self.file_system_nums = m.get('FileSystemNums')
+        if m.get('FileSystemType') is not None:
+            self.file_system_type = m.get('FileSystemType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RepeatWeekdays') is not None:
@@ -7915,6 +8128,8 @@ class DescribeAutoSnapshotTasksRequest(TeaModel):
         # The type of the file system.
         # 
         # Valid value: extreme, which indicates Extreme NAS file systems.
+        # 
+        # This parameter is required.
         self.file_system_type = file_system_type
         # The number of entries per page.
         # 
@@ -8142,8 +8357,12 @@ class DescribeBlackListClientsRequest(TeaModel):
         # The IP address of the client.
         self.client_ip = client_ip
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the region where the file system resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8322,6 +8541,7 @@ class DescribeDataFlowTasksRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # This parameter is required.
         self.file_system_id = file_system_id
         self.filters = filters
         self.max_results = max_results
@@ -8718,6 +8938,8 @@ class DescribeDataFlowsRequest(TeaModel):
         next_token: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The filter that is used to query dataflows.
         self.filters = filters
@@ -8883,7 +9105,7 @@ class DescribeDataFlowsResponseBodyDataFlowInfoDataFlow(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter but cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # The error message returned. Valid values:
         # 
@@ -9166,6 +9388,8 @@ class DescribeDirQuotasRequest(TeaModel):
         path: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The page number.
         # 
@@ -9220,6 +9444,7 @@ class DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos(TeaModel):
         quota_type: str = None,
         size_limit: int = None,
         size_real: int = None,
+        size_real_in_byte: int = None,
         user_id: str = None,
         user_type: str = None,
     ):
@@ -9233,6 +9458,7 @@ class DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos(TeaModel):
         self.size_limit = size_limit
         # The total size of files that a user has created in the directory. Unit: GiB.
         self.size_real = size_real
+        self.size_real_in_byte = size_real_in_byte
         # The ID of the user that you specify to create a quota for the directory. The value depends on the value of the UserType parameter. Valid values: Uid and Gid.
         self.user_id = user_id
         # The type of the user ID. Valid values: Uid, Gid, and AllUsers.
@@ -9260,6 +9486,8 @@ class DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos(TeaModel):
             result['SizeLimit'] = self.size_limit
         if self.size_real is not None:
             result['SizeReal'] = self.size_real
+        if self.size_real_in_byte is not None:
+            result['SizeRealInByte'] = self.size_real_in_byte
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.user_type is not None:
@@ -9278,6 +9506,8 @@ class DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos(TeaModel):
             self.size_limit = m.get('SizeLimit')
         if m.get('SizeReal') is not None:
             self.size_real = m.get('SizeReal')
+        if m.get('SizeRealInByte') is not None:
+            self.size_real_in_byte = m.get('SizeRealInByte')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('UserType') is not None:
@@ -9753,7 +9983,7 @@ class DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # *   Valid values for General-purpose NAS file systems: Capacity and Performance.
         # *   Valid values for Extreme NAS file systems: standard and advance.
-        # *   Valid values for CPFS file systems: advance\_100 (100 MB/s/TiB baseline) and advance\_200 (200 MB/s/TiB baseline).
+        # *   Valid values for CPFS file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline).
         self.storage_type = storage_type
         # The zone ID.
         self.zone_id = zone_id
@@ -10042,9 +10272,9 @@ class DescribeFileSystemsRequest(TeaModel):
     ):
         # The ID of the file system.
         # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\*\*\*\*.
-        # *   The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015\*\*\*\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with cpfs-, for example, cpfs-125487\*\*\*\*.
+        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
+        # *   The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015\\*\\*\\*\\*.
+        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with cpfs-, for example, cpfs-125487\\*\\*\\*\\*.
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_id = file_system_id
@@ -10768,7 +10998,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # *   Valid values for General-purpose NAS file systems: Capacity and Performance.
         # *   Valid values for Extreme NAS file systems: standard and advance.
-        # *   Valid values for CPFS file systems: advance\_100 (100 MB/s/TiB baseline) and advance\_200 (200 MB/s/TiB baseline).
+        # *   Valid values for CPFS file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline).
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.storage_type = storage_type
@@ -11103,6 +11333,8 @@ class DescribeFilesetsRequest(TeaModel):
         next_token: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The filter that is used to query filesets.
         self.filters = filters
@@ -11157,6 +11389,7 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        deletion_protection: bool = None,
         description: str = None,
         file_system_path: str = None,
         fset_id: str = None,
@@ -11167,6 +11400,7 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         # 
         # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
+        self.deletion_protection = deletion_protection
         # The fileset description.
         self.description = description
         # The fileset path.
@@ -11196,6 +11430,8 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.description is not None:
             result['Description'] = self.description
         if self.file_system_path is not None:
@@ -11212,6 +11448,8 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('FileSystemPath') is not None:
@@ -11365,7 +11603,7 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
         self.file_system_id = file_system_id
         # The name of the lifecycle policy. The name must meet the following conventions:
         # 
-        # The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (\_), and hyphens (-).
+        # The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
         self.lifecycle_policy_name = lifecycle_policy_name
         # The page number.
         # 
@@ -11438,10 +11676,10 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         # 
         # Valid values:
         # 
-        # *   DEFAULT_ATIME\_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
         self.lifecycle_rule_name = lifecycle_rule_name
         # The absolute path of a directory with which the lifecycle policy is associated.
         self.path = path
@@ -11603,15 +11841,19 @@ class DescribeLifecyclePoliciesResponse(TeaModel):
 class DescribeLogAnalysisRequest(TeaModel):
     def __init__(
         self,
+        file_system_type: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
     ):
+        self.file_system_type = file_system_type
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11623,6 +11865,8 @@ class DescribeLogAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.file_system_type is not None:
+            result['FileSystemType'] = self.file_system_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -11633,6 +11877,8 @@ class DescribeLogAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileSystemType') is not None:
+            self.file_system_type = m.get('FileSystemType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -11884,11 +12130,13 @@ class DescribeMountTargetsRequest(TeaModel):
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
         # The ID of the file system.
         # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\*\*\*\*.
-        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\*\*\*\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\*\*\*\*.
+        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
+        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
+        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
@@ -12266,8 +12514,12 @@ class DescribeMountedClientsRequest(TeaModel):
         # *   If you do not specify an IP address, the operation returns the IP addresses of all clients that have accessed the specified NAS file system within the last minute.
         self.client_ip = client_ip
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The domain name of the mount target.
+        # 
+        # This parameter is required.
         self.mount_target_domain = mount_target_domain
         # The page number.
         # 
@@ -12280,6 +12532,8 @@ class DescribeMountedClientsRequest(TeaModel):
         # Default value: 10.
         self.page_size = page_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12490,6 +12744,8 @@ class DescribeNfsAclRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -12682,11 +12938,13 @@ class DescribeProtocolMountTargetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The filter that is used to query the export directories of the protocol service.
         self.filters = filters
@@ -12949,7 +13207,7 @@ class DescribeProtocolServiceRequest(TeaModel):
         protocol_service_ids: str = None,
         status: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -12959,9 +13217,11 @@ class DescribeProtocolServiceRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The number of results for each query.
         # 
@@ -13060,7 +13320,7 @@ class DescribeProtocolServiceResponseBodyProtocolServices(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # The ID of the file system.
         self.file_system_id = file_system_id
@@ -13500,6 +13760,8 @@ class DescribeSmbAclRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -13781,11 +14043,13 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         create_time: str = None,
         description: str = None,
         encrypt_type: int = None,
+        file_system_type: str = None,
         progress: str = None,
         remain_time: int = None,
         retention_days: int = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
+        snapshot_type: str = None,
         source_file_system_id: str = None,
         source_file_system_size: int = None,
         source_file_system_version: str = None,
@@ -13804,6 +14068,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         # *   0: The snapshot is not encrypted.
         # *   1: The snapshot is encrypted.
         self.encrypt_type = encrypt_type
+        self.file_system_type = file_system_type
         # The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
         self.progress = progress
         # The remaining time that is required to create the snapshot.
@@ -13816,7 +14081,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         # 
         # Valid values:
         # 
-        # *   \-1: Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
+        # *   \\-1: Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         # *   1 to 65536: Auto snapshots are retained for the specified days. After the retention period of auto snapshots expires, the auto snapshots are automatically deleted.
         self.retention_days = retention_days
         # The snapshot ID.
@@ -13825,6 +14090,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         # 
         # If you specify a name to create a snapshot, the name of the snapshot is returned. Otherwise, no value is returned for this parameter.
         self.snapshot_name = snapshot_name
+        self.snapshot_type = snapshot_type
         # The ID of the source file system.
         # 
         # This parameter is retained even if the source file system of the snapshot is deleted.
@@ -13859,6 +14125,8 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
             result['Description'] = self.description
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+        if self.file_system_type is not None:
+            result['FileSystemType'] = self.file_system_type
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.remain_time is not None:
@@ -13869,6 +14137,8 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
             result['SnapshotId'] = self.snapshot_id
         if self.snapshot_name is not None:
             result['SnapshotName'] = self.snapshot_name
+        if self.snapshot_type is not None:
+            result['SnapshotType'] = self.snapshot_type
         if self.source_file_system_id is not None:
             result['SourceFileSystemId'] = self.source_file_system_id
         if self.source_file_system_size is not None:
@@ -13887,6 +14157,8 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
             self.description = m.get('Description')
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+        if m.get('FileSystemType') is not None:
+            self.file_system_type = m.get('FileSystemType')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('RemainTime') is not None:
@@ -13897,6 +14169,8 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
             self.snapshot_id = m.get('SnapshotId')
         if m.get('SnapshotName') is not None:
             self.snapshot_name = m.get('SnapshotName')
+        if m.get('SnapshotType') is not None:
+            self.snapshot_type = m.get('SnapshotType')
         if m.get('SourceFileSystemId') is not None:
             self.source_file_system_id = m.get('SourceFileSystemId')
         if m.get('SourceFileSystemSize') is not None:
@@ -14061,6 +14335,8 @@ class DescribeStoragePackagesRequest(TeaModel):
         # Default value: 10.
         self.page_size = page_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether the time to return is in UTC.
         # 
@@ -14337,6 +14613,8 @@ class DescribeZonesRequest(TeaModel):
         # The ID of the region where you want to query zones.
         # 
         # You can call the DescribeRegions operation to query the latest region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -14408,7 +14686,7 @@ class DescribeZonesResponseBodyZonesZoneInstanceTypesInstanceType(TeaModel):
         # 
         # *   If the FileSystemType parameter is set to standard, the storage type is Performance or Capacity.
         # *   If the FileSystemType parameter is set to extreme, the storage type is standard or advance.
-        # *   If the FileSystemType parameter is set to cpfs, the storage type is advance\_100 (100 MB/s/TiB baseline) or advance\_200 (200 MB/s/TiB baseline).
+        # *   If the FileSystemType parameter is set to cpfs, the storage type is advance_100 (100 MB/s/TiB baseline) or advance_200 (200 MB/s/TiB baseline).
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.storage_type = storage_type
@@ -14675,6 +14953,8 @@ class DisableAndCleanRecycleBinRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -14772,6 +15052,8 @@ class DisableNfsAclRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -14869,6 +15151,8 @@ class DisableSmbAclRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -14966,6 +15250,8 @@ class EnableNfsAclRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -15064,6 +15350,8 @@ class EnableRecycleBinRequest(TeaModel):
         reserved_days: int = None,
     ):
         # The ID of the file system for which you want to enable the recycle bin feature.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The retention period of the files in the recycle bin. Unit: days.
         # 
@@ -15173,6 +15461,8 @@ class EnableSmbAclRequest(TeaModel):
         keytab_md_5: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The string that is generated after the system encodes the keytab file by using Base64.
         self.keytab = keytab
@@ -15283,10 +15573,14 @@ class GetDirectoryOrFilePropertiesRequest(TeaModel):
         path: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The absolute path of the directory.
         # 
         # The path must start with a forward slash (/) and must be a path that exists in the mount target.
+        # 
+        # This parameter is required.
         self.path = path
 
     def validate(self):
@@ -15533,6 +15827,8 @@ class GetRecycleBinAttributeRequest(TeaModel):
         file_system_id: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -15714,6 +16010,8 @@ class ListDirectoriesAndFilesRequest(TeaModel):
         # *   true: queries only directories
         self.directory_only = directory_only
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The maximum number of directories or files to include in the results of each query.
         # 
@@ -15726,10 +16024,14 @@ class ListDirectoriesAndFilesRequest(TeaModel):
         # The absolute path of the directory.
         # 
         # The path must start with a forward slash (/) and must be a path that exists in the mount target.
+        # 
+        # This parameter is required.
         self.path = path
         # The storage type of the files.
         # 
         # Default value: InfrequentAccess (IA).
+        # 
+        # This parameter is required.
         self.storage_type = storage_type
 
     def validate(self):
@@ -16282,6 +16584,8 @@ class ListRecentlyRecycledDirectoriesRequest(TeaModel):
         next_token: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The number of directories to return for each query.
         # 
@@ -16474,6 +16778,8 @@ class ListRecycleBinJobsRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The job ID.
         self.job_id = job_id
@@ -16749,9 +17055,13 @@ class ListRecycledDirectoriesAndFilesRequest(TeaModel):
     ):
         # The ID of the directory that you want to query.
         # 
-        # You can call the [ListRecycleBinJobs](~~264192~~) operation to query the value of the FileId parameter.
+        # You can call the [ListRecycleBinJobs](https://help.aliyun.com/document_detail/264192.html) operation to query the value of the FileId parameter.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The number of files or directories to return for each query.
         # 
@@ -17041,6 +17351,8 @@ class ListTagResourcesRequest(TeaModel):
         # The resource IDs.
         self.resource_id = resource_id
         # The resource type. Set the value to filesystem.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The details about the tags.
         self.tag = tag
@@ -17266,7 +17578,9 @@ class ModifyAccessGroupRequest(TeaModel):
         # Limits:
         # 
         # *   The name must be 3 to 64 characters in length.
-        # *   The name must start with a letter and can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.access_group_name = access_group_name
         # The description of the permission group.
         # 
@@ -17274,7 +17588,7 @@ class ModifyAccessGroupRequest(TeaModel):
         # 
         # *   By default, the description of the permission group is the same as the name of the permission group. The description must be 2 to 128 characters in length.
         # *   The description must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # The type of the file system.
         # 
@@ -17391,9 +17705,11 @@ class ModifyAccessPointRequest(TeaModel):
         file_system_id: str = None,
     ):
         self.access_group = access_group
+        # This parameter is required.
         self.access_point_id = access_point_id
         self.access_point_name = access_point_name
         self.enabled_ram = enabled_ram
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -17437,6 +17753,7 @@ class ModifyAccessPointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # This parameter is required.
         self.request_id = request_id
 
     def validate(self):
@@ -17513,8 +17830,12 @@ class ModifyAccessRuleRequest(TeaModel):
         user_access_type: str = None,
     ):
         # The name of the permission group.
+        # 
+        # This parameter is required.
         self.access_group_name = access_group_name
         # The rule ID.
+        # 
+        # This parameter is required.
         self.access_rule_id = access_rule_id
         # The type of the file system.
         # 
@@ -17688,6 +18009,8 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         # The ID of the automatic snapshot policy.
         # 
         # You can call the DescribeAutoSnapshotPolicies operation to view available automatic snapshot policies.
+        # 
+        # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # The name of the automatic snapshot policy. If you do not specify this parameter, the policy name is not changed.
         # 
@@ -17695,7 +18018,7 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         # 
         # *   The name must be 2 to 128 characters in length.
         # *   The name must start with a letter.
-        # *   The name can contain digits, letters, colons (:), underscores (\_), and hyphens (-). It cannot start with `http://` or `https://`.
+        # *   The name can contain digits, letters, colons (:), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
         # The days of a week on which auto snapshots are created.
         # 
@@ -17709,7 +18032,7 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   \-1 (default): Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
+        # *   \\-1 (default): Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         # *   1 to 65536: Auto snapshots are retained for the specified number of days. After the retention period of auto snapshots expires, the auto snapshots are automatically deleted.
         self.retention_days = retention_days
         # The points in time at which auto snapshots are created.
@@ -17838,11 +18161,13 @@ class ModifyDataFlowRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
         # The dataflow ID.
+        # 
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         # The description of the dataflow.
         # 
@@ -17850,7 +18175,7 @@ class ModifyDataFlowRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter but cannot start with http:// or https://.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform a dry run.
         # 
@@ -17862,6 +18187,8 @@ class ModifyDataFlowRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The maximum transmission bandwidth for a dataflow. Unit: MB/s. Valid values:
         # 
@@ -17994,8 +18321,10 @@ class ModifyDataFlowAutoRefreshRequest(TeaModel):
         self.auto_refresh_interval = auto_refresh_interval
         self.auto_refresh_policy = auto_refresh_policy
         self.client_token = client_token
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         self.dry_run = dry_run
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -18118,7 +18447,7 @@ class ModifyFileSystemRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   It must start with a letter but cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # The ID of the file system.
         # 
@@ -18126,6 +18455,8 @@ class ModifyFileSystemRequest(TeaModel):
         # *   The IDs of Extreme NAS file systems must start with `extreme-`. Example: `extreme-0015****`.
         # *   The IDs of Cloud Paralleled File System (CPFS) file systems must start with `cpfs-`. Example: `cpfs-125487****`.
         # >CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -18225,6 +18556,7 @@ class ModifyFilesetRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        deletion_protection: bool = None,
         description: str = None,
         dry_run: bool = None,
         file_system_id: str = None,
@@ -18232,10 +18564,11 @@ class ModifyFilesetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        self.deletion_protection = deletion_protection
         # The fileset description.
         self.description = description
         # Specifies whether to perform only a dry run, without performing the actual request. 
@@ -18248,8 +18581,12 @@ class ModifyFilesetRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The fileset ID.
+        # 
+        # This parameter is required.
         self.fset_id = fset_id
 
     def validate(self):
@@ -18263,6 +18600,8 @@ class ModifyFilesetRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.description is not None:
             result['Description'] = self.description
         if self.dry_run is not None:
@@ -18277,6 +18616,8 @@ class ModifyFilesetRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DryRun') is not None:
@@ -18366,8 +18707,11 @@ class ModifyLDAPConfigRequest(TeaModel):
         uri: str = None,
     ):
         self.bind_dn = bind_dn
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.search_base = search_base
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -18480,19 +18824,25 @@ class ModifyLifecyclePolicyRequest(TeaModel):
         storage_type: str = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The name of the lifecycle policy.
         # 
-        # The name must be 3 to 64 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # 
+        # This parameter is required.
         self.lifecycle_policy_name = lifecycle_policy_name
         # The management rule that is associated with the lifecycle policy.
         # 
         # Valid values:
         # 
-        # *   DEFAULT_ATIME\_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME\_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+        # 
+        # This parameter is required.
         self.lifecycle_rule_name = lifecycle_rule_name
         # The absolute path of a directory with which the lifecycle policy is associated.
         # 
@@ -18639,6 +18989,8 @@ class ModifyMountTargetRequest(TeaModel):
         # 
         # *   Sample ID of a General-purpose NAS file system: `31a8e4****`.
         # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, `extreme-0015****`.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The IPv4 domain name of the mount target.
         self.mount_target_domain = mount_target_domain
@@ -18767,7 +19119,7 @@ class ModifyProtocolMountTargetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -18777,7 +19129,7 @@ class ModifyProtocolMountTargetRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter but cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform only a dry run, without performing the actual request. The dry run checks parameter validity and prerequisites. The dry run does not modify the specified export directory or incur fees.
         # 
@@ -18787,10 +19139,16 @@ class ModifyProtocolMountTargetRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request.
         self.dry_run = dry_run
         # The ID of the export directory for the protocol service.
+        # 
+        # This parameter is required.
         self.export_id = export_id
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the protocol service.
+        # 
+        # This parameter is required.
         self.protocol_service_id = protocol_service_id
 
     def validate(self):
@@ -18913,7 +19271,7 @@ class ModifyProtocolServiceRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -18923,7 +19281,7 @@ class ModifyProtocolServiceRequest(TeaModel):
         # 
         # *   The description must be 2 to 128 characters in length.
         # *   The description must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform only a dry run, without performing the actual request. The dry run checks parameter validity and prerequisites. The dry run does not modify a file system or incur fees.
         # 
@@ -18933,8 +19291,12 @@ class ModifyProtocolServiceRequest(TeaModel):
         # *   false (default): performs a dry run and performs the actual request. If the request passes the dry run, the service protocol is modified.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the protocol service.
+        # 
+        # This parameter is required.
         self.protocol_service_id = protocol_service_id
 
     def validate(self):
@@ -19065,17 +19427,19 @@ class ModifySmbAclRequest(TeaModel):
         # *   false (default): disables encryption in transit.
         self.encrypt_data = encrypt_data
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The home directory of each user. Each user-specific home directory must meet the following requirements:
         # 
-        # *   Each segment starts with a forward slash (/) or a backward slash (\\).
+        # *   Each segment starts with a forward slash (/) or a backward slash (\\\\).
         # *   Each segment does not contain the following special characters: `<>":|?*`.
         # *   Each segment is 0 to 255 characters in length.
         # *   The total length is 0 to 32,767 characters.
         # 
         # For example, if you create a user named A and the home directory is `/home`, the file system automatically creates a directory named `/home/A` when User A logs on to the file system. If the `/home/A` directory already exists, the file system does not create the directory.
         # 
-        # > User A must have the permissions to create folders in the \home directory. Otherwise, the file system cannot create the `/home/A` directory when User A logs on to the file system.
+        # > User A must have the permissions to create folders in the \\home directory. Otherwise, the file system cannot create the `/home/A` directory when User A logs on to the file system.
         self.home_dir_path = home_dir_path
         # The string that is generated after the system encodes the keytab file by using Base64.
         self.keytab = keytab
@@ -19295,10 +19659,15 @@ class RemoveClientFromBlackListRequest(TeaModel):
         file_system_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.client_ip = client_ip
+        # This parameter is required.
         self.client_token = client_token
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19443,7 +19812,10 @@ class RemoveTagsRequest(TeaModel):
         tag: List[RemoveTagsRequestTag] = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -19554,8 +19926,12 @@ class ResetFileSystemRequest(TeaModel):
         snapshot_id: str = None,
     ):
         # The ID of the advanced Extreme NAS file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The snapshot ID.
+        # 
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -19657,6 +20033,8 @@ class RetryLifecycleRetrieveJobRequest(TeaModel):
         job_id: str = None,
     ):
         # The ID of the data retrieval task.
+        # 
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -19766,8 +20144,12 @@ class SetDirQuotaRequest(TeaModel):
         # If you set the QuotaType parameter to Enforcement, you must specify at least one of the SizeLimit and FileCountLimit parameters.
         self.file_count_limit = file_count_limit
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The absolute path of a directory.
+        # 
+        # This parameter is required.
         self.path = path
         # The type of the quota.
         # 
@@ -19775,6 +20157,8 @@ class SetDirQuotaRequest(TeaModel):
         # 
         # *   Accounting: a statistical quota. If you set this parameter to Accounting, NAS calculates only the storage usage of the directory.
         # *   Enforcement: a restricted quota. If you set this parameter to Enforcement and the storage usage exceeds the quota, you can no longer create files or subdirectories for the directory, or write data to the directory.
+        # 
+        # This parameter is required.
         self.quota_type = quota_type
         # The size of files that a user can create in the directory.
         # 
@@ -19798,6 +20182,8 @@ class SetDirQuotaRequest(TeaModel):
         # *   Uid: user ID
         # *   Gid: user group ID
         # *   AllUsers: all users
+        # 
+        # This parameter is required.
         self.user_type = user_type
 
     def validate(self):
@@ -19935,11 +20321,13 @@ class StartDataFlowRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The dataflow ID.
+        # 
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         # Specifies whether to perform only a dry run, without performing the actual request.
         # 
@@ -19951,6 +20339,8 @@ class StartDataFlowRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the specified dataflow is enabled.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -20064,11 +20454,13 @@ class StopDataFlowRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
         # The dataflow ID.
+        # 
+        # This parameter is required.
         self.data_flow_id = data_flow_id
         # Specifies whether to perform a dry run.
         # 
@@ -20080,6 +20472,8 @@ class StopDataFlowRequest(TeaModel):
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
@@ -20198,6 +20592,8 @@ class TagResourcesRequestTag(TeaModel):
         # *   The tag key must be 1 to 128 characters in length.
         # *   The tag key cannot start with `aliyun` or `acs:`.
         # *   The tag key cannot contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N to add to the resource.
         # 
@@ -20207,6 +20603,8 @@ class TagResourcesRequestTag(TeaModel):
         # *   The tag value must be 1 to 128 characters in length.
         # *   The tag value cannot start with `aliyun` or `acs:`.
         # *   The tag value cannot contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -20241,10 +20639,16 @@ class TagResourcesRequest(TeaModel):
         tag: List[TagResourcesRequestTag] = None,
     ):
         # The resource IDs. Valid values of N: 1 to 50.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type. Set the value to filesystem.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The details about the tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -20370,10 +20774,14 @@ class UntagResourcesRequest(TeaModel):
         # *   false (default): No tags are removed from the file system and a success message is returned.
         self.all = all
         # The resource IDs. Valid values of N: 1 to 50.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type.
         # 
         # Set the value to filesystem.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys of the resources. Valid values of N: 1 to 20.
         self.tag_key = tag_key
@@ -20486,12 +20894,16 @@ class UpdateRecycleBinAttributeRequest(TeaModel):
         reserved_days: int = None,
     ):
         # The ID of the file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The retention period of the files in the recycle bin. Unit: days.
         # 
         # Valid values: 1 to 180.
         # 
         # Default value: 3.
+        # 
+        # This parameter is required.
         self.reserved_days = reserved_days
 
     def validate(self):
@@ -20598,10 +21010,12 @@ class UpgradeFileSystemRequest(TeaModel):
         # The desired capacity of the file system.
         # 
         # The desired capacity of the file system must be greater than the original capacity of the file system. Unit: GiB.
+        # 
+        # This parameter is required.
         self.capacity = capacity
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](~~25693~~)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
         # 
         # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
@@ -20616,10 +21030,12 @@ class UpgradeFileSystemRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the file system.
         # 
-        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\*\*\*\*.
-        # *   The IDs of CPFS file systems must start with `cpfs-`, for example, cpfs-125487\*\*\*\*.
+        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
+        # *   The IDs of CPFS file systems must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
         # 
         # > CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
 
     def validate(self):
