@@ -1,3 +1,17 @@
+2024-06-05 Version: 3.0.1
+- Update API Batch: update param body.
+- Update API Batch: update response param.
+- Update API CreateDrive: update response param.
+- Update API CreateShareLink: update param body.
+- Update API GetDomain: update param body.
+- Update API GetUploadUrl: update param body.
+- Update API InvestigateFile: update param body.
+- Update API ListDomains: update param body.
+- Update API ListMyGroupDrive: update response param.
+- Update API SearchDomains: update param body.
+- Update API SearchFile: update param body.
+
+
 2023-11-30 Version: 3.0.0
 - Generated python 2022-03-01 for pds.
 

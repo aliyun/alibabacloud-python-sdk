@@ -3,7 +3,6 @@
 from typing import Dict
 from Tea.core import TeaCore
 
-from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_gateway_pds.client import Client as GatewayClientClient
@@ -17,16 +16,15 @@ class Client(OpenApiClient):
     """
     *\
     """
-    _client: SPIClient = None
-
     def __init__(
         self, 
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._client = GatewayClientClient()
-        self._spi = self._client
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._signature_algorithm = 'v2'
+        self._disable_http_2 = True
         self._endpoint_rule = ''
 
     def add_group_member_with_options(
@@ -35,6 +33,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AddGroupMemberResponse:
+        """
+        @summary Adds a member to a group.
+        
+        @param request: AddGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -69,6 +75,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AddGroupMemberResponse:
+        """
+        @summary Adds a member to a group.
+        
+        @param request: AddGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -101,6 +115,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.AddGroupMemberRequest,
     ) -> pds_20220301_models.AddGroupMemberResponse:
+        """
+        @summary Adds a member to a group.
+        
+        @param request: AddGroupMemberRequest
+        @return: AddGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_group_member_with_options(request, headers, runtime)
@@ -109,6 +129,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.AddGroupMemberRequest,
     ) -> pds_20220301_models.AddGroupMemberResponse:
+        """
+        @summary Adds a member to a group.
+        
+        @param request: AddGroupMemberRequest
+        @return: AddGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_group_member_with_options_async(request, headers, runtime)
@@ -119,6 +145,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AddStoryFilesResponse:
+        """
+        @summary 故事添加文件
+        
+        @param request: AddStoryFilesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddStoryFilesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -153,6 +187,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AddStoryFilesResponse:
+        """
+        @summary 故事添加文件
+        
+        @param request: AddStoryFilesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddStoryFilesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -185,6 +227,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.AddStoryFilesRequest,
     ) -> pds_20220301_models.AddStoryFilesResponse:
+        """
+        @summary 故事添加文件
+        
+        @param request: AddStoryFilesRequest
+        @return: AddStoryFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_story_files_with_options(request, headers, runtime)
@@ -193,6 +241,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.AddStoryFilesRequest,
     ) -> pds_20220301_models.AddStoryFilesResponse:
+        """
+        @summary 故事添加文件
+        
+        @param request: AddStoryFilesRequest
+        @return: AddStoryFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_story_files_with_options_async(request, headers, runtime)
@@ -204,7 +258,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AssignRoleResponse:
         """
-        You can call this operation to assign a group administrator role to a user.
+        @summary Assigns a group administrator role to a user.
+        
+        @description You can call this operation to assign a group administrator role to a user.
         
         @param request: AssignRoleRequest
         @param headers: map
@@ -248,7 +304,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AssignRoleResponse:
         """
-        You can call this operation to assign a group administrator role to a user.
+        @summary Assigns a group administrator role to a user.
+        
+        @description You can call this operation to assign a group administrator role to a user.
         
         @param request: AssignRoleRequest
         @param headers: map
@@ -290,7 +348,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.AssignRoleRequest,
     ) -> pds_20220301_models.AssignRoleResponse:
         """
-        You can call this operation to assign a group administrator role to a user.
+        @summary Assigns a group administrator role to a user.
+        
+        @description You can call this operation to assign a group administrator role to a user.
         
         @param request: AssignRoleRequest
         @return: AssignRoleResponse
@@ -304,7 +364,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.AssignRoleRequest,
     ) -> pds_20220301_models.AssignRoleResponse:
         """
-        You can call this operation to assign a group administrator role to a user.
+        @summary Assigns a group administrator role to a user.
+        
+        @description You can call this operation to assign a group administrator role to a user.
         
         @param request: AssignRoleRequest
         @return: AssignRoleResponse
@@ -320,7 +382,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AuthorizeResponse:
         """
-        For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+        @summary Requests permissions by using OAuth 2.0.
+        
+        @description For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
         
         @param tmp_req: AuthorizeRequest
         @param headers: map
@@ -374,7 +438,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AuthorizeResponse:
         """
-        For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+        @summary Requests permissions by using OAuth 2.0.
+        
+        @description For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
         
         @param tmp_req: AuthorizeRequest
         @param headers: map
@@ -426,7 +492,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.AuthorizeRequest,
     ) -> pds_20220301_models.AuthorizeResponse:
         """
-        For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+        @summary Requests permissions by using OAuth 2.0.
+        
+        @description For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
         
         @param request: AuthorizeRequest
         @return: AuthorizeResponse
@@ -440,7 +508,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.AuthorizeRequest,
     ) -> pds_20220301_models.AuthorizeResponse:
         """
-        For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+        @summary Requests permissions by using OAuth 2.0.
+        
+        @description For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
         
         @param request: AuthorizeRequest
         @return: AuthorizeResponse
@@ -455,6 +525,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.BatchResponse:
+        """
+        @summary Calls multiple operations at a time to improve call efficiency.
+        
+        @param request: BatchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.requests):
@@ -487,6 +565,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.BatchResponse:
+        """
+        @summary Calls multiple operations at a time to improve call efficiency.
+        
+        @param request: BatchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.requests):
@@ -517,6 +603,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.BatchRequest,
     ) -> pds_20220301_models.BatchResponse:
+        """
+        @summary Calls multiple operations at a time to improve call efficiency.
+        
+        @param request: BatchRequest
+        @return: BatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_with_options(request, headers, runtime)
@@ -525,6 +617,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.BatchRequest,
     ) -> pds_20220301_models.BatchResponse:
+        """
+        @summary Calls multiple operations at a time to improve call efficiency.
+        
+        @param request: BatchRequest
+        @return: BatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_with_options_async(request, headers, runtime)
@@ -536,7 +634,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CancelAssignRoleResponse:
         """
-        You can cancel only the group administrator role.
+        @summary Cancels a role.
+        
+        @description You can cancel only the group administrator role.
         
         @param request: CancelAssignRoleRequest
         @param headers: map
@@ -580,7 +680,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CancelAssignRoleResponse:
         """
-        You can cancel only the group administrator role.
+        @summary Cancels a role.
+        
+        @description You can cancel only the group administrator role.
         
         @param request: CancelAssignRoleRequest
         @param headers: map
@@ -622,7 +724,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CancelAssignRoleRequest,
     ) -> pds_20220301_models.CancelAssignRoleResponse:
         """
-        You can cancel only the group administrator role.
+        @summary Cancels a role.
+        
+        @description You can cancel only the group administrator role.
         
         @param request: CancelAssignRoleRequest
         @return: CancelAssignRoleResponse
@@ -636,7 +740,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CancelAssignRoleRequest,
     ) -> pds_20220301_models.CancelAssignRoleResponse:
         """
-        You can cancel only the group administrator role.
+        @summary Cancels a role.
+        
+        @description You can cancel only the group administrator role.
         
         @param request: CancelAssignRoleRequest
         @return: CancelAssignRoleResponse
@@ -651,6 +757,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CancelShareLinkResponse:
+        """
+        @summary Deletes a share link.
+        
+        @param request: CancelShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.share_id):
@@ -681,6 +795,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CancelShareLinkResponse:
+        """
+        @summary Deletes a share link.
+        
+        @param request: CancelShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.share_id):
@@ -709,6 +831,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CancelShareLinkRequest,
     ) -> pds_20220301_models.CancelShareLinkResponse:
+        """
+        @summary Deletes a share link.
+        
+        @param request: CancelShareLinkRequest
+        @return: CancelShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_share_link_with_options(request, headers, runtime)
@@ -717,6 +845,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CancelShareLinkRequest,
     ) -> pds_20220301_models.CancelShareLinkResponse:
+        """
+        @summary Deletes a share link.
+        
+        @param request: CancelShareLinkRequest
+        @return: CancelShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_share_link_with_options_async(request, headers, runtime)
@@ -727,6 +861,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ClearRecyclebinResponse:
+        """
+        @summary Empties the recycle bin.
+        
+        @param request: ClearRecyclebinRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearRecyclebinResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -757,6 +899,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ClearRecyclebinResponse:
+        """
+        @summary Empties the recycle bin.
+        
+        @param request: ClearRecyclebinRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearRecyclebinResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -785,6 +935,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ClearRecyclebinRequest,
     ) -> pds_20220301_models.ClearRecyclebinResponse:
+        """
+        @summary Empties the recycle bin.
+        
+        @param request: ClearRecyclebinRequest
+        @return: ClearRecyclebinResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.clear_recyclebin_with_options(request, headers, runtime)
@@ -793,6 +949,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ClearRecyclebinRequest,
     ) -> pds_20220301_models.ClearRecyclebinResponse:
+        """
+        @summary Empties the recycle bin.
+        
+        @param request: ClearRecyclebinRequest
+        @return: ClearRecyclebinResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.clear_recyclebin_with_options_async(request, headers, runtime)
@@ -803,6 +965,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CompleteFileResponse:
+        """
+        @summary Completes the upload of a file.
+        
+        @param request: CompleteFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompleteFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -837,6 +1007,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CompleteFileResponse:
+        """
+        @summary Completes the upload of a file.
+        
+        @param request: CompleteFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompleteFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -869,6 +1047,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CompleteFileRequest,
     ) -> pds_20220301_models.CompleteFileResponse:
+        """
+        @summary Completes the upload of a file.
+        
+        @param request: CompleteFileRequest
+        @return: CompleteFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.complete_file_with_options(request, headers, runtime)
@@ -877,6 +1061,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CompleteFileRequest,
     ) -> pds_20220301_models.CompleteFileResponse:
+        """
+        @summary Completes the upload of a file.
+        
+        @param request: CompleteFileRequest
+        @return: CompleteFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.complete_file_with_options_async(request, headers, runtime)
@@ -887,6 +1077,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CopyFileResponse:
+        """
+        @summary Copies a file or folder.
+        
+        @param request: CopyFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_rename):
@@ -927,6 +1125,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CopyFileResponse:
+        """
+        @summary Copies a file or folder.
+        
+        @param request: CopyFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_rename):
@@ -965,6 +1171,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CopyFileRequest,
     ) -> pds_20220301_models.CopyFileResponse:
+        """
+        @summary Copies a file or folder.
+        
+        @param request: CopyFileRequest
+        @return: CopyFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.copy_file_with_options(request, headers, runtime)
@@ -973,6 +1185,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CopyFileRequest,
     ) -> pds_20220301_models.CopyFileResponse:
+        """
+        @summary Copies a file or folder.
+        
+        @param request: CopyFileRequest
+        @return: CopyFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.copy_file_with_options_async(request, headers, runtime)
@@ -983,6 +1201,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateCustomizedStoryResponse:
+        """
+        @summary 创建自定义故事
+        
+        @param request: CreateCustomizedStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomizedStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.custom_labels):
@@ -1025,6 +1251,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateCustomizedStoryResponse:
+        """
+        @summary 创建自定义故事
+        
+        @param request: CreateCustomizedStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomizedStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.custom_labels):
@@ -1065,6 +1299,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateCustomizedStoryRequest,
     ) -> pds_20220301_models.CreateCustomizedStoryResponse:
+        """
+        @summary 创建自定义故事
+        
+        @param request: CreateCustomizedStoryRequest
+        @return: CreateCustomizedStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_customized_story_with_options(request, headers, runtime)
@@ -1073,6 +1313,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateCustomizedStoryRequest,
     ) -> pds_20220301_models.CreateCustomizedStoryResponse:
+        """
+        @summary 创建自定义故事
+        
+        @param request: CreateCustomizedStoryRequest
+        @return: CreateCustomizedStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_customized_story_with_options_async(request, headers, runtime)
@@ -1084,7 +1330,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateDomainResponse:
         """
-        If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        @summary Create domain.
+        
+        @description If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
         
         @param request: CreateDomainRequest
         @param headers: map
@@ -1134,7 +1382,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateDomainResponse:
         """
-        If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        @summary Create domain.
+        
+        @description If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
         
         @param request: CreateDomainRequest
         @param headers: map
@@ -1182,7 +1432,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CreateDomainRequest,
     ) -> pds_20220301_models.CreateDomainResponse:
         """
-        If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        @summary Create domain.
+        
+        @description If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -1196,7 +1448,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CreateDomainRequest,
     ) -> pds_20220301_models.CreateDomainResponse:
         """
-        If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        @summary Create domain.
+        
+        @description If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -1211,6 +1465,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateDriveResponse:
+        """
+        @summary Creates a drive.
+        
+        @param request: CreateDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.default):
@@ -1255,6 +1517,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateDriveResponse:
+        """
+        @summary Creates a drive.
+        
+        @param request: CreateDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.default):
@@ -1297,6 +1567,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateDriveRequest,
     ) -> pds_20220301_models.CreateDriveResponse:
+        """
+        @summary Creates a drive.
+        
+        @param request: CreateDriveRequest
+        @return: CreateDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_drive_with_options(request, headers, runtime)
@@ -1305,6 +1581,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateDriveRequest,
     ) -> pds_20220301_models.CreateDriveResponse:
+        """
+        @summary Creates a drive.
+        
+        @param request: CreateDriveRequest
+        @return: CreateDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_drive_with_options_async(request, headers, runtime)
@@ -1315,6 +1597,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateFileResponse:
+        """
+        @summary Creates a file or folder.
+        
+        @param request: CreateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_name_mode):
@@ -1385,6 +1675,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateFileResponse:
+        """
+        @summary Creates a file or folder.
+        
+        @param request: CreateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_name_mode):
@@ -1453,6 +1751,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateFileRequest,
     ) -> pds_20220301_models.CreateFileResponse:
+        """
+        @summary Creates a file or folder.
+        
+        @param request: CreateFileRequest
+        @return: CreateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_file_with_options(request, headers, runtime)
@@ -1461,6 +1765,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateFileRequest,
     ) -> pds_20220301_models.CreateFileResponse:
+        """
+        @summary Creates a file or folder.
+        
+        @param request: CreateFileRequest
+        @return: CreateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_file_with_options_async(request, headers, runtime)
@@ -1471,6 +1781,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateGroupResponse:
+        """
+        @summary Creates a group.
+        
+        @param request: CreateGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1507,6 +1825,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateGroupResponse:
+        """
+        @summary Creates a group.
+        
+        @param request: CreateGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1541,6 +1867,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateGroupRequest,
     ) -> pds_20220301_models.CreateGroupResponse:
+        """
+        @summary Creates a group.
+        
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_group_with_options(request, headers, runtime)
@@ -1549,6 +1881,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateGroupRequest,
     ) -> pds_20220301_models.CreateGroupResponse:
+        """
+        @summary Creates a group.
+        
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_group_with_options_async(request, headers, runtime)
@@ -1560,7 +1898,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
         """
-        If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+        @summary Creates a mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+        
+        @description If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
         
         @param request: CreateIdentityToBenefitPkgMappingRequest
         @param headers: map
@@ -1606,7 +1946,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
         """
-        If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+        @summary Creates a mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+        
+        @description If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
         
         @param request: CreateIdentityToBenefitPkgMappingRequest
         @param headers: map
@@ -1650,7 +1992,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CreateIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
         """
-        If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+        @summary Creates a mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+        
+        @description If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
         
         @param request: CreateIdentityToBenefitPkgMappingRequest
         @return: CreateIdentityToBenefitPkgMappingResponse
@@ -1664,7 +2008,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CreateIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
         """
-        If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+        @summary Creates a mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+        
+        @description If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
         
         @param request: CreateIdentityToBenefitPkgMappingRequest
         @return: CreateIdentityToBenefitPkgMappingResponse
@@ -1679,6 +2025,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateOrderResponse:
+        """
+        @summary 创建凌霄订单
+        
+        @param request: CreateOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -1727,6 +2081,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateOrderResponse:
+        """
+        @summary 创建凌霄订单
+        
+        @param request: CreateOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -1773,6 +2135,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateOrderRequest,
     ) -> pds_20220301_models.CreateOrderResponse:
+        """
+        @summary 创建凌霄订单
+        
+        @param request: CreateOrderRequest
+        @return: CreateOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_order_with_options(request, headers, runtime)
@@ -1781,6 +2149,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateOrderRequest,
     ) -> pds_20220301_models.CreateOrderResponse:
+        """
+        @summary 创建凌霄订单
+        
+        @param request: CreateOrderRequest
+        @return: CreateOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_order_with_options_async(request, headers, runtime)
@@ -1792,7 +2166,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateShareLinkResponse:
         """
-        A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+        @summary Creates a share URL.
+        
+        @description A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
         
         @param request: CreateShareLinkRequest
         @param headers: map
@@ -1801,6 +2177,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.creatable):
+            body['creatable'] = request.creatable
+        if not UtilClient.is_unset(request.creatable_file_id_list):
+            body['creatable_file_id_list'] = request.creatable_file_id_list
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.disable_download):
@@ -1817,8 +2197,6 @@ class Client(OpenApiClient):
             body['expiration'] = request.expiration
         if not UtilClient.is_unset(request.file_id_list):
             body['file_id_list'] = request.file_id_list
-        if not UtilClient.is_unset(request.office_editable):
-            body['office_editable'] = request.office_editable
         if not UtilClient.is_unset(request.preview_limit):
             body['preview_limit'] = request.preview_limit
         if not UtilClient.is_unset(request.save_limit):
@@ -1858,7 +2236,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateShareLinkResponse:
         """
-        A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+        @summary Creates a share URL.
+        
+        @description A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
         
         @param request: CreateShareLinkRequest
         @param headers: map
@@ -1867,6 +2247,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.creatable):
+            body['creatable'] = request.creatable
+        if not UtilClient.is_unset(request.creatable_file_id_list):
+            body['creatable_file_id_list'] = request.creatable_file_id_list
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.disable_download):
@@ -1883,8 +2267,6 @@ class Client(OpenApiClient):
             body['expiration'] = request.expiration
         if not UtilClient.is_unset(request.file_id_list):
             body['file_id_list'] = request.file_id_list
-        if not UtilClient.is_unset(request.office_editable):
-            body['office_editable'] = request.office_editable
         if not UtilClient.is_unset(request.preview_limit):
             body['preview_limit'] = request.preview_limit
         if not UtilClient.is_unset(request.save_limit):
@@ -1922,7 +2304,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CreateShareLinkRequest,
     ) -> pds_20220301_models.CreateShareLinkResponse:
         """
-        A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+        @summary Creates a share URL.
+        
+        @description A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
         
         @param request: CreateShareLinkRequest
         @return: CreateShareLinkResponse
@@ -1936,7 +2320,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CreateShareLinkRequest,
     ) -> pds_20220301_models.CreateShareLinkResponse:
         """
-        A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+        @summary Creates a share URL.
+        
+        @description A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
         
         @param request: CreateShareLinkRequest
         @return: CreateShareLinkResponse
@@ -1951,6 +2337,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateSimilarImageClusterTaskResponse:
+        """
+        @summary 创建相似图片聚类任务
+        
+        @param request: CreateSimilarImageClusterTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSimilarImageClusterTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -1981,6 +2375,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateSimilarImageClusterTaskResponse:
+        """
+        @summary 创建相似图片聚类任务
+        
+        @param request: CreateSimilarImageClusterTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSimilarImageClusterTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2009,6 +2411,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateSimilarImageClusterTaskRequest,
     ) -> pds_20220301_models.CreateSimilarImageClusterTaskResponse:
+        """
+        @summary 创建相似图片聚类任务
+        
+        @param request: CreateSimilarImageClusterTaskRequest
+        @return: CreateSimilarImageClusterTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_similar_image_cluster_task_with_options(request, headers, runtime)
@@ -2017,6 +2425,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateSimilarImageClusterTaskRequest,
     ) -> pds_20220301_models.CreateSimilarImageClusterTaskResponse:
+        """
+        @summary 创建相似图片聚类任务
+        
+        @param request: CreateSimilarImageClusterTaskRequest
+        @return: CreateSimilarImageClusterTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_similar_image_cluster_task_with_options_async(request, headers, runtime)
@@ -2027,6 +2441,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateStoryResponse:
+        """
+        @summary 创建推荐故事
+        
+        @param request: CreateStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address):
@@ -2077,6 +2499,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateStoryResponse:
+        """
+        @summary 创建推荐故事
+        
+        @param request: CreateStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address):
@@ -2125,6 +2555,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateStoryRequest,
     ) -> pds_20220301_models.CreateStoryResponse:
+        """
+        @summary 创建推荐故事
+        
+        @param request: CreateStoryRequest
+        @return: CreateStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_story_with_options(request, headers, runtime)
@@ -2133,6 +2569,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateStoryRequest,
     ) -> pds_20220301_models.CreateStoryResponse:
+        """
+        @summary 创建推荐故事
+        
+        @param request: CreateStoryRequest
+        @return: CreateStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_story_with_options_async(request, headers, runtime)
@@ -2143,6 +2585,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateUserResponse:
+        """
+        @summary Creates a user.
+        
+        @param request: CreateUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.avatar):
@@ -2193,6 +2643,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateUserResponse:
+        """
+        @summary Creates a user.
+        
+        @param request: CreateUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.avatar):
@@ -2241,6 +2699,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateUserRequest,
     ) -> pds_20220301_models.CreateUserResponse:
+        """
+        @summary Creates a user.
+        
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_user_with_options(request, headers, runtime)
@@ -2249,6 +2713,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateUserRequest,
     ) -> pds_20220301_models.CreateUserResponse:
+        """
+        @summary Creates a user.
+        
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_user_with_options_async(request, headers, runtime)
@@ -2259,6 +2729,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CsiGetFileInfoResponse:
+        """
+        @summary 获取文件内容安全信息
+        
+        @param request: CsiGetFileInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CsiGetFileInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2293,6 +2771,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CsiGetFileInfoResponse:
+        """
+        @summary 获取文件内容安全信息
+        
+        @param request: CsiGetFileInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CsiGetFileInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2325,6 +2811,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CsiGetFileInfoRequest,
     ) -> pds_20220301_models.CsiGetFileInfoResponse:
+        """
+        @summary 获取文件内容安全信息
+        
+        @param request: CsiGetFileInfoRequest
+        @return: CsiGetFileInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.csi_get_file_info_with_options(request, headers, runtime)
@@ -2333,6 +2825,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CsiGetFileInfoRequest,
     ) -> pds_20220301_models.CsiGetFileInfoResponse:
+        """
+        @summary 获取文件内容安全信息
+        
+        @param request: CsiGetFileInfoRequest
+        @return: CsiGetFileInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.csi_get_file_info_with_options_async(request, headers, runtime)
@@ -2343,6 +2841,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteDomainResponse:
+        """
+        @summary Delete the domain
+        
+        @param request: DeleteDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -2373,6 +2879,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteDomainResponse:
+        """
+        @summary Delete the domain
+        
+        @param request: DeleteDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -2401,6 +2915,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteDomainRequest,
     ) -> pds_20220301_models.DeleteDomainResponse:
+        """
+        @summary Delete the domain
+        
+        @param request: DeleteDomainRequest
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_domain_with_options(request, headers, runtime)
@@ -2409,6 +2929,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteDomainRequest,
     ) -> pds_20220301_models.DeleteDomainResponse:
+        """
+        @summary Delete the domain
+        
+        @param request: DeleteDomainRequest
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_domain_with_options_async(request, headers, runtime)
@@ -2419,6 +2945,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteDriveResponse:
+        """
+        @summary Deletes a drive.
+        
+        @param request: DeleteDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2449,6 +2983,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteDriveResponse:
+        """
+        @summary Deletes a drive.
+        
+        @param request: DeleteDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2477,6 +3019,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteDriveRequest,
     ) -> pds_20220301_models.DeleteDriveResponse:
+        """
+        @summary Deletes a drive.
+        
+        @param request: DeleteDriveRequest
+        @return: DeleteDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_drive_with_options(request, headers, runtime)
@@ -2485,6 +3033,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteDriveRequest,
     ) -> pds_20220301_models.DeleteDriveResponse:
+        """
+        @summary Deletes a drive.
+        
+        @param request: DeleteDriveRequest
+        @return: DeleteDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_drive_with_options_async(request, headers, runtime)
@@ -2495,6 +3049,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteFileResponse:
+        """
+        @summary Deletes a file or folder.
+        
+        @param request: DeleteFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2527,6 +3089,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteFileResponse:
+        """
+        @summary Deletes a file or folder.
+        
+        @param request: DeleteFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2557,6 +3127,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteFileRequest,
     ) -> pds_20220301_models.DeleteFileResponse:
+        """
+        @summary Deletes a file or folder.
+        
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_file_with_options(request, headers, runtime)
@@ -2565,6 +3141,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteFileRequest,
     ) -> pds_20220301_models.DeleteFileResponse:
+        """
+        @summary Deletes a file or folder.
+        
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_file_with_options_async(request, headers, runtime)
@@ -2575,6 +3157,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteGroupResponse:
+        """
+        @summary Deletes groups. Before you delete a group, make sure that no other groups or users exist in the group. Otherwise, the group fails to be deleted.
+        
+        @param request: DeleteGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -2605,6 +3195,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteGroupResponse:
+        """
+        @summary Deletes groups. Before you delete a group, make sure that no other groups or users exist in the group. Otherwise, the group fails to be deleted.
+        
+        @param request: DeleteGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -2633,6 +3231,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteGroupRequest,
     ) -> pds_20220301_models.DeleteGroupResponse:
+        """
+        @summary Deletes groups. Before you delete a group, make sure that no other groups or users exist in the group. Otherwise, the group fails to be deleted.
+        
+        @param request: DeleteGroupRequest
+        @return: DeleteGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_group_with_options(request, headers, runtime)
@@ -2641,6 +3245,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteGroupRequest,
     ) -> pds_20220301_models.DeleteGroupResponse:
+        """
+        @summary Deletes groups. Before you delete a group, make sure that no other groups or users exist in the group. Otherwise, the group fails to be deleted.
+        
+        @param request: DeleteGroupRequest
+        @return: DeleteGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_group_with_options_async(request, headers, runtime)
@@ -2651,6 +3261,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteRevisionResponse:
+        """
+        @summary Deletes a historical version of a file. You cannot delete the latest version of a file.
+        
+        @param request: DeleteRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2685,6 +3303,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteRevisionResponse:
+        """
+        @summary Deletes a historical version of a file. You cannot delete the latest version of a file.
+        
+        @param request: DeleteRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2717,6 +3343,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteRevisionRequest,
     ) -> pds_20220301_models.DeleteRevisionResponse:
+        """
+        @summary Deletes a historical version of a file. You cannot delete the latest version of a file.
+        
+        @param request: DeleteRevisionRequest
+        @return: DeleteRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_revision_with_options(request, headers, runtime)
@@ -2725,6 +3357,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteRevisionRequest,
     ) -> pds_20220301_models.DeleteRevisionResponse:
+        """
+        @summary Deletes a historical version of a file. You cannot delete the latest version of a file.
+        
+        @param request: DeleteRevisionRequest
+        @return: DeleteRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_revision_with_options_async(request, headers, runtime)
@@ -2735,6 +3373,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteStoryResponse:
+        """
+        @summary 删除故事
+        
+        @param request: DeleteStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2767,6 +3413,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteStoryResponse:
+        """
+        @summary 删除故事
+        
+        @param request: DeleteStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2797,6 +3451,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteStoryRequest,
     ) -> pds_20220301_models.DeleteStoryResponse:
+        """
+        @summary 删除故事
+        
+        @param request: DeleteStoryRequest
+        @return: DeleteStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_story_with_options(request, headers, runtime)
@@ -2805,6 +3465,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteStoryRequest,
     ) -> pds_20220301_models.DeleteStoryResponse:
+        """
+        @summary 删除故事
+        
+        @param request: DeleteStoryRequest
+        @return: DeleteStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_story_with_options_async(request, headers, runtime)
@@ -2815,6 +3481,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteUserResponse:
+        """
+        @summary Deletes a user.
+        
+        @param request: DeleteUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_id):
@@ -2845,6 +3519,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeleteUserResponse:
+        """
+        @summary Deletes a user.
+        
+        @param request: DeleteUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_id):
@@ -2873,6 +3555,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteUserRequest,
     ) -> pds_20220301_models.DeleteUserResponse:
+        """
+        @summary Deletes a user.
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_user_with_options(request, headers, runtime)
@@ -2881,6 +3569,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeleteUserRequest,
     ) -> pds_20220301_models.DeleteUserResponse:
+        """
+        @summary Deletes a user.
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_user_with_options_async(request, headers, runtime)
@@ -2891,6 +3585,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeltaGetLastCursorResponse:
+        """
+        @summary Queries the cursor of incremental information.
+        
+        @param request: DeltaGetLastCursorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeltaGetLastCursorResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2923,6 +3625,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DeltaGetLastCursorResponse:
+        """
+        @summary Queries the cursor of incremental information.
+        
+        @param request: DeltaGetLastCursorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeltaGetLastCursorResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2953,6 +3663,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeltaGetLastCursorRequest,
     ) -> pds_20220301_models.DeltaGetLastCursorResponse:
+        """
+        @summary Queries the cursor of incremental information.
+        
+        @param request: DeltaGetLastCursorRequest
+        @return: DeltaGetLastCursorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delta_get_last_cursor_with_options(request, headers, runtime)
@@ -2961,6 +3677,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DeltaGetLastCursorRequest,
     ) -> pds_20220301_models.DeltaGetLastCursorResponse:
+        """
+        @summary Queries the cursor of incremental information.
+        
+        @param request: DeltaGetLastCursorRequest
+        @return: DeltaGetLastCursorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delta_get_last_cursor_with_options_async(request, headers, runtime)
@@ -2972,7 +3694,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DownloadFileResponse:
         """
-        For information about best practices for downloading a file.
+        @summary Downloads a file.
+        
+        @description For information about best practices for downloading a file.
         
         @param request: DownloadFileRequest
         @param headers: map
@@ -3020,7 +3744,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DownloadFileResponse:
         """
-        For information about best practices for downloading a file.
+        @summary Downloads a file.
+        
+        @description For information about best practices for downloading a file.
         
         @param request: DownloadFileRequest
         @param headers: map
@@ -3066,7 +3792,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.DownloadFileRequest,
     ) -> pds_20220301_models.DownloadFileResponse:
         """
-        For information about best practices for downloading a file.
+        @summary Downloads a file.
+        
+        @description For information about best practices for downloading a file.
         
         @param request: DownloadFileRequest
         @return: DownloadFileResponse
@@ -3080,7 +3808,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.DownloadFileRequest,
     ) -> pds_20220301_models.DownloadFileResponse:
         """
-        For information about best practices for downloading a file.
+        @summary Downloads a file.
+        
+        @description For information about best practices for downloading a file.
         
         @param request: DownloadFileRequest
         @return: DownloadFileResponse
@@ -3095,6 +3825,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FileAddPermissionResponse:
+        """
+        @summary Grants permissions to access files to a user or group.
+        
+        @param request: FileAddPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileAddPermissionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3129,6 +3867,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FileAddPermissionResponse:
+        """
+        @summary Grants permissions to access files to a user or group.
+        
+        @param request: FileAddPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileAddPermissionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3161,6 +3907,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FileAddPermissionRequest,
     ) -> pds_20220301_models.FileAddPermissionResponse:
+        """
+        @summary Grants permissions to access files to a user or group.
+        
+        @param request: FileAddPermissionRequest
+        @return: FileAddPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.file_add_permission_with_options(request, headers, runtime)
@@ -3169,6 +3921,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FileAddPermissionRequest,
     ) -> pds_20220301_models.FileAddPermissionResponse:
+        """
+        @summary Grants permissions to access files to a user or group.
+        
+        @param request: FileAddPermissionRequest
+        @return: FileAddPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.file_add_permission_with_options_async(request, headers, runtime)
@@ -3179,6 +3937,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        """
+        @summary Removes custom tags from a file.
+        
+        @param request: FileDeleteUserTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileDeleteUserTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3213,6 +3979,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        """
+        @summary Removes custom tags from a file.
+        
+        @param request: FileDeleteUserTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileDeleteUserTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3245,6 +4019,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FileDeleteUserTagsRequest,
     ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        """
+        @summary Removes custom tags from a file.
+        
+        @param request: FileDeleteUserTagsRequest
+        @return: FileDeleteUserTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.file_delete_user_tags_with_options(request, headers, runtime)
@@ -3253,6 +4033,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FileDeleteUserTagsRequest,
     ) -> pds_20220301_models.FileDeleteUserTagsResponse:
+        """
+        @summary Removes custom tags from a file.
+        
+        @param request: FileDeleteUserTagsRequest
+        @return: FileDeleteUserTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.file_delete_user_tags_with_options_async(request, headers, runtime)
@@ -3263,6 +4049,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FileListPermissionResponse:
+        """
+        @summary Queries the sharing authorization records of a file.
+        
+        @param request: FileListPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileListPermissionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3295,6 +4089,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FileListPermissionResponse:
+        """
+        @summary Queries the sharing authorization records of a file.
+        
+        @param request: FileListPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileListPermissionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3325,6 +4127,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FileListPermissionRequest,
     ) -> pds_20220301_models.FileListPermissionResponse:
+        """
+        @summary Queries the sharing authorization records of a file.
+        
+        @param request: FileListPermissionRequest
+        @return: FileListPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.file_list_permission_with_options(request, headers, runtime)
@@ -3333,6 +4141,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FileListPermissionRequest,
     ) -> pds_20220301_models.FileListPermissionResponse:
+        """
+        @summary Queries the sharing authorization records of a file.
+        
+        @param request: FileListPermissionRequest
+        @return: FileListPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.file_list_permission_with_options_async(request, headers, runtime)
@@ -3344,10 +4158,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FilePutUserTagsResponse:
         """
-        This operation is an incremental update operation. Take note of the following items:
-        *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
-        *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
-        *   The existing tags with unique names are not affected.
+        @summary Adds custom tags to a file.
+        
+        @description This operation is an incremental update operation. Take note of the following items:
+        If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+        If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+        The existing tags with unique names are not affected.
         
         @param request: FilePutUserTagsRequest
         @param headers: map
@@ -3389,10 +4205,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FilePutUserTagsResponse:
         """
-        This operation is an incremental update operation. Take note of the following items:
-        *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
-        *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
-        *   The existing tags with unique names are not affected.
+        @summary Adds custom tags to a file.
+        
+        @description This operation is an incremental update operation. Take note of the following items:
+        If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+        If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+        The existing tags with unique names are not affected.
         
         @param request: FilePutUserTagsRequest
         @param headers: map
@@ -3432,10 +4250,12 @@ class Client(OpenApiClient):
         request: pds_20220301_models.FilePutUserTagsRequest,
     ) -> pds_20220301_models.FilePutUserTagsResponse:
         """
-        This operation is an incremental update operation. Take note of the following items:
-        *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
-        *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
-        *   The existing tags with unique names are not affected.
+        @summary Adds custom tags to a file.
+        
+        @description This operation is an incremental update operation. Take note of the following items:
+        If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+        If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+        The existing tags with unique names are not affected.
         
         @param request: FilePutUserTagsRequest
         @return: FilePutUserTagsResponse
@@ -3449,10 +4269,12 @@ class Client(OpenApiClient):
         request: pds_20220301_models.FilePutUserTagsRequest,
     ) -> pds_20220301_models.FilePutUserTagsResponse:
         """
-        This operation is an incremental update operation. Take note of the following items:
-        *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
-        *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
-        *   The existing tags with unique names are not affected.
+        @summary Adds custom tags to a file.
+        
+        @description This operation is an incremental update operation. Take note of the following items:
+        If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+        If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+        The existing tags with unique names are not affected.
         
         @param request: FilePutUserTagsRequest
         @return: FilePutUserTagsResponse
@@ -3467,6 +4289,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FileRemovePermissionResponse:
+        """
+        @summary Cancels the permissions on a shared file.
+        
+        @param request: FileRemovePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileRemovePermissionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3501,6 +4331,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FileRemovePermissionResponse:
+        """
+        @summary Cancels the permissions on a shared file.
+        
+        @param request: FileRemovePermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileRemovePermissionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3533,6 +4371,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FileRemovePermissionRequest,
     ) -> pds_20220301_models.FileRemovePermissionResponse:
+        """
+        @summary Cancels the permissions on a shared file.
+        
+        @param request: FileRemovePermissionRequest
+        @return: FileRemovePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.file_remove_permission_with_options(request, headers, runtime)
@@ -3541,6 +4385,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FileRemovePermissionRequest,
     ) -> pds_20220301_models.FileRemovePermissionResponse:
+        """
+        @summary Cancels the permissions on a shared file.
+        
+        @param request: FileRemovePermissionRequest
+        @return: FileRemovePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.file_remove_permission_with_options_async(request, headers, runtime)
@@ -3551,6 +4401,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetAsyncTaskResponse:
+        """
+        @summary Queries the information about an asynchronous task.
+        
+        @param request: GetAsyncTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.async_task_id):
@@ -3581,6 +4439,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetAsyncTaskResponse:
+        """
+        @summary Queries the information about an asynchronous task.
+        
+        @param request: GetAsyncTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.async_task_id):
@@ -3609,6 +4475,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetAsyncTaskRequest,
     ) -> pds_20220301_models.GetAsyncTaskResponse:
+        """
+        @summary Queries the information about an asynchronous task.
+        
+        @param request: GetAsyncTaskRequest
+        @return: GetAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_async_task_with_options(request, headers, runtime)
@@ -3617,6 +4489,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetAsyncTaskRequest,
     ) -> pds_20220301_models.GetAsyncTaskResponse:
+        """
+        @summary Queries the information about an asynchronous task.
+        
+        @param request: GetAsyncTaskRequest
+        @return: GetAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_async_task_with_options_async(request, headers, runtime)
@@ -3627,6 +4505,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDefaultDriveResponse:
+        """
+        @summary Queries the default drive of a user.
+        
+        @param request: GetDefaultDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDefaultDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_id):
@@ -3657,6 +4543,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDefaultDriveResponse:
+        """
+        @summary Queries the default drive of a user.
+        
+        @param request: GetDefaultDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDefaultDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_id):
@@ -3685,6 +4579,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetDefaultDriveRequest,
     ) -> pds_20220301_models.GetDefaultDriveResponse:
+        """
+        @summary Queries the default drive of a user.
+        
+        @param request: GetDefaultDriveRequest
+        @return: GetDefaultDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_default_drive_with_options(request, headers, runtime)
@@ -3693,6 +4593,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetDefaultDriveRequest,
     ) -> pds_20220301_models.GetDefaultDriveResponse:
+        """
+        @summary Queries the default drive of a user.
+        
+        @param request: GetDefaultDriveRequest
+        @return: GetDefaultDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_default_drive_with_options_async(request, headers, runtime)
@@ -3703,10 +4609,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDomainResponse:
+        """
+        @summary Get domain information.
+        
+        @param request: GetDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_id):
             body['domain_id'] = request.domain_id
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
         if not UtilClient.is_unset(request.get_quota_used):
             body['get_quota_used'] = request.get_quota_used
         req = open_api_models.OpenApiRequest(
@@ -3735,10 +4651,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDomainResponse:
+        """
+        @summary Get domain information.
+        
+        @param request: GetDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_id):
             body['domain_id'] = request.domain_id
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
         if not UtilClient.is_unset(request.get_quota_used):
             body['get_quota_used'] = request.get_quota_used
         req = open_api_models.OpenApiRequest(
@@ -3765,6 +4691,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetDomainRequest,
     ) -> pds_20220301_models.GetDomainResponse:
+        """
+        @summary Get domain information.
+        
+        @param request: GetDomainRequest
+        @return: GetDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_domain_with_options(request, headers, runtime)
@@ -3773,6 +4705,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetDomainRequest,
     ) -> pds_20220301_models.GetDomainResponse:
+        """
+        @summary Get domain information.
+        
+        @param request: GetDomainRequest
+        @return: GetDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_domain_with_options_async(request, headers, runtime)
@@ -3782,6 +4720,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDomainQuotaResponse:
+        """
+        @summary 获取domain限额
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDomainQuotaResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3806,6 +4751,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDomainQuotaResponse:
+        """
+        @summary 获取domain限额
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDomainQuotaResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3826,11 +4778,21 @@ class Client(OpenApiClient):
         )
 
     def get_domain_quota(self) -> pds_20220301_models.GetDomainQuotaResponse:
+        """
+        @summary 获取domain限额
+        
+        @return: GetDomainQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_domain_quota_with_options(headers, runtime)
 
     async def get_domain_quota_async(self) -> pds_20220301_models.GetDomainQuotaResponse:
+        """
+        @summary 获取domain限额
+        
+        @return: GetDomainQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_domain_quota_with_options_async(headers, runtime)
@@ -3841,6 +4803,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDownloadUrlResponse:
+        """
+        @summary Queries the download URL of a file. For more information about best practices, visit https://help.aliyun.com/document_detail/175889.html.
+        
+        @param request: GetDownloadUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDownloadUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3879,6 +4849,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDownloadUrlResponse:
+        """
+        @summary Queries the download URL of a file. For more information about best practices, visit https://help.aliyun.com/document_detail/175889.html.
+        
+        @param request: GetDownloadUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDownloadUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3915,6 +4893,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetDownloadUrlRequest,
     ) -> pds_20220301_models.GetDownloadUrlResponse:
+        """
+        @summary Queries the download URL of a file. For more information about best practices, visit https://help.aliyun.com/document_detail/175889.html.
+        
+        @param request: GetDownloadUrlRequest
+        @return: GetDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_download_url_with_options(request, headers, runtime)
@@ -3923,6 +4907,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetDownloadUrlRequest,
     ) -> pds_20220301_models.GetDownloadUrlResponse:
+        """
+        @summary Queries the download URL of a file. For more information about best practices, visit https://help.aliyun.com/document_detail/175889.html.
+        
+        @param request: GetDownloadUrlRequest
+        @return: GetDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_download_url_with_options_async(request, headers, runtime)
@@ -3933,6 +4923,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDriveResponse:
+        """
+        @summary Queries the information about a drive.
+        
+        @param request: GetDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3963,6 +4961,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetDriveResponse:
+        """
+        @summary Queries the information about a drive.
+        
+        @param request: GetDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3991,6 +4997,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetDriveRequest,
     ) -> pds_20220301_models.GetDriveResponse:
+        """
+        @summary Queries the information about a drive.
+        
+        @param request: GetDriveRequest
+        @return: GetDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_drive_with_options(request, headers, runtime)
@@ -3999,6 +5011,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetDriveRequest,
     ) -> pds_20220301_models.GetDriveResponse:
+        """
+        @summary Queries the information about a drive.
+        
+        @param request: GetDriveRequest
+        @return: GetDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_drive_with_options_async(request, headers, runtime)
@@ -4009,6 +5027,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetFileResponse:
+        """
+        @summary Queries the information about a file.
+        
+        @param request: GetFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -4049,6 +5075,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetFileResponse:
+        """
+        @summary Queries the information about a file.
+        
+        @param request: GetFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -4087,6 +5121,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetFileRequest,
     ) -> pds_20220301_models.GetFileResponse:
+        """
+        @summary Queries the information about a file.
+        
+        @param request: GetFileRequest
+        @return: GetFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_file_with_options(request, headers, runtime)
@@ -4095,6 +5135,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetFileRequest,
     ) -> pds_20220301_models.GetFileResponse:
+        """
+        @summary Queries the information about a file.
+        
+        @param request: GetFileRequest
+        @return: GetFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_file_with_options_async(request, headers, runtime)
@@ -4105,6 +5151,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetGroupResponse:
+        """
+        @summary Queries the information about a group.
+        
+        @param request: GetGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4135,6 +5189,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetGroupResponse:
+        """
+        @summary Queries the information about a group.
+        
+        @param request: GetGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4163,6 +5225,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetGroupRequest,
     ) -> pds_20220301_models.GetGroupResponse:
+        """
+        @summary Queries the information about a group.
+        
+        @param request: GetGroupRequest
+        @return: GetGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_group_with_options(request, headers, runtime)
@@ -4171,6 +5239,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetGroupRequest,
     ) -> pds_20220301_models.GetGroupResponse:
+        """
+        @summary Queries the information about a group.
+        
+        @param request: GetGroupRequest
+        @return: GetGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_group_with_options_async(request, headers, runtime)
@@ -4181,6 +5255,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Queries the mapping between an entity and a benefit package. You can call this operation to query the benefit package that is associated with a user.
+        
+        @param request: GetIdentityToBenefitPkgMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdentityToBenefitPkgMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.benefit_pkg_id):
@@ -4215,6 +5297,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Queries the mapping between an entity and a benefit package. You can call this operation to query the benefit package that is associated with a user.
+        
+        @param request: GetIdentityToBenefitPkgMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdentityToBenefitPkgMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.benefit_pkg_id):
@@ -4247,6 +5337,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.GetIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Queries the mapping between an entity and a benefit package. You can call this operation to query the benefit package that is associated with a user.
+        
+        @param request: GetIdentityToBenefitPkgMappingRequest
+        @return: GetIdentityToBenefitPkgMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_identity_to_benefit_pkg_mapping_with_options(request, headers, runtime)
@@ -4255,6 +5351,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.GetIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Queries the mapping between an entity and a benefit package. You can call this operation to query the benefit package that is associated with a user.
+        
+        @param request: GetIdentityToBenefitPkgMappingRequest
+        @return: GetIdentityToBenefitPkgMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
@@ -4265,6 +5367,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetLinkInfoResponse:
+        """
+        @summary 获取用户认证方式详情
+        
+        @param request: GetLinkInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLinkInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -4299,6 +5409,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetLinkInfoResponse:
+        """
+        @summary 获取用户认证方式详情
+        
+        @param request: GetLinkInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLinkInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -4331,6 +5449,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetLinkInfoRequest,
     ) -> pds_20220301_models.GetLinkInfoResponse:
+        """
+        @summary 获取用户认证方式详情
+        
+        @param request: GetLinkInfoRequest
+        @return: GetLinkInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_link_info_with_options(request, headers, runtime)
@@ -4339,6 +5463,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetLinkInfoRequest,
     ) -> pds_20220301_models.GetLinkInfoResponse:
+        """
+        @summary 获取用户认证方式详情
+        
+        @param request: GetLinkInfoRequest
+        @return: GetLinkInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_link_info_with_options_async(request, headers, runtime)
@@ -4349,6 +5479,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetLinkInfoByUserIdResponse:
+        """
+        @summary Queries the information about a user based on the user ID.
+        
+        @param request: GetLinkInfoByUserIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLinkInfoByUserIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_id):
@@ -4379,6 +5517,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetLinkInfoByUserIdResponse:
+        """
+        @summary Queries the information about a user based on the user ID.
+        
+        @param request: GetLinkInfoByUserIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLinkInfoByUserIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_id):
@@ -4407,6 +5553,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetLinkInfoByUserIdRequest,
     ) -> pds_20220301_models.GetLinkInfoByUserIdResponse:
+        """
+        @summary Queries the information about a user based on the user ID.
+        
+        @param request: GetLinkInfoByUserIdRequest
+        @return: GetLinkInfoByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_link_info_by_user_id_with_options(request, headers, runtime)
@@ -4415,6 +5567,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetLinkInfoByUserIdRequest,
     ) -> pds_20220301_models.GetLinkInfoByUserIdResponse:
+        """
+        @summary Queries the information about a user based on the user ID.
+        
+        @param request: GetLinkInfoByUserIdRequest
+        @return: GetLinkInfoByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_link_info_by_user_id_with_options_async(request, headers, runtime)
@@ -4425,6 +5583,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetRevisionResponse:
+        """
+        @summary Queries the information about a version.
+        
+        @param request: GetRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -4463,6 +5629,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetRevisionResponse:
+        """
+        @summary Queries the information about a version.
+        
+        @param request: GetRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -4499,6 +5673,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetRevisionRequest,
     ) -> pds_20220301_models.GetRevisionResponse:
+        """
+        @summary Queries the information about a version.
+        
+        @param request: GetRevisionRequest
+        @return: GetRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_revision_with_options(request, headers, runtime)
@@ -4507,6 +5687,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetRevisionRequest,
     ) -> pds_20220301_models.GetRevisionResponse:
+        """
+        @summary Queries the information about a version.
+        
+        @param request: GetRevisionRequest
+        @return: GetRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_revision_with_options_async(request, headers, runtime)
@@ -4517,6 +5703,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetShareLinkResponse:
+        """
+        @summary Queries the share URL of a file.
+        
+        @param request: GetShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.share_id):
@@ -4547,6 +5741,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetShareLinkResponse:
+        """
+        @summary Queries the share URL of a file.
+        
+        @param request: GetShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.share_id):
@@ -4575,6 +5777,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetShareLinkRequest,
     ) -> pds_20220301_models.GetShareLinkResponse:
+        """
+        @summary Queries the share URL of a file.
+        
+        @param request: GetShareLinkRequest
+        @return: GetShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_share_link_with_options(request, headers, runtime)
@@ -4583,6 +5791,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetShareLinkRequest,
     ) -> pds_20220301_models.GetShareLinkResponse:
+        """
+        @summary Queries the share URL of a file.
+        
+        @param request: GetShareLinkRequest
+        @return: GetShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_share_link_with_options_async(request, headers, runtime)
@@ -4593,6 +5807,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetShareLinkByAnonymousResponse:
+        """
+        @summary Queries the information about a share link anonymously.
+        
+        @param request: GetShareLinkByAnonymousRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShareLinkByAnonymousResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.share_id):
@@ -4623,6 +5845,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetShareLinkByAnonymousResponse:
+        """
+        @summary Queries the information about a share link anonymously.
+        
+        @param request: GetShareLinkByAnonymousRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShareLinkByAnonymousResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.share_id):
@@ -4651,6 +5881,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetShareLinkByAnonymousRequest,
     ) -> pds_20220301_models.GetShareLinkByAnonymousResponse:
+        """
+        @summary Queries the information about a share link anonymously.
+        
+        @param request: GetShareLinkByAnonymousRequest
+        @return: GetShareLinkByAnonymousResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_share_link_by_anonymous_with_options(request, headers, runtime)
@@ -4659,6 +5895,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetShareLinkByAnonymousRequest,
     ) -> pds_20220301_models.GetShareLinkByAnonymousResponse:
+        """
+        @summary Queries the information about a share link anonymously.
+        
+        @param request: GetShareLinkByAnonymousRequest
+        @return: GetShareLinkByAnonymousResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_share_link_by_anonymous_with_options_async(request, headers, runtime)
@@ -4670,7 +5912,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetShareLinkTokenResponse:
         """
-        To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+        @summary Queries a share token anonymously.
+        
+        @description To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
         
         @param request: GetShareLinkTokenRequest
         @param headers: map
@@ -4712,7 +5956,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetShareLinkTokenResponse:
         """
-        To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+        @summary Queries a share token anonymously.
+        
+        @description To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
         
         @param request: GetShareLinkTokenRequest
         @param headers: map
@@ -4752,7 +5998,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetShareLinkTokenRequest,
     ) -> pds_20220301_models.GetShareLinkTokenResponse:
         """
-        To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+        @summary Queries a share token anonymously.
+        
+        @description To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
         
         @param request: GetShareLinkTokenRequest
         @return: GetShareLinkTokenResponse
@@ -4766,7 +6014,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetShareLinkTokenRequest,
     ) -> pds_20220301_models.GetShareLinkTokenResponse:
         """
-        To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+        @summary Queries a share token anonymously.
+        
+        @description To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
         
         @param request: GetShareLinkTokenRequest
         @return: GetShareLinkTokenResponse
@@ -4781,6 +6031,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetStoryResponse:
+        """
+        @summary 获取故事详情
+        
+        @param request: GetStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cover_image_thumbnail_process):
@@ -4825,6 +6083,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetStoryResponse:
+        """
+        @summary 获取故事详情
+        
+        @param request: GetStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cover_image_thumbnail_process):
@@ -4867,6 +6133,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetStoryRequest,
     ) -> pds_20220301_models.GetStoryResponse:
+        """
+        @summary 获取故事详情
+        
+        @param request: GetStoryRequest
+        @return: GetStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_story_with_options(request, headers, runtime)
@@ -4875,6 +6147,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetStoryRequest,
     ) -> pds_20220301_models.GetStoryResponse:
+        """
+        @summary 获取故事详情
+        
+        @param request: GetStoryRequest
+        @return: GetStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_story_with_options_async(request, headers, runtime)
@@ -4886,7 +6164,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetTaskStatusResponse:
         """
-        *Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+        @summary Queries the execution status of a value-added asynchronous task. You can call this operation to query the execution status of an asynchronous task that is created by calling the CreateSimilarImageClusterTask operation.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/425220.html) of Drive and Photo Service**.
         To call this operation, make sure that the value-added image processing feature is enabled.
         Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
         
@@ -4928,7 +6208,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetTaskStatusResponse:
         """
-        *Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+        @summary Queries the execution status of a value-added asynchronous task. You can call this operation to query the execution status of an asynchronous task that is created by calling the CreateSimilarImageClusterTask operation.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/425220.html) of Drive and Photo Service**.
         To call this operation, make sure that the value-added image processing feature is enabled.
         Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
         
@@ -4968,7 +6250,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetTaskStatusRequest,
     ) -> pds_20220301_models.GetTaskStatusResponse:
         """
-        *Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+        @summary Queries the execution status of a value-added asynchronous task. You can call this operation to query the execution status of an asynchronous task that is created by calling the CreateSimilarImageClusterTask operation.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/425220.html) of Drive and Photo Service**.
         To call this operation, make sure that the value-added image processing feature is enabled.
         Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
         
@@ -4984,7 +6268,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetTaskStatusRequest,
     ) -> pds_20220301_models.GetTaskStatusResponse:
         """
-        *Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+        @summary Queries the execution status of a value-added asynchronous task. You can call this operation to query the execution status of an asynchronous task that is created by calling the CreateSimilarImageClusterTask operation.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/425220.html) of Drive and Photo Service**.
         To call this operation, make sure that the value-added image processing feature is enabled.
         Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
         
@@ -5001,6 +6287,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetUploadUrlResponse:
+        """
+        @summary Queries the upload URL of a file.
+        
+        @param request: GetUploadUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -5039,6 +6333,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetUploadUrlResponse:
+        """
+        @summary Queries the upload URL of a file.
+        
+        @param request: GetUploadUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -5075,6 +6377,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetUploadUrlRequest,
     ) -> pds_20220301_models.GetUploadUrlResponse:
+        """
+        @summary Queries the upload URL of a file.
+        
+        @param request: GetUploadUrlRequest
+        @return: GetUploadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_upload_url_with_options(request, headers, runtime)
@@ -5083,6 +6391,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetUploadUrlRequest,
     ) -> pds_20220301_models.GetUploadUrlResponse:
+        """
+        @summary Queries the upload URL of a file.
+        
+        @param request: GetUploadUrlRequest
+        @return: GetUploadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_upload_url_with_options_async(request, headers, runtime)
@@ -5093,6 +6407,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetUserResponse:
+        """
+        @summary Queries the information about a user.
+        
+        @param request: GetUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_id):
@@ -5123,6 +6445,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetUserResponse:
+        """
+        @summary Queries the information about a user.
+        
+        @param request: GetUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_id):
@@ -5151,6 +6481,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetUserRequest,
     ) -> pds_20220301_models.GetUserResponse:
+        """
+        @summary Queries the information about a user.
+        
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_user_with_options(request, headers, runtime)
@@ -5159,6 +6495,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetUserRequest,
     ) -> pds_20220301_models.GetUserResponse:
+        """
+        @summary Queries the information about a user.
+        
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_user_with_options_async(request, headers, runtime)
@@ -5170,7 +6512,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
         """
-        For more information about best practices, see [Preview videos online](~~427477~~).
+        @summary Queries the information about video playback.
+        
+        @description For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
         
         @param request: GetVideoPreviewPlayInfoRequest
         @param headers: map
@@ -5222,7 +6566,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
         """
-        For more information about best practices, see [Preview videos online](~~427477~~).
+        @summary Queries the information about video playback.
+        
+        @description For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
         
         @param request: GetVideoPreviewPlayInfoRequest
         @param headers: map
@@ -5272,7 +6618,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetVideoPreviewPlayInfoRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
         """
-        For more information about best practices, see [Preview videos online](~~427477~~).
+        @summary Queries the information about video playback.
+        
+        @description For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
         
         @param request: GetVideoPreviewPlayInfoRequest
         @return: GetVideoPreviewPlayInfoResponse
@@ -5286,7 +6634,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetVideoPreviewPlayInfoRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
         """
-        For more information about best practices, see [Preview videos online](~~427477~~).
+        @summary Queries the information about video playback.
+        
+        @description For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
         
         @param request: GetVideoPreviewPlayInfoRequest
         @return: GetVideoPreviewPlayInfoResponse
@@ -5302,7 +6652,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         """
-        For more information about best practices, see [Preview videos online](~~427477~~).
+        @summary Queries the preview metadata of a video.
+        
+        @description For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
         
         @param request: GetVideoPreviewPlayMetaRequest
         @param headers: map
@@ -5346,7 +6698,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         """
-        For more information about best practices, see [Preview videos online](~~427477~~).
+        @summary Queries the preview metadata of a video.
+        
+        @description For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
         
         @param request: GetVideoPreviewPlayMetaRequest
         @param headers: map
@@ -5388,7 +6742,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         """
-        For more information about best practices, see [Preview videos online](~~427477~~).
+        @summary Queries the preview metadata of a video.
+        
+        @description For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
         
         @param request: GetVideoPreviewPlayMetaRequest
         @return: GetVideoPreviewPlayMetaResponse
@@ -5402,7 +6758,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         """
-        For more information about best practices, see [Preview videos online](~~427477~~).
+        @summary Queries the preview metadata of a video.
+        
+        @description For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
         
         @param request: GetVideoPreviewPlayMetaRequest
         @return: GetVideoPreviewPlayMetaResponse
@@ -5417,6 +6775,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GroupUpdateNameResponse:
+        """
+        @summary 更新用户组名字
+        
+        @param request: GroupUpdateNameRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupUpdateNameResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5449,6 +6815,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GroupUpdateNameResponse:
+        """
+        @summary 更新用户组名字
+        
+        @param request: GroupUpdateNameRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupUpdateNameResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5479,6 +6853,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GroupUpdateNameRequest,
     ) -> pds_20220301_models.GroupUpdateNameResponse:
+        """
+        @summary 更新用户组名字
+        
+        @param request: GroupUpdateNameRequest
+        @return: GroupUpdateNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.group_update_name_with_options(request, headers, runtime)
@@ -5487,6 +6867,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GroupUpdateNameRequest,
     ) -> pds_20220301_models.GroupUpdateNameResponse:
+        """
+        @summary 更新用户组名字
+        
+        @param request: GroupUpdateNameRequest
+        @return: GroupUpdateNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.group_update_name_with_options_async(request, headers, runtime)
@@ -5497,6 +6883,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ImportUserResponse:
+        """
+        @summary Imports a user.
+        
+        @param request: ImportUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.authentication_display_name):
@@ -5541,6 +6935,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ImportUserResponse:
+        """
+        @summary Imports a user.
+        
+        @param request: ImportUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.authentication_display_name):
@@ -5583,6 +6985,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ImportUserRequest,
     ) -> pds_20220301_models.ImportUserResponse:
+        """
+        @summary Imports a user.
+        
+        @param request: ImportUserRequest
+        @return: ImportUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.import_user_with_options(request, headers, runtime)
@@ -5591,6 +6999,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ImportUserRequest,
     ) -> pds_20220301_models.ImportUserResponse:
+        """
+        @summary Imports a user.
+        
+        @param request: ImportUserRequest
+        @return: ImportUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.import_user_with_options_async(request, headers, runtime)
@@ -5601,10 +7015,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.InvestigateFileResponse:
+        """
+        @summary 送审文件
+        
+        @param request: InvestigateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvestigateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_file_ids):
             body['drive_file_ids'] = request.drive_file_ids
+        if not UtilClient.is_unset(request.policy):
+            body['policy'] = request.policy
+        if not UtilClient.is_unset(request.recursive):
+            body['recursive'] = request.recursive
+        if not UtilClient.is_unset(request.user_data):
+            body['user_data'] = request.user_data
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5631,10 +7059,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.InvestigateFileResponse:
+        """
+        @summary 送审文件
+        
+        @param request: InvestigateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvestigateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_file_ids):
             body['drive_file_ids'] = request.drive_file_ids
+        if not UtilClient.is_unset(request.policy):
+            body['policy'] = request.policy
+        if not UtilClient.is_unset(request.recursive):
+            body['recursive'] = request.recursive
+        if not UtilClient.is_unset(request.user_data):
+            body['user_data'] = request.user_data
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5659,6 +7101,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.InvestigateFileRequest,
     ) -> pds_20220301_models.InvestigateFileResponse:
+        """
+        @summary 送审文件
+        
+        @param request: InvestigateFileRequest
+        @return: InvestigateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.investigate_file_with_options(request, headers, runtime)
@@ -5667,6 +7115,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.InvestigateFileRequest,
     ) -> pds_20220301_models.InvestigateFileResponse:
+        """
+        @summary 送审文件
+        
+        @param request: InvestigateFileRequest
+        @return: InvestigateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.investigate_file_with_options_async(request, headers, runtime)
@@ -5677,6 +7131,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.LinkAccountResponse:
+        """
+        @summary Associates an account with a user.
+        
+        @param request: LinkAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LinkAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -5713,6 +7175,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.LinkAccountResponse:
+        """
+        @summary Associates an account with a user.
+        
+        @param request: LinkAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LinkAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -5747,6 +7217,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.LinkAccountRequest,
     ) -> pds_20220301_models.LinkAccountResponse:
+        """
+        @summary Associates an account with a user.
+        
+        @param request: LinkAccountRequest
+        @return: LinkAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.link_account_with_options(request, headers, runtime)
@@ -5755,6 +7231,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.LinkAccountRequest,
     ) -> pds_20220301_models.LinkAccountResponse:
+        """
+        @summary Associates an account with a user.
+        
+        @param request: LinkAccountRequest
+        @return: LinkAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.link_account_with_options_async(request, headers, runtime)
@@ -5765,6 +7247,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListAddressGroupsResponse:
+        """
+        @summary Queries location-based groups.
+        
+        @param request: ListAddressGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAddressGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -5803,6 +7293,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListAddressGroupsResponse:
+        """
+        @summary Queries location-based groups.
+        
+        @param request: ListAddressGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAddressGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -5839,6 +7337,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListAddressGroupsRequest,
     ) -> pds_20220301_models.ListAddressGroupsResponse:
+        """
+        @summary Queries location-based groups.
+        
+        @param request: ListAddressGroupsRequest
+        @return: ListAddressGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_address_groups_with_options(request, headers, runtime)
@@ -5847,6 +7351,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListAddressGroupsRequest,
     ) -> pds_20220301_models.ListAddressGroupsResponse:
+        """
+        @summary Queries location-based groups.
+        
+        @param request: ListAddressGroupsRequest
+        @return: ListAddressGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_address_groups_with_options_async(request, headers, runtime)
@@ -5857,6 +7367,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListAssignmentResponse:
+        """
+        @summary Queries a list of assigned roles. For example, you can query the administrators of a group by group ID.
+        
+        @param request: ListAssignmentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAssignmentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -5893,6 +7411,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListAssignmentResponse:
+        """
+        @summary Queries a list of assigned roles. For example, you can query the administrators of a group by group ID.
+        
+        @param request: ListAssignmentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAssignmentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -5927,6 +7453,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListAssignmentRequest,
     ) -> pds_20220301_models.ListAssignmentResponse:
+        """
+        @summary Queries a list of assigned roles. For example, you can query the administrators of a group by group ID.
+        
+        @param request: ListAssignmentRequest
+        @return: ListAssignmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_assignment_with_options(request, headers, runtime)
@@ -5935,6 +7467,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListAssignmentRequest,
     ) -> pds_20220301_models.ListAssignmentResponse:
+        """
+        @summary Queries a list of assigned roles. For example, you can query the administrators of a group by group ID.
+        
+        @param request: ListAssignmentRequest
+        @return: ListAssignmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_assignment_with_options_async(request, headers, runtime)
@@ -5945,6 +7483,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListDeltaResponse:
+        """
+        @summary Queries incremental information.
+        
+        @param request: ListDeltaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeltaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cursor):
@@ -5981,6 +7527,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListDeltaResponse:
+        """
+        @summary Queries incremental information.
+        
+        @param request: ListDeltaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeltaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cursor):
@@ -6015,6 +7569,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListDeltaRequest,
     ) -> pds_20220301_models.ListDeltaResponse:
+        """
+        @summary Queries incremental information.
+        
+        @param request: ListDeltaRequest
+        @return: ListDeltaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_delta_with_options(request, headers, runtime)
@@ -6023,6 +7583,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListDeltaRequest,
     ) -> pds_20220301_models.ListDeltaResponse:
+        """
+        @summary Queries incremental information.
+        
+        @param request: ListDeltaRequest
+        @return: ListDeltaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_delta_with_options_async(request, headers, runtime)
@@ -6033,6 +7599,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListDomainsResponse:
+        """
+        @summary 列举 domain
+        
+        @param request: ListDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6041,6 +7615,8 @@ class Client(OpenApiClient):
             body['marker'] = request.marker
         if not UtilClient.is_unset(request.parent_domain_id):
             body['parent_domain_id'] = request.parent_domain_id
+        if not UtilClient.is_unset(request.service_code):
+            body['service_code'] = request.service_code
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6067,6 +7643,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListDomainsResponse:
+        """
+        @summary 列举 domain
+        
+        @param request: ListDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6075,6 +7659,8 @@ class Client(OpenApiClient):
             body['marker'] = request.marker
         if not UtilClient.is_unset(request.parent_domain_id):
             body['parent_domain_id'] = request.parent_domain_id
+        if not UtilClient.is_unset(request.service_code):
+            body['service_code'] = request.service_code
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6099,6 +7685,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListDomainsRequest,
     ) -> pds_20220301_models.ListDomainsResponse:
+        """
+        @summary 列举 domain
+        
+        @param request: ListDomainsRequest
+        @return: ListDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_domains_with_options(request, headers, runtime)
@@ -6107,6 +7699,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListDomainsRequest,
     ) -> pds_20220301_models.ListDomainsResponse:
+        """
+        @summary 列举 domain
+        
+        @param request: ListDomainsRequest
+        @return: ListDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_domains_with_options_async(request, headers, runtime)
@@ -6117,6 +7715,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListDriveResponse:
+        """
+        @summary Queries a list of drives.
+        
+        @param request: ListDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6153,6 +7759,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListDriveResponse:
+        """
+        @summary Queries a list of drives.
+        
+        @param request: ListDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6187,6 +7801,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListDriveRequest,
     ) -> pds_20220301_models.ListDriveResponse:
+        """
+        @summary Queries a list of drives.
+        
+        @param request: ListDriveRequest
+        @return: ListDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_drive_with_options(request, headers, runtime)
@@ -6195,6 +7815,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListDriveRequest,
     ) -> pds_20220301_models.ListDriveResponse:
+        """
+        @summary Queries a list of drives.
+        
+        @param request: ListDriveRequest
+        @return: ListDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_drive_with_options_async(request, headers, runtime)
@@ -6205,6 +7831,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListFacegroupsResponse:
+        """
+        @summary Queries face-based groups.
+        
+        @param request: ListFacegroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFacegroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -6243,6 +7877,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListFacegroupsResponse:
+        """
+        @summary Queries face-based groups.
+        
+        @param request: ListFacegroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFacegroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -6279,6 +7921,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListFacegroupsRequest,
     ) -> pds_20220301_models.ListFacegroupsResponse:
+        """
+        @summary Queries face-based groups.
+        
+        @param request: ListFacegroupsRequest
+        @return: ListFacegroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_facegroups_with_options(request, headers, runtime)
@@ -6287,6 +7935,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListFacegroupsRequest,
     ) -> pds_20220301_models.ListFacegroupsResponse:
+        """
+        @summary Queries face-based groups.
+        
+        @param request: ListFacegroupsRequest
+        @return: ListFacegroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_facegroups_with_options_async(request, headers, runtime)
@@ -6297,6 +7951,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListFileResponse:
+        """
+        @summary Queries a list of files and folders.
+        
+        @param request: ListFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category):
@@ -6349,6 +8011,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListFileResponse:
+        """
+        @summary Queries a list of files and folders.
+        
+        @param request: ListFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category):
@@ -6399,6 +8069,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListFileRequest,
     ) -> pds_20220301_models.ListFileResponse:
+        """
+        @summary Queries a list of files and folders.
+        
+        @param request: ListFileRequest
+        @return: ListFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_file_with_options(request, headers, runtime)
@@ -6407,6 +8083,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListFileRequest,
     ) -> pds_20220301_models.ListFileResponse:
+        """
+        @summary Queries a list of files and folders.
+        
+        @param request: ListFileRequest
+        @return: ListFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_file_with_options_async(request, headers, runtime)
@@ -6417,6 +8099,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListGroupResponse:
+        """
+        @summary Queries groups.
+        
+        @param request: ListGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6449,6 +8139,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListGroupResponse:
+        """
+        @summary Queries groups.
+        
+        @param request: ListGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6479,6 +8177,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListGroupRequest,
     ) -> pds_20220301_models.ListGroupResponse:
+        """
+        @summary Queries groups.
+        
+        @param request: ListGroupRequest
+        @return: ListGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_group_with_options(request, headers, runtime)
@@ -6487,6 +8191,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListGroupRequest,
     ) -> pds_20220301_models.ListGroupResponse:
+        """
+        @summary Queries groups.
+        
+        @param request: ListGroupRequest
+        @return: ListGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_group_with_options_async(request, headers, runtime)
@@ -6497,6 +8207,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListGroupMemberResponse:
+        """
+        @summary Queries the members of a group.
+        
+        @param request: ListGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -6533,6 +8251,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListGroupMemberResponse:
+        """
+        @summary Queries the members of a group.
+        
+        @param request: ListGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -6567,6 +8293,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListGroupMemberRequest,
     ) -> pds_20220301_models.ListGroupMemberResponse:
+        """
+        @summary Queries the members of a group.
+        
+        @param request: ListGroupMemberRequest
+        @return: ListGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_group_member_with_options(request, headers, runtime)
@@ -6575,6 +8307,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListGroupMemberRequest,
     ) -> pds_20220301_models.ListGroupMemberResponse:
+        """
+        @summary Queries the members of a group.
+        
+        @param request: ListGroupMemberRequest
+        @return: ListGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_group_member_with_options_async(request, headers, runtime)
@@ -6585,6 +8323,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListIdentityRoleResponse:
+        """
+        @summary 列举用户或团队已分配的角色列表
+        
+        @param request: ListIdentityRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdentityRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.identity):
@@ -6615,6 +8361,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListIdentityRoleResponse:
+        """
+        @summary 列举用户或团队已分配的角色列表
+        
+        @param request: ListIdentityRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdentityRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.identity):
@@ -6643,6 +8397,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListIdentityRoleRequest,
     ) -> pds_20220301_models.ListIdentityRoleResponse:
+        """
+        @summary 列举用户或团队已分配的角色列表
+        
+        @param request: ListIdentityRoleRequest
+        @return: ListIdentityRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_identity_role_with_options(request, headers, runtime)
@@ -6651,6 +8411,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListIdentityRoleRequest,
     ) -> pds_20220301_models.ListIdentityRoleResponse:
+        """
+        @summary 列举用户或团队已分配的角色列表
+        
+        @param request: ListIdentityRoleRequest
+        @return: ListIdentityRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_identity_role_with_options_async(request, headers, runtime)
@@ -6661,6 +8427,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Queries the mappings between entities and benefit packages. You can call this operation to query the benefit packages that are associated with a user.
+        
+        @param request: ListIdentityToBenefitPkgMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdentityToBenefitPkgMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.identity_id):
@@ -6695,6 +8469,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Queries the mappings between entities and benefit packages. You can call this operation to query the benefit packages that are associated with a user.
+        
+        @param request: ListIdentityToBenefitPkgMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdentityToBenefitPkgMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.identity_id):
@@ -6727,6 +8509,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.ListIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Queries the mappings between entities and benefit packages. You can call this operation to query the benefit packages that are associated with a user.
+        
+        @param request: ListIdentityToBenefitPkgMappingRequest
+        @return: ListIdentityToBenefitPkgMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_identity_to_benefit_pkg_mapping_with_options(request, headers, runtime)
@@ -6735,6 +8523,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.ListIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Queries the mappings between entities and benefit packages. You can call this operation to query the benefit packages that are associated with a user.
+        
+        @param request: ListIdentityToBenefitPkgMappingRequest
+        @return: ListIdentityToBenefitPkgMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
@@ -6745,6 +8539,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListMyDrivesResponse:
+        """
+        @summary Queries the drives of the current user.
+        
+        @param request: ListMyDrivesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMyDrivesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6777,6 +8579,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListMyDrivesResponse:
+        """
+        @summary Queries the drives of the current user.
+        
+        @param request: ListMyDrivesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMyDrivesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6807,6 +8617,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListMyDrivesRequest,
     ) -> pds_20220301_models.ListMyDrivesResponse:
+        """
+        @summary Queries the drives of the current user.
+        
+        @param request: ListMyDrivesRequest
+        @return: ListMyDrivesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_my_drives_with_options(request, headers, runtime)
@@ -6815,6 +8631,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListMyDrivesRequest,
     ) -> pds_20220301_models.ListMyDrivesResponse:
+        """
+        @summary Queries the drives of the current user.
+        
+        @param request: ListMyDrivesRequest
+        @return: ListMyDrivesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_my_drives_with_options_async(request, headers, runtime)
@@ -6825,6 +8647,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListMyGroupDriveResponse:
+        """
+        @summary Queries the team drives that can be accessed by the authorized users.
+        
+        @param request: ListMyGroupDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMyGroupDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6857,6 +8687,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListMyGroupDriveResponse:
+        """
+        @summary Queries the team drives that can be accessed by the authorized users.
+        
+        @param request: ListMyGroupDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMyGroupDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6887,6 +8725,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListMyGroupDriveRequest,
     ) -> pds_20220301_models.ListMyGroupDriveResponse:
+        """
+        @summary Queries the team drives that can be accessed by the authorized users.
+        
+        @param request: ListMyGroupDriveRequest
+        @return: ListMyGroupDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_my_group_drive_with_options(request, headers, runtime)
@@ -6895,6 +8739,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListMyGroupDriveRequest,
     ) -> pds_20220301_models.ListMyGroupDriveResponse:
+        """
+        @summary Queries the team drives that can be accessed by the authorized users.
+        
+        @param request: ListMyGroupDriveRequest
+        @return: ListMyGroupDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_my_group_drive_with_options_async(request, headers, runtime)
@@ -6905,6 +8755,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListReceivedFileResponse:
+        """
+        @summary Queries a list of files that are shared with a user. You can call this operation to query a list of files in a personal drive on which a user is granted permissions.
+        
+        @param request: ListReceivedFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListReceivedFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6937,6 +8795,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListReceivedFileResponse:
+        """
+        @summary Queries a list of files that are shared with a user. You can call this operation to query a list of files in a personal drive on which a user is granted permissions.
+        
+        @param request: ListReceivedFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListReceivedFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -6967,6 +8833,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListReceivedFileRequest,
     ) -> pds_20220301_models.ListReceivedFileResponse:
+        """
+        @summary Queries a list of files that are shared with a user. You can call this operation to query a list of files in a personal drive on which a user is granted permissions.
+        
+        @param request: ListReceivedFileRequest
+        @return: ListReceivedFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_received_file_with_options(request, headers, runtime)
@@ -6975,6 +8847,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListReceivedFileRequest,
     ) -> pds_20220301_models.ListReceivedFileResponse:
+        """
+        @summary Queries a list of files that are shared with a user. You can call this operation to query a list of files in a personal drive on which a user is granted permissions.
+        
+        @param request: ListReceivedFileRequest
+        @return: ListReceivedFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_received_file_with_options_async(request, headers, runtime)
@@ -6985,6 +8863,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListRecyclebinResponse:
+        """
+        @summary Queries the information about files and folders in the recycle bin.
+        
+        @param request: ListRecyclebinRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecyclebinResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7021,6 +8907,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListRecyclebinResponse:
+        """
+        @summary Queries the information about files and folders in the recycle bin.
+        
+        @param request: ListRecyclebinRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecyclebinResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7055,6 +8949,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListRecyclebinRequest,
     ) -> pds_20220301_models.ListRecyclebinResponse:
+        """
+        @summary Queries the information about files and folders in the recycle bin.
+        
+        @param request: ListRecyclebinRequest
+        @return: ListRecyclebinResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_recyclebin_with_options(request, headers, runtime)
@@ -7063,6 +8963,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListRecyclebinRequest,
     ) -> pds_20220301_models.ListRecyclebinResponse:
+        """
+        @summary Queries the information about files and folders in the recycle bin.
+        
+        @param request: ListRecyclebinRequest
+        @return: ListRecyclebinResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_recyclebin_with_options_async(request, headers, runtime)
@@ -7073,6 +8979,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListRevisionResponse:
+        """
+        @summary Queries the versions of a file.
+        
+        @param request: ListRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7111,6 +9025,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListRevisionResponse:
+        """
+        @summary Queries the versions of a file.
+        
+        @param request: ListRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7147,6 +9069,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListRevisionRequest,
     ) -> pds_20220301_models.ListRevisionResponse:
+        """
+        @summary Queries the versions of a file.
+        
+        @param request: ListRevisionRequest
+        @return: ListRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_revision_with_options(request, headers, runtime)
@@ -7155,6 +9083,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListRevisionRequest,
     ) -> pds_20220301_models.ListRevisionResponse:
+        """
+        @summary Queries the versions of a file.
+        
+        @param request: ListRevisionRequest
+        @return: ListRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_revision_with_options_async(request, headers, runtime)
@@ -7166,7 +9100,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListShareLinkResponse:
         """
-        This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+        @summary Queries shares.
+        
+        @description This operation is discontinued. To query shares, you can call the SearchShareLink operation.
         
         @param request: ListShareLinkRequest
         @param headers: map
@@ -7214,7 +9150,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListShareLinkResponse:
         """
-        This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+        @summary Queries shares.
+        
+        @description This operation is discontinued. To query shares, you can call the SearchShareLink operation.
         
         @param request: ListShareLinkRequest
         @param headers: map
@@ -7260,7 +9198,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.ListShareLinkRequest,
     ) -> pds_20220301_models.ListShareLinkResponse:
         """
-        This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+        @summary Queries shares.
+        
+        @description This operation is discontinued. To query shares, you can call the SearchShareLink operation.
         
         @param request: ListShareLinkRequest
         @return: ListShareLinkResponse
@@ -7274,7 +9214,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.ListShareLinkRequest,
     ) -> pds_20220301_models.ListShareLinkResponse:
         """
-        This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+        @summary Queries shares.
+        
+        @description This operation is discontinued. To query shares, you can call the SearchShareLink operation.
         
         @param request: ListShareLinkRequest
         @return: ListShareLinkResponse
@@ -7290,7 +9232,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListTagsResponse:
         """
-        You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+        @summary Queries tags.
+        
+        @description You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
         
         @param request: ListTagsRequest
         @param headers: map
@@ -7332,7 +9276,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListTagsResponse:
         """
-        You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+        @summary Queries tags.
+        
+        @description You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
         
         @param request: ListTagsRequest
         @param headers: map
@@ -7372,7 +9318,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.ListTagsRequest,
     ) -> pds_20220301_models.ListTagsResponse:
         """
-        You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+        @summary Queries tags.
+        
+        @description You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
         
         @param request: ListTagsRequest
         @return: ListTagsResponse
@@ -7386,7 +9334,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.ListTagsRequest,
     ) -> pds_20220301_models.ListTagsResponse:
         """
-        You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+        @summary Queries tags.
+        
+        @description You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
         
         @param request: ListTagsRequest
         @return: ListTagsResponse
@@ -7401,6 +9351,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListUploadedPartsResponse:
+        """
+        @summary Queries the file parts that are uploaded.
+        
+        @param request: ListUploadedPartsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUploadedPartsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7441,6 +9399,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListUploadedPartsResponse:
+        """
+        @summary Queries the file parts that are uploaded.
+        
+        @param request: ListUploadedPartsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUploadedPartsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7479,6 +9445,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListUploadedPartsRequest,
     ) -> pds_20220301_models.ListUploadedPartsResponse:
+        """
+        @summary Queries the file parts that are uploaded.
+        
+        @param request: ListUploadedPartsRequest
+        @return: ListUploadedPartsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_uploaded_parts_with_options(request, headers, runtime)
@@ -7487,6 +9459,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListUploadedPartsRequest,
     ) -> pds_20220301_models.ListUploadedPartsResponse:
+        """
+        @summary Queries the file parts that are uploaded.
+        
+        @param request: ListUploadedPartsRequest
+        @return: ListUploadedPartsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_uploaded_parts_with_options_async(request, headers, runtime)
@@ -7497,6 +9475,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListUserResponse:
+        """
+        @summary Queries users.
+        
+        @param request: ListUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -7529,6 +9515,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListUserResponse:
+        """
+        @summary Queries users.
+        
+        @param request: ListUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.limit):
@@ -7559,6 +9553,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListUserRequest,
     ) -> pds_20220301_models.ListUserResponse:
+        """
+        @summary Queries users.
+        
+        @param request: ListUserRequest
+        @return: ListUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_user_with_options(request, headers, runtime)
@@ -7567,6 +9567,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListUserRequest,
     ) -> pds_20220301_models.ListUserResponse:
+        """
+        @summary Queries users.
+        
+        @param request: ListUserRequest
+        @return: ListUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_user_with_options_async(request, headers, runtime)
@@ -7577,6 +9583,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.MoveFileResponse:
+        """
+        @summary Moves files or folders.
+        
+        @param request: MoveFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_name_mode):
@@ -7613,6 +9627,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.MoveFileResponse:
+        """
+        @summary Moves files or folders.
+        
+        @param request: MoveFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_name_mode):
@@ -7647,6 +9669,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.MoveFileRequest,
     ) -> pds_20220301_models.MoveFileResponse:
+        """
+        @summary Moves files or folders.
+        
+        @param request: MoveFileRequest
+        @return: MoveFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.move_file_with_options(request, headers, runtime)
@@ -7655,6 +9683,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.MoveFileRequest,
     ) -> pds_20220301_models.MoveFileResponse:
+        """
+        @summary Moves files or folders.
+        
+        @param request: MoveFileRequest
+        @return: MoveFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.move_file_with_options_async(request, headers, runtime)
@@ -7665,6 +9699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.QueryOrderPriceResponse:
+        """
+        @summary 查询凌霄订单价格
+        
+        @param request: QueryOrderPriceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrderPriceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -7709,6 +9751,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.QueryOrderPriceResponse:
+        """
+        @summary 查询凌霄订单价格
+        
+        @param request: QueryOrderPriceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrderPriceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -7751,6 +9801,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.QueryOrderPriceRequest,
     ) -> pds_20220301_models.QueryOrderPriceResponse:
+        """
+        @summary 查询凌霄订单价格
+        
+        @param request: QueryOrderPriceRequest
+        @return: QueryOrderPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.query_order_price_with_options(request, headers, runtime)
@@ -7759,6 +9815,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.QueryOrderPriceRequest,
     ) -> pds_20220301_models.QueryOrderPriceResponse:
+        """
+        @summary 查询凌霄订单价格
+        
+        @param request: QueryOrderPriceRequest
+        @return: QueryOrderPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_order_price_with_options_async(request, headers, runtime)
@@ -7769,6 +9831,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RemoveFaceGroupFileResponse:
+        """
+        @summary 从人脸分组中的移除指定的文件
+        
+        @param request: RemoveFaceGroupFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveFaceGroupFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7803,6 +9873,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RemoveFaceGroupFileResponse:
+        """
+        @summary 从人脸分组中的移除指定的文件
+        
+        @param request: RemoveFaceGroupFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveFaceGroupFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7835,6 +9913,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RemoveFaceGroupFileRequest,
     ) -> pds_20220301_models.RemoveFaceGroupFileResponse:
+        """
+        @summary 从人脸分组中的移除指定的文件
+        
+        @param request: RemoveFaceGroupFileRequest
+        @return: RemoveFaceGroupFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_face_group_file_with_options(request, headers, runtime)
@@ -7843,6 +9927,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RemoveFaceGroupFileRequest,
     ) -> pds_20220301_models.RemoveFaceGroupFileResponse:
+        """
+        @summary 从人脸分组中的移除指定的文件
+        
+        @param request: RemoveFaceGroupFileRequest
+        @return: RemoveFaceGroupFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_face_group_file_with_options_async(request, headers, runtime)
@@ -7853,6 +9943,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RemoveGroupMemberResponse:
+        """
+        @summary Removes a member from a group.
+        
+        @param request: RemoveGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -7887,6 +9985,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RemoveGroupMemberResponse:
+        """
+        @summary Removes a member from a group.
+        
+        @param request: RemoveGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -7919,6 +10025,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RemoveGroupMemberRequest,
     ) -> pds_20220301_models.RemoveGroupMemberResponse:
+        """
+        @summary Removes a member from a group.
+        
+        @param request: RemoveGroupMemberRequest
+        @return: RemoveGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_group_member_with_options(request, headers, runtime)
@@ -7927,6 +10039,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RemoveGroupMemberRequest,
     ) -> pds_20220301_models.RemoveGroupMemberResponse:
+        """
+        @summary Removes a member from a group.
+        
+        @param request: RemoveGroupMemberRequest
+        @return: RemoveGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_group_member_with_options_async(request, headers, runtime)
@@ -7937,6 +10055,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RemoveStoryFilesResponse:
+        """
+        @summary 故事移除文件
+        
+        @param request: RemoveStoryFilesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveStoryFilesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -7971,6 +10097,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RemoveStoryFilesResponse:
+        """
+        @summary 故事移除文件
+        
+        @param request: RemoveStoryFilesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveStoryFilesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8003,6 +10137,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RemoveStoryFilesRequest,
     ) -> pds_20220301_models.RemoveStoryFilesResponse:
+        """
+        @summary 故事移除文件
+        
+        @param request: RemoveStoryFilesRequest
+        @return: RemoveStoryFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_story_files_with_options(request, headers, runtime)
@@ -8011,6 +10151,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RemoveStoryFilesRequest,
     ) -> pds_20220301_models.RemoveStoryFilesResponse:
+        """
+        @summary 故事移除文件
+        
+        @param request: RemoveStoryFilesRequest
+        @return: RemoveStoryFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_story_files_with_options_async(request, headers, runtime)
@@ -8021,6 +10167,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RestoreFileResponse:
+        """
+        @summary Restores a file or folder from the recycle bin.
+        
+        @param request: RestoreFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8053,6 +10207,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RestoreFileResponse:
+        """
+        @summary Restores a file or folder from the recycle bin.
+        
+        @param request: RestoreFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8083,6 +10245,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RestoreFileRequest,
     ) -> pds_20220301_models.RestoreFileResponse:
+        """
+        @summary Restores a file or folder from the recycle bin.
+        
+        @param request: RestoreFileRequest
+        @return: RestoreFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.restore_file_with_options(request, headers, runtime)
@@ -8091,6 +10259,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RestoreFileRequest,
     ) -> pds_20220301_models.RestoreFileResponse:
+        """
+        @summary Restores a file or folder from the recycle bin.
+        
+        @param request: RestoreFileRequest
+        @return: RestoreFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restore_file_with_options_async(request, headers, runtime)
@@ -8101,6 +10275,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RestoreRevisionResponse:
+        """
+        @summary Restores a historical version of a file. You cannot restore the latest version of a file.
+        
+        @param request: RestoreRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8135,6 +10317,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.RestoreRevisionResponse:
+        """
+        @summary Restores a historical version of a file. You cannot restore the latest version of a file.
+        
+        @param request: RestoreRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8167,6 +10357,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RestoreRevisionRequest,
     ) -> pds_20220301_models.RestoreRevisionResponse:
+        """
+        @summary Restores a historical version of a file. You cannot restore the latest version of a file.
+        
+        @param request: RestoreRevisionRequest
+        @return: RestoreRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.restore_revision_with_options(request, headers, runtime)
@@ -8175,6 +10371,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.RestoreRevisionRequest,
     ) -> pds_20220301_models.RestoreRevisionResponse:
+        """
+        @summary Restores a historical version of a file. You cannot restore the latest version of a file.
+        
+        @param request: RestoreRevisionRequest
+        @return: RestoreRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restore_revision_with_options_async(request, headers, runtime)
@@ -8185,6 +10387,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ScanFileResponse:
+        """
+        @summary Scans files.
+        
+        @param request: ScanFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScanFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8221,6 +10431,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ScanFileResponse:
+        """
+        @summary Scans files.
+        
+        @param request: ScanFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScanFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8255,6 +10473,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ScanFileRequest,
     ) -> pds_20220301_models.ScanFileResponse:
+        """
+        @summary Scans files.
+        
+        @param request: ScanFileRequest
+        @return: ScanFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.scan_file_with_options(request, headers, runtime)
@@ -8263,6 +10487,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ScanFileRequest,
     ) -> pds_20220301_models.ScanFileResponse:
+        """
+        @summary Scans files.
+        
+        @param request: ScanFileRequest
+        @return: ScanFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.scan_file_with_options_async(request, headers, runtime)
@@ -8273,6 +10503,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchAddressGroupsResponse:
+        """
+        @summary Queries location-based groups based on specific locations.
+        
+        @param request: SearchAddressGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchAddressGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address_level):
@@ -8315,6 +10553,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchAddressGroupsResponse:
+        """
+        @summary Queries location-based groups based on specific locations.
+        
+        @param request: SearchAddressGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchAddressGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address_level):
@@ -8355,6 +10601,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchAddressGroupsRequest,
     ) -> pds_20220301_models.SearchAddressGroupsResponse:
+        """
+        @summary Queries location-based groups based on specific locations.
+        
+        @param request: SearchAddressGroupsRequest
+        @return: SearchAddressGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_address_groups_with_options(request, headers, runtime)
@@ -8363,6 +10615,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchAddressGroupsRequest,
     ) -> pds_20220301_models.SearchAddressGroupsResponse:
+        """
+        @summary Queries location-based groups based on specific locations.
+        
+        @param request: SearchAddressGroupsRequest
+        @return: SearchAddressGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_address_groups_with_options_async(request, headers, runtime)
@@ -8373,10 +10631,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchDomainsResponse:
+        """
+        @summary Search domain with specified attributes
+        
+        @param request: SearchDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.instance_id):
-            body['instance_id'] = request.instance_id
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
@@ -8411,10 +10675,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchDomainsResponse:
+        """
+        @summary Search domain with specified attributes
+        
+        @param request: SearchDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.instance_id):
-            body['instance_id'] = request.instance_id
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
@@ -8447,6 +10717,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchDomainsRequest,
     ) -> pds_20220301_models.SearchDomainsResponse:
+        """
+        @summary Search domain with specified attributes
+        
+        @param request: SearchDomainsRequest
+        @return: SearchDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_domains_with_options(request, headers, runtime)
@@ -8455,6 +10731,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchDomainsRequest,
     ) -> pds_20220301_models.SearchDomainsResponse:
+        """
+        @summary Search domain with specified attributes
+        
+        @param request: SearchDomainsRequest
+        @return: SearchDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_domains_with_options_async(request, headers, runtime)
@@ -8465,6 +10747,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchDriveResponse:
+        """
+        @summary Queries drives.
+        
+        @param request: SearchDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_name):
@@ -8503,6 +10793,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchDriveResponse:
+        """
+        @summary Queries drives.
+        
+        @param request: SearchDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_name):
@@ -8539,6 +10837,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchDriveRequest,
     ) -> pds_20220301_models.SearchDriveResponse:
+        """
+        @summary Queries drives.
+        
+        @param request: SearchDriveRequest
+        @return: SearchDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_drive_with_options(request, headers, runtime)
@@ -8547,6 +10851,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchDriveRequest,
     ) -> pds_20220301_models.SearchDriveResponse:
+        """
+        @summary Queries drives.
+        
+        @param request: SearchDriveRequest
+        @return: SearchDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_drive_with_options_async(request, headers, runtime)
@@ -8557,6 +10867,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchFileResponse:
+        """
+        @summary Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+        
+        @param request: SearchFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8599,6 +10917,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchFileResponse:
+        """
+        @summary Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+        
+        @param request: SearchFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8639,6 +10965,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchFileRequest,
     ) -> pds_20220301_models.SearchFileResponse:
+        """
+        @summary Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+        
+        @param request: SearchFileRequest
+        @return: SearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_file_with_options(request, headers, runtime)
@@ -8647,6 +10979,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchFileRequest,
     ) -> pds_20220301_models.SearchFileResponse:
+        """
+        @summary Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+        
+        @param request: SearchFileRequest
+        @return: SearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_file_with_options_async(request, headers, runtime)
@@ -8657,6 +10995,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchShareLinkResponse:
+        """
+        @summary Queries share URLs.
+        
+        @param request: SearchShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.creators):
@@ -8699,6 +11045,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchShareLinkResponse:
+        """
+        @summary Queries share URLs.
+        
+        @param request: SearchShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.creators):
@@ -8739,6 +11093,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchShareLinkRequest,
     ) -> pds_20220301_models.SearchShareLinkResponse:
+        """
+        @summary Queries share URLs.
+        
+        @param request: SearchShareLinkRequest
+        @return: SearchShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_share_link_with_options(request, headers, runtime)
@@ -8747,6 +11107,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchShareLinkRequest,
     ) -> pds_20220301_models.SearchShareLinkResponse:
+        """
+        @summary Queries share URLs.
+        
+        @param request: SearchShareLinkRequest
+        @return: SearchShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_share_link_with_options_async(request, headers, runtime)
@@ -8757,6 +11123,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchSimilarImageClustersResponse:
+        """
+        @summary 获取相似图片聚类结果
+        
+        @param request: SearchSimilarImageClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchSimilarImageClustersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8795,6 +11169,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchSimilarImageClustersResponse:
+        """
+        @summary 获取相似图片聚类结果
+        
+        @param request: SearchSimilarImageClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchSimilarImageClustersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -8831,6 +11213,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchSimilarImageClustersRequest,
     ) -> pds_20220301_models.SearchSimilarImageClustersResponse:
+        """
+        @summary 获取相似图片聚类结果
+        
+        @param request: SearchSimilarImageClustersRequest
+        @return: SearchSimilarImageClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_similar_image_clusters_with_options(request, headers, runtime)
@@ -8839,6 +11227,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchSimilarImageClustersRequest,
     ) -> pds_20220301_models.SearchSimilarImageClustersResponse:
+        """
+        @summary 获取相似图片聚类结果
+        
+        @param request: SearchSimilarImageClustersRequest
+        @return: SearchSimilarImageClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_similar_image_clusters_with_options_async(request, headers, runtime)
@@ -8849,6 +11243,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchStoriesResponse:
+        """
+        @summary 查询故事列表
+        
+        @param request: SearchStoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchStoriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cover_image_thumbnail_process):
@@ -8911,6 +11313,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchStoriesResponse:
+        """
+        @summary 查询故事列表
+        
+        @param request: SearchStoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchStoriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cover_image_thumbnail_process):
@@ -8971,6 +11381,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchStoriesRequest,
     ) -> pds_20220301_models.SearchStoriesResponse:
+        """
+        @summary 查询故事列表
+        
+        @param request: SearchStoriesRequest
+        @return: SearchStoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_stories_with_options(request, headers, runtime)
@@ -8979,6 +11395,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchStoriesRequest,
     ) -> pds_20220301_models.SearchStoriesResponse:
+        """
+        @summary 查询故事列表
+        
+        @param request: SearchStoriesRequest
+        @return: SearchStoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_stories_with_options_async(request, headers, runtime)
@@ -8989,6 +11411,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchUserResponse:
+        """
+        @summary Searches for users.
+        
+        @param request: SearchUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.email):
@@ -9035,6 +11465,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.SearchUserResponse:
+        """
+        @summary Searches for users.
+        
+        @param request: SearchUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.email):
@@ -9079,6 +11517,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchUserRequest,
     ) -> pds_20220301_models.SearchUserResponse:
+        """
+        @summary Searches for users.
+        
+        @param request: SearchUserRequest
+        @return: SearchUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_user_with_options(request, headers, runtime)
@@ -9087,6 +11531,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.SearchUserRequest,
     ) -> pds_20220301_models.SearchUserResponse:
+        """
+        @summary Searches for users.
+        
+        @param request: SearchUserRequest
+        @return: SearchUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_user_with_options_async(request, headers, runtime)
@@ -9098,8 +11548,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.TokenResponse:
         """
-        For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
-        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
+        @summary Generates an access token based on Open Authorization (OAuth) 2.0.
+        
+        @description For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).
+        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).
         
         @param request: TokenRequest
         @param headers: map
@@ -9149,8 +11601,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.TokenResponse:
         """
-        For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
-        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
+        @summary Generates an access token based on Open Authorization (OAuth) 2.0.
+        
+        @description For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).
+        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).
         
         @param request: TokenRequest
         @param headers: map
@@ -9198,8 +11652,10 @@ class Client(OpenApiClient):
         request: pds_20220301_models.TokenRequest,
     ) -> pds_20220301_models.TokenResponse:
         """
-        For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
-        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
+        @summary Generates an access token based on Open Authorization (OAuth) 2.0.
+        
+        @description For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).
+        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).
         
         @param request: TokenRequest
         @return: TokenResponse
@@ -9213,8 +11669,10 @@ class Client(OpenApiClient):
         request: pds_20220301_models.TokenRequest,
     ) -> pds_20220301_models.TokenResponse:
         """
-        For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
-        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
+        @summary Generates an access token based on Open Authorization (OAuth) 2.0.
+        
+        @description For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).
+        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).
         
         @param request: TokenRequest
         @return: TokenResponse
@@ -9229,6 +11687,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.TrashFileResponse:
+        """
+        @summary Moves a file or folder to the recycle bin.
+        
+        @param request: TrashFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrashFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -9261,6 +11727,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.TrashFileResponse:
+        """
+        @summary Moves a file or folder to the recycle bin.
+        
+        @param request: TrashFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrashFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -9291,6 +11765,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.TrashFileRequest,
     ) -> pds_20220301_models.TrashFileResponse:
+        """
+        @summary Moves a file or folder to the recycle bin.
+        
+        @param request: TrashFileRequest
+        @return: TrashFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.trash_file_with_options(request, headers, runtime)
@@ -9299,6 +11779,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.TrashFileRequest,
     ) -> pds_20220301_models.TrashFileResponse:
+        """
+        @summary Moves a file or folder to the recycle bin.
+        
+        @param request: TrashFileRequest
+        @return: TrashFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.trash_file_with_options_async(request, headers, runtime)
@@ -9309,6 +11795,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UnLinkAccountResponse:
+        """
+        @summary 取消账号绑定
+        
+        @param request: UnLinkAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnLinkAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -9345,6 +11839,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UnLinkAccountResponse:
+        """
+        @summary 取消账号绑定
+        
+        @param request: UnLinkAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnLinkAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -9379,6 +11881,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UnLinkAccountRequest,
     ) -> pds_20220301_models.UnLinkAccountResponse:
+        """
+        @summary 取消账号绑定
+        
+        @param request: UnLinkAccountRequest
+        @return: UnLinkAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.un_link_account_with_options(request, headers, runtime)
@@ -9387,6 +11895,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UnLinkAccountRequest,
     ) -> pds_20220301_models.UnLinkAccountResponse:
+        """
+        @summary 取消账号绑定
+        
+        @param request: UnLinkAccountRequest
+        @return: UnLinkAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.un_link_account_with_options_async(request, headers, runtime)
@@ -9397,6 +11911,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateDomainResponse:
+        """
+        @summary Update domain information.
+        
+        @param request: UpdateDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -9441,6 +11963,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateDomainResponse:
+        """
+        @summary Update domain information.
+        
+        @param request: UpdateDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -9483,6 +12013,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateDomainRequest,
     ) -> pds_20220301_models.UpdateDomainResponse:
+        """
+        @summary Update domain information.
+        
+        @param request: UpdateDomainRequest
+        @return: UpdateDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_domain_with_options(request, headers, runtime)
@@ -9491,6 +12027,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateDomainRequest,
     ) -> pds_20220301_models.UpdateDomainResponse:
+        """
+        @summary Update domain information.
+        
+        @param request: UpdateDomainRequest
+        @return: UpdateDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_domain_with_options_async(request, headers, runtime)
@@ -9501,6 +12043,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateDriveResponse:
+        """
+        @summary Modifies a drive.
+        
+        @param request: UpdateDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -9541,6 +12091,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateDriveResponse:
+        """
+        @summary Modifies a drive.
+        
+        @param request: UpdateDriveRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDriveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -9579,6 +12137,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateDriveRequest,
     ) -> pds_20220301_models.UpdateDriveResponse:
+        """
+        @summary Modifies a drive.
+        
+        @param request: UpdateDriveRequest
+        @return: UpdateDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_drive_with_options(request, headers, runtime)
@@ -9587,6 +12151,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateDriveRequest,
     ) -> pds_20220301_models.UpdateDriveResponse:
+        """
+        @summary Modifies a drive.
+        
+        @param request: UpdateDriveRequest
+        @return: UpdateDriveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_drive_with_options_async(request, headers, runtime)
@@ -9597,6 +12167,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateFacegroupResponse:
+        """
+        @summary Updates a face-based group.
+        
+        @param request: UpdateFacegroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFacegroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -9635,6 +12213,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateFacegroupResponse:
+        """
+        @summary Updates a face-based group.
+        
+        @param request: UpdateFacegroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFacegroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -9671,6 +12257,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateFacegroupRequest,
     ) -> pds_20220301_models.UpdateFacegroupResponse:
+        """
+        @summary Updates a face-based group.
+        
+        @param request: UpdateFacegroupRequest
+        @return: UpdateFacegroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_facegroup_with_options(request, headers, runtime)
@@ -9679,6 +12271,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateFacegroupRequest,
     ) -> pds_20220301_models.UpdateFacegroupResponse:
+        """
+        @summary Updates a face-based group.
+        
+        @param request: UpdateFacegroupRequest
+        @return: UpdateFacegroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_facegroup_with_options_async(request, headers, runtime)
@@ -9689,6 +12287,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateFileResponse:
+        """
+        @summary Modifies the information about a file instead of the file data.
+        
+        @param request: UpdateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_name_mode):
@@ -9735,6 +12341,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateFileResponse:
+        """
+        @summary Modifies the information about a file instead of the file data.
+        
+        @param request: UpdateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_name_mode):
@@ -9779,6 +12393,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateFileRequest,
     ) -> pds_20220301_models.UpdateFileResponse:
+        """
+        @summary Modifies the information about a file instead of the file data.
+        
+        @param request: UpdateFileRequest
+        @return: UpdateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_file_with_options(request, headers, runtime)
@@ -9787,6 +12407,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateFileRequest,
     ) -> pds_20220301_models.UpdateFileResponse:
+        """
+        @summary Modifies the information about a file instead of the file data.
+        
+        @param request: UpdateFileRequest
+        @return: UpdateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_file_with_options_async(request, headers, runtime)
@@ -9797,6 +12423,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateGroupResponse:
+        """
+        @summary Modifies the information about a group.
+        
+        @param request: UpdateGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -9831,6 +12465,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateGroupResponse:
+        """
+        @summary Modifies the information about a group.
+        
+        @param request: UpdateGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -9863,6 +12505,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateGroupRequest,
     ) -> pds_20220301_models.UpdateGroupResponse:
+        """
+        @summary Modifies the information about a group.
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_group_with_options(request, headers, runtime)
@@ -9871,6 +12519,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateGroupRequest,
     ) -> pds_20220301_models.UpdateGroupResponse:
+        """
+        @summary Modifies the information about a group.
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_group_with_options_async(request, headers, runtime)
@@ -9881,6 +12535,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Updates the mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+        
+        @param request: UpdateIdentityToBenefitPkgMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIdentityToBenefitPkgMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amount):
@@ -9919,6 +12581,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Updates the mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+        
+        @param request: UpdateIdentityToBenefitPkgMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIdentityToBenefitPkgMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amount):
@@ -9955,6 +12625,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Updates the mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+        
+        @param request: UpdateIdentityToBenefitPkgMappingRequest
+        @return: UpdateIdentityToBenefitPkgMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_identity_to_benefit_pkg_mapping_with_options(request, headers, runtime)
@@ -9963,6 +12639,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.UpdateIdentityToBenefitPkgMappingResponse:
+        """
+        @summary Updates the mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+        
+        @param request: UpdateIdentityToBenefitPkgMappingRequest
+        @return: UpdateIdentityToBenefitPkgMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
@@ -9973,6 +12655,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateRevisionResponse:
+        """
+        @summary Updates the version information. You can call this operation to permanently retain a version or modify the description of a version. You can permanently retain up to 50 versions of a file.
+        
+        @param request: UpdateRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -10011,6 +12701,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateRevisionResponse:
+        """
+        @summary Updates the version information. You can call this operation to permanently retain a version or modify the description of a version. You can permanently retain up to 50 versions of a file.
+        
+        @param request: UpdateRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRevisionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -10047,6 +12745,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateRevisionRequest,
     ) -> pds_20220301_models.UpdateRevisionResponse:
+        """
+        @summary Updates the version information. You can call this operation to permanently retain a version or modify the description of a version. You can permanently retain up to 50 versions of a file.
+        
+        @param request: UpdateRevisionRequest
+        @return: UpdateRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_revision_with_options(request, headers, runtime)
@@ -10055,6 +12759,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateRevisionRequest,
     ) -> pds_20220301_models.UpdateRevisionResponse:
+        """
+        @summary Updates the version information. You can call this operation to permanently retain a version or modify the description of a version. You can permanently retain up to 50 versions of a file.
+        
+        @param request: UpdateRevisionRequest
+        @return: UpdateRevisionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_revision_with_options_async(request, headers, runtime)
@@ -10065,6 +12775,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateShareLinkResponse:
+        """
+        @summary Modifies a share link.
+        
+        @param request: UpdateShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -10127,6 +12845,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateShareLinkResponse:
+        """
+        @summary Modifies a share link.
+        
+        @param request: UpdateShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -10187,6 +12913,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateShareLinkRequest,
     ) -> pds_20220301_models.UpdateShareLinkResponse:
+        """
+        @summary Modifies a share link.
+        
+        @param request: UpdateShareLinkRequest
+        @return: UpdateShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_share_link_with_options(request, headers, runtime)
@@ -10195,6 +12927,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateShareLinkRequest,
     ) -> pds_20220301_models.UpdateShareLinkResponse:
+        """
+        @summary Modifies a share link.
+        
+        @param request: UpdateShareLinkRequest
+        @return: UpdateShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_share_link_with_options_async(request, headers, runtime)
@@ -10205,6 +12943,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateStoryResponse:
+        """
+        @summary 更新故事
+        
+        @param request: UpdateStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cover):
@@ -10243,6 +12989,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateStoryResponse:
+        """
+        @summary 更新故事
+        
+        @param request: UpdateStoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cover):
@@ -10279,6 +13033,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateStoryRequest,
     ) -> pds_20220301_models.UpdateStoryResponse:
+        """
+        @summary 更新故事
+        
+        @param request: UpdateStoryRequest
+        @return: UpdateStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_story_with_options(request, headers, runtime)
@@ -10287,6 +13047,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateStoryRequest,
     ) -> pds_20220301_models.UpdateStoryResponse:
+        """
+        @summary 更新故事
+        
+        @param request: UpdateStoryRequest
+        @return: UpdateStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_story_with_options_async(request, headers, runtime)
@@ -10297,6 +13063,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateUserResponse:
+        """
+        @summary Modifies the information about a user.
+        
+        @param request: UpdateUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.avatar):
@@ -10345,6 +13119,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UpdateUserResponse:
+        """
+        @summary Modifies the information about a user.
+        
+        @param request: UpdateUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.avatar):
@@ -10391,6 +13173,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateUserRequest,
     ) -> pds_20220301_models.UpdateUserResponse:
+        """
+        @summary Modifies the information about a user.
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_user_with_options(request, headers, runtime)
@@ -10399,6 +13187,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.UpdateUserRequest,
     ) -> pds_20220301_models.UpdateUserResponse:
+        """
+        @summary Modifies the information about a user.
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_user_with_options_async(request, headers, runtime)
