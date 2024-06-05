@@ -1,3 +1,21 @@
+2024-06-05 Version: 1.1.7
+- Update API CreateSecurityPolicy: update param Ciphers.
+- Update API CreateServerGroup: add param ConnectionDrainConfig.
+- Update API CreateServerGroup: add param SlowStartConfig.
+- Update API ListListenerCertificates: add param CertificateIds.
+- Update API ListRules: update param ListenerIds.
+- Update API ListRules: update param LoadBalancerIds.
+- Update API ListRules: update param RuleIds.
+- Update API ListRules: update param Tag.
+- Update API ListServerGroupServers: update param MaxResults.
+- Update API ListServerGroups: update response param.
+- Update API ListTagKeys: update response param.
+- Update API ReplaceServersInServerGroup: update response param.
+- Update API UpdateSecurityPolicyAttribute: update param Ciphers.
+- Update API UpdateServerGroupAttribute: add param ConnectionDrainConfig.
+- Update API UpdateServerGroupAttribute: add param SlowStartConfig.
+
+
 2024-02-23 Version: 1.1.6
 - Update API CreateSecurityPolicy: update param Ciphers.
 - Update API CreateServerGroup: add param ConnectionDrainConfig.

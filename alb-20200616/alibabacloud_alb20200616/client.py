@@ -47,12 +47,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AddEntriesToAclResponse:
         """
-        Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
-        *   The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
-        *   The maximum number of IP entries that each ACL can contain: 1,000
-        *   **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
-        *   If the ACL is in the **Adding** state, the IP entries are being added.
-        *   If the ACL is in the **Available** state, the IP entries are added.
+        @summary Adds IP entries to an access control list (ACL).
+        
+        @description    Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
+        The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
+        The maximum number of IP entries that each ACL can contain: 1,000
+        **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+        If the ACL is in the **Adding** state, the IP entries are being added.
+        If the ACL is in the **Available** state, the IP entries are added.
         
         @param request: AddEntriesToAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -93,12 +95,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AddEntriesToAclResponse:
         """
-        Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
-        *   The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
-        *   The maximum number of IP entries that each ACL can contain: 1,000
-        *   **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
-        *   If the ACL is in the **Adding** state, the IP entries are being added.
-        *   If the ACL is in the **Available** state, the IP entries are added.
+        @summary Adds IP entries to an access control list (ACL).
+        
+        @description    Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
+        The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
+        The maximum number of IP entries that each ACL can contain: 1,000
+        **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+        If the ACL is in the **Adding** state, the IP entries are being added.
+        If the ACL is in the **Available** state, the IP entries are added.
         
         @param request: AddEntriesToAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -138,12 +142,14 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AddEntriesToAclRequest,
     ) -> alb_20200616_models.AddEntriesToAclResponse:
         """
-        Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
-        *   The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
-        *   The maximum number of IP entries that each ACL can contain: 1,000
-        *   **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
-        *   If the ACL is in the **Adding** state, the IP entries are being added.
-        *   If the ACL is in the **Available** state, the IP entries are added.
+        @summary Adds IP entries to an access control list (ACL).
+        
+        @description    Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
+        The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
+        The maximum number of IP entries that each ACL can contain: 1,000
+        **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+        If the ACL is in the **Adding** state, the IP entries are being added.
+        If the ACL is in the **Available** state, the IP entries are added.
         
         @param request: AddEntriesToAclRequest
         @return: AddEntriesToAclResponse
@@ -156,12 +162,14 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AddEntriesToAclRequest,
     ) -> alb_20200616_models.AddEntriesToAclResponse:
         """
-        Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
-        *   The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
-        *   The maximum number of IP entries that each ACL can contain: 1,000
-        *   **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
-        *   If the ACL is in the **Adding** state, the IP entries are being added.
-        *   If the ACL is in the **Available** state, the IP entries are added.
+        @summary Adds IP entries to an access control list (ACL).
+        
+        @description    Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
+        The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
+        The maximum number of IP entries that each ACL can contain: 1,000
+        **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+        If the ACL is in the **Adding** state, the IP entries are being added.
+        If the ACL is in the **Available** state, the IP entries are added.
         
         @param request: AddEntriesToAclRequest
         @return: AddEntriesToAclResponse
@@ -175,13 +183,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AddServersToServerGroupResponse:
         """
-        *AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
-        *   If a backend server is in the **Available** state, it indicates that the server is running.
+        @summary Adds backend servers to a server group.
+        
+        @description *AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
+        If a backend server is in the **Available** state, it indicates that the server is running.
         
         @param request: AddServersToServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -222,13 +232,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AddServersToServerGroupResponse:
         """
-        *AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
-        *   If a backend server is in the **Available** state, it indicates that the server is running.
+        @summary Adds backend servers to a server group.
+        
+        @description *AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
+        If a backend server is in the **Available** state, it indicates that the server is running.
         
         @param request: AddServersToServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -268,13 +280,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AddServersToServerGroupRequest,
     ) -> alb_20200616_models.AddServersToServerGroupResponse:
         """
-        *AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
-        *   If a backend server is in the **Available** state, it indicates that the server is running.
+        @summary Adds backend servers to a server group.
+        
+        @description *AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
+        If a backend server is in the **Available** state, it indicates that the server is running.
         
         @param request: AddServersToServerGroupRequest
         @return: AddServersToServerGroupResponse
@@ -287,13 +301,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AddServersToServerGroupRequest,
     ) -> alb_20200616_models.AddServersToServerGroupResponse:
         """
-        *AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
-        *   If a backend server is in the **Available** state, it indicates that the server is running.
+        @summary Adds backend servers to a server group.
+        
+        @description *AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
+        If a backend server is in the **Available** state, it indicates that the server is running.
         
         @param request: AddServersToServerGroupRequest
         @return: AddServersToServerGroupResponse
@@ -306,6 +322,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ApplyHealthCheckTemplateToServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse:
+        """
+        @summary Applies a health check template to a server group.
+        
+        @param request: ApplyHealthCheckTemplateToServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyHealthCheckTemplateToServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -340,6 +363,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ApplyHealthCheckTemplateToServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse:
+        """
+        @summary Applies a health check template to a server group.
+        
+        @param request: ApplyHealthCheckTemplateToServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyHealthCheckTemplateToServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -373,6 +403,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ApplyHealthCheckTemplateToServerGroupRequest,
     ) -> alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse:
+        """
+        @summary Applies a health check template to a server group.
+        
+        @param request: ApplyHealthCheckTemplateToServerGroupRequest
+        @return: ApplyHealthCheckTemplateToServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_health_check_template_to_server_group_with_options(request, runtime)
 
@@ -380,6 +416,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ApplyHealthCheckTemplateToServerGroupRequest,
     ) -> alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse:
+        """
+        @summary Applies a health check template to a server group.
+        
+        @param request: ApplyHealthCheckTemplateToServerGroupRequest
+        @return: ApplyHealthCheckTemplateToServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_health_check_template_to_server_group_with_options_async(request, runtime)
 
@@ -389,9 +431,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AssociateAclsWithListenerResponse:
         """
-        *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
-        *   If an ACL is in the **Associating** state, the ACL is being associated with a listener.
-        *   If an ACL is in the **Associated** state, the ACL is associated with a listener.
+        @summary Associates access control lists (ACLs) with a listener.
+        
+        @description *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+        If an ACL is in the **Associating** state, the ACL is being associated with a listener.
+        If an ACL is in the **Associated** state, the ACL is associated with a listener.
         
         @param request: AssociateAclsWithListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -434,9 +478,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AssociateAclsWithListenerResponse:
         """
-        *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
-        *   If an ACL is in the **Associating** state, the ACL is being associated with a listener.
-        *   If an ACL is in the **Associated** state, the ACL is associated with a listener.
+        @summary Associates access control lists (ACLs) with a listener.
+        
+        @description *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+        If an ACL is in the **Associating** state, the ACL is being associated with a listener.
+        If an ACL is in the **Associated** state, the ACL is associated with a listener.
         
         @param request: AssociateAclsWithListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -478,9 +524,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AssociateAclsWithListenerRequest,
     ) -> alb_20200616_models.AssociateAclsWithListenerResponse:
         """
-        *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
-        *   If an ACL is in the **Associating** state, the ACL is being associated with a listener.
-        *   If an ACL is in the **Associated** state, the ACL is associated with a listener.
+        @summary Associates access control lists (ACLs) with a listener.
+        
+        @description *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+        If an ACL is in the **Associating** state, the ACL is being associated with a listener.
+        If an ACL is in the **Associated** state, the ACL is associated with a listener.
         
         @param request: AssociateAclsWithListenerRequest
         @return: AssociateAclsWithListenerResponse
@@ -493,9 +541,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AssociateAclsWithListenerRequest,
     ) -> alb_20200616_models.AssociateAclsWithListenerResponse:
         """
-        *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
-        *   If an ACL is in the **Associating** state, the ACL is being associated with a listener.
-        *   If an ACL is in the **Associated** state, the ACL is associated with a listener.
+        @summary Associates access control lists (ACLs) with a listener.
+        
+        @description *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+        If an ACL is in the **Associating** state, the ACL is being associated with a listener.
+        If an ACL is in the **Associated** state, the ACL is associated with a listener.
         
         @param request: AssociateAclsWithListenerRequest
         @return: AssociateAclsWithListenerResponse
@@ -509,9 +559,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse:
         """
-        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
-        *   If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
-        *   If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
+        @summary Associates additional certificates with a listener.
+        
+        @description *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+        If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
+        If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
         
         @param request: AssociateAdditionalCertificatesWithListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -552,9 +604,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse:
         """
-        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
-        *   If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
-        *   If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
+        @summary Associates additional certificates with a listener.
+        
+        @description *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+        If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
+        If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
         
         @param request: AssociateAdditionalCertificatesWithListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -594,9 +648,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AssociateAdditionalCertificatesWithListenerRequest,
     ) -> alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse:
         """
-        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
-        *   If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
-        *   If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
+        @summary Associates additional certificates with a listener.
+        
+        @description *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+        If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
+        If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
         
         @param request: AssociateAdditionalCertificatesWithListenerRequest
         @return: AssociateAdditionalCertificatesWithListenerResponse
@@ -609,9 +665,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AssociateAdditionalCertificatesWithListenerRequest,
     ) -> alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse:
         """
-        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
-        *   If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
-        *   If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
+        @summary Associates additional certificates with a listener.
+        
+        @description *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+        If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
+        If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
         
         @param request: AssociateAdditionalCertificatesWithListenerRequest
         @return: AssociateAdditionalCertificatesWithListenerResponse
@@ -625,9 +683,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         """
-        *AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
-        *   If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
+        @summary Associates an EIP bandwidth plan with an Application Load Balancer (ALB) instance.
+        
+        @description *AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
+        If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
         
         @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -670,9 +730,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         """
-        *AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
-        *   If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
+        @summary Associates an EIP bandwidth plan with an Application Load Balancer (ALB) instance.
+        
+        @description *AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
+        If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
         
         @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -714,9 +776,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
     ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         """
-        *AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
-        *   If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
+        @summary Associates an EIP bandwidth plan with an Application Load Balancer (ALB) instance.
+        
+        @description *AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
+        If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
         
         @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
         @return: AttachCommonBandwidthPackageToLoadBalancerResponse
@@ -729,9 +793,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
     ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         """
-        *AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
-        *   If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
+        @summary Associates an EIP bandwidth plan with an Application Load Balancer (ALB) instance.
+        
+        @description *AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
+        If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
         
         @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
         @return: AttachCommonBandwidthPackageToLoadBalancerResponse
@@ -745,7 +811,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
         """
-        This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+        @summary Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to a DNS record.
+        
+        @description This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
         
         @param request: CancelShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -786,7 +854,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
         """
-        This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+        @summary Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to a DNS record.
+        
+        @description This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
         
         @param request: CancelShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -826,7 +896,9 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
     ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
         """
-        This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+        @summary Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to a DNS record.
+        
+        @description This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
         
         @param request: CancelShiftLoadBalancerZonesRequest
         @return: CancelShiftLoadBalancerZonesResponse
@@ -839,7 +911,9 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
     ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
         """
-        This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+        @summary Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to a DNS record.
+        
+        @description This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
         
         @param request: CancelShiftLoadBalancerZonesRequest
         @return: CancelShiftLoadBalancerZonesResponse
@@ -853,14 +927,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateAScriptsResponse:
         """
-        ### Prerequisites
-        *   A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](~~214358~~).
-        *   By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
+        @summary Creates AScript rules.
+        
+        @description ### Prerequisites
+        A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+        By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
         ### Usage notes
-        *   **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
-        *   If an AScript rule is in the **Creating** state, the AScript rule is being created.
-        *   If an AScript rule is in the **Available** state, the AScript rule is created.
-        *   In the following table, the value of **N** is **1**.
+        **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+        If an AScript rule is in the **Creating** state, the AScript rule is being created.
+        If an AScript rule is in the **Available** state, the AScript rule is created.
+        In the following table, the value of **N** is **1**.
         
         @param request: CreateAScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -901,14 +977,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateAScriptsResponse:
         """
-        ### Prerequisites
-        *   A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](~~214358~~).
-        *   By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
+        @summary Creates AScript rules.
+        
+        @description ### Prerequisites
+        A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+        By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
         ### Usage notes
-        *   **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
-        *   If an AScript rule is in the **Creating** state, the AScript rule is being created.
-        *   If an AScript rule is in the **Available** state, the AScript rule is created.
-        *   In the following table, the value of **N** is **1**.
+        **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+        If an AScript rule is in the **Creating** state, the AScript rule is being created.
+        If an AScript rule is in the **Available** state, the AScript rule is created.
+        In the following table, the value of **N** is **1**.
         
         @param request: CreateAScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -948,14 +1026,16 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateAScriptsRequest,
     ) -> alb_20200616_models.CreateAScriptsResponse:
         """
-        ### Prerequisites
-        *   A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](~~214358~~).
-        *   By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
+        @summary Creates AScript rules.
+        
+        @description ### Prerequisites
+        A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+        By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
         ### Usage notes
-        *   **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
-        *   If an AScript rule is in the **Creating** state, the AScript rule is being created.
-        *   If an AScript rule is in the **Available** state, the AScript rule is created.
-        *   In the following table, the value of **N** is **1**.
+        **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+        If an AScript rule is in the **Creating** state, the AScript rule is being created.
+        If an AScript rule is in the **Available** state, the AScript rule is created.
+        In the following table, the value of **N** is **1**.
         
         @param request: CreateAScriptsRequest
         @return: CreateAScriptsResponse
@@ -968,14 +1048,16 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateAScriptsRequest,
     ) -> alb_20200616_models.CreateAScriptsResponse:
         """
-        ### Prerequisites
-        *   A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](~~214358~~).
-        *   By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
+        @summary Creates AScript rules.
+        
+        @description ### Prerequisites
+        A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+        By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
         ### Usage notes
-        *   **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
-        *   If an AScript rule is in the **Creating** state, the AScript rule is being created.
-        *   If an AScript rule is in the **Available** state, the AScript rule is created.
-        *   In the following table, the value of **N** is **1**.
+        **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+        If an AScript rule is in the **Creating** state, the AScript rule is being created.
+        If an AScript rule is in the **Available** state, the AScript rule is created.
+        In the following table, the value of **N** is **1**.
         
         @param request: CreateAScriptsRequest
         @return: CreateAScriptsResponse
@@ -989,10 +1071,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateAclResponse:
         """
-        ## Usage notes
-        The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
-        *   If an ACL is in the **Creating** state, the ACL is being created.
-        *   If an ACL is in the **Available** state, the ACL is created.
+        @summary Creates an access control list (ACL) in a region.
+        
+        @description ## Usage notes
+        The *CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of an ACL:
+        If an ACL is in the **Creating** state, the ACL is being created.
+        If an ACL is in the **Available** state, the ACL is created.
         
         @param request: CreateAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1035,10 +1119,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateAclResponse:
         """
-        ## Usage notes
-        The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
-        *   If an ACL is in the **Creating** state, the ACL is being created.
-        *   If an ACL is in the **Available** state, the ACL is created.
+        @summary Creates an access control list (ACL) in a region.
+        
+        @description ## Usage notes
+        The *CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of an ACL:
+        If an ACL is in the **Creating** state, the ACL is being created.
+        If an ACL is in the **Available** state, the ACL is created.
         
         @param request: CreateAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1080,10 +1166,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateAclRequest,
     ) -> alb_20200616_models.CreateAclResponse:
         """
-        ## Usage notes
-        The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
-        *   If an ACL is in the **Creating** state, the ACL is being created.
-        *   If an ACL is in the **Available** state, the ACL is created.
+        @summary Creates an access control list (ACL) in a region.
+        
+        @description ## Usage notes
+        The *CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of an ACL:
+        If an ACL is in the **Creating** state, the ACL is being created.
+        If an ACL is in the **Available** state, the ACL is created.
         
         @param request: CreateAclRequest
         @return: CreateAclResponse
@@ -1096,10 +1184,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateAclRequest,
     ) -> alb_20200616_models.CreateAclResponse:
         """
-        ## Usage notes
-        The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
-        *   If an ACL is in the **Creating** state, the ACL is being created.
-        *   If an ACL is in the **Available** state, the ACL is created.
+        @summary Creates an access control list (ACL) in a region.
+        
+        @description ## Usage notes
+        The *CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of an ACL:
+        If an ACL is in the **Creating** state, the ACL is being created.
+        If an ACL is in the **Available** state, the ACL is created.
         
         @param request: CreateAclRequest
         @return: CreateAclResponse
@@ -1112,6 +1202,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateHealthCheckTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateHealthCheckTemplateResponse:
+        """
+        @summary Creates a health check template in a region.
+        
+        @param request: CreateHealthCheckTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHealthCheckTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1168,6 +1265,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateHealthCheckTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateHealthCheckTemplateResponse:
+        """
+        @summary Creates a health check template in a region.
+        
+        @param request: CreateHealthCheckTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHealthCheckTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1223,6 +1327,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.CreateHealthCheckTemplateRequest,
     ) -> alb_20200616_models.CreateHealthCheckTemplateResponse:
+        """
+        @summary Creates a health check template in a region.
+        
+        @param request: CreateHealthCheckTemplateRequest
+        @return: CreateHealthCheckTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_health_check_template_with_options(request, runtime)
 
@@ -1230,6 +1340,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.CreateHealthCheckTemplateRequest,
     ) -> alb_20200616_models.CreateHealthCheckTemplateResponse:
+        """
+        @summary Creates a health check template in a region.
+        
+        @param request: CreateHealthCheckTemplateRequest
+        @return: CreateHealthCheckTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_health_check_template_with_options_async(request, runtime)
 
@@ -1239,10 +1355,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateListenerResponse:
         """
-        ## Usage notes
-        **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
+        @summary Creates an HTTP, HTTPS, or QUIC listener in a region.
+        
+        @description ## Usage notes
+        *CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/214353.html) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+        If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
+        If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
         
         @param request: CreateListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1311,10 +1429,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateListenerResponse:
         """
-        ## Usage notes
-        **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
+        @summary Creates an HTTP, HTTPS, or QUIC listener in a region.
+        
+        @description ## Usage notes
+        *CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/214353.html) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+        If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
+        If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
         
         @param request: CreateListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1382,10 +1502,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateListenerRequest,
     ) -> alb_20200616_models.CreateListenerResponse:
         """
-        ## Usage notes
-        **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
+        @summary Creates an HTTP, HTTPS, or QUIC listener in a region.
+        
+        @description ## Usage notes
+        *CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/214353.html) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+        If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
+        If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
         
         @param request: CreateListenerRequest
         @return: CreateListenerResponse
@@ -1398,10 +1520,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateListenerRequest,
     ) -> alb_20200616_models.CreateListenerResponse:
         """
-        ## Usage notes
-        **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
+        @summary Creates an HTTP, HTTPS, or QUIC listener in a region.
+        
+        @description ## Usage notes
+        *CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/214353.html) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+        If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
+        If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
         
         @param request: CreateListenerRequest
         @return: CreateListenerResponse
@@ -1415,9 +1539,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateLoadBalancerResponse:
         """
-        *CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of an ALB instance.
-        *   If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
-        *   If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
+        @summary Creates an Application Load Balancer (ALB) instance in a region.
+        
+        @description *CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
+        If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
+        If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1478,9 +1604,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateLoadBalancerResponse:
         """
-        *CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of an ALB instance.
-        *   If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
-        *   If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
+        @summary Creates an Application Load Balancer (ALB) instance in a region.
+        
+        @description *CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
+        If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
+        If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1540,9 +1668,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateLoadBalancerRequest,
     ) -> alb_20200616_models.CreateLoadBalancerResponse:
         """
-        *CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of an ALB instance.
-        *   If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
-        *   If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
+        @summary Creates an Application Load Balancer (ALB) instance in a region.
+        
+        @description *CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
+        If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
+        If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -1555,9 +1685,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateLoadBalancerRequest,
     ) -> alb_20200616_models.CreateLoadBalancerResponse:
         """
-        *CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of an ALB instance.
-        *   If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
-        *   If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
+        @summary Creates an Application Load Balancer (ALB) instance in a region.
+        
+        @description *CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
+        If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
+        If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -1571,15 +1703,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateRuleResponse:
         """
-        Take note of the following limits:
-        *   When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
-        *   If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
-        *   **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule.
-        *   If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is created.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
-        *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
-        *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+        @summary Creates a forwarding rule for a listener.
+        
+        @description Take note of the following limits:
+        When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
+        If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
+        **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
+        If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
+        If a forwarding rule is in the **Available** state, the forwarding rule is created.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
+        Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+        Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
         
         @param request: CreateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1630,15 +1764,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateRuleResponse:
         """
-        Take note of the following limits:
-        *   When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
-        *   If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
-        *   **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule.
-        *   If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is created.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
-        *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
-        *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+        @summary Creates a forwarding rule for a listener.
+        
+        @description Take note of the following limits:
+        When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
+        If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
+        **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
+        If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
+        If a forwarding rule is in the **Available** state, the forwarding rule is created.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
+        Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+        Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
         
         @param request: CreateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1688,15 +1824,17 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateRuleRequest,
     ) -> alb_20200616_models.CreateRuleResponse:
         """
-        Take note of the following limits:
-        *   When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
-        *   If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
-        *   **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule.
-        *   If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is created.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
-        *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
-        *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+        @summary Creates a forwarding rule for a listener.
+        
+        @description Take note of the following limits:
+        When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
+        If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
+        **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
+        If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
+        If a forwarding rule is in the **Available** state, the forwarding rule is created.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
+        Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+        Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
         
         @param request: CreateRuleRequest
         @return: CreateRuleResponse
@@ -1709,15 +1847,17 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateRuleRequest,
     ) -> alb_20200616_models.CreateRuleResponse:
         """
-        Take note of the following limits:
-        *   When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
-        *   If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
-        *   **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule.
-        *   If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is created.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
-        *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
-        *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+        @summary Creates a forwarding rule for a listener.
+        
+        @description Take note of the following limits:
+        When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
+        If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
+        **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
+        If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
+        If a forwarding rule is in the **Available** state, the forwarding rule is created.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
+        Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+        Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
         
         @param request: CreateRuleRequest
         @return: CreateRuleResponse
@@ -1731,15 +1871,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateRulesResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
-        *   If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
-        *   **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
-        *   If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
-        *   If forwarding rules are in the **Available** state, the forwarding rules have been created.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
-        *   Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
-        *   Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
+        @summary Creates one or more forwarding rules at a time.
+        
+        @description When you call this operation, take note of the following limits:
+        When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
+        If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
+        **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+        If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
+        If forwarding rules are in the **Available** state, the forwarding rules have been created.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+        Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
+        Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
         
         @param request: CreateRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1780,15 +1922,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateRulesResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
-        *   If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
-        *   **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
-        *   If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
-        *   If forwarding rules are in the **Available** state, the forwarding rules have been created.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
-        *   Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
-        *   Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
+        @summary Creates one or more forwarding rules at a time.
+        
+        @description When you call this operation, take note of the following limits:
+        When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
+        If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
+        **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+        If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
+        If forwarding rules are in the **Available** state, the forwarding rules have been created.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+        Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
+        Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
         
         @param request: CreateRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1828,15 +1972,17 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateRulesRequest,
     ) -> alb_20200616_models.CreateRulesResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
-        *   If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
-        *   **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
-        *   If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
-        *   If forwarding rules are in the **Available** state, the forwarding rules have been created.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
-        *   Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
-        *   Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
+        @summary Creates one or more forwarding rules at a time.
+        
+        @description When you call this operation, take note of the following limits:
+        When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
+        If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
+        **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+        If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
+        If forwarding rules are in the **Available** state, the forwarding rules have been created.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+        Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
+        Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
         
         @param request: CreateRulesRequest
         @return: CreateRulesResponse
@@ -1849,15 +1995,17 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateRulesRequest,
     ) -> alb_20200616_models.CreateRulesResponse:
         """
-        When you call this operation, take note of the following limits:
-        *   When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
-        *   If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
-        *   **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
-        *   If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
-        *   If forwarding rules are in the **Available** state, the forwarding rules have been created.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
-        *   Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
-        *   Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
+        @summary Creates one or more forwarding rules at a time.
+        
+        @description When you call this operation, take note of the following limits:
+        When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
+        If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
+        **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+        If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
+        If forwarding rules are in the **Available** state, the forwarding rules have been created.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+        Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
+        Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
         
         @param request: CreateRulesRequest
         @return: CreateRulesResponse
@@ -1870,6 +2018,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateSecurityPolicyResponse:
+        """
+        @summary Creates a custom security policy in a region.
+        
+        @param request: CreateSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -1910,6 +2065,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateSecurityPolicyResponse:
+        """
+        @summary Creates a custom security policy in a region.
+        
+        @param request: CreateSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -1949,6 +2111,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.CreateSecurityPolicyRequest,
     ) -> alb_20200616_models.CreateSecurityPolicyResponse:
+        """
+        @summary Creates a custom security policy in a region.
+        
+        @param request: CreateSecurityPolicyRequest
+        @return: CreateSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_security_policy_with_options(request, runtime)
 
@@ -1956,6 +2124,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.CreateSecurityPolicyRequest,
     ) -> alb_20200616_models.CreateSecurityPolicyResponse:
+        """
+        @summary Creates a custom security policy in a region.
+        
+        @param request: CreateSecurityPolicyRequest
+        @return: CreateSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_security_policy_with_options_async(request, runtime)
 
@@ -1965,9 +2139,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         """
-        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
-        *   If a server group is in the **Creating** state, it indicates that the server group is being created.
-        *   If a server group is in the **Available** state, it indicates that the server group is created.
+        @summary Creates a server group in a region.
+        
+        @description *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) to query the status of a server group.
+        If a server group is in the **Creating** state, it indicates that the server group is being created.
+        If a server group is in the **Available** state, it indicates that the server group is created.
         
         @param request: CreateServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2032,9 +2208,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         """
-        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
-        *   If a server group is in the **Creating** state, it indicates that the server group is being created.
-        *   If a server group is in the **Available** state, it indicates that the server group is created.
+        @summary Creates a server group in a region.
+        
+        @description *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) to query the status of a server group.
+        If a server group is in the **Creating** state, it indicates that the server group is being created.
+        If a server group is in the **Available** state, it indicates that the server group is created.
         
         @param request: CreateServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2098,9 +2276,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateServerGroupRequest,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         """
-        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
-        *   If a server group is in the **Creating** state, it indicates that the server group is being created.
-        *   If a server group is in the **Available** state, it indicates that the server group is created.
+        @summary Creates a server group in a region.
+        
+        @description *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) to query the status of a server group.
+        If a server group is in the **Creating** state, it indicates that the server group is being created.
+        If a server group is in the **Available** state, it indicates that the server group is created.
         
         @param request: CreateServerGroupRequest
         @return: CreateServerGroupResponse
@@ -2113,9 +2293,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateServerGroupRequest,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         """
-        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
-        *   If a server group is in the **Creating** state, it indicates that the server group is being created.
-        *   If a server group is in the **Available** state, it indicates that the server group is created.
+        @summary Creates a server group in a region.
+        
+        @description *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) to query the status of a server group.
+        If a server group is in the **Creating** state, it indicates that the server group is being created.
+        If a server group is in the **Available** state, it indicates that the server group is created.
         
         @param request: CreateServerGroupRequest
         @return: CreateServerGroupResponse
@@ -2129,9 +2311,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteAScriptsResponse:
         """
-        *DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
-        *   If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
-        *   If an AScript rule cannot be found, the AScript rule is deleted.
+        @summary Deletes AScript rules.
+        
+        @description *DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+        If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
+        If an AScript rule cannot be found, the AScript rule is deleted.
         
         @param request: DeleteAScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2170,9 +2354,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteAScriptsResponse:
         """
-        *DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
-        *   If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
-        *   If an AScript rule cannot be found, the AScript rule is deleted.
+        @summary Deletes AScript rules.
+        
+        @description *DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+        If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
+        If an AScript rule cannot be found, the AScript rule is deleted.
         
         @param request: DeleteAScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2210,9 +2396,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteAScriptsRequest,
     ) -> alb_20200616_models.DeleteAScriptsResponse:
         """
-        *DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
-        *   If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
-        *   If an AScript rule cannot be found, the AScript rule is deleted.
+        @summary Deletes AScript rules.
+        
+        @description *DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+        If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
+        If an AScript rule cannot be found, the AScript rule is deleted.
         
         @param request: DeleteAScriptsRequest
         @return: DeleteAScriptsResponse
@@ -2225,9 +2413,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteAScriptsRequest,
     ) -> alb_20200616_models.DeleteAScriptsResponse:
         """
-        *DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
-        *   If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
-        *   If an AScript rule cannot be found, the AScript rule is deleted.
+        @summary Deletes AScript rules.
+        
+        @description *DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+        If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
+        If an AScript rule cannot be found, the AScript rule is deleted.
         
         @param request: DeleteAScriptsRequest
         @return: DeleteAScriptsResponse
@@ -2241,9 +2431,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteAclResponse:
         """
-        *DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
-        *   If the ACL is in the **Deleting** state, the ACL is being deleted.
-        *   If the ACL cannot be found, the ACL is deleted.
+        @summary Deletes an access control list (ACL).
+        
+        @description *DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of the task.
+        If the ACL is in the **Deleting** state, the ACL is being deleted.
+        If the ACL cannot be found, the ACL is deleted.
         
         @param request: DeleteAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2282,9 +2474,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteAclResponse:
         """
-        *DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
-        *   If the ACL is in the **Deleting** state, the ACL is being deleted.
-        *   If the ACL cannot be found, the ACL is deleted.
+        @summary Deletes an access control list (ACL).
+        
+        @description *DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of the task.
+        If the ACL is in the **Deleting** state, the ACL is being deleted.
+        If the ACL cannot be found, the ACL is deleted.
         
         @param request: DeleteAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2322,9 +2516,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteAclRequest,
     ) -> alb_20200616_models.DeleteAclResponse:
         """
-        *DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
-        *   If the ACL is in the **Deleting** state, the ACL is being deleted.
-        *   If the ACL cannot be found, the ACL is deleted.
+        @summary Deletes an access control list (ACL).
+        
+        @description *DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of the task.
+        If the ACL is in the **Deleting** state, the ACL is being deleted.
+        If the ACL cannot be found, the ACL is deleted.
         
         @param request: DeleteAclRequest
         @return: DeleteAclResponse
@@ -2337,9 +2533,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteAclRequest,
     ) -> alb_20200616_models.DeleteAclResponse:
         """
-        *DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
-        *   If the ACL is in the **Deleting** state, the ACL is being deleted.
-        *   If the ACL cannot be found, the ACL is deleted.
+        @summary Deletes an access control list (ACL).
+        
+        @description *DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of the task.
+        If the ACL is in the **Deleting** state, the ACL is being deleted.
+        If the ACL cannot be found, the ACL is deleted.
         
         @param request: DeleteAclRequest
         @return: DeleteAclResponse
@@ -2352,6 +2550,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteHealthCheckTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteHealthCheckTemplatesResponse:
+        """
+        @summary Deletes health check templates.
+        
+        @param request: DeleteHealthCheckTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHealthCheckTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2384,6 +2589,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteHealthCheckTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteHealthCheckTemplatesResponse:
+        """
+        @summary Deletes health check templates.
+        
+        @param request: DeleteHealthCheckTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHealthCheckTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2415,6 +2627,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DeleteHealthCheckTemplatesRequest,
     ) -> alb_20200616_models.DeleteHealthCheckTemplatesResponse:
+        """
+        @summary Deletes health check templates.
+        
+        @param request: DeleteHealthCheckTemplatesRequest
+        @return: DeleteHealthCheckTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_health_check_templates_with_options(request, runtime)
 
@@ -2422,6 +2640,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DeleteHealthCheckTemplatesRequest,
     ) -> alb_20200616_models.DeleteHealthCheckTemplatesResponse:
+        """
+        @summary Deletes health check templates.
+        
+        @param request: DeleteHealthCheckTemplatesRequest
+        @return: DeleteHealthCheckTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_health_check_templates_with_options_async(request, runtime)
 
@@ -2431,9 +2655,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteListenerResponse:
         """
-        *DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
-        *   If the listener is in the **Deleting** state, the listener is being deleted.
-        *   If the listener cannot be found, the listener is deleted.
+        @summary Deletes a listener.
+        
+        @description *DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+        If the listener is in the **Deleting** state, the listener is being deleted.
+        If the listener cannot be found, the listener is deleted.
         
         @param request: DeleteListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2472,9 +2698,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteListenerResponse:
         """
-        *DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
-        *   If the listener is in the **Deleting** state, the listener is being deleted.
-        *   If the listener cannot be found, the listener is deleted.
+        @summary Deletes a listener.
+        
+        @description *DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+        If the listener is in the **Deleting** state, the listener is being deleted.
+        If the listener cannot be found, the listener is deleted.
         
         @param request: DeleteListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2512,9 +2740,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteListenerRequest,
     ) -> alb_20200616_models.DeleteListenerResponse:
         """
-        *DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
-        *   If the listener is in the **Deleting** state, the listener is being deleted.
-        *   If the listener cannot be found, the listener is deleted.
+        @summary Deletes a listener.
+        
+        @description *DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+        If the listener is in the **Deleting** state, the listener is being deleted.
+        If the listener cannot be found, the listener is deleted.
         
         @param request: DeleteListenerRequest
         @return: DeleteListenerResponse
@@ -2527,9 +2757,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteListenerRequest,
     ) -> alb_20200616_models.DeleteListenerResponse:
         """
-        *DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
-        *   If the listener is in the **Deleting** state, the listener is being deleted.
-        *   If the listener cannot be found, the listener is deleted.
+        @summary Deletes a listener.
+        
+        @description *DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+        If the listener is in the **Deleting** state, the listener is being deleted.
+        If the listener cannot be found, the listener is deleted.
         
         @param request: DeleteListenerRequest
         @return: DeleteListenerResponse
@@ -2543,9 +2775,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteLoadBalancerResponse:
         """
-        *DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
-        *   If an ALB instance cannot be found, the ALB instance is deleted.
+        @summary Deletes an Application Load Balancer (ALB) instance.
+        
+        @description *DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
+        If an ALB instance cannot be found, the ALB instance is deleted.
         
         @param request: DeleteLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2584,9 +2818,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteLoadBalancerResponse:
         """
-        *DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
-        *   If an ALB instance cannot be found, the ALB instance is deleted.
+        @summary Deletes an Application Load Balancer (ALB) instance.
+        
+        @description *DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
+        If an ALB instance cannot be found, the ALB instance is deleted.
         
         @param request: DeleteLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2624,9 +2860,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteLoadBalancerRequest,
     ) -> alb_20200616_models.DeleteLoadBalancerResponse:
         """
-        *DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
-        *   If an ALB instance cannot be found, the ALB instance is deleted.
+        @summary Deletes an Application Load Balancer (ALB) instance.
+        
+        @description *DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
+        If an ALB instance cannot be found, the ALB instance is deleted.
         
         @param request: DeleteLoadBalancerRequest
         @return: DeleteLoadBalancerResponse
@@ -2639,9 +2877,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteLoadBalancerRequest,
     ) -> alb_20200616_models.DeleteLoadBalancerResponse:
         """
-        *DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
-        *   If an ALB instance cannot be found, the ALB instance is deleted.
+        @summary Deletes an Application Load Balancer (ALB) instance.
+        
+        @description *DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
+        If an ALB instance cannot be found, the ALB instance is deleted.
         
         @param request: DeleteLoadBalancerRequest
         @return: DeleteLoadBalancerResponse
@@ -2655,9 +2895,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteRuleResponse:
         """
-        *DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
-        *   If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
-        *   If the forwarding rule cannot be found, the forwarding rule is deleted.
+        @summary Deletes a forwarding rule.
+        
+        @description *DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+        If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
+        If the forwarding rule cannot be found, the forwarding rule is deleted.
         
         @param request: DeleteRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2696,9 +2938,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteRuleResponse:
         """
-        *DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
-        *   If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
-        *   If the forwarding rule cannot be found, the forwarding rule is deleted.
+        @summary Deletes a forwarding rule.
+        
+        @description *DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+        If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
+        If the forwarding rule cannot be found, the forwarding rule is deleted.
         
         @param request: DeleteRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2736,9 +2980,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteRuleRequest,
     ) -> alb_20200616_models.DeleteRuleResponse:
         """
-        *DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
-        *   If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
-        *   If the forwarding rule cannot be found, the forwarding rule is deleted.
+        @summary Deletes a forwarding rule.
+        
+        @description *DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+        If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
+        If the forwarding rule cannot be found, the forwarding rule is deleted.
         
         @param request: DeleteRuleRequest
         @return: DeleteRuleResponse
@@ -2751,9 +2997,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteRuleRequest,
     ) -> alb_20200616_models.DeleteRuleResponse:
         """
-        *DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
-        *   If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
-        *   If the forwarding rule cannot be found, the forwarding rule is deleted.
+        @summary Deletes a forwarding rule.
+        
+        @description *DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+        If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
+        If the forwarding rule cannot be found, the forwarding rule is deleted.
         
         @param request: DeleteRuleRequest
         @return: DeleteRuleResponse
@@ -2767,9 +3015,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteRulesResponse:
         """
-        *DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
-        *   If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
-        *   If the forwarding rules cannot be found, the forwarding rules are deleted.
+        @summary Deletes one or more forwarding rules from a listener at a time.
+        
+        @description *DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+        If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
+        If the forwarding rules cannot be found, the forwarding rules are deleted.
         
         @param request: DeleteRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2808,9 +3058,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteRulesResponse:
         """
-        *DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
-        *   If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
-        *   If the forwarding rules cannot be found, the forwarding rules are deleted.
+        @summary Deletes one or more forwarding rules from a listener at a time.
+        
+        @description *DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+        If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
+        If the forwarding rules cannot be found, the forwarding rules are deleted.
         
         @param request: DeleteRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2848,9 +3100,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteRulesRequest,
     ) -> alb_20200616_models.DeleteRulesResponse:
         """
-        *DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
-        *   If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
-        *   If the forwarding rules cannot be found, the forwarding rules are deleted.
+        @summary Deletes one or more forwarding rules from a listener at a time.
+        
+        @description *DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+        If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
+        If the forwarding rules cannot be found, the forwarding rules are deleted.
         
         @param request: DeleteRulesRequest
         @return: DeleteRulesResponse
@@ -2863,9 +3117,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteRulesRequest,
     ) -> alb_20200616_models.DeleteRulesResponse:
         """
-        *DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
-        *   If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
-        *   If the forwarding rules cannot be found, the forwarding rules are deleted.
+        @summary Deletes one or more forwarding rules from a listener at a time.
+        
+        @description *DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+        If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
+        If the forwarding rules cannot be found, the forwarding rules are deleted.
         
         @param request: DeleteRulesRequest
         @return: DeleteRulesResponse
@@ -2878,6 +3134,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteSecurityPolicyResponse:
+        """
+        @summary Deletes a custom security policy.
+        
+        @param request: DeleteSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2910,6 +3173,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteSecurityPolicyResponse:
+        """
+        @summary Deletes a custom security policy.
+        
+        @param request: DeleteSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2941,6 +3211,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DeleteSecurityPolicyRequest,
     ) -> alb_20200616_models.DeleteSecurityPolicyResponse:
+        """
+        @summary Deletes a custom security policy.
+        
+        @param request: DeleteSecurityPolicyRequest
+        @return: DeleteSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_security_policy_with_options(request, runtime)
 
@@ -2948,6 +3224,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DeleteSecurityPolicyRequest,
     ) -> alb_20200616_models.DeleteSecurityPolicyResponse:
+        """
+        @summary Deletes a custom security policy.
+        
+        @param request: DeleteSecurityPolicyRequest
+        @return: DeleteSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_policy_with_options_async(request, runtime)
 
@@ -2957,9 +3239,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteServerGroupResponse:
         """
-        *DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
-        *   If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
-        *   If a specified server group cannot be found, it indicates that the server group has been deleted.
+        @summary Deletes a server group.
+        
+        @description *DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of the task.
+        If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
+        If a specified server group cannot be found, it indicates that the server group has been deleted.
         
         @param request: DeleteServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2998,9 +3282,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DeleteServerGroupResponse:
         """
-        *DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
-        *   If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
-        *   If a specified server group cannot be found, it indicates that the server group has been deleted.
+        @summary Deletes a server group.
+        
+        @description *DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of the task.
+        If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
+        If a specified server group cannot be found, it indicates that the server group has been deleted.
         
         @param request: DeleteServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3038,9 +3324,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteServerGroupRequest,
     ) -> alb_20200616_models.DeleteServerGroupResponse:
         """
-        *DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
-        *   If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
-        *   If a specified server group cannot be found, it indicates that the server group has been deleted.
+        @summary Deletes a server group.
+        
+        @description *DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of the task.
+        If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
+        If a specified server group cannot be found, it indicates that the server group has been deleted.
         
         @param request: DeleteServerGroupRequest
         @return: DeleteServerGroupResponse
@@ -3053,9 +3341,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DeleteServerGroupRequest,
     ) -> alb_20200616_models.DeleteServerGroupResponse:
         """
-        *DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
-        *   If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
-        *   If a specified server group cannot be found, it indicates that the server group has been deleted.
+        @summary Deletes a server group.
+        
+        @description *DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of the task.
+        If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
+        If a specified server group cannot be found, it indicates that the server group has been deleted.
         
         @param request: DeleteServerGroupRequest
         @return: DeleteServerGroupResponse
@@ -3068,6 +3358,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3096,6 +3393,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3123,6 +3427,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DescribeRegionsRequest,
     ) -> alb_20200616_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -3130,6 +3440,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DescribeRegionsRequest,
     ) -> alb_20200616_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -3138,6 +3454,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3166,6 +3489,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3193,6 +3523,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DescribeZonesRequest,
     ) -> alb_20200616_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -3200,6 +3536,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DescribeZonesRequest,
     ) -> alb_20200616_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -3209,9 +3551,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         """
-        *DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214359~~) operation to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
-        *   If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
+        @summary Disassociates an elastic IP address (EIP) bandwidth plan from an Application Load Balancer (ALB) instance.
+        
+        @description *DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214359.html) operation to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
+        If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
         
         @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3254,9 +3598,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         """
-        *DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214359~~) operation to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
-        *   If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
+        @summary Disassociates an elastic IP address (EIP) bandwidth plan from an Application Load Balancer (ALB) instance.
+        
+        @description *DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214359.html) operation to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
+        If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
         
         @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3298,9 +3644,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
     ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         """
-        *DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214359~~) operation to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
-        *   If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
+        @summary Disassociates an elastic IP address (EIP) bandwidth plan from an Application Load Balancer (ALB) instance.
+        
+        @description *DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214359.html) operation to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
+        If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
         
         @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
         @return: DetachCommonBandwidthPackageFromLoadBalancerResponse
@@ -3313,9 +3661,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
     ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         """
-        *DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214359~~) operation to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
-        *   If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
+        @summary Disassociates an elastic IP address (EIP) bandwidth plan from an Application Load Balancer (ALB) instance.
+        
+        @description *DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214359.html) operation to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
+        If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
         
         @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
         @return: DetachCommonBandwidthPackageFromLoadBalancerResponse
@@ -3328,6 +3678,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DisableDeletionProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableDeletionProtectionResponse:
+        """
+        @summary Disables deletion protection for an Application Load Balancer (ALB) instance.
+        
+        @param request: DisableDeletionProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableDeletionProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3360,6 +3717,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DisableDeletionProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableDeletionProtectionResponse:
+        """
+        @summary Disables deletion protection for an Application Load Balancer (ALB) instance.
+        
+        @param request: DisableDeletionProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableDeletionProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3391,6 +3755,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DisableDeletionProtectionRequest,
     ) -> alb_20200616_models.DisableDeletionProtectionResponse:
+        """
+        @summary Disables deletion protection for an Application Load Balancer (ALB) instance.
+        
+        @param request: DisableDeletionProtectionRequest
+        @return: DisableDeletionProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_deletion_protection_with_options(request, runtime)
 
@@ -3398,6 +3768,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DisableDeletionProtectionRequest,
     ) -> alb_20200616_models.DisableDeletionProtectionResponse:
+        """
+        @summary Disables deletion protection for an Application Load Balancer (ALB) instance.
+        
+        @param request: DisableDeletionProtectionRequest
+        @return: DisableDeletionProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_deletion_protection_with_options_async(request, runtime)
 
@@ -3406,6 +3782,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DisableLoadBalancerAccessLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableLoadBalancerAccessLogResponse:
+        """
+        @summary Disables the access log feature for a Server Load Balancer (SLB) instance.
+        
+        @param request: DisableLoadBalancerAccessLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableLoadBalancerAccessLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3438,6 +3821,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DisableLoadBalancerAccessLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableLoadBalancerAccessLogResponse:
+        """
+        @summary Disables the access log feature for a Server Load Balancer (SLB) instance.
+        
+        @param request: DisableLoadBalancerAccessLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableLoadBalancerAccessLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3469,6 +3859,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DisableLoadBalancerAccessLogRequest,
     ) -> alb_20200616_models.DisableLoadBalancerAccessLogResponse:
+        """
+        @summary Disables the access log feature for a Server Load Balancer (SLB) instance.
+        
+        @param request: DisableLoadBalancerAccessLogRequest
+        @return: DisableLoadBalancerAccessLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_load_balancer_access_log_with_options(request, runtime)
 
@@ -3476,6 +3872,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.DisableLoadBalancerAccessLogRequest,
     ) -> alb_20200616_models.DisableLoadBalancerAccessLogResponse:
+        """
+        @summary Disables the access log feature for a Server Load Balancer (SLB) instance.
+        
+        @param request: DisableLoadBalancerAccessLogRequest
+        @return: DisableLoadBalancerAccessLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_load_balancer_access_log_with_options_async(request, runtime)
 
@@ -3485,16 +3887,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableLoadBalancerIpv6InternetResponse:
         """
-        ### Prerequisites
-        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
-        > If you set **AddressIpVersion** to **DualStack**:
-        *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
-        *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+        @summary Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from public to private.
+        
+        @description ### Prerequisites
+        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set *AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
+        > If you set *AddressIpVersion** to **DualStack**:
+        If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+        If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
         ### Description
-        *   After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
-        *   **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
-        *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
+        After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+        **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+        If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
         
         @param request: DisableLoadBalancerIpv6InternetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3533,16 +3937,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DisableLoadBalancerIpv6InternetResponse:
         """
-        ### Prerequisites
-        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
-        > If you set **AddressIpVersion** to **DualStack**:
-        *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
-        *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+        @summary Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from public to private.
+        
+        @description ### Prerequisites
+        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set *AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
+        > If you set *AddressIpVersion** to **DualStack**:
+        If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+        If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
         ### Description
-        *   After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
-        *   **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
-        *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
+        After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+        **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+        If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
         
         @param request: DisableLoadBalancerIpv6InternetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3580,16 +3986,18 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DisableLoadBalancerIpv6InternetRequest,
     ) -> alb_20200616_models.DisableLoadBalancerIpv6InternetResponse:
         """
-        ### Prerequisites
-        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
-        > If you set **AddressIpVersion** to **DualStack**:
-        *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
-        *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+        @summary Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from public to private.
+        
+        @description ### Prerequisites
+        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set *AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
+        > If you set *AddressIpVersion** to **DualStack**:
+        If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+        If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
         ### Description
-        *   After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
-        *   **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
-        *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
+        After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+        **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+        If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
         
         @param request: DisableLoadBalancerIpv6InternetRequest
         @return: DisableLoadBalancerIpv6InternetResponse
@@ -3602,16 +4010,18 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DisableLoadBalancerIpv6InternetRequest,
     ) -> alb_20200616_models.DisableLoadBalancerIpv6InternetResponse:
         """
-        ### Prerequisites
-        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
-        > If you set **AddressIpVersion** to **DualStack**:
-        *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
-        *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+        @summary Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from public to private.
+        
+        @description ### Prerequisites
+        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set *AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
+        > If you set *AddressIpVersion** to **DualStack**:
+        If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+        If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
         ### Description
-        *   After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
-        *   **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
-        *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
+        After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+        **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+        If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
         
         @param request: DisableLoadBalancerIpv6InternetRequest
         @return: DisableLoadBalancerIpv6InternetResponse
@@ -3625,9 +4035,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DissociateAclsFromListenerResponse:
         """
-        *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
-        *   If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
-        *   If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
+        @summary Disassociates access control lists (ACLs) from a listener.
+        
+        @description *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+        If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
+        If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
         
         @param request: DissociateAclsFromListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3668,9 +4080,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DissociateAclsFromListenerResponse:
         """
-        *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
-        *   If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
-        *   If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
+        @summary Disassociates access control lists (ACLs) from a listener.
+        
+        @description *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+        If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
+        If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
         
         @param request: DissociateAclsFromListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3710,9 +4124,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DissociateAclsFromListenerRequest,
     ) -> alb_20200616_models.DissociateAclsFromListenerResponse:
         """
-        *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
-        *   If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
-        *   If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
+        @summary Disassociates access control lists (ACLs) from a listener.
+        
+        @description *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+        If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
+        If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
         
         @param request: DissociateAclsFromListenerRequest
         @return: DissociateAclsFromListenerResponse
@@ -3725,9 +4141,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DissociateAclsFromListenerRequest,
     ) -> alb_20200616_models.DissociateAclsFromListenerResponse:
         """
-        *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
-        *   If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
-        *   If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
+        @summary Disassociates access control lists (ACLs) from a listener.
+        
+        @description *DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+        If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
+        If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
         
         @param request: DissociateAclsFromListenerRequest
         @return: DissociateAclsFromListenerResponse
@@ -3741,7 +4159,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse:
         """
-        *DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~214354~~) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        @summary Disassociates additional certificates from a listener.
+        
+        @description *DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/214354.html) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
         
         @param request: DissociateAdditionalCertificatesFromListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3782,7 +4202,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse:
         """
-        *DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~214354~~) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        @summary Disassociates additional certificates from a listener.
+        
+        @description *DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/214354.html) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
         
         @param request: DissociateAdditionalCertificatesFromListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3822,7 +4244,9 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DissociateAdditionalCertificatesFromListenerRequest,
     ) -> alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse:
         """
-        *DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~214354~~) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        @summary Disassociates additional certificates from a listener.
+        
+        @description *DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/214354.html) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
         
         @param request: DissociateAdditionalCertificatesFromListenerRequest
         @return: DissociateAdditionalCertificatesFromListenerResponse
@@ -3835,7 +4259,9 @@ class Client(OpenApiClient):
         request: alb_20200616_models.DissociateAdditionalCertificatesFromListenerRequest,
     ) -> alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse:
         """
-        *DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~214354~~) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        @summary Disassociates additional certificates from a listener.
+        
+        @description *DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/214354.html) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
         
         @param request: DissociateAdditionalCertificatesFromListenerRequest
         @return: DissociateAdditionalCertificatesFromListenerResponse
@@ -3848,6 +4274,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.EnableDeletionProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
+        """
+        @summary Enables deletion protection for a resource.
+        
+        @param request: EnableDeletionProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableDeletionProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3880,6 +4313,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.EnableDeletionProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
+        """
+        @summary Enables deletion protection for a resource.
+        
+        @param request: EnableDeletionProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableDeletionProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3911,6 +4351,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.EnableDeletionProtectionRequest,
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
+        """
+        @summary Enables deletion protection for a resource.
+        
+        @param request: EnableDeletionProtectionRequest
+        @return: EnableDeletionProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_deletion_protection_with_options(request, runtime)
 
@@ -3918,6 +4364,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.EnableDeletionProtectionRequest,
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
+        """
+        @summary Enables deletion protection for a resource.
+        
+        @param request: EnableDeletionProtectionRequest
+        @return: EnableDeletionProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_deletion_protection_with_options_async(request, runtime)
 
@@ -3926,6 +4378,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.EnableLoadBalancerAccessLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableLoadBalancerAccessLogResponse:
+        """
+        @summary Enables the access log feature for an Application Load Balancer (ALB) instance.
+        
+        @param request: EnableLoadBalancerAccessLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableLoadBalancerAccessLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3962,6 +4421,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.EnableLoadBalancerAccessLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableLoadBalancerAccessLogResponse:
+        """
+        @summary Enables the access log feature for an Application Load Balancer (ALB) instance.
+        
+        @param request: EnableLoadBalancerAccessLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableLoadBalancerAccessLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3997,6 +4463,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.EnableLoadBalancerAccessLogRequest,
     ) -> alb_20200616_models.EnableLoadBalancerAccessLogResponse:
+        """
+        @summary Enables the access log feature for an Application Load Balancer (ALB) instance.
+        
+        @param request: EnableLoadBalancerAccessLogRequest
+        @return: EnableLoadBalancerAccessLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_load_balancer_access_log_with_options(request, runtime)
 
@@ -4004,6 +4476,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.EnableLoadBalancerAccessLogRequest,
     ) -> alb_20200616_models.EnableLoadBalancerAccessLogResponse:
+        """
+        @summary Enables the access log feature for an Application Load Balancer (ALB) instance.
+        
+        @param request: EnableLoadBalancerAccessLogRequest
+        @return: EnableLoadBalancerAccessLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_load_balancer_access_log_with_options_async(request, runtime)
 
@@ -4013,16 +4491,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableLoadBalancerIpv6InternetResponse:
         """
-        ### Prerequisites
-        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
-        > If you set **AddressIpVersion** to **DualStack**:
-        *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
-        *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+        @summary Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from private to public.
+        
+        @description ### Prerequisites
+        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set *AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
+        > If you set *AddressIpVersion** to **DualStack**:
+        If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+        If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
         ### Description
-        *   After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
-        *   **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
-        *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
+        After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+        **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+        If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
         
         @param request: EnableLoadBalancerIpv6InternetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4061,16 +4541,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.EnableLoadBalancerIpv6InternetResponse:
         """
-        ### Prerequisites
-        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
-        > If you set **AddressIpVersion** to **DualStack**:
-        *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
-        *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+        @summary Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from private to public.
+        
+        @description ### Prerequisites
+        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set *AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
+        > If you set *AddressIpVersion** to **DualStack**:
+        If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+        If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
         ### Description
-        *   After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
-        *   **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
-        *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
+        After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+        **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+        If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
         
         @param request: EnableLoadBalancerIpv6InternetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4108,16 +4590,18 @@ class Client(OpenApiClient):
         request: alb_20200616_models.EnableLoadBalancerIpv6InternetRequest,
     ) -> alb_20200616_models.EnableLoadBalancerIpv6InternetResponse:
         """
-        ### Prerequisites
-        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
-        > If you set **AddressIpVersion** to **DualStack**:
-        *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
-        *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+        @summary Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from private to public.
+        
+        @description ### Prerequisites
+        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set *AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
+        > If you set *AddressIpVersion** to **DualStack**:
+        If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+        If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
         ### Description
-        *   After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
-        *   **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
-        *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
+        After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+        **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+        If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
         
         @param request: EnableLoadBalancerIpv6InternetRequest
         @return: EnableLoadBalancerIpv6InternetResponse
@@ -4130,16 +4614,18 @@ class Client(OpenApiClient):
         request: alb_20200616_models.EnableLoadBalancerIpv6InternetRequest,
     ) -> alb_20200616_models.EnableLoadBalancerIpv6InternetResponse:
         """
-        ### Prerequisites
-        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
-        > If you set **AddressIpVersion** to **DualStack**:
-        *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
-        *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+        @summary Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from private to public.
+        
+        @description ### Prerequisites
+        An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set *AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
+        > If you set *AddressIpVersion** to **DualStack**:
+        If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+        If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
         ### Description
-        *   After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
-        *   **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
-        *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
+        After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+        **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+        If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
         
         @param request: EnableLoadBalancerIpv6InternetRequest
         @return: EnableLoadBalancerIpv6InternetResponse
@@ -4152,6 +4638,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.GetHealthCheckTemplateAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetHealthCheckTemplateAttributeResponse:
+        """
+        @summary Queries the details about a health check template.
+        
+        @param request: GetHealthCheckTemplateAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHealthCheckTemplateAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.health_check_template_id):
@@ -4180,6 +4673,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.GetHealthCheckTemplateAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetHealthCheckTemplateAttributeResponse:
+        """
+        @summary Queries the details about a health check template.
+        
+        @param request: GetHealthCheckTemplateAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHealthCheckTemplateAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.health_check_template_id):
@@ -4207,6 +4707,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.GetHealthCheckTemplateAttributeRequest,
     ) -> alb_20200616_models.GetHealthCheckTemplateAttributeResponse:
+        """
+        @summary Queries the details about a health check template.
+        
+        @param request: GetHealthCheckTemplateAttributeRequest
+        @return: GetHealthCheckTemplateAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_health_check_template_attribute_with_options(request, runtime)
 
@@ -4214,6 +4720,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.GetHealthCheckTemplateAttributeRequest,
     ) -> alb_20200616_models.GetHealthCheckTemplateAttributeResponse:
+        """
+        @summary Queries the details about a health check template.
+        
+        @param request: GetHealthCheckTemplateAttributeRequest
+        @return: GetHealthCheckTemplateAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_health_check_template_attribute_with_options_async(request, runtime)
 
@@ -4222,6 +4734,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.GetListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetListenerAttributeResponse:
+        """
+        @summary Queries the details about a listener.
+        
+        @param request: GetListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_id):
@@ -4250,6 +4769,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.GetListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetListenerAttributeResponse:
+        """
+        @summary Queries the details about a listener.
+        
+        @param request: GetListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_id):
@@ -4277,6 +4803,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.GetListenerAttributeRequest,
     ) -> alb_20200616_models.GetListenerAttributeResponse:
+        """
+        @summary Queries the details about a listener.
+        
+        @param request: GetListenerAttributeRequest
+        @return: GetListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_listener_attribute_with_options(request, runtime)
 
@@ -4284,6 +4816,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.GetListenerAttributeRequest,
     ) -> alb_20200616_models.GetListenerAttributeResponse:
+        """
+        @summary Queries the details about a listener.
+        
+        @param request: GetListenerAttributeRequest
+        @return: GetListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_listener_attribute_with_options_async(request, runtime)
 
@@ -4292,6 +4830,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.GetListenerHealthStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetListenerHealthStatusResponse:
+        """
+        @summary Queries the health check status of a listener and its forwarding rules.
+        
+        @param request: GetListenerHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetListenerHealthStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_rule):
@@ -4326,6 +4871,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.GetListenerHealthStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetListenerHealthStatusResponse:
+        """
+        @summary Queries the health check status of a listener and its forwarding rules.
+        
+        @param request: GetListenerHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetListenerHealthStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_rule):
@@ -4359,6 +4911,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.GetListenerHealthStatusRequest,
     ) -> alb_20200616_models.GetListenerHealthStatusResponse:
+        """
+        @summary Queries the health check status of a listener and its forwarding rules.
+        
+        @param request: GetListenerHealthStatusRequest
+        @return: GetListenerHealthStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_listener_health_status_with_options(request, runtime)
 
@@ -4366,6 +4924,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.GetListenerHealthStatusRequest,
     ) -> alb_20200616_models.GetListenerHealthStatusResponse:
+        """
+        @summary Queries the health check status of a listener and its forwarding rules.
+        
+        @param request: GetListenerHealthStatusRequest
+        @return: GetListenerHealthStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_listener_health_status_with_options_async(request, runtime)
 
@@ -4374,6 +4938,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.GetLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetLoadBalancerAttributeResponse:
+        """
+        @summary Queries the details of an Application Load Balancer (ALB) instance.
+        
+        @param request: GetLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -4402,6 +4973,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.GetLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.GetLoadBalancerAttributeResponse:
+        """
+        @summary Queries the details of an Application Load Balancer (ALB) instance.
+        
+        @param request: GetLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -4429,6 +5007,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.GetLoadBalancerAttributeRequest,
     ) -> alb_20200616_models.GetLoadBalancerAttributeResponse:
+        """
+        @summary Queries the details of an Application Load Balancer (ALB) instance.
+        
+        @param request: GetLoadBalancerAttributeRequest
+        @return: GetLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_load_balancer_attribute_with_options(request, runtime)
 
@@ -4436,6 +5020,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.GetLoadBalancerAttributeRequest,
     ) -> alb_20200616_models.GetLoadBalancerAttributeResponse:
+        """
+        @summary Queries the details of an Application Load Balancer (ALB) instance.
+        
+        @param request: GetLoadBalancerAttributeRequest
+        @return: GetLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_load_balancer_attribute_with_options_async(request, runtime)
 
@@ -4444,6 +5034,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAScriptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAScriptsResponse:
+        """
+        @summary Queries AScript rules.
+        
+        @param request: ListAScriptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAScriptsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ascript_ids):
@@ -4480,6 +5077,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAScriptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAScriptsResponse:
+        """
+        @summary Queries AScript rules.
+        
+        @param request: ListAScriptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAScriptsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ascript_ids):
@@ -4515,6 +5119,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAScriptsRequest,
     ) -> alb_20200616_models.ListAScriptsResponse:
+        """
+        @summary Queries AScript rules.
+        
+        @param request: ListAScriptsRequest
+        @return: ListAScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ascripts_with_options(request, runtime)
 
@@ -4522,6 +5132,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAScriptsRequest,
     ) -> alb_20200616_models.ListAScriptsResponse:
+        """
+        @summary Queries AScript rules.
+        
+        @param request: ListAScriptsRequest
+        @return: ListAScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ascripts_with_options_async(request, runtime)
 
@@ -4530,6 +5146,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAclEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclEntriesResponse:
+        """
+        @summary Queries the entries of an access control list (ACL).
+        
+        @param request: ListAclEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAclEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -4562,6 +5185,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAclEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclEntriesResponse:
+        """
+        @summary Queries the entries of an access control list (ACL).
+        
+        @param request: ListAclEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAclEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -4593,6 +5223,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAclEntriesRequest,
     ) -> alb_20200616_models.ListAclEntriesResponse:
+        """
+        @summary Queries the entries of an access control list (ACL).
+        
+        @param request: ListAclEntriesRequest
+        @return: ListAclEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_acl_entries_with_options(request, runtime)
 
@@ -4600,6 +5236,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAclEntriesRequest,
     ) -> alb_20200616_models.ListAclEntriesResponse:
+        """
+        @summary Queries the entries of an access control list (ACL).
+        
+        @param request: ListAclEntriesRequest
+        @return: ListAclEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_acl_entries_with_options_async(request, runtime)
 
@@ -4608,6 +5250,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAclRelationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclRelationsResponse:
+        """
+        @summary Queries the listeners that are associated with access control lists (ACLs).
+        
+        @param request: ListAclRelationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAclRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_ids):
@@ -4636,6 +5285,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAclRelationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclRelationsResponse:
+        """
+        @summary Queries the listeners that are associated with access control lists (ACLs).
+        
+        @param request: ListAclRelationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAclRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_ids):
@@ -4663,6 +5319,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAclRelationsRequest,
     ) -> alb_20200616_models.ListAclRelationsResponse:
+        """
+        @summary Queries the listeners that are associated with access control lists (ACLs).
+        
+        @param request: ListAclRelationsRequest
+        @return: ListAclRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_acl_relations_with_options(request, runtime)
 
@@ -4670,6 +5332,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAclRelationsRequest,
     ) -> alb_20200616_models.ListAclRelationsResponse:
+        """
+        @summary Queries the listeners that are associated with access control lists (ACLs).
+        
+        @param request: ListAclRelationsRequest
+        @return: ListAclRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_acl_relations_with_options_async(request, runtime)
 
@@ -4678,6 +5346,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAclsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclsResponse:
+        """
+        @summary Queries the access control lists (ACLs) in a region.
+        
+        @param request: ListAclsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAclsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_ids):
@@ -4716,6 +5391,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAclsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAclsResponse:
+        """
+        @summary Queries the access control lists (ACLs) in a region.
+        
+        @param request: ListAclsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAclsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_ids):
@@ -4753,6 +5435,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAclsRequest,
     ) -> alb_20200616_models.ListAclsResponse:
+        """
+        @summary Queries the access control lists (ACLs) in a region.
+        
+        @param request: ListAclsRequest
+        @return: ListAclsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_acls_with_options(request, runtime)
 
@@ -4760,6 +5448,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAclsRequest,
     ) -> alb_20200616_models.ListAclsResponse:
+        """
+        @summary Queries the access control lists (ACLs) in a region.
+        
+        @param request: ListAclsRequest
+        @return: ListAclsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_acls_with_options_async(request, runtime)
 
@@ -4768,6 +5462,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAsynJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAsynJobsResponse:
+        """
+        @summary Queries asynchronous tasks in a region.
+        
+        @param request: ListAsynJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAsynJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -4810,6 +5511,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListAsynJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListAsynJobsResponse:
+        """
+        @summary Queries asynchronous tasks in a region.
+        
+        @param request: ListAsynJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAsynJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -4851,6 +5559,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAsynJobsRequest,
     ) -> alb_20200616_models.ListAsynJobsResponse:
+        """
+        @summary Queries asynchronous tasks in a region.
+        
+        @param request: ListAsynJobsRequest
+        @return: ListAsynJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_asyn_jobs_with_options(request, runtime)
 
@@ -4858,6 +5572,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListAsynJobsRequest,
     ) -> alb_20200616_models.ListAsynJobsResponse:
+        """
+        @summary Queries asynchronous tasks in a region.
+        
+        @param request: ListAsynJobsRequest
+        @return: ListAsynJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_asyn_jobs_with_options_async(request, runtime)
 
@@ -4866,6 +5586,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListHealthCheckTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListHealthCheckTemplatesResponse:
+        """
+        @summary Queries health check templates in a region.
+        
+        @param request: ListHealthCheckTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHealthCheckTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.health_check_template_ids):
@@ -4902,6 +5629,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListHealthCheckTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListHealthCheckTemplatesResponse:
+        """
+        @summary Queries health check templates in a region.
+        
+        @param request: ListHealthCheckTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHealthCheckTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.health_check_template_ids):
@@ -4937,6 +5671,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListHealthCheckTemplatesRequest,
     ) -> alb_20200616_models.ListHealthCheckTemplatesResponse:
+        """
+        @summary Queries health check templates in a region.
+        
+        @param request: ListHealthCheckTemplatesRequest
+        @return: ListHealthCheckTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_health_check_templates_with_options(request, runtime)
 
@@ -4944,6 +5684,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListHealthCheckTemplatesRequest,
     ) -> alb_20200616_models.ListHealthCheckTemplatesResponse:
+        """
+        @summary Queries health check templates in a region.
+        
+        @param request: ListHealthCheckTemplatesRequest
+        @return: ListHealthCheckTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_health_check_templates_with_options_async(request, runtime)
 
@@ -4952,8 +5698,17 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListListenerCertificatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListListenerCertificatesResponse:
+        """
+        @summary Queries the certificates that are associated with a listener, including additional certificates and the default certificate.
+        
+        @param request: ListListenerCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenerCertificatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.certificate_ids):
+            query['CertificateIds'] = request.certificate_ids
         if not UtilClient.is_unset(request.certificate_type):
             query['CertificateType'] = request.certificate_type
         if not UtilClient.is_unset(request.listener_id):
@@ -4986,8 +5741,17 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListListenerCertificatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListListenerCertificatesResponse:
+        """
+        @summary Queries the certificates that are associated with a listener, including additional certificates and the default certificate.
+        
+        @param request: ListListenerCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenerCertificatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.certificate_ids):
+            query['CertificateIds'] = request.certificate_ids
         if not UtilClient.is_unset(request.certificate_type):
             query['CertificateType'] = request.certificate_type
         if not UtilClient.is_unset(request.listener_id):
@@ -5019,6 +5783,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListListenerCertificatesRequest,
     ) -> alb_20200616_models.ListListenerCertificatesResponse:
+        """
+        @summary Queries the certificates that are associated with a listener, including additional certificates and the default certificate.
+        
+        @param request: ListListenerCertificatesRequest
+        @return: ListListenerCertificatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_listener_certificates_with_options(request, runtime)
 
@@ -5026,6 +5796,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListListenerCertificatesRequest,
     ) -> alb_20200616_models.ListListenerCertificatesResponse:
+        """
+        @summary Queries the certificates that are associated with a listener, including additional certificates and the default certificate.
+        
+        @param request: ListListenerCertificatesRequest
+        @return: ListListenerCertificatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_listener_certificates_with_options_async(request, runtime)
 
@@ -5034,6 +5810,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListListenersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListListenersResponse:
+        """
+        @summary Queries the listeners in a region.
+        
+        @param request: ListListenersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_ids):
@@ -5072,6 +5855,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListListenersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListListenersResponse:
+        """
+        @summary Queries the listeners in a region.
+        
+        @param request: ListListenersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_ids):
@@ -5109,6 +5899,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListListenersRequest,
     ) -> alb_20200616_models.ListListenersResponse:
+        """
+        @summary Queries the listeners in a region.
+        
+        @param request: ListListenersRequest
+        @return: ListListenersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_listeners_with_options(request, runtime)
 
@@ -5116,6 +5912,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListListenersRequest,
     ) -> alb_20200616_models.ListListenersResponse:
+        """
+        @summary Queries the listeners in a region.
+        
+        @param request: ListListenersRequest
+        @return: ListListenersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_listeners_with_options_async(request, runtime)
 
@@ -5124,6 +5926,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListLoadBalancersResponse:
+        """
+        @summary Queries Application Load Balancer (ALB) instances in a region based on filter conditions.
+        
+        @param request: ListLoadBalancersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLoadBalancersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_ip_version):
@@ -5180,6 +5989,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListLoadBalancersResponse:
+        """
+        @summary Queries Application Load Balancer (ALB) instances in a region based on filter conditions.
+        
+        @param request: ListLoadBalancersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLoadBalancersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_ip_version):
@@ -5235,6 +6051,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListLoadBalancersRequest,
     ) -> alb_20200616_models.ListLoadBalancersResponse:
+        """
+        @summary Queries Application Load Balancer (ALB) instances in a region based on filter conditions.
+        
+        @param request: ListLoadBalancersRequest
+        @return: ListLoadBalancersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_load_balancers_with_options(request, runtime)
 
@@ -5242,6 +6064,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListLoadBalancersRequest,
     ) -> alb_20200616_models.ListLoadBalancersResponse:
+        """
+        @summary Queries Application Load Balancer (ALB) instances in a region based on filter conditions.
+        
+        @param request: ListLoadBalancersRequest
+        @return: ListLoadBalancersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_load_balancers_with_options_async(request, runtime)
 
@@ -5250,6 +6078,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListRulesResponse:
+        """
+        @summary Queries the forwarding rules in a region.
+        
+        @param request: ListRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -5290,6 +6125,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListRulesResponse:
+        """
+        @summary Queries the forwarding rules in a region.
+        
+        @param request: ListRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -5329,6 +6171,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListRulesRequest,
     ) -> alb_20200616_models.ListRulesResponse:
+        """
+        @summary Queries the forwarding rules in a region.
+        
+        @param request: ListRulesRequest
+        @return: ListRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_rules_with_options(request, runtime)
 
@@ -5336,6 +6184,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListRulesRequest,
     ) -> alb_20200616_models.ListRulesResponse:
+        """
+        @summary Queries the forwarding rules in a region.
+        
+        @param request: ListRulesRequest
+        @return: ListRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_rules_with_options_async(request, runtime)
 
@@ -5344,6 +6198,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListSecurityPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSecurityPoliciesResponse:
+        """
+        @summary Queries custom security policies in a region.
+        
+        @param request: ListSecurityPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5382,6 +6243,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListSecurityPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSecurityPoliciesResponse:
+        """
+        @summary Queries custom security policies in a region.
+        
+        @param request: ListSecurityPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5419,6 +6287,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListSecurityPoliciesRequest,
     ) -> alb_20200616_models.ListSecurityPoliciesResponse:
+        """
+        @summary Queries custom security policies in a region.
+        
+        @param request: ListSecurityPoliciesRequest
+        @return: ListSecurityPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_security_policies_with_options(request, runtime)
 
@@ -5426,6 +6300,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListSecurityPoliciesRequest,
     ) -> alb_20200616_models.ListSecurityPoliciesResponse:
+        """
+        @summary Queries custom security policies in a region.
+        
+        @param request: ListSecurityPoliciesRequest
+        @return: ListSecurityPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_security_policies_with_options_async(request, runtime)
 
@@ -5434,6 +6314,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListSecurityPolicyRelationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSecurityPolicyRelationsResponse:
+        """
+        @summary Queries the listeners that are associated with security policies.
+        
+        @param request: ListSecurityPolicyRelationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityPolicyRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.security_policy_ids):
@@ -5462,6 +6349,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListSecurityPolicyRelationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSecurityPolicyRelationsResponse:
+        """
+        @summary Queries the listeners that are associated with security policies.
+        
+        @param request: ListSecurityPolicyRelationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityPolicyRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.security_policy_ids):
@@ -5489,6 +6383,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListSecurityPolicyRelationsRequest,
     ) -> alb_20200616_models.ListSecurityPolicyRelationsResponse:
+        """
+        @summary Queries the listeners that are associated with security policies.
+        
+        @param request: ListSecurityPolicyRelationsRequest
+        @return: ListSecurityPolicyRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_security_policy_relations_with_options(request, runtime)
 
@@ -5496,6 +6396,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListSecurityPolicyRelationsRequest,
     ) -> alb_20200616_models.ListSecurityPolicyRelationsResponse:
+        """
+        @summary Queries the listeners that are associated with security policies.
+        
+        @param request: ListSecurityPolicyRelationsRequest
+        @return: ListSecurityPolicyRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_security_policy_relations_with_options_async(request, runtime)
 
@@ -5504,6 +6410,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListServerGroupServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListServerGroupServersResponse:
+        """
+        @summary Queries servers in a server group.
+        
+        @param request: ListServerGroupServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerGroupServersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5540,6 +6453,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListServerGroupServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListServerGroupServersResponse:
+        """
+        @summary Queries servers in a server group.
+        
+        @param request: ListServerGroupServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerGroupServersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5575,6 +6495,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListServerGroupServersRequest,
     ) -> alb_20200616_models.ListServerGroupServersResponse:
+        """
+        @summary Queries servers in a server group.
+        
+        @param request: ListServerGroupServersRequest
+        @return: ListServerGroupServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_server_group_servers_with_options(request, runtime)
 
@@ -5582,6 +6508,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListServerGroupServersRequest,
     ) -> alb_20200616_models.ListServerGroupServersResponse:
+        """
+        @summary Queries servers in a server group.
+        
+        @param request: ListServerGroupServersRequest
+        @return: ListServerGroupServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_server_group_servers_with_options_async(request, runtime)
 
@@ -5590,6 +6522,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListServerGroupsResponse:
+        """
+        @summary Queries server groups in a region.
+        
+        @param request: ListServerGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5632,6 +6571,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListServerGroupsResponse:
+        """
+        @summary Queries server groups in a region.
+        
+        @param request: ListServerGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5673,6 +6619,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListServerGroupsRequest,
     ) -> alb_20200616_models.ListServerGroupsResponse:
+        """
+        @summary Queries server groups in a region.
+        
+        @param request: ListServerGroupsRequest
+        @return: ListServerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_server_groups_with_options(request, runtime)
 
@@ -5680,6 +6632,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListServerGroupsRequest,
     ) -> alb_20200616_models.ListServerGroupsResponse:
+        """
+        @summary Queries server groups in a region.
+        
+        @param request: ListServerGroupsRequest
+        @return: ListServerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_server_groups_with_options_async(request, runtime)
 
@@ -5687,6 +6645,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSystemSecurityPoliciesResponse:
+        """
+        @summary Queries system security policies in a region.
+        
+        @param request: ListSystemSecurityPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSystemSecurityPoliciesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListSystemSecurityPolicies',
@@ -5708,6 +6673,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListSystemSecurityPoliciesResponse:
+        """
+        @summary Queries system security policies in a region.
+        
+        @param request: ListSystemSecurityPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSystemSecurityPoliciesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListSystemSecurityPolicies',
@@ -5726,10 +6698,20 @@ class Client(OpenApiClient):
         )
 
     def list_system_security_policies(self) -> alb_20200616_models.ListSystemSecurityPoliciesResponse:
+        """
+        @summary Queries system security policies in a region.
+        
+        @return: ListSystemSecurityPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_system_security_policies_with_options(runtime)
 
     async def list_system_security_policies_async(self) -> alb_20200616_models.ListSystemSecurityPoliciesResponse:
+        """
+        @summary Queries system security policies in a region.
+        
+        @return: ListSystemSecurityPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_system_security_policies_with_options_async(runtime)
 
@@ -5738,6 +6720,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagKeysResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -5774,6 +6763,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagKeysResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -5809,6 +6805,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListTagKeysRequest,
     ) -> alb_20200616_models.ListTagKeysResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_keys_with_options(request, runtime)
 
@@ -5816,6 +6818,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListTagKeysRequest,
     ) -> alb_20200616_models.ListTagKeysResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_keys_with_options_async(request, runtime)
 
@@ -5824,6 +6832,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of resources.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5860,6 +6875,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of resources.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5895,6 +6917,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListTagResourcesRequest,
     ) -> alb_20200616_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -5902,6 +6930,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListTagResourcesRequest,
     ) -> alb_20200616_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -5910,6 +6944,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagValuesResponse:
+        """
+        @summary Queries tag values.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5946,6 +6987,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ListTagValuesResponse:
+        """
+        @summary Queries tag values.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5981,6 +7029,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListTagValuesRequest,
     ) -> alb_20200616_models.ListTagValuesResponse:
+        """
+        @summary Queries tag values.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_values_with_options(request, runtime)
 
@@ -5988,6 +7042,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.ListTagValuesRequest,
     ) -> alb_20200616_models.ListTagValuesResponse:
+        """
+        @summary Queries tag values.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
@@ -5996,6 +7056,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a resource to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -6028,6 +7095,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a resource to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -6059,6 +7133,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.MoveResourceGroupRequest,
     ) -> alb_20200616_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a resource to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
@@ -6066,6 +7146,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.MoveResourceGroupRequest,
     ) -> alb_20200616_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a resource to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
@@ -6075,9 +7161,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.RemoveEntriesFromAclResponse:
         """
-        *RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
-        *   If an ACL is in the **Removing** state, the entries are being removed.
-        *   If an ACL cannot be found, the entries are removed.
+        @summary Removes entries from an access control list (ACL).
+        
+        @description *RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+        If an ACL is in the **Removing** state, the entries are being removed.
+        If an ACL cannot be found, the entries are removed.
         
         @param request: RemoveEntriesFromAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6118,9 +7206,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.RemoveEntriesFromAclResponse:
         """
-        *RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
-        *   If an ACL is in the **Removing** state, the entries are being removed.
-        *   If an ACL cannot be found, the entries are removed.
+        @summary Removes entries from an access control list (ACL).
+        
+        @description *RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+        If an ACL is in the **Removing** state, the entries are being removed.
+        If an ACL cannot be found, the entries are removed.
         
         @param request: RemoveEntriesFromAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6160,9 +7250,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.RemoveEntriesFromAclRequest,
     ) -> alb_20200616_models.RemoveEntriesFromAclResponse:
         """
-        *RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
-        *   If an ACL is in the **Removing** state, the entries are being removed.
-        *   If an ACL cannot be found, the entries are removed.
+        @summary Removes entries from an access control list (ACL).
+        
+        @description *RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+        If an ACL is in the **Removing** state, the entries are being removed.
+        If an ACL cannot be found, the entries are removed.
         
         @param request: RemoveEntriesFromAclRequest
         @return: RemoveEntriesFromAclResponse
@@ -6175,9 +7267,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.RemoveEntriesFromAclRequest,
     ) -> alb_20200616_models.RemoveEntriesFromAclResponse:
         """
-        *RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
-        *   If an ACL is in the **Removing** state, the entries are being removed.
-        *   If an ACL cannot be found, the entries are removed.
+        @summary Removes entries from an access control list (ACL).
+        
+        @description *RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+        If an ACL is in the **Removing** state, the entries are being removed.
+        If an ACL cannot be found, the entries are removed.
         
         @param request: RemoveEntriesFromAclRequest
         @return: RemoveEntriesFromAclResponse
@@ -6191,13 +7285,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         """
-        *RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Removing** state, the server is being removed from the server group.
-        *   If a backend server cannot be found, the server is no longer in the server group.
+        @summary Removes backend servers from a server group.
+        
+        @description *RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Removing** state, the server is being removed from the server group.
+        If a backend server cannot be found, the server is no longer in the server group.
         
         @param request: RemoveServersFromServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6238,13 +7334,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         """
-        *RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Removing** state, the server is being removed from the server group.
-        *   If a backend server cannot be found, the server is no longer in the server group.
+        @summary Removes backend servers from a server group.
+        
+        @description *RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Removing** state, the server is being removed from the server group.
+        If a backend server cannot be found, the server is no longer in the server group.
         
         @param request: RemoveServersFromServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6284,13 +7382,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.RemoveServersFromServerGroupRequest,
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         """
-        *RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Removing** state, the server is being removed from the server group.
-        *   If a backend server cannot be found, the server is no longer in the server group.
+        @summary Removes backend servers from a server group.
+        
+        @description *RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Removing** state, the server is being removed from the server group.
+        If a backend server cannot be found, the server is no longer in the server group.
         
         @param request: RemoveServersFromServerGroupRequest
         @return: RemoveServersFromServerGroupResponse
@@ -6303,13 +7403,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.RemoveServersFromServerGroupRequest,
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         """
-        *RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Removing** state, the server is being removed from the server group.
-        *   If a backend server cannot be found, the server is no longer in the server group.
+        @summary Removes backend servers from a server group.
+        
+        @description *RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Removing** state, the server is being removed from the server group.
+        If a backend server cannot be found, the server is no longer in the server group.
         
         @param request: RemoveServersFromServerGroupRequest
         @return: RemoveServersFromServerGroupResponse
@@ -6323,13 +7425,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
         """
-        *ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
-        *   If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
+        @summary Replaces backend servers in a server group.
+        
+        @description *ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
+        If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
         
         @param request: ReplaceServersInServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6372,13 +7476,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
         """
-        *ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
-        *   If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
+        @summary Replaces backend servers in a server group.
+        
+        @description *ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
+        If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
         
         @param request: ReplaceServersInServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6420,13 +7526,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ReplaceServersInServerGroupRequest,
     ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
         """
-        *ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
-        *   If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
+        @summary Replaces backend servers in a server group.
+        
+        @description *ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
+        If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
         
         @param request: ReplaceServersInServerGroupRequest
         @return: ReplaceServersInServerGroupResponse
@@ -6439,13 +7547,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.ReplaceServersInServerGroupRequest,
     ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
         """
-        *ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
-        *   If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
+        @summary Replaces backend servers in a server group.
+        
+        @description *ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
+        If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
         
         @param request: ReplaceServersInServerGroupRequest
         @return: ReplaceServersInServerGroupResponse
@@ -6459,9 +7569,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StartListenerResponse:
         """
-        *StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
-        *   If a listener is in the **Configuring** state, the listener is being enabled.
-        *   If a listener is in the **Running** state, the listener is enabled.
+        @summary Enables a listener.
+        
+        @description *StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+        If a listener is in the **Configuring** state, the listener is being enabled.
+        If a listener is in the **Running** state, the listener is enabled.
         
         @param request: StartListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6500,9 +7612,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StartListenerResponse:
         """
-        *StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
-        *   If a listener is in the **Configuring** state, the listener is being enabled.
-        *   If a listener is in the **Running** state, the listener is enabled.
+        @summary Enables a listener.
+        
+        @description *StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+        If a listener is in the **Configuring** state, the listener is being enabled.
+        If a listener is in the **Running** state, the listener is enabled.
         
         @param request: StartListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6540,9 +7654,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.StartListenerRequest,
     ) -> alb_20200616_models.StartListenerResponse:
         """
-        *StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
-        *   If a listener is in the **Configuring** state, the listener is being enabled.
-        *   If a listener is in the **Running** state, the listener is enabled.
+        @summary Enables a listener.
+        
+        @description *StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+        If a listener is in the **Configuring** state, the listener is being enabled.
+        If a listener is in the **Running** state, the listener is enabled.
         
         @param request: StartListenerRequest
         @return: StartListenerResponse
@@ -6555,9 +7671,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.StartListenerRequest,
     ) -> alb_20200616_models.StartListenerResponse:
         """
-        *StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
-        *   If a listener is in the **Configuring** state, the listener is being enabled.
-        *   If a listener is in the **Running** state, the listener is enabled.
+        @summary Enables a listener.
+        
+        @description *StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+        If a listener is in the **Configuring** state, the listener is being enabled.
+        If a listener is in the **Running** state, the listener is enabled.
         
         @param request: StartListenerRequest
         @return: StartListenerResponse
@@ -6571,7 +7689,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
         """
-        This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        
+        @description This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6612,7 +7732,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
         """
-        This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        
+        @description This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6652,7 +7774,9 @@ class Client(OpenApiClient):
         request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
     ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
         """
-        This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        
+        @description This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @return: StartShiftLoadBalancerZonesResponse
@@ -6665,7 +7789,9 @@ class Client(OpenApiClient):
         request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
     ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
         """
-        This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        
+        @description This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @return: StartShiftLoadBalancerZonesResponse
@@ -6679,9 +7805,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StopListenerResponse:
         """
-        *StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
-        *   If a listener is in the **Configuring** state, the listener is being disabled.
-        *   If a listener is in the **Stopped** state, the listener is disabled.
+        @summary Disables a listener.
+        
+        @description *StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+        If a listener is in the **Configuring** state, the listener is being disabled.
+        If a listener is in the **Stopped** state, the listener is disabled.
         
         @param request: StopListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6720,9 +7848,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StopListenerResponse:
         """
-        *StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
-        *   If a listener is in the **Configuring** state, the listener is being disabled.
-        *   If a listener is in the **Stopped** state, the listener is disabled.
+        @summary Disables a listener.
+        
+        @description *StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+        If a listener is in the **Configuring** state, the listener is being disabled.
+        If a listener is in the **Stopped** state, the listener is disabled.
         
         @param request: StopListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6760,9 +7890,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.StopListenerRequest,
     ) -> alb_20200616_models.StopListenerResponse:
         """
-        *StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
-        *   If a listener is in the **Configuring** state, the listener is being disabled.
-        *   If a listener is in the **Stopped** state, the listener is disabled.
+        @summary Disables a listener.
+        
+        @description *StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+        If a listener is in the **Configuring** state, the listener is being disabled.
+        If a listener is in the **Stopped** state, the listener is disabled.
         
         @param request: StopListenerRequest
         @return: StopListenerResponse
@@ -6775,9 +7907,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.StopListenerRequest,
     ) -> alb_20200616_models.StopListenerResponse:
         """
-        *StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
-        *   If a listener is in the **Configuring** state, the listener is being disabled.
-        *   If a listener is in the **Stopped** state, the listener is disabled.
+        @summary Disables a listener.
+        
+        @description *StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+        If a listener is in the **Configuring** state, the listener is being disabled.
+        If a listener is in the **Stopped** state, the listener is disabled.
         
         @param request: StopListenerRequest
         @return: StopListenerResponse
@@ -6790,6 +7924,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -6822,6 +7963,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -6853,6 +8001,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.TagResourcesRequest,
     ) -> alb_20200616_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -6860,6 +8014,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.TagResourcesRequest,
     ) -> alb_20200616_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -6868,6 +8028,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UnTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -6904,6 +8071,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UnTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -6939,6 +8113,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.UnTagResourcesRequest,
     ) -> alb_20200616_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.un_tag_resources_with_options(request, runtime)
 
@@ -6946,6 +8126,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.UnTagResourcesRequest,
     ) -> alb_20200616_models.UnTagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.un_tag_resources_with_options_async(request, runtime)
 
@@ -6955,10 +8141,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateAScriptsResponse:
         """
-        **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task.
-        *   If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
-        *   If an AScript rule is in the **Available** state, the AScript rule is updated.
-        *   In the following table, the maximum value of **N** is **4**.
+        @summary Updates AScript rules.
+        
+        @description    **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task.
+        If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
+        If an AScript rule is in the **Available** state, the AScript rule is updated.
+        In the following table, the maximum value of **N** is **4**.
         
         @param request: UpdateAScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6997,10 +8185,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateAScriptsResponse:
         """
-        **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task.
-        *   If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
-        *   If an AScript rule is in the **Available** state, the AScript rule is updated.
-        *   In the following table, the maximum value of **N** is **4**.
+        @summary Updates AScript rules.
+        
+        @description    **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task.
+        If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
+        If an AScript rule is in the **Available** state, the AScript rule is updated.
+        In the following table, the maximum value of **N** is **4**.
         
         @param request: UpdateAScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7038,10 +8228,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateAScriptsRequest,
     ) -> alb_20200616_models.UpdateAScriptsResponse:
         """
-        **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task.
-        *   If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
-        *   If an AScript rule is in the **Available** state, the AScript rule is updated.
-        *   In the following table, the maximum value of **N** is **4**.
+        @summary Updates AScript rules.
+        
+        @description    **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task.
+        If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
+        If an AScript rule is in the **Available** state, the AScript rule is updated.
+        In the following table, the maximum value of **N** is **4**.
         
         @param request: UpdateAScriptsRequest
         @return: UpdateAScriptsResponse
@@ -7054,10 +8246,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateAScriptsRequest,
     ) -> alb_20200616_models.UpdateAScriptsResponse:
         """
-        **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task.
-        *   If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
-        *   If an AScript rule is in the **Available** state, the AScript rule is updated.
-        *   In the following table, the maximum value of **N** is **4**.
+        @summary Updates AScript rules.
+        
+        @description    **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task.
+        If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
+        If an AScript rule is in the **Available** state, the AScript rule is updated.
+        In the following table, the maximum value of **N** is **4**.
         
         @param request: UpdateAScriptsRequest
         @return: UpdateAScriptsResponse
@@ -7070,6 +8264,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateAclAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateAclAttributeResponse:
+        """
+        @summary Updates the attributes of an access control list (ACL), such as the name.
+        
+        @param request: UpdateAclAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAclAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -7104,6 +8305,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateAclAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateAclAttributeResponse:
+        """
+        @summary Updates the attributes of an access control list (ACL), such as the name.
+        
+        @param request: UpdateAclAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAclAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -7137,6 +8345,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.UpdateAclAttributeRequest,
     ) -> alb_20200616_models.UpdateAclAttributeResponse:
+        """
+        @summary Updates the attributes of an access control list (ACL), such as the name.
+        
+        @param request: UpdateAclAttributeRequest
+        @return: UpdateAclAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_acl_attribute_with_options(request, runtime)
 
@@ -7144,6 +8358,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.UpdateAclAttributeRequest,
     ) -> alb_20200616_models.UpdateAclAttributeResponse:
+        """
+        @summary Updates the attributes of an access control list (ACL), such as the name.
+        
+        @param request: UpdateAclAttributeRequest
+        @return: UpdateAclAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_acl_attribute_with_options_async(request, runtime)
 
@@ -7152,6 +8372,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateHealthCheckTemplateAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse:
+        """
+        @summary Modifies the attributes, such as the name and protocol, of a health check template.
+        
+        @param request: UpdateHealthCheckTemplateAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHealthCheckTemplateAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -7208,6 +8435,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateHealthCheckTemplateAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse:
+        """
+        @summary Modifies the attributes, such as the name and protocol, of a health check template.
+        
+        @param request: UpdateHealthCheckTemplateAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHealthCheckTemplateAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -7263,6 +8497,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.UpdateHealthCheckTemplateAttributeRequest,
     ) -> alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse:
+        """
+        @summary Modifies the attributes, such as the name and protocol, of a health check template.
+        
+        @param request: UpdateHealthCheckTemplateAttributeRequest
+        @return: UpdateHealthCheckTemplateAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_health_check_template_attribute_with_options(request, runtime)
 
@@ -7270,6 +8510,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.UpdateHealthCheckTemplateAttributeRequest,
     ) -> alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse:
+        """
+        @summary Modifies the attributes, such as the name and protocol, of a health check template.
+        
+        @param request: UpdateHealthCheckTemplateAttributeRequest
+        @return: UpdateHealthCheckTemplateAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_health_check_template_attribute_with_options_async(request, runtime)
 
@@ -7279,9 +8525,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateListenerAttributeResponse:
         """
-        *UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
-        *   If a listener is in the **Configuring** state, the configuration of the listener is being modified.
-        *   If a listener is in the **Running** state, the configuration of the listener is modified.
+        @summary Updates the attributes of a listener, such as the name and the default action.
+        
+        @description *UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task.
+        If a listener is in the **Configuring** state, the configuration of the listener is being modified.
+        If a listener is in the **Running** state, the configuration of the listener is modified.
         
         @param request: UpdateListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7344,9 +8592,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateListenerAttributeResponse:
         """
-        *UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
-        *   If a listener is in the **Configuring** state, the configuration of the listener is being modified.
-        *   If a listener is in the **Running** state, the configuration of the listener is modified.
+        @summary Updates the attributes of a listener, such as the name and the default action.
+        
+        @description *UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task.
+        If a listener is in the **Configuring** state, the configuration of the listener is being modified.
+        If a listener is in the **Running** state, the configuration of the listener is modified.
         
         @param request: UpdateListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7408,9 +8658,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateListenerAttributeRequest,
     ) -> alb_20200616_models.UpdateListenerAttributeResponse:
         """
-        *UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
-        *   If a listener is in the **Configuring** state, the configuration of the listener is being modified.
-        *   If a listener is in the **Running** state, the configuration of the listener is modified.
+        @summary Updates the attributes of a listener, such as the name and the default action.
+        
+        @description *UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task.
+        If a listener is in the **Configuring** state, the configuration of the listener is being modified.
+        If a listener is in the **Running** state, the configuration of the listener is modified.
         
         @param request: UpdateListenerAttributeRequest
         @return: UpdateListenerAttributeResponse
@@ -7423,9 +8675,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateListenerAttributeRequest,
     ) -> alb_20200616_models.UpdateListenerAttributeResponse:
         """
-        *UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
-        *   If a listener is in the **Configuring** state, the configuration of the listener is being modified.
-        *   If a listener is in the **Running** state, the configuration of the listener is modified.
+        @summary Updates the attributes of a listener, such as the name and the default action.
+        
+        @description *UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task.
+        If a listener is in the **Configuring** state, the configuration of the listener is being modified.
+        If a listener is in the **Running** state, the configuration of the listener is modified.
         
         @param request: UpdateListenerAttributeRequest
         @return: UpdateListenerAttributeResponse
@@ -7439,9 +8693,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateListenerLogConfigResponse:
         """
-        *UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task:
-        *   If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
-        *   If a listener is in the **Running** state, the log configuration of the listener is modified.
+        @summary Updates the log configuration of a listener, such as the access log configuration.
+        
+        @description *UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task:
+        If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
+        If a listener is in the **Running** state, the log configuration of the listener is modified.
         > You can update the log configuration of a listener only after you enable the access log feature.
         
         @param request: UpdateListenerLogConfigRequest
@@ -7485,9 +8741,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateListenerLogConfigResponse:
         """
-        *UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task:
-        *   If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
-        *   If a listener is in the **Running** state, the log configuration of the listener is modified.
+        @summary Updates the log configuration of a listener, such as the access log configuration.
+        
+        @description *UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task:
+        If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
+        If a listener is in the **Running** state, the log configuration of the listener is modified.
         > You can update the log configuration of a listener only after you enable the access log feature.
         
         @param request: UpdateListenerLogConfigRequest
@@ -7530,9 +8788,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateListenerLogConfigRequest,
     ) -> alb_20200616_models.UpdateListenerLogConfigResponse:
         """
-        *UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task:
-        *   If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
-        *   If a listener is in the **Running** state, the log configuration of the listener is modified.
+        @summary Updates the log configuration of a listener, such as the access log configuration.
+        
+        @description *UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task:
+        If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
+        If a listener is in the **Running** state, the log configuration of the listener is modified.
         > You can update the log configuration of a listener only after you enable the access log feature.
         
         @param request: UpdateListenerLogConfigRequest
@@ -7546,9 +8806,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateListenerLogConfigRequest,
     ) -> alb_20200616_models.UpdateListenerLogConfigResponse:
         """
-        *UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task:
-        *   If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
-        *   If a listener is in the **Running** state, the log configuration of the listener is modified.
+        @summary Updates the log configuration of a listener, such as the access log configuration.
+        
+        @description *UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task:
+        If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
+        If a listener is in the **Running** state, the log configuration of the listener is modified.
         > You can update the log configuration of a listener only after you enable the access log feature.
         
         @param request: UpdateListenerLogConfigRequest
@@ -7563,13 +8825,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        ## Prerequisites
-        *   An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](~~214358~~).
-        *   If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](~~120192~~).
+        @summary Modifies the network type of an Application Load Balancer (ALB) instance.
+        
+        @description ## Prerequisites
+        An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+        If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
         ## Usage notes
-        **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the network type is being changed.
-        *   If an ALB instance is in the **Active** state, the network type has been changed.
+        *UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the network type is being changed.
+        If an ALB instance is in the **Active** state, the network type has been changed.
         
         @param request: UpdateLoadBalancerAddressTypeConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7612,13 +8876,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        ## Prerequisites
-        *   An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](~~214358~~).
-        *   If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](~~120192~~).
+        @summary Modifies the network type of an Application Load Balancer (ALB) instance.
+        
+        @description ## Prerequisites
+        An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+        If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
         ## Usage notes
-        **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the network type is being changed.
-        *   If an ALB instance is in the **Active** state, the network type has been changed.
+        *UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the network type is being changed.
+        If an ALB instance is in the **Active** state, the network type has been changed.
         
         @param request: UpdateLoadBalancerAddressTypeConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7660,13 +8926,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateLoadBalancerAddressTypeConfigRequest,
     ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        ## Prerequisites
-        *   An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](~~214358~~).
-        *   If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](~~120192~~).
+        @summary Modifies the network type of an Application Load Balancer (ALB) instance.
+        
+        @description ## Prerequisites
+        An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+        If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
         ## Usage notes
-        **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the network type is being changed.
-        *   If an ALB instance is in the **Active** state, the network type has been changed.
+        *UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the network type is being changed.
+        If an ALB instance is in the **Active** state, the network type has been changed.
         
         @param request: UpdateLoadBalancerAddressTypeConfigRequest
         @return: UpdateLoadBalancerAddressTypeConfigResponse
@@ -7679,13 +8947,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateLoadBalancerAddressTypeConfigRequest,
     ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        ## Prerequisites
-        *   An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](~~214358~~).
-        *   If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](~~120192~~).
+        @summary Modifies the network type of an Application Load Balancer (ALB) instance.
+        
+        @description ## Prerequisites
+        An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+        If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
         ## Usage notes
-        **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the network type is being changed.
-        *   If an ALB instance is in the **Active** state, the network type has been changed.
+        *UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the network type is being changed.
+        If an ALB instance is in the **Active** state, the network type has been changed.
         
         @param request: UpdateLoadBalancerAddressTypeConfigRequest
         @return: UpdateLoadBalancerAddressTypeConfigResponse
@@ -7699,9 +8969,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerAttributeResponse:
         """
-        *UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
-        *   If the ALB instance is in the **Active** state, the ALB instance is modified.
+        @summary Modifies the attributes of an Application Load Balancer (ALB) instance, such as the name and the configuration read-only mode.
+        
+        @description *UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
+        If the ALB instance is in the **Active** state, the ALB instance is modified.
         
         @param request: UpdateLoadBalancerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7744,9 +9016,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerAttributeResponse:
         """
-        *UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
-        *   If the ALB instance is in the **Active** state, the ALB instance is modified.
+        @summary Modifies the attributes of an Application Load Balancer (ALB) instance, such as the name and the configuration read-only mode.
+        
+        @description *UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
+        If the ALB instance is in the **Active** state, the ALB instance is modified.
         
         @param request: UpdateLoadBalancerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7788,9 +9062,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateLoadBalancerAttributeRequest,
     ) -> alb_20200616_models.UpdateLoadBalancerAttributeResponse:
         """
-        *UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
-        *   If the ALB instance is in the **Active** state, the ALB instance is modified.
+        @summary Modifies the attributes of an Application Load Balancer (ALB) instance, such as the name and the configuration read-only mode.
+        
+        @description *UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
+        If the ALB instance is in the **Active** state, the ALB instance is modified.
         
         @param request: UpdateLoadBalancerAttributeRequest
         @return: UpdateLoadBalancerAttributeResponse
@@ -7803,9 +9079,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateLoadBalancerAttributeRequest,
     ) -> alb_20200616_models.UpdateLoadBalancerAttributeResponse:
         """
-        *UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
-        *   If the ALB instance is in the **Active** state, the ALB instance is modified.
+        @summary Modifies the attributes of an Application Load Balancer (ALB) instance, such as the name and the configuration read-only mode.
+        
+        @description *UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
+        If the ALB instance is in the **Active** state, the ALB instance is modified.
         
         @param request: UpdateLoadBalancerAttributeRequest
         @return: UpdateLoadBalancerAttributeResponse
@@ -7819,11 +9097,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         """
-        ##
-        *   You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](~~214654~~).
-        *   **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
-        *   If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
+        @summary Changes the edition of an Application Load Balancer (ALB) instance.
+        
+        @description ##
+        You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
+        **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
+        If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
         
         @param request: UpdateLoadBalancerEditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7864,11 +9144,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         """
-        ##
-        *   You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](~~214654~~).
-        *   **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
-        *   If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
+        @summary Changes the edition of an Application Load Balancer (ALB) instance.
+        
+        @description ##
+        You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
+        **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
+        If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
         
         @param request: UpdateLoadBalancerEditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7908,11 +9190,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateLoadBalancerEditionRequest,
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         """
-        ##
-        *   You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](~~214654~~).
-        *   **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
-        *   If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
+        @summary Changes the edition of an Application Load Balancer (ALB) instance.
+        
+        @description ##
+        You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
+        **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
+        If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
         
         @param request: UpdateLoadBalancerEditionRequest
         @return: UpdateLoadBalancerEditionResponse
@@ -7925,11 +9209,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateLoadBalancerEditionRequest,
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         """
-        ##
-        *   You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](~~214654~~).
-        *   **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
-        *   If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
+        @summary Changes the edition of an Application Load Balancer (ALB) instance.
+        
+        @description ##
+        You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
+        **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
+        If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
         
         @param request: UpdateLoadBalancerEditionRequest
         @return: UpdateLoadBalancerEditionResponse
@@ -7943,9 +9229,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
         """
-        *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the zones are being modified.
-        *   If an ALB instance is in the **Active** state, the zones are modified.
+        @summary Modifies the zones of an Application Load Balancer (ALB) instance.
+        
+        @description *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the zones are being modified.
+        If an ALB instance is in the **Active** state, the zones are modified.
         > You may be charged after you call UpdateLoadBalancerZones.
         
         @param request: UpdateLoadBalancerZonesRequest
@@ -7987,9 +9275,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
         """
-        *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the zones are being modified.
-        *   If an ALB instance is in the **Active** state, the zones are modified.
+        @summary Modifies the zones of an Application Load Balancer (ALB) instance.
+        
+        @description *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the zones are being modified.
+        If an ALB instance is in the **Active** state, the zones are modified.
         > You may be charged after you call UpdateLoadBalancerZones.
         
         @param request: UpdateLoadBalancerZonesRequest
@@ -8030,9 +9320,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateLoadBalancerZonesRequest,
     ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
         """
-        *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the zones are being modified.
-        *   If an ALB instance is in the **Active** state, the zones are modified.
+        @summary Modifies the zones of an Application Load Balancer (ALB) instance.
+        
+        @description *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the zones are being modified.
+        If an ALB instance is in the **Active** state, the zones are modified.
         > You may be charged after you call UpdateLoadBalancerZones.
         
         @param request: UpdateLoadBalancerZonesRequest
@@ -8046,9 +9338,11 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateLoadBalancerZonesRequest,
     ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
         """
-        *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
-        *   If an ALB instance is in the **Configuring** state, the zones are being modified.
-        *   If an ALB instance is in the **Active** state, the zones are modified.
+        @summary Modifies the zones of an Application Load Balancer (ALB) instance.
+        
+        @description *UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+        If an ALB instance is in the **Configuring** state, the zones are being modified.
+        If an ALB instance is in the **Active** state, the zones are modified.
         > You may be charged after you call UpdateLoadBalancerZones.
         
         @param request: UpdateLoadBalancerZonesRequest
@@ -8063,12 +9357,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         """
-        **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
-        *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
-        *   Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
-        *   Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
+        @summary Updates a forwarding rule, such as the match condition, action, and name.
+        
+        @description    **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+        If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
+        If a forwarding rule is in the **Available** state, the forwarding rule is updated.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+        Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
+        Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
         
         @param request: UpdateRuleAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8115,12 +9411,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         """
-        **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
-        *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
-        *   Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
-        *   Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
+        @summary Updates a forwarding rule, such as the match condition, action, and name.
+        
+        @description    **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+        If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
+        If a forwarding rule is in the **Available** state, the forwarding rule is updated.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+        Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
+        Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
         
         @param request: UpdateRuleAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8166,12 +9464,14 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateRuleAttributeRequest,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         """
-        **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
-        *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
-        *   Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
-        *   Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
+        @summary Updates a forwarding rule, such as the match condition, action, and name.
+        
+        @description    **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+        If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
+        If a forwarding rule is in the **Available** state, the forwarding rule is updated.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+        Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
+        Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
         
         @param request: UpdateRuleAttributeRequest
         @return: UpdateRuleAttributeResponse
@@ -8184,12 +9484,14 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateRuleAttributeRequest,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         """
-        **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
-        *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
-        *   Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
-        *   Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
+        @summary Updates a forwarding rule, such as the match condition, action, and name.
+        
+        @description    **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+        If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
+        If a forwarding rule is in the **Available** state, the forwarding rule is updated.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+        Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
+        Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
         
         @param request: UpdateRuleAttributeRequest
         @return: UpdateRuleAttributeResponse
@@ -8203,12 +9505,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRulesAttributeResponse:
         """
-        *UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of the task.
-        *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
-        *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
-        *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+        @summary Modifies the attributes of forwarding rules.
+        
+        @description *UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the task.
+        If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
+        If a forwarding rule is in the **Available** state, the forwarding rule is updated.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
+        Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+        Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
         
         @param request: UpdateRulesAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8247,12 +9551,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRulesAttributeResponse:
         """
-        *UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of the task.
-        *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
-        *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
-        *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+        @summary Modifies the attributes of forwarding rules.
+        
+        @description *UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the task.
+        If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
+        If a forwarding rule is in the **Available** state, the forwarding rule is updated.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
+        Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+        Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
         
         @param request: UpdateRulesAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8290,12 +9596,14 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateRulesAttributeRequest,
     ) -> alb_20200616_models.UpdateRulesAttributeResponse:
         """
-        *UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of the task.
-        *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
-        *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
-        *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+        @summary Modifies the attributes of forwarding rules.
+        
+        @description *UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the task.
+        If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
+        If a forwarding rule is in the **Available** state, the forwarding rule is updated.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
+        Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+        Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
         
         @param request: UpdateRulesAttributeRequest
         @return: UpdateRulesAttributeResponse
@@ -8308,12 +9616,14 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateRulesAttributeRequest,
     ) -> alb_20200616_models.UpdateRulesAttributeResponse:
         """
-        *UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of the task.
-        *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
-        *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
-        *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
-        *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
-        *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+        @summary Modifies the attributes of forwarding rules.
+        
+        @description *UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the task.
+        If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
+        If a forwarding rule is in the **Available** state, the forwarding rule is updated.
+        You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
+        Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+        Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
         
         @param request: UpdateRulesAttributeRequest
         @return: UpdateRulesAttributeResponse
@@ -8327,10 +9637,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateSecurityPolicyAttributeResponse:
         """
-        ##
-        **UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](~~213609~~) to query the status of the task.
-        *   If a security policy is in the **Configuring** state, the security policy is being updated.
-        *   If a security policy is in the **Available** state, the security policy is updated.
+        @summary Updates the attributes of a security policy, such as the TLS protocol version and the supported cipher suites.
+        
+        @description ##
+        *UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](https://help.aliyun.com/document_detail/213609.html) to query the status of the task.
+        If a security policy is in the **Configuring** state, the security policy is being updated.
+        If a security policy is in the **Available** state, the security policy is updated.
         
         @param request: UpdateSecurityPolicyAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8375,10 +9687,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateSecurityPolicyAttributeResponse:
         """
-        ##
-        **UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](~~213609~~) to query the status of the task.
-        *   If a security policy is in the **Configuring** state, the security policy is being updated.
-        *   If a security policy is in the **Available** state, the security policy is updated.
+        @summary Updates the attributes of a security policy, such as the TLS protocol version and the supported cipher suites.
+        
+        @description ##
+        *UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](https://help.aliyun.com/document_detail/213609.html) to query the status of the task.
+        If a security policy is in the **Configuring** state, the security policy is being updated.
+        If a security policy is in the **Available** state, the security policy is updated.
         
         @param request: UpdateSecurityPolicyAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8422,10 +9736,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateSecurityPolicyAttributeRequest,
     ) -> alb_20200616_models.UpdateSecurityPolicyAttributeResponse:
         """
-        ##
-        **UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](~~213609~~) to query the status of the task.
-        *   If a security policy is in the **Configuring** state, the security policy is being updated.
-        *   If a security policy is in the **Available** state, the security policy is updated.
+        @summary Updates the attributes of a security policy, such as the TLS protocol version and the supported cipher suites.
+        
+        @description ##
+        *UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](https://help.aliyun.com/document_detail/213609.html) to query the status of the task.
+        If a security policy is in the **Configuring** state, the security policy is being updated.
+        If a security policy is in the **Available** state, the security policy is updated.
         
         @param request: UpdateSecurityPolicyAttributeRequest
         @return: UpdateSecurityPolicyAttributeResponse
@@ -8438,10 +9754,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateSecurityPolicyAttributeRequest,
     ) -> alb_20200616_models.UpdateSecurityPolicyAttributeResponse:
         """
-        ##
-        **UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](~~213609~~) to query the status of the task.
-        *   If a security policy is in the **Configuring** state, the security policy is being updated.
-        *   If a security policy is in the **Available** state, the security policy is updated.
+        @summary Updates the attributes of a security policy, such as the TLS protocol version and the supported cipher suites.
+        
+        @description ##
+        *UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](https://help.aliyun.com/document_detail/213609.html) to query the status of the task.
+        If a security policy is in the **Configuring** state, the security policy is being updated.
+        If a security policy is in the **Available** state, the security policy is updated.
         
         @param request: UpdateSecurityPolicyAttributeRequest
         @return: UpdateSecurityPolicyAttributeResponse
@@ -8455,10 +9773,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateServerGroupAttributeResponse:
         """
-        ## Description
-        **UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group:
-        *   If a server group is in the **Configuring** state, the configuration of the server group is being modified.
-        *   If a server group is in the **Available** state, the configuration of the server group is modified.
+        @summary Modifies the configurations of a server group, such as health checks, session persistence, server group names, routing algorithms, and protocols.
+        
+        @description ## Description
+        *UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group:
+        If a server group is in the **Configuring** state, the configuration of the server group is being modified.
+        If a server group is in the **Available** state, the configuration of the server group is modified.
         
         @param request: UpdateServerGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8515,10 +9835,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateServerGroupAttributeResponse:
         """
-        ## Description
-        **UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group:
-        *   If a server group is in the **Configuring** state, the configuration of the server group is being modified.
-        *   If a server group is in the **Available** state, the configuration of the server group is modified.
+        @summary Modifies the configurations of a server group, such as health checks, session persistence, server group names, routing algorithms, and protocols.
+        
+        @description ## Description
+        *UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group:
+        If a server group is in the **Configuring** state, the configuration of the server group is being modified.
+        If a server group is in the **Available** state, the configuration of the server group is modified.
         
         @param request: UpdateServerGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8574,10 +9896,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateServerGroupAttributeRequest,
     ) -> alb_20200616_models.UpdateServerGroupAttributeResponse:
         """
-        ## Description
-        **UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group:
-        *   If a server group is in the **Configuring** state, the configuration of the server group is being modified.
-        *   If a server group is in the **Available** state, the configuration of the server group is modified.
+        @summary Modifies the configurations of a server group, such as health checks, session persistence, server group names, routing algorithms, and protocols.
+        
+        @description ## Description
+        *UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group:
+        If a server group is in the **Configuring** state, the configuration of the server group is being modified.
+        If a server group is in the **Available** state, the configuration of the server group is modified.
         
         @param request: UpdateServerGroupAttributeRequest
         @return: UpdateServerGroupAttributeResponse
@@ -8590,10 +9914,12 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateServerGroupAttributeRequest,
     ) -> alb_20200616_models.UpdateServerGroupAttributeResponse:
         """
-        ## Description
-        **UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group:
-        *   If a server group is in the **Configuring** state, the configuration of the server group is being modified.
-        *   If a server group is in the **Available** state, the configuration of the server group is modified.
+        @summary Modifies the configurations of a server group, such as health checks, session persistence, server group names, routing algorithms, and protocols.
+        
+        @description ## Description
+        *UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group:
+        If a server group is in the **Configuring** state, the configuration of the server group is being modified.
+        If a server group is in the **Available** state, the configuration of the server group is modified.
         
         @param request: UpdateServerGroupAttributeRequest
         @return: UpdateServerGroupAttributeResponse
@@ -8607,13 +9933,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateServerGroupServersAttributeResponse:
         """
-        *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
-        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        @summary Modifies the configurations, such as the backend server weight and description, of a server group.
+        
+        @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        If a backend server is in the **Available** state, it indicates that the backend server is running.
         
         @param request: UpdateServerGroupServersAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8654,13 +9982,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateServerGroupServersAttributeResponse:
         """
-        *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
-        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        @summary Modifies the configurations, such as the backend server weight and description, of a server group.
+        
+        @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        If a backend server is in the **Available** state, it indicates that the backend server is running.
         
         @param request: UpdateServerGroupServersAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8700,13 +10030,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateServerGroupServersAttributeRequest,
     ) -> alb_20200616_models.UpdateServerGroupServersAttributeResponse:
         """
-        *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
-        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        @summary Modifies the configurations, such as the backend server weight and description, of a server group.
+        
+        @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        If a backend server is in the **Available** state, it indicates that the backend server is running.
         
         @param request: UpdateServerGroupServersAttributeRequest
         @return: UpdateServerGroupServersAttributeResponse
@@ -8719,13 +10051,15 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateServerGroupServersAttributeRequest,
     ) -> alb_20200616_models.UpdateServerGroupServersAttributeResponse:
         """
-        *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
-        *   If a server group is in the **Available** state, it indicates that the server group is running.
-        2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
-        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        @summary Modifies the configurations, such as the backend server weight and description, of a server group.
+        
+        @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, it indicates that the server group is being modified.
+        If a server group is in the **Available** state, it indicates that the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+        If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        If a backend server is in the **Available** state, it indicates that the backend server is running.
         
         @param request: UpdateServerGroupServersAttributeRequest
         @return: UpdateServerGroupServersAttributeResponse
