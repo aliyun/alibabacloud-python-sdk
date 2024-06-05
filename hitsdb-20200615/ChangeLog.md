@@ -1,3 +1,7 @@
+2024-06-05 Version: 4.6.2
+- Update API GetLindormInstance: update response param.
+
+
 2024-05-23 Version: 4.6.1
 - Update API CreateLindormInstance: add param LtsNum.
 - Update API CreateLindormInstance: add param LtsSpec.

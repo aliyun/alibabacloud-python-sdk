@@ -1599,7 +1599,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
         """
-        @summary The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+        @summary Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
         
         @param request: GetLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1644,7 +1644,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
         """
-        @summary The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+        @summary Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
         
         @param request: GetLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1688,7 +1688,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormInstanceRequest,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
         """
-        @summary The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+        @summary Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
         
         @param request: GetLindormInstanceRequest
         @return: GetLindormInstanceResponse
@@ -1701,7 +1701,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormInstanceRequest,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
         """
-        @summary The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+        @summary Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
         
         @param request: GetLindormInstanceRequest
         @return: GetLindormInstanceResponse
@@ -2075,7 +2075,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListTagResourcesResponse:
         """
-        @summary Queries tags associated with the specified Lindorm instances.
+        @summary Queries the tags associated with the specified Lindorm instance.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2128,7 +2128,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListTagResourcesResponse:
         """
-        @summary Queries tags associated with the specified Lindorm instances.
+        @summary Queries the tags associated with the specified Lindorm instance.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2180,7 +2180,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListTagResourcesRequest,
     ) -> hitsdb_20200615_models.ListTagResourcesResponse:
         """
-        @summary Queries tags associated with the specified Lindorm instances.
+        @summary Queries the tags associated with the specified Lindorm instance.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2193,7 +2193,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListTagResourcesRequest,
     ) -> hitsdb_20200615_models.ListTagResourcesResponse:
         """
-        @summary Queries tags associated with the specified Lindorm instances.
+        @summary Queries the tags associated with the specified Lindorm instance.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2947,7 +2947,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
         """
-        @summary Enables and disables the MySQL compatibility feature.
+        @summary Enables or disables the MySQL compatibility feature for a Lindorm instance.
         
         @description Prerequisites
         The LindormTable version of your instance is 2.6.0 or later.
@@ -2999,7 +2999,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
         """
-        @summary Enables and disables the MySQL compatibility feature.
+        @summary Enables or disables the MySQL compatibility feature for a Lindorm instance.
         
         @description Prerequisites
         The LindormTable version of your instance is 2.6.0 or later.
@@ -3050,7 +3050,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
         """
-        @summary Enables and disables the MySQL compatibility feature.
+        @summary Enables or disables the MySQL compatibility feature for a Lindorm instance.
         
         @description Prerequisites
         The LindormTable version of your instance is 2.6.0 or later.
@@ -3068,7 +3068,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
         """
-        @summary Enables and disables the MySQL compatibility feature.
+        @summary Enables or disables the MySQL compatibility feature for a Lindorm instance.
         
         @description Prerequisites
         The LindormTable version of your instance is 2.6.0 or later.
@@ -3215,7 +3215,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UntagResourcesResponse:
         """
-        @summary Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+        @summary Removes tags from a Lindorm instance.
+        
+        @description If a tag is not added to any Lindorm instance, it is deleted.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3266,7 +3268,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UntagResourcesResponse:
         """
-        @summary Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+        @summary Removes tags from a Lindorm instance.
+        
+        @description If a tag is not added to any Lindorm instance, it is deleted.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3316,7 +3320,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UntagResourcesRequest,
     ) -> hitsdb_20200615_models.UntagResourcesResponse:
         """
-        @summary Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+        @summary Removes tags from a Lindorm instance.
+        
+        @description If a tag is not added to any Lindorm instance, it is deleted.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -3329,7 +3335,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UntagResourcesRequest,
     ) -> hitsdb_20200615_models.UntagResourcesResponse:
         """
-        @summary Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+        @summary Removes tags from a Lindorm instance.
+        
+        @description If a tag is not added to any Lindorm instance, it is deleted.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse

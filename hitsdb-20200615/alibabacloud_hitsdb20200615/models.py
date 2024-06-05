@@ -346,7 +346,20 @@ class CreateLindormInstanceRequest(TeaModel):
         # 
         # By default, the value of this parameter is 1.0. To create a multi-zone instance, set this parameter to 2.0. **This parameter is required if you want to create a multi-zone instance**.
         self.arch_version = arch_version
+        # The auto-renewal duration. Unit: month.
+        # 
+        # Valid values: **1** to **12**.
+        # 
+        # >  This parameter is available only when the **AutoRenewal** parameter is set to **true**.
         self.auto_renew_duration = auto_renew_duration
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # 
+        # *   **true**: enables auto-renewal.
+        # *   **false**: disables auto-renewal.
+        # 
+        # Default value: false.
+        # 
+        # >  This parameter is available only when the **PayType** parameter is set to **PREPAY**.
         self.auto_renewal = auto_renewal
         # The cold storage capacity of the instance. By default, if you leave this parameter unspecified, cold storage is not enabled for the instance. Unit: GB. Valid values: **800** to **1000000**.
         self.cold_storage = cold_storage
@@ -1520,7 +1533,9 @@ class GetInstanceIpWhiteListResponseBodyGroupList(TeaModel):
         group_name: str = None,
         security_ip_list: str = None,
     ):
+        # The name of the IP address whitelist.
         self.group_name = group_name
+        # The IP addresses in the whitelist.
         self.security_ip_list = security_ip_list
 
     def validate(self):
@@ -1555,6 +1570,7 @@ class GetInstanceIpWhiteListResponseBody(TeaModel):
         ip_list: List[str] = None,
         request_id: str = None,
     ):
+        # The details about the IP address whitelists.
         self.group_list = group_list
         # The ID of the Lindorm instance.
         self.instance_id = instance_id
@@ -2388,12 +2404,29 @@ class GetLindormInstanceResponseBodyEngineList(TeaModel):
         memory_size: str = None,
         version: str = None,
     ):
+        # The number of engine nodes.
         self.core_count = core_count
+        # The number of CPU cores on the engine node.
         self.cpu_count = cpu_count
+        # The engine type. Valid values:
+        # 
+        # *   **lindorm**: LindormTable.
+        # *   **tsdb**: LindormTSDB.
+        # *   **solr**: LindormSearch.
+        # *   **store**: LindormDFS.
+        # *   **bds** :Lindorm Tunnel Service (LTS).
+        # *   **compute**: Lindorm Distributed Processing System (LDPS).
         self.engine = engine
+        # Indicates whether the version of the engine is the latest. Valid values:
+        # 
+        # *   **true**: The version of the engine is the latest.
+        # *   **false**: The version of the engine is not the latest.
         self.is_last_version = is_last_version
+        # The latest version number of the engine.
         self.latest_version = latest_version
+        # The memory size of the engine nodes
         self.memory_size = memory_size
+        # The version of the engine.
         self.version = version
 
     def validate(self):
@@ -2463,6 +2496,7 @@ class GetLindormInstanceResponseBody(TeaModel):
         enable_cdc: bool = None,
         enable_compute: bool = None,
         enable_kms: bool = None,
+        enable_lproxy: bool = None,
         enable_lts: bool = None,
         enable_lsql_version_v3: bool = None,
         enable_mlctrl: bool = None,
@@ -2501,10 +2535,10 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.ali_uid = ali_uid
         self.arbiter_vswitch_id = arbiter_vswitch_id
         self.arbiter_zone_id = arbiter_zone_id
-        # 部署架构，取值：
+        # The architecture of the instance. Valid values:
         # 
-        # - **1.0**：单可用区。
-        # - **2.0**：多可用区。
+        # *   **1.0**: The instance is deployed in a single zone.
+        # *   **2.0**: The instance is deployed across multiple zones.
         self.arch_version = arch_version
         self.auto_renew = auto_renew
         # The Capacity storage size of the instance.
@@ -2535,16 +2569,28 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.disk_category = disk_category
         self.disk_threshold = disk_threshold
         self.disk_usage = disk_usage
+        # Indicates whether LBlob is enabled for the instance. Valid values:
+        # 
+        # true: LBlob is enabled for the instance. false: LBlob is not enabled for the instance.
         self.enable_blob = enable_blob
         self.enable_cdc = enable_cdc
         self.enable_compute = enable_compute
         self.enable_kms = enable_kms
-        # 实例是否开通LTS引擎，返回值：
+        self.enable_lproxy = enable_lproxy
+        # Indicates whether the LTS engine is activated for the instance. Valid values:
         # 
-        # - **true**：开通LTS引擎。
-        # - **false**：未开通LTS引擎。
+        # *   **true**: The LTS engine is activated for the instance.
+        # *   **false**: The LTS engine is not activated for the instance.
         self.enable_lts = enable_lts
+        # Indicates whether LindormTable of the instance supports LindormSQL V3 that is compatible with MySQL. By default, LindormTable of instances that are purchased after October 24, 2023 supports LindormSQL V3. If your instance is purchased before this date and want to enable LindormSQL V3, contact the technical support.
+        # 
+        # *   True: LindormTable supports LindormSQL V3.
+        # *   False: LindormTable does not support LindormSQL V3.
         self.enable_lsql_version_v3 = enable_lsql_version_v3
+        # Indicates whether AI control nodes are enabled for the instance.
+        # 
+        # *   True: AI control nodes are enabled for the instance.
+        # *   False: AI control nodes are not enabled for the instance.
         self.enable_mlctrl = enable_mlctrl
         self.enable_ssl = enable_ssl
         self.enable_shs = enable_shs
@@ -2658,6 +2704,8 @@ class GetLindormInstanceResponseBody(TeaModel):
             result['EnableCompute'] = self.enable_compute
         if self.enable_kms is not None:
             result['EnableKms'] = self.enable_kms
+        if self.enable_lproxy is not None:
+            result['EnableLProxy'] = self.enable_lproxy
         if self.enable_lts is not None:
             result['EnableLTS'] = self.enable_lts
         if self.enable_lsql_version_v3 is not None:
@@ -2772,6 +2820,8 @@ class GetLindormInstanceResponseBody(TeaModel):
             self.enable_compute = m.get('EnableCompute')
         if m.get('EnableKms') is not None:
             self.enable_kms = m.get('EnableKms')
+        if m.get('EnableLProxy') is not None:
+            self.enable_lproxy = m.get('EnableLProxy')
         if m.get('EnableLTS') is not None:
             self.enable_lts = m.get('EnableLTS')
         if m.get('EnableLsqlVersionV3') is not None:
@@ -5289,16 +5339,16 @@ class UntagResourcesRequest(TeaModel):
         security_token: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the instance. Valid values:
+        # Specifies whether to remove all tags from the instances. Valid values:
         # 
         # *   **true**: Remove all tags from the instances.
         # *   **false**: Do not remove all tags from the instances.
         # 
-        # > 
+        # >  The default value of this parameter is false.
         # 
-        # *   The default value of this parameter is false.
         # 
-        # *   If you specify the TagKey parameter together with this parameter, this parameter does not take effect.
+        # 
+        # *   If you specify this parameter together with the TagKey parameter, this parameter does not take effect.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5452,6 +5502,7 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
     ):
         # Specifies whether to clear all IP addresses and CIDR blocks in the whitelist.
         self.delete = delete
+        # The name of the IP whitelist. Default value: user.
         self.group_name = group_name
         # The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the ID.
         # 
