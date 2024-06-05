@@ -190,6 +190,7 @@ class GrafanaWorkspace(TeaModel):
         gmt_create: float = None,
         grafana_version: str = None,
         grafana_workspace_domain: str = None,
+        grafana_workspace_domain_status: str = None,
         grafana_workspace_edition: str = None,
         grafana_workspace_id: str = None,
         grafana_workspace_ip: str = None,
@@ -217,6 +218,7 @@ class GrafanaWorkspace(TeaModel):
         self.gmt_create = gmt_create
         self.grafana_version = grafana_version
         self.grafana_workspace_domain = grafana_workspace_domain
+        self.grafana_workspace_domain_status = grafana_workspace_domain_status
         self.grafana_workspace_edition = grafana_workspace_edition
         self.grafana_workspace_id = grafana_workspace_id
         self.grafana_workspace_ip = grafana_workspace_ip
@@ -263,6 +265,8 @@ class GrafanaWorkspace(TeaModel):
             result['grafanaVersion'] = self.grafana_version
         if self.grafana_workspace_domain is not None:
             result['grafanaWorkspaceDomain'] = self.grafana_workspace_domain
+        if self.grafana_workspace_domain_status is not None:
+            result['grafanaWorkspaceDomainStatus'] = self.grafana_workspace_domain_status
         if self.grafana_workspace_edition is not None:
             result['grafanaWorkspaceEdition'] = self.grafana_workspace_edition
         if self.grafana_workspace_id is not None:
@@ -321,6 +325,8 @@ class GrafanaWorkspace(TeaModel):
             self.grafana_version = m.get('grafanaVersion')
         if m.get('grafanaWorkspaceDomain') is not None:
             self.grafana_workspace_domain = m.get('grafanaWorkspaceDomain')
+        if m.get('grafanaWorkspaceDomainStatus') is not None:
+            self.grafana_workspace_domain_status = m.get('grafanaWorkspaceDomainStatus')
         if m.get('grafanaWorkspaceEdition') is not None:
             self.grafana_workspace_edition = m.get('grafanaWorkspaceEdition')
         if m.get('grafanaWorkspaceId') is not None:
