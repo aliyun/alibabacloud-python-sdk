@@ -2903,6 +2903,7 @@ class Tensorboard(TeaModel):
         display_name: str = None,
         duration: str = None,
         gmt_create_time: str = None,
+        gmt_finish_time: str = None,
         gmt_modify_time: str = None,
         job_id: str = None,
         reason_code: str = None,
@@ -2915,11 +2916,13 @@ class Tensorboard(TeaModel):
         tensorboard_spec: TensorboardSpec = None,
         tensorboard_url: str = None,
         user_id: str = None,
+        username: str = None,
     ):
         self.data_source_id = data_source_id
         self.display_name = display_name
         self.duration = duration
         self.gmt_create_time = gmt_create_time
+        self.gmt_finish_time = gmt_finish_time
         self.gmt_modify_time = gmt_modify_time
         self.job_id = job_id
         self.reason_code = reason_code
@@ -2932,6 +2935,7 @@ class Tensorboard(TeaModel):
         self.tensorboard_spec = tensorboard_spec
         self.tensorboard_url = tensorboard_url
         self.user_id = user_id
+        self.username = username
 
     def validate(self):
         if self.tensorboard_data_sources:
@@ -2955,6 +2959,8 @@ class Tensorboard(TeaModel):
             result['Duration'] = self.duration
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_finish_time is not None:
+            result['GmtFinishTime'] = self.gmt_finish_time
         if self.gmt_modify_time is not None:
             result['GmtModifyTime'] = self.gmt_modify_time
         if self.job_id is not None:
@@ -2981,6 +2987,8 @@ class Tensorboard(TeaModel):
             result['TensorboardUrl'] = self.tensorboard_url
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.username is not None:
+            result['Username'] = self.username
         return result
 
     def from_map(self, m: dict = None):
@@ -2993,6 +3001,8 @@ class Tensorboard(TeaModel):
             self.duration = m.get('Duration')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtFinishTime') is not None:
+            self.gmt_finish_time = m.get('GmtFinishTime')
         if m.get('GmtModifyTime') is not None:
             self.gmt_modify_time = m.get('GmtModifyTime')
         if m.get('JobId') is not None:
@@ -3021,6 +3031,8 @@ class Tensorboard(TeaModel):
             self.tensorboard_url = m.get('TensorboardUrl')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
         return self
 
 
@@ -3289,11 +3301,14 @@ class CreateJobRequest(TeaModel):
         self.code_source = code_source
         self.data_sources = data_sources
         self.debugger_config_content = debugger_config_content
+        # This parameter is required.
         self.display_name = display_name
         self.elastic_spec = elastic_spec
         self.envs = envs
         self.job_max_running_time_minutes = job_max_running_time_minutes
+        # This parameter is required.
         self.job_specs = job_specs
+        # This parameter is required.
         self.job_type = job_type
         self.options = options
         self.priority = priority
@@ -3302,6 +3317,7 @@ class CreateJobRequest(TeaModel):
         self.success_policy = success_policy
         self.thirdparty_lib_dir = thirdparty_lib_dir
         self.thirdparty_libs = thirdparty_libs
+        # This parameter is required.
         self.user_command = user_command
         self.user_vpc = user_vpc
         self.workspace_id = workspace_id
@@ -4655,6 +4671,7 @@ class GetJobMetricsRequest(TeaModel):
         token: str = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.metric_type = metric_type
         self.start_time = start_time
         self.time_step = time_step
@@ -4791,6 +4808,7 @@ class GetJobSanityCheckResultRequest(TeaModel):
         sanity_check_phase: str = None,
         token: str = None,
     ):
+        # This parameter is required.
         self.sanity_check_number = sanity_check_number
         self.sanity_check_phase = sanity_check_phase
         self.token = token
@@ -4967,6 +4985,7 @@ class GetPodEventsResponseBody(TeaModel):
     ):
         self.events = events
         self.job_id = job_id
+        # This parameter is required.
         self.pod_id = pod_id
         self.pod_uid = pod_uid
         self.request_id = request_id
@@ -6265,6 +6284,8 @@ class ListTensorboardsRequest(TeaModel):
         start_time: str = None,
         status: str = None,
         tensorboard_id: str = None,
+        user_id: str = None,
+        username: str = None,
         verbose: bool = None,
         workspace_id: str = None,
     ):
@@ -6282,6 +6303,8 @@ class ListTensorboardsRequest(TeaModel):
         self.start_time = start_time
         self.status = status
         self.tensorboard_id = tensorboard_id
+        self.user_id = user_id
+        self.username = username
         self.verbose = verbose
         self.workspace_id = workspace_id
 
@@ -6322,6 +6345,10 @@ class ListTensorboardsRequest(TeaModel):
             result['Status'] = self.status
         if self.tensorboard_id is not None:
             result['TensorboardId'] = self.tensorboard_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.username is not None:
+            result['Username'] = self.username
         if self.verbose is not None:
             result['Verbose'] = self.verbose
         if self.workspace_id is not None:
@@ -6358,6 +6385,10 @@ class ListTensorboardsRequest(TeaModel):
             self.status = m.get('Status')
         if m.get('TensorboardId') is not None:
             self.tensorboard_id = m.get('TensorboardId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
         if m.get('WorkspaceId') is not None:

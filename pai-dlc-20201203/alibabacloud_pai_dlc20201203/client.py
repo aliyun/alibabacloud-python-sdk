@@ -99,6 +99,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.CreateJobResponse:
+        """
+        @summary 创建一个DLC作业
+        
+        @param request: CreateJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code_source):
@@ -165,6 +173,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.CreateJobResponse:
+        """
+        @summary 创建一个DLC作业
+        
+        @param request: CreateJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code_source):
@@ -229,6 +245,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.CreateJobRequest,
     ) -> pai_dlc_20201203_models.CreateJobResponse:
+        """
+        @summary 创建一个DLC作业
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_job_with_options(request, headers, runtime)
@@ -237,6 +259,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.CreateJobRequest,
     ) -> pai_dlc_20201203_models.CreateJobResponse:
+        """
+        @summary 创建一个DLC作业
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_job_with_options_async(request, headers, runtime)
@@ -247,6 +275,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
+        """
+        @summary 创建一个Tensorboard
+        
+        @param request: CreateTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTensorboardResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu):
@@ -309,6 +345,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
+        """
+        @summary 创建一个Tensorboard
+        
+        @param request: CreateTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTensorboardResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu):
@@ -369,6 +413,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.CreateTensorboardRequest,
     ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
+        """
+        @summary 创建一个Tensorboard
+        
+        @param request: CreateTensorboardRequest
+        @return: CreateTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_tensorboard_with_options(request, headers, runtime)
@@ -377,6 +427,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.CreateTensorboardRequest,
     ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
+        """
+        @summary 创建一个Tensorboard
+        
+        @param request: CreateTensorboardRequest
+        @return: CreateTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_tensorboard_with_options_async(request, headers, runtime)
@@ -387,6 +443,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
+        """
+        @summary 删除一个DLC作业
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -412,6 +475,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
+        """
+        @summary 删除一个DLC作业
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -435,6 +505,11 @@ class Client(OpenApiClient):
         self,
         job_id: str,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
+        """
+        @summary 删除一个DLC作业
+        
+        @return: DeleteJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_job_with_options(job_id, headers, runtime)
@@ -443,6 +518,11 @@ class Client(OpenApiClient):
         self,
         job_id: str,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
+        """
+        @summary 删除一个DLC作业
+        
+        @return: DeleteJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_job_with_options_async(job_id, headers, runtime)
@@ -454,6 +534,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
+        """
+        @summary 删除一个数据源配置
+        
+        @param request: DeleteTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -485,6 +573,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
+        """
+        @summary 删除一个数据源配置
+        
+        @param request: DeleteTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -514,6 +610,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.DeleteTensorboardRequest,
     ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
+        """
+        @summary 删除一个数据源配置
+        
+        @param request: DeleteTensorboardRequest
+        @return: DeleteTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_tensorboard_with_options(tensorboard_id, request, headers, runtime)
@@ -523,6 +625,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.DeleteTensorboardRequest,
     ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
+        """
+        @summary 删除一个数据源配置
+        
+        @param request: DeleteTensorboardRequest
+        @return: DeleteTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
@@ -534,6 +642,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobResponse:
+        """
+        @summary 获取一个DLC作业详情
+        
+        @param request: GetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.need_detail):
@@ -565,6 +681,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobResponse:
+        """
+        @summary 获取一个DLC作业详情
+        
+        @param request: GetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.need_detail):
@@ -594,6 +718,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.GetJobRequest,
     ) -> pai_dlc_20201203_models.GetJobResponse:
+        """
+        @summary 获取一个DLC作业详情
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_job_with_options(job_id, request, headers, runtime)
@@ -603,6 +733,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.GetJobRequest,
     ) -> pai_dlc_20201203_models.GetJobResponse:
+        """
+        @summary 获取一个DLC作业详情
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_with_options_async(job_id, request, headers, runtime)
@@ -614,6 +750,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobEventsResponse:
+        """
+        @summary 获取作业的事件
+        
+        @param request: GetJobEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -649,6 +793,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobEventsResponse:
+        """
+        @summary 获取作业的事件
+        
+        @param request: GetJobEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -682,6 +834,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.GetJobEventsRequest,
     ) -> pai_dlc_20201203_models.GetJobEventsResponse:
+        """
+        @summary 获取作业的事件
+        
+        @param request: GetJobEventsRequest
+        @return: GetJobEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_job_events_with_options(job_id, request, headers, runtime)
@@ -691,6 +849,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.GetJobEventsRequest,
     ) -> pai_dlc_20201203_models.GetJobEventsResponse:
+        """
+        @summary 获取作业的事件
+        
+        @param request: GetJobEventsRequest
+        @return: GetJobEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_events_with_options_async(job_id, request, headers, runtime)
@@ -702,6 +866,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
+        """
+        @summary 获取一个作业的资源监控指标
+        
+        @param request: GetJobMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -741,6 +913,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
+        """
+        @summary 获取一个作业的资源监控指标
+        
+        @param request: GetJobMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -778,6 +958,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.GetJobMetricsRequest,
     ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
+        """
+        @summary 获取一个作业的资源监控指标
+        
+        @param request: GetJobMetricsRequest
+        @return: GetJobMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_job_metrics_with_options(job_id, request, headers, runtime)
@@ -787,6 +973,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.GetJobMetricsRequest,
     ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
+        """
+        @summary 获取一个作业的资源监控指标
+        
+        @param request: GetJobMetricsRequest
+        @return: GetJobMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_metrics_with_options_async(job_id, request, headers, runtime)
@@ -798,6 +990,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
+        """
+        @summary 获取DLC作业某次算力健康检测结果
+        
+        @param request: GetJobSanityCheckResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobSanityCheckResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.sanity_check_number):
@@ -833,6 +1033,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
+        """
+        @summary 获取DLC作业某次算力健康检测结果
+        
+        @param request: GetJobSanityCheckResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobSanityCheckResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.sanity_check_number):
@@ -866,6 +1074,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.GetJobSanityCheckResultRequest,
     ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
+        """
+        @summary 获取DLC作业某次算力健康检测结果
+        
+        @param request: GetJobSanityCheckResultRequest
+        @return: GetJobSanityCheckResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_job_sanity_check_result_with_options(job_id, request, headers, runtime)
@@ -875,6 +1089,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.GetJobSanityCheckResultRequest,
     ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
+        """
+        @summary 获取DLC作业某次算力健康检测结果
+        
+        @param request: GetJobSanityCheckResultRequest
+        @return: GetJobSanityCheckResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_sanity_check_result_with_options_async(job_id, request, headers, runtime)
@@ -887,6 +1107,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetPodEventsResponse:
+        """
+        @summary 获取作业中一个运行实例的系统事件
+        
+        @param request: GetPodEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPodEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -925,6 +1153,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetPodEventsResponse:
+        """
+        @summary 获取作业中一个运行实例的系统事件
+        
+        @param request: GetPodEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPodEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -961,6 +1197,12 @@ class Client(OpenApiClient):
         pod_id: str,
         request: pai_dlc_20201203_models.GetPodEventsRequest,
     ) -> pai_dlc_20201203_models.GetPodEventsResponse:
+        """
+        @summary 获取作业中一个运行实例的系统事件
+        
+        @param request: GetPodEventsRequest
+        @return: GetPodEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pod_events_with_options(job_id, pod_id, request, headers, runtime)
@@ -971,6 +1213,12 @@ class Client(OpenApiClient):
         pod_id: str,
         request: pai_dlc_20201203_models.GetPodEventsRequest,
     ) -> pai_dlc_20201203_models.GetPodEventsResponse:
+        """
+        @summary 获取作业中一个运行实例的系统事件
+        
+        @param request: GetPodEventsRequest
+        @return: GetPodEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pod_events_with_options_async(job_id, pod_id, request, headers, runtime)
@@ -983,6 +1231,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetPodLogsResponse:
+        """
+        @summary 获取作业中一个运行实例的日志
+        
+        @param request: GetPodLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPodLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.download_to_file):
@@ -1023,6 +1279,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetPodLogsResponse:
+        """
+        @summary 获取作业中一个运行实例的日志
+        
+        @param request: GetPodLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPodLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.download_to_file):
@@ -1061,6 +1325,12 @@ class Client(OpenApiClient):
         pod_id: str,
         request: pai_dlc_20201203_models.GetPodLogsRequest,
     ) -> pai_dlc_20201203_models.GetPodLogsResponse:
+        """
+        @summary 获取作业中一个运行实例的日志
+        
+        @param request: GetPodLogsRequest
+        @return: GetPodLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pod_logs_with_options(job_id, pod_id, request, headers, runtime)
@@ -1071,6 +1341,12 @@ class Client(OpenApiClient):
         pod_id: str,
         request: pai_dlc_20201203_models.GetPodLogsRequest,
     ) -> pai_dlc_20201203_models.GetPodLogsResponse:
+        """
+        @summary 获取作业中一个运行实例的日志
+        
+        @param request: GetPodLogsRequest
+        @return: GetPodLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pod_logs_with_options_async(job_id, pod_id, request, headers, runtime)
@@ -1082,6 +1358,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTensorboardResponse:
+        """
+        @summary 获取一个Tensorboard
+        
+        @param request: GetTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.jod_id):
@@ -1117,6 +1401,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTensorboardResponse:
+        """
+        @summary 获取一个Tensorboard
+        
+        @param request: GetTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.jod_id):
@@ -1150,6 +1442,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.GetTensorboardRequest,
     ) -> pai_dlc_20201203_models.GetTensorboardResponse:
+        """
+        @summary 获取一个Tensorboard
+        
+        @param request: GetTensorboardRequest
+        @return: GetTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_tensorboard_with_options(tensorboard_id, request, headers, runtime)
@@ -1159,6 +1457,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.GetTensorboardRequest,
     ) -> pai_dlc_20201203_models.GetTensorboardResponse:
+        """
+        @summary 获取一个Tensorboard
+        
+        @param request: GetTensorboardRequest
+        @return: GetTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
@@ -1170,6 +1474,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
+        """
+        @summary Get the shared url for tensorboard
+        
+        @param request: GetTensorboardSharedUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTensorboardSharedUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time_seconds):
@@ -1201,6 +1513,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
+        """
+        @summary Get the shared url for tensorboard
+        
+        @param request: GetTensorboardSharedUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTensorboardSharedUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time_seconds):
@@ -1230,6 +1550,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.GetTensorboardSharedUrlRequest,
     ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
+        """
+        @summary Get the shared url for tensorboard
+        
+        @param request: GetTensorboardSharedUrlRequest
+        @return: GetTensorboardSharedUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_tensorboard_shared_url_with_options(tensorboard_id, request, headers, runtime)
@@ -1239,6 +1565,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.GetTensorboardSharedUrlRequest,
     ) -> pai_dlc_20201203_models.GetTensorboardSharedUrlResponse:
+        """
+        @summary Get the shared url for tensorboard
+        
+        @param request: GetTensorboardSharedUrlRequest
+        @return: GetTensorboardSharedUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_tensorboard_shared_url_with_options_async(tensorboard_id, request, headers, runtime)
@@ -1249,6 +1581,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
+        """
+        @summary 获取用户Token
+        
+        @param request: GetTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time):
@@ -1283,6 +1623,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
+        """
+        @summary 获取用户Token
+        
+        @param request: GetTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time):
@@ -1315,6 +1663,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.GetTokenRequest,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
+        """
+        @summary 获取用户Token
+        
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_token_with_options(request, headers, runtime)
@@ -1323,6 +1677,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.GetTokenRequest,
     ) -> pai_dlc_20201203_models.GetTokenResponse:
+        """
+        @summary 获取用户Token
+        
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_token_with_options_async(request, headers, runtime)
@@ -1335,6 +1695,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
+        """
+        @summary Get the url for accessing pod's terminal in k8s
+        
+        @param request: GetWebTerminalRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWebTerminalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_shared):
@@ -1369,6 +1737,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
+        """
+        @summary Get the url for accessing pod's terminal in k8s
+        
+        @param request: GetWebTerminalRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWebTerminalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_shared):
@@ -1401,6 +1777,12 @@ class Client(OpenApiClient):
         pod_id: str,
         request: pai_dlc_20201203_models.GetWebTerminalRequest,
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
+        """
+        @summary Get the url for accessing pod's terminal in k8s
+        
+        @param request: GetWebTerminalRequest
+        @return: GetWebTerminalResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_web_terminal_with_options(job_id, pod_id, request, headers, runtime)
@@ -1411,6 +1793,12 @@ class Client(OpenApiClient):
         pod_id: str,
         request: pai_dlc_20201203_models.GetWebTerminalRequest,
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
+        """
+        @summary Get the url for accessing pod's terminal in k8s
+        
+        @param request: GetWebTerminalRequest
+        @return: GetWebTerminalResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_web_terminal_with_options_async(job_id, pod_id, request, headers, runtime)
@@ -1421,6 +1809,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
+        """
+        @summary ListEcsSpecs
+        
+        @param request: ListEcsSpecsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEcsSpecsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
@@ -1463,6 +1859,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
+        """
+        @summary ListEcsSpecs
+        
+        @param request: ListEcsSpecsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEcsSpecsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
@@ -1503,6 +1907,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.ListEcsSpecsRequest,
     ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
+        """
+        @summary ListEcsSpecs
+        
+        @param request: ListEcsSpecsRequest
+        @return: ListEcsSpecsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_ecs_specs_with_options(request, headers, runtime)
@@ -1511,6 +1921,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.ListEcsSpecsRequest,
     ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
+        """
+        @summary ListEcsSpecs
+        
+        @param request: ListEcsSpecsRequest
+        @return: ListEcsSpecsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_ecs_specs_with_options_async(request, headers, runtime)
@@ -1522,6 +1938,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
+        """
+        @summary 获取某个DLC作业的多次算力健康检测结果
+        
+        @param request: ListJobSanityCheckResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobSanityCheckResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -1553,6 +1977,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
+        """
+        @summary 获取某个DLC作业的多次算力健康检测结果
+        
+        @param request: ListJobSanityCheckResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobSanityCheckResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -1582,6 +2014,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.ListJobSanityCheckResultsRequest,
     ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
+        """
+        @summary 获取某个DLC作业的多次算力健康检测结果
+        
+        @param request: ListJobSanityCheckResultsRequest
+        @return: ListJobSanityCheckResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_job_sanity_check_results_with_options(job_id, request, headers, runtime)
@@ -1591,6 +2029,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.ListJobSanityCheckResultsRequest,
     ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
+        """
+        @summary 获取某个DLC作业的多次算力健康检测结果
+        
+        @param request: ListJobSanityCheckResultsRequest
+        @return: ListJobSanityCheckResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_job_sanity_check_results_with_options_async(job_id, request, headers, runtime)
@@ -1601,6 +2045,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListJobsResponse:
+        """
+        @summary 根据过滤条件获取DLC作业列表
+        
+        @param tmp_req: ListJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_dlc_20201203_models.ListJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1675,6 +2127,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListJobsResponse:
+        """
+        @summary 根据过滤条件获取DLC作业列表
+        
+        @param tmp_req: ListJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_dlc_20201203_models.ListJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1747,6 +2207,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.ListJobsRequest,
     ) -> pai_dlc_20201203_models.ListJobsResponse:
+        """
+        @summary 根据过滤条件获取DLC作业列表
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_jobs_with_options(request, headers, runtime)
@@ -1755,6 +2221,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.ListJobsRequest,
     ) -> pai_dlc_20201203_models.ListJobsResponse:
+        """
+        @summary 根据过滤条件获取DLC作业列表
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_jobs_with_options_async(request, headers, runtime)
@@ -1765,6 +2237,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
+        """
+        @summary 获取Tensorboard
+        
+        @param request: ListTensorboardsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTensorboardsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_name):
@@ -1795,6 +2275,10 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tensorboard_id):
             query['TensorboardId'] = request.tensorboard_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
@@ -1825,6 +2309,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
+        """
+        @summary 获取Tensorboard
+        
+        @param request: ListTensorboardsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTensorboardsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_name):
@@ -1855,6 +2347,10 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tensorboard_id):
             query['TensorboardId'] = request.tensorboard_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
@@ -1883,6 +2379,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.ListTensorboardsRequest,
     ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
+        """
+        @summary 获取Tensorboard
+        
+        @param request: ListTensorboardsRequest
+        @return: ListTensorboardsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tensorboards_with_options(request, headers, runtime)
@@ -1891,6 +2393,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dlc_20201203_models.ListTensorboardsRequest,
     ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
+        """
+        @summary 获取Tensorboard
+        
+        @param request: ListTensorboardsRequest
+        @return: ListTensorboardsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tensorboards_with_options_async(request, headers, runtime)
@@ -1902,6 +2410,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
+        """
+        @summary 开始运行tensorboard
+        
+        @param request: StartTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -1933,6 +2449,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
+        """
+        @summary 开始运行tensorboard
+        
+        @param request: StartTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -1962,6 +2486,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.StartTensorboardRequest,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
+        """
+        @summary 开始运行tensorboard
+        
+        @param request: StartTensorboardRequest
+        @return: StartTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_tensorboard_with_options(tensorboard_id, request, headers, runtime)
@@ -1971,6 +2501,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.StartTensorboardRequest,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
+        """
+        @summary 开始运行tensorboard
+        
+        @param request: StartTensorboardRequest
+        @return: StartTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
@@ -1981,6 +2517,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StopJobResponse:
+        """
+        @summary 停止一个DLC作业
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopJobResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2006,6 +2549,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StopJobResponse:
+        """
+        @summary 停止一个DLC作业
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopJobResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2029,6 +2579,11 @@ class Client(OpenApiClient):
         self,
         job_id: str,
     ) -> pai_dlc_20201203_models.StopJobResponse:
+        """
+        @summary 停止一个DLC作业
+        
+        @return: StopJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_job_with_options(job_id, headers, runtime)
@@ -2037,6 +2592,11 @@ class Client(OpenApiClient):
         self,
         job_id: str,
     ) -> pai_dlc_20201203_models.StopJobResponse:
+        """
+        @summary 停止一个DLC作业
+        
+        @return: StopJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_job_with_options_async(job_id, headers, runtime)
@@ -2048,6 +2608,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StopTensorboardResponse:
+        """
+        @summary 停止运行tensorboard
+        
+        @param request: StopTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -2079,6 +2647,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StopTensorboardResponse:
+        """
+        @summary 停止运行tensorboard
+        
+        @param request: StopTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -2108,6 +2684,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.StopTensorboardRequest,
     ) -> pai_dlc_20201203_models.StopTensorboardResponse:
+        """
+        @summary 停止运行tensorboard
+        
+        @param request: StopTensorboardRequest
+        @return: StopTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_tensorboard_with_options(tensorboard_id, request, headers, runtime)
@@ -2117,6 +2699,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.StopTensorboardRequest,
     ) -> pai_dlc_20201203_models.StopTensorboardResponse:
+        """
+        @summary 停止运行tensorboard
+        
+        @param request: StopTensorboardRequest
+        @return: StopTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
@@ -2128,6 +2716,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.UpdateJobResponse:
+        """
+        @summary 更新一个Job
+        
+        @param request: UpdateJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.priority):
@@ -2159,6 +2755,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.UpdateJobResponse:
+        """
+        @summary 更新一个Job
+        
+        @param request: UpdateJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.priority):
@@ -2188,6 +2792,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.UpdateJobRequest,
     ) -> pai_dlc_20201203_models.UpdateJobResponse:
+        """
+        @summary 更新一个Job
+        
+        @param request: UpdateJobRequest
+        @return: UpdateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_job_with_options(job_id, request, headers, runtime)
@@ -2197,6 +2807,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: pai_dlc_20201203_models.UpdateJobRequest,
     ) -> pai_dlc_20201203_models.UpdateJobResponse:
+        """
+        @summary 更新一个Job
+        
+        @param request: UpdateJobRequest
+        @return: UpdateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_job_with_options_async(job_id, request, headers, runtime)
@@ -2208,6 +2824,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
+        """
+        @summary 更新tensorboard
+        
+        @param request: UpdateTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_running_time_minutes):
@@ -2241,6 +2865,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
+        """
+        @summary 更新tensorboard
+        
+        @param request: UpdateTensorboardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTensorboardResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_running_time_minutes):
@@ -2272,6 +2904,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.UpdateTensorboardRequest,
     ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
+        """
+        @summary 更新tensorboard
+        
+        @param request: UpdateTensorboardRequest
+        @return: UpdateTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_tensorboard_with_options(tensorboard_id, request, headers, runtime)
@@ -2281,6 +2919,12 @@ class Client(OpenApiClient):
         tensorboard_id: str,
         request: pai_dlc_20201203_models.UpdateTensorboardRequest,
     ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
+        """
+        @summary 更新tensorboard
+        
+        @param request: UpdateTensorboardRequest
+        @return: UpdateTensorboardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
