@@ -1,3 +1,9 @@
+2024-06-06 Version: 4.2.0
+- Support API CreateClusterDiagnosis.
+- Support API GetClusterDiagnosisCheckItems.
+- Support API GetClusterDiagnosisResult.
+
+
 2024-05-27 Version: 4.1.1
 - Update API RepairClusterNodePool: update param body.
 

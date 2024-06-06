@@ -1688,6 +1688,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_cluster_with_options_async(request, headers, runtime)
 
+    def create_cluster_diagnosis_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateClusterDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CreateClusterDiagnosisResponse:
+        """
+        @summary 发起集群诊断
+        
+        @param request: CreateClusterDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterDiagnosisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.target):
+            body['target'] = request.target
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateClusterDiagnosis',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/diagnosis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CreateClusterDiagnosisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cluster_diagnosis_with_options_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateClusterDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CreateClusterDiagnosisResponse:
+        """
+        @summary 发起集群诊断
+        
+        @param request: CreateClusterDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterDiagnosisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.target):
+            body['target'] = request.target
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateClusterDiagnosis',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/diagnosis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CreateClusterDiagnosisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cluster_diagnosis(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateClusterDiagnosisRequest,
+    ) -> cs20151215_models.CreateClusterDiagnosisResponse:
+        """
+        @summary 发起集群诊断
+        
+        @param request: CreateClusterDiagnosisRequest
+        @return: CreateClusterDiagnosisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_cluster_diagnosis_with_options(cluster_id, request, headers, runtime)
+
+    async def create_cluster_diagnosis_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.CreateClusterDiagnosisRequest,
+    ) -> cs20151215_models.CreateClusterDiagnosisResponse:
+        """
+        @summary 发起集群诊断
+        
+        @param request: CreateClusterDiagnosisRequest
+        @return: CreateClusterDiagnosisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_cluster_diagnosis_with_options_async(cluster_id, request, headers, runtime)
+
     def create_cluster_node_pool_with_options(
         self,
         cluster_id: str,
@@ -1696,7 +1808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @param headers: map
@@ -1755,7 +1867,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @param headers: map
@@ -1812,7 +1924,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterNodePoolRequest,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @return: CreateClusterNodePoolResponse
@@ -1827,7 +1939,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterNodePoolRequest,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @return: CreateClusterNodePoolResponse
@@ -4944,7 +5056,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         """
-        @summary You can call the DescribeClusterNodePools operation to query node pools in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries node pools in a Container Service for Kubernetes (ACK) cluster.
         
         @param request: DescribeClusterNodePoolsRequest
         @param headers: map
@@ -4983,7 +5095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         """
-        @summary You can call the DescribeClusterNodePools operation to query node pools in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries node pools in a Container Service for Kubernetes (ACK) cluster.
         
         @param request: DescribeClusterNodePoolsRequest
         @param headers: map
@@ -5020,7 +5132,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterNodePoolsRequest,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         """
-        @summary You can call the DescribeClusterNodePools operation to query node pools in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries node pools in a Container Service for Kubernetes (ACK) cluster.
         
         @param request: DescribeClusterNodePoolsRequest
         @return: DescribeClusterNodePoolsResponse
@@ -5035,7 +5147,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterNodePoolsRequest,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         """
-        @summary You can call the DescribeClusterNodePools operation to query node pools in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries node pools in a Container Service for Kubernetes (ACK) cluster.
         
         @param request: DescribeClusterNodePoolsRequest
         @return: DescribeClusterNodePoolsResponse
@@ -8653,6 +8765,194 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_cluster_check_with_options_async(cluster_id, check_id, headers, runtime)
+
+    def get_cluster_diagnosis_check_items_with_options(
+        self,
+        cluster_id: str,
+        diagnosis_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.GetClusterDiagnosisCheckItemsResponse:
+        """
+        @summary 获取集群诊断检查项
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterDiagnosisCheckItemsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetClusterDiagnosisCheckItems',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/diagnosis/{OpenApiUtilClient.get_encode_param(diagnosis_id)}/check_items',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.GetClusterDiagnosisCheckItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cluster_diagnosis_check_items_with_options_async(
+        self,
+        cluster_id: str,
+        diagnosis_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.GetClusterDiagnosisCheckItemsResponse:
+        """
+        @summary 获取集群诊断检查项
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterDiagnosisCheckItemsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetClusterDiagnosisCheckItems',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/diagnosis/{OpenApiUtilClient.get_encode_param(diagnosis_id)}/check_items',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.GetClusterDiagnosisCheckItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cluster_diagnosis_check_items(
+        self,
+        cluster_id: str,
+        diagnosis_id: str,
+    ) -> cs20151215_models.GetClusterDiagnosisCheckItemsResponse:
+        """
+        @summary 获取集群诊断检查项
+        
+        @return: GetClusterDiagnosisCheckItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cluster_diagnosis_check_items_with_options(cluster_id, diagnosis_id, headers, runtime)
+
+    async def get_cluster_diagnosis_check_items_async(
+        self,
+        cluster_id: str,
+        diagnosis_id: str,
+    ) -> cs20151215_models.GetClusterDiagnosisCheckItemsResponse:
+        """
+        @summary 获取集群诊断检查项
+        
+        @return: GetClusterDiagnosisCheckItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cluster_diagnosis_check_items_with_options_async(cluster_id, diagnosis_id, headers, runtime)
+
+    def get_cluster_diagnosis_result_with_options(
+        self,
+        cluster_id: str,
+        diagnosis_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.GetClusterDiagnosisResultResponse:
+        """
+        @summary 获取集群诊断结果
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterDiagnosisResultResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetClusterDiagnosisResult',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/diagnosis/{OpenApiUtilClient.get_encode_param(diagnosis_id)}/result',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.GetClusterDiagnosisResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cluster_diagnosis_result_with_options_async(
+        self,
+        cluster_id: str,
+        diagnosis_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.GetClusterDiagnosisResultResponse:
+        """
+        @summary 获取集群诊断结果
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterDiagnosisResultResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetClusterDiagnosisResult',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/diagnosis/{OpenApiUtilClient.get_encode_param(diagnosis_id)}/result',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.GetClusterDiagnosisResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cluster_diagnosis_result(
+        self,
+        cluster_id: str,
+        diagnosis_id: str,
+    ) -> cs20151215_models.GetClusterDiagnosisResultResponse:
+        """
+        @summary 获取集群诊断结果
+        
+        @return: GetClusterDiagnosisResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cluster_diagnosis_result_with_options(cluster_id, diagnosis_id, headers, runtime)
+
+    async def get_cluster_diagnosis_result_async(
+        self,
+        cluster_id: str,
+        diagnosis_id: str,
+    ) -> cs20151215_models.GetClusterDiagnosisResultResponse:
+        """
+        @summary 获取集群诊断结果
+        
+        @return: GetClusterDiagnosisResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cluster_diagnosis_result_with_options_async(cluster_id, diagnosis_id, headers, runtime)
 
     def get_kubernetes_trigger_with_options(
         self,
