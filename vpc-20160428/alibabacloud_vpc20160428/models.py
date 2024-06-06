@@ -9923,8 +9923,6 @@ class CreateFullNatEntryRequest(TeaModel):
         # This parameter is required.
         self.nat_ip = nat_ip
         # The frontend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
-        # 
-        # This parameter is required.
         self.nat_ip_port = nat_ip_port
         # The elastic network interface (ENI) ID.
         # 
@@ -23852,7 +23850,7 @@ class DeleteCustomerGatewayRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
@@ -27947,7 +27945,7 @@ class DeleteRouteEntryRequest(TeaModel):
         route_entry_id: str = None,
         route_table_id: str = None,
     ):
-        # The destination CIDR block of the route entry. IPv4 and IPv6 CIDR blocks are supported.
+        # The destination CIDR block of the route. Only IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix lists are supported.
         self.destination_cidr_block = destination_cidr_block
         # The ID of the next hop.
         # 
@@ -30994,7 +30992,9 @@ class DeleteVpnPbrRouteEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
-        # The weight of the policy-based route.
+        # The weight of the policy-based route. Valid values:
+        # 
+        # You can call [DescribeVpnPbrRouteEntries](https://help.aliyun.com/document_detail/2526959.html) to query weights of policy-based routes.
         # 
         # This parameter is required.
         self.weight = weight
@@ -34231,17 +34231,17 @@ class DescribeCustomerGatewaysRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The tag key cannot be an empty string.
+        # The key of the tag. The tag key cannot be an empty string.
         # 
-        # It can be at most 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         # 
-        # You can specify at most 20 tag keys in each call.
+        # You can specify at most 20 tag keys at a time.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         # 
-        # The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It can be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
-        # Each tag key corresponds to one tag value. You can specify at most 20 tag values in each call.
+        # Each tag key corresponds to one tag value. You can specify at most 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -34304,11 +34304,7 @@ class DescribeCustomerGatewaysRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag value.
-        # 
-        # The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-        # 
-        # Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
+        # The tags to be added to the customer gateway.
         self.tag = tag
 
     def validate(self):
@@ -34381,9 +34377,9 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The key of the tag.
         self.key = key
-        # The value of tag N.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -34460,25 +34456,25 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
     ):
         # The autonomous system number (ASN) of the gateway device in the data center.
         self.asn = asn
-        # The authentication key of the Border Gateway Protocol (BGP) routing protocol for the gateway device in the data center.
+        # The authentication key that is used to connect to the gateway device in the data center by using Border Gateway Protocol (BGP).
         self.auth_key = auth_key
-        # The timestamp generated when the customer gateway was created. Unit: millisecond.
+        # The time when the customer gateway was created. Unit: millisecond.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The ID of the customer gateway.
+        # The customer gateway ID.
         self.customer_gateway_id = customer_gateway_id
         # The description of the customer gateway.
         self.description = description
-        # The public IP address of the gateway device in the data center.
+        # The IP address of the gateway device in the data center.
         self.ip_address = ip_address
         # The name of the customer gateway.
         self.name = name
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
-        # The list of tags added to the customer gateway.
+        # The tags that are added to the customer gateway.
         self.tags = tags
 
     def validate(self):
@@ -52126,9 +52122,7 @@ class DescribeSslVpnClientCertResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of the resource group to which the SSL client certificate belongs.
         # 
-        # The SSL client certificate is the same as the resource group of the SSL server associated with it.
-        # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
+        # The SSL client certificate and the SSL server associated with the SSL client certificate belong to the same resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
         # The ID of the SSL client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
@@ -52992,7 +52986,7 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
         self.compress = compress
         # The total number of current connections.
         self.connections = connections
-        # The timestamp generated when the SSL server was created.
+        # The timestamp generated when the SSL-VPN server was created.
         self.create_time = create_time
         # Indicates whether two-factor authentication is enabled.
         # 
@@ -53003,7 +52997,7 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
         # The ID of the IDaaS instance.
         self.idaa_sinstance_id = idaa_sinstance_id
         self.idaa_sinstance_version = idaa_sinstance_version
-        # The ID of the region where the IDaaS instance is created.
+        # The region ID of the IDaaS instance.
         self.idaa_sregion_id = idaa_sregion_id
         # The public IP address of the VPN gateway.
         self.internet_ip = internet_ip
@@ -53011,19 +53005,19 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
         self.local_subnet = local_subnet
         # The maximum number of connections.
         self.max_connections = max_connections
-        # The name of the SSL server.
+        # The name of the SSL-VPN server.
         self.name = name
-        # The port that is used by the SSL server.
+        # The port that is used by the SSL-VPN server.
         self.port = port
-        # The protocol that is used by the SSL server.
+        # The protocol that is used by the SSL-VPN server.
         self.proto = proto
-        # The ID of the region where the SSL server is created.
+        # The region ID of the SSL-VPN server.
         self.region_id = region_id
-        # The ID of the resource group to which the SSL server belongs.
+        # The resource group ID of the SSL-VPN server.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
-        # The ID of the SSL server.
+        # The ID of the SSL-VPN server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -53174,7 +53168,7 @@ class DescribeSslVpnServersResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The detailed information about the SSL servers.
+        # The detailed information about the SSL-VPN server.
         self.ssl_vpn_servers = ssl_vpn_servers
         # The number of entries returned.
         self.total_count = total_count
@@ -60526,21 +60520,21 @@ class DescribeVpnConnectionLogsRequest(TeaModel):
         tunnel_id: str = None,
         vpn_connection_id: str = None,
     ):
-        # The beginning of the time range to query. The value must be a UNIX timestamp. For example, 1671003744 specifies 15:42:24 (UTC+8) on December 14, 2022.
+        # The start time of the flow log. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  If you specify **From**, you must also specify **To** or **MinutePeriod**.
+        # >  If you specify **From**, you must specify **To** or **MinutePeriod**.
         self.from_ = from_
-        # The interval at which log data is queried. Valid values: **1** to **10**. Unit: minutes.
+        # The interval at which log data is collected. Valid values: **1** to **10**. Unit: minutes.
         # 
-        # >  If both **From** and **To** are not specified, you must specify **MinutePeriod**.
+        # >  If you do not specify **From** and **To**, you must specify **MinutePeriod**.
         self.minute_period = minute_period
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region to which the IPsec-VPN connection belongs.
+        # The region ID of the IPsec-VPN connection.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
@@ -60548,11 +60542,13 @@ class DescribeVpnConnectionLogsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The end of the time range to query. The value must be a UNIX timestamp. For example, 1671004344 specifies 15:52:24 (UTC+8) on December 14, 2022.
+        # The end time of the flow log. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  If you specify **To**, you must also specify **From** or **MinutePeriod**.
+        # >  If you specify **To**, you must specify **From** or **MinutePeriod**.
         self.to = to
-        # The tunnel ID of the IPsec-VPN connection. You can specify this parameter only for IPsec-VPN connections in dual-tunnel mode.
+        # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is available only for a dual-tunnel IPsec-VPN connection.
         self.tunnel_id = tunnel_id
         # The ID of the IPsec-VPN connection.
         # 
@@ -60662,20 +60658,18 @@ class DescribeVpnConnectionLogsResponseBody(TeaModel):
     ):
         # The number of entries on the current page.
         self.count = count
-        # An array of strings.
-        # 
-        # Each item in the array is a log entry.
+        # The log list.
         self.data = data
         # Indicates whether the log is accurate. Valid values:
         # 
-        # *   **true**: accurate
-        # *   **false**: inaccurate
+        # *   **true**\
+        # *   **false**\
         self.is_completed = is_completed
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63354,34 +63348,34 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData(TeaMod
         reservation_ssl: str = None,
         status: str = None,
     ):
-        # If the order type is **TEMP_UPGRADE** (temporary upgrade), this parameter specifies the time when the temporary upgrade expires.
+        # If the value of ReservationOrderType is **TEMP_UPGRADE**, this parameter indicates the time when the temporary upgrade expires.
         # 
-        # If the order type is **RENEWCHANGE** (renewal with a specification change) or **RENEW** (renewal), this parameter indicates the time when the renewal or renewal with a specification change takes effect.
+        # If the value of ReservationOrderType is **RENEWCHANGE** or **RENEW**, this parameter indicates the time when the renewal or renewal with a specification change takes effect.
         self.reservation_end_time = reservation_end_time
-        # The IPsec-VPN status of the order that has not taken effect. Valid values:
+        # The IPsec-VPN status of the pending order. Valid values:
         # 
         # *   **enable**\
         # *   **disable**\
         self.reservation_ipsec = reservation_ipsec
         # The maximum number of concurrent SSL-VPN connections of the pending order.
         self.reservation_max_connections = reservation_max_connections
-        # The type of the order that has not taken effect. Valid values:
+        # The type of the pending order. Valid values:
         # 
-        # *   **RENEWCHANGE**: renewal with upgrade or downgrade
+        # *   **RENEWCHANGE**: renewal with a specification change
         # *   **TEMP_UPGRADE**: temporary upgrade
         # *   **RENEW**: renewal
         self.reservation_order_type = reservation_order_type
         # The bandwidth of the pending order. Unit: Mbit/s.
         self.reservation_spec = reservation_spec
-        # The SSL-VPN status of the order that has not taken effect. Valid values:
+        # The SSL-VPN status of the pending order. Valid values:
         # 
         # *   **enable**\
         # *   **disable**\
         self.reservation_ssl = reservation_ssl
-        # The status of the order that has not taken effect.
+        # The status of the pending order.
         # 
         # *   **1**: indicates that the order is an order for renewal or renewal with a specification change and the order has not taken effect.
-        # *   **2**: indicates that the order is an order for temporary upgrade and the order has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specification.
+        # *   **2**: indicates that the order is an order for temporary upgrade and the order has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, the values of **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specifications of the VPN gateway.
         self.status = status
 
     def validate(self):
@@ -63434,9 +63428,9 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The tag key.
         self.key = key
-        # The value of tag N.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -63529,51 +63523,51 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         vpn_gateway_id: str = None,
         vpn_type: str = None,
     ):
-        # Indicates whether BGP routes are automatically advertised to the VPC. Valid values:
+        # Indicates whether Border Gateway Protocol (BGP) routes are automatically advertised to the VPC. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.auto_propagate = auto_propagate
-        # The payment status of the VPN gateway.
+        # The payment status of the VPN gateway. Valid values:
         # 
-        # *   **Normal**\
-        # *   **FinancialLocked**\
+        # *   **Normal**: The VPN gateway runs as expected.
+        # *   **FinancialLocked**: The VPN gateway is locked due to overdue payments.
         self.business_status = business_status
         # The billing method of the VPN gateway.
         # 
-        # The value is fixed as **POSTPAY**, which indicates the pay-as-you-go billing method.
+        # Only **POSTPAY** may be returned, which indicates the pay-as-you-go billing method.
         self.charge_type = charge_type
-        # The timestamp when the VPN gateway was created. Unit: millisecond.
+        # The timestamp generated when the VPN gateway was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
-        # The second IP address assigned by the system to create an IPsec-VPN connection.
+        # The second IP address that is assigned to the VPN gateway to create IPsec-VPN connections.
         # 
-        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        # This parameter is returned only if the VPN gateway supports IPsec-VPN connections in dual-tunnel mode.
         self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        # The ID of the second vSwitch associated with the VPN gateway.
+        # The ID of the second vSwitch that is associated with the VPN gateway.
         # 
-        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        # This parameter is returned only if the VPN gateway supports IPsec-VPN connections in dual-tunnel mode.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # The BGP status of the VPN gateway.
+        # The BGP status of the VPN gateway. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: The feature is enabled.
+        # *   **false**: The feature is disabled.
         self.enable_bgp = enable_bgp
-        # The timestamp when the VPN gateway expires. Unit: millisecond.
+        # The timestamp generated when the VPN gateway expires. Unit: milliseconds.
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
         self.eni_instance_ids = eni_instance_ids
-        # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
+        # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the value of this parameter is the IP address of the VPN gateway, which can be used to create IPsec-VPN or SSL-VPN connections.
         # 
-        # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+        # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the value of this parameter is the first IP address that is used to create an IPsec-VPN connection. The IP address cannot be used to create SSL-VPN connections.
         # 
-        #     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+        #     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IPsec addresses to the VPN gateway to create IPsec-VPN connections in dual-tunnel mode.
         self.internet_ip = internet_ip
-        # Indicates whether IPsec-VPN is enabled for the VPN gateway.
+        # Indicates whether IPsec-VPN is enabled for the VPN gateway. Valid values:
         # 
         # *   **enable**\
         # *   **disable**\
@@ -63585,26 +63579,26 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # *   **public**\
         # *   **private**\
         self.network_type = network_type
-        # The information about pending orders.
+        # The pending orders.
         # 
-        # >  This parameter is returned only when **IncludeReservationData** is set to **true**.
+        # >  This parameter is returned only if **IncludeReservationData** is set to **true**.
         self.reservation_data = reservation_data
         # The ID of the resource group to which the VPN gateway belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
-        # The maximum bandwidth of the VPN gateway. **M** indicates Mbit/s.
+        # The maximum bandwidth of the VPN gateway. Unit: **M**, which indicates Mbit/s.
         self.spec = spec
         # The number of SSL-VPN connections supported by the VPN gateway.
         self.ssl_max_connections = ssl_max_connections
-        # Indicates whether SSL-VPN is enabled for the VPN gateway.
+        # Indicates whether SSL-VPN is enabled for the VPN gateway. Valid values:
         # 
         # *   **enable**\
         # *   **disable**\
         self.ssl_vpn = ssl_vpn
         # The IP address of the SSL-VPN connection.
         # 
-        # This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        # This parameter is returned only if the VPN gateway is a public VPN gateway and supports IPsec-VPN connections in dual-tunnel mode. In addition, SSL-VPN must be enabled for the VPN gateway.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The status of the VPN gateway. Valid values:
         # 
@@ -63614,43 +63608,43 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # *   **updating**\
         # *   **deleting**\
         self.status = status
-        # The automatically generated tag of the VPN gateway.
+        # The tag that is automatically generated for the VPN gateway. The tag consists of the following parameters:
         # 
         # *   **VpnEnableBgp**: indicates whether the VPN gateway supports BGP. Valid values:
         # 
         #     *   **true**\
         #     *   **false**\
         # 
-        # *   **VisuallySsl**: indicates whether the VPN gateway allows you to view information about connected SSL clients.
+        # *   **VisuallySsl**: indicates whether the VPN gateway allows you to view the connection information of SSL clients. Valid values:
         # 
         #     *   **true**\
         #     *   **false**\
         # 
-        # *   **PbrPriority**: indicates whether the VPN gateway allows you to configure priorities for policy-based routes.
+        # *   **PbrPriority**: indicates whether the VPN gateway allows you to configure priorities for policy-based routes. Valid values:
         # 
         #     *   **true**\
         #     *   **false**\
         # 
-        # *   **VpnNewImage**: indicates whether the VPN gateway is upgraded.
+        # *   **VpnNewImage**: indicates whether the VPN gateway is upgraded. Valid values:
         # 
         #     *   **true**\
         #     *   **false**\
         # 
-        # *   **description**: the description of the VPN gateway. This parameter is for internal system use only.
+        # *   **description**: the description of the VPN gateway. This parameter is only for internal use.
         # 
-        # *   **VpnVersion**: the version of the VPN gateway.
+        # *   **VpnVersion**: the version number of the VPN gateway.
         self.tag = tag
-        # The tags to be added to the VPN gateway.
+        # The tags that are added to the VPN gateway.
         self.tags = tags
         # The ID of the vSwitch to which the VPN gateway belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC) to which the VPN gateway belongs.
+        # The ID of the VPC to which the VPN gateway belongs.
         self.vpc_id = vpc_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
         # The type of the VPN gateway.
         # 
-        # Only **Normal** may be returned, which indicates a standard NAT gateway.
+        # Only **Normal** may be returned, which indicates a standard VPN gateway.
         self.vpn_type = vpn_type
 
     def validate(self):
@@ -63837,7 +63831,7 @@ class DescribeVpnGatewaysResponseBody(TeaModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The information about VPN gateways.
+        # The VPN gateways.
         self.vpn_gateways = vpn_gateways
 
     def validate(self):
@@ -64011,7 +64005,7 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
         vpn_instance_id: str = None,
         weight: int = None,
     ):
-        # The time when the policy-based route was created. Unit: milliseconds.
+        # The time when the policy-based route was created. Unit: millisecond.
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
@@ -64019,7 +64013,7 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
         self.next_hop = next_hop
         # The ID of the tunnel associated with the next hop of the policy-based route.
         # 
-        # This parameter is returned only if the VPN gateway supports the dual-tunnel mode.
+        # This parameter is returned only if the VPN gateway supports IPsec-VPN connections in dual-tunnel mode.
         self.next_hop_tunnel_id = next_hop_tunnel_id
         # The priority of the policy-based route.
         # 
@@ -64034,16 +64028,16 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(T
         # *   **published**: advertised to the VPC route table.
         # *   **normal**: not advertised to the VPC route table.
         self.state = state
-        # The VPN gateway ID.
+        # The ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id
-        # The weight of the policy-based route. Valid values:
+        # The weight of the policy-based route.
         # 
-        # *   For a VPN gateway that supports the dual-tunnel mode, the default value is **100**.
+        # For a VPN gateway that supports IPsec-VPN connections in single-tunnel mode, the weight of a policy-based route indicates the priority of the route.
         # 
-        # *   For a VPN gateway that supports the single-tunnel mode, the weight specifies the priority of the policy-based route.
+        # *   **100**: a high priority If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the active connection.
+        # *   **0**: a low priority If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the standby connection.
         # 
-        #     *   **100**: a high priority If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the active connection.
-        #     *   **0**: a low priority If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the standby connection.
+        # >  For a VPN gateway that does not support IPsec-VPN connections in single-tunnel mode, this parameter does not take effect.
         self.weight = weight
 
     def validate(self):
@@ -65215,13 +65209,22 @@ class DiagnoseVpnConnectionsRequest(TeaModel):
         vpn_connection_ids: List[str] = None,
         vpn_gateway_id: str = None,
     ):
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
+        # The region ID of the IPsec-VPN connection.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        # The list of tunnel IDs.
         self.tunnel_ids = tunnel_ids
+        # The IDs of IPsec-VPN connections.
         self.vpn_connection_ids = vpn_connection_ids
+        # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -65281,14 +65284,29 @@ class DiagnoseVpnConnectionsResponseBodyVpnConnections(TeaModel):
         tunnel_id: str = None,
         vpn_connection_id: str = None,
     ):
+        # The cause of the error.
         self.failed_reason = failed_reason
+        # The error code.
         self.failed_reason_code = failed_reason_code
+        # The timestamp when the current error occurred on the IPsec-VPN connection. Unit: millisecond.
+        # 
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.failed_time = failed_time
+        # If the values of the parameters configured for the IPsec-VPN connection and the peer gateway device do not match, this parameter indicates the value of the parameters configured for the IPsec-VPN connection.
         self.mismatch_local_param = mismatch_local_param
+        # If the parameter values configured for the IPsec-VPN connection and the peer gateway device do not match, this parameter indicates the value of the parameter configured for the peer gateway device.
         self.mismatch_remote_param = mismatch_remote_param
+        # The error level. Valid values:
+        # 
+        # *   **Critical**\
+        # *   **Warn**\
+        # *   **Normal**\
         self.severity = severity
+        # The log information about the error.
         self.source_log = source_log
+        # The tunnel ID.
         self.tunnel_id = tunnel_id
+        # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -65352,10 +65370,15 @@ class DiagnoseVpnConnectionsResponseBody(TeaModel):
         total_count: int = None,
         vpn_connections: List[DiagnoseVpnConnectionsResponseBodyVpnConnections] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The number of entries returned.
         self.total_count = total_count
+        # The diagnostic information.
         self.vpn_connections = vpn_connections
 
     def validate(self):
@@ -86356,11 +86379,11 @@ class ModifySslVpnClientCertRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The name of the SSL-VPN client certificate.
+        # The new name of the SSL client certificate. This parameter cannot be left empty.
         # 
         # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         self.name = name
@@ -86374,7 +86397,7 @@ class ModifySslVpnClientCertRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SSL-VPN client certificate.
+        # The ID of the SSL client certificate.
         # 
         # This parameter is required.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
@@ -86436,9 +86459,9 @@ class ModifySslVpnClientCertResponseBody(TeaModel):
     ):
         # The name of the SSL client certificate.
         self.name = name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the SSL-VPN client certificate.
+        # The ID of the SSL client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
 
     def validate(self):
@@ -92339,7 +92362,7 @@ class ModifyVpnRouteEntryWeightRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The new weight that you want to set for the destination-based route. Valid values:
+        # The new weight of the destination-based route. Valid values:
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
@@ -92368,7 +92391,7 @@ class ModifyVpnRouteEntryWeightRequest(TeaModel):
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
-        # The previous weight of the destination-based route. Valid values:
+        # The original weight of the destination-based route. Valid values:
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
