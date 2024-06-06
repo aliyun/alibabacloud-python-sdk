@@ -4,6 +4,12 @@
 - Update API ModifyDBCluster: add param FaultInjectionType.
 
 
+2024-06-06 Version: 5.1.3
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API ModifyDBCluster: add param DBNodeCrashList.
+- Update API ModifyDBCluster: add param FaultInjectionType.
+
+
 2024-05-28 Version: 5.1.2
 - Update API DescribeDBClusterAvailableResources: update response param.
 - Update API DescribeDBClusterVersion: update response param.
