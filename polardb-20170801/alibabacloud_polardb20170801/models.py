@@ -8940,6 +8940,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         max_connections: int = None,
         max_iops: int = None,
         memory_size: str = None,
+        orca: str = None,
         remote_memory_size: str = None,
         scc_mode: str = None,
         server_weight: str = None,
@@ -8996,6 +8997,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         # The maximum input/output operations per second (IOPS).
         self.max_iops = max_iops
         self.memory_size = memory_size
+        self.orca = orca
         self.remote_memory_size = remote_memory_size
         # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
         # 
@@ -9051,6 +9053,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['MaxIOPS'] = self.max_iops
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+        if self.orca is not None:
+            result['Orca'] = self.orca
         if self.remote_memory_size is not None:
             result['RemoteMemorySize'] = self.remote_memory_size
         if self.scc_mode is not None:
@@ -9095,6 +9099,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.max_iops = m.get('MaxIOPS')
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+        if m.get('Orca') is not None:
+            self.orca = m.get('Orca')
         if m.get('RemoteMemorySize') is not None:
             self.remote_memory_size = m.get('RemoteMemorySize')
         if m.get('SccMode') is not None:
@@ -9179,6 +9185,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         is_proxy_latest_version: bool = None,
         lock_mode: str = None,
         maintain_time: str = None,
+        orca: str = None,
         pay_type: str = None,
         provisioned_iops: str = None,
         proxy_cpu_cores: str = None,
@@ -9189,8 +9196,11 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
+        restore_data_point: str = None,
+        restore_type: str = None,
         sqlsize: int = None,
         serverless_type: str = None,
+        source_dbcluster: str = None,
         standby_hamode: str = None,
         storage_max: int = None,
         storage_pay_type: str = None,
@@ -9298,6 +9308,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         self.lock_mode = lock_mode
         # The maintenance window of the cluster. The format is `HH:mmZ-HH:mmZ`. The time is displayed in UTC. For example, the value `16:00Z-17:00Z` indicates that the cluster can be maintained from 00:00 to 01:00 (UTC+08:00).
         self.maintain_time = maintain_time
+        self.orca = orca
         # The billing method of the cluster. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go.
@@ -9335,10 +9346,13 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of your Alibaba Cloud resource group.
         self.resource_group_id = resource_group_id
+        self.restore_data_point = restore_data_point
+        self.restore_type = restore_type
         # The storage of SQL. Unit: bytes. If the value is -1, no data is stored.
         self.sqlsize = sqlsize
         # The type of the serverless cluster. Only **AgileServerless** can be returned.
         self.serverless_type = serverless_type
+        self.source_dbcluster = source_dbcluster
         # Indicates whether the cross-zone disaster recovery feature is enabled. Valid values: ON OFF 0: Customer Drill Mode
         self.standby_hamode = standby_hamode
         # The maximum storage capacity of the current cluster specification. Unit: bytes.
@@ -9456,6 +9470,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['LockMode'] = self.lock_mode
         if self.maintain_time is not None:
             result['MaintainTime'] = self.maintain_time
+        if self.orca is not None:
+            result['Orca'] = self.orca
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.provisioned_iops is not None:
@@ -9476,10 +9492,16 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.restore_data_point is not None:
+            result['RestoreDataPoint'] = self.restore_data_point
+        if self.restore_type is not None:
+            result['RestoreType'] = self.restore_type
         if self.sqlsize is not None:
             result['SQLSize'] = self.sqlsize
         if self.serverless_type is not None:
             result['ServerlessType'] = self.serverless_type
+        if self.source_dbcluster is not None:
+            result['SourceDBCluster'] = self.source_dbcluster
         if self.standby_hamode is not None:
             result['StandbyHAMode'] = self.standby_hamode
         if self.storage_max is not None:
@@ -9577,6 +9599,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.lock_mode = m.get('LockMode')
         if m.get('MaintainTime') is not None:
             self.maintain_time = m.get('MaintainTime')
+        if m.get('Orca') is not None:
+            self.orca = m.get('Orca')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('ProvisionedIops') is not None:
@@ -9597,10 +9621,16 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('RestoreDataPoint') is not None:
+            self.restore_data_point = m.get('RestoreDataPoint')
+        if m.get('RestoreType') is not None:
+            self.restore_type = m.get('RestoreType')
         if m.get('SQLSize') is not None:
             self.sqlsize = m.get('SQLSize')
         if m.get('ServerlessType') is not None:
             self.serverless_type = m.get('ServerlessType')
+        if m.get('SourceDBCluster') is not None:
+            self.source_dbcluster = m.get('SourceDBCluster')
         if m.get('StandbyHAMode') is not None:
             self.standby_hamode = m.get('StandbyHAMode')
         if m.get('StorageMax') is not None:
@@ -24841,7 +24871,9 @@ class ModifyDBClusterRequest(TeaModel):
         self,
         compress_storage: str = None,
         dbcluster_id: str = None,
+        dbnode_crash_list: str = None,
         data_sync_mode: str = None,
+        fault_injection_type: str = None,
         fault_simulate_mode: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -24859,11 +24891,13 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.dbnode_crash_list = dbnode_crash_list
         # The method used to replicate data across zones. Valid values:
         # 
         # *   **AsyncSync**: the asynchronous mode.
         # *   **SemiSync**: the semi-synchronous mode.
         self.data_sync_mode = data_sync_mode
+        self.fault_injection_type = fault_injection_type
         # The fault scenario that you want to simulate for the cluster.
         # 
         # *   Set the value to **0**. The value 0 indicates the scenario in which the primary zone of the cluster fails.
@@ -24907,8 +24941,12 @@ class ModifyDBClusterRequest(TeaModel):
             result['CompressStorage'] = self.compress_storage
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.dbnode_crash_list is not None:
+            result['DBNodeCrashList'] = self.dbnode_crash_list
         if self.data_sync_mode is not None:
             result['DataSyncMode'] = self.data_sync_mode
+        if self.fault_injection_type is not None:
+            result['FaultInjectionType'] = self.fault_injection_type
         if self.fault_simulate_mode is not None:
             result['FaultSimulateMode'] = self.fault_simulate_mode
         if self.owner_account is not None:
@@ -24933,8 +24971,12 @@ class ModifyDBClusterRequest(TeaModel):
             self.compress_storage = m.get('CompressStorage')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNodeCrashList') is not None:
+            self.dbnode_crash_list = m.get('DBNodeCrashList')
         if m.get('DataSyncMode') is not None:
             self.data_sync_mode = m.get('DataSyncMode')
+        if m.get('FaultInjectionType') is not None:
+            self.fault_injection_type = m.get('FaultInjectionType')
         if m.get('FaultSimulateMode') is not None:
             self.fault_simulate_mode = m.get('FaultSimulateMode')
         if m.get('OwnerAccount') is not None:

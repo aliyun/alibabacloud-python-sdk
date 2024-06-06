@@ -12823,8 +12823,12 @@ class Client(OpenApiClient):
             query['CompressStorage'] = request.compress_storage
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_crash_list):
+            query['DBNodeCrashList'] = request.dbnode_crash_list
         if not UtilClient.is_unset(request.data_sync_mode):
             query['DataSyncMode'] = request.data_sync_mode
+        if not UtilClient.is_unset(request.fault_injection_type):
+            query['FaultInjectionType'] = request.fault_injection_type
         if not UtilClient.is_unset(request.fault_simulate_mode):
             query['FaultSimulateMode'] = request.fault_simulate_mode
         if not UtilClient.is_unset(request.owner_account):
@@ -12878,8 +12882,12 @@ class Client(OpenApiClient):
             query['CompressStorage'] = request.compress_storage
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_crash_list):
+            query['DBNodeCrashList'] = request.dbnode_crash_list
         if not UtilClient.is_unset(request.data_sync_mode):
             query['DataSyncMode'] = request.data_sync_mode
+        if not UtilClient.is_unset(request.fault_injection_type):
+            query['FaultInjectionType'] = request.fault_injection_type
         if not UtilClient.is_unset(request.fault_simulate_mode):
             query['FaultSimulateMode'] = request.fault_simulate_mode
         if not UtilClient.is_unset(request.owner_account):
