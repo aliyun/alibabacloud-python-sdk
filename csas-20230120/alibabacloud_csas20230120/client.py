@@ -5397,6 +5397,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
+    def revoke_user_session_with_options(
+        self,
+        request: csas_20230120_models.RevokeUserSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.RevokeUserSessionResponse:
+        """
+        @summary 吊销用户登录会话
+        
+        @param request: RevokeUserSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeUserSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ids):
+            query['ExternalIds'] = request.external_ids
+        if not UtilClient.is_unset(request.idp_id):
+            query['IdpId'] = request.idp_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeUserSession',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.RevokeUserSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_user_session_with_options_async(
+        self,
+        request: csas_20230120_models.RevokeUserSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.RevokeUserSessionResponse:
+        """
+        @summary 吊销用户登录会话
+        
+        @param request: RevokeUserSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeUserSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ids):
+            query['ExternalIds'] = request.external_ids
+        if not UtilClient.is_unset(request.idp_id):
+            query['IdpId'] = request.idp_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeUserSession',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.RevokeUserSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_user_session(
+        self,
+        request: csas_20230120_models.RevokeUserSessionRequest,
+    ) -> csas_20230120_models.RevokeUserSessionResponse:
+        """
+        @summary 吊销用户登录会话
+        
+        @param request: RevokeUserSessionRequest
+        @return: RevokeUserSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.revoke_user_session_with_options(request, runtime)
+
+    async def revoke_user_session_async(
+        self,
+        request: csas_20230120_models.RevokeUserSessionRequest,
+    ) -> csas_20230120_models.RevokeUserSessionResponse:
+        """
+        @summary 吊销用户登录会话
+        
+        @param request: RevokeUserSessionRequest
+        @return: RevokeUserSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.revoke_user_session_with_options_async(request, runtime)
+
     def update_client_user_with_options(
         self,
         request: csas_20230120_models.UpdateClientUserRequest,
