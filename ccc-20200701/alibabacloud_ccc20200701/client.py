@@ -2979,11 +2979,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateCustomCallTaggingResponse:
         """
+        @deprecated OpenAPI CreateCustomCallTagging is deprecated, please use CCC::2020-07-01::CreateCustomCallTaggings instead.
+        
         @summary 创建呼入控制号码
         
         @param request: CreateCustomCallTaggingRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCustomCallTaggingResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3016,11 +3019,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateCustomCallTaggingResponse:
         """
+        @deprecated OpenAPI CreateCustomCallTagging is deprecated, please use CCC::2020-07-01::CreateCustomCallTaggings instead.
+        
         @summary 创建呼入控制号码
         
         @param request: CreateCustomCallTaggingRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateCustomCallTaggingResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3052,10 +3058,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateCustomCallTaggingRequest,
     ) -> ccc20200701_models.CreateCustomCallTaggingResponse:
         """
+        @deprecated OpenAPI CreateCustomCallTagging is deprecated, please use CCC::2020-07-01::CreateCustomCallTaggings instead.
+        
         @summary 创建呼入控制号码
         
         @param request: CreateCustomCallTaggingRequest
         @return: CreateCustomCallTaggingResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.create_custom_call_tagging_with_options(request, runtime)
@@ -3065,10 +3074,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateCustomCallTaggingRequest,
     ) -> ccc20200701_models.CreateCustomCallTaggingResponse:
         """
+        @deprecated OpenAPI CreateCustomCallTagging is deprecated, please use CCC::2020-07-01::CreateCustomCallTaggings instead.
+        
         @summary 创建呼入控制号码
         
         @param request: CreateCustomCallTaggingRequest
         @return: CreateCustomCallTaggingResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_custom_call_tagging_with_options_async(request, runtime)
@@ -12219,11 +12231,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
         """
+        @deprecated OpenAPI ListLegacyAgentEventLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+        
         @summary ListLegacyAgentEventLogs
         
         @param request: ListLegacyAgentEventLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListLegacyAgentEventLogsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -12264,11 +12279,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
         """
+        @deprecated OpenAPI ListLegacyAgentEventLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+        
         @summary ListLegacyAgentEventLogs
         
         @param request: ListLegacyAgentEventLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListLegacyAgentEventLogsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -12308,10 +12326,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
     ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
         """
+        @deprecated OpenAPI ListLegacyAgentEventLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+        
         @summary ListLegacyAgentEventLogs
         
         @param request: ListLegacyAgentEventLogsRequest
         @return: ListLegacyAgentEventLogsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_legacy_agent_event_logs_with_options(request, runtime)
@@ -12321,10 +12342,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
     ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
         """
+        @deprecated OpenAPI ListLegacyAgentEventLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+        
         @summary ListLegacyAgentEventLogs
         
         @param request: ListLegacyAgentEventLogsRequest
         @return: ListLegacyAgentEventLogsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_legacy_agent_event_logs_with_options_async(request, runtime)
@@ -12335,11 +12359,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
         """
+        @deprecated OpenAPI ListLegacyAgentStatusLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+        
         @summary ListLegacyAgentStatusLogs
         
         @param request: ListLegacyAgentStatusLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListLegacyAgentStatusLogsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -12380,11 +12407,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
         """
+        @deprecated OpenAPI ListLegacyAgentStatusLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+        
         @summary ListLegacyAgentStatusLogs
         
         @param request: ListLegacyAgentStatusLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListLegacyAgentStatusLogsResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -12424,10 +12454,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
         """
+        @deprecated OpenAPI ListLegacyAgentStatusLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+        
         @summary ListLegacyAgentStatusLogs
         
         @param request: ListLegacyAgentStatusLogsRequest
         @return: ListLegacyAgentStatusLogsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.list_legacy_agent_status_logs_with_options(request, runtime)
@@ -12437,10 +12470,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
         """
+        @deprecated OpenAPI ListLegacyAgentStatusLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+        
         @summary ListLegacyAgentStatusLogs
         
         @param request: ListLegacyAgentStatusLogsRequest
         @return: ListLegacyAgentStatusLogsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_legacy_agent_status_logs_with_options_async(request, runtime)

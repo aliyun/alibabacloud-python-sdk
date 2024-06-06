@@ -11663,6 +11663,7 @@ class GetCampaignResponseBodyData(TeaModel):
         cases_uncompleted_after_attempt: str = None,
         cases_uncompleted_after_attempted: int = None,
         completion_rate: float = None,
+        contact_flow_id: str = None,
         max_attempt_count: int = None,
         min_attempt_interval: int = None,
         name: str = None,
@@ -11686,6 +11687,7 @@ class GetCampaignResponseBodyData(TeaModel):
         self.cases_uncompleted_after_attempt = cases_uncompleted_after_attempt
         self.cases_uncompleted_after_attempted = cases_uncompleted_after_attempted
         self.completion_rate = completion_rate
+        self.contact_flow_id = contact_flow_id
         self.max_attempt_count = max_attempt_count
         self.min_attempt_interval = min_attempt_interval
         self.name = name
@@ -11727,6 +11729,8 @@ class GetCampaignResponseBodyData(TeaModel):
             result['CasesUncompletedAfterAttempted'] = self.cases_uncompleted_after_attempted
         if self.completion_rate is not None:
             result['CompletionRate'] = self.completion_rate
+        if self.contact_flow_id is not None:
+            result['ContactFlowId'] = self.contact_flow_id
         if self.max_attempt_count is not None:
             result['MaxAttemptCount'] = self.max_attempt_count
         if self.min_attempt_interval is not None:
@@ -11775,6 +11779,8 @@ class GetCampaignResponseBodyData(TeaModel):
             self.cases_uncompleted_after_attempted = m.get('CasesUncompletedAfterAttempted')
         if m.get('CompletionRate') is not None:
             self.completion_rate = m.get('CompletionRate')
+        if m.get('ContactFlowId') is not None:
+            self.contact_flow_id = m.get('ContactFlowId')
         if m.get('MaxAttemptCount') is not None:
             self.max_attempt_count = m.get('MaxAttemptCount')
         if m.get('MinAttemptInterval') is not None:
@@ -24549,6 +24555,7 @@ class ListCampaignsResponseBodyDataList(TeaModel):
         cases_connected: int = None,
         cases_uncompleted: int = None,
         completion_rate: float = None,
+        contact_flow_id: str = None,
         max_attempt_count: int = None,
         min_attempt_interval: int = None,
         name: str = None,
@@ -24569,6 +24576,7 @@ class ListCampaignsResponseBodyDataList(TeaModel):
         self.cases_connected = cases_connected
         self.cases_uncompleted = cases_uncompleted
         self.completion_rate = completion_rate
+        self.contact_flow_id = contact_flow_id
         self.max_attempt_count = max_attempt_count
         self.min_attempt_interval = min_attempt_interval
         self.name = name
@@ -24605,6 +24613,8 @@ class ListCampaignsResponseBodyDataList(TeaModel):
             result['CasesUncompleted'] = self.cases_uncompleted
         if self.completion_rate is not None:
             result['CompletionRate'] = self.completion_rate
+        if self.contact_flow_id is not None:
+            result['ContactFlowId'] = self.contact_flow_id
         if self.max_attempt_count is not None:
             result['MaxAttemptCount'] = self.max_attempt_count
         if self.min_attempt_interval is not None:
@@ -24647,6 +24657,8 @@ class ListCampaignsResponseBodyDataList(TeaModel):
             self.cases_uncompleted = m.get('CasesUncompleted')
         if m.get('CompletionRate') is not None:
             self.completion_rate = m.get('CompletionRate')
+        if m.get('ContactFlowId') is not None:
+            self.contact_flow_id = m.get('ContactFlowId')
         if m.get('MaxAttemptCount') is not None:
             self.max_attempt_count = m.get('MaxAttemptCount')
         if m.get('MinAttemptInterval') is not None:
@@ -40635,10 +40647,12 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         average_ring_time: int = None,
         average_talk_time: int = None,
         average_work_time: int = None,
+        calls_abandoned: int = None,
         calls_attended_transfer_out: int = None,
         calls_blind_transfer_out: int = None,
         calls_handled: int = None,
         calls_offered: int = None,
+        calls_overflow: str = None,
         calls_queuing_canceled: str = None,
         calls_queuing_failure: str = None,
         calls_queuing_rerouted: str = None,
@@ -40671,10 +40685,12 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_work_time = average_work_time
+        self.calls_abandoned = calls_abandoned
         self.calls_attended_transfer_out = calls_attended_transfer_out
         self.calls_blind_transfer_out = calls_blind_transfer_out
         self.calls_handled = calls_handled
         self.calls_offered = calls_offered
+        self.calls_overflow = calls_overflow
         self.calls_queuing_canceled = calls_queuing_canceled
         self.calls_queuing_failure = calls_queuing_failure
         self.calls_queuing_rerouted = calls_queuing_rerouted
@@ -40723,6 +40739,8 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
             result['AverageTalkTime'] = self.average_talk_time
         if self.average_work_time is not None:
             result['AverageWorkTime'] = self.average_work_time
+        if self.calls_abandoned is not None:
+            result['CallsAbandoned'] = self.calls_abandoned
         if self.calls_attended_transfer_out is not None:
             result['CallsAttendedTransferOut'] = self.calls_attended_transfer_out
         if self.calls_blind_transfer_out is not None:
@@ -40731,6 +40749,8 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
             result['CallsHandled'] = self.calls_handled
         if self.calls_offered is not None:
             result['CallsOffered'] = self.calls_offered
+        if self.calls_overflow is not None:
+            result['CallsOverflow'] = self.calls_overflow
         if self.calls_queuing_canceled is not None:
             result['CallsQueuingCanceled'] = self.calls_queuing_canceled
         if self.calls_queuing_failure is not None:
@@ -40797,6 +40817,8 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
             self.average_talk_time = m.get('AverageTalkTime')
         if m.get('AverageWorkTime') is not None:
             self.average_work_time = m.get('AverageWorkTime')
+        if m.get('CallsAbandoned') is not None:
+            self.calls_abandoned = m.get('CallsAbandoned')
         if m.get('CallsAttendedTransferOut') is not None:
             self.calls_attended_transfer_out = m.get('CallsAttendedTransferOut')
         if m.get('CallsBlindTransferOut') is not None:
@@ -40805,6 +40827,8 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
             self.calls_handled = m.get('CallsHandled')
         if m.get('CallsOffered') is not None:
             self.calls_offered = m.get('CallsOffered')
+        if m.get('CallsOverflow') is not None:
+            self.calls_overflow = m.get('CallsOverflow')
         if m.get('CallsQueuingCanceled') is not None:
             self.calls_queuing_canceled = m.get('CallsQueuingCanceled')
         if m.get('CallsQueuingFailure') is not None:

@@ -1,3 +1,9 @@
+2024-06-06 Version: 2.19.2
+- Update API GetCampaign: update response param.
+- Update API ListCampaigns: update response param.
+- Update API ListSkillGroupSummaryReportsSinceMidnight: update response param.
+
+
 2024-05-28 Version: 2.19.1
 - Update API ListSkillGroupSummaryReportsSinceMidnight: update response param.
 
