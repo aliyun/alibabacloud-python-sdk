@@ -1,3 +1,12 @@
+2024-06-06 Version: 5.6.2
+- Update API ConfigureDtsJob: add param DestClientCertOssUrl.
+- Update API ConfigureDtsJob: add param DestClientKeyOssUrl.
+- Update API ConfigureDtsJob: add param DestClientPassword.
+- Update API ConfigureDtsJob: add param SrcClientCertOssUrl.
+- Update API ConfigureDtsJob: add param SrcClientKeyOssUrl.
+- Update API ConfigureDtsJob: add param SrcClientPassword.
+
+
 2024-05-29 Version: 5.6.1
 - Update API TransferPayType: add param AutoPay.
 
