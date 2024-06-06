@@ -780,6 +780,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_batch_translate_with_options_async(request, runtime)
 
+    def get_batch_translate_by_vpcwith_options(
+        self,
+        request: alimt_20181012_models.GetBatchTranslateByVPCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetBatchTranslateByVPCResponse:
+        """
+        @summary GetBatchTranslateByVPC
+        
+        @param request: GetBatchTranslateByVPCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBatchTranslateByVPCResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_type):
+            body['ApiType'] = request.api_type
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBatchTranslateByVPC',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetBatchTranslateByVPCResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_batch_translate_by_vpcwith_options_async(
+        self,
+        request: alimt_20181012_models.GetBatchTranslateByVPCRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.GetBatchTranslateByVPCResponse:
+        """
+        @summary GetBatchTranslateByVPC
+        
+        @param request: GetBatchTranslateByVPCRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBatchTranslateByVPCResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_type):
+            body['ApiType'] = request.api_type
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBatchTranslateByVPC',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.GetBatchTranslateByVPCResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_batch_translate_by_vpc(
+        self,
+        request: alimt_20181012_models.GetBatchTranslateByVPCRequest,
+    ) -> alimt_20181012_models.GetBatchTranslateByVPCResponse:
+        """
+        @summary GetBatchTranslateByVPC
+        
+        @param request: GetBatchTranslateByVPCRequest
+        @return: GetBatchTranslateByVPCResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_batch_translate_by_vpcwith_options(request, runtime)
+
+    async def get_batch_translate_by_vpc_async(
+        self,
+        request: alimt_20181012_models.GetBatchTranslateByVPCRequest,
+    ) -> alimt_20181012_models.GetBatchTranslateByVPCResponse:
+        """
+        @summary GetBatchTranslateByVPC
+        
+        @param request: GetBatchTranslateByVPCRequest
+        @return: GetBatchTranslateByVPCResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_batch_translate_by_vpcwith_options_async(request, runtime)
+
     def get_detect_language_with_options(
         self,
         request: alimt_20181012_models.GetDetectLanguageRequest,
@@ -2451,6 +2567,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.translate_general_with_options_async(request, runtime)
+
+    def translate_general_vpc_with_options(
+        self,
+        request: alimt_20181012_models.TranslateGeneralVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.TranslateGeneralVpcResponse:
+        """
+        @summary TranslateGeneralVpc
+        
+        @param request: TranslateGeneralVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateGeneralVpcResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateGeneralVpc',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateGeneralVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def translate_general_vpc_with_options_async(
+        self,
+        request: alimt_20181012_models.TranslateGeneralVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.TranslateGeneralVpcResponse:
+        """
+        @summary TranslateGeneralVpc
+        
+        @param request: TranslateGeneralVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateGeneralVpcResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateGeneralVpc',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateGeneralVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def translate_general_vpc(
+        self,
+        request: alimt_20181012_models.TranslateGeneralVpcRequest,
+    ) -> alimt_20181012_models.TranslateGeneralVpcResponse:
+        """
+        @summary TranslateGeneralVpc
+        
+        @param request: TranslateGeneralVpcRequest
+        @return: TranslateGeneralVpcResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.translate_general_vpc_with_options(request, runtime)
+
+    async def translate_general_vpc_async(
+        self,
+        request: alimt_20181012_models.TranslateGeneralVpcRequest,
+    ) -> alimt_20181012_models.TranslateGeneralVpcResponse:
+        """
+        @summary TranslateGeneralVpc
+        
+        @param request: TranslateGeneralVpcRequest
+        @return: TranslateGeneralVpcResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.translate_general_vpc_with_options_async(request, runtime)
 
     def translate_image_with_options(
         self,

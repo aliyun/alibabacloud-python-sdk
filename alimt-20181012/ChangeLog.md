@@ -1,3 +1,8 @@
+2024-06-06 Version: 1.3.0
+- Support API GetBatchTranslateByVPC.
+- Support API TranslateGeneralVpc.
+
+
 2024-06-06 Version: 1.2.2
 - Update API GetDetectLanguage: update response param.
 - Update API TranslateECommerce: update response param.

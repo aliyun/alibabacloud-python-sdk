@@ -869,6 +869,156 @@ class GetBatchTranslateResponse(TeaModel):
         return self
 
 
+class GetBatchTranslateByVPCRequest(TeaModel):
+    def __init__(
+        self,
+        api_type: str = None,
+        format_type: str = None,
+        scene: str = None,
+        source_language: str = None,
+        source_text: str = None,
+        target_language: str = None,
+    ):
+        # This parameter is required.
+        self.api_type = api_type
+        # This parameter is required.
+        self.format_type = format_type
+        # This parameter is required.
+        self.scene = scene
+        # This parameter is required.
+        self.source_language = source_language
+        # This parameter is required.
+        self.source_text = source_text
+        # This parameter is required.
+        self.target_language = target_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_type is not None:
+            result['ApiType'] = self.api_type
+        if self.format_type is not None:
+            result['FormatType'] = self.format_type
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        if self.source_language is not None:
+            result['SourceLanguage'] = self.source_language
+        if self.source_text is not None:
+            result['SourceText'] = self.source_text
+        if self.target_language is not None:
+            result['TargetLanguage'] = self.target_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiType') is not None:
+            self.api_type = m.get('ApiType')
+        if m.get('FormatType') is not None:
+            self.format_type = m.get('FormatType')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
+        if m.get('SourceLanguage') is not None:
+            self.source_language = m.get('SourceLanguage')
+        if m.get('SourceText') is not None:
+            self.source_text = m.get('SourceText')
+        if m.get('TargetLanguage') is not None:
+            self.target_language = m.get('TargetLanguage')
+        return self
+
+
+class GetBatchTranslateByVPCResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        translated_list: List[Dict[str, Any]] = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.translated_list = translated_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.translated_list is not None:
+            result['TranslatedList'] = self.translated_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TranslatedList') is not None:
+            self.translated_list = m.get('TranslatedList')
+        return self
+
+
+class GetBatchTranslateByVPCResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBatchTranslateByVPCResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBatchTranslateByVPCResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDetectLanguageRequest(TeaModel):
     def __init__(
         self,
@@ -3441,6 +3591,197 @@ class TranslateGeneralResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TranslateGeneralResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TranslateGeneralVpcRequest(TeaModel):
+    def __init__(
+        self,
+        context: str = None,
+        format_type: str = None,
+        scene: str = None,
+        source_language: str = None,
+        source_text: str = None,
+        target_language: str = None,
+    ):
+        self.context = context
+        # This parameter is required.
+        self.format_type = format_type
+        # This parameter is required.
+        self.scene = scene
+        # This parameter is required.
+        self.source_language = source_language
+        # This parameter is required.
+        self.source_text = source_text
+        # This parameter is required.
+        self.target_language = target_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context
+        if self.format_type is not None:
+            result['FormatType'] = self.format_type
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        if self.source_language is not None:
+            result['SourceLanguage'] = self.source_language
+        if self.source_text is not None:
+            result['SourceText'] = self.source_text
+        if self.target_language is not None:
+            result['TargetLanguage'] = self.target_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        if m.get('FormatType') is not None:
+            self.format_type = m.get('FormatType')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
+        if m.get('SourceLanguage') is not None:
+            self.source_language = m.get('SourceLanguage')
+        if m.get('SourceText') is not None:
+            self.source_text = m.get('SourceText')
+        if m.get('TargetLanguage') is not None:
+            self.target_language = m.get('TargetLanguage')
+        return self
+
+
+class TranslateGeneralVpcResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detected_language: str = None,
+        translated: str = None,
+        word_count: str = None,
+    ):
+        self.detected_language = detected_language
+        self.translated = translated
+        self.word_count = word_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detected_language is not None:
+            result['DetectedLanguage'] = self.detected_language
+        if self.translated is not None:
+            result['Translated'] = self.translated
+        if self.word_count is not None:
+            result['WordCount'] = self.word_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DetectedLanguage') is not None:
+            self.detected_language = m.get('DetectedLanguage')
+        if m.get('Translated') is not None:
+            self.translated = m.get('Translated')
+        if m.get('WordCount') is not None:
+            self.word_count = m.get('WordCount')
+        return self
+
+
+class TranslateGeneralVpcResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: TranslateGeneralVpcResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # This parameter is required.
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = TranslateGeneralVpcResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TranslateGeneralVpcResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TranslateGeneralVpcResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TranslateGeneralVpcResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
