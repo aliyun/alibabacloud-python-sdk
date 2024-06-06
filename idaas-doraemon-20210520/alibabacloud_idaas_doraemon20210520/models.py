@@ -17,13 +17,16 @@ class CreateAuthenticatorRegistrationRequest(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
+        # This parameter is required.
         self.authenticator_type = authenticator_type
         self.client_extend_params_json = client_extend_params_json
         self.client_extend_params_json_sign = client_extend_params_json_sign
         self.registration_context = registration_context
         self.server_extend_params_json = server_extend_params_json
         self.user_display_name = user_display_name
+        # This parameter is required.
         self.user_id = user_id
         self.user_name = user_name
 
@@ -170,12 +173,15 @@ class CreateUserAuthenticateOptionsRequest(TeaModel):
         server_extend_params_json: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
+        # This parameter is required.
         self.authenticator_type = authenticator_type
         self.bind_hash_base_64 = bind_hash_base_64
         self.client_extend_params_json = client_extend_params_json
         self.client_extend_params_json_sign = client_extend_params_json_sign
         self.server_extend_params_json = server_extend_params_json
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -309,8 +315,11 @@ class DeregisterAuthenticatorRequest(TeaModel):
         authenticator_uuid: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
+        # This parameter is required.
         self.authenticator_uuid = authenticator_uuid
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -419,8 +428,11 @@ class FetchAccessTokenRequest(TeaModel):
         user_id: str = None,
         xclient_ip: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
+        # This parameter is required.
         self.mobile_extend_params_json = mobile_extend_params_json
+        # This parameter is required.
         self.mobile_extend_params_json_sign = mobile_extend_params_json_sign
         self.server_extend_params_json = server_extend_params_json
         self.user_id = user_id
@@ -624,8 +636,11 @@ class GetAuthenticatorRequest(TeaModel):
         authenticator_uuid: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
+        # This parameter is required.
         self.authenticator_uuid = authenticator_uuid
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -827,6 +842,7 @@ class ListAuthenticationLogsRequest(TeaModel):
         to_time: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
         self.authenticator_type = authenticator_type
         self.authenticator_uuid = authenticator_uuid
@@ -1147,6 +1163,7 @@ class ListAuthenticatorOpsLogsRequest(TeaModel):
         to_time: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
         self.authenticator_type = authenticator_type
         self.authenticator_uuid = authenticator_uuid
@@ -1448,10 +1465,12 @@ class ListAuthenticatorsRequest(TeaModel):
         page_size: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
         self.authenticator_type = authenticator_type
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -2104,6 +2123,7 @@ class ListPwnedPasswordsRequest(TeaModel):
         self,
         prefix_hex_password_sha_1hash: str = None,
     ):
+        # This parameter is required.
         self.prefix_hex_password_sha_1hash = prefix_hex_password_sha_1hash
 
     def validate(self):
@@ -2266,6 +2286,7 @@ class ListUsersRequest(TeaModel):
         application_external_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
         self.user_id = user_id
 
@@ -2782,15 +2803,19 @@ class RegisterAuthenticatorRequest(TeaModel):
         user_id: str = None,
         user_source_ip: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
         self.authenticator_name = authenticator_name
+        # This parameter is required.
         self.authenticator_type = authenticator_type
         self.client_extend_params_json = client_extend_params_json
         self.client_extend_params_json_sign = client_extend_params_json_sign
         self.log_params = log_params
+        # This parameter is required.
         self.registration_context = registration_context
         self.require_challenge_base_64 = require_challenge_base_64
         self.server_extend_params_json = server_extend_params_json
+        # This parameter is required.
         self.user_id = user_id
         self.user_source_ip = user_source_ip
 
@@ -2946,11 +2971,14 @@ class ServiceInvokeRequest(TeaModel):
         test_model: bool = None,
         xclient_ip: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
+        # This parameter is required.
         self.doraemon_action = doraemon_action
         self.mobile_extend_params_json = mobile_extend_params_json
         self.mobile_extend_params_json_sign = mobile_extend_params_json_sign
         self.server_extend_params_json = server_extend_params_json
+        # This parameter is required.
         self.service_code = service_code
         self.test_model = test_model
         self.xclient_ip = xclient_ip
@@ -3115,9 +3143,13 @@ class UpdateAuthenticatorAttributeRequest(TeaModel):
         authenticator_uuid: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
+        # This parameter is required.
         self.authenticator_name = authenticator_name
+        # This parameter is required.
         self.authenticator_uuid = authenticator_uuid
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -3344,8 +3376,11 @@ class VerifyUserAuthenticationRequest(TeaModel):
         user_id: str = None,
         user_source_ip: str = None,
     ):
+        # This parameter is required.
         self.application_external_id = application_external_id
+        # This parameter is required.
         self.authentication_context = authentication_context
+        # This parameter is required.
         self.authenticator_type = authenticator_type
         self.client_extend_params_json = client_extend_params_json
         self.client_extend_params_json_sign = client_extend_params_json_sign
@@ -3354,6 +3389,7 @@ class VerifyUserAuthenticationRequest(TeaModel):
         self.require_bind_hash_base_64 = require_bind_hash_base_64
         self.require_challenge_base_64 = require_challenge_base_64
         self.server_extend_params_json = server_extend_params_json
+        # This parameter is required.
         self.user_id = user_id
         self.user_source_ip = user_source_ip
 

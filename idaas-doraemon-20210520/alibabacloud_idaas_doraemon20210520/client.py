@@ -49,6 +49,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.CreateAuthenticatorRegistrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.CreateAuthenticatorRegistrationResponse:
+        """
+        @summary 创建认证器请求
+        
+        @param request: CreateAuthenticatorRegistrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAuthenticatorRegistrationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -93,6 +100,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.CreateAuthenticatorRegistrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.CreateAuthenticatorRegistrationResponse:
+        """
+        @summary 创建认证器请求
+        
+        @param request: CreateAuthenticatorRegistrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAuthenticatorRegistrationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -136,6 +150,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.CreateAuthenticatorRegistrationRequest,
     ) -> idaas_doraemon_20210520_models.CreateAuthenticatorRegistrationResponse:
+        """
+        @summary 创建认证器请求
+        
+        @param request: CreateAuthenticatorRegistrationRequest
+        @return: CreateAuthenticatorRegistrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_authenticator_registration_with_options(request, runtime)
 
@@ -143,6 +163,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.CreateAuthenticatorRegistrationRequest,
     ) -> idaas_doraemon_20210520_models.CreateAuthenticatorRegistrationResponse:
+        """
+        @summary 创建认证器请求
+        
+        @param request: CreateAuthenticatorRegistrationRequest
+        @return: CreateAuthenticatorRegistrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_authenticator_registration_with_options_async(request, runtime)
 
@@ -151,6 +177,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.CreateUserAuthenticateOptionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.CreateUserAuthenticateOptionsResponse:
+        """
+        @summary 创建用户认证请求
+        
+        @param request: CreateUserAuthenticateOptionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserAuthenticateOptionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -191,6 +224,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.CreateUserAuthenticateOptionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.CreateUserAuthenticateOptionsResponse:
+        """
+        @summary 创建用户认证请求
+        
+        @param request: CreateUserAuthenticateOptionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserAuthenticateOptionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -230,6 +270,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.CreateUserAuthenticateOptionsRequest,
     ) -> idaas_doraemon_20210520_models.CreateUserAuthenticateOptionsResponse:
+        """
+        @summary 创建用户认证请求
+        
+        @param request: CreateUserAuthenticateOptionsRequest
+        @return: CreateUserAuthenticateOptionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_user_authenticate_options_with_options(request, runtime)
 
@@ -237,6 +283,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.CreateUserAuthenticateOptionsRequest,
     ) -> idaas_doraemon_20210520_models.CreateUserAuthenticateOptionsResponse:
+        """
+        @summary 创建用户认证请求
+        
+        @param request: CreateUserAuthenticateOptionsRequest
+        @return: CreateUserAuthenticateOptionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_authenticate_options_with_options_async(request, runtime)
 
@@ -245,6 +297,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.DeregisterAuthenticatorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.DeregisterAuthenticatorResponse:
+        """
+        @summary 删除认证器
+        
+        @param request: DeregisterAuthenticatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeregisterAuthenticatorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -277,6 +336,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.DeregisterAuthenticatorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.DeregisterAuthenticatorResponse:
+        """
+        @summary 删除认证器
+        
+        @param request: DeregisterAuthenticatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeregisterAuthenticatorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -308,6 +374,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.DeregisterAuthenticatorRequest,
     ) -> idaas_doraemon_20210520_models.DeregisterAuthenticatorResponse:
+        """
+        @summary 删除认证器
+        
+        @param request: DeregisterAuthenticatorRequest
+        @return: DeregisterAuthenticatorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deregister_authenticator_with_options(request, runtime)
 
@@ -315,6 +387,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.DeregisterAuthenticatorRequest,
     ) -> idaas_doraemon_20210520_models.DeregisterAuthenticatorResponse:
+        """
+        @summary 删除认证器
+        
+        @param request: DeregisterAuthenticatorRequest
+        @return: DeregisterAuthenticatorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deregister_authenticator_with_options_async(request, runtime)
 
@@ -323,6 +401,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.FetchAccessTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.FetchAccessTokenResponse:
+        """
+        @summary 获取access_token
+        
+        @param request: FetchAccessTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchAccessTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -361,6 +446,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.FetchAccessTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.FetchAccessTokenResponse:
+        """
+        @summary 获取access_token
+        
+        @param request: FetchAccessTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchAccessTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -398,6 +490,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.FetchAccessTokenRequest,
     ) -> idaas_doraemon_20210520_models.FetchAccessTokenResponse:
+        """
+        @summary 获取access_token
+        
+        @param request: FetchAccessTokenRequest
+        @return: FetchAccessTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.fetch_access_token_with_options(request, runtime)
 
@@ -405,6 +503,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.FetchAccessTokenRequest,
     ) -> idaas_doraemon_20210520_models.FetchAccessTokenResponse:
+        """
+        @summary 获取access_token
+        
+        @param request: FetchAccessTokenRequest
+        @return: FetchAccessTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.fetch_access_token_with_options_async(request, runtime)
 
@@ -413,6 +517,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.GetAuthenticatorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.GetAuthenticatorResponse:
+        """
+        @summary 查询单个认证器
+        
+        @param request: GetAuthenticatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthenticatorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -445,6 +556,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.GetAuthenticatorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.GetAuthenticatorResponse:
+        """
+        @summary 查询单个认证器
+        
+        @param request: GetAuthenticatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthenticatorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -476,6 +594,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.GetAuthenticatorRequest,
     ) -> idaas_doraemon_20210520_models.GetAuthenticatorResponse:
+        """
+        @summary 查询单个认证器
+        
+        @param request: GetAuthenticatorRequest
+        @return: GetAuthenticatorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_authenticator_with_options(request, runtime)
 
@@ -483,6 +607,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.GetAuthenticatorRequest,
     ) -> idaas_doraemon_20210520_models.GetAuthenticatorResponse:
+        """
+        @summary 查询单个认证器
+        
+        @param request: GetAuthenticatorRequest
+        @return: GetAuthenticatorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_authenticator_with_options_async(request, runtime)
 
@@ -491,6 +621,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListAuthenticationLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListAuthenticationLogsResponse:
+        """
+        @summary 列表查询认证事件日志
+        
+        @param request: ListAuthenticationLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthenticationLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -537,6 +674,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListAuthenticationLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListAuthenticationLogsResponse:
+        """
+        @summary 列表查询认证事件日志
+        
+        @param request: ListAuthenticationLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthenticationLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -582,6 +726,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListAuthenticationLogsRequest,
     ) -> idaas_doraemon_20210520_models.ListAuthenticationLogsResponse:
+        """
+        @summary 列表查询认证事件日志
+        
+        @param request: ListAuthenticationLogsRequest
+        @return: ListAuthenticationLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_authentication_logs_with_options(request, runtime)
 
@@ -589,6 +739,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListAuthenticationLogsRequest,
     ) -> idaas_doraemon_20210520_models.ListAuthenticationLogsResponse:
+        """
+        @summary 列表查询认证事件日志
+        
+        @param request: ListAuthenticationLogsRequest
+        @return: ListAuthenticationLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_authentication_logs_with_options_async(request, runtime)
 
@@ -597,6 +753,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListAuthenticatorOpsLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListAuthenticatorOpsLogsResponse:
+        """
+        @summary 列表查询认证器操作日志
+        
+        @param request: ListAuthenticatorOpsLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthenticatorOpsLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -639,6 +802,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListAuthenticatorOpsLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListAuthenticatorOpsLogsResponse:
+        """
+        @summary 列表查询认证器操作日志
+        
+        @param request: ListAuthenticatorOpsLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthenticatorOpsLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -680,6 +850,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListAuthenticatorOpsLogsRequest,
     ) -> idaas_doraemon_20210520_models.ListAuthenticatorOpsLogsResponse:
+        """
+        @summary 列表查询认证器操作日志
+        
+        @param request: ListAuthenticatorOpsLogsRequest
+        @return: ListAuthenticatorOpsLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_authenticator_ops_logs_with_options(request, runtime)
 
@@ -687,6 +863,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListAuthenticatorOpsLogsRequest,
     ) -> idaas_doraemon_20210520_models.ListAuthenticatorOpsLogsResponse:
+        """
+        @summary 列表查询认证器操作日志
+        
+        @param request: ListAuthenticatorOpsLogsRequest
+        @return: ListAuthenticatorOpsLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_authenticator_ops_logs_with_options_async(request, runtime)
 
@@ -695,6 +877,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListAuthenticatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListAuthenticatorsResponse:
+        """
+        @summary 列表查询认证器
+        
+        @param request: ListAuthenticatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthenticatorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -731,6 +920,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListAuthenticatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListAuthenticatorsResponse:
+        """
+        @summary 列表查询认证器
+        
+        @param request: ListAuthenticatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthenticatorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -766,6 +962,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListAuthenticatorsRequest,
     ) -> idaas_doraemon_20210520_models.ListAuthenticatorsResponse:
+        """
+        @summary 列表查询认证器
+        
+        @param request: ListAuthenticatorsRequest
+        @return: ListAuthenticatorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_authenticators_with_options(request, runtime)
 
@@ -773,6 +975,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListAuthenticatorsRequest,
     ) -> idaas_doraemon_20210520_models.ListAuthenticatorsResponse:
+        """
+        @summary 列表查询认证器
+        
+        @param request: ListAuthenticatorsRequest
+        @return: ListAuthenticatorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_authenticators_with_options_async(request, runtime)
 
@@ -781,6 +989,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListCostUnitOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListCostUnitOrdersResponse:
+        """
+        @summary 查询按量计费订单列表
+        
+        @param request: ListCostUnitOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCostUnitOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_date):
@@ -815,6 +1030,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListCostUnitOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListCostUnitOrdersResponse:
+        """
+        @summary 查询按量计费订单列表
+        
+        @param request: ListCostUnitOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCostUnitOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_date):
@@ -848,6 +1070,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListCostUnitOrdersRequest,
     ) -> idaas_doraemon_20210520_models.ListCostUnitOrdersResponse:
+        """
+        @summary 查询按量计费订单列表
+        
+        @param request: ListCostUnitOrdersRequest
+        @return: ListCostUnitOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cost_unit_orders_with_options(request, runtime)
 
@@ -855,6 +1083,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListCostUnitOrdersRequest,
     ) -> idaas_doraemon_20210520_models.ListCostUnitOrdersResponse:
+        """
+        @summary 查询按量计费订单列表
+        
+        @param request: ListCostUnitOrdersRequest
+        @return: ListCostUnitOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cost_unit_orders_with_options_async(request, runtime)
 
@@ -863,6 +1097,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListOrderConsumeStatisticRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListOrderConsumeStatisticRecordsResponse:
+        """
+        @summary 查询用量消费统计记录列表
+        
+        @param request: ListOrderConsumeStatisticRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrderConsumeStatisticRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_order_code):
@@ -903,6 +1144,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListOrderConsumeStatisticRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListOrderConsumeStatisticRecordsResponse:
+        """
+        @summary 查询用量消费统计记录列表
+        
+        @param request: ListOrderConsumeStatisticRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrderConsumeStatisticRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_order_code):
@@ -942,6 +1190,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListOrderConsumeStatisticRecordsRequest,
     ) -> idaas_doraemon_20210520_models.ListOrderConsumeStatisticRecordsResponse:
+        """
+        @summary 查询用量消费统计记录列表
+        
+        @param request: ListOrderConsumeStatisticRecordsRequest
+        @return: ListOrderConsumeStatisticRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_order_consume_statistic_records_with_options(request, runtime)
 
@@ -949,6 +1203,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListOrderConsumeStatisticRecordsRequest,
     ) -> idaas_doraemon_20210520_models.ListOrderConsumeStatisticRecordsResponse:
+        """
+        @summary 查询用量消费统计记录列表
+        
+        @param request: ListOrderConsumeStatisticRecordsRequest
+        @return: ListOrderConsumeStatisticRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_order_consume_statistic_records_with_options_async(request, runtime)
 
@@ -957,6 +1217,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListPwnedPasswordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListPwnedPasswordsResponse:
+        """
+        @summary 弱密码检测
+        
+        @param request: ListPwnedPasswordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPwnedPasswordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.prefix_hex_password_sha_1hash):
@@ -985,6 +1252,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListPwnedPasswordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListPwnedPasswordsResponse:
+        """
+        @summary 弱密码检测
+        
+        @param request: ListPwnedPasswordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPwnedPasswordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.prefix_hex_password_sha_1hash):
@@ -1012,6 +1286,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListPwnedPasswordsRequest,
     ) -> idaas_doraemon_20210520_models.ListPwnedPasswordsResponse:
+        """
+        @summary 弱密码检测
+        
+        @param request: ListPwnedPasswordsRequest
+        @return: ListPwnedPasswordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_pwned_passwords_with_options(request, runtime)
 
@@ -1019,6 +1299,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListPwnedPasswordsRequest,
     ) -> idaas_doraemon_20210520_models.ListPwnedPasswordsResponse:
+        """
+        @summary 弱密码检测
+        
+        @param request: ListPwnedPasswordsRequest
+        @return: ListPwnedPasswordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_pwned_passwords_with_options_async(request, runtime)
 
@@ -1027,6 +1313,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListUsersResponse:
+        """
+        @summary 查询应用用户
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1057,6 +1350,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ListUsersResponse:
+        """
+        @summary 查询应用用户
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1086,6 +1386,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListUsersRequest,
     ) -> idaas_doraemon_20210520_models.ListUsersResponse:
+        """
+        @summary 查询应用用户
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_with_options(request, runtime)
 
@@ -1093,6 +1399,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ListUsersRequest,
     ) -> idaas_doraemon_20210520_models.ListUsersResponse:
+        """
+        @summary 查询应用用户
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
@@ -1101,6 +1413,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.QuerySmsReportsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.QuerySmsReportsResponse:
+        """
+        @summary 短信回执查询
+        
+        @param request: QuerySmsReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsReportsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1127,6 +1446,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.QuerySmsReportsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.QuerySmsReportsResponse:
+        """
+        @summary 短信回执查询
+        
+        @param request: QuerySmsReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsReportsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1152,6 +1478,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.QuerySmsReportsRequest,
     ) -> idaas_doraemon_20210520_models.QuerySmsReportsResponse:
+        """
+        @summary 短信回执查询
+        
+        @param request: QuerySmsReportsRequest
+        @return: QuerySmsReportsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sms_reports_with_options(request, runtime)
 
@@ -1159,6 +1491,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.QuerySmsReportsRequest,
     ) -> idaas_doraemon_20210520_models.QuerySmsReportsResponse:
+        """
+        @summary 短信回执查询
+        
+        @param request: QuerySmsReportsRequest
+        @return: QuerySmsReportsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_reports_with_options_async(request, runtime)
 
@@ -1166,6 +1504,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.QuerySmsUpsResponse:
+        """
+        @summary 短信上行查询
+        
+        @param request: QuerySmsUpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsUpsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QuerySmsUps',
@@ -1187,6 +1532,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.QuerySmsUpsResponse:
+        """
+        @summary 短信上行查询
+        
+        @param request: QuerySmsUpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsUpsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QuerySmsUps',
@@ -1205,10 +1557,20 @@ class Client(OpenApiClient):
         )
 
     def query_sms_ups(self) -> idaas_doraemon_20210520_models.QuerySmsUpsResponse:
+        """
+        @summary 短信上行查询
+        
+        @return: QuerySmsUpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sms_ups_with_options(runtime)
 
     async def query_sms_ups_async(self) -> idaas_doraemon_20210520_models.QuerySmsUpsResponse:
+        """
+        @summary 短信上行查询
+        
+        @return: QuerySmsUpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_ups_with_options_async(runtime)
 
@@ -1217,6 +1579,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.RegisterAuthenticatorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.RegisterAuthenticatorResponse:
+        """
+        @summary 注册认证器
+        
+        @param request: RegisterAuthenticatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterAuthenticatorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1265,6 +1634,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.RegisterAuthenticatorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.RegisterAuthenticatorResponse:
+        """
+        @summary 注册认证器
+        
+        @param request: RegisterAuthenticatorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterAuthenticatorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1312,6 +1688,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.RegisterAuthenticatorRequest,
     ) -> idaas_doraemon_20210520_models.RegisterAuthenticatorResponse:
+        """
+        @summary 注册认证器
+        
+        @param request: RegisterAuthenticatorRequest
+        @return: RegisterAuthenticatorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_authenticator_with_options(request, runtime)
 
@@ -1319,6 +1701,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.RegisterAuthenticatorRequest,
     ) -> idaas_doraemon_20210520_models.RegisterAuthenticatorResponse:
+        """
+        @summary 注册认证器
+        
+        @param request: RegisterAuthenticatorRequest
+        @return: RegisterAuthenticatorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_authenticator_with_options_async(request, runtime)
 
@@ -1327,6 +1715,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ServiceInvokeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ServiceInvokeResponse:
+        """
+        @summary 认证接口
+        
+        @param request: ServiceInvokeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ServiceInvokeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1369,6 +1764,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.ServiceInvokeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.ServiceInvokeResponse:
+        """
+        @summary 认证接口
+        
+        @param request: ServiceInvokeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ServiceInvokeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1410,6 +1812,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ServiceInvokeRequest,
     ) -> idaas_doraemon_20210520_models.ServiceInvokeResponse:
+        """
+        @summary 认证接口
+        
+        @param request: ServiceInvokeRequest
+        @return: ServiceInvokeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.service_invoke_with_options(request, runtime)
 
@@ -1417,6 +1825,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.ServiceInvokeRequest,
     ) -> idaas_doraemon_20210520_models.ServiceInvokeResponse:
+        """
+        @summary 认证接口
+        
+        @param request: ServiceInvokeRequest
+        @return: ServiceInvokeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.service_invoke_with_options_async(request, runtime)
 
@@ -1425,6 +1839,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.UpdateAuthenticatorAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.UpdateAuthenticatorAttributeResponse:
+        """
+        @summary 更新认证器名字
+        
+        @param request: UpdateAuthenticatorAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAuthenticatorAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1459,6 +1880,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.UpdateAuthenticatorAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.UpdateAuthenticatorAttributeResponse:
+        """
+        @summary 更新认证器名字
+        
+        @param request: UpdateAuthenticatorAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAuthenticatorAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1492,6 +1920,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.UpdateAuthenticatorAttributeRequest,
     ) -> idaas_doraemon_20210520_models.UpdateAuthenticatorAttributeResponse:
+        """
+        @summary 更新认证器名字
+        
+        @param request: UpdateAuthenticatorAttributeRequest
+        @return: UpdateAuthenticatorAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_authenticator_attribute_with_options(request, runtime)
 
@@ -1499,6 +1933,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.UpdateAuthenticatorAttributeRequest,
     ) -> idaas_doraemon_20210520_models.UpdateAuthenticatorAttributeResponse:
+        """
+        @summary 更新认证器名字
+        
+        @param request: UpdateAuthenticatorAttributeRequest
+        @return: UpdateAuthenticatorAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_authenticator_attribute_with_options_async(request, runtime)
 
@@ -1507,6 +1947,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.VerifyIdTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.VerifyIdTokenResponse:
+        """
+        @summary 验证id_token
+        
+        @param request: VerifyIdTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyIdTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1537,6 +1984,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.VerifyIdTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.VerifyIdTokenResponse:
+        """
+        @summary 验证id_token
+        
+        @param request: VerifyIdTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyIdTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1566,6 +2020,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.VerifyIdTokenRequest,
     ) -> idaas_doraemon_20210520_models.VerifyIdTokenResponse:
+        """
+        @summary 验证id_token
+        
+        @param request: VerifyIdTokenRequest
+        @return: VerifyIdTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_id_token_with_options(request, runtime)
 
@@ -1573,6 +2033,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.VerifyIdTokenRequest,
     ) -> idaas_doraemon_20210520_models.VerifyIdTokenResponse:
+        """
+        @summary 验证id_token
+        
+        @param request: VerifyIdTokenRequest
+        @return: VerifyIdTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_id_token_with_options_async(request, runtime)
 
@@ -1581,6 +2047,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.VerifyUserAuthenticationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.VerifyUserAuthenticationResponse:
+        """
+        @summary 认证用户
+        
+        @param request: VerifyUserAuthenticationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyUserAuthenticationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1631,6 +2104,13 @@ class Client(OpenApiClient):
         request: idaas_doraemon_20210520_models.VerifyUserAuthenticationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> idaas_doraemon_20210520_models.VerifyUserAuthenticationResponse:
+        """
+        @summary 认证用户
+        
+        @param request: VerifyUserAuthenticationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyUserAuthenticationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_external_id):
@@ -1680,6 +2160,12 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.VerifyUserAuthenticationRequest,
     ) -> idaas_doraemon_20210520_models.VerifyUserAuthenticationResponse:
+        """
+        @summary 认证用户
+        
+        @param request: VerifyUserAuthenticationRequest
+        @return: VerifyUserAuthenticationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_user_authentication_with_options(request, runtime)
 
@@ -1687,5 +2173,11 @@ class Client(OpenApiClient):
         self,
         request: idaas_doraemon_20210520_models.VerifyUserAuthenticationRequest,
     ) -> idaas_doraemon_20210520_models.VerifyUserAuthenticationResponse:
+        """
+        @summary 认证用户
+        
+        @param request: VerifyUserAuthenticationRequest
+        @return: VerifyUserAuthenticationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_user_authentication_with_options_async(request, runtime)
