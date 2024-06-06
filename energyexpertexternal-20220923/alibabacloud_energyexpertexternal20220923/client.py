@@ -10,6 +10,12 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_energyexpertexternal20220923 import models as energy_expert_external_20220923_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
+from alibabacloud_openplatform20191219 import models as open_platform_models
+from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
+from alibabacloud_tea_fileform import models as file_form_models
+from alibabacloud_oss_util import models as ossutil_models
 
 
 class Client(OpenApiClient):
@@ -47,6 +53,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GenerateResultResponse:
+        """
+        @summary Generate a report of the specified carbon footprint.
+        
+        @description Given a product ID, this API initiates a task to calculate the carbon footprint result for the corresponding product. The task\\"s status can be checked using the `IsCompleted` API. Following the generation of results, other result inquiry APIs can be accessed for display content.
+        
+        @param request: GenerateResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -81,6 +97,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GenerateResultResponse:
+        """
+        @summary Generate a report of the specified carbon footprint.
+        
+        @description Given a product ID, this API initiates a task to calculate the carbon footprint result for the corresponding product. The task\\"s status can be checked using the `IsCompleted` API. Following the generation of results, other result inquiry APIs can be accessed for display content.
+        
+        @param request: GenerateResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -113,6 +139,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GenerateResultRequest,
     ) -> energy_expert_external_20220923_models.GenerateResultResponse:
+        """
+        @summary Generate a report of the specified carbon footprint.
+        
+        @description Given a product ID, this API initiates a task to calculate the carbon footprint result for the corresponding product. The task\\"s status can be checked using the `IsCompleted` API. Following the generation of results, other result inquiry APIs can be accessed for display content.
+        
+        @param request: GenerateResultRequest
+        @return: GenerateResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.generate_result_with_options(request, headers, runtime)
@@ -121,6 +155,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GenerateResultRequest,
     ) -> energy_expert_external_20220923_models.GenerateResultResponse:
+        """
+        @summary Generate a report of the specified carbon footprint.
+        
+        @description Given a product ID, this API initiates a task to calculate the carbon footprint result for the corresponding product. The task\\"s status can be checked using the `IsCompleted` API. Following the generation of results, other result inquiry APIs can be accessed for display content.
+        
+        @param request: GenerateResultRequest
+        @return: GenerateResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.generate_result_with_options_async(request, headers, runtime)
@@ -131,6 +173,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetAreaElecConstituteResponse:
+        """
+        @summary This interface is used to obtain electrical constitute analysis data.
+        
+        @param request: GetAreaElecConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAreaElecConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -163,6 +213,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetAreaElecConstituteResponse:
+        """
+        @summary This interface is used to obtain electrical constitute analysis data.
+        
+        @param request: GetAreaElecConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAreaElecConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -193,6 +251,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetAreaElecConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetAreaElecConstituteResponse:
+        """
+        @summary This interface is used to obtain electrical constitute analysis data.
+        
+        @param request: GetAreaElecConstituteRequest
+        @return: GetAreaElecConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_area_elec_constitute_with_options(request, headers, runtime)
@@ -201,6 +265,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetAreaElecConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetAreaElecConstituteResponse:
+        """
+        @summary This interface is used to obtain electrical constitute analysis data.
+        
+        @param request: GetAreaElecConstituteRequest
+        @return: GetAreaElecConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_area_elec_constitute_with_options_async(request, headers, runtime)
@@ -211,6 +281,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse:
+        """
+        @summary Get trends in carbon emissions.
+        
+        @param request: GetCarbonEmissionTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCarbonEmissionTrendResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -249,6 +327,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse:
+        """
+        @summary Get trends in carbon emissions.
+        
+        @param request: GetCarbonEmissionTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCarbonEmissionTrendResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -285,6 +371,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetCarbonEmissionTrendRequest,
     ) -> energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse:
+        """
+        @summary Get trends in carbon emissions.
+        
+        @param request: GetCarbonEmissionTrendRequest
+        @return: GetCarbonEmissionTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_carbon_emission_trend_with_options(request, headers, runtime)
@@ -293,6 +385,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetCarbonEmissionTrendRequest,
     ) -> energy_expert_external_20220923_models.GetCarbonEmissionTrendResponse:
+        """
+        @summary Get trends in carbon emissions.
+        
+        @param request: GetCarbonEmissionTrendRequest
+        @return: GetCarbonEmissionTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_carbon_emission_trend_with_options_async(request, headers, runtime)
@@ -303,6 +401,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDataItemListResponse:
+        """
+        @summary This interface is used to obtain the details category of a data item.
+        
+        @description - obtain data item detail list under the current enterprise.
+        
+        @param request: GetDataItemListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataItemListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -333,6 +441,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDataItemListResponse:
+        """
+        @summary This interface is used to obtain the details category of a data item.
+        
+        @description - obtain data item detail list under the current enterprise.
+        
+        @param request: GetDataItemListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataItemListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -361,6 +479,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetDataItemListRequest,
     ) -> energy_expert_external_20220923_models.GetDataItemListResponse:
+        """
+        @summary This interface is used to obtain the details category of a data item.
+        
+        @description - obtain data item detail list under the current enterprise.
+        
+        @param request: GetDataItemListRequest
+        @return: GetDataItemListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_data_item_list_with_options(request, headers, runtime)
@@ -369,6 +495,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetDataItemListRequest,
     ) -> energy_expert_external_20220923_models.GetDataItemListResponse:
+        """
+        @summary This interface is used to obtain the details category of a data item.
+        
+        @description - obtain data item detail list under the current enterprise.
+        
+        @param request: GetDataItemListRequest
+        @return: GetDataItemListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_data_item_list_with_options_async(request, headers, runtime)
@@ -379,6 +513,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDataQualityAnalysisResponse:
+        """
+        @summary Obtain the data quality evaluation results DQR and DQI.
+        
+        @description This API returns the data quality evaluation results based on the user-provided product ID. It\\"s useful for understanding the data quality of the carbon emission factors for each inventory of the product.
+        
+        @param request: GetDataQualityAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityAnalysisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -415,6 +559,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDataQualityAnalysisResponse:
+        """
+        @summary Obtain the data quality evaluation results DQR and DQI.
+        
+        @description This API returns the data quality evaluation results based on the user-provided product ID. It\\"s useful for understanding the data quality of the carbon emission factors for each inventory of the product.
+        
+        @param request: GetDataQualityAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityAnalysisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -449,6 +603,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetDataQualityAnalysisRequest,
     ) -> energy_expert_external_20220923_models.GetDataQualityAnalysisResponse:
+        """
+        @summary Obtain the data quality evaluation results DQR and DQI.
+        
+        @description This API returns the data quality evaluation results based on the user-provided product ID. It\\"s useful for understanding the data quality of the carbon emission factors for each inventory of the product.
+        
+        @param request: GetDataQualityAnalysisRequest
+        @return: GetDataQualityAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_data_quality_analysis_with_options(request, headers, runtime)
@@ -457,6 +619,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetDataQualityAnalysisRequest,
     ) -> energy_expert_external_20220923_models.GetDataQualityAnalysisResponse:
+        """
+        @summary Obtain the data quality evaluation results DQR and DQI.
+        
+        @description This API returns the data quality evaluation results based on the user-provided product ID. It\\"s useful for understanding the data quality of the carbon emission factors for each inventory of the product.
+        
+        @param request: GetDataQualityAnalysisRequest
+        @return: GetDataQualityAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_data_quality_analysis_with_options_async(request, headers, runtime)
@@ -468,8 +638,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDeviceInfoResponse:
         """
-        You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
-        *   You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+        @summary Queries the information about a device at a site that is activated by using an Alibaba Cloud account.
+        
+        @description    You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
+        You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceInfoRequest
         @param headers: map
@@ -511,8 +686,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDeviceInfoResponse:
         """
-        You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
-        *   You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+        @summary Queries the information about a device at a site that is activated by using an Alibaba Cloud account.
+        
+        @description    You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
+        You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceInfoRequest
         @param headers: map
@@ -552,8 +732,13 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.GetDeviceInfoRequest,
     ) -> energy_expert_external_20220923_models.GetDeviceInfoResponse:
         """
-        You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
-        *   You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+        @summary Queries the information about a device at a site that is activated by using an Alibaba Cloud account.
+        
+        @description    You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
+        You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceInfoRequest
         @return: GetDeviceInfoResponse
@@ -567,8 +752,13 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.GetDeviceInfoRequest,
     ) -> energy_expert_external_20220923_models.GetDeviceInfoResponse:
         """
-        You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
-        *   You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+        @summary Queries the information about a device at a site that is activated by using an Alibaba Cloud account.
+        
+        @description    You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
+        You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceInfoRequest
         @return: GetDeviceInfoResponse
@@ -584,8 +774,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDeviceListResponse:
         """
-        You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
-        *   Virtual meters at the site are not returned.
+        @summary Queries the devices of a site that is activated by using an Alibaba Cloud account.
+        
+        @description    You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
+        Virtual meters at the site are not returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceListRequest
         @param headers: map
@@ -623,8 +818,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetDeviceListResponse:
         """
-        You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
-        *   Virtual meters at the site are not returned.
+        @summary Queries the devices of a site that is activated by using an Alibaba Cloud account.
+        
+        @description    You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
+        Virtual meters at the site are not returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceListRequest
         @param headers: map
@@ -660,8 +860,13 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.GetDeviceListRequest,
     ) -> energy_expert_external_20220923_models.GetDeviceListResponse:
         """
-        You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
-        *   Virtual meters at the site are not returned.
+        @summary Queries the devices of a site that is activated by using an Alibaba Cloud account.
+        
+        @description    You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
+        Virtual meters at the site are not returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceListRequest
         @return: GetDeviceListResponse
@@ -675,8 +880,13 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.GetDeviceListRequest,
     ) -> energy_expert_external_20220923_models.GetDeviceListResponse:
         """
-        You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
-        *   Virtual meters at the site are not returned.
+        @summary Queries the devices of a site that is activated by using an Alibaba Cloud account.
+        
+        @description    You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
+        Virtual meters at the site are not returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceListRequest
         @return: GetDeviceListResponse
@@ -685,12 +895,124 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_device_list_with_options_async(request, headers, runtime)
 
+    def get_document_analyze_result_with_options(
+        self,
+        request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
+        """
+        @summary 获取文档结果
+        
+        @param request: GetDocumentAnalyzeResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentAnalyzeResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['jobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocumentAnalyzeResult',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/getDocumentAnalyzeResult',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_document_analyze_result_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
+        """
+        @summary 获取文档结果
+        
+        @param request: GetDocumentAnalyzeResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentAnalyzeResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['jobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocumentAnalyzeResult',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/getDocumentAnalyzeResult',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_document_analyze_result(
+        self,
+        request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
+    ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
+        """
+        @summary 获取文档结果
+        
+        @param request: GetDocumentAnalyzeResultRequest
+        @return: GetDocumentAnalyzeResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_document_analyze_result_with_options(request, headers, runtime)
+
+    async def get_document_analyze_result_async(
+        self,
+        request: energy_expert_external_20220923_models.GetDocumentAnalyzeResultRequest,
+    ) -> energy_expert_external_20220923_models.GetDocumentAnalyzeResultResponse:
+        """
+        @summary 获取文档结果
+        
+        @param request: GetDocumentAnalyzeResultRequest
+        @return: GetDocumentAnalyzeResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_document_analyze_result_with_options_async(request, headers, runtime)
+
     def get_elec_constitute_with_options(
         self,
         request: energy_expert_external_20220923_models.GetElecConstituteRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetElecConstituteResponse:
+        """
+        @summary This interface is used to obtain power composition analysis data.
+        
+        @param request: GetElecConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetElecConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -723,6 +1045,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetElecConstituteResponse:
+        """
+        @summary This interface is used to obtain power composition analysis data.
+        
+        @param request: GetElecConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetElecConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -753,6 +1083,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetElecConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetElecConstituteResponse:
+        """
+        @summary This interface is used to obtain power composition analysis data.
+        
+        @param request: GetElecConstituteRequest
+        @return: GetElecConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_elec_constitute_with_options(request, headers, runtime)
@@ -761,6 +1097,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetElecConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetElecConstituteResponse:
+        """
+        @summary This interface is used to obtain power composition analysis data.
+        
+        @param request: GetElecConstituteRequest
+        @return: GetElecConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_elec_constitute_with_options_async(request, headers, runtime)
@@ -771,6 +1113,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetElecTrendResponse:
+        """
+        @summary This interface is used to obtain power trend analysis data.
+        
+        @param request: GetElecTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetElecTrendResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -803,6 +1153,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetElecTrendResponse:
+        """
+        @summary This interface is used to obtain power trend analysis data.
+        
+        @param request: GetElecTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetElecTrendResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -833,6 +1191,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetElecTrendRequest,
     ) -> energy_expert_external_20220923_models.GetElecTrendResponse:
+        """
+        @summary This interface is used to obtain power trend analysis data.
+        
+        @param request: GetElecTrendRequest
+        @return: GetElecTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_elec_trend_with_options(request, headers, runtime)
@@ -841,6 +1205,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetElecTrendRequest,
     ) -> energy_expert_external_20220923_models.GetElecTrendResponse:
+        """
+        @summary This interface is used to obtain power trend analysis data.
+        
+        @param request: GetElecTrendRequest
+        @return: GetElecTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_elec_trend_with_options_async(request, headers, runtime)
@@ -851,6 +1221,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse:
+        """
+        @summary Obtain the emission source composition.
+        
+        @param request: GetEmissionSourceConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmissionSourceConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -887,6 +1265,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse:
+        """
+        @summary Obtain the emission source composition.
+        
+        @param request: GetEmissionSourceConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmissionSourceConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -921,6 +1307,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetEmissionSourceConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse:
+        """
+        @summary Obtain the emission source composition.
+        
+        @param request: GetEmissionSourceConstituteRequest
+        @return: GetEmissionSourceConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_emission_source_constitute_with_options(request, headers, runtime)
@@ -929,6 +1321,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetEmissionSourceConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetEmissionSourceConstituteResponse:
+        """
+        @summary Obtain the emission source composition.
+        
+        @param request: GetEmissionSourceConstituteRequest
+        @return: GetEmissionSourceConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_emission_source_constitute_with_options_async(request, headers, runtime)
@@ -939,6 +1337,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetEmissionSummaryResponse:
+        """
+        @summary Get a summary of carbon emissions.
+        
+        @param request: GetEmissionSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmissionSummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -975,6 +1381,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetEmissionSummaryResponse:
+        """
+        @summary Get a summary of carbon emissions.
+        
+        @param request: GetEmissionSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmissionSummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1009,6 +1423,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetEmissionSummaryRequest,
     ) -> energy_expert_external_20220923_models.GetEmissionSummaryResponse:
+        """
+        @summary Get a summary of carbon emissions.
+        
+        @param request: GetEmissionSummaryRequest
+        @return: GetEmissionSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_emission_summary_with_options(request, headers, runtime)
@@ -1017,6 +1437,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetEmissionSummaryRequest,
     ) -> energy_expert_external_20220923_models.GetEmissionSummaryResponse:
+        """
+        @summary Get a summary of carbon emissions.
+        
+        @param request: GetEmissionSummaryRequest
+        @return: GetEmissionSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_emission_summary_with_options_async(request, headers, runtime)
@@ -1027,6 +1453,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse:
+        """
+        @summary Gets the result details of the environmental impact category.
+        
+        @description This API returns the emission amounts for various environmental impact categories at different levels for the given product ID. It helps understand the emission quantities for different environmental impact categories and inventories of the product.
+        
+        @param request: GetEpdInventoryConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEpdInventoryConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1061,6 +1497,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse:
+        """
+        @summary Gets the result details of the environmental impact category.
+        
+        @description This API returns the emission amounts for various environmental impact categories at different levels for the given product ID. It helps understand the emission quantities for different environmental impact categories and inventories of the product.
+        
+        @param request: GetEpdInventoryConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEpdInventoryConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1093,6 +1539,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetEpdInventoryConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse:
+        """
+        @summary Gets the result details of the environmental impact category.
+        
+        @description This API returns the emission amounts for various environmental impact categories at different levels for the given product ID. It helps understand the emission quantities for different environmental impact categories and inventories of the product.
+        
+        @param request: GetEpdInventoryConstituteRequest
+        @return: GetEpdInventoryConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_epd_inventory_constitute_with_options(request, headers, runtime)
@@ -1101,6 +1555,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetEpdInventoryConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetEpdInventoryConstituteResponse:
+        """
+        @summary Gets the result details of the environmental impact category.
+        
+        @description This API returns the emission amounts for various environmental impact categories at different levels for the given product ID. It helps understand the emission quantities for different environmental impact categories and inventories of the product.
+        
+        @param request: GetEpdInventoryConstituteRequest
+        @return: GetEpdInventoryConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_epd_inventory_constitute_with_options_async(request, headers, runtime)
@@ -1111,6 +1573,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetEpdSummaryResponse:
+        """
+        @summary Obtain the total amount of emissions for various environmental impacts.
+        
+        @description This API takes a product ID from the user and returns the summary of environmental impact generated for the product. This info helps understand the overall emissions for different environmental impact categories of the product.
+        
+        @param request: GetEpdSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEpdSummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1145,6 +1617,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetEpdSummaryResponse:
+        """
+        @summary Obtain the total amount of emissions for various environmental impacts.
+        
+        @description This API takes a product ID from the user and returns the summary of environmental impact generated for the product. This info helps understand the overall emissions for different environmental impact categories of the product.
+        
+        @param request: GetEpdSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEpdSummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1177,6 +1659,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetEpdSummaryRequest,
     ) -> energy_expert_external_20220923_models.GetEpdSummaryResponse:
+        """
+        @summary Obtain the total amount of emissions for various environmental impacts.
+        
+        @description This API takes a product ID from the user and returns the summary of environmental impact generated for the product. This info helps understand the overall emissions for different environmental impact categories of the product.
+        
+        @param request: GetEpdSummaryRequest
+        @return: GetEpdSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_epd_summary_with_options(request, headers, runtime)
@@ -1185,6 +1675,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetEpdSummaryRequest,
     ) -> energy_expert_external_20220923_models.GetEpdSummaryResponse:
+        """
+        @summary Obtain the total amount of emissions for various environmental impacts.
+        
+        @description This API takes a product ID from the user and returns the summary of environmental impact generated for the product. This info helps understand the overall emissions for different environmental impact categories of the product.
+        
+        @param request: GetEpdSummaryRequest
+        @return: GetEpdSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_epd_summary_with_options_async(request, headers, runtime)
@@ -1195,6 +1693,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetFootprintListResponse:
+        """
+        @summary Get the list of product carbon footprints.
+        
+        @description With user-specified parameters such as enterprise code, current page, and page size, this API returns a list of matching product carbon footprints (or supply chain carbon footprints), including product names and product IDs. The product ID can be used as input parameters in other APIs to get the corresponding product\\"s detailed information.
+        
+        @param request: GetFootprintListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFootprintListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1231,6 +1739,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetFootprintListResponse:
+        """
+        @summary Get the list of product carbon footprints.
+        
+        @description With user-specified parameters such as enterprise code, current page, and page size, this API returns a list of matching product carbon footprints (or supply chain carbon footprints), including product names and product IDs. The product ID can be used as input parameters in other APIs to get the corresponding product\\"s detailed information.
+        
+        @param request: GetFootprintListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFootprintListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1265,6 +1783,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetFootprintListRequest,
     ) -> energy_expert_external_20220923_models.GetFootprintListResponse:
+        """
+        @summary Get the list of product carbon footprints.
+        
+        @description With user-specified parameters such as enterprise code, current page, and page size, this API returns a list of matching product carbon footprints (or supply chain carbon footprints), including product names and product IDs. The product ID can be used as input parameters in other APIs to get the corresponding product\\"s detailed information.
+        
+        @param request: GetFootprintListRequest
+        @return: GetFootprintListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_footprint_list_with_options(request, headers, runtime)
@@ -1273,6 +1799,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetFootprintListRequest,
     ) -> energy_expert_external_20220923_models.GetFootprintListResponse:
+        """
+        @summary Get the list of product carbon footprints.
+        
+        @description With user-specified parameters such as enterprise code, current page, and page size, this API returns a list of matching product carbon footprints (or supply chain carbon footprints), including product names and product IDs. The product ID can be used as input parameters in other APIs to get the corresponding product\\"s detailed information.
+        
+        @param request: GetFootprintListRequest
+        @return: GetFootprintListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_footprint_list_with_options_async(request, headers, runtime)
@@ -1283,6 +1817,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGasConstituteResponse:
+        """
+        @summary This interface is used to obtain gas composition analysis.
+        
+        @param request: GetGasConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGasConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1319,6 +1861,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGasConstituteResponse:
+        """
+        @summary This interface is used to obtain gas composition analysis.
+        
+        @param request: GetGasConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGasConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1353,6 +1903,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGasConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetGasConstituteResponse:
+        """
+        @summary This interface is used to obtain gas composition analysis.
+        
+        @param request: GetGasConstituteRequest
+        @return: GetGasConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_gas_constitute_with_options(request, headers, runtime)
@@ -1361,6 +1917,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGasConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetGasConstituteResponse:
+        """
+        @summary This interface is used to obtain gas composition analysis.
+        
+        @param request: GetGasConstituteRequest
+        @return: GetGasConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_gas_constitute_with_options_async(request, headers, runtime)
@@ -1371,6 +1933,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGwpBenchmarkListResponse:
+        """
+        @summary obtain the active carbon reduction ranking list.
+        
+        @description This interface returns a list of proactive carbon reduction information given product ID. It\\"s used to understand the carbon reduction efforts at various levels of the product.
+        
+        @param request: GetGwpBenchmarkListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGwpBenchmarkListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1405,6 +1977,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGwpBenchmarkListResponse:
+        """
+        @summary obtain the active carbon reduction ranking list.
+        
+        @description This interface returns a list of proactive carbon reduction information given product ID. It\\"s used to understand the carbon reduction efforts at various levels of the product.
+        
+        @param request: GetGwpBenchmarkListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGwpBenchmarkListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1437,6 +2019,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGwpBenchmarkListRequest,
     ) -> energy_expert_external_20220923_models.GetGwpBenchmarkListResponse:
+        """
+        @summary obtain the active carbon reduction ranking list.
+        
+        @description This interface returns a list of proactive carbon reduction information given product ID. It\\"s used to understand the carbon reduction efforts at various levels of the product.
+        
+        @param request: GetGwpBenchmarkListRequest
+        @return: GetGwpBenchmarkListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_gwp_benchmark_list_with_options(request, headers, runtime)
@@ -1445,6 +2035,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGwpBenchmarkListRequest,
     ) -> energy_expert_external_20220923_models.GetGwpBenchmarkListResponse:
+        """
+        @summary obtain the active carbon reduction ranking list.
+        
+        @description This interface returns a list of proactive carbon reduction information given product ID. It\\"s used to understand the carbon reduction efforts at various levels of the product.
+        
+        @param request: GetGwpBenchmarkListRequest
+        @return: GetGwpBenchmarkListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_gwp_benchmark_list_with_options_async(request, headers, runtime)
@@ -1455,6 +2053,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse:
+        """
+        @summary This API is to obtain the total amount of active carbon reduction.
+        
+        @description The API takes a product ID and returns data on the carbon emissions reduction along with a list of the top four contributors to carbon reduction. This info helps understand the total carbon reduction of the product and its main sources.
+        
+        @param request: GetGwpBenchmarkSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGwpBenchmarkSummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1489,6 +2097,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse:
+        """
+        @summary This API is to obtain the total amount of active carbon reduction.
+        
+        @description The API takes a product ID and returns data on the carbon emissions reduction along with a list of the top four contributors to carbon reduction. This info helps understand the total carbon reduction of the product and its main sources.
+        
+        @param request: GetGwpBenchmarkSummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGwpBenchmarkSummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1521,6 +2139,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGwpBenchmarkSummaryRequest,
     ) -> energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse:
+        """
+        @summary This API is to obtain the total amount of active carbon reduction.
+        
+        @description The API takes a product ID and returns data on the carbon emissions reduction along with a list of the top four contributors to carbon reduction. This info helps understand the total carbon reduction of the product and its main sources.
+        
+        @param request: GetGwpBenchmarkSummaryRequest
+        @return: GetGwpBenchmarkSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_gwp_benchmark_summary_with_options(request, headers, runtime)
@@ -1529,6 +2155,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGwpBenchmarkSummaryRequest,
     ) -> energy_expert_external_20220923_models.GetGwpBenchmarkSummaryResponse:
+        """
+        @summary This API is to obtain the total amount of active carbon reduction.
+        
+        @description The API takes a product ID and returns data on the carbon emissions reduction along with a list of the top four contributors to carbon reduction. This info helps understand the total carbon reduction of the product and its main sources.
+        
+        @param request: GetGwpBenchmarkSummaryRequest
+        @return: GetGwpBenchmarkSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_gwp_benchmark_summary_with_options_async(request, headers, runtime)
@@ -1539,6 +2173,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse:
+        """
+        @summary Used to obtain the carbon emission composition analysis of a specified product. Carbon emission composition analysis includes two analysis dimensions: inventory and type. In the rendering effect, including a hierarchical list and pie chart.
+        
+        @description Used to obtain the carbon emission composition analysis of a specified product. Carbon emission composition analysis includes two analysis dimensions: inventory and type. In the rendering effect, including a hierarchical list and pie chart.
+        
+        @param request: GetGwpInventoryConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGwpInventoryConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1573,6 +2217,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse:
+        """
+        @summary Used to obtain the carbon emission composition analysis of a specified product. Carbon emission composition analysis includes two analysis dimensions: inventory and type. In the rendering effect, including a hierarchical list and pie chart.
+        
+        @description Used to obtain the carbon emission composition analysis of a specified product. Carbon emission composition analysis includes two analysis dimensions: inventory and type. In the rendering effect, including a hierarchical list and pie chart.
+        
+        @param request: GetGwpInventoryConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGwpInventoryConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1605,6 +2259,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGwpInventoryConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse:
+        """
+        @summary Used to obtain the carbon emission composition analysis of a specified product. Carbon emission composition analysis includes two analysis dimensions: inventory and type. In the rendering effect, including a hierarchical list and pie chart.
+        
+        @description Used to obtain the carbon emission composition analysis of a specified product. Carbon emission composition analysis includes two analysis dimensions: inventory and type. In the rendering effect, including a hierarchical list and pie chart.
+        
+        @param request: GetGwpInventoryConstituteRequest
+        @return: GetGwpInventoryConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_gwp_inventory_constitute_with_options(request, headers, runtime)
@@ -1613,6 +2275,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGwpInventoryConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetGwpInventoryConstituteResponse:
+        """
+        @summary Used to obtain the carbon emission composition analysis of a specified product. Carbon emission composition analysis includes two analysis dimensions: inventory and type. In the rendering effect, including a hierarchical list and pie chart.
+        
+        @description Used to obtain the carbon emission composition analysis of a specified product. Carbon emission composition analysis includes two analysis dimensions: inventory and type. In the rendering effect, including a hierarchical list and pie chart.
+        
+        @param request: GetGwpInventoryConstituteRequest
+        @return: GetGwpInventoryConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_gwp_inventory_constitute_with_options_async(request, headers, runtime)
@@ -1623,6 +2293,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGwpInventorySummaryResponse:
+        """
+        @summary This API is used to obtain the total carbon footprint of a product and the top four types of carbon footprint contribution.
+        
+        @description Returns the total carbon footprint data for the user-specified product ID, along with details on the top four contributors to the carbon footprint, helping to understand the overall carbon footprint and its main components.
+        
+        @param request: GetGwpInventorySummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGwpInventorySummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1657,6 +2337,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetGwpInventorySummaryResponse:
+        """
+        @summary This API is used to obtain the total carbon footprint of a product and the top four types of carbon footprint contribution.
+        
+        @description Returns the total carbon footprint data for the user-specified product ID, along with details on the top four contributors to the carbon footprint, helping to understand the overall carbon footprint and its main components.
+        
+        @param request: GetGwpInventorySummaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGwpInventorySummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1689,6 +2379,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGwpInventorySummaryRequest,
     ) -> energy_expert_external_20220923_models.GetGwpInventorySummaryResponse:
+        """
+        @summary This API is used to obtain the total carbon footprint of a product and the top four types of carbon footprint contribution.
+        
+        @description Returns the total carbon footprint data for the user-specified product ID, along with details on the top four contributors to the carbon footprint, helping to understand the overall carbon footprint and its main components.
+        
+        @param request: GetGwpInventorySummaryRequest
+        @return: GetGwpInventorySummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_gwp_inventory_summary_with_options(request, headers, runtime)
@@ -1697,6 +2395,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetGwpInventorySummaryRequest,
     ) -> energy_expert_external_20220923_models.GetGwpInventorySummaryResponse:
+        """
+        @summary This API is used to obtain the total carbon footprint of a product and the top four types of carbon footprint contribution.
+        
+        @description Returns the total carbon footprint data for the user-specified product ID, along with details on the top four contributors to the carbon footprint, helping to understand the overall carbon footprint and its main components.
+        
+        @param request: GetGwpInventorySummaryRequest
+        @return: GetGwpInventorySummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_gwp_inventory_summary_with_options_async(request, headers, runtime)
@@ -1707,6 +2413,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetInventoryListResponse:
+        """
+        @summary Get the list of emissions in descending order under the specified environmental impact (methodType), specified aggregate level (group), and specified calculation mode (emissionType).
+        
+        @description This interface retrieves a descending order list of emissions for a specified product ID, environmental impact method, group level, and calculation method. It\\"s used to understand various environmental impact emission scenarios.
+        
+        @param request: GetInventoryListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInventoryListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1747,6 +2463,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetInventoryListResponse:
+        """
+        @summary Get the list of emissions in descending order under the specified environmental impact (methodType), specified aggregate level (group), and specified calculation mode (emissionType).
+        
+        @description This interface retrieves a descending order list of emissions for a specified product ID, environmental impact method, group level, and calculation method. It\\"s used to understand various environmental impact emission scenarios.
+        
+        @param request: GetInventoryListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInventoryListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1785,6 +2511,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetInventoryListRequest,
     ) -> energy_expert_external_20220923_models.GetInventoryListResponse:
+        """
+        @summary Get the list of emissions in descending order under the specified environmental impact (methodType), specified aggregate level (group), and specified calculation mode (emissionType).
+        
+        @description This interface retrieves a descending order list of emissions for a specified product ID, environmental impact method, group level, and calculation method. It\\"s used to understand various environmental impact emission scenarios.
+        
+        @param request: GetInventoryListRequest
+        @return: GetInventoryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_inventory_list_with_options(request, headers, runtime)
@@ -1793,6 +2527,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetInventoryListRequest,
     ) -> energy_expert_external_20220923_models.GetInventoryListResponse:
+        """
+        @summary Get the list of emissions in descending order under the specified environmental impact (methodType), specified aggregate level (group), and specified calculation mode (emissionType).
+        
+        @description This interface retrieves a descending order list of emissions for a specified product ID, environmental impact method, group level, and calculation method. It\\"s used to understand various environmental impact emission scenarios.
+        
+        @param request: GetInventoryListRequest
+        @return: GetInventoryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_inventory_list_with_options_async(request, headers, runtime)
@@ -1803,9 +2545,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetOrgAndFactoryResponse:
         """
-        You can set multiple request parameters to filter query results. Specified parameters have logical AND relations. Parameters without assigned values are not used as filtering conditions.
-        *   The x-acs-caller-uid header is used to check whether the activated service plan is the required service plan. If the verification is passed, the information about the organizations and sites that are activated by using the Alibaba Cloud account is returned. If the verification fails, a null value is returned.
-        *   If activated organizations and sites exist, the data of the organizations and sites is returned. If no organization or site data exists, a null value is returned.
+        @summary Queries the organizations and sites that are activated by using an Alibaba Cloud account. You cannot call this operation to query the organizations or sites that have not been activated in the console.
+        
+        @description    If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1836,9 +2581,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetOrgAndFactoryResponse:
         """
-        You can set multiple request parameters to filter query results. Specified parameters have logical AND relations. Parameters without assigned values are not used as filtering conditions.
-        *   The x-acs-caller-uid header is used to check whether the activated service plan is the required service plan. If the verification is passed, the information about the organizations and sites that are activated by using the Alibaba Cloud account is returned. If the verification fails, a null value is returned.
-        *   If activated organizations and sites exist, the data of the organizations and sites is returned. If no organization or site data exists, a null value is returned.
+        @summary Queries the organizations and sites that are activated by using an Alibaba Cloud account. You cannot call this operation to query the organizations or sites that have not been activated in the console.
+        
+        @description    If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1865,9 +2613,12 @@ class Client(OpenApiClient):
 
     def get_org_and_factory(self) -> energy_expert_external_20220923_models.GetOrgAndFactoryResponse:
         """
-        You can set multiple request parameters to filter query results. Specified parameters have logical AND relations. Parameters without assigned values are not used as filtering conditions.
-        *   The x-acs-caller-uid header is used to check whether the activated service plan is the required service plan. If the verification is passed, the information about the organizations and sites that are activated by using the Alibaba Cloud account is returned. If the verification fails, a null value is returned.
-        *   If activated organizations and sites exist, the data of the organizations and sites is returned. If no organization or site data exists, a null value is returned.
+        @summary Queries the organizations and sites that are activated by using an Alibaba Cloud account. You cannot call this operation to query the organizations or sites that have not been activated in the console.
+        
+        @description    If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @return: GetOrgAndFactoryResponse
         """
@@ -1877,9 +2628,12 @@ class Client(OpenApiClient):
 
     async def get_org_and_factory_async(self) -> energy_expert_external_20220923_models.GetOrgAndFactoryResponse:
         """
-        You can set multiple request parameters to filter query results. Specified parameters have logical AND relations. Parameters without assigned values are not used as filtering conditions.
-        *   The x-acs-caller-uid header is used to check whether the activated service plan is the required service plan. If the verification is passed, the information about the organizations and sites that are activated by using the Alibaba Cloud account is returned. If the verification fails, a null value is returned.
-        *   If activated organizations and sites exist, the data of the organizations and sites is returned. If no organization or site data exists, a null value is returned.
+        @summary Queries the organizations and sites that are activated by using an Alibaba Cloud account. You cannot call this operation to query the organizations or sites that have not been activated in the console.
+        
+        @description    If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
+        - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
+        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @return: GetOrgAndFactoryResponse
         """
@@ -1893,6 +2647,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetOrgConstituteResponse:
+        """
+        @summary This interface is used to obtain carbon inventory organization analysis data.
+        
+        @param request: GetOrgConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrgConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1929,6 +2691,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetOrgConstituteResponse:
+        """
+        @summary This interface is used to obtain carbon inventory organization analysis data.
+        
+        @param request: GetOrgConstituteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrgConstituteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -1963,6 +2733,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetOrgConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetOrgConstituteResponse:
+        """
+        @summary This interface is used to obtain carbon inventory organization analysis data.
+        
+        @param request: GetOrgConstituteRequest
+        @return: GetOrgConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_org_constitute_with_options(request, headers, runtime)
@@ -1971,6 +2747,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetOrgConstituteRequest,
     ) -> energy_expert_external_20220923_models.GetOrgConstituteResponse:
+        """
+        @summary This interface is used to obtain carbon inventory organization analysis data.
+        
+        @param request: GetOrgConstituteRequest
+        @return: GetOrgConstituteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_org_constitute_with_options_async(request, headers, runtime)
@@ -1981,6 +2763,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetPcrInfoResponse:
+        """
+        @summary Obtains the oss address of the Product Carbon footprint Report.
+        
+        @description With the user-specified product ID, this interface retrieves detailed information and download links for previously generated PCR reports. To use it, two conditions must be met: 1) the result has already been generated; 2) the PCR report has been created.
+        
+        @param request: GetPcrInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPcrInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -2015,6 +2807,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetPcrInfoResponse:
+        """
+        @summary Obtains the oss address of the Product Carbon footprint Report.
+        
+        @description With the user-specified product ID, this interface retrieves detailed information and download links for previously generated PCR reports. To use it, two conditions must be met: 1) the result has already been generated; 2) the PCR report has been created.
+        
+        @param request: GetPcrInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPcrInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -2047,6 +2849,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetPcrInfoRequest,
     ) -> energy_expert_external_20220923_models.GetPcrInfoResponse:
+        """
+        @summary Obtains the oss address of the Product Carbon footprint Report.
+        
+        @description With the user-specified product ID, this interface retrieves detailed information and download links for previously generated PCR reports. To use it, two conditions must be met: 1) the result has already been generated; 2) the PCR report has been created.
+        
+        @param request: GetPcrInfoRequest
+        @return: GetPcrInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pcr_info_with_options(request, headers, runtime)
@@ -2055,6 +2865,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetPcrInfoRequest,
     ) -> energy_expert_external_20220923_models.GetPcrInfoResponse:
+        """
+        @summary Obtains the oss address of the Product Carbon footprint Report.
+        
+        @description With the user-specified product ID, this interface retrieves detailed information and download links for previously generated PCR reports. To use it, two conditions must be met: 1) the result has already been generated; 2) the PCR report has been created.
+        
+        @param request: GetPcrInfoRequest
+        @return: GetPcrInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pcr_info_with_options_async(request, headers, runtime)
@@ -2065,6 +2883,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetReductionProposalResponse:
+        """
+        @summary Get carbon reduction recommendations.
+        
+        @description This API returns carbon reduction proposals based on the product ID. It\\"s useful for understanding optimization tips to reduce the carbon emissions associated with a product.
+        
+        @param request: GetReductionProposalRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReductionProposalResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -2101,6 +2929,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.GetReductionProposalResponse:
+        """
+        @summary Get carbon reduction recommendations.
+        
+        @description This API returns carbon reduction proposals based on the product ID. It\\"s useful for understanding optimization tips to reduce the carbon emissions associated with a product.
+        
+        @param request: GetReductionProposalRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReductionProposalResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -2135,6 +2973,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetReductionProposalRequest,
     ) -> energy_expert_external_20220923_models.GetReductionProposalResponse:
+        """
+        @summary Get carbon reduction recommendations.
+        
+        @description This API returns carbon reduction proposals based on the product ID. It\\"s useful for understanding optimization tips to reduce the carbon emissions associated with a product.
+        
+        @param request: GetReductionProposalRequest
+        @return: GetReductionProposalResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_reduction_proposal_with_options(request, headers, runtime)
@@ -2143,6 +2989,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.GetReductionProposalRequest,
     ) -> energy_expert_external_20220923_models.GetReductionProposalResponse:
+        """
+        @summary Get carbon reduction recommendations.
+        
+        @description This API returns carbon reduction proposals based on the product ID. It\\"s useful for understanding optimization tips to reduce the carbon emissions associated with a product.
+        
+        @param request: GetReductionProposalRequest
+        @return: GetReductionProposalResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_reduction_proposal_with_options_async(request, headers, runtime)
@@ -2153,6 +3007,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.IsCompletedResponse:
+        """
+        @summary Check if the result generation is complete.
+        
+        @description This API checks the completion status of generating a report. It should be used before calling other result APIs, as they will only display content once the report generation is complete.
+        
+        @param request: IsCompletedRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsCompletedResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -2187,6 +3051,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.IsCompletedResponse:
+        """
+        @summary Check if the result generation is complete.
+        
+        @description This API checks the completion status of generating a report. It should be used before calling other result APIs, as they will only display content once the report generation is complete.
+        
+        @param request: IsCompletedRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsCompletedResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -2219,6 +3093,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.IsCompletedRequest,
     ) -> energy_expert_external_20220923_models.IsCompletedResponse:
+        """
+        @summary Check if the result generation is complete.
+        
+        @description This API checks the completion status of generating a report. It should be used before calling other result APIs, as they will only display content once the report generation is complete.
+        
+        @param request: IsCompletedRequest
+        @return: IsCompletedResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.is_completed_with_options(request, headers, runtime)
@@ -2227,6 +3109,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.IsCompletedRequest,
     ) -> energy_expert_external_20220923_models.IsCompletedResponse:
+        """
+        @summary Check if the result generation is complete.
+        
+        @description This API checks the completion status of generating a report. It should be used before calling other result APIs, as they will only display content once the report generation is complete.
+        
+        @param request: IsCompletedRequest
+        @return: IsCompletedResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.is_completed_with_options_async(request, headers, runtime)
@@ -2237,6 +3127,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.PushDeviceDataResponse:
+        """
+        @summary This interface is used to push device measuring point data, such as power meter voltage and other data.
+        
+        @param request: PushDeviceDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushDeviceDataResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_type):
@@ -2269,6 +3167,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.PushDeviceDataResponse:
+        """
+        @summary This interface is used to push device measuring point data, such as power meter voltage and other data.
+        
+        @param request: PushDeviceDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushDeviceDataResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_type):
@@ -2299,6 +3205,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.PushDeviceDataRequest,
     ) -> energy_expert_external_20220923_models.PushDeviceDataResponse:
+        """
+        @summary This interface is used to push device measuring point data, such as power meter voltage and other data.
+        
+        @param request: PushDeviceDataRequest
+        @return: PushDeviceDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.push_device_data_with_options(request, headers, runtime)
@@ -2307,6 +3219,12 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.PushDeviceDataRequest,
     ) -> energy_expert_external_20220923_models.PushDeviceDataResponse:
+        """
+        @summary This interface is used to push device measuring point data, such as power meter voltage and other data.
+        
+        @param request: PushDeviceDataRequest
+        @return: PushDeviceDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.push_device_data_with_options_async(request, headers, runtime)
@@ -2318,7 +3236,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.PushItemDataResponse:
         """
-        N/A.
+        @summary This interface is used to push data items.
+        
+        @description - This interface is used for individual data item data.
+        - Data items can link data to services such as carbon footprints and carbon inventories.
+        - Depending on the platform configuration, active data on a yearly and monthly basis is supported.
         
         @param request: PushItemDataRequest
         @param headers: map
@@ -2360,7 +3282,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.PushItemDataResponse:
         """
-        N/A.
+        @summary This interface is used to push data items.
+        
+        @description - This interface is used for individual data item data.
+        - Data items can link data to services such as carbon footprints and carbon inventories.
+        - Depending on the platform configuration, active data on a yearly and monthly basis is supported.
         
         @param request: PushItemDataRequest
         @param headers: map
@@ -2400,7 +3326,11 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.PushItemDataRequest,
     ) -> energy_expert_external_20220923_models.PushItemDataResponse:
         """
-        N/A.
+        @summary This interface is used to push data items.
+        
+        @description - This interface is used for individual data item data.
+        - Data items can link data to services such as carbon footprints and carbon inventories.
+        - Depending on the platform configuration, active data on a yearly and monthly basis is supported.
         
         @param request: PushItemDataRequest
         @return: PushItemDataResponse
@@ -2414,7 +3344,11 @@ class Client(OpenApiClient):
         request: energy_expert_external_20220923_models.PushItemDataRequest,
     ) -> energy_expert_external_20220923_models.PushItemDataResponse:
         """
-        N/A.
+        @summary This interface is used to push data items.
+        
+        @description - This interface is used for individual data item data.
+        - Data items can link data to services such as carbon footprints and carbon inventories.
+        - Depending on the platform configuration, active data on a yearly and monthly basis is supported.
         
         @param request: PushItemDataRequest
         @return: PushItemDataResponse
@@ -2429,6 +3363,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse:
+        """
+        @summary Recalculate carbon emissions.
+        
+        @description - After uploading the data items, you need to call this interface to recalculate the carbon inventory data.
+        
+        @param request: RecalculateCarbonEmissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecalculateCarbonEmissionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -2461,6 +3405,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse:
+        """
+        @summary Recalculate carbon emissions.
+        
+        @description - After uploading the data items, you need to call this interface to recalculate the carbon inventory data.
+        
+        @param request: RecalculateCarbonEmissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecalculateCarbonEmissionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -2491,6 +3445,14 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.RecalculateCarbonEmissionRequest,
     ) -> energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse:
+        """
+        @summary Recalculate carbon emissions.
+        
+        @description - After uploading the data items, you need to call this interface to recalculate the carbon inventory data.
+        
+        @param request: RecalculateCarbonEmissionRequest
+        @return: RecalculateCarbonEmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.recalculate_carbon_emission_with_options(request, headers, runtime)
@@ -2499,6 +3461,388 @@ class Client(OpenApiClient):
         self,
         request: energy_expert_external_20220923_models.RecalculateCarbonEmissionRequest,
     ) -> energy_expert_external_20220923_models.RecalculateCarbonEmissionResponse:
+        """
+        @summary Recalculate carbon emissions.
+        
+        @description - After uploading the data items, you need to call this interface to recalculate the carbon inventory data.
+        
+        @param request: RecalculateCarbonEmissionRequest
+        @return: RecalculateCarbonEmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.recalculate_carbon_emission_with_options_async(request, headers, runtime)
+
+    def send_document_ask_question_with_options(
+        self,
+        request: energy_expert_external_20220923_models.SendDocumentAskQuestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
+        """
+        @summary 在线文档问答
+        
+        @param request: SendDocumentAskQuestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendDocumentAskQuestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendDocumentAskQuestion',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/sendDocumentAskQuestion',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SendDocumentAskQuestionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_document_ask_question_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.SendDocumentAskQuestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
+        """
+        @summary 在线文档问答
+        
+        @param request: SendDocumentAskQuestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendDocumentAskQuestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.folder_id):
+            body['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendDocumentAskQuestion',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/sendDocumentAskQuestion',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SendDocumentAskQuestionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_document_ask_question(
+        self,
+        request: energy_expert_external_20220923_models.SendDocumentAskQuestionRequest,
+    ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
+        """
+        @summary 在线文档问答
+        
+        @param request: SendDocumentAskQuestionRequest
+        @return: SendDocumentAskQuestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.send_document_ask_question_with_options(request, headers, runtime)
+
+    async def send_document_ask_question_async(
+        self,
+        request: energy_expert_external_20220923_models.SendDocumentAskQuestionRequest,
+    ) -> energy_expert_external_20220923_models.SendDocumentAskQuestionResponse:
+        """
+        @summary 在线文档问答
+        
+        @param request: SendDocumentAskQuestionRequest
+        @return: SendDocumentAskQuestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.send_document_ask_question_with_options_async(request, headers, runtime)
+
+    def submit_document_analyze_job_with_options(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
+        """
+        @summary 获取文档结果
+        
+        @param request: SubmitDocumentAnalyzeJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocumentAnalyzeJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.oss_url):
+            query['ossUrl'] = request.oss_url
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocumentAnalyzeJob',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/submitDocumentAnalyzeJob',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_document_analyze_job_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
+        """
+        @summary 获取文档结果
+        
+        @param request: SubmitDocumentAnalyzeJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocumentAnalyzeJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_url):
+            query['fileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.folder_id):
+            query['folderId'] = request.folder_id
+        if not UtilClient.is_unset(request.oss_url):
+            query['ossUrl'] = request.oss_url
+        if not UtilClient.is_unset(request.template_id):
+            query['templateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocumentAnalyzeJob',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/aidoc/document/submitDocumentAnalyzeJob',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_document_analyze_job(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
+    ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
+        """
+        @summary 获取文档结果
+        
+        @param request: SubmitDocumentAnalyzeJobRequest
+        @return: SubmitDocumentAnalyzeJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_document_analyze_job_with_options(request, headers, runtime)
+
+    async def submit_document_analyze_job_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest,
+    ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
+        """
+        @summary 获取文档结果
+        
+        @param request: SubmitDocumentAnalyzeJobRequest
+        @return: SubmitDocumentAnalyzeJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_document_analyze_job_with_options_async(request, headers, runtime)
+
+    def submit_document_analyze_job_advance(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_document_analyze_job_req = energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest()
+        OpenApiUtilClient.convert(request, submit_document_analyze_job_req)
+        if not UtilClient.is_unset(request.oss_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.oss_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            submit_document_analyze_job_req.oss_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_document_analyze_job_resp = self.submit_document_analyze_job_with_options(submit_document_analyze_job_req, headers, runtime)
+        return submit_document_analyze_job_resp
+
+    async def submit_document_analyze_job_advance_async(
+        self,
+        request: energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='energyExpertExternal',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_document_analyze_job_req = energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest()
+        OpenApiUtilClient.convert(request, submit_document_analyze_job_req)
+        if not UtilClient.is_unset(request.oss_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.oss_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            submit_document_analyze_job_req.oss_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_document_analyze_job_resp = await self.submit_document_analyze_job_with_options_async(submit_document_analyze_job_req, headers, runtime)
+        return submit_document_analyze_job_resp

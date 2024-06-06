@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import List, Dict, Any, BinaryIO
 
 
 class CarbonEmissionElecSummaryItem(TeaModel):
@@ -201,6 +201,175 @@ class ConstituteItem(TeaModel):
             for k in m.get('subConstituteItems'):
                 temp_model = ConstituteItem()
                 self.sub_constitute_items.append(temp_model.from_map(k))
+        return self
+
+
+class ContentItemExtInfoPos(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['x'] = self.x
+        if self.y is not None:
+            result['y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('x') is not None:
+            self.x = m.get('x')
+        if m.get('y') is not None:
+            self.y = m.get('y')
+        return self
+
+
+class ContentItemExtInfo(TeaModel):
+    def __init__(
+        self,
+        alignment: str = None,
+        index: int = None,
+        level: int = None,
+        page_num: List[int] = None,
+        pos: List[ContentItemExtInfoPos] = None,
+        sub_type: str = None,
+        text: str = None,
+        type: str = None,
+        unique_id: str = None,
+    ):
+        self.alignment = alignment
+        self.index = index
+        self.level = level
+        self.page_num = page_num
+        self.pos = pos
+        self.sub_type = sub_type
+        self.text = text
+        self.type = type
+        self.unique_id = unique_id
+
+    def validate(self):
+        if self.pos:
+            for k in self.pos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alignment is not None:
+            result['alignment'] = self.alignment
+        if self.index is not None:
+            result['index'] = self.index
+        if self.level is not None:
+            result['level'] = self.level
+        if self.page_num is not None:
+            result['pageNum'] = self.page_num
+        result['pos'] = []
+        if self.pos is not None:
+            for k in self.pos:
+                result['pos'].append(k.to_map() if k else None)
+        if self.sub_type is not None:
+            result['subType'] = self.sub_type
+        if self.text is not None:
+            result['text'] = self.text
+        if self.type is not None:
+            result['type'] = self.type
+        if self.unique_id is not None:
+            result['uniqueId'] = self.unique_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alignment') is not None:
+            self.alignment = m.get('alignment')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('pageNum') is not None:
+            self.page_num = m.get('pageNum')
+        self.pos = []
+        if m.get('pos') is not None:
+            for k in m.get('pos'):
+                temp_model = ContentItemExtInfoPos()
+                self.pos.append(temp_model.from_map(k))
+        if m.get('subType') is not None:
+            self.sub_type = m.get('subType')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('uniqueId') is not None:
+            self.unique_id = m.get('uniqueId')
+        return self
+
+
+class ContentItem(TeaModel):
+    def __init__(
+        self,
+        ext_info: List[ContentItemExtInfo] = None,
+        score: float = None,
+        text: str = None,
+        type: str = None,
+    ):
+        self.ext_info = ext_info
+        self.score = score
+        self.text = text
+        self.type = type
+
+    def validate(self):
+        if self.ext_info:
+            for k in self.ext_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['extInfo'] = []
+        if self.ext_info is not None:
+            for k in self.ext_info:
+                result['extInfo'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['score'] = self.score
+        if self.text is not None:
+            result['text'] = self.text
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ext_info = []
+        if m.get('extInfo') is not None:
+            for k in m.get('extInfo'):
+                temp_model = ContentItemExtInfo()
+                self.ext_info.append(temp_model.from_map(k))
+        if m.get('score') is not None:
+            self.score = m.get('score')
+        if m.get('text') is not None:
+            self.text = m.get('text')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
@@ -623,10 +792,16 @@ class GenerateResultRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -740,8 +915,12 @@ class GetAreaElecConstituteRequest(TeaModel):
         year: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Year.
+        # 
+        # This parameter is required.
         self.year = year
 
     def validate(self):
@@ -995,14 +1174,20 @@ class GetCarbonEmissionTrendRequest(TeaModel):
         year_list: List[int] = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Module code.
         self.module_code = module_code
         # Module type.
         self.module_type = module_type
         # Trend Type.
+        # 
+        # This parameter is required.
         self.trend_type = trend_type
         # The list of inventory year.
+        # 
+        # This parameter is required.
         self.year_list = year_list
 
     def validate(self):
@@ -1347,6 +1532,8 @@ class GetDataItemListRequest(TeaModel):
         code: str = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
 
     def validate(self):
@@ -1511,12 +1698,20 @@ class GetDataQualityAnalysisRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Data quality assessment type: 1 is DQI and 2 is DQR.
+        # 
+        # This parameter is required.
         self.data_quality_evaluation_type = data_quality_evaluation_type
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -1792,7 +1987,7 @@ class GetDataQualityAnalysisResponseBodyData(TeaModel):
         self.data_quality_result = data_quality_result
         # Sensitivity analysis list
         self.sensitivity_list = sensitivity_list
-        # Uncertainty value. The model\"s overall percentage uncertainty results. "10.00%" symbolizes a 10.00% uncertainty, indicating that the carbon footprint lies within ±10.00%. This is derived from a weighted aggregation of individual inventory uncertainties.
+        # Uncertainty value. The model\\"s overall percentage uncertainty results. "10.00%" symbolizes a 10.00% uncertainty, indicating that the carbon footprint lies within ±10.00%. This is derived from a weighted aggregation of individual inventory uncertainties.
         self.uncertainty = uncertainty
         # Uncertainty list
         self.uncertainty_values = uncertainty_values
@@ -1948,10 +2143,16 @@ class GetDeviceInfoRequest(TeaModel):
         factory_id: str = None,
     ):
         # The ID of the device.
+        # 
+        # This parameter is required.
         self.device_id = device_id
-        # The date on which the statistics are collected.
+        # The time string in the YYYY-mm-dd format.
+        # 
+        # This parameter is required.
         self.ds = ds
         # The ID of the site.
+        # 
+        # This parameter is required.
         self.factory_id = factory_id
 
     def validate(self):
@@ -1992,9 +2193,9 @@ class GetDeviceInfoResponseBodyDataRecordList(TeaModel):
         unit: str = None,
         value: float = None,
     ):
-        # The identifier of the device.
+        # The device identifier.
         self.identifier = identifier
-        # The name of the parameter.
+        # The parameter name.
         self.param_name = param_name
         # The date on which the statistics were collected.
         self.statistics_date = statistics_date
@@ -2124,7 +2325,7 @@ class GetDeviceInfoResponseBody(TeaModel):
         self.data = data
         # The HTTP status code.
         self.http_code = http_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -2214,6 +2415,8 @@ class GetDeviceListRequest(TeaModel):
         factory_id: str = None,
     ):
         # The ID of the site.
+        # 
+        # This parameter is required.
         self.factory_id = factory_id
 
     def validate(self):
@@ -2246,6 +2449,7 @@ class GetDeviceListResponseBodyDataDeviceListInfo(TeaModel):
         pt: int = None,
     ):
         # The rated capacity.
+        # Unit is kVA.
         self.const_kva = const_kva
         # The transformation ratio of current.
         self.ct = ct
@@ -2302,13 +2506,13 @@ class GetDeviceListResponseBodyDataDeviceList(TeaModel):
         parent_device: str = None,
         second_type_name: str = None,
     ):
-        # The ID of the device.
+        # The device ID.
         self.device_id = device_id
-        # The name of the device.
+        # The device name.
         self.device_name = device_name
         # The level 1 meter type.
         self.first_type_name = first_type_name
-        # The information about the device.
+        # The device information.
         self.info = info
         # The ID of the parent device.
         self.parent_device = parent_device
@@ -2430,13 +2634,13 @@ class GetDeviceListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The code returned for the request.
+        # The response code.
         self.code = code
         # The data returned.
         self.data = data
         # The HTTP status code.
         self.http_code = http_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -2520,6 +2724,278 @@ class GetDeviceListResponse(TeaModel):
         return self
 
 
+class GetDocumentAnalyzeResultRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        # This parameter is required.
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['jobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('jobId') is not None:
+            self.job_id = m.get('jobId')
+        return self
+
+
+class GetDocumentAnalyzeResultResponseBodyDataKvListInfoContextConfidence(TeaModel):
+    def __init__(
+        self,
+        key_confidence: float = None,
+        value_confidence: float = None,
+    ):
+        self.key_confidence = key_confidence
+        self.value_confidence = value_confidence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_confidence is not None:
+            result['keyConfidence'] = self.key_confidence
+        if self.value_confidence is not None:
+            result['valueConfidence'] = self.value_confidence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyConfidence') is not None:
+            self.key_confidence = m.get('keyConfidence')
+        if m.get('valueConfidence') is not None:
+            self.value_confidence = m.get('valueConfidence')
+        return self
+
+
+class GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext(TeaModel):
+    def __init__(
+        self,
+        confidence: GetDocumentAnalyzeResultResponseBodyDataKvListInfoContextConfidence = None,
+        key: List[ContentItem] = None,
+        value: List[ContentItem] = None,
+    ):
+        self.confidence = confidence
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        if self.confidence:
+            self.confidence.validate()
+        if self.key:
+            for k in self.key:
+                if k:
+                    k.validate()
+        if self.value:
+            for k in self.value:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['confidence'] = self.confidence.to_map()
+        result['key'] = []
+        if self.key is not None:
+            for k in self.key:
+                result['key'].append(k.to_map() if k else None)
+        result['value'] = []
+        if self.value is not None:
+            for k in self.value:
+                result['value'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('confidence') is not None:
+            temp_model = GetDocumentAnalyzeResultResponseBodyDataKvListInfoContextConfidence()
+            self.confidence = temp_model.from_map(m['confidence'])
+        self.key = []
+        if m.get('key') is not None:
+            for k in m.get('key'):
+                temp_model = ContentItem()
+                self.key.append(temp_model.from_map(k))
+        self.value = []
+        if m.get('value') is not None:
+            for k in m.get('value'):
+                temp_model = ContentItem()
+                self.value.append(temp_model.from_map(k))
+        return self
+
+
+class GetDocumentAnalyzeResultResponseBodyDataKvListInfo(TeaModel):
+    def __init__(
+        self,
+        context: GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext = None,
+        key_name: str = None,
+        key_value: str = None,
+    ):
+        self.context = context
+        self.key_name = key_name
+        self.key_value = key_value
+
+    def validate(self):
+        if self.context:
+            self.context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['context'] = self.context.to_map()
+        if self.key_name is not None:
+            result['keyName'] = self.key_name
+        if self.key_value is not None:
+            result['keyValue'] = self.key_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('context') is not None:
+            temp_model = GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext()
+            self.context = temp_model.from_map(m['context'])
+        if m.get('keyName') is not None:
+            self.key_name = m.get('keyName')
+        if m.get('keyValue') is not None:
+            self.key_value = m.get('keyValue')
+        return self
+
+
+class GetDocumentAnalyzeResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        kv_list_info: List[GetDocumentAnalyzeResultResponseBodyDataKvListInfo] = None,
+    ):
+        self.kv_list_info = kv_list_info
+
+    def validate(self):
+        if self.kv_list_info:
+            for k in self.kv_list_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['kvListInfo'] = []
+        if self.kv_list_info is not None:
+            for k in self.kv_list_info:
+                result['kvListInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.kv_list_info = []
+        if m.get('kvListInfo') is not None:
+            for k in m.get('kvListInfo'):
+                temp_model = GetDocumentAnalyzeResultResponseBodyDataKvListInfo()
+                self.kv_list_info.append(temp_model.from_map(k))
+        return self
+
+
+class GetDocumentAnalyzeResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetDocumentAnalyzeResultResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetDocumentAnalyzeResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetDocumentAnalyzeResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDocumentAnalyzeResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDocumentAnalyzeResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetElecConstituteRequest(TeaModel):
     def __init__(
         self,
@@ -2527,8 +3003,12 @@ class GetElecConstituteRequest(TeaModel):
         year: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Year.
+        # 
+        # This parameter is required.
         self.year = year
 
     def validate(self):
@@ -3171,8 +3651,12 @@ class GetElecTrendRequest(TeaModel):
         year_list: List[int] = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # List of years.
+        # 
+        # This parameter is required.
         self.year_list = year_list
 
     def validate(self):
@@ -3964,12 +4448,18 @@ class GetEmissionSourceConstituteRequest(TeaModel):
         year: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Module code.
         self.module_code = module_code
         # Module type.
+        # 
+        # This parameter is required.
         self.module_type = module_type
         # Year of inventory.
+        # 
+        # This parameter is required.
         self.year = year
 
     def validate(self):
@@ -4097,12 +4587,16 @@ class GetEmissionSummaryRequest(TeaModel):
         year: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Module code.
         self.module_code = module_code
         # Module type.
         self.module_type = module_type
         # Year of inventory.
+        # 
+        # This parameter is required.
         self.year = year
 
     def validate(self):
@@ -4314,10 +4808,16 @@ class GetEpdInventoryConstituteRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -4440,10 +4940,16 @@ class GetEpdSummaryRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -4644,12 +5150,20 @@ class GetFootprintListRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The pagination parameter. The number of the page that starts from 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The number of entries returned on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -4947,12 +5461,20 @@ class GetGasConstituteRequest(TeaModel):
         year: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Module code.
+        # 
+        # This parameter is required.
         self.module_code = module_code
         # Module type.
+        # 
+        # This parameter is required.
         self.module_type = module_type
         # Year
+        # 
+        # This parameter is required.
         self.year = year
 
     def validate(self):
@@ -5135,10 +5657,16 @@ class GetGwpBenchmarkListRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -5362,10 +5890,16 @@ class GetGwpBenchmarkSummaryRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -5408,7 +5942,7 @@ class GetGwpBenchmarkSummaryResponseBodyDataItems(TeaModel):
         self.name = name
         # Percentage of emissions. The value is of the string type. Two decimal places are reserved for numbers. For example, "99.01" indicates the 99.01% of this type of emissions to the total emissions. Note that the returned string itself does not contain a percent sign.
         self.percent = percent
-        # Emission amount is presented with four decimal places. Normally, modeling doesn\"t result in negative values, but users can represent carbon reductions as negatives. The amount, paired with the unit, defines the emissions. Both are dynamically adjusted. If emissions exceed `1000 kgCO₂e/productUnit`, they convert to `tCO₂e/productUnit`. If they fall below `1 kgCO₂e/productUnit`, they convert to `gCO₂e/productUnit`. Otherwise, they stay in `kgCO₂e/productUnit`.
+        # Emission amount is presented with four decimal places. Normally, modeling doesn\\"t result in negative values, but users can represent carbon reductions as negatives. The amount, paired with the unit, defines the emissions. Both are dynamically adjusted. If emissions exceed `1000 kgCO₂e/productUnit`, they convert to `tCO₂e/productUnit`. If they fall below `1 kgCO₂e/productUnit`, they convert to `gCO₂e/productUnit`. Otherwise, they stay in `kgCO₂e/productUnit`.
         self.quantity = quantity
         # Unit of emissions. The default value is `kgCO₂e/productUnit.` `productUnit` is the unit selected for the product. The unit value is changed to `tCO₂e/productUnit` or `gCO₂e/productUnit`. For more information, see the remarks in the quantity column.
         self.unit = unit
@@ -5454,7 +5988,7 @@ class GetGwpBenchmarkSummaryResponseBodyData(TeaModel):
     ):
         # Carbon Reduction Contribution Top4 Details.
         self.items = items
-        # Emission amount is presented with four decimal places. Normally, modeling doesn\"t result in negative values, but users can represent carbon reductions as negatives. The amount, paired with the unit, defines the emissions. Both are dynamically adjusted. If emissions exceed `1000 kgCO₂e/productUnit`, they convert to `tCO₂e/productUnit`. If they fall below `1 kgCO₂e/productUnit`, they convert to `gCO₂e/productUnit`. Otherwise, they stay in `kgCO₂e/productUnit`.
+        # Emission amount is presented with four decimal places. Normally, modeling doesn\\"t result in negative values, but users can represent carbon reductions as negatives. The amount, paired with the unit, defines the emissions. Both are dynamically adjusted. If emissions exceed `1000 kgCO₂e/productUnit`, they convert to `tCO₂e/productUnit`. If they fall below `1 kgCO₂e/productUnit`, they convert to `gCO₂e/productUnit`. Otherwise, they stay in `kgCO₂e/productUnit`.
         self.quantity = quantity
         # Unit of emissions. The default value is `kgCO₂e/productUnit.` `productUnit` is the unit selected for the product. The unit value is changed to `tCO₂e/productUnit` or `gCO₂e/productUnit`. For more information, see the remarks in the quantity column.
         self.unit = unit
@@ -5581,10 +6115,16 @@ class GetGwpInventoryConstituteRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -5774,10 +6314,16 @@ class GetGwpInventorySummaryRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -6003,20 +6549,32 @@ class GetInventoryListRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Type of emission
         # 
         # >  Valid values: footprint | emission. Meaning: footprint: all inventories are involved in the calculation; emission: only inventories with positive and zero emissions are involved in the calculation, and negative numbers are not involved in the calculation.
+        # 
+        # This parameter is required.
         self.emission_type = emission_type
         # Group by
         # 
         # >  Valid values: resource | process | resourceType | processType. Meaning: resource: aggregation by inventory group, process: aggregation by operation group, resourceType: aggregation by inventory type, processType: aggregation by phase group
+        # 
+        # This parameter is required.
         self.group = group
         # The type of the obtained environmental impact: gwp indicates the carbon footprint of climate change. For more information, see the type value of the enumerated values.
+        # 
+        # This parameter is required.
         self.method_type = method_type
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -6244,9 +6802,9 @@ class GetOrgAndFactoryResponseBodyDataFactoryList(TeaModel):
         factory_id: str = None,
         factory_name: str = None,
     ):
-        # The ID of the site.
+        # The site ID.
         self.factory_id = factory_id
-        # The name of the site.
+        # The site name.
         self.factory_name = factory_name
 
     def validate(self):
@@ -6281,13 +6839,13 @@ class GetOrgAndFactoryResponseBodyData(TeaModel):
         organization_id: str = None,
         organization_name: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.aliyun_pk = aliyun_pk
         # The sites.
         self.factory_list = factory_list
-        # The ID of the organization.
+        # The enterprise ID.
         self.organization_id = organization_id
-        # The name of the organization.
+        # The enterprise name.
         self.organization_name = organization_name
 
     def validate(self):
@@ -6345,7 +6903,7 @@ class GetOrgAndFactoryResponseBody(TeaModel):
         self.data = data
         # The HTTP status code.
         self.http_code = http_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -6444,12 +7002,18 @@ class GetOrgConstituteRequest(TeaModel):
         year: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Module code.
         self.module_code = module_code
         # Module type.
+        # 
+        # This parameter is required.
         self.module_type = module_type
         # Year.
+        # 
+        # This parameter is required.
         self.year = year
 
     def validate(self):
@@ -6570,10 +7134,16 @@ class GetPcrInfoRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -6733,12 +7303,20 @@ class GetReductionProposalRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The type of the data quality evaluation. 1 is DQI and 2 is DQR.
+        # 
+        # This parameter is required.
         self.data_quality_evaluation_type = data_quality_evaluation_type
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -6894,10 +7472,16 @@ class IsCompletedRequest(TeaModel):
         product_type: int = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # The product id.
+        # 
+        # This parameter is required.
         self.product_id = product_id
         # Product type: 1 indicates that the carbon footprint of the product is requested, and 5 indicates that the carbon footprint of the supply chain is requested.
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -7064,10 +7648,16 @@ class PushDeviceDataRequestDevices(TeaModel):
     ):
         # Measuring point information To avoid accuracy problems, the measurement point data is uniformly transmitted to the string. The function of missing required fields cannot be used normally. Some functions may be affected due to the lack of recommend fields. For details, please refer to the notes of equipment measuring points in the appendix. [Reference Point Definition](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/Deviceappendixes-en.pdf
         # )
+        # 
+        # This parameter is required.
         self.data = data
         # If the deviceType parameter is set to 12, 13, or 17, you must set the system_id parameter. The field name is still device_id. If the deviceType parameter is set to 15 or 16, no Other situations will be transmitted.
+        # 
+        # This parameter is required.
         self.device_id = device_id
         # Data generation time of measuring point.
+        # 
+        # This parameter is required.
         self.record_time = record_time
 
     def validate(self):
@@ -7105,8 +7695,12 @@ class PushDeviceDataRequest(TeaModel):
         devices: List[PushDeviceDataRequestDevices] = None,
     ):
         # The type of the device. [View device type definitions](https://carbon-doc.oss-cn-hangzhou.aliyuncs.com/Deviceappendixes-en.pdf)
+        # 
+        # This parameter is required.
         self.device_type = device_type
         # List of devices to which data is pushed.
+        # 
+        # This parameter is required.
         self.devices = devices
 
     def validate(self):
@@ -7224,11 +7818,17 @@ class PushItemDataRequestItems(TeaModel):
         month: str = None,
         value: float = None,
     ):
-        # The data item code.
+        # API data identification.<props="intl">For details: [GetDataItemList ](https://www.alibabacloud.com/help/en/energy-expert/developer-reference/api-energyexpertexternal-2022-09-23-getdataitemlist)
+        # 
+        # This parameter is required.
         self.code = code
         # The month.
+        # 
+        # This parameter is required.
         self.month = month
         # The value of the data item.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -7267,10 +7867,16 @@ class PushItemDataRequest(TeaModel):
         year: str = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Push data list.
+        # 
+        # This parameter is required.
         self.items = items
         # The year of the data created.
+        # 
+        # This parameter is required.
         self.year = year
 
     def validate(self):
@@ -7386,8 +7992,12 @@ class RecalculateCarbonEmissionRequest(TeaModel):
         year: str = None,
     ):
         # The enterprise code.
+        # 
+        # This parameter is required.
         self.code = code
         # Year of inventory.
+        # 
+        # This parameter is required.
         self.year = year
 
     def validate(self):
@@ -7486,6 +8096,351 @@ class RecalculateCarbonEmissionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RecalculateCarbonEmissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendDocumentAskQuestionRequest(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        prompt: str = None,
+        session_id: str = None,
+    ):
+        self.folder_id = folder_id
+        # This parameter is required.
+        self.prompt = prompt
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.prompt is not None:
+            result['prompt'] = self.prompt
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('prompt') is not None:
+            self.prompt = m.get('prompt')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        return self
+
+
+class SendDocumentAskQuestionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        answer: str = None,
+        document: List[str] = None,
+    ):
+        self.answer = answer
+        self.document = document
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['answer'] = self.answer
+        if self.document is not None:
+            result['document'] = self.document
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('answer') is not None:
+            self.answer = m.get('answer')
+        if m.get('document') is not None:
+            self.document = m.get('document')
+        return self
+
+
+class SendDocumentAskQuestionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SendDocumentAskQuestionResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SendDocumentAskQuestionResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SendDocumentAskQuestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendDocumentAskQuestionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendDocumentAskQuestionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitDocumentAnalyzeJobRequest(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+        folder_id: str = None,
+        oss_url: str = None,
+        template_id: str = None,
+    ):
+        self.file_url = file_url
+        self.folder_id = folder_id
+        self.oss_url = oss_url
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.oss_url is not None:
+            result['ossUrl'] = self.oss_url
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('ossUrl') is not None:
+            self.oss_url = m.get('ossUrl')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class SubmitDocumentAnalyzeJobAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+        folder_id: str = None,
+        oss_url_object: BinaryIO = None,
+        template_id: str = None,
+    ):
+        self.file_url = file_url
+        self.folder_id = folder_id
+        self.oss_url_object = oss_url_object
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.oss_url_object is not None:
+            result['ossUrl'] = self.oss_url_object
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('ossUrl') is not None:
+            self.oss_url_object = m.get('ossUrl')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class SubmitDocumentAnalyzeJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['jobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('jobId') is not None:
+            self.job_id = m.get('jobId')
+        return self
+
+
+class SubmitDocumentAnalyzeJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SubmitDocumentAnalyzeJobResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SubmitDocumentAnalyzeJobResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SubmitDocumentAnalyzeJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDocumentAnalyzeJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDocumentAnalyzeJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

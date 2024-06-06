@@ -1,3 +1,9 @@
+2024-06-06 Version: 1.2.0
+- Support API GetDocumentAnalyzeResult.
+- Support API SendDocumentAskQuestion.
+- Support API SubmitDocumentAnalyzeJob.
+
+
 2024-04-03 Version: 1.1.0
 - Support API GenerateResult.
 - Support API GetAreaElecConstitute.
