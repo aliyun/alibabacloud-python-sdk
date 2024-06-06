@@ -13,9 +13,9 @@ from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
 class Client(OpenApiClient):
@@ -109,6 +109,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.CreateAsyncTranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateAsyncTranslateResponse:
+        """
+        @summary 大文本异步翻译，支持5000-50000字翻译
+        
+        @param request: CreateAsyncTranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAsyncTranslateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_type):
@@ -147,6 +154,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.CreateAsyncTranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateAsyncTranslateResponse:
+        """
+        @summary 大文本异步翻译，支持5000-50000字翻译
+        
+        @param request: CreateAsyncTranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAsyncTranslateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_type):
@@ -184,6 +198,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.CreateAsyncTranslateRequest,
     ) -> alimt_20181012_models.CreateAsyncTranslateResponse:
+        """
+        @summary 大文本异步翻译，支持5000-50000字翻译
+        
+        @param request: CreateAsyncTranslateRequest
+        @return: CreateAsyncTranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_async_translate_with_options(request, runtime)
 
@@ -191,6 +211,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.CreateAsyncTranslateRequest,
     ) -> alimt_20181012_models.CreateAsyncTranslateResponse:
+        """
+        @summary 大文本异步翻译，支持5000-50000字翻译
+        
+        @param request: CreateAsyncTranslateRequest
+        @return: CreateAsyncTranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_async_translate_with_options_async(request, runtime)
 
@@ -199,6 +225,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.CreateDocTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateDocTranslateTaskResponse:
+        """
+        @param request: CreateDocTranslateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDocTranslateTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.callback_url):
@@ -237,6 +268,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.CreateDocTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateDocTranslateTaskResponse:
+        """
+        @param request: CreateDocTranslateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDocTranslateTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.callback_url):
@@ -274,6 +310,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.CreateDocTranslateTaskRequest,
     ) -> alimt_20181012_models.CreateDocTranslateTaskResponse:
+        """
+        @param request: CreateDocTranslateTaskRequest
+        @return: CreateDocTranslateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_doc_translate_task_with_options(request, runtime)
 
@@ -281,6 +321,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.CreateDocTranslateTaskRequest,
     ) -> alimt_20181012_models.CreateDocTranslateTaskResponse:
+        """
+        @param request: CreateDocTranslateTaskRequest
+        @return: CreateDocTranslateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_doc_translate_task_with_options_async(request, runtime)
 
@@ -295,7 +339,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -315,12 +359,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -366,7 +411,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -386,12 +431,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -431,6 +477,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.CreateImageTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateImageTranslateTaskResponse:
+        """
+        @param request: CreateImageTranslateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageTranslateTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -467,6 +518,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.CreateImageTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateImageTranslateTaskResponse:
+        """
+        @param request: CreateImageTranslateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageTranslateTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -502,6 +558,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.CreateImageTranslateTaskRequest,
     ) -> alimt_20181012_models.CreateImageTranslateTaskResponse:
+        """
+        @param request: CreateImageTranslateTaskRequest
+        @return: CreateImageTranslateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_image_translate_task_with_options(request, runtime)
 
@@ -509,6 +569,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.CreateImageTranslateTaskRequest,
     ) -> alimt_20181012_models.CreateImageTranslateTaskResponse:
+        """
+        @param request: CreateImageTranslateTaskRequest
+        @return: CreateImageTranslateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_image_translate_task_with_options_async(request, runtime)
 
@@ -517,6 +581,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetAsyncTranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetAsyncTranslateResponse:
+        """
+        @summary 大文本异步翻译，支持5000-50000字翻译
+        
+        @param request: GetAsyncTranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTranslateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -545,6 +616,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetAsyncTranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetAsyncTranslateResponse:
+        """
+        @summary 大文本异步翻译，支持5000-50000字翻译
+        
+        @param request: GetAsyncTranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTranslateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -572,6 +650,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetAsyncTranslateRequest,
     ) -> alimt_20181012_models.GetAsyncTranslateResponse:
+        """
+        @summary 大文本异步翻译，支持5000-50000字翻译
+        
+        @param request: GetAsyncTranslateRequest
+        @return: GetAsyncTranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_async_translate_with_options(request, runtime)
 
@@ -579,6 +663,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetAsyncTranslateRequest,
     ) -> alimt_20181012_models.GetAsyncTranslateResponse:
+        """
+        @summary 大文本异步翻译，支持5000-50000字翻译
+        
+        @param request: GetAsyncTranslateRequest
+        @return: GetAsyncTranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_async_translate_with_options_async(request, runtime)
 
@@ -587,6 +677,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetBatchTranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetBatchTranslateResponse:
+        """
+        @param request: GetBatchTranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBatchTranslateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_type):
@@ -625,6 +720,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetBatchTranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetBatchTranslateResponse:
+        """
+        @param request: GetBatchTranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBatchTranslateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_type):
@@ -662,6 +762,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetBatchTranslateRequest,
     ) -> alimt_20181012_models.GetBatchTranslateResponse:
+        """
+        @param request: GetBatchTranslateRequest
+        @return: GetBatchTranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_batch_translate_with_options(request, runtime)
 
@@ -669,6 +773,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetBatchTranslateRequest,
     ) -> alimt_20181012_models.GetBatchTranslateResponse:
+        """
+        @param request: GetBatchTranslateRequest
+        @return: GetBatchTranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_batch_translate_with_options_async(request, runtime)
 
@@ -677,6 +785,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetDetectLanguageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetDetectLanguageResponse:
+        """
+        @summary 语种识别
+        
+        @param request: GetDetectLanguageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDetectLanguageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.source_text):
@@ -705,6 +820,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetDetectLanguageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetDetectLanguageResponse:
+        """
+        @summary 语种识别
+        
+        @param request: GetDetectLanguageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDetectLanguageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.source_text):
@@ -732,6 +854,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetDetectLanguageRequest,
     ) -> alimt_20181012_models.GetDetectLanguageResponse:
+        """
+        @summary 语种识别
+        
+        @param request: GetDetectLanguageRequest
+        @return: GetDetectLanguageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_detect_language_with_options(request, runtime)
 
@@ -739,6 +867,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetDetectLanguageRequest,
     ) -> alimt_20181012_models.GetDetectLanguageResponse:
+        """
+        @summary 语种识别
+        
+        @param request: GetDetectLanguageRequest
+        @return: GetDetectLanguageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_detect_language_with_options_async(request, runtime)
 
@@ -747,6 +881,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetDocTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetDocTranslateTaskResponse:
+        """
+        @param request: GetDocTranslateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocTranslateTaskResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -773,6 +912,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetDocTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetDocTranslateTaskResponse:
+        """
+        @param request: GetDocTranslateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocTranslateTaskResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -798,6 +942,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetDocTranslateTaskRequest,
     ) -> alimt_20181012_models.GetDocTranslateTaskResponse:
+        """
+        @param request: GetDocTranslateTaskRequest
+        @return: GetDocTranslateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_doc_translate_task_with_options(request, runtime)
 
@@ -805,6 +953,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetDocTranslateTaskRequest,
     ) -> alimt_20181012_models.GetDocTranslateTaskResponse:
+        """
+        @param request: GetDocTranslateTaskRequest
+        @return: GetDocTranslateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_doc_translate_task_with_options_async(request, runtime)
 
@@ -813,6 +965,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetImageDiagnoseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageDiagnoseResponse:
+        """
+        @param request: GetImageDiagnoseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageDiagnoseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -843,6 +1000,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetImageDiagnoseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageDiagnoseResponse:
+        """
+        @param request: GetImageDiagnoseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageDiagnoseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -872,6 +1034,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetImageDiagnoseRequest,
     ) -> alimt_20181012_models.GetImageDiagnoseResponse:
+        """
+        @param request: GetImageDiagnoseRequest
+        @return: GetImageDiagnoseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_image_diagnose_with_options(request, runtime)
 
@@ -879,6 +1045,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetImageDiagnoseRequest,
     ) -> alimt_20181012_models.GetImageDiagnoseResponse:
+        """
+        @param request: GetImageDiagnoseRequest
+        @return: GetImageDiagnoseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_image_diagnose_with_options_async(request, runtime)
 
@@ -887,6 +1057,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetImageTranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageTranslateResponse:
+        """
+        @param request: GetImageTranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageTranslateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -921,6 +1096,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetImageTranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageTranslateResponse:
+        """
+        @param request: GetImageTranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageTranslateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -954,6 +1134,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetImageTranslateRequest,
     ) -> alimt_20181012_models.GetImageTranslateResponse:
+        """
+        @param request: GetImageTranslateRequest
+        @return: GetImageTranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_image_translate_with_options(request, runtime)
 
@@ -961,6 +1145,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetImageTranslateRequest,
     ) -> alimt_20181012_models.GetImageTranslateResponse:
+        """
+        @param request: GetImageTranslateRequest
+        @return: GetImageTranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_image_translate_with_options_async(request, runtime)
 
@@ -969,6 +1157,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetImageTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageTranslateTaskResponse:
+        """
+        @param request: GetImageTranslateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageTranslateTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -997,6 +1190,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetImageTranslateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageTranslateTaskResponse:
+        """
+        @param request: GetImageTranslateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageTranslateTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -1024,6 +1222,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetImageTranslateTaskRequest,
     ) -> alimt_20181012_models.GetImageTranslateTaskResponse:
+        """
+        @param request: GetImageTranslateTaskRequest
+        @return: GetImageTranslateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_image_translate_task_with_options(request, runtime)
 
@@ -1031,6 +1233,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetImageTranslateTaskRequest,
     ) -> alimt_20181012_models.GetImageTranslateTaskResponse:
+        """
+        @param request: GetImageTranslateTaskRequest
+        @return: GetImageTranslateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_image_translate_task_with_options_async(request, runtime)
 
@@ -1039,6 +1245,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleDiagnoseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
+        """
+        @param request: GetTitleDiagnoseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTitleDiagnoseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category_id):
@@ -1075,6 +1286,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleDiagnoseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
+        """
+        @param request: GetTitleDiagnoseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTitleDiagnoseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category_id):
@@ -1110,6 +1326,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTitleDiagnoseRequest,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
+        """
+        @param request: GetTitleDiagnoseRequest
+        @return: GetTitleDiagnoseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_title_diagnose_with_options(request, runtime)
 
@@ -1117,6 +1337,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTitleDiagnoseRequest,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
+        """
+        @param request: GetTitleDiagnoseRequest
+        @return: GetTitleDiagnoseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_title_diagnose_with_options_async(request, runtime)
 
@@ -1125,6 +1349,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleGenerateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
+        """
+        @param request: GetTitleGenerateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTitleGenerateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.attributes):
@@ -1165,6 +1394,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleGenerateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
+        """
+        @param request: GetTitleGenerateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTitleGenerateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.attributes):
@@ -1204,6 +1438,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTitleGenerateRequest,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
+        """
+        @param request: GetTitleGenerateRequest
+        @return: GetTitleGenerateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_title_generate_with_options(request, runtime)
 
@@ -1211,6 +1449,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTitleGenerateRequest,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
+        """
+        @param request: GetTitleGenerateRequest
+        @return: GetTitleGenerateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_title_generate_with_options_async(request, runtime)
 
@@ -1219,6 +1461,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleIntelligenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
+        """
+        @param request: GetTitleIntelligenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTitleIntelligenceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cat_level_three_id):
@@ -1255,6 +1502,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTitleIntelligenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
+        """
+        @param request: GetTitleIntelligenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTitleIntelligenceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cat_level_three_id):
@@ -1290,6 +1542,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTitleIntelligenceRequest,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
+        """
+        @param request: GetTitleIntelligenceRequest
+        @return: GetTitleIntelligenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_title_intelligence_with_options(request, runtime)
 
@@ -1297,6 +1553,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTitleIntelligenceRequest,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
+        """
+        @param request: GetTitleIntelligenceRequest
+        @return: GetTitleIntelligenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_title_intelligence_with_options_async(request, runtime)
 
@@ -1305,6 +1565,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTranslateImageBatchResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTranslateImageBatchResultResponse:
+        """
+        @summary 获取图片批量翻译结果
+        
+        @param request: GetTranslateImageBatchResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTranslateImageBatchResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -1333,6 +1600,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTranslateImageBatchResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTranslateImageBatchResultResponse:
+        """
+        @summary 获取图片批量翻译结果
+        
+        @param request: GetTranslateImageBatchResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTranslateImageBatchResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -1360,6 +1634,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTranslateImageBatchResultRequest,
     ) -> alimt_20181012_models.GetTranslateImageBatchResultResponse:
+        """
+        @summary 获取图片批量翻译结果
+        
+        @param request: GetTranslateImageBatchResultRequest
+        @return: GetTranslateImageBatchResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_translate_image_batch_result_with_options(request, runtime)
 
@@ -1367,6 +1647,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTranslateImageBatchResultRequest,
     ) -> alimt_20181012_models.GetTranslateImageBatchResultResponse:
+        """
+        @summary 获取图片批量翻译结果
+        
+        @param request: GetTranslateImageBatchResultRequest
+        @return: GetTranslateImageBatchResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_translate_image_batch_result_with_options_async(request, runtime)
 
@@ -1375,6 +1661,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTranslateReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
+        """
+        @param request: GetTranslateReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTranslateReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -1409,6 +1700,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.GetTranslateReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
+        """
+        @param request: GetTranslateReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTranslateReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -1442,6 +1738,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTranslateReportRequest,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
+        """
+        @param request: GetTranslateReportRequest
+        @return: GetTranslateReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_translate_report_with_options(request, runtime)
 
@@ -1449,6 +1749,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.GetTranslateReportRequest,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
+        """
+        @param request: GetTranslateReportRequest
+        @return: GetTranslateReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_translate_report_with_options_async(request, runtime)
 
@@ -1457,6 +1761,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.OpenAlimtServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.OpenAlimtServiceResponse:
+        """
+        @summary 开通服务
+        
+        @param request: OpenAlimtServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenAlimtServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1487,6 +1798,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.OpenAlimtServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.OpenAlimtServiceResponse:
+        """
+        @summary 开通服务
+        
+        @param request: OpenAlimtServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenAlimtServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1516,6 +1834,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.OpenAlimtServiceRequest,
     ) -> alimt_20181012_models.OpenAlimtServiceResponse:
+        """
+        @summary 开通服务
+        
+        @param request: OpenAlimtServiceRequest
+        @return: OpenAlimtServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_alimt_service_with_options(request, runtime)
 
@@ -1523,6 +1847,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.OpenAlimtServiceRequest,
     ) -> alimt_20181012_models.OpenAlimtServiceResponse:
+        """
+        @summary 开通服务
+        
+        @param request: OpenAlimtServiceRequest
+        @return: OpenAlimtServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_alimt_service_with_options_async(request, runtime)
 
@@ -1531,6 +1861,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateResponse:
+        """
+        @param request: TranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.context):
@@ -1571,6 +1906,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateResponse:
+        """
+        @param request: TranslateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.context):
@@ -1610,6 +1950,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateRequest,
     ) -> alimt_20181012_models.TranslateResponse:
+        """
+        @param request: TranslateRequest
+        @return: TranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.translate_with_options(request, runtime)
 
@@ -1617,6 +1961,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateRequest,
     ) -> alimt_20181012_models.TranslateResponse:
+        """
+        @param request: TranslateRequest
+        @return: TranslateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.translate_with_options_async(request, runtime)
 
@@ -1625,6 +1973,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
+        """
+        @param request: TranslateCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateCertificateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.certificate_type):
@@ -1661,6 +2014,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
+        """
+        @param request: TranslateCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateCertificateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.certificate_type):
@@ -1696,6 +2054,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateCertificateRequest,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
+        """
+        @param request: TranslateCertificateRequest
+        @return: TranslateCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.translate_certificate_with_options(request, runtime)
 
@@ -1703,6 +2065,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateCertificateRequest,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
+        """
+        @param request: TranslateCertificateRequest
+        @return: TranslateCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.translate_certificate_with_options_async(request, runtime)
 
@@ -1717,7 +2083,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1737,12 +2103,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1788,7 +2155,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1808,12 +2175,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1854,7 +2222,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
         """
-        @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+        @deprecated OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
         
         @param request: TranslateECommerceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1902,7 +2270,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
         """
-        @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+        @deprecated OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
         
         @param request: TranslateECommerceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1949,7 +2317,7 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateECommerceRequest,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
         """
-        @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+        @deprecated OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
         
         @param request: TranslateECommerceRequest
         @return: TranslateECommerceResponse
@@ -1963,7 +2331,7 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateECommerceRequest,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
         """
-        @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+        @deprecated OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
         
         @param request: TranslateECommerceRequest
         @return: TranslateECommerceResponse
@@ -1977,6 +2345,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateGeneralRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
+        """
+        @param request: TranslateGeneralRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateGeneralResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.context):
@@ -2017,6 +2390,11 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateGeneralRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
+        """
+        @param request: TranslateGeneralRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateGeneralResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.context):
@@ -2056,6 +2434,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateGeneralRequest,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
+        """
+        @param request: TranslateGeneralRequest
+        @return: TranslateGeneralResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.translate_general_with_options(request, runtime)
 
@@ -2063,6 +2445,10 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateGeneralRequest,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
+        """
+        @param request: TranslateGeneralRequest
+        @return: TranslateGeneralResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.translate_general_with_options_async(request, runtime)
 
@@ -2071,6 +2457,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateImageResponse:
+        """
+        @summary 公有云图片翻译产品API
+        
+        @param request: TranslateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateImageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ext):
@@ -2109,6 +2502,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateImageResponse:
+        """
+        @summary 公有云图片翻译产品API
+        
+        @param request: TranslateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateImageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ext):
@@ -2146,6 +2546,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateImageRequest,
     ) -> alimt_20181012_models.TranslateImageResponse:
+        """
+        @summary 公有云图片翻译产品API
+        
+        @param request: TranslateImageRequest
+        @return: TranslateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.translate_image_with_options(request, runtime)
 
@@ -2153,6 +2559,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateImageRequest,
     ) -> alimt_20181012_models.TranslateImageResponse:
+        """
+        @summary 公有云图片翻译产品API
+        
+        @param request: TranslateImageRequest
+        @return: TranslateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.translate_image_with_options_async(request, runtime)
 
@@ -2161,6 +2573,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateImageBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateImageBatchResponse:
+        """
+        @summary 批量图片翻译接口
+        
+        @param request: TranslateImageBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateImageBatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.custom_task_id):
@@ -2199,6 +2618,13 @@ class Client(OpenApiClient):
         request: alimt_20181012_models.TranslateImageBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateImageBatchResponse:
+        """
+        @summary 批量图片翻译接口
+        
+        @param request: TranslateImageBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateImageBatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.custom_task_id):
@@ -2236,6 +2662,12 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateImageBatchRequest,
     ) -> alimt_20181012_models.TranslateImageBatchResponse:
+        """
+        @summary 批量图片翻译接口
+        
+        @param request: TranslateImageBatchRequest
+        @return: TranslateImageBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.translate_image_batch_with_options(request, runtime)
 
@@ -2243,5 +2675,11 @@ class Client(OpenApiClient):
         self,
         request: alimt_20181012_models.TranslateImageBatchRequest,
     ) -> alimt_20181012_models.TranslateImageBatchResponse:
+        """
+        @summary 批量图片翻译接口
+        
+        @param request: TranslateImageBatchRequest
+        @return: TranslateImageBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.translate_image_batch_with_options_async(request, runtime)

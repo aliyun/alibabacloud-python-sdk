@@ -14,11 +14,17 @@ class CreateAsyncTranslateRequest(TeaModel):
         source_text: str = None,
         target_language: str = None,
     ):
+        # This parameter is required.
         self.api_type = api_type
+        # This parameter is required.
         self.format_type = format_type
+        # This parameter is required.
         self.scene = scene
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.source_text = source_text
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -67,7 +73,9 @@ class CreateAsyncTranslateResponseBodyData(TeaModel):
         job_id: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -153,9 +161,6 @@ class CreateAsyncTranslateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -197,9 +202,12 @@ class CreateDocTranslateTaskRequest(TeaModel):
     ):
         self.callback_url = callback_url
         self.client_token = client_token
+        # This parameter is required.
         self.file_url = file_url
         self.scene = scene
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -254,9 +262,12 @@ class CreateDocTranslateTaskAdvanceRequest(TeaModel):
     ):
         self.callback_url = callback_url
         self.client_token = client_token
+        # This parameter is required.
         self.file_url_object = file_url_object
         self.scene = scene
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -350,9 +361,6 @@ class CreateDocTranslateTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -393,8 +401,11 @@ class CreateImageTranslateTaskRequest(TeaModel):
     ):
         self.client_token = client_token
         self.extra = extra
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.target_language = target_language
+        # This parameter is required.
         self.url_list = url_list
 
     def validate(self):
@@ -519,9 +530,6 @@ class CreateImageTranslateTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -556,6 +564,7 @@ class GetAsyncTranslateRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -682,9 +691,6 @@ class GetAsyncTranslateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -724,11 +730,17 @@ class GetBatchTranslateRequest(TeaModel):
         source_text: str = None,
         target_language: str = None,
     ):
+        # This parameter is required.
         self.api_type = api_type
+        # This parameter is required.
         self.format_type = format_type
+        # This parameter is required.
         self.scene = scene
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.source_text = source_text
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -828,9 +840,6 @@ class GetBatchTranslateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -865,6 +874,7 @@ class GetDetectLanguageRequest(TeaModel):
         self,
         source_text: str = None,
     ):
+        # This parameter is required.
         self.source_text = source_text
 
     def validate(self):
@@ -891,9 +901,11 @@ class GetDetectLanguageResponseBody(TeaModel):
     def __init__(
         self,
         detected_language: str = None,
+        language_probabilities: str = None,
         request_id: str = None,
     ):
         self.detected_language = detected_language
+        self.language_probabilities = language_probabilities
         self.request_id = request_id
 
     def validate(self):
@@ -907,6 +919,8 @@ class GetDetectLanguageResponseBody(TeaModel):
         result = dict()
         if self.detected_language is not None:
             result['DetectedLanguage'] = self.detected_language
+        if self.language_probabilities is not None:
+            result['LanguageProbabilities'] = self.language_probabilities
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -915,6 +929,8 @@ class GetDetectLanguageResponseBody(TeaModel):
         m = m or dict()
         if m.get('DetectedLanguage') is not None:
             self.detected_language = m.get('DetectedLanguage')
+        if m.get('LanguageProbabilities') is not None:
+            self.language_probabilities = m.get('LanguageProbabilities')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -932,9 +948,6 @@ class GetDetectLanguageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -969,6 +982,7 @@ class GetDocTranslateTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -1066,9 +1080,6 @@ class GetDocTranslateTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1105,6 +1116,7 @@ class GetImageDiagnoseRequest(TeaModel):
         url: str = None,
     ):
         self.extra = extra
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -1217,9 +1229,6 @@ class GetImageDiagnoseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1258,8 +1267,11 @@ class GetImageTranslateRequest(TeaModel):
         url: str = None,
     ):
         self.extra = extra
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.target_language = target_language
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -1392,9 +1404,6 @@ class GetImageTranslateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1429,6 +1438,7 @@ class GetImageTranslateTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -1537,9 +1547,6 @@ class GetImageTranslateTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1578,10 +1585,14 @@ class GetTitleDiagnoseRequest(TeaModel):
         platform: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.category_id = category_id
         self.extra = extra
+        # This parameter is required.
         self.language = language
+        # This parameter is required.
         self.platform = platform
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -1760,9 +1771,6 @@ class GetTitleDiagnoseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1804,11 +1812,15 @@ class GetTitleGenerateRequest(TeaModel):
         title: str = None,
     ):
         self.attributes = attributes
+        # This parameter is required.
         self.category_id = category_id
         self.extra = extra
         self.hot_words = hot_words
+        # This parameter is required.
         self.language = language
+        # This parameter is required.
         self.platform = platform
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -1941,9 +1953,6 @@ class GetTitleGenerateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1982,10 +1991,13 @@ class GetTitleIntelligenceRequest(TeaModel):
         keywords: str = None,
         platform: str = None,
     ):
+        # This parameter is required.
         self.cat_level_three_id = cat_level_three_id
+        # This parameter is required.
         self.cat_level_two_id = cat_level_two_id
         self.extra = extra
         self.keywords = keywords
+        # This parameter is required.
         self.platform = platform
 
     def validate(self):
@@ -2110,9 +2122,6 @@ class GetTitleIntelligenceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2147,6 +2156,7 @@ class GetTranslateImageBatchResultRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -2332,9 +2342,6 @@ class GetTranslateImageBatchResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2372,9 +2379,13 @@ class GetTranslateReportRequest(TeaModel):
         end_time: str = None,
         group: str = None,
     ):
+        # This parameter is required.
         self.api_name = api_name
+        # This parameter is required.
         self.begin_time = begin_time
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.group = group
 
     def validate(self):
@@ -2466,9 +2477,6 @@ class GetTranslateReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2576,9 +2584,6 @@ class OpenAlimtServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2619,10 +2624,15 @@ class TranslateRequest(TeaModel):
         target_language: str = None,
     ):
         self.context = context
+        # This parameter is required.
         self.format_type = format_type
+        # This parameter is required.
         self.scene = scene
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.source_text = source_text
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -2763,9 +2773,6 @@ class TranslateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2804,10 +2811,14 @@ class TranslateCertificateRequest(TeaModel):
         source_language: str = None,
         target_language: str = None,
     ):
+        # This parameter is required.
         self.certificate_type = certificate_type
+        # This parameter is required.
         self.image_url = image_url
         self.result_type = result_type
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -2855,10 +2866,14 @@ class TranslateCertificateAdvanceRequest(TeaModel):
         source_language: str = None,
         target_language: str = None,
     ):
+        # This parameter is required.
         self.certificate_type = certificate_type
+        # This parameter is required.
         self.image_url_object = image_url_object
         self.result_type = result_type
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -3024,9 +3039,6 @@ class TranslateCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3067,10 +3079,15 @@ class TranslateECommerceRequest(TeaModel):
         target_language: str = None,
     ):
         self.context = context
+        # This parameter is required.
         self.format_type = format_type
+        # This parameter is required.
         self.scene = scene
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.source_text = source_text
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -3116,9 +3133,11 @@ class TranslateECommerceRequest(TeaModel):
 class TranslateECommerceResponseBodyData(TeaModel):
     def __init__(
         self,
+        detected_language: str = None,
         translated: str = None,
         word_count: str = None,
     ):
+        self.detected_language = detected_language
         self.translated = translated
         self.word_count = word_count
 
@@ -3131,6 +3150,8 @@ class TranslateECommerceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.detected_language is not None:
+            result['DetectedLanguage'] = self.detected_language
         if self.translated is not None:
             result['Translated'] = self.translated
         if self.word_count is not None:
@@ -3139,6 +3160,8 @@ class TranslateECommerceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DetectedLanguage') is not None:
+            self.detected_language = m.get('DetectedLanguage')
         if m.get('Translated') is not None:
             self.translated = m.get('Translated')
         if m.get('WordCount') is not None:
@@ -3205,9 +3228,6 @@ class TranslateECommerceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3248,10 +3268,14 @@ class TranslateGeneralRequest(TeaModel):
         target_language: str = None,
     ):
         self.context = context
+        # This parameter is required.
         self.format_type = format_type
         self.scene = scene
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.source_text = source_text
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -3392,9 +3416,6 @@ class TranslateGeneralResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3579,9 +3600,6 @@ class TranslateImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3624,8 +3642,11 @@ class TranslateImageBatchRequest(TeaModel):
         self.custom_task_id = custom_task_id
         self.ext = ext
         self.field = field
+        # This parameter is required.
         self.image_urls = image_urls
+        # This parameter is required.
         self.source_language = source_language
+        # This parameter is required.
         self.target_language = target_language
 
     def validate(self):
@@ -3754,9 +3775,6 @@ class TranslateImageBatchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
