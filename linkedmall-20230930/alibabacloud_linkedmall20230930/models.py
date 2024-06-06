@@ -327,6 +327,73 @@ class CooperationShop(TeaModel):
         return self
 
 
+class CreateAliPayUrlRequest(TeaModel):
+    def __init__(
+        self,
+        shop_id: str = None,
+    ):
+        # This parameter is required.
+        self.shop_id = shop_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.shop_id is not None:
+            result['shopId'] = self.shop_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('shopId') is not None:
+            self.shop_id = m.get('shopId')
+        return self
+
+
+class CreateAliPayUrlResult(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        member_id: str = None,
+        zft_withhold_sign_url: str = None,
+    ):
+        self.account_id = account_id
+        self.member_id = member_id
+        self.zft_withhold_sign_url = zft_withhold_sign_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.member_id is not None:
+            result['memberId'] = self.member_id
+        if self.zft_withhold_sign_url is not None:
+            result['zftWithholdSignUrl'] = self.zft_withhold_sign_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('memberId') is not None:
+            self.member_id = m.get('memberId')
+        if m.get('zftWithholdSignUrl') is not None:
+            self.zft_withhold_sign_url = m.get('zftWithholdSignUrl')
+        return self
+
+
 class DeliveryInfo(TeaModel):
     def __init__(
         self,
@@ -1165,6 +1232,67 @@ class LogisticsOrderListResult(TeaModel):
         return self
 
 
+class MemberAccountRequest(TeaModel):
+    def __init__(
+        self,
+        shop_id: str = None,
+    ):
+        # This parameter is required.
+        self.shop_id = shop_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.shop_id is not None:
+            result['shopId'] = self.shop_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('shopId') is not None:
+            self.shop_id = m.get('shopId')
+        return self
+
+
+class MemberAccountResult(TeaModel):
+    def __init__(
+        self,
+        account_no: List[str] = None,
+        shop_id: str = None,
+    ):
+        self.account_no = account_no
+        self.shop_id = shop_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_no is not None:
+            result['accountNo'] = self.account_no
+        if self.shop_id is not None:
+            result['shopId'] = self.shop_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountNo') is not None:
+            self.account_no = m.get('accountNo')
+        if m.get('shopId') is not None:
+            self.shop_id = m.get('shopId')
+        return self
+
+
 class OrderLineResult(TeaModel):
     def __init__(
         self,
@@ -1961,6 +2089,7 @@ class Product(TeaModel):
         extend_properties: List[ProductExtendProperty] = None,
         fuzzy_quantity: str = None,
         images: List[str] = None,
+        lm_item_id: str = None,
         pic_url: str = None,
         product_id: str = None,
         product_specs: List[ProductSpec] = None,
@@ -1985,6 +2114,7 @@ class Product(TeaModel):
         self.extend_properties = extend_properties
         self.fuzzy_quantity = fuzzy_quantity
         self.images = images
+        self.lm_item_id = lm_item_id
         self.pic_url = pic_url
         self.product_id = product_id
         self.product_specs = product_specs
@@ -2050,6 +2180,8 @@ class Product(TeaModel):
             result['fuzzyQuantity'] = self.fuzzy_quantity
         if self.images is not None:
             result['images'] = self.images
+        if self.lm_item_id is not None:
+            result['lmItemId'] = self.lm_item_id
         if self.pic_url is not None:
             result['picUrl'] = self.pic_url
         if self.product_id is not None:
@@ -2112,6 +2244,8 @@ class Product(TeaModel):
             self.fuzzy_quantity = m.get('fuzzyQuantity')
         if m.get('images') is not None:
             self.images = m.get('images')
+        if m.get('lmItemId') is not None:
+            self.lm_item_id = m.get('lmItemId')
         if m.get('picUrl') is not None:
             self.pic_url = m.get('picUrl')
         if m.get('productId') is not None:
@@ -2423,6 +2557,7 @@ class ProductSaleInfo(TeaModel):
         can_sell: bool = None,
         division_code: str = None,
         fuzzy_quantity: str = None,
+        lm_item_id: str = None,
         product_id: str = None,
         product_status: str = None,
         quantity: int = None,
@@ -2434,6 +2569,7 @@ class ProductSaleInfo(TeaModel):
         self.can_sell = can_sell
         self.division_code = division_code
         self.fuzzy_quantity = fuzzy_quantity
+        self.lm_item_id = lm_item_id
         self.product_id = product_id
         self.product_status = product_status
         self.quantity = quantity
@@ -2460,6 +2596,8 @@ class ProductSaleInfo(TeaModel):
             result['divisionCode'] = self.division_code
         if self.fuzzy_quantity is not None:
             result['fuzzyQuantity'] = self.fuzzy_quantity
+        if self.lm_item_id is not None:
+            result['lmItemId'] = self.lm_item_id
         if self.product_id is not None:
             result['productId'] = self.product_id
         if self.product_status is not None:
@@ -2486,6 +2624,8 @@ class ProductSaleInfo(TeaModel):
             self.division_code = m.get('divisionCode')
         if m.get('fuzzyQuantity') is not None:
             self.fuzzy_quantity = m.get('fuzzyQuantity')
+        if m.get('lmItemId') is not None:
+            self.lm_item_id = m.get('lmItemId')
         if m.get('productId') is not None:
             self.product_id = m.get('productId')
         if m.get('productStatus') is not None:
@@ -3465,6 +3605,93 @@ class Shop(TeaModel):
         return self
 
 
+class ShopCreateRequest(TeaModel):
+    def __init__(
+        self,
+        after_sale_ding_talk_id: str = None,
+        description: str = None,
+        operator_ding_talk_id: str = None,
+        pre_sale_ding_talk_id: str = None,
+        shop_name: str = None,
+    ):
+        self.after_sale_ding_talk_id = after_sale_ding_talk_id
+        # This parameter is required.
+        self.description = description
+        # This parameter is required.
+        self.operator_ding_talk_id = operator_ding_talk_id
+        self.pre_sale_ding_talk_id = pre_sale_ding_talk_id
+        # This parameter is required.
+        self.shop_name = shop_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.after_sale_ding_talk_id is not None:
+            result['afterSaleDingTalkId'] = self.after_sale_ding_talk_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.operator_ding_talk_id is not None:
+            result['operatorDingTalkId'] = self.operator_ding_talk_id
+        if self.pre_sale_ding_talk_id is not None:
+            result['preSaleDingTalkId'] = self.pre_sale_ding_talk_id
+        if self.shop_name is not None:
+            result['shopName'] = self.shop_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('afterSaleDingTalkId') is not None:
+            self.after_sale_ding_talk_id = m.get('afterSaleDingTalkId')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('operatorDingTalkId') is not None:
+            self.operator_ding_talk_id = m.get('operatorDingTalkId')
+        if m.get('preSaleDingTalkId') is not None:
+            self.pre_sale_ding_talk_id = m.get('preSaleDingTalkId')
+        if m.get('shopName') is not None:
+            self.shop_name = m.get('shopName')
+        return self
+
+
+class ShopCreateResult(TeaModel):
+    def __init__(
+        self,
+        shop_id: str = None,
+        shop_status: str = None,
+    ):
+        self.shop_id = shop_id
+        self.shop_status = shop_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.shop_id is not None:
+            result['shopId'] = self.shop_id
+        if self.shop_status is not None:
+            result['shopStatus'] = self.shop_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('shopId') is not None:
+            self.shop_id = m.get('shopId')
+        if m.get('shopStatus') is not None:
+            self.shop_status = m.get('shopStatus')
+        return self
+
+
 class ShopPageDataResult(TeaModel):
     def __init__(
         self,
@@ -3586,6 +3813,68 @@ class ShopPageResult(TeaModel):
                 self.shop_list.append(temp_model.from_map(k))
         if m.get('total') is not None:
             self.total = m.get('total')
+        return self
+
+
+class ShopStatusChangeRequest(TeaModel):
+    def __init__(
+        self,
+        shop_id: str = None,
+        shop_status: str = None,
+    ):
+        # This parameter is required.
+        self.shop_id = shop_id
+        # This parameter is required.
+        self.shop_status = shop_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.shop_id is not None:
+            result['shopId'] = self.shop_id
+        if self.shop_status is not None:
+            result['shopStatus'] = self.shop_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('shopId') is not None:
+            self.shop_id = m.get('shopId')
+        if m.get('shopStatus') is not None:
+            self.shop_status = m.get('shopStatus')
+        return self
+
+
+class ShopStatusChangeResult(TeaModel):
+    def __init__(
+        self,
+        operate: bool = None,
+    ):
+        self.operate = operate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operate is not None:
+            result['operate'] = self.operate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('operate') is not None:
+            self.operate = m.get('operate')
         return self
 
 
