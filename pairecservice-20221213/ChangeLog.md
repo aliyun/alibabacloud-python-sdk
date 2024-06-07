@@ -1,3 +1,27 @@
+2024-06-07 Version: 1.5.0
+- Support API CloneTrafficControlTask.
+- Support API CreateTrafficControlTarget.
+- Support API CreateTrafficControlTask.
+- Support API DeleteTrafficControlTarget.
+- Support API DeleteTrafficControlTask.
+- Support API GenerateTrafficControlTaskCode.
+- Support API GenerateTrafficControlTaskConfig.
+- Support API GetTrafficControlTarget.
+- Support API GetTrafficControlTask.
+- Support API GetTrafficControlTaskTraffic.
+- Support API ListTrafficControlTargetTrafficHistory.
+- Support API ListTrafficControlTasks.
+- Support API ReleaseTrafficControlTask.
+- Support API SplitTrafficControlTarget.
+- Support API StartTrafficControlTarget.
+- Support API StartTrafficControlTask.
+- Support API StopTrafficControlTarget.
+- Support API StopTrafficControlTask.
+- Support API UpdateTrafficControlTarget.
+- Support API UpdateTrafficControlTask.
+- Support API UpdateTrafficControlTaskTraffic.
+
+
 2024-05-07 Version: 1.4.0
 - Support API CreateResourceRule.
 - Support API CreateResourceRuleItem.

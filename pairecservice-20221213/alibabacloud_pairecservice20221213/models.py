@@ -51,15 +51,25 @@ class BackflowFeatureConsistencyCheckJobDataRequest(TeaModel):
         scores: str = None,
         user_features: str = None,
     ):
+        # This parameter is required.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.item_features = item_features
+        # This parameter is required.
         self.log_item_id = log_item_id
+        # This parameter is required.
         self.log_request_id = log_request_id
+        # This parameter is required.
         self.log_request_time = log_request_time
+        # This parameter is required.
         self.log_user_id = log_user_id
+        # This parameter is required.
         self.scene_name = scene_name
+        # This parameter is required.
         self.scores = scores
+        # This parameter is required.
         self.user_features = user_features
 
     def validate(self):
@@ -192,6 +202,7 @@ class CheckInstanceResourcesRequest(TeaModel):
         type: str = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.type = type
         self.uri = uri
 
@@ -345,6 +356,7 @@ class CloneExperimentRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -449,8 +461,11 @@ class CloneExperimentGroupRequest(TeaModel):
         instance_id: str = None,
         layer_id: str = None,
     ):
+        # This parameter is required.
         self.environment = environment
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.layer_id = layer_id
 
     def validate(self):
@@ -561,6 +576,7 @@ class CloneFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -664,8 +680,11 @@ class CloneLaboratoryRequest(TeaModel):
         environment: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.clone_experiment_group = clone_experiment_group
+        # This parameter is required.
         self.environment = environment
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -771,6 +790,107 @@ class CloneLaboratoryResponse(TeaModel):
         return self
 
 
+class CloneTrafficControlTaskRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CloneTrafficControlTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        traffic_control_task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.traffic_control_task_id = traffic_control_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
+        return self
+
+
+class CloneTrafficControlTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloneTrafficControlTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloneTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateABMetricRequest(TeaModel):
     def __init__(
         self,
@@ -788,18 +908,26 @@ class CreateABMetricRequest(TeaModel):
         table_meta_id: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.definition = definition
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
         self.left_metric_id = left_metric_id
+        # This parameter is required.
         self.name = name
         self.operator = operator
+        # This parameter is required.
         self.realtime = realtime
         self.result_resource_id = result_resource_id
         self.right_metric_id = right_metric_id
+        # This parameter is required.
         self.scene_id = scene_id
         self.statistics_cycle = statistics_cycle
+        # This parameter is required.
         self.table_meta_id = table_meta_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -954,11 +1082,17 @@ class CreateABMetricGroupRequest(TeaModel):
         realtime: bool = None,
         scene_id: str = None,
     ):
+        # This parameter is required.
         self.abmetric_ids = abmetric_ids
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.realtime = realtime
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -1083,9 +1217,13 @@ class CreateCalculationJobsRequest(TeaModel):
         instance_id: str = None,
         start_date: str = None,
     ):
+        # This parameter is required.
         self.abmetric_ids = abmetric_ids
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -1204,9 +1342,12 @@ class CreateCrowdRequest(TeaModel):
         source: str = None,
         users: str = None,
     ):
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
         self.label = label
+        # This parameter is required.
         self.name = name
         self.source = source
         self.users = users
@@ -1342,11 +1483,16 @@ class CreateExperimentRequest(TeaModel):
         self.config = config
         self.debug_crowd_id = debug_crowd_id
         self.debug_users = debug_users
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.experiment_group_id = experiment_group_id
         self.flow_percent = flow_percent
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -1504,9 +1650,13 @@ class CreateExperimentGroupRequest(TeaModel):
         self.distribution_time_duration = distribution_time_duration
         self.distribution_type = distribution_type
         self.filter = filter
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.layer_id = layer_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.need_aa = need_aa
         self.random_flow = random_flow
         self.reserved_buckets = reserved_buckets
@@ -1670,9 +1820,13 @@ class CreateFeatureConsistencyCheckJobRequest(TeaModel):
         instance_id: str = None,
         sampling_duration: int = None,
     ):
+        # This parameter is required.
         self.environment = environment
+        # This parameter is required.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.sampling_duration = sampling_duration
 
     def validate(self):
@@ -1817,11 +1971,14 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         user_table_partition_field_format: str = None,
         workflow_name: str = None,
     ):
+        # This parameter is required.
         self.compare_feature = compare_feature
+        # This parameter is required.
         self.eas_service_name = eas_service_name
         self.easy_rec_package_path = easy_rec_package_path
         self.easy_rec_version = easy_rec_version
         self.feature_display_exclude = feature_display_exclude
+        # This parameter is required.
         self.feature_landing_resource_id = feature_landing_resource_id
         self.feature_priority = feature_priority
         self.feature_store_item_id = feature_store_item_id
@@ -1831,18 +1988,26 @@ class CreateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self.feature_store_seq_feature_view = feature_store_seq_feature_view
         self.feature_store_user_id = feature_store_user_id
         self.fg_jar_version = fg_jar_version
+        # This parameter is required.
         self.fg_json_file_name = fg_json_file_name
+        # This parameter is required.
         self.generate_zip = generate_zip
+        # This parameter is required.
         self.instance_id = instance_id
         self.item_id_field = item_id_field
         self.item_table = item_table
         self.item_table_partition_field = item_table_partition_field
         self.item_table_partition_field_format = item_table_partition_field_format
+        # This parameter is required.
         self.name = name
         self.oss_resource_id = oss_resource_id
+        # This parameter is required.
         self.sample_rate = sample_rate
+        # This parameter is required.
         self.scene_id = scene_id
+        # This parameter is required.
         self.service_id = service_id
+        # This parameter is required.
         self.use_feature_store = use_feature_store
         self.user_id_field = user_id_field
         self.user_table = user_table
@@ -2076,9 +2241,13 @@ class CreateInstanceResourceRequest(TeaModel):
         type: str = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.category = category
+        # This parameter is required.
         self.group = group
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -2204,16 +2373,22 @@ class CreateLaboratoryRequest(TeaModel):
         type: str = None,
     ):
         self.bucket_count = bucket_count
+        # This parameter is required.
         self.bucket_type = bucket_type
         self.buckets = buckets
         self.debug_crowd_id = debug_crowd_id
         self.debug_users = debug_users
         self.description = description
+        # This parameter is required.
         self.environment = environment
         self.filter = filter
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.scene_id = scene_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2363,9 +2538,13 @@ class CreateLayerRequest(TeaModel):
         laboratory_id: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.laboratory_id = laboratory_id
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -2611,9 +2790,13 @@ class CreateResourceRuleRequestRuleItems(TeaModel):
         value: float = None,
     ):
         self.description = description
+        # This parameter is required.
         self.max_value = max_value
+        # This parameter is required.
         self.min_value = min_value
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -2665,12 +2848,17 @@ class CreateResourceRuleRequest(TeaModel):
         rule_items: List[CreateResourceRuleRequestRuleItems] = None,
     ):
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.metric_operation_type = metric_operation_type
         self.metric_pull_info = metric_pull_info
         self.metric_pull_period = metric_pull_period
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.rule_computing_definition = rule_computing_definition
+        # This parameter is required.
         self.rule_items = rule_items
 
     def validate(self):
@@ -2814,10 +3002,15 @@ class CreateResourceRuleItemRequest(TeaModel):
         value: float = None,
     ):
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.max_value = max_value
+        # This parameter is required.
         self.min_value = min_value
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -3102,8 +3295,11 @@ class CreateSubCrowdRequest(TeaModel):
         source: str = None,
         users: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.source = source
+        # This parameter is required.
         self.users = users
 
     def validate(self):
@@ -3220,10 +3416,15 @@ class CreateTableMetaRequestFields(TeaModel):
         type: str = None,
     ):
         self.data_type = data_type
+        # This parameter is required.
         self.is_dimension_field = is_dimension_field
+        # This parameter is required.
         self.is_partition_field = is_partition_field
+        # This parameter is required.
         self.meaning = meaning
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3277,12 +3478,19 @@ class CreateTableMetaRequest(TeaModel):
         resource_id: str = None,
         table_name: str = None,
     ):
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.fields = fields
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.module = module
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -3411,6 +3619,525 @@ class CreateTableMetaResponse(TeaModel):
         return self
 
 
+class CreateTrafficControlTargetRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        event: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        name: str = None,
+        new_product_regulation: bool = None,
+        recall_name: str = None,
+        start_time: str = None,
+        statis_period: str = None,
+        status: str = None,
+        tolerance_value: int = None,
+        traffic_control_task_id: str = None,
+        value: float = None,
+    ):
+        self.end_time = end_time
+        self.event = event
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.name = name
+        self.new_product_regulation = new_product_regulation
+        self.recall_name = recall_name
+        self.start_time = start_time
+        self.statis_period = statis_period
+        self.status = status
+        self.tolerance_value = tolerance_value
+        self.traffic_control_task_id = traffic_control_task_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.new_product_regulation is not None:
+            result['NewProductRegulation'] = self.new_product_regulation
+        if self.recall_name is not None:
+            result['RecallName'] = self.recall_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_period is not None:
+            result['StatisPeriod'] = self.statis_period
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tolerance_value is not None:
+            result['ToleranceValue'] = self.tolerance_value
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NewProductRegulation') is not None:
+            self.new_product_regulation = m.get('NewProductRegulation')
+        if m.get('RecallName') is not None:
+            self.recall_name = m.get('RecallName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisPeriod') is not None:
+            self.statis_period = m.get('StatisPeriod')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ToleranceValue') is not None:
+            self.tolerance_value = m.get('ToleranceValue')
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTrafficControlTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        traffic_control_target_id: str = None,
+    ):
+        self.request_id = request_id
+        self.traffic_control_target_id = traffic_control_target_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.traffic_control_target_id is not None:
+            result['TrafficControlTargetId'] = self.traffic_control_target_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TrafficControlTargetId') is not None:
+            self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        return self
+
+
+class CreateTrafficControlTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTrafficControlTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTrafficControlTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTrafficControlTaskRequestTrafficControlTargets(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        event: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        name: str = None,
+        new_product_regulation: bool = None,
+        recall_name: str = None,
+        start_time: str = None,
+        statis_period: str = None,
+        status: str = None,
+        tolerance_value: int = None,
+        value: float = None,
+    ):
+        self.end_time = end_time
+        self.event = event
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.name = name
+        self.new_product_regulation = new_product_regulation
+        self.recall_name = recall_name
+        self.start_time = start_time
+        self.statis_period = statis_period
+        self.status = status
+        self.tolerance_value = tolerance_value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.new_product_regulation is not None:
+            result['NewProductRegulation'] = self.new_product_regulation
+        if self.recall_name is not None:
+            result['RecallName'] = self.recall_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_period is not None:
+            result['StatisPeriod'] = self.statis_period
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tolerance_value is not None:
+            result['ToleranceValue'] = self.tolerance_value
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NewProductRegulation') is not None:
+            self.new_product_regulation = m.get('NewProductRegulation')
+        if m.get('RecallName') is not None:
+            self.recall_name = m.get('RecallName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisPeriod') is not None:
+            self.statis_period = m.get('StatisPeriod')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ToleranceValue') is not None:
+            self.tolerance_value = m.get('ToleranceValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTrafficControlTaskRequest(TeaModel):
+    def __init__(
+        self,
+        behavior_table_meta_id: str = None,
+        control_granularity: str = None,
+        control_logic: str = None,
+        control_type: str = None,
+        description: str = None,
+        end_time: str = None,
+        execution_time: str = None,
+        instance_id: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        item_table_meta_id: str = None,
+        name: str = None,
+        scene_id: str = None,
+        start_time: str = None,
+        statis_behavior_condition_array: str = None,
+        statis_behavior_condition_express: str = None,
+        statis_behavior_condition_type: str = None,
+        traffic_control_targets: List[CreateTrafficControlTaskRequestTrafficControlTargets] = None,
+        user_condition_array: str = None,
+        user_condition_express: str = None,
+        user_condition_type: str = None,
+        user_table_meta_id: str = None,
+    ):
+        self.behavior_table_meta_id = behavior_table_meta_id
+        self.control_granularity = control_granularity
+        self.control_logic = control_logic
+        self.control_type = control_type
+        self.description = description
+        self.end_time = end_time
+        self.execution_time = execution_time
+        self.instance_id = instance_id
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.item_table_meta_id = item_table_meta_id
+        self.name = name
+        self.scene_id = scene_id
+        self.start_time = start_time
+        self.statis_behavior_condition_array = statis_behavior_condition_array
+        self.statis_behavior_condition_express = statis_behavior_condition_express
+        self.statis_behavior_condition_type = statis_behavior_condition_type
+        self.traffic_control_targets = traffic_control_targets
+        self.user_condition_array = user_condition_array
+        self.user_condition_express = user_condition_express
+        self.user_condition_type = user_condition_type
+        self.user_table_meta_id = user_table_meta_id
+
+    def validate(self):
+        if self.traffic_control_targets:
+            for k in self.traffic_control_targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.behavior_table_meta_id is not None:
+            result['BehaviorTableMetaId'] = self.behavior_table_meta_id
+        if self.control_granularity is not None:
+            result['ControlGranularity'] = self.control_granularity
+        if self.control_logic is not None:
+            result['ControlLogic'] = self.control_logic
+        if self.control_type is not None:
+            result['ControlType'] = self.control_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execution_time is not None:
+            result['ExecutionTime'] = self.execution_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.item_table_meta_id is not None:
+            result['ItemTableMetaId'] = self.item_table_meta_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_behavior_condition_array is not None:
+            result['StatisBehaviorConditionArray'] = self.statis_behavior_condition_array
+        if self.statis_behavior_condition_express is not None:
+            result['StatisBehaviorConditionExpress'] = self.statis_behavior_condition_express
+        if self.statis_behavior_condition_type is not None:
+            result['StatisBehaviorConditionType'] = self.statis_behavior_condition_type
+        result['TrafficControlTargets'] = []
+        if self.traffic_control_targets is not None:
+            for k in self.traffic_control_targets:
+                result['TrafficControlTargets'].append(k.to_map() if k else None)
+        if self.user_condition_array is not None:
+            result['UserConditionArray'] = self.user_condition_array
+        if self.user_condition_express is not None:
+            result['UserConditionExpress'] = self.user_condition_express
+        if self.user_condition_type is not None:
+            result['UserConditionType'] = self.user_condition_type
+        if self.user_table_meta_id is not None:
+            result['UserTableMetaId'] = self.user_table_meta_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BehaviorTableMetaId') is not None:
+            self.behavior_table_meta_id = m.get('BehaviorTableMetaId')
+        if m.get('ControlGranularity') is not None:
+            self.control_granularity = m.get('ControlGranularity')
+        if m.get('ControlLogic') is not None:
+            self.control_logic = m.get('ControlLogic')
+        if m.get('ControlType') is not None:
+            self.control_type = m.get('ControlType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecutionTime') is not None:
+            self.execution_time = m.get('ExecutionTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('ItemTableMetaId') is not None:
+            self.item_table_meta_id = m.get('ItemTableMetaId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisBehaviorConditionArray') is not None:
+            self.statis_behavior_condition_array = m.get('StatisBehaviorConditionArray')
+        if m.get('StatisBehaviorConditionExpress') is not None:
+            self.statis_behavior_condition_express = m.get('StatisBehaviorConditionExpress')
+        if m.get('StatisBehaviorConditionType') is not None:
+            self.statis_behavior_condition_type = m.get('StatisBehaviorConditionType')
+        self.traffic_control_targets = []
+        if m.get('TrafficControlTargets') is not None:
+            for k in m.get('TrafficControlTargets'):
+                temp_model = CreateTrafficControlTaskRequestTrafficControlTargets()
+                self.traffic_control_targets.append(temp_model.from_map(k))
+        if m.get('UserConditionArray') is not None:
+            self.user_condition_array = m.get('UserConditionArray')
+        if m.get('UserConditionExpress') is not None:
+            self.user_condition_express = m.get('UserConditionExpress')
+        if m.get('UserConditionType') is not None:
+            self.user_condition_type = m.get('UserConditionType')
+        if m.get('UserTableMetaId') is not None:
+            self.user_table_meta_id = m.get('UserTableMetaId')
+        return self
+
+
+class CreateTrafficControlTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        traffic_control_task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.traffic_control_task_id = traffic_control_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
+        return self
+
+
+class CreateTrafficControlTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTrafficControlTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DebugResourceRuleRequest(TeaModel):
     def __init__(
         self,
@@ -3418,7 +4145,9 @@ class DebugResourceRuleRequest(TeaModel):
         metric_info: Dict[str, Any] = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.metric_info = metric_info
         self.region_id = region_id
 
@@ -3457,7 +4186,9 @@ class DebugResourceRuleShrinkRequest(TeaModel):
         metric_info_shrink: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.metric_info_shrink = metric_info_shrink
         self.region_id = region_id
 
@@ -3574,6 +4305,7 @@ class DeleteABMetricRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3669,6 +4401,7 @@ class DeleteABMetricGroupRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3764,6 +4497,7 @@ class DeleteCrowdRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3860,6 +4594,7 @@ class DeleteExperimentRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3956,6 +4691,7 @@ class DeleteExperimentGroupRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4120,6 +4856,7 @@ class DeleteLaboratoryRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4408,6 +5145,7 @@ class DeleteResourceRuleRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4503,6 +5241,7 @@ class DeleteResourceRuleItemRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4694,6 +5433,7 @@ class DeleteSubCrowdRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4790,6 +5530,7 @@ class DeleteTableMetaRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4880,11 +5621,404 @@ class DeleteTableMetaResponse(TeaModel):
         return self
 
 
+class DeleteTrafficControlTargetRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteTrafficControlTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTrafficControlTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTrafficControlTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTrafficControlTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTrafficControlTaskRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteTrafficControlTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTrafficControlTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTrafficControlTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateTrafficControlTaskCodeRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GenerateTrafficControlTaskCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateTrafficControlTaskCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateTrafficControlTaskCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateTrafficControlTaskCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateTrafficControlTaskConfigRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GenerateTrafficControlTaskConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        request_id: str = None,
+    ):
+        self.config = config
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateTrafficControlTaskConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateTrafficControlTaskConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateTrafficControlTaskConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetABMetricRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5064,6 +6198,7 @@ class GetABMetricGroupRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5201,6 +6336,7 @@ class GetCalculationJobRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5344,6 +6480,7 @@ class GetExperimentRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5536,6 +6673,7 @@ class GetExperimentGroupRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5883,6 +7021,7 @@ class GetFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6791,6 +7930,7 @@ class GetLaboratoryRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6965,6 +8105,7 @@ class GetLayerRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7097,6 +8238,7 @@ class GetResourceRuleRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7454,6 +8596,7 @@ class GetSubCrowdRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7574,6 +8717,7 @@ class GetTableMetaRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7801,6 +8945,875 @@ class GetTableMetaResponse(TeaModel):
         return self
 
 
+class GetTrafficControlTargetRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetTrafficControlTargetResponseBodySplitParts(TeaModel):
+    def __init__(
+        self,
+        set_values: List[int] = None,
+        time_points: List[int] = None,
+    ):
+        self.set_values = set_values
+        self.time_points = time_points
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.set_values is not None:
+            result['SetValues'] = self.set_values
+        if self.time_points is not None:
+            result['TimePoints'] = self.time_points
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SetValues') is not None:
+            self.set_values = m.get('SetValues')
+        if m.get('TimePoints') is not None:
+            self.time_points = m.get('TimePoints')
+        return self
+
+
+class GetTrafficControlTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        event: str = None,
+        gmt_create_time: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        name: str = None,
+        new_product_regulation: bool = None,
+        recall_name: str = None,
+        request_id: str = None,
+        split_parts: GetTrafficControlTargetResponseBodySplitParts = None,
+        start_time: str = None,
+        statis_period: str = None,
+        status: str = None,
+        tolerance_value: int = None,
+        traffic_control_target_id: str = None,
+        value: float = None,
+    ):
+        self.end_time = end_time
+        self.event = event
+        self.gmt_create_time = gmt_create_time
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.name = name
+        self.new_product_regulation = new_product_regulation
+        self.recall_name = recall_name
+        self.request_id = request_id
+        self.split_parts = split_parts
+        self.start_time = start_time
+        self.statis_period = statis_period
+        self.status = status
+        self.tolerance_value = tolerance_value
+        self.traffic_control_target_id = traffic_control_target_id
+        self.value = value
+
+    def validate(self):
+        if self.split_parts:
+            self.split_parts.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.new_product_regulation is not None:
+            result['NewProductRegulation'] = self.new_product_regulation
+        if self.recall_name is not None:
+            result['RecallName'] = self.recall_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.split_parts is not None:
+            result['SplitParts'] = self.split_parts.to_map()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_period is not None:
+            result['StatisPeriod'] = self.statis_period
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tolerance_value is not None:
+            result['ToleranceValue'] = self.tolerance_value
+        if self.traffic_control_target_id is not None:
+            result['TrafficControlTargetId'] = self.traffic_control_target_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NewProductRegulation') is not None:
+            self.new_product_regulation = m.get('NewProductRegulation')
+        if m.get('RecallName') is not None:
+            self.recall_name = m.get('RecallName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SplitParts') is not None:
+            temp_model = GetTrafficControlTargetResponseBodySplitParts()
+            self.split_parts = temp_model.from_map(m['SplitParts'])
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisPeriod') is not None:
+            self.statis_period = m.get('StatisPeriod')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ToleranceValue') is not None:
+            self.tolerance_value = m.get('ToleranceValue')
+        if m.get('TrafficControlTargetId') is not None:
+            self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTrafficControlTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTrafficControlTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTrafficControlTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTrafficControlTaskRequest(TeaModel):
+    def __init__(
+        self,
+        control_target_filter: str = None,
+        environment: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        version: str = None,
+    ):
+        self.control_target_filter = control_target_filter
+        self.environment = environment
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.control_target_filter is not None:
+            result['ControlTargetFilter'] = self.control_target_filter
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ControlTargetFilter') is not None:
+            self.control_target_filter = m.get('ControlTargetFilter')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts(TeaModel):
+    def __init__(
+        self,
+        set_points: List[int] = None,
+        time_points: List[int] = None,
+    ):
+        self.set_points = set_points
+        self.time_points = time_points
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.set_points is not None:
+            result['SetPoints'] = self.set_points
+        if self.time_points is not None:
+            result['TimePoints'] = self.time_points
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SetPoints') is not None:
+            self.set_points = m.get('SetPoints')
+        if m.get('TimePoints') is not None:
+            self.time_points = m.get('TimePoints')
+        return self
+
+
+class GetTrafficControlTaskResponseBodyTrafficControlTargets(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        event: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        name: str = None,
+        new_product_regulation: bool = None,
+        recall_name: str = None,
+        split_parts: GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts = None,
+        start_time: str = None,
+        statis_period: str = None,
+        status: str = None,
+        tolerance_value: int = None,
+        traffic_control_target_id: str = None,
+        value: float = None,
+    ):
+        self.end_time = end_time
+        self.event = event
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.name = name
+        self.new_product_regulation = new_product_regulation
+        self.recall_name = recall_name
+        self.split_parts = split_parts
+        self.start_time = start_time
+        self.statis_period = statis_period
+        self.status = status
+        self.tolerance_value = tolerance_value
+        self.traffic_control_target_id = traffic_control_target_id
+        self.value = value
+
+    def validate(self):
+        if self.split_parts:
+            self.split_parts.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.new_product_regulation is not None:
+            result['NewProductRegulation'] = self.new_product_regulation
+        if self.recall_name is not None:
+            result['RecallName'] = self.recall_name
+        if self.split_parts is not None:
+            result['SplitParts'] = self.split_parts.to_map()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_period is not None:
+            result['StatisPeriod'] = self.statis_period
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tolerance_value is not None:
+            result['ToleranceValue'] = self.tolerance_value
+        if self.traffic_control_target_id is not None:
+            result['TrafficControlTargetId'] = self.traffic_control_target_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NewProductRegulation') is not None:
+            self.new_product_regulation = m.get('NewProductRegulation')
+        if m.get('RecallName') is not None:
+            self.recall_name = m.get('RecallName')
+        if m.get('SplitParts') is not None:
+            temp_model = GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts()
+            self.split_parts = temp_model.from_map(m['SplitParts'])
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisPeriod') is not None:
+            self.statis_period = m.get('StatisPeriod')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ToleranceValue') is not None:
+            self.tolerance_value = m.get('ToleranceValue')
+        if m.get('TrafficControlTargetId') is not None:
+            self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTrafficControlTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        behavior_table_meta_id: str = None,
+        control_granularity: str = None,
+        control_logic: str = None,
+        control_type: str = None,
+        description: str = None,
+        end_time: str = None,
+        ever_published: bool = None,
+        execution_time: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        item_table_meta_id: str = None,
+        name: str = None,
+        prepub_status: str = None,
+        product_status: str = None,
+        request_id: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
+        start_time: str = None,
+        statis_behavior_condition_array: str = None,
+        statis_behavior_condition_express: str = None,
+        statis_behavior_condition_type: str = None,
+        traffic_control_targets: List[GetTrafficControlTaskResponseBodyTrafficControlTargets] = None,
+        traffic_control_task_id: str = None,
+        user_condition_array: str = None,
+        user_condition_express: str = None,
+        user_condition_type: str = None,
+        user_table_meta_id: str = None,
+    ):
+        self.behavior_table_meta_id = behavior_table_meta_id
+        self.control_granularity = control_granularity
+        self.control_logic = control_logic
+        self.control_type = control_type
+        self.description = description
+        self.end_time = end_time
+        self.ever_published = ever_published
+        self.execution_time = execution_time
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.item_table_meta_id = item_table_meta_id
+        self.name = name
+        self.prepub_status = prepub_status
+        self.product_status = product_status
+        self.request_id = request_id
+        self.scene_id = scene_id
+        self.scene_name = scene_name
+        self.start_time = start_time
+        self.statis_behavior_condition_array = statis_behavior_condition_array
+        self.statis_behavior_condition_express = statis_behavior_condition_express
+        self.statis_behavior_condition_type = statis_behavior_condition_type
+        self.traffic_control_targets = traffic_control_targets
+        self.traffic_control_task_id = traffic_control_task_id
+        self.user_condition_array = user_condition_array
+        self.user_condition_express = user_condition_express
+        self.user_condition_type = user_condition_type
+        self.user_table_meta_id = user_table_meta_id
+
+    def validate(self):
+        if self.traffic_control_targets:
+            for k in self.traffic_control_targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.behavior_table_meta_id is not None:
+            result['BehaviorTableMetaId'] = self.behavior_table_meta_id
+        if self.control_granularity is not None:
+            result['ControlGranularity'] = self.control_granularity
+        if self.control_logic is not None:
+            result['ControlLogic'] = self.control_logic
+        if self.control_type is not None:
+            result['ControlType'] = self.control_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.ever_published is not None:
+            result['EverPublished'] = self.ever_published
+        if self.execution_time is not None:
+            result['ExecutionTime'] = self.execution_time
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.item_table_meta_id is not None:
+            result['ItemTableMetaId'] = self.item_table_meta_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.prepub_status is not None:
+            result['PrepubStatus'] = self.prepub_status
+        if self.product_status is not None:
+            result['ProductStatus'] = self.product_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_behavior_condition_array is not None:
+            result['StatisBehaviorConditionArray'] = self.statis_behavior_condition_array
+        if self.statis_behavior_condition_express is not None:
+            result['StatisBehaviorConditionExpress'] = self.statis_behavior_condition_express
+        if self.statis_behavior_condition_type is not None:
+            result['StatisBehaviorConditionType'] = self.statis_behavior_condition_type
+        result['TrafficControlTargets'] = []
+        if self.traffic_control_targets is not None:
+            for k in self.traffic_control_targets:
+                result['TrafficControlTargets'].append(k.to_map() if k else None)
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
+        if self.user_condition_array is not None:
+            result['UserConditionArray'] = self.user_condition_array
+        if self.user_condition_express is not None:
+            result['UserConditionExpress'] = self.user_condition_express
+        if self.user_condition_type is not None:
+            result['UserConditionType'] = self.user_condition_type
+        if self.user_table_meta_id is not None:
+            result['UserTableMetaId'] = self.user_table_meta_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BehaviorTableMetaId') is not None:
+            self.behavior_table_meta_id = m.get('BehaviorTableMetaId')
+        if m.get('ControlGranularity') is not None:
+            self.control_granularity = m.get('ControlGranularity')
+        if m.get('ControlLogic') is not None:
+            self.control_logic = m.get('ControlLogic')
+        if m.get('ControlType') is not None:
+            self.control_type = m.get('ControlType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EverPublished') is not None:
+            self.ever_published = m.get('EverPublished')
+        if m.get('ExecutionTime') is not None:
+            self.execution_time = m.get('ExecutionTime')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('ItemTableMetaId') is not None:
+            self.item_table_meta_id = m.get('ItemTableMetaId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PrepubStatus') is not None:
+            self.prepub_status = m.get('PrepubStatus')
+        if m.get('ProductStatus') is not None:
+            self.product_status = m.get('ProductStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisBehaviorConditionArray') is not None:
+            self.statis_behavior_condition_array = m.get('StatisBehaviorConditionArray')
+        if m.get('StatisBehaviorConditionExpress') is not None:
+            self.statis_behavior_condition_express = m.get('StatisBehaviorConditionExpress')
+        if m.get('StatisBehaviorConditionType') is not None:
+            self.statis_behavior_condition_type = m.get('StatisBehaviorConditionType')
+        self.traffic_control_targets = []
+        if m.get('TrafficControlTargets') is not None:
+            for k in m.get('TrafficControlTargets'):
+                temp_model = GetTrafficControlTaskResponseBodyTrafficControlTargets()
+                self.traffic_control_targets.append(temp_model.from_map(k))
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
+        if m.get('UserConditionArray') is not None:
+            self.user_condition_array = m.get('UserConditionArray')
+        if m.get('UserConditionExpress') is not None:
+            self.user_condition_express = m.get('UserConditionExpress')
+        if m.get('UserConditionType') is not None:
+            self.user_condition_type = m.get('UserConditionType')
+        if m.get('UserTableMetaId') is not None:
+            self.user_table_meta_id = m.get('UserTableMetaId')
+        return self
+
+
+class GetTrafficControlTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTrafficControlTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTrafficControlTaskTrafficRequest(TeaModel):
+    def __init__(
+        self,
+        environment: str = None,
+        instance_id: str = None,
+    ):
+        self.environment = environment
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics(TeaModel):
+    def __init__(
+        self,
+        data: List[Dict[str, Any]] = None,
+        traffic_contorl_target_id: str = None,
+    ):
+        self.data = data
+        self.traffic_contorl_target_id = traffic_contorl_target_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.traffic_contorl_target_id is not None:
+            result['TrafficContorlTargetId'] = self.traffic_contorl_target_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('TrafficContorlTargetId') is not None:
+            self.traffic_contorl_target_id = m.get('TrafficContorlTargetId')
+        return self
+
+
+class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic(TeaModel):
+    def __init__(
+        self,
+        target_traffics: List[GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics] = None,
+        task_traffics: Dict[str, Any] = None,
+    ):
+        self.target_traffics = target_traffics
+        self.task_traffics = task_traffics
+
+    def validate(self):
+        if self.target_traffics:
+            for k in self.target_traffics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TargetTraffics'] = []
+        if self.target_traffics is not None:
+            for k in self.target_traffics:
+                result['TargetTraffics'].append(k.to_map() if k else None)
+        if self.task_traffics is not None:
+            result['TaskTraffics'] = self.task_traffics
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.target_traffics = []
+        if m.get('TargetTraffics') is not None:
+            for k in m.get('TargetTraffics'):
+                temp_model = GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics()
+                self.target_traffics.append(temp_model.from_map(k))
+        if m.get('TaskTraffics') is not None:
+            self.task_traffics = m.get('TaskTraffics')
+        return self
+
+
+class GetTrafficControlTaskTrafficResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        traffic_control_task_traffic: GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic = None,
+    ):
+        self.request_id = request_id
+        self.traffic_control_task_traffic = traffic_control_task_traffic
+
+    def validate(self):
+        if self.traffic_control_task_traffic:
+            self.traffic_control_task_traffic.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.traffic_control_task_traffic is not None:
+            result['TrafficControlTaskTraffic'] = self.traffic_control_task_traffic.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TrafficControlTaskTraffic') is not None:
+            temp_model = GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic()
+            self.traffic_control_task_traffic = temp_model.from_map(m['TrafficControlTaskTraffic'])
+        return self
+
+
+class GetTrafficControlTaskTrafficResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTrafficControlTaskTrafficResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTrafficControlTaskTrafficResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListABMetricGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -7812,6 +9825,7 @@ class ListABMetricGroupsRequest(TeaModel):
         scene_id: str = None,
         sort_by: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.order = order
         self.page_number = page_number
@@ -8033,6 +10047,7 @@ class ListABMetricsRequest(TeaModel):
         table_meta_id: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.name = name
         self.page_number = page_number
@@ -8298,9 +10313,11 @@ class ListCalculationJobsRequest(TeaModel):
         scene_id: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.scene_id = scene_id
         self.status = status
 
@@ -8502,6 +10519,7 @@ class ListCrowdUsersRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8610,6 +10628,7 @@ class ListCrowdsRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8798,6 +10817,7 @@ class ListExperimentGroupsRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.layer_id = layer_id
         self.region_id = region_id
@@ -9074,6 +11094,7 @@ class ListExperimentsRequest(TeaModel):
         status: str = None,
     ):
         self.experiment_group_id = experiment_group_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.query = query
         self.status = status
@@ -9331,6 +11352,7 @@ class ListFeatureConsistencyCheckJobConfigsRequest(TeaModel):
         page_size: str = None,
         sort_by: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.order = order
         self.page_number = page_number
@@ -9742,9 +11764,13 @@ class ListFeatureConsistencyCheckJobFeatureReportsRequest(TeaModel):
         log_request_id: str = None,
         log_user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.log_item_id = log_item_id
+        # This parameter is required.
         self.log_request_id = log_request_id
+        # This parameter is required.
         self.log_user_id = log_user_id
 
     def validate(self):
@@ -10151,6 +12177,7 @@ class ListFeatureConsistencyCheckJobsRequest(TeaModel):
         sort_by: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.order = order
         self.page_number = page_number
@@ -10970,7 +12997,9 @@ class ListLaboratoriesRequest(TeaModel):
         status: str = None,
     ):
         self.environment = environment
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.scene_id = scene_id
         self.status = status
 
@@ -11206,7 +13235,9 @@ class ListLayersRequest(TeaModel):
         instance_id: str = None,
         laboratory_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.laboratory_id = laboratory_id
 
     def validate(self):
@@ -11396,10 +13427,12 @@ class ListParamsRequest(TeaModel):
         scene_id: str = None,
     ):
         self.environment = environment
+        # This parameter is required.
         self.instance_id = instance_id
         self.name = name
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -11595,6 +13628,7 @@ class ListResourceRulesRequest(TeaModel):
         sort_by: str = None,
     ):
         self.all = all
+        # This parameter is required.
         self.instance_id = instance_id
         self.order = order
         self.page_number = page_number
@@ -12080,6 +14114,7 @@ class ListSubCrowdsRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -12252,7 +14287,9 @@ class ListTableMetasRequest(TeaModel):
         page_size: int = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.module = module
         self.name = name
         self.page_number = page_number
@@ -12545,11 +14582,774 @@ class ListTableMetasResponse(TeaModel):
         return self
 
 
+class ListTrafficControlTargetTrafficHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        environment: str = None,
+        experiment_group_id: str = None,
+        experiment_id: str = None,
+        instance_id: str = None,
+        item_id: str = None,
+        start_time: str = None,
+        threshold: str = None,
+    ):
+        self.end_time = end_time
+        self.environment = environment
+        self.experiment_group_id = experiment_group_id
+        self.experiment_id = experiment_id
+        self.instance_id = instance_id
+        self.item_id = item_id
+        self.start_time = start_time
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.experiment_group_id is not None:
+            result['ExperimentGroupId'] = self.experiment_group_id
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('ExperimentGroupId') is not None:
+            self.experiment_group_id = m.get('ExperimentGroupId')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories(TeaModel):
+    def __init__(
+        self,
+        experiment_id: str = None,
+        item_id: str = None,
+        record_time: str = None,
+        traffic_control_target_aim_traffic: str = None,
+        traffic_control_target_traffic: str = None,
+        traffic_control_task_traffic: str = None,
+    ):
+        self.experiment_id = experiment_id
+        self.item_id = item_id
+        self.record_time = record_time
+        self.traffic_control_target_aim_traffic = traffic_control_target_aim_traffic
+        self.traffic_control_target_traffic = traffic_control_target_traffic
+        self.traffic_control_task_traffic = traffic_control_task_traffic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+        if self.record_time is not None:
+            result['RecordTime'] = self.record_time
+        if self.traffic_control_target_aim_traffic is not None:
+            result['TrafficControlTargetAimTraffic'] = self.traffic_control_target_aim_traffic
+        if self.traffic_control_target_traffic is not None:
+            result['TrafficControlTargetTraffic'] = self.traffic_control_target_traffic
+        if self.traffic_control_task_traffic is not None:
+            result['TrafficControlTaskTraffic'] = self.traffic_control_task_traffic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+        if m.get('RecordTime') is not None:
+            self.record_time = m.get('RecordTime')
+        if m.get('TrafficControlTargetAimTraffic') is not None:
+            self.traffic_control_target_aim_traffic = m.get('TrafficControlTargetAimTraffic')
+        if m.get('TrafficControlTargetTraffic') is not None:
+            self.traffic_control_target_traffic = m.get('TrafficControlTargetTraffic')
+        if m.get('TrafficControlTaskTraffic') is not None:
+            self.traffic_control_task_traffic = m.get('TrafficControlTaskTraffic')
+        return self
+
+
+class ListTrafficControlTargetTrafficHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        total_count: str = None,
+        traffic_control_task_traffic_histories: List[ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories] = None,
+    ):
+        self.request_id = request_id
+        self.total_count = total_count
+        self.traffic_control_task_traffic_histories = traffic_control_task_traffic_histories
+
+    def validate(self):
+        if self.traffic_control_task_traffic_histories:
+            for k in self.traffic_control_task_traffic_histories:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['TrafficControlTaskTrafficHistories'] = []
+        if self.traffic_control_task_traffic_histories is not None:
+            for k in self.traffic_control_task_traffic_histories:
+                result['TrafficControlTaskTrafficHistories'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.traffic_control_task_traffic_histories = []
+        if m.get('TrafficControlTaskTrafficHistories') is not None:
+            for k in m.get('TrafficControlTaskTrafficHistories'):
+                temp_model = ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories()
+                self.traffic_control_task_traffic_histories.append(temp_model.from_map(k))
+        return self
+
+
+class ListTrafficControlTargetTrafficHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTrafficControlTargetTrafficHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTrafficControlTargetTrafficHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTrafficControlTasksRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        control_target_filter: str = None,
+        environment: str = None,
+        instance_id: str = None,
+        name: str = None,
+        order: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        scene_id: str = None,
+        sort_by: str = None,
+        status: str = None,
+        traffic_control_task_id: str = None,
+        version: str = None,
+    ):
+        self.all = all
+        self.control_target_filter = control_target_filter
+        self.environment = environment
+        self.instance_id = instance_id
+        self.name = name
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.scene_id = scene_id
+        self.sort_by = sort_by
+        self.status = status
+        self.traffic_control_task_id = traffic_control_task_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.control_target_filter is not None:
+            result['ControlTargetFilter'] = self.control_target_filter
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ControlTargetFilter') is not None:
+            self.control_target_filter = m.get('ControlTargetFilter')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts(TeaModel):
+    def __init__(
+        self,
+        set_values: List[int] = None,
+        time_points: List[int] = None,
+    ):
+        self.set_values = set_values
+        self.time_points = time_points
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.set_values is not None:
+            result['SetValues'] = self.set_values
+        if self.time_points is not None:
+            result['TimePoints'] = self.time_points
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SetValues') is not None:
+            self.set_values = m.get('SetValues')
+        if m.get('TimePoints') is not None:
+            self.time_points = m.get('TimePoints')
+        return self
+
+
+class ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        event: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        name: str = None,
+        new_product_regulation: bool = None,
+        recall_name: str = None,
+        split_parts: ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts = None,
+        start_time: str = None,
+        statis_period: str = None,
+        status: str = None,
+        tolerance_value: int = None,
+        traffic_control_target_id: str = None,
+        value: float = None,
+    ):
+        self.end_time = end_time
+        self.event = event
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.name = name
+        self.new_product_regulation = new_product_regulation
+        self.recall_name = recall_name
+        self.split_parts = split_parts
+        self.start_time = start_time
+        self.statis_period = statis_period
+        self.status = status
+        self.tolerance_value = tolerance_value
+        self.traffic_control_target_id = traffic_control_target_id
+        self.value = value
+
+    def validate(self):
+        if self.split_parts:
+            self.split_parts.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.new_product_regulation is not None:
+            result['NewProductRegulation'] = self.new_product_regulation
+        if self.recall_name is not None:
+            result['RecallName'] = self.recall_name
+        if self.split_parts is not None:
+            result['SplitParts'] = self.split_parts.to_map()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_period is not None:
+            result['StatisPeriod'] = self.statis_period
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tolerance_value is not None:
+            result['ToleranceValue'] = self.tolerance_value
+        if self.traffic_control_target_id is not None:
+            result['TrafficControlTargetId'] = self.traffic_control_target_id
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NewProductRegulation') is not None:
+            self.new_product_regulation = m.get('NewProductRegulation')
+        if m.get('RecallName') is not None:
+            self.recall_name = m.get('RecallName')
+        if m.get('SplitParts') is not None:
+            temp_model = ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts()
+            self.split_parts = temp_model.from_map(m['SplitParts'])
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisPeriod') is not None:
+            self.statis_period = m.get('StatisPeriod')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ToleranceValue') is not None:
+            self.tolerance_value = m.get('ToleranceValue')
+        if m.get('TrafficControlTargetId') is not None:
+            self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
+    def __init__(
+        self,
+        behavior_table_meta_id: str = None,
+        control_granularity: str = None,
+        control_logic: str = None,
+        control_type: str = None,
+        description: str = None,
+        end_time: str = None,
+        ever_published: bool = None,
+        execution_time: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        item_table_meta_id: str = None,
+        name: str = None,
+        prepub_status: str = None,
+        product_status: str = None,
+        scene_id: str = None,
+        scene_name: str = None,
+        start_time: str = None,
+        statis_bahavior_condition_express: str = None,
+        statis_behavior_condition_array: str = None,
+        statis_behavior_condition_type: str = None,
+        traffic_control_targets: List[ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets] = None,
+        traffic_control_task_id: str = None,
+        user_condition_array: str = None,
+        user_condition_express: str = None,
+        user_condition_type: str = None,
+        user_table_meta_id: str = None,
+    ):
+        self.behavior_table_meta_id = behavior_table_meta_id
+        self.control_granularity = control_granularity
+        self.control_logic = control_logic
+        self.control_type = control_type
+        self.description = description
+        self.end_time = end_time
+        self.ever_published = ever_published
+        self.execution_time = execution_time
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.item_table_meta_id = item_table_meta_id
+        self.name = name
+        self.prepub_status = prepub_status
+        self.product_status = product_status
+        self.scene_id = scene_id
+        self.scene_name = scene_name
+        self.start_time = start_time
+        self.statis_bahavior_condition_express = statis_bahavior_condition_express
+        self.statis_behavior_condition_array = statis_behavior_condition_array
+        self.statis_behavior_condition_type = statis_behavior_condition_type
+        self.traffic_control_targets = traffic_control_targets
+        self.traffic_control_task_id = traffic_control_task_id
+        self.user_condition_array = user_condition_array
+        self.user_condition_express = user_condition_express
+        self.user_condition_type = user_condition_type
+        self.user_table_meta_id = user_table_meta_id
+
+    def validate(self):
+        if self.traffic_control_targets:
+            for k in self.traffic_control_targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.behavior_table_meta_id is not None:
+            result['BehaviorTableMetaId'] = self.behavior_table_meta_id
+        if self.control_granularity is not None:
+            result['ControlGranularity'] = self.control_granularity
+        if self.control_logic is not None:
+            result['ControlLogic'] = self.control_logic
+        if self.control_type is not None:
+            result['ControlType'] = self.control_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.ever_published is not None:
+            result['EverPublished'] = self.ever_published
+        if self.execution_time is not None:
+            result['ExecutionTime'] = self.execution_time
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.item_table_meta_id is not None:
+            result['ItemTableMetaId'] = self.item_table_meta_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.prepub_status is not None:
+            result['PrepubStatus'] = self.prepub_status
+        if self.product_status is not None:
+            result['ProductStatus'] = self.product_status
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_bahavior_condition_express is not None:
+            result['StatisBahaviorConditionExpress'] = self.statis_bahavior_condition_express
+        if self.statis_behavior_condition_array is not None:
+            result['StatisBehaviorConditionArray'] = self.statis_behavior_condition_array
+        if self.statis_behavior_condition_type is not None:
+            result['StatisBehaviorConditionType'] = self.statis_behavior_condition_type
+        result['TrafficControlTargets'] = []
+        if self.traffic_control_targets is not None:
+            for k in self.traffic_control_targets:
+                result['TrafficControlTargets'].append(k.to_map() if k else None)
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
+        if self.user_condition_array is not None:
+            result['UserConditionArray'] = self.user_condition_array
+        if self.user_condition_express is not None:
+            result['UserConditionExpress'] = self.user_condition_express
+        if self.user_condition_type is not None:
+            result['UserConditionType'] = self.user_condition_type
+        if self.user_table_meta_id is not None:
+            result['UserTableMetaId'] = self.user_table_meta_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BehaviorTableMetaId') is not None:
+            self.behavior_table_meta_id = m.get('BehaviorTableMetaId')
+        if m.get('ControlGranularity') is not None:
+            self.control_granularity = m.get('ControlGranularity')
+        if m.get('ControlLogic') is not None:
+            self.control_logic = m.get('ControlLogic')
+        if m.get('ControlType') is not None:
+            self.control_type = m.get('ControlType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EverPublished') is not None:
+            self.ever_published = m.get('EverPublished')
+        if m.get('ExecutionTime') is not None:
+            self.execution_time = m.get('ExecutionTime')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('ItemTableMetaId') is not None:
+            self.item_table_meta_id = m.get('ItemTableMetaId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PrepubStatus') is not None:
+            self.prepub_status = m.get('PrepubStatus')
+        if m.get('ProductStatus') is not None:
+            self.product_status = m.get('ProductStatus')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisBahaviorConditionExpress') is not None:
+            self.statis_bahavior_condition_express = m.get('StatisBahaviorConditionExpress')
+        if m.get('StatisBehaviorConditionArray') is not None:
+            self.statis_behavior_condition_array = m.get('StatisBehaviorConditionArray')
+        if m.get('StatisBehaviorConditionType') is not None:
+            self.statis_behavior_condition_type = m.get('StatisBehaviorConditionType')
+        self.traffic_control_targets = []
+        if m.get('TrafficControlTargets') is not None:
+            for k in m.get('TrafficControlTargets'):
+                temp_model = ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets()
+                self.traffic_control_targets.append(temp_model.from_map(k))
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
+        if m.get('UserConditionArray') is not None:
+            self.user_condition_array = m.get('UserConditionArray')
+        if m.get('UserConditionExpress') is not None:
+            self.user_condition_express = m.get('UserConditionExpress')
+        if m.get('UserConditionType') is not None:
+            self.user_condition_type = m.get('UserConditionType')
+        if m.get('UserTableMetaId') is not None:
+            self.user_table_meta_id = m.get('UserTableMetaId')
+        return self
+
+
+class ListTrafficControlTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        total_count: str = None,
+        traffic_control_tasks: List[ListTrafficControlTasksResponseBodyTrafficControlTasks] = None,
+    ):
+        self.request_id = request_id
+        self.total_count = total_count
+        self.traffic_control_tasks = traffic_control_tasks
+
+    def validate(self):
+        if self.traffic_control_tasks:
+            for k in self.traffic_control_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['TrafficControlTasks'] = []
+        if self.traffic_control_tasks is not None:
+            for k in self.traffic_control_tasks:
+                result['TrafficControlTasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.traffic_control_tasks = []
+        if m.get('TrafficControlTasks') is not None:
+            for k in m.get('TrafficControlTasks'):
+                temp_model = ListTrafficControlTasksResponseBodyTrafficControlTasks()
+                self.traffic_control_tasks.append(temp_model.from_map(k))
+        return self
+
+
+class ListTrafficControlTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTrafficControlTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTrafficControlTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class OfflineExperimentRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -12646,6 +15446,7 @@ class OfflineExperimentGroupRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -12742,6 +15543,7 @@ class OfflineLaboratoryRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -12934,6 +15736,7 @@ class OnlineExperimentGroupRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -13030,6 +15833,7 @@ class OnlineLaboratoryRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -13223,7 +16027,9 @@ class PushResourceRuleRequest(TeaModel):
         instance_id: str = None,
         metric_info: Dict[str, Any] = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.metric_info = metric_info
 
     def validate(self):
@@ -13256,7 +16062,9 @@ class PushResourceRuleShrinkRequest(TeaModel):
         instance_id: str = None,
         metric_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.metric_info_shrink = metric_info_shrink
 
     def validate(self):
@@ -13458,6 +16266,107 @@ class PushResourceRuleResponse(TeaModel):
         return self
 
 
+class ReleaseTrafficControlTaskRequest(TeaModel):
+    def __init__(
+        self,
+        environment: str = None,
+        instance_id: str = None,
+    ):
+        self.environment = environment
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ReleaseTrafficControlTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReleaseTrafficControlTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReleaseTrafficControlTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReleaseTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReportABMetricGroupRequest(TeaModel):
     def __init__(
         self,
@@ -13472,12 +16381,16 @@ class ReportABMetricGroupRequest(TeaModel):
         start_date: str = None,
         time_statistics_method: str = None,
     ):
+        # This parameter is required.
         self.base_experiment_id = base_experiment_id
         self.dimension_fields = dimension_fields
         self.end_date = end_date
         self.experiment_group_id = experiment_group_id
+        # This parameter is required.
         self.experiment_ids = experiment_ids
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.report_type = report_type
         self.scene_id = scene_id
         self.start_date = start_date
@@ -13627,6 +16540,517 @@ class ReportABMetricGroupResponse(TeaModel):
         return self
 
 
+class SplitTrafficControlTargetRequest(TeaModel):
+    def __init__(
+        self,
+        environment: str = None,
+        instance_id: str = None,
+        set_values: List[int] = None,
+        time_points: List[int] = None,
+    ):
+        self.environment = environment
+        self.instance_id = instance_id
+        self.set_values = set_values
+        self.time_points = time_points
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.set_values is not None:
+            result['SetValues'] = self.set_values
+        if self.time_points is not None:
+            result['TimePoints'] = self.time_points
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SetValues') is not None:
+            self.set_values = m.get('SetValues')
+        if m.get('TimePoints') is not None:
+            self.time_points = m.get('TimePoints')
+        return self
+
+
+class SplitTrafficControlTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SplitTrafficControlTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SplitTrafficControlTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SplitTrafficControlTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartTrafficControlTargetRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class StartTrafficControlTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartTrafficControlTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartTrafficControlTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartTrafficControlTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartTrafficControlTaskRequest(TeaModel):
+    def __init__(
+        self,
+        environment: str = None,
+        instance_id: str = None,
+    ):
+        self.environment = environment
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class StartTrafficControlTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartTrafficControlTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartTrafficControlTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopTrafficControlTargetRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class StopTrafficControlTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopTrafficControlTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopTrafficControlTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopTrafficControlTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopTrafficControlTaskRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        environment: str = None,
+        instance_id: str = None,
+    ):
+        self.region_id = region_id
+        self.environment = environment
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class StopTrafficControlTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopTrafficControlTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopTrafficControlTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SyncFeatureConsistencyCheckJobReplayLogRequest(TeaModel):
     def __init__(
         self,
@@ -13641,15 +17065,25 @@ class SyncFeatureConsistencyCheckJobReplayLogRequest(TeaModel):
         raw_features: str = None,
         scene_name: str = None,
     ):
+        # This parameter is required.
         self.context_features = context_features
+        # This parameter is required.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
+        # This parameter is required.
         self.generated_features = generated_features
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.log_item_id = log_item_id
+        # This parameter is required.
         self.log_request_id = log_request_id
+        # This parameter is required.
         self.log_request_time = log_request_time
+        # This parameter is required.
         self.log_user_id = log_user_id
+        # This parameter is required.
         self.raw_features = raw_features
+        # This parameter is required.
         self.scene_name = scene_name
 
     def validate(self):
@@ -13781,6 +17215,7 @@ class TerminateFeatureConsistencyCheckJobRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -13888,18 +17323,26 @@ class UpdateABMetricRequest(TeaModel):
         table_meta_id: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.definition = definition
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
         self.left_metric_id = left_metric_id
+        # This parameter is required.
         self.name = name
         self.operator = operator
+        # This parameter is required.
         self.realtime = realtime
         self.result_resource_id = result_resource_id
         self.right_metric_id = right_metric_id
+        # This parameter is required.
         self.scene_id = scene_id
         self.statistics_cycle = statistics_cycle
+        # This parameter is required.
         self.table_meta_id = table_meta_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -14048,11 +17491,17 @@ class UpdateABMetricGroupRequest(TeaModel):
         realtime: bool = None,
         scene_id: str = None,
     ):
+        # This parameter is required.
         self.abmetric_ids = abmetric_ids
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.realtime = realtime
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -14170,8 +17619,11 @@ class UpdateCrowdRequest(TeaModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -14286,10 +17738,14 @@ class UpdateExperimentRequest(TeaModel):
         self.config = config
         self.debug_crowd_id = debug_crowd_id
         self.debug_users = debug_users
+        # This parameter is required.
         self.description = description
         self.flow_percent = flow_percent
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -14433,12 +17889,16 @@ class UpdateExperimentGroupRequest(TeaModel):
         self.crowd_target_type = crowd_target_type
         self.debug_crowd_id = debug_crowd_id
         self.debug_users = debug_users
+        # This parameter is required.
         self.description = description
         self.distribution_time_duration = distribution_time_duration
         self.distribution_type = distribution_type
         self.filter = filter
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.layer_id = layer_id
+        # This parameter is required.
         self.name = name
         self.need_aa = need_aa
         self.random_flow = random_flow
@@ -14625,11 +18085,14 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         user_table_partition_field_format: str = None,
         workflow_name: str = None,
     ):
+        # This parameter is required.
         self.compare_feature = compare_feature
+        # This parameter is required.
         self.eas_service_name = eas_service_name
         self.easy_rec_package_path = easy_rec_package_path
         self.easy_rec_version = easy_rec_version
         self.feature_display_exclude = feature_display_exclude
+        # This parameter is required.
         self.feature_landing_resource_id = feature_landing_resource_id
         self.feature_priority = feature_priority
         self.feature_store_item_id = feature_store_item_id
@@ -14639,22 +18102,36 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(TeaModel):
         self.feature_store_seq_feature_view = feature_store_seq_feature_view
         self.feature_store_user_id = feature_store_user_id
         self.fg_jar_version = fg_jar_version
+        # This parameter is required.
         self.fg_json_file_name = fg_json_file_name
+        # This parameter is required.
         self.generate_zip = generate_zip
+        # This parameter is required.
         self.instance_id = instance_id
         self.is_use_feature_store = is_use_feature_store
+        # This parameter is required.
         self.item_id_field = item_id_field
+        # This parameter is required.
         self.item_table = item_table
+        # This parameter is required.
         self.item_table_partition_field = item_table_partition_field
+        # This parameter is required.
         self.item_table_partition_field_format = item_table_partition_field_format
+        # This parameter is required.
         self.name = name
         self.oss_resource_id = oss_resource_id
+        # This parameter is required.
         self.sample_rate = sample_rate
+        # This parameter is required.
         self.scene_id = scene_id
         self.service_id = service_id
+        # This parameter is required.
         self.user_id_field = user_id_field
+        # This parameter is required.
         self.user_table = user_table
+        # This parameter is required.
         self.user_table_partition_field = user_table_partition_field
+        # This parameter is required.
         self.user_table_partition_field_format = user_table_partition_field_format
         self.workflow_name = workflow_name
 
@@ -14987,6 +18464,7 @@ class UpdateLaboratoryRequest(TeaModel):
         type: str = None,
     ):
         self.bucket_count = bucket_count
+        # This parameter is required.
         self.bucket_type = bucket_type
         self.buckets = buckets
         self.debug_crowd_id = debug_crowd_id
@@ -14994,8 +18472,11 @@ class UpdateLaboratoryRequest(TeaModel):
         self.description = description
         self.environment = environment
         self.filter = filter
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -15134,8 +18615,11 @@ class UpdateLayerRequest(TeaModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -15349,11 +18833,15 @@ class UpdateResourceRuleRequest(TeaModel):
         rule_computing_definition: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.metric_operation_type = metric_operation_type
         self.metric_pull_info = metric_pull_info
         self.metric_pull_period = metric_pull_period
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.rule_computing_definition = rule_computing_definition
 
     def validate(self):
@@ -15479,9 +18967,11 @@ class UpdateResourceRuleItemRequest(TeaModel):
         value: float = None,
     ):
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
         self.max_value = max_value
         self.min_value = min_value
+        # This parameter is required.
         self.name = name
         self.value = value
 
@@ -15759,10 +19249,15 @@ class UpdateTableMetaRequestFields(TeaModel):
         type: str = None,
     ):
         self.data_type = data_type
+        # This parameter is required.
         self.is_dimension_field = is_dimension_field
+        # This parameter is required.
         self.is_partition_field = is_partition_field
+        # This parameter is required.
         self.meaning = meaning
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -15817,11 +19312,17 @@ class UpdateTableMetaRequest(TeaModel):
         table_name: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.fields = fields
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.module = module
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -15940,6 +19441,691 @@ class UpdateTableMetaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateTableMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTrafficControlTargetRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        event: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        name: str = None,
+        new_product_regulation: bool = None,
+        recall_name: str = None,
+        start_time: str = None,
+        statis_period: str = None,
+        status: str = None,
+        tolerance_value: int = None,
+        value: float = None,
+        new_param_3: str = None,
+    ):
+        self.end_time = end_time
+        self.event = event
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.name = name
+        self.new_product_regulation = new_product_regulation
+        self.recall_name = recall_name
+        self.start_time = start_time
+        self.statis_period = statis_period
+        self.status = status
+        self.tolerance_value = tolerance_value
+        self.value = value
+        self.new_param_3 = new_param_3
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.new_product_regulation is not None:
+            result['NewProductRegulation'] = self.new_product_regulation
+        if self.recall_name is not None:
+            result['RecallName'] = self.recall_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_period is not None:
+            result['StatisPeriod'] = self.statis_period
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tolerance_value is not None:
+            result['ToleranceValue'] = self.tolerance_value
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.new_param_3 is not None:
+            result['new-param-3'] = self.new_param_3
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NewProductRegulation') is not None:
+            self.new_product_regulation = m.get('NewProductRegulation')
+        if m.get('RecallName') is not None:
+            self.recall_name = m.get('RecallName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisPeriod') is not None:
+            self.statis_period = m.get('StatisPeriod')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ToleranceValue') is not None:
+            self.tolerance_value = m.get('ToleranceValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('new-param-3') is not None:
+            self.new_param_3 = m.get('new-param-3')
+        return self
+
+
+class UpdateTrafficControlTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateTrafficControlTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTrafficControlTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTrafficControlTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTrafficControlTaskRequestTrafficControlTargets(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        event: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        name: str = None,
+        new_product_regulation: bool = None,
+        recall_name: str = None,
+        start_time: str = None,
+        statis_period: str = None,
+        status: str = None,
+        tolerance_value: int = None,
+        value: float = None,
+    ):
+        self.end_time = end_time
+        self.event = event
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.name = name
+        self.new_product_regulation = new_product_regulation
+        self.recall_name = recall_name
+        self.start_time = start_time
+        self.statis_period = statis_period
+        self.status = status
+        self.tolerance_value = tolerance_value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.new_product_regulation is not None:
+            result['NewProductRegulation'] = self.new_product_regulation
+        if self.recall_name is not None:
+            result['RecallName'] = self.recall_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_period is not None:
+            result['StatisPeriod'] = self.statis_period
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tolerance_value is not None:
+            result['ToleranceValue'] = self.tolerance_value
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NewProductRegulation') is not None:
+            self.new_product_regulation = m.get('NewProductRegulation')
+        if m.get('RecallName') is not None:
+            self.recall_name = m.get('RecallName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisPeriod') is not None:
+            self.statis_period = m.get('StatisPeriod')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ToleranceValue') is not None:
+            self.tolerance_value = m.get('ToleranceValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateTrafficControlTaskRequest(TeaModel):
+    def __init__(
+        self,
+        behavior_table_meta_id: str = None,
+        control_granularity: str = None,
+        control_logic: str = None,
+        control_type: str = None,
+        description: str = None,
+        end_time: str = None,
+        execution_time: str = None,
+        instance_id: str = None,
+        item_condition_array: str = None,
+        item_condition_express: str = None,
+        item_condition_type: str = None,
+        item_table_meta_id: str = None,
+        name: str = None,
+        scene_id: str = None,
+        start_time: str = None,
+        statis_baeavior_condition_array: str = None,
+        statis_behavior_condition_express: str = None,
+        statis_behavior_condition_type: str = None,
+        traffic_control_targets: List[UpdateTrafficControlTaskRequestTrafficControlTargets] = None,
+        user_condition_array: str = None,
+        user_condition_express: str = None,
+        user_condition_type: str = None,
+        user_table_meta_id: str = None,
+    ):
+        self.behavior_table_meta_id = behavior_table_meta_id
+        self.control_granularity = control_granularity
+        self.control_logic = control_logic
+        self.control_type = control_type
+        self.description = description
+        self.end_time = end_time
+        self.execution_time = execution_time
+        self.instance_id = instance_id
+        self.item_condition_array = item_condition_array
+        self.item_condition_express = item_condition_express
+        self.item_condition_type = item_condition_type
+        self.item_table_meta_id = item_table_meta_id
+        self.name = name
+        self.scene_id = scene_id
+        self.start_time = start_time
+        self.statis_baeavior_condition_array = statis_baeavior_condition_array
+        self.statis_behavior_condition_express = statis_behavior_condition_express
+        self.statis_behavior_condition_type = statis_behavior_condition_type
+        self.traffic_control_targets = traffic_control_targets
+        self.user_condition_array = user_condition_array
+        self.user_condition_express = user_condition_express
+        self.user_condition_type = user_condition_type
+        self.user_table_meta_id = user_table_meta_id
+
+    def validate(self):
+        if self.traffic_control_targets:
+            for k in self.traffic_control_targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.behavior_table_meta_id is not None:
+            result['BehaviorTableMetaId'] = self.behavior_table_meta_id
+        if self.control_granularity is not None:
+            result['ControlGranularity'] = self.control_granularity
+        if self.control_logic is not None:
+            result['ControlLogic'] = self.control_logic
+        if self.control_type is not None:
+            result['ControlType'] = self.control_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execution_time is not None:
+            result['ExecutionTime'] = self.execution_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.item_condition_array is not None:
+            result['ItemConditionArray'] = self.item_condition_array
+        if self.item_condition_express is not None:
+            result['ItemConditionExpress'] = self.item_condition_express
+        if self.item_condition_type is not None:
+            result['ItemConditionType'] = self.item_condition_type
+        if self.item_table_meta_id is not None:
+            result['ItemTableMetaId'] = self.item_table_meta_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statis_baeavior_condition_array is not None:
+            result['StatisBaeaviorConditionArray'] = self.statis_baeavior_condition_array
+        if self.statis_behavior_condition_express is not None:
+            result['StatisBehaviorConditionExpress'] = self.statis_behavior_condition_express
+        if self.statis_behavior_condition_type is not None:
+            result['StatisBehaviorConditionType'] = self.statis_behavior_condition_type
+        result['TrafficControlTargets'] = []
+        if self.traffic_control_targets is not None:
+            for k in self.traffic_control_targets:
+                result['TrafficControlTargets'].append(k.to_map() if k else None)
+        if self.user_condition_array is not None:
+            result['UserConditionArray'] = self.user_condition_array
+        if self.user_condition_express is not None:
+            result['UserConditionExpress'] = self.user_condition_express
+        if self.user_condition_type is not None:
+            result['UserConditionType'] = self.user_condition_type
+        if self.user_table_meta_id is not None:
+            result['UserTableMetaId'] = self.user_table_meta_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BehaviorTableMetaId') is not None:
+            self.behavior_table_meta_id = m.get('BehaviorTableMetaId')
+        if m.get('ControlGranularity') is not None:
+            self.control_granularity = m.get('ControlGranularity')
+        if m.get('ControlLogic') is not None:
+            self.control_logic = m.get('ControlLogic')
+        if m.get('ControlType') is not None:
+            self.control_type = m.get('ControlType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecutionTime') is not None:
+            self.execution_time = m.get('ExecutionTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ItemConditionArray') is not None:
+            self.item_condition_array = m.get('ItemConditionArray')
+        if m.get('ItemConditionExpress') is not None:
+            self.item_condition_express = m.get('ItemConditionExpress')
+        if m.get('ItemConditionType') is not None:
+            self.item_condition_type = m.get('ItemConditionType')
+        if m.get('ItemTableMetaId') is not None:
+            self.item_table_meta_id = m.get('ItemTableMetaId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatisBaeaviorConditionArray') is not None:
+            self.statis_baeavior_condition_array = m.get('StatisBaeaviorConditionArray')
+        if m.get('StatisBehaviorConditionExpress') is not None:
+            self.statis_behavior_condition_express = m.get('StatisBehaviorConditionExpress')
+        if m.get('StatisBehaviorConditionType') is not None:
+            self.statis_behavior_condition_type = m.get('StatisBehaviorConditionType')
+        self.traffic_control_targets = []
+        if m.get('TrafficControlTargets') is not None:
+            for k in m.get('TrafficControlTargets'):
+                temp_model = UpdateTrafficControlTaskRequestTrafficControlTargets()
+                self.traffic_control_targets.append(temp_model.from_map(k))
+        if m.get('UserConditionArray') is not None:
+            self.user_condition_array = m.get('UserConditionArray')
+        if m.get('UserConditionExpress') is not None:
+            self.user_condition_express = m.get('UserConditionExpress')
+        if m.get('UserConditionType') is not None:
+            self.user_condition_type = m.get('UserConditionType')
+        if m.get('UserTableMetaId') is not None:
+            self.user_table_meta_id = m.get('UserTableMetaId')
+        return self
+
+
+class UpdateTrafficControlTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateTrafficControlTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTrafficControlTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTrafficControlTaskTrafficRequestTraffics(TeaModel):
+    def __init__(
+        self,
+        item_or_experiment_id: str = None,
+        record_time: str = None,
+        traffic_control_target_aim_traffic: float = None,
+        traffic_control_target_id: str = None,
+        traffic_control_target_traffic: int = None,
+        traffic_control_task_traffic: int = None,
+    ):
+        self.item_or_experiment_id = item_or_experiment_id
+        self.record_time = record_time
+        self.traffic_control_target_aim_traffic = traffic_control_target_aim_traffic
+        self.traffic_control_target_id = traffic_control_target_id
+        self.traffic_control_target_traffic = traffic_control_target_traffic
+        self.traffic_control_task_traffic = traffic_control_task_traffic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.item_or_experiment_id is not None:
+            result['ItemOrExperimentId'] = self.item_or_experiment_id
+        if self.record_time is not None:
+            result['RecordTime'] = self.record_time
+        if self.traffic_control_target_aim_traffic is not None:
+            result['TrafficControlTargetAimTraffic'] = self.traffic_control_target_aim_traffic
+        if self.traffic_control_target_id is not None:
+            result['TrafficControlTargetId'] = self.traffic_control_target_id
+        if self.traffic_control_target_traffic is not None:
+            result['TrafficControlTargetTraffic'] = self.traffic_control_target_traffic
+        if self.traffic_control_task_traffic is not None:
+            result['TrafficControlTaskTraffic'] = self.traffic_control_task_traffic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ItemOrExperimentId') is not None:
+            self.item_or_experiment_id = m.get('ItemOrExperimentId')
+        if m.get('RecordTime') is not None:
+            self.record_time = m.get('RecordTime')
+        if m.get('TrafficControlTargetAimTraffic') is not None:
+            self.traffic_control_target_aim_traffic = m.get('TrafficControlTargetAimTraffic')
+        if m.get('TrafficControlTargetId') is not None:
+            self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        if m.get('TrafficControlTargetTraffic') is not None:
+            self.traffic_control_target_traffic = m.get('TrafficControlTargetTraffic')
+        if m.get('TrafficControlTaskTraffic') is not None:
+            self.traffic_control_task_traffic = m.get('TrafficControlTaskTraffic')
+        return self
+
+
+class UpdateTrafficControlTaskTrafficRequest(TeaModel):
+    def __init__(
+        self,
+        environment: str = None,
+        instance_id: str = None,
+        traffics: List[UpdateTrafficControlTaskTrafficRequestTraffics] = None,
+        new_param_3: str = None,
+    ):
+        self.environment = environment
+        self.instance_id = instance_id
+        self.traffics = traffics
+        self.new_param_3 = new_param_3
+
+    def validate(self):
+        if self.traffics:
+            for k in self.traffics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment is not None:
+            result['Environment'] = self.environment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['Traffics'] = []
+        if self.traffics is not None:
+            for k in self.traffics:
+                result['Traffics'].append(k.to_map() if k else None)
+        if self.new_param_3 is not None:
+            result['new-param-3'] = self.new_param_3
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Environment') is not None:
+            self.environment = m.get('Environment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.traffics = []
+        if m.get('Traffics') is not None:
+            for k in m.get('Traffics'):
+                temp_model = UpdateTrafficControlTaskTrafficRequestTraffics()
+                self.traffics.append(temp_model.from_map(k))
+        if m.get('new-param-3') is not None:
+            self.new_param_3 = m.get('new-param-3')
+        return self
+
+
+class UpdateTrafficControlTaskTrafficResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateTrafficControlTaskTrafficResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTrafficControlTaskTrafficResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTrafficControlTaskTrafficResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
