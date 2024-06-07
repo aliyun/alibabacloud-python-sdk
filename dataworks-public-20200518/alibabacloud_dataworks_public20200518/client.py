@@ -22743,6 +22743,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_manual_dag_instances_with_options_async(request, runtime)
 
+    def list_measure_data_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListMeasureDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListMeasureDataResponse:
+        """
+        @summary 查询DataWorks计量数据
+        
+        @param request: ListMeasureDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMeasureDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.component_code):
+            query['ComponentCode'] = request.component_code
+        if not UtilClient.is_unset(request.domain_code):
+            query['DomainCode'] = request.domain_code
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMeasureData',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListMeasureDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_measure_data_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListMeasureDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListMeasureDataResponse:
+        """
+        @summary 查询DataWorks计量数据
+        
+        @param request: ListMeasureDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMeasureDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.component_code):
+            query['ComponentCode'] = request.component_code
+        if not UtilClient.is_unset(request.domain_code):
+            query['DomainCode'] = request.domain_code
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMeasureData',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListMeasureDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_measure_data(
+        self,
+        request: dataworks_public_20200518_models.ListMeasureDataRequest,
+    ) -> dataworks_public_20200518_models.ListMeasureDataResponse:
+        """
+        @summary 查询DataWorks计量数据
+        
+        @param request: ListMeasureDataRequest
+        @return: ListMeasureDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_measure_data_with_options(request, runtime)
+
+    async def list_measure_data_async(
+        self,
+        request: dataworks_public_20200518_models.ListMeasureDataRequest,
+    ) -> dataworks_public_20200518_models.ListMeasureDataResponse:
+        """
+        @summary 查询DataWorks计量数据
+        
+        @param request: ListMeasureDataRequest
+        @return: ListMeasureDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_measure_data_with_options_async(request, runtime)
+
     def list_meta_collection_entities_with_options(
         self,
         request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
