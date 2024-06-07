@@ -1,3 +1,7 @@
+2024-06-07 Version: 1.4.0
+- Support API GetMetrics.
+
+
 2024-06-04 Version: 1.3.1
 - Update API ListInstances: add param Labels.
 - Update API ListInstances: update response param.

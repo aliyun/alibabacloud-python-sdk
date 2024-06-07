@@ -1605,6 +1605,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_lifecycle_with_options_async(instance_id, request, headers, runtime)
 
+    def get_metrics_with_options(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetMetricsResponse:
+        """
+        @summary 获取metrics数据
+        
+        @param request: GetMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetricsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            query['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMetrics',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instance/{OpenApiUtilClient.get_encode_param(instance_id)}/cms/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_metrics_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetMetricsResponse:
+        """
+        @summary 获取metrics数据
+        
+        @param request: GetMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetricsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            query['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMetrics',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instance/{OpenApiUtilClient.get_encode_param(instance_id)}/cms/metrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_metrics(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetMetricsRequest,
+    ) -> pai_dsw_20220101_models.GetMetricsResponse:
+        """
+        @summary 获取metrics数据
+        
+        @param request: GetMetricsRequest
+        @return: GetMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_metrics_with_options(instance_id, request, headers, runtime)
+
+    async def get_metrics_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetMetricsRequest,
+    ) -> pai_dsw_20220101_models.GetMetricsResponse:
+        """
+        @summary 获取metrics数据
+        
+        @param request: GetMetricsRequest
+        @return: GetMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_metrics_with_options_async(instance_id, request, headers, runtime)
+
     def get_resource_group_statistics_with_options(
         self,
         request: pai_dsw_20220101_models.GetResourceGroupStatisticsRequest,
