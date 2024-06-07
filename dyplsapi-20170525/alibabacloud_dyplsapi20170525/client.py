@@ -47,6 +47,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.AddAxnTrackNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.AddAxnTrackNoResponse:
+        """
+        @summary Adds a tracking number for a private number in the AXN binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddAxnTrackNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAxnTrackNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -87,6 +97,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.AddAxnTrackNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.AddAxnTrackNoResponse:
+        """
+        @summary Adds a tracking number for a private number in the AXN binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddAxnTrackNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAxnTrackNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -126,6 +146,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.AddAxnTrackNoRequest,
     ) -> dyplsapi_20170525_models.AddAxnTrackNoResponse:
+        """
+        @summary Adds a tracking number for a private number in the AXN binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddAxnTrackNoRequest
+        @return: AddAxnTrackNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_axn_track_no_with_options(request, runtime)
 
@@ -133,6 +162,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.AddAxnTrackNoRequest,
     ) -> dyplsapi_20170525_models.AddAxnTrackNoResponse:
+        """
+        @summary Adds a tracking number for a private number in the AXN binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddAxnTrackNoRequest
+        @return: AddAxnTrackNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_axn_track_no_with_options_async(request, runtime)
 
@@ -141,6 +179,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.AddSecretBlacklistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.AddSecretBlacklistResponse:
+        """
+        @summary Adds a blacklist.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddSecretBlacklistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSecretBlacklistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.black_no):
@@ -177,6 +225,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.AddSecretBlacklistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.AddSecretBlacklistResponse:
+        """
+        @summary Adds a blacklist.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddSecretBlacklistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSecretBlacklistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.black_no):
@@ -212,6 +270,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.AddSecretBlacklistRequest,
     ) -> dyplsapi_20170525_models.AddSecretBlacklistResponse:
+        """
+        @summary Adds a blacklist.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddSecretBlacklistRequest
+        @return: AddSecretBlacklistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_secret_blacklist_with_options(request, runtime)
 
@@ -219,6 +286,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.AddSecretBlacklistRequest,
     ) -> dyplsapi_20170525_models.AddSecretBlacklistResponse:
+        """
+        @summary Adds a blacklist.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddSecretBlacklistRequest
+        @return: AddSecretBlacklistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_secret_blacklist_with_options_async(request, runtime)
 
@@ -227,6 +303,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BindAxbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindAxbResponse:
+        """
+        @summary Adds an AXB binding.
+        
+        @description Before you add an AXB binding, we recommend that you specify role A and role B in the AXB device certificate (ProductKey, DeviceName, and DeviceSecret) in your business scenario. For example, in a taxi-hailing scenario, role A is the passenger and role B is the driver.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -291,6 +378,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BindAxbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindAxbResponse:
+        """
+        @summary Adds an AXB binding.
+        
+        @description Before you add an AXB binding, we recommend that you specify role A and role B in the AXB device certificate (ProductKey, DeviceName, and DeviceSecret) in your business scenario. For example, in a taxi-hailing scenario, role A is the passenger and role B is the driver.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -354,6 +452,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindAxbRequest,
     ) -> dyplsapi_20170525_models.BindAxbResponse:
+        """
+        @summary Adds an AXB binding.
+        
+        @description Before you add an AXB binding, we recommend that you specify role A and role B in the AXB device certificate (ProductKey, DeviceName, and DeviceSecret) in your business scenario. For example, in a taxi-hailing scenario, role A is the passenger and role B is the driver.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxbRequest
+        @return: BindAxbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_axb_with_options(request, runtime)
 
@@ -361,6 +469,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindAxbRequest,
     ) -> dyplsapi_20170525_models.BindAxbResponse:
+        """
+        @summary Adds an AXB binding.
+        
+        @description Before you add an AXB binding, we recommend that you specify role A and role B in the AXB device certificate (ProductKey, DeviceName, and DeviceSecret) in your business scenario. For example, in a taxi-hailing scenario, role A is the passenger and role B is the driver.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxbRequest
+        @return: BindAxbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_axb_with_options_async(request, runtime)
 
@@ -369,6 +487,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BindAxgRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindAxgResponse:
+        """
+        @summary Adds an AXG binding.
+        
+        @description An AXG protection solution can be configured to meet the requirements for grading users, limiting the scope of calls, and restricting order snatching. The letter G represents a phone number group to which you can add phone numbers as needed.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxgResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -431,6 +560,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BindAxgRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindAxgResponse:
+        """
+        @summary Adds an AXG binding.
+        
+        @description An AXG protection solution can be configured to meet the requirements for grading users, limiting the scope of calls, and restricting order snatching. The letter G represents a phone number group to which you can add phone numbers as needed.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxgResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -492,6 +632,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindAxgRequest,
     ) -> dyplsapi_20170525_models.BindAxgResponse:
+        """
+        @summary Adds an AXG binding.
+        
+        @description An AXG protection solution can be configured to meet the requirements for grading users, limiting the scope of calls, and restricting order snatching. The letter G represents a phone number group to which you can add phone numbers as needed.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxgRequest
+        @return: BindAxgResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_axg_with_options(request, runtime)
 
@@ -499,6 +649,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindAxgRequest,
     ) -> dyplsapi_20170525_models.BindAxgResponse:
+        """
+        @summary Adds an AXG binding.
+        
+        @description An AXG protection solution can be configured to meet the requirements for grading users, limiting the scope of calls, and restricting order snatching. The letter G represents a phone number group to which you can add phone numbers as needed.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxgRequest
+        @return: BindAxgResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_axg_with_options_async(request, runtime)
 
@@ -507,6 +667,15 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BindAxnRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindAxnResponse:
+        """
+        @summary Adds an AXN binding.
+        
+        @description >  An AXN private number is a dedicated private number assigned to phone number A. When an N-side number is used to call phone number X, the call is forwarded to phone number A.
+        
+        @param request: BindAxnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxnResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -571,6 +740,15 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BindAxnRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindAxnResponse:
+        """
+        @summary Adds an AXN binding.
+        
+        @description >  An AXN private number is a dedicated private number assigned to phone number A. When an N-side number is used to call phone number X, the call is forwarded to phone number A.
+        
+        @param request: BindAxnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxnResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -634,6 +812,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindAxnRequest,
     ) -> dyplsapi_20170525_models.BindAxnResponse:
+        """
+        @summary Adds an AXN binding.
+        
+        @description >  An AXN private number is a dedicated private number assigned to phone number A. When an N-side number is used to call phone number X, the call is forwarded to phone number A.
+        
+        @param request: BindAxnRequest
+        @return: BindAxnResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_axn_with_options(request, runtime)
 
@@ -641,6 +827,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindAxnRequest,
     ) -> dyplsapi_20170525_models.BindAxnResponse:
+        """
+        @summary Adds an AXN binding.
+        
+        @description >  An AXN private number is a dedicated private number assigned to phone number A. When an N-side number is used to call phone number X, the call is forwarded to phone number A.
+        
+        @param request: BindAxnRequest
+        @return: BindAxnResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_axn_with_options_async(request, runtime)
 
@@ -649,6 +843,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BindAxnExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindAxnExtensionResponse:
+        """
+        @summary Adds an AXN extension binding.
+        
+        @description Before you add an AXN extension binding, confirm phone number A and phone number N in the business scenario. Phone number A belongs to a customer, and phone number X is the private number assigned to the customer. When any other phone number is used to call phone number X and the extension, the call is transferred to phone number A. When phone number A is used to call phone number X, the call is transferred to the default phone number B that is specified during the phone number binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxnExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxnExtensionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -663,6 +868,8 @@ class Client(OpenApiClient):
             query['ExpectCity'] = request.expect_city
         if not UtilClient.is_unset(request.expiration):
             query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.extension):
             query['Extension'] = request.extension
         if not UtilClient.is_unset(request.is_recording_enabled):
@@ -711,6 +918,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BindAxnExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindAxnExtensionResponse:
+        """
+        @summary Adds an AXN extension binding.
+        
+        @description Before you add an AXN extension binding, confirm phone number A and phone number N in the business scenario. Phone number A belongs to a customer, and phone number X is the private number assigned to the customer. When any other phone number is used to call phone number X and the extension, the call is transferred to phone number A. When phone number A is used to call phone number X, the call is transferred to the default phone number B that is specified during the phone number binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxnExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAxnExtensionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -725,6 +943,8 @@ class Client(OpenApiClient):
             query['ExpectCity'] = request.expect_city
         if not UtilClient.is_unset(request.expiration):
             query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
         if not UtilClient.is_unset(request.extension):
             query['Extension'] = request.extension
         if not UtilClient.is_unset(request.is_recording_enabled):
@@ -772,6 +992,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindAxnExtensionRequest,
     ) -> dyplsapi_20170525_models.BindAxnExtensionResponse:
+        """
+        @summary Adds an AXN extension binding.
+        
+        @description Before you add an AXN extension binding, confirm phone number A and phone number N in the business scenario. Phone number A belongs to a customer, and phone number X is the private number assigned to the customer. When any other phone number is used to call phone number X and the extension, the call is transferred to phone number A. When phone number A is used to call phone number X, the call is transferred to the default phone number B that is specified during the phone number binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxnExtensionRequest
+        @return: BindAxnExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_axn_extension_with_options(request, runtime)
 
@@ -779,6 +1009,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindAxnExtensionRequest,
     ) -> dyplsapi_20170525_models.BindAxnExtensionResponse:
+        """
+        @summary Adds an AXN extension binding.
+        
+        @description Before you add an AXN extension binding, confirm phone number A and phone number N in the business scenario. Phone number A belongs to a customer, and phone number X is the private number assigned to the customer. When any other phone number is used to call phone number X and the extension, the call is transferred to phone number A. When phone number A is used to call phone number X, the call is transferred to the default phone number B that is specified during the phone number binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: BindAxnExtensionRequest
+        @return: BindAxnExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_axn_extension_with_options_async(request, runtime)
 
@@ -787,6 +1027,11 @@ class Client(OpenApiClient):
         tmp_req: dyplsapi_20170525_models.BindBatchAxgRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindBatchAxgResponse:
+        """
+        @param tmp_req: BindBatchAxgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindBatchAxgResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyplsapi_20170525_models.BindBatchAxgShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -827,6 +1072,11 @@ class Client(OpenApiClient):
         tmp_req: dyplsapi_20170525_models.BindBatchAxgRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BindBatchAxgResponse:
+        """
+        @param tmp_req: BindBatchAxgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindBatchAxgResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyplsapi_20170525_models.BindBatchAxgShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -866,6 +1116,10 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindBatchAxgRequest,
     ) -> dyplsapi_20170525_models.BindBatchAxgResponse:
+        """
+        @param request: BindBatchAxgRequest
+        @return: BindBatchAxgResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_batch_axg_with_options(request, runtime)
 
@@ -873,6 +1127,10 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BindBatchAxgRequest,
     ) -> dyplsapi_20170525_models.BindBatchAxgResponse:
+        """
+        @param request: BindBatchAxgRequest
+        @return: BindBatchAxgResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_batch_axg_with_options_async(request, runtime)
 
@@ -881,6 +1139,18 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BuySecretNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BuySecretNoResponse:
+        """
+        @summary Purchases a phone number.
+        
+        @description    After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
+        Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
+        When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
+        The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
+        
+        @param request: BuySecretNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BuySecretNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city):
@@ -923,6 +1193,18 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.BuySecretNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.BuySecretNoResponse:
+        """
+        @summary Purchases a phone number.
+        
+        @description    After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
+        Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
+        When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
+        The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
+        
+        @param request: BuySecretNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BuySecretNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city):
@@ -964,6 +1246,17 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BuySecretNoRequest,
     ) -> dyplsapi_20170525_models.BuySecretNoResponse:
+        """
+        @summary Purchases a phone number.
+        
+        @description    After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
+        Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
+        When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
+        The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
+        
+        @param request: BuySecretNoRequest
+        @return: BuySecretNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.buy_secret_no_with_options(request, runtime)
 
@@ -971,6 +1264,17 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.BuySecretNoRequest,
     ) -> dyplsapi_20170525_models.BuySecretNoResponse:
+        """
+        @summary Purchases a phone number.
+        
+        @description    After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
+        Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
+        When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
+        The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
+        
+        @param request: BuySecretNoRequest
+        @return: BuySecretNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.buy_secret_no_with_options_async(request, runtime)
 
@@ -979,6 +1283,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.CancelPickUpWaybillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.CancelPickUpWaybillResponse:
+        """
+        @summary Cancels a door-to-door delivery order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CancelPickUpWaybillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPickUpWaybillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cancel_desc):
@@ -1015,6 +1329,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.CancelPickUpWaybillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.CancelPickUpWaybillResponse:
+        """
+        @summary Cancels a door-to-door delivery order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CancelPickUpWaybillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPickUpWaybillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cancel_desc):
@@ -1050,6 +1374,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.CancelPickUpWaybillRequest,
     ) -> dyplsapi_20170525_models.CancelPickUpWaybillResponse:
+        """
+        @summary Cancels a door-to-door delivery order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CancelPickUpWaybillRequest
+        @return: CancelPickUpWaybillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_pick_up_waybill_with_options(request, runtime)
 
@@ -1057,6 +1390,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.CancelPickUpWaybillRequest,
     ) -> dyplsapi_20170525_models.CancelPickUpWaybillResponse:
+        """
+        @summary Cancels a door-to-door delivery order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CancelPickUpWaybillRequest
+        @return: CancelPickUpWaybillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_pick_up_waybill_with_options_async(request, runtime)
 
@@ -1065,6 +1407,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.CreateAxgGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.CreateAxgGroupResponse:
+        """
+        @summary Creates number group G.
+        
+        @description Before you add an AXG binding, you must purchase phone number X, create number group G, and then add phone numbers to number group G. If you do not add phone numbers to number group G after you create number group G, you can call the [OperateAxgGroup](https://help.aliyun.com/document_detail/110252.htm) operation to add phone numbers to number group G.
+        >  Up to 2,000 number groups G can be added for a single phone number pool.
+        
+        @param request: CreateAxgGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAxgGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1105,6 +1457,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.CreateAxgGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.CreateAxgGroupResponse:
+        """
+        @summary Creates number group G.
+        
+        @description Before you add an AXG binding, you must purchase phone number X, create number group G, and then add phone numbers to number group G. If you do not add phone numbers to number group G after you create number group G, you can call the [OperateAxgGroup](https://help.aliyun.com/document_detail/110252.htm) operation to add phone numbers to number group G.
+        >  Up to 2,000 number groups G can be added for a single phone number pool.
+        
+        @param request: CreateAxgGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAxgGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1144,6 +1506,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.CreateAxgGroupRequest,
     ) -> dyplsapi_20170525_models.CreateAxgGroupResponse:
+        """
+        @summary Creates number group G.
+        
+        @description Before you add an AXG binding, you must purchase phone number X, create number group G, and then add phone numbers to number group G. If you do not add phone numbers to number group G after you create number group G, you can call the [OperateAxgGroup](https://help.aliyun.com/document_detail/110252.htm) operation to add phone numbers to number group G.
+        >  Up to 2,000 number groups G can be added for a single phone number pool.
+        
+        @param request: CreateAxgGroupRequest
+        @return: CreateAxgGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_axg_group_with_options(request, runtime)
 
@@ -1151,6 +1522,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.CreateAxgGroupRequest,
     ) -> dyplsapi_20170525_models.CreateAxgGroupResponse:
+        """
+        @summary Creates number group G.
+        
+        @description Before you add an AXG binding, you must purchase phone number X, create number group G, and then add phone numbers to number group G. If you do not add phone numbers to number group G after you create number group G, you can call the [OperateAxgGroup](https://help.aliyun.com/document_detail/110252.htm) operation to add phone numbers to number group G.
+        >  Up to 2,000 number groups G can be added for a single phone number pool.
+        
+        @param request: CreateAxgGroupRequest
+        @return: CreateAxgGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_axg_group_with_options_async(request, runtime)
 
@@ -1159,6 +1539,16 @@ class Client(OpenApiClient):
         tmp_req: dyplsapi_20170525_models.CreatePickUpWaybillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillResponse:
+        """
+        @summary Creates a door-to-door delivery order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param tmp_req: CreatePickUpWaybillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePickUpWaybillResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyplsapi_20170525_models.CreatePickUpWaybillShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1225,6 +1615,16 @@ class Client(OpenApiClient):
         tmp_req: dyplsapi_20170525_models.CreatePickUpWaybillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillResponse:
+        """
+        @summary Creates a door-to-door delivery order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param tmp_req: CreatePickUpWaybillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePickUpWaybillResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyplsapi_20170525_models.CreatePickUpWaybillShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1290,6 +1690,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.CreatePickUpWaybillRequest,
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillResponse:
+        """
+        @summary Creates a door-to-door delivery order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreatePickUpWaybillRequest
+        @return: CreatePickUpWaybillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_pick_up_waybill_with_options(request, runtime)
 
@@ -1297,6 +1706,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.CreatePickUpWaybillRequest,
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillResponse:
+        """
+        @summary Creates a door-to-door delivery order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreatePickUpWaybillRequest
+        @return: CreatePickUpWaybillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_pick_up_waybill_with_options_async(request, runtime)
 
@@ -1305,6 +1723,16 @@ class Client(OpenApiClient):
         tmp_req: dyplsapi_20170525_models.CreatePickUpWaybillPreQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse:
+        """
+        @summary Queries a pickup order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param tmp_req: CreatePickUpWaybillPreQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePickUpWaybillPreQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyplsapi_20170525_models.CreatePickUpWaybillPreQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1349,6 +1777,16 @@ class Client(OpenApiClient):
         tmp_req: dyplsapi_20170525_models.CreatePickUpWaybillPreQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse:
+        """
+        @summary Queries a pickup order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param tmp_req: CreatePickUpWaybillPreQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePickUpWaybillPreQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dyplsapi_20170525_models.CreatePickUpWaybillPreQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1392,6 +1830,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.CreatePickUpWaybillPreQueryRequest,
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse:
+        """
+        @summary Queries a pickup order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreatePickUpWaybillPreQueryRequest
+        @return: CreatePickUpWaybillPreQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_pick_up_waybill_pre_query_with_options(request, runtime)
 
@@ -1399,6 +1846,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.CreatePickUpWaybillPreQueryRequest,
     ) -> dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse:
+        """
+        @summary Queries a pickup order.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreatePickUpWaybillPreQueryRequest
+        @return: CreatePickUpWaybillPreQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_pick_up_waybill_pre_query_with_options_async(request, runtime)
 
@@ -1407,6 +1863,11 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.DeleteAxgGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.DeleteAxgGroupResponse:
+        """
+        @param request: DeleteAxgGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAxgGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1443,6 +1904,11 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.DeleteAxgGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.DeleteAxgGroupResponse:
+        """
+        @param request: DeleteAxgGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAxgGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1478,6 +1944,10 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.DeleteAxgGroupRequest,
     ) -> dyplsapi_20170525_models.DeleteAxgGroupResponse:
+        """
+        @param request: DeleteAxgGroupRequest
+        @return: DeleteAxgGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_axg_group_with_options(request, runtime)
 
@@ -1485,6 +1955,10 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.DeleteAxgGroupRequest,
     ) -> dyplsapi_20170525_models.DeleteAxgGroupResponse:
+        """
+        @param request: DeleteAxgGroupRequest
+        @return: DeleteAxgGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_axg_group_with_options_async(request, runtime)
 
@@ -1493,6 +1967,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.DeleteSecretBlacklistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.DeleteSecretBlacklistResponse:
+        """
+        @summary Deletes a blacklist.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSecretBlacklistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretBlacklistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.black_no):
@@ -1529,6 +2013,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.DeleteSecretBlacklistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.DeleteSecretBlacklistResponse:
+        """
+        @summary Deletes a blacklist.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSecretBlacklistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretBlacklistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.black_no):
@@ -1564,6 +2058,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.DeleteSecretBlacklistRequest,
     ) -> dyplsapi_20170525_models.DeleteSecretBlacklistResponse:
+        """
+        @summary Deletes a blacklist.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSecretBlacklistRequest
+        @return: DeleteSecretBlacklistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_secret_blacklist_with_options(request, runtime)
 
@@ -1571,6 +2074,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.DeleteSecretBlacklistRequest,
     ) -> dyplsapi_20170525_models.DeleteSecretBlacklistResponse:
+        """
+        @summary Deletes a blacklist.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSecretBlacklistRequest
+        @return: DeleteSecretBlacklistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_secret_blacklist_with_options_async(request, runtime)
 
@@ -1579,6 +2091,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.GetSecretAsrDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.GetSecretAsrDetailResponse:
+        """
+        @summary Obtains the details of the automatic speech recognition (ASR) result.
+        
+        @description Before you call the GetSecretAsrDetail operation, set the ASRStatus parameter to true in the [BindAxn operation](https://help.aliyun.com/document_detail/400483.html). This ensures that you can obtain the ASR result properly.
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetSecretAsrDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretAsrDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1611,6 +2134,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.GetSecretAsrDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.GetSecretAsrDetailResponse:
+        """
+        @summary Obtains the details of the automatic speech recognition (ASR) result.
+        
+        @description Before you call the GetSecretAsrDetail operation, set the ASRStatus parameter to true in the [BindAxn operation](https://help.aliyun.com/document_detail/400483.html). This ensures that you can obtain the ASR result properly.
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetSecretAsrDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretAsrDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1642,6 +2176,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.GetSecretAsrDetailRequest,
     ) -> dyplsapi_20170525_models.GetSecretAsrDetailResponse:
+        """
+        @summary Obtains the details of the automatic speech recognition (ASR) result.
+        
+        @description Before you call the GetSecretAsrDetail operation, set the ASRStatus parameter to true in the [BindAxn operation](https://help.aliyun.com/document_detail/400483.html). This ensures that you can obtain the ASR result properly.
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetSecretAsrDetailRequest
+        @return: GetSecretAsrDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_secret_asr_detail_with_options(request, runtime)
 
@@ -1649,6 +2193,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.GetSecretAsrDetailRequest,
     ) -> dyplsapi_20170525_models.GetSecretAsrDetailResponse:
+        """
+        @summary Obtains the details of the automatic speech recognition (ASR) result.
+        
+        @description Before you call the GetSecretAsrDetail operation, set the ASRStatus parameter to true in the [BindAxn operation](https://help.aliyun.com/document_detail/400483.html). This ensures that you can obtain the ASR result properly.
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetSecretAsrDetailRequest
+        @return: GetSecretAsrDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_secret_asr_detail_with_options_async(request, runtime)
 
@@ -1657,6 +2211,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.GetTotalPublicUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.GetTotalPublicUrlResponse:
+        """
+        @summary Obtains the download URL of a recorded ringing tone.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetTotalPublicUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTotalPublicUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1697,6 +2261,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.GetTotalPublicUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.GetTotalPublicUrlResponse:
+        """
+        @summary Obtains the download URL of a recorded ringing tone.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetTotalPublicUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTotalPublicUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -1736,6 +2310,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.GetTotalPublicUrlRequest,
     ) -> dyplsapi_20170525_models.GetTotalPublicUrlResponse:
+        """
+        @summary Obtains the download URL of a recorded ringing tone.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetTotalPublicUrlRequest
+        @return: GetTotalPublicUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_total_public_url_with_options(request, runtime)
 
@@ -1743,6 +2326,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.GetTotalPublicUrlRequest,
     ) -> dyplsapi_20170525_models.GetTotalPublicUrlResponse:
+        """
+        @summary Obtains the download URL of a recorded ringing tone.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetTotalPublicUrlRequest
+        @return: GetTotalPublicUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_total_public_url_with_options_async(request, runtime)
 
@@ -1751,6 +2343,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.LockSecretNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.LockSecretNoResponse:
+        """
+        @summary Locks a phone number.
+        
+        @description After a phone number is locked, the locked phone number cannot be selected when you call an operation to create a binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: LockSecretNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LockSecretNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1787,6 +2390,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.LockSecretNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.LockSecretNoResponse:
+        """
+        @summary Locks a phone number.
+        
+        @description After a phone number is locked, the locked phone number cannot be selected when you call an operation to create a binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: LockSecretNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LockSecretNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1822,6 +2436,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.LockSecretNoRequest,
     ) -> dyplsapi_20170525_models.LockSecretNoResponse:
+        """
+        @summary Locks a phone number.
+        
+        @description After a phone number is locked, the locked phone number cannot be selected when you call an operation to create a binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: LockSecretNoRequest
+        @return: LockSecretNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.lock_secret_no_with_options(request, runtime)
 
@@ -1829,6 +2453,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.LockSecretNoRequest,
     ) -> dyplsapi_20170525_models.LockSecretNoResponse:
+        """
+        @summary Locks a phone number.
+        
+        @description After a phone number is locked, the locked phone number cannot be selected when you call an operation to create a binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: LockSecretNoRequest
+        @return: LockSecretNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.lock_secret_no_with_options_async(request, runtime)
 
@@ -1837,6 +2471,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.OperateAxgGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.OperateAxgGroupResponse:
+        """
+        @summary Modifies number group G.
+        
+        @description After you create number group G, you can call the OperateAxgGroup operation to modify number group G. For example, you can add phone numbers to number group G, delete phone numbers from number group G, and replace all phone numbers in number group G.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: OperateAxgGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateAxgGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1877,6 +2522,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.OperateAxgGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.OperateAxgGroupResponse:
+        """
+        @summary Modifies number group G.
+        
+        @description After you create number group G, you can call the OperateAxgGroup operation to modify number group G. For example, you can add phone numbers to number group G, delete phone numbers from number group G, and replace all phone numbers in number group G.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: OperateAxgGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateAxgGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1916,6 +2572,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.OperateAxgGroupRequest,
     ) -> dyplsapi_20170525_models.OperateAxgGroupResponse:
+        """
+        @summary Modifies number group G.
+        
+        @description After you create number group G, you can call the OperateAxgGroup operation to modify number group G. For example, you can add phone numbers to number group G, delete phone numbers from number group G, and replace all phone numbers in number group G.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: OperateAxgGroupRequest
+        @return: OperateAxgGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.operate_axg_group_with_options(request, runtime)
 
@@ -1923,6 +2589,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.OperateAxgGroupRequest,
     ) -> dyplsapi_20170525_models.OperateAxgGroupResponse:
+        """
+        @summary Modifies number group G.
+        
+        @description After you create number group G, you can call the OperateAxgGroup operation to modify number group G. For example, you can add phone numbers to number group G, delete phone numbers from number group G, and replace all phone numbers in number group G.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: OperateAxgGroupRequest
+        @return: OperateAxgGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.operate_axg_group_with_options_async(request, runtime)
 
@@ -1931,6 +2607,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.OperateBlackNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.OperateBlackNoResponse:
+        """
+        @summary Adds a phone number to a blacklist or deletes a phone number from a blacklist.
+        
+        @description The OperateBlackNo operation supports the following number pool types: AXN, AXN extension, and 95AXN.
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: OperateBlackNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateBlackNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.black_no):
@@ -1971,6 +2658,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.OperateBlackNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.OperateBlackNoResponse:
+        """
+        @summary Adds a phone number to a blacklist or deletes a phone number from a blacklist.
+        
+        @description The OperateBlackNo operation supports the following number pool types: AXN, AXN extension, and 95AXN.
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: OperateBlackNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateBlackNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.black_no):
@@ -2010,6 +2708,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.OperateBlackNoRequest,
     ) -> dyplsapi_20170525_models.OperateBlackNoResponse:
+        """
+        @summary Adds a phone number to a blacklist or deletes a phone number from a blacklist.
+        
+        @description The OperateBlackNo operation supports the following number pool types: AXN, AXN extension, and 95AXN.
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: OperateBlackNoRequest
+        @return: OperateBlackNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.operate_black_no_with_options(request, runtime)
 
@@ -2017,6 +2725,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.OperateBlackNoRequest,
     ) -> dyplsapi_20170525_models.OperateBlackNoResponse:
+        """
+        @summary Adds a phone number to a blacklist or deletes a phone number from a blacklist.
+        
+        @description The OperateBlackNo operation supports the following number pool types: AXN, AXN extension, and 95AXN.
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: OperateBlackNoRequest
+        @return: OperateBlackNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.operate_black_no_with_options_async(request, runtime)
 
@@ -2025,6 +2743,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QueryPhoneNoAByTrackNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse:
+        """
+        @summary Queries the details about a tracking number.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryPhoneNoAByTrackNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPhoneNoAByTrackNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cabinet_no):
@@ -2063,6 +2791,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QueryPhoneNoAByTrackNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse:
+        """
+        @summary Queries the details about a tracking number.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryPhoneNoAByTrackNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPhoneNoAByTrackNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cabinet_no):
@@ -2100,6 +2838,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QueryPhoneNoAByTrackNoRequest,
     ) -> dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse:
+        """
+        @summary Queries the details about a tracking number.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryPhoneNoAByTrackNoRequest
+        @return: QueryPhoneNoAByTrackNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_phone_no_aby_track_no_with_options(request, runtime)
 
@@ -2107,6 +2854,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QueryPhoneNoAByTrackNoRequest,
     ) -> dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse:
+        """
+        @summary Queries the details about a tracking number.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryPhoneNoAByTrackNoRequest
+        @return: QueryPhoneNoAByTrackNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_phone_no_aby_track_no_with_options_async(request, runtime)
 
@@ -2115,6 +2871,23 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QueryRecordFileDownloadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse:
+        """
+        @summary Obtains the download URL of a recording file.
+        
+        @description If the recording feature is enabled for a binding, all calls made by the bound phone numbers are recorded. You can obtain the download URL of a recording file by calling the QueryRecordFileDownloadUrl operation and download the recording file.
+        >  We recommend that you subscribe to [the recording status report SecretRecording](https://help.aliyun.com/document_detail/109198.html). The values of the response parameters in SecretRecording can be used as the values of the request parameters for downloading a recording file.
+        ### [](#)Procedure for obtaining a recording file
+        1.  Specify the request parameter in an update or binding operation to enable the recording feature.
+        2.  Subscribe to recording message receipts in the Phone Number Protection console.
+        3.  After a recording message receipt is returned, call the QueryRecordFileDownloadUrl operation to obtain the download URL of the recording file, and download the recording file.
+        >
+        A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
+        The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
+        
+        @param request: QueryRecordFileDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecordFileDownloadUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -2155,6 +2928,23 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QueryRecordFileDownloadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse:
+        """
+        @summary Obtains the download URL of a recording file.
+        
+        @description If the recording feature is enabled for a binding, all calls made by the bound phone numbers are recorded. You can obtain the download URL of a recording file by calling the QueryRecordFileDownloadUrl operation and download the recording file.
+        >  We recommend that you subscribe to [the recording status report SecretRecording](https://help.aliyun.com/document_detail/109198.html). The values of the response parameters in SecretRecording can be used as the values of the request parameters for downloading a recording file.
+        ### [](#)Procedure for obtaining a recording file
+        1.  Specify the request parameter in an update or binding operation to enable the recording feature.
+        2.  Subscribe to recording message receipts in the Phone Number Protection console.
+        3.  After a recording message receipt is returned, call the QueryRecordFileDownloadUrl operation to obtain the download URL of the recording file, and download the recording file.
+        >
+        A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
+        The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
+        
+        @param request: QueryRecordFileDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecordFileDownloadUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -2194,6 +2984,22 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QueryRecordFileDownloadUrlRequest,
     ) -> dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse:
+        """
+        @summary Obtains the download URL of a recording file.
+        
+        @description If the recording feature is enabled for a binding, all calls made by the bound phone numbers are recorded. You can obtain the download URL of a recording file by calling the QueryRecordFileDownloadUrl operation and download the recording file.
+        >  We recommend that you subscribe to [the recording status report SecretRecording](https://help.aliyun.com/document_detail/109198.html). The values of the response parameters in SecretRecording can be used as the values of the request parameters for downloading a recording file.
+        ### [](#)Procedure for obtaining a recording file
+        1.  Specify the request parameter in an update or binding operation to enable the recording feature.
+        2.  Subscribe to recording message receipts in the Phone Number Protection console.
+        3.  After a recording message receipt is returned, call the QueryRecordFileDownloadUrl operation to obtain the download URL of the recording file, and download the recording file.
+        >
+        A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
+        The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
+        
+        @param request: QueryRecordFileDownloadUrlRequest
+        @return: QueryRecordFileDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_record_file_download_url_with_options(request, runtime)
 
@@ -2201,6 +3007,22 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QueryRecordFileDownloadUrlRequest,
     ) -> dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse:
+        """
+        @summary Obtains the download URL of a recording file.
+        
+        @description If the recording feature is enabled for a binding, all calls made by the bound phone numbers are recorded. You can obtain the download URL of a recording file by calling the QueryRecordFileDownloadUrl operation and download the recording file.
+        >  We recommend that you subscribe to [the recording status report SecretRecording](https://help.aliyun.com/document_detail/109198.html). The values of the response parameters in SecretRecording can be used as the values of the request parameters for downloading a recording file.
+        ### [](#)Procedure for obtaining a recording file
+        1.  Specify the request parameter in an update or binding operation to enable the recording feature.
+        2.  Subscribe to recording message receipts in the Phone Number Protection console.
+        3.  After a recording message receipt is returned, call the QueryRecordFileDownloadUrl operation to obtain the download URL of the recording file, and download the recording file.
+        >
+        A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
+        The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
+        
+        @param request: QueryRecordFileDownloadUrlRequest
+        @return: QueryRecordFileDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_record_file_download_url_with_options_async(request, runtime)
 
@@ -2209,6 +3031,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QuerySecretNoDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QuerySecretNoDetailResponse:
+        """
+        @summary Queries the attributes of a private number.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySecretNoDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySecretNoDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2245,6 +3077,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QuerySecretNoDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QuerySecretNoDetailResponse:
+        """
+        @summary Queries the attributes of a private number.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySecretNoDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySecretNoDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2280,6 +3122,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QuerySecretNoDetailRequest,
     ) -> dyplsapi_20170525_models.QuerySecretNoDetailResponse:
+        """
+        @summary Queries the attributes of a private number.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySecretNoDetailRequest
+        @return: QuerySecretNoDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_secret_no_detail_with_options(request, runtime)
 
@@ -2287,6 +3138,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QuerySecretNoDetailRequest,
     ) -> dyplsapi_20170525_models.QuerySecretNoDetailResponse:
+        """
+        @summary Queries the attributes of a private number.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySecretNoDetailRequest
+        @return: QuerySecretNoDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_secret_no_detail_with_options_async(request, runtime)
 
@@ -2295,6 +3155,15 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QuerySecretNoRemainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QuerySecretNoRemainResponse:
+        """
+        @summary Queries the quantity of remaining phone numbers available for online purchase.
+        
+        @description When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before calling the [BuySecretNo](~~BuySecretNo~~) operation to purchase a phone number, call the [QuerySecretNoRemain](~~QuerySecretNoRemain~~) operation to query the quantity of remaining phone numbers available for online purchase.
+        
+        @param request: QuerySecretNoRemainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySecretNoRemainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city):
@@ -2333,6 +3202,15 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QuerySecretNoRemainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QuerySecretNoRemainResponse:
+        """
+        @summary Queries the quantity of remaining phone numbers available for online purchase.
+        
+        @description When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before calling the [BuySecretNo](~~BuySecretNo~~) operation to purchase a phone number, call the [QuerySecretNoRemain](~~QuerySecretNoRemain~~) operation to query the quantity of remaining phone numbers available for online purchase.
+        
+        @param request: QuerySecretNoRemainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySecretNoRemainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city):
@@ -2370,6 +3248,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QuerySecretNoRemainRequest,
     ) -> dyplsapi_20170525_models.QuerySecretNoRemainResponse:
+        """
+        @summary Queries the quantity of remaining phone numbers available for online purchase.
+        
+        @description When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before calling the [BuySecretNo](~~BuySecretNo~~) operation to purchase a phone number, call the [QuerySecretNoRemain](~~QuerySecretNoRemain~~) operation to query the quantity of remaining phone numbers available for online purchase.
+        
+        @param request: QuerySecretNoRemainRequest
+        @return: QuerySecretNoRemainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_secret_no_remain_with_options(request, runtime)
 
@@ -2377,6 +3263,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QuerySecretNoRemainRequest,
     ) -> dyplsapi_20170525_models.QuerySecretNoRemainResponse:
+        """
+        @summary Queries the quantity of remaining phone numbers available for online purchase.
+        
+        @description When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before calling the [BuySecretNo](~~BuySecretNo~~) operation to purchase a phone number, call the [QuerySecretNoRemain](~~QuerySecretNoRemain~~) operation to query the quantity of remaining phone numbers available for online purchase.
+        
+        @param request: QuerySecretNoRemainRequest
+        @return: QuerySecretNoRemainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_secret_no_remain_with_options_async(request, runtime)
 
@@ -2385,6 +3279,15 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QuerySubsIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QuerySubsIdResponse:
+        """
+        @summary Queries binding IDs.
+        
+        @description You can query binding IDs by phone number X. In the AXB product, multiple bindings may exist for the same phone number X. In this case, multiple binding IDs may be obtained for the same phone number X.
+        
+        @param request: QuerySubsIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySubsIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2421,6 +3324,15 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QuerySubsIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QuerySubsIdResponse:
+        """
+        @summary Queries binding IDs.
+        
+        @description You can query binding IDs by phone number X. In the AXB product, multiple bindings may exist for the same phone number X. In this case, multiple binding IDs may be obtained for the same phone number X.
+        
+        @param request: QuerySubsIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySubsIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2456,6 +3368,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QuerySubsIdRequest,
     ) -> dyplsapi_20170525_models.QuerySubsIdResponse:
+        """
+        @summary Queries binding IDs.
+        
+        @description You can query binding IDs by phone number X. In the AXB product, multiple bindings may exist for the same phone number X. In this case, multiple binding IDs may be obtained for the same phone number X.
+        
+        @param request: QuerySubsIdRequest
+        @return: QuerySubsIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_subs_id_with_options(request, runtime)
 
@@ -2463,6 +3383,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QuerySubsIdRequest,
     ) -> dyplsapi_20170525_models.QuerySubsIdResponse:
+        """
+        @summary Queries binding IDs.
+        
+        @description You can query binding IDs by phone number X. In the AXB product, multiple bindings may exist for the same phone number X. In this case, multiple binding IDs may be obtained for the same phone number X.
+        
+        @param request: QuerySubsIdRequest
+        @return: QuerySubsIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_subs_id_with_options_async(request, runtime)
 
@@ -2471,6 +3399,18 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QuerySubscriptionDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QuerySubscriptionDetailResponse:
+        """
+        @summary Queries the details about a phone number binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### [](#poolkeyproducttype)Limits on PoolKey and ProductType
+        You must specify either PoolKey or ProductType. If both parameters are not specified, an error is reported when you call the QuerySubscriptionDetail operation. We recommend that you specify the ProductType parameter for the original key accounts of Alibaba Cloud and the PoolKey parameter for Alibaba Cloud users.
+        
+        @param request: QuerySubscriptionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySubscriptionDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2511,6 +3451,18 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.QuerySubscriptionDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.QuerySubscriptionDetailResponse:
+        """
+        @summary Queries the details about a phone number binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### [](#poolkeyproducttype)Limits on PoolKey and ProductType
+        You must specify either PoolKey or ProductType. If both parameters are not specified, an error is reported when you call the QuerySubscriptionDetail operation. We recommend that you specify the ProductType parameter for the original key accounts of Alibaba Cloud and the PoolKey parameter for Alibaba Cloud users.
+        
+        @param request: QuerySubscriptionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySubscriptionDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2550,6 +3502,17 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QuerySubscriptionDetailRequest,
     ) -> dyplsapi_20170525_models.QuerySubscriptionDetailResponse:
+        """
+        @summary Queries the details about a phone number binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### [](#poolkeyproducttype)Limits on PoolKey and ProductType
+        You must specify either PoolKey or ProductType. If both parameters are not specified, an error is reported when you call the QuerySubscriptionDetail operation. We recommend that you specify the ProductType parameter for the original key accounts of Alibaba Cloud and the PoolKey parameter for Alibaba Cloud users.
+        
+        @param request: QuerySubscriptionDetailRequest
+        @return: QuerySubscriptionDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_subscription_detail_with_options(request, runtime)
 
@@ -2557,6 +3520,17 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.QuerySubscriptionDetailRequest,
     ) -> dyplsapi_20170525_models.QuerySubscriptionDetailResponse:
+        """
+        @summary Queries the details about a phone number binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### [](#poolkeyproducttype)Limits on PoolKey and ProductType
+        You must specify either PoolKey or ProductType. If both parameters are not specified, an error is reported when you call the QuerySubscriptionDetail operation. We recommend that you specify the ProductType parameter for the original key accounts of Alibaba Cloud and the PoolKey parameter for Alibaba Cloud users.
+        
+        @param request: QuerySubscriptionDetailRequest
+        @return: QuerySubscriptionDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_subscription_detail_with_options_async(request, runtime)
 
@@ -2565,6 +3539,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.ReleaseSecretNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.ReleaseSecretNoResponse:
+        """
+        @summary Releases a phone number.
+        
+        @description    After a phone number is released, it will no longer be charged from the following month.
+        Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
+        
+        @param request: ReleaseSecretNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseSecretNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2601,6 +3585,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.ReleaseSecretNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.ReleaseSecretNoResponse:
+        """
+        @summary Releases a phone number.
+        
+        @description    After a phone number is released, it will no longer be charged from the following month.
+        Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
+        
+        @param request: ReleaseSecretNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseSecretNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2636,6 +3630,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.ReleaseSecretNoRequest,
     ) -> dyplsapi_20170525_models.ReleaseSecretNoResponse:
+        """
+        @summary Releases a phone number.
+        
+        @description    After a phone number is released, it will no longer be charged from the following month.
+        Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
+        
+        @param request: ReleaseSecretNoRequest
+        @return: ReleaseSecretNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_secret_no_with_options(request, runtime)
 
@@ -2643,6 +3646,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.ReleaseSecretNoRequest,
     ) -> dyplsapi_20170525_models.ReleaseSecretNoResponse:
+        """
+        @summary Releases a phone number.
+        
+        @description    After a phone number is released, it will no longer be charged from the following month.
+        Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
+        
+        @param request: ReleaseSecretNoRequest
+        @return: ReleaseSecretNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_secret_no_with_options_async(request, runtime)
 
@@ -2651,6 +3663,15 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.UnbindSubscriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.UnbindSubscriptionResponse:
+        """
+        @summary Unbinds a phone number.
+        
+        @description Before releasing a phone number, you must call the UnbindSubscription operation to unbind the phone number.
+        
+        @param request: UnbindSubscriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindSubscriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2691,6 +3712,15 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.UnbindSubscriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.UnbindSubscriptionResponse:
+        """
+        @summary Unbinds a phone number.
+        
+        @description Before releasing a phone number, you must call the UnbindSubscription operation to unbind the phone number.
+        
+        @param request: UnbindSubscriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindSubscriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2730,6 +3760,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.UnbindSubscriptionRequest,
     ) -> dyplsapi_20170525_models.UnbindSubscriptionResponse:
+        """
+        @summary Unbinds a phone number.
+        
+        @description Before releasing a phone number, you must call the UnbindSubscription operation to unbind the phone number.
+        
+        @param request: UnbindSubscriptionRequest
+        @return: UnbindSubscriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_subscription_with_options(request, runtime)
 
@@ -2737,6 +3775,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.UnbindSubscriptionRequest,
     ) -> dyplsapi_20170525_models.UnbindSubscriptionResponse:
+        """
+        @summary Unbinds a phone number.
+        
+        @description Before releasing a phone number, you must call the UnbindSubscription operation to unbind the phone number.
+        
+        @param request: UnbindSubscriptionRequest
+        @return: UnbindSubscriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_subscription_with_options_async(request, runtime)
 
@@ -2745,6 +3791,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.UnlockSecretNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.UnlockSecretNoResponse:
+        """
+        @summary Unlocks a phone number.
+        
+        @description After a phone number is unlocked, you can reselect the unlocked phone number when you call an operation to create a binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UnlockSecretNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnlockSecretNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2781,6 +3838,17 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.UnlockSecretNoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.UnlockSecretNoResponse:
+        """
+        @summary Unlocks a phone number.
+        
+        @description After a phone number is unlocked, you can reselect the unlocked phone number when you call an operation to create a binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UnlockSecretNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnlockSecretNoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2816,6 +3884,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.UnlockSecretNoRequest,
     ) -> dyplsapi_20170525_models.UnlockSecretNoResponse:
+        """
+        @summary Unlocks a phone number.
+        
+        @description After a phone number is unlocked, you can reselect the unlocked phone number when you call an operation to create a binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UnlockSecretNoRequest
+        @return: UnlockSecretNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unlock_secret_no_with_options(request, runtime)
 
@@ -2823,6 +3901,16 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.UnlockSecretNoRequest,
     ) -> dyplsapi_20170525_models.UnlockSecretNoResponse:
+        """
+        @summary Unlocks a phone number.
+        
+        @description After a phone number is unlocked, you can reselect the unlocked phone number when you call an operation to create a binding.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UnlockSecretNoRequest
+        @return: UnlockSecretNoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unlock_secret_no_with_options_async(request, runtime)
 
@@ -2831,6 +3919,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.UpdateSubscriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.UpdateSubscriptionResponse:
+        """
+        @summary Modifies a phone number binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 10,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UpdateSubscriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubscriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -2895,6 +3993,16 @@ class Client(OpenApiClient):
         request: dyplsapi_20170525_models.UpdateSubscriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dyplsapi_20170525_models.UpdateSubscriptionResponse:
+        """
+        @summary Modifies a phone number binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 10,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UpdateSubscriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubscriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asrmodel_id):
@@ -2958,6 +4066,15 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.UpdateSubscriptionRequest,
     ) -> dyplsapi_20170525_models.UpdateSubscriptionResponse:
+        """
+        @summary Modifies a phone number binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 10,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UpdateSubscriptionRequest
+        @return: UpdateSubscriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_subscription_with_options(request, runtime)
 
@@ -2965,5 +4082,14 @@ class Client(OpenApiClient):
         self,
         request: dyplsapi_20170525_models.UpdateSubscriptionRequest,
     ) -> dyplsapi_20170525_models.UpdateSubscriptionResponse:
+        """
+        @summary Modifies a phone number binding.
+        
+        @description ### [](#qps)QPS limits
+        You can call this operation up to 10,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: UpdateSubscriptionRequest
+        @return: UpdateSubscriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_subscription_with_options_async(request, runtime)

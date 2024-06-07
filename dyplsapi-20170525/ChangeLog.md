@@ -1,3 +1,7 @@
+2024-06-07 Version: 1.0.8
+- Update API BindAxnExtension: add param Extend.
+
+
 2023-05-04 Version: 1.0.7
 - Add new API.
 

@@ -16,11 +16,27 @@ class AddAxnTrackNoRequest(TeaModel):
         track_no: str = None,
     ):
         self.owner_id = owner_id
+        # The private number in the AXN binding, that is, phone number X.
+        # 
+        # You can call the [BindAxn](https://help.aliyun.com/document_detail/110258.html) operation to obtain the value of PhoneNoX.
+        # 
+        # This parameter is required.
         self.phone_no_x = phone_no_x
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The binding ID.
+        # 
+        # You can call the [BindAxn](https://help.aliyun.com/document_detail/110258.html) operation to obtain the value of SubsId.
+        # 
+        # This parameter is required.
         self.subs_id = subs_id
+        # The tracking number.
+        # 
+        # This parameter is required.
         self.track_no = track_no
 
     def validate(self):
@@ -74,8 +90,14 @@ class AddAxnTrackNoResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -118,9 +140,6 @@ class AddAxnTrackNoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -159,10 +178,40 @@ class AddSecretBlacklistRequest(TeaModel):
         remark: str = None,
         way_control: str = None,
     ):
+        # The numbers in the blacklist. A point-to-point blacklist has a pair of numbers separated by a colon (:). A number pool blacklist has only one single number.
+        # 
+        # >  The asterisks (\\*) in the sample value are not wildcards.
+        # 
+        # This parameter is required.
         self.black_no = black_no
+        # The blacklist type. Valid values:
+        # 
+        # *   **POINT_TO_POINT_BLACK**: point-to-point blacklist.
+        # *   **PARTNER_GLOBAL_NUMBER_BLACK**: number pool blacklist.
+        # 
+        # This parameter is required.
         self.black_type = black_type
+        # The key of the phone number pool.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the Number Pool Management page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
+        # The blacklist remarks.
         self.remark = remark
+        # The control on the call direction.
+        # 
+        # *   **PHONEA_REJECT**: The first number in the blacklist can be used to call the second number, but the second number cannot be used to call the first number.
+        # *   **PHONEB_REJECT**: The first number in the blacklist cannot be used to call the second number, but the second number can be used to call the first number.
+        # *   If this parameter is left empty, the two numbers in the blacklist cannot be used to call each other.
+        # 
+        # >  This parameter is available only for a point-to-point blacklist.
+        # 
+        # Valid values:
+        # 
+        # *   DUPLEX_REJECT
+        # *   PHONEA_REJECT
+        # *   PHONEB_REJECT
         self.way_control = way_control
 
     def validate(self):
@@ -208,8 +257,14 @@ class AddSecretBlacklistResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -252,9 +307,6 @@ class AddSecretBlacklistResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -307,24 +359,85 @@ class BindAxbRequest(TeaModel):
         resource_owner_id: int = None,
         ring_config: str = None,
     ):
+        # The ID of the ASR model. On the [Automatic Speech Recognition (ASR) Model Management](https://dyplsnext.console.aliyun.com/?spm=5176.12818093.categories-n-products.ddypls.22e616d0a0tEFC#/asr) page, you can view the ID of the ASR model.
         self.asrmodel_id = asrmodel_id
+        # Specifies whether to enable automatic speech recognition (ASR). Valid values:
+        # 
+        # *   **false** (default): disables ASR.
+        # *   **true**: enables ASR.
         self.asrstatus = asrstatus
+        # Re-sets the phone number display logic in the AXB binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+        # 
+        # >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
         self.call_display_type = call_display_type
+        # The status of the one-way call restriction. Valid values:
+        # 
+        # *   **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+        # *   **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
         self.call_restrict = call_restrict
+        # The maximum ringing duration for each number in sequential ringing. Unit: seconds. The value ranges from 5 to 20.
         self.call_timeout = call_timeout
+        # Specifies the dual tone multiple frequency (DTMF) key configuration in the AXB binding. The following content can be configured:
+        # 
+        # *   endCallIvrPhoneNo: for whom the audio is played, user A or user B.
+        # *   waitingDtmfTime: the maximum waiting time after the first audio is played. The maximum waiting time is 30 seconds.
+        # *   maxLoop: the maximum number of loop playback times of the first audio if the DTMF key is not matched. The maximum number of loop playback times is 5.
+        # *   step1File: the name of the first audio.
+        # *   step2File: the name of the second audio.
+        # *   validKey: the valid key values, such as 1,2. Only two valid key values can be set, and the key values are separated by a comma (,).
+        # *   waitingEndCall: The waiting duration to hang up a call. The waiting duration is allowed by a carrier. The maximum waiting duration is 10 seconds.
         self.dtmf_config = dtmf_config
+        # Specifies the city to which phone number X to be selected belongs.
+        # 
+        # *   If no phone number for the specified city is available in the current phone number pool or this parameter is not specified, a phone number that belongs to another city is randomly selected from the current phone number pool and assigned as phone number X.
+        # *   If**Number X Assignment Mode** is set to **Strict Matching Mode** and no phone number meets the requirement, the system displays an allocation error.
         self.expect_city = expect_city
+        # The expiration time of the AXB binding.
+        # 
+        # >  The expiration time must be more than 1 minute later than the time when you call this API operation.
+        # 
+        # This parameter is required.
         self.expiration = expiration
+        # Specifies whether to record all calls made by the bound phone numbers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.is_recording_enabled = is_recording_enabled
+        # The extension field for the external business. This parameter is returned in a call record receipt.
         self.out_id = out_id
+        # The ID of the external business.
         self.out_order_id = out_order_id
         self.owner_id = owner_id
+        # Phone number A in the AXB binding.
+        # 
+        # Phone number A can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+        # 
+        # This parameter is required.
         self.phone_no_a = phone_no_a
+        # Phone number B in the AXB binding. If phone number A is used to call phone number X, the call is forwarded to phone number B. Phone number B can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+        # 
+        # >  If you need to update phone number B, call the [UpdateSubscription](https://help.aliyun.com/document_detail/110253.html) operation.
         self.phone_no_b = phone_no_b
+        # Phone number X in the AXB binding.
+        # 
+        # Phone number X is the phone number that you purchased in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) or by using the [BuySecretNo](https://help.aliyun.com/document_detail/110266.html) operation before you bind a phone number. Phone number X is used to forward calls.
+        # 
+        # If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the ExpectCity parameter and is used as phone number X.
         self.phone_no_x = phone_no_x
+        # The key of the phone number pool.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Sets the ringtone code for enterprise Color Ring Back Tone (CRBT) in the AXB binding.
+        # 
+        # *   Ringtone setting when phone number A is used to call phone number X in the AXB binding: AXBRing_A
+        # *   Ringtone setting when phone number B is used to call phone number X in the AXB binding: AXBRing_B
+        # 
+        # Enterprise CRBT codes: Enterprise CRBT codes can be queried in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). You can choose **Number Pool Management** > **Enterprise CRBT Management** to view enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+        # 
+        # >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
         self.ring_config = ring_config
 
     def validate(self):
@@ -426,8 +539,13 @@ class BindAxbResponseBodySecretBindDTO(TeaModel):
         secret_no: str = None,
         subs_id: str = None,
     ):
+        # The extension of the phone number.
+        # 
+        # >  The BindAxb operation does not involve an extension. Ignore this parameter.
         self.extension = extension
+        # The private number, that is, phone number X.
         self.secret_no = secret_no
+        # The binding ID.
         self.subs_id = subs_id
 
     def validate(self):
@@ -466,9 +584,16 @@ class BindAxbResponseBody(TeaModel):
         request_id: str = None,
         secret_bind_dto: BindAxbResponseBodySecretBindDTO = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The information returned after the phone numbers were bound.
         self.secret_bind_dto = secret_bind_dto
 
     def validate(self):
@@ -517,9 +642,6 @@ class BindAxbResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -571,23 +693,73 @@ class BindAxgRequest(TeaModel):
         resource_owner_id: int = None,
         ring_config: str = None,
     ):
+        # The ID of the ASR model.
         self.asrmodel_id = asrmodel_id
+        # Specifies whether to enable automatic speech recognition (ASR). Valid values:
+        # 
+        # *   **False** (default): disables ASR.
+        # *   **True**: enables ASR.
         self.asrstatus = asrstatus
+        # Re-sets the phone number display logic in the AXG binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+        # 
+        # >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
         self.call_display_type = call_display_type
+        # The status of call restrictions. Valid values:
+        # 
+        # *   **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+        # *   **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
         self.call_restrict = call_restrict
+        # Specifies the city to which phone number X to be selected belongs.
+        # 
+        # *   If no phone number for the specified city is available in the current phone number pool or this parameter is not specified, a phone number that belongs to another city is randomly selected from the current phone number pool and assigned as phone number X.
+        # *   If Number X Assignment Mode is set to Strict Matching Mode and no phone number meets the requirement, the system displays an allocation error.
         self.expect_city = expect_city
+        # The expiration time of the AXG binding. The value is accurate to seconds.
+        # 
+        # >  The expiration time must be more than 1 minute later than the time when you call this API operation.
+        # 
+        # This parameter is required.
         self.expiration = expiration
+        # The group ID in the AXG binding. You can view the group ID by using either of the following methods:
+        # 
+        # *   On the **Number Pool Management** page in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account), filter AXG privacy numbers and click **Number Group G Management** to view the group IDs of number groups G.****\
+        # *   If the [CreateAxgGroup](https://help.aliyun.com/document_detail/110250.html) operation is called to create number group G, the value of **GroupId** in the response of the CreateAxgGroup operation is specified as the value of the request parameter **GroupId** of the BindAxg operation.
+        # 
+        # >  Number group G must have one or more phone numbers.
+        # 
+        # This parameter is required.
         self.group_id = group_id
+        # Specifies whether to record all calls made by the bound phone numbers.
         self.is_recording_enabled = is_recording_enabled
+        # The extension field for the external business. This parameter is returned in a call record receipt.
         self.out_id = out_id
+        # The ID of the external business.
         self.out_order_id = out_order_id
         self.owner_id = owner_id
+        # Phone number A in the AXG binding. Phone number A can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+        # 
+        # This parameter is required.
         self.phone_no_a = phone_no_a
+        # Phone number B in the AXG binding. If phone number A is used to call phone number X, the call is forwarded to phone number B. If you need to update phone number B, call the [UpdateSubscription](https://help.aliyun.com/document_detail/110253.html) operation.
+        # 
+        # Phone number B can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
         self.phone_no_b = phone_no_b
+        # Phone number X in the AXG binding. If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the **ExpectCity** parameter and is used as phone number X.
+        # 
+        # >  Phone number X is the phone number that you purchased in the Phone Number Protection console or by using the [BuySecretNo](https://help.aliyun.com/document_detail/110266.html) operation before you bind a phone number. Phone number X is used to forward calls.
         self.phone_no_x = phone_no_x
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Sets the ringtone for enterprise Color Ring Back Tone (CRBT) in the AXG binding.
+        # 
+        # *   Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXG binding: AXGRing_AB
+        # *   Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXG binding: AXGRing_A
+        # *   Ringtone setting when a phone number in number group G is used to call phone number X in the AXG binding: AXGRing_G
+        # *   Enterprise CRBT codes: Enterprise CRBT codes can be queried in the Phone Number Protection console. You can choose **Number Pool Management > Enterprise CRBT Management** to view and manage enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+        # 
+        # >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
         self.ring_config = ring_config
 
     def validate(self):
@@ -685,8 +857,13 @@ class BindAxgResponseBodySecretBindDTO(TeaModel):
         secret_no: str = None,
         subs_id: str = None,
     ):
+        # The extension of the phone number.
+        # 
+        # >  The BindAxg operation does not involve an extension. Ignore this parameter.
         self.extension = extension
+        # The private number, that is, phone number X.
         self.secret_no = secret_no
+        # The binding ID.
         self.subs_id = subs_id
 
     def validate(self):
@@ -725,9 +902,16 @@ class BindAxgResponseBody(TeaModel):
         request_id: str = None,
         secret_bind_dto: BindAxgResponseBodySecretBindDTO = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The information returned after the phone numbers were bound.
         self.secret_bind_dto = secret_bind_dto
 
     def validate(self):
@@ -776,9 +960,6 @@ class BindAxgResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -831,24 +1012,74 @@ class BindAxnRequest(TeaModel):
         resource_owner_id: int = None,
         ring_config: str = None,
     ):
+        # The ID of the ASR model. On the [Automatic Speech Recognition (ASR) Model Management](https://dyplsnext.console.aliyun.com/?spm=5176.12818093.categories-n-products.ddypls.22e616d0a0tEFC#/asr) page, you can view the ID of the ASR model.
         self.asrmodel_id = asrmodel_id
+        # Specifies whether to enable automatic speech recognition (ASR). Valid values:
+        # 
+        # *   **false** (default): disables ASR.
+        # *   **true**: enables ASR.
         self.asrstatus = asrstatus
+        # Re-sets the phone number display logic in the AXN binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+        # 
+        # >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
         self.call_display_type = call_display_type
+        # The status of one-way call restrictions. Valid values:
+        # 
+        # *   **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+        # *   **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
         self.call_restrict = call_restrict
+        # The maximum ringing duration for each number in sequential ringing. Unit: seconds.
         self.call_timeout = call_timeout
+        # Specifies the city to which phone number X to be selected belongs.
+        # 
+        # *   If no phone number for the specified city is available in the current phone number pool or this parameter is not specified, a phone number that belongs to another city is randomly selected from the current phone number pool and assigned as phone number X.
+        # *   If **Number X Assignment Mode** is set to **Strict Matching Mode** and no phone number meets the requirement, the system displays an allocation error.
         self.expect_city = expect_city
+        # The expiration time of the AXN binding. Unit: seconds.
+        # 
+        # >  The expiration time must be more than 60 seconds later than the time when you call this API operation.
+        # 
+        # This parameter is required.
         self.expiration = expiration
+        # Specifies whether to record all calls made by the bound phone numbers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.is_recording_enabled = is_recording_enabled
+        # The type of the phone number.
+        # 
+        # >  This parameter is applicable to the key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
         self.no_type = no_type
+        # The extension field for the external business. This parameter is returned in a call record receipt.
         self.out_id = out_id
+        # The ID of the external business.
         self.out_order_id = out_order_id
         self.owner_id = owner_id
+        # Phone number A in the AXN binding. Phone number A can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+        # 
+        # This parameter is required.
         self.phone_no_a = phone_no_a
+        # Phone number B in the AXN binding. If phone number A is used to call phone number X, the call is forwarded to phone number B. Phone number B can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+        # 
+        # >  If phone number B is not specified in the AXN binding, the system automatically generates a nonexistent number. If phone number A is used to call phone number X, the nonexistent number is returned. If you need to update phone number B, call the [UpdateSubscription](https://help.aliyun.com/document_detail/110253.html) operation.
         self.phone_no_b = phone_no_b
+        # Phone number X in the AXN binding. Phone number X is the phone number that you purchased in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) or by using the [BuySecretNo](https://help.aliyun.com/document_detail/110266.html) operation before you bind a phone number. Phone number X is used to forward calls.
+        # 
+        # >  If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the ExpectCity parameter and is used as phone number X.
         self.phone_no_x = phone_no_x
+        # The key of the phone number pool. Log on to the [Phone Number Protection console ](https://dypls.console.aliyun.com/dypls.htm#/account)and view the key of the phone number pool on the **Number Pool Management** page.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Sets the ringtone code for enterprise Color Ring Back Tone (CRBT) in the AXN extension binding.
+        # 
+        # *   Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_AB
+        # *   Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_A
+        # *   Ringtone setting when an N-side number is used to call phone number X in the AXN extension binding: AXNRing_N
+        # 
+        # Enterprise CRBT codes: Enterprise CRBT codes can be queried in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). You can choose **Number Pool Management > Enterprise CRBT Management** to view enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+        # 
+        # >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
         self.ring_config = ring_config
 
     def validate(self):
@@ -950,8 +1181,13 @@ class BindAxnResponseBodySecretBindDTO(TeaModel):
         secret_no: str = None,
         subs_id: str = None,
     ):
+        # The extension of the phone number.
+        # 
+        # >  The BindAxn operation does not involve an extension. Ignore this parameter.
         self.extension = extension
+        # The private number, that is, phone number X.
         self.secret_no = secret_no
+        # The binding ID.
         self.subs_id = subs_id
 
     def validate(self):
@@ -990,9 +1226,16 @@ class BindAxnResponseBody(TeaModel):
         request_id: str = None,
         secret_bind_dto: BindAxnResponseBodySecretBindDTO = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The information returned after the phone numbers were bound.
         self.secret_bind_dto = secret_bind_dto
 
     def validate(self):
@@ -1041,9 +1284,6 @@ class BindAxnResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1082,6 +1322,7 @@ class BindAxnExtensionRequest(TeaModel):
         call_restrict: str = None,
         expect_city: str = None,
         expiration: str = None,
+        extend: str = None,
         extension: str = None,
         is_recording_enabled: bool = None,
         out_id: str = None,
@@ -1095,23 +1336,73 @@ class BindAxnExtensionRequest(TeaModel):
         resource_owner_id: int = None,
         ring_config: str = None,
     ):
+        # The ID of the ASR model. On the [Automatic Speech Recognition (ASR) Model Management](https://dyplsnext.console.aliyun.com/?spm=5176.12818093.categories-n-products.ddypls.22e616d0a0tEFC#/asr) page, you can view the ID of the ASR model.
         self.asrmodel_id = asrmodel_id
+        # Specifies whether to enable automatic speech recognition (ASR). Valid values:
+        # 
+        # *   **false** (default): disables ASR.
+        # *   **true**: enables ASR.
         self.asrstatus = asrstatus
+        # Re-sets the phone number display logic in the AXN extension binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+        # 
+        # >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
         self.call_display_type = call_display_type
+        # The status of call restrictions. Valid values:
+        # 
+        # *   **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+        # *   **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
         self.call_restrict = call_restrict
+        # Specifies the city to which phone number X to be selected belongs.
+        # 
+        # *   If no phone number for the specified city is available in the current phone number pool or this parameter is not specified, a phone number that belongs to another city is randomly selected from the current phone number pool and assigned as phone number X.
+        # *   If Number X Assignment Mode is set to Strict Matching Mode and no phone number meets the requirement, the system displays an allocation error.
         self.expect_city = expect_city
+        # The expiration time of the AXN extension binding. The value is accurate to seconds.
+        # 
+        # >  The expiration time must be more than 1 minute later than the time when you call this API operation.
+        # 
+        # This parameter is required.
         self.expiration = expiration
+        self.extend = extend
+        # The extension of phone number X. The extension is 1 to 3 digits in length.
+        # 
+        # >  If you specify Extension, you must also specify PhoneNoX.
         self.extension = extension
+        # Specifies whether to record all calls made by the bound phone numbers. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.is_recording_enabled = is_recording_enabled
+        # The extension field for the external business. This parameter is returned in a call record receipt.
         self.out_id = out_id
+        # The ID of the external business.
         self.out_order_id = out_order_id
         self.owner_id = owner_id
+        # Phone number A in the AXN extension binding. Phone number A can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+        # 
+        # This parameter is required.
         self.phone_no_a = phone_no_a
+        # Phone number B in the AXN extension binding. When phone number A is used to call phone number X, the call is forwarded to phone number B. If you need to update phone number B, call the [UpdateSubscription](https://help.aliyun.com/document_detail/110253.html) operation.
+        # 
+        # Phone number B can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
         self.phone_no_b = phone_no_b
+        # Phone number X in the AXN extension binding. If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the **ExpectCity** parameter and is used as phone number X.
+        # 
+        # >  Phone number X is the phone number that you purchased in the Phone Number Protection console or by using the [BuySecretNo](https://help.aliyun.com/document_detail/110266.html) operation before you bind a phone number. Phone number X is used to forward calls.
         self.phone_no_x = phone_no_x
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Sets the ringtone for enterprise Color Ring Back Tone (CRBT) in the AXN extension binding.
+        # 
+        # *   Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_AB
+        # *   Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_A
+        # *   Ringtone setting when an N-side number is used to call phone number X in the AXN extension binding: AXNRing_N
+        # 
+        # Enterprise CRBT codes: Enterprise CRBT codes can be queried in the Phone Number Protection console. You can choose **Number Pool Management > Enterprise CRBT Management** to view and manage enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+        # 
+        # >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
         self.ring_config = ring_config
 
     def validate(self):
@@ -1135,6 +1426,8 @@ class BindAxnExtensionRequest(TeaModel):
             result['ExpectCity'] = self.expect_city
         if self.expiration is not None:
             result['Expiration'] = self.expiration
+        if self.extend is not None:
+            result['Extend'] = self.extend
         if self.extension is not None:
             result['Extension'] = self.extension
         if self.is_recording_enabled is not None:
@@ -1175,6 +1468,8 @@ class BindAxnExtensionRequest(TeaModel):
             self.expect_city = m.get('ExpectCity')
         if m.get('Expiration') is not None:
             self.expiration = m.get('Expiration')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
         if m.get('Extension') is not None:
             self.extension = m.get('Extension')
         if m.get('IsRecordingEnabled') is not None:
@@ -1209,8 +1504,11 @@ class BindAxnExtensionResponseBodySecretBindDTO(TeaModel):
         secret_no: str = None,
         subs_id: str = None,
     ):
+        # The extension of the phone number.
         self.extension = extension
+        # The private number, that is, phone number X.
         self.secret_no = secret_no
+        # The binding ID.
         self.subs_id = subs_id
 
     def validate(self):
@@ -1249,9 +1547,16 @@ class BindAxnExtensionResponseBody(TeaModel):
         request_id: str = None,
         secret_bind_dto: BindAxnExtensionResponseBodySecretBindDTO = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The information returned after the phone numbers were bound.
         self.secret_bind_dto = secret_bind_dto
 
     def validate(self):
@@ -1300,9 +1605,6 @@ class BindAxnExtensionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1356,10 +1658,12 @@ class BindBatchAxgRequestAxgBindList(TeaModel):
         self.call_restrict = call_restrict
         self.expect_city = expect_city
         self.expiration = expiration
+        # This parameter is required.
         self.group_id = group_id
         self.is_recording_enabled = is_recording_enabled
         self.out_id = out_id
         self.out_order_id = out_order_id
+        # This parameter is required.
         self.phone_no_a = phone_no_a
         self.phone_no_b = phone_no_b
         self.phone_no_x = phone_no_x
@@ -1446,6 +1750,7 @@ class BindBatchAxgRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.axg_bind_list = axg_bind_list
         self.owner_id = owner_id
         self.pool_key = pool_key
@@ -1505,6 +1810,7 @@ class BindBatchAxgShrinkRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.axg_bind_list_shrink = axg_bind_list_shrink
         self.owner_id = owner_id
         self.pool_key = pool_key
@@ -1704,9 +2010,6 @@ class BindBatchAxgResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1748,13 +2051,38 @@ class BuySecretNoRequest(TeaModel):
         secret_no: str = None,
         spec_id: int = None,
     ):
+        # Specifies the home location of the phone number.
+        # 
+        # > 
+        # 
+        # *   The home location can be set only to a location in the Chinese mainland.
+        # 
+        # *   A phone number that starts with 95 does not have a home location. If you purchase a phone number that starts with 95, set this parameter to **Nationwide**.
+        # 
+        # This parameter is required.
         self.city = city
+        # Specifies whether to add the phone number to the pool of numbers that will be displayed during calls.
+        # 
+        # >  This parameter takes effect only for customers who have enabled the number display feature.
         self.display_pool = display_pool
         self.owner_id = owner_id
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The prefix of the phone number. If you specify the value of **SecretNo** when you purchase a phone number, a phone number starting with the specified prefix is selected.
+        # 
+        # >  You can specify up to 18 digits of the phone number prefix.
         self.secret_no = secret_no
+        # The type of the phone number. Valid values:
+        # 
+        # *   **1**: a phone number assigned by a virtual network operator, that is, a phone number that belongs to the 170 or 171 number segment.
+        # *   **2**: a phone number provided by a carrier.
+        # *   **3**: a phone number that starts with 95.
+        # 
+        # This parameter is required.
         self.spec_id = spec_id
 
     def validate(self):
@@ -1810,6 +2138,7 @@ class BuySecretNoResponseBodySecretBuyInfoDTO(TeaModel):
         self,
         secret_no: str = None,
     ):
+        # The private number, that is, phone number X.
         self.secret_no = secret_no
 
     def validate(self):
@@ -1840,9 +2169,16 @@ class BuySecretNoResponseBody(TeaModel):
         request_id: str = None,
         secret_buy_info_dto: BuySecretNoResponseBodySecretBuyInfoDTO = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The information returned after the operation was called.
         self.secret_buy_info_dto = secret_buy_info_dto
 
     def validate(self):
@@ -1891,9 +2227,6 @@ class BuySecretNoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1932,7 +2265,13 @@ class CancelPickUpWaybillRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cancellation reason.
+        # 
+        # This parameter is required.
         self.cancel_desc = cancel_desc
+        # The ID of the external order.
+        # 
+        # This parameter is required.
         self.outer_order_code = outer_order_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1982,9 +2321,13 @@ class CancelPickUpWaybillResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The cancellation result.
         self.message = message
+        # Indicates whether the cancellation was successful.
         self.success = success
 
     def validate(self):
@@ -2027,9 +2370,16 @@ class CancelPickUpWaybillResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2078,9 +2428,6 @@ class CancelPickUpWaybillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2121,10 +2468,18 @@ class CreateAxgGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of number group G. If the name of number group G is not specified, the ID of number group G is used as the name of number group G.
+        # 
+        # >  The value must be 1 to 128 characters in length.
         self.name = name
+        # The phone numbers that you add to number group G. Separate multiple phone numbers with commas (,). A maximum of 200 phone numbers can be added to number group G.
         self.numbers = numbers
         self.owner_id = owner_id
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
+        # The remarks of number group G. The value must be 0 to 256 characters in length.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2181,9 +2536,16 @@ class CreateAxgGroupResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The ID of number group G. The value of this parameter is required when the [BindAxg](https://help.aliyun.com/document_detail/110249.html) operation is called to add an AXG binding.
         self.group_id = group_id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2230,9 +2592,6 @@ class CreateAxgGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2271,10 +2630,23 @@ class CreatePickUpWaybillRequestConsigneeAddress(TeaModel):
         province_name: str = None,
         town_name: str = None,
     ):
+        # The detailed address of the consignee.
+        # 
+        # This parameter is required.
         self.address_detail = address_detail
+        # The district where the consignee is located.
+        # 
+        # This parameter is required.
         self.area_name = area_name
+        # The city where the consignee is located.
+        # 
+        # This parameter is required.
         self.city_name = city_name
+        # The province where the consignee is located.
+        # 
+        # This parameter is required.
         self.province_name = province_name
+        # The street where the consignee is located.
         self.town_name = town_name
 
     def validate(self):
@@ -2320,8 +2692,11 @@ class CreatePickUpWaybillRequestGoodsInfos(TeaModel):
         quantity: str = None,
         weight: str = None,
     ):
+        # The item name.
         self.name = name
+        # The item quantity.
         self.quantity = quantity
+        # The item weight. Unit: gram.
         self.weight = weight
 
     def validate(self):
@@ -2361,10 +2736,23 @@ class CreatePickUpWaybillRequestSendAddress(TeaModel):
         province_name: str = None,
         town_name: str = None,
     ):
+        # The detailed address of the sender.
+        # 
+        # This parameter is required.
         self.address_detail = address_detail
+        # The district where the sender is located.
+        # 
+        # This parameter is required.
         self.area_name = area_name
+        # The city where the sender is located.
+        # 
+        # This parameter is required.
         self.city_name = city_name
+        # The province where the sender is located.
+        # 
+        # This parameter is required.
         self.province_name = province_name
+        # The street where the sender is located.
         self.town_name = town_name
 
     def validate(self):
@@ -2423,21 +2811,64 @@ class CreatePickUpWaybillRequest(TeaModel):
         send_name: str = None,
         send_phone: str = None,
     ):
+        # The end time of the door-to-door pickup in the appointment. The value of **AppointGotEndTime** is the value of **EndTime** of **AppointTimes** in **CpTimeSelectList** returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+        # 
+        # >  This parameter is required when **BizType** is set to **1**.
         self.appoint_got_end_time = appoint_got_end_time
+        # The start time of the door-to-door pickup in the appointment. The value of **AppointGotStartTime** is the value of **StartTime** of **AppointTimes** in **CpTimeSelectList** returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+        # 
+        # >  This parameter is required when **BizType** is set to **1**.
         self.appoint_got_start_time = appoint_got_start_time
+        # The pickup mode. Valid values:
+        # 
+        # *   **0** (default): real-time order.
+        # *   **1**: appointment order.
         self.biz_type = biz_type
+        # The address of the consignee.
+        # 
+        # This parameter is required.
         self.consignee_address = consignee_address
+        # The mobile phone number of the consignee.
+        # 
+        # >  Either ConsigneeMobile or ConsigneePhone must be set.
         self.consignee_mobile = consignee_mobile
+        # The name of the consignee.
+        # 
+        # This parameter is required.
         self.consignee_name = consignee_name
+        # The landline phone number of the consignee.
+        # 
+        # >  Either ConsigneeMobile or ConsigneePhone must be set.
         self.consignee_phone = consignee_phone
+        # The code of the courier company.
         self.cp_code = cp_code
+        # The items.
         self.goods_infos = goods_infos
+        # The external channel sources.
+        # 
+        # This parameter is required.
         self.order_channels = order_channels
+        # The ID of the external order.
+        # 
+        # This parameter is required.
         self.outer_order_code = outer_order_code
+        # The additional information about the order. The additional information will be printed on the order.
         self.remark = remark
+        # The address of the sender.
+        # 
+        # This parameter is required.
         self.send_address = send_address
+        # The mobile phone number of the sender.
+        # 
+        # >  Either SendMobile or SendPhone must be set.
         self.send_mobile = send_mobile
+        # The name of the sender.
+        # 
+        # This parameter is required.
         self.send_name = send_name
+        # The landline phone number of the sender.
+        # 
+        # >  Either SendMobile or SendPhone must be set.
         self.send_phone = send_phone
 
     def validate(self):
@@ -2554,21 +2985,64 @@ class CreatePickUpWaybillShrinkRequest(TeaModel):
         send_name: str = None,
         send_phone: str = None,
     ):
+        # The end time of the door-to-door pickup in the appointment. The value of **AppointGotEndTime** is the value of **EndTime** of **AppointTimes** in **CpTimeSelectList** returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+        # 
+        # >  This parameter is required when **BizType** is set to **1**.
         self.appoint_got_end_time = appoint_got_end_time
+        # The start time of the door-to-door pickup in the appointment. The value of **AppointGotStartTime** is the value of **StartTime** of **AppointTimes** in **CpTimeSelectList** returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+        # 
+        # >  This parameter is required when **BizType** is set to **1**.
         self.appoint_got_start_time = appoint_got_start_time
+        # The pickup mode. Valid values:
+        # 
+        # *   **0** (default): real-time order.
+        # *   **1**: appointment order.
         self.biz_type = biz_type
+        # The address of the consignee.
+        # 
+        # This parameter is required.
         self.consignee_address_shrink = consignee_address_shrink
+        # The mobile phone number of the consignee.
+        # 
+        # >  Either ConsigneeMobile or ConsigneePhone must be set.
         self.consignee_mobile = consignee_mobile
+        # The name of the consignee.
+        # 
+        # This parameter is required.
         self.consignee_name = consignee_name
+        # The landline phone number of the consignee.
+        # 
+        # >  Either ConsigneeMobile or ConsigneePhone must be set.
         self.consignee_phone = consignee_phone
+        # The code of the courier company.
         self.cp_code = cp_code
+        # The items.
         self.goods_infos_shrink = goods_infos_shrink
+        # The external channel sources.
+        # 
+        # This parameter is required.
         self.order_channels = order_channels
+        # The ID of the external order.
+        # 
+        # This parameter is required.
         self.outer_order_code = outer_order_code
+        # The additional information about the order. The additional information will be printed on the order.
         self.remark = remark
+        # The address of the sender.
+        # 
+        # This parameter is required.
         self.send_address_shrink = send_address_shrink
+        # The mobile phone number of the sender.
+        # 
+        # >  Either SendMobile or SendPhone must be set.
         self.send_mobile = send_mobile
+        # The name of the sender.
+        # 
+        # This parameter is required.
         self.send_name = send_name
+        # The landline phone number of the sender.
+        # 
+        # >  Either SendMobile or SendPhone must be set.
         self.send_phone = send_phone
 
     def validate(self):
@@ -2661,11 +3135,17 @@ class CreatePickUpWaybillResponseBodyData(TeaModel):
         mail_no: str = None,
         success: str = None,
     ):
+        # The code of the courier company.
         self.cp_code = cp_code
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The pickup code.
         self.got_code = got_code
+        # The order ID.
         self.mail_no = mail_no
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2716,9 +3196,13 @@ class CreatePickUpWaybillResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2767,9 +3251,6 @@ class CreatePickUpWaybillResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2808,10 +3289,15 @@ class CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo(TeaModel):
         province_name: str = None,
         town_name: str = None,
     ):
+        # The detailed address of the consignee.
         self.address_detail = address_detail
+        # The district where the consignee is located.
         self.area_name = area_name
+        # The city where the consignee is located.
         self.city_name = city_name
+        # The province where the consignee is located.
         self.province_name = province_name
+        # The street where the consignee is located.
         self.town_name = town_name
 
     def validate(self):
@@ -2857,8 +3343,15 @@ class CreatePickUpWaybillPreQueryRequestConsigneeInfo(TeaModel):
         mobile: str = None,
         name: str = None,
     ):
+        # The address of the consignee.
         self.address_info = address_info
+        # The mobile phone number of the consignee.
+        # 
+        # This parameter is required.
         self.mobile = mobile
+        # The name of the consignee.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -2900,10 +3393,15 @@ class CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo(TeaModel):
         province_name: str = None,
         town_name: str = None,
     ):
+        # The detailed address of the sender.
         self.address_detail = address_detail
+        # The district where the sender is located.
         self.area_name = area_name
+        # The city where the sender is located.
         self.city_name = city_name
+        # The province where the sender is located.
         self.province_name = province_name
+        # The street where the sender is located.
         self.town_name = town_name
 
     def validate(self):
@@ -2949,8 +3447,15 @@ class CreatePickUpWaybillPreQueryRequestSenderInfo(TeaModel):
         mobile: str = None,
         name: str = None,
     ):
+        # The address of the sender.
         self.address_info = address_info
+        # The mobile phone number of the sender.
+        # 
+        # This parameter is required.
         self.mobile = mobile
+        # The name of the sender.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -2993,11 +3498,25 @@ class CreatePickUpWaybillPreQueryRequest(TeaModel):
         pre_weight: str = None,
         sender_info: CreatePickUpWaybillPreQueryRequestSenderInfo = None,
     ):
+        # The consignee information.
+        # 
+        # This parameter is required.
         self.consignee_info = consignee_info
+        # The code of the courier company. If no courier company is specified, the system allocates a courier company.
         self.cp_code = cp_code
+        # The identifier of the external channel source. It cannot contain underscores.
+        # 
+        # This parameter is required.
         self.order_channels = order_channels
+        # The order number of the access system.
         self.outer_order_code = outer_order_code
+        # The estimated weight. Unit: gram.
+        # 
+        # >  If you need to query the estimated price, this parameter is required.
         self.pre_weight = pre_weight
+        # The sender information.
+        # 
+        # This parameter is required.
         self.sender_info = sender_info
 
     def validate(self):
@@ -3055,11 +3574,25 @@ class CreatePickUpWaybillPreQueryShrinkRequest(TeaModel):
         pre_weight: str = None,
         sender_info_shrink: str = None,
     ):
+        # The consignee information.
+        # 
+        # This parameter is required.
         self.consignee_info_shrink = consignee_info_shrink
+        # The code of the courier company. If no courier company is specified, the system allocates a courier company.
         self.cp_code = cp_code
+        # The identifier of the external channel source. It cannot contain underscores.
+        # 
+        # This parameter is required.
         self.order_channels = order_channels
+        # The order number of the access system.
         self.outer_order_code = outer_order_code
+        # The estimated weight. Unit: gram.
+        # 
+        # >  If you need to query the estimated price, this parameter is required.
         self.pre_weight = pre_weight
+        # The sender information.
+        # 
+        # This parameter is required.
         self.sender_info_shrink = sender_info_shrink
 
     def validate(self):
@@ -3110,9 +3643,13 @@ class CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTim
         selectable: bool = None,
         start_time: str = None,
     ):
+        # The end of the time range.
         self.end_time = end_time
+        # The tip displayed when the scheduled pickup is not available.
         self.select_disable_tip = select_disable_tip
+        # Indicates whether the time range can be selected for the scheduled pickup.
         self.selectable = selectable
+        # The beginning of the time range.
         self.start_time = start_time
 
     def validate(self):
@@ -3154,8 +3691,11 @@ class CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes(Te
         date_selectable: bool = None,
         time_list: List[CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList] = None,
     ):
+        # The date in the YYYY-MM-DD format.
         self.date = date
+        # Indicates whether the date is selectable.
         self.date_selectable = date_selectable
+        # The time range for the scheduled pickup for this date.
         self.time_list = time_list
 
     def validate(self):
@@ -3201,8 +3741,11 @@ class CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime(TeaMod
         select_disable_tip: str = None,
         selectable: bool = None,
     ):
+        # The name of the real-time order type.
         self.name = name
+        # The tip displayed when the real-time order cannot be placed.
         self.select_disable_tip = select_disable_tip
+        # Indicates whether the real-time order can be placed after the deadline for placing a real-time order is reached.
         self.selectable = selectable
 
     def validate(self):
@@ -3240,8 +3783,11 @@ class CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList(TeaModel):
         pre_price: str = None,
         real_time: CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime = None,
     ):
+        # The available time for the scheduled pickup. If the current courier company cannot accept the scheduled pickup, this field is left empty.
         self.appoint_times = appoint_times
+        # The estimated price. Unit: CNY. The value is accurate to two decimal places. The value of this parameter is displayed if an estimated weight is specified.
         self.pre_price = pre_price
+        # The information about whether the real-time order can be selected.
         self.real_time = real_time
 
     def validate(self):
@@ -3293,11 +3839,17 @@ class CreatePickUpWaybillPreQueryResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The information about whether the courier company can accept the order.
         self.cp_time_select_list = cp_time_select_list
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The response content.
         self.message = message
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3356,9 +3908,13 @@ class CreatePickUpWaybillPreQueryResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The result set.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3407,9 +3963,6 @@ class CreatePickUpWaybillPreQueryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3448,8 +4001,10 @@ class DeleteAxgGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3541,9 +4096,6 @@ class DeleteAxgGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3582,10 +4134,34 @@ class DeleteSecretBlacklistRequest(TeaModel):
         remark: str = None,
         way_control: str = None,
     ):
+        # The phone numbers in the blacklist. A point-to-point blacklist has a pair of numbers separated by a colon (":"). A number pool blacklist or a platform blacklist has only one single number.
+        # 
+        # This parameter is required.
         self.black_no = black_no
+        # The blacklist type. Valid values:
+        # 
+        # *   **POINT_TO_POINT_BLACK**: point-to-point blacklist
+        # *   **PARTNER_GLOBAL_NUMBER_BLACK**: number pool blacklist
+        # 
+        # This parameter is required.
         self.black_type = black_type
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
+        # The remarks for the blacklist.
         self.remark = remark
+        # The control on the call direction.
+        # 
+        # *   **PHONEA_REJECT**: The first phone number in the blacklist can be used to call the second phone number, but the second phone number in the blacklist cannot be used to call the first phone number.
+        # *   **PHONEB_REJECT**: The first phone number in the blacklist cannot be used to call the second phone number, but the second phone number in the blacklist can be used to call the first phone number.
+        # *   If this parameter is not specified, the two phone numbers in the blacklist cannot be used to call each other.
+        # 
+        # Valid values:
+        # 
+        # *   DUPLEX_REJECT
+        # *   PHONEA_REJECT
+        # *   PHONEB_REJECT
         self.way_control = way_control
 
     def validate(self):
@@ -3631,8 +4207,14 @@ class DeleteSecretBlacklistResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3675,9 +4257,6 @@ class DeleteSecretBlacklistResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3714,8 +4293,23 @@ class GetSecretAsrDetailRequest(TeaModel):
         call_time: str = None,
         pool_key: str = None,
     ):
+        # The ID of the call record.
+        # 
+        # You can log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view **Call Record ID** on the **Call Record Query** page.
+        # 
+        # This parameter is required.
         self.call_id = call_id
+        # The call initiation time in the call record.
+        # 
+        # You can log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). View **Call Initiated At** on the **Call Record Query** page, or view the call_time field in the Call Detail Record (CDR) receipt.
+        # 
+        # This parameter is required.
         self.call_time = call_time
+        # The key of the phone number pool.
+        # 
+        # You can log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
 
     def validate(self):
@@ -3757,12 +4351,19 @@ class GetSecretAsrDetailResponseBodyDataSentences(TeaModel):
         speech_rate: int = None,
         text: str = None,
     ):
+        # The start time offset of the sentence. Unit: milliseconds.
         self.begin_time = begin_time
+        # The ID of the audio track to which the sentence belongs.
         self.channel_id = channel_id
+        # The emotion value. Value range: 1 to 10. The higher the value, the stronger the emotion.
         self.emotion_value = emotion_value
+        # The end time offset of the sentence. Unit: milliseconds.
         self.end_time = end_time
+        # The silence duration between the current sentence and the previous sentence. Unit: seconds.
         self.silence_duration = silence_duration
+        # The average speech rate of the sentence. Unit: number of words per minute.
         self.speech_rate = speech_rate
+        # The recognition result of the sentence.
         self.text = text
 
     def validate(self):
@@ -3821,13 +4422,21 @@ class GetSecretAsrDetailResponseBodyData(TeaModel):
         sentences: List[GetSecretAsrDetailResponseBodyDataSentences] = None,
         type: str = None,
     ):
+        # The total duration of the audio file that was recognized. Unit: milliseconds.
         self.biz_duration = biz_duration
+        # The ID of the business process.
         self.business_id = business_id
+        # The business keyword.
         self.business_key = business_key
+        # The status code. The status code 21050000 indicates that the request was successful.
         self.code = code
+        # The description.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
+        # The ASR result.
         self.sentences = sentences
+        # The type.
         self.type = type
 
     def validate(self):
@@ -3894,9 +4503,13 @@ class GetSecretAsrDetailResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The ASR details.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3945,9 +4558,6 @@ class GetSecretAsrDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3988,10 +4598,26 @@ class GetTotalPublicUrlRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the call record.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view **Call Record ID** on the **Call Record Query** page.
+        # 
+        # This parameter is required.
         self.call_id = call_id
+        # The call initiation time in the call record.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). View **Call Initiated At** on the **Call Record Query** page, or view the call_time field in the Call Detail Record (CDR) receipt.
+        # 
+        # This parameter is required.
         self.call_time = call_time
+        # Specifies whether the verification on the binding ID is required.
+        # 
+        # This parameter is required.
         self.check_subs = check_subs
         self.owner_id = owner_id
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.partner_key = partner_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4046,7 +4672,13 @@ class GetTotalPublicUrlResponseBodyData(TeaModel):
         phone_public_url: str = None,
         ring_public_url: str = None,
     ):
+        # The download URL of the recorded call.
+        # 
+        # >  The download URL of the recorded call is valid for 30 days.
         self.phone_public_url = phone_public_url
+        # The download URL of the recorded ringing tone.
+        # 
+        # >  The download URL of the recorded ringing tone is valid for 30 days.
         self.ring_public_url = ring_public_url
 
     def validate(self):
@@ -4081,9 +4713,16 @@ class GetTotalPublicUrlResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The download URLs of the recording files.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4132,9 +4771,6 @@ class GetTotalPublicUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4174,9 +4810,17 @@ class LockSecretNoRequest(TeaModel):
         secret_no: str = None,
     ):
         self.owner_id = owner_id
+        # The key of the phone number pool.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The private number that you want to lock. You must enter a complete mobile phone number.
+        # 
+        # This parameter is required.
         self.secret_no = secret_no
 
     def validate(self):
@@ -4222,8 +4866,14 @@ class LockSecretNoResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4266,9 +4916,6 @@ class LockSecretNoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4309,10 +4956,39 @@ class OperateAxgGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The group ID in the AXG binding.
+        # 
+        # You can view the group ID by using either of the following methods:
+        # 
+        # *   On the **Number Pool Management** page in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account), filter AXG private numbers and click **Number Group G Management** to view the group IDs of number groups G.****\
+        # *   If the [CreateAxgGroup](https://help.aliyun.com/document_detail/110250.html) operation is called to create number group G, the value of **GroupId** in the response of the CreateAxgGroup operation is specified as the value of the request parameter **GroupId** of the OperateAxgGroup operation.
+        # 
+        # >  Number group G must have one or more phone numbers.
+        # 
+        # This parameter is required.
         self.group_id = group_id
+        # The phone numbers that you add to number group G. Separate the phone numbers with commas (,). You can add up to 200 phone numbers at a time.
+        # 
+        # This parameter is required.
         self.numbers = numbers
+        # The type of the operation on number group G. Valid values:
+        # 
+        # *   **addNumbers**: adds phone numbers to number group G.
+        # *   **deleteNumbers**: deletes phone numbers from number group G.
+        # *   **overwriteNumbers**: replaces all phone numbers in number group G. All the original phone numbers are deleted from number group G, and new phone numbers are added to number group G.
+        # 
+        # > 
+        # 
+        # *   When you replace all phone numbers in number group G, the quantity of original phone numbers in number group G cannot exceed 200.
+        # 
+        # *   You can add up to 200 phone numbers to number group G at a time.
+        # 
+        # This parameter is required.
         self.operate_type = operate_type
         self.owner_id = owner_id
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4368,8 +5044,14 @@ class OperateAxgGroupResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4412,9 +5094,6 @@ class OperateAxgGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4455,12 +5134,25 @@ class OperateBlackNoRequest(TeaModel):
         resource_owner_id: int = None,
         tips: str = None,
     ):
+        # The phone number to be added to or deleted from the blacklist.
+        # 
+        # This parameter is required.
         self.black_no = black_no
+        # The type of the operation on the phone number. Valid values:
+        # 
+        # *   **AddBlack**: adds the phone number to the blacklist.
+        # *   **DeleteBlack**: deletes the phone number from the blacklist.
+        # 
+        # This parameter is required.
         self.operate_type = operate_type
         self.owner_id = owner_id
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The description.
         self.tips = tips
 
     def validate(self):
@@ -4514,8 +5206,14 @@ class OperateBlackNoResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4558,9 +5256,6 @@ class OperateBlackNoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4600,11 +5295,16 @@ class QueryPhoneNoAByTrackNoRequest(TeaModel):
         resource_owner_id: int = None,
         track_no: str = None,
     ):
+        # The cabinet number.
         self.cabinet_no = cabinet_no
         self.owner_id = owner_id
+        # Phone number X returned by the API operation for creating a binding.
         self.phone_no_x = phone_no_x
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tracking number.
+        # 
+        # This parameter is required.
         self.track_no = track_no
 
     def validate(self):
@@ -4654,8 +5354,11 @@ class QueryPhoneNoAByTrackNoResponseBodyModule(TeaModel):
         phone_no_a: str = None,
         phone_no_x: str = None,
     ):
+        # The extension of phone number X.
         self.extension = extension
+        # Phone number A.
         self.phone_no_a = phone_no_a
+        # The private number, that is, phone number X.
         self.phone_no_x = phone_no_x
 
     def validate(self):
@@ -4694,9 +5397,16 @@ class QueryPhoneNoAByTrackNoResponseBody(TeaModel):
         module: List[QueryPhoneNoAByTrackNoResponseBodyModule] = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The information returned after the phone numbers were bound.
         self.module = module
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4751,9 +5461,6 @@ class QueryPhoneNoAByTrackNoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4794,10 +5501,29 @@ class QueryRecordFileDownloadUrlRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the call record. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view **Call Record ID** on the **Call Record Query** page.
+        # 
+        # This parameter is required.
         self.call_id = call_id
+        # The call initiation time in the call record. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). View **Call Initiated At** on the **Call Record Query** page, or view the call_time field in the Call Detail Record (CDR) receipt.
         self.call_time = call_time
         self.owner_id = owner_id
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # >  This parameter is required when **ProductType** is left empty.
         self.pool_key = pool_key
+        # The product type. Valid values:
+        # 
+        # *   **AXB_170**.
+        # *   **AXN_170**.
+        # *   **AXN_95**.
+        # *   **AXN_EXTENSION_REUSE**\
+        # 
+        # > 
+        # 
+        # *   This parameter is applicable to the original key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+        # 
+        # *   This parameter is required when **PoolKey** is left empty.
         self.product_type = product_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4854,9 +5580,16 @@ class QueryRecordFileDownloadUrlResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The download URL of the recording file. The download URL is valid for 2 hours.
         self.download_url = download_url
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4903,9 +5636,6 @@ class QueryRecordFileDownloadUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4945,9 +5675,17 @@ class QuerySecretNoDetailRequest(TeaModel):
         secret_no: str = None,
     ):
         self.owner_id = owner_id
+        # The key of the phone number pool.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The private number.
+        # 
+        # This parameter is required.
         self.secret_no = secret_no
 
     def validate(self):
@@ -4996,11 +5734,29 @@ class QuerySecretNoDetailResponseBodySecretNoInfoDTO(TeaModel):
         secret_status: int = None,
         vendor: int = None,
     ):
+        # The verification status of the phone number. Valid values:
+        # 
+        # *   **0**: The phone number is not verified.
+        # *   **1**: The phone number is verified.
         self.certify_status = certify_status
+        # The city.
         self.city = city
+        # The province.
         self.province = province
+        # The time when the phone number was purchased.
         self.purchase_time = purchase_time
+        # The status of the phone number. Valid values:
+        # 
+        # *   **0**: The phone number is not bound to other phone numbers.
+        # *   **1**: The phone number is bound to other phone numbers.
+        # *   **2**: The phone number is locked.
+        # *   **3**: The phone number is frozen.
         self.secret_status = secret_status
+        # The carrier to which the phone number belongs. Valid values:
+        # 
+        # *   **1**: China Mobile
+        # *   **2**: China Unicom
+        # *   **3**: China Telecom
         self.vendor = vendor
 
     def validate(self):
@@ -5051,9 +5807,16 @@ class QuerySecretNoDetailResponseBody(TeaModel):
         request_id: str = None,
         secret_no_info_dto: QuerySecretNoDetailResponseBodySecretNoInfoDTO = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The attributes of the phone number.
         self.secret_no_info_dto = secret_no_info_dto
 
     def validate(self):
@@ -5102,9 +5865,6 @@ class QuerySecretNoDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5144,11 +5904,34 @@ class QuerySecretNoRemainRequest(TeaModel):
         secret_no: str = None,
         spec_id: int = None,
     ):
+        # The home location of the phone number.
+        # 
+        # *   If **SpecId** is set to 1 or 2, you can specify the **City** parameter to query the quantity of available phone numbers.
+        # 
+        # 1.  You can enter a single city name to perform a query.
+        # 2.  You can enter National to query the quantity of remaining phone numbers available in the Chinese mainland for online purchase.
+        # 3.  You can enter National List to query the cities with available phone numbers and the quantities of remaining phone numbers in the Chinese mainland. Cities without available phone numbers will not be returned.
+        # 
+        # *   If **SpecId** is set to 3, home locations are not distinguished for phone numbers that start with 95 and only the quantity of all the remaining phone numbers that start with 95 and are available for online purchase can be queried. If SpecId is set to 3, **City** must be set to **Nationwide**.
+        # 
+        # >  Home locations can be set to only locations in the Chinese mainland.
+        # 
+        # This parameter is required.
         self.city = city
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The prefix of the phone number. When you call the QuerySecretNoRemain operation with **SecretNo** specified, the quantity of remaining phone numbers with the specified prefix that are available for online purchase is queried.
+        # 
+        # Up to 18 digits of a phone number prefix can be specified.
         self.secret_no = secret_no
+        # The type of the phone number. Valid values:
+        # 
+        # *   **1**: a phone number assigned by a virtual network operator, that is, a phone number that belongs to the 170 or 171 number segment.
+        # *   **2**: a phone number provided by a carrier.
+        # *   **3**: a phone number that starts with 95.
+        # 
+        # This parameter is required.
         self.spec_id = spec_id
 
     def validate(self):
@@ -5197,7 +5980,9 @@ class QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOListRemainDTO(TeaMo
         amount: int = None,
         city: str = None,
     ):
+        # The quantity of remaining phone numbers available for online purchase for the city.
         self.amount = amount
+        # The home location of the phone numbers.
         self.city = city
 
     def validate(self):
@@ -5266,8 +6051,11 @@ class QuerySecretNoRemainResponseBodySecretRemainDTO(TeaModel):
         city: str = None,
         remain_dtolist: QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOList = None,
     ):
+        # The quantity of remaining phone numbers available for online purchase.
         self.amount = amount
+        # The home location of the phone numbers.
         self.city = city
+        # The information about remaining phone numbers available for online purchase.
         self.remain_dtolist = remain_dtolist
 
     def validate(self):
@@ -5308,9 +6096,16 @@ class QuerySecretNoRemainResponseBody(TeaModel):
         request_id: str = None,
         secret_remain_dto: QuerySecretNoRemainResponseBodySecretRemainDTO = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The information returned after the operation was called.
         self.secret_remain_dto = secret_remain_dto
 
     def validate(self):
@@ -5359,9 +6154,6 @@ class QuerySecretNoRemainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5401,7 +6193,13 @@ class QuerySubsIdRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
+        # The private number in the binding, that is, phone number X.
+        # 
+        # This parameter is required.
         self.phone_no_x = phone_no_x
+        # The key of the phone number pool.
+        # 
+        # Log on to the [Phone Number Protection console](https://dyplsnext.console.aliyun.com/overview) and view the key of the phone number pool on the Number Pool Management page.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5450,9 +6248,13 @@ class QuerySubsIdResponseBody(TeaModel):
         request_id: str = None,
         subs_id: str = None,
     ):
+        # The response code. The value OK indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The binding ID.
         self.subs_id = subs_id
 
     def validate(self):
@@ -5499,9 +6301,6 @@ class QuerySubsIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5543,11 +6342,34 @@ class QuerySubscriptionDetailRequest(TeaModel):
         subs_id: str = None,
     ):
         self.owner_id = owner_id
+        # The private number in the binding, that is, phone number X.
+        # 
+        # This parameter is required.
         self.phone_no_x = phone_no_x
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # >  This parameter is required when **ProductType** is left empty.
         self.pool_key = pool_key
+        # The product type. Valid values:
+        # 
+        # *   **AXB_170**\
+        # *   **AXN_170**\
+        # *   **AXN_95**\
+        # *   **AXN_EXTENSION_REUSE**\
+        # 
+        # > 
+        # 
+        # *   This parameter is applicable to the original key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+        # 
+        # *   This parameter is required when **PoolKey** is left empty.
         self.product_type = product_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The binding ID.
+        # 
+        # Log on to the Phone Number Protection console, choose **Number and Number Pool** > **Number Management**. On the Number Management page, select the desired record and click Details to view the binding ID. Alternatively, you can view the value of the **SubsId** parameter returned by an API operation for a phone number binding such as [BindAxb](https://help.aliyun.com/document_detail/110248.html). The value of this parameter indicates a binding ID.
+        # 
+        # This parameter is required.
         self.subs_id = subs_id
 
     def validate(self):
@@ -5611,18 +6433,43 @@ class QuerySubscriptionDetailResponseBodySecretBindDetailDTO(TeaModel):
         status: int = None,
         subs_id: str = None,
     ):
+        # The ID of the ASR model.
         self.asrmodel_id = asrmodel_id
+        # Indicates whether automatic speech recognition (ASR) is enabled. Valid values:
+        # 
+        # *   **false**: ASR is disabled.
+        # *   **true**: ASR is enabled.
         self.asrstatus = asrstatus
+        # The status of one-way call restrictions. No value is returned for this parameter if one-way call restrictions are not set. Valid values:
+        # 
+        # *   **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+        # *   **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
         self.call_restrict = call_restrict
+        # The expiration time of the binding.
         self.expire_date = expire_date
+        # The extension in the AXG extension binding.
         self.extension = extension
+        # The creation time of the binding.
         self.gmt_create = gmt_create
+        # The ID of number group G in the binding.
         self.group_id = group_id
+        # Indicates whether all calls made by the bound phone numbers are recorded. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.need_record = need_record
+        # Phone number A in the binding.
         self.phone_no_a = phone_no_a
+        # Phone number B in the binding.
         self.phone_no_b = phone_no_b
+        # The private number in the binding, that is, phone number X.
         self.phone_no_x = phone_no_x
+        # The binding status. Valid values:
+        # 
+        # *   **0**: The binding expired.
+        # *   **1**: The binding is in effect.
         self.status = status
+        # The binding ID.
         self.subs_id = subs_id
 
     def validate(self):
@@ -5701,9 +6548,16 @@ class QuerySubscriptionDetailResponseBody(TeaModel):
         request_id: str = None,
         secret_bind_detail_dto: QuerySubscriptionDetailResponseBodySecretBindDetailDTO = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The information returned after the QuerySubscriptionDetail operation was called.
         self.secret_bind_detail_dto = secret_bind_detail_dto
 
     def validate(self):
@@ -5752,9 +6606,6 @@ class QuerySubscriptionDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5794,9 +6645,17 @@ class ReleaseSecretNoRequest(TeaModel):
         secret_no: str = None,
     ):
         self.owner_id = owner_id
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The prefix of phone numbers. When you call the ReleaseSecretNo operation with **SecretNo** specified, the system performs fuzzy matching against phone numbers based on the prefix.
+        # 
+        # >  Up to 18 digits of a phone number prefix can be specified.
+        # 
+        # This parameter is required.
         self.secret_no = secret_no
 
     def validate(self):
@@ -5842,8 +6701,14 @@ class ReleaseSecretNoResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5886,9 +6751,6 @@ class ReleaseSecretNoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5930,11 +6792,29 @@ class UnbindSubscriptionRequest(TeaModel):
         subs_id: str = None,
     ):
         self.owner_id = owner_id
+        # The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # >  This parameter is required when **ProductType** is left empty.
         self.pool_key = pool_key
+        # The product type. Fixed value: **AXB_170**.
+        # 
+        # > 
+        # 
+        # *   This parameter is applicable to the original key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+        # 
+        # *   This parameter is required when **PoolKey** is left empty.
         self.product_type = product_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The private number, that is, phone number X specified in an API operation for a phone number binding such as [BindAXG](https://help.aliyun.com/document_detail/110249.html) or automatically assigned after such an operation is called.
+        # 
+        # This parameter is required.
         self.secret_no = secret_no
+        # The binding ID.
+        # 
+        # Log on to the Phone Number Protection console, choose **Number and Number Pool** > **Number Management**. On the Number Management page, select the desired record and click Details to view the binding ID. Alternatively, you can view the value of the **SubsId** parameter returned by an API operation for a phone number binding such as BindAxb. The value of this parameter indicates a binding ID.
+        # 
+        # This parameter is required.
         self.subs_id = subs_id
 
     def validate(self):
@@ -5989,9 +6869,16 @@ class UnbindSubscriptionResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # A deprecated parameter.
         self.charge_id = charge_id
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6038,9 +6925,6 @@ class UnbindSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6080,9 +6964,17 @@ class UnlockSecretNoRequest(TeaModel):
         secret_no: str = None,
     ):
         self.owner_id = owner_id
+        # The key of the phone number pool.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # This parameter is required.
         self.pool_key = pool_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The private number that you want to unlock. You must enter a complete mobile phone number.
+        # 
+        # This parameter is required.
         self.secret_no = secret_no
 
     def validate(self):
@@ -6128,8 +7020,14 @@ class UnlockSecretNoResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6172,9 +7070,6 @@ class UnlockSecretNoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6227,24 +7122,118 @@ class UpdateSubscriptionRequest(TeaModel):
         ring_config: str = None,
         subs_id: str = None,
     ):
+        # The ID of the ASR model.
         self.asrmodel_id = asrmodel_id
+        # Specifies whether to enable automatic speech recognition (ASR). Valid values:
+        # 
+        # *   **false** (default): disables ASR.
+        # *   **true**: enables ASR.
         self.asrstatus = asrstatus
+        # Re-sets the phone number display logic in the phone number binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+        # 
+        # >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
         self.call_display_type = call_display_type
+        # One-way call restrictions. Valid values:
+        # 
+        # *   **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+        # *   **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
+        # *   **CONTROL_CLEAR_DISABLE**: The call restrictions are cleared.
+        # 
+        # >  This parameter is required when **OperateType** is set to **updateCallRestrict**.
         self.call_restrict = call_restrict
+        # Re-sets the expiration time of the phone number binding.
+        # 
+        # > 
+        # 
+        # *   This parameter is required when **OperateType** is set to **updateExpire**.
+        # 
+        # *   The expiration time must be more than 1 minute later than the time when you call this API operation.
         self.expiration = expiration
+        # The ID of number group G in the phone number binding.
+        # 
+        # >  This parameter is required when **OperateType** is set to **updateAxgGroup**.
         self.group_id = group_id
+        # Re-sets the recording status in the phone number binding.
+        # 
+        # >  This parameter does not have a default value. If you do not specify this parameter, the value of the corresponding field is not updated.
         self.is_recording_enabled = is_recording_enabled
+        # The operation to modify the phone number binding. Valid values:
+        # 
+        # *   **updateNoA**: modifies phone number A.
+        # *   **updateNoB**: modifies phone number B.
+        # *   **updateExpire**: modifies the validity period of the binding.
+        # *   **updateAxgGroup**: modifies number group G.
+        # *   **updateCallRestrict**: modifies one-way call restrictions.
+        # *   **updateCallDisplayType**: updates the number display logic for calls.
+        # *   **updateOutId**: updates the value of the OutId parameter.
+        # *   **updateIsRecordingEnabled**: updates the status of the recording feature in the binding.
+        # 
+        # This parameter is required.
         self.operate_type = operate_type
+        # Re-sets the value of the OutId parameter in the phone number binding.
         self.out_id = out_id
         self.owner_id = owner_id
+        # Phone number A in the phone number binding.
+        # 
+        # >  This parameter is required when **OperateType** is set to **updateNoA**.
         self.phone_no_a = phone_no_a
+        # Phone number B in the phone number binding.
+        # 
+        # >  This parameter is required when **OperateType** is set to **updateNoB**.
         self.phone_no_b = phone_no_b
+        # Phone number X in the phone number binding.
+        # 
+        # This parameter is required.
         self.phone_no_x = phone_no_x
+        # The key of the phone number pool.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management** page.
+        # 
+        # >  This parameter is required when **ProductType** is left empty.
         self.pool_key = pool_key
+        # The product type. Valid values:
+        # 
+        # *   **AXB_170**\
+        # *   **AXN_170**\
+        # *   **AXN_95**\
+        # *   **AXN_EXTENSION_REUSE**\
+        # 
+        # > 
+        # 
+        # *   This parameter is applicable to the original key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+        # 
+        # *   This parameter is required when **PoolKey** is left empty.
         self.product_type = product_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Updates the ringtone code for enterprise Color Ring Back Tone (CRBT) in the phone number binding.
+        # 
+        # AXB product:
+        # 
+        # *   Ringtone setting when phone number A is used to call phone number X in the AXB binding: AXBRing_A
+        # *   Ringtone setting when phone number B is used to call phone number X in the AXB binding: AXBRing_B
+        # 
+        # AXN product:
+        # 
+        # *   Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_AB
+        # *   Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_A
+        # *   Ringtone setting when phone number N is used to call phone number X in the AXN extension binding: AXNRing_N
+        # 
+        # AXG product:
+        # 
+        # *   Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXG binding: AXGRing_AB
+        # *   Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXG binding: AXGRing_A
+        # *   Ringtone setting when a phone number in number group G is used to call phone number X in the AXG binding: AXGRing_G
+        # 
+        # Enterprise CRBT codes: Enterprise CRBT codes can be queried in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). You can choose **Number Pool Management** > **Enterprise CRBT Management** to view and manage enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+        # 
+        # >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
         self.ring_config = ring_config
+        # The binding ID.
+        # 
+        # Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account), choose **Number and Number Pool** > **Number Management**. On the Number Management page, select the desired record and click Details to view the binding ID. Alternatively, you can view the value of the **SubsId** parameter returned by an API operation for a phone number binding such as BindAxb. The value of this parameter indicates a binding ID.
+        # 
+        # This parameter is required.
         self.subs_id = subs_id
 
     def validate(self):
@@ -6346,8 +7335,14 @@ class UpdateSubscriptionResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6390,9 +7385,6 @@ class UpdateSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
