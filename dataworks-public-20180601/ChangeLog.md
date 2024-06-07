@@ -1,3 +1,6 @@
+2024-06-07 Version: 1.0.5
+- Generated python 2018-06-01 for dataworks-public.
+
 2022-01-15 Version: 1.0.4
 - Add set switch value api.
 
