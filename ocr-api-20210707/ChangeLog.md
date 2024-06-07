@@ -1,3 +1,7 @@
+2024-06-07 Version: 3.0.0
+- Update API RecognizeAllText: update param OutputCoordinate.
+
+
 2024-04-03 Version: 2.0.8
 - Update API RecognizeMixedInvoices: add param MergePdfPages.
 

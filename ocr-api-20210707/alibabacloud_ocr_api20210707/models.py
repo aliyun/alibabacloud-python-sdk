@@ -854,7 +854,7 @@ class RecognizeAllTextRequest(TeaModel):
         international_id_card_config: RecognizeAllTextRequestInternationalIdCardConfig = None,
         multi_lan_config: RecognizeAllTextRequestMultiLanConfig = None,
         output_bar_code: bool = None,
-        output_coordinate: bytes = None,
+        output_coordinate: str = None,
         output_figure: bool = None,
         output_kvexcel: bool = None,
         output_oricoord: bool = None,
@@ -880,6 +880,7 @@ class RecognizeAllTextRequest(TeaModel):
         self.output_stamp = output_stamp
         self.page_no = page_no
         self.table_config = table_config
+        # This parameter is required.
         self.type = type
         self.url = url
         self.body = body
@@ -994,7 +995,7 @@ class RecognizeAllTextShrinkRequest(TeaModel):
         international_id_card_config_shrink: str = None,
         multi_lan_config_shrink: str = None,
         output_bar_code: bool = None,
-        output_coordinate: bytes = None,
+        output_coordinate: str = None,
         output_figure: bool = None,
         output_kvexcel: bool = None,
         output_oricoord: bool = None,
@@ -1020,6 +1021,7 @@ class RecognizeAllTextShrinkRequest(TeaModel):
         self.output_stamp = output_stamp
         self.page_no = page_no
         self.table_config_shrink = table_config_shrink
+        # This parameter is required.
         self.type = type
         self.url = url
         self.body = body
@@ -5540,7 +5542,9 @@ class RecognizeEduPaperCutRequest(TeaModel):
         url: str = None,
         body: BinaryIO = None,
     ):
+        # This parameter is required.
         self.cut_type = cut_type
+        # This parameter is required.
         self.image_type = image_type
         self.subject = subject
         self.url = url
@@ -5677,6 +5681,7 @@ class RecognizeEduPaperOcrRequest(TeaModel):
         url: str = None,
         body: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_type = image_type
         self.output_oricoord = output_oricoord
         self.subject = subject
@@ -7687,6 +7692,7 @@ class RecognizeInternationalBusinessLicenseRequest(TeaModel):
         url: str = None,
         body: BinaryIO = None,
     ):
+        # This parameter is required.
         self.country = country
         self.url = url
         self.body = body
@@ -7812,6 +7818,7 @@ class RecognizeInternationalIdcardRequest(TeaModel):
         url: str = None,
         body: BinaryIO = None,
     ):
+        # This parameter is required.
         self.country = country
         self.url = url
         self.body = body
@@ -8846,6 +8853,7 @@ class RecognizeMultiLanguageRequest(TeaModel):
         url: str = None,
         body: BinaryIO = None,
     ):
+        # This parameter is required.
         self.languages = languages
         self.need_rotate = need_rotate
         self.need_sort_page = need_sort_page
@@ -8909,6 +8917,7 @@ class RecognizeMultiLanguageShrinkRequest(TeaModel):
         url: str = None,
         body: BinaryIO = None,
     ):
+        # This parameter is required.
         self.languages_shrink = languages_shrink
         self.need_rotate = need_rotate
         self.need_sort_page = need_sort_page
@@ -11857,8 +11866,11 @@ class VerifyBusinessLicenseRequest(TeaModel):
         credit_code: str = None,
         legal_person: str = None,
     ):
+        # This parameter is required.
         self.company_name = company_name
+        # This parameter is required.
         self.credit_code = credit_code
+        # This parameter is required.
         self.legal_person = legal_person
 
     def validate(self):
@@ -11974,8 +11986,10 @@ class VerifyVATInvoiceRequest(TeaModel):
         verify_code: str = None,
     ):
         self.invoice_code = invoice_code
+        # This parameter is required.
         self.invoice_date = invoice_date
         self.invoice_kind = invoice_kind
+        # This parameter is required.
         self.invoice_no = invoice_no
         self.invoice_sum = invoice_sum
         self.verify_code = verify_code
