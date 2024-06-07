@@ -6526,7 +6526,7 @@ class CreateEnvironmentRequest(TeaModel):
         self.environment_name = environment_name
         # The subtype of the environment. Valid values:
         # 
-        # *   CS: ACK, One
+        # *   CS: ACK
         # *   ECS: ECS
         # *   Cloud: cloud service
         # 
@@ -6545,14 +6545,15 @@ class CreateEnvironmentRequest(TeaModel):
         # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
         # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
+        # 环境绑定的grafana工作区id。传空时，表示使用默认的共享grafana。
         self.grafana_workspace_id = grafana_workspace_id
         # Specifies whether agents or exporters are managed. Valid values:
         # 
         # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
         # *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
-        # *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
+        # *   agent-exporter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
         self.managed_type = managed_type
-        # The ID of the Prometheus instance. If no Prometheus instance is created, call the InitEnvironment operation to initialize a storage instance.
+        # The ID of the Prometheus instance. If no Prometheus instance is created, call the InitEnvironment operation.
         self.prometheus_instance_id = prometheus_instance_id
         # The region ID.
         # 
@@ -15185,11 +15186,13 @@ class DelAuthTokenResponse(TeaModel):
 class DeleteAddonReleaseRequest(TeaModel):
     def __init__(
         self,
+        addon_name: str = None,
         environment_id: str = None,
         force: bool = None,
         region_id: str = None,
         release_name: str = None,
     ):
+        self.addon_name = addon_name
         # Environment ID.
         # 
         # This parameter is required.
@@ -15212,6 +15215,8 @@ class DeleteAddonReleaseRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.addon_name is not None:
+            result['AddonName'] = self.addon_name
         if self.environment_id is not None:
             result['EnvironmentId'] = self.environment_id
         if self.force is not None:
@@ -15224,6 +15229,8 @@ class DeleteAddonReleaseRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddonName') is not None:
+            self.addon_name = m.get('AddonName')
         if m.get('EnvironmentId') is not None:
             self.environment_id = m.get('EnvironmentId')
         if m.get('Force') is not None:
@@ -38734,9 +38741,11 @@ class ListAddonsResponseBodyDataDashboards(TeaModel):
 class ListAddonsResponseBodyDataEnvironmentsDependencies(TeaModel):
     def __init__(
         self,
+        cluster_types: List[str] = None,
         features: Dict[str, bool] = None,
         services: List[str] = None,
     ):
+        self.cluster_types = cluster_types
         # Name of the Feature.
         self.features = features
         # Service list.
@@ -38751,6 +38760,8 @@ class ListAddonsResponseBodyDataEnvironmentsDependencies(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_types is not None:
+            result['ClusterTypes'] = self.cluster_types
         if self.features is not None:
             result['Features'] = self.features
         if self.services is not None:
@@ -38759,6 +38770,8 @@ class ListAddonsResponseBodyDataEnvironmentsDependencies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterTypes') is not None:
+            self.cluster_types = m.get('ClusterTypes')
         if m.get('Features') is not None:
             self.features = m.get('Features')
         if m.get('Services') is not None:

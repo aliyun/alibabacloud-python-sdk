@@ -5879,6 +5879,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.addon_name):
+            query['AddonName'] = request.addon_name
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.force):
@@ -5920,6 +5922,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.addon_name):
+            query['AddonName'] = request.addon_name
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.force):
