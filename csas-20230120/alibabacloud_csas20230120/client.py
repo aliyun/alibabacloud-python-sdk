@@ -1825,6 +1825,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_registration_policies_with_options_async(request, runtime)
 
+    def delete_user_devices_with_options(
+        self,
+        request: csas_20230120_models.DeleteUserDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteUserDevicesResponse:
+        """
+        @summary 批量删除用户非在线设备
+        
+        @param request: DeleteUserDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.device_tags):
+            body_flat['DeviceTags'] = request.device_tags
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserDevices',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteUserDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_user_devices_with_options_async(
+        self,
+        request: csas_20230120_models.DeleteUserDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.DeleteUserDevicesResponse:
+        """
+        @summary 批量删除用户非在线设备
+        
+        @param request: DeleteUserDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.device_tags):
+            body_flat['DeviceTags'] = request.device_tags
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserDevices',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.DeleteUserDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_user_devices(
+        self,
+        request: csas_20230120_models.DeleteUserDevicesRequest,
+    ) -> csas_20230120_models.DeleteUserDevicesResponse:
+        """
+        @summary 批量删除用户非在线设备
+        
+        @param request: DeleteUserDevicesRequest
+        @return: DeleteUserDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_user_devices_with_options(request, runtime)
+
+    async def delete_user_devices_async(
+        self,
+        request: csas_20230120_models.DeleteUserDevicesRequest,
+    ) -> csas_20230120_models.DeleteUserDevicesResponse:
+        """
+        @summary 批量删除用户非在线设备
+        
+        @param request: DeleteUserDevicesRequest
+        @return: DeleteUserDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_user_devices_with_options_async(request, runtime)
+
     def delete_user_group_with_options(
         self,
         request: csas_20230120_models.DeleteUserGroupRequest,
@@ -2028,6 +2130,164 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.detach_application_2connector_with_options_async(request, runtime)
+
+    def export_user_devices_with_options(
+        self,
+        request: csas_20230120_models.ExportUserDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ExportUserDevicesResponse:
+        """
+        @summary 批量查询用户设备列表
+        
+        @param request: ExportUserDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportUserDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.app_statuses):
+            body_flat['AppStatuses'] = request.app_statuses
+        if not UtilClient.is_unset(request.department):
+            body['Department'] = request.department
+        if not UtilClient.is_unset(request.device_belong):
+            body['DeviceBelong'] = request.device_belong
+        if not UtilClient.is_unset(request.device_statuses):
+            body_flat['DeviceStatuses'] = request.device_statuses
+        if not UtilClient.is_unset(request.device_tags):
+            body_flat['DeviceTags'] = request.device_tags
+        if not UtilClient.is_unset(request.device_types):
+            body_flat['DeviceTypes'] = request.device_types
+        if not UtilClient.is_unset(request.dlp_statuses):
+            body_flat['DlpStatuses'] = request.dlp_statuses
+        if not UtilClient.is_unset(request.hostname):
+            body['Hostname'] = request.hostname
+        if not UtilClient.is_unset(request.ia_statuses):
+            body_flat['IaStatuses'] = request.ia_statuses
+        if not UtilClient.is_unset(request.mac):
+            body['Mac'] = request.mac
+        if not UtilClient.is_unset(request.nac_statuses):
+            body_flat['NacStatuses'] = request.nac_statuses
+        if not UtilClient.is_unset(request.pa_statuses):
+            body_flat['PaStatuses'] = request.pa_statuses
+        if not UtilClient.is_unset(request.sase_user_id):
+            body['SaseUserId'] = request.sase_user_id
+        if not UtilClient.is_unset(request.sharing_status):
+            body['SharingStatus'] = request.sharing_status
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportUserDevices',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ExportUserDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_user_devices_with_options_async(
+        self,
+        request: csas_20230120_models.ExportUserDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ExportUserDevicesResponse:
+        """
+        @summary 批量查询用户设备列表
+        
+        @param request: ExportUserDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportUserDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.app_statuses):
+            body_flat['AppStatuses'] = request.app_statuses
+        if not UtilClient.is_unset(request.department):
+            body['Department'] = request.department
+        if not UtilClient.is_unset(request.device_belong):
+            body['DeviceBelong'] = request.device_belong
+        if not UtilClient.is_unset(request.device_statuses):
+            body_flat['DeviceStatuses'] = request.device_statuses
+        if not UtilClient.is_unset(request.device_tags):
+            body_flat['DeviceTags'] = request.device_tags
+        if not UtilClient.is_unset(request.device_types):
+            body_flat['DeviceTypes'] = request.device_types
+        if not UtilClient.is_unset(request.dlp_statuses):
+            body_flat['DlpStatuses'] = request.dlp_statuses
+        if not UtilClient.is_unset(request.hostname):
+            body['Hostname'] = request.hostname
+        if not UtilClient.is_unset(request.ia_statuses):
+            body_flat['IaStatuses'] = request.ia_statuses
+        if not UtilClient.is_unset(request.mac):
+            body['Mac'] = request.mac
+        if not UtilClient.is_unset(request.nac_statuses):
+            body_flat['NacStatuses'] = request.nac_statuses
+        if not UtilClient.is_unset(request.pa_statuses):
+            body_flat['PaStatuses'] = request.pa_statuses
+        if not UtilClient.is_unset(request.sase_user_id):
+            body['SaseUserId'] = request.sase_user_id
+        if not UtilClient.is_unset(request.sharing_status):
+            body['SharingStatus'] = request.sharing_status
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportUserDevices',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ExportUserDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_user_devices(
+        self,
+        request: csas_20230120_models.ExportUserDevicesRequest,
+    ) -> csas_20230120_models.ExportUserDevicesResponse:
+        """
+        @summary 批量查询用户设备列表
+        
+        @param request: ExportUserDevicesRequest
+        @return: ExportUserDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_user_devices_with_options(request, runtime)
+
+    async def export_user_devices_async(
+        self,
+        request: csas_20230120_models.ExportUserDevicesRequest,
+    ) -> csas_20230120_models.ExportUserDevicesResponse:
+        """
+        @summary 批量查询用户设备列表
+        
+        @param request: ExportUserDevicesRequest
+        @return: ExportUserDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_user_devices_with_options_async(request, runtime)
 
     def get_active_idp_config_with_options(
         self,

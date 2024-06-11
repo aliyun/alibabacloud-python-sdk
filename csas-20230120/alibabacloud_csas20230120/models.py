@@ -2443,6 +2443,101 @@ class DeleteRegistrationPoliciesResponse(TeaModel):
         return self
 
 
+class DeleteUserDevicesRequest(TeaModel):
+    def __init__(
+        self,
+        device_tags: List[str] = None,
+    ):
+        self.device_tags = device_tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_tags is not None:
+            result['DeviceTags'] = self.device_tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceTags') is not None:
+            self.device_tags = m.get('DeviceTags')
+        return self
+
+
+class DeleteUserDevicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteUserDevicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteUserDevicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteUserDevicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteUserGroupRequest(TeaModel):
     def __init__(
         self,
@@ -2677,6 +2772,191 @@ class DetachApplication2ConnectorResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetachApplication2ConnectorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportUserDevicesRequest(TeaModel):
+    def __init__(
+        self,
+        app_statuses: List[str] = None,
+        department: str = None,
+        device_belong: str = None,
+        device_statuses: List[str] = None,
+        device_tags: List[str] = None,
+        device_types: List[str] = None,
+        dlp_statuses: List[str] = None,
+        hostname: str = None,
+        ia_statuses: List[str] = None,
+        mac: str = None,
+        nac_statuses: List[str] = None,
+        pa_statuses: List[str] = None,
+        sase_user_id: str = None,
+        sharing_status: bool = None,
+        username: str = None,
+    ):
+        self.app_statuses = app_statuses
+        self.department = department
+        self.device_belong = device_belong
+        self.device_statuses = device_statuses
+        self.device_tags = device_tags
+        self.device_types = device_types
+        self.dlp_statuses = dlp_statuses
+        self.hostname = hostname
+        self.ia_statuses = ia_statuses
+        self.mac = mac
+        self.nac_statuses = nac_statuses
+        self.pa_statuses = pa_statuses
+        self.sase_user_id = sase_user_id
+        self.sharing_status = sharing_status
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_statuses is not None:
+            result['AppStatuses'] = self.app_statuses
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_belong is not None:
+            result['DeviceBelong'] = self.device_belong
+        if self.device_statuses is not None:
+            result['DeviceStatuses'] = self.device_statuses
+        if self.device_tags is not None:
+            result['DeviceTags'] = self.device_tags
+        if self.device_types is not None:
+            result['DeviceTypes'] = self.device_types
+        if self.dlp_statuses is not None:
+            result['DlpStatuses'] = self.dlp_statuses
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.ia_statuses is not None:
+            result['IaStatuses'] = self.ia_statuses
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.nac_statuses is not None:
+            result['NacStatuses'] = self.nac_statuses
+        if self.pa_statuses is not None:
+            result['PaStatuses'] = self.pa_statuses
+        if self.sase_user_id is not None:
+            result['SaseUserId'] = self.sase_user_id
+        if self.sharing_status is not None:
+            result['SharingStatus'] = self.sharing_status
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppStatuses') is not None:
+            self.app_statuses = m.get('AppStatuses')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceBelong') is not None:
+            self.device_belong = m.get('DeviceBelong')
+        if m.get('DeviceStatuses') is not None:
+            self.device_statuses = m.get('DeviceStatuses')
+        if m.get('DeviceTags') is not None:
+            self.device_tags = m.get('DeviceTags')
+        if m.get('DeviceTypes') is not None:
+            self.device_types = m.get('DeviceTypes')
+        if m.get('DlpStatuses') is not None:
+            self.dlp_statuses = m.get('DlpStatuses')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('IaStatuses') is not None:
+            self.ia_statuses = m.get('IaStatuses')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('NacStatuses') is not None:
+            self.nac_statuses = m.get('NacStatuses')
+        if m.get('PaStatuses') is not None:
+            self.pa_statuses = m.get('PaStatuses')
+        if m.get('SaseUserId') is not None:
+            self.sase_user_id = m.get('SaseUserId')
+        if m.get('SharingStatus') is not None:
+            self.sharing_status = m.get('SharingStatus')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ExportUserDevicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        signed_url: str = None,
+    ):
+        self.request_id = request_id
+        self.signed_url = signed_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.signed_url is not None:
+            result['SignedUrl'] = self.signed_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SignedUrl') is not None:
+            self.signed_url = m.get('SignedUrl')
+        return self
+
+
+class ExportUserDevicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportUserDevicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportUserDevicesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

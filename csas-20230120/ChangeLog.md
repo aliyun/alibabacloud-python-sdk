@@ -1,3 +1,8 @@
+2024-06-11 Version: 1.6.0
+- Support API DeleteUserDevices.
+- Support API ExportUserDevices.
+
+
 2024-06-06 Version: 1.5.0
 - Support API RevokeUserSession.
 
