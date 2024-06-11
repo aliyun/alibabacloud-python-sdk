@@ -1213,11 +1213,46 @@ class CancelShiftLoadBalancerZonesResponse(TeaModel):
         return self
 
 
+class CreateAScriptsRequestAScriptsExtAttributes(TeaModel):
+    def __init__(
+        self,
+        attribute_key: str = None,
+        attribute_value: str = None,
+    ):
+        self.attribute_key = attribute_key
+        self.attribute_value = attribute_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_key is not None:
+            result['AttributeKey'] = self.attribute_key
+        if self.attribute_value is not None:
+            result['AttributeValue'] = self.attribute_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeKey') is not None:
+            self.attribute_key = m.get('AttributeKey')
+        if m.get('AttributeValue') is not None:
+            self.attribute_value = m.get('AttributeValue')
+        return self
+
+
 class CreateAScriptsRequestAScripts(TeaModel):
     def __init__(
         self,
         ascript_name: str = None,
         enabled: bool = None,
+        ext_attribute_enabled: bool = None,
+        ext_attributes: List[CreateAScriptsRequestAScriptsExtAttributes] = None,
         script_content: str = None,
     ):
         # The name of the AScript rule.
@@ -1231,13 +1266,18 @@ class CreateAScriptsRequestAScripts(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.enabled = enabled
+        self.ext_attribute_enabled = ext_attribute_enabled
+        self.ext_attributes = ext_attributes
         # The content of the AScript rule.
         # 
         # This parameter is required.
         self.script_content = script_content
 
     def validate(self):
-        pass
+        if self.ext_attributes:
+            for k in self.ext_attributes:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1249,6 +1289,12 @@ class CreateAScriptsRequestAScripts(TeaModel):
             result['AScriptName'] = self.ascript_name
         if self.enabled is not None:
             result['Enabled'] = self.enabled
+        if self.ext_attribute_enabled is not None:
+            result['ExtAttributeEnabled'] = self.ext_attribute_enabled
+        result['ExtAttributes'] = []
+        if self.ext_attributes is not None:
+            for k in self.ext_attributes:
+                result['ExtAttributes'].append(k.to_map() if k else None)
         if self.script_content is not None:
             result['ScriptContent'] = self.script_content
         return result
@@ -1259,6 +1305,13 @@ class CreateAScriptsRequestAScripts(TeaModel):
             self.ascript_name = m.get('AScriptName')
         if m.get('Enabled') is not None:
             self.enabled = m.get('Enabled')
+        if m.get('ExtAttributeEnabled') is not None:
+            self.ext_attribute_enabled = m.get('ExtAttributeEnabled')
+        self.ext_attributes = []
+        if m.get('ExtAttributes') is not None:
+            for k in m.get('ExtAttributes'):
+                temp_model = CreateAScriptsRequestAScriptsExtAttributes()
+                self.ext_attributes.append(temp_model.from_map(k))
         if m.get('ScriptContent') is not None:
             self.script_content = m.get('ScriptContent')
         return self
@@ -21319,12 +21372,49 @@ class UnTagResourcesResponse(TeaModel):
         return self
 
 
+class UpdateAScriptsRequestAScriptsExtAttributes(TeaModel):
+    def __init__(
+        self,
+        attribute_key: str = None,
+        attribute_value: str = None,
+    ):
+        # This parameter is required.
+        self.attribute_key = attribute_key
+        # This parameter is required.
+        self.attribute_value = attribute_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute_key is not None:
+            result['AttributeKey'] = self.attribute_key
+        if self.attribute_value is not None:
+            result['AttributeValue'] = self.attribute_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttributeKey') is not None:
+            self.attribute_key = m.get('AttributeKey')
+        if m.get('AttributeValue') is not None:
+            self.attribute_value = m.get('AttributeValue')
+        return self
+
+
 class UpdateAScriptsRequestAScripts(TeaModel):
     def __init__(
         self,
         ascript_id: str = None,
         ascript_name: str = None,
         enabled: bool = None,
+        ext_attribute_enabled: bool = None,
+        ext_attributes: List[UpdateAScriptsRequestAScriptsExtAttributes] = None,
         script_content: str = None,
     ):
         # The AScript rule ID.
@@ -21340,11 +21430,16 @@ class UpdateAScriptsRequestAScripts(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.enabled = enabled
+        self.ext_attribute_enabled = ext_attribute_enabled
+        self.ext_attributes = ext_attributes
         # The content of the AScript rule.
         self.script_content = script_content
 
     def validate(self):
-        pass
+        if self.ext_attributes:
+            for k in self.ext_attributes:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21358,6 +21453,12 @@ class UpdateAScriptsRequestAScripts(TeaModel):
             result['AScriptName'] = self.ascript_name
         if self.enabled is not None:
             result['Enabled'] = self.enabled
+        if self.ext_attribute_enabled is not None:
+            result['ExtAttributeEnabled'] = self.ext_attribute_enabled
+        result['ExtAttributes'] = []
+        if self.ext_attributes is not None:
+            for k in self.ext_attributes:
+                result['ExtAttributes'].append(k.to_map() if k else None)
         if self.script_content is not None:
             result['ScriptContent'] = self.script_content
         return result
@@ -21370,6 +21471,13 @@ class UpdateAScriptsRequestAScripts(TeaModel):
             self.ascript_name = m.get('AScriptName')
         if m.get('Enabled') is not None:
             self.enabled = m.get('Enabled')
+        if m.get('ExtAttributeEnabled') is not None:
+            self.ext_attribute_enabled = m.get('ExtAttributeEnabled')
+        self.ext_attributes = []
+        if m.get('ExtAttributes') is not None:
+            for k in m.get('ExtAttributes'):
+                temp_model = UpdateAScriptsRequestAScriptsExtAttributes()
+                self.ext_attributes.append(temp_model.from_map(k))
         if m.get('ScriptContent') is not None:
             self.script_content = m.get('ScriptContent')
         return self

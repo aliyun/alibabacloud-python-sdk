@@ -1,3 +1,8 @@
+2024-06-11 Version: 1.1.8
+- Update API CreateAScripts: update param AScripts.
+- Update API UpdateAScripts: update param AScripts.
+
+
 2024-06-05 Version: 1.1.7
 - Update API CreateSecurityPolicy: update param Ciphers.
 - Update API CreateServerGroup: add param ConnectionDrainConfig.
