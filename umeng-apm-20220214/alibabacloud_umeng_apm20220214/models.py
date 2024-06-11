@@ -4,6 +4,184 @@ from Tea.model import TeaModel
 from typing import List, Dict, BinaryIO
 
 
+class DeleteSymRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        app_versions: List[str] = None,
+        data_source_id: str = None,
+        file_type: int = None,
+    ):
+        # This parameter is required.
+        self.app_versions = app_versions
+        # This parameter is required.
+        self.data_source_id = data_source_id
+        # This parameter is required.
+        self.file_type = file_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_versions is not None:
+            result['appVersions'] = self.app_versions
+        if self.data_source_id is not None:
+            result['dataSourceId'] = self.data_source_id
+        if self.file_type is not None:
+            result['fileType'] = self.file_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appVersions') is not None:
+            self.app_versions = m.get('appVersions')
+        if m.get('dataSourceId') is not None:
+            self.data_source_id = m.get('dataSourceId')
+        if m.get('fileType') is not None:
+            self.file_type = m.get('fileType')
+        return self
+
+
+class DeleteSymRecordsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_versions_shrink: str = None,
+        data_source_id: str = None,
+        file_type: int = None,
+    ):
+        # This parameter is required.
+        self.app_versions_shrink = app_versions_shrink
+        # This parameter is required.
+        self.data_source_id = data_source_id
+        # This parameter is required.
+        self.file_type = file_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_versions_shrink is not None:
+            result['appVersions'] = self.app_versions_shrink
+        if self.data_source_id is not None:
+            result['dataSourceId'] = self.data_source_id
+        if self.file_type is not None:
+            result['fileType'] = self.file_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appVersions') is not None:
+            self.app_versions_shrink = m.get('appVersions')
+        if m.get('dataSourceId') is not None:
+            self.data_source_id = m.get('dataSourceId')
+        if m.get('fileType') is not None:
+            self.file_type = m.get('fileType')
+        return self
+
+
+class DeleteSymRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        msg: str = None,
+        num: int = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        # code
+        self.code = code
+        self.msg = msg
+        self.num = num
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.num is not None:
+            result['num'] = self.num
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('num') is not None:
+            self.num = m.get('num')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class DeleteSymRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSymRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSymRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetH5PageTrendRequest(TeaModel):
     def __init__(
         self,

@@ -1,3 +1,7 @@
+2024-06-11 Version: 1.2.0
+- Support API DeleteSymRecords.
+
+
 2024-05-21 Version: 1.1.3
 - Update API GetTodayStatTrend: update response param.
 

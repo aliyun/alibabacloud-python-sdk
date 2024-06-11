@@ -47,6 +47,126 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def delete_sym_records_with_options(
+        self,
+        tmp_req: umeng_apm_20220214_models.DeleteSymRecordsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> umeng_apm_20220214_models.DeleteSymRecordsResponse:
+        """
+        @summary 删除符号表记录
+        
+        @param tmp_req: DeleteSymRecordsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSymRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = umeng_apm_20220214_models.DeleteSymRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_versions):
+            request.app_versions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_versions, 'appVersions', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.app_versions_shrink):
+            body['appVersions'] = request.app_versions_shrink
+        if not UtilClient.is_unset(request.data_source_id):
+            body['dataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.file_type):
+            body['fileType'] = request.file_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSymRecords',
+            version='2022-02-14',
+            protocol='HTTPS',
+            pathname=f'/deleteSymRecords',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            umeng_apm_20220214_models.DeleteSymRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sym_records_with_options_async(
+        self,
+        tmp_req: umeng_apm_20220214_models.DeleteSymRecordsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> umeng_apm_20220214_models.DeleteSymRecordsResponse:
+        """
+        @summary 删除符号表记录
+        
+        @param tmp_req: DeleteSymRecordsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSymRecordsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = umeng_apm_20220214_models.DeleteSymRecordsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_versions):
+            request.app_versions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_versions, 'appVersions', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.app_versions_shrink):
+            body['appVersions'] = request.app_versions_shrink
+        if not UtilClient.is_unset(request.data_source_id):
+            body['dataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.file_type):
+            body['fileType'] = request.file_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSymRecords',
+            version='2022-02-14',
+            protocol='HTTPS',
+            pathname=f'/deleteSymRecords',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            umeng_apm_20220214_models.DeleteSymRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sym_records(
+        self,
+        request: umeng_apm_20220214_models.DeleteSymRecordsRequest,
+    ) -> umeng_apm_20220214_models.DeleteSymRecordsResponse:
+        """
+        @summary 删除符号表记录
+        
+        @param request: DeleteSymRecordsRequest
+        @return: DeleteSymRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_sym_records_with_options(request, headers, runtime)
+
+    async def delete_sym_records_async(
+        self,
+        request: umeng_apm_20220214_models.DeleteSymRecordsRequest,
+    ) -> umeng_apm_20220214_models.DeleteSymRecordsResponse:
+        """
+        @summary 删除符号表记录
+        
+        @param request: DeleteSymRecordsRequest
+        @return: DeleteSymRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_sym_records_with_options_async(request, headers, runtime)
+
     def get_h5page_trend_with_options(
         self,
         request: umeng_apm_20220214_models.GetH5PageTrendRequest,
