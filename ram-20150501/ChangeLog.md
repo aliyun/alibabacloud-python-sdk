@@ -1,3 +1,7 @@
+2024-06-11 Version: 1.1.0
+- Support API DecodeDiagnosticMessage.
+
+
 2022-08-29 Version: 1.0.3
 - Fix 44273543.
 

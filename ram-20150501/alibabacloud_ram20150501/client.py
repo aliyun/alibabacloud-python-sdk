@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AddUserToGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AddUserToGroupResponse:
+        """
+        @summary Adds a RAM user to a RAM user group.
+        
+        @param request: AddUserToGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -76,6 +83,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AddUserToGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AddUserToGroupResponse:
+        """
+        @summary Adds a RAM user to a RAM user group.
+        
+        @param request: AddUserToGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -105,6 +119,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.AddUserToGroupRequest,
     ) -> ram_20150501_models.AddUserToGroupResponse:
+        """
+        @summary Adds a RAM user to a RAM user group.
+        
+        @param request: AddUserToGroupRequest
+        @return: AddUserToGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_to_group_with_options(request, runtime)
 
@@ -112,6 +132,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.AddUserToGroupRequest,
     ) -> ram_20150501_models.AddUserToGroupResponse:
+        """
+        @summary Adds a RAM user to a RAM user group.
+        
+        @param request: AddUserToGroupRequest
+        @return: AddUserToGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_to_group_with_options_async(request, runtime)
 
@@ -120,6 +146,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
+        """
+        @summary Attaches a policy to a RAM user group.
+        
+        @param request: AttachPolicyToGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyToGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -152,6 +185,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
+        """
+        @summary Attaches a policy to a RAM user group.
+        
+        @param request: AttachPolicyToGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyToGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -183,6 +223,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.AttachPolicyToGroupRequest,
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
+        """
+        @summary Attaches a policy to a RAM user group.
+        
+        @param request: AttachPolicyToGroupRequest
+        @return: AttachPolicyToGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_policy_to_group_with_options(request, runtime)
 
@@ -190,6 +236,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.AttachPolicyToGroupRequest,
     ) -> ram_20150501_models.AttachPolicyToGroupResponse:
+        """
+        @summary Attaches a policy to a RAM user group.
+        
+        @param request: AttachPolicyToGroupRequest
+        @return: AttachPolicyToGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_policy_to_group_with_options_async(request, runtime)
 
@@ -198,6 +250,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
+        """
+        @summary Attaches a policy to a RAM role.
+        
+        @param request: AttachPolicyToRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyToRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -230,6 +289,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
+        """
+        @summary Attaches a policy to a RAM role.
+        
+        @param request: AttachPolicyToRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyToRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -261,6 +327,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.AttachPolicyToRoleRequest,
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
+        """
+        @summary Attaches a policy to a RAM role.
+        
+        @param request: AttachPolicyToRoleRequest
+        @return: AttachPolicyToRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_policy_to_role_with_options(request, runtime)
 
@@ -268,6 +340,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.AttachPolicyToRoleRequest,
     ) -> ram_20150501_models.AttachPolicyToRoleResponse:
+        """
+        @summary Attaches a policy to a RAM role.
+        
+        @param request: AttachPolicyToRoleRequest
+        @return: AttachPolicyToRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_policy_to_role_with_options_async(request, runtime)
 
@@ -276,6 +354,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
+        """
+        @summary Attaches a policy to a RAM user.
+        
+        @param request: AttachPolicyToUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyToUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -308,6 +393,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.AttachPolicyToUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
+        """
+        @summary Attaches a policy to a RAM user.
+        
+        @param request: AttachPolicyToUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachPolicyToUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -339,6 +431,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.AttachPolicyToUserRequest,
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
+        """
+        @summary Attaches a policy to a RAM user.
+        
+        @param request: AttachPolicyToUserRequest
+        @return: AttachPolicyToUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_policy_to_user_with_options(request, runtime)
 
@@ -346,6 +444,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.AttachPolicyToUserRequest,
     ) -> ram_20150501_models.AttachPolicyToUserResponse:
+        """
+        @summary Attaches a policy to a RAM user.
+        
+        @param request: AttachPolicyToUserRequest
+        @return: AttachPolicyToUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_policy_to_user_with_options_async(request, runtime)
 
@@ -354,6 +458,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.BindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.BindMFADeviceResponse:
+        """
+        @param request: BindMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_code_1):
@@ -388,6 +497,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.BindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.BindMFADeviceResponse:
+        """
+        @param request: BindMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_code_1):
@@ -421,6 +535,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.BindMFADeviceRequest,
     ) -> ram_20150501_models.BindMFADeviceResponse:
+        """
+        @param request: BindMFADeviceRequest
+        @return: BindMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_mfadevice_with_options(request, runtime)
 
@@ -428,6 +546,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.BindMFADeviceRequest,
     ) -> ram_20150501_models.BindMFADeviceResponse:
+        """
+        @param request: BindMFADeviceRequest
+        @return: BindMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_mfadevice_with_options_async(request, runtime)
 
@@ -436,6 +558,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ChangePasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ChangePasswordResponse:
+        """
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        
+        @param request: ChangePasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangePasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_password):
@@ -466,6 +595,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ChangePasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ChangePasswordResponse:
+        """
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        
+        @param request: ChangePasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangePasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_password):
@@ -495,6 +631,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ChangePasswordRequest,
     ) -> ram_20150501_models.ChangePasswordResponse:
+        """
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        
+        @param request: ChangePasswordRequest
+        @return: ChangePasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_password_with_options(request, runtime)
 
@@ -502,6 +644,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ChangePasswordRequest,
     ) -> ram_20150501_models.ChangePasswordResponse:
+        """
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        
+        @param request: ChangePasswordRequest
+        @return: ChangePasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_password_with_options_async(request, runtime)
 
@@ -509,6 +657,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ClearAccountAliasResponse:
+        """
+        @param request: ClearAccountAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearAccountAliasResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ClearAccountAlias',
@@ -530,6 +683,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ClearAccountAliasResponse:
+        """
+        @param request: ClearAccountAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearAccountAliasResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ClearAccountAlias',
@@ -548,10 +706,16 @@ class Client(OpenApiClient):
         )
 
     def clear_account_alias(self) -> ram_20150501_models.ClearAccountAliasResponse:
+        """
+        @return: ClearAccountAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.clear_account_alias_with_options(runtime)
 
     async def clear_account_alias_async(self) -> ram_20150501_models.ClearAccountAliasResponse:
+        """
+        @return: ClearAccountAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clear_account_alias_with_options_async(runtime)
 
@@ -560,6 +724,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateAccessKeyResponse:
+        """
+        @param request: CreateAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -588,6 +757,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateAccessKeyResponse:
+        """
+        @param request: CreateAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -615,6 +789,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateAccessKeyRequest,
     ) -> ram_20150501_models.CreateAccessKeyResponse:
+        """
+        @param request: CreateAccessKeyRequest
+        @return: CreateAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_key_with_options(request, runtime)
 
@@ -622,6 +800,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateAccessKeyRequest,
     ) -> ram_20150501_models.CreateAccessKeyResponse:
+        """
+        @param request: CreateAccessKeyRequest
+        @return: CreateAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_key_with_options_async(request, runtime)
 
@@ -630,6 +812,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateGroupResponse:
+        """
+        @summary Creates a RAM user group.
+        
+        @param request: CreateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.comments):
@@ -660,6 +849,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateGroupResponse:
+        """
+        @summary Creates a RAM user group.
+        
+        @param request: CreateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.comments):
@@ -689,6 +885,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateGroupRequest,
     ) -> ram_20150501_models.CreateGroupResponse:
+        """
+        @summary Creates a RAM user group.
+        
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_group_with_options(request, runtime)
 
@@ -696,6 +898,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateGroupRequest,
     ) -> ram_20150501_models.CreateGroupResponse:
+        """
+        @summary Creates a RAM user group.
+        
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_group_with_options_async(request, runtime)
 
@@ -704,6 +912,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateLoginProfileResponse:
+        """
+        @summary Enables console logon for a RAM user.
+        
+        @param request: CreateLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfabind_required):
@@ -738,6 +953,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateLoginProfileResponse:
+        """
+        @summary Enables console logon for a RAM user.
+        
+        @param request: CreateLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfabind_required):
@@ -771,6 +993,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateLoginProfileRequest,
     ) -> ram_20150501_models.CreateLoginProfileResponse:
+        """
+        @summary Enables console logon for a RAM user.
+        
+        @param request: CreateLoginProfileRequest
+        @return: CreateLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_login_profile_with_options(request, runtime)
 
@@ -778,6 +1006,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateLoginProfileRequest,
     ) -> ram_20150501_models.CreateLoginProfileResponse:
+        """
+        @summary Enables console logon for a RAM user.
+        
+        @param request: CreateLoginProfileRequest
+        @return: CreateLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_login_profile_with_options_async(request, runtime)
 
@@ -786,6 +1020,16 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreatePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreatePolicyResponse:
+        """
+        @summary Creates a custom policy.
+        
+        @description For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
+        This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
+        
+        @param request: CreatePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -818,6 +1062,16 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreatePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreatePolicyResponse:
+        """
+        @summary Creates a custom policy.
+        
+        @description For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
+        This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
+        
+        @param request: CreatePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -849,6 +1103,15 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreatePolicyRequest,
     ) -> ram_20150501_models.CreatePolicyResponse:
+        """
+        @summary Creates a custom policy.
+        
+        @description For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
+        This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
+        
+        @param request: CreatePolicyRequest
+        @return: CreatePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_policy_with_options(request, runtime)
 
@@ -856,6 +1119,15 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreatePolicyRequest,
     ) -> ram_20150501_models.CreatePolicyResponse:
+        """
+        @summary Creates a custom policy.
+        
+        @description For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
+        This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
+        
+        @param request: CreatePolicyRequest
+        @return: CreatePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_policy_with_options_async(request, runtime)
 
@@ -864,6 +1136,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreatePolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
+        """
+        @param request: CreatePolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_document):
@@ -898,6 +1175,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreatePolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
+        """
+        @param request: CreatePolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_document):
@@ -931,6 +1213,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreatePolicyVersionRequest,
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
+        """
+        @param request: CreatePolicyVersionRequest
+        @return: CreatePolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_policy_version_with_options(request, runtime)
 
@@ -938,6 +1224,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreatePolicyVersionRequest,
     ) -> ram_20150501_models.CreatePolicyVersionResponse:
+        """
+        @param request: CreatePolicyVersionRequest
+        @return: CreatePolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_policy_version_with_options_async(request, runtime)
 
@@ -946,6 +1236,16 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateRoleResponse:
+        """
+        @summary Creates a RAM role.
+        
+        @description ## Description
+        For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+        
+        @param request: CreateRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.assume_role_policy_document):
@@ -980,6 +1280,16 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateRoleResponse:
+        """
+        @summary Creates a RAM role.
+        
+        @description ## Description
+        For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+        
+        @param request: CreateRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.assume_role_policy_document):
@@ -1013,6 +1323,15 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateRoleRequest,
     ) -> ram_20150501_models.CreateRoleResponse:
+        """
+        @summary Creates a RAM role.
+        
+        @description ## Description
+        For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+        
+        @param request: CreateRoleRequest
+        @return: CreateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_role_with_options(request, runtime)
 
@@ -1020,6 +1339,15 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateRoleRequest,
     ) -> ram_20150501_models.CreateRoleResponse:
+        """
+        @summary Creates a RAM role.
+        
+        @description ## Description
+        For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+        
+        @param request: CreateRoleRequest
+        @return: CreateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_role_with_options_async(request, runtime)
 
@@ -1028,6 +1356,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateUserResponse:
+        """
+        @summary Creates a Resource Access Management (RAM) user.
+        
+        @description This topic provides an example on how to create a RAM user named `alice`.
+        
+        @param request: CreateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.comments):
@@ -1064,6 +1401,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateUserResponse:
+        """
+        @summary Creates a Resource Access Management (RAM) user.
+        
+        @description This topic provides an example on how to create a RAM user named `alice`.
+        
+        @param request: CreateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.comments):
@@ -1099,6 +1445,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateUserRequest,
     ) -> ram_20150501_models.CreateUserResponse:
+        """
+        @summary Creates a Resource Access Management (RAM) user.
+        
+        @description This topic provides an example on how to create a RAM user named `alice`.
+        
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_user_with_options(request, runtime)
 
@@ -1106,6 +1460,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateUserRequest,
     ) -> ram_20150501_models.CreateUserResponse:
+        """
+        @summary Creates a Resource Access Management (RAM) user.
+        
+        @description This topic provides an example on how to create a RAM user named `alice`.
+        
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_with_options_async(request, runtime)
 
@@ -1114,6 +1476,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
+        """
+        @param request: CreateVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.virtual_mfadevice_name):
@@ -1142,6 +1509,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.CreateVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
+        """
+        @param request: CreateVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.virtual_mfadevice_name):
@@ -1169,6 +1541,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateVirtualMFADeviceRequest,
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
+        """
+        @param request: CreateVirtualMFADeviceRequest
+        @return: CreateVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_virtual_mfadevice_with_options(request, runtime)
 
@@ -1176,14 +1552,119 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.CreateVirtualMFADeviceRequest,
     ) -> ram_20150501_models.CreateVirtualMFADeviceResponse:
+        """
+        @param request: CreateVirtualMFADeviceRequest
+        @return: CreateVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_virtual_mfadevice_with_options_async(request, runtime)
+
+    def decode_diagnostic_message_with_options(
+        self,
+        request: ram_20150501_models.DecodeDiagnosticMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.DecodeDiagnosticMessageResponse:
+        """
+        @summary Decodes the diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+        
+        @param request: DecodeDiagnosticMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DecodeDiagnosticMessageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.encoded_diagnostic_message):
+            query['EncodedDiagnosticMessage'] = request.encoded_diagnostic_message
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DecodeDiagnosticMessage',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.DecodeDiagnosticMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def decode_diagnostic_message_with_options_async(
+        self,
+        request: ram_20150501_models.DecodeDiagnosticMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ram_20150501_models.DecodeDiagnosticMessageResponse:
+        """
+        @summary Decodes the diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+        
+        @param request: DecodeDiagnosticMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DecodeDiagnosticMessageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.encoded_diagnostic_message):
+            query['EncodedDiagnosticMessage'] = request.encoded_diagnostic_message
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DecodeDiagnosticMessage',
+            version='2015-05-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ram_20150501_models.DecodeDiagnosticMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def decode_diagnostic_message(
+        self,
+        request: ram_20150501_models.DecodeDiagnosticMessageRequest,
+    ) -> ram_20150501_models.DecodeDiagnosticMessageResponse:
+        """
+        @summary Decodes the diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+        
+        @param request: DecodeDiagnosticMessageRequest
+        @return: DecodeDiagnosticMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.decode_diagnostic_message_with_options(request, runtime)
+
+    async def decode_diagnostic_message_async(
+        self,
+        request: ram_20150501_models.DecodeDiagnosticMessageRequest,
+    ) -> ram_20150501_models.DecodeDiagnosticMessageResponse:
+        """
+        @summary Decodes the diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+        
+        @param request: DecodeDiagnosticMessageRequest
+        @return: DecodeDiagnosticMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.decode_diagnostic_message_with_options_async(request, runtime)
 
     def delete_access_key_with_options(
         self,
         request: ram_20150501_models.DeleteAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
+        """
+        @param request: DeleteAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_access_key_id):
@@ -1214,6 +1695,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
+        """
+        @param request: DeleteAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_access_key_id):
@@ -1243,6 +1729,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteAccessKeyRequest,
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
+        """
+        @param request: DeleteAccessKeyRequest
+        @return: DeleteAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_access_key_with_options(request, runtime)
 
@@ -1250,6 +1740,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteAccessKeyRequest,
     ) -> ram_20150501_models.DeleteAccessKeyResponse:
+        """
+        @param request: DeleteAccessKeyRequest
+        @return: DeleteAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_key_with_options_async(request, runtime)
 
@@ -1258,6 +1752,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteGroupResponse:
+        """
+        @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+        
+        @param request: DeleteGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1286,6 +1787,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteGroupResponse:
+        """
+        @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+        
+        @param request: DeleteGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1313,6 +1821,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteGroupRequest,
     ) -> ram_20150501_models.DeleteGroupResponse:
+        """
+        @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+        
+        @param request: DeleteGroupRequest
+        @return: DeleteGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_group_with_options(request, runtime)
 
@@ -1320,6 +1834,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteGroupRequest,
     ) -> ram_20150501_models.DeleteGroupResponse:
+        """
+        @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+        
+        @param request: DeleteGroupRequest
+        @return: DeleteGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_group_with_options_async(request, runtime)
 
@@ -1328,6 +1848,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
+        """
+        @param request: DeleteLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -1356,6 +1881,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
+        """
+        @param request: DeleteLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -1383,6 +1913,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteLoginProfileRequest,
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
+        """
+        @param request: DeleteLoginProfileRequest
+        @return: DeleteLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_login_profile_with_options(request, runtime)
 
@@ -1390,6 +1924,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteLoginProfileRequest,
     ) -> ram_20150501_models.DeleteLoginProfileResponse:
+        """
+        @param request: DeleteLoginProfileRequest
+        @return: DeleteLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_login_profile_with_options_async(request, runtime)
 
@@ -1398,6 +1936,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeletePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeletePolicyResponse:
+        """
+        @param request: DeletePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1426,6 +1969,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeletePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeletePolicyResponse:
+        """
+        @param request: DeletePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1453,6 +2001,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeletePolicyRequest,
     ) -> ram_20150501_models.DeletePolicyResponse:
+        """
+        @param request: DeletePolicyRequest
+        @return: DeletePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_policy_with_options(request, runtime)
 
@@ -1460,6 +2012,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeletePolicyRequest,
     ) -> ram_20150501_models.DeletePolicyResponse:
+        """
+        @param request: DeletePolicyRequest
+        @return: DeletePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_with_options_async(request, runtime)
 
@@ -1468,6 +2024,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeletePolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
+        """
+        @param request: DeletePolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1498,6 +2059,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeletePolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
+        """
+        @param request: DeletePolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1527,6 +2093,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeletePolicyVersionRequest,
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
+        """
+        @param request: DeletePolicyVersionRequest
+        @return: DeletePolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_policy_version_with_options(request, runtime)
 
@@ -1534,6 +2104,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeletePolicyVersionRequest,
     ) -> ram_20150501_models.DeletePolicyVersionResponse:
+        """
+        @param request: DeletePolicyVersionRequest
+        @return: DeletePolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_version_with_options_async(request, runtime)
 
@@ -1542,6 +2116,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteRoleResponse:
+        """
+        @param request: DeleteRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -1570,6 +2149,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteRoleResponse:
+        """
+        @param request: DeleteRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -1597,6 +2181,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteRoleRequest,
     ) -> ram_20150501_models.DeleteRoleResponse:
+        """
+        @param request: DeleteRoleRequest
+        @return: DeleteRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_role_with_options(request, runtime)
 
@@ -1604,6 +2192,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteRoleRequest,
     ) -> ram_20150501_models.DeleteRoleResponse:
+        """
+        @param request: DeleteRoleRequest
+        @return: DeleteRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_role_with_options_async(request, runtime)
 
@@ -1612,6 +2204,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteUserResponse:
+        """
+        @description Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -1640,6 +2239,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteUserResponse:
+        """
+        @description Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -1667,6 +2273,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteUserRequest,
     ) -> ram_20150501_models.DeleteUserResponse:
+        """
+        @description Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_with_options(request, runtime)
 
@@ -1674,6 +2286,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteUserRequest,
     ) -> ram_20150501_models.DeleteUserResponse:
+        """
+        @description Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
@@ -1682,6 +2300,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
+        """
+        @param request: DeleteVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.serial_number):
@@ -1710,6 +2333,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DeleteVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
+        """
+        @param request: DeleteVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.serial_number):
@@ -1737,6 +2365,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteVirtualMFADeviceRequest,
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
+        """
+        @param request: DeleteVirtualMFADeviceRequest
+        @return: DeleteVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_virtual_mfadevice_with_options(request, runtime)
 
@@ -1744,6 +2376,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DeleteVirtualMFADeviceRequest,
     ) -> ram_20150501_models.DeleteVirtualMFADeviceResponse:
+        """
+        @param request: DeleteVirtualMFADeviceRequest
+        @return: DeleteVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_virtual_mfadevice_with_options_async(request, runtime)
 
@@ -1752,6 +2388,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
+        """
+        @summary Detaches a policy from a RAM user group.
+        
+        @param request: DetachPolicyFromGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicyFromGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1784,6 +2427,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
+        """
+        @summary Detaches a policy from a RAM user group.
+        
+        @param request: DetachPolicyFromGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicyFromGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1815,6 +2465,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DetachPolicyFromGroupRequest,
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
+        """
+        @summary Detaches a policy from a RAM user group.
+        
+        @param request: DetachPolicyFromGroupRequest
+        @return: DetachPolicyFromGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_policy_from_group_with_options(request, runtime)
 
@@ -1822,6 +2478,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DetachPolicyFromGroupRequest,
     ) -> ram_20150501_models.DetachPolicyFromGroupResponse:
+        """
+        @summary Detaches a policy from a RAM user group.
+        
+        @param request: DetachPolicyFromGroupRequest
+        @return: DetachPolicyFromGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_policy_from_group_with_options_async(request, runtime)
 
@@ -1830,6 +2492,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
+        """
+        @summary Detaches a policy from a RAM role.
+        
+        @param request: DetachPolicyFromRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicyFromRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1862,6 +2531,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
+        """
+        @summary Detaches a policy from a RAM role.
+        
+        @param request: DetachPolicyFromRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicyFromRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1893,6 +2569,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DetachPolicyFromRoleRequest,
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
+        """
+        @summary Detaches a policy from a RAM role.
+        
+        @param request: DetachPolicyFromRoleRequest
+        @return: DetachPolicyFromRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_policy_from_role_with_options(request, runtime)
 
@@ -1900,6 +2582,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DetachPolicyFromRoleRequest,
     ) -> ram_20150501_models.DetachPolicyFromRoleResponse:
+        """
+        @summary Detaches a policy from a RAM role.
+        
+        @param request: DetachPolicyFromRoleRequest
+        @return: DetachPolicyFromRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_policy_from_role_with_options_async(request, runtime)
 
@@ -1908,6 +2596,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
+        """
+        @summary Detaches a policy from a RAM user.
+        
+        @param request: DetachPolicyFromUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicyFromUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1940,6 +2635,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.DetachPolicyFromUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
+        """
+        @summary Detaches a policy from a RAM user.
+        
+        @param request: DetachPolicyFromUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPolicyFromUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -1971,6 +2673,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DetachPolicyFromUserRequest,
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
+        """
+        @summary Detaches a policy from a RAM user.
+        
+        @param request: DetachPolicyFromUserRequest
+        @return: DetachPolicyFromUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_policy_from_user_with_options(request, runtime)
 
@@ -1978,6 +2686,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.DetachPolicyFromUserRequest,
     ) -> ram_20150501_models.DetachPolicyFromUserResponse:
+        """
+        @summary Detaches a policy from a RAM user.
+        
+        @param request: DetachPolicyFromUserRequest
+        @return: DetachPolicyFromUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_policy_from_user_with_options_async(request, runtime)
 
@@ -1986,6 +2700,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetAccessKeyLastUsedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetAccessKeyLastUsedResponse:
+        """
+        @param request: GetAccessKeyLastUsedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessKeyLastUsedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_access_key_id):
@@ -2016,6 +2735,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetAccessKeyLastUsedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetAccessKeyLastUsedResponse:
+        """
+        @param request: GetAccessKeyLastUsedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessKeyLastUsedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_access_key_id):
@@ -2045,6 +2769,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetAccessKeyLastUsedRequest,
     ) -> ram_20150501_models.GetAccessKeyLastUsedResponse:
+        """
+        @param request: GetAccessKeyLastUsedRequest
+        @return: GetAccessKeyLastUsedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_access_key_last_used_with_options(request, runtime)
 
@@ -2052,6 +2780,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetAccessKeyLastUsedRequest,
     ) -> ram_20150501_models.GetAccessKeyLastUsedResponse:
+        """
+        @param request: GetAccessKeyLastUsedRequest
+        @return: GetAccessKeyLastUsedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_access_key_last_used_with_options_async(request, runtime)
 
@@ -2059,6 +2791,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetAccountAliasResponse:
+        """
+        @param request: GetAccountAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountAliasResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountAlias',
@@ -2080,6 +2817,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetAccountAliasResponse:
+        """
+        @param request: GetAccountAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountAliasResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountAlias',
@@ -2098,10 +2840,16 @@ class Client(OpenApiClient):
         )
 
     def get_account_alias(self) -> ram_20150501_models.GetAccountAliasResponse:
+        """
+        @return: GetAccountAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_alias_with_options(runtime)
 
     async def get_account_alias_async(self) -> ram_20150501_models.GetAccountAliasResponse:
+        """
+        @return: GetAccountAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_alias_with_options_async(runtime)
 
@@ -2110,6 +2858,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetGroupResponse:
+        """
+        @summary Queries the information of a RAM user group.
+        
+        @param request: GetGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -2138,6 +2893,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetGroupResponse:
+        """
+        @summary Queries the information of a RAM user group.
+        
+        @param request: GetGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -2165,6 +2927,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetGroupRequest,
     ) -> ram_20150501_models.GetGroupResponse:
+        """
+        @summary Queries the information of a RAM user group.
+        
+        @param request: GetGroupRequest
+        @return: GetGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_group_with_options(request, runtime)
 
@@ -2172,6 +2940,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetGroupRequest,
     ) -> ram_20150501_models.GetGroupResponse:
+        """
+        @summary Queries the information of a RAM user group.
+        
+        @param request: GetGroupRequest
+        @return: GetGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_group_with_options_async(request, runtime)
 
@@ -2180,6 +2954,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetLoginProfileResponse:
+        """
+        @param request: GetLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2208,6 +2987,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetLoginProfileResponse:
+        """
+        @param request: GetLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2235,6 +3019,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetLoginProfileRequest,
     ) -> ram_20150501_models.GetLoginProfileResponse:
+        """
+        @param request: GetLoginProfileRequest
+        @return: GetLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_login_profile_with_options(request, runtime)
 
@@ -2242,6 +3030,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetLoginProfileRequest,
     ) -> ram_20150501_models.GetLoginProfileResponse:
+        """
+        @param request: GetLoginProfileRequest
+        @return: GetLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_login_profile_with_options_async(request, runtime)
 
@@ -2249,6 +3041,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPasswordPolicyResponse:
+        """
+        @param request: GetPasswordPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPasswordPolicyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetPasswordPolicy',
@@ -2270,6 +3067,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPasswordPolicyResponse:
+        """
+        @param request: GetPasswordPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPasswordPolicyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetPasswordPolicy',
@@ -2288,10 +3090,16 @@ class Client(OpenApiClient):
         )
 
     def get_password_policy(self) -> ram_20150501_models.GetPasswordPolicyResponse:
+        """
+        @return: GetPasswordPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_password_policy_with_options(runtime)
 
     async def get_password_policy_async(self) -> ram_20150501_models.GetPasswordPolicyResponse:
+        """
+        @return: GetPasswordPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_password_policy_with_options_async(runtime)
 
@@ -2300,6 +3108,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPolicyResponse:
+        """
+        @summary Queries the information of a policy.
+        
+        @param request: GetPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -2330,6 +3145,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPolicyResponse:
+        """
+        @summary Queries the information of a policy.
+        
+        @param request: GetPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -2359,6 +3181,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetPolicyRequest,
     ) -> ram_20150501_models.GetPolicyResponse:
+        """
+        @summary Queries the information of a policy.
+        
+        @param request: GetPolicyRequest
+        @return: GetPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_policy_with_options(request, runtime)
 
@@ -2366,6 +3194,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetPolicyRequest,
     ) -> ram_20150501_models.GetPolicyResponse:
+        """
+        @summary Queries the information of a policy.
+        
+        @param request: GetPolicyRequest
+        @return: GetPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_policy_with_options_async(request, runtime)
 
@@ -2374,6 +3208,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetPolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPolicyVersionResponse:
+        """
+        @summary Queries the information of a policy version.
+        
+        @param request: GetPolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -2406,6 +3247,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetPolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetPolicyVersionResponse:
+        """
+        @summary Queries the information of a policy version.
+        
+        @param request: GetPolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -2437,6 +3285,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetPolicyVersionRequest,
     ) -> ram_20150501_models.GetPolicyVersionResponse:
+        """
+        @summary Queries the information of a policy version.
+        
+        @param request: GetPolicyVersionRequest
+        @return: GetPolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_policy_version_with_options(request, runtime)
 
@@ -2444,6 +3298,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetPolicyVersionRequest,
     ) -> ram_20150501_models.GetPolicyVersionResponse:
+        """
+        @summary Queries the information of a policy version.
+        
+        @param request: GetPolicyVersionRequest
+        @return: GetPolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_policy_version_with_options_async(request, runtime)
 
@@ -2452,6 +3312,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetRoleResponse:
+        """
+        @summary Queries information of a RAM role.
+        
+        @param request: GetRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -2480,6 +3347,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetRoleResponse:
+        """
+        @summary Queries information of a RAM role.
+        
+        @param request: GetRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -2507,6 +3381,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetRoleRequest,
     ) -> ram_20150501_models.GetRoleResponse:
+        """
+        @summary Queries information of a RAM role.
+        
+        @param request: GetRoleRequest
+        @return: GetRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_role_with_options(request, runtime)
 
@@ -2514,6 +3394,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetRoleRequest,
     ) -> ram_20150501_models.GetRoleResponse:
+        """
+        @summary Queries information of a RAM role.
+        
+        @param request: GetRoleRequest
+        @return: GetRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_role_with_options_async(request, runtime)
 
@@ -2521,6 +3407,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetSecurityPreferenceResponse:
+        """
+        @param request: GetSecurityPreferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecurityPreferenceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetSecurityPreference',
@@ -2542,6 +3433,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetSecurityPreferenceResponse:
+        """
+        @param request: GetSecurityPreferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecurityPreferenceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetSecurityPreference',
@@ -2560,10 +3456,16 @@ class Client(OpenApiClient):
         )
 
     def get_security_preference(self) -> ram_20150501_models.GetSecurityPreferenceResponse:
+        """
+        @return: GetSecurityPreferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_security_preference_with_options(runtime)
 
     async def get_security_preference_async(self) -> ram_20150501_models.GetSecurityPreferenceResponse:
+        """
+        @return: GetSecurityPreferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_security_preference_with_options_async(runtime)
 
@@ -2572,6 +3474,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetUserResponse:
+        """
+        @summary Queries the information about a RAM user.
+        
+        @description This topic provides an example on how to query the information about the RAM user `alice`.
+        
+        @param request: GetUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2600,6 +3511,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetUserResponse:
+        """
+        @summary Queries the information about a RAM user.
+        
+        @description This topic provides an example on how to query the information about the RAM user `alice`.
+        
+        @param request: GetUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2627,6 +3547,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetUserRequest,
     ) -> ram_20150501_models.GetUserResponse:
+        """
+        @summary Queries the information about a RAM user.
+        
+        @description This topic provides an example on how to query the information about the RAM user `alice`.
+        
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_with_options(request, runtime)
 
@@ -2634,6 +3562,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetUserRequest,
     ) -> ram_20150501_models.GetUserResponse:
+        """
+        @summary Queries the information about a RAM user.
+        
+        @description This topic provides an example on how to query the information about the RAM user `alice`.
+        
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(request, runtime)
 
@@ -2642,6 +3578,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetUserMFAInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
+        """
+        @param request: GetUserMFAInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserMFAInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2670,6 +3611,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.GetUserMFAInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
+        """
+        @param request: GetUserMFAInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserMFAInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2697,6 +3643,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetUserMFAInfoRequest,
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
+        """
+        @param request: GetUserMFAInfoRequest
+        @return: GetUserMFAInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_mfainfo_with_options(request, runtime)
 
@@ -2704,6 +3654,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.GetUserMFAInfoRequest,
     ) -> ram_20150501_models.GetUserMFAInfoResponse:
+        """
+        @param request: GetUserMFAInfoRequest
+        @return: GetUserMFAInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_mfainfo_with_options_async(request, runtime)
 
@@ -2712,6 +3666,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListAccessKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListAccessKeysResponse:
+        """
+        @summary Queries the list of all AccessKey pairs that belong to a RAM user.
+        
+        @param request: ListAccessKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2740,6 +3701,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListAccessKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListAccessKeysResponse:
+        """
+        @summary Queries the list of all AccessKey pairs that belong to a RAM user.
+        
+        @param request: ListAccessKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2767,6 +3735,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListAccessKeysRequest,
     ) -> ram_20150501_models.ListAccessKeysResponse:
+        """
+        @summary Queries the list of all AccessKey pairs that belong to a RAM user.
+        
+        @param request: ListAccessKeysRequest
+        @return: ListAccessKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_access_keys_with_options(request, runtime)
 
@@ -2774,6 +3748,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListAccessKeysRequest,
     ) -> ram_20150501_models.ListAccessKeysResponse:
+        """
+        @summary Queries the list of all AccessKey pairs that belong to a RAM user.
+        
+        @param request: ListAccessKeysRequest
+        @return: ListAccessKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_access_keys_with_options_async(request, runtime)
 
@@ -2782,6 +3762,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListEntitiesForPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListEntitiesForPolicyResponse:
+        """
+        @summary Queries the entities to which a policy is attached.
+        
+        @param request: ListEntitiesForPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesForPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -2812,6 +3799,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListEntitiesForPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListEntitiesForPolicyResponse:
+        """
+        @summary Queries the entities to which a policy is attached.
+        
+        @param request: ListEntitiesForPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesForPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -2841,6 +3835,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListEntitiesForPolicyRequest,
     ) -> ram_20150501_models.ListEntitiesForPolicyResponse:
+        """
+        @summary Queries the entities to which a policy is attached.
+        
+        @param request: ListEntitiesForPolicyRequest
+        @return: ListEntitiesForPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_entities_for_policy_with_options(request, runtime)
 
@@ -2848,6 +3848,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListEntitiesForPolicyRequest,
     ) -> ram_20150501_models.ListEntitiesForPolicyResponse:
+        """
+        @summary Queries the entities to which a policy is attached.
+        
+        @param request: ListEntitiesForPolicyRequest
+        @return: ListEntitiesForPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_entities_for_policy_with_options_async(request, runtime)
 
@@ -2856,6 +3862,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListGroupsResponse:
+        """
+        @summary Queries RAM user groups.
+        
+        @param request: ListGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -2886,6 +3899,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListGroupsResponse:
+        """
+        @summary Queries RAM user groups.
+        
+        @param request: ListGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -2915,6 +3935,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListGroupsRequest,
     ) -> ram_20150501_models.ListGroupsResponse:
+        """
+        @summary Queries RAM user groups.
+        
+        @param request: ListGroupsRequest
+        @return: ListGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_groups_with_options(request, runtime)
 
@@ -2922,6 +3948,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListGroupsRequest,
     ) -> ram_20150501_models.ListGroupsResponse:
+        """
+        @summary Queries RAM user groups.
+        
+        @param request: ListGroupsRequest
+        @return: ListGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_groups_with_options_async(request, runtime)
 
@@ -2930,6 +3962,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListGroupsForUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListGroupsForUserResponse:
+        """
+        @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+        
+        @description This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+        
+        @param request: ListGroupsForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsForUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2958,6 +3999,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListGroupsForUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListGroupsForUserResponse:
+        """
+        @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+        
+        @description This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+        
+        @param request: ListGroupsForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsForUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -2985,6 +4035,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListGroupsForUserRequest,
     ) -> ram_20150501_models.ListGroupsForUserResponse:
+        """
+        @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+        
+        @description This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+        
+        @param request: ListGroupsForUserRequest
+        @return: ListGroupsForUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_groups_for_user_with_options(request, runtime)
 
@@ -2992,6 +4050,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListGroupsForUserRequest,
     ) -> ram_20150501_models.ListGroupsForUserResponse:
+        """
+        @summary Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+        
+        @description This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+        
+        @param request: ListGroupsForUserRequest
+        @return: ListGroupsForUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_groups_for_user_with_options_async(request, runtime)
 
@@ -3000,6 +4066,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesResponse:
+        """
+        @summary Queries a list of policies.
+        
+        @param request: ListPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3032,6 +4105,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesResponse:
+        """
+        @summary Queries a list of policies.
+        
+        @param request: ListPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3063,6 +4143,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPoliciesRequest,
     ) -> ram_20150501_models.ListPoliciesResponse:
+        """
+        @summary Queries a list of policies.
+        
+        @param request: ListPoliciesRequest
+        @return: ListPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_policies_with_options(request, runtime)
 
@@ -3070,6 +4156,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPoliciesRequest,
     ) -> ram_20150501_models.ListPoliciesResponse:
+        """
+        @summary Queries a list of policies.
+        
+        @param request: ListPoliciesRequest
+        @return: ListPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_policies_with_options_async(request, runtime)
 
@@ -3078,6 +4170,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
+        """
+        @summary Queries the policies that are attached to a RAM user group.
+        
+        @param request: ListPoliciesForGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesForGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -3106,6 +4205,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
+        """
+        @summary Queries the policies that are attached to a RAM user group.
+        
+        @param request: ListPoliciesForGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesForGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -3133,6 +4239,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPoliciesForGroupRequest,
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
+        """
+        @summary Queries the policies that are attached to a RAM user group.
+        
+        @param request: ListPoliciesForGroupRequest
+        @return: ListPoliciesForGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_policies_for_group_with_options(request, runtime)
 
@@ -3140,6 +4252,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPoliciesForGroupRequest,
     ) -> ram_20150501_models.ListPoliciesForGroupResponse:
+        """
+        @summary Queries the policies that are attached to a RAM user group.
+        
+        @param request: ListPoliciesForGroupRequest
+        @return: ListPoliciesForGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_policies_for_group_with_options_async(request, runtime)
 
@@ -3148,6 +4266,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
+        """
+        @summary Queries the policies that are attached to a RAM role.
+        
+        @param request: ListPoliciesForRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesForRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -3176,6 +4301,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
+        """
+        @summary Queries the policies that are attached to a RAM role.
+        
+        @param request: ListPoliciesForRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesForRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -3203,6 +4335,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPoliciesForRoleRequest,
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
+        """
+        @summary Queries the policies that are attached to a RAM role.
+        
+        @param request: ListPoliciesForRoleRequest
+        @return: ListPoliciesForRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_policies_for_role_with_options(request, runtime)
 
@@ -3210,6 +4348,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPoliciesForRoleRequest,
     ) -> ram_20150501_models.ListPoliciesForRoleResponse:
+        """
+        @summary Queries the policies that are attached to a RAM role.
+        
+        @param request: ListPoliciesForRoleRequest
+        @return: ListPoliciesForRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_policies_for_role_with_options_async(request, runtime)
 
@@ -3218,6 +4362,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForUserResponse:
+        """
+        @summary Queries the policies that are attached to a RAM user.
+        
+        @description > You can call this operation to query only the policies that are attached to Alibaba Cloud accounts. You cannot query the policies that are attached to resource groups.
+        
+        @param request: ListPoliciesForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesForUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -3246,6 +4399,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPoliciesForUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesForUserResponse:
+        """
+        @summary Queries the policies that are attached to a RAM user.
+        
+        @description > You can call this operation to query only the policies that are attached to Alibaba Cloud accounts. You cannot query the policies that are attached to resource groups.
+        
+        @param request: ListPoliciesForUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesForUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -3273,6 +4435,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPoliciesForUserRequest,
     ) -> ram_20150501_models.ListPoliciesForUserResponse:
+        """
+        @summary Queries the policies that are attached to a RAM user.
+        
+        @description > You can call this operation to query only the policies that are attached to Alibaba Cloud accounts. You cannot query the policies that are attached to resource groups.
+        
+        @param request: ListPoliciesForUserRequest
+        @return: ListPoliciesForUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_policies_for_user_with_options(request, runtime)
 
@@ -3280,6 +4450,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPoliciesForUserRequest,
     ) -> ram_20150501_models.ListPoliciesForUserResponse:
+        """
+        @summary Queries the policies that are attached to a RAM user.
+        
+        @description > You can call this operation to query only the policies that are attached to Alibaba Cloud accounts. You cannot query the policies that are attached to resource groups.
+        
+        @param request: ListPoliciesForUserRequest
+        @return: ListPoliciesForUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_policies_for_user_with_options_async(request, runtime)
 
@@ -3288,6 +4466,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPolicyVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPolicyVersionsResponse:
+        """
+        @summary Queries the versions of a policy.
+        
+        @param request: ListPolicyVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicyVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -3318,6 +4503,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListPolicyVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPolicyVersionsResponse:
+        """
+        @summary Queries the versions of a policy.
+        
+        @param request: ListPolicyVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicyVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -3347,6 +4539,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPolicyVersionsRequest,
     ) -> ram_20150501_models.ListPolicyVersionsResponse:
+        """
+        @summary Queries the versions of a policy.
+        
+        @param request: ListPolicyVersionsRequest
+        @return: ListPolicyVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_policy_versions_with_options(request, runtime)
 
@@ -3354,6 +4552,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListPolicyVersionsRequest,
     ) -> ram_20150501_models.ListPolicyVersionsResponse:
+        """
+        @summary Queries the versions of a policy.
+        
+        @param request: ListPolicyVersionsRequest
+        @return: ListPolicyVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_policy_versions_with_options_async(request, runtime)
 
@@ -3362,6 +4566,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListRolesResponse:
+        """
+        @summary Queries the list of all RAM roles.
+        
+        @param request: ListRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3392,6 +4603,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListRolesResponse:
+        """
+        @summary Queries the list of all RAM roles.
+        
+        @param request: ListRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3421,6 +4639,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListRolesRequest,
     ) -> ram_20150501_models.ListRolesResponse:
+        """
+        @summary Queries the list of all RAM roles.
+        
+        @param request: ListRolesRequest
+        @return: ListRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_roles_with_options(request, runtime)
 
@@ -3428,6 +4652,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListRolesRequest,
     ) -> ram_20150501_models.ListRolesResponse:
+        """
+        @summary Queries the list of all RAM roles.
+        
+        @param request: ListRolesRequest
+        @return: ListRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_roles_with_options_async(request, runtime)
 
@@ -3436,6 +4666,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListUsersResponse:
+        """
+        @summary Queries the information about all RAM users.
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3466,6 +4703,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListUsersResponse:
+        """
+        @summary Queries the information about all RAM users.
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -3495,6 +4739,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListUsersRequest,
     ) -> ram_20150501_models.ListUsersResponse:
+        """
+        @summary Queries the information about all RAM users.
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_with_options(request, runtime)
 
@@ -3502,6 +4752,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListUsersRequest,
     ) -> ram_20150501_models.ListUsersResponse:
+        """
+        @summary Queries the information about all RAM users.
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
@@ -3510,6 +4766,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListUsersForGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListUsersForGroupResponse:
+        """
+        @param request: ListUsersForGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersForGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -3542,6 +4803,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.ListUsersForGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListUsersForGroupResponse:
+        """
+        @param request: ListUsersForGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersForGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -3573,6 +4839,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListUsersForGroupRequest,
     ) -> ram_20150501_models.ListUsersForGroupResponse:
+        """
+        @param request: ListUsersForGroupRequest
+        @return: ListUsersForGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_for_group_with_options(request, runtime)
 
@@ -3580,6 +4850,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.ListUsersForGroupRequest,
     ) -> ram_20150501_models.ListUsersForGroupResponse:
+        """
+        @param request: ListUsersForGroupRequest
+        @return: ListUsersForGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_for_group_with_options_async(request, runtime)
 
@@ -3587,6 +4861,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListVirtualMFADevicesResponse:
+        """
+        @summary Queries the list of all multi-factor authentication (MFA) devices.
+        
+        @param request: ListVirtualMFADevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVirtualMFADevicesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListVirtualMFADevices',
@@ -3608,6 +4889,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListVirtualMFADevicesResponse:
+        """
+        @summary Queries the list of all multi-factor authentication (MFA) devices.
+        
+        @param request: ListVirtualMFADevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVirtualMFADevicesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListVirtualMFADevices',
@@ -3626,10 +4914,20 @@ class Client(OpenApiClient):
         )
 
     def list_virtual_mfadevices(self) -> ram_20150501_models.ListVirtualMFADevicesResponse:
+        """
+        @summary Queries the list of all multi-factor authentication (MFA) devices.
+        
+        @return: ListVirtualMFADevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_virtual_mfadevices_with_options(runtime)
 
     async def list_virtual_mfadevices_async(self) -> ram_20150501_models.ListVirtualMFADevicesResponse:
+        """
+        @summary Queries the list of all multi-factor authentication (MFA) devices.
+        
+        @return: ListVirtualMFADevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_virtual_mfadevices_with_options_async(runtime)
 
@@ -3638,6 +4936,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.RemoveUserFromGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
+        """
+        @param request: RemoveUserFromGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserFromGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -3668,6 +4971,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.RemoveUserFromGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
+        """
+        @param request: RemoveUserFromGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserFromGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -3697,6 +5005,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.RemoveUserFromGroupRequest,
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
+        """
+        @param request: RemoveUserFromGroupRequest
+        @return: RemoveUserFromGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_user_from_group_with_options(request, runtime)
 
@@ -3704,6 +5016,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.RemoveUserFromGroupRequest,
     ) -> ram_20150501_models.RemoveUserFromGroupResponse:
+        """
+        @param request: RemoveUserFromGroupRequest
+        @return: RemoveUserFromGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_user_from_group_with_options_async(request, runtime)
 
@@ -3712,6 +5028,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetAccountAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetAccountAliasResponse:
+        """
+        @summary You can call this operation to specify an alias for an Alibaba Cloud account.
+        
+        @param request: SetAccountAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccountAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_alias):
@@ -3740,6 +5063,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetAccountAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetAccountAliasResponse:
+        """
+        @summary You can call this operation to specify an alias for an Alibaba Cloud account.
+        
+        @param request: SetAccountAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccountAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_alias):
@@ -3767,6 +5097,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.SetAccountAliasRequest,
     ) -> ram_20150501_models.SetAccountAliasResponse:
+        """
+        @summary You can call this operation to specify an alias for an Alibaba Cloud account.
+        
+        @param request: SetAccountAliasRequest
+        @return: SetAccountAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_account_alias_with_options(request, runtime)
 
@@ -3774,6 +5110,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.SetAccountAliasRequest,
     ) -> ram_20150501_models.SetAccountAliasResponse:
+        """
+        @summary You can call this operation to specify an alias for an Alibaba Cloud account.
+        
+        @param request: SetAccountAliasRequest
+        @return: SetAccountAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_account_alias_with_options_async(request, runtime)
 
@@ -3782,6 +5124,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetDefaultPolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
+        """
+        @summary Sets the default version of a policy.
+        
+        @param request: SetDefaultPolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDefaultPolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -3812,6 +5161,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetDefaultPolicyVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
+        """
+        @summary Sets the default version of a policy.
+        
+        @param request: SetDefaultPolicyVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDefaultPolicyVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -3841,6 +5197,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.SetDefaultPolicyVersionRequest,
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
+        """
+        @summary Sets the default version of a policy.
+        
+        @param request: SetDefaultPolicyVersionRequest
+        @return: SetDefaultPolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_default_policy_version_with_options(request, runtime)
 
@@ -3848,6 +5210,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.SetDefaultPolicyVersionRequest,
     ) -> ram_20150501_models.SetDefaultPolicyVersionResponse:
+        """
+        @summary Sets the default version of a policy.
+        
+        @param request: SetDefaultPolicyVersionRequest
+        @return: SetDefaultPolicyVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_default_policy_version_with_options_async(request, runtime)
 
@@ -3856,6 +5224,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetPasswordPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
+        """
+        @param request: SetPasswordPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPasswordPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hard_expiry):
@@ -3900,6 +5273,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetPasswordPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
+        """
+        @param request: SetPasswordPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPasswordPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hard_expiry):
@@ -3943,6 +5321,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.SetPasswordPolicyRequest,
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
+        """
+        @param request: SetPasswordPolicyRequest
+        @return: SetPasswordPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_password_policy_with_options(request, runtime)
 
@@ -3950,6 +5332,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.SetPasswordPolicyRequest,
     ) -> ram_20150501_models.SetPasswordPolicyResponse:
+        """
+        @param request: SetPasswordPolicyRequest
+        @return: SetPasswordPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_password_policy_with_options_async(request, runtime)
 
@@ -3958,6 +5344,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetSecurityPreferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
+        """
+        @param request: SetSecurityPreferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSecurityPreferenceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_user_to_change_password):
@@ -3998,6 +5389,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetSecurityPreferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
+        """
+        @param request: SetSecurityPreferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSecurityPreferenceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_user_to_change_password):
@@ -4037,6 +5433,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.SetSecurityPreferenceRequest,
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
+        """
+        @param request: SetSecurityPreferenceRequest
+        @return: SetSecurityPreferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_security_preference_with_options(request, runtime)
 
@@ -4044,6 +5444,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.SetSecurityPreferenceRequest,
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
+        """
+        @param request: SetSecurityPreferenceRequest
+        @return: SetSecurityPreferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_security_preference_with_options_async(request, runtime)
 
@@ -4052,6 +5456,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UnbindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
+        """
+        @param request: UnbindMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -4080,6 +5489,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UnbindMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
+        """
+        @param request: UnbindMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_name):
@@ -4107,6 +5521,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UnbindMFADeviceRequest,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
+        """
+        @param request: UnbindMFADeviceRequest
+        @return: UnbindMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_mfadevice_with_options(request, runtime)
 
@@ -4114,6 +5532,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UnbindMFADeviceRequest,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
+        """
+        @param request: UnbindMFADeviceRequest
+        @return: UnbindMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_mfadevice_with_options_async(request, runtime)
 
@@ -4122,6 +5544,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
+        """
+        @param request: UpdateAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.status):
@@ -4154,6 +5581,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateAccessKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
+        """
+        @param request: UpdateAccessKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccessKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.status):
@@ -4185,6 +5617,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateAccessKeyRequest,
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
+        """
+        @param request: UpdateAccessKeyRequest
+        @return: UpdateAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_access_key_with_options(request, runtime)
 
@@ -4192,6 +5628,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateAccessKeyRequest,
     ) -> ram_20150501_models.UpdateAccessKeyResponse:
+        """
+        @param request: UpdateAccessKeyRequest
+        @return: UpdateAccessKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_access_key_with_options_async(request, runtime)
 
@@ -4200,6 +5640,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateGroupResponse:
+        """
+        @summary Modifies a RAM user group.
+        
+        @param request: UpdateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -4232,6 +5679,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateGroupResponse:
+        """
+        @summary Modifies a RAM user group.
+        
+        @param request: UpdateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -4263,6 +5717,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateGroupRequest,
     ) -> ram_20150501_models.UpdateGroupResponse:
+        """
+        @summary Modifies a RAM user group.
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_group_with_options(request, runtime)
 
@@ -4270,6 +5730,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateGroupRequest,
     ) -> ram_20150501_models.UpdateGroupResponse:
+        """
+        @summary Modifies a RAM user group.
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_group_with_options_async(request, runtime)
 
@@ -4278,6 +5744,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
+        """
+        @param request: UpdateLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfabind_required):
@@ -4312,6 +5783,11 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateLoginProfileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
+        """
+        @param request: UpdateLoginProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoginProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfabind_required):
@@ -4345,6 +5821,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateLoginProfileRequest,
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
+        """
+        @param request: UpdateLoginProfileRequest
+        @return: UpdateLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_login_profile_with_options(request, runtime)
 
@@ -4352,6 +5832,10 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateLoginProfileRequest,
     ) -> ram_20150501_models.UpdateLoginProfileResponse:
+        """
+        @param request: UpdateLoginProfileRequest
+        @return: UpdateLoginProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_login_profile_with_options_async(request, runtime)
 
@@ -4360,6 +5844,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdatePolicyDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdatePolicyDescriptionResponse:
+        """
+        @summary Modifies the description of a custom policy.
+        
+        @description You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+        
+        @param request: UpdatePolicyDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePolicyDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_description):
@@ -4390,6 +5883,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdatePolicyDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdatePolicyDescriptionResponse:
+        """
+        @summary Modifies the description of a custom policy.
+        
+        @description You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+        
+        @param request: UpdatePolicyDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePolicyDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_description):
@@ -4419,6 +5921,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdatePolicyDescriptionRequest,
     ) -> ram_20150501_models.UpdatePolicyDescriptionResponse:
+        """
+        @summary Modifies the description of a custom policy.
+        
+        @description You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+        
+        @param request: UpdatePolicyDescriptionRequest
+        @return: UpdatePolicyDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_policy_description_with_options(request, runtime)
 
@@ -4426,6 +5936,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdatePolicyDescriptionRequest,
     ) -> ram_20150501_models.UpdatePolicyDescriptionResponse:
+        """
+        @summary Modifies the description of a custom policy.
+        
+        @description You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+        
+        @param request: UpdatePolicyDescriptionRequest
+        @return: UpdatePolicyDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_policy_description_with_options_async(request, runtime)
 
@@ -4434,6 +5952,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateRoleResponse:
+        """
+        @summary Changes the description of a RAM role.
+        
+        @description This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+        
+        @param request: UpdateRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_assume_role_policy_document):
@@ -4468,6 +5995,15 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateRoleResponse:
+        """
+        @summary Changes the description of a RAM role.
+        
+        @description This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+        
+        @param request: UpdateRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_assume_role_policy_document):
@@ -4501,6 +6037,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateRoleRequest,
     ) -> ram_20150501_models.UpdateRoleResponse:
+        """
+        @summary Changes the description of a RAM role.
+        
+        @description This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+        
+        @param request: UpdateRoleRequest
+        @return: UpdateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_role_with_options(request, runtime)
 
@@ -4508,6 +6052,14 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateRoleRequest,
     ) -> ram_20150501_models.UpdateRoleResponse:
+        """
+        @summary Changes the description of a RAM role.
+        
+        @description This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+        
+        @param request: UpdateRoleRequest
+        @return: UpdateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_role_with_options_async(request, runtime)
 
@@ -4516,6 +6068,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateUserResponse:
+        """
+        @description This topic provides an example on how to change the name of a RAM user from `zhangq***` to `xiaoq****`.
+        
+        @param request: UpdateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_comments):
@@ -4554,6 +6113,13 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UpdateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UpdateUserResponse:
+        """
+        @description This topic provides an example on how to change the name of a RAM user from `zhangq***` to `xiaoq****`.
+        
+        @param request: UpdateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_comments):
@@ -4591,6 +6157,12 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateUserRequest,
     ) -> ram_20150501_models.UpdateUserResponse:
+        """
+        @description This topic provides an example on how to change the name of a RAM user from `zhangq***` to `xiaoq****`.
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_with_options(request, runtime)
 
@@ -4598,5 +6170,11 @@ class Client(OpenApiClient):
         self,
         request: ram_20150501_models.UpdateUserRequest,
     ) -> ram_20150501_models.UpdateUserResponse:
+        """
+        @description This topic provides an example on how to change the name of a RAM user from `zhangq***` to `xiaoq****`.
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_with_options_async(request, runtime)

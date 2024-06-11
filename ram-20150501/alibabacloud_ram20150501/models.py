@@ -10,7 +10,9 @@ class AddUserToGroupRequest(TeaModel):
         group_name: str = None,
         user_name: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -42,6 +44,7 @@ class AddUserToGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +79,6 @@ class AddUserToGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -115,8 +115,11 @@ class AttachPolicyToGroupRequest(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
 
     def validate(self):
@@ -152,6 +155,7 @@ class AttachPolicyToGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -186,9 +190,6 @@ class AttachPolicyToGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -225,8 +226,11 @@ class AttachPolicyToRoleRequest(TeaModel):
         policy_type: str = None,
         role_name: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
+        # The name of the RAM role.
         self.role_name = role_name
 
     def validate(self):
@@ -262,6 +266,7 @@ class AttachPolicyToRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -296,9 +301,6 @@ class AttachPolicyToRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -335,8 +337,11 @@ class AttachPolicyToUserRequest(TeaModel):
         policy_type: str = None,
         user_name: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -372,6 +377,7 @@ class AttachPolicyToUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -406,9 +412,6 @@ class AttachPolicyToUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -446,9 +449,13 @@ class BindMFADeviceRequest(TeaModel):
         serial_number: str = None,
         user_name: str = None,
     ):
+        # The first authentication code.
         self.authentication_code_1 = authentication_code_1
+        # The second authentication code.
         self.authentication_code_2 = authentication_code_2
+        # The serial number of the MFA device.
         self.serial_number = serial_number
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -488,6 +495,7 @@ class BindMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -522,9 +530,6 @@ class BindMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -560,7 +565,11 @@ class ChangePasswordRequest(TeaModel):
         new_password: str = None,
         old_password: str = None,
     ):
+        # The new password that is used to log on to the Alibaba Cloud Management Console.
+        # 
+        # The password must meet the complexity requirements. For more information, see [SetPasswordPolicy](https://help.aliyun.com/document_detail/28739.html).
         self.new_password = new_password
+        # The old password that is used to log on to the Alibaba Cloud Management Console.
         self.old_password = old_password
 
     def validate(self):
@@ -592,6 +601,7 @@ class ChangePasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -626,9 +636,6 @@ class ChangePasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -663,6 +670,7 @@ class ClearAccountAliasResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -697,9 +705,6 @@ class ClearAccountAliasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -734,6 +739,7 @@ class CreateAccessKeyRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The name of the RAM user. If a RAM user calls this operation and does not specify this parameter, an AccessKey pair is created for the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -764,9 +770,13 @@ class CreateAccessKeyResponseBodyAccessKey(TeaModel):
         create_date: str = None,
         status: str = None,
     ):
+        # The AccessKey ID.
         self.access_key_id = access_key_id
+        # The AccessKey secret.
         self.access_key_secret = access_key_secret
+        # The time when the AccessKey pair was created.
         self.create_date = create_date
+        # The status of the AccessKey pair. Valid values: Active and Inactive.
         self.status = status
 
     def validate(self):
@@ -807,7 +817,9 @@ class CreateAccessKeyResponseBody(TeaModel):
         access_key: CreateAccessKeyResponseBodyAccessKey = None,
         request_id: str = None,
     ):
+        # The information of the AccessKey pair.
         self.access_key = access_key
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -848,9 +860,6 @@ class CreateAccessKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -886,7 +895,13 @@ class CreateGroupRequest(TeaModel):
         comments: str = None,
         group_name: str = None,
     ):
+        # The description.
+        # 
+        # The value can be up to 128 characters in length.
         self.comments = comments
+        # The name of the user group.
+        # 
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.group_name = group_name
 
     def validate(self):
@@ -921,9 +936,13 @@ class CreateGroupResponseBodyGroup(TeaModel):
         group_id: str = None,
         group_name: str = None,
     ):
+        # The description.
         self.comments = comments
+        # The creation time.
         self.create_date = create_date
+        # The ID of the user group.
         self.group_id = group_id
+        # The name of the user group.
         self.group_name = group_name
 
     def validate(self):
@@ -964,7 +983,9 @@ class CreateGroupResponseBody(TeaModel):
         group: CreateGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
+        # The information about the group.
         self.group = group
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1005,9 +1026,6 @@ class CreateGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1045,9 +1063,13 @@ class CreateLoginProfileRequest(TeaModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
+        # Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`.
         self.mfabind_required = mfabind_required
+        # The logon password of the RAM user. The password must meet the password strength requirements. For more information, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
         self.password = password
+        # Specifies whether the RAM user must change the password upon logon. Default value: `false`.
         self.password_reset_required = password_reset_required
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -1090,9 +1112,13 @@ class CreateLoginProfileResponseBodyLoginProfile(TeaModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
+        # The time when the logon configurations were created.
         self.create_date = create_date
+        # Indicates whether an MFA device must be attached to the RAM user upon logon.
         self.mfabind_required = mfabind_required
+        # Indicates whether the RAM user must change the password upon logon.
         self.password_reset_required = password_reset_required
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -1133,7 +1159,9 @@ class CreateLoginProfileResponseBody(TeaModel):
         login_profile: CreateLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
+        # The logon configurations of the RAM user.
         self.login_profile = login_profile
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1174,9 +1202,6 @@ class CreateLoginProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1213,8 +1238,19 @@ class CreatePolicyRequest(TeaModel):
         policy_document: str = None,
         policy_name: str = None,
     ):
+        # The description of the policy.
+        # 
+        # The description must be 1 to 1,024 characters in length.
         self.description = description
+        # The document of the policy.
+        # 
+        # The document must be 1 to 6,144 characters in length.
+        # 
+        # For more information about policy elements and sample policies, see [Policy elements](https://help.aliyun.com/document_detail/93738.html) and [Overview of sample policies](https://help.aliyun.com/document_detail/210969.html).
         self.policy_document = policy_document
+        # The name of the policy.
+        # 
+        # The name must be 1 to 128 characters in length, and can contain letters, digits, and hyphens (-).
         self.policy_name = policy_name
 
     def validate(self):
@@ -1254,10 +1290,18 @@ class CreatePolicyResponseBodyPolicy(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The time when the policy was created.
         self.create_date = create_date
+        # The version of the policy. Default value: v1.
         self.default_version = default_version
+        # The description of the policy.
         self.description = description
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values:
+        # 
+        # *   Custom: custom policy
+        # *   System: system policy
         self.policy_type = policy_type
 
     def validate(self):
@@ -1302,7 +1346,9 @@ class CreatePolicyResponseBody(TeaModel):
         policy: CreatePolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # The information about the policy.
         self.policy = policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1343,9 +1389,6 @@ class CreatePolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1383,9 +1426,20 @@ class CreatePolicyVersionRequest(TeaModel):
         rotate_strategy: str = None,
         set_as_default: bool = None,
     ):
+        # The document of the policy. The document can be up to 6,144 bytes in length.
         self.policy_document = policy_document
+        # The name of the policy.
         self.policy_name = policy_name
+        # The rotation strategy of the policy. The rotation strategy can be used to delete an early policy version.
+        # 
+        # Valid values:
+        # 
+        # *   `None`: disables the rotation strategy.
+        # *   `DeleteOldestNonDefaultVersionWhenLimitExceeded`: deletes the earliest non-active version if the number of versions exceeds the limit.
+        # 
+        # Default value: `None`.
         self.rotate_strategy = rotate_strategy
+        # Specifies whether to set this policy as the default policy. Default value: `false`.
         self.set_as_default = set_as_default
 
     def validate(self):
@@ -1428,9 +1482,13 @@ class CreatePolicyVersionResponseBodyPolicyVersion(TeaModel):
         policy_document: str = None,
         version_id: str = None,
     ):
+        # The time when the policy version was created.
         self.create_date = create_date
+        # Indicates whether the policy version is the default version.
         self.is_default_version = is_default_version
+        # The document of the policy.
         self.policy_document = policy_document
+        # The ID of the policy version.
         self.version_id = version_id
 
     def validate(self):
@@ -1471,7 +1529,9 @@ class CreatePolicyVersionResponseBody(TeaModel):
         policy_version: CreatePolicyVersionResponseBodyPolicyVersion = None,
         request_id: str = None,
     ):
+        # The information about the policy version.
         self.policy_version = policy_version
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1512,9 +1572,6 @@ class CreatePolicyVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1552,9 +1609,23 @@ class CreateRoleRequest(TeaModel):
         max_session_duration: int = None,
         role_name: str = None,
     ):
+        # The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+        # 
+        # >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
         self.assume_role_policy_document = assume_role_policy_document
+        # The description of the RAM role.
+        # 
+        # The description must be 1 to 1,024 characters in length.
         self.description = description
+        # The maximum session duration of the RAM role.
+        # 
+        # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
+        # 
+        # If you do not specify this parameter, the default value is used.
         self.max_session_duration = max_session_duration
+        # The name of the RAM role.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
 
     def validate(self):
@@ -1600,12 +1671,19 @@ class CreateRoleResponseBodyRole(TeaModel):
         role_id: str = None,
         role_name: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the role.
         self.arn = arn
+        # The trust policy that specifies the trusted entity to assume the RAM role.
         self.assume_role_policy_document = assume_role_policy_document
+        # The time when the RAM user was created.
         self.create_date = create_date
+        # The description of the RAM role.
         self.description = description
+        # The maximum session duration of the RAM role.
         self.max_session_duration = max_session_duration
+        # The ID of the RAM role.
         self.role_id = role_id
+        # The name of the RAM role.
         self.role_name = role_name
 
     def validate(self):
@@ -1658,7 +1736,9 @@ class CreateRoleResponseBody(TeaModel):
         request_id: str = None,
         role: CreateRoleResponseBodyRole = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the RAM role.
         self.role = role
 
     def validate(self):
@@ -1699,9 +1779,6 @@ class CreateRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1740,10 +1817,27 @@ class CreateUserRequest(TeaModel):
         mobile_phone: str = None,
         user_name: str = None,
     ):
+        # The description of the RAM user.
+        # 
+        # The description must be 1 to 128 characters in length.
         self.comments = comments
+        # The display name of the RAM user.
+        # 
+        # The display name must be 1 to 128 characters in length.
         self.display_name = display_name
+        # The email address of the RAM user.
+        # 
+        # >  This parameter applies only to the China site (aliyun.com).
         self.email = email
+        # The mobile phone number of the RAM user.
+        # 
+        # Format: Country code-Mobile phone number.
+        # 
+        # >  This parameter applies only to the China site (aliyun.com).
         self.mobile_phone = mobile_phone
+        # The username of the RAM user.
+        # 
+        # The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.user_name = user_name
 
     def validate(self):
@@ -1793,12 +1887,23 @@ class CreateUserResponseBodyUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The description of the RAM user.
         self.comments = comments
+        # The point in time when the RAM user was created. The time is displayed in UTC.
         self.create_date = create_date
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The email address of the RAM user.
+        # 
+        # >  This parameter can be returned only on the China site (aliyun.com).
         self.email = email
+        # The mobile phone number of the RAM user.
+        # 
+        # >  This parameter can be returned only on the China site (aliyun.com).
         self.mobile_phone = mobile_phone
+        # The ID of the RAM user.
         self.user_id = user_id
+        # The username of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -1851,7 +1956,9 @@ class CreateUserResponseBody(TeaModel):
         request_id: str = None,
         user: CreateUserResponseBodyUser = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the RAM user.
         self.user = user
 
     def validate(self):
@@ -1892,9 +1999,6 @@ class CreateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1929,6 +2033,9 @@ class CreateVirtualMFADeviceRequest(TeaModel):
         self,
         virtual_mfadevice_name: str = None,
     ):
+        # The name of the MFA device.
+        # 
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         self.virtual_mfadevice_name = virtual_mfadevice_name
 
     def validate(self):
@@ -1958,8 +2065,11 @@ class CreateVirtualMFADeviceResponseBodyVirtualMFADevice(TeaModel):
         qrcode_png: str = None,
         serial_number: str = None,
     ):
+        # The key of the MFA device.
         self.base_32string_seed = base_32string_seed
+        # The Base64-encoded QR code, in the PNG format.
         self.qrcode_png = qrcode_png
+        # The serial number of the MFA device.
         self.serial_number = serial_number
 
     def validate(self):
@@ -1996,7 +2106,9 @@ class CreateVirtualMFADeviceResponseBody(TeaModel):
         request_id: str = None,
         virtual_mfadevice: CreateVirtualMFADeviceResponseBodyVirtualMFADevice = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the MFA device.
         self.virtual_mfadevice = virtual_mfadevice
 
     def validate(self):
@@ -2037,9 +2149,6 @@ class CreateVirtualMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2069,13 +2178,427 @@ class CreateVirtualMFADeviceResponse(TeaModel):
         return self
 
 
+class DecodeDiagnosticMessageRequest(TeaModel):
+    def __init__(
+        self,
+        encoded_diagnostic_message: str = None,
+    ):
+        # The encoded diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        return self
+
+
+class DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions(TeaModel):
+    def __init__(
+        self,
+        condition_key: str = None,
+        condition_values: List[str] = None,
+    ):
+        # The key of the condition.
+        self.condition_key = condition_key
+        # The values that correspond to the key.
+        self.condition_values = condition_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_key is not None:
+            result['ConditionKey'] = self.condition_key
+        if self.condition_values is not None:
+            result['ConditionValues'] = self.condition_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionKey') is not None:
+            self.condition_key = m.get('ConditionKey')
+        if m.get('ConditionValues') is not None:
+            self.condition_values = m.get('ConditionValues')
+        return self
+
+
+class DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal(TeaModel):
+    def __init__(
+        self,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+    ):
+        # The identity.
+        # 
+        # *   If the operator is a RAM user, the ID of the user is displayed.
+        # *   If the operator is a RAM role, the name and session name of the role are displayed. Example: RoleName:RoleSessionName.
+        # *   If the operator is an SSO federated identity, the type and name of the identity provider (IdP) are displayed. Example: saml-provider/AzureAD.
+        self.auth_principal_display_name = auth_principal_display_name
+        # The ID of the Alibaba Cloud account to which the identity belongs.
+        self.auth_principal_owner_id = auth_principal_owner_id
+        # The identity type that is used for authentication in the request.
+        # 
+        # Valid values:
+        # 
+        # *   SubUser: RAM user
+        # *   AssumedRoleUser: RAM role
+        # *   Federated: SSO federated identity
+        self.auth_principal_type = auth_principal_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        return self
+
+
+class DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies(TeaModel):
+    def __init__(
+        self,
+        attached_entity_type: str = None,
+        attached_scope: str = None,
+        effect: str = None,
+        policy_identifier: str = None,
+        policy_type: str = None,
+        policy_version: str = None,
+    ):
+        # The type of the entity to which the policy is attached.
+        # 
+        # Valid values:
+        # 
+        # *   RamUser: RAM user
+        # *   RamRole: RAM role
+        # *   ResourceDirectoryTarget: entity in a resource directory
+        # *   RamGroup: RAM user group
+        self.attached_entity_type = attached_entity_type
+        # The authorization scope of the policy.
+        # 
+        # Valid values:
+        # 
+        # *   Account: Alibaba Cloud account
+        # *   Folder: folder in the resource directory
+        # *   ResourceGroup: resource group
+        self.attached_scope = attached_scope
+        # The effect of the policy.
+        # 
+        # Valid values:
+        # 
+        # *   Deny
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Allow
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.effect = effect
+        # The identifier of the policy.
+        # 
+        # *   Control policy: the ID of the control policy
+        # *   RAM policy: the name of the policy
+        self.policy_identifier = policy_identifier
+        # The type of the policy.
+        # 
+        # Valid values:
+        # *   Custom: custom policy
+        # *   System: system policy
+        self.policy_type = policy_type
+        # The version number of the policy.
+        # 
+        # > Only custom policies have version numbers.
+        self.policy_version = policy_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attached_entity_type is not None:
+            result['AttachedEntityType'] = self.attached_entity_type
+        if self.attached_scope is not None:
+            result['AttachedScope'] = self.attached_scope
+        if self.effect is not None:
+            result['Effect'] = self.effect
+        if self.policy_identifier is not None:
+            result['PolicyIdentifier'] = self.policy_identifier
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        if self.policy_version is not None:
+            result['PolicyVersion'] = self.policy_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttachedEntityType') is not None:
+            self.attached_entity_type = m.get('AttachedEntityType')
+        if m.get('AttachedScope') is not None:
+            self.attached_scope = m.get('AttachedScope')
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+        if m.get('PolicyIdentifier') is not None:
+            self.policy_identifier = m.get('PolicyIdentifier')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        if m.get('PolicyVersion') is not None:
+            self.policy_version = m.get('PolicyVersion')
+        return self
+
+
+class DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_conditions: List[DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions] = None,
+        auth_principal: DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal = None,
+        auth_resource: str = None,
+        explicit_deny: bool = None,
+        matched_policies: List[DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies] = None,
+        no_permission_policy_type: str = None,
+    ):
+        # The operation that is used for authentication in the request.
+        self.auth_action = auth_action
+        # The conditions that are used for authentication in the request.
+        self.auth_conditions = auth_conditions
+        # The operator that is used for authentication in the request.
+        self.auth_principal = auth_principal
+        # The resource that is used for authentication in the request.
+        self.auth_resource = auth_resource
+        # Indicates whether the access denied error is caused by an explicit deny.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.explicit_deny = explicit_deny
+        # The policies that are matched.
+        self.matched_policies = matched_policies
+        # The type of the policy that causes the access denied error.
+        # 
+        # Valid values:
+        # 
+        # *   AssumeRolePolicy: role-specific trust policy
+        # *   ControlPolicy: control policy
+        # *   AccountLevelIdentityBasedPolicy: identity-based policy at the account level
+        # *   ResourceGroupLevelIdentityBasedPolicy: identity-based policy at the resource group level
+        # *   SessionPolicy: session policy
+        self.no_permission_policy_type = no_permission_policy_type
+
+    def validate(self):
+        if self.auth_conditions:
+            for k in self.auth_conditions:
+                if k:
+                    k.validate()
+        if self.auth_principal:
+            self.auth_principal.validate()
+        if self.matched_policies:
+            for k in self.matched_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        result['AuthConditions'] = []
+        if self.auth_conditions is not None:
+            for k in self.auth_conditions:
+                result['AuthConditions'].append(k.to_map() if k else None)
+        if self.auth_principal is not None:
+            result['AuthPrincipal'] = self.auth_principal.to_map()
+        if self.auth_resource is not None:
+            result['AuthResource'] = self.auth_resource
+        if self.explicit_deny is not None:
+            result['ExplicitDeny'] = self.explicit_deny
+        result['MatchedPolicies'] = []
+        if self.matched_policies is not None:
+            for k in self.matched_policies:
+                result['MatchedPolicies'].append(k.to_map() if k else None)
+        if self.no_permission_policy_type is not None:
+            result['NoPermissionPolicyType'] = self.no_permission_policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        self.auth_conditions = []
+        if m.get('AuthConditions') is not None:
+            for k in m.get('AuthConditions'):
+                temp_model = DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions()
+                self.auth_conditions.append(temp_model.from_map(k))
+        if m.get('AuthPrincipal') is not None:
+            temp_model = DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal()
+            self.auth_principal = temp_model.from_map(m['AuthPrincipal'])
+        if m.get('AuthResource') is not None:
+            self.auth_resource = m.get('AuthResource')
+        if m.get('ExplicitDeny') is not None:
+            self.explicit_deny = m.get('ExplicitDeny')
+        self.matched_policies = []
+        if m.get('MatchedPolicies') is not None:
+            for k in m.get('MatchedPolicies'):
+                temp_model = DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies()
+                self.matched_policies.append(temp_model.from_map(k))
+        if m.get('NoPermissionPolicyType') is not None:
+            self.no_permission_policy_type = m.get('NoPermissionPolicyType')
+        return self
+
+
+class DecodeDiagnosticMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        decoded_diagnostic_message: DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage = None,
+        request_id: str = None,
+    ):
+        # The decoded diagnostic information.
+        self.decoded_diagnostic_message = decoded_diagnostic_message
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.decoded_diagnostic_message:
+            self.decoded_diagnostic_message.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.decoded_diagnostic_message is not None:
+            result['DecodedDiagnosticMessage'] = self.decoded_diagnostic_message.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DecodedDiagnosticMessage') is not None:
+            temp_model = DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage()
+            self.decoded_diagnostic_message = temp_model.from_map(m['DecodedDiagnosticMessage'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DecodeDiagnosticMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DecodeDiagnosticMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DecodeDiagnosticMessageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAccessKeyRequest(TeaModel):
     def __init__(
         self,
         user_access_key_id: str = None,
         user_name: str = None,
     ):
+        # The AccessKey ID in the AccessKey pair that you want to delete.
         self.user_access_key_id = user_access_key_id
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -2107,6 +2630,7 @@ class DeleteAccessKeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2141,9 +2665,6 @@ class DeleteAccessKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2178,6 +2699,9 @@ class DeleteGroupRequest(TeaModel):
         self,
         group_name: str = None,
     ):
+        # The name of the RAM user group.
+        # 
+        # If you want to query the name of a RAM user group, call the [ListGroups](https://help.aliyun.com/document_detail/28703.html) operation.
         self.group_name = group_name
 
     def validate(self):
@@ -2205,6 +2729,7 @@ class DeleteGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2239,9 +2764,6 @@ class DeleteGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2276,6 +2798,7 @@ class DeleteLoginProfileRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -2303,6 +2826,7 @@ class DeleteLoginProfileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2337,9 +2861,6 @@ class DeleteLoginProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2374,6 +2895,7 @@ class DeletePolicyRequest(TeaModel):
         self,
         policy_name: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
 
     def validate(self):
@@ -2401,6 +2923,7 @@ class DeletePolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2435,9 +2958,6 @@ class DeletePolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2473,7 +2993,9 @@ class DeletePolicyVersionRequest(TeaModel):
         policy_name: str = None,
         version_id: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The ID of the policy version.
         self.version_id = version_id
 
     def validate(self):
@@ -2505,6 +3027,7 @@ class DeletePolicyVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2539,9 +3062,6 @@ class DeletePolicyVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2576,6 +3096,7 @@ class DeleteRoleRequest(TeaModel):
         self,
         role_name: str = None,
     ):
+        # The name of the RAM role.
         self.role_name = role_name
 
     def validate(self):
@@ -2603,6 +3124,7 @@ class DeleteRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2637,9 +3159,6 @@ class DeleteRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2674,6 +3193,9 @@ class DeleteUserRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The name of the RAM user.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.user_name = user_name
 
     def validate(self):
@@ -2701,6 +3223,7 @@ class DeleteUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2735,9 +3258,6 @@ class DeleteUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2772,6 +3292,7 @@ class DeleteVirtualMFADeviceRequest(TeaModel):
         self,
         serial_number: str = None,
     ):
+        # The serial number of the MFA device.
         self.serial_number = serial_number
 
     def validate(self):
@@ -2799,6 +3320,7 @@ class DeleteVirtualMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2833,9 +3355,6 @@ class DeleteVirtualMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2872,8 +3391,11 @@ class DetachPolicyFromGroupRequest(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
 
     def validate(self):
@@ -2909,6 +3431,7 @@ class DetachPolicyFromGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2943,9 +3466,6 @@ class DetachPolicyFromGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2982,8 +3502,11 @@ class DetachPolicyFromRoleRequest(TeaModel):
         policy_type: str = None,
         role_name: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
+        # The name of the RAM role.
         self.role_name = role_name
 
     def validate(self):
@@ -3019,6 +3542,7 @@ class DetachPolicyFromRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3053,9 +3577,6 @@ class DetachPolicyFromRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3092,8 +3613,11 @@ class DetachPolicyFromUserRequest(TeaModel):
         policy_type: str = None,
         user_name: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -3129,6 +3653,7 @@ class DetachPolicyFromUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3163,9 +3688,6 @@ class DetachPolicyFromUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3302,9 +3824,6 @@ class GetAccessKeyLastUsedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3340,7 +3859,9 @@ class GetAccountAliasResponseBody(TeaModel):
         account_alias: str = None,
         request_id: str = None,
     ):
+        # The alias of the Alibaba Cloud account.
         self.account_alias = account_alias
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3379,9 +3900,6 @@ class GetAccountAliasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3416,6 +3934,7 @@ class GetGroupRequest(TeaModel):
         self,
         group_name: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
 
     def validate(self):
@@ -3447,10 +3966,15 @@ class GetGroupResponseBodyGroup(TeaModel):
         group_name: str = None,
         update_date: str = None,
     ):
+        # The description of the RAM user group.
         self.comments = comments
+        # The time when the RAM user group was created.
         self.create_date = create_date
+        # The ID of the RAM user group.
         self.group_id = group_id
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The time when the information of the RAM user group was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -3495,7 +4019,9 @@ class GetGroupResponseBody(TeaModel):
         group: GetGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
+        # The information of the RAM user group.
         self.group = group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3536,9 +4062,6 @@ class GetGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3573,6 +4096,7 @@ class GetLoginProfileRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -3603,9 +4127,13 @@ class GetLoginProfileResponseBodyLoginProfile(TeaModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
+        # The time when the logon configurations were created.
         self.create_date = create_date
+        # Indicates whether an MFA device must be attached to the RAM user upon logon.
         self.mfabind_required = mfabind_required
+        # Indicates whether the RAM user must change the password upon logon.
         self.password_reset_required = password_reset_required
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -3646,7 +4174,9 @@ class GetLoginProfileResponseBody(TeaModel):
         login_profile: GetLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
+        # The logon configurations of the RAM user.
         self.login_profile = login_profile
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3687,9 +4217,6 @@ class GetLoginProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3732,14 +4259,28 @@ class GetPasswordPolicyResponseBodyPasswordPolicy(TeaModel):
         require_symbols: bool = None,
         require_uppercase_characters: bool = None,
     ):
+        # Indicates whether the password has expired.
+        # 
+        # Valid values: `true` and `false`. Default value: `false`.
+        # 
+        # *   If the value of this parameter is `true`, the parent Alibaba Cloud account must reset the password before the RAM user can log on to the console.
+        # *   If the value of this parameter is `false`, the RAM user can change the password and then log on to the console.
         self.hard_expiry = hard_expiry
+        # The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
         self.max_login_attemps = max_login_attemps
+        # The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
         self.max_password_age = max_password_age
+        # The minimum required number of characters in a password.
         self.minimum_password_length = minimum_password_length
+        # The number of previous passwords that the user is prevented from reusing. Default value: 0. The default value indicates that the RAM user is not prevented from reusing previous passwords
         self.password_reuse_prevention = password_reuse_prevention
+        # Indicates whether a password must contain one or more lowercase letters.
         self.require_lowercase_characters = require_lowercase_characters
+        # Indicates whether a password must contain one or more digits.
         self.require_numbers = require_numbers
+        # Indicates whether a password must contain one or more special characters.
         self.require_symbols = require_symbols
+        # Indicates whether a password must contain one or more uppercase letters.
         self.require_uppercase_characters = require_uppercase_characters
 
     def validate(self):
@@ -3800,7 +4341,9 @@ class GetPasswordPolicyResponseBody(TeaModel):
         password_policy: GetPasswordPolicyResponseBodyPasswordPolicy = None,
         request_id: str = None,
     ):
+        # The policy to manage passwords.
         self.password_policy = password_policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3841,9 +4384,6 @@ class GetPasswordPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3879,7 +4419,9 @@ class GetPolicyRequest(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
 
     def validate(self):
@@ -3914,9 +4456,13 @@ class GetPolicyResponseBodyDefaultPolicyVersion(TeaModel):
         policy_document: str = None,
         version_id: str = None,
     ):
+        # The time when the default policy version was created.
         self.create_date = create_date
+        # An attribute in the `DefaultPolicyVersion` parameter. The value of the `IsDefaultVersion` parameter is `true`.
         self.is_default_version = is_default_version
+        # The script of the default policy version.
         self.policy_document = policy_document
+        # The ID of the default policy version.
         self.version_id = version_id
 
     def validate(self):
@@ -3963,13 +4509,21 @@ class GetPolicyResponseBodyPolicy(TeaModel):
         policy_type: str = None,
         update_date: str = None,
     ):
+        # The number of references to the policy.
         self.attachment_count = attachment_count
+        # The time when the policy was created.
         self.create_date = create_date
+        # The default version ID of the policy.
         self.default_version = default_version
+        # The description of the policy.
         self.description = description
+        # This parameter is deprecated.
         self.policy_document = policy_document
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy.
         self.policy_type = policy_type
+        # The time when the policy was modified.
         self.update_date = update_date
 
     def validate(self):
@@ -4027,8 +4581,11 @@ class GetPolicyResponseBody(TeaModel):
         policy: GetPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # The information of the default policy version.
         self.default_policy_version = default_policy_version
+        # The basic information of the policy.
         self.policy = policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4076,9 +4633,6 @@ class GetPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4115,8 +4669,11 @@ class GetPolicyVersionRequest(TeaModel):
         policy_type: str = None,
         version_id: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
+        # The ID of the policy version.
         self.version_id = version_id
 
     def validate(self):
@@ -4155,9 +4712,13 @@ class GetPolicyVersionResponseBodyPolicyVersion(TeaModel):
         policy_document: str = None,
         version_id: str = None,
     ):
+        # The time when the version was created.
         self.create_date = create_date
+        # Indicates whether the version is the default version.
         self.is_default_version = is_default_version
+        # The script of the policy.
         self.policy_document = policy_document
+        # The ID of the version.
         self.version_id = version_id
 
     def validate(self):
@@ -4198,7 +4759,9 @@ class GetPolicyVersionResponseBody(TeaModel):
         policy_version: GetPolicyVersionResponseBodyPolicyVersion = None,
         request_id: str = None,
     ):
+        # The information of the policy version.
         self.policy_version = policy_version
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4239,9 +4802,6 @@ class GetPolicyVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4276,6 +4836,9 @@ class GetRoleRequest(TeaModel):
         self,
         role_name: str = None,
     ):
+        # The name of the RAM role.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
 
     def validate(self):
@@ -4310,13 +4873,21 @@ class GetRoleResponseBodyRole(TeaModel):
         role_name: str = None,
         update_date: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
+        # The content of the policy that specifies one or more entities entrusted to assume the RAM role.
         self.assume_role_policy_document = assume_role_policy_document
+        # The time when the RAM role was created.
         self.create_date = create_date
+        # The description of the RAM role.
         self.description = description
+        # The maximum session duration of the RAM role.
         self.max_session_duration = max_session_duration
+        # The ID of the RAM role.
         self.role_id = role_id
+        # The name of the RAM role.
         self.role_name = role_name
+        # The time when the RAM role was modified.
         self.update_date = update_date
 
     def validate(self):
@@ -4373,7 +4944,9 @@ class GetRoleResponseBody(TeaModel):
         request_id: str = None,
         role: GetRoleResponseBodyRole = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the RAM role.
         self.role = role
 
     def validate(self):
@@ -4414,9 +4987,6 @@ class GetRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4451,6 +5021,10 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference(Tea
         self,
         allow_user_to_manage_access_keys: bool = None,
     ):
+        # Indicates whether RAM users can manage their AccessKey pairs. Valid values:
+        # 
+        # *   true: RAM users can manage their AccessKey pairs.
+        # *   false: RAM users cannot manage their AccessKey pairs.
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
 
     def validate(self):
@@ -4481,9 +5055,24 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         login_network_masks: str = None,
         login_session_duration: int = None,
     ):
+        # Indicates whether RAM users can change their passwords. Valid values:
+        # 
+        # *   true: RAM users can change their passwords.
+        # *   false: RAM users cannot change their passwords.
         self.allow_user_to_change_password = allow_user_to_change_password
+        # Indicates whether RAM users can save security codes for multi-factor authentication (MFA) during logon. Each security code is valid for seven days. Valid values:
+        # 
+        # *   true: RAM users can save MFA security codes during logon.
+        # *   false: RAM users cannot save MFA security codes during logon.
         self.enable_save_mfaticket = enable_save_mfaticket
+        # The subnet mask that indicates the IP addresses from which logon to the Alibaba Cloud Management Console is allowed. This parameter applies to password-based logon and single sign-on (SSO). However, this parameter does not apply to API calls that are authenticated based on AccessKey pairs.
+        # 
+        # *   If a subnet mask is specified, RAM users can log on to the Alibaba Cloud Management Console only by using the IP addresses in the subnetwork.
+        # *   If no subnet mask is specified, RAM users can log on to the Alibaba Cloud Management Console by using all IP addresses.
+        # 
+        # If more than one subnet mask is specified, the masks are separated with semicolons (;), for example, 192.168.0.0/16;10.0.0.0/8.
         self.login_network_masks = login_network_masks
+        # The validity period of a logon session of a RAM user. Unit: hours.
         self.login_session_duration = login_session_duration
 
     def validate(self):
@@ -4523,6 +5112,10 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
         self,
         allow_user_to_manage_mfadevices: bool = None,
     ):
+        # Indicates whether RAM users can manage their MFA devices. Valid values:
+        # 
+        # *   true: RAM users can manage their MFA devices.
+        # *   false: RAM users cannot manage their MFA devices.
         self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
 
     def validate(self):
@@ -4550,6 +5143,10 @@ class GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference(Tea
         self,
         allow_user_to_manage_public_keys: bool = None,
     ):
+        # Indicates whether RAM users can manage their public keys. Valid values:
+        # 
+        # *   true: RAM users can manage their public keys.
+        # *   false: RAM users cannot manage their public keys.
         self.allow_user_to_manage_public_keys = allow_user_to_manage_public_keys
 
     def validate(self):
@@ -4580,9 +5177,15 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         mfapreference: GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference = None,
         public_key_preference: GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference = None,
     ):
+        # The AccessKey pair preference.
         self.access_key_preference = access_key_preference
+        # The logon preferences.
         self.login_profile_preference = login_profile_preference
+        # The MFA preference.
         self.mfapreference = mfapreference
+        # The public key preference.
+        # 
+        # >  The public key preference is valid only for the Japan site.
         self.public_key_preference = public_key_preference
 
     def validate(self):
@@ -4634,7 +5237,9 @@ class GetSecurityPreferenceResponseBody(TeaModel):
         request_id: str = None,
         security_preference: GetSecurityPreferenceResponseBodySecurityPreference = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The security preferences.
         self.security_preference = security_preference
 
     def validate(self):
@@ -4675,9 +5280,6 @@ class GetSecurityPreferenceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4712,6 +5314,9 @@ class GetUserRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The username of the RAM user.
+        # 
+        # The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.user_name = user_name
 
     def validate(self):
@@ -4747,14 +5352,27 @@ class GetUserResponseBodyUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The description of the RAM user.
         self.comments = comments
+        # The point in time when the RAM user was created. The time is displayed in UTC.
         self.create_date = create_date
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The email address of the RAM user.
+        # 
+        # >  This parameter can be returned only on the China site (aliyun.com).
         self.email = email
+        # The point in time when the RAM user last logged on to the Alibaba Cloud Management Console by using the password. The time is displayed in UTC.
         self.last_login_date = last_login_date
+        # The mobile phone number of the RAM user.
+        # 
+        # >  This parameter can be returned only on the China site (aliyun.com).
         self.mobile_phone = mobile_phone
+        # The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
         self.update_date = update_date
+        # The ID of the RAM user.
         self.user_id = user_id
+        # The username of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -4815,7 +5433,9 @@ class GetUserResponseBody(TeaModel):
         request_id: str = None,
         user: GetUserResponseBodyUser = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the RAM user.
         self.user = user
 
     def validate(self):
@@ -4856,9 +5476,6 @@ class GetUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4893,6 +5510,7 @@ class GetUserMFAInfoRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The username of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -4921,7 +5539,12 @@ class GetUserMFAInfoResponseBodyMFADevice(TeaModel):
         serial_number: str = None,
         type: str = None,
     ):
+        # The serial number of the MFA device.
         self.serial_number = serial_number
+        # The type of the MFA device. Valid values:
+        # 
+        # *   VMFA: virtual MFA device
+        # *   U2F: Universal 2nd Factor (U2F) security key
         self.type = type
 
     def validate(self):
@@ -4954,7 +5577,9 @@ class GetUserMFAInfoResponseBody(TeaModel):
         mfadevice: GetUserMFAInfoResponseBodyMFADevice = None,
         request_id: str = None,
     ):
+        # The information about the MFA device that is attached to the RAM user.
         self.mfadevice = mfadevice
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4995,9 +5620,6 @@ class GetUserMFAInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5032,6 +5654,7 @@ class ListAccessKeysRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The name of the RAM user. If a RAM user calls this operation and does not specify this parameter, the AccessKey pairs of the RAM user are returned.
         self.user_name = user_name
 
     def validate(self):
@@ -5061,8 +5684,11 @@ class ListAccessKeysResponseBodyAccessKeysAccessKey(TeaModel):
         create_date: str = None,
         status: str = None,
     ):
+        # The AccessKey ID.
         self.access_key_id = access_key_id
+        # The time when the AccessKey pair was created.
         self.create_date = create_date
+        # The status of the AccessKey pair. Valid values: Active and Inactive.
         self.status = status
 
     def validate(self):
@@ -5134,7 +5760,9 @@ class ListAccessKeysResponseBody(TeaModel):
         access_keys: ListAccessKeysResponseBodyAccessKeys = None,
         request_id: str = None,
     ):
+        # The list of AccessKey pairs that belong to the RAM user.
         self.access_keys = access_keys
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5175,9 +5803,6 @@ class ListAccessKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5213,7 +5838,9 @@ class ListEntitiesForPolicyRequest(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
 
     def validate(self):
@@ -5247,8 +5874,11 @@ class ListEntitiesForPolicyResponseBodyGroupsGroup(TeaModel):
         comments: str = None,
         group_name: str = None,
     ):
+        # The time when the policy was attached to the RAM user group.
         self.attach_date = attach_date
+        # The description of the RAM user group.
         self.comments = comments
+        # The name of the RAM user group.
         self.group_name = group_name
 
     def validate(self):
@@ -5323,10 +5953,15 @@ class ListEntitiesForPolicyResponseBodyRolesRole(TeaModel):
         role_id: str = None,
         role_name: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
+        # The time when the policy was attached to the RAM user.
         self.attach_date = attach_date
+        # The description of the RAM role.
         self.description = description
+        # The ID of the RAM role.
         self.role_id = role_id
+        # The name of the RAM role.
         self.role_name = role_name
 
     def validate(self):
@@ -5408,9 +6043,13 @@ class ListEntitiesForPolicyResponseBodyUsersUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The time when the policy was attached to the RAM user.
         self.attach_date = attach_date
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The unique ID of the RAM user.
         self.user_id = user_id
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -5488,9 +6127,13 @@ class ListEntitiesForPolicyResponseBody(TeaModel):
         roles: ListEntitiesForPolicyResponseBodyRoles = None,
         users: ListEntitiesForPolicyResponseBodyUsers = None,
     ):
+        # The list of the RAM user groups.
         self.groups = groups
+        # The ID of the request.
         self.request_id = request_id
+        # The information of RAM roles.
         self.roles = roles
+        # The list of the RAM users to which the policy is attached.
         self.users = users
 
     def validate(self):
@@ -5545,9 +6188,6 @@ class ListEntitiesForPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5583,7 +6223,11 @@ class ListGroupsRequest(TeaModel):
         marker: str = None,
         max_items: int = None,
     ):
+        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
+        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` is `true`.
+        # 
+        # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
 
     def validate(self):
@@ -5619,10 +6263,15 @@ class ListGroupsResponseBodyGroupsGroup(TeaModel):
         group_name: str = None,
         update_date: str = None,
     ):
+        # The description of the RAM user group.
         self.comments = comments
+        # The time when the RAM user group was created.
         self.create_date = create_date
+        # The ID of the RAM user group.
         self.group_id = group_id
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The time when the information of the RAM user group was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -5704,9 +6353,13 @@ class ListGroupsResponseBody(TeaModel):
         marker: str = None,
         request_id: str = None,
     ):
+        # The list of the RAM user groups.
         self.groups = groups
+        # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
+        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If `true` is returned, you can call this operation again and set the `Marker` parameter to obtain the truncated part.
         self.marker = marker
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5755,9 +6408,6 @@ class ListGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5792,6 +6442,7 @@ class ListGroupsForUserRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The username of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -5822,9 +6473,13 @@ class ListGroupsForUserResponseBodyGroupsGroup(TeaModel):
         group_name: str = None,
         join_date: str = None,
     ):
+        # The description of the RAM user group.
         self.comments = comments
+        # The ID of the RAM user group.
         self.group_id = group_id
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The time when the RAM user joined the RAM user group.
         self.join_date = join_date
 
     def validate(self):
@@ -5900,7 +6555,9 @@ class ListGroupsForUserResponseBody(TeaModel):
         groups: ListGroupsForUserResponseBodyGroups = None,
         request_id: str = None,
     ):
+        # The list of the RAM user groups.
         self.groups = groups
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5941,9 +6598,6 @@ class ListGroupsForUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5980,8 +6634,13 @@ class ListPoliciesRequest(TeaModel):
         max_items: int = None,
         policy_type: str = None,
     ):
+        # The `Marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
+        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+        # 
+        # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
+        # The type of the `Policy`. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.
         self.policy_type = policy_type
 
     def validate(self):
@@ -6023,12 +6682,19 @@ class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
         policy_type: str = None,
         update_date: str = None,
     ):
+        # The number of references to the policy.
         self.attachment_count = attachment_count
+        # The time when the policy was created.
         self.create_date = create_date
+        # The default version of the policy.
         self.default_version = default_version
+        # The description of the policy.
         self.description = description
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy.
         self.policy_type = policy_type
+        # The time when the policy was modified.
         self.update_date = update_date
 
     def validate(self):
@@ -6118,9 +6784,13 @@ class ListPoliciesResponseBody(TeaModel):
         policies: ListPoliciesResponseBodyPolicies = None,
         request_id: str = None,
     ):
+        # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
+        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value of IsTruncated is `true`, you can call this operation again and set `Marker` to obtain the truncated part.
         self.marker = marker
+        # The list of policies.
         self.policies = policies
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6169,9 +6839,6 @@ class ListPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6206,6 +6873,7 @@ class ListPoliciesForGroupRequest(TeaModel):
         self,
         group_name: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
 
     def validate(self):
@@ -6237,10 +6905,15 @@ class ListPoliciesForGroupResponseBodyPoliciesPolicy(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The time when the policy was attached to the RAM user group.
         self.attach_date = attach_date
+        # The default version of the policy.
         self.default_version = default_version
+        # The description of the policy.
         self.description = description
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):
@@ -6320,7 +6993,9 @@ class ListPoliciesForGroupResponseBody(TeaModel):
         policies: ListPoliciesForGroupResponseBodyPolicies = None,
         request_id: str = None,
     ):
+        # The list of the policies that are attached to the RAM user group.
         self.policies = policies
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6361,9 +7036,6 @@ class ListPoliciesForGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6398,6 +7070,7 @@ class ListPoliciesForRoleRequest(TeaModel):
         self,
         role_name: str = None,
     ):
+        # The name of the RAM role.
         self.role_name = role_name
 
     def validate(self):
@@ -6429,10 +7102,15 @@ class ListPoliciesForRoleResponseBodyPoliciesPolicy(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The time when the policy was attached to the RAM role.
         self.attach_date = attach_date
+        # The default version of the policy.
         self.default_version = default_version
+        # The description of the policy.
         self.description = description
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):
@@ -6512,7 +7190,9 @@ class ListPoliciesForRoleResponseBody(TeaModel):
         policies: ListPoliciesForRoleResponseBodyPolicies = None,
         request_id: str = None,
     ):
+        # The list of the policies that are attached to the RAM role.
         self.policies = policies
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6553,9 +7233,6 @@ class ListPoliciesForRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6590,6 +7267,7 @@ class ListPoliciesForUserRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -6621,10 +7299,18 @@ class ListPoliciesForUserResponseBodyPoliciesPolicy(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The time at which the policy is attached to the RAM user. The time is displayed in UTC.
         self.attach_date = attach_date
+        # The current version.
         self.default_version = default_version
+        # The description of the policy.
         self.description = description
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values:
+        # 
+        # *   System: system policy
+        # *   Custom: custom policy
         self.policy_type = policy_type
 
     def validate(self):
@@ -6704,7 +7390,9 @@ class ListPoliciesForUserResponseBody(TeaModel):
         policies: ListPoliciesForUserResponseBodyPolicies = None,
         request_id: str = None,
     ):
+        # The information about the policy.
         self.policies = policies
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6745,9 +7433,6 @@ class ListPoliciesForUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6783,7 +7468,9 @@ class ListPolicyVersionsRequest(TeaModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values: `System` and `Custom`.
         self.policy_type = policy_type
 
     def validate(self):
@@ -6818,9 +7505,13 @@ class ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion(TeaModel):
         policy_document: str = None,
         version_id: str = None,
     ):
+        # The time when the version was created.
         self.create_date = create_date
+        # Indicates whether the version is the default version.
         self.is_default_version = is_default_version
+        # The script of the policy.
         self.policy_document = policy_document
+        # The ID of the version.
         self.version_id = version_id
 
     def validate(self):
@@ -6896,7 +7587,9 @@ class ListPolicyVersionsResponseBody(TeaModel):
         policy_versions: ListPolicyVersionsResponseBodyPolicyVersions = None,
         request_id: str = None,
     ):
+        # The list of the policy versions.
         self.policy_versions = policy_versions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6937,9 +7630,6 @@ class ListPolicyVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6975,7 +7665,11 @@ class ListRolesRequest(TeaModel):
         marker: str = None,
         max_items: int = None,
     ):
+        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
+        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+        # 
+        # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
 
     def validate(self):
@@ -7013,12 +7707,19 @@ class ListRolesResponseBodyRolesRole(TeaModel):
         role_name: str = None,
         update_date: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.arn = arn
+        # The time when the RAM role was created.
         self.create_date = create_date
+        # The description of the RAM role.
         self.description = description
+        # The maximum session duration of the RAM role.
         self.max_session_duration = max_session_duration
+        # The ID of the RAM role.
         self.role_id = role_id
+        # The name of the RAM role.
         self.role_name = role_name
+        # The time when the RAM role was modified.
         self.update_date = update_date
 
     def validate(self):
@@ -7108,9 +7809,13 @@ class ListRolesResponseBody(TeaModel):
         request_id: str = None,
         roles: ListRolesResponseBodyRoles = None,
     ):
+        # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
+        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value is `true`, you can call this operation again and set the `Marker` parameter to obtain the truncated part.
         self.marker = marker
+        # The ID of the request.
         self.request_id = request_id
+        # The information of RAM roles.
         self.roles = roles
 
     def validate(self):
@@ -7159,9 +7864,6 @@ class ListRolesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7197,7 +7899,11 @@ class ListUsersRequest(TeaModel):
         marker: str = None,
         max_items: int = None,
     ):
+        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
+        # The number of entries per page. If a response is truncated because it reaches the value of MaxItems, the value of `IsTruncatedg` will be `true`.
+        # 
+        # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
 
     def validate(self):
@@ -7236,13 +7942,25 @@ class ListUsersResponseBodyUsersUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The description.
         self.comments = comments
+        # The time when the RAM user was created. The time is displayed in UTC.
         self.create_date = create_date
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The email address of the RAM user.
+        # 
+        # > This parameter is unavailable.
         self.email = email
+        # The mobile phone number of the RAM user.
+        # 
+        # > This parameter is unavailable.
         self.mobile_phone = mobile_phone
+        # The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
         self.update_date = update_date
+        # The ID of the RAM user.
         self.user_id = user_id
+        # The logon name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -7336,9 +8054,13 @@ class ListUsersResponseBody(TeaModel):
         request_id: str = None,
         users: ListUsersResponseBodyUsers = None,
     ):
+        # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
+        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set `Marker` to obtain the truncated part.``
         self.marker = marker
+        # The request ID.
         self.request_id = request_id
+        # The RAM users.
         self.users = users
 
     def validate(self):
@@ -7387,9 +8109,6 @@ class ListUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7426,8 +8145,13 @@ class ListUsersForGroupRequest(TeaModel):
         marker: str = None,
         max_items: int = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
+        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+        # 
+        # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
 
     def validate(self):
@@ -7465,8 +8189,11 @@ class ListUsersForGroupResponseBodyUsersUser(TeaModel):
         join_date: str = None,
         user_name: str = None,
     ):
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The time when the RAM user joined the RAM user group.
         self.join_date = join_date
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -7540,9 +8267,13 @@ class ListUsersForGroupResponseBody(TeaModel):
         request_id: str = None,
         users: ListUsersForGroupResponseBodyUsers = None,
     ):
+        # Indicates whether the response is truncated.
         self.is_truncated = is_truncated
+        # The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value of IsTruncated is `true`, you can call this operation again and set `marker` to obtain the truncated part.
         self.marker = marker
+        # The ID of the request.
         self.request_id = request_id
+        # The list of the RAM users.
         self.users = users
 
     def validate(self):
@@ -7591,9 +8322,6 @@ class ListUsersForGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7630,8 +8358,11 @@ class ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser(Tea
         user_id: str = None,
         user_name: str = None,
     ):
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The unique ID of the RAM user.
         self.user_id = user_id
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -7669,8 +8400,11 @@ class ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice(TeaMode
         serial_number: str = None,
         user: ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser = None,
     ):
+        # The time when the MFA device was enabled.
         self.activate_date = activate_date
+        # The serial number of the MFA device.
         self.serial_number = serial_number
+        # The basic information of the RAM user to which the MFA device is attached.
         self.user = user
 
     def validate(self):
@@ -7744,7 +8478,9 @@ class ListVirtualMFADevicesResponseBody(TeaModel):
         request_id: str = None,
         virtual_mfadevices: ListVirtualMFADevicesResponseBodyVirtualMFADevices = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of MFA devices.
         self.virtual_mfadevices = virtual_mfadevices
 
     def validate(self):
@@ -7785,9 +8521,6 @@ class ListVirtualMFADevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7823,7 +8556,9 @@ class RemoveUserFromGroupRequest(TeaModel):
         group_name: str = None,
         user_name: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -7855,6 +8590,7 @@ class RemoveUserFromGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7889,9 +8625,6 @@ class RemoveUserFromGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7926,6 +8659,11 @@ class SetAccountAliasRequest(TeaModel):
         self,
         account_alias: str = None,
     ):
+        # The alias of the Alibaba Cloud account.
+        # 
+        # The alias must be 3 to 32 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+        # 
+        # > It cannot start or end with a hyphen (-), and cannot contain consecutive hyphens (-).
         self.account_alias = account_alias
 
     def validate(self):
@@ -7953,6 +8691,7 @@ class SetAccountAliasResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7987,9 +8726,6 @@ class SetAccountAliasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8025,7 +8761,9 @@ class SetDefaultPolicyVersionRequest(TeaModel):
         policy_name: str = None,
         version_id: str = None,
     ):
+        # The name of the policy.
         self.policy_name = policy_name
+        # The ID of the policy version that you want to set as the default version.
         self.version_id = version_id
 
     def validate(self):
@@ -8057,6 +8795,7 @@ class SetDefaultPolicyVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8091,9 +8830,6 @@ class SetDefaultPolicyVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8136,14 +8872,30 @@ class SetPasswordPolicyRequest(TeaModel):
         require_symbols: bool = None,
         require_uppercase_characters: bool = None,
     ):
+        # Specifies whether a password will expire.
+        # 
+        # Valid values: `true` and `false`. Default value: `false`. If you leave this parameter unspecified, the default value false is used.
+        # 
+        # *   If you set this parameter to `true`, the Alibaba Cloud account to which the RAM users belong must reset the passwords before the RAM users can log on to the Alibaba Cloud Management Console.
+        # *   If you set this parameter to `false`, the RAM users can change the passwords after the passwords expire and then log on to the Alibaba Cloud Management Console.
         self.hard_expiry = hard_expiry
+        # The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
         self.max_login_attemps = max_login_attemps
+        # The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
         self.max_password_age = max_password_age
+        # The minimum required number of characters in a password.
+        # 
+        # Valid values: 8 to 32. Default value: 8.
         self.minimum_password_length = minimum_password_length
+        # The number of previous passwords that a RAM user is prevented from reusing. Default value: 0. The default value indicates that the RAM user can reuse previous passwords.
         self.password_reuse_prevention = password_reuse_prevention
+        # Specifies whether a password must contain one or more lowercase letters.
         self.require_lowercase_characters = require_lowercase_characters
+        # Specifies whether a password must contain one or more digits.
         self.require_numbers = require_numbers
+        # Specifies whether a password must contain one or more special characters.
         self.require_symbols = require_symbols
+        # Specifies whether a password must contain one or more uppercase letters.
         self.require_uppercase_characters = require_uppercase_characters
 
     def validate(self):
@@ -8211,14 +8963,28 @@ class SetPasswordPolicyResponseBodyPasswordPolicy(TeaModel):
         require_symbols: bool = None,
         require_uppercase_characters: bool = None,
     ):
+        # Indicates whether a password expires.
+        # 
+        # Valid values: `true` and `false`. Default value: `false`. If the parameter is unspecified, the default value false is returned.
+        # 
+        # *   If this parameter is set to `true`, the Alibaba Cloud account to which the RAM users belong must reset the password before the RAM users can log on to the Alibaba Cloud Management Console.
+        # *   If this parameter is set to `false`, the RAM users can change the passwords after the passwords expire and then log on to the Alibaba Cloud Management Console.
         self.hard_expiry = hard_expiry
+        # The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
         self.max_login_attemps = max_login_attemps
+        # The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
         self.max_password_age = max_password_age
+        # The minimum required number of characters in a password.
         self.minimum_password_length = minimum_password_length
+        # The number of previous passwords that a RAM user is prevented from reusing. Default value: 0. The default value indicates that the RAM user can reuse previous passwords.
         self.password_reuse_prevention = password_reuse_prevention
+        # Indicates whether a password must contain one or more lowercase letters.
         self.require_lowercase_characters = require_lowercase_characters
+        # Indicates whether a password must contain one or more digits.
         self.require_numbers = require_numbers
+        # Indicates whether a password must contain one or more special characters.
         self.require_symbols = require_symbols
+        # Indicates whether a password must contain one or more uppercase letters.
         self.require_uppercase_characters = require_uppercase_characters
 
     def validate(self):
@@ -8279,7 +9045,9 @@ class SetPasswordPolicyResponseBody(TeaModel):
         password_policy: SetPasswordPolicyResponseBodyPasswordPolicy = None,
         request_id: str = None,
     ):
+        # The password policy.
         self.password_policy = password_policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8320,9 +9088,6 @@ class SetPasswordPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8363,12 +9128,45 @@ class SetSecurityPreferenceRequest(TeaModel):
         login_network_masks: str = None,
         login_session_duration: int = None,
     ):
+        # Specifies whether RAM users can change their passwords. Valid values:
+        # 
+        # *   true: RAM users can change their passwords. This is the default value.
+        # *   false: RAM users cannot change their passwords.
         self.allow_user_to_change_password = allow_user_to_change_password
+        # Specifies whether RAM users can manage their AccessKey pairs. Valid values:
+        # 
+        # *   true: RAM users can manage their AccessKey pairs.
+        # *   false: RAM users cannot manage their AccessKey pairs. This is the default value.
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
+        # Specifies whether RAM users can manage their MFA devices. Valid values:
+        # 
+        # *   true: RAM users can manage their MFA devices. This is the default value.
+        # *   false: RAM users cannot manage their MFA devices.
         self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
+        # Specifies whether RAM users can manage their public keys. Valid values:
+        # 
+        # *   true: RAM users can manage their public keys.
+        # *   false: RAM users cannot manage their public keys. This is the default value.
+        # 
+        # >  This parameter is valid only for the Japan site.
         self.allow_user_to_manage_public_keys = allow_user_to_manage_public_keys
+        # Specifies whether to remember the multi-factor authentication (MFA) devices of Resource Access Management (RAM) users for seven days. Valid values:
+        # 
+        # *   true: remembers the MFA devices of RAM users for seven days.
+        # *   false: does not remember the MFA devices of RAM users for seven days.
         self.enable_save_mfaticket = enable_save_mfaticket
+        # The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
+        # 
+        # *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
+        # *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
+        # 
+        # If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+        # 
+        # You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
         self.login_network_masks = login_network_masks
+        # The validity period of the logon session of RAM users.
+        # 
+        # Valid values: 1 to 24. Default value: 6. Unit: hours.
         self.login_session_duration = login_session_duration
 
     def validate(self):
@@ -8420,6 +9218,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference(Tea
         self,
         allow_user_to_manage_access_keys: bool = None,
     ):
+        # Indicates whether RAM users can manage their AccessKey pairs.
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
 
     def validate(self):
@@ -8450,9 +9249,13 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         login_network_masks: str = None,
         login_session_duration: int = None,
     ):
+        # Indicates whether RAM users can change their passwords.
         self.allow_user_to_change_password = allow_user_to_change_password
+        # Indicates whether the MFA devices of RAM users are remembered.
         self.enable_save_mfaticket = enable_save_mfaticket
+        # The subnet mask.
         self.login_network_masks = login_network_masks
+        # The validity period of the logon session of RAM users.
         self.login_session_duration = login_session_duration
 
     def validate(self):
@@ -8492,6 +9295,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
         self,
         allow_user_to_manage_mfadevices: bool = None,
     ):
+        # Indicates whether RAM users can manage their MFA devices.
         self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
 
     def validate(self):
@@ -8519,6 +9323,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference(Tea
         self,
         allow_user_to_manage_public_keys: bool = None,
     ):
+        # Indicates whether RAM users can manage their public keys.
         self.allow_user_to_manage_public_keys = allow_user_to_manage_public_keys
 
     def validate(self):
@@ -8549,9 +9354,15 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         mfapreference: SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference = None,
         public_key_preference: SetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference = None,
     ):
+        # The AccessKey pair preference.
         self.access_key_preference = access_key_preference
+        # The logon preference.
         self.login_profile_preference = login_profile_preference
+        # The MFA preference.
         self.mfapreference = mfapreference
+        # The public key preference.
+        # 
+        # >  This parameter is valid only for the Japan site.
         self.public_key_preference = public_key_preference
 
     def validate(self):
@@ -8603,7 +9414,9 @@ class SetSecurityPreferenceResponseBody(TeaModel):
         request_id: str = None,
         security_preference: SetSecurityPreferenceResponseBodySecurityPreference = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The security preferences.
         self.security_preference = security_preference
 
     def validate(self):
@@ -8644,9 +9457,6 @@ class SetSecurityPreferenceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8681,6 +9491,7 @@ class UnbindMFADeviceRequest(TeaModel):
         self,
         user_name: str = None,
     ):
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -8708,6 +9519,7 @@ class UnbindMFADeviceResponseBodyMFADevice(TeaModel):
         self,
         serial_number: str = None,
     ):
+        # The serial number of the MFA device.
         self.serial_number = serial_number
 
     def validate(self):
@@ -8736,7 +9548,9 @@ class UnbindMFADeviceResponseBody(TeaModel):
         mfadevice: UnbindMFADeviceResponseBodyMFADevice = None,
         request_id: str = None,
     ):
+        # The information of the MFA device.
         self.mfadevice = mfadevice
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8777,9 +9591,6 @@ class UnbindMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8816,8 +9627,11 @@ class UpdateAccessKeyRequest(TeaModel):
         user_access_key_id: str = None,
         user_name: str = None,
     ):
+        # The status of the AccessKey pair. Valid values: `Active` and `Inactive`.
         self.status = status
+        # The AccessKey ID in the AccessKey pair whose status you want to change.
         self.user_access_key_id = user_access_key_id
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -8853,6 +9667,7 @@ class UpdateAccessKeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8887,9 +9702,6 @@ class UpdateAccessKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8926,8 +9738,15 @@ class UpdateGroupRequest(TeaModel):
         new_comments: str = None,
         new_group_name: str = None,
     ):
+        # The name of the RAM user group.
         self.group_name = group_name
+        # The new description of the RAM user group.
+        # 
+        # The comments must be 1 to 128 characters in length.
         self.new_comments = new_comments
+        # The new name of the RAM user group.
+        # 
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.new_group_name = new_group_name
 
     def validate(self):
@@ -8967,10 +9786,15 @@ class UpdateGroupResponseBodyGroup(TeaModel):
         group_name: str = None,
         update_date: str = None,
     ):
+        # The description of the RAM user group.
         self.comments = comments
+        # The time when the RAM user group was created.
         self.create_date = create_date
+        # The ID of the RAM user group.
         self.group_id = group_id
+        # The new name of the RAM user group.
         self.group_name = group_name
+        # The time when the information of the RAM user group was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -9015,7 +9839,9 @@ class UpdateGroupResponseBody(TeaModel):
         group: UpdateGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
+        # The information of the RAM user group.
         self.group = group
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9056,9 +9882,6 @@ class UpdateGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9096,9 +9919,13 @@ class UpdateLoginProfileRequest(TeaModel):
         password_reset_required: bool = None,
         user_name: str = None,
     ):
+        # Specifies whether an MFA device must be attached to the RAM user upon logon.
         self.mfabind_required = mfabind_required
+        # The logon password of the RAM user. The password must meet the password strength requirements.
         self.password = password
+        # Specifies whether the RAM user must change the password upon logon.
         self.password_reset_required = password_reset_required
+        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -9138,6 +9965,7 @@ class UpdateLoginProfileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9172,9 +10000,6 @@ class UpdateLoginProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9210,7 +10035,11 @@ class UpdatePolicyDescriptionRequest(TeaModel):
         new_description: str = None,
         policy_name: str = None,
     ):
+        # The description of the policy.
+        # 
+        # The value of the parameter must be 1 to 1,024 characters in length.
         self.new_description = new_description
+        # The name of the policy.
         self.policy_name = policy_name
 
     def validate(self):
@@ -9247,11 +10076,20 @@ class UpdatePolicyDescriptionResponseBodyPolicy(TeaModel):
         policy_type: str = None,
         update_date: str = None,
     ):
+        # The time when the policy was created.
         self.create_date = create_date
+        # The version of the policy. Default value: v1.
         self.default_version = default_version
+        # The description of the policy.
         self.description = description
+        # The name of the policy.
         self.policy_name = policy_name
+        # The type of the policy. Valid values:
+        # 
+        # *   Custom: custom policy
+        # *   System: system policy
         self.policy_type = policy_type
+        # The time when the policy was modified.
         self.update_date = update_date
 
     def validate(self):
@@ -9300,7 +10138,9 @@ class UpdatePolicyDescriptionResponseBody(TeaModel):
         policy: UpdatePolicyDescriptionResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # The information about the policy.
         self.policy = policy
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -9341,9 +10181,6 @@ class UpdatePolicyDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9381,9 +10218,21 @@ class UpdateRoleRequest(TeaModel):
         new_max_session_duration: int = None,
         role_name: str = None,
     ):
+        # The policy that specifies the trusted entity to assume the RAM role.
         self.new_assume_role_policy_document = new_assume_role_policy_document
+        # The new description of the RAM role.
+        # 
+        # The value must be 1 to 1,024 characters in length.
         self.new_description = new_description
+        # The maximum session duration of the RAM role.
+        # 
+        # Valid values: 3600 to 43200. Unit: seconds.Default value: 3600.
+        # 
+        # If you do not specify this parameter, the default value is used.
         self.new_max_session_duration = new_max_session_duration
+        # The name of the RAM role.
+        # 
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.),and hyphens (-).
         self.role_name = role_name
 
     def validate(self):
@@ -9430,13 +10279,21 @@ class UpdateRoleResponseBodyRole(TeaModel):
         role_name: str = None,
         update_date: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the role.
         self.arn = arn
+        # The policy that specifies the trusted entity to assume the RAM role.
         self.assume_role_policy_document = assume_role_policy_document
+        # The time when the RAM role was created.
         self.create_date = create_date
+        # The description of the RAM role.
         self.description = description
+        # The maximum session duration of the RAM role.
         self.max_session_duration = max_session_duration
+        # The ID of the RAM role.
         self.role_id = role_id
+        # The name of the RAM role.
         self.role_name = role_name
+        # The time when the description of the RAM role was changed.
         self.update_date = update_date
 
     def validate(self):
@@ -9493,7 +10350,9 @@ class UpdateRoleResponseBody(TeaModel):
         request_id: str = None,
         role: UpdateRoleResponseBodyRole = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information of the RAM role.
         self.role = role
 
     def validate(self):
@@ -9534,9 +10393,6 @@ class UpdateRoleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9576,11 +10432,29 @@ class UpdateUserRequest(TeaModel):
         new_user_name: str = None,
         user_name: str = None,
     ):
+        # The new description of the RAM user.
+        # 
+        # The description must be 1 to 128 characters in length.
         self.new_comments = new_comments
+        # The new display name of the RAM user.
+        # 
+        # The name must be 1 to 128 characters in length.
         self.new_display_name = new_display_name
+        # The new email address of the RAM user.
+        # 
+        # >  This parameter can be returned only on the China site (aliyun.com).
         self.new_email = new_email
+        # The new mobile phone number of the RAM user.
+        # 
+        # Format: \\<Country code>-\\<Mobile phone number>.
+        # 
+        # >  This parameter can be returned only on the China site (aliyun.com).
         self.new_mobile_phone = new_mobile_phone
+        # The new username of the RAM user.
+        # 
+        # The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         self.new_user_name = new_user_name
+        # The username of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -9635,13 +10509,25 @@ class UpdateUserResponseBodyUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The description of the RAM user.
         self.comments = comments
+        # The point in time when the RAM user was created. The time is displayed in UTC.
         self.create_date = create_date
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The email address of the RAM user.
+        # 
+        # >  This parameter can be returned only on the China site (aliyun.com).
         self.email = email
+        # The mobile phone number of the RAM user.
+        # 
+        # >  This parameter can be returned only on the China site (aliyun.com).
         self.mobile_phone = mobile_phone
+        # The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
         self.update_date = update_date
+        # The ID of the RAM user.
         self.user_id = user_id
+        # The username of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -9698,7 +10584,9 @@ class UpdateUserResponseBody(TeaModel):
         request_id: str = None,
         user: UpdateUserResponseBodyUser = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information about the RAM user.
         self.user = user
 
     def validate(self):
@@ -9739,9 +10627,6 @@ class UpdateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
