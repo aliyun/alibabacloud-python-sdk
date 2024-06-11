@@ -50,6 +50,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ChangeProjectFeatureEntityHotIdVersionResponse:
+        """
+        @summary 切换生效的热点数据的版本。
+        
+        @param request: ChangeProjectFeatureEntityHotIdVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeProjectFeatureEntityHotIdVersionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.version):
@@ -83,6 +91,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ChangeProjectFeatureEntityHotIdVersionResponse:
+        """
+        @summary 切换生效的热点数据的版本。
+        
+        @param request: ChangeProjectFeatureEntityHotIdVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeProjectFeatureEntityHotIdVersionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.version):
@@ -114,6 +130,12 @@ class Client(OpenApiClient):
         feature_entity_name: str,
         request: pai_feature_store_20230621_models.ChangeProjectFeatureEntityHotIdVersionRequest,
     ) -> pai_feature_store_20230621_models.ChangeProjectFeatureEntityHotIdVersionResponse:
+        """
+        @summary 切换生效的热点数据的版本。
+        
+        @param request: ChangeProjectFeatureEntityHotIdVersionRequest
+        @return: ChangeProjectFeatureEntityHotIdVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.change_project_feature_entity_hot_id_version_with_options(instance_id, project_id, feature_entity_name, request, headers, runtime)
@@ -125,6 +147,12 @@ class Client(OpenApiClient):
         feature_entity_name: str,
         request: pai_feature_store_20230621_models.ChangeProjectFeatureEntityHotIdVersionRequest,
     ) -> pai_feature_store_20230621_models.ChangeProjectFeatureEntityHotIdVersionResponse:
+        """
+        @summary 切换生效的热点数据的版本。
+        
+        @param request: ChangeProjectFeatureEntityHotIdVersionRequest
+        @return: ChangeProjectFeatureEntityHotIdVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.change_project_feature_entity_hot_id_version_with_options_async(instance_id, project_id, feature_entity_name, request, headers, runtime)
@@ -136,6 +164,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CheckInstanceDatasourceResponse:
+        """
+        @summary 检测资源连接状态。
+        
+        @param request: CheckInstanceDatasourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckInstanceDatasourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -171,6 +207,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CheckInstanceDatasourceResponse:
+        """
+        @summary 检测资源连接状态。
+        
+        @param request: CheckInstanceDatasourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckInstanceDatasourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -204,6 +248,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CheckInstanceDatasourceRequest,
     ) -> pai_feature_store_20230621_models.CheckInstanceDatasourceResponse:
+        """
+        @summary 检测资源连接状态。
+        
+        @param request: CheckInstanceDatasourceRequest
+        @return: CheckInstanceDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.check_instance_datasource_with_options(instance_id, request, headers, runtime)
@@ -213,6 +263,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CheckInstanceDatasourceRequest,
     ) -> pai_feature_store_20230621_models.CheckInstanceDatasourceResponse:
+        """
+        @summary 检测资源连接状态。
+        
+        @param request: CheckInstanceDatasourceRequest
+        @return: CheckInstanceDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.check_instance_datasource_with_options_async(instance_id, request, headers, runtime)
@@ -224,6 +280,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateDatasourceResponse:
+        """
+        @summary 创建数据源。
+        
+        @param request: CreateDatasourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -263,6 +327,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateDatasourceResponse:
+        """
+        @summary 创建数据源。
+        
+        @param request: CreateDatasourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -300,6 +372,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateDatasourceRequest,
     ) -> pai_feature_store_20230621_models.CreateDatasourceResponse:
+        """
+        @summary 创建数据源。
+        
+        @param request: CreateDatasourceRequest
+        @return: CreateDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_datasource_with_options(instance_id, request, headers, runtime)
@@ -309,6 +387,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateDatasourceRequest,
     ) -> pai_feature_store_20230621_models.CreateDatasourceResponse:
+        """
+        @summary 创建数据源。
+        
+        @param request: CreateDatasourceRequest
+        @return: CreateDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_datasource_with_options_async(instance_id, request, headers, runtime)
@@ -320,6 +404,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateFeatureEntityResponse:
+        """
+        @summary 创建特征实体
+        
+        @param request: CreateFeatureEntityRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFeatureEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.join_id):
@@ -355,6 +447,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateFeatureEntityResponse:
+        """
+        @summary 创建特征实体
+        
+        @param request: CreateFeatureEntityRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFeatureEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.join_id):
@@ -388,6 +488,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateFeatureEntityRequest,
     ) -> pai_feature_store_20230621_models.CreateFeatureEntityResponse:
+        """
+        @summary 创建特征实体
+        
+        @param request: CreateFeatureEntityRequest
+        @return: CreateFeatureEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_feature_entity_with_options(instance_id, request, headers, runtime)
@@ -397,6 +503,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateFeatureEntityRequest,
     ) -> pai_feature_store_20230621_models.CreateFeatureEntityResponse:
+        """
+        @summary 创建特征实体
+        
+        @param request: CreateFeatureEntityRequest
+        @return: CreateFeatureEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_feature_entity_with_options_async(instance_id, request, headers, runtime)
@@ -408,6 +520,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateFeatureViewResponse:
+        """
+        @summary 创建特征视图。
+        
+        @param request: CreateFeatureViewRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFeatureViewResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -463,6 +583,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateFeatureViewResponse:
+        """
+        @summary 创建特征视图。
+        
+        @param request: CreateFeatureViewRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFeatureViewResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -516,6 +644,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateFeatureViewRequest,
     ) -> pai_feature_store_20230621_models.CreateFeatureViewResponse:
+        """
+        @summary 创建特征视图。
+        
+        @param request: CreateFeatureViewRequest
+        @return: CreateFeatureViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_feature_view_with_options(instance_id, request, headers, runtime)
@@ -525,6 +659,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateFeatureViewRequest,
     ) -> pai_feature_store_20230621_models.CreateFeatureViewResponse:
+        """
+        @summary 创建特征视图。
+        
+        @param request: CreateFeatureViewRequest
+        @return: CreateFeatureViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_feature_view_with_options_async(instance_id, request, headers, runtime)
@@ -535,6 +675,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateInstanceResponse:
+        """
+        @summary 创建Feature Store实例。
+        
+        @param request: CreateInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.type):
@@ -565,6 +713,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateInstanceResponse:
+        """
+        @summary 创建Feature Store实例。
+        
+        @param request: CreateInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.type):
@@ -593,6 +749,12 @@ class Client(OpenApiClient):
         self,
         request: pai_feature_store_20230621_models.CreateInstanceRequest,
     ) -> pai_feature_store_20230621_models.CreateInstanceResponse:
+        """
+        @summary 创建Feature Store实例。
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_instance_with_options(request, headers, runtime)
@@ -601,6 +763,12 @@ class Client(OpenApiClient):
         self,
         request: pai_feature_store_20230621_models.CreateInstanceRequest,
     ) -> pai_feature_store_20230621_models.CreateInstanceResponse:
+        """
+        @summary 创建Feature Store实例。
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
@@ -612,6 +780,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateLabelTableResponse:
+        """
+        @summary 创建label表
+        
+        @param request: CreateLabelTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLabelTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.datasource_id):
@@ -649,6 +825,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateLabelTableResponse:
+        """
+        @summary 创建label表
+        
+        @param request: CreateLabelTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLabelTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.datasource_id):
@@ -684,6 +868,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateLabelTableRequest,
     ) -> pai_feature_store_20230621_models.CreateLabelTableResponse:
+        """
+        @summary 创建label表
+        
+        @param request: CreateLabelTableRequest
+        @return: CreateLabelTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_label_table_with_options(instance_id, request, headers, runtime)
@@ -693,6 +883,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateLabelTableRequest,
     ) -> pai_feature_store_20230621_models.CreateLabelTableResponse:
+        """
+        @summary 创建label表
+        
+        @param request: CreateLabelTableRequest
+        @return: CreateLabelTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_label_table_with_options_async(instance_id, request, headers, runtime)
@@ -704,6 +900,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateModelFeatureResponse:
+        """
+        @summary 创建模型特征。
+        
+        @param request: CreateModelFeatureRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateModelFeatureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.features):
@@ -743,6 +947,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateModelFeatureResponse:
+        """
+        @summary 创建模型特征。
+        
+        @param request: CreateModelFeatureRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateModelFeatureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.features):
@@ -780,6 +992,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateModelFeatureRequest,
     ) -> pai_feature_store_20230621_models.CreateModelFeatureResponse:
+        """
+        @summary 创建模型特征。
+        
+        @param request: CreateModelFeatureRequest
+        @return: CreateModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_model_feature_with_options(instance_id, request, headers, runtime)
@@ -789,6 +1007,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateModelFeatureRequest,
     ) -> pai_feature_store_20230621_models.CreateModelFeatureResponse:
+        """
+        @summary 创建模型特征。
+        
+        @param request: CreateModelFeatureRequest
+        @return: CreateModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_model_feature_with_options_async(instance_id, request, headers, runtime)
@@ -800,6 +1024,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
+        """
+        @summary 创建训练样本FG表。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateModelFeatureTrainingSetFGTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -826,6 +1057,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
+        """
+        @summary 创建训练样本FG表。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateModelFeatureTrainingSetFGTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -850,6 +1088,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
+        """
+        @summary 创建训练样本FG表。
+        
+        @return: CreateModelFeatureTrainingSetFGTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_model_feature_training_set_fgtable_with_options(instance_id, model_feature_id, headers, runtime)
@@ -859,6 +1102,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.CreateModelFeatureTrainingSetFGTableResponse:
+        """
+        @summary 创建训练样本FG表。
+        
+        @return: CreateModelFeatureTrainingSetFGTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_model_feature_training_set_fgtable_with_options_async(instance_id, model_feature_id, headers, runtime)
@@ -870,6 +1118,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateProjectResponse:
+        """
+        @summary 创建FeatureStore项目
+        
+        @param request: CreateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -911,6 +1167,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateProjectResponse:
+        """
+        @summary 创建FeatureStore项目
+        
+        @param request: CreateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -950,6 +1214,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateProjectRequest,
     ) -> pai_feature_store_20230621_models.CreateProjectResponse:
+        """
+        @summary 创建FeatureStore项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_project_with_options(instance_id, request, headers, runtime)
@@ -959,6 +1229,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.CreateProjectRequest,
     ) -> pai_feature_store_20230621_models.CreateProjectResponse:
+        """
+        @summary 创建FeatureStore项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_project_with_options_async(instance_id, request, headers, runtime)
@@ -969,6 +1245,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateServiceIdentityRoleResponse:
+        """
+        @summary 创建feature store服务账户角色
+        
+        @param request: CreateServiceIdentityRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceIdentityRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -999,6 +1283,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.CreateServiceIdentityRoleResponse:
+        """
+        @summary 创建feature store服务账户角色
+        
+        @param request: CreateServiceIdentityRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceIdentityRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -1027,6 +1319,12 @@ class Client(OpenApiClient):
         self,
         request: pai_feature_store_20230621_models.CreateServiceIdentityRoleRequest,
     ) -> pai_feature_store_20230621_models.CreateServiceIdentityRoleResponse:
+        """
+        @summary 创建feature store服务账户角色
+        
+        @param request: CreateServiceIdentityRoleRequest
+        @return: CreateServiceIdentityRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_service_identity_role_with_options(request, headers, runtime)
@@ -1035,6 +1333,12 @@ class Client(OpenApiClient):
         self,
         request: pai_feature_store_20230621_models.CreateServiceIdentityRoleRequest,
     ) -> pai_feature_store_20230621_models.CreateServiceIdentityRoleResponse:
+        """
+        @summary 创建feature store服务账户角色
+        
+        @param request: CreateServiceIdentityRoleRequest
+        @return: CreateServiceIdentityRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_identity_role_with_options_async(request, headers, runtime)
@@ -1046,6 +1350,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteDatasourceResponse:
+        """
+        @summary 删除指定数据源。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1072,6 +1383,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteDatasourceResponse:
+        """
+        @summary 删除指定数据源。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1096,6 +1414,11 @@ class Client(OpenApiClient):
         instance_id: str,
         datasource_id: str,
     ) -> pai_feature_store_20230621_models.DeleteDatasourceResponse:
+        """
+        @summary 删除指定数据源。
+        
+        @return: DeleteDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_datasource_with_options(instance_id, datasource_id, headers, runtime)
@@ -1105,6 +1428,11 @@ class Client(OpenApiClient):
         instance_id: str,
         datasource_id: str,
     ) -> pai_feature_store_20230621_models.DeleteDatasourceResponse:
+        """
+        @summary 删除指定数据源。
+        
+        @return: DeleteDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_datasource_with_options_async(instance_id, datasource_id, headers, runtime)
@@ -1116,6 +1444,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteFeatureEntityResponse:
+        """
+        @summary 删除指定特征实体
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFeatureEntityResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1142,6 +1477,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteFeatureEntityResponse:
+        """
+        @summary 删除指定特征实体
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFeatureEntityResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1166,6 +1508,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_entity_id: str,
     ) -> pai_feature_store_20230621_models.DeleteFeatureEntityResponse:
+        """
+        @summary 删除指定特征实体
+        
+        @return: DeleteFeatureEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_feature_entity_with_options(instance_id, feature_entity_id, headers, runtime)
@@ -1175,6 +1522,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_entity_id: str,
     ) -> pai_feature_store_20230621_models.DeleteFeatureEntityResponse:
+        """
+        @summary 删除指定特征实体
+        
+        @return: DeleteFeatureEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_feature_entity_with_options_async(instance_id, feature_entity_id, headers, runtime)
@@ -1186,6 +1538,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteFeatureViewResponse:
+        """
+        @summary 删除指定特征视图。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFeatureViewResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1212,6 +1571,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteFeatureViewResponse:
+        """
+        @summary 删除指定特征视图。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFeatureViewResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1236,6 +1602,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_view_id: str,
     ) -> pai_feature_store_20230621_models.DeleteFeatureViewResponse:
+        """
+        @summary 删除指定特征视图。
+        
+        @return: DeleteFeatureViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_feature_view_with_options(instance_id, feature_view_id, headers, runtime)
@@ -1245,6 +1616,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_view_id: str,
     ) -> pai_feature_store_20230621_models.DeleteFeatureViewResponse:
+        """
+        @summary 删除指定特征视图。
+        
+        @return: DeleteFeatureViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_feature_view_with_options_async(instance_id, feature_view_id, headers, runtime)
@@ -1256,6 +1632,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteLabelTableResponse:
+        """
+        @summary 删除label表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLabelTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1282,6 +1665,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteLabelTableResponse:
+        """
+        @summary 删除label表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLabelTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1306,6 +1696,11 @@ class Client(OpenApiClient):
         instance_id: str,
         label_table_id: str,
     ) -> pai_feature_store_20230621_models.DeleteLabelTableResponse:
+        """
+        @summary 删除label表
+        
+        @return: DeleteLabelTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_label_table_with_options(instance_id, label_table_id, headers, runtime)
@@ -1315,6 +1710,11 @@ class Client(OpenApiClient):
         instance_id: str,
         label_table_id: str,
     ) -> pai_feature_store_20230621_models.DeleteLabelTableResponse:
+        """
+        @summary 删除label表
+        
+        @return: DeleteLabelTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_label_table_with_options_async(instance_id, label_table_id, headers, runtime)
@@ -1326,6 +1726,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteModelFeatureResponse:
+        """
+        @summary 删除指定模型特征。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteModelFeatureResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1352,6 +1759,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteModelFeatureResponse:
+        """
+        @summary 删除指定模型特征。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteModelFeatureResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1376,6 +1790,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.DeleteModelFeatureResponse:
+        """
+        @summary 删除指定模型特征。
+        
+        @return: DeleteModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_model_feature_with_options(instance_id, model_feature_id, headers, runtime)
@@ -1385,6 +1804,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.DeleteModelFeatureResponse:
+        """
+        @summary 删除指定模型特征。
+        
+        @return: DeleteModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_model_feature_with_options_async(instance_id, model_feature_id, headers, runtime)
@@ -1396,6 +1820,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteProjectResponse:
+        """
+        @summary 删除指定Feature Store项目。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1422,6 +1853,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.DeleteProjectResponse:
+        """
+        @summary 删除指定Feature Store项目。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1446,6 +1884,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.DeleteProjectResponse:
+        """
+        @summary 删除指定Feature Store项目。
+        
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_project_with_options(instance_id, project_id, headers, runtime)
@@ -1455,6 +1898,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.DeleteProjectResponse:
+        """
+        @summary 删除指定Feature Store项目。
+        
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_project_with_options_async(instance_id, project_id, headers, runtime)
@@ -1467,6 +1915,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
+        """
+        @summary 导出训练样本FG表。
+        
+        @param request: ExportModelFeatureTrainingSetFGTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportModelFeatureTrainingSetFGTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.training_set_fg_config):
@@ -1499,6 +1955,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
+        """
+        @summary 导出训练样本FG表。
+        
+        @param request: ExportModelFeatureTrainingSetFGTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportModelFeatureTrainingSetFGTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.training_set_fg_config):
@@ -1529,6 +1993,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
     ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
+        """
+        @summary 导出训练样本FG表。
+        
+        @param request: ExportModelFeatureTrainingSetFGTableRequest
+        @return: ExportModelFeatureTrainingSetFGTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.export_model_feature_training_set_fgtable_with_options(instance_id, model_feature_id, request, headers, runtime)
@@ -1539,6 +2009,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableRequest,
     ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetFGTableResponse:
+        """
+        @summary 导出训练样本FG表。
+        
+        @param request: ExportModelFeatureTrainingSetFGTableRequest
+        @return: ExportModelFeatureTrainingSetFGTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.export_model_feature_training_set_fgtable_with_options_async(instance_id, model_feature_id, request, headers, runtime)
@@ -1551,6 +2027,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetTableResponse:
+        """
+        @summary 导出训练集表。
+        
+        @param request: ExportModelFeatureTrainingSetTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportModelFeatureTrainingSetTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.feature_view_config):
@@ -1587,6 +2071,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetTableResponse:
+        """
+        @summary 导出训练集表。
+        
+        @param request: ExportModelFeatureTrainingSetTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportModelFeatureTrainingSetTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.feature_view_config):
@@ -1621,6 +2113,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetTableRequest,
     ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetTableResponse:
+        """
+        @summary 导出训练集表。
+        
+        @param request: ExportModelFeatureTrainingSetTableRequest
+        @return: ExportModelFeatureTrainingSetTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.export_model_feature_training_set_table_with_options(instance_id, model_feature_id, request, headers, runtime)
@@ -1631,6 +2129,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.ExportModelFeatureTrainingSetTableRequest,
     ) -> pai_feature_store_20230621_models.ExportModelFeatureTrainingSetTableResponse:
+        """
+        @summary 导出训练集表。
+        
+        @param request: ExportModelFeatureTrainingSetTableRequest
+        @return: ExportModelFeatureTrainingSetTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.export_model_feature_training_set_table_with_options_async(instance_id, model_feature_id, request, headers, runtime)
@@ -1642,6 +2146,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetDatasourceResponse:
+        """
+        @summary 获取数据源详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1668,6 +2179,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetDatasourceResponse:
+        """
+        @summary 获取数据源详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1692,6 +2210,11 @@ class Client(OpenApiClient):
         instance_id: str,
         datasource_id: str,
     ) -> pai_feature_store_20230621_models.GetDatasourceResponse:
+        """
+        @summary 获取数据源详细信息。
+        
+        @return: GetDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_datasource_with_options(instance_id, datasource_id, headers, runtime)
@@ -1701,6 +2224,11 @@ class Client(OpenApiClient):
         instance_id: str,
         datasource_id: str,
     ) -> pai_feature_store_20230621_models.GetDatasourceResponse:
+        """
+        @summary 获取数据源详细信息。
+        
+        @return: GetDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_datasource_with_options_async(instance_id, datasource_id, headers, runtime)
@@ -1713,6 +2241,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetDatasourceTableResponse:
+        """
+        @summary 获取数据源下指定表的详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasourceTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1740,6 +2275,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetDatasourceTableResponse:
+        """
+        @summary 获取数据源下指定表的详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasourceTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1765,6 +2307,11 @@ class Client(OpenApiClient):
         datasource_id: str,
         table_name: str,
     ) -> pai_feature_store_20230621_models.GetDatasourceTableResponse:
+        """
+        @summary 获取数据源下指定表的详细信息。
+        
+        @return: GetDatasourceTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_datasource_table_with_options(instance_id, datasource_id, table_name, headers, runtime)
@@ -1775,6 +2322,11 @@ class Client(OpenApiClient):
         datasource_id: str,
         table_name: str,
     ) -> pai_feature_store_20230621_models.GetDatasourceTableResponse:
+        """
+        @summary 获取数据源下指定表的详细信息。
+        
+        @return: GetDatasourceTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_datasource_table_with_options_async(instance_id, datasource_id, table_name, headers, runtime)
@@ -1786,6 +2338,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetFeatureEntityResponse:
+        """
+        @summary 获取特征实体详细信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFeatureEntityResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1812,6 +2371,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetFeatureEntityResponse:
+        """
+        @summary 获取特征实体详细信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFeatureEntityResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1836,6 +2402,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_entity_id: str,
     ) -> pai_feature_store_20230621_models.GetFeatureEntityResponse:
+        """
+        @summary 获取特征实体详细信息
+        
+        @return: GetFeatureEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_feature_entity_with_options(instance_id, feature_entity_id, headers, runtime)
@@ -1845,6 +2416,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_entity_id: str,
     ) -> pai_feature_store_20230621_models.GetFeatureEntityResponse:
+        """
+        @summary 获取特征实体详细信息
+        
+        @return: GetFeatureEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_feature_entity_with_options_async(instance_id, feature_entity_id, headers, runtime)
@@ -1856,6 +2432,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetFeatureViewResponse:
+        """
+        @summary 获取特征视图详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFeatureViewResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1882,6 +2465,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetFeatureViewResponse:
+        """
+        @summary 获取特征视图详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFeatureViewResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1906,6 +2496,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_view_id: str,
     ) -> pai_feature_store_20230621_models.GetFeatureViewResponse:
+        """
+        @summary 获取特征视图详细信息。
+        
+        @return: GetFeatureViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_feature_view_with_options(instance_id, feature_view_id, headers, runtime)
@@ -1915,6 +2510,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_view_id: str,
     ) -> pai_feature_store_20230621_models.GetFeatureViewResponse:
+        """
+        @summary 获取特征视图详细信息。
+        
+        @return: GetFeatureViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_feature_view_with_options_async(instance_id, feature_view_id, headers, runtime)
@@ -1925,6 +2525,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetInstanceResponse:
+        """
+        @summary 获取实例详细信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1950,6 +2557,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetInstanceResponse:
+        """
+        @summary 获取实例详细信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1973,6 +2587,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_feature_store_20230621_models.GetInstanceResponse:
+        """
+        @summary 获取实例详细信息
+        
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_instance_with_options(instance_id, headers, runtime)
@@ -1981,6 +2600,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_feature_store_20230621_models.GetInstanceResponse:
+        """
+        @summary 获取实例详细信息
+        
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
@@ -1992,6 +2616,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetLabelTableResponse:
+        """
+        @summary 获取Label表详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLabelTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2018,6 +2649,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetLabelTableResponse:
+        """
+        @summary 获取Label表详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLabelTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2042,6 +2680,11 @@ class Client(OpenApiClient):
         instance_id: str,
         label_table_id: str,
     ) -> pai_feature_store_20230621_models.GetLabelTableResponse:
+        """
+        @summary 获取Label表详细信息。
+        
+        @return: GetLabelTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_label_table_with_options(instance_id, label_table_id, headers, runtime)
@@ -2051,6 +2694,11 @@ class Client(OpenApiClient):
         instance_id: str,
         label_table_id: str,
     ) -> pai_feature_store_20230621_models.GetLabelTableResponse:
+        """
+        @summary 获取Label表详细信息。
+        
+        @return: GetLabelTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_label_table_with_options_async(instance_id, label_table_id, headers, runtime)
@@ -2062,6 +2710,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetModelFeatureResponse:
+        """
+        @summary 获取模型特征详情。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelFeatureResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2088,6 +2743,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetModelFeatureResponse:
+        """
+        @summary 获取模型特征详情。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelFeatureResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2112,6 +2774,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.GetModelFeatureResponse:
+        """
+        @summary 获取模型特征详情。
+        
+        @return: GetModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_model_feature_with_options(instance_id, model_feature_id, headers, runtime)
@@ -2121,6 +2788,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.GetModelFeatureResponse:
+        """
+        @summary 获取模型特征详情。
+        
+        @return: GetModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_model_feature_with_options_async(instance_id, model_feature_id, headers, runtime)
@@ -2132,6 +2804,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse:
+        """
+        @summary 获取模型特征的FG特征配置信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelFeatureFGFeatureResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2158,6 +2837,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse:
+        """
+        @summary 获取模型特征的FG特征配置信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelFeatureFGFeatureResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2182,6 +2868,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse:
+        """
+        @summary 获取模型特征的FG特征配置信息。
+        
+        @return: GetModelFeatureFGFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_model_feature_fgfeature_with_options(instance_id, model_feature_id, headers, runtime)
@@ -2191,6 +2882,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.GetModelFeatureFGFeatureResponse:
+        """
+        @summary 获取模型特征的FG特征配置信息。
+        
+        @return: GetModelFeatureFGFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_model_feature_fgfeature_with_options_async(instance_id, model_feature_id, headers, runtime)
@@ -2202,6 +2898,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse:
+        """
+        @summary 获取模型特征的fg.json文件配置信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelFeatureFGInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2228,6 +2931,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse:
+        """
+        @summary 获取模型特征的fg.json文件配置信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModelFeatureFGInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2252,6 +2962,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse:
+        """
+        @summary 获取模型特征的fg.json文件配置信息。
+        
+        @return: GetModelFeatureFGInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_model_feature_fginfo_with_options(instance_id, model_feature_id, headers, runtime)
@@ -2261,6 +2976,11 @@ class Client(OpenApiClient):
         instance_id: str,
         model_feature_id: str,
     ) -> pai_feature_store_20230621_models.GetModelFeatureFGInfoResponse:
+        """
+        @summary 获取模型特征的fg.json文件配置信息。
+        
+        @return: GetModelFeatureFGInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_model_feature_fginfo_with_options_async(instance_id, model_feature_id, headers, runtime)
@@ -2272,6 +2992,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectResponse:
+        """
+        @summary 获取指定Feature Store项目详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2298,6 +3025,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectResponse:
+        """
+        @summary 获取指定Feature Store项目详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2322,6 +3056,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.GetProjectResponse:
+        """
+        @summary 获取指定Feature Store项目详细信息。
+        
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_with_options(instance_id, project_id, headers, runtime)
@@ -2331,6 +3070,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.GetProjectResponse:
+        """
+        @summary 获取指定Feature Store项目详细信息。
+        
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_with_options_async(instance_id, project_id, headers, runtime)
@@ -2343,6 +3087,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureEntityResponse:
+        """
+        @summary 获取项目下特征实体详细信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectFeatureEntityResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2370,6 +3121,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureEntityResponse:
+        """
+        @summary 获取项目下特征实体详细信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectFeatureEntityResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2395,6 +3153,11 @@ class Client(OpenApiClient):
         project_id: str,
         feature_entity_name: str,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureEntityResponse:
+        """
+        @summary 获取项目下特征实体详细信息
+        
+        @return: GetProjectFeatureEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_feature_entity_with_options(instance_id, project_id, feature_entity_name, headers, runtime)
@@ -2405,6 +3168,11 @@ class Client(OpenApiClient):
         project_id: str,
         feature_entity_name: str,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureEntityResponse:
+        """
+        @summary 获取项目下特征实体详细信息
+        
+        @return: GetProjectFeatureEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_feature_entity_with_options_async(instance_id, project_id, feature_entity_name, headers, runtime)
@@ -2418,6 +3186,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureEntityHotIdsResponse:
+        """
+        @summary 获取项目下，指定特征实体指定的热点数据。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectFeatureEntityHotIdsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2446,6 +3221,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureEntityHotIdsResponse:
+        """
+        @summary 获取项目下，指定特征实体指定的热点数据。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectFeatureEntityHotIdsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2472,6 +3254,11 @@ class Client(OpenApiClient):
         next_seq_number: str,
         feature_entity_name: str,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureEntityHotIdsResponse:
+        """
+        @summary 获取项目下，指定特征实体指定的热点数据。
+        
+        @return: GetProjectFeatureEntityHotIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_feature_entity_hot_ids_with_options(instance_id, project_id, next_seq_number, feature_entity_name, headers, runtime)
@@ -2483,6 +3270,11 @@ class Client(OpenApiClient):
         next_seq_number: str,
         feature_entity_name: str,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureEntityHotIdsResponse:
+        """
+        @summary 获取项目下，指定特征实体指定的热点数据。
+        
+        @return: GetProjectFeatureEntityHotIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_feature_entity_hot_ids_with_options_async(instance_id, project_id, next_seq_number, feature_entity_name, headers, runtime)
@@ -2495,6 +3287,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureViewResponse:
+        """
+        @summary 获取项目下特征视图详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectFeatureViewResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2522,6 +3321,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureViewResponse:
+        """
+        @summary 获取项目下特征视图详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectFeatureViewResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2547,6 +3353,11 @@ class Client(OpenApiClient):
         project_id: str,
         feature_view_name: str,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureViewResponse:
+        """
+        @summary 获取项目下特征视图详细信息。
+        
+        @return: GetProjectFeatureViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_feature_view_with_options(instance_id, project_id, feature_view_name, headers, runtime)
@@ -2557,6 +3368,11 @@ class Client(OpenApiClient):
         project_id: str,
         feature_view_name: str,
     ) -> pai_feature_store_20230621_models.GetProjectFeatureViewResponse:
+        """
+        @summary 获取项目下特征视图详细信息。
+        
+        @return: GetProjectFeatureViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_feature_view_with_options_async(instance_id, project_id, feature_view_name, headers, runtime)
@@ -2569,6 +3385,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectModelFeatureResponse:
+        """
+        @summary 获取项目下指定模型特征的详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectModelFeatureResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2596,6 +3419,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetProjectModelFeatureResponse:
+        """
+        @summary 获取项目下指定模型特征的详细信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectModelFeatureResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2621,6 +3451,11 @@ class Client(OpenApiClient):
         project_id: str,
         model_feature_name: str,
     ) -> pai_feature_store_20230621_models.GetProjectModelFeatureResponse:
+        """
+        @summary 获取项目下指定模型特征的详细信息。
+        
+        @return: GetProjectModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_model_feature_with_options(instance_id, project_id, model_feature_name, headers, runtime)
@@ -2631,6 +3466,11 @@ class Client(OpenApiClient):
         project_id: str,
         model_feature_name: str,
     ) -> pai_feature_store_20230621_models.GetProjectModelFeatureResponse:
+        """
+        @summary 获取项目下指定模型特征的详细信息。
+        
+        @return: GetProjectModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_model_feature_with_options_async(instance_id, project_id, model_feature_name, headers, runtime)
@@ -2641,6 +3481,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetServiceIdentityRoleResponse:
+        """
+        @summary 获取feature store服务账户角色。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceIdentityRoleResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2666,6 +3513,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetServiceIdentityRoleResponse:
+        """
+        @summary 获取feature store服务账户角色。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceIdentityRoleResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2689,6 +3543,11 @@ class Client(OpenApiClient):
         self,
         role_name: str,
     ) -> pai_feature_store_20230621_models.GetServiceIdentityRoleResponse:
+        """
+        @summary 获取feature store服务账户角色。
+        
+        @return: GetServiceIdentityRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_service_identity_role_with_options(role_name, headers, runtime)
@@ -2697,6 +3556,11 @@ class Client(OpenApiClient):
         self,
         role_name: str,
     ) -> pai_feature_store_20230621_models.GetServiceIdentityRoleResponse:
+        """
+        @summary 获取feature store服务账户角色。
+        
+        @return: GetServiceIdentityRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_service_identity_role_with_options_async(role_name, headers, runtime)
@@ -2708,6 +3572,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetTaskResponse:
+        """
+        @summary 获取任务详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2734,6 +3605,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.GetTaskResponse:
+        """
+        @summary 获取任务详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2758,6 +3636,11 @@ class Client(OpenApiClient):
         instance_id: str,
         task_id: str,
     ) -> pai_feature_store_20230621_models.GetTaskResponse:
+        """
+        @summary 获取任务详情
+        
+        @return: GetTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_with_options(instance_id, task_id, headers, runtime)
@@ -2767,6 +3650,11 @@ class Client(OpenApiClient):
         instance_id: str,
         task_id: str,
     ) -> pai_feature_store_20230621_models.GetTaskResponse:
+        """
+        @summary 获取任务详情
+        
+        @return: GetTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_with_options_async(instance_id, task_id, headers, runtime)
@@ -2779,6 +3667,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListDatasourceTablesResponse:
+        """
+        @summary 获取数据源下所有表。
+        
+        @param request: ListDatasourceTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasourceTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_name):
@@ -2811,6 +3707,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListDatasourceTablesResponse:
+        """
+        @summary 获取数据源下所有表。
+        
+        @param request: ListDatasourceTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasourceTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_name):
@@ -2841,6 +3745,12 @@ class Client(OpenApiClient):
         datasource_id: str,
         request: pai_feature_store_20230621_models.ListDatasourceTablesRequest,
     ) -> pai_feature_store_20230621_models.ListDatasourceTablesResponse:
+        """
+        @summary 获取数据源下所有表。
+        
+        @param request: ListDatasourceTablesRequest
+        @return: ListDatasourceTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_datasource_tables_with_options(instance_id, datasource_id, request, headers, runtime)
@@ -2851,6 +3761,12 @@ class Client(OpenApiClient):
         datasource_id: str,
         request: pai_feature_store_20230621_models.ListDatasourceTablesRequest,
     ) -> pai_feature_store_20230621_models.ListDatasourceTablesResponse:
+        """
+        @summary 获取数据源下所有表。
+        
+        @param request: ListDatasourceTablesRequest
+        @return: ListDatasourceTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_datasource_tables_with_options_async(instance_id, datasource_id, request, headers, runtime)
@@ -2862,6 +3778,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListDatasourcesResponse:
+        """
+        @summary 获取数据源列表。
+        
+        @param request: ListDatasourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2905,6 +3829,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListDatasourcesResponse:
+        """
+        @summary 获取数据源列表。
+        
+        @param request: ListDatasourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2946,6 +3878,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListDatasourcesRequest,
     ) -> pai_feature_store_20230621_models.ListDatasourcesResponse:
+        """
+        @summary 获取数据源列表。
+        
+        @param request: ListDatasourcesRequest
+        @return: ListDatasourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_datasources_with_options(instance_id, request, headers, runtime)
@@ -2955,6 +3893,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListDatasourcesRequest,
     ) -> pai_feature_store_20230621_models.ListDatasourcesResponse:
+        """
+        @summary 获取数据源列表。
+        
+        @param request: ListDatasourcesRequest
+        @return: ListDatasourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_datasources_with_options_async(instance_id, request, headers, runtime)
@@ -2966,6 +3910,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListFeatureEntitiesResponse:
+        """
+        @summary 创建特征实体列表
+        
+        @param tmp_req: ListFeatureEntitiesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureEntitiesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListFeatureEntitiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3015,6 +3967,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListFeatureEntitiesResponse:
+        """
+        @summary 创建特征实体列表
+        
+        @param tmp_req: ListFeatureEntitiesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureEntitiesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListFeatureEntitiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3062,6 +4022,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListFeatureEntitiesRequest,
     ) -> pai_feature_store_20230621_models.ListFeatureEntitiesResponse:
+        """
+        @summary 创建特征实体列表
+        
+        @param request: ListFeatureEntitiesRequest
+        @return: ListFeatureEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_feature_entities_with_options(instance_id, request, headers, runtime)
@@ -3071,6 +4037,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListFeatureEntitiesRequest,
     ) -> pai_feature_store_20230621_models.ListFeatureEntitiesResponse:
+        """
+        @summary 创建特征实体列表
+        
+        @param request: ListFeatureEntitiesRequest
+        @return: ListFeatureEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_feature_entities_with_options_async(instance_id, request, headers, runtime)
@@ -3083,6 +4055,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListFeatureViewFieldRelationshipsResponse:
+        """
+        @summary 获取特征字段血缘关系。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureViewFieldRelationshipsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3110,6 +4089,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListFeatureViewFieldRelationshipsResponse:
+        """
+        @summary 获取特征字段血缘关系。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureViewFieldRelationshipsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3135,6 +4121,11 @@ class Client(OpenApiClient):
         feature_view_id: str,
         field_name: str,
     ) -> pai_feature_store_20230621_models.ListFeatureViewFieldRelationshipsResponse:
+        """
+        @summary 获取特征字段血缘关系。
+        
+        @return: ListFeatureViewFieldRelationshipsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_feature_view_field_relationships_with_options(instance_id, feature_view_id, field_name, headers, runtime)
@@ -3145,9 +4136,134 @@ class Client(OpenApiClient):
         feature_view_id: str,
         field_name: str,
     ) -> pai_feature_store_20230621_models.ListFeatureViewFieldRelationshipsResponse:
+        """
+        @summary 获取特征字段血缘关系。
+        
+        @return: ListFeatureViewFieldRelationshipsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_feature_view_field_relationships_with_options_async(instance_id, feature_view_id, field_name, headers, runtime)
+
+    def list_feature_view_online_features_with_options(
+        self,
+        instance_id: str,
+        feature_view_id: str,
+        tmp_req: pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesResponse:
+        """
+        @summary 获取特征视图下的在线特征数据。
+        
+        @param tmp_req: ListFeatureViewOnlineFeaturesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureViewOnlineFeaturesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.join_ids):
+            request.join_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.join_ids, 'JoinIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.join_ids_shrink):
+            query['JoinIds'] = request.join_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFeatureViewOnlineFeatures',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/featureviews/{OpenApiUtilClient.get_encode_param(feature_view_id)}/onlinefeatures',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_feature_view_online_features_with_options_async(
+        self,
+        instance_id: str,
+        feature_view_id: str,
+        tmp_req: pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesResponse:
+        """
+        @summary 获取特征视图下的在线特征数据。
+        
+        @param tmp_req: ListFeatureViewOnlineFeaturesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureViewOnlineFeaturesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.join_ids):
+            request.join_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.join_ids, 'JoinIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.join_ids_shrink):
+            query['JoinIds'] = request.join_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFeatureViewOnlineFeatures',
+            version='2023-06-21',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/featureviews/{OpenApiUtilClient.get_encode_param(feature_view_id)}/onlinefeatures',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_feature_view_online_features(
+        self,
+        instance_id: str,
+        feature_view_id: str,
+        request: pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesRequest,
+    ) -> pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesResponse:
+        """
+        @summary 获取特征视图下的在线特征数据。
+        
+        @param request: ListFeatureViewOnlineFeaturesRequest
+        @return: ListFeatureViewOnlineFeaturesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_feature_view_online_features_with_options(instance_id, feature_view_id, request, headers, runtime)
+
+    async def list_feature_view_online_features_async(
+        self,
+        instance_id: str,
+        feature_view_id: str,
+        request: pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesRequest,
+    ) -> pai_feature_store_20230621_models.ListFeatureViewOnlineFeaturesResponse:
+        """
+        @summary 获取特征视图下的在线特征数据。
+        
+        @param request: ListFeatureViewOnlineFeaturesRequest
+        @return: ListFeatureViewOnlineFeaturesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_feature_view_online_features_with_options_async(instance_id, feature_view_id, request, headers, runtime)
 
     def list_feature_view_relationships_with_options(
         self,
@@ -3156,6 +4272,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListFeatureViewRelationshipsResponse:
+        """
+        @summary 获取特征视图血缘关系。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureViewRelationshipsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3182,6 +4305,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListFeatureViewRelationshipsResponse:
+        """
+        @summary 获取特征视图血缘关系。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureViewRelationshipsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3206,6 +4336,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_view_id: str,
     ) -> pai_feature_store_20230621_models.ListFeatureViewRelationshipsResponse:
+        """
+        @summary 获取特征视图血缘关系。
+        
+        @return: ListFeatureViewRelationshipsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_feature_view_relationships_with_options(instance_id, feature_view_id, headers, runtime)
@@ -3215,6 +4350,11 @@ class Client(OpenApiClient):
         instance_id: str,
         feature_view_id: str,
     ) -> pai_feature_store_20230621_models.ListFeatureViewRelationshipsResponse:
+        """
+        @summary 获取特征视图血缘关系。
+        
+        @return: ListFeatureViewRelationshipsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_feature_view_relationships_with_options_async(instance_id, feature_view_id, headers, runtime)
@@ -3226,6 +4366,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListFeatureViewsResponse:
+        """
+        @summary 获取特征视图列表。
+        
+        @param tmp_req: ListFeatureViewsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureViewsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListFeatureViewsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3281,6 +4429,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListFeatureViewsResponse:
+        """
+        @summary 获取特征视图列表。
+        
+        @param tmp_req: ListFeatureViewsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFeatureViewsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListFeatureViewsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3334,6 +4490,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListFeatureViewsRequest,
     ) -> pai_feature_store_20230621_models.ListFeatureViewsResponse:
+        """
+        @summary 获取特征视图列表。
+        
+        @param request: ListFeatureViewsRequest
+        @return: ListFeatureViewsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_feature_views_with_options(instance_id, request, headers, runtime)
@@ -3343,6 +4505,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListFeatureViewsRequest,
     ) -> pai_feature_store_20230621_models.ListFeatureViewsResponse:
+        """
+        @summary 获取特征视图列表。
+        
+        @param request: ListFeatureViewsRequest
+        @return: ListFeatureViewsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_feature_views_with_options_async(instance_id, request, headers, runtime)
@@ -3353,6 +4521,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListInstancesResponse:
+        """
+        @summary 获取Feature Store实例列表。
+        
+        @param request: ListInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -3391,6 +4567,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListInstancesResponse:
+        """
+        @summary 获取Feature Store实例列表。
+        
+        @param request: ListInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -3427,6 +4611,12 @@ class Client(OpenApiClient):
         self,
         request: pai_feature_store_20230621_models.ListInstancesRequest,
     ) -> pai_feature_store_20230621_models.ListInstancesResponse:
+        """
+        @summary 获取Feature Store实例列表。
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_instances_with_options(request, headers, runtime)
@@ -3435,6 +4625,12 @@ class Client(OpenApiClient):
         self,
         request: pai_feature_store_20230621_models.ListInstancesRequest,
     ) -> pai_feature_store_20230621_models.ListInstancesResponse:
+        """
+        @summary 获取Feature Store实例列表。
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
@@ -3446,6 +4642,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListLabelTablesResponse:
+        """
+        @summary 获取Label表列表。
+        
+        @param tmp_req: ListLabelTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLabelTablesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListLabelTablesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3495,6 +4699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListLabelTablesResponse:
+        """
+        @summary 获取Label表列表。
+        
+        @param tmp_req: ListLabelTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLabelTablesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListLabelTablesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3542,6 +4754,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListLabelTablesRequest,
     ) -> pai_feature_store_20230621_models.ListLabelTablesResponse:
+        """
+        @summary 获取Label表列表。
+        
+        @param request: ListLabelTablesRequest
+        @return: ListLabelTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_label_tables_with_options(instance_id, request, headers, runtime)
@@ -3551,6 +4769,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListLabelTablesRequest,
     ) -> pai_feature_store_20230621_models.ListLabelTablesResponse:
+        """
+        @summary 获取Label表列表。
+        
+        @param request: ListLabelTablesRequest
+        @return: ListLabelTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_label_tables_with_options_async(instance_id, request, headers, runtime)
@@ -3563,6 +4787,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse:
+        """
+        @summary 获取注册FG特征时模型特征下可选的所有特征。
+        
+        @param request: ListModelFeatureAvailableFeaturesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListModelFeatureAvailableFeaturesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_name):
@@ -3595,6 +4827,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse:
+        """
+        @summary 获取注册FG特征时模型特征下可选的所有特征。
+        
+        @param request: ListModelFeatureAvailableFeaturesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListModelFeatureAvailableFeaturesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_name):
@@ -3625,6 +4865,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesRequest,
     ) -> pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse:
+        """
+        @summary 获取注册FG特征时模型特征下可选的所有特征。
+        
+        @param request: ListModelFeatureAvailableFeaturesRequest
+        @return: ListModelFeatureAvailableFeaturesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_model_feature_available_features_with_options(instance_id, model_feature_id, request, headers, runtime)
@@ -3635,6 +4881,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesRequest,
     ) -> pai_feature_store_20230621_models.ListModelFeatureAvailableFeaturesResponse:
+        """
+        @summary 获取注册FG特征时模型特征下可选的所有特征。
+        
+        @param request: ListModelFeatureAvailableFeaturesRequest
+        @return: ListModelFeatureAvailableFeaturesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_model_feature_available_features_with_options_async(instance_id, model_feature_id, request, headers, runtime)
@@ -3646,6 +4898,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListModelFeaturesResponse:
+        """
+        @summary 获取模型特征列表。
+        
+        @param tmp_req: ListModelFeaturesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListModelFeaturesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListModelFeaturesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3695,6 +4955,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListModelFeaturesResponse:
+        """
+        @summary 获取模型特征列表。
+        
+        @param tmp_req: ListModelFeaturesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListModelFeaturesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListModelFeaturesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3742,6 +5010,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListModelFeaturesRequest,
     ) -> pai_feature_store_20230621_models.ListModelFeaturesResponse:
+        """
+        @summary 获取模型特征列表。
+        
+        @param request: ListModelFeaturesRequest
+        @return: ListModelFeaturesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_model_features_with_options(instance_id, request, headers, runtime)
@@ -3751,6 +5025,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListModelFeaturesRequest,
     ) -> pai_feature_store_20230621_models.ListModelFeaturesResponse:
+        """
+        @summary 获取模型特征列表。
+        
+        @param request: ListModelFeaturesRequest
+        @return: ListModelFeaturesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_model_features_with_options_async(instance_id, request, headers, runtime)
@@ -3762,6 +5042,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewOwnersResponse:
+        """
+        @summary 获取项目下特征视图的所有创建人。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFeatureViewOwnersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3788,6 +5075,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewOwnersResponse:
+        """
+        @summary 获取项目下特征视图的所有创建人。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFeatureViewOwnersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3812,6 +5106,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewOwnersResponse:
+        """
+        @summary 获取项目下特征视图的所有创建人。
+        
+        @return: ListProjectFeatureViewOwnersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_project_feature_view_owners_with_options(instance_id, project_id, headers, runtime)
@@ -3821,6 +5120,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewOwnersResponse:
+        """
+        @summary 获取项目下特征视图的所有创建人。
+        
+        @return: ListProjectFeatureViewOwnersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_feature_view_owners_with_options_async(instance_id, project_id, headers, runtime)
@@ -3832,6 +5136,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewTagsResponse:
+        """
+        @summary 获取项目下特征视图的所有标签。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFeatureViewTagsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3858,6 +5169,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewTagsResponse:
+        """
+        @summary 获取项目下特征视图的所有标签。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFeatureViewTagsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3882,6 +5200,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewTagsResponse:
+        """
+        @summary 获取项目下特征视图的所有标签。
+        
+        @return: ListProjectFeatureViewTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_project_feature_view_tags_with_options(instance_id, project_id, headers, runtime)
@@ -3891,6 +5214,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewTagsResponse:
+        """
+        @summary 获取项目下特征视图的所有标签。
+        
+        @return: ListProjectFeatureViewTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_feature_view_tags_with_options_async(instance_id, project_id, headers, runtime)
@@ -3902,6 +5230,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewsResponse:
+        """
+        @summary 获取项目下的所有特征视图、特征信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFeatureViewsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3928,6 +5263,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewsResponse:
+        """
+        @summary 获取项目下的所有特征视图、特征信息。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFeatureViewsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3952,6 +5294,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewsResponse:
+        """
+        @summary 获取项目下的所有特征视图、特征信息。
+        
+        @return: ListProjectFeatureViewsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_project_feature_views_with_options(instance_id, project_id, headers, runtime)
@@ -3961,6 +5308,11 @@ class Client(OpenApiClient):
         instance_id: str,
         project_id: str,
     ) -> pai_feature_store_20230621_models.ListProjectFeatureViewsResponse:
+        """
+        @summary 获取项目下的所有特征视图、特征信息。
+        
+        @return: ListProjectFeatureViewsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_feature_views_with_options_async(instance_id, project_id, headers, runtime)
@@ -3972,6 +5324,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListProjectsResponse:
+        """
+        @summary 获取Feature Store项目列表。
+        
+        @param tmp_req: ListProjectsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListProjectsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4021,6 +5381,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListProjectsResponse:
+        """
+        @summary 获取Feature Store项目列表。
+        
+        @param tmp_req: ListProjectsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListProjectsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4068,6 +5436,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListProjectsRequest,
     ) -> pai_feature_store_20230621_models.ListProjectsResponse:
+        """
+        @summary 获取Feature Store项目列表。
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_projects_with_options(instance_id, request, headers, runtime)
@@ -4077,6 +5451,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListProjectsRequest,
     ) -> pai_feature_store_20230621_models.ListProjectsResponse:
+        """
+        @summary 获取Feature Store项目列表。
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_projects_with_options_async(instance_id, request, headers, runtime)
@@ -4089,6 +5469,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListTaskLogsResponse:
+        """
+        @summary 获取任务日志列表
+        
+        @param request: ListTaskLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4123,6 +5511,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListTaskLogsResponse:
+        """
+        @summary 获取任务日志列表
+        
+        @param request: ListTaskLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4155,6 +5551,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: pai_feature_store_20230621_models.ListTaskLogsRequest,
     ) -> pai_feature_store_20230621_models.ListTaskLogsResponse:
+        """
+        @summary 获取任务日志列表
+        
+        @param request: ListTaskLogsRequest
+        @return: ListTaskLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_task_logs_with_options(instance_id, task_id, request, headers, runtime)
@@ -4165,6 +5567,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: pai_feature_store_20230621_models.ListTaskLogsRequest,
     ) -> pai_feature_store_20230621_models.ListTaskLogsResponse:
+        """
+        @summary 获取任务日志列表
+        
+        @param request: ListTaskLogsRequest
+        @return: ListTaskLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_task_logs_with_options_async(instance_id, task_id, request, headers, runtime)
@@ -4176,6 +5584,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListTasksResponse:
+        """
+        @summary 获取任务列表
+        
+        @param tmp_req: ListTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4225,6 +5641,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.ListTasksResponse:
+        """
+        @summary 获取任务列表
+        
+        @param tmp_req: ListTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_feature_store_20230621_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4272,6 +5696,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListTasksRequest,
     ) -> pai_feature_store_20230621_models.ListTasksResponse:
+        """
+        @summary 获取任务列表
+        
+        @param request: ListTasksRequest
+        @return: ListTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tasks_with_options(instance_id, request, headers, runtime)
@@ -4281,6 +5711,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_feature_store_20230621_models.ListTasksRequest,
     ) -> pai_feature_store_20230621_models.ListTasksResponse:
+        """
+        @summary 获取任务列表
+        
+        @param request: ListTasksRequest
+        @return: ListTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tasks_with_options_async(instance_id, request, headers, runtime)
@@ -4293,6 +5729,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.PublishFeatureViewTableResponse:
+        """
+        @summary 将特征视图的离线数据发布/同步到线上。
+        
+        @param request: PublishFeatureViewTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishFeatureViewTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -4333,6 +5777,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.PublishFeatureViewTableResponse:
+        """
+        @summary 将特征视图的离线数据发布/同步到线上。
+        
+        @param request: PublishFeatureViewTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishFeatureViewTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -4371,6 +5823,12 @@ class Client(OpenApiClient):
         feature_view_id: str,
         request: pai_feature_store_20230621_models.PublishFeatureViewTableRequest,
     ) -> pai_feature_store_20230621_models.PublishFeatureViewTableResponse:
+        """
+        @summary 将特征视图的离线数据发布/同步到线上。
+        
+        @param request: PublishFeatureViewTableRequest
+        @return: PublishFeatureViewTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.publish_feature_view_table_with_options(instance_id, feature_view_id, request, headers, runtime)
@@ -4381,6 +5839,12 @@ class Client(OpenApiClient):
         feature_view_id: str,
         request: pai_feature_store_20230621_models.PublishFeatureViewTableRequest,
     ) -> pai_feature_store_20230621_models.PublishFeatureViewTableResponse:
+        """
+        @summary 将特征视图的离线数据发布/同步到线上。
+        
+        @param request: PublishFeatureViewTableRequest
+        @return: PublishFeatureViewTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.publish_feature_view_table_with_options_async(instance_id, feature_view_id, request, headers, runtime)
@@ -4393,6 +5857,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateDatasourceResponse:
+        """
+        @summary 更新数据源信息。
+        
+        @param request: UpdateDatasourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -4429,6 +5901,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateDatasourceResponse:
+        """
+        @summary 更新数据源信息。
+        
+        @param request: UpdateDatasourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -4463,6 +5943,12 @@ class Client(OpenApiClient):
         datasource_id: str,
         request: pai_feature_store_20230621_models.UpdateDatasourceRequest,
     ) -> pai_feature_store_20230621_models.UpdateDatasourceResponse:
+        """
+        @summary 更新数据源信息。
+        
+        @param request: UpdateDatasourceRequest
+        @return: UpdateDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_datasource_with_options(instance_id, datasource_id, request, headers, runtime)
@@ -4473,6 +5959,12 @@ class Client(OpenApiClient):
         datasource_id: str,
         request: pai_feature_store_20230621_models.UpdateDatasourceRequest,
     ) -> pai_feature_store_20230621_models.UpdateDatasourceResponse:
+        """
+        @summary 更新数据源信息。
+        
+        @param request: UpdateDatasourceRequest
+        @return: UpdateDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_datasource_with_options_async(instance_id, datasource_id, request, headers, runtime)
@@ -4485,6 +5977,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateLabelTableResponse:
+        """
+        @summary 更新label表。
+        
+        @param request: UpdateLabelTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLabelTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.datasource_id):
@@ -4521,6 +6021,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateLabelTableResponse:
+        """
+        @summary 更新label表。
+        
+        @param request: UpdateLabelTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLabelTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.datasource_id):
@@ -4555,6 +6063,12 @@ class Client(OpenApiClient):
         label_table_id: str,
         request: pai_feature_store_20230621_models.UpdateLabelTableRequest,
     ) -> pai_feature_store_20230621_models.UpdateLabelTableResponse:
+        """
+        @summary 更新label表。
+        
+        @param request: UpdateLabelTableRequest
+        @return: UpdateLabelTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_label_table_with_options(instance_id, label_table_id, request, headers, runtime)
@@ -4565,6 +6079,12 @@ class Client(OpenApiClient):
         label_table_id: str,
         request: pai_feature_store_20230621_models.UpdateLabelTableRequest,
     ) -> pai_feature_store_20230621_models.UpdateLabelTableResponse:
+        """
+        @summary 更新label表。
+        
+        @param request: UpdateLabelTableRequest
+        @return: UpdateLabelTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_label_table_with_options_async(instance_id, label_table_id, request, headers, runtime)
@@ -4577,6 +6097,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureResponse:
+        """
+        @summary 更新模型特征。
+        
+        @param request: UpdateModelFeatureRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateModelFeatureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.features):
@@ -4613,6 +6141,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureResponse:
+        """
+        @summary 更新模型特征。
+        
+        @param request: UpdateModelFeatureRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateModelFeatureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.features):
@@ -4647,6 +6183,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.UpdateModelFeatureRequest,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureResponse:
+        """
+        @summary 更新模型特征。
+        
+        @param request: UpdateModelFeatureRequest
+        @return: UpdateModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_model_feature_with_options(instance_id, model_feature_id, request, headers, runtime)
@@ -4657,6 +6199,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.UpdateModelFeatureRequest,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureResponse:
+        """
+        @summary 更新模型特征。
+        
+        @param request: UpdateModelFeatureRequest
+        @return: UpdateModelFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_model_feature_with_options_async(instance_id, model_feature_id, request, headers, runtime)
@@ -4669,6 +6217,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse:
+        """
+        @summary 更新模型特征的FG特征配置信息。
+        
+        @param request: UpdateModelFeatureFGFeatureRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateModelFeatureFGFeatureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lookup_features):
@@ -4707,6 +6263,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse:
+        """
+        @summary 更新模型特征的FG特征配置信息。
+        
+        @param request: UpdateModelFeatureFGFeatureRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateModelFeatureFGFeatureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lookup_features):
@@ -4743,6 +6307,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureRequest,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse:
+        """
+        @summary 更新模型特征的FG特征配置信息。
+        
+        @param request: UpdateModelFeatureFGFeatureRequest
+        @return: UpdateModelFeatureFGFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_model_feature_fgfeature_with_options(instance_id, model_feature_id, request, headers, runtime)
@@ -4753,6 +6323,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureRequest,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGFeatureResponse:
+        """
+        @summary 更新模型特征的FG特征配置信息。
+        
+        @param request: UpdateModelFeatureFGFeatureRequest
+        @return: UpdateModelFeatureFGFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_model_feature_fgfeature_with_options_async(instance_id, model_feature_id, request, headers, runtime)
@@ -4765,6 +6341,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
+        """
+        @summary 更新模型特征的fg.json文件配置信息。
+        
+        @param request: UpdateModelFeatureFGInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateModelFeatureFGInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -4797,6 +6381,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
+        """
+        @summary 更新模型特征的fg.json文件配置信息。
+        
+        @param request: UpdateModelFeatureFGInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateModelFeatureFGInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -4827,6 +6419,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
+        """
+        @summary 更新模型特征的fg.json文件配置信息。
+        
+        @param request: UpdateModelFeatureFGInfoRequest
+        @return: UpdateModelFeatureFGInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_model_feature_fginfo_with_options(instance_id, model_feature_id, request, headers, runtime)
@@ -4837,6 +6435,12 @@ class Client(OpenApiClient):
         model_feature_id: str,
         request: pai_feature_store_20230621_models.UpdateModelFeatureFGInfoRequest,
     ) -> pai_feature_store_20230621_models.UpdateModelFeatureFGInfoResponse:
+        """
+        @summary 更新模型特征的fg.json文件配置信息。
+        
+        @param request: UpdateModelFeatureFGInfoRequest
+        @return: UpdateModelFeatureFGInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_model_feature_fginfo_with_options_async(instance_id, model_feature_id, request, headers, runtime)
@@ -4849,6 +6453,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateProjectResponse:
+        """
+        @summary 更新指定Feature Store项目信息。
+        
+        @param request: UpdateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -4883,6 +6495,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.UpdateProjectResponse:
+        """
+        @summary 更新指定Feature Store项目信息。
+        
+        @param request: UpdateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -4915,6 +6535,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: pai_feature_store_20230621_models.UpdateProjectRequest,
     ) -> pai_feature_store_20230621_models.UpdateProjectResponse:
+        """
+        @summary 更新指定Feature Store项目信息。
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_project_with_options(instance_id, project_id, request, headers, runtime)
@@ -4925,6 +6551,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: pai_feature_store_20230621_models.UpdateProjectRequest,
     ) -> pai_feature_store_20230621_models.UpdateProjectResponse:
+        """
+        @summary 更新指定Feature Store项目信息。
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_with_options_async(instance_id, project_id, request, headers, runtime)
@@ -4937,6 +6569,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.WriteFeatureViewTableResponse:
+        """
+        @summary 获取特征视图血缘关系。
+        
+        @param request: WriteFeatureViewTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WriteFeatureViewTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.mode):
@@ -4973,6 +6613,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.WriteFeatureViewTableResponse:
+        """
+        @summary 获取特征视图血缘关系。
+        
+        @param request: WriteFeatureViewTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WriteFeatureViewTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.mode):
@@ -5007,6 +6655,12 @@ class Client(OpenApiClient):
         feature_view_id: str,
         request: pai_feature_store_20230621_models.WriteFeatureViewTableRequest,
     ) -> pai_feature_store_20230621_models.WriteFeatureViewTableResponse:
+        """
+        @summary 获取特征视图血缘关系。
+        
+        @param request: WriteFeatureViewTableRequest
+        @return: WriteFeatureViewTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.write_feature_view_table_with_options(instance_id, feature_view_id, request, headers, runtime)
@@ -5017,6 +6671,12 @@ class Client(OpenApiClient):
         feature_view_id: str,
         request: pai_feature_store_20230621_models.WriteFeatureViewTableRequest,
     ) -> pai_feature_store_20230621_models.WriteFeatureViewTableResponse:
+        """
+        @summary 获取特征视图血缘关系。
+        
+        @param request: WriteFeatureViewTableRequest
+        @return: WriteFeatureViewTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.write_feature_view_table_with_options_async(instance_id, feature_view_id, request, headers, runtime)
@@ -5030,6 +6690,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.WriteProjectFeatureEntityHotIdsResponse:
+        """
+        @summary 向指定项目下的特征实体写入热点数据。
+        
+        @param request: WriteProjectFeatureEntityHotIdsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WriteProjectFeatureEntityHotIdsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hot_ids):
@@ -5065,6 +6733,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_feature_store_20230621_models.WriteProjectFeatureEntityHotIdsResponse:
+        """
+        @summary 向指定项目下的特征实体写入热点数据。
+        
+        @param request: WriteProjectFeatureEntityHotIdsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WriteProjectFeatureEntityHotIdsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hot_ids):
@@ -5098,6 +6774,12 @@ class Client(OpenApiClient):
         feature_entity_name: str,
         request: pai_feature_store_20230621_models.WriteProjectFeatureEntityHotIdsRequest,
     ) -> pai_feature_store_20230621_models.WriteProjectFeatureEntityHotIdsResponse:
+        """
+        @summary 向指定项目下的特征实体写入热点数据。
+        
+        @param request: WriteProjectFeatureEntityHotIdsRequest
+        @return: WriteProjectFeatureEntityHotIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.write_project_feature_entity_hot_ids_with_options(instance_id, project_id, feature_entity_name, request, headers, runtime)
@@ -5109,6 +6791,12 @@ class Client(OpenApiClient):
         feature_entity_name: str,
         request: pai_feature_store_20230621_models.WriteProjectFeatureEntityHotIdsRequest,
     ) -> pai_feature_store_20230621_models.WriteProjectFeatureEntityHotIdsResponse:
+        """
+        @summary 向指定项目下的特征实体写入热点数据。
+        
+        @param request: WriteProjectFeatureEntityHotIdsRequest
+        @return: WriteProjectFeatureEntityHotIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.write_project_feature_entity_hot_ids_with_options_async(instance_id, project_id, feature_entity_name, request, headers, runtime)

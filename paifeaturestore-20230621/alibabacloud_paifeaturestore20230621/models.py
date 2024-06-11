@@ -101,6 +101,7 @@ class ChangeProjectFeatureEntityHotIdVersionRequest(TeaModel):
         self,
         version: str = None,
     ):
+        # This parameter is required.
         self.version = version
 
     def validate(self):
@@ -199,7 +200,9 @@ class CheckInstanceDatasourceRequest(TeaModel):
         uri: str = None,
     ):
         self.config = config
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -314,9 +317,13 @@ class CreateDatasourceRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.config = config
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.uri = uri
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -436,8 +443,11 @@ class CreateFeatureEntityRequest(TeaModel):
         name: str = None,
         project_id: str = None,
     ):
+        # This parameter is required.
         self.join_id = join_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -601,14 +611,19 @@ class CreateFeatureViewRequest(TeaModel):
         self.config = config
         self.feature_entity_id = feature_entity_id
         self.fields = fields
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.project_id = project_id
         self.register_datasource_id = register_datasource_id
         self.register_table = register_table
+        # This parameter is required.
         self.sync_online_table = sync_online_table
         self.ttl = ttl
         self.tags = tags
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.write_method = write_method
         self.write_to_feature_db = write_to_feature_db
 
@@ -876,8 +891,11 @@ class CreateLabelTableRequestFields(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.attributes = attributes
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -916,9 +934,13 @@ class CreateLabelTableRequest(TeaModel):
         name: str = None,
         project_id: str = None,
     ):
+        # This parameter is required.
         self.datasource_id = datasource_id
+        # This parameter is required.
         self.fields = fields
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -1044,8 +1066,11 @@ class CreateModelFeatureRequestFeatures(TeaModel):
         type: str = None,
     ):
         self.alias_name = alias_name
+        # This parameter is required.
         self.feature_view_id = feature_view_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -1089,9 +1114,13 @@ class CreateModelFeatureRequest(TeaModel):
         project_id: str = None,
         sequence_feature_view_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.features = features
+        # This parameter is required.
         self.label_table_id = label_table_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.project_id = project_id
         self.sequence_feature_view_ids = sequence_feature_view_ids
 
@@ -1298,10 +1327,14 @@ class CreateProjectRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.offline_datasource_id = offline_datasource_id
         self.offline_life_cycle = offline_life_cycle
+        # This parameter is required.
         self.online_datasource_id = online_datasource_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1423,6 +1456,7 @@ class CreateServiceIdentityRoleRequest(TeaModel):
         self,
         role_name: str = None,
     ):
+        # This parameter is required.
         self.role_name = role_name
 
     def validate(self):
@@ -1942,6 +1976,7 @@ class ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig(TeaModel):
     ):
         self.fg_json_name = fg_json_name
         self.jar_name = jar_name
+        # This parameter is required.
         self.partitions = partitions
 
     def validate(self):
@@ -1977,6 +2012,7 @@ class ExportModelFeatureTrainingSetFGTableRequest(TeaModel):
         self,
         training_set_fg_config: ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig = None,
     ):
+        # This parameter is required.
         self.training_set_fg_config = training_set_fg_config
 
     def validate(self):
@@ -5259,6 +5295,7 @@ class ListFeatureEntitiesRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -5328,6 +5365,7 @@ class ListFeatureEntitiesShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -5698,6 +5736,136 @@ class ListFeatureViewFieldRelationshipsResponse(TeaModel):
         return self
 
 
+class ListFeatureViewOnlineFeaturesRequest(TeaModel):
+    def __init__(
+        self,
+        join_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.join_ids = join_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.join_ids is not None:
+            result['JoinIds'] = self.join_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JoinIds') is not None:
+            self.join_ids = m.get('JoinIds')
+        return self
+
+
+class ListFeatureViewOnlineFeaturesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        join_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.join_ids_shrink = join_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.join_ids_shrink is not None:
+            result['JoinIds'] = self.join_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JoinIds') is not None:
+            self.join_ids_shrink = m.get('JoinIds')
+        return self
+
+
+class ListFeatureViewOnlineFeaturesResponseBody(TeaModel):
+    def __init__(
+        self,
+        online_features: List[str] = None,
+        request_id: str = None,
+    ):
+        self.online_features = online_features
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.online_features is not None:
+            result['OnlineFeatures'] = self.online_features
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OnlineFeatures') is not None:
+            self.online_features = m.get('OnlineFeatures')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListFeatureViewOnlineFeaturesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFeatureViewOnlineFeaturesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFeatureViewOnlineFeaturesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFeatureViewRelationshipsResponseBodyRelationshipsModels(TeaModel):
     def __init__(
         self,
@@ -5882,6 +6050,7 @@ class ListFeatureViewsRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
         self.tag = tag
@@ -5969,6 +6138,7 @@ class ListFeatureViewsShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
         self.tag = tag
@@ -6441,6 +6611,7 @@ class ListLabelTablesRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -6510,6 +6681,7 @@ class ListLabelTablesShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -6902,6 +7074,7 @@ class ListModelFeaturesRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -6971,6 +7144,7 @@ class ListModelFeaturesShrinkRequest(TeaModel):
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.sort_by = sort_by
 
@@ -7979,6 +8153,7 @@ class ListTasksRequest(TeaModel):
         self.object_type = object_type
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.status = status
         self.task_ids = task_ids
@@ -8048,6 +8223,7 @@ class ListTasksShrinkRequest(TeaModel):
         self.object_type = object_type
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.project_id = project_id
         self.status = status
         self.task_ids_shrink = task_ids_shrink
@@ -8281,7 +8457,9 @@ class PublishFeatureViewTableRequest(TeaModel):
     ):
         self.config = config
         self.event_time = event_time
+        # This parameter is required.
         self.mode = mode
+        # This parameter is required.
         self.offline_to_online = offline_to_online
         self.partitions = partitions
 
@@ -8403,7 +8581,9 @@ class UpdateDatasourceRequest(TeaModel):
         uri: str = None,
     ):
         self.config = config
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -8509,8 +8689,11 @@ class UpdateLabelTableRequestFields(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.attributes = attributes
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -8549,6 +8732,7 @@ class UpdateLabelTableRequest(TeaModel):
         name: str = None,
     ):
         self.datasource_id = datasource_id
+        # This parameter is required.
         self.fields = fields
         self.name = name
 
@@ -8665,8 +8849,11 @@ class UpdateModelFeatureRequestFeatures(TeaModel):
         type: str = None,
     ):
         self.alias_name = alias_name
+        # This parameter is required.
         self.feature_view_id = feature_view_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -8827,12 +9014,19 @@ class UpdateModelFeatureFGFeatureRequestLookupFeatures(TeaModel):
         map_feature_name: str = None,
         value_type: str = None,
     ):
+        # This parameter is required.
         self.default_value = default_value
+        # This parameter is required.
         self.feature_name = feature_name
+        # This parameter is required.
         self.key_feature_domain = key_feature_domain
+        # This parameter is required.
         self.key_feature_name = key_feature_name
+        # This parameter is required.
         self.map_feature_domain = map_feature_domain
+        # This parameter is required.
         self.map_feature_name = map_feature_name
+        # This parameter is required.
         self.value_type = value_type
 
     def validate(self):
@@ -8889,11 +9083,17 @@ class UpdateModelFeatureFGFeatureRequestRawFeatures(TeaModel):
         input_feature_name: str = None,
         value_type: str = None,
     ):
+        # This parameter is required.
         self.default_value = default_value
+        # This parameter is required.
         self.feature_domain = feature_domain
+        # This parameter is required.
         self.feature_name = feature_name
+        # This parameter is required.
         self.feature_type = feature_type
+        # This parameter is required.
         self.input_feature_name = input_feature_name
+        # This parameter is required.
         self.value_type = value_type
 
     def validate(self):
@@ -8946,11 +9146,17 @@ class UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures(TeaModel):
         input_feature_name: str = None,
         value_type: str = None,
     ):
+        # This parameter is required.
         self.default_value = default_value
+        # This parameter is required.
         self.feature_domain = feature_domain
+        # This parameter is required.
         self.feature_name = feature_name
+        # This parameter is required.
         self.feature_type = feature_type
+        # This parameter is required.
         self.input_feature_name = input_feature_name
+        # This parameter is required.
         self.value_type = value_type
 
     def validate(self):
@@ -9002,9 +9208,13 @@ class UpdateModelFeatureFGFeatureRequestSequenceFeatures(TeaModel):
         sequence_length: int = None,
         sub_features: List[UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures] = None,
     ):
+        # This parameter is required.
         self.attribute_delim = attribute_delim
+        # This parameter is required.
         self.feature_name = feature_name
+        # This parameter is required.
         self.sequence_delim = sequence_delim
+        # This parameter is required.
         self.sequence_length = sequence_length
         self.sub_features = sub_features
 
@@ -9062,6 +9272,7 @@ class UpdateModelFeatureFGFeatureRequest(TeaModel):
     ):
         self.lookup_features = lookup_features
         self.raw_features = raw_features
+        # This parameter is required.
         self.reserves = reserves
         self.sequence_features = sequence_features
 
@@ -9196,6 +9407,7 @@ class UpdateModelFeatureFGInfoRequest(TeaModel):
         self,
         content: str = None,
     ):
+        # This parameter is required.
         self.content = content
 
     def validate(self):
@@ -9433,6 +9645,7 @@ class WriteFeatureViewTableRequest(TeaModel):
         partitions: Dict[str, dict] = None,
         url_datasource: WriteFeatureViewTableRequestUrlDatasource = None,
     ):
+        # This parameter is required.
         self.mode = mode
         self.partitions = partitions
         self.url_datasource = url_datasource
@@ -9547,7 +9760,9 @@ class WriteProjectFeatureEntityHotIdsRequest(TeaModel):
         hot_ids: str = None,
         version: str = None,
     ):
+        # This parameter is required.
         self.hot_ids = hot_ids
+        # This parameter is required.
         self.version = version
 
     def validate(self):
