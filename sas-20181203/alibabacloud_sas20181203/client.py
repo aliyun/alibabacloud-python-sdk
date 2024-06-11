@@ -34600,6 +34600,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vul_config_with_options_async(request, runtime)
 
+    def describe_vul_defend_count_statistics_with_options(
+        self,
+        request: sas_20181203_models.DescribeVulDefendCountStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVulDefendCountStatisticsResponse:
+        """
+        @summary 查询漏洞rasp防御统计
+        
+        @param request: DescribeVulDefendCountStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVulDefendCountStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vul_type):
+            query['VulType'] = request.vul_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVulDefendCountStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulDefendCountStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vul_defend_count_statistics_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeVulDefendCountStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVulDefendCountStatisticsResponse:
+        """
+        @summary 查询漏洞rasp防御统计
+        
+        @param request: DescribeVulDefendCountStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVulDefendCountStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vul_type):
+            query['VulType'] = request.vul_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVulDefendCountStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulDefendCountStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vul_defend_count_statistics(
+        self,
+        request: sas_20181203_models.DescribeVulDefendCountStatisticsRequest,
+    ) -> sas_20181203_models.DescribeVulDefendCountStatisticsResponse:
+        """
+        @summary 查询漏洞rasp防御统计
+        
+        @param request: DescribeVulDefendCountStatisticsRequest
+        @return: DescribeVulDefendCountStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vul_defend_count_statistics_with_options(request, runtime)
+
+    async def describe_vul_defend_count_statistics_async(
+        self,
+        request: sas_20181203_models.DescribeVulDefendCountStatisticsRequest,
+    ) -> sas_20181203_models.DescribeVulDefendCountStatisticsResponse:
+        """
+        @summary 查询漏洞rasp防御统计
+        
+        @param request: DescribeVulDefendCountStatisticsRequest
+        @return: DescribeVulDefendCountStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vul_defend_count_statistics_with_options_async(request, runtime)
+
     def describe_vul_details_with_options(
         self,
         request: sas_20181203_models.DescribeVulDetailsRequest,
@@ -35074,8 +35170,12 @@ class Client(OpenApiClient):
             query['CveId'] = request.cve_id
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rasp_defend):
+            query['RaspDefend'] = request.rasp_defend
         if not UtilClient.is_unset(request.vul_name_like):
             query['VulNameLike'] = request.vul_name_like
+        if not UtilClient.is_unset(request.vul_type):
+            query['VulType'] = request.vul_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -35115,8 +35215,12 @@ class Client(OpenApiClient):
             query['CveId'] = request.cve_id
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rasp_defend):
+            query['RaspDefend'] = request.rasp_defend
         if not UtilClient.is_unset(request.vul_name_like):
             query['VulNameLike'] = request.vul_name_like
+        if not UtilClient.is_unset(request.vul_type):
+            query['VulType'] = request.vul_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -35161,6 +35265,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vul_list_page_with_options_async(request, runtime)
+
+    def describe_vul_meta_count_statistics_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVulMetaCountStatisticsResponse:
+        """
+        @summary 查询漏洞库信息统计
+        
+        @param request: DescribeVulMetaCountStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVulMetaCountStatisticsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeVulMetaCountStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulMetaCountStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vul_meta_count_statistics_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVulMetaCountStatisticsResponse:
+        """
+        @summary 查询漏洞库信息统计
+        
+        @param request: DescribeVulMetaCountStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVulMetaCountStatisticsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeVulMetaCountStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVulMetaCountStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vul_meta_count_statistics(self) -> sas_20181203_models.DescribeVulMetaCountStatisticsResponse:
+        """
+        @summary 查询漏洞库信息统计
+        
+        @return: DescribeVulMetaCountStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vul_meta_count_statistics_with_options(runtime)
+
+    async def describe_vul_meta_count_statistics_async(self) -> sas_20181203_models.DescribeVulMetaCountStatisticsResponse:
+        """
+        @summary 查询漏洞库信息统计
+        
+        @return: DescribeVulMetaCountStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vul_meta_count_statistics_with_options_async(runtime)
 
     def describe_vul_num_statistics_with_options(
         self,
@@ -46492,6 +46670,8 @@ class Client(OpenApiClient):
             query['OperationParams'] = request.operation_params
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.security_event_ids):
             query['SecurityEventIds'] = request.security_event_ids
         if not UtilClient.is_unset(request.source_ip):
@@ -46539,6 +46719,8 @@ class Client(OpenApiClient):
             query['OperationParams'] = request.operation_params
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.security_event_ids):
             query['SecurityEventIds'] = request.security_event_ids
         if not UtilClient.is_unset(request.source_ip):

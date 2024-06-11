@@ -1,3 +1,16 @@
+2024-06-11 Version: 2.30.0
+- Support API DescribeVulDefendCountStatistics.
+- Support API DescribeVulMetaCountStatistics.
+- Update API DescribeCloudCenterInstances: update param RegionId.
+- Update API DescribeFieldStatistics: update response param.
+- Update API DescribeGroupedInstances: update response param.
+- Update API DescribeUuidsByVulNames: update response param.
+- Update API DescribeVulListPage: add param RaspDefend.
+- Update API DescribeVulListPage: add param VulType.
+- Update API DescribeVulListPage: update response param.
+- Update API HandleSecurityEvents: add param ResourceDirectoryAccountId.
+
+
 2024-05-30 Version: 2.29.4
 - Update API DescribeImageListWithBaselineName: update response param.
 - Update API DescribeImageSensitiveFileList: update response param.
