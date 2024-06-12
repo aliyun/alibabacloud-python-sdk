@@ -561,6 +561,327 @@ class CheckResourceStockResponse(TeaModel):
         return self
 
 
+class CreateAndroidInstanceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        biz_region_id: str = None,
+        charge_type: str = None,
+        image_id: str = None,
+        instance_group_name: str = None,
+        instance_group_spec: str = None,
+        number_of_instances: int = None,
+        office_site_id: str = None,
+        period: int = None,
+        period_unit: str = None,
+        policy_group_id: str = None,
+        v_switch_id: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        # This parameter is required.
+        self.biz_region_id = biz_region_id
+        self.charge_type = charge_type
+        # This parameter is required.
+        self.image_id = image_id
+        self.instance_group_name = instance_group_name
+        # This parameter is required.
+        self.instance_group_spec = instance_group_spec
+        self.number_of_instances = number_of_instances
+        self.office_site_id = office_site_id
+        self.period = period
+        self.period_unit = period_unit
+        # This parameter is required.
+        self.policy_group_id = policy_group_id
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_group_name is not None:
+            result['InstanceGroupName'] = self.instance_group_name
+        if self.instance_group_spec is not None:
+            result['InstanceGroupSpec'] = self.instance_group_spec
+        if self.number_of_instances is not None:
+            result['NumberOfInstances'] = self.number_of_instances
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceGroupName') is not None:
+            self.instance_group_name = m.get('InstanceGroupName')
+        if m.get('InstanceGroupSpec') is not None:
+            self.instance_group_spec = m.get('InstanceGroupSpec')
+        if m.get('NumberOfInstances') is not None:
+            self.number_of_instances = m.get('NumberOfInstances')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateAndroidInstanceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_group_ids: List[str] = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.instance_group_ids = instance_group_ids
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_group_ids is not None:
+            result['InstanceGroupIds'] = self.instance_group_ids
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceGroupIds') is not None:
+            self.instance_group_ids = m.get('InstanceGroupIds')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAndroidInstanceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAndroidInstanceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAndroidInstanceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        description: str = None,
+        file_name: str = None,
+        file_path: str = None,
+        icon_url: str = None,
+        install_param: str = None,
+        oss_app_url: str = None,
+    ):
+        # This parameter is required.
+        self.app_name = app_name
+        self.description = description
+        self.file_name = file_name
+        self.file_path = file_path
+        self.icon_url = icon_url
+        self.install_param = install_param
+        self.oss_app_url = oss_app_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.icon_url is not None:
+            result['IconUrl'] = self.icon_url
+        if self.install_param is not None:
+            result['InstallParam'] = self.install_param
+        if self.oss_app_url is not None:
+            result['OssAppUrl'] = self.oss_app_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('IconUrl') is not None:
+            self.icon_url = m.get('IconUrl')
+        if m.get('InstallParam') is not None:
+            self.install_param = m.get('InstallParam')
+        if m.get('OssAppUrl') is not None:
+            self.oss_app_url = m.get('OssAppUrl')
+        return self
+
+
+class CreateAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_id: int = None,
+        request_id: str = None,
+    ):
+        self.app_id = app_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCustomImageRequest(TeaModel):
     def __init__(
         self,
@@ -2165,6 +2486,238 @@ class DescribeAndroidInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAndroidInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id_list: List[str] = None,
+        app_name: str = None,
+        installation_status: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        status: str = None,
+    ):
+        self.app_id_list = app_id_list
+        self.app_name = app_name
+        self.installation_status = installation_status
+        self.max_results = max_results
+        self.next_token = next_token
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id_list is not None:
+            result['AppIdList'] = self.app_id_list
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.installation_status is not None:
+            result['InstallationStatus'] = self.installation_status
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppIdList') is not None:
+            self.app_id_list = m.get('AppIdList')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('InstallationStatus') is not None:
+            self.installation_status = m.get('InstallationStatus')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeAppsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        android_app_version: str = None,
+        app_id: int = None,
+        app_name: str = None,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        icon_url: str = None,
+        installation_status: str = None,
+        instance_group_list: List[str] = None,
+        status: str = None,
+    ):
+        self.android_app_version = android_app_version
+        self.app_id = app_id
+        self.app_name = app_name
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.icon_url = icon_url
+        self.installation_status = installation_status
+        self.instance_group_list = instance_group_list
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_app_version is not None:
+            result['AndroidAppVersion'] = self.android_app_version
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.icon_url is not None:
+            result['IconUrl'] = self.icon_url
+        if self.installation_status is not None:
+            result['InstallationStatus'] = self.installation_status
+        if self.instance_group_list is not None:
+            result['InstanceGroupList'] = self.instance_group_list
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidAppVersion') is not None:
+            self.android_app_version = m.get('AndroidAppVersion')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IconUrl') is not None:
+            self.icon_url = m.get('IconUrl')
+        if m.get('InstallationStatus') is not None:
+            self.installation_status = m.get('InstallationStatus')
+        if m.get('InstanceGroupList') is not None:
+            self.instance_group_list = m.get('InstanceGroupList')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeAppsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeAppsResponseBodyData] = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.data = data
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeAppsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAppsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

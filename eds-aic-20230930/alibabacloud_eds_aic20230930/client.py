@@ -458,6 +458,262 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_resource_stock_with_options_async(request, runtime)
 
+    def create_android_instance_group_with_options(
+        self,
+        request: eds_aic_20230930_models.CreateAndroidInstanceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.CreateAndroidInstanceGroupResponse:
+        """
+        @summary 创建安卓实例组
+        
+        @param request: CreateAndroidInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndroidInstanceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_group_name):
+            query['InstanceGroupName'] = request.instance_group_name
+        if not UtilClient.is_unset(request.instance_group_spec):
+            query['InstanceGroupSpec'] = request.instance_group_spec
+        if not UtilClient.is_unset(request.number_of_instances):
+            query['NumberOfInstances'] = request.number_of_instances
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAndroidInstanceGroup',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.CreateAndroidInstanceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_android_instance_group_with_options_async(
+        self,
+        request: eds_aic_20230930_models.CreateAndroidInstanceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.CreateAndroidInstanceGroupResponse:
+        """
+        @summary 创建安卓实例组
+        
+        @param request: CreateAndroidInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndroidInstanceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_group_name):
+            query['InstanceGroupName'] = request.instance_group_name
+        if not UtilClient.is_unset(request.instance_group_spec):
+            query['InstanceGroupSpec'] = request.instance_group_spec
+        if not UtilClient.is_unset(request.number_of_instances):
+            query['NumberOfInstances'] = request.number_of_instances
+        if not UtilClient.is_unset(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.policy_group_id):
+            query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAndroidInstanceGroup',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.CreateAndroidInstanceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_android_instance_group(
+        self,
+        request: eds_aic_20230930_models.CreateAndroidInstanceGroupRequest,
+    ) -> eds_aic_20230930_models.CreateAndroidInstanceGroupResponse:
+        """
+        @summary 创建安卓实例组
+        
+        @param request: CreateAndroidInstanceGroupRequest
+        @return: CreateAndroidInstanceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_android_instance_group_with_options(request, runtime)
+
+    async def create_android_instance_group_async(
+        self,
+        request: eds_aic_20230930_models.CreateAndroidInstanceGroupRequest,
+    ) -> eds_aic_20230930_models.CreateAndroidInstanceGroupResponse:
+        """
+        @summary 创建安卓实例组
+        
+        @param request: CreateAndroidInstanceGroupRequest
+        @return: CreateAndroidInstanceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_android_instance_group_with_options_async(request, runtime)
+
+    def create_app_with_options(
+        self,
+        request: eds_aic_20230930_models.CreateAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.CreateAppResponse:
+        """
+        @param request: CreateAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_path):
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.icon_url):
+            query['IconUrl'] = request.icon_url
+        if not UtilClient.is_unset(request.install_param):
+            query['InstallParam'] = request.install_param
+        if not UtilClient.is_unset(request.oss_app_url):
+            query['OssAppUrl'] = request.oss_app_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApp',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.CreateAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_with_options_async(
+        self,
+        request: eds_aic_20230930_models.CreateAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.CreateAppResponse:
+        """
+        @param request: CreateAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_path):
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.icon_url):
+            query['IconUrl'] = request.icon_url
+        if not UtilClient.is_unset(request.install_param):
+            query['InstallParam'] = request.install_param
+        if not UtilClient.is_unset(request.oss_app_url):
+            query['OssAppUrl'] = request.oss_app_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateApp',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.CreateAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app(
+        self,
+        request: eds_aic_20230930_models.CreateAppRequest,
+    ) -> eds_aic_20230930_models.CreateAppResponse:
+        """
+        @param request: CreateAppRequest
+        @return: CreateAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_with_options(request, runtime)
+
+    async def create_app_async(
+        self,
+        request: eds_aic_20230930_models.CreateAppRequest,
+    ) -> eds_aic_20230930_models.CreateAppResponse:
+        """
+        @param request: CreateAppRequest
+        @return: CreateAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_with_options_async(request, runtime)
+
     def create_custom_image_with_options(
         self,
         request: eds_aic_20230930_models.CreateCustomImageRequest,
@@ -1513,6 +1769,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_android_instances_with_options_async(request, runtime)
+
+    def describe_apps_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeAppsResponse:
+        """
+        @summary 查询app
+        
+        @param request: DescribeAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id_list):
+            query['AppIdList'] = request.app_id_list
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.installation_status):
+            query['InstallationStatus'] = request.installation_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApps',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apps_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeAppsResponse:
+        """
+        @summary 查询app
+        
+        @param request: DescribeAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id_list):
+            query['AppIdList'] = request.app_id_list
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.installation_status):
+            query['InstallationStatus'] = request.installation_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApps',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apps(
+        self,
+        request: eds_aic_20230930_models.DescribeAppsRequest,
+    ) -> eds_aic_20230930_models.DescribeAppsResponse:
+        """
+        @summary 查询app
+        
+        @param request: DescribeAppsRequest
+        @return: DescribeAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apps_with_options(request, runtime)
+
+    async def describe_apps_async(
+        self,
+        request: eds_aic_20230930_models.DescribeAppsRequest,
+    ) -> eds_aic_20230930_models.DescribeAppsResponse:
+        """
+        @summary 查询app
+        
+        @param request: DescribeAppsRequest
+        @return: DescribeAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apps_with_options_async(request, runtime)
 
     def describe_backup_files_with_options(
         self,
