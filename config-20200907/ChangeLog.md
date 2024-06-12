@@ -1,3 +1,42 @@
+2024-06-12 Version: 3.0.4
+- Update API GenerateAggregateResourceInventory: add param ResourceDeleted.
+- Update API GenerateAggregateResourceInventory: update response param.
+- Update API GenerateResourceInventory: add param ResourceDeleted.
+- Update API GenerateResourceInventory: update response param.
+- Update API GetAggregateDiscoveredResource: add param ComplianceOption.
+- Update API GetAggregateDiscoveredResource: update param ResourceOwnerId.
+- Update API GetAggregateDiscoveredResource: update response param.
+- Update API GetAggregateResourceComplianceByConfigRule: update param ComplianceType.
+- Update API GetAggregateResourceComplianceByConfigRule: update response param.
+- Update API GetDiscoveredResource: add param ComplianceOption.
+- Update API GetDiscoveredResource: update param Region.
+- Update API GetDiscoveredResource: update response param.
+- Update API GetResourceComplianceGroupByRegion: update param ConfigRuleIds.
+- Update API GetResourceComplianceGroupByRegion: update response param.
+- Update API ListAggregateConfigRuleEvaluationResults: update param CompliancePackId.
+- Update API ListAggregateConfigRuleEvaluationResults: update param ComplianceType.
+- Update API ListAggregateConfigRuleEvaluationResults: update param ConfigRuleId.
+- Update API ListAggregateConfigRuleEvaluationResults: update param MaxResults.
+- Update API ListAggregateConfigRuleEvaluationResults: update param NextToken.
+- Update API ListAggregateConfigRuleEvaluationResults: update param ResourceOwnerId.
+- Update API ListAggregateConfigRuleEvaluationResults: update response param.
+- Update API ListAggregateRemediationExecutions: update param ConfigRuleId.
+- Update API ListAggregateRemediationExecutions: update param ExecutionStatus.
+- Update API ListAggregateRemediationExecutions: update param MaxResults.
+- Update API ListAggregateRemediationExecutions: update param NextToken.
+- Update API ListConfigRuleEvaluationResults: update param CompliancePackId.
+- Update API ListConfigRuleEvaluationResults: update param ComplianceType.
+- Update API ListConfigRuleEvaluationResults: update param ConfigRuleId.
+- Update API ListConfigRuleEvaluationResults: update param MaxResults.
+- Update API ListConfigRuleEvaluationResults: update param NextToken.
+- Update API ListConfigRuleEvaluationResults: update response param.
+- Update API ListRemediationExecutions: update param ConfigRuleId.
+- Update API ListRemediationExecutions: update param ExecutionStatus.
+- Update API ListRemediationExecutions: update param MaxResults.
+- Update API ListRemediationExecutions: update param NextToken.
+- Update API ListRemediationExecutions: update response param.
+
+
 2024-01-29 Version: 3.0.3
 - Update API CreateAggregateCompliancePackupdate ClientToken param.
 update CompliancePackTemplateId param.

@@ -51,7 +51,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ActiveAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        @summary Enables one or more rules in an account group.
+        
+        @description This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
         
         @param request: ActiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -88,7 +90,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ActiveAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        @summary Enables one or more rules in an account group.
+        
+        @description This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
         
         @param request: ActiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -124,7 +128,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ActiveAggregateConfigRulesRequest,
     ) -> config_20200907_models.ActiveAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        @summary Enables one or more rules in an account group.
+        
+        @description This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
         
         @param request: ActiveAggregateConfigRulesRequest
         @return: ActiveAggregateConfigRulesResponse
@@ -137,7 +143,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ActiveAggregateConfigRulesRequest,
     ) -> config_20200907_models.ActiveAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        @summary Enables one or more rules in an account group.
+        
+        @description This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
         
         @param request: ActiveAggregateConfigRulesRequest
         @return: ActiveAggregateConfigRulesResponse
@@ -150,6 +158,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ActiveConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ActiveConfigRulesResponse:
+        """
+        @summary Enables multiple rules at a time so that these rules enter the Active state.
+        
+        @param request: ActiveConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveConfigRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
@@ -178,6 +193,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ActiveConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ActiveConfigRulesResponse:
+        """
+        @summary Enables multiple rules at a time so that these rules enter the Active state.
+        
+        @param request: ActiveConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActiveConfigRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
@@ -205,6 +227,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ActiveConfigRulesRequest,
     ) -> config_20200907_models.ActiveConfigRulesResponse:
+        """
+        @summary Enables multiple rules at a time so that these rules enter the Active state.
+        
+        @param request: ActiveConfigRulesRequest
+        @return: ActiveConfigRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.active_config_rules_with_options(request, runtime)
 
@@ -212,6 +240,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ActiveConfigRulesRequest,
     ) -> config_20200907_models.ActiveConfigRulesResponse:
+        """
+        @summary Enables multiple rules at a time so that these rules enter the Active state.
+        
+        @param request: ActiveConfigRulesRequest
+        @return: ActiveConfigRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.active_config_rules_with_options_async(request, runtime)
 
@@ -221,7 +255,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.AttachAggregateConfigRuleToCompliancePackResponse:
         """
-        The sample request in this topic shows you how to add the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
+        @summary Adds one or more rules in an account group to a compliance package.
+        
+        @description The sample request in this topic shows you how to add the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: AttachAggregateConfigRuleToCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -260,7 +296,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.AttachAggregateConfigRuleToCompliancePackResponse:
         """
-        The sample request in this topic shows you how to add the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
+        @summary Adds one or more rules in an account group to a compliance package.
+        
+        @description The sample request in this topic shows you how to add the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: AttachAggregateConfigRuleToCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -298,7 +336,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.AttachAggregateConfigRuleToCompliancePackRequest,
     ) -> config_20200907_models.AttachAggregateConfigRuleToCompliancePackResponse:
         """
-        The sample request in this topic shows you how to add the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
+        @summary Adds one or more rules in an account group to a compliance package.
+        
+        @description The sample request in this topic shows you how to add the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: AttachAggregateConfigRuleToCompliancePackRequest
         @return: AttachAggregateConfigRuleToCompliancePackResponse
@@ -311,7 +351,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.AttachAggregateConfigRuleToCompliancePackRequest,
     ) -> config_20200907_models.AttachAggregateConfigRuleToCompliancePackResponse:
         """
-        The sample request in this topic shows you how to add the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
+        @summary Adds one or more rules in an account group to a compliance package.
+        
+        @description The sample request in this topic shows you how to add the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: AttachAggregateConfigRuleToCompliancePackRequest
         @return: AttachAggregateConfigRuleToCompliancePackResponse
@@ -325,7 +367,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.AttachConfigRuleToCompliancePackResponse:
         """
-        This topic provides an example on how to add the `cr-6cc4626622af00e7***` rule to the `cp-5bb1626622af00bd****` compliance package.
+        @summary Adds one or more rules to a compliance package.
+        
+        @description This topic provides an example on how to add the `cr-6cc4626622af00e7***` rule to the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: AttachConfigRuleToCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -362,7 +406,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.AttachConfigRuleToCompliancePackResponse:
         """
-        This topic provides an example on how to add the `cr-6cc4626622af00e7***` rule to the `cp-5bb1626622af00bd****` compliance package.
+        @summary Adds one or more rules to a compliance package.
+        
+        @description This topic provides an example on how to add the `cr-6cc4626622af00e7***` rule to the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: AttachConfigRuleToCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -398,7 +444,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.AttachConfigRuleToCompliancePackRequest,
     ) -> config_20200907_models.AttachConfigRuleToCompliancePackResponse:
         """
-        This topic provides an example on how to add the `cr-6cc4626622af00e7***` rule to the `cp-5bb1626622af00bd****` compliance package.
+        @summary Adds one or more rules to a compliance package.
+        
+        @description This topic provides an example on how to add the `cr-6cc4626622af00e7***` rule to the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: AttachConfigRuleToCompliancePackRequest
         @return: AttachConfigRuleToCompliancePackResponse
@@ -411,7 +459,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.AttachConfigRuleToCompliancePackRequest,
     ) -> config_20200907_models.AttachConfigRuleToCompliancePackResponse:
         """
-        This topic provides an example on how to add the `cr-6cc4626622af00e7***` rule to the `cp-5bb1626622af00bd****` compliance package.
+        @summary Adds one or more rules to a compliance package.
+        
+        @description This topic provides an example on how to add the `cr-6cc4626622af00e7***` rule to the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: AttachConfigRuleToCompliancePackRequest
         @return: AttachConfigRuleToCompliancePackResponse
@@ -424,6 +474,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.CopyCompliancePacksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CopyCompliancePacksResponse:
+        """
+        @summary Replicates compliance packages.
+        
+        @param request: CopyCompliancePacksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyCompliancePacksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.des_aggregator_ids):
@@ -456,6 +513,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.CopyCompliancePacksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CopyCompliancePacksResponse:
+        """
+        @summary Replicates compliance packages.
+        
+        @param request: CopyCompliancePacksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyCompliancePacksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.des_aggregator_ids):
@@ -487,6 +551,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.CopyCompliancePacksRequest,
     ) -> config_20200907_models.CopyCompliancePacksResponse:
+        """
+        @summary Replicates compliance packages.
+        
+        @param request: CopyCompliancePacksRequest
+        @return: CopyCompliancePacksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_compliance_packs_with_options(request, runtime)
 
@@ -494,6 +564,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.CopyCompliancePacksRequest,
     ) -> config_20200907_models.CopyCompliancePacksResponse:
+        """
+        @summary Replicates compliance packages.
+        
+        @param request: CopyCompliancePacksRequest
+        @return: CopyCompliancePacksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_compliance_packs_with_options_async(request, runtime)
 
@@ -502,6 +578,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.CopyConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CopyConfigRulesResponse:
+        """
+        @summary Replicates rules.
+        
+        @param request: CopyConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyConfigRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.des_aggregator_ids):
@@ -534,6 +617,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.CopyConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CopyConfigRulesResponse:
+        """
+        @summary Replicates rules.
+        
+        @param request: CopyConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyConfigRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.des_aggregator_ids):
@@ -565,6 +655,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.CopyConfigRulesRequest,
     ) -> config_20200907_models.CopyConfigRulesResponse:
+        """
+        @summary Replicates rules.
+        
+        @param request: CopyConfigRulesRequest
+        @return: CopyConfigRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_config_rules_with_options(request, runtime)
 
@@ -572,6 +668,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.CopyConfigRulesRequest,
     ) -> config_20200907_models.CopyConfigRulesResponse:
+        """
+        @summary Replicates rules.
+        
+        @param request: CopyConfigRulesRequest
+        @return: CopyConfigRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_config_rules_with_options_async(request, runtime)
 
@@ -580,6 +682,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAdvancedSearchFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAdvancedSearchFileResponse:
+        """
+        @summary Creates a downloadable resource file for the current Alibaba Cloud account.
+        
+        @param request: CreateAdvancedSearchFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAdvancedSearchFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.sql):
@@ -608,6 +717,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAdvancedSearchFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAdvancedSearchFileResponse:
+        """
+        @summary Creates a downloadable resource file for the current Alibaba Cloud account.
+        
+        @param request: CreateAdvancedSearchFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAdvancedSearchFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.sql):
@@ -635,6 +751,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.CreateAdvancedSearchFileRequest,
     ) -> config_20200907_models.CreateAdvancedSearchFileResponse:
+        """
+        @summary Creates a downloadable resource file for the current Alibaba Cloud account.
+        
+        @param request: CreateAdvancedSearchFileRequest
+        @return: CreateAdvancedSearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_advanced_search_file_with_options(request, runtime)
 
@@ -642,6 +764,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.CreateAdvancedSearchFileRequest,
     ) -> config_20200907_models.CreateAdvancedSearchFileResponse:
+        """
+        @summary Creates a downloadable resource file for the current Alibaba Cloud account.
+        
+        @param request: CreateAdvancedSearchFileRequest
+        @return: CreateAdvancedSearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_advanced_search_file_with_options_async(request, runtime)
 
@@ -651,7 +779,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
         """
-        This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
+        @summary Creates a downloadable resource file for an account group.
+        
+        @description This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
         
         @param request: CreateAggregateAdvancedSearchFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -688,7 +818,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
         """
-        This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
+        @summary Creates a downloadable resource file for an account group.
+        
+        @description This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
         
         @param request: CreateAggregateAdvancedSearchFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -724,7 +856,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
     ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
         """
-        This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
+        @summary Creates a downloadable resource file for an account group.
+        
+        @description This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
         
         @param request: CreateAggregateAdvancedSearchFileRequest
         @return: CreateAggregateAdvancedSearchFileResponse
@@ -737,7 +871,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
     ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
         """
-        This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
+        @summary Creates a downloadable resource file for an account group.
+        
+        @description This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
         
         @param request: CreateAggregateAdvancedSearchFileRequest
         @return: CreateAggregateAdvancedSearchFileResponse
@@ -751,8 +887,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateCompliancePackResponse:
         """
-        You can use your management account to create up to five compliance packages for each account group.
-        This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
+        @summary Creates a compliance package for an account group.
+        
+        @description You can use your management account to create up to five compliance packages for each account group.
+        This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079***` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
         
         @param tmp_req: CreateAggregateCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -817,8 +955,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateCompliancePackResponse:
         """
-        You can use your management account to create up to five compliance packages for each account group.
-        This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
+        @summary Creates a compliance package for an account group.
+        
+        @description You can use your management account to create up to five compliance packages for each account group.
+        This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079***` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
         
         @param tmp_req: CreateAggregateCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -882,8 +1022,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateCompliancePackRequest,
     ) -> config_20200907_models.CreateAggregateCompliancePackResponse:
         """
-        You can use your management account to create up to five compliance packages for each account group.
-        This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
+        @summary Creates a compliance package for an account group.
+        
+        @description You can use your management account to create up to five compliance packages for each account group.
+        This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079***` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
         
         @param request: CreateAggregateCompliancePackRequest
         @return: CreateAggregateCompliancePackResponse
@@ -896,8 +1038,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateCompliancePackRequest,
     ) -> config_20200907_models.CreateAggregateCompliancePackResponse:
         """
-        You can use your management account to create up to five compliance packages for each account group.
-        This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
+        @summary Creates a compliance package for an account group.
+        
+        @description You can use your management account to create up to five compliance packages for each account group.
+        This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079***` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
         
         @param request: CreateAggregateCompliancePackRequest
         @return: CreateAggregateCompliancePackResponse
@@ -911,7 +1055,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079***`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @summary Creates a delivery channel for an account group.
+        
+        @description In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079***`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateAggregateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -968,7 +1114,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079***`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @summary Creates a delivery channel for an account group.
+        
+        @description In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079***`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateAggregateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1024,7 +1172,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.CreateAggregateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079***`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @summary Creates a delivery channel for an account group.
+        
+        @description In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079***`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateAggregateConfigDeliveryChannelRequest
         @return: CreateAggregateConfigDeliveryChannelResponse
@@ -1037,7 +1187,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.CreateAggregateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079***`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @summary Creates a delivery channel for an account group.
+        
+        @description In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079***`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateAggregateConfigDeliveryChannelRequest
         @return: CreateAggregateConfigDeliveryChannelResponse
@@ -1051,10 +1203,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateConfigRuleResponse:
         """
-        ### Limits
+        @summary Creates a rule for an account group.
+        
+        @description ### Limits
         You can create up to 200 rules for each management account.
         ### Usage notes
-        This topic provides an example on how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079****` account group. The returned result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
+        This topic provides an example on how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079***` account group. The returned result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
         
         @param tmp_req: CreateAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1133,10 +1287,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateConfigRuleResponse:
         """
-        ### Limits
+        @summary Creates a rule for an account group.
+        
+        @description ### Limits
         You can create up to 200 rules for each management account.
         ### Usage notes
-        This topic provides an example on how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079****` account group. The returned result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
+        This topic provides an example on how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079***` account group. The returned result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
         
         @param tmp_req: CreateAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1214,10 +1370,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateConfigRuleRequest,
     ) -> config_20200907_models.CreateAggregateConfigRuleResponse:
         """
-        ### Limits
+        @summary Creates a rule for an account group.
+        
+        @description ### Limits
         You can create up to 200 rules for each management account.
         ### Usage notes
-        This topic provides an example on how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079****` account group. The returned result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
+        This topic provides an example on how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079***` account group. The returned result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
         
         @param request: CreateAggregateConfigRuleRequest
         @return: CreateAggregateConfigRuleResponse
@@ -1230,10 +1388,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateConfigRuleRequest,
     ) -> config_20200907_models.CreateAggregateConfigRuleResponse:
         """
-        ### Limits
+        @summary Creates a rule for an account group.
+        
+        @description ### Limits
         You can create up to 200 rules for each management account.
         ### Usage notes
-        This topic provides an example on how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079****` account group. The returned result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
+        This topic provides an example on how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079***` account group. The returned result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
         
         @param request: CreateAggregateConfigRuleRequest
         @return: CreateAggregateConfigRuleResponse
@@ -1247,7 +1407,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateRemediationResponse:
         """
-        This topic provides an example on how to create a remediation template for the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
+        @summary Creates a remediation template for a rule in an account group.
+        
+        @description This topic provides an example on how to create a remediation template for the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
         
         @param request: CreateAggregateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1296,7 +1458,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateRemediationResponse:
         """
-        This topic provides an example on how to create a remediation template for the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
+        @summary Creates a remediation template for a rule in an account group.
+        
+        @description This topic provides an example on how to create a remediation template for the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
         
         @param request: CreateAggregateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1344,7 +1508,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateRemediationRequest,
     ) -> config_20200907_models.CreateAggregateRemediationResponse:
         """
-        This topic provides an example on how to create a remediation template for the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
+        @summary Creates a remediation template for a rule in an account group.
+        
+        @description This topic provides an example on how to create a remediation template for the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
         
         @param request: CreateAggregateRemediationRequest
         @return: CreateAggregateRemediationResponse
@@ -1357,7 +1523,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateRemediationRequest,
     ) -> config_20200907_models.CreateAggregateRemediationResponse:
         """
-        This topic provides an example on how to create a remediation template for the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
+        @summary Creates a remediation template for a rule in an account group.
+        
+        @description This topic provides an example on how to create a remediation template for the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
         
         @param request: CreateAggregateRemediationRequest
         @return: CreateAggregateRemediationResponse
@@ -1371,13 +1539,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregatorResponse:
         """
-        Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
+        @summary Creates an account group.
+        
+        @description Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
         Cloud Config supports the following types of account groups:
-        *   Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
-        *   Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
+        Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
+        Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
         This topic provides an example on how to create an account group of the `CUSTOM` type. The custom account group is named `Test_Group`, and its description is `Test account group`. The custom account group contains the following two member accounts:
-        *   Member account ID: `171322098523****`. Member account name: `Alice`.
-        *   Member account ID: `100532098349****`. Member account name: `Tom`.
+        Member account ID: `171322098523****`. Member account name: `Alice`.
+        Member account ID: `100532098349****`. Member account name: `Tom`.
         
         @param tmp_req: CreateAggregatorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1426,13 +1596,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregatorResponse:
         """
-        Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
+        @summary Creates an account group.
+        
+        @description Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
         Cloud Config supports the following types of account groups:
-        *   Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
-        *   Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
+        Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
+        Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
         This topic provides an example on how to create an account group of the `CUSTOM` type. The custom account group is named `Test_Group`, and its description is `Test account group`. The custom account group contains the following two member accounts:
-        *   Member account ID: `171322098523****`. Member account name: `Alice`.
-        *   Member account ID: `100532098349****`. Member account name: `Tom`.
+        Member account ID: `171322098523****`. Member account name: `Alice`.
+        Member account ID: `100532098349****`. Member account name: `Tom`.
         
         @param tmp_req: CreateAggregatorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1480,13 +1652,15 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregatorRequest,
     ) -> config_20200907_models.CreateAggregatorResponse:
         """
-        Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
+        @summary Creates an account group.
+        
+        @description Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
         Cloud Config supports the following types of account groups:
-        *   Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
-        *   Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
+        Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
+        Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
         This topic provides an example on how to create an account group of the `CUSTOM` type. The custom account group is named `Test_Group`, and its description is `Test account group`. The custom account group contains the following two member accounts:
-        *   Member account ID: `171322098523****`. Member account name: `Alice`.
-        *   Member account ID: `100532098349****`. Member account name: `Tom`.
+        Member account ID: `171322098523****`. Member account name: `Alice`.
+        Member account ID: `100532098349****`. Member account name: `Tom`.
         
         @param request: CreateAggregatorRequest
         @return: CreateAggregatorResponse
@@ -1499,13 +1673,15 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregatorRequest,
     ) -> config_20200907_models.CreateAggregatorResponse:
         """
-        Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
+        @summary Creates an account group.
+        
+        @description Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
         Cloud Config supports the following types of account groups:
-        *   Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
-        *   Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
+        Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
+        Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
         This topic provides an example on how to create an account group of the `CUSTOM` type. The custom account group is named `Test_Group`, and its description is `Test account group`. The custom account group contains the following two member accounts:
-        *   Member account ID: `171322098523****`. Member account name: `Alice`.
-        *   Member account ID: `100532098349****`. Member account name: `Tom`.
+        Member account ID: `171322098523****`. Member account name: `Alice`.
+        Member account ID: `100532098349****`. Member account name: `Tom`.
         
         @param request: CreateAggregatorRequest
         @return: CreateAggregatorResponse
@@ -1519,7 +1695,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateCompliancePackResponse:
         """
-        Each ordinary account can create up to five compliance packages.
+        @summary Creates a compliance package for the current account.
+        
+        @description Each ordinary account can create up to five compliance packages.
         This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck. The compliance package contains a managed rule named `eip-bandwidth-limit`.
         
         @param tmp_req: CreateCompliancePackRequest
@@ -1583,7 +1761,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateCompliancePackResponse:
         """
-        Each ordinary account can create up to five compliance packages.
+        @summary Creates a compliance package for the current account.
+        
+        @description Each ordinary account can create up to five compliance packages.
         This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck. The compliance package contains a managed rule named `eip-bandwidth-limit`.
         
         @param tmp_req: CreateCompliancePackRequest
@@ -1646,7 +1826,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateCompliancePackRequest,
     ) -> config_20200907_models.CreateCompliancePackResponse:
         """
-        Each ordinary account can create up to five compliance packages.
+        @summary Creates a compliance package for the current account.
+        
+        @description Each ordinary account can create up to five compliance packages.
         This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck. The compliance package contains a managed rule named `eip-bandwidth-limit`.
         
         @param request: CreateCompliancePackRequest
@@ -1660,7 +1842,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateCompliancePackRequest,
     ) -> config_20200907_models.CreateCompliancePackResponse:
         """
-        Each ordinary account can create up to five compliance packages.
+        @summary Creates a compliance package for the current account.
+        
+        @description Each ordinary account can create up to five compliance packages.
         This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck. The compliance package contains a managed rule named `eip-bandwidth-limit`.
         
         @param request: CreateCompliancePackRequest
@@ -1675,7 +1859,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @summary Creates a delivery channel.
+        
+        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1730,7 +1916,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @summary Creates a delivery channel.
+        
+        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1784,7 +1972,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.CreateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @summary Creates a delivery channel.
+        
+        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateConfigDeliveryChannelRequest
         @return: CreateConfigDeliveryChannelResponse
@@ -1797,7 +1987,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.CreateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @summary Creates a delivery channel.
+        
+        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateConfigDeliveryChannelRequest
         @return: CreateConfigDeliveryChannelResponse
@@ -1811,7 +2003,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateConfigRuleResponse:
         """
-        ## Limits
+        @summary Creates a rule for the current account.
+        
+        @description ## Limits
         You can use a common account to create up to 200 rules.
         
         @param tmp_req: CreateConfigRuleRequest
@@ -1883,7 +2077,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateConfigRuleResponse:
         """
-        ## Limits
+        @summary Creates a rule for the current account.
+        
+        @description ## Limits
         You can use a common account to create up to 200 rules.
         
         @param tmp_req: CreateConfigRuleRequest
@@ -1954,7 +2150,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateConfigRuleRequest,
     ) -> config_20200907_models.CreateConfigRuleResponse:
         """
-        ## Limits
+        @summary Creates a rule for the current account.
+        
+        @description ## Limits
         You can use a common account to create up to 200 rules.
         
         @param request: CreateConfigRuleRequest
@@ -1968,7 +2166,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateConfigRuleRequest,
     ) -> config_20200907_models.CreateConfigRuleResponse:
         """
-        ## Limits
+        @summary Creates a rule for the current account.
+        
+        @description ## Limits
         You can use a common account to create up to 200 rules.
         
         @param request: CreateConfigRuleRequest
@@ -1983,8 +2183,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateDeliveryChannelResponse:
         """
-        @deprecated : CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
-        In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @deprecated OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+        
+        @summary Creates a delivery channel.
+        
+        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2040,8 +2243,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateDeliveryChannelResponse:
         """
-        @deprecated : CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
-        In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @deprecated OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+        
+        @summary Creates a delivery channel.
+        
+        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2096,8 +2302,11 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateDeliveryChannelRequest,
     ) -> config_20200907_models.CreateDeliveryChannelResponse:
         """
-        @deprecated : CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
-        In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @deprecated OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+        
+        @summary Creates a delivery channel.
+        
+        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateDeliveryChannelRequest
         @return: CreateDeliveryChannelResponse
@@ -2111,8 +2320,11 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateDeliveryChannelRequest,
     ) -> config_20200907_models.CreateDeliveryChannelResponse:
         """
-        @deprecated : CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
-        In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+        @deprecated OpenAPI CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+        
+        @summary Creates a delivery channel.
+        
+        @description In this example, a delivery channel is created. The type of the delivery channel is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542***:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The returned result shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
         
         @param request: CreateDeliveryChannelRequest
         @return: CreateDeliveryChannelResponse
@@ -2127,7 +2339,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateRemediationResponse:
         """
-        This topic provides an example on how to create a remediation template for the rule `cr-8a973ac2e2be00a2***`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
+        @summary Creates a remediation template for a rule.
+        
+        @description This topic provides an example on how to create a remediation template for the rule `cr-8a973ac2e2be00a2***`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
         
         @param request: CreateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2174,7 +2388,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateRemediationResponse:
         """
-        This topic provides an example on how to create a remediation template for the rule `cr-8a973ac2e2be00a2***`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
+        @summary Creates a remediation template for a rule.
+        
+        @description This topic provides an example on how to create a remediation template for the rule `cr-8a973ac2e2be00a2***`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
         
         @param request: CreateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2220,7 +2436,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateRemediationRequest,
     ) -> config_20200907_models.CreateRemediationResponse:
         """
-        This topic provides an example on how to create a remediation template for the rule `cr-8a973ac2e2be00a2***`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
+        @summary Creates a remediation template for a rule.
+        
+        @description This topic provides an example on how to create a remediation template for the rule `cr-8a973ac2e2be00a2***`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
         
         @param request: CreateRemediationRequest
         @return: CreateRemediationResponse
@@ -2233,7 +2451,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateRemediationRequest,
     ) -> config_20200907_models.CreateRemediationResponse:
         """
-        This topic provides an example on how to create a remediation template for the rule `cr-8a973ac2e2be00a2***`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
+        @summary Creates a remediation template for a rule.
+        
+        @description This topic provides an example on how to create a remediation template for the rule `cr-8a973ac2e2be00a2***`. The returned result shows that a remediation template is created and the ID of the remediation template is `crr-909ba2d4716700eb****`.
         
         @param request: CreateRemediationRequest
         @return: CreateRemediationResponse
@@ -2247,7 +2467,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeactiveAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
+        @summary Disables one or more rules in an account group.
+        
+        @description This topic provides an example on how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
         
         @param request: DeactiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2284,7 +2506,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeactiveAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
+        @summary Disables one or more rules in an account group.
+        
+        @description This topic provides an example on how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
         
         @param request: DeactiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2320,7 +2544,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeactiveAggregateConfigRulesRequest,
     ) -> config_20200907_models.DeactiveAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
+        @summary Disables one or more rules in an account group.
+        
+        @description This topic provides an example on how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
         
         @param request: DeactiveAggregateConfigRulesRequest
         @return: DeactiveAggregateConfigRulesResponse
@@ -2333,7 +2559,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeactiveAggregateConfigRulesRequest,
     ) -> config_20200907_models.DeactiveAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
+        @summary Disables one or more rules in an account group.
+        
+        @description This topic provides an example on how to disable the `cr-5772ba41209e007b***` rule in the `ca-04b3fd170e340007****` account group.
         
         @param request: DeactiveAggregateConfigRulesRequest
         @return: DeactiveAggregateConfigRulesResponse
@@ -2347,7 +2575,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeactiveConfigRulesResponse:
         """
-        In this example, the `cr-19a56457e0d90058***` rule is used.
+        @summary Disables one or more rules.
+        
+        @description In this example, the `cr-19a56457e0d90058***` rule is used.
         
         @param request: DeactiveConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2382,7 +2612,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeactiveConfigRulesResponse:
         """
-        In this example, the `cr-19a56457e0d90058***` rule is used.
+        @summary Disables one or more rules.
+        
+        @description In this example, the `cr-19a56457e0d90058***` rule is used.
         
         @param request: DeactiveConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2416,7 +2648,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeactiveConfigRulesRequest,
     ) -> config_20200907_models.DeactiveConfigRulesResponse:
         """
-        In this example, the `cr-19a56457e0d90058***` rule is used.
+        @summary Disables one or more rules.
+        
+        @description In this example, the `cr-19a56457e0d90058***` rule is used.
         
         @param request: DeactiveConfigRulesRequest
         @return: DeactiveConfigRulesResponse
@@ -2429,7 +2663,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeactiveConfigRulesRequest,
     ) -> config_20200907_models.DeactiveConfigRulesResponse:
         """
-        In this example, the `cr-19a56457e0d90058***` rule is used.
+        @summary Disables one or more rules.
+        
+        @description In this example, the `cr-19a56457e0d90058***` rule is used.
         
         @param request: DeactiveConfigRulesRequest
         @return: DeactiveConfigRulesResponse
@@ -2443,7 +2679,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateCompliancePacksResponse:
         """
-        This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package from the `ca-04b3fd170e340007****` account group.
+        @summary Deletes the compliance packages of an account group.
+        
+        @description This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package from the `ca-04b3fd170e340007****` account group.
         
         @param request: DeleteAggregateCompliancePacksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2484,7 +2722,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateCompliancePacksResponse:
         """
-        This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package from the `ca-04b3fd170e340007****` account group.
+        @summary Deletes the compliance packages of an account group.
+        
+        @description This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package from the `ca-04b3fd170e340007****` account group.
         
         @param request: DeleteAggregateCompliancePacksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2524,7 +2764,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregateCompliancePacksRequest,
     ) -> config_20200907_models.DeleteAggregateCompliancePacksResponse:
         """
-        This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package from the `ca-04b3fd170e340007****` account group.
+        @summary Deletes the compliance packages of an account group.
+        
+        @description This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package from the `ca-04b3fd170e340007****` account group.
         
         @param request: DeleteAggregateCompliancePacksRequest
         @return: DeleteAggregateCompliancePacksResponse
@@ -2537,7 +2779,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregateCompliancePacksRequest,
     ) -> config_20200907_models.DeleteAggregateCompliancePacksResponse:
         """
-        This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package from the `ca-04b3fd170e340007****` account group.
+        @summary Deletes the compliance packages of an account group.
+        
+        @description This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package from the `ca-04b3fd170e340007****` account group.
         
         @param request: DeleteAggregateCompliancePacksRequest
         @return: DeleteAggregateCompliancePacksResponse
@@ -2551,7 +2795,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel from the `ca-23c6626622af0041****` account group. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+        @summary Deletes a delivery channel from an account group.
+        
+        @description This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel from the `ca-23c6626622af0041****` account group. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
         
         @param request: DeleteAggregateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2588,7 +2834,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel from the `ca-23c6626622af0041****` account group. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+        @summary Deletes a delivery channel from an account group.
+        
+        @description This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel from the `ca-23c6626622af0041****` account group. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
         
         @param request: DeleteAggregateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2624,7 +2872,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel from the `ca-23c6626622af0041****` account group. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+        @summary Deletes a delivery channel from an account group.
+        
+        @description This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel from the `ca-23c6626622af0041****` account group. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
         
         @param request: DeleteAggregateConfigDeliveryChannelRequest
         @return: DeleteAggregateConfigDeliveryChannelResponse
@@ -2637,7 +2887,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.DeleteAggregateConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel from the `ca-23c6626622af0041****` account group. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+        @summary Deletes a delivery channel from an account group.
+        
+        @description This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel from the `ca-23c6626622af0041****` account group. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
         
         @param request: DeleteAggregateConfigDeliveryChannelRequest
         @return: DeleteAggregateConfigDeliveryChannelResponse
@@ -2651,10 +2903,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateConfigRulesResponse:
         """
-        ### Background information
+        @summary Deletes one or more rules from an account group.
+        
+        @description ### Background information
         You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
         ### Usage notes
-        This topic provides an example on how to delete the `cr-4e3d626622af0080****` rule from the `ca-a4e5626622af0079****` account group.
+        This topic provides an example on how to delete the `cr-4e3d626622af0080***` rule from the `ca-a4e5626622af0079****` account group.
         
         @param request: DeleteAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2691,10 +2945,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateConfigRulesResponse:
         """
-        ### Background information
+        @summary Deletes one or more rules from an account group.
+        
+        @description ### Background information
         You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
         ### Usage notes
-        This topic provides an example on how to delete the `cr-4e3d626622af0080****` rule from the `ca-a4e5626622af0079****` account group.
+        This topic provides an example on how to delete the `cr-4e3d626622af0080***` rule from the `ca-a4e5626622af0079****` account group.
         
         @param request: DeleteAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2730,10 +2986,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregateConfigRulesRequest,
     ) -> config_20200907_models.DeleteAggregateConfigRulesResponse:
         """
-        ### Background information
+        @summary Deletes one or more rules from an account group.
+        
+        @description ### Background information
         You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
         ### Usage notes
-        This topic provides an example on how to delete the `cr-4e3d626622af0080****` rule from the `ca-a4e5626622af0079****` account group.
+        This topic provides an example on how to delete the `cr-4e3d626622af0080***` rule from the `ca-a4e5626622af0079****` account group.
         
         @param request: DeleteAggregateConfigRulesRequest
         @return: DeleteAggregateConfigRulesResponse
@@ -2746,10 +3004,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregateConfigRulesRequest,
     ) -> config_20200907_models.DeleteAggregateConfigRulesResponse:
         """
-        ### Background information
+        @summary Deletes one or more rules from an account group.
+        
+        @description ### Background information
         You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
         ### Usage notes
-        This topic provides an example on how to delete the `cr-4e3d626622af0080****` rule from the `ca-a4e5626622af0079****` account group.
+        This topic provides an example on how to delete the `cr-4e3d626622af0080***` rule from the `ca-a4e5626622af0079****` account group.
         
         @param request: DeleteAggregateConfigRulesRequest
         @return: DeleteAggregateConfigRulesResponse
@@ -2763,7 +3023,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateRemediationsResponse:
         """
-        This topic provides an example on how to delete the remediation template whose ID is `crr-909ba2d4716700eb***` from the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
+        @summary Deletes one or more remediation templates from a rule in an account group.
+        
+        @description This topic provides an example on how to delete the remediation template whose ID is `crr-909ba2d4716700eb***` from the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
         
         @param request: DeleteAggregateRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2800,7 +3062,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregateRemediationsResponse:
         """
-        This topic provides an example on how to delete the remediation template whose ID is `crr-909ba2d4716700eb***` from the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
+        @summary Deletes one or more remediation templates from a rule in an account group.
+        
+        @description This topic provides an example on how to delete the remediation template whose ID is `crr-909ba2d4716700eb***` from the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
         
         @param request: DeleteAggregateRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2836,7 +3100,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregateRemediationsRequest,
     ) -> config_20200907_models.DeleteAggregateRemediationsResponse:
         """
-        This topic provides an example on how to delete the remediation template whose ID is `crr-909ba2d4716700eb***` from the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
+        @summary Deletes one or more remediation templates from a rule in an account group.
+        
+        @description This topic provides an example on how to delete the remediation template whose ID is `crr-909ba2d4716700eb***` from the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
         
         @param request: DeleteAggregateRemediationsRequest
         @return: DeleteAggregateRemediationsResponse
@@ -2849,7 +3115,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregateRemediationsRequest,
     ) -> config_20200907_models.DeleteAggregateRemediationsResponse:
         """
-        This topic provides an example on how to delete the remediation template whose ID is `crr-909ba2d4716700eb***` from the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
+        @summary Deletes one or more remediation templates from a rule in an account group.
+        
+        @description This topic provides an example on how to delete the remediation template whose ID is `crr-909ba2d4716700eb***` from the account group whose ID is `ca-6b4a626622af0012****`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
         
         @param request: DeleteAggregateRemediationsRequest
         @return: DeleteAggregateRemediationsResponse
@@ -2863,7 +3131,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         """
-        This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9***`.
+        @summary Deletes an account group.
+        
+        @description This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9***`.
         
         @param request: DeleteAggregatorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2900,7 +3170,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         """
-        This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9***`.
+        @summary Deletes an account group.
+        
+        @description This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9***`.
         
         @param request: DeleteAggregatorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2936,7 +3208,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregatorsRequest,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         """
-        This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9***`.
+        @summary Deletes an account group.
+        
+        @description This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9***`.
         
         @param request: DeleteAggregatorsRequest
         @return: DeleteAggregatorsResponse
@@ -2949,7 +3223,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteAggregatorsRequest,
     ) -> config_20200907_models.DeleteAggregatorsResponse:
         """
-        This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9***`.
+        @summary Deletes an account group.
+        
+        @description This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9***`.
         
         @param request: DeleteAggregatorsRequest
         @return: DeleteAggregatorsResponse
@@ -2963,7 +3239,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         """
-        This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package.
+        @summary Deletes one or more compliance packages.
+        
+        @description This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package.
         
         @param request: DeleteCompliancePacksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3002,7 +3280,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         """
-        This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package.
+        @summary Deletes one or more compliance packages.
+        
+        @description This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package.
         
         @param request: DeleteCompliancePacksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3040,7 +3320,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteCompliancePacksRequest,
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         """
-        This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package.
+        @summary Deletes one or more compliance packages.
+        
+        @description This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package.
         
         @param request: DeleteCompliancePacksRequest
         @return: DeleteCompliancePacksResponse
@@ -3053,7 +3335,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteCompliancePacksRequest,
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         """
-        This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package.
+        @summary Deletes one or more compliance packages.
+        
+        @description This topic provides an example on how to delete the `cp-541e626622af0087***` compliance package.
         
         @param request: DeleteCompliancePacksRequest
         @return: DeleteCompliancePacksResponse
@@ -3067,7 +3351,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+        @summary Deletes a delivery channel.
+        
+        @description This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
         
         @param request: DeleteConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3102,7 +3388,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+        @summary Deletes a delivery channel.
+        
+        @description This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
         
         @param request: DeleteConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3136,7 +3424,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteConfigDeliveryChannelRequest,
     ) -> config_20200907_models.DeleteConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+        @summary Deletes a delivery channel.
+        
+        @description This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
         
         @param request: DeleteConfigDeliveryChannelRequest
         @return: DeleteConfigDeliveryChannelResponse
@@ -3149,7 +3439,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteConfigDeliveryChannelRequest,
     ) -> config_20200907_models.DeleteConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+        @summary Deletes a delivery channel.
+        
+        @description This topic provides an example on how to delete the `cdc-38c3013b46c9002c***` delivery channel. The returned result shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
         
         @param request: DeleteConfigDeliveryChannelRequest
         @return: DeleteConfigDeliveryChannelResponse
@@ -3163,7 +3455,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteConfigRulesResponse:
         """
-        In this example, the rule whose ID is cr-9908626622af0035\\\\*\\*\\* is deleted.
+        @summary Deletes rules.
+        
+        @description In this example, the rule whose ID is cr-9908626622af0035\\\\*\\*\\* is deleted.
         
         @param request: DeleteConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3198,7 +3492,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteConfigRulesResponse:
         """
-        In this example, the rule whose ID is cr-9908626622af0035\\\\*\\*\\* is deleted.
+        @summary Deletes rules.
+        
+        @description In this example, the rule whose ID is cr-9908626622af0035\\\\*\\*\\* is deleted.
         
         @param request: DeleteConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3232,7 +3528,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteConfigRulesRequest,
     ) -> config_20200907_models.DeleteConfigRulesResponse:
         """
-        In this example, the rule whose ID is cr-9908626622af0035\\\\*\\*\\* is deleted.
+        @summary Deletes rules.
+        
+        @description In this example, the rule whose ID is cr-9908626622af0035\\\\*\\*\\* is deleted.
         
         @param request: DeleteConfigRulesRequest
         @return: DeleteConfigRulesResponse
@@ -3245,7 +3543,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteConfigRulesRequest,
     ) -> config_20200907_models.DeleteConfigRulesResponse:
         """
-        In this example, the rule whose ID is cr-9908626622af0035\\\\*\\*\\* is deleted.
+        @summary Deletes rules.
+        
+        @description In this example, the rule whose ID is cr-9908626622af0035\\\\*\\*\\* is deleted.
         
         @param request: DeleteConfigRulesRequest
         @return: DeleteConfigRulesResponse
@@ -3259,7 +3559,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteRemediationsResponse:
         """
-        This topic provides an example on how to delete the remediation template `crr-909ba2d4716700eb***`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
+        @summary Deletes one or more configured remediation templates that are associated with a rule.
+        
+        @description This topic provides an example on how to delete the remediation template `crr-909ba2d4716700eb***`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
         
         @param request: DeleteRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3294,7 +3596,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DeleteRemediationsResponse:
         """
-        This topic provides an example on how to delete the remediation template `crr-909ba2d4716700eb***`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
+        @summary Deletes one or more configured remediation templates that are associated with a rule.
+        
+        @description This topic provides an example on how to delete the remediation template `crr-909ba2d4716700eb***`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
         
         @param request: DeleteRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3328,7 +3632,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteRemediationsRequest,
     ) -> config_20200907_models.DeleteRemediationsResponse:
         """
-        This topic provides an example on how to delete the remediation template `crr-909ba2d4716700eb***`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
+        @summary Deletes one or more configured remediation templates that are associated with a rule.
+        
+        @description This topic provides an example on how to delete the remediation template `crr-909ba2d4716700eb***`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
         
         @param request: DeleteRemediationsRequest
         @return: DeleteRemediationsResponse
@@ -3341,7 +3647,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.DeleteRemediationsRequest,
     ) -> config_20200907_models.DeleteRemediationsResponse:
         """
-        This topic provides an example on how to delete the remediation template `crr-909ba2d4716700eb***`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
+        @summary Deletes one or more configured remediation templates that are associated with a rule.
+        
+        @description This topic provides an example on how to delete the remediation template `crr-909ba2d4716700eb***`. The returned result shows that the remediation template whose ID is `crr-909ba2d4716700eb****` is deleted.
         
         @param request: DeleteRemediationsRequest
         @return: DeleteRemediationsResponse
@@ -3354,6 +3662,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.DescribeRemediationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DescribeRemediationResponse:
+        """
+        @summary This topic provides an example on how to query the details of a remediation configuration whose ID is crr-f381cf0c1c2f004e\\\\*\\*\\*.
+        
+        @param request: DescribeRemediationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRemediationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3380,6 +3695,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.DescribeRemediationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DescribeRemediationResponse:
+        """
+        @summary This topic provides an example on how to query the details of a remediation configuration whose ID is crr-f381cf0c1c2f004e\\\\*\\*\\*.
+        
+        @param request: DescribeRemediationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRemediationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3405,6 +3727,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.DescribeRemediationRequest,
     ) -> config_20200907_models.DescribeRemediationResponse:
+        """
+        @summary This topic provides an example on how to query the details of a remediation configuration whose ID is crr-f381cf0c1c2f004e\\\\*\\*\\*.
+        
+        @param request: DescribeRemediationRequest
+        @return: DescribeRemediationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_remediation_with_options(request, runtime)
 
@@ -3412,6 +3740,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.DescribeRemediationRequest,
     ) -> config_20200907_models.DescribeRemediationResponse:
+        """
+        @summary This topic provides an example on how to query the details of a remediation configuration whose ID is crr-f381cf0c1c2f004e\\\\*\\*\\*.
+        
+        @param request: DescribeRemediationRequest
+        @return: DescribeRemediationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_remediation_with_options_async(request, runtime)
 
@@ -3421,10 +3755,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DetachAggregateConfigRuleToCompliancePackResponse:
         """
-        ### Prerequisites
+        @summary Removes one or more rules in an account group from a compliance package.
+        
+        @description ### Prerequisites
         One or more rules are added to a compliance package.
         ### Usage notes
-        The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7****` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
+        The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: DetachAggregateConfigRuleToCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3463,10 +3799,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DetachAggregateConfigRuleToCompliancePackResponse:
         """
-        ### Prerequisites
+        @summary Removes one or more rules in an account group from a compliance package.
+        
+        @description ### Prerequisites
         One or more rules are added to a compliance package.
         ### Usage notes
-        The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7****` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
+        The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: DetachAggregateConfigRuleToCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3504,10 +3842,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.DetachAggregateConfigRuleToCompliancePackRequest,
     ) -> config_20200907_models.DetachAggregateConfigRuleToCompliancePackResponse:
         """
-        ### Prerequisites
+        @summary Removes one or more rules in an account group from a compliance package.
+        
+        @description ### Prerequisites
         One or more rules are added to a compliance package.
         ### Usage notes
-        The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7****` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
+        The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: DetachAggregateConfigRuleToCompliancePackRequest
         @return: DetachAggregateConfigRuleToCompliancePackResponse
@@ -3520,10 +3860,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.DetachAggregateConfigRuleToCompliancePackRequest,
     ) -> config_20200907_models.DetachAggregateConfigRuleToCompliancePackResponse:
         """
-        ### Prerequisites
+        @summary Removes one or more rules in an account group from a compliance package.
+        
+        @description ### Prerequisites
         One or more rules are added to a compliance package.
         ### Usage notes
-        The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7****` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
+        The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7***` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: DetachAggregateConfigRuleToCompliancePackRequest
         @return: DetachAggregateConfigRuleToCompliancePackResponse
@@ -3537,10 +3879,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DetachConfigRuleToCompliancePackResponse:
         """
-        ### Prerequisites
+        @summary Removes one or more rules from a compliance package.
+        
+        @description ### Prerequisites
         One or more rules are added to a compliance package.
         ### Usage notes
-        This topic provides an example on how to remove the `cr-6cc4626622af00e7****` rule from the `cp-5bb1626622af00bd****` compliance package.
+        This topic provides an example on how to remove the `cr-6cc4626622af00e7***` rule from the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: DetachConfigRuleToCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3577,10 +3921,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.DetachConfigRuleToCompliancePackResponse:
         """
-        ### Prerequisites
+        @summary Removes one or more rules from a compliance package.
+        
+        @description ### Prerequisites
         One or more rules are added to a compliance package.
         ### Usage notes
-        This topic provides an example on how to remove the `cr-6cc4626622af00e7****` rule from the `cp-5bb1626622af00bd****` compliance package.
+        This topic provides an example on how to remove the `cr-6cc4626622af00e7***` rule from the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: DetachConfigRuleToCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3616,10 +3962,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.DetachConfigRuleToCompliancePackRequest,
     ) -> config_20200907_models.DetachConfigRuleToCompliancePackResponse:
         """
-        ### Prerequisites
+        @summary Removes one or more rules from a compliance package.
+        
+        @description ### Prerequisites
         One or more rules are added to a compliance package.
         ### Usage notes
-        This topic provides an example on how to remove the `cr-6cc4626622af00e7****` rule from the `cp-5bb1626622af00bd****` compliance package.
+        This topic provides an example on how to remove the `cr-6cc4626622af00e7***` rule from the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: DetachConfigRuleToCompliancePackRequest
         @return: DetachConfigRuleToCompliancePackResponse
@@ -3632,10 +3980,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.DetachConfigRuleToCompliancePackRequest,
     ) -> config_20200907_models.DetachConfigRuleToCompliancePackResponse:
         """
-        ### Prerequisites
+        @summary Removes one or more rules from a compliance package.
+        
+        @description ### Prerequisites
         One or more rules are added to a compliance package.
         ### Usage notes
-        This topic provides an example on how to remove the `cr-6cc4626622af00e7****` rule from the `cp-5bb1626622af00bd****` compliance package.
+        This topic provides an example on how to remove the `cr-6cc4626622af00e7***` rule from the `cp-5bb1626622af00bd****` compliance package.
         
         @param request: DetachConfigRuleToCompliancePackRequest
         @return: DetachConfigRuleToCompliancePackResponse
@@ -3648,6 +3998,13 @@ class Client(OpenApiClient):
         tmp_req: config_20200907_models.EvaluatePreConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.EvaluatePreConfigRulesResponse:
+        """
+        @summary Executes evaluation rules to evaluate resources.
+        
+        @param tmp_req: EvaluatePreConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EvaluatePreConfigRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = config_20200907_models.EvaluatePreConfigRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3682,6 +4039,13 @@ class Client(OpenApiClient):
         tmp_req: config_20200907_models.EvaluatePreConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.EvaluatePreConfigRulesResponse:
+        """
+        @summary Executes evaluation rules to evaluate resources.
+        
+        @param tmp_req: EvaluatePreConfigRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EvaluatePreConfigRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = config_20200907_models.EvaluatePreConfigRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3715,6 +4079,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.EvaluatePreConfigRulesRequest,
     ) -> config_20200907_models.EvaluatePreConfigRulesResponse:
+        """
+        @summary Executes evaluation rules to evaluate resources.
+        
+        @param request: EvaluatePreConfigRulesRequest
+        @return: EvaluatePreConfigRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.evaluate_pre_config_rules_with_options(request, runtime)
 
@@ -3722,6 +4092,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.EvaluatePreConfigRulesRequest,
     ) -> config_20200907_models.EvaluatePreConfigRulesResponse:
+        """
+        @summary Executes evaluation rules to evaluate resources.
+        
+        @param request: EvaluatePreConfigRulesRequest
+        @return: EvaluatePreConfigRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.evaluate_pre_config_rules_with_options_async(request, runtime)
 
@@ -3731,8 +4107,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateCompliancePackReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](~~262699~~).
-        This topic provides an example on how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Generates a compliance evaluation report based on a compliance package in an account group.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](https://help.aliyun.com/document_detail/262699.html).
+        This topic provides an example on how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: GenerateAggregateCompliancePackReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3771,8 +4149,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateCompliancePackReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](~~262699~~).
-        This topic provides an example on how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Generates a compliance evaluation report based on a compliance package in an account group.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](https://help.aliyun.com/document_detail/262699.html).
+        This topic provides an example on how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: GenerateAggregateCompliancePackReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3810,8 +4190,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateAggregateCompliancePackReportRequest,
     ) -> config_20200907_models.GenerateAggregateCompliancePackReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](~~262699~~).
-        This topic provides an example on how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Generates a compliance evaluation report based on a compliance package in an account group.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](https://help.aliyun.com/document_detail/262699.html).
+        This topic provides an example on how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: GenerateAggregateCompliancePackReportRequest
         @return: GenerateAggregateCompliancePackReportResponse
@@ -3824,8 +4206,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateAggregateCompliancePackReportRequest,
     ) -> config_20200907_models.GenerateAggregateCompliancePackReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](~~262699~~).
-        This topic provides an example on how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Generates a compliance evaluation report based on a compliance package in an account group.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](https://help.aliyun.com/document_detail/262699.html).
+        This topic provides an example on how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: GenerateAggregateCompliancePackReportRequest
         @return: GenerateAggregateCompliancePackReportResponse
@@ -3839,8 +4223,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateConfigRulesReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](~~262706~~).
-        The topic provides an example on how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079****` account group.
+        @summary Generates a compliance evaluation report based on all rules in an account group.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](https://help.aliyun.com/document_detail/262706.html).
+        The topic provides an example on how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079***` account group.
         
         @param request: GenerateAggregateConfigRulesReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3879,8 +4265,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateConfigRulesReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](~~262706~~).
-        The topic provides an example on how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079****` account group.
+        @summary Generates a compliance evaluation report based on all rules in an account group.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](https://help.aliyun.com/document_detail/262706.html).
+        The topic provides an example on how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079***` account group.
         
         @param request: GenerateAggregateConfigRulesReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3918,8 +4306,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateAggregateConfigRulesReportRequest,
     ) -> config_20200907_models.GenerateAggregateConfigRulesReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](~~262706~~).
-        The topic provides an example on how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079****` account group.
+        @summary Generates a compliance evaluation report based on all rules in an account group.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](https://help.aliyun.com/document_detail/262706.html).
+        The topic provides an example on how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079***` account group.
         
         @param request: GenerateAggregateConfigRulesReportRequest
         @return: GenerateAggregateConfigRulesReportResponse
@@ -3932,8 +4322,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateAggregateConfigRulesReportRequest,
     ) -> config_20200907_models.GenerateAggregateConfigRulesReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](~~262706~~).
-        The topic provides an example on how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079****` account group.
+        @summary Generates a compliance evaluation report based on all rules in an account group.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](https://help.aliyun.com/document_detail/262706.html).
+        The topic provides an example on how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079***` account group.
         
         @param request: GenerateAggregateConfigRulesReportRequest
         @return: GenerateAggregateConfigRulesReportResponse
@@ -3947,7 +4339,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateResourceInventoryResponse:
         """
-        This topic provides an example to show how to generate a downloadable inventory for global resources in the account group ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Generates a downloadable inventory for global resources in an account group.
+        
+        @description This topic provides an example to show how to generate a downloadable inventory for global resources in the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GenerateAggregateResourceInventoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3961,6 +4355,8 @@ class Client(OpenApiClient):
             query['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.regions):
             query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
@@ -3988,7 +4384,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateAggregateResourceInventoryResponse:
         """
-        This topic provides an example to show how to generate a downloadable inventory for global resources in the account group ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Generates a downloadable inventory for global resources in an account group.
+        
+        @description This topic provides an example to show how to generate a downloadable inventory for global resources in the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GenerateAggregateResourceInventoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4002,6 +4400,8 @@ class Client(OpenApiClient):
             query['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.regions):
             query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
@@ -4028,7 +4428,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateAggregateResourceInventoryRequest,
     ) -> config_20200907_models.GenerateAggregateResourceInventoryResponse:
         """
-        This topic provides an example to show how to generate a downloadable inventory for global resources in the account group ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Generates a downloadable inventory for global resources in an account group.
+        
+        @description This topic provides an example to show how to generate a downloadable inventory for global resources in the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GenerateAggregateResourceInventoryRequest
         @return: GenerateAggregateResourceInventoryResponse
@@ -4041,7 +4443,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateAggregateResourceInventoryRequest,
     ) -> config_20200907_models.GenerateAggregateResourceInventoryResponse:
         """
-        This topic provides an example to show how to generate a downloadable inventory for global resources in the account group ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Generates a downloadable inventory for global resources in an account group.
+        
+        @description This topic provides an example to show how to generate a downloadable inventory for global resources in the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GenerateAggregateResourceInventoryRequest
         @return: GenerateAggregateResourceInventoryResponse
@@ -4055,8 +4459,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateCompliancePackReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](~~263347~~).
-        This topic provides an example on how to generate a compliance evaluation report based on the `cp-a8a8626622af0082****` compliance package.
+        @summary Generates a compliance evaluation report based on a compliance package.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](https://help.aliyun.com/document_detail/263347.html).
+        This topic provides an example on how to generate a compliance evaluation report based on the `cp-a8a8626622af0082***` compliance package.
         
         @param request: GenerateCompliancePackReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4093,8 +4499,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateCompliancePackReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](~~263347~~).
-        This topic provides an example on how to generate a compliance evaluation report based on the `cp-a8a8626622af0082****` compliance package.
+        @summary Generates a compliance evaluation report based on a compliance package.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](https://help.aliyun.com/document_detail/263347.html).
+        This topic provides an example on how to generate a compliance evaluation report based on the `cp-a8a8626622af0082***` compliance package.
         
         @param request: GenerateCompliancePackReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4130,8 +4538,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateCompliancePackReportRequest,
     ) -> config_20200907_models.GenerateCompliancePackReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](~~263347~~).
-        This topic provides an example on how to generate a compliance evaluation report based on the `cp-a8a8626622af0082****` compliance package.
+        @summary Generates a compliance evaluation report based on a compliance package.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](https://help.aliyun.com/document_detail/263347.html).
+        This topic provides an example on how to generate a compliance evaluation report based on the `cp-a8a8626622af0082***` compliance package.
         
         @param request: GenerateCompliancePackReportRequest
         @return: GenerateCompliancePackReportResponse
@@ -4144,8 +4554,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateCompliancePackReportRequest,
     ) -> config_20200907_models.GenerateCompliancePackReportResponse:
         """
-        > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](~~263347~~).
-        This topic provides an example on how to generate a compliance evaluation report based on the `cp-a8a8626622af0082****` compliance package.
+        @summary Generates a compliance evaluation report based on a compliance package.
+        
+        @description > You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](https://help.aliyun.com/document_detail/263347.html).
+        This topic provides an example on how to generate a compliance evaluation report based on the `cp-a8a8626622af0082***` compliance package.
         
         @param request: GenerateCompliancePackReportRequest
         @return: GenerateCompliancePackReportResponse
@@ -4159,7 +4571,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateConfigRulesReportResponse:
         """
-        >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](~~263608~~).
+        @summary Generates a compliance evaluation report based on all existing rules.
+        
+        @description >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](https://help.aliyun.com/document_detail/263608.html).
         This topic provides an example of how to generate a compliance evaluation report based on all existing rules.
         
         @param request: GenerateConfigRulesReportRequest
@@ -4197,7 +4611,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateConfigRulesReportResponse:
         """
-        >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](~~263608~~).
+        @summary Generates a compliance evaluation report based on all existing rules.
+        
+        @description >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](https://help.aliyun.com/document_detail/263608.html).
         This topic provides an example of how to generate a compliance evaluation report based on all existing rules.
         
         @param request: GenerateConfigRulesReportRequest
@@ -4234,7 +4650,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateConfigRulesReportRequest,
     ) -> config_20200907_models.GenerateConfigRulesReportResponse:
         """
-        >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](~~263608~~).
+        @summary Generates a compliance evaluation report based on all existing rules.
+        
+        @description >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](https://help.aliyun.com/document_detail/263608.html).
         This topic provides an example of how to generate a compliance evaluation report based on all existing rules.
         
         @param request: GenerateConfigRulesReportRequest
@@ -4248,7 +4666,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateConfigRulesReportRequest,
     ) -> config_20200907_models.GenerateConfigRulesReportResponse:
         """
-        >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](~~263608~~).
+        @summary Generates a compliance evaluation report based on all existing rules.
+        
+        @description >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](https://help.aliyun.com/document_detail/263608.html).
         This topic provides an example of how to generate a compliance evaluation report based on all existing rules.
         
         @param request: GenerateConfigRulesReportRequest
@@ -4263,7 +4683,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateResourceInventoryResponse:
         """
-        This topic provides an example on how to generate a resource inventory for global resources of the current account.
+        @summary Generates a resource inventory for global resources.
+        
+        @description This topic provides an example on how to generate a resource inventory for global resources of the current account.
         
         @param request: GenerateResourceInventoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4273,6 +4695,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.regions):
             query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
@@ -4300,7 +4724,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GenerateResourceInventoryResponse:
         """
-        This topic provides an example on how to generate a resource inventory for global resources of the current account.
+        @summary Generates a resource inventory for global resources.
+        
+        @description This topic provides an example on how to generate a resource inventory for global resources of the current account.
         
         @param request: GenerateResourceInventoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4310,6 +4736,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.regions):
             query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
         req = open_api_models.OpenApiRequest(
@@ -4336,7 +4764,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateResourceInventoryRequest,
     ) -> config_20200907_models.GenerateResourceInventoryResponse:
         """
-        This topic provides an example on how to generate a resource inventory for global resources of the current account.
+        @summary Generates a resource inventory for global resources.
+        
+        @description This topic provides an example on how to generate a resource inventory for global resources of the current account.
         
         @param request: GenerateResourceInventoryRequest
         @return: GenerateResourceInventoryResponse
@@ -4349,7 +4779,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GenerateResourceInventoryRequest,
     ) -> config_20200907_models.GenerateResourceInventoryResponse:
         """
-        This topic provides an example on how to generate a resource inventory for global resources of the current account.
+        @summary Generates a resource inventory for global resources.
+        
+        @description This topic provides an example on how to generate a resource inventory for global resources of the current account.
         
         @param request: GenerateResourceInventoryRequest
         @return: GenerateResourceInventoryResponse
@@ -4361,6 +4793,16 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAdvancedSearchFileResponse:
+        """
+        @summary Obtains the last resource advanced search file that is generated within the current account. You can call this operation to obtain the URL of the resource advanced search file.
+        
+        @description ### [](#)Prerequisites
+        You must call the [CreateAdvancedSearchFile](https://help.aliyun.com/document_detail/2511967.html) operation to create a resource advanced search file. Then, you can call this operation to obtain the URL of the resource advanced search file.
+        
+        @param request: GetAdvancedSearchFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAdvancedSearchFileResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAdvancedSearchFile',
@@ -4382,6 +4824,16 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAdvancedSearchFileResponse:
+        """
+        @summary Obtains the last resource advanced search file that is generated within the current account. You can call this operation to obtain the URL of the resource advanced search file.
+        
+        @description ### [](#)Prerequisites
+        You must call the [CreateAdvancedSearchFile](https://help.aliyun.com/document_detail/2511967.html) operation to create a resource advanced search file. Then, you can call this operation to obtain the URL of the resource advanced search file.
+        
+        @param request: GetAdvancedSearchFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAdvancedSearchFileResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAdvancedSearchFile',
@@ -4400,10 +4852,26 @@ class Client(OpenApiClient):
         )
 
     def get_advanced_search_file(self) -> config_20200907_models.GetAdvancedSearchFileResponse:
+        """
+        @summary Obtains the last resource advanced search file that is generated within the current account. You can call this operation to obtain the URL of the resource advanced search file.
+        
+        @description ### [](#)Prerequisites
+        You must call the [CreateAdvancedSearchFile](https://help.aliyun.com/document_detail/2511967.html) operation to create a resource advanced search file. Then, you can call this operation to obtain the URL of the resource advanced search file.
+        
+        @return: GetAdvancedSearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_advanced_search_file_with_options(runtime)
 
     async def get_advanced_search_file_async(self) -> config_20200907_models.GetAdvancedSearchFileResponse:
+        """
+        @summary Obtains the last resource advanced search file that is generated within the current account. You can call this operation to obtain the URL of the resource advanced search file.
+        
+        @description ### [](#)Prerequisites
+        You must call the [CreateAdvancedSearchFile](https://help.aliyun.com/document_detail/2511967.html) operation to create a resource advanced search file. Then, you can call this operation to obtain the URL of the resource advanced search file.
+        
+        @return: GetAdvancedSearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_advanced_search_file_with_options_async(runtime)
 
@@ -4413,7 +4881,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateAccountComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087***` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
+        @summary Queries the compliance evaluation results of member accounts for which a compliance package takes effect in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087***` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
         
         @param request: GetAggregateAccountComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4446,7 +4916,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateAccountComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087***` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
+        @summary Queries the compliance evaluation results of member accounts for which a compliance package takes effect in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087***` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
         
         @param request: GetAggregateAccountComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4478,7 +4950,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateAccountComplianceByPackRequest,
     ) -> config_20200907_models.GetAggregateAccountComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087***` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
+        @summary Queries the compliance evaluation results of member accounts for which a compliance package takes effect in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087***` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
         
         @param request: GetAggregateAccountComplianceByPackRequest
         @return: GetAggregateAccountComplianceByPackResponse
@@ -4491,7 +4965,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateAccountComplianceByPackRequest,
     ) -> config_20200907_models.GetAggregateAccountComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087***` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
+        @summary Queries the compliance evaluation results of member accounts for which a compliance package takes effect in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of member accounts for which the `cp-541e626622af0087***` compliance package takes effect in the `ca-04b3fd170e340007****` account group. The returned result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
         
         @param request: GetAggregateAccountComplianceByPackRequest
         @return: GetAggregateAccountComplianceByPackResponse
@@ -4504,6 +4980,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateAdvancedSearchFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateAdvancedSearchFileResponse:
+        """
+        @summary Queries the most recently generated resource file of an account group.
+        
+        @param request: GetAggregateAdvancedSearchFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateAdvancedSearchFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -4532,6 +5015,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateAdvancedSearchFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateAdvancedSearchFileResponse:
+        """
+        @summary Queries the most recently generated resource file of an account group.
+        
+        @param request: GetAggregateAdvancedSearchFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateAdvancedSearchFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -4559,6 +5049,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateAdvancedSearchFileRequest,
     ) -> config_20200907_models.GetAggregateAdvancedSearchFileResponse:
+        """
+        @summary Queries the most recently generated resource file of an account group.
+        
+        @param request: GetAggregateAdvancedSearchFileRequest
+        @return: GetAggregateAdvancedSearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_aggregate_advanced_search_file_with_options(request, runtime)
 
@@ -4566,6 +5062,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateAdvancedSearchFileRequest,
     ) -> config_20200907_models.GetAggregateAdvancedSearchFileResponse:
+        """
+        @summary Queries the most recently generated resource file of an account group.
+        
+        @param request: GetAggregateAdvancedSearchFileRequest
+        @return: GetAggregateAdvancedSearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_advanced_search_file_with_options_async(request, runtime)
 
@@ -4575,7 +5077,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateCompliancePackResponse:
         """
-        The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***` in an account group whose ID is `ca-f632626622af0079****`.
+        @summary Queries the details of a compliance package in an account group.
+        
+        @description The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***` in an account group whose ID is `ca-f632626622af0079****`.
         
         @param request: GetAggregateCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4608,7 +5112,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateCompliancePackResponse:
         """
-        The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***` in an account group whose ID is `ca-f632626622af0079****`.
+        @summary Queries the details of a compliance package in an account group.
+        
+        @description The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***` in an account group whose ID is `ca-f632626622af0079****`.
         
         @param request: GetAggregateCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4640,7 +5146,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateCompliancePackRequest,
     ) -> config_20200907_models.GetAggregateCompliancePackResponse:
         """
-        The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***` in an account group whose ID is `ca-f632626622af0079****`.
+        @summary Queries the details of a compliance package in an account group.
+        
+        @description The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***` in an account group whose ID is `ca-f632626622af0079****`.
         
         @param request: GetAggregateCompliancePackRequest
         @return: GetAggregateCompliancePackResponse
@@ -4653,7 +5161,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateCompliancePackRequest,
     ) -> config_20200907_models.GetAggregateCompliancePackResponse:
         """
-        The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***` in an account group whose ID is `ca-f632626622af0079****`.
+        @summary Queries the details of a compliance package in an account group.
+        
+        @description The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***` in an account group whose ID is `ca-f632626622af0079****`.
         
         @param request: GetAggregateCompliancePackRequest
         @return: GetAggregateCompliancePackResponse
@@ -4667,8 +5177,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateCompliancePackReportResponse:
         """
-        > Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateAggregateCompliancePackReport](~~262687~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Queries the compliance evaluation report that is generated based on a compliance package of an account group.
+        
+        @description > Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateAggregateCompliancePackReport](https://help.aliyun.com/document_detail/262687.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: GetAggregateCompliancePackReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4701,8 +5213,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateCompliancePackReportResponse:
         """
-        > Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateAggregateCompliancePackReport](~~262687~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Queries the compliance evaluation report that is generated based on a compliance package of an account group.
+        
+        @description > Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateAggregateCompliancePackReport](https://help.aliyun.com/document_detail/262687.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: GetAggregateCompliancePackReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4734,8 +5248,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateCompliancePackReportRequest,
     ) -> config_20200907_models.GetAggregateCompliancePackReportResponse:
         """
-        > Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateAggregateCompliancePackReport](~~262687~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Queries the compliance evaluation report that is generated based on a compliance package of an account group.
+        
+        @description > Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateAggregateCompliancePackReport](https://help.aliyun.com/document_detail/262687.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: GetAggregateCompliancePackReportRequest
         @return: GetAggregateCompliancePackReportResponse
@@ -4748,8 +5264,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateCompliancePackReportRequest,
     ) -> config_20200907_models.GetAggregateCompliancePackReportResponse:
         """
-        > Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateAggregateCompliancePackReport](~~262687~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Queries the compliance evaluation report that is generated based on a compliance package of an account group.
+        
+        @description > Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateAggregateCompliancePackReport](https://help.aliyun.com/document_detail/262687.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: GetAggregateCompliancePackReportRequest
         @return: GetAggregateCompliancePackReportResponse
@@ -4763,7 +5281,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateComplianceSummaryResponse:
         """
-        This topic provides an example on how to query the compliance statistics of resources and rules in the account group ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Queries the compliance statistics of an account group.
+        
+        @description This topic provides an example on how to query the compliance statistics of resources and rules in the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GetAggregateComplianceSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4798,7 +5318,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateComplianceSummaryResponse:
         """
-        This topic provides an example on how to query the compliance statistics of resources and rules in the account group ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Queries the compliance statistics of an account group.
+        
+        @description This topic provides an example on how to query the compliance statistics of resources and rules in the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GetAggregateComplianceSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4832,7 +5354,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateComplianceSummaryRequest,
     ) -> config_20200907_models.GetAggregateComplianceSummaryResponse:
         """
-        This topic provides an example on how to query the compliance statistics of resources and rules in the account group ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Queries the compliance statistics of an account group.
+        
+        @description This topic provides an example on how to query the compliance statistics of resources and rules in the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GetAggregateComplianceSummaryRequest
         @return: GetAggregateComplianceSummaryResponse
@@ -4845,7 +5369,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateComplianceSummaryRequest,
     ) -> config_20200907_models.GetAggregateComplianceSummaryResponse:
         """
-        This topic provides an example on how to query the compliance statistics of resources and rules in the account group ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Queries the compliance statistics of an account group.
+        
+        @description This topic provides an example on how to query the compliance statistics of resources and rules in the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GetAggregateComplianceSummaryRequest
         @return: GetAggregateComplianceSummaryResponse
@@ -4858,6 +5384,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigDeliveryChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigDeliveryChannelResponse:
+        """
+        @summary Queries the information about a delivery channel in an account group.
+        
+        @param request: GetAggregateConfigDeliveryChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateConfigDeliveryChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -4888,6 +5421,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigDeliveryChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigDeliveryChannelResponse:
+        """
+        @summary Queries the information about a delivery channel in an account group.
+        
+        @param request: GetAggregateConfigDeliveryChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateConfigDeliveryChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -4917,6 +5457,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.GetAggregateConfigDeliveryChannelResponse:
+        """
+        @summary Queries the information about a delivery channel in an account group.
+        
+        @param request: GetAggregateConfigDeliveryChannelRequest
+        @return: GetAggregateConfigDeliveryChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_aggregate_config_delivery_channel_with_options(request, runtime)
 
@@ -4924,6 +5470,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.GetAggregateConfigDeliveryChannelResponse:
+        """
+        @summary Queries the information about a delivery channel in an account group.
+        
+        @param request: GetAggregateConfigDeliveryChannelRequest
+        @return: GetAggregateConfigDeliveryChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_config_delivery_channel_with_options_async(request, runtime)
 
@@ -4933,7 +5485,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
-        This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
+        @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
         @param request: GetAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4970,7 +5522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
-        This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
+        @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
         @param request: GetAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5006,7 +5558,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
-        This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
+        @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
         @param request: GetAggregateConfigRuleRequest
         @return: GetAggregateConfigRuleResponse
@@ -5019,7 +5571,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
-        This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
+        @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
         @param request: GetAggregateConfigRuleRequest
         @return: GetAggregateConfigRuleResponse
@@ -5033,7 +5585,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleComplianceByPackResponse:
         """
-        The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087***` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
+        @summary Queries compliance evaluation results based on the rules in a compliance package in an account group.
+        
+        @description The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087***` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
         
         @param request: GetAggregateConfigRuleComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5066,7 +5620,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleComplianceByPackResponse:
         """
-        The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087***` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
+        @summary Queries compliance evaluation results based on the rules in a compliance package in an account group.
+        
+        @description The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087***` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
         
         @param request: GetAggregateConfigRuleComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5098,7 +5654,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleComplianceByPackRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleComplianceByPackResponse:
         """
-        The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087***` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
+        @summary Queries compliance evaluation results based on the rules in a compliance package in an account group.
+        
+        @description The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087***` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
         
         @param request: GetAggregateConfigRuleComplianceByPackRequest
         @return: GetAggregateConfigRuleComplianceByPackResponse
@@ -5111,7 +5669,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleComplianceByPackRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleComplianceByPackResponse:
         """
-        The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087***` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
+        @summary Queries compliance evaluation results based on the rules in a compliance package in an account group.
+        
+        @description The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087***` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
         
         @param request: GetAggregateConfigRuleComplianceByPackRequest
         @return: GetAggregateConfigRuleComplianceByPackResponse
@@ -5125,7 +5685,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleSummaryByRiskLevelResponse:
         """
-        This topic provides an example on how to query the summary of compliance evaluation results by rule risk level in the `ca-3a58626622af0005***` account group. The returned result shows four rules that are specified with the high risk level. One of the rules detects non-compliant resources, and the resources evaluated by the remaining three are compliant.
+        @summary Queries the summary of compliance evaluation results by rule risk level in an account group.
+        
+        @description This topic provides an example on how to query the summary of compliance evaluation results by rule risk level in the `ca-3a58626622af0005***` account group. The returned result shows four rules that are specified with the high risk level. One of the rules detects non-compliant resources, and the resources evaluated by the remaining three are compliant.
         
         @param request: GetAggregateConfigRuleSummaryByRiskLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5158,7 +5720,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleSummaryByRiskLevelResponse:
         """
-        This topic provides an example on how to query the summary of compliance evaluation results by rule risk level in the `ca-3a58626622af0005***` account group. The returned result shows four rules that are specified with the high risk level. One of the rules detects non-compliant resources, and the resources evaluated by the remaining three are compliant.
+        @summary Queries the summary of compliance evaluation results by rule risk level in an account group.
+        
+        @description This topic provides an example on how to query the summary of compliance evaluation results by rule risk level in the `ca-3a58626622af0005***` account group. The returned result shows four rules that are specified with the high risk level. One of the rules detects non-compliant resources, and the resources evaluated by the remaining three are compliant.
         
         @param request: GetAggregateConfigRuleSummaryByRiskLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5190,7 +5754,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleSummaryByRiskLevelRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleSummaryByRiskLevelResponse:
         """
-        This topic provides an example on how to query the summary of compliance evaluation results by rule risk level in the `ca-3a58626622af0005***` account group. The returned result shows four rules that are specified with the high risk level. One of the rules detects non-compliant resources, and the resources evaluated by the remaining three are compliant.
+        @summary Queries the summary of compliance evaluation results by rule risk level in an account group.
+        
+        @description This topic provides an example on how to query the summary of compliance evaluation results by rule risk level in the `ca-3a58626622af0005***` account group. The returned result shows four rules that are specified with the high risk level. One of the rules detects non-compliant resources, and the resources evaluated by the remaining three are compliant.
         
         @param request: GetAggregateConfigRuleSummaryByRiskLevelRequest
         @return: GetAggregateConfigRuleSummaryByRiskLevelResponse
@@ -5203,7 +5769,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleSummaryByRiskLevelRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleSummaryByRiskLevelResponse:
         """
-        This topic provides an example on how to query the summary of compliance evaluation results by rule risk level in the `ca-3a58626622af0005***` account group. The returned result shows four rules that are specified with the high risk level. One of the rules detects non-compliant resources, and the resources evaluated by the remaining three are compliant.
+        @summary Queries the summary of compliance evaluation results by rule risk level in an account group.
+        
+        @description This topic provides an example on how to query the summary of compliance evaluation results by rule risk level in the `ca-3a58626622af0005***` account group. The returned result shows four rules that are specified with the high risk level. One of the rules detects non-compliant resources, and the resources evaluated by the remaining three are compliant.
         
         @param request: GetAggregateConfigRuleSummaryByRiskLevelRequest
         @return: GetAggregateConfigRuleSummaryByRiskLevelResponse
@@ -5217,8 +5785,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRulesReportResponse:
         """
-        > Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group. For more information, see [GenerateAggregateConfigRulesReport](~~262701~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079****` account group.
+        @summary Queries the compliance evaluation report that is generated based on all rules in an account group.
+        
+        @description > Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group. For more information, see [GenerateAggregateConfigRulesReport](https://help.aliyun.com/document_detail/262701.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079***` account group.
         
         @param request: GetAggregateConfigRulesReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5255,8 +5825,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRulesReportResponse:
         """
-        > Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group. For more information, see [GenerateAggregateConfigRulesReport](~~262701~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079****` account group.
+        @summary Queries the compliance evaluation report that is generated based on all rules in an account group.
+        
+        @description > Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group. For more information, see [GenerateAggregateConfigRulesReport](https://help.aliyun.com/document_detail/262701.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079***` account group.
         
         @param request: GetAggregateConfigRulesReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5292,8 +5864,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRulesReportRequest,
     ) -> config_20200907_models.GetAggregateConfigRulesReportResponse:
         """
-        > Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group. For more information, see [GenerateAggregateConfigRulesReport](~~262701~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079****` account group.
+        @summary Queries the compliance evaluation report that is generated based on all rules in an account group.
+        
+        @description > Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group. For more information, see [GenerateAggregateConfigRulesReport](https://help.aliyun.com/document_detail/262701.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079***` account group.
         
         @param request: GetAggregateConfigRulesReportRequest
         @return: GetAggregateConfigRulesReportResponse
@@ -5306,8 +5880,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRulesReportRequest,
     ) -> config_20200907_models.GetAggregateConfigRulesReportResponse:
         """
-        > Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group. For more information, see [GenerateAggregateConfigRulesReport](~~262701~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079****` account group.
+        @summary Queries the compliance evaluation report that is generated based on all rules in an account group.
+        
+        @description > Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group. For more information, see [GenerateAggregateConfigRulesReport](https://help.aliyun.com/document_detail/262701.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079***` account group.
         
         @param request: GetAggregateConfigRulesReportRequest
         @return: GetAggregateConfigRulesReportResponse
@@ -5321,14 +5897,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
         """
-        This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
+        @summary Queries the details of a resource in an account group.
+        
+        @description This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
         
         @param request: GetAggregateDiscoveredResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAggregateDiscoveredResourceResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_option):
+            query['ComplianceOption'] = request.compliance_option
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_account_id):
+            query['ResourceAccountId'] = request.resource_account_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5337,7 +5929,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5354,14 +5946,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
         """
-        This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
+        @summary Queries the details of a resource in an account group.
+        
+        @description This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
         
         @param request: GetAggregateDiscoveredResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAggregateDiscoveredResourceResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_option):
+            query['ComplianceOption'] = request.compliance_option
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_account_id):
+            query['ResourceAccountId'] = request.resource_account_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5370,7 +5978,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5386,7 +5994,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateDiscoveredResourceRequest,
     ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
         """
-        This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
+        @summary Queries the details of a resource in an account group.
+        
+        @description This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
         
         @param request: GetAggregateDiscoveredResourceRequest
         @return: GetAggregateDiscoveredResourceResponse
@@ -5399,7 +6009,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateDiscoveredResourceRequest,
     ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
         """
-        This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
+        @summary Queries the details of a resource in an account group.
+        
+        @description This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008***` account group.
         
         @param request: GetAggregateDiscoveredResourceRequest
         @return: GetAggregateDiscoveredResourceResponse
@@ -5413,7 +6025,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceByConfigRuleResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The returned result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+        @summary Queries compliance evaluation results based on the rules in a compliance package in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The returned result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
         
         @param request: GetAggregateResourceComplianceByConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5456,7 +6070,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceByConfigRuleResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The returned result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+        @summary Queries compliance evaluation results based on the rules in a compliance package in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The returned result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
         
         @param request: GetAggregateResourceComplianceByConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5498,7 +6114,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceByConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceByConfigRuleResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The returned result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+        @summary Queries compliance evaluation results based on the rules in a compliance package in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The returned result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
         
         @param request: GetAggregateResourceComplianceByConfigRuleRequest
         @return: GetAggregateResourceComplianceByConfigRuleResponse
@@ -5511,7 +6129,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceByConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceByConfigRuleResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The returned result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+        @summary Queries compliance evaluation results based on the rules in a compliance package in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results based on the `cr-d369626622af008e***` rule in the `ca-a4e5626622af0079****` account group. The returned result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
         
         @param request: GetAggregateResourceComplianceByConfigRuleRequest
         @return: GetAggregateResourceComplianceByConfigRuleResponse
@@ -5525,7 +6145,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources monitored based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****`account group. The returned result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
+        @summary Queries the compliance evaluation results of resources evaluated based on a compliance package of an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources monitored based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****`account group. The returned result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
         
         @param request: GetAggregateResourceComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5558,7 +6180,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources monitored based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****`account group. The returned result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
+        @summary Queries the compliance evaluation results of resources evaluated based on a compliance package of an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources monitored based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****`account group. The returned result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
         
         @param request: GetAggregateResourceComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5590,7 +6214,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceByPackRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources monitored based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****`account group. The returned result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
+        @summary Queries the compliance evaluation results of resources evaluated based on a compliance package of an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources monitored based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****`account group. The returned result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
         
         @param request: GetAggregateResourceComplianceByPackRequest
         @return: GetAggregateResourceComplianceByPackResponse
@@ -5603,7 +6229,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceByPackRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources monitored based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****`account group. The returned result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
+        @summary Queries the compliance evaluation results of resources evaluated based on a compliance package of an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources monitored based on the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****`account group. The returned result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
         
         @param request: GetAggregateResourceComplianceByPackRequest
         @return: GetAggregateResourceComplianceByPackResponse
@@ -5616,6 +6244,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceGroupByRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceGroupByRegionResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for an account group rule.
+        
+        @param request: GetAggregateResourceComplianceGroupByRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateResourceComplianceGroupByRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -5646,6 +6281,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceGroupByRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceGroupByRegionResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for an account group rule.
+        
+        @param request: GetAggregateResourceComplianceGroupByRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateResourceComplianceGroupByRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -5675,6 +6317,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateResourceComplianceGroupByRegionRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceGroupByRegionResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for an account group rule.
+        
+        @param request: GetAggregateResourceComplianceGroupByRegionRequest
+        @return: GetAggregateResourceComplianceGroupByRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_aggregate_resource_compliance_group_by_region_with_options(request, runtime)
 
@@ -5682,6 +6330,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateResourceComplianceGroupByRegionRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceGroupByRegionResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for an account group rule.
+        
+        @param request: GetAggregateResourceComplianceGroupByRegionRequest
+        @return: GetAggregateResourceComplianceGroupByRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_resource_compliance_group_by_region_with_options_async(request, runtime)
 
@@ -5690,6 +6344,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceGroupByResourceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceGroupByResourceTypeResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for an account group rule.
+        
+        @param request: GetAggregateResourceComplianceGroupByResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateResourceComplianceGroupByResourceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -5720,6 +6381,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceGroupByResourceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceGroupByResourceTypeResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for an account group rule.
+        
+        @param request: GetAggregateResourceComplianceGroupByResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateResourceComplianceGroupByResourceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -5749,6 +6417,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateResourceComplianceGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceGroupByResourceTypeResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for an account group rule.
+        
+        @param request: GetAggregateResourceComplianceGroupByResourceTypeRequest
+        @return: GetAggregateResourceComplianceGroupByResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_aggregate_resource_compliance_group_by_resource_type_with_options(request, runtime)
 
@@ -5756,6 +6430,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateResourceComplianceGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceGroupByResourceTypeResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for an account group rule.
+        
+        @param request: GetAggregateResourceComplianceGroupByResourceTypeRequest
+        @return: GetAggregateResourceComplianceGroupByResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_resource_compliance_group_by_resource_type_with_options_async(request, runtime)
 
@@ -5765,7 +6445,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        @summary Queries the compliance timeline of a resource in an account group.
+        
+        @description The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
         
         @param request: GetAggregateResourceComplianceTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5798,7 +6480,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        @summary Queries the compliance timeline of a resource in an account group.
+        
+        @description The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
         
         @param request: GetAggregateResourceComplianceTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5830,7 +6514,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceTimelineRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        @summary Queries the compliance timeline of a resource in an account group.
+        
+        @description The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
         
         @param request: GetAggregateResourceComplianceTimelineRequest
         @return: GetAggregateResourceComplianceTimelineResponse
@@ -5843,7 +6529,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceComplianceTimelineRequest,
     ) -> config_20200907_models.GetAggregateResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        @summary Queries the compliance timeline of a resource in an account group.
+        
+        @description The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
         
         @param request: GetAggregateResourceComplianceTimelineRequest
         @return: GetAggregateResourceComplianceTimelineResponse
@@ -5857,7 +6545,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        @summary Queries the configuration timeline of a resource in an account group.
+        
+        @description The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
         
         @param request: GetAggregateResourceConfigurationTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5890,7 +6580,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        @summary Queries the configuration timeline of a resource in an account group.
+        
+        @description The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
         
         @param request: GetAggregateResourceConfigurationTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5922,7 +6614,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceConfigurationTimelineRequest,
     ) -> config_20200907_models.GetAggregateResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        @summary Queries the configuration timeline of a resource in an account group.
+        
+        @description The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
         
         @param request: GetAggregateResourceConfigurationTimelineRequest
         @return: GetAggregateResourceConfigurationTimelineResponse
@@ -5935,7 +6629,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceConfigurationTimelineRequest,
     ) -> config_20200907_models.GetAggregateResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        @summary Queries the configuration timeline of a resource in an account group.
+        
+        @description The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542***` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
         
         @param request: GetAggregateResourceConfigurationTimelineRequest
         @return: GetAggregateResourceConfigurationTimelineResponse
@@ -5949,7 +6645,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+        @summary Queries the statistics on the resources in an account group by region.
+        
+        @description This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
         
         @param request: GetAggregateResourceCountsGroupByRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5992,7 +6690,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+        @summary Queries the statistics on the resources in an account group by region.
+        
+        @description This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
         
         @param request: GetAggregateResourceCountsGroupByRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6034,7 +6734,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceCountsGroupByRegionRequest,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+        @summary Queries the statistics on the resources in an account group by region.
+        
+        @description This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
         
         @param request: GetAggregateResourceCountsGroupByRegionRequest
         @return: GetAggregateResourceCountsGroupByRegionResponse
@@ -6047,7 +6749,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceCountsGroupByRegionRequest,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+        @summary Queries the statistics on the resources in an account group by region.
+        
+        @description This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005***` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
         
         @param request: GetAggregateResourceCountsGroupByRegionRequest
         @return: GetAggregateResourceCountsGroupByRegionResponse
@@ -6061,7 +6765,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
+        @summary Queries the statistics on the resources in an account group by resource type.
+        
+        @description This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
         
         @param request: GetAggregateResourceCountsGroupByResourceTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6104,7 +6810,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
+        @summary Queries the statistics on the resources in an account group by resource type.
+        
+        @description This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
         
         @param request: GetAggregateResourceCountsGroupByResourceTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6146,7 +6854,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
+        @summary Queries the statistics on the resources in an account group by resource type.
+        
+        @description This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
         
         @param request: GetAggregateResourceCountsGroupByResourceTypeRequest
         @return: GetAggregateResourceCountsGroupByResourceTypeResponse
@@ -6159,7 +6869,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetAggregateResourceCountsGroupByResourceTypeResponse:
         """
-        This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
+        @summary Queries the statistics on the resources in an account group by resource type.
+        
+        @description This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005***` by resource type. The returned result shows that the account group has a total of `seven` resources of the `ACS::RAM::Role` resource type.
         
         @param request: GetAggregateResourceCountsGroupByResourceTypeRequest
         @return: GetAggregateResourceCountsGroupByResourceTypeResponse
@@ -6173,7 +6885,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
         """
-        This topic provides an example on how to query the most recently generated resource inventory of an account group whose ID is ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Obtains the last resource inventory that is generated on the Global Resources page within the current account group.
+        
+        @description ### [](#)Prerequisites
+        The [GenerateAggregateResourceInventory](https://help.aliyun.com/document_detail/2398353.html) operation is called to generate a resource inventory. Then, this operation is called to obtain the URL of the resource inventory.
+        ### [](#)Description
+        This topic provides an example on how to obtain the last resource inventory that is generated within the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GetAggregateResourceInventoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6208,7 +6925,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
         """
-        This topic provides an example on how to query the most recently generated resource inventory of an account group whose ID is ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Obtains the last resource inventory that is generated on the Global Resources page within the current account group.
+        
+        @description ### [](#)Prerequisites
+        The [GenerateAggregateResourceInventory](https://help.aliyun.com/document_detail/2398353.html) operation is called to generate a resource inventory. Then, this operation is called to obtain the URL of the resource inventory.
+        ### [](#)Description
+        This topic provides an example on how to obtain the last resource inventory that is generated within the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GetAggregateResourceInventoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6242,7 +6964,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceInventoryRequest,
     ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
         """
-        This topic provides an example on how to query the most recently generated resource inventory of an account group whose ID is ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Obtains the last resource inventory that is generated on the Global Resources page within the current account group.
+        
+        @description ### [](#)Prerequisites
+        The [GenerateAggregateResourceInventory](https://help.aliyun.com/document_detail/2398353.html) operation is called to generate a resource inventory. Then, this operation is called to obtain the URL of the resource inventory.
+        ### [](#)Description
+        This topic provides an example on how to obtain the last resource inventory that is generated within the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GetAggregateResourceInventoryRequest
         @return: GetAggregateResourceInventoryResponse
@@ -6255,7 +6982,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceInventoryRequest,
     ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
         """
-        This topic provides an example on how to query the most recently generated resource inventory of an account group whose ID is ca-a91d626622af0035\\\\*\\*\\*.
+        @summary Obtains the last resource inventory that is generated on the Global Resources page within the current account group.
+        
+        @description ### [](#)Prerequisites
+        The [GenerateAggregateResourceInventory](https://help.aliyun.com/document_detail/2398353.html) operation is called to generate a resource inventory. Then, this operation is called to obtain the URL of the resource inventory.
+        ### [](#)Description
+        This topic provides an example on how to obtain the last resource inventory that is generated within the account group ca-a91d626622af0035\\\\*\\*\\*.
         
         @param request: GetAggregateResourceInventoryRequest
         @return: GetAggregateResourceInventoryResponse
@@ -6269,7 +7001,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregatorResponse:
         """
-        The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055***` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
+        @summary Queries the details of an account group.
+        
+        @description The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055***` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
         
         @param request: GetAggregatorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6304,7 +7038,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregatorResponse:
         """
-        The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055***` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
+        @summary Queries the details of an account group.
+        
+        @description The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055***` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
         
         @param request: GetAggregatorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6338,7 +7074,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregatorRequest,
     ) -> config_20200907_models.GetAggregatorResponse:
         """
-        The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055***` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
+        @summary Queries the details of an account group.
+        
+        @description The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055***` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
         
         @param request: GetAggregatorRequest
         @return: GetAggregatorResponse
@@ -6351,7 +7089,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregatorRequest,
     ) -> config_20200907_models.GetAggregatorResponse:
         """
-        The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055***` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
+        @summary Queries the details of an account group.
+        
+        @description The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055***` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
         
         @param request: GetAggregatorRequest
         @return: GetAggregatorResponse
@@ -6365,7 +7105,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetCompliancePackResponse:
         """
-        This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
+        @summary Queries the details of a compliance package.
+        
+        @description This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
         
         @param request: GetCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6398,7 +7140,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetCompliancePackResponse:
         """
-        This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
+        @summary Queries the details of a compliance package.
+        
+        @description This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
         
         @param request: GetCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6430,7 +7174,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetCompliancePackRequest,
     ) -> config_20200907_models.GetCompliancePackResponse:
         """
-        This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
+        @summary Queries the details of a compliance package.
+        
+        @description This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
         
         @param request: GetCompliancePackRequest
         @return: GetCompliancePackResponse
@@ -6443,7 +7189,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetCompliancePackRequest,
     ) -> config_20200907_models.GetCompliancePackResponse:
         """
-        This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
+        @summary Queries the details of a compliance package.
+        
+        @description This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9***`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
         
         @param request: GetCompliancePackRequest
         @return: GetCompliancePackResponse
@@ -6457,8 +7205,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetCompliancePackReportResponse:
         """
-        > Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateCompliancePackReport](~~263525~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package.
+        @summary Queries the compliance evaluation report that is generated based on a compliance package.
+        
+        @description > Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateCompliancePackReport](https://help.aliyun.com/document_detail/263525.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9***` compliance package.
         
         @param request: GetCompliancePackReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6491,8 +7241,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetCompliancePackReportResponse:
         """
-        > Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateCompliancePackReport](~~263525~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package.
+        @summary Queries the compliance evaluation report that is generated based on a compliance package.
+        
+        @description > Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateCompliancePackReport](https://help.aliyun.com/document_detail/263525.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9***` compliance package.
         
         @param request: GetCompliancePackReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6524,8 +7276,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetCompliancePackReportRequest,
     ) -> config_20200907_models.GetCompliancePackReportResponse:
         """
-        > Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateCompliancePackReport](~~263525~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package.
+        @summary Queries the compliance evaluation report that is generated based on a compliance package.
+        
+        @description > Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateCompliancePackReport](https://help.aliyun.com/document_detail/263525.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9***` compliance package.
         
         @param request: GetCompliancePackReportRequest
         @return: GetCompliancePackReportResponse
@@ -6538,8 +7292,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetCompliancePackReportRequest,
     ) -> config_20200907_models.GetCompliancePackReportResponse:
         """
-        > Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateCompliancePackReport](~~263525~~).
-        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package.
+        @summary Queries the compliance evaluation report that is generated based on a compliance package.
+        
+        @description > Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package. For more information, see [GenerateCompliancePackReport](https://help.aliyun.com/document_detail/263525.html).
+        This topic provides an example on how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9***` compliance package.
         
         @param request: GetCompliancePackReportRequest
         @return: GetCompliancePackReportResponse
@@ -6552,7 +7308,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetComplianceSummaryResponse:
         """
-        This topic provides an example on how to query the compliance statistics of resources and rules in the current account group.
+        @summary Queries the summary of compliance statistics within the current account.
+        
+        @description This topic provides an example on how to query the compliance statistics of resources and rules in the current account group.
         
         @param request: GetComplianceSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6580,7 +7338,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetComplianceSummaryResponse:
         """
-        This topic provides an example on how to query the compliance statistics of resources and rules in the current account group.
+        @summary Queries the summary of compliance statistics within the current account.
+        
+        @description This topic provides an example on how to query the compliance statistics of resources and rules in the current account group.
         
         @param request: GetComplianceSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6605,7 +7365,9 @@ class Client(OpenApiClient):
 
     def get_compliance_summary(self) -> config_20200907_models.GetComplianceSummaryResponse:
         """
-        This topic provides an example on how to query the compliance statistics of resources and rules in the current account group.
+        @summary Queries the summary of compliance statistics within the current account.
+        
+        @description This topic provides an example on how to query the compliance statistics of resources and rules in the current account group.
         
         @return: GetComplianceSummaryResponse
         """
@@ -6614,7 +7376,9 @@ class Client(OpenApiClient):
 
     async def get_compliance_summary_async(self) -> config_20200907_models.GetComplianceSummaryResponse:
         """
-        This topic provides an example on how to query the compliance statistics of resources and rules in the current account group.
+        @summary Queries the summary of compliance statistics within the current account.
+        
+        @description This topic provides an example on how to query the compliance statistics of resources and rules in the current account group.
         
         @return: GetComplianceSummaryResponse
         """
@@ -6626,6 +7390,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetConfigDeliveryChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigDeliveryChannelResponse:
+        """
+        @summary Queries the information about a delivery channel.
+        
+        @param request: GetConfigDeliveryChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigDeliveryChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delivery_channel_id):
@@ -6654,6 +7425,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetConfigDeliveryChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigDeliveryChannelResponse:
+        """
+        @summary Queries the information about a delivery channel.
+        
+        @param request: GetConfigDeliveryChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConfigDeliveryChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delivery_channel_id):
@@ -6681,6 +7459,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetConfigDeliveryChannelRequest,
     ) -> config_20200907_models.GetConfigDeliveryChannelResponse:
+        """
+        @summary Queries the information about a delivery channel.
+        
+        @param request: GetConfigDeliveryChannelRequest
+        @return: GetConfigDeliveryChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_config_delivery_channel_with_options(request, runtime)
 
@@ -6688,6 +7472,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetConfigDeliveryChannelRequest,
     ) -> config_20200907_models.GetConfigDeliveryChannelResponse:
+        """
+        @summary Queries the information about a delivery channel.
+        
+        @param request: GetConfigDeliveryChannelRequest
+        @return: GetConfigDeliveryChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_config_delivery_channel_with_options_async(request, runtime)
 
@@ -6697,7 +7487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleResponse:
         """
-        This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
+        @summary Queries the details of a rule.
+        
+        @description This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
         
         @param request: GetConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6732,7 +7524,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleResponse:
         """
-        This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
+        @summary Queries the details of a rule.
+        
+        @description This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
         
         @param request: GetConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6766,7 +7560,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetConfigRuleRequest,
     ) -> config_20200907_models.GetConfigRuleResponse:
         """
-        This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
+        @summary Queries the details of a rule.
+        
+        @description This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
         
         @param request: GetConfigRuleRequest
         @return: GetConfigRuleResponse
@@ -6779,7 +7575,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetConfigRuleRequest,
     ) -> config_20200907_models.GetConfigRuleResponse:
         """
-        This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
+        @summary Queries the details of a rule.
+        
+        @description This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
         
         @param request: GetConfigRuleRequest
         @return: GetConfigRuleResponse
@@ -6793,7 +7591,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleComplianceByPackResponse:
         """
-        In this topic, the `cp-541e626622af0087***` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
+        @summary Queries compliance evaluation results based on the rules in a compliance package.
+        
+        @description In this topic, the `cp-541e626622af0087***` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
         
         @param request: GetConfigRuleComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6826,7 +7626,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleComplianceByPackResponse:
         """
-        In this topic, the `cp-541e626622af0087***` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
+        @summary Queries compliance evaluation results based on the rules in a compliance package.
+        
+        @description In this topic, the `cp-541e626622af0087***` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
         
         @param request: GetConfigRuleComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6858,7 +7660,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetConfigRuleComplianceByPackRequest,
     ) -> config_20200907_models.GetConfigRuleComplianceByPackResponse:
         """
-        In this topic, the `cp-541e626622af0087***` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
+        @summary Queries compliance evaluation results based on the rules in a compliance package.
+        
+        @description In this topic, the `cp-541e626622af0087***` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
         
         @param request: GetConfigRuleComplianceByPackRequest
         @return: GetConfigRuleComplianceByPackResponse
@@ -6871,7 +7675,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetConfigRuleComplianceByPackRequest,
     ) -> config_20200907_models.GetConfigRuleComplianceByPackResponse:
         """
-        In this topic, the `cp-541e626622af0087***` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
+        @summary Queries compliance evaluation results based on the rules in a compliance package.
+        
+        @description In this topic, the `cp-541e626622af0087***` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
         
         @param request: GetConfigRuleComplianceByPackRequest
         @return: GetConfigRuleComplianceByPackResponse
@@ -6884,7 +7690,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleSummaryByRiskLevelResponse:
         """
-        This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
+        @summary Queries the summary of compliance evaluation results by rule risk level.
+        
+        @description This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
         
         @param request: GetConfigRuleSummaryByRiskLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6912,7 +7720,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleSummaryByRiskLevelResponse:
         """
-        This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
+        @summary Queries the summary of compliance evaluation results by rule risk level.
+        
+        @description This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
         
         @param request: GetConfigRuleSummaryByRiskLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6937,7 +7747,9 @@ class Client(OpenApiClient):
 
     def get_config_rule_summary_by_risk_level(self) -> config_20200907_models.GetConfigRuleSummaryByRiskLevelResponse:
         """
-        This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
+        @summary Queries the summary of compliance evaluation results by rule risk level.
+        
+        @description This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
         
         @return: GetConfigRuleSummaryByRiskLevelResponse
         """
@@ -6946,7 +7758,9 @@ class Client(OpenApiClient):
 
     async def get_config_rule_summary_by_risk_level_async(self) -> config_20200907_models.GetConfigRuleSummaryByRiskLevelResponse:
         """
-        This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
+        @summary Queries the summary of compliance evaluation results by rule risk level.
+        
+        @description This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
         
         @return: GetConfigRuleSummaryByRiskLevelResponse
         """
@@ -6959,7 +7773,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRulesReportResponse:
         """
-        >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](~~263601~~).
+        @summary Queries the compliance evaluation report that is generated based on all existing rules.
+        
+        @description >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](https://help.aliyun.com/document_detail/263601.html).
         This topic provides an example of how to query the compliance evaluation report that is generated based on all existing rules.
         
         @param request: GetConfigRulesReportRequest
@@ -6995,7 +7811,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRulesReportResponse:
         """
-        >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](~~263601~~).
+        @summary Queries the compliance evaluation report that is generated based on all existing rules.
+        
+        @description >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](https://help.aliyun.com/document_detail/263601.html).
         This topic provides an example of how to query the compliance evaluation report that is generated based on all existing rules.
         
         @param request: GetConfigRulesReportRequest
@@ -7030,7 +7848,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetConfigRulesReportRequest,
     ) -> config_20200907_models.GetConfigRulesReportResponse:
         """
-        >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](~~263601~~).
+        @summary Queries the compliance evaluation report that is generated based on all existing rules.
+        
+        @description >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](https://help.aliyun.com/document_detail/263601.html).
         This topic provides an example of how to query the compliance evaluation report that is generated based on all existing rules.
         
         @param request: GetConfigRulesReportRequest
@@ -7044,7 +7864,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetConfigRulesReportRequest,
     ) -> config_20200907_models.GetConfigRulesReportResponse:
         """
-        >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](~~263601~~).
+        @summary Queries the compliance evaluation report that is generated based on all existing rules.
+        
+        @description >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](https://help.aliyun.com/document_detail/263601.html).
         This topic provides an example of how to query the compliance evaluation report that is generated based on all existing rules.
         
         @param request: GetConfigRulesReportRequest
@@ -7058,7 +7880,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigurationRecorderResponse:
         """
-        This topic provides an example on how to query the activation status and resource monitoring scope of Cloud Config for the current account.
+        @summary Queries the activation status and resource monitoring scope of Cloud Config for the current account.
+        
+        @description This topic provides an example on how to query the activation status and resource monitoring scope of Cloud Config for the current account.
         
         @param request: GetConfigurationRecorderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7086,7 +7910,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigurationRecorderResponse:
         """
-        This topic provides an example on how to query the activation status and resource monitoring scope of Cloud Config for the current account.
+        @summary Queries the activation status and resource monitoring scope of Cloud Config for the current account.
+        
+        @description This topic provides an example on how to query the activation status and resource monitoring scope of Cloud Config for the current account.
         
         @param request: GetConfigurationRecorderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7111,7 +7937,9 @@ class Client(OpenApiClient):
 
     def get_configuration_recorder(self) -> config_20200907_models.GetConfigurationRecorderResponse:
         """
-        This topic provides an example on how to query the activation status and resource monitoring scope of Cloud Config for the current account.
+        @summary Queries the activation status and resource monitoring scope of Cloud Config for the current account.
+        
+        @description This topic provides an example on how to query the activation status and resource monitoring scope of Cloud Config for the current account.
         
         @return: GetConfigurationRecorderResponse
         """
@@ -7120,7 +7948,9 @@ class Client(OpenApiClient):
 
     async def get_configuration_recorder_async(self) -> config_20200907_models.GetConfigurationRecorderResponse:
         """
-        This topic provides an example on how to query the activation status and resource monitoring scope of Cloud Config for the current account.
+        @summary Queries the activation status and resource monitoring scope of Cloud Config for the current account.
+        
+        @description This topic provides an example on how to query the activation status and resource monitoring scope of Cloud Config for the current account.
         
         @return: GetConfigurationRecorderResponse
         """
@@ -7133,14 +7963,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetDiscoveredResourceResponse:
         """
-        The sample request in this topic shows you how to query the details of the `new-bucket` resource.
+        @summary Queries the details of a resource.
+        
+        @description The sample request in this topic shows you how to query the details of the `new-bucket` resource.
         
         @param request: GetDiscoveredResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDiscoveredResourceResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.compliance_option):
+            query['ComplianceOption'] = request.compliance_option
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7149,7 +7989,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7166,14 +8006,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetDiscoveredResourceResponse:
         """
-        The sample request in this topic shows you how to query the details of the `new-bucket` resource.
+        @summary Queries the details of a resource.
+        
+        @description The sample request in this topic shows you how to query the details of the `new-bucket` resource.
         
         @param request: GetDiscoveredResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDiscoveredResourceResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.compliance_option):
+            query['ComplianceOption'] = request.compliance_option
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7182,7 +8032,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7198,7 +8048,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetDiscoveredResourceRequest,
     ) -> config_20200907_models.GetDiscoveredResourceResponse:
         """
-        The sample request in this topic shows you how to query the details of the `new-bucket` resource.
+        @summary Queries the details of a resource.
+        
+        @description The sample request in this topic shows you how to query the details of the `new-bucket` resource.
         
         @param request: GetDiscoveredResourceRequest
         @return: GetDiscoveredResourceResponse
@@ -7211,7 +8063,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetDiscoveredResourceRequest,
     ) -> config_20200907_models.GetDiscoveredResourceResponse:
         """
-        The sample request in this topic shows you how to query the details of the `new-bucket` resource.
+        @summary Queries the details of a resource.
+        
+        @description The sample request in this topic shows you how to query the details of the `new-bucket` resource.
         
         @param request: GetDiscoveredResourceRequest
         @return: GetDiscoveredResourceResponse
@@ -7225,7 +8079,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+        @summary Queries the statistics on resources by region.
+        
+        @description This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
         
         @param request: GetDiscoveredResourceCountsGroupByRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7260,7 +8116,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+        @summary Queries the statistics on resources by region.
+        
+        @description This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
         
         @param request: GetDiscoveredResourceCountsGroupByRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7294,7 +8152,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetDiscoveredResourceCountsGroupByRegionRequest,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+        @summary Queries the statistics on resources by region.
+        
+        @description This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
         
         @param request: GetDiscoveredResourceCountsGroupByRegionRequest
         @return: GetDiscoveredResourceCountsGroupByRegionResponse
@@ -7307,7 +8167,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetDiscoveredResourceCountsGroupByRegionRequest,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+        @summary Queries the statistics on resources by region.
+        
+        @description This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
         
         @param request: GetDiscoveredResourceCountsGroupByRegionRequest
         @return: GetDiscoveredResourceCountsGroupByRegionResponse
@@ -7321,7 +8183,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByResourceTypeResponse:
         """
-        This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
+        @summary Queries the statistics on resources by resource type.
+        
+        @description This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
         
         @param request: GetDiscoveredResourceCountsGroupByResourceTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7356,7 +8220,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByResourceTypeResponse:
         """
-        This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
+        @summary Queries the statistics on resources by resource type.
+        
+        @description This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
         
         @param request: GetDiscoveredResourceCountsGroupByResourceTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7390,7 +8256,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetDiscoveredResourceCountsGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByResourceTypeResponse:
         """
-        This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
+        @summary Queries the statistics on resources by resource type.
+        
+        @description This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
         
         @param request: GetDiscoveredResourceCountsGroupByResourceTypeRequest
         @return: GetDiscoveredResourceCountsGroupByResourceTypeResponse
@@ -7403,7 +8271,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetDiscoveredResourceCountsGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByResourceTypeResponse:
         """
-        This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
+        @summary Queries the statistics on resources by resource type.
+        
+        @description This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
         
         @param request: GetDiscoveredResourceCountsGroupByResourceTypeRequest
         @return: GetDiscoveredResourceCountsGroupByResourceTypeResponse
@@ -7416,6 +8286,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetIntegratedServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetIntegratedServiceStatusResponse:
+        """
+        @summary Queries the status of a cloud service that is integrated with Cloud Config.
+        
+        @param request: GetIntegratedServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntegratedServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_code):
@@ -7444,6 +8321,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetIntegratedServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetIntegratedServiceStatusResponse:
+        """
+        @summary Queries the status of a cloud service that is integrated with Cloud Config.
+        
+        @param request: GetIntegratedServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntegratedServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service_code):
@@ -7471,6 +8355,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetIntegratedServiceStatusRequest,
     ) -> config_20200907_models.GetIntegratedServiceStatusResponse:
+        """
+        @summary Queries the status of a cloud service that is integrated with Cloud Config.
+        
+        @param request: GetIntegratedServiceStatusRequest
+        @return: GetIntegratedServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_integrated_service_status_with_options(request, runtime)
 
@@ -7478,6 +8368,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetIntegratedServiceStatusRequest,
     ) -> config_20200907_models.GetIntegratedServiceStatusResponse:
+        """
+        @summary Queries the status of a cloud service that is integrated with Cloud Config.
+        
+        @param request: GetIntegratedServiceStatusRequest
+        @return: GetIntegratedServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_integrated_service_status_with_options_async(request, runtime)
 
@@ -7487,7 +8383,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetManagedRuleResponse:
         """
-        In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
+        @summary Queries the details of a managed rule.
+        
+        @description In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
         
         @param request: GetManagedRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7522,7 +8420,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetManagedRuleResponse:
         """
-        In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
+        @summary Queries the details of a managed rule.
+        
+        @description In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
         
         @param request: GetManagedRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7556,7 +8456,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetManagedRuleRequest,
     ) -> config_20200907_models.GetManagedRuleResponse:
         """
-        In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
+        @summary Queries the details of a managed rule.
+        
+        @description In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
         
         @param request: GetManagedRuleRequest
         @return: GetManagedRuleResponse
@@ -7569,7 +8471,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetManagedRuleRequest,
     ) -> config_20200907_models.GetManagedRuleResponse:
         """
-        In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
+        @summary Queries the details of a managed rule.
+        
+        @description In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
         
         @param request: GetManagedRuleRequest
         @return: GetManagedRuleResponse
@@ -7583,7 +8487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetRemediationTemplateResponse:
         """
-        This topic provides an example on how to query the details of the automatic remediation template ACS-ALB-BulkyEnableDeletionProtection.
+        @summary Queries the details of an automatic remediation template.
+        
+        @description This topic provides an example on how to query the details of the automatic remediation template ACS-ALB-BulkyEnableDeletionProtection.
         
         @param request: GetRemediationTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7618,7 +8524,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetRemediationTemplateResponse:
         """
-        This topic provides an example on how to query the details of the automatic remediation template ACS-ALB-BulkyEnableDeletionProtection.
+        @summary Queries the details of an automatic remediation template.
+        
+        @description This topic provides an example on how to query the details of the automatic remediation template ACS-ALB-BulkyEnableDeletionProtection.
         
         @param request: GetRemediationTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7652,7 +8560,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetRemediationTemplateRequest,
     ) -> config_20200907_models.GetRemediationTemplateResponse:
         """
-        This topic provides an example on how to query the details of the automatic remediation template ACS-ALB-BulkyEnableDeletionProtection.
+        @summary Queries the details of an automatic remediation template.
+        
+        @description This topic provides an example on how to query the details of the automatic remediation template ACS-ALB-BulkyEnableDeletionProtection.
         
         @param request: GetRemediationTemplateRequest
         @return: GetRemediationTemplateResponse
@@ -7665,7 +8575,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetRemediationTemplateRequest,
     ) -> config_20200907_models.GetRemediationTemplateResponse:
         """
-        This topic provides an example on how to query the details of the automatic remediation template ACS-ALB-BulkyEnableDeletionProtection.
+        @summary Queries the details of an automatic remediation template.
+        
+        @description This topic provides an example on how to query the details of the automatic remediation template ACS-ALB-BulkyEnableDeletionProtection.
         
         @param request: GetRemediationTemplateRequest
         @return: GetRemediationTemplateResponse
@@ -7679,7 +8591,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceByConfigRuleResponse:
         """
-        In this topic, the `cr-d369626622af008e***` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
+        @summary Queries the compliance evaluation result of a resource by using a rule.
+        
+        @description In this topic, the `cr-d369626622af008e***` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
         
         @param request: GetResourceComplianceByConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7712,7 +8626,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceByConfigRuleResponse:
         """
-        In this topic, the `cr-d369626622af008e***` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
+        @summary Queries the compliance evaluation result of a resource by using a rule.
+        
+        @description In this topic, the `cr-d369626622af008e***` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
         
         @param request: GetResourceComplianceByConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7744,7 +8660,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceByConfigRuleRequest,
     ) -> config_20200907_models.GetResourceComplianceByConfigRuleResponse:
         """
-        In this topic, the `cr-d369626622af008e***` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
+        @summary Queries the compliance evaluation result of a resource by using a rule.
+        
+        @description In this topic, the `cr-d369626622af008e***` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
         
         @param request: GetResourceComplianceByConfigRuleRequest
         @return: GetResourceComplianceByConfigRuleResponse
@@ -7757,7 +8675,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceByConfigRuleRequest,
     ) -> config_20200907_models.GetResourceComplianceByConfigRuleResponse:
         """
-        In this topic, the `cr-d369626622af008e***` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
+        @summary Queries the compliance evaluation result of a resource by using a rule.
+        
+        @description In this topic, the `cr-d369626622af008e***` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
         
         @param request: GetResourceComplianceByConfigRuleRequest
         @return: GetResourceComplianceByConfigRuleResponse
@@ -7771,7 +8691,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources monitored by using the `cp-541e626622af0087***` compliance package. The returned result shows a total of 10 resources and seven of them are evaluated as non-compliant.
+        @summary Queries the compliance evaluation results of resources evaluated based on a compliance package.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources monitored by using the `cp-541e626622af0087***` compliance package. The returned result shows a total of 10 resources and seven of them are evaluated as non-compliant.
         
         @param request: GetResourceComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7804,7 +8726,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources monitored by using the `cp-541e626622af0087***` compliance package. The returned result shows a total of 10 resources and seven of them are evaluated as non-compliant.
+        @summary Queries the compliance evaluation results of resources evaluated based on a compliance package.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources monitored by using the `cp-541e626622af0087***` compliance package. The returned result shows a total of 10 resources and seven of them are evaluated as non-compliant.
         
         @param request: GetResourceComplianceByPackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7836,7 +8760,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceByPackRequest,
     ) -> config_20200907_models.GetResourceComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources monitored by using the `cp-541e626622af0087***` compliance package. The returned result shows a total of 10 resources and seven of them are evaluated as non-compliant.
+        @summary Queries the compliance evaluation results of resources evaluated based on a compliance package.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources monitored by using the `cp-541e626622af0087***` compliance package. The returned result shows a total of 10 resources and seven of them are evaluated as non-compliant.
         
         @param request: GetResourceComplianceByPackRequest
         @return: GetResourceComplianceByPackResponse
@@ -7849,7 +8775,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceByPackRequest,
     ) -> config_20200907_models.GetResourceComplianceByPackResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources monitored by using the `cp-541e626622af0087***` compliance package. The returned result shows a total of 10 resources and seven of them are evaluated as non-compliant.
+        @summary Queries the compliance evaluation results of resources evaluated based on a compliance package.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources monitored by using the `cp-541e626622af0087***` compliance package. The returned result shows a total of 10 resources and seven of them are evaluated as non-compliant.
         
         @param request: GetResourceComplianceByPackRequest
         @return: GetResourceComplianceByPackResponse
@@ -7862,6 +8790,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceGroupByRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceGroupByRegionResponse:
+        """
+        @summary Queries the evaluation results grouped by region for a rule.
+        
+        @param request: GetResourceComplianceGroupByRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceComplianceGroupByRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
@@ -7890,6 +8825,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceGroupByRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceGroupByRegionResponse:
+        """
+        @summary Queries the evaluation results grouped by region for a rule.
+        
+        @param request: GetResourceComplianceGroupByRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceComplianceGroupByRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
@@ -7917,6 +8859,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetResourceComplianceGroupByRegionRequest,
     ) -> config_20200907_models.GetResourceComplianceGroupByRegionResponse:
+        """
+        @summary Queries the evaluation results grouped by region for a rule.
+        
+        @param request: GetResourceComplianceGroupByRegionRequest
+        @return: GetResourceComplianceGroupByRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_compliance_group_by_region_with_options(request, runtime)
 
@@ -7924,6 +8872,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetResourceComplianceGroupByRegionRequest,
     ) -> config_20200907_models.GetResourceComplianceGroupByRegionResponse:
+        """
+        @summary Queries the evaluation results grouped by region for a rule.
+        
+        @param request: GetResourceComplianceGroupByRegionRequest
+        @return: GetResourceComplianceGroupByRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_compliance_group_by_region_with_options_async(request, runtime)
 
@@ -7932,6 +8886,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceGroupByResourceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceGroupByResourceTypeResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for a rule.
+        
+        @param request: GetResourceComplianceGroupByResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceComplianceGroupByResourceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
@@ -7960,6 +8921,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceGroupByResourceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceGroupByResourceTypeResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for a rule.
+        
+        @param request: GetResourceComplianceGroupByResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceComplianceGroupByResourceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_rule_ids):
@@ -7987,6 +8955,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetResourceComplianceGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetResourceComplianceGroupByResourceTypeResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for a rule.
+        
+        @param request: GetResourceComplianceGroupByResourceTypeRequest
+        @return: GetResourceComplianceGroupByResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_compliance_group_by_resource_type_with_options(request, runtime)
 
@@ -7994,6 +8968,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetResourceComplianceGroupByResourceTypeRequest,
     ) -> config_20200907_models.GetResourceComplianceGroupByResourceTypeResponse:
+        """
+        @summary Queries the evaluation results grouped by resource type for a rule.
+        
+        @param request: GetResourceComplianceGroupByResourceTypeRequest
+        @return: GetResourceComplianceGroupByResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_compliance_group_by_resource_type_with_options_async(request, runtime)
 
@@ -8003,7 +8983,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        @summary Queries the compliance timeline of a resource. The compliance timeline of a resource indicates the compliance evaluation record of the resource. A compliance timeline includes points and the content on the compliance timeline.
+        
+        @description In Cloud Config, each resource has a compliance timeline. Cloud Config generates a compliance evaluation record for a resource each time the resource is evaluated based on a rule. The compliance evaluation records of a resource are displayed in a compliance timeline. You can configure Cloud Config to execute a rule to evaluate a resource on a regular basis or each time you change the resource configuration. You can also manually execute a rule to evaluate a resource.
+        This topic provides an example on how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The returned result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
         
         @param request: GetResourceComplianceTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8036,7 +9019,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        @summary Queries the compliance timeline of a resource. The compliance timeline of a resource indicates the compliance evaluation record of the resource. A compliance timeline includes points and the content on the compliance timeline.
+        
+        @description In Cloud Config, each resource has a compliance timeline. Cloud Config generates a compliance evaluation record for a resource each time the resource is evaluated based on a rule. The compliance evaluation records of a resource are displayed in a compliance timeline. You can configure Cloud Config to execute a rule to evaluate a resource on a regular basis or each time you change the resource configuration. You can also manually execute a rule to evaluate a resource.
+        This topic provides an example on how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The returned result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
         
         @param request: GetResourceComplianceTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8068,7 +9054,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceTimelineRequest,
     ) -> config_20200907_models.GetResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        @summary Queries the compliance timeline of a resource. The compliance timeline of a resource indicates the compliance evaluation record of the resource. A compliance timeline includes points and the content on the compliance timeline.
+        
+        @description In Cloud Config, each resource has a compliance timeline. Cloud Config generates a compliance evaluation record for a resource each time the resource is evaluated based on a rule. The compliance evaluation records of a resource are displayed in a compliance timeline. You can configure Cloud Config to execute a rule to evaluate a resource on a regular basis or each time you change the resource configuration. You can also manually execute a rule to evaluate a resource.
+        This topic provides an example on how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The returned result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
         
         @param request: GetResourceComplianceTimelineRequest
         @return: GetResourceComplianceTimelineResponse
@@ -8081,7 +9070,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceComplianceTimelineRequest,
     ) -> config_20200907_models.GetResourceComplianceTimelineResponse:
         """
-        The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+        @summary Queries the compliance timeline of a resource. The compliance timeline of a resource indicates the compliance evaluation record of the resource. A compliance timeline includes points and the content on the compliance timeline.
+        
+        @description In Cloud Config, each resource has a compliance timeline. Cloud Config generates a compliance evaluation record for a resource each time the resource is evaluated based on a rule. The compliance evaluation records of a resource are displayed in a compliance timeline. You can configure Cloud Config to execute a rule to evaluate a resource on a regular basis or each time you change the resource configuration. You can also manually execute a rule to evaluate a resource.
+        This topic provides an example on how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The returned result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
         
         @param request: GetResourceComplianceTimelineRequest
         @return: GetResourceComplianceTimelineResponse
@@ -8095,7 +9087,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        @summary Queries the configuration timeline of a resource.
+        
+        @description The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
         
         @param request: GetResourceConfigurationTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8128,7 +9122,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        @summary Queries the configuration timeline of a resource.
+        
+        @description The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
         
         @param request: GetResourceConfigurationTimelineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8160,7 +9156,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceConfigurationTimelineRequest,
     ) -> config_20200907_models.GetResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        @summary Queries the configuration timeline of a resource.
+        
+        @description The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
         
         @param request: GetResourceConfigurationTimelineRequest
         @return: GetResourceConfigurationTimelineResponse
@@ -8173,7 +9171,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetResourceConfigurationTimelineRequest,
     ) -> config_20200907_models.GetResourceConfigurationTimelineResponse:
         """
-        The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+        @summary Queries the configuration timeline of a resource.
+        
+        @description The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
         
         @param request: GetResourceConfigurationTimelineRequest
         @return: GetResourceConfigurationTimelineResponse
@@ -8186,7 +9186,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceInventoryResponse:
         """
-        This topic provides an example on how to query the most recently generated resource inventory of the current Alibaba Cloud account.
+        @summary Obtains the last resource inventory that is generated within the current Alibaba Cloud account.
+        
+        @description ### [](#)Prerequisites
+        You can call the [GenerateResourceInventory](https://help.aliyun.com/document_detail/2398354.html) operation to generate a resource inventory. Then, you can call the GetResourceInventory operation to obtain the URL of the resource inventory.
+        ### [](#)Description
+        This topic provides an example on how to obtain the last resource inventory that is generated within the current Alibaba Cloud account.
         
         @param request: GetResourceInventoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8214,7 +9219,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceInventoryResponse:
         """
-        This topic provides an example on how to query the most recently generated resource inventory of the current Alibaba Cloud account.
+        @summary Obtains the last resource inventory that is generated within the current Alibaba Cloud account.
+        
+        @description ### [](#)Prerequisites
+        You can call the [GenerateResourceInventory](https://help.aliyun.com/document_detail/2398354.html) operation to generate a resource inventory. Then, you can call the GetResourceInventory operation to obtain the URL of the resource inventory.
+        ### [](#)Description
+        This topic provides an example on how to obtain the last resource inventory that is generated within the current Alibaba Cloud account.
         
         @param request: GetResourceInventoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8239,7 +9249,12 @@ class Client(OpenApiClient):
 
     def get_resource_inventory(self) -> config_20200907_models.GetResourceInventoryResponse:
         """
-        This topic provides an example on how to query the most recently generated resource inventory of the current Alibaba Cloud account.
+        @summary Obtains the last resource inventory that is generated within the current Alibaba Cloud account.
+        
+        @description ### [](#)Prerequisites
+        You can call the [GenerateResourceInventory](https://help.aliyun.com/document_detail/2398354.html) operation to generate a resource inventory. Then, you can call the GetResourceInventory operation to obtain the URL of the resource inventory.
+        ### [](#)Description
+        This topic provides an example on how to obtain the last resource inventory that is generated within the current Alibaba Cloud account.
         
         @return: GetResourceInventoryResponse
         """
@@ -8248,7 +9263,12 @@ class Client(OpenApiClient):
 
     async def get_resource_inventory_async(self) -> config_20200907_models.GetResourceInventoryResponse:
         """
-        This topic provides an example on how to query the most recently generated resource inventory of the current Alibaba Cloud account.
+        @summary Obtains the last resource inventory that is generated within the current Alibaba Cloud account.
+        
+        @description ### [](#)Prerequisites
+        You can call the [GenerateResourceInventory](https://help.aliyun.com/document_detail/2398354.html) operation to generate a resource inventory. Then, you can call the GetResourceInventory operation to obtain the URL of the resource inventory.
+        ### [](#)Description
+        This topic provides an example on how to obtain the last resource inventory that is generated within the current Alibaba Cloud account.
         
         @return: GetResourceInventoryResponse
         """
@@ -8261,7 +9281,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetSupportedResourceRelationConfigResponse:
         """
-        This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
+        @summary Queries the resource relationships supported by a resource type.
+        
+        @description This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
         
         @param request: GetSupportedResourceRelationConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8296,7 +9318,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetSupportedResourceRelationConfigResponse:
         """
-        This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
+        @summary Queries the resource relationships supported by a resource type.
+        
+        @description This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
         
         @param request: GetSupportedResourceRelationConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8330,7 +9354,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetSupportedResourceRelationConfigRequest,
     ) -> config_20200907_models.GetSupportedResourceRelationConfigResponse:
         """
-        This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
+        @summary Queries the resource relationships supported by a resource type.
+        
+        @description This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
         
         @param request: GetSupportedResourceRelationConfigRequest
         @return: GetSupportedResourceRelationConfigResponse
@@ -8343,7 +9369,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetSupportedResourceRelationConfigRequest,
     ) -> config_20200907_models.GetSupportedResourceRelationConfigResponse:
         """
-        This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
+        @summary Queries the resource relationships supported by a resource type.
+        
+        @description This topic provides an example to show how to query the resource relationships that are supported by the ACS::ECS::Instance resource type.
         
         @param request: GetSupportedResourceRelationConfigRequest
         @return: GetSupportedResourceRelationConfigResponse
@@ -8357,8 +9385,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.IgnoreAggregateEvaluationResultsResponse:
         """
-        After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
-        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        @summary Ignores the compliance evaluation results of one or more non-compliant resources that are evaluated based on a rule in an account group.
+        
+        @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param tmp_req: IgnoreAggregateEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8405,8 +9435,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.IgnoreAggregateEvaluationResultsResponse:
         """
-        After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
-        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        @summary Ignores the compliance evaluation results of one or more non-compliant resources that are evaluated based on a rule in an account group.
+        
+        @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param tmp_req: IgnoreAggregateEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8452,8 +9484,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.IgnoreAggregateEvaluationResultsRequest,
     ) -> config_20200907_models.IgnoreAggregateEvaluationResultsResponse:
         """
-        After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
-        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        @summary Ignores the compliance evaluation results of one or more non-compliant resources that are evaluated based on a rule in an account group.
+        
+        @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param request: IgnoreAggregateEvaluationResultsRequest
         @return: IgnoreAggregateEvaluationResultsResponse
@@ -8466,8 +9500,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.IgnoreAggregateEvaluationResultsRequest,
     ) -> config_20200907_models.IgnoreAggregateEvaluationResultsResponse:
         """
-        After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
-        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        @summary Ignores the compliance evaluation results of one or more non-compliant resources that are evaluated based on a rule in an account group.
+        
+        @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param request: IgnoreAggregateEvaluationResultsRequest
         @return: IgnoreAggregateEvaluationResultsResponse
@@ -8481,8 +9517,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.IgnoreEvaluationResultsResponse:
         """
-        After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
-        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        @summary Ignores one or more resources that are evaluated as non-compliant by using a rule.
+        
+        @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param tmp_req: IgnoreEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8527,8 +9565,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.IgnoreEvaluationResultsResponse:
         """
-        After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
-        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        @summary Ignores one or more resources that are evaluated as non-compliant by using a rule.
+        
+        @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param tmp_req: IgnoreEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8572,8 +9612,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.IgnoreEvaluationResultsRequest,
     ) -> config_20200907_models.IgnoreEvaluationResultsResponse:
         """
-        After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
-        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        @summary Ignores one or more resources that are evaluated as non-compliant by using a rule.
+        
+        @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param request: IgnoreEvaluationResultsRequest
         @return: IgnoreEvaluationResultsResponse
@@ -8586,8 +9628,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.IgnoreEvaluationResultsRequest,
     ) -> config_20200907_models.IgnoreEvaluationResultsResponse:
         """
-        After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
-        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        @summary Ignores one or more resources that are evaluated as non-compliant by using a rule.
+        
+        @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+        This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param request: IgnoreEvaluationResultsRequest
         @return: IgnoreEvaluationResultsResponse
@@ -8601,7 +9645,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateCompliancePacksResponse:
         """
-        In this topic, the `ca-f632626622af0079***` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
+        @summary Queries a list of compliance packages in an account group.
+        
+        @description In this topic, the `ca-f632626622af0079***` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
         
         @param request: ListAggregateCompliancePacksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8642,7 +9688,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateCompliancePacksResponse:
         """
-        In this topic, the `ca-f632626622af0079***` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
+        @summary Queries a list of compliance packages in an account group.
+        
+        @description In this topic, the `ca-f632626622af0079***` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
         
         @param request: ListAggregateCompliancePacksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8682,7 +9730,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateCompliancePacksRequest,
     ) -> config_20200907_models.ListAggregateCompliancePacksResponse:
         """
-        In this topic, the `ca-f632626622af0079***` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
+        @summary Queries a list of compliance packages in an account group.
+        
+        @description In this topic, the `ca-f632626622af0079***` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
         
         @param request: ListAggregateCompliancePacksRequest
         @return: ListAggregateCompliancePacksResponse
@@ -8695,7 +9745,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateCompliancePacksRequest,
     ) -> config_20200907_models.ListAggregateCompliancePacksResponse:
         """
-        In this topic, the `ca-f632626622af0079***` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
+        @summary Queries a list of compliance packages in an account group.
+        
+        @description In this topic, the `ca-f632626622af0079***` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
         
         @param request: ListAggregateCompliancePacksRequest
         @return: ListAggregateCompliancePacksResponse
@@ -8708,6 +9760,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigDeliveryChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigDeliveryChannelsResponse:
+        """
+        @summary Queries the information about all delivery channels in an account group.
+        
+        @param request: ListAggregateConfigDeliveryChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateConfigDeliveryChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -8738,6 +9797,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigDeliveryChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigDeliveryChannelsResponse:
+        """
+        @summary Queries the information about all delivery channels in an account group.
+        
+        @param request: ListAggregateConfigDeliveryChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateConfigDeliveryChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -8767,6 +9833,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListAggregateConfigDeliveryChannelsRequest,
     ) -> config_20200907_models.ListAggregateConfigDeliveryChannelsResponse:
+        """
+        @summary Queries the information about all delivery channels in an account group.
+        
+        @param request: ListAggregateConfigDeliveryChannelsRequest
+        @return: ListAggregateConfigDeliveryChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_aggregate_config_delivery_channels_with_options(request, runtime)
 
@@ -8774,6 +9846,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListAggregateConfigDeliveryChannelsRequest,
     ) -> config_20200907_models.ListAggregateConfigDeliveryChannelsResponse:
+        """
+        @summary Queries the information about all delivery channels in an account group.
+        
+        @param request: ListAggregateConfigDeliveryChannelsRequest
+        @return: ListAggregateConfigDeliveryChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_config_delivery_channels_with_options_async(request, runtime)
 
@@ -8783,7 +9861,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationResultsResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae***` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
+        @summary Queries the compliance evaluation results of resources based on a rule in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae***` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
         
         @param request: ListAggregateConfigRuleEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8838,7 +9918,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationResultsResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae***` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
+        @summary Queries the compliance evaluation results of resources based on a rule in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae***` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
         
         @param request: ListAggregateConfigRuleEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8892,7 +9974,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigRuleEvaluationResultsRequest,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationResultsResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae***` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
+        @summary Queries the compliance evaluation results of resources based on a rule in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae***` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
         
         @param request: ListAggregateConfigRuleEvaluationResultsRequest
         @return: ListAggregateConfigRuleEvaluationResultsResponse
@@ -8905,7 +9989,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigRuleEvaluationResultsRequest,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationResultsResponse:
         """
-        This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae***` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
+        @summary Queries the compliance evaluation results of resources based on a rule in an account group.
+        
+        @description This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae***` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
         
         @param request: ListAggregateConfigRuleEvaluationResultsRequest
         @return: ListAggregateConfigRuleEvaluationResultsResponse
@@ -8919,7 +10005,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
         """
-        This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
+        @summary Queries the statistics of compliance evaluation results of an account group.
+        
+        @description This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
         
         @param request: ListAggregateConfigRuleEvaluationStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8954,7 +10042,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
         """
-        This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
+        @summary Queries the statistics of compliance evaluation results of an account group.
+        
+        @description This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
         
         @param request: ListAggregateConfigRuleEvaluationStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8988,7 +10078,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
         """
-        This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
+        @summary Queries the statistics of compliance evaluation results of an account group.
+        
+        @description This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
         
         @param request: ListAggregateConfigRuleEvaluationStatisticsRequest
         @return: ListAggregateConfigRuleEvaluationStatisticsResponse
@@ -9001,7 +10093,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
         """
-        This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
+        @summary Queries the statistics of compliance evaluation results of an account group.
+        
+        @description This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
         
         @param request: ListAggregateConfigRuleEvaluationStatisticsRequest
         @return: ListAggregateConfigRuleEvaluationStatisticsResponse
@@ -9015,7 +10109,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079***`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
+        @summary Queries a list of rules in an account group.
+        
+        @description This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079***`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
         
         @param request: ListAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9066,7 +10162,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079***`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
+        @summary Queries a list of rules in an account group.
+        
+        @description This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079***`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
         
         @param request: ListAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9116,7 +10214,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigRulesRequest,
     ) -> config_20200907_models.ListAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079***`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
+        @summary Queries a list of rules in an account group.
+        
+        @description This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079***`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
         
         @param request: ListAggregateConfigRulesRequest
         @return: ListAggregateConfigRulesResponse
@@ -9129,7 +10229,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigRulesRequest,
     ) -> config_20200907_models.ListAggregateConfigRulesResponse:
         """
-        This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079***`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
+        @summary Queries a list of rules in an account group.
+        
+        @description This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079***`. The returned result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
         
         @param request: ListAggregateConfigRulesRequest
         @return: ListAggregateConfigRulesResponse
@@ -9143,7 +10245,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
         """
-        This topic provides an example on how to query a list of resources in the `ca-c560626622af0005***` account group. The returned result shows that eight resources exist in the account group.
+        @summary Obtains a list of resources aggregated across regions within all member accounts of a specific account group.
+        
+        @description This topic provides an example on how to query the resources within the member account `100931896542***` of the account group `ca-c560626622af0005****`. The result indicates that eight resources are queried.
         
         @param request: ListAggregateDiscoveredResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9194,7 +10298,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
         """
-        This topic provides an example on how to query a list of resources in the `ca-c560626622af0005***` account group. The returned result shows that eight resources exist in the account group.
+        @summary Obtains a list of resources aggregated across regions within all member accounts of a specific account group.
+        
+        @description This topic provides an example on how to query the resources within the member account `100931896542***` of the account group `ca-c560626622af0005****`. The result indicates that eight resources are queried.
         
         @param request: ListAggregateDiscoveredResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9244,7 +10350,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateDiscoveredResourcesRequest,
     ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
         """
-        This topic provides an example on how to query a list of resources in the `ca-c560626622af0005***` account group. The returned result shows that eight resources exist in the account group.
+        @summary Obtains a list of resources aggregated across regions within all member accounts of a specific account group.
+        
+        @description This topic provides an example on how to query the resources within the member account `100931896542***` of the account group `ca-c560626622af0005****`. The result indicates that eight resources are queried.
         
         @param request: ListAggregateDiscoveredResourcesRequest
         @return: ListAggregateDiscoveredResourcesResponse
@@ -9257,7 +10365,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateDiscoveredResourcesRequest,
     ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
         """
-        This topic provides an example on how to query a list of resources in the `ca-c560626622af0005***` account group. The returned result shows that eight resources exist in the account group.
+        @summary Obtains a list of resources aggregated across regions within all member accounts of a specific account group.
+        
+        @description This topic provides an example on how to query the resources within the member account `100931896542***` of the account group `ca-c560626622af0005****`. The result indicates that eight resources are queried.
         
         @param request: ListAggregateDiscoveredResourcesRequest
         @return: ListAggregateDiscoveredResourcesResponse
@@ -9271,7 +10381,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
         """
-        This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
+        @summary Queries the remediation records of a rule in an account group.
+        
+        @description This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
         
         @param request: ListAggregateRemediationExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9316,7 +10428,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
         """
-        This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
+        @summary Queries the remediation records of a rule in an account group.
+        
+        @description This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
         
         @param request: ListAggregateRemediationExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9360,7 +10474,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
     ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
         """
-        This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
+        @summary Queries the remediation records of a rule in an account group.
+        
+        @description This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
         
         @param request: ListAggregateRemediationExecutionsRequest
         @return: ListAggregateRemediationExecutionsResponse
@@ -9373,7 +10489,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
     ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
         """
-        This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
+        @summary Queries the remediation records of a rule in an account group.
+        
+        @description This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
         
         @param request: ListAggregateRemediationExecutionsRequest
         @return: ListAggregateRemediationExecutionsResponse
@@ -9387,7 +10505,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateRemediationsResponse:
         """
-        This topic provides an example on how to query the remediation templates of the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`.
+        @summary Queries a list of remediation templates for a rule in an account group.
+        
+        @description This topic provides an example on how to query the remediation templates of the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`.
         
         @param request: ListAggregateRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9424,7 +10544,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateRemediationsResponse:
         """
-        This topic provides an example on how to query the remediation templates of the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`.
+        @summary Queries a list of remediation templates for a rule in an account group.
+        
+        @description This topic provides an example on how to query the remediation templates of the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`.
         
         @param request: ListAggregateRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9460,7 +10582,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateRemediationsRequest,
     ) -> config_20200907_models.ListAggregateRemediationsResponse:
         """
-        This topic provides an example on how to query the remediation templates of the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`.
+        @summary Queries a list of remediation templates for a rule in an account group.
+        
+        @description This topic provides an example on how to query the remediation templates of the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`.
         
         @param request: ListAggregateRemediationsRequest
         @return: ListAggregateRemediationsResponse
@@ -9473,7 +10597,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateRemediationsRequest,
     ) -> config_20200907_models.ListAggregateRemediationsResponse:
         """
-        This topic provides an example on how to query the remediation templates of the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`.
+        @summary Queries a list of remediation templates for a rule in an account group.
+        
+        @description This topic provides an example on how to query the remediation templates of the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`.
         
         @param request: ListAggregateRemediationsRequest
         @return: ListAggregateRemediationsResponse
@@ -9487,7 +10613,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateResourceEvaluationResultsResponse:
         """
-        This example shows how to query the compliance evaluation result of the `23642660635396***` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+        @summary Queries the compliance evaluation results of resources in an account group.
+        
+        @description This example shows how to query the compliance evaluation result of the `23642660635396***` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
         
         @param request: ListAggregateResourceEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9534,7 +10662,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateResourceEvaluationResultsResponse:
         """
-        This example shows how to query the compliance evaluation result of the `23642660635396***` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+        @summary Queries the compliance evaluation results of resources in an account group.
+        
+        @description This example shows how to query the compliance evaluation result of the `23642660635396***` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
         
         @param request: ListAggregateResourceEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9580,7 +10710,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateResourceEvaluationResultsRequest,
     ) -> config_20200907_models.ListAggregateResourceEvaluationResultsResponse:
         """
-        This example shows how to query the compliance evaluation result of the `23642660635396***` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+        @summary Queries the compliance evaluation results of resources in an account group.
+        
+        @description This example shows how to query the compliance evaluation result of the `23642660635396***` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
         
         @param request: ListAggregateResourceEvaluationResultsRequest
         @return: ListAggregateResourceEvaluationResultsResponse
@@ -9593,7 +10725,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateResourceEvaluationResultsRequest,
     ) -> config_20200907_models.ListAggregateResourceEvaluationResultsResponse:
         """
-        This example shows how to query the compliance evaluation result of the `23642660635396***` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+        @summary Queries the compliance evaluation results of resources in an account group.
+        
+        @description This example shows how to query the compliance evaluation result of the `23642660635396***` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
         
         @param request: ListAggregateResourceEvaluationResultsRequest
         @return: ListAggregateResourceEvaluationResultsResponse
@@ -9607,7 +10741,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateResourceRelationsResponse:
         """
-        This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance in an account group.
+        @summary Queries a list of the resources of a specific resource in an account group.
+        
+        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance in an account group.
         
         @param request: ListAggregateResourceRelationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9660,7 +10796,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateResourceRelationsResponse:
         """
-        This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance in an account group.
+        @summary Queries a list of the resources of a specific resource in an account group.
+        
+        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance in an account group.
         
         @param request: ListAggregateResourceRelationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9712,7 +10850,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateResourceRelationsRequest,
     ) -> config_20200907_models.ListAggregateResourceRelationsResponse:
         """
-        This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance in an account group.
+        @summary Queries a list of the resources of a specific resource in an account group.
+        
+        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance in an account group.
         
         @param request: ListAggregateResourceRelationsRequest
         @return: ListAggregateResourceRelationsResponse
@@ -9725,7 +10865,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateResourceRelationsRequest,
     ) -> config_20200907_models.ListAggregateResourceRelationsResponse:
         """
-        This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance in an account group.
+        @summary Queries a list of the resources of a specific resource in an account group.
+        
+        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance in an account group.
         
         @param request: ListAggregateResourceRelationsRequest
         @return: ListAggregateResourceRelationsResponse
@@ -9738,6 +10880,19 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateResourcesByAdvancedSearchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse:
+        """
+        @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
+        
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+        >
+        Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+        For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+        This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` in the account group `ca-4b05626622af000c***` by using the advanced search feature.
+        
+        @param request: ListAggregateResourcesByAdvancedSearchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateResourcesByAdvancedSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -9768,6 +10923,19 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateResourcesByAdvancedSearchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse:
+        """
+        @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
+        
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+        >
+        Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+        For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+        This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` in the account group `ca-4b05626622af000c***` by using the advanced search feature.
+        
+        @param request: ListAggregateResourcesByAdvancedSearchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateResourcesByAdvancedSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -9797,6 +10965,18 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListAggregateResourcesByAdvancedSearchRequest,
     ) -> config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse:
+        """
+        @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
+        
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+        >
+        Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+        For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+        This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` in the account group `ca-4b05626622af000c***` by using the advanced search feature.
+        
+        @param request: ListAggregateResourcesByAdvancedSearchRequest
+        @return: ListAggregateResourcesByAdvancedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_aggregate_resources_by_advanced_search_with_options(request, runtime)
 
@@ -9804,6 +10984,18 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListAggregateResourcesByAdvancedSearchRequest,
     ) -> config_20200907_models.ListAggregateResourcesByAdvancedSearchResponse:
+        """
+        @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
+        
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+        >
+        Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+        For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+        This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` in the account group `ca-4b05626622af000c***` by using the advanced search feature.
+        
+        @param request: ListAggregateResourcesByAdvancedSearchRequest
+        @return: ListAggregateResourcesByAdvancedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_resources_by_advanced_search_with_options_async(request, runtime)
 
@@ -9813,7 +11005,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregatorsResponse:
         """
-        The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
+        @summary Queries a list of account groups that the current account manages or to which the current account belongs.
+        
+        @description The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
         
         @param request: ListAggregatorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9850,7 +11044,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregatorsResponse:
         """
-        The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
+        @summary Queries a list of account groups that the current account manages or to which the current account belongs.
+        
+        @description The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
         
         @param request: ListAggregatorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9886,7 +11082,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregatorsRequest,
     ) -> config_20200907_models.ListAggregatorsResponse:
         """
-        The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
+        @summary Queries a list of account groups that the current account manages or to which the current account belongs.
+        
+        @description The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
         
         @param request: ListAggregatorsRequest
         @return: ListAggregatorsResponse
@@ -9899,7 +11097,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregatorsRequest,
     ) -> config_20200907_models.ListAggregatorsResponse:
         """
-        The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
+        @summary Queries a list of account groups that the current account manages or to which the current account belongs.
+        
+        @description The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
         
         @param request: ListAggregatorsRequest
         @return: ListAggregatorsResponse
@@ -9913,7 +11113,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListCompliancePackTemplatesResponse:
         """
-        This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+        @summary Queries a list of compliance package templates.
+        
+        @description This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
         
         @param request: ListCompliancePackTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9954,7 +11156,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListCompliancePackTemplatesResponse:
         """
-        This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+        @summary Queries a list of compliance package templates.
+        
+        @description This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
         
         @param request: ListCompliancePackTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9994,7 +11198,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListCompliancePackTemplatesRequest,
     ) -> config_20200907_models.ListCompliancePackTemplatesResponse:
         """
-        This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+        @summary Queries a list of compliance package templates.
+        
+        @description This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
         
         @param request: ListCompliancePackTemplatesRequest
         @return: ListCompliancePackTemplatesResponse
@@ -10007,7 +11213,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListCompliancePackTemplatesRequest,
     ) -> config_20200907_models.ListCompliancePackTemplatesResponse:
         """
-        This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+        @summary Queries a list of compliance package templates.
+        
+        @description This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
         
         @param request: ListCompliancePackTemplatesRequest
         @return: ListCompliancePackTemplatesResponse
@@ -10021,7 +11229,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListCompliancePacksResponse:
         """
-        This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9***` compliance package.
+        @summary Queries a list of compliance packages.
+        
+        @description This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9***` compliance package.
         
         @param request: ListCompliancePacksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10060,7 +11270,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListCompliancePacksResponse:
         """
-        This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9***` compliance package.
+        @summary Queries a list of compliance packages.
+        
+        @description This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9***` compliance package.
         
         @param request: ListCompliancePacksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10098,7 +11310,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListCompliancePacksRequest,
     ) -> config_20200907_models.ListCompliancePacksResponse:
         """
-        This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9***` compliance package.
+        @summary Queries a list of compliance packages.
+        
+        @description This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9***` compliance package.
         
         @param request: ListCompliancePacksRequest
         @return: ListCompliancePacksResponse
@@ -10111,7 +11325,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListCompliancePacksRequest,
     ) -> config_20200907_models.ListCompliancePacksResponse:
         """
-        This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9***` compliance package.
+        @summary Queries a list of compliance packages.
+        
+        @description This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9***` compliance package.
         
         @param request: ListCompliancePacksRequest
         @return: ListCompliancePacksResponse
@@ -10124,6 +11340,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListConfigDeliveryChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigDeliveryChannelsResponse:
+        """
+        @summary Queries a list of delivery channels.
+        
+        @param request: ListConfigDeliveryChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigDeliveryChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delivery_channel_ids):
@@ -10152,6 +11375,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListConfigDeliveryChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigDeliveryChannelsResponse:
+        """
+        @summary Queries a list of delivery channels.
+        
+        @param request: ListConfigDeliveryChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigDeliveryChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delivery_channel_ids):
@@ -10179,6 +11409,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListConfigDeliveryChannelsRequest,
     ) -> config_20200907_models.ListConfigDeliveryChannelsResponse:
+        """
+        @summary Queries a list of delivery channels.
+        
+        @param request: ListConfigDeliveryChannelsRequest
+        @return: ListConfigDeliveryChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_config_delivery_channels_with_options(request, runtime)
 
@@ -10186,6 +11422,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListConfigDeliveryChannelsRequest,
     ) -> config_20200907_models.ListConfigDeliveryChannelsResponse:
+        """
+        @summary Queries a list of delivery channels.
+        
+        @param request: ListConfigDeliveryChannelsRequest
+        @return: ListConfigDeliveryChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_config_delivery_channels_with_options_async(request, runtime)
 
@@ -10195,7 +11437,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRuleEvaluationResultsResponse:
         """
-        This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3***`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
+        @summary Queries a list of compliance evaluation results of resources based on a rule.
+        
+        @description This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3***`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
         
         @param request: ListConfigRuleEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10228,7 +11472,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRuleEvaluationResultsResponse:
         """
-        This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3***`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
+        @summary Queries a list of compliance evaluation results of resources based on a rule.
+        
+        @description This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3***`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
         
         @param request: ListConfigRuleEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10260,7 +11506,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListConfigRuleEvaluationResultsRequest,
     ) -> config_20200907_models.ListConfigRuleEvaluationResultsResponse:
         """
-        This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3***`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
+        @summary Queries a list of compliance evaluation results of resources based on a rule.
+        
+        @description This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3***`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
         
         @param request: ListConfigRuleEvaluationResultsRequest
         @return: ListConfigRuleEvaluationResultsResponse
@@ -10273,7 +11521,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListConfigRuleEvaluationResultsRequest,
     ) -> config_20200907_models.ListConfigRuleEvaluationResultsResponse:
         """
-        This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3***`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
+        @summary Queries a list of compliance evaluation results of resources based on a rule.
+        
+        @description This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3***`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
         
         @param request: ListConfigRuleEvaluationResultsRequest
         @return: ListConfigRuleEvaluationResultsResponse
@@ -10285,6 +11535,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRuleEvaluationStatisticsResponse:
+        """
+        @summary Queries the statistics of compliance evaluation results of the current Alibaba Cloud account.
+        
+        @param request: ListConfigRuleEvaluationStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigRuleEvaluationStatisticsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListConfigRuleEvaluationStatistics',
@@ -10306,6 +11563,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRuleEvaluationStatisticsResponse:
+        """
+        @summary Queries the statistics of compliance evaluation results of the current Alibaba Cloud account.
+        
+        @param request: ListConfigRuleEvaluationStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigRuleEvaluationStatisticsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListConfigRuleEvaluationStatistics',
@@ -10324,10 +11588,20 @@ class Client(OpenApiClient):
         )
 
     def list_config_rule_evaluation_statistics(self) -> config_20200907_models.ListConfigRuleEvaluationStatisticsResponse:
+        """
+        @summary Queries the statistics of compliance evaluation results of the current Alibaba Cloud account.
+        
+        @return: ListConfigRuleEvaluationStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_config_rule_evaluation_statistics_with_options(runtime)
 
     async def list_config_rule_evaluation_statistics_async(self) -> config_20200907_models.ListConfigRuleEvaluationStatisticsResponse:
+        """
+        @summary Queries the statistics of compliance evaluation results of the current Alibaba Cloud account.
+        
+        @return: ListConfigRuleEvaluationStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_config_rule_evaluation_statistics_with_options_async(runtime)
 
@@ -10337,7 +11611,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRulesResponse:
         """
-        This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+        @summary Queries the rules of the current account.
+        
+        @description This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
         
         @param request: ListConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10386,7 +11662,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRulesResponse:
         """
-        This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+        @summary Queries the rules of the current account.
+        
+        @description This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
         
         @param request: ListConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10434,7 +11712,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListConfigRulesRequest,
     ) -> config_20200907_models.ListConfigRulesResponse:
         """
-        This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+        @summary Queries the rules of the current account.
+        
+        @description This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
         
         @param request: ListConfigRulesRequest
         @return: ListConfigRulesResponse
@@ -10447,7 +11727,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListConfigRulesRequest,
     ) -> config_20200907_models.ListConfigRulesResponse:
         """
-        This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
+        @summary Queries the rules of the current account.
+        
+        @description This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
         
         @param request: ListConfigRulesRequest
         @return: ListConfigRulesResponse
@@ -10461,7 +11743,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListDiscoveredResourcesResponse:
         """
-        This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
+        @summary Obtains a list of resources aggregated across regions within an Alibaba Cloud account.
+        
+        @description This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
         
         @param request: ListDiscoveredResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10506,7 +11790,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListDiscoveredResourcesResponse:
         """
-        This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
+        @summary Obtains a list of resources aggregated across regions within an Alibaba Cloud account.
+        
+        @description This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
         
         @param request: ListDiscoveredResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10550,7 +11836,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListDiscoveredResourcesRequest,
     ) -> config_20200907_models.ListDiscoveredResourcesResponse:
         """
-        This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
+        @summary Obtains a list of resources aggregated across regions within an Alibaba Cloud account.
+        
+        @description This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
         
         @param request: ListDiscoveredResourcesRequest
         @return: ListDiscoveredResourcesResponse
@@ -10563,7 +11851,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListDiscoveredResourcesRequest,
     ) -> config_20200907_models.ListDiscoveredResourcesResponse:
         """
-        This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
+        @summary Obtains a list of resources aggregated across regions within an Alibaba Cloud account.
+        
+        @description This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
         
         @param request: ListDiscoveredResourcesRequest
         @return: ListDiscoveredResourcesResponse
@@ -10576,7 +11866,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListIntegratedServiceResponse:
         """
-        This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
+        @summary Queries the cloud services that can be integrated by the current Alibaba Cloud account.
+        
+        @description This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
         
         @param request: ListIntegratedServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10604,7 +11896,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListIntegratedServiceResponse:
         """
-        This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
+        @summary Queries the cloud services that can be integrated by the current Alibaba Cloud account.
+        
+        @description This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
         
         @param request: ListIntegratedServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10629,7 +11923,9 @@ class Client(OpenApiClient):
 
     def list_integrated_service(self) -> config_20200907_models.ListIntegratedServiceResponse:
         """
-        This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
+        @summary Queries the cloud services that can be integrated by the current Alibaba Cloud account.
+        
+        @description This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
         
         @return: ListIntegratedServiceResponse
         """
@@ -10638,7 +11934,9 @@ class Client(OpenApiClient):
 
     async def list_integrated_service_async(self) -> config_20200907_models.ListIntegratedServiceResponse:
         """
-        This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
+        @summary Queries the cloud services that can be integrated by the current Alibaba Cloud account.
+        
+        @description This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
         
         @return: ListIntegratedServiceResponse
         """
@@ -10651,7 +11949,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListManagedRulesResponse:
         """
-        This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
+        @summary Queries managed rules.
+        
+        @description This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
         
         @param request: ListManagedRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10694,7 +11994,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListManagedRulesResponse:
         """
-        This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
+        @summary Queries managed rules.
+        
+        @description This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
         
         @param request: ListManagedRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10736,7 +12038,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListManagedRulesRequest,
     ) -> config_20200907_models.ListManagedRulesResponse:
         """
-        This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
+        @summary Queries managed rules.
+        
+        @description This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
         
         @param request: ListManagedRulesRequest
         @return: ListManagedRulesResponse
@@ -10749,7 +12053,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListManagedRulesRequest,
     ) -> config_20200907_models.ListManagedRulesResponse:
         """
-        This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
+        @summary Queries managed rules.
+        
+        @description This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
         
         @param request: ListManagedRulesRequest
         @return: ListManagedRulesResponse
@@ -10762,6 +12068,13 @@ class Client(OpenApiClient):
         tmp_req: config_20200907_models.ListPreManagedRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListPreManagedRulesResponse:
+        """
+        @summary Queries a list of evaluation rules.
+        
+        @param tmp_req: ListPreManagedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPreManagedRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = config_20200907_models.ListPreManagedRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10798,6 +12111,13 @@ class Client(OpenApiClient):
         tmp_req: config_20200907_models.ListPreManagedRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListPreManagedRulesResponse:
+        """
+        @summary Queries a list of evaluation rules.
+        
+        @param tmp_req: ListPreManagedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPreManagedRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = config_20200907_models.ListPreManagedRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10833,6 +12153,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListPreManagedRulesRequest,
     ) -> config_20200907_models.ListPreManagedRulesResponse:
+        """
+        @summary Queries a list of evaluation rules.
+        
+        @param request: ListPreManagedRulesRequest
+        @return: ListPreManagedRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_pre_managed_rules_with_options(request, runtime)
 
@@ -10840,6 +12166,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListPreManagedRulesRequest,
     ) -> config_20200907_models.ListPreManagedRulesResponse:
+        """
+        @summary Queries a list of evaluation rules.
+        
+        @param request: ListPreManagedRulesRequest
+        @return: ListPreManagedRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_pre_managed_rules_with_options_async(request, runtime)
 
@@ -10849,7 +12181,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListRemediationExecutionsResponse:
         """
-        This topic provides an example on how to query the remediation records of the rule cr-5392626622af0000\\\\*\\*\\*.
+        @summary Queries the remediation records of a rule.
+        
+        @description This topic provides an example on how to query the remediation records of the rule cr-5392626622af0000\\\\*\\*\\*.
         
         @param request: ListRemediationExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10890,7 +12224,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListRemediationExecutionsResponse:
         """
-        This topic provides an example on how to query the remediation records of the rule cr-5392626622af0000\\\\*\\*\\*.
+        @summary Queries the remediation records of a rule.
+        
+        @description This topic provides an example on how to query the remediation records of the rule cr-5392626622af0000\\\\*\\*\\*.
         
         @param request: ListRemediationExecutionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10930,7 +12266,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListRemediationExecutionsRequest,
     ) -> config_20200907_models.ListRemediationExecutionsResponse:
         """
-        This topic provides an example on how to query the remediation records of the rule cr-5392626622af0000\\\\*\\*\\*.
+        @summary Queries the remediation records of a rule.
+        
+        @description This topic provides an example on how to query the remediation records of the rule cr-5392626622af0000\\\\*\\*\\*.
         
         @param request: ListRemediationExecutionsRequest
         @return: ListRemediationExecutionsResponse
@@ -10943,7 +12281,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListRemediationExecutionsRequest,
     ) -> config_20200907_models.ListRemediationExecutionsResponse:
         """
-        This topic provides an example on how to query the remediation records of the rule cr-5392626622af0000\\\\*\\*\\*.
+        @summary Queries the remediation records of a rule.
+        
+        @description This topic provides an example on how to query the remediation records of the rule cr-5392626622af0000\\\\*\\*\\*.
         
         @param request: ListRemediationExecutionsRequest
         @return: ListRemediationExecutionsResponse
@@ -10957,7 +12297,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListRemediationTemplatesResponse:
         """
-        In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+        @summary Queries a list of remediation templates for a managed rule.
+        
+        @description In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
         
         @param request: ListRemediationTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10998,7 +12340,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListRemediationTemplatesResponse:
         """
-        In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+        @summary Queries a list of remediation templates for a managed rule.
+        
+        @description In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
         
         @param request: ListRemediationTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11038,7 +12382,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListRemediationTemplatesRequest,
     ) -> config_20200907_models.ListRemediationTemplatesResponse:
         """
-        In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+        @summary Queries a list of remediation templates for a managed rule.
+        
+        @description In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
         
         @param request: ListRemediationTemplatesRequest
         @return: ListRemediationTemplatesResponse
@@ -11051,7 +12397,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListRemediationTemplatesRequest,
     ) -> config_20200907_models.ListRemediationTemplatesResponse:
         """
-        In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+        @summary Queries a list of remediation templates for a managed rule.
+        
+        @description In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
         
         @param request: ListRemediationTemplatesRequest
         @return: ListRemediationTemplatesResponse
@@ -11065,7 +12413,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListRemediationsResponse:
         """
-        This topic provides an example on how to query the remediation templates for the rule whose ID is `cr-6b7c626622af00b4***`.
+        @summary Queries the information about the execution of remediation templates.
+        
+        @description This topic provides an example on how to query the remediation templates for the rule whose ID is `cr-6b7c626622af00b4***`.
         
         @param request: ListRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11104,7 +12454,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListRemediationsResponse:
         """
-        This topic provides an example on how to query the remediation templates for the rule whose ID is `cr-6b7c626622af00b4***`.
+        @summary Queries the information about the execution of remediation templates.
+        
+        @description This topic provides an example on how to query the remediation templates for the rule whose ID is `cr-6b7c626622af00b4***`.
         
         @param request: ListRemediationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11142,7 +12494,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListRemediationsRequest,
     ) -> config_20200907_models.ListRemediationsResponse:
         """
-        This topic provides an example on how to query the remediation templates for the rule whose ID is `cr-6b7c626622af00b4***`.
+        @summary Queries the information about the execution of remediation templates.
+        
+        @description This topic provides an example on how to query the remediation templates for the rule whose ID is `cr-6b7c626622af00b4***`.
         
         @param request: ListRemediationsRequest
         @return: ListRemediationsResponse
@@ -11155,7 +12509,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListRemediationsRequest,
     ) -> config_20200907_models.ListRemediationsResponse:
         """
-        This topic provides an example on how to query the remediation templates for the rule whose ID is `cr-6b7c626622af00b4***`.
+        @summary Queries the information about the execution of remediation templates.
+        
+        @description This topic provides an example on how to query the remediation templates for the rule whose ID is `cr-6b7c626622af00b4***`.
         
         @param request: ListRemediationsRequest
         @return: ListRemediationsResponse
@@ -11169,7 +12525,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListResourceEvaluationResultsResponse:
         """
-        In this example, the compliance evaluation result of the `23642660635396***` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+        @summary Queries the compliance evaluation result of a resource.
+        
+        @description In this example, the compliance evaluation result of the `23642660635396***` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
         
         @param request: ListResourceEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11214,7 +12572,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListResourceEvaluationResultsResponse:
         """
-        In this example, the compliance evaluation result of the `23642660635396***` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+        @summary Queries the compliance evaluation result of a resource.
+        
+        @description In this example, the compliance evaluation result of the `23642660635396***` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
         
         @param request: ListResourceEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11258,7 +12618,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListResourceEvaluationResultsRequest,
     ) -> config_20200907_models.ListResourceEvaluationResultsResponse:
         """
-        In this example, the compliance evaluation result of the `23642660635396***` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+        @summary Queries the compliance evaluation result of a resource.
+        
+        @description In this example, the compliance evaluation result of the `23642660635396***` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
         
         @param request: ListResourceEvaluationResultsRequest
         @return: ListResourceEvaluationResultsResponse
@@ -11271,7 +12633,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListResourceEvaluationResultsRequest,
     ) -> config_20200907_models.ListResourceEvaluationResultsResponse:
         """
-        In this example, the compliance evaluation result of the `23642660635396***` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+        @summary Queries the compliance evaluation result of a resource.
+        
+        @description In this example, the compliance evaluation result of the `23642660635396***` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
         
         @param request: ListResourceEvaluationResultsRequest
         @return: ListResourceEvaluationResultsResponse
@@ -11285,7 +12649,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListResourceRelationsResponse:
         """
-        This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
+        @summary Queries a list of resources that associate with a specific resource.
+        
+        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
         
         @param request: ListResourceRelationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11334,7 +12700,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListResourceRelationsResponse:
         """
-        This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
+        @summary Queries a list of resources that associate with a specific resource.
+        
+        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
         
         @param request: ListResourceRelationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11382,7 +12750,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListResourceRelationsRequest,
     ) -> config_20200907_models.ListResourceRelationsResponse:
         """
-        This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
+        @summary Queries a list of resources that associate with a specific resource.
+        
+        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
         
         @param request: ListResourceRelationsRequest
         @return: ListResourceRelationsResponse
@@ -11395,7 +12765,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListResourceRelationsRequest,
     ) -> config_20200907_models.ListResourceRelationsResponse:
         """
-        This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
+        @summary Queries a list of resources that associate with a specific resource.
+        
+        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
         
         @param request: ListResourceRelationsRequest
         @return: ListResourceRelationsResponse
@@ -11409,7 +12781,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
         """
-        This topic provides an example on how to query all resources with the business tag key and the online tag value in the current Alibaba Cloud account.
+        @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
+        
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+        >
+        Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+        For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+        This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` within the current account by using the advanced search feature.
         
         @param request: ListResourcesByAdvancedSearchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11444,7 +12822,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
         """
-        This topic provides an example on how to query all resources with the business tag key and the online tag value in the current Alibaba Cloud account.
+        @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
+        
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+        >
+        Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+        For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+        This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` within the current account by using the advanced search feature.
         
         @param request: ListResourcesByAdvancedSearchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11478,7 +12862,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
     ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
         """
-        This topic provides an example on how to query all resources with the business tag key and the online tag value in the current Alibaba Cloud account.
+        @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
+        
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+        >
+        Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+        For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+        This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` within the current account by using the advanced search feature.
         
         @param request: ListResourcesByAdvancedSearchRequest
         @return: ListResourcesByAdvancedSearchResponse
@@ -11491,7 +12881,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
     ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
         """
-        This topic provides an example on how to query all resources with the business tag key and the online tag value in the current Alibaba Cloud account.
+        @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
+        
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+        >
+        Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+        For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+        This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` within the current account by using the advanced search feature.
         
         @param request: ListResourcesByAdvancedSearchRequest
         @return: ListResourcesByAdvancedSearchResponse
@@ -11505,7 +12901,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListSupportedProductsResponse:
         """
-        This topic provides an example on how to query the cloud services and resource types that are supported by Cloud Config.
+        @summary Queries the cloud services and resource types that are supported by Cloud Config.
+        
+        @description This topic provides an example on how to query the Alibaba Cloud services and resource types supported by a Cloud Config.
         
         @param request: ListSupportedProductsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11542,7 +12940,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListSupportedProductsResponse:
         """
-        This topic provides an example on how to query the cloud services and resource types that are supported by Cloud Config.
+        @summary Queries the cloud services and resource types that are supported by Cloud Config.
+        
+        @description This topic provides an example on how to query the Alibaba Cloud services and resource types supported by a Cloud Config.
         
         @param request: ListSupportedProductsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11578,7 +12978,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListSupportedProductsRequest,
     ) -> config_20200907_models.ListSupportedProductsResponse:
         """
-        This topic provides an example on how to query the cloud services and resource types that are supported by Cloud Config.
+        @summary Queries the cloud services and resource types that are supported by Cloud Config.
+        
+        @description This topic provides an example on how to query the Alibaba Cloud services and resource types supported by a Cloud Config.
         
         @param request: ListSupportedProductsRequest
         @return: ListSupportedProductsResponse
@@ -11591,7 +12993,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListSupportedProductsRequest,
     ) -> config_20200907_models.ListSupportedProductsResponse:
         """
-        This topic provides an example on how to query the cloud services and resource types that are supported by Cloud Config.
+        @summary Queries the cloud services and resource types that are supported by Cloud Config.
+        
+        @description This topic provides an example on how to query the Alibaba Cloud services and resource types supported by a Cloud Config.
         
         @param request: ListSupportedProductsRequest
         @return: ListSupportedProductsResponse
@@ -11604,6 +13008,13 @@ class Client(OpenApiClient):
         tmp_req: config_20200907_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags that are added to specified resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = config_20200907_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11644,6 +13055,13 @@ class Client(OpenApiClient):
         tmp_req: config_20200907_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags that are added to specified resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = config_20200907_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11683,6 +13101,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListTagResourcesRequest,
     ) -> config_20200907_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags that are added to specified resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -11690,6 +13114,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListTagResourcesRequest,
     ) -> config_20200907_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags that are added to specified resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -11698,6 +13128,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.PutEvaluationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.PutEvaluationsResponse:
+        """
+        @summary Submits the evaluation results of a custom rule to Function Compute.
+        
+        @param request: PutEvaluationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutEvaluationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.delete_mode):
@@ -11730,6 +13167,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.PutEvaluationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.PutEvaluationsResponse:
+        """
+        @summary Submits the evaluation results of a custom rule to Function Compute.
+        
+        @param request: PutEvaluationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutEvaluationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.delete_mode):
@@ -11761,6 +13205,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.PutEvaluationsRequest,
     ) -> config_20200907_models.PutEvaluationsResponse:
+        """
+        @summary Submits the evaluation results of a custom rule to Function Compute.
+        
+        @param request: PutEvaluationsRequest
+        @return: PutEvaluationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_evaluations_with_options(request, runtime)
 
@@ -11768,6 +13218,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.PutEvaluationsRequest,
     ) -> config_20200907_models.PutEvaluationsResponse:
+        """
+        @summary Submits the evaluation results of a custom rule to Function Compute.
+        
+        @param request: PutEvaluationsRequest
+        @return: PutEvaluationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_evaluations_with_options_async(request, runtime)
 
@@ -11777,10 +13233,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.RevertAggregateEvaluationResultsResponse:
         """
-        ### Prerequisites
+        @summary Re-evaluates one or more incompliant resources that are evaluated based on a rule in an account group.
+        
+        @description ### Prerequisites
         One or more non-compliant resources that are evaluated based on a rule are ignored.
         ### Usage notes
-        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm***` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param tmp_req: RevertAggregateEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11823,10 +13281,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.RevertAggregateEvaluationResultsResponse:
         """
-        ### Prerequisites
+        @summary Re-evaluates one or more incompliant resources that are evaluated based on a rule in an account group.
+        
+        @description ### Prerequisites
         One or more non-compliant resources that are evaluated based on a rule are ignored.
         ### Usage notes
-        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm***` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param tmp_req: RevertAggregateEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11868,10 +13328,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.RevertAggregateEvaluationResultsRequest,
     ) -> config_20200907_models.RevertAggregateEvaluationResultsResponse:
         """
-        ### Prerequisites
+        @summary Re-evaluates one or more incompliant resources that are evaluated based on a rule in an account group.
+        
+        @description ### Prerequisites
         One or more non-compliant resources that are evaluated based on a rule are ignored.
         ### Usage notes
-        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm***` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param request: RevertAggregateEvaluationResultsRequest
         @return: RevertAggregateEvaluationResultsResponse
@@ -11884,10 +13346,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.RevertAggregateEvaluationResultsRequest,
     ) -> config_20200907_models.RevertAggregateEvaluationResultsResponse:
         """
-        ### Prerequisites
+        @summary Re-evaluates one or more incompliant resources that are evaluated based on a rule in an account group.
+        
+        @description ### Prerequisites
         One or more non-compliant resources that are evaluated based on a rule are ignored.
         ### Usage notes
-        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm***` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
         
         @param request: RevertAggregateEvaluationResultsRequest
         @return: RevertAggregateEvaluationResultsResponse
@@ -11901,10 +13365,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.RevertEvaluationResultsResponse:
         """
-        ### Prerequisites
+        @summary Re-evaluates non-compliant resources that are evaluated based on a rule.
+        
+        @description ### Prerequisites
         One or more non-compliant resources that are evaluated by a rule are ignored.
         ### Usage notes
-        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
+        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm***` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
         
         @param tmp_req: RevertEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11945,10 +13411,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.RevertEvaluationResultsResponse:
         """
-        ### Prerequisites
+        @summary Re-evaluates non-compliant resources that are evaluated based on a rule.
+        
+        @description ### Prerequisites
         One or more non-compliant resources that are evaluated by a rule are ignored.
         ### Usage notes
-        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
+        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm***` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
         
         @param tmp_req: RevertEvaluationResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11988,10 +13456,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.RevertEvaluationResultsRequest,
     ) -> config_20200907_models.RevertEvaluationResultsResponse:
         """
-        ### Prerequisites
+        @summary Re-evaluates non-compliant resources that are evaluated based on a rule.
+        
+        @description ### Prerequisites
         One or more non-compliant resources that are evaluated by a rule are ignored.
         ### Usage notes
-        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
+        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm***` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
         
         @param request: RevertEvaluationResultsRequest
         @return: RevertEvaluationResultsResponse
@@ -12004,10 +13474,12 @@ class Client(OpenApiClient):
         request: config_20200907_models.RevertEvaluationResultsRequest,
     ) -> config_20200907_models.RevertEvaluationResultsResponse:
         """
-        ### Prerequisites
+        @summary Re-evaluates non-compliant resources that are evaluated based on a rule.
+        
+        @description ### Prerequisites
         One or more non-compliant resources that are evaluated by a rule are ignored.
         ### Usage notes
-        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
+        The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm***` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
         
         @param request: RevertEvaluationResultsRequest
         @return: RevertEvaluationResultsResponse
@@ -12021,8 +13493,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartAggregateConfigRuleEvaluationResponse:
         """
-        > After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](~~265979~~).
-        The sample request in this topic shows how to use the `cr-c169626622af009f****` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
+        @summary Starts to evaluate the involved resources by using a rule in an account group.
+        
+        @description > After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](https://help.aliyun.com/document_detail/265979.html).
+        The sample request in this topic shows how to use the `cr-c169626622af009f***` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
         
         @param request: StartAggregateConfigRuleEvaluationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12063,8 +13537,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartAggregateConfigRuleEvaluationResponse:
         """
-        > After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](~~265979~~).
-        The sample request in this topic shows how to use the `cr-c169626622af009f****` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
+        @summary Starts to evaluate the involved resources by using a rule in an account group.
+        
+        @description > After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](https://help.aliyun.com/document_detail/265979.html).
+        The sample request in this topic shows how to use the `cr-c169626622af009f***` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
         
         @param request: StartAggregateConfigRuleEvaluationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12104,8 +13580,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartAggregateConfigRuleEvaluationRequest,
     ) -> config_20200907_models.StartAggregateConfigRuleEvaluationResponse:
         """
-        > After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](~~265979~~).
-        The sample request in this topic shows how to use the `cr-c169626622af009f****` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
+        @summary Starts to evaluate the involved resources by using a rule in an account group.
+        
+        @description > After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](https://help.aliyun.com/document_detail/265979.html).
+        The sample request in this topic shows how to use the `cr-c169626622af009f***` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
         
         @param request: StartAggregateConfigRuleEvaluationRequest
         @return: StartAggregateConfigRuleEvaluationResponse
@@ -12118,8 +13596,10 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartAggregateConfigRuleEvaluationRequest,
     ) -> config_20200907_models.StartAggregateConfigRuleEvaluationResponse:
         """
-        > After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](~~265979~~).
-        The sample request in this topic shows how to use the `cr-c169626622af009f****` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
+        @summary Starts to evaluate the involved resources by using a rule in an account group.
+        
+        @description > After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](https://help.aliyun.com/document_detail/265979.html).
+        The sample request in this topic shows how to use the `cr-c169626622af009f***` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
         
         @param request: StartAggregateConfigRuleEvaluationRequest
         @return: StartAggregateConfigRuleEvaluationResponse
@@ -12133,7 +13613,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartAggregateRemediationResponse:
         """
-        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
+        @summary Performs a remediation operation by using a rule in an account group.
+        
+        @description This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
         
         @param request: StartAggregateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12172,7 +13654,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartAggregateRemediationResponse:
         """
-        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
+        @summary Performs a remediation operation by using a rule in an account group.
+        
+        @description This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
         
         @param request: StartAggregateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12210,7 +13694,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartAggregateRemediationRequest,
     ) -> config_20200907_models.StartAggregateRemediationResponse:
         """
-        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
+        @summary Performs a remediation operation by using a rule in an account group.
+        
+        @description This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
         
         @param request: StartAggregateRemediationRequest
         @return: StartAggregateRemediationResponse
@@ -12223,7 +13709,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartAggregateRemediationRequest,
     ) -> config_20200907_models.StartAggregateRemediationResponse:
         """
-        This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
+        @summary Performs a remediation operation by using a rule in an account group.
+        
+        @description This topic provides an example on how to manually perform a remediation operation by using the rule whose ID is `cr-6b7c626622af00b4***` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
         
         @param request: StartAggregateRemediationRequest
         @return: StartAggregateRemediationResponse
@@ -12237,7 +13725,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartConfigRuleEvaluationResponse:
         """
-        In this example, the cr-9920626622af0035\\\\*\\*\\* rule is used to re-evaluate the compliance of resources.
+        @summary Re-evaluates the compliance of resources based on a rule or compliance package.
+        
+        @description In this example, the cr-9920626622af0035\\\\*\\*\\* rule is used to re-evaluate the compliance of resources.
         
         @param request: StartConfigRuleEvaluationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12276,7 +13766,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartConfigRuleEvaluationResponse:
         """
-        In this example, the cr-9920626622af0035\\\\*\\*\\* rule is used to re-evaluate the compliance of resources.
+        @summary Re-evaluates the compliance of resources based on a rule or compliance package.
+        
+        @description In this example, the cr-9920626622af0035\\\\*\\*\\* rule is used to re-evaluate the compliance of resources.
         
         @param request: StartConfigRuleEvaluationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12314,7 +13806,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartConfigRuleEvaluationRequest,
     ) -> config_20200907_models.StartConfigRuleEvaluationResponse:
         """
-        In this example, the cr-9920626622af0035\\\\*\\*\\* rule is used to re-evaluate the compliance of resources.
+        @summary Re-evaluates the compliance of resources based on a rule or compliance package.
+        
+        @description In this example, the cr-9920626622af0035\\\\*\\*\\* rule is used to re-evaluate the compliance of resources.
         
         @param request: StartConfigRuleEvaluationRequest
         @return: StartConfigRuleEvaluationResponse
@@ -12327,7 +13821,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartConfigRuleEvaluationRequest,
     ) -> config_20200907_models.StartConfigRuleEvaluationResponse:
         """
-        In this example, the cr-9920626622af0035\\\\*\\*\\* rule is used to re-evaluate the compliance of resources.
+        @summary Re-evaluates the compliance of resources based on a rule or compliance package.
+        
+        @description In this example, the cr-9920626622af0035\\\\*\\*\\* rule is used to re-evaluate the compliance of resources.
         
         @param request: StartConfigRuleEvaluationRequest
         @return: StartConfigRuleEvaluationResponse
@@ -12340,7 +13836,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartConfigurationRecorderResponse:
         """
-        This topic provides an example on how to enable Cloud Config to monitor the resources of your Alibaba Cloud account.
+        @summary Enables Cloud Config to monitor the resources of your Alibaba Cloud account.
+        
+        @description This topic provides an example on how to enable Cloud Config to monitor the resources of your Alibaba Cloud account.
         
         @param request: StartConfigurationRecorderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12368,7 +13866,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartConfigurationRecorderResponse:
         """
-        This topic provides an example on how to enable Cloud Config to monitor the resources of your Alibaba Cloud account.
+        @summary Enables Cloud Config to monitor the resources of your Alibaba Cloud account.
+        
+        @description This topic provides an example on how to enable Cloud Config to monitor the resources of your Alibaba Cloud account.
         
         @param request: StartConfigurationRecorderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12393,7 +13893,9 @@ class Client(OpenApiClient):
 
     def start_configuration_recorder(self) -> config_20200907_models.StartConfigurationRecorderResponse:
         """
-        This topic provides an example on how to enable Cloud Config to monitor the resources of your Alibaba Cloud account.
+        @summary Enables Cloud Config to monitor the resources of your Alibaba Cloud account.
+        
+        @description This topic provides an example on how to enable Cloud Config to monitor the resources of your Alibaba Cloud account.
         
         @return: StartConfigurationRecorderResponse
         """
@@ -12402,7 +13904,9 @@ class Client(OpenApiClient):
 
     async def start_configuration_recorder_async(self) -> config_20200907_models.StartConfigurationRecorderResponse:
         """
-        This topic provides an example on how to enable Cloud Config to monitor the resources of your Alibaba Cloud account.
+        @summary Enables Cloud Config to monitor the resources of your Alibaba Cloud account.
+        
+        @description This topic provides an example on how to enable Cloud Config to monitor the resources of your Alibaba Cloud account.
         
         @return: StartConfigurationRecorderResponse
         """
@@ -12415,7 +13919,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartRemediationResponse:
         """
-        This topic provides an example on how to perform a remediation operation by using the rule whose ID is `cr-8a973ac2e2be00a2***`. The returned result shows that the manual execution is successful.
+        @summary Performs a remediation operation by using a rule.
+        
+        @description This topic provides an example on how to perform a remediation operation by using the rule whose ID is `cr-8a973ac2e2be00a2***`. The returned result shows that the manual execution is successful.
         
         @param request: StartRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12450,7 +13956,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StartRemediationResponse:
         """
-        This topic provides an example on how to perform a remediation operation by using the rule whose ID is `cr-8a973ac2e2be00a2***`. The returned result shows that the manual execution is successful.
+        @summary Performs a remediation operation by using a rule.
+        
+        @description This topic provides an example on how to perform a remediation operation by using the rule whose ID is `cr-8a973ac2e2be00a2***`. The returned result shows that the manual execution is successful.
         
         @param request: StartRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12484,7 +13992,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartRemediationRequest,
     ) -> config_20200907_models.StartRemediationResponse:
         """
-        This topic provides an example on how to perform a remediation operation by using the rule whose ID is `cr-8a973ac2e2be00a2***`. The returned result shows that the manual execution is successful.
+        @summary Performs a remediation operation by using a rule.
+        
+        @description This topic provides an example on how to perform a remediation operation by using the rule whose ID is `cr-8a973ac2e2be00a2***`. The returned result shows that the manual execution is successful.
         
         @param request: StartRemediationRequest
         @return: StartRemediationResponse
@@ -12497,7 +14007,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.StartRemediationRequest,
     ) -> config_20200907_models.StartRemediationResponse:
         """
-        This topic provides an example on how to perform a remediation operation by using the rule whose ID is `cr-8a973ac2e2be00a2***`. The returned result shows that the manual execution is successful.
+        @summary Performs a remediation operation by using a rule.
+        
+        @description This topic provides an example on how to perform a remediation operation by using the rule whose ID is `cr-8a973ac2e2be00a2***`. The returned result shows that the manual execution is successful.
         
         @param request: StartRemediationRequest
         @return: StartRemediationResponse
@@ -12509,6 +14021,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StopConfigurationRecorderResponse:
+        """
+        @summary Deactivates Cloud Config.
+        
+        @param request: StopConfigurationRecorderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopConfigurationRecorderResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='StopConfigurationRecorder',
@@ -12530,6 +14049,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.StopConfigurationRecorderResponse:
+        """
+        @summary Deactivates Cloud Config.
+        
+        @param request: StopConfigurationRecorderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopConfigurationRecorderResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='StopConfigurationRecorder',
@@ -12548,10 +14074,20 @@ class Client(OpenApiClient):
         )
 
     def stop_configuration_recorder(self) -> config_20200907_models.StopConfigurationRecorderResponse:
+        """
+        @summary Deactivates Cloud Config.
+        
+        @return: StopConfigurationRecorderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_configuration_recorder_with_options(runtime)
 
     async def stop_configuration_recorder_async(self) -> config_20200907_models.StopConfigurationRecorderResponse:
+        """
+        @summary Deactivates Cloud Config.
+        
+        @return: StopConfigurationRecorderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_configuration_recorder_with_options_async(runtime)
 
@@ -12560,6 +14096,13 @@ class Client(OpenApiClient):
         tmp_req: config_20200907_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param tmp_req: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = config_20200907_models.TagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12598,6 +14141,13 @@ class Client(OpenApiClient):
         tmp_req: config_20200907_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param tmp_req: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = config_20200907_models.TagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12635,6 +14185,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.TagResourcesRequest,
     ) -> config_20200907_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -12642,6 +14198,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.TagResourcesRequest,
     ) -> config_20200907_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -12650,6 +14212,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from specified resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.all):
@@ -12686,6 +14255,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from specified resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.all):
@@ -12721,6 +14297,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.UntagResourcesRequest,
     ) -> config_20200907_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from specified resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -12728,6 +14310,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.UntagResourcesRequest,
     ) -> config_20200907_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from specified resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -12737,7 +14325,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregateCompliancePackResponse:
         """
-        This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Modifies the configurations of a compliance package in an account group.
+        
+        @description This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param tmp_req: UpdateAggregateCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12798,7 +14388,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregateCompliancePackResponse:
         """
-        This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Modifies the configurations of a compliance package in an account group.
+        
+        @description This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param tmp_req: UpdateAggregateCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12858,7 +14450,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregateCompliancePackRequest,
     ) -> config_20200907_models.UpdateAggregateCompliancePackResponse:
         """
-        This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Modifies the configurations of a compliance package in an account group.
+        
+        @description This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: UpdateAggregateCompliancePackRequest
         @return: UpdateAggregateCompliancePackResponse
@@ -12871,7 +14465,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregateCompliancePackRequest,
     ) -> config_20200907_models.UpdateAggregateCompliancePackResponse:
         """
-        This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
+        @summary Modifies the configurations of a compliance package in an account group.
+        
+        @description This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9***` compliance package in the `ca-f632626622af0079****` account group.
         
         @param request: UpdateAggregateCompliancePackRequest
         @return: UpdateAggregateCompliancePackResponse
@@ -12885,7 +14481,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to disable a delivery channel in an account group. The ID of the account group is `ca-a4e5626622af0079***`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`. The Status parameter is set to `0`. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+        @summary Modifies a delivery channel in an account group.
+        
+        @description This topic provides an example on how to disable a delivery channel in an account group. The ID of the account group is `ca-a4e5626622af0079***`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`. The Status parameter is set to `0`. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
         
         @param request: UpdateAggregateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12944,7 +14542,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to disable a delivery channel in an account group. The ID of the account group is `ca-a4e5626622af0079***`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`. The Status parameter is set to `0`. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+        @summary Modifies a delivery channel in an account group.
+        
+        @description This topic provides an example on how to disable a delivery channel in an account group. The ID of the account group is `ca-a4e5626622af0079***`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`. The Status parameter is set to `0`. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
         
         @param request: UpdateAggregateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13002,7 +14602,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to disable a delivery channel in an account group. The ID of the account group is `ca-a4e5626622af0079***`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`. The Status parameter is set to `0`. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+        @summary Modifies a delivery channel in an account group.
+        
+        @description This topic provides an example on how to disable a delivery channel in an account group. The ID of the account group is `ca-a4e5626622af0079***`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`. The Status parameter is set to `0`. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
         
         @param request: UpdateAggregateConfigDeliveryChannelRequest
         @return: UpdateAggregateConfigDeliveryChannelResponse
@@ -13015,7 +14617,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.UpdateAggregateConfigDeliveryChannelResponse:
         """
-        This topic provides an example on how to disable a delivery channel in an account group. The ID of the account group is `ca-a4e5626622af0079***`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`. The Status parameter is set to `0`. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+        @summary Modifies a delivery channel in an account group.
+        
+        @description This topic provides an example on how to disable a delivery channel in an account group. The ID of the account group is `ca-a4e5626622af0079***`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`. The Status parameter is set to `0`. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
         
         @param request: UpdateAggregateConfigDeliveryChannelRequest
         @return: UpdateAggregateConfigDeliveryChannelResponse
@@ -13029,7 +14633,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregateConfigRuleResponse:
         """
-        The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080***` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
+        @summary Modifies a rule in an account group.
+        
+        @description The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080***` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
         
         @param tmp_req: UpdateAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13106,7 +14712,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregateConfigRuleResponse:
         """
-        The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080***` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
+        @summary Modifies a rule in an account group.
+        
+        @description The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080***` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
         
         @param tmp_req: UpdateAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13182,7 +14790,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregateConfigRuleRequest,
     ) -> config_20200907_models.UpdateAggregateConfigRuleResponse:
         """
-        The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080***` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
+        @summary Modifies a rule in an account group.
+        
+        @description The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080***` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
         
         @param request: UpdateAggregateConfigRuleRequest
         @return: UpdateAggregateConfigRuleResponse
@@ -13195,7 +14805,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregateConfigRuleRequest,
     ) -> config_20200907_models.UpdateAggregateConfigRuleResponse:
         """
-        The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080***` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
+        @summary Modifies a rule in an account group.
+        
+        @description The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080***` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
         
         @param request: UpdateAggregateConfigRuleRequest
         @return: UpdateAggregateConfigRuleResponse
@@ -13209,7 +14821,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregateRemediationResponse:
         """
-        This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+        @summary Modifies a remediation template for a rule in an account group.
+        
+        @description This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
         
         @param request: UpdateAggregateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13256,7 +14870,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregateRemediationResponse:
         """
-        This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+        @summary Modifies a remediation template for a rule in an account group.
+        
+        @description This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
         
         @param request: UpdateAggregateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13302,7 +14918,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregateRemediationRequest,
     ) -> config_20200907_models.UpdateAggregateRemediationResponse:
         """
-        This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+        @summary Modifies a remediation template for a rule in an account group.
+        
+        @description This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
         
         @param request: UpdateAggregateRemediationRequest
         @return: UpdateAggregateRemediationResponse
@@ -13315,7 +14933,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregateRemediationRequest,
     ) -> config_20200907_models.UpdateAggregateRemediationResponse:
         """
-        This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+        @summary Modifies a remediation template for a rule in an account group.
+        
+        @description This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
         
         @param request: UpdateAggregateRemediationRequest
         @return: UpdateAggregateRemediationResponse
@@ -13329,7 +14949,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregatorResponse:
         """
-        The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb***`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
+        @summary Modify an account group
+        
+        @description The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb***`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
         
         @param tmp_req: UpdateAggregatorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13376,7 +14998,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateAggregatorResponse:
         """
-        The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb***`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
+        @summary Modify an account group
+        
+        @description The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb***`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
         
         @param tmp_req: UpdateAggregatorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13422,7 +15046,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregatorRequest,
     ) -> config_20200907_models.UpdateAggregatorResponse:
         """
-        The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb***`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
+        @summary Modify an account group
+        
+        @description The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb***`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
         
         @param request: UpdateAggregatorRequest
         @return: UpdateAggregatorResponse
@@ -13435,7 +15061,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateAggregatorRequest,
     ) -> config_20200907_models.UpdateAggregatorResponse:
         """
-        The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb***`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
+        @summary Modify an account group
+        
+        @description The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb***`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
         
         @param request: UpdateAggregatorRequest
         @return: UpdateAggregatorResponse
@@ -13449,7 +15077,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateCompliancePackResponse:
         """
-        This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082***` compliance package.
+        @summary Modifies the configurations of a compliance package within your account.
+        
+        @description This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082***` compliance package.
         
         @param tmp_req: UpdateCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13508,7 +15138,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateCompliancePackResponse:
         """
-        This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082***` compliance package.
+        @summary Modifies the configurations of a compliance package within your account.
+        
+        @description This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082***` compliance package.
         
         @param tmp_req: UpdateCompliancePackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13566,7 +15198,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateCompliancePackRequest,
     ) -> config_20200907_models.UpdateCompliancePackResponse:
         """
-        This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082***` compliance package.
+        @summary Modifies the configurations of a compliance package within your account.
+        
+        @description This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082***` compliance package.
         
         @param request: UpdateCompliancePackRequest
         @return: UpdateCompliancePackResponse
@@ -13579,7 +15213,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateCompliancePackRequest,
     ) -> config_20200907_models.UpdateCompliancePackResponse:
         """
-        This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082***` compliance package.
+        @summary Modifies the configurations of a compliance package within your account.
+        
+        @description This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082***` compliance package.
         
         @param request: UpdateCompliancePackRequest
         @return: UpdateCompliancePackResponse
@@ -13593,7 +15229,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
+        @summary Modifies a delivery channel.
+        
+        @description In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
         
         @param request: UpdateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13650,7 +15288,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
+        @summary Modifies a delivery channel.
+        
+        @description In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
         
         @param request: UpdateConfigDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13706,7 +15346,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
+        @summary Modifies a delivery channel.
+        
+        @description In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
         
         @param request: UpdateConfigDeliveryChannelRequest
         @return: UpdateConfigDeliveryChannelResponse
@@ -13719,7 +15361,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
         """
-        In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
+        @summary Modifies a delivery channel.
+        
+        @description In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
         
         @param request: UpdateConfigDeliveryChannelRequest
         @return: UpdateConfigDeliveryChannelResponse
@@ -13733,7 +15377,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateConfigRuleResponse:
         """
-        This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005***` to `3` (low risk level).
+        @summary Modifies the rules of an account.
+        
+        @description This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005***` to `3` (low risk level).
         
         @param tmp_req: UpdateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13802,7 +15448,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateConfigRuleResponse:
         """
-        This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005***` to `3` (low risk level).
+        @summary Modifies the rules of an account.
+        
+        @description This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005***` to `3` (low risk level).
         
         @param tmp_req: UpdateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13870,7 +15518,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateConfigRuleRequest,
     ) -> config_20200907_models.UpdateConfigRuleResponse:
         """
-        This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005***` to `3` (low risk level).
+        @summary Modifies the rules of an account.
+        
+        @description This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005***` to `3` (low risk level).
         
         @param request: UpdateConfigRuleRequest
         @return: UpdateConfigRuleResponse
@@ -13883,7 +15533,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateConfigRuleRequest,
     ) -> config_20200907_models.UpdateConfigRuleResponse:
         """
-        This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005***` to `3` (low risk level).
+        @summary Modifies the rules of an account.
+        
+        @description This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005***` to `3` (low risk level).
         
         @param request: UpdateConfigRuleRequest
         @return: UpdateConfigRuleResponse
@@ -13897,7 +15549,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateConfigurationRecorderResponse:
         """
-        This topic provides an example on how to change the resource monitoring scope of the current account to ACS::ECS::Instance.
+        @summary Modifies the resource monitoring scope of the current account.
+        
+        @description This topic provides an example on how to change the resource monitoring scope of the current account to ACS::ECS::Instance.
         
         @param request: UpdateConfigurationRecorderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13932,7 +15586,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateConfigurationRecorderResponse:
         """
-        This topic provides an example on how to change the resource monitoring scope of the current account to ACS::ECS::Instance.
+        @summary Modifies the resource monitoring scope of the current account.
+        
+        @description This topic provides an example on how to change the resource monitoring scope of the current account to ACS::ECS::Instance.
         
         @param request: UpdateConfigurationRecorderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13966,7 +15622,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateConfigurationRecorderRequest,
     ) -> config_20200907_models.UpdateConfigurationRecorderResponse:
         """
-        This topic provides an example on how to change the resource monitoring scope of the current account to ACS::ECS::Instance.
+        @summary Modifies the resource monitoring scope of the current account.
+        
+        @description This topic provides an example on how to change the resource monitoring scope of the current account to ACS::ECS::Instance.
         
         @param request: UpdateConfigurationRecorderRequest
         @return: UpdateConfigurationRecorderResponse
@@ -13979,7 +15637,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateConfigurationRecorderRequest,
     ) -> config_20200907_models.UpdateConfigurationRecorderResponse:
         """
-        This topic provides an example on how to change the resource monitoring scope of the current account to ACS::ECS::Instance.
+        @summary Modifies the resource monitoring scope of the current account.
+        
+        @description This topic provides an example on how to change the resource monitoring scope of the current account to ACS::ECS::Instance.
         
         @param request: UpdateConfigurationRecorderRequest
         @return: UpdateConfigurationRecorderResponse
@@ -13993,8 +15653,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateDeliveryChannelResponse:
         """
-        @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+        @deprecated OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
+        
+        @summary Modifies a delivery channel.
+        
+        @description This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8***` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
         
         @param request: UpdateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14052,8 +15715,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateDeliveryChannelResponse:
         """
-        @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+        @deprecated OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
+        
+        @summary Modifies a delivery channel.
+        
+        @description This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8***` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
         
         @param request: UpdateDeliveryChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14110,8 +15776,11 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateDeliveryChannelRequest,
     ) -> config_20200907_models.UpdateDeliveryChannelResponse:
         """
-        @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+        @deprecated OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
+        
+        @summary Modifies a delivery channel.
+        
+        @description This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8***` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
         
         @param request: UpdateDeliveryChannelRequest
         @return: UpdateDeliveryChannelResponse
@@ -14125,8 +15794,11 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateDeliveryChannelRequest,
     ) -> config_20200907_models.UpdateDeliveryChannelResponse:
         """
-        @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
-        This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+        @deprecated OpenAPI UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
+        
+        @summary Modifies a delivery channel.
+        
+        @description This topic provides an example on how to change the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8***` to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
         
         @param request: UpdateDeliveryChannelRequest
         @return: UpdateDeliveryChannelResponse
@@ -14140,6 +15812,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateIntegratedServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
+        """
+        @summary Enables or disables the integration of a cloud service.
+        
+        @param request: UpdateIntegratedServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIntegratedServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.integrated_types):
@@ -14172,6 +15851,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateIntegratedServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
+        """
+        @summary Enables or disables the integration of a cloud service.
+        
+        @param request: UpdateIntegratedServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIntegratedServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.integrated_types):
@@ -14203,6 +15889,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.UpdateIntegratedServiceStatusRequest,
     ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
+        """
+        @summary Enables or disables the integration of a cloud service.
+        
+        @param request: UpdateIntegratedServiceStatusRequest
+        @return: UpdateIntegratedServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_integrated_service_status_with_options(request, runtime)
 
@@ -14210,6 +15902,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.UpdateIntegratedServiceStatusRequest,
     ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
+        """
+        @summary Enables or disables the integration of a cloud service.
+        
+        @param request: UpdateIntegratedServiceStatusRequest
+        @return: UpdateIntegratedServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_integrated_service_status_with_options_async(request, runtime)
 
@@ -14219,7 +15917,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateRemediationResponse:
         """
-        This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+        @summary Updates a remediation template for a rule.
+        
+        @description This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
         
         @param request: UpdateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14266,7 +15966,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateRemediationResponse:
         """
-        This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+        @summary Updates a remediation template for a rule.
+        
+        @description This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
         
         @param request: UpdateRemediationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14312,7 +16014,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateRemediationRequest,
     ) -> config_20200907_models.UpdateRemediationResponse:
         """
-        This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+        @summary Updates a remediation template for a rule.
+        
+        @description This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
         
         @param request: UpdateRemediationRequest
         @return: UpdateRemediationResponse
@@ -14325,7 +16029,9 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateRemediationRequest,
     ) -> config_20200907_models.UpdateRemediationResponse:
         """
-        This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+        @summary Updates a remediation template for a rule.
+        
+        @description This topic describes how to change the execution mode of the `crr-909ba2d4716700eb***` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
         
         @param request: UpdateRemediationRequest
         @return: UpdateRemediationResponse
