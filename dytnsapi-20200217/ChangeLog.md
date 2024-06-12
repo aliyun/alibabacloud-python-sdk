@@ -1,3 +1,10 @@
+2024-06-12 Version: 2.8.0
+- Support API GetUAIDConversionSign.
+- Support API UAIDCollection.
+- Support API UAIDConversion.
+- Update API DescribePhoneNumberAnalysisAI: update response param.
+
+
 2024-04-24 Version: 2.7.0
 - Support API QueryPhoneTwiceTelVerify.
 

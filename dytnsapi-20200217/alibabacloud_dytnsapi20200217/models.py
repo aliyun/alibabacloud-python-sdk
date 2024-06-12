@@ -14,8 +14,11 @@ class CertNoTwoElementVerificationRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.auth_code = auth_code
+        # This parameter is required.
         self.cert_name = cert_name
+        # This parameter is required.
         self.cert_no = cert_no
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -197,18 +200,26 @@ class CompanyFourElementsVerificationRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/overview?spm=a2c4g.608385.0.0.79847f8b3awqUC), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The enterprise name.
         self.ep_cert_name = ep_cert_name
         # The business license number.
+        # 
+        # This parameter is required.
         self.ep_cert_no = ep_cert_no
         # The name of the legal representative.
         # 
         # >  If an enterprise has multiple legal representatives, separate them with commas (,).
+        # 
+        # This parameter is required.
         self.legal_person_cert_name = legal_person_cert_name
         # The ID card number of the legal representative.
         # 
         # >  If an enterprise has multiple legal representatives, separate the ID card numbers with commas (,).
+        # 
+        # This parameter is required.
         self.legal_person_cert_no = legal_person_cert_no
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -471,14 +482,22 @@ class CompanyThreeElementsVerificationRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/overview?spm=a2c4g.608385.0.0.79847f8b3awqUC), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The enterprise name.
+        # 
+        # This parameter is required.
         self.ep_cert_name = ep_cert_name
         # The business license number.
+        # 
+        # This parameter is required.
         self.ep_cert_no = ep_cert_no
         # The name of the legal representative.
         # 
         # >  If an enterprise has multiple legal representatives, separate them with commas (,).
+        # 
+        # This parameter is required.
         self.legal_person_cert_name = legal_person_cert_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -736,10 +755,16 @@ class CompanyTwoElementsVerificationRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/overview?spm=a2c4g.608385.0.0.79847f8b3awqUC), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The enterprise name.
+        # 
+        # This parameter is required.
         self.ep_cert_name = ep_cert_name
         # The business license number.
+        # 
+        # This parameter is required.
         self.ep_cert_no = ep_cert_no
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -991,16 +1016,22 @@ class DescribeEmptyNumberRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
         # >  You can query only one phone number a time.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
         # *   **NORMAL**: The phone number is not encrypted.
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1193,7 +1224,9 @@ class DescribePhoneNumberAnalysisRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.auth_code = auth_code
+        # This parameter is required.
         self.input_number = input_number
         self.mask = mask
         self.number_type = number_type
@@ -1420,8 +1453,12 @@ class DescribePhoneNumberAnalysisAIRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the ****[**Labels**](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click Activate Now, enter the required information, and then submit your application. After your application is approved, you can obtain an authorization code.
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The model parameter configuration. This field is required by some labels.
         self.model_config = model_config
@@ -1519,11 +1556,13 @@ class DescribePhoneNumberAnalysisAIResponseBodyData(TeaModel):
 class DescribePhoneNumberAnalysisAIResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: DescribePhoneNumberAnalysisAIResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response code. Valid values:
         # 
         # *   OK: The request is successful.
@@ -1545,6 +1584,8 @@ class DescribePhoneNumberAnalysisAIResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -1557,6 +1598,8 @@ class DescribePhoneNumberAnalysisAIResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -1621,9 +1664,12 @@ class DescribePhoneNumberAnalysisTransparentRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.auth_code = auth_code
+        # This parameter is required.
         self.input_number = input_number
         self.ip = ip
+        # This parameter is required.
         self.number_type = number_type
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1828,6 +1874,8 @@ class DescribePhoneNumberAttributeRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The phone number that you want to query.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2045,6 +2093,8 @@ class DescribePhoneNumberOnlineTimeRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The carrier. Valid values:
         # 
@@ -2061,12 +2111,16 @@ class DescribePhoneNumberOnlineTimeRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
         # *   **NORMAL**: The phone number is not encrypted.
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2133,8 +2187,8 @@ class DescribePhoneNumberOnlineTimeResponseBodyData(TeaModel):
         # 
         # *   **-1**: No usage period information is available for the phone number.
         # *   **0**: The phone number status is abnormal. For example, the phone number is a nonexistent number.
-        # *   **1** :\[0-3) months.
-        # *   **2** :\[3-6] months.
+        # *   **1** :[0-3) months.
+        # *   **2** :[3-6] months.
         # *   **3** :(6-12] months.
         # *   **4** :(12-24] months.
         # *   **5** :(24,+) months.
@@ -2178,7 +2232,7 @@ class DescribePhoneNumberOnlineTimeResponseBody(TeaModel):
         # *   **PortabilityNumberNotSupported**: The phone number that is involved in mobile number portability is not supported.
         # *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
         # 
-        # >  You are charged if the value of Code is OK and the value of VerifyResult is not -1. For more information, see [Pricing](~~154751~~).
+        # >  You are charged if the value of Code is OK and the value of VerifyResult is not -1. For more information, see [Pricing](https://help.aliyun.com/document_detail/154751.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -2275,6 +2329,8 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
@@ -2283,6 +2339,8 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
@@ -2291,6 +2349,8 @@ class DescribePhoneNumberOperatorAttributeRequest(TeaModel):
         # *   **SHA256**: The phone number is SHA256-encrypted.
         # 
         # > Letters in the string must be uppercase.
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2515,8 +2575,11 @@ class DescribePhoneNumberRiskRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.auth_code = auth_code
+        # This parameter is required.
         self.input_number = input_number
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2697,6 +2760,8 @@ class DescribePhoneTwiceTelVerifyRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
@@ -2705,12 +2770,16 @@ class DescribePhoneTwiceTelVerifyRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
         # *   **NORMAL**: The phone number is not encrypted.
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2722,6 +2791,8 @@ class DescribePhoneTwiceTelVerifyRequest(TeaModel):
         # *   If a carrier allocates a single number multiple times, the system will determine whether the phone number is a reassigned number based on the time when the carrier last allocated the phone number.
         # 
         # *   The service registration time must be later than 00:00:00 on January 1, 1970.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -2829,7 +2900,7 @@ class DescribePhoneTwiceTelVerifyResponseBody(TeaModel):
         # *   **RequestNumberNotSupported**: You are not allowed to query phone numbers assigned by China Broadnet (that is, phone numbers start with 192) and phone numbers assigned by virtual network operators (VNOs).
         # *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
         # 
-        # >  You are charged for phone number verifications if the value of Code is OK and the value of VerifyResult is not 0. For more information, see [Pricing](~~154751~~).
+        # >  You are charged for phone number verifications if the value of Code is OK and the value of VerifyResult is not 0. For more information, see [Pricing](https://help.aliyun.com/document_detail/154751.html).
         self.code = code
         # The response parameters.
         self.data = data
@@ -2928,16 +2999,21 @@ class GetUAIDApplyTokenSignRequest(TeaModel):
         resource_owner_id: int = None,
         time: str = None,
     ):
+        # This parameter is required.
         self.auth_code = auth_code
+        # This parameter is required.
         self.carrier = carrier
+        # This parameter is required.
         self.client_type = client_type
         self.format = format
+        # This parameter is required.
         self.out_id = out_id
         self.owner_id = owner_id
         self.param_key = param_key
         self.param_str = param_str
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.time = time
 
     def validate(self):
@@ -3133,6 +3209,228 @@ class GetUAIDApplyTokenSignResponse(TeaModel):
         return self
 
 
+class GetUAIDConversionSignRequest(TeaModel):
+    def __init__(
+        self,
+        auth_code: str = None,
+        carrier: str = None,
+        client_type: str = None,
+        format: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        param_key: str = None,
+        param_str: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        time: str = None,
+    ):
+        # This parameter is required.
+        self.auth_code = auth_code
+        # This parameter is required.
+        self.carrier = carrier
+        self.client_type = client_type
+        self.format = format
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.param_key = param_key
+        self.param_str = param_str
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        if self.carrier is not None:
+            result['Carrier'] = self.carrier
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.param_key is not None:
+            result['ParamKey'] = self.param_key
+        if self.param_str is not None:
+            result['ParamStr'] = self.param_str
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        if m.get('Carrier') is not None:
+            self.carrier = m.get('Carrier')
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ParamKey') is not None:
+            self.param_key = m.get('ParamKey')
+        if m.get('ParamStr') is not None:
+            self.param_str = m.get('ParamStr')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class GetUAIDConversionSignResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        carrier: str = None,
+        out_id: str = None,
+        sign: str = None,
+    ):
+        self.carrier = carrier
+        self.out_id = out_id
+        self.sign = sign
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.carrier is not None:
+            result['Carrier'] = self.carrier
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.sign is not None:
+            result['Sign'] = self.sign
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Carrier') is not None:
+            self.carrier = m.get('Carrier')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('Sign') is not None:
+            self.sign = m.get('Sign')
+        return self
+
+
+class GetUAIDConversionSignResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetUAIDConversionSignResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetUAIDConversionSignResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetUAIDConversionSignResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUAIDConversionSignResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUAIDConversionSignResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InvalidPhoneNumberFilterRequest(TeaModel):
     def __init__(
         self,
@@ -3146,12 +3444,18 @@ class InvalidPhoneNumberFilterRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number.
         # 
         # >  Only the NORMAL encryption method is supported.
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3369,8 +3673,11 @@ class PhoneNumberConvertServiceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.auth_code = auth_code
+        # This parameter is required.
         self.input_number = input_number
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3568,14 +3875,20 @@ class PhoneNumberEncryptRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
         # >  You can query only one phone number at a time.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Set the value to **NORMAL**.
         # 
         # >  Only the NORMAL encryption method is supported.
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3674,7 +3987,7 @@ class PhoneNumberEncryptResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](~~109196~~).
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
         # Details about the returned entries.
         self.data = data
@@ -3777,6 +4090,8 @@ class PhoneNumberStatusForAccountRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
@@ -3785,12 +4100,16 @@ class PhoneNumberStatusForAccountRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
         # *   **NORMAL**: The phone number is not encrypted.
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3995,6 +4314,8 @@ class PhoneNumberStatusForPublicRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization ID.
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
@@ -4009,6 +4330,8 @@ class PhoneNumberStatusForPublicRequest(TeaModel):
         # *   **NORMAL**: The phone number is not encrypted.
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -4218,6 +4541,8 @@ class PhoneNumberStatusForRealRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization ID.
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
@@ -4226,12 +4551,16 @@ class PhoneNumberStatusForRealRequest(TeaModel):
         # *   If the value of Mask is SHA256, the value of this field is a 64-bit encrypted string.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
         # *   **NORMAL**: The phone number is not encrypted.
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -4438,6 +4767,8 @@ class PhoneNumberStatusForSmsRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
@@ -4446,12 +4777,16 @@ class PhoneNumberStatusForSmsRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
         # *   **NORMAL**: plaintext
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -4656,6 +4991,8 @@ class PhoneNumberStatusForVirtualRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization ID.
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
@@ -4664,12 +5001,16 @@ class PhoneNumberStatusForVirtualRequest(TeaModel):
         # *   If the value of Mask is SHA256, the value of this field is a 64-bit encrypted string.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
         # *   **NORMAL**: The phone number is not encrypted.
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -4855,6 +5196,8 @@ class PhoneNumberStatusForVoiceRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be queried.
         # 
@@ -4863,12 +5206,16 @@ class PhoneNumberStatusForVoiceRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method. Valid values:
         # 
         # *   **NORMAL**: plaintext
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -5402,12 +5749,16 @@ class QueryPhoneTwiceTelVerifyRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.auth_code = auth_code
+        # This parameter is required.
         self.input_number = input_number
+        # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -6811,6 +7162,8 @@ class ThreeElementsVerificationRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The ID card number to be verified.
         # 
@@ -6819,6 +7172,8 @@ class ThreeElementsVerificationRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.cert_code = cert_code
         # The phone number to be verified.
         # 
@@ -6827,12 +7182,16 @@ class ThreeElementsVerificationRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method. Valid values:
         # 
         # *   **NORMAL**: The phone number is not encrypted.
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         # The name to be verified.
         # 
@@ -6841,6 +7200,8 @@ class ThreeElementsVerificationRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.name = name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -7055,6 +7416,8 @@ class TwoElementsVerificationRequest(TeaModel):
         # The authorization code.
         # 
         # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
         # The phone number to be verified.
         # 
@@ -7063,12 +7426,16 @@ class TwoElementsVerificationRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.input_number = input_number
         # The encryption method. Valid values:
         # 
         # *   **NORMAL**: plaintext
         # *   **MD5**\
         # *   **SHA256**\
+        # 
+        # This parameter is required.
         self.mask = mask
         # The name to be verified.
         # 
@@ -7077,6 +7444,8 @@ class TwoElementsVerificationRequest(TeaModel):
         # *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
         # 
         # >  Letters in the encrypted strings are not case-sensitive.
+        # 
+        # This parameter is required.
         self.name = name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -7277,6 +7646,397 @@ class TwoElementsVerificationResponse(TeaModel):
         return self
 
 
+class UAIDCollectionRequest(TeaModel):
+    def __init__(
+        self,
+        auth_code: str = None,
+        carrier: str = None,
+        ip: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        province: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        token: str = None,
+        user_grant_id: str = None,
+    ):
+        # This parameter is required.
+        self.auth_code = auth_code
+        self.carrier = carrier
+        self.ip = ip
+        # This parameter is required.
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.province = province
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.token = token
+        self.user_grant_id = user_grant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        if self.carrier is not None:
+            result['Carrier'] = self.carrier
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.user_grant_id is not None:
+            result['UserGrantId'] = self.user_grant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        if m.get('Carrier') is not None:
+            self.carrier = m.get('Carrier')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('UserGrantId') is not None:
+            self.user_grant_id = m.get('UserGrantId')
+        return self
+
+
+class UAIDCollectionResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        uaid: str = None,
+    ):
+        self.uaid = uaid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.uaid is not None:
+            result['Uaid'] = self.uaid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Uaid') is not None:
+            self.uaid = m.get('Uaid')
+        return self
+
+
+class UAIDCollectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: UAIDCollectionResponseBodyModel = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = UAIDCollectionResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UAIDCollectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UAIDCollectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UAIDCollectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UAIDConversionRequest(TeaModel):
+    def __init__(
+        self,
+        auth_code: str = None,
+        carrier: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        uaid_list: str = None,
+    ):
+        # This parameter is required.
+        self.auth_code = auth_code
+        # This parameter is required.
+        self.carrier = carrier
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.uaid_list = uaid_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_code is not None:
+            result['AuthCode'] = self.auth_code
+        if self.carrier is not None:
+            result['Carrier'] = self.carrier
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.uaid_list is not None:
+            result['UaidList'] = self.uaid_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthCode') is not None:
+            self.auth_code = m.get('AuthCode')
+        if m.get('Carrier') is not None:
+            self.carrier = m.get('Carrier')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('UaidList') is not None:
+            self.uaid_list = m.get('UaidList')
+        return self
+
+
+class UAIDConversionResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        phone_list: str = None,
+    ):
+        self.phone_list = phone_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone_list is not None:
+            result['PhoneList'] = self.phone_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PhoneList') is not None:
+            self.phone_list = m.get('PhoneList')
+        return self
+
+
+class UAIDConversionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        model: UAIDConversionResponseBodyModel = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.model = model
+        self.request_id = request_id
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Model') is not None:
+            temp_model = UAIDConversionResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UAIDConversionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UAIDConversionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UAIDConversionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UAIDVerificationRequest(TeaModel):
     def __init__(
         self,
@@ -7291,7 +8051,9 @@ class UAIDVerificationRequest(TeaModel):
         token: str = None,
         user_grant_id: str = None,
     ):
+        # This parameter is required.
         self.auth_code = auth_code
+        # This parameter is required.
         self.carrier = carrier
         self.ip = ip
         self.out_id = out_id
@@ -7299,6 +8061,7 @@ class UAIDVerificationRequest(TeaModel):
         self.province = province
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.token = token
         self.user_grant_id = user_grant_id
 
