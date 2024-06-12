@@ -265,17 +265,19 @@ class AttachAlbServerGroupsRequestAlbServerGroups(TeaModel):
     ):
         # The ID of the ALB server group.
         # 
-        # You can associate only a limited number of ALB server groups with a scaling group. To view the quota or manually request a quota increase, go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas).
+        # You can attach only a limited number of ALB server groups to a scaling group. To view the predefined quota limit or manually request a quota increase, go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas).
         # 
         # This parameter is required.
         self.alb_server_group_id = alb_server_group_id
-        # The port number used by the ECS instance after the ECS instance is added to the ALB server group. Valid values: 1 to 65535.
+        # The port used by ECS instances or elastic container instances after being added as backend servers to the ALB server group.
+        # 
+        # Valid values: 1 to 65535.
         # 
         # This parameter is required.
         self.port = port
-        # The weight of the ECS instance as a backend server after the instance is added to the ALB server group.
+        # The weight of an ECS instance or elastic container instance after being added as a backend server to the ALB server group. Valid values: 0 to 100.
         # 
-        # If you increase the weight of an ECS instance in an ALB server group, the number of access requests that are forwarded to the ECS instance increases. If you set the Weight parameter for an ECS instance to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
+        # If you assign a higher weight to an instance, the instance is allocated a larger proportion of access requests. If you assign zero weight to an instance, the instance is allocated no access requests.
         # 
         # This parameter is required.
         self.weight = weight
@@ -319,21 +321,25 @@ class AttachAlbServerGroupsRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # Details of the ALB server group.
+        # The information about the ALB server groups.
         # 
         # This parameter is required.
         self.alb_server_groups = alb_server_groups
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25965.html).
-        self.client_token = client_token
-        # Specifies whether to add Elastic Compute Service (ECS) instances in the scaling group to new ALB server groups. Valid values:
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # *   true: adds ECS instances in the scaling group to new ALB server groups and returns the value of `ScalingActivityId`. You can check whether ECS instances are added to new ALB server groups by the scaling activity ID.
-        # *   false: does not add ECS instances in the scaling group to new ALB server groups.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        self.client_token = client_token
+        # Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the ALB server group. Valid values:
+        # 
+        # *   true: adds the existing ECS instances or elastic container instances in the scaling group to the ALB server group. In this case, the system returns the value of `ScalingActivityId`.
+        # *   false: does not add the existing ECS instances or elastic container instances in the scaling group to the ALB server group.
         # 
         # Default value: false.
         self.force_attach = force_attach
         self.owner_id = owner_id
-        # The region ID of the scaling group, such as cn-hangzhou and cn-shanghai. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the scaling group.
+        # 
+        # Examples: `cn-hangzhou` and `cn-shanghai`. For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -403,7 +409,9 @@ class AttachAlbServerGroupsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the scaling activity in which Auto Scaling associates the ALB server group with the scaling group and adds ECS instances in the scaling group to the ALB server group. This parameter is returned only if you set the `ForceAttach` parameter to `true`.
+        # The ID of the scaling activity. During the scaling activity, the ALB server group is attached to the scaling group and the existing ECS instances or elastic container instances in the scaling group are added to the ALB server group.
+        # 
+        # >  This parameter is returned only if you set `ForceAttach` to `true`.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -1052,7 +1060,9 @@ class AttachServerGroupsRequestServerGroups(TeaModel):
         type: str = None,
         weight: int = None,
     ):
-        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the server group. Valid values: 1 to 65535.
+        # The port used by ECS instances or elastic container instances after being added as backend servers to the server group.
+        # 
+        # Valid values: 1 to 65535.
         # 
         # This parameter is required.
         self.port = port
@@ -1067,9 +1077,9 @@ class AttachServerGroupsRequestServerGroups(TeaModel):
         # 
         # This parameter is required.
         self.type = type
-        # The weight of an ECS instance after Auto Scaling adds the ECS instance to the server group as a backend server.
+        # The weight of an ECS instance or elastic container instance as a backend server of the server group. Valid values: 0 to 100.
         # 
-        # A higher weight specifies that a larger number of requests are forwarded to the ECS instance. If you set the Weight parameter for an ECS instance in the server group to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
+        # If you assign a higher weight to an instance, the instance is allocated a larger proportion of access requests. If you assign zero weight to an instance, the instance is allocated no access requests.
         # 
         # This parameter is required.
         self.weight = weight
@@ -1117,11 +1127,11 @@ class AttachServerGroupsRequest(TeaModel):
         scaling_group_id: str = None,
         server_groups: List[AttachServerGroupsRequestServerGroups] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to add the Elastic Compute Service (ECS) instances in the scaling group to the new server group.
+        # Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the server group. Valid values:
         # 
         # *   true
         # *   false
@@ -1138,7 +1148,7 @@ class AttachServerGroupsRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # Details of the server groups.
+        # The information about the server groups.
         # 
         # This parameter is required.
         self.server_groups = server_groups
@@ -1203,9 +1213,9 @@ class AttachServerGroupsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the scaling activity in which you attach the server group to the scaling group and Auto Scaling adds the ECS instances in the scaling group to the server group.
+        # The ID of the scaling activity. During the scaling activity, the server group is attached to the scaling group and the existing ECS instances or elastic container instances in the scaling group are added to the server group.
         # 
-        # > This parameter is returned only if you set the ForceAttach parameter to true.
+        # >  This parameter is returned only if you set ForceAttach to true.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -1280,11 +1290,11 @@ class AttachVServerGroupsRequestVServerGroupsVServerGroupAttributes(TeaModel):
         vserver_group_id: str = None,
         weight: int = None,
     ):
-        # The port number that is used when Auto Scaling adds ECS instances to the vServer group. Valid values: 1 to 65535.
+        # The port number over which Auto Scaling adds ECS instances or elastic container instances to the new vServer group. Valid values: 1 to 65535.
         self.port = port
         # The ID of the vServer group.
         self.vserver_group_id = vserver_group_id
-        # The weight of an ECS instance as a backend server in the vServer group. Valid values: 0 to 100.
+        # The weight of an ECS instance or elastic container instance as a backend server. Valid values: 0 to 100.
         # 
         # Default value: 50.
         self.weight = weight
@@ -1323,9 +1333,9 @@ class AttachVServerGroupsRequestVServerGroups(TeaModel):
         load_balancer_id: str = None,
         vserver_group_attributes: List[AttachVServerGroupsRequestVServerGroupsVServerGroupAttributes] = None,
     ):
-        # The ID of the CLB instance to which the vServer group belongs.
+        # The ID of the CLB instance to which the new vServer group belongs.
         self.load_balancer_id = load_balancer_id
-        # Details of the vServer group attributes.
+        # The attributes of the vServer group.
         self.vserver_group_attributes = vserver_group_attributes
 
     def validate(self):
@@ -1371,11 +1381,11 @@ class AttachVServerGroupsRequest(TeaModel):
         scaling_group_id: str = None,
         vserver_groups: List[AttachVServerGroupsRequestVServerGroups] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25965.html).
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to add Elastic Compute Service (ECS) instances in the scaling group to new vServer groups. Valid values:
+        # Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the new vServer group. Valid values:
         # 
         # *   true
         # *   false
@@ -1383,7 +1393,7 @@ class AttachVServerGroupsRequest(TeaModel):
         # Default value: false.
         self.force_attach = force_attach
         self.owner_id = owner_id
-        # The region ID of the scaling group. Examples: cn-hangzhou and cn-shanghai.
+        # The region ID of the scaling group. Examples: cn-hangzhou and cn-shanghai. For information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -1392,7 +1402,7 @@ class AttachVServerGroupsRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # Details of the vServer groups.
+        # The information about the vServer groups.
         # 
         # This parameter is required.
         self.vserver_groups = vserver_groups
@@ -1528,14 +1538,19 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource group to which you want to move the scaling group.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_id = owner_id
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the scaling group that you want to move from the current resource group to another resource group.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
+        # The resource type. Set the value to scalinggroup.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1812,36 +1827,36 @@ class CreateAlarmRequestDimensions(TeaModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # The key of the metric dimension. The valid values vary based on the metric type.
+        # The dimension key of the metric. The valid values vary based on the metric type.
         # 
-        # *   If you set the MetricType parameter to custom, you can specify this parameter based on your business requirements.
+        # *   If you set MetricType to custom, you can specify this parameter based on your business requirements.
         # 
-        # *   If you set the MetricType parameter to system, this parameter has the following valid values:
+        # *   If you set MetricType to system, this parameter has the following valid values:
         # 
-        #     *   user_id: the ID of your Alibaba Cloud account
-        #     *   scaling_group: the scaling group that you want to monitor
-        #     *   device: the type of the NIC
-        #     *   state: the status of the TCP connection
+        #     *   user_id: the ID of your Alibaba Cloud account.
+        #     *   scaling_group: the scaling group that you want to monitor by using the event-triggered task.
+        #     *   device: the NIC type.
+        #     *   state: the status of the TCP connection.
         self.dimension_key = dimension_key
-        # The value of the metric dimension. The valid values vary based on the value of the DimensionKey parameter.
+        # The dimension value of the metric. The valid values of this parameter vary based on the value of Dimensions.DimensionKey.
         # 
-        # *   If you set the MetricType parameter to custom, you can specify this parameter based on your business requirements.
+        # *   If you set MetricType to custom, you can specify this parameter based on your business requirements.
         # 
-        # *   If you set the MetricType parameter to system, the following rules apply:
+        # *   If you set MetricType to system, this parameter has the following valid values:
         # 
-        #     *   If you set the DimensionKey parameter to user_id, the system specifies the value of the DimensionValue parameter.
+        #     *   user_id: The system specifies the value.
         # 
-        #     *   If you set the DimensionKey parameter to scaling_group, the system specifies the value of the DimensionValue parameter.
+        #     *   scaling_group: The system specifies the value.
         # 
-        #     *   If you set the DimensionKey parameter to device, you can set the DimensionValue parameter to eth0 or eth1.
+        #     *   device: You can set this parameter to eth0 or eth1.
         # 
-        #         *   For instances that reside in the classic network, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC.
-        #         *   For instances that reside in the classic network, eth1 specifies the public NIC.
+        #         *   For instances of the classic network type, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in VPCs.
+        #         *   For instances of the classic network type, eth1 specifies the public NIC.
         # 
-        #     *   If you set the DimensionKey parameter to state, you can set the DimensionValue parameter to TCP_TOTAL or ESTABLISHED.
+        #     *   state: You can set this parameter to TCP_TOTAL or ESTABLISHED.
         # 
         #         *   TCP_TOTAL specifies the total number of TCP connections.
-        #         *   ESTABLISHED specifies the number of established TCP connections.
+        #         *   ESTABLISHED specifies the number of TCP connections that are established.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -1877,46 +1892,50 @@ class CreateAlarmRequestExpressions(TeaModel):
         statistics: str = None,
         threshold: float = None,
     ):
-        # The operator that is used to compare the metric value and the threshold. Valid values:
+        # The operator that you want to use to compare the metric value and the threshold in the multi-metric alert rule. Valid values:
         # 
-        # *   If the metric value is greater than or equal to the threshold, set the value to: >=.
-        # *   If the metric value is less than or equal to the threshold, set the value to: <=.
-        # *   If the metric value is greater than the threshold, set the value to: >.
-        # *   If the metric value is less than the threshold, set the value to: <.
+        # *   If the metric value is greater than or equal to the threshold, set the value to >=.
+        # *   If the metric value is less than or equal to the metric threshold, set the value to <=.
+        # *   If the metric value is greater than the metric threshold, set the value to >.
+        # *   If the metric value is less than the metric threshold, set the value to <.
         # 
         # Default value: >=.
         self.comparison_operator = comparison_operator
-        # The names of the metrics that are specified in the multi-metric alert rule. The valid values of this parameter vary based on the metric type.
+        # The names of the metrics in the multi-metric alert rule. The valid values of this parameter vary based on the metric type.
         # 
-        # *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
+        # *   If you set MetricType to custom, the valid values are the metrics that you have.
         # 
-        # *   If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
+        # *   If you set MetricType to system, this parameter has the following valid values:
         # 
-        #     *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-        #     *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-        #     *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-        #     *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-        #     *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-        #     *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-        #     *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-        #     *   GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
-        #     *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-        #     *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-        #     *   MemoryUtilization: the memory usage of an agent. Unit: %.
-        #     *   LoadAverage: the average system load of an agent.
-        #     *   TcpConnection: the total number of TCP connections of an agent.
-        #     *   TcpConnection: the number of established TCP connections of an agent.
-        #     *   PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
-        #     *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-        #     *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-        #     *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+        #     *   CpuUtilization: the CPU utilization. Unit: %.
+        #     *   ConcurrentConnections: the number of concurrent connections.
+        #     *   IntranetTx: the outbound traffic over an internal network. Unit: KB/min.
+        #     *   IntranetRx: the inbound traffic over an internal network. Unit: KB/min.
+        #     *   VpcInternetTx: the outbound traffic over a VPC. Unit: KB/min.
+        #     *   VpcInternetRx: the inbound traffic over a VPC. Unit: KB/min.
+        #     *   SystemDiskReadBps: the number of bytes read from the system disk per second.
+        #     *   SystemDiskWriteBps: the number of bytes written to the system disk per second.
+        #     *   SystemDiskReadOps: the read IOPS of the system disk. Unit: counts/s.
+        #     *   SystemDiskWriteOps: the write IOPS of the system disk. Unit: counts/s.
+        #     *   CpuUtilizationAgent: the CPU utilization. Unit: %.
+        #     *   GpuUtilizationAgent: the GPU utilization. Unit: %.
+        #     *   GpuMemoryFreeUtilizationAgent: the idle GPU memory usage. Unit: %.
+        #     *   GpuMemoryUtilizationAgent: the GPU memory usage. Unit: %.
+        #     *   MemoryUtilization: the memory usage. Unit: %.
+        #     *   LoadAverage: the average system load.
+        #     *   TcpConnection: the total number of TCP connections.
+        #     *   TcpConnection: the number of established TCP connections.
+        #     *   PackagesNetOut: the number of packets sent by the internal NIC. Unit: counts/s.
+        #     *   PackagesNetIn: the number of packets received by the internal NIC. Unit: counts/s.
+        #     *   PackagesNetOut: the number of packets sent by the public NIC. Unit: counts/s.
+        #     *   PackagesNetIn: the number of packets received by the public NIC. Unit: counts/s.
+        #     *   EciPodCpuUtilization: the CPU utilization. Unit: %.
+        #     *   EciPodMemoryUtilization: the memory usage. Unit: %.
+        #     *   LoadBalancerRealServerAverageQps: the QPS of an instance.
         # 
-        # For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
+        # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The period during which the statistical values of the metrics that are specified in the multi-metric alert rule are collected. Unit: seconds. Valid values:
+        # The statistical period of the metric data in the multi-metric alert rule. Unit: seconds. Valid values:
         # 
         # *   15
         # *   60
@@ -1924,19 +1943,19 @@ class CreateAlarmRequestExpressions(TeaModel):
         # *   300
         # *   900
         # 
-        # > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
+        # >  You can set this parameter to 15 seconds only for scaling groups of the ECS type.
         # 
         # Default value: 300.
         self.period = period
-        # The method that is used to aggregate statistics about the metrics that are specified in the multi-metric alert rule. Valid values:
+        # The method that you want to use to aggregate the metric data in the multi-metric alert rule. Valid values:
         # 
-        # *   Average
-        # *   Minimum
-        # *   Maximum
+        # *   Average: the average value.
+        # *   Minimum: the minimum value
+        # *   Maximum: the maximum value
         # 
         # Default value: Average.
         self.statistics = statistics
-        # The thresholds of the metric values. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
+        # The threshold of the metric value in the multi-metric alert rule. If the threshold is reached the specified number of times within the statistical period, a scaling rule is executed.
         self.threshold = threshold
 
     def validate(self):
@@ -2032,7 +2051,7 @@ class CreateAlarmRequest(TeaModel):
         # 
         # Default value: 3.
         self.evaluation_count = evaluation_count
-        # The expressions that are specified in the multi-metric alert rule.
+        # The information about the multi-metric alert rules.
         self.expressions = expressions
         # The relationship between the trigger conditions in the multi-metric alert rule. Valid values:
         # 
@@ -2043,35 +2062,39 @@ class CreateAlarmRequest(TeaModel):
         self.expressions_logic_operator = expressions_logic_operator
         # The ID of the application group to which the custom metric belongs. If you set the MetricType parameter to custom, you must specify this parameter.
         self.group_id = group_id
-        # The name of the metric. The valid values vary based on the metric type.
+        # The metric name. The valid values of this parameter vary based on the metric type.
         # 
-        # *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
+        # *   If you set MetricType to custom, the valid values are the metrics that you have.
         # 
-        # *   If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
+        # *   If you set MetricType to system, this parameter has the following valid values:
         # 
-        #     *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-        #     *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-        #     *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min.
-        #     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-        #     *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-        #     *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-        #     *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-        #     *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-        #     *   GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
-        #     *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-        #     *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-        #     *   MemoryUtilization: the memory usage of an agent. Unit: %.
-        #     *   LoadAverage: the average system load of an agent.
-        #     *   TcpConnection: the total number of TCP connections of an agent.
-        #     *   TcpConnection: the number of established TCP connections of an agent.
-        #     *   PackagesNetOut: the number of packets that are sent by the internal network interface controller (NIC) used by an agent.
-        #     *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-        #     *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-        #     *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+        #     *   CpuUtilization: the CPU utilization. Unit: %.
+        #     *   ConcurrentConnections: the number of concurrent connections.
+        #     *   IntranetTx: the outbound traffic over an internal network. Unit: KB/min.
+        #     *   IntranetRx: the inbound traffic over an internal network. Unit: KB/min.
+        #     *   VpcInternetTx: the outbound traffic over a virtual private cloud (VPC). Unit: KB/min.
+        #     *   VpcInternetRx: the inbound traffic over a VPC. Unit: KB/min.
+        #     *   SystemDiskReadBps: the number of bytes read from the system disk per second.
+        #     *   SystemDiskWriteBps: the number of bytes written to the system disk per second.
+        #     *   SystemDiskReadOps: the read IOPS of the system disk. Unit: counts/s.
+        #     *   SystemDiskWriteOps: the write IOPS of the system disk. Unit: counts/s.
+        #     *   CpuUtilizationAgent: the CPU utilization. Unit: %.
+        #     *   GpuUtilizationAgent: the GPU utilization. Unit: %.
+        #     *   GpuMemoryFreeUtilizationAgent: the idle GPU memory usage. Unit: %.
+        #     *   GpuMemoryUtilizationAgent: the GPU memory usage. Unit: %.
+        #     *   MemoryUtilization: the memory usage. Unit: %.
+        #     *   LoadAverage: the average system load.
+        #     *   TcpConnection: the total number of TCP connections.
+        #     *   TcpConnection: the number of established TCP connections.
+        #     *   PackagesNetOut: the number of packets sent by the internal network interface controller (NIC). Unit: counts/s.
+        #     *   PackagesNetIn: the number of packets received by the internal NIC. Unit: counts/s.
+        #     *   PackagesNetOut: the number of packets sent by the public NIC. Unit: counts/s.
+        #     *   PackagesNetIn: the number of packets received by the public NIC. Unit: counts/s.
+        #     *   EciPodCpuUtilization: the CPU utilization. Unit: %.
+        #     *   EciPodMemoryUtilization: the memory usage. Unit: %.
+        #     *   LoadBalancerRealServerAverageQps: the queries per second (QPS) of an instance.
         # 
-        # For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
+        # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
         # The type of the metric. Valid values:
         # 
@@ -2081,7 +2104,7 @@ class CreateAlarmRequest(TeaModel):
         # The name of the event-triggered task.
         self.name = name
         self.owner_id = owner_id
-        # The period during which the statistical value of the metric is collected. Unit: seconds. Valid values:
+        # The statistical period of the metric data. Unit: seconds. Valid values:
         # 
         # *   15
         # *   60
@@ -2089,7 +2112,7 @@ class CreateAlarmRequest(TeaModel):
         # *   300
         # *   900
         # 
-        # > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
+        # >  You can set this parameter to 15 seconds only for scaling groups of the ECS type.
         # 
         # Default value: 300.
         self.period = period
@@ -5409,10 +5432,26 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
         architectures: List[str] = None,
         burstable_performance: str = None,
         cores: int = None,
+        cpu_architectures: List[str] = None,
         excluded_instance_types: List[str] = None,
+        gpu_specs: List[str] = None,
+        instance_categories: List[str] = None,
         instance_family_level: str = None,
+        instance_type_families: List[str] = None,
         max_price: float = None,
+        maximum_cpu_core_count: int = None,
+        maximum_gpu_amount: int = None,
+        maximum_memory_size: float = None,
         memory: float = None,
+        minimum_baseline_credit: int = None,
+        minimum_cpu_core_count: int = None,
+        minimum_eni_ipv_6address_quantity: int = None,
+        minimum_eni_private_ip_address_quantity: int = None,
+        minimum_eni_quantity: int = None,
+        minimum_gpu_amount: int = None,
+        minimum_initial_credit: int = None,
+        minimum_memory_size: float = None,
+        physical_processor_models: List[str] = None,
     ):
         # The architectures of the instance types. Valid values:
         # 
@@ -5440,23 +5479,39 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
         # *   If you specify InstancePatternInfos, you must specify Cores and Memory.
         # *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfos.
         self.cores = cores
+        self.cpu_architectures = cpu_architectures
         # The instance types that you want to exclude. You can use wildcard characters, such as asterisks (\\*), to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
+        self.gpu_specs = gpu_specs
+        self.instance_categories = instance_categories
         # The level of the instance type, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
         # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "[Shared instance families](https://help.aliyun.com/document_detail/108489.html)" topic.
         # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
         # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "[Overview](https://help.aliyun.com/document_detail/59977.html)" topic of burstable instances.
         self.instance_family_level = instance_family_level
+        self.instance_type_families = instance_type_families
         # The maximum hourly price of a pay-as-you-go or preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
         # 
         # > If you set SpotStrategy to SpotWithPriceLimit, you must specify MaxPrice. In other cases, MaxPrice is optional.
         self.max_price = max_price
+        self.maximum_cpu_core_count = maximum_cpu_core_count
+        self.maximum_gpu_amount = maximum_gpu_amount
+        self.maximum_memory_size = maximum_memory_size
         # The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
         self.memory = memory
+        self.minimum_baseline_credit = minimum_baseline_credit
+        self.minimum_cpu_core_count = minimum_cpu_core_count
+        self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
+        self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
+        self.minimum_eni_quantity = minimum_eni_quantity
+        self.minimum_gpu_amount = minimum_gpu_amount
+        self.minimum_initial_credit = minimum_initial_credit
+        self.minimum_memory_size = minimum_memory_size
+        self.physical_processor_models = physical_processor_models
 
     def validate(self):
         pass
@@ -5473,14 +5528,46 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
             result['BurstablePerformance'] = self.burstable_performance
         if self.cores is not None:
             result['Cores'] = self.cores
+        if self.cpu_architectures is not None:
+            result['CpuArchitectures'] = self.cpu_architectures
         if self.excluded_instance_types is not None:
             result['ExcludedInstanceTypes'] = self.excluded_instance_types
+        if self.gpu_specs is not None:
+            result['GpuSpecs'] = self.gpu_specs
+        if self.instance_categories is not None:
+            result['InstanceCategories'] = self.instance_categories
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_type_families is not None:
+            result['InstanceTypeFamilies'] = self.instance_type_families
         if self.max_price is not None:
             result['MaxPrice'] = self.max_price
+        if self.maximum_cpu_core_count is not None:
+            result['MaximumCpuCoreCount'] = self.maximum_cpu_core_count
+        if self.maximum_gpu_amount is not None:
+            result['MaximumGpuAmount'] = self.maximum_gpu_amount
+        if self.maximum_memory_size is not None:
+            result['MaximumMemorySize'] = self.maximum_memory_size
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.minimum_baseline_credit is not None:
+            result['MinimumBaselineCredit'] = self.minimum_baseline_credit
+        if self.minimum_cpu_core_count is not None:
+            result['MinimumCpuCoreCount'] = self.minimum_cpu_core_count
+        if self.minimum_eni_ipv_6address_quantity is not None:
+            result['MinimumEniIpv6AddressQuantity'] = self.minimum_eni_ipv_6address_quantity
+        if self.minimum_eni_private_ip_address_quantity is not None:
+            result['MinimumEniPrivateIpAddressQuantity'] = self.minimum_eni_private_ip_address_quantity
+        if self.minimum_eni_quantity is not None:
+            result['MinimumEniQuantity'] = self.minimum_eni_quantity
+        if self.minimum_gpu_amount is not None:
+            result['MinimumGpuAmount'] = self.minimum_gpu_amount
+        if self.minimum_initial_credit is not None:
+            result['MinimumInitialCredit'] = self.minimum_initial_credit
+        if self.minimum_memory_size is not None:
+            result['MinimumMemorySize'] = self.minimum_memory_size
+        if self.physical_processor_models is not None:
+            result['PhysicalProcessorModels'] = self.physical_processor_models
         return result
 
     def from_map(self, m: dict = None):
@@ -5491,14 +5578,46 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
             self.burstable_performance = m.get('BurstablePerformance')
         if m.get('Cores') is not None:
             self.cores = m.get('Cores')
+        if m.get('CpuArchitectures') is not None:
+            self.cpu_architectures = m.get('CpuArchitectures')
         if m.get('ExcludedInstanceTypes') is not None:
             self.excluded_instance_types = m.get('ExcludedInstanceTypes')
+        if m.get('GpuSpecs') is not None:
+            self.gpu_specs = m.get('GpuSpecs')
+        if m.get('InstanceCategories') is not None:
+            self.instance_categories = m.get('InstanceCategories')
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypeFamilies') is not None:
+            self.instance_type_families = m.get('InstanceTypeFamilies')
         if m.get('MaxPrice') is not None:
             self.max_price = m.get('MaxPrice')
+        if m.get('MaximumCpuCoreCount') is not None:
+            self.maximum_cpu_core_count = m.get('MaximumCpuCoreCount')
+        if m.get('MaximumGpuAmount') is not None:
+            self.maximum_gpu_amount = m.get('MaximumGpuAmount')
+        if m.get('MaximumMemorySize') is not None:
+            self.maximum_memory_size = m.get('MaximumMemorySize')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MinimumBaselineCredit') is not None:
+            self.minimum_baseline_credit = m.get('MinimumBaselineCredit')
+        if m.get('MinimumCpuCoreCount') is not None:
+            self.minimum_cpu_core_count = m.get('MinimumCpuCoreCount')
+        if m.get('MinimumEniIpv6AddressQuantity') is not None:
+            self.minimum_eni_ipv_6address_quantity = m.get('MinimumEniIpv6AddressQuantity')
+        if m.get('MinimumEniPrivateIpAddressQuantity') is not None:
+            self.minimum_eni_private_ip_address_quantity = m.get('MinimumEniPrivateIpAddressQuantity')
+        if m.get('MinimumEniQuantity') is not None:
+            self.minimum_eni_quantity = m.get('MinimumEniQuantity')
+        if m.get('MinimumGpuAmount') is not None:
+            self.minimum_gpu_amount = m.get('MinimumGpuAmount')
+        if m.get('MinimumInitialCredit') is not None:
+            self.minimum_initial_credit = m.get('MinimumInitialCredit')
+        if m.get('MinimumMemorySize') is not None:
+            self.minimum_memory_size = m.get('MinimumMemorySize')
+        if m.get('PhysicalProcessorModels') is not None:
+            self.physical_processor_models = m.get('PhysicalProcessorModels')
         return self
 
 
@@ -6642,10 +6761,26 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         architectures: List[str] = None,
         burstable_performance: str = None,
         cores: int = None,
+        cpu_architectures: List[str] = None,
         excluded_instance_types: List[str] = None,
+        gpu_specs: List[str] = None,
+        instance_categories: List[str] = None,
         instance_family_level: str = None,
+        instance_type_families: List[str] = None,
         max_price: float = None,
+        maximum_cpu_core_count: int = None,
+        maximum_gpu_amount: int = None,
+        maximum_memory_size: float = None,
         memory: float = None,
+        minimum_baseline_credit: int = None,
+        minimum_cpu_core_count: int = None,
+        minimum_eni_ipv_6address_quantity: int = None,
+        minimum_eni_private_ip_address_quantity: int = None,
+        minimum_eni_quantity: int = None,
+        minimum_gpu_amount: int = None,
+        minimum_initial_credit: int = None,
+        minimum_memory_size: float = None,
+        physical_processor_models: List[str] = None,
     ):
         # The architectures of the instance types. Valid values:
         # 
@@ -6673,23 +6808,39 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         # *   If you specify InstancePatternInfos, you must specify Cores and Memory.
         # *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfos.
         self.cores = cores
+        self.cpu_architectures = cpu_architectures
         # The instance types that you want to exclude. You can use wildcard characters, such as asterisks (\\*), to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
+        self.gpu_specs = gpu_specs
+        self.instance_categories = instance_categories
         # The level of the instance type, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
         # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "[Shared instance families](https://help.aliyun.com/document_detail/108489.html)" topic.
         # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
         # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "[Overview](https://help.aliyun.com/document_detail/59977.html)" topic of burstable instances.
         self.instance_family_level = instance_family_level
+        self.instance_type_families = instance_type_families
         # The maximum hourly price of a pay-as-you-go or preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
         # 
         # > If you set SpotStrategy to SpotWithPriceLimit, you must specify MaxPrice. In other cases, MaxPrice is optional.
         self.max_price = max_price
+        self.maximum_cpu_core_count = maximum_cpu_core_count
+        self.maximum_gpu_amount = maximum_gpu_amount
+        self.maximum_memory_size = maximum_memory_size
         # The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
         self.memory = memory
+        self.minimum_baseline_credit = minimum_baseline_credit
+        self.minimum_cpu_core_count = minimum_cpu_core_count
+        self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
+        self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
+        self.minimum_eni_quantity = minimum_eni_quantity
+        self.minimum_gpu_amount = minimum_gpu_amount
+        self.minimum_initial_credit = minimum_initial_credit
+        self.minimum_memory_size = minimum_memory_size
+        self.physical_processor_models = physical_processor_models
 
     def validate(self):
         pass
@@ -6706,14 +6857,46 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
             result['BurstablePerformance'] = self.burstable_performance
         if self.cores is not None:
             result['Cores'] = self.cores
+        if self.cpu_architectures is not None:
+            result['CpuArchitectures'] = self.cpu_architectures
         if self.excluded_instance_types is not None:
             result['ExcludedInstanceTypes'] = self.excluded_instance_types
+        if self.gpu_specs is not None:
+            result['GpuSpecs'] = self.gpu_specs
+        if self.instance_categories is not None:
+            result['InstanceCategories'] = self.instance_categories
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_type_families is not None:
+            result['InstanceTypeFamilies'] = self.instance_type_families
         if self.max_price is not None:
             result['MaxPrice'] = self.max_price
+        if self.maximum_cpu_core_count is not None:
+            result['MaximumCpuCoreCount'] = self.maximum_cpu_core_count
+        if self.maximum_gpu_amount is not None:
+            result['MaximumGpuAmount'] = self.maximum_gpu_amount
+        if self.maximum_memory_size is not None:
+            result['MaximumMemorySize'] = self.maximum_memory_size
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.minimum_baseline_credit is not None:
+            result['MinimumBaselineCredit'] = self.minimum_baseline_credit
+        if self.minimum_cpu_core_count is not None:
+            result['MinimumCpuCoreCount'] = self.minimum_cpu_core_count
+        if self.minimum_eni_ipv_6address_quantity is not None:
+            result['MinimumEniIpv6AddressQuantity'] = self.minimum_eni_ipv_6address_quantity
+        if self.minimum_eni_private_ip_address_quantity is not None:
+            result['MinimumEniPrivateIpAddressQuantity'] = self.minimum_eni_private_ip_address_quantity
+        if self.minimum_eni_quantity is not None:
+            result['MinimumEniQuantity'] = self.minimum_eni_quantity
+        if self.minimum_gpu_amount is not None:
+            result['MinimumGpuAmount'] = self.minimum_gpu_amount
+        if self.minimum_initial_credit is not None:
+            result['MinimumInitialCredit'] = self.minimum_initial_credit
+        if self.minimum_memory_size is not None:
+            result['MinimumMemorySize'] = self.minimum_memory_size
+        if self.physical_processor_models is not None:
+            result['PhysicalProcessorModels'] = self.physical_processor_models
         return result
 
     def from_map(self, m: dict = None):
@@ -6724,14 +6907,46 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
             self.burstable_performance = m.get('BurstablePerformance')
         if m.get('Cores') is not None:
             self.cores = m.get('Cores')
+        if m.get('CpuArchitectures') is not None:
+            self.cpu_architectures = m.get('CpuArchitectures')
         if m.get('ExcludedInstanceTypes') is not None:
             self.excluded_instance_types = m.get('ExcludedInstanceTypes')
+        if m.get('GpuSpecs') is not None:
+            self.gpu_specs = m.get('GpuSpecs')
+        if m.get('InstanceCategories') is not None:
+            self.instance_categories = m.get('InstanceCategories')
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypeFamilies') is not None:
+            self.instance_type_families = m.get('InstanceTypeFamilies')
         if m.get('MaxPrice') is not None:
             self.max_price = m.get('MaxPrice')
+        if m.get('MaximumCpuCoreCount') is not None:
+            self.maximum_cpu_core_count = m.get('MaximumCpuCoreCount')
+        if m.get('MaximumGpuAmount') is not None:
+            self.maximum_gpu_amount = m.get('MaximumGpuAmount')
+        if m.get('MaximumMemorySize') is not None:
+            self.maximum_memory_size = m.get('MaximumMemorySize')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MinimumBaselineCredit') is not None:
+            self.minimum_baseline_credit = m.get('MinimumBaselineCredit')
+        if m.get('MinimumCpuCoreCount') is not None:
+            self.minimum_cpu_core_count = m.get('MinimumCpuCoreCount')
+        if m.get('MinimumEniIpv6AddressQuantity') is not None:
+            self.minimum_eni_ipv_6address_quantity = m.get('MinimumEniIpv6AddressQuantity')
+        if m.get('MinimumEniPrivateIpAddressQuantity') is not None:
+            self.minimum_eni_private_ip_address_quantity = m.get('MinimumEniPrivateIpAddressQuantity')
+        if m.get('MinimumEniQuantity') is not None:
+            self.minimum_eni_quantity = m.get('MinimumEniQuantity')
+        if m.get('MinimumGpuAmount') is not None:
+            self.minimum_gpu_amount = m.get('MinimumGpuAmount')
+        if m.get('MinimumInitialCredit') is not None:
+            self.minimum_initial_credit = m.get('MinimumInitialCredit')
+        if m.get('MinimumMemorySize') is not None:
+            self.minimum_memory_size = m.get('MinimumMemorySize')
+        if m.get('PhysicalProcessorModels') is not None:
+            self.physical_processor_models = m.get('PhysicalProcessorModels')
         return self
 
 
@@ -10424,12 +10639,12 @@ class DescribeAlarmsRequest(TeaModel):
         # *   true: enables the event-triggered task.
         # *   false: disables the event-triggered task.
         self.is_enable = is_enable
-        # The name of the event-triggered task.
+        # The metric name.
         self.metric_name = metric_name
-        # The type of the metric. Valid values:
+        # The metric type. Valid values:
         # 
         # *   system: system metrics of CloudMonitor
-        # *   custom: custom metrics that are reported to CloudMonitor
+        # *   custom: custom metrics that are reported to CloudMonitor.
         self.metric_type = metric_type
         self.owner_id = owner_id
         # The number of the page to return. Pages start from page 1.
@@ -10520,28 +10735,28 @@ class DescribeAlarmsResponseBodyAlarmListDimensions(TeaModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # The key of the dimension. Valid values:
+        # The dimension key of the metric. Valid values:
         # 
-        # *   user_id: the ID of your Alibaba Cloud account
-        # *   scaling_group: the scaling group that you want to monitor
-        # *   device: the type of the NIC
-        # *   state: the state of the TCP connection
+        # *   user_id: the ID of your Alibaba Cloud account.
+        # *   scaling_group: the scaling group that is monitored by the event-triggered task.
+        # *   device: the NIC type.
+        # *   state: the status of the TCP connection.
         self.dimension_key = dimension_key
-        # The value of the dimension. The value of the DimensionValue parameter varies based on the value of the DimensionKey parameter.
+        # The dimension value of the metric. The value of DimensionValue varies based on the value of DimensionKey.
         # 
-        # *   If you set the DimensionKey parameter to `user_id`, the system specifies the value of the DimensionValue parameter.
+        # *   If you set DimensionKey to `user_id`, the system specifies the value of DimensionValue.
         # 
-        # *   If you set the DimensionKey parameter to `scaling_group`, the system specifies the value of the DimensionValue parameter.
+        # *   If you set DimensionKey to `scaling_group`, the system specifies the value of DimensionValue.
         # 
-        # *   If you set the DimensionKey parameter to `device`, you can set the DimensionValue parameter to eth0 or eth1.
+        # *   If you set DimensionKey to `device`, you can set DimensionValue to eth0 or eth1.
         # 
-        #     *   For instances that reside in the classic network type, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC.
-        #     *   For instances that reside in the classic network, eth1 specifies the public NIC.
+        #     *   For instances of the classic network type, eth0 indicates the internal NIC. Only one eth0 NIC exists on each instance that resides in VPCs.
+        #     *   For instances of the classic network type, eth1 indicates the public NIC.
         # 
-        # *   If you set the DimensionKey parameter to `state`, you can set the DimensionValue parameter to TCP_TOTAL or ESTABLISHED.
+        # *   If you set DimensionKey to `state`, you can set DimensionValue to TCP_TOTAL or ESTABLISHED.
         # 
-        #     *   TCP_TOTAL specifies the total number of TCP connections.
-        #     *   ESTABLISHED specifies the number of established TCP connections.
+        #     *   TCP_TOTAL indicates the total number of TCP connections.
+        #     *   ESTABLISHED indicates the number of TCP connections that are established.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -10579,40 +10794,42 @@ class DescribeAlarmsResponseBodyAlarmListExpressions(TeaModel):
     ):
         # The operator that is used to compare the metric value and the threshold.
         # 
-        # *   Valid value if the metric value is greater than or equal to the threshold: >=\
-        # *   Valid value if the metric value is less than or equal to the threshold: <=\
-        # *   Valid value if the metric value is greater than the threshold: >
-        # *   Valid value if the metric value is less than the threshold: <
-        # 
-        # Default value: >=.
+        # *   Valid value if the metric value is greater than or equal to the threshold: >=.
+        # *   Valid value if the metric value is less than or equal to the threshold: <=.
+        # *   Valid value if the metric value is greater than the threshold: >.
+        # *   Valid value if the metric value is less than the threshold: <.
         self.comparison_operator = comparison_operator
         # The name of the metric that is specified in the multi-metric alert rule. Valid values:
         # 
         # *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-        # *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-        # *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        # *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-        # *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        # *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-        # *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-        # *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-        # *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-        # *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-        # *   GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
-        # *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-        # *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-        # *   MemoryUtilization: the memory usage of an agent. Unit: %.
-        # *   LoadAverage: the average system load of an agent.
-        # *   TcpConnection: the total number of TCP connections of an agent.
-        # *   TcpConnection: the number of established TCP connections of an agent.
-        # *   PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
-        # *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-        # *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-        # *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+        # *   ConcurrentConnections: the number of current connections to an ECS instance.
+        # *   IntranetTx: the outbound traffic over an internal network. Unit: KB/min.
+        # *   IntranetRx: the inbound traffic over an internal network. Unit: KB/min.
+        # *   VpcInternetTx: the outbound traffic over a VPC. Unit: KB/min.
+        # *   VpcInternetRx: the inbound traffic over a VPC. Unit: KB/min.
+        # *   SystemDiskReadBps: the number of bytes read from the system disk per second.
+        # *   SystemDiskWriteBps: the number of bytes written to the system disk per second.
+        # *   SystemDiskReadOps: the read IOPS of the system disk. Unit: counts/s.
+        # *   SystemDiskWriteOps: the write IOPS of the system disk. Unit: counts/s.
+        # *   CpuUtilizationAgent: the CPU utilization. Unit: %.
+        # *   GpuUtilizationAgent: the GPU utilization. Unit: %.
+        # *   GpuMemoryFreeUtilizationAgent: the idle GPU memory usage. Unit: %.
+        # *   GpuMemoryUtilizationAgent: the GPU memory usage. Unit: %.
+        # *   MemoryUtilization: the memory usage. Unit: %.
+        # *   LoadAverage: the average system load.
+        # *   TcpConnection: the total number of TCP connections.
+        # *   TcpConnection: the number of established TCP connections.
+        # *   PackagesNetOut: the number of packets sent by the internal NIC. Unit: counts/s.
+        # *   PackagesNetIn: the number of packets received by the internal NIC. Unit: counts/s.
+        # *   PackagesNetOut: the number of packets sent by the public NIC. Unit: counts/s.
+        # *   PackagesNetIn: the number of packets received by the public NIC. Unit: counts/s.
+        # *   EciPodCpuUtilization: the CPU utilization. Unit: %.
+        # *   EciPodMemoryUtilization: the memory usage. Unit: %.
+        # *   LoadBalancerRealServerAverageQps: the QPS of an instance.
         # 
-        # For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
+        # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The period of time during which statistics about the metrics in the multi-metric alert rule is collected. Unit: seconds. Valid values:
+        # The statistical period of the metric data in the multi-metric alert rule. Unit: seconds. Valid values:
         # 
         # *   15
         # *   60
@@ -10620,15 +10837,15 @@ class DescribeAlarmsResponseBodyAlarmListExpressions(TeaModel):
         # *   300
         # *   900
         # 
-        # > If your scaling group is of the ECS type and the event-triggered task associated with your scaling group monitors CloudMonitor metrics, you can set the Period parameter to 15. In most cases, the name of a CloudMonitor metric contains Agent.
+        # >  If your scaling group is of the ECS type and the event-triggered task that is associated with your scaling group monitors CloudMonitor metrics, you can set Period to 15. In most cases, the name of a CloudMonitor metric contains Agent.
         self.period = period
         # The method that is used to aggregate statistics about the metrics in the multi-metric alert rule. Valid values:
         # 
-        # *   Average
-        # *   Minimum
-        # *   Maximum
+        # *   Average: the average value
+        # *   Minimum: the minimum value
+        # *   Maximum: the maximum value
         self.statistics = statistics
-        # The thresholds of the metric values in the multi-metric alert rule. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
+        # The threshold of the metric value. If the threshold is reached the specified number of times within the specified period, a scaling rule is executed.
         self.threshold = threshold
 
     def validate(self):
@@ -10689,70 +10906,75 @@ class DescribeAlarmsResponseBodyAlarmList(TeaModel):
         statistics: str = None,
         threshold: float = None,
     ):
-        # The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
+        # The unique identifiers of the scaling rules that are associated with the event-triggered task.
         self.alarm_actions = alarm_actions
         # The ID of the event-triggered task.
         self.alarm_task_id = alarm_task_id
-        # The operator that is used to compare the metric value and the threshold.
+        # The operator that is used to compare the metric value and the metric threshold.
         # 
-        # *   Valid value if the metric value is greater than or equal to the threshold: >=\
-        # *   Valid value if the metric value is less than or equal to the threshold: <=\
-        # *   Valid value if the metric value is greater than the threshold: >
-        # *   Valid value if the metric value is less than the threshold: <
+        # *   Valid value if the metric value is greater than or equal to the threshold: >=.
+        # *   Valid value if the metric value is less than or equal to the threshold: <=.
+        # *   Valid value if the metric value is greater than the threshold: >.
+        # *   Valid value if the metric value is less than the threshold: <.
         self.comparison_operator = comparison_operator
         # The description of the event-triggered task.
         self.description = description
-        # Details of the dimensions.
+        # The metric dimensions.
         self.dimensions = dimensions
-        # > This parameter is in invitational preview and is unavailable.
+        # The effective period of the event-triggered task.
         self.effective = effective
-        # Indicates whether the event-triggered task is enabled. Valid values:
+        # Indicates whether the event-triggered task feature is enabled. Valid values:
         # 
-        # *   true: The event-triggered task is enabled.
-        # *   false: The event-triggered task is disabled.
+        # *   true
+        # *   false
         self.enable = enable
-        # The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
+        # The number of consecutive times that the threshold must be reached before a scaling rule is executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is executed.
         self.evaluation_count = evaluation_count
-        # The expressions that are specified in the multi-metric alert rule.
+        # The alert conditions of the multi-metric alert rule.
         self.expressions = expressions
         # The relationship between the trigger conditions that are specified in the multi-metric alert rule. Valid values:
         # 
-        # *   `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet the trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
-        # *   `||`: An alert is triggered if one of the metrics in the multi-metric alert rule meets the trigger conditions.
+        # *   `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet their trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
+        # *   `||`: An alert is triggered only if one of the metrics in the multi-metric alert rule meets its trigger condition.
         self.expressions_logic_operator = expressions_logic_operator
-        # The name of the metric. Valid values:
+        # The metric name. Valid values:
         # 
-        # *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-        # *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-        # *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        # *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-        # *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        # *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-        # *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-        # *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-        # *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-        # *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-        # *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-        # *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-        # *   MemoryUtilization: the memory usage of an agent. Unit: %.
-        # *   LoadAverage: the average system load of an agent.
-        # *   TcpConnection: the total number of TCP connections of an agent.
-        # *   TcpConnection: the number of established TCP connections of an agent.
-        # *   PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
-        # *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-        # *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-        # *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+        # *   CpuUtilization: the CPU utilization of an Elastic Compute Service (ECS) instance. Unit: %.
+        # *   ConcurrentConnections: the number of current connections to an ECS instance.
+        # *   IntranetTx: the outbound traffic over an internal network. Unit: KB/min.
+        # *   IntranetRx: the inbound traffic over an internal network. Unit: KB/min.
+        # *   VpcInternetTx: the outbound traffic over a virtual private cloud (VPC). Unit: KB/min.
+        # *   VpcInternetRx: the inbound traffic over a VPC. Unit: KB/min.
+        # *   SystemDiskReadBps: the number of bytes read from the system disk per second.
+        # *   SystemDiskWriteBps: the number of bytes written to the system disk per second.
+        # *   SystemDiskReadOps: the read IOPS of the system disk. Unit: counts/s.
+        # *   SystemDiskWriteOps: the write IOPS of the system disk. Unit: counts/s.
+        # *   CpuUtilizationAgent: the CPU utilization. Unit: %.
+        # *   GpuUtilizationAgent: the GPU utilization. Unit: %.
+        # *   GpuMemoryFreeUtilizationAgent: the idle GPU memory usage. Unit: %.
+        # *   GpuMemoryUtilizationAgent: the GPU memory usage. Unit: %.
+        # *   MemoryUtilization: the memory usage. Unit: %.
+        # *   LoadAverage: the average system load.
+        # *   TcpConnection: the total number of TCP connections.
+        # *   TcpConnection: the number of established TCP connections.
+        # *   PackagesNetOut: the number of packets sent by the internal NIC. Unit: counts/s.
+        # *   PackagesNetIn: the number of packets received by the internal NIC. Unit: counts/s.
+        # *   PackagesNetOut: the number of packets sent by the public NIC. Unit: counts/s.
+        # *   PackagesNetIn: the number of packets received by the public NIC. Unit: counts/s.
+        # *   EciPodCpuUtilization: the CPU utilization. Unit: %.
+        # *   EciPodMemoryUtilization: the memory usage. Unit: %.
+        # *   LoadBalancerRealServerAverageQps: the queries per second (QPS) of an instance.
         # 
-        # For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
+        # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The type of the metric. Valid values:
+        # The metric type. Valid values:
         # 
         # *   system: system metrics of CloudMonitor
-        # *   custom: custom metrics that are reported to CloudMonitor
+        # *   custom: custom metrics that are reported to CloudMonitor.
         self.metric_type = metric_type
         # The name of the event-triggered task.
         self.name = name
-        # The period of time during which statistics about the metric is collected. Unit: seconds. Valid values:
+        # The statistical period of the metric data. Unit: seconds. Valid values:
         # 
         # *   15
         # *   60
@@ -10760,9 +10982,9 @@ class DescribeAlarmsResponseBodyAlarmList(TeaModel):
         # *   300
         # *   900
         # 
-        # > If your scaling group is of the ECS type and the event-triggered task associated with your scaling group monitors CloudMonitor metrics, you can set the Period parameter to 15. In most cases, the name of a CloudMonitor metric contains Agent.
+        # >  You can set the value of this parameter to 15 Seconds only for scaling groups of the ECS type.
         self.period = period
-        # The scaling group ID of the event-triggered task.
+        # The ID of the scaling group to which the event-triggered task is associated.
         self.scaling_group_id = scaling_group_id
         # The status of the event-triggered task. Valid values:
         # 
@@ -10770,13 +10992,13 @@ class DescribeAlarmsResponseBodyAlarmList(TeaModel):
         # *   OK: The alert condition is not met.
         # *   INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
         self.state = state
-        # The method that is used to aggregate statistics for the metric. Valid values:
+        # The method that is used to aggregate the metric data. Valid values:
         # 
-        # *   Average
-        # *   Minimum
-        # *   Maximum
+        # *   Average: the average value
+        # *   Minimum: the minimum value
+        # *   Maximum: the maximum value
         self.statistics = statistics
-        # The threshold of the metric value. If the threshold is reached the specified times within the specified period, a scaling rule is executed.
+        # The threshold of the metric. If the threshold is reached the specified number of times within the statistical period, a scaling rule is executed.
         self.threshold = threshold
 
     def validate(self):
@@ -10893,7 +11115,7 @@ class DescribeAlarmsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of event-triggered tasks.
+        # The event-triggered tasks.
         self.alarm_list = alarm_list
         # The page number of the returned page.
         self.page_number = page_number
@@ -15999,28 +16221,97 @@ class DescribePatternTypesRequest(TeaModel):
         channel_id: int = None,
         cores: int = None,
         cores_list: List[int] = None,
+        cpu_architectures: List[str] = None,
         excluded_instance_type: List[str] = None,
+        gpu_specs: List[str] = None,
+        instance_categories: List[str] = None,
         instance_family_level: str = None,
+        instance_type_families: List[str] = None,
         max_price: float = None,
+        maximum_cpu_core_count: int = None,
+        maximum_gpu_amount: int = None,
+        maximum_memory_size: float = None,
         memory: float = None,
         memory_list: List[float] = None,
+        minimum_baseline_credit: int = None,
+        minimum_cpu_core_count: int = None,
+        minimum_eni_ipv_6address_quantity: int = None,
+        minimum_eni_private_ip_address_quantity: int = None,
+        minimum_eni_quantity: int = None,
+        minimum_gpu_amount: int = None,
+        minimum_initial_credit: int = None,
+        minimum_memory_size: float = None,
+        physical_processor_models: List[str] = None,
         region_id: str = None,
         spot_strategy: str = None,
         v_switch_id: List[str] = None,
     ):
+        # The architectures of instance types. Valid values:
+        # 
+        # *   X86: x86
+        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
+        # *   BareMetal: ECS Bare Metal Instance
+        # *   Arm: Arm
+        # *   SuperComputeCluster: Super Computing Cluster
+        # 
+        # By default, all values are selected.
         self.architecture = architecture
+        # Specifies whether to include burstable instance types. Valid values:
+        # 
+        # *   Exclude: does not include burstable instance types.
+        # *   Include: includes burstable instance types.
+        # *   Required: includes only burstable instance types.
+        # 
+        # Default value: Include.
         self.burstable_performance = burstable_performance
+        # The channel ID. This parameter is not for public use.
         self.channel_id = channel_id
+        # The number of vCPUs that you want to assign to the instance type.
         self.cores = cores
+        # The number of vCPUs that you want to assign to the instance type. You can specify multiple vCPUs.
         self.cores_list = cores_list
+        self.cpu_architectures = cpu_architectures
         self.excluded_instance_type = excluded_instance_type
+        self.gpu_specs = gpu_specs
+        self.instance_categories = instance_categories
+        # The level of the instance family. Valid values:
+        # 
+        # *   EntryLevel: entry level
+        # *   EnterpriseLevel: enterprise level
+        # *   CreditEntryLevel: credit-based entry level For more information, see [Burstable instance families](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
+        self.instance_type_families = instance_type_families
+        # The maximum hourly price for pay-as-you-go or preemptible instances.
         self.max_price = max_price
+        self.maximum_cpu_core_count = maximum_cpu_core_count
+        self.maximum_gpu_amount = maximum_gpu_amount
+        self.maximum_memory_size = maximum_memory_size
+        # The memory size that you want to assign to the instance type. Unit: GiB.
         self.memory = memory
+        # The memory size that you want to assign to the instance type. Unit: GiB. You can specify multiple memory sizes.
         self.memory_list = memory_list
+        self.minimum_baseline_credit = minimum_baseline_credit
+        self.minimum_cpu_core_count = minimum_cpu_core_count
+        self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
+        self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
+        self.minimum_eni_quantity = minimum_eni_quantity
+        self.minimum_gpu_amount = minimum_gpu_amount
+        self.minimum_initial_credit = minimum_initial_credit
+        self.minimum_memory_size = minimum_memory_size
+        self.physical_processor_models = physical_processor_models
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The preemption policy that you want to apply to pay-as-you-go instances. Valid values:
+        # 
+        # *   NoSpot: The instances are created as regular pay-as-you-go instances.
+        # *   SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
+        # 
+        # Default value: NoSpot.
         self.spot_strategy = spot_strategy
+        # The vSwitch IDs.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -16042,16 +16333,48 @@ class DescribePatternTypesRequest(TeaModel):
             result['Cores'] = self.cores
         if self.cores_list is not None:
             result['CoresList'] = self.cores_list
+        if self.cpu_architectures is not None:
+            result['CpuArchitectures'] = self.cpu_architectures
         if self.excluded_instance_type is not None:
             result['ExcludedInstanceType'] = self.excluded_instance_type
+        if self.gpu_specs is not None:
+            result['GpuSpecs'] = self.gpu_specs
+        if self.instance_categories is not None:
+            result['InstanceCategories'] = self.instance_categories
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_type_families is not None:
+            result['InstanceTypeFamilies'] = self.instance_type_families
         if self.max_price is not None:
             result['MaxPrice'] = self.max_price
+        if self.maximum_cpu_core_count is not None:
+            result['MaximumCpuCoreCount'] = self.maximum_cpu_core_count
+        if self.maximum_gpu_amount is not None:
+            result['MaximumGpuAmount'] = self.maximum_gpu_amount
+        if self.maximum_memory_size is not None:
+            result['MaximumMemorySize'] = self.maximum_memory_size
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.memory_list is not None:
             result['MemoryList'] = self.memory_list
+        if self.minimum_baseline_credit is not None:
+            result['MinimumBaselineCredit'] = self.minimum_baseline_credit
+        if self.minimum_cpu_core_count is not None:
+            result['MinimumCpuCoreCount'] = self.minimum_cpu_core_count
+        if self.minimum_eni_ipv_6address_quantity is not None:
+            result['MinimumEniIpv6AddressQuantity'] = self.minimum_eni_ipv_6address_quantity
+        if self.minimum_eni_private_ip_address_quantity is not None:
+            result['MinimumEniPrivateIpAddressQuantity'] = self.minimum_eni_private_ip_address_quantity
+        if self.minimum_eni_quantity is not None:
+            result['MinimumEniQuantity'] = self.minimum_eni_quantity
+        if self.minimum_gpu_amount is not None:
+            result['MinimumGpuAmount'] = self.minimum_gpu_amount
+        if self.minimum_initial_credit is not None:
+            result['MinimumInitialCredit'] = self.minimum_initial_credit
+        if self.minimum_memory_size is not None:
+            result['MinimumMemorySize'] = self.minimum_memory_size
+        if self.physical_processor_models is not None:
+            result['PhysicalProcessorModels'] = self.physical_processor_models
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.spot_strategy is not None:
@@ -16072,16 +16395,48 @@ class DescribePatternTypesRequest(TeaModel):
             self.cores = m.get('Cores')
         if m.get('CoresList') is not None:
             self.cores_list = m.get('CoresList')
+        if m.get('CpuArchitectures') is not None:
+            self.cpu_architectures = m.get('CpuArchitectures')
         if m.get('ExcludedInstanceType') is not None:
             self.excluded_instance_type = m.get('ExcludedInstanceType')
+        if m.get('GpuSpecs') is not None:
+            self.gpu_specs = m.get('GpuSpecs')
+        if m.get('InstanceCategories') is not None:
+            self.instance_categories = m.get('InstanceCategories')
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypeFamilies') is not None:
+            self.instance_type_families = m.get('InstanceTypeFamilies')
         if m.get('MaxPrice') is not None:
             self.max_price = m.get('MaxPrice')
+        if m.get('MaximumCpuCoreCount') is not None:
+            self.maximum_cpu_core_count = m.get('MaximumCpuCoreCount')
+        if m.get('MaximumGpuAmount') is not None:
+            self.maximum_gpu_amount = m.get('MaximumGpuAmount')
+        if m.get('MaximumMemorySize') is not None:
+            self.maximum_memory_size = m.get('MaximumMemorySize')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('MemoryList') is not None:
             self.memory_list = m.get('MemoryList')
+        if m.get('MinimumBaselineCredit') is not None:
+            self.minimum_baseline_credit = m.get('MinimumBaselineCredit')
+        if m.get('MinimumCpuCoreCount') is not None:
+            self.minimum_cpu_core_count = m.get('MinimumCpuCoreCount')
+        if m.get('MinimumEniIpv6AddressQuantity') is not None:
+            self.minimum_eni_ipv_6address_quantity = m.get('MinimumEniIpv6AddressQuantity')
+        if m.get('MinimumEniPrivateIpAddressQuantity') is not None:
+            self.minimum_eni_private_ip_address_quantity = m.get('MinimumEniPrivateIpAddressQuantity')
+        if m.get('MinimumEniQuantity') is not None:
+            self.minimum_eni_quantity = m.get('MinimumEniQuantity')
+        if m.get('MinimumGpuAmount') is not None:
+            self.minimum_gpu_amount = m.get('MinimumGpuAmount')
+        if m.get('MinimumInitialCredit') is not None:
+            self.minimum_initial_credit = m.get('MinimumInitialCredit')
+        if m.get('MinimumMemorySize') is not None:
+            self.minimum_memory_size = m.get('MinimumMemorySize')
+        if m.get('PhysicalProcessorModels') is not None:
+            self.physical_processor_models = m.get('PhysicalProcessorModels')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SpotStrategy') is not None:
@@ -16100,10 +16455,19 @@ class DescribePatternTypesResponseBodyPatternTypes(TeaModel):
         instance_type_family: str = None,
         memory: float = None,
     ):
+        # The number of vCPUs that are assigned to the instance type.
         self.cores = cores
+        # The level of the instance family.
+        # 
+        # *   EntryLevel: entry level (shared instance types) Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
+        # The name of the instance type.
         self.instance_type = instance_type
+        # The instance family.
         self.instance_type_family = instance_type_family
+        # The memory size that are assigned to the instance type. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -16148,7 +16512,9 @@ class DescribePatternTypesResponseBody(TeaModel):
         pattern_types: List[DescribePatternTypesResponseBodyPatternTypes] = None,
         request_id: str = None,
     ):
+        # The instance types that meet the specified requirements.
         self.pattern_types = pattern_types
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17307,10 +17673,26 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
         architectures: List[str] = None,
         burstable_performance: str = None,
         cores: int = None,
+        cpu_architectures: List[str] = None,
         excluded_instance_types: List[str] = None,
+        gpu_specs: List[str] = None,
+        instance_categories: List[str] = None,
         instance_family_level: str = None,
+        instance_type_families: List[str] = None,
         max_price: float = None,
+        maximum_cpu_core_count: int = None,
+        maximum_gpu_amount: int = None,
+        maximum_memory_size: float = None,
         memory: float = None,
+        minimum_baseline_credit: int = None,
+        minimum_cpu_core_count: int = None,
+        minimum_eni_ipv_6address_quantity: int = None,
+        minimum_eni_private_ip_address_quantity: int = None,
+        minimum_eni_quantity: int = None,
+        minimum_gpu_amount: int = None,
+        minimum_initial_credit: int = None,
+        minimum_memory_size: float = None,
+        physical_processor_models: List[str] = None,
     ):
         # The architecture types of the instance types. Valid values:
         # 
@@ -17328,21 +17710,37 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
         self.burstable_performance = burstable_performance
         # The number of vCPUs of the instance type.
         self.cores = cores
+        self.cpu_architectures = cpu_architectures
         # The instance types that are excluded. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: The ecs.c6.large instance type is excluded.
         # *   ecs.c6.\\*: The c6 instance family is excluded.
         self.excluded_instance_types = excluded_instance_types
+        self.gpu_specs = gpu_specs
+        self.instance_categories = instance_categories
         # The level of the instance family.
         # 
         # *   EntryLevel: entry level (shared instance types) Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
         # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # *   CreditEntryLevel: credit entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
+        self.instance_type_families = instance_type_families
         # The maximum hourly price for pay-as-you-go or preemptible instances.
         self.max_price = max_price
+        self.maximum_cpu_core_count = maximum_cpu_core_count
+        self.maximum_gpu_amount = maximum_gpu_amount
+        self.maximum_memory_size = maximum_memory_size
         # The memory size of the instance type. Unit: GiB.
         self.memory = memory
+        self.minimum_baseline_credit = minimum_baseline_credit
+        self.minimum_cpu_core_count = minimum_cpu_core_count
+        self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
+        self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
+        self.minimum_eni_quantity = minimum_eni_quantity
+        self.minimum_gpu_amount = minimum_gpu_amount
+        self.minimum_initial_credit = minimum_initial_credit
+        self.minimum_memory_size = minimum_memory_size
+        self.physical_processor_models = physical_processor_models
 
     def validate(self):
         pass
@@ -17359,14 +17757,46 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
             result['BurstablePerformance'] = self.burstable_performance
         if self.cores is not None:
             result['Cores'] = self.cores
+        if self.cpu_architectures is not None:
+            result['CpuArchitectures'] = self.cpu_architectures
         if self.excluded_instance_types is not None:
             result['ExcludedInstanceTypes'] = self.excluded_instance_types
+        if self.gpu_specs is not None:
+            result['GpuSpecs'] = self.gpu_specs
+        if self.instance_categories is not None:
+            result['InstanceCategories'] = self.instance_categories
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_type_families is not None:
+            result['InstanceTypeFamilies'] = self.instance_type_families
         if self.max_price is not None:
             result['MaxPrice'] = self.max_price
+        if self.maximum_cpu_core_count is not None:
+            result['MaximumCpuCoreCount'] = self.maximum_cpu_core_count
+        if self.maximum_gpu_amount is not None:
+            result['MaximumGpuAmount'] = self.maximum_gpu_amount
+        if self.maximum_memory_size is not None:
+            result['MaximumMemorySize'] = self.maximum_memory_size
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.minimum_baseline_credit is not None:
+            result['MinimumBaselineCredit'] = self.minimum_baseline_credit
+        if self.minimum_cpu_core_count is not None:
+            result['MinimumCpuCoreCount'] = self.minimum_cpu_core_count
+        if self.minimum_eni_ipv_6address_quantity is not None:
+            result['MinimumEniIpv6AddressQuantity'] = self.minimum_eni_ipv_6address_quantity
+        if self.minimum_eni_private_ip_address_quantity is not None:
+            result['MinimumEniPrivateIpAddressQuantity'] = self.minimum_eni_private_ip_address_quantity
+        if self.minimum_eni_quantity is not None:
+            result['MinimumEniQuantity'] = self.minimum_eni_quantity
+        if self.minimum_gpu_amount is not None:
+            result['MinimumGpuAmount'] = self.minimum_gpu_amount
+        if self.minimum_initial_credit is not None:
+            result['MinimumInitialCredit'] = self.minimum_initial_credit
+        if self.minimum_memory_size is not None:
+            result['MinimumMemorySize'] = self.minimum_memory_size
+        if self.physical_processor_models is not None:
+            result['PhysicalProcessorModels'] = self.physical_processor_models
         return result
 
     def from_map(self, m: dict = None):
@@ -17377,14 +17807,46 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
             self.burstable_performance = m.get('BurstablePerformance')
         if m.get('Cores') is not None:
             self.cores = m.get('Cores')
+        if m.get('CpuArchitectures') is not None:
+            self.cpu_architectures = m.get('CpuArchitectures')
         if m.get('ExcludedInstanceTypes') is not None:
             self.excluded_instance_types = m.get('ExcludedInstanceTypes')
+        if m.get('GpuSpecs') is not None:
+            self.gpu_specs = m.get('GpuSpecs')
+        if m.get('InstanceCategories') is not None:
+            self.instance_categories = m.get('InstanceCategories')
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypeFamilies') is not None:
+            self.instance_type_families = m.get('InstanceTypeFamilies')
         if m.get('MaxPrice') is not None:
             self.max_price = m.get('MaxPrice')
+        if m.get('MaximumCpuCoreCount') is not None:
+            self.maximum_cpu_core_count = m.get('MaximumCpuCoreCount')
+        if m.get('MaximumGpuAmount') is not None:
+            self.maximum_gpu_amount = m.get('MaximumGpuAmount')
+        if m.get('MaximumMemorySize') is not None:
+            self.maximum_memory_size = m.get('MaximumMemorySize')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MinimumBaselineCredit') is not None:
+            self.minimum_baseline_credit = m.get('MinimumBaselineCredit')
+        if m.get('MinimumCpuCoreCount') is not None:
+            self.minimum_cpu_core_count = m.get('MinimumCpuCoreCount')
+        if m.get('MinimumEniIpv6AddressQuantity') is not None:
+            self.minimum_eni_ipv_6address_quantity = m.get('MinimumEniIpv6AddressQuantity')
+        if m.get('MinimumEniPrivateIpAddressQuantity') is not None:
+            self.minimum_eni_private_ip_address_quantity = m.get('MinimumEniPrivateIpAddressQuantity')
+        if m.get('MinimumEniQuantity') is not None:
+            self.minimum_eni_quantity = m.get('MinimumEniQuantity')
+        if m.get('MinimumGpuAmount') is not None:
+            self.minimum_gpu_amount = m.get('MinimumGpuAmount')
+        if m.get('MinimumInitialCredit') is not None:
+            self.minimum_initial_credit = m.get('MinimumInitialCredit')
+        if m.get('MinimumMemorySize') is not None:
+            self.minimum_memory_size = m.get('MinimumMemorySize')
+        if m.get('PhysicalProcessorModels') is not None:
+            self.physical_processor_models = m.get('PhysicalProcessorModels')
         return self
 
 
@@ -18297,7 +18759,7 @@ class DescribeScalingGroupDetailRequest(TeaModel):
         # The output format. Set the value to yaml.
         self.output_format = output_format
         self.owner_id = owner_id
-        # The region ID of the scaling group. For more information, see the "Regions and zones" topic.
+        # The region ID of the scaling group. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -18345,9 +18807,9 @@ class DescribeScalingGroupDetailResponseBodyScalingGroupAlbServerGroups(TeaModel
         port: int = None,
         weight: int = None,
     ):
-        # The ID of the ALB server group.
+        # The ID of the Application Load Balancer (ALB) server group.
         self.alb_server_group_id = alb_server_group_id
-        # The port number of an ECS instance as a backend server in the ALB server group.
+        # The port number used by an ECS instance as a backend server in the ALB server group.
         self.port = port
         # The weight of an ECS instance as a backend server in the ALB server group.
         self.weight = weight
@@ -18387,13 +18849,13 @@ class DescribeScalingGroupDetailResponseBodyScalingGroupLaunchTemplateOverrides(
         spot_price_limit: float = None,
         weighted_capacity: int = None,
     ):
-        # The instance type. The instance type specified by using InstanceType overrides the instance type specified in the launch template.
+        # The instance type. The instance type that is specified by using this parameter overwrites the instance type of the launch template.
         self.instance_type = instance_type
         # The maximum bid price of the instance type that is specified by `LaunchTemplateOverride.InstanceType`.
         # 
-        # >  This parameter takes effect only if you use `LaunchTemplateId` to specify a launch template.
+        # >  This parameter takes effect only if you specify `LaunchTemplateId`.
         self.spot_price_limit = spot_price_limit
-        # The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A higher weight indicates that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
+        # The weight of the instance type. The value of this parameter indicates the capacity of an instance of the specified instance type in the scaling group. A higher weight indicates that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         self.weighted_capacity = weighted_capacity
 
     def validate(self):
@@ -18467,7 +18929,7 @@ class DescribeScalingGroupDetailResponseBodyScalingGroupServerGroups(TeaModel):
         type: str = None,
         weight: int = None,
     ):
-        # The port number of an ECS instance as a backend server in the server group.
+        # The port number used by an ECS instance as a backend server in the server group.
         self.port = port
         # The ID of the server group.
         self.server_group_id = server_group_id
@@ -18520,8 +18982,8 @@ class DescribeScalingGroupDetailResponseBodyScalingGroupTags(TeaModel):
     ):
         # Indicates whether the tags of the scaling group can be propagated to instances. Valid values:
         # 
-        # *   true: Tags of the scaling group can be propagated to only instances that are newly created.
-        # *   false: Tags of the scaling group cannot be propagated to instances.
+        # *   true: The tags of the scaling group can be propagated to only instances that are newly created.
+        # *   false: The tags of the scaling group cannot be propagated to any instances.
         # 
         # Default value: false.
         self.propagate = propagate
@@ -18749,7 +19211,7 @@ class DescribeScalingGroupDetailResponseBodyScalingGroup(TeaModel):
         # *   true: Deletion Protection is enabled for the scaling group. This way, the scaling group cannot be deleted.
         # *   false: Deletion Protection is disabled for the scaling group.
         self.group_deletion_protection = group_deletion_protection
-        # The type of instances that are managed by the scaling group. Valid values:
+        # The type of the instances that are managed by the scaling group. Valid values:
         # 
         # *   ECS: ECS instances
         # *   ECI: elastic container instances
@@ -18781,9 +19243,9 @@ class DescribeScalingGroupDetailResponseBodyScalingGroup(TeaModel):
         self.load_balancer_configs = load_balancer_configs
         # The IDs of the SLB instances that are associated with the scaling group.
         self.load_balancer_ids = load_balancer_ids
-        # The maximum life span of an ECS instance in the scaling group. Unit: seconds.
+        # The maximum life span of an instance in the scaling group. Unit: seconds.
         # 
-        # Valid values: 0 and `[86400, Integer.maxValue]`. A value of 0 indicates that the ECS instance has an unlimited life span in the scaling group.
+        # Valid values: 0 or from 86400 to `Integer.maxValue`. A value of 0 for MaxInstanceLifetime indicates that any previously set limit has been removed, which effectively disables the maximum instance lifetime constraint.
         # 
         # Default value: null.
         # 
@@ -18833,19 +19295,22 @@ class DescribeScalingGroupDetailResponseBodyScalingGroup(TeaModel):
         self.resource_group_id = resource_group_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # The name of the scaling group. The name of a scaling group must be unique in a region. The name must be 2 to 64 characters in length, and can contain digits, underscores (_), hyphens (-), and periods (.). It must start with a letter or digit.
+        # The name of the scaling group. The name of each scaling group must be unique in a region.
+        # 
+        # The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter or digit.
         self.scaling_group_name = scaling_group_name
         # The reclaim mode of the scaling group. Valid values:
         # 
         # *   recycle: economical mode
         # *   release: release mode
         # *   forcerelease: forced release mode
+        # *   forcerecycle: forced recycle mode
         # 
         # For more information, see [RemoveInstances](https://help.aliyun.com/document_detail/25955.html).
         self.scaling_policy = scaling_policy
         # The information about the server groups.
         # 
-        # >  You can use this parameter to obtain information about ALB server groups and Network Load Balancer (NLB) server groups that are associated with your scaling group.
+        # >  You can use this parameter to obtain information about ALB server groups and Network Load Balancer (NLB) server groups attached to your scaling group.
         self.server_groups = server_groups
         # The allocation policy of preemptible instances. Auto Scaling selects instance types based on the allocation policy to create the required number of preemptible instances. You can apply the policy to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
         # 
@@ -19200,11 +19665,11 @@ class DescribeScalingGroupDetailResponseBody(TeaModel):
         request_id: str = None,
         scaling_group: DescribeScalingGroupDetailResponseBodyScalingGroup = None,
     ):
-        # The output details of the scaling group of the Elastic Container Instance type. The output is a Kubernetes Deployment file in the YAML format.
+        # The output details of the scaling group of the Elastic Container Instance type. Currently, the output is displayed in a Kubernetes Deployment YAML file.
         self.output = output
         # The request ID.
         self.request_id = request_id
-        # The information about the scaling group.
+        # The information about the scaling groups.
         self.scaling_group = scaling_group
 
     def validate(self):
@@ -22598,7 +23063,7 @@ class DetachServerGroupsRequestServerGroups(TeaModel):
         server_group_id: str = None,
         type: str = None,
     ):
-        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the server group.
+        # The port used by ECS instances or elastic container instances as backend servers of the server group.
         # 
         # This parameter is required.
         self.port = port
@@ -22653,11 +23118,11 @@ class DetachServerGroupsRequest(TeaModel):
         scaling_group_id: str = None,
         server_groups: List[DetachServerGroupsRequestServerGroups] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to remove the Elastic Compute Service (ECS) instances in the scaling group from the server group that you want to detach.
+        # Specifies whether to remove the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group from the server group marked for detachment.
         # 
         # *   true
         # *   false
@@ -22674,7 +23139,7 @@ class DetachServerGroupsRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # Details of the server groups.
+        # The information about the server groups.
         # 
         # This parameter is required.
         self.server_groups = server_groups
@@ -22739,9 +23204,9 @@ class DetachServerGroupsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the scaling activity in which you detach the server group from the scaling group and Auto Scaling removes the ECS instances from the server group.
+        # The ID of the scaling activity. During the scaling activity, the server group is detached from the scaling group and the existing servers, which are the ECS instances or elastic container instances in the scaling group, are removed from the server group.
         # 
-        # > This parameter is returned only if you set the ForceAttach parameter to true.
+        # >  This parameter is returned only if you set `ForceDetach` to `true`.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -23226,7 +23691,7 @@ class DisableScalingGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23416,19 +23881,19 @@ class EnableScalingGroupRequestLaunchTemplateOverrides(TeaModel):
         instance_type: str = None,
         weighted_capacity: int = None,
     ):
-        # The instance type. The instance type that you specify by using the InstanceType parameter overwrites the instance type that is specified in the launch template.
+        # The instance type. If you want to scale instances based on instance type weights in the scaling group, you must specify `LaunchTemplateOverrides.WeightedCapacity` after you specify this parameter.
         # 
-        # If you want Auto Scaling to scale instances in the scaling group based on the instance type weight, you must specify both the InstanceType parameter and the WeightedCapacity parameter.
+        # The instance type specified by using this parameter overwrites the instance type of the launch template.
         # 
-        # > This parameter takes effect only after you specify the LaunchTemplateId parameter.
+        # >  This parameter takes effect only if you specify LaunchTemplateId.
         # 
-        # You can use the InstanceType parameter to specify only instance types that are available for purchase.
+        # You can use this parameter to specify any instance types that are available for purchase.
         self.instance_type = instance_type
-        # The weight of the instance type. The weight specifies the capacity of a single instance of the specified instance type in the scaling group. If you want Auto Scaling to scale instances in the scaling group based on the weighted capacity of instances, you must specify the WeightedCapacity parameter after you specify the InstanceType parameter.
+        # The weight of the instance type. If you want to scale instances based on instance type weights in the scaling group, you must specify this parameter after you specify `LaunchTemplateOverrides.InstanceType`.
         # 
-        # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
+        # The weight specifies the capacity of an instance of the specified instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         # 
-        # Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
+        # Performance metrics such as the number of vCPUs and the memory size of each instance type may vary. You can specify different weights for different instance types based on your business requirements.
         # 
         # Example:
         # 
@@ -23436,11 +23901,11 @@ class EnableScalingGroupRequestLaunchTemplateOverrides(TeaModel):
         # *   Expected capacity: 6
         # *   Capacity of ecs.c5.xlarge: 4
         # 
-        # To meet the expected capacity requirement, Auto Scaling must create and add two ecs.c5.xlarge instances.
+        # To reach the expected capacity, Auto Scaling must scale out two instances of ecs.c5.xlarge.
         # 
-        # > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by the MaxSize parameter and the maximum weight of the instance types.
+        # >  The total capacity of the scaling group is constrained and cannot surpass the combined total of the maximum group size defined by MaxSize and the highest weight assigned to any instance type.
         # 
-        # Valid values of the WeightedCapacity parameter: 1 to 500.
+        # Valid values of WeightedCapacity: 1 to 500.
         self.weighted_capacity = weighted_capacity
 
     def validate(self):
@@ -23483,22 +23948,22 @@ class EnableScalingGroupRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
     ):
-        # The ID of the scaling configuration that you want to put into the Active state.
+        # The ID of the scaling configuration that you want to enable in the scaling group.
         self.active_scaling_configuration_id = active_scaling_configuration_id
-        # The IDs of ECS instances that you want to add to the scaling group after you enable the scaling group.
+        # The IDs of the ECS instances that you want to add to the scaling group after the scaling group is enabled.
         # 
-        # The ECS instances must meet the following requirements:
+        # Before you add ECS instances to the scaling group, make sure that the instances meet the following requirements:
         # 
-        # *   The instances and the scaling group must reside in the same region.
+        # *   The instances must reside in the same region as the scaling group.
         # *   The instances must be in the Running state.
-        # *   The instances are not added to other scaling groups.
-        # *   The instances must use the subscription or pay-as-you-go billing method or be preemptible instances.
-        # *   If you specify the VswitchID parameter for the scaling group, the instances must reside in the same virtual private cloud (VPC) as the specified vSwitch. You cannot add instances that reside in the classic network or other VPCs to the scaling group.
-        # *   If you do not specify the VswitchID parameter for the scaling group, you cannot add instances that reside in VPCs to the scaling group.
+        # *   The instances do not belong to another scaling group.
+        # *   The instances are billed on a subscription or pay-as-you-go basis, or the instances are preemptible instances.
+        # *   If you specify VswitchID for the scaling group, the instances must share the same VPC as the scaling group.
+        # *   If you do not specify VswitchID for the scaling group, the instances must use the classic network.
         self.instance_ids = instance_ids
         # The ID of the launch template that is used by Auto Scaling to create ECS instances.
         self.launch_template_id = launch_template_id
-        # Details of the instance types that are specified in the extended configurations of the launch template.
+        # The information about the instance types that you want to extend in the launch template.
         self.launch_template_overrides = launch_template_overrides
         # The version number of the launch template. Valid values:
         # 
@@ -23506,7 +23971,7 @@ class EnableScalingGroupRequest(TeaModel):
         # *   Default: The default template version is always used.
         # *   Latest: The latest template version is always used.
         self.launch_template_version = launch_template_version
-        # The weight of an ECS instance as a backend server in the associated vServer group.
+        # The weights of ECS instances or elastic container instances as backend servers.
         # 
         # Default value: 50.
         self.load_balancer_weights = load_balancer_weights
@@ -24335,14 +24800,14 @@ class ListTagResourcesRequest(TeaModel):
         # The token that determines the start point of the next query.
         self.next_token = next_token
         self.owner_id = owner_id
-        # The region ID of the Auto Scaling resource. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The IDs of the Auto Scaling resources. You can specify 1 to 50 resource IDs.
         self.resource_ids = resource_ids
         self.resource_owner_account = resource_owner_account
-        # The type of the Auto Scaling resource. Only scaling groups are supported. Set the value to scalinggroup.
+        # The resource type. Set the value to scalinggroup.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -24410,18 +24875,18 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Indicates whether the tag can be propagated.
+        # Indicates whether the tags of the scaling group can be propagated to instances. Valid values:
         # 
-        # *   true: The tag can be propagated only to instances that are to be added to the scaling group. The tag cannot be propagated to instances that are already running in the scaling group.
-        # *   false: The tag cannot be propagated to an instance.
+        # *   true: The tags of the scaling group can be propagated to only instances that are newly created.
+        # *   false: The tags of the scaling group cannot be propagated to instances.
         self.propagate = propagate
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
-        # The key of the tag.
+        # The tag key of the resource.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value of the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -24471,7 +24936,7 @@ class ListTagResourcesResponseBody(TeaModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # Details of the resource and tags, such as the resource ID, the resource type, tag keys, and tag values.
+        # An array that encompasses both the resource details and its tags, comprising elements like the resource ID, the resource type, the tag key, and the tag value.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -28479,10 +28944,26 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         architectures: List[str] = None,
         burstable_performance: str = None,
         cores: int = None,
+        cpu_architectures: List[str] = None,
         excluded_instance_types: List[str] = None,
+        gpu_specs: List[str] = None,
+        instance_categories: List[str] = None,
         instance_family_level: str = None,
+        instance_type_families: List[str] = None,
         max_price: float = None,
+        maximum_cpu_core_count: int = None,
+        maximum_gpu_amount: int = None,
+        maximum_memory_size: float = None,
         memory: float = None,
+        minimum_baseline_credit: int = None,
+        minimum_cpu_core_count: int = None,
+        minimum_eni_ipv_6address_quantity: int = None,
+        minimum_eni_private_ip_address_quantity: int = None,
+        minimum_eni_quantity: int = None,
+        minimum_gpu_amount: int = None,
+        minimum_initial_credit: int = None,
+        minimum_memory_size: float = None,
+        physical_processor_models: List[str] = None,
     ):
         # The architectures of the instance types.
         # 
@@ -28510,23 +28991,39 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         # *   If you specify InstancePatternInfo, you must also specify Cores and Memory.
         # *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.
         self.cores = cores
+        self.cpu_architectures = cpu_architectures
         # The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\\*) to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
+        self.gpu_specs = gpu_specs
+        self.instance_categories = instance_categories
         # The level of the instance family. You can use this parameter to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
         # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
         # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) topic.
         # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which CPU utilization is low but may fluctuate in specific scenarios. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
         self.instance_family_level = instance_family_level
+        self.instance_type_families = instance_type_families
         # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria.
         # 
         # > If you set SpotStrategy to SpotWithPriceLimit, specify MaxPrice. In other scenarios, MaxPrice is optional.
         self.max_price = max_price
+        self.maximum_cpu_core_count = maximum_cpu_core_count
+        self.maximum_gpu_amount = maximum_gpu_amount
+        self.maximum_memory_size = maximum_memory_size
         # The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to filter the available instance types that meet the specified criteria.
         self.memory = memory
+        self.minimum_baseline_credit = minimum_baseline_credit
+        self.minimum_cpu_core_count = minimum_cpu_core_count
+        self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
+        self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
+        self.minimum_eni_quantity = minimum_eni_quantity
+        self.minimum_gpu_amount = minimum_gpu_amount
+        self.minimum_initial_credit = minimum_initial_credit
+        self.minimum_memory_size = minimum_memory_size
+        self.physical_processor_models = physical_processor_models
 
     def validate(self):
         pass
@@ -28543,14 +29040,46 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
             result['BurstablePerformance'] = self.burstable_performance
         if self.cores is not None:
             result['Cores'] = self.cores
+        if self.cpu_architectures is not None:
+            result['CpuArchitectures'] = self.cpu_architectures
         if self.excluded_instance_types is not None:
             result['ExcludedInstanceTypes'] = self.excluded_instance_types
+        if self.gpu_specs is not None:
+            result['GpuSpecs'] = self.gpu_specs
+        if self.instance_categories is not None:
+            result['InstanceCategories'] = self.instance_categories
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_type_families is not None:
+            result['InstanceTypeFamilies'] = self.instance_type_families
         if self.max_price is not None:
             result['MaxPrice'] = self.max_price
+        if self.maximum_cpu_core_count is not None:
+            result['MaximumCpuCoreCount'] = self.maximum_cpu_core_count
+        if self.maximum_gpu_amount is not None:
+            result['MaximumGpuAmount'] = self.maximum_gpu_amount
+        if self.maximum_memory_size is not None:
+            result['MaximumMemorySize'] = self.maximum_memory_size
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.minimum_baseline_credit is not None:
+            result['MinimumBaselineCredit'] = self.minimum_baseline_credit
+        if self.minimum_cpu_core_count is not None:
+            result['MinimumCpuCoreCount'] = self.minimum_cpu_core_count
+        if self.minimum_eni_ipv_6address_quantity is not None:
+            result['MinimumEniIpv6AddressQuantity'] = self.minimum_eni_ipv_6address_quantity
+        if self.minimum_eni_private_ip_address_quantity is not None:
+            result['MinimumEniPrivateIpAddressQuantity'] = self.minimum_eni_private_ip_address_quantity
+        if self.minimum_eni_quantity is not None:
+            result['MinimumEniQuantity'] = self.minimum_eni_quantity
+        if self.minimum_gpu_amount is not None:
+            result['MinimumGpuAmount'] = self.minimum_gpu_amount
+        if self.minimum_initial_credit is not None:
+            result['MinimumInitialCredit'] = self.minimum_initial_credit
+        if self.minimum_memory_size is not None:
+            result['MinimumMemorySize'] = self.minimum_memory_size
+        if self.physical_processor_models is not None:
+            result['PhysicalProcessorModels'] = self.physical_processor_models
         return result
 
     def from_map(self, m: dict = None):
@@ -28561,14 +29090,46 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
             self.burstable_performance = m.get('BurstablePerformance')
         if m.get('Cores') is not None:
             self.cores = m.get('Cores')
+        if m.get('CpuArchitectures') is not None:
+            self.cpu_architectures = m.get('CpuArchitectures')
         if m.get('ExcludedInstanceTypes') is not None:
             self.excluded_instance_types = m.get('ExcludedInstanceTypes')
+        if m.get('GpuSpecs') is not None:
+            self.gpu_specs = m.get('GpuSpecs')
+        if m.get('InstanceCategories') is not None:
+            self.instance_categories = m.get('InstanceCategories')
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypeFamilies') is not None:
+            self.instance_type_families = m.get('InstanceTypeFamilies')
         if m.get('MaxPrice') is not None:
             self.max_price = m.get('MaxPrice')
+        if m.get('MaximumCpuCoreCount') is not None:
+            self.maximum_cpu_core_count = m.get('MaximumCpuCoreCount')
+        if m.get('MaximumGpuAmount') is not None:
+            self.maximum_gpu_amount = m.get('MaximumGpuAmount')
+        if m.get('MaximumMemorySize') is not None:
+            self.maximum_memory_size = m.get('MaximumMemorySize')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MinimumBaselineCredit') is not None:
+            self.minimum_baseline_credit = m.get('MinimumBaselineCredit')
+        if m.get('MinimumCpuCoreCount') is not None:
+            self.minimum_cpu_core_count = m.get('MinimumCpuCoreCount')
+        if m.get('MinimumEniIpv6AddressQuantity') is not None:
+            self.minimum_eni_ipv_6address_quantity = m.get('MinimumEniIpv6AddressQuantity')
+        if m.get('MinimumEniPrivateIpAddressQuantity') is not None:
+            self.minimum_eni_private_ip_address_quantity = m.get('MinimumEniPrivateIpAddressQuantity')
+        if m.get('MinimumEniQuantity') is not None:
+            self.minimum_eni_quantity = m.get('MinimumEniQuantity')
+        if m.get('MinimumGpuAmount') is not None:
+            self.minimum_gpu_amount = m.get('MinimumGpuAmount')
+        if m.get('MinimumInitialCredit') is not None:
+            self.minimum_initial_credit = m.get('MinimumInitialCredit')
+        if m.get('MinimumMemorySize') is not None:
+            self.minimum_memory_size = m.get('MinimumMemorySize')
+        if m.get('PhysicalProcessorModels') is not None:
+            self.physical_processor_models = m.get('PhysicalProcessorModels')
         return self
 
 
@@ -29629,10 +30190,26 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         architectures: List[str] = None,
         burstable_performance: str = None,
         cores: int = None,
+        cpu_architectures: List[str] = None,
         excluded_instance_types: List[str] = None,
+        gpu_specs: List[str] = None,
+        instance_categories: List[str] = None,
         instance_family_level: str = None,
+        instance_type_families: List[str] = None,
         max_price: float = None,
+        maximum_cpu_core_count: int = None,
+        maximum_gpu_amount: int = None,
+        maximum_memory_size: float = None,
         memory: float = None,
+        minimum_baseline_credit: int = None,
+        minimum_cpu_core_count: int = None,
+        minimum_eni_ipv_6address_quantity: int = None,
+        minimum_eni_private_ip_address_quantity: int = None,
+        minimum_eni_quantity: int = None,
+        minimum_gpu_amount: int = None,
+        minimum_initial_credit: int = None,
+        minimum_memory_size: float = None,
+        physical_processor_models: List[str] = None,
     ):
         # The architectures of the instance types.
         # 
@@ -29660,23 +30237,39 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         # *   If you specify InstancePatternInfo, you must also specify Cores and Memory.
         # *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.
         self.cores = cores
+        self.cpu_architectures = cpu_architectures
         # The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\\*) to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
+        self.gpu_specs = gpu_specs
+        self.instance_categories = instance_categories
         # The level of the instance family. You can use this parameter to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
         # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
         # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) topic.
         # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which CPU utilization is low but may fluctuate in specific scenarios. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
         self.instance_family_level = instance_family_level
+        self.instance_type_families = instance_type_families
         # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria.
         # 
         # > If you set SpotStrategy to SpotWithPriceLimit, specify MaxPrice. In other scenarios, MaxPrice is optional.
         self.max_price = max_price
+        self.maximum_cpu_core_count = maximum_cpu_core_count
+        self.maximum_gpu_amount = maximum_gpu_amount
+        self.maximum_memory_size = maximum_memory_size
         # The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to filter the available instance types that meet the specified criteria.
         self.memory = memory
+        self.minimum_baseline_credit = minimum_baseline_credit
+        self.minimum_cpu_core_count = minimum_cpu_core_count
+        self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
+        self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
+        self.minimum_eni_quantity = minimum_eni_quantity
+        self.minimum_gpu_amount = minimum_gpu_amount
+        self.minimum_initial_credit = minimum_initial_credit
+        self.minimum_memory_size = minimum_memory_size
+        self.physical_processor_models = physical_processor_models
 
     def validate(self):
         pass
@@ -29693,14 +30286,46 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
             result['BurstablePerformance'] = self.burstable_performance
         if self.cores is not None:
             result['Cores'] = self.cores
+        if self.cpu_architectures is not None:
+            result['CpuArchitectures'] = self.cpu_architectures
         if self.excluded_instance_types is not None:
             result['ExcludedInstanceTypes'] = self.excluded_instance_types
+        if self.gpu_specs is not None:
+            result['GpuSpecs'] = self.gpu_specs
+        if self.instance_categories is not None:
+            result['InstanceCategories'] = self.instance_categories
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_type_families is not None:
+            result['InstanceTypeFamilies'] = self.instance_type_families
         if self.max_price is not None:
             result['MaxPrice'] = self.max_price
+        if self.maximum_cpu_core_count is not None:
+            result['MaximumCpuCoreCount'] = self.maximum_cpu_core_count
+        if self.maximum_gpu_amount is not None:
+            result['MaximumGpuAmount'] = self.maximum_gpu_amount
+        if self.maximum_memory_size is not None:
+            result['MaximumMemorySize'] = self.maximum_memory_size
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.minimum_baseline_credit is not None:
+            result['MinimumBaselineCredit'] = self.minimum_baseline_credit
+        if self.minimum_cpu_core_count is not None:
+            result['MinimumCpuCoreCount'] = self.minimum_cpu_core_count
+        if self.minimum_eni_ipv_6address_quantity is not None:
+            result['MinimumEniIpv6AddressQuantity'] = self.minimum_eni_ipv_6address_quantity
+        if self.minimum_eni_private_ip_address_quantity is not None:
+            result['MinimumEniPrivateIpAddressQuantity'] = self.minimum_eni_private_ip_address_quantity
+        if self.minimum_eni_quantity is not None:
+            result['MinimumEniQuantity'] = self.minimum_eni_quantity
+        if self.minimum_gpu_amount is not None:
+            result['MinimumGpuAmount'] = self.minimum_gpu_amount
+        if self.minimum_initial_credit is not None:
+            result['MinimumInitialCredit'] = self.minimum_initial_credit
+        if self.minimum_memory_size is not None:
+            result['MinimumMemorySize'] = self.minimum_memory_size
+        if self.physical_processor_models is not None:
+            result['PhysicalProcessorModels'] = self.physical_processor_models
         return result
 
     def from_map(self, m: dict = None):
@@ -29711,14 +30336,46 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
             self.burstable_performance = m.get('BurstablePerformance')
         if m.get('Cores') is not None:
             self.cores = m.get('Cores')
+        if m.get('CpuArchitectures') is not None:
+            self.cpu_architectures = m.get('CpuArchitectures')
         if m.get('ExcludedInstanceTypes') is not None:
             self.excluded_instance_types = m.get('ExcludedInstanceTypes')
+        if m.get('GpuSpecs') is not None:
+            self.gpu_specs = m.get('GpuSpecs')
+        if m.get('InstanceCategories') is not None:
+            self.instance_categories = m.get('InstanceCategories')
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypeFamilies') is not None:
+            self.instance_type_families = m.get('InstanceTypeFamilies')
         if m.get('MaxPrice') is not None:
             self.max_price = m.get('MaxPrice')
+        if m.get('MaximumCpuCoreCount') is not None:
+            self.maximum_cpu_core_count = m.get('MaximumCpuCoreCount')
+        if m.get('MaximumGpuAmount') is not None:
+            self.maximum_gpu_amount = m.get('MaximumGpuAmount')
+        if m.get('MaximumMemorySize') is not None:
+            self.maximum_memory_size = m.get('MaximumMemorySize')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MinimumBaselineCredit') is not None:
+            self.minimum_baseline_credit = m.get('MinimumBaselineCredit')
+        if m.get('MinimumCpuCoreCount') is not None:
+            self.minimum_cpu_core_count = m.get('MinimumCpuCoreCount')
+        if m.get('MinimumEniIpv6AddressQuantity') is not None:
+            self.minimum_eni_ipv_6address_quantity = m.get('MinimumEniIpv6AddressQuantity')
+        if m.get('MinimumEniPrivateIpAddressQuantity') is not None:
+            self.minimum_eni_private_ip_address_quantity = m.get('MinimumEniPrivateIpAddressQuantity')
+        if m.get('MinimumEniQuantity') is not None:
+            self.minimum_eni_quantity = m.get('MinimumEniQuantity')
+        if m.get('MinimumGpuAmount') is not None:
+            self.minimum_gpu_amount = m.get('MinimumGpuAmount')
+        if m.get('MinimumInitialCredit') is not None:
+            self.minimum_initial_credit = m.get('MinimumInitialCredit')
+        if m.get('MinimumMemorySize') is not None:
+            self.minimum_memory_size = m.get('MinimumMemorySize')
+        if m.get('PhysicalProcessorModels') is not None:
+            self.physical_processor_models = m.get('PhysicalProcessorModels')
         return self
 
 
@@ -30549,16 +31206,20 @@ class ModifyScalingGroupRequest(TeaModel):
         # 
         # Default value: false.
         self.az_balance = az_balance
-        # Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as costs and insufficient resources. This parameter takes effect only if you set the MultiAZPolicy parameter in the CreateScalingGroup operation to COST_OPTIMIZED. Valid values:
+        # Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
         # 
         # *   true
         # *   false
         self.compensate_with_on_demand = compensate_with_on_demand
         # The ARN of the custom scaling policy (Function). This parameter takes effect only when you specify CustomPolicy as the first step of the instance removal policy.
         self.custom_policy_arn = custom_policy_arn
-        # The default cooldown time of the scaling group. This parameter takes effect only for scaling groups that have simple scaling rules. Valid values: 0 to 86400. Unit: seconds. During the cooldown time, Auto Scaling executes only scaling activities that are triggered by event-triggered tasks associated with CloudMonitor.
+        # The cooldown period of the scaling group. This parameter is available only if you set ScalingRuleType to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
+        # 
+        # During the cooldown period, Auto Scaling does not execute scaling activities that are triggered by CloudMonitor event-triggered tasks.
         self.default_cooldown = default_cooldown
-        # The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the specified expected number of ECS instances. The expected number cannot be greater than the value of the MaxSize parameter and cannot be less than the value of the MinSize parameter.
+        # The expected number of ECS instances or elastic container instances in the scaling group. Auto Scaling maintains the expected number of ECS instances or elastic container instances in the scaling group. Make sure that you adhere to the following rule when specifying this parameter: Value of MaxSize ≥ Value of DesiredCapacity ≥ Value of MinSize
+        # 
+        # >  If you re-enable the Expected Number of Instances feature, you must specify a value for `DesiredCapacity` again.
         self.desired_capacity = desired_capacity
         self.disable_desired_capacity = disable_desired_capacity
         # Specifies whether to enable deletion protection for the scaling group. Valid values:
@@ -30568,15 +31229,19 @@ class ModifyScalingGroupRequest(TeaModel):
         self.group_deletion_protection = group_deletion_protection
         # The health check mode of the scaling group. Valid values:
         # 
-        # *   NONE: Auto Scaling does not check the health status of instances in the scaling group.
-        # *   ECS: Auto Scaling checks the health status of Elastic Compute Service (ECS) instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis of instances in the scaling group.
+        # *   NONE: Auto Scaling does not perform health checks.
+        # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
+        # *   ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
+        # 
+        # >  HealthCheckType has the same effect as `HealthCheckTypes`. You can select one of them to specify based on your business requirements. If you specify `HealthCheckTypes`, `HealthCheckType` is ignored. HealthCheckType is optional.
         self.health_check_type = health_check_type
         # The health check modes of the scaling group. Valid values:
         # 
-        # *   NONE: Auto Scaling does not check the health status of instances in the scaling group.
+        # *   NONE: Auto Scaling does not perform health checks.
         # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis of instances in the scaling group.
+        # *   ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
         self.health_check_types = health_check_types
         # The ID of the launch template that is used by Auto Scaling to create instances.
         self.launch_template_id = launch_template_id
@@ -30596,15 +31261,15 @@ class ModifyScalingGroupRequest(TeaModel):
         # 
         # > You cannot specify this parameter for scaling groups that manage elastic container instances or scaling groups whose ScalingPolicy is set to recycle.
         self.max_instance_lifetime = max_instance_lifetime
-        # The maximum number of ECS instances in the scaling group. When the number of ECS instances in the scaling group is greater than the value of the MaxSize parameter, Auto Scaling automatically removes ECS instances from the scaling group until the number of instances is equal to the value of the MaxSize parameter.
+        # The maximum number of ECS instances or elastic container instances that can be contained in the scaling group. If the total number of instances in the scaling group is greater than the value of MaxSize, Auto Scaling proactively removes the surplus instances from the scaling group to restore the total number to match the maximum limit.
         # 
-        # The value range of the MaxSize parameter varies based on the instance quota. You can go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check the quota of **instances that can be included in a scaling group**.
+        # The value range of MaxSize is directly correlated with the degree of dependency your business has on Auto Scaling. You can go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check **the maximum number of instances that a single scaling group can contain.**\
         # 
-        # For example, if the quota of instances that can be included in a scaling group is 2000, the valid values of the MaxSize parameter range from 0 to 2000.
+        # For example, if a scaling group can contain up to **2,000** instances, the value range of MaxSize is 0 to 2000.
         self.max_size = max_size
-        # The minimum number of ECS instances in the scaling group. When the number of ECS instances in the scaling group is less than the value of the MinSize parameter, Auto Scaling automatically creates ECS instances and adds the instances to the scaling group until the number of instances is equal to the value of the MinSize parameter.
+        # The minimum number of ECS instances or elastic container instances that must be contained in the scaling group. If the total number of instances in the scaling group is less than the value of MinSize, Auto Scaling proactively adds instances to the scaling group to ensure that the total number aligns with the minimum threshold.
         # 
-        # > The value of the MinSize parameter must be less than or equal to the value of the MaxSize parameter.
+        # >  The value of MinSize must be less than or equal to the value of MaxSize.
         self.min_size = min_size
         # The scaling policy for the multi-zone scaling group that contains ECS instances. Valid values:
         # 
@@ -32143,7 +32808,10 @@ class ScaleWithAdjustmentRequestLifecycleHookContext(TeaModel):
         disable_lifecycle_hook: bool = None,
         ignored_lifecycle_hook_ids: List[str] = None,
     ):
-        # Specifies whether to disable the lifecycle hook.
+        # Specifies whether to disable the Lifecycle Hook feature. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_lifecycle_hook = disable_lifecycle_hook
         # The IDs of the lifecycle hooks that you want to disable.
         self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
@@ -32178,7 +32846,7 @@ class ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars(TeaMo
         key: str = None,
         value: str = None,
     ):
-        # The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, underscores (_), and digits. The name cannot start with a digit. Specify the value in the `[0-9a-zA-Z]` format.
+        # The name of the environment variable. The name can be 1 to 128 characters in length and can contain letters, underscores (_), and digits. It cannot start with a digit. Specify the value in the `[0-9a-zA-Z]` format.
         self.key = key
         # The value of the environment variable. The value can be up to 256 characters in length.
         self.value = value
@@ -32217,9 +32885,9 @@ class ScaleWithAdjustmentRequestOverridesContainerOverrides(TeaModel):
         memory: float = None,
         name: str = None,
     ):
-        # The container startup arguments. You can specify up to 10 arguments.
+        # The arguments that correspond to the startup commands of the container. You can specify up to 10 arguments.
         self.args = args
-        # The container startup commands. You can specify up to 20 commands. Each command contains up to 256 characters.
+        # The startup commands of the container. You can specify up to 20 commands. Each command can contain up to 256 characters.
         self.commands = commands
         # The number of vCPUs that you want to allocate to the container.
         self.cpu = cpu
@@ -32574,6 +33242,11 @@ class ScaleWithAdjustmentResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
+        # The type of the scaling activity.
+        # 
+        # If `ActivityType` is set to `CapacityChange`, only the expected number of instances is changed during the scaling activity specified by ScalingActivityId and no scale-out is triggered.
+        # 
+        # This parameter is applicable to only scaling groups that have an expected number of instances.
         self.activity_type = activity_type
         # The ID of the request.
         self.request_id = request_id
@@ -33240,7 +33913,7 @@ class TagResourcesRequest(TeaModel):
         tags: List[TagResourcesRequestTags] = None,
     ):
         self.owner_id = owner_id
-        # The region ID.
+        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -33249,7 +33922,7 @@ class TagResourcesRequest(TeaModel):
         # This parameter is required.
         self.resource_ids = resource_ids
         self.resource_owner_account = resource_owner_account
-        # The type of the resource. Only scaling groups are supported. Set the value to scalinggroup.
+        # The resource type. Set the value to scalinggroup.
         # 
         # This parameter is required.
         self.resource_type = resource_type

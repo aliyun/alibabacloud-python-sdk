@@ -1,3 +1,25 @@
+2024-06-12 Version: 1.6.2
+- Update API CreateScalingConfiguration: update param InstancePatternInfos.
+- Update API DescribePatternTypes: add param CpuArchitectures.
+- Update API DescribePatternTypes: add param GpuSpecs.
+- Update API DescribePatternTypes: add param InstanceCategories.
+- Update API DescribePatternTypes: add param InstanceTypeFamilies.
+- Update API DescribePatternTypes: add param MaximumCpuCoreCount.
+- Update API DescribePatternTypes: add param MaximumGpuAmount.
+- Update API DescribePatternTypes: add param MaximumMemorySize.
+- Update API DescribePatternTypes: add param MinimumBaselineCredit.
+- Update API DescribePatternTypes: add param MinimumCpuCoreCount.
+- Update API DescribePatternTypes: add param MinimumEniIpv6AddressQuantity.
+- Update API DescribePatternTypes: add param MinimumEniPrivateIpAddressQuantity.
+- Update API DescribePatternTypes: add param MinimumEniQuantity.
+- Update API DescribePatternTypes: add param MinimumGpuAmount.
+- Update API DescribePatternTypes: add param MinimumInitialCredit.
+- Update API DescribePatternTypes: add param MinimumMemorySize.
+- Update API DescribePatternTypes: add param PhysicalProcessorModels.
+- Update API DescribeScalingConfigurations: update response param.
+- Update API ModifyScalingConfiguration: update param InstancePatternInfos.
+
+
 2024-05-21 Version: 1.6.1
 - Update API DetachInstances: add param IgnoreInvalidInstance.
 - Update API RemoveInstances: add param IgnoreInvalidInstance.
