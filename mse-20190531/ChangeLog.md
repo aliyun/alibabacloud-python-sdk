@@ -1,3 +1,9 @@
+2024-06-12 Version: 6.7.1
+- Update API QueryConfig: update response param.
+- Update API UpdateConfig: add param AuthEnabled.
+- Update API UpdateConfig: add param Enable4lw.
+
+
 2024-06-12 Version: 6.7.0
 - Support API ListGatewayZone.
 - Update API GetPluginConfig: update response param.

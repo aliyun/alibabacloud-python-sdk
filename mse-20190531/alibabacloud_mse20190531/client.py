@@ -21602,6 +21602,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.auth_enabled):
+            query['AuthEnabled'] = request.auth_enabled
         if not UtilClient.is_unset(request.autopurge_purge_interval):
             query['AutopurgePurgeInterval'] = request.autopurge_purge_interval
         if not UtilClient.is_unset(request.autopurge_snap_retain_count):
@@ -21616,6 +21618,8 @@ class Client(OpenApiClient):
             query['ConfigType'] = request.config_type
         if not UtilClient.is_unset(request.console_uienabled):
             query['ConsoleUIEnabled'] = request.console_uienabled
+        if not UtilClient.is_unset(request.enable_4lw):
+            query['Enable4lw'] = request.enable_4lw
         if not UtilClient.is_unset(request.eureka_supported):
             query['EurekaSupported'] = request.eureka_supported
         if not UtilClient.is_unset(request.extended_types_enable):
@@ -21689,6 +21693,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.auth_enabled):
+            query['AuthEnabled'] = request.auth_enabled
         if not UtilClient.is_unset(request.autopurge_purge_interval):
             query['AutopurgePurgeInterval'] = request.autopurge_purge_interval
         if not UtilClient.is_unset(request.autopurge_snap_retain_count):
@@ -21703,6 +21709,8 @@ class Client(OpenApiClient):
             query['ConfigType'] = request.config_type
         if not UtilClient.is_unset(request.console_uienabled):
             query['ConsoleUIEnabled'] = request.console_uienabled
+        if not UtilClient.is_unset(request.enable_4lw):
+            query['Enable4lw'] = request.enable_4lw
         if not UtilClient.is_unset(request.eureka_supported):
             query['EurekaSupported'] = request.eureka_supported
         if not UtilClient.is_unset(request.extended_types_enable):

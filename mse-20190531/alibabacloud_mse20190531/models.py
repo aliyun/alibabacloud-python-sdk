@@ -52275,6 +52275,7 @@ class QueryConfigResponseBodyDataNacosRunningEnv(TeaModel):
 class QueryConfigResponseBodyData(TeaModel):
     def __init__(
         self,
+        auth_enabled: bool = None,
         autopurge_purge_interval: str = None,
         autopurge_snap_retain_count: str = None,
         cluster_name: str = None,
@@ -52284,6 +52285,7 @@ class QueryConfigResponseBodyData(TeaModel):
         config_secret_enabled: bool = None,
         config_secret_supported: bool = None,
         console_uienabled: bool = None,
+        enable_4lw: bool = None,
         eureka_supported: bool = None,
         extended_types_enable: bool = None,
         init_limit: str = None,
@@ -52307,6 +52309,7 @@ class QueryConfigResponseBodyData(TeaModel):
         tick_time: str = None,
         user_name: str = None,
     ):
+        self.auth_enabled = auth_enabled
         # A reserved parameter.
         self.autopurge_purge_interval = autopurge_purge_interval
         # A reserved parameter.
@@ -52337,6 +52340,7 @@ class QueryConfigResponseBodyData(TeaModel):
         self.config_secret_supported = config_secret_supported
         # Indicates whether the Nacos open source console is enabled.
         self.console_uienabled = console_uienabled
+        self.enable_4lw = enable_4lw
         # Indicates whether access port 8761 was enabled for Eureka. If this port is disabled, applications cannot use the Eureka protocol for service registration and discovery.
         self.eureka_supported = eureka_supported
         # Indicates whether the time to live (TTL) configuration is enabled. This parameter is valid for ZooKeeper instances.
@@ -52414,6 +52418,8 @@ class QueryConfigResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_enabled is not None:
+            result['AuthEnabled'] = self.auth_enabled
         if self.autopurge_purge_interval is not None:
             result['AutopurgePurgeInterval'] = self.autopurge_purge_interval
         if self.autopurge_snap_retain_count is not None:
@@ -52432,6 +52438,8 @@ class QueryConfigResponseBodyData(TeaModel):
             result['ConfigSecretSupported'] = self.config_secret_supported
         if self.console_uienabled is not None:
             result['ConsoleUIEnabled'] = self.console_uienabled
+        if self.enable_4lw is not None:
+            result['Enable4lw'] = self.enable_4lw
         if self.eureka_supported is not None:
             result['EurekaSupported'] = self.eureka_supported
         if self.extended_types_enable is not None:
@@ -52480,6 +52488,8 @@ class QueryConfigResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthEnabled') is not None:
+            self.auth_enabled = m.get('AuthEnabled')
         if m.get('AutopurgePurgeInterval') is not None:
             self.autopurge_purge_interval = m.get('AutopurgePurgeInterval')
         if m.get('AutopurgeSnapRetainCount') is not None:
@@ -52498,6 +52508,8 @@ class QueryConfigResponseBodyData(TeaModel):
             self.config_secret_supported = m.get('ConfigSecretSupported')
         if m.get('ConsoleUIEnabled') is not None:
             self.console_uienabled = m.get('ConsoleUIEnabled')
+        if m.get('Enable4lw') is not None:
+            self.enable_4lw = m.get('Enable4lw')
         if m.get('EurekaSupported') is not None:
             self.eureka_supported = m.get('EurekaSupported')
         if m.get('ExtendedTypesEnable') is not None:
@@ -57239,6 +57251,7 @@ class UpdateConfigRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        auth_enabled: bool = None,
         autopurge_purge_interval: str = None,
         autopurge_snap_retain_count: str = None,
         cluster_id: str = None,
@@ -57246,6 +57259,7 @@ class UpdateConfigRequest(TeaModel):
         config_secret_enabled: bool = None,
         config_type: str = None,
         console_uienabled: bool = None,
+        enable_4lw: bool = None,
         eureka_supported: bool = None,
         extended_types_enable: str = None,
         init_limit: str = None,
@@ -57270,6 +57284,7 @@ class UpdateConfigRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
+        self.auth_enabled = auth_enabled
         # A reserved parameter.
         self.autopurge_purge_interval = autopurge_purge_interval
         # A reserved parameter.
@@ -57293,6 +57308,7 @@ class UpdateConfigRequest(TeaModel):
         # The format of the configuration. Supported formats include TEXT, JSON, XML, and HTML.
         self.config_type = config_type
         self.console_uienabled = console_uienabled
+        self.enable_4lw = enable_4lw
         self.eureka_supported = eureka_supported
         # Specifies whether to enable the time to live (TTL) configuration. This parameter is valid for ZooKeeper instances.
         self.extended_types_enable = extended_types_enable
@@ -57357,6 +57373,8 @@ class UpdateConfigRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.auth_enabled is not None:
+            result['AuthEnabled'] = self.auth_enabled
         if self.autopurge_purge_interval is not None:
             result['AutopurgePurgeInterval'] = self.autopurge_purge_interval
         if self.autopurge_snap_retain_count is not None:
@@ -57371,6 +57389,8 @@ class UpdateConfigRequest(TeaModel):
             result['ConfigType'] = self.config_type
         if self.console_uienabled is not None:
             result['ConsoleUIEnabled'] = self.console_uienabled
+        if self.enable_4lw is not None:
+            result['Enable4lw'] = self.enable_4lw
         if self.eureka_supported is not None:
             result['EurekaSupported'] = self.eureka_supported
         if self.extended_types_enable is not None:
@@ -57413,6 +57433,8 @@ class UpdateConfigRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('AuthEnabled') is not None:
+            self.auth_enabled = m.get('AuthEnabled')
         if m.get('AutopurgePurgeInterval') is not None:
             self.autopurge_purge_interval = m.get('AutopurgePurgeInterval')
         if m.get('AutopurgeSnapRetainCount') is not None:
@@ -57427,6 +57449,8 @@ class UpdateConfigRequest(TeaModel):
             self.config_type = m.get('ConfigType')
         if m.get('ConsoleUIEnabled') is not None:
             self.console_uienabled = m.get('ConsoleUIEnabled')
+        if m.get('Enable4lw') is not None:
+            self.enable_4lw = m.get('Enable4lw')
         if m.get('EurekaSupported') is not None:
             self.eureka_supported = m.get('EurekaSupported')
         if m.get('ExtendedTypesEnable') is not None:
