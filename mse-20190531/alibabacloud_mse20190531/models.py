@@ -26979,6 +26979,39 @@ class GetPluginConfigRequest(TeaModel):
         return self
 
 
+class GetPluginConfigResponseBodyDataGatewayConfigListResourceList(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class GetPluginConfigResponseBodyDataGatewayConfigList(TeaModel):
     def __init__(
         self,
@@ -26991,6 +27024,7 @@ class GetPluginConfigResponseBodyDataGatewayConfigList(TeaModel):
         gmt_modified: str = None,
         id: int = None,
         plugin_id: int = None,
+        resource_list: List[GetPluginConfigResponseBodyDataGatewayConfigListResourceList] = None,
     ):
         # The plug-in configuration.
         self.config = config
@@ -27016,9 +27050,13 @@ class GetPluginConfigResponseBodyDataGatewayConfigList(TeaModel):
         self.id = id
         # The ID of the gateway plug-in.
         self.plugin_id = plugin_id
+        self.resource_list = resource_list
 
     def validate(self):
-        pass
+        if self.resource_list:
+            for k in self.resource_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27044,6 +27082,10 @@ class GetPluginConfigResponseBodyDataGatewayConfigList(TeaModel):
             result['Id'] = self.id
         if self.plugin_id is not None:
             result['PluginId'] = self.plugin_id
+        result['ResourceList'] = []
+        if self.resource_list is not None:
+            for k in self.resource_list:
+                result['ResourceList'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -27066,6 +27108,11 @@ class GetPluginConfigResponseBodyDataGatewayConfigList(TeaModel):
             self.id = m.get('Id')
         if m.get('PluginId') is not None:
             self.plugin_id = m.get('PluginId')
+        self.resource_list = []
+        if m.get('ResourceList') is not None:
+            for k in m.get('ResourceList'):
+                temp_model = GetPluginConfigResponseBodyDataGatewayConfigListResourceList()
+                self.resource_list.append(temp_model.from_map(k))
         return self
 
 
@@ -27074,7 +27121,10 @@ class GetPluginConfigResponseBodyData(TeaModel):
         self,
         category: int = None,
         config_check: str = None,
+        config_example: str = None,
+        domain_config_start_index: int = None,
         gateway_config_list: List[GetPluginConfigResponseBodyDataGatewayConfigList] = None,
+        gateway_config_start_index: int = None,
         id: int = None,
         image_name: str = None,
         mode: int = None,
@@ -27085,6 +27135,7 @@ class GetPluginConfigResponseBodyData(TeaModel):
         publish_state: int = None,
         readme: str = None,
         readme_en: str = None,
+        route_config_start_index: int = None,
         status: str = None,
         summary: str = None,
         type: int = None,
@@ -27108,8 +27159,11 @@ class GetPluginConfigResponseBodyData(TeaModel):
         self.category = category
         # The information about the plug-in configuration used for checking.
         self.config_check = config_check
+        self.config_example = config_example
+        self.domain_config_start_index = domain_config_start_index
         # The list of gateway plug-in configurations.
         self.gateway_config_list = gateway_config_list
+        self.gateway_config_start_index = gateway_config_start_index
         # The ID of the plug-in.
         self.id = id
         # The name of the image.
@@ -27138,6 +27192,7 @@ class GetPluginConfigResponseBodyData(TeaModel):
         self.readme = readme
         # The description of the README file that is edited in English.
         self.readme_en = readme_en
+        self.route_config_start_index = route_config_start_index
         # Indicates whether the plug-in is enabled. Valid values:
         # 
         # 0: disabled
@@ -27180,10 +27235,16 @@ class GetPluginConfigResponseBodyData(TeaModel):
             result['Category'] = self.category
         if self.config_check is not None:
             result['ConfigCheck'] = self.config_check
+        if self.config_example is not None:
+            result['ConfigExample'] = self.config_example
+        if self.domain_config_start_index is not None:
+            result['DomainConfigStartIndex'] = self.domain_config_start_index
         result['GatewayConfigList'] = []
         if self.gateway_config_list is not None:
             for k in self.gateway_config_list:
                 result['GatewayConfigList'].append(k.to_map() if k else None)
+        if self.gateway_config_start_index is not None:
+            result['GatewayConfigStartIndex'] = self.gateway_config_start_index
         if self.id is not None:
             result['Id'] = self.id
         if self.image_name is not None:
@@ -27204,6 +27265,8 @@ class GetPluginConfigResponseBodyData(TeaModel):
             result['Readme'] = self.readme
         if self.readme_en is not None:
             result['ReadmeEn'] = self.readme_en
+        if self.route_config_start_index is not None:
+            result['RouteConfigStartIndex'] = self.route_config_start_index
         if self.status is not None:
             result['Status'] = self.status
         if self.summary is not None:
@@ -27224,11 +27287,17 @@ class GetPluginConfigResponseBodyData(TeaModel):
             self.category = m.get('Category')
         if m.get('ConfigCheck') is not None:
             self.config_check = m.get('ConfigCheck')
+        if m.get('ConfigExample') is not None:
+            self.config_example = m.get('ConfigExample')
+        if m.get('DomainConfigStartIndex') is not None:
+            self.domain_config_start_index = m.get('DomainConfigStartIndex')
         self.gateway_config_list = []
         if m.get('GatewayConfigList') is not None:
             for k in m.get('GatewayConfigList'):
                 temp_model = GetPluginConfigResponseBodyDataGatewayConfigList()
                 self.gateway_config_list.append(temp_model.from_map(k))
+        if m.get('GatewayConfigStartIndex') is not None:
+            self.gateway_config_start_index = m.get('GatewayConfigStartIndex')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('ImageName') is not None:
@@ -27249,6 +27318,8 @@ class GetPluginConfigResponseBodyData(TeaModel):
             self.readme = m.get('Readme')
         if m.get('ReadmeEn') is not None:
             self.readme_en = m.get('ReadmeEn')
+        if m.get('RouteConfigStartIndex') is not None:
+            self.route_config_start_index = m.get('RouteConfigStartIndex')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Summary') is not None:
@@ -43493,6 +43564,190 @@ class ListGatewaySlbResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListGatewaySlbResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListGatewayZoneRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        return self
+
+
+class ListGatewayZoneResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        local_name: str = None,
+        zone_id: str = None,
+    ):
+        self.local_name = local_name
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListGatewayZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[ListGatewayZoneResponseBodyData] = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListGatewayZoneResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListGatewayZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGatewayZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGatewayZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -66718,6 +66973,7 @@ class UpdatePluginConfigRequest(TeaModel):
         gmt_modified: str = None,
         id: int = None,
         plugin_id: int = None,
+        resource_id_list: List[int] = None,
     ):
         # The language of the response. Valid values:
         # 
@@ -66736,8 +66992,6 @@ class UpdatePluginConfigRequest(TeaModel):
         # The ID of the gateway.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
-        # 
-        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The creation time.
         self.gmt_create = gmt_create
@@ -66746,9 +67000,8 @@ class UpdatePluginConfigRequest(TeaModel):
         # The ID of the plug-in configuration.
         self.id = id
         # The ID of the gateway plug-in.
-        # 
-        # This parameter is required.
         self.plugin_id = plugin_id
+        self.resource_id_list = resource_id_list
 
     def validate(self):
         pass
@@ -66779,6 +67032,8 @@ class UpdatePluginConfigRequest(TeaModel):
             result['Id'] = self.id
         if self.plugin_id is not None:
             result['PluginId'] = self.plugin_id
+        if self.resource_id_list is not None:
+            result['ResourceIdList'] = self.resource_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -66803,6 +67058,111 @@ class UpdatePluginConfigRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('PluginId') is not None:
             self.plugin_id = m.get('PluginId')
+        if m.get('ResourceIdList') is not None:
+            self.resource_id_list = m.get('ResourceIdList')
+        return self
+
+
+class UpdatePluginConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        config: str = None,
+        config_level: int = None,
+        enable: bool = None,
+        gateway_id: int = None,
+        gateway_unique_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        plugin_id: int = None,
+        resource_id_list_shrink: str = None,
+    ):
+        # The language of the response. Valid values:
+        # 
+        # zh: Chinese en: English
+        self.accept_language = accept_language
+        # The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
+        self.config = config
+        # The application scope of the plug-in.
+        # 
+        # *   0: global
+        # *   1: route
+        # *   2: domain name
+        self.config_level = config_level
+        # Specifies whether to enable the plug-in.
+        self.enable = enable
+        # The ID of the gateway.
+        self.gateway_id = gateway_id
+        # The unique ID of the gateway.
+        self.gateway_unique_id = gateway_unique_id
+        # The creation time.
+        self.gmt_create = gmt_create
+        # The update time.
+        self.gmt_modified = gmt_modified
+        # The ID of the plug-in configuration.
+        self.id = id
+        # The ID of the gateway plug-in.
+        self.plugin_id = plugin_id
+        self.resource_id_list_shrink = resource_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.config_level is not None:
+            result['ConfigLevel'] = self.config_level
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.resource_id_list_shrink is not None:
+            result['ResourceIdList'] = self.resource_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('ConfigLevel') is not None:
+            self.config_level = m.get('ConfigLevel')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('ResourceIdList') is not None:
+            self.resource_id_list_shrink = m.get('ResourceIdList')
         return self
 
 

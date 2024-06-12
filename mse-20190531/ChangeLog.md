@@ -1,3 +1,15 @@
+2024-06-12 Version: 6.7.0
+- Support API ListGatewayZone.
+- Update API GetPluginConfig: update response param.
+- Update API UpdatePluginConfig: add param ResourceIdList.
+- Update API UpdatePluginConfig: update param GatewayId.
+- Update API UpdatePluginConfig: update param GatewayUniqueId.
+- Update API UpdatePluginConfig: update param GmtCreate.
+- Update API UpdatePluginConfig: update param GmtModified.
+- Update API UpdatePluginConfig: update param PluginId.
+- Update API UpdatePluginConfig: update response param.
+
+
 2024-05-29 Version: 6.6.3
 - Update API CreateCircuitBreakerRule: update param ResourceType.
 - Update API CreateFlowRule: update param ResourceType.

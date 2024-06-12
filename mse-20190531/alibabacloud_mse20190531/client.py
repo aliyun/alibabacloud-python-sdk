@@ -15674,6 +15674,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_slb_with_options_async(request, runtime)
 
+    def list_gateway_zone_with_options(
+        self,
+        request: mse_20190531_models.ListGatewayZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayZoneResponse:
+        """
+        @summary 获取网关可用区列表
+        
+        @param request: ListGatewayZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayZone',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_zone_with_options_async(
+        self,
+        request: mse_20190531_models.ListGatewayZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayZoneResponse:
+        """
+        @summary 获取网关可用区列表
+        
+        @param request: ListGatewayZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayZone',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_zone(
+        self,
+        request: mse_20190531_models.ListGatewayZoneRequest,
+    ) -> mse_20190531_models.ListGatewayZoneResponse:
+        """
+        @summary 获取网关可用区列表
+        
+        @param request: ListGatewayZoneRequest
+        @return: ListGatewayZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_gateway_zone_with_options(request, runtime)
+
+    async def list_gateway_zone_async(
+        self,
+        request: mse_20190531_models.ListGatewayZoneRequest,
+    ) -> mse_20190531_models.ListGatewayZoneResponse:
+        """
+        @summary 获取网关可用区列表
+        
+        @param request: ListGatewayZoneRequest
+        @return: ListGatewayZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_gateway_zone_with_options_async(request, runtime)
+
     def list_instance_count_with_options(
         self,
         request: mse_20190531_models.ListInstanceCountRequest,
@@ -25752,17 +25848,21 @@ class Client(OpenApiClient):
 
     def update_plugin_config_with_options(
         self,
-        request: mse_20190531_models.UpdatePluginConfigRequest,
+        tmp_req: mse_20190531_models.UpdatePluginConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdatePluginConfigResponse:
         """
         @summary Updates the configuration of a plug-in.
         
-        @param request: UpdatePluginConfigRequest
+        @param tmp_req: UpdatePluginConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePluginConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdatePluginConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id_list):
+            request.resource_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id_list, 'ResourceIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -25784,6 +25884,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.plugin_id):
             query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.resource_id_list_shrink):
+            query['ResourceIdList'] = request.resource_id_list_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25805,17 +25907,21 @@ class Client(OpenApiClient):
 
     async def update_plugin_config_with_options_async(
         self,
-        request: mse_20190531_models.UpdatePluginConfigRequest,
+        tmp_req: mse_20190531_models.UpdatePluginConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdatePluginConfigResponse:
         """
         @summary Updates the configuration of a plug-in.
         
-        @param request: UpdatePluginConfigRequest
+        @param tmp_req: UpdatePluginConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdatePluginConfigResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdatePluginConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id_list):
+            request.resource_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id_list, 'ResourceIdList', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -25837,6 +25943,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.plugin_id):
             query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.resource_id_list_shrink):
+            query['ResourceIdList'] = request.resource_id_list_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
