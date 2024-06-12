@@ -13460,6 +13460,199 @@ class ApplyQueryResponse(TeaModel):
         return self
 
 
+class ApplyTripTaskExecuteHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class ApplyTripTaskExecuteRequest(TeaModel):
+    def __init__(
+        self,
+        action_from: str = None,
+        comment: str = None,
+        task_action: str = None,
+        task_id: int = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        # This parameter is required.
+        self.action_from = action_from
+        self.comment = comment
+        # This parameter is required.
+        self.task_action = task_action
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_from is not None:
+            result['action_from'] = self.action_from
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.task_action is not None:
+            result['task_action'] = self.task_action
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action_from') is not None:
+            self.action_from = m.get('action_from')
+        if m.get('comment') is not None:
+            self.comment = m.get('comment')
+        if m.get('task_action') is not None:
+            self.task_action = m.get('task_action')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
+        return self
+
+
+class ApplyTripTaskExecuteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: bool = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            self.module = m.get('module')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class ApplyTripTaskExecuteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyTripTaskExecuteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyTripTaskExecuteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BaseCityInfoSearchHeaders(TeaModel):
     def __init__(
         self,
@@ -17770,12 +17963,13 @@ class CommonApplyQueryRequest(TeaModel):
         self,
         apply_id: int = None,
         biz_category: int = None,
+        business_instance_id: str = None,
         user_id: str = None,
     ):
-        # This parameter is required.
         self.apply_id = apply_id
         # This parameter is required.
         self.biz_category = biz_category
+        self.business_instance_id = business_instance_id
         self.user_id = user_id
 
     def validate(self):
@@ -17791,6 +17985,8 @@ class CommonApplyQueryRequest(TeaModel):
             result['apply_id'] = self.apply_id
         if self.biz_category is not None:
             result['biz_category'] = self.biz_category
+        if self.business_instance_id is not None:
+            result['business_instance_id'] = self.business_instance_id
         if self.user_id is not None:
             result['user_id'] = self.user_id
         return result
@@ -17801,6 +17997,8 @@ class CommonApplyQueryRequest(TeaModel):
             self.apply_id = m.get('apply_id')
         if m.get('biz_category') is not None:
             self.biz_category = m.get('biz_category')
+        if m.get('business_instance_id') is not None:
+            self.business_instance_id = m.get('business_instance_id')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
         return self
@@ -17820,6 +18018,7 @@ class CommonApplyQueryResponseBodyModule(TeaModel):
         thirdpart_id: str = None,
         trip_cause: str = None,
         user_id: str = None,
+        user_name: str = None,
     ):
         self.apply_id = apply_id
         self.biz_category = biz_category
@@ -17832,6 +18031,7 @@ class CommonApplyQueryResponseBodyModule(TeaModel):
         self.thirdpart_id = thirdpart_id
         self.trip_cause = trip_cause
         self.user_id = user_id
+        self.user_name = user_name
 
     def validate(self):
         pass
@@ -17864,6 +18064,8 @@ class CommonApplyQueryResponseBodyModule(TeaModel):
             result['trip_cause'] = self.trip_cause
         if self.user_id is not None:
             result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -17890,6 +18092,8 @@ class CommonApplyQueryResponseBodyModule(TeaModel):
             self.trip_cause = m.get('trip_cause')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
         return self
 
 
@@ -26640,9 +26844,10 @@ class FlightExceedApplyQueryRequest(TeaModel):
     def __init__(
         self,
         apply_id: int = None,
+        business_instance_id: str = None,
     ):
-        # This parameter is required.
         self.apply_id = apply_id
+        self.business_instance_id = business_instance_id
 
     def validate(self):
         pass
@@ -26655,12 +26860,16 @@ class FlightExceedApplyQueryRequest(TeaModel):
         result = dict()
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
+        if self.business_instance_id is not None:
+            result['business_instance_id'] = self.business_instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
+        if m.get('business_instance_id') is not None:
+            self.business_instance_id = m.get('business_instance_id')
         return self
 
 
@@ -27002,6 +27211,7 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
         thirdpart_apply_id: str = None,
         thirdpart_corp_id: str = None,
         user_id: str = None,
+        user_name: str = None,
     ):
         self.apply_id = apply_id
         self.apply_intention_info_do = apply_intention_info_do
@@ -27017,6 +27227,7 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_corp_id = thirdpart_corp_id
         self.user_id = user_id
+        self.user_name = user_name
 
     def validate(self):
         if self.apply_intention_info_do:
@@ -27064,6 +27275,8 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
             result['thirdpart_corp_id'] = self.thirdpart_corp_id
         if self.user_id is not None:
             result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -27101,6 +27314,8 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
             self.thirdpart_corp_id = m.get('thirdpart_corp_id')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
         return self
 
 
@@ -56279,9 +56494,10 @@ class HotelExceedApplyQueryRequest(TeaModel):
     def __init__(
         self,
         apply_id: int = None,
+        business_instance_id: str = None,
     ):
-        # This parameter is required.
         self.apply_id = apply_id
+        self.business_instance_id = business_instance_id
 
     def validate(self):
         pass
@@ -56294,12 +56510,16 @@ class HotelExceedApplyQueryRequest(TeaModel):
         result = dict()
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
+        if self.business_instance_id is not None:
+            result['business_instance_id'] = self.business_instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
+        if m.get('business_instance_id') is not None:
+            self.business_instance_id = m.get('business_instance_id')
         return self
 
 
@@ -56381,6 +56601,7 @@ class HotelExceedApplyQueryResponseBodyModule(TeaModel):
         thirdpart_apply_id: str = None,
         thirdpart_corp_id: str = None,
         user_id: str = None,
+        user_name: str = None,
     ):
         self.apply_id = apply_id
         self.apply_intention_info_do = apply_intention_info_do
@@ -56394,6 +56615,7 @@ class HotelExceedApplyQueryResponseBodyModule(TeaModel):
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_corp_id = thirdpart_corp_id
         self.user_id = user_id
+        self.user_name = user_name
 
     def validate(self):
         if self.apply_intention_info_do:
@@ -56429,6 +56651,8 @@ class HotelExceedApplyQueryResponseBodyModule(TeaModel):
             result['thirdpart_corp_id'] = self.thirdpart_corp_id
         if self.user_id is not None:
             result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -56458,6 +56682,8 @@ class HotelExceedApplyQueryResponseBodyModule(TeaModel):
             self.thirdpart_corp_id = m.get('thirdpart_corp_id')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
         return self
 
 
@@ -91161,9 +91387,10 @@ class TrainExceedApplyQueryRequest(TeaModel):
     def __init__(
         self,
         apply_id: int = None,
+        business_instance_id: str = None,
     ):
-        # This parameter is required.
         self.apply_id = apply_id
+        self.business_instance_id = business_instance_id
 
     def validate(self):
         pass
@@ -91176,12 +91403,16 @@ class TrainExceedApplyQueryRequest(TeaModel):
         result = dict()
         if self.apply_id is not None:
             result['apply_id'] = self.apply_id
+        if self.business_instance_id is not None:
+            result['business_instance_id'] = self.business_instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('apply_id') is not None:
             self.apply_id = m.get('apply_id')
+        if m.get('business_instance_id') is not None:
+            self.business_instance_id = m.get('business_instance_id')
         return self
 
 
@@ -91299,6 +91530,7 @@ class TrainExceedApplyQueryResponseBodyModule(TeaModel):
         thirdpart_apply_id: str = None,
         thirdpart_corp_id: str = None,
         user_id: str = None,
+        user_name: str = None,
     ):
         self.apply_id = apply_id
         self.apply_intention_info_do = apply_intention_info_do
@@ -91312,6 +91544,7 @@ class TrainExceedApplyQueryResponseBodyModule(TeaModel):
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_corp_id = thirdpart_corp_id
         self.user_id = user_id
+        self.user_name = user_name
 
     def validate(self):
         if self.apply_intention_info_do:
@@ -91347,6 +91580,8 @@ class TrainExceedApplyQueryResponseBodyModule(TeaModel):
             result['thirdpart_corp_id'] = self.thirdpart_corp_id
         if self.user_id is not None:
             result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -91376,6 +91611,8 @@ class TrainExceedApplyQueryResponseBodyModule(TeaModel):
             self.thirdpart_corp_id = m.get('thirdpart_corp_id')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
         return self
 
 
@@ -101204,6 +101441,830 @@ class TravelStandardQueryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TravelStandardQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TripBusinessInstanceQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_so_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_so_corp_token is not None:
+            result['x-acs-btrip-so-corp-token'] = self.x_acs_btrip_so_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-so-corp-token') is not None:
+            self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class TripBusinessInstanceQueryRequest(TeaModel):
+    def __init__(
+        self,
+        business_instance_id: str = None,
+        third_business_id: str = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.business_instance_id = business_instance_id
+        self.third_business_id = third_business_id
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_instance_id is not None:
+            result['business_instance_id'] = self.business_instance_id
+        if self.third_business_id is not None:
+            result['third_business_id'] = self.third_business_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('business_instance_id') is not None:
+            self.business_instance_id = m.get('business_instance_id')
+        if m.get('third_business_id') is not None:
+            self.third_business_id = m.get('third_business_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
+        return self
+
+
+class TripBusinessInstanceQueryResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        status: str = None,
+    ):
+        self.creator = creator
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.gmt_create is not None:
+            result['gmt_create'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmt_modified'] = self.gmt_modified
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('gmt_create') is not None:
+            self.gmt_create = m.get('gmt_create')
+        if m.get('gmt_modified') is not None:
+            self.gmt_modified = m.get('gmt_modified')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class TripBusinessInstanceQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: TripBusinessInstanceQueryResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # module。
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = TripBusinessInstanceQueryResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class TripBusinessInstanceQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TripBusinessInstanceQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TripBusinessInstanceQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TripCCInfoQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class TripCCInfoQueryRequest(TeaModel):
+    def __init__(
+        self,
+        business_instance_id: str = None,
+        node_id: str = None,
+        third_business_id: str = None,
+    ):
+        self.business_instance_id = business_instance_id
+        self.node_id = node_id
+        self.third_business_id = third_business_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_instance_id is not None:
+            result['business_instance_id'] = self.business_instance_id
+        if self.node_id is not None:
+            result['node_id'] = self.node_id
+        if self.third_business_id is not None:
+            result['third_business_id'] = self.third_business_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('business_instance_id') is not None:
+            self.business_instance_id = m.get('business_instance_id')
+        if m.get('node_id') is not None:
+            self.node_id = m.get('node_id')
+        if m.get('third_business_id') is not None:
+            self.third_business_id = m.get('third_business_id')
+        return self
+
+
+class TripCCInfoQueryResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        notifier: str = None,
+        notify_start_time: int = None,
+    ):
+        self.notifier = notifier
+        self.notify_start_time = notify_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notifier is not None:
+            result['notifier'] = self.notifier
+        if self.notify_start_time is not None:
+            result['notify_start_time'] = self.notify_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('notifier') is not None:
+            self.notifier = m.get('notifier')
+        if m.get('notify_start_time') is not None:
+            self.notify_start_time = m.get('notify_start_time')
+        return self
+
+
+class TripCCInfoQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: List[TripCCInfoQueryResponseBodyModule] = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # module。
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            for k in self.module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        result['module'] = []
+        if self.module is not None:
+            for k in self.module:
+                result['module'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        self.module = []
+        if m.get('module') is not None:
+            for k in m.get('module'):
+                temp_model = TripCCInfoQueryResponseBodyModule()
+                self.module.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class TripCCInfoQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TripCCInfoQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TripCCInfoQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TripTaskQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class TripTaskQueryRequest(TeaModel):
+    def __init__(
+        self,
+        business_instance_id: str = None,
+        third_business_id: str = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.business_instance_id = business_instance_id
+        self.third_business_id = third_business_id
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_instance_id is not None:
+            result['business_instance_id'] = self.business_instance_id
+        if self.third_business_id is not None:
+            result['third_business_id'] = self.third_business_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('business_instance_id') is not None:
+            self.business_instance_id = m.get('business_instance_id')
+        if m.get('third_business_id') is not None:
+            self.third_business_id = m.get('third_business_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
+        return self
+
+
+class TripTaskQueryResponseBodyModuleRecordTasks(TeaModel):
+    def __init__(
+        self,
+        actioner: str = None,
+        attributes: str = None,
+        gmt_create: int = None,
+        gmt_finished: int = None,
+        id: int = None,
+        node_id: str = None,
+        out_result: str = None,
+        owner: str = None,
+        status: str = None,
+    ):
+        self.actioner = actioner
+        self.attributes = attributes
+        self.gmt_create = gmt_create
+        self.gmt_finished = gmt_finished
+        self.id = id
+        self.node_id = node_id
+        self.out_result = out_result
+        self.owner = owner
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actioner is not None:
+            result['actioner'] = self.actioner
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        if self.gmt_create is not None:
+            result['gmt_create'] = self.gmt_create
+        if self.gmt_finished is not None:
+            result['gmt_finished'] = self.gmt_finished
+        if self.id is not None:
+            result['id'] = self.id
+        if self.node_id is not None:
+            result['node_id'] = self.node_id
+        if self.out_result is not None:
+            result['out_result'] = self.out_result
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actioner') is not None:
+            self.actioner = m.get('actioner')
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        if m.get('gmt_create') is not None:
+            self.gmt_create = m.get('gmt_create')
+        if m.get('gmt_finished') is not None:
+            self.gmt_finished = m.get('gmt_finished')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('node_id') is not None:
+            self.node_id = m.get('node_id')
+        if m.get('out_result') is not None:
+            self.out_result = m.get('out_result')
+        if m.get('owner') is not None:
+            self.owner = m.get('owner')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class TripTaskQueryResponseBodyModuleRunningTasks(TeaModel):
+    def __init__(
+        self,
+        actioner: str = None,
+        attributes: str = None,
+        gmt_create: int = None,
+        gmt_finished: int = None,
+        id: int = None,
+        node_id: str = None,
+        out_result: str = None,
+        owner: str = None,
+        status: str = None,
+    ):
+        self.actioner = actioner
+        self.attributes = attributes
+        self.gmt_create = gmt_create
+        self.gmt_finished = gmt_finished
+        self.id = id
+        self.node_id = node_id
+        self.out_result = out_result
+        self.owner = owner
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actioner is not None:
+            result['actioner'] = self.actioner
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+        if self.gmt_create is not None:
+            result['gmt_create'] = self.gmt_create
+        if self.gmt_finished is not None:
+            result['gmt_finished'] = self.gmt_finished
+        if self.id is not None:
+            result['id'] = self.id
+        if self.node_id is not None:
+            result['node_id'] = self.node_id
+        if self.out_result is not None:
+            result['out_result'] = self.out_result
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actioner') is not None:
+            self.actioner = m.get('actioner')
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+        if m.get('gmt_create') is not None:
+            self.gmt_create = m.get('gmt_create')
+        if m.get('gmt_finished') is not None:
+            self.gmt_finished = m.get('gmt_finished')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('node_id') is not None:
+            self.node_id = m.get('node_id')
+        if m.get('out_result') is not None:
+            self.out_result = m.get('out_result')
+        if m.get('owner') is not None:
+            self.owner = m.get('owner')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class TripTaskQueryResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        need_refresh: bool = None,
+        record_tasks: List[TripTaskQueryResponseBodyModuleRecordTasks] = None,
+        running_tasks: List[TripTaskQueryResponseBodyModuleRunningTasks] = None,
+    ):
+        self.need_refresh = need_refresh
+        self.record_tasks = record_tasks
+        self.running_tasks = running_tasks
+
+    def validate(self):
+        if self.record_tasks:
+            for k in self.record_tasks:
+                if k:
+                    k.validate()
+        if self.running_tasks:
+            for k in self.running_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.need_refresh is not None:
+            result['needRefresh'] = self.need_refresh
+        result['record_tasks'] = []
+        if self.record_tasks is not None:
+            for k in self.record_tasks:
+                result['record_tasks'].append(k.to_map() if k else None)
+        result['running_tasks'] = []
+        if self.running_tasks is not None:
+            for k in self.running_tasks:
+                result['running_tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('needRefresh') is not None:
+            self.need_refresh = m.get('needRefresh')
+        self.record_tasks = []
+        if m.get('record_tasks') is not None:
+            for k in m.get('record_tasks'):
+                temp_model = TripTaskQueryResponseBodyModuleRecordTasks()
+                self.record_tasks.append(temp_model.from_map(k))
+        self.running_tasks = []
+        if m.get('running_tasks') is not None:
+            for k in m.get('running_tasks'):
+                temp_model = TripTaskQueryResponseBodyModuleRunningTasks()
+                self.running_tasks.append(temp_model.from_map(k))
+        return self
+
+
+class TripTaskQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: TripTaskQueryResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # module。
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = TripTaskQueryResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class TripTaskQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TripTaskQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TripTaskQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -2035,6 +2035,140 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.ApplyQueryHeaders()
         return await self.apply_query_with_options_async(request, headers, runtime)
 
+    def apply_trip_task_execute_with_options(
+        self,
+        request: btrip_open_20220520_models.ApplyTripTaskExecuteRequest,
+        headers: btrip_open_20220520_models.ApplyTripTaskExecuteHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ApplyTripTaskExecuteResponse:
+        """
+        @summary 执行审批任务
+        
+        @param request: ApplyTripTaskExecuteRequest
+        @param headers: ApplyTripTaskExecuteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyTripTaskExecuteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.action_from):
+            body['action_from'] = request.action_from
+        if not UtilClient.is_unset(request.comment):
+            body['comment'] = request.comment
+        if not UtilClient.is_unset(request.task_action):
+            body['task_action'] = request.task_action
+        if not UtilClient.is_unset(request.task_id):
+            body['task_id'] = request.task_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            body['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyTripTaskExecute',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/trip-task/action/execute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ApplyTripTaskExecuteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_trip_task_execute_with_options_async(
+        self,
+        request: btrip_open_20220520_models.ApplyTripTaskExecuteRequest,
+        headers: btrip_open_20220520_models.ApplyTripTaskExecuteHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ApplyTripTaskExecuteResponse:
+        """
+        @summary 执行审批任务
+        
+        @param request: ApplyTripTaskExecuteRequest
+        @param headers: ApplyTripTaskExecuteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyTripTaskExecuteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.action_from):
+            body['action_from'] = request.action_from
+        if not UtilClient.is_unset(request.comment):
+            body['comment'] = request.comment
+        if not UtilClient.is_unset(request.task_action):
+            body['task_action'] = request.task_action
+        if not UtilClient.is_unset(request.task_id):
+            body['task_id'] = request.task_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            body['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyTripTaskExecute',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/trip-task/action/execute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ApplyTripTaskExecuteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_trip_task_execute(
+        self,
+        request: btrip_open_20220520_models.ApplyTripTaskExecuteRequest,
+    ) -> btrip_open_20220520_models.ApplyTripTaskExecuteResponse:
+        """
+        @summary 执行审批任务
+        
+        @param request: ApplyTripTaskExecuteRequest
+        @return: ApplyTripTaskExecuteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ApplyTripTaskExecuteHeaders()
+        return self.apply_trip_task_execute_with_options(request, headers, runtime)
+
+    async def apply_trip_task_execute_async(
+        self,
+        request: btrip_open_20220520_models.ApplyTripTaskExecuteRequest,
+    ) -> btrip_open_20220520_models.ApplyTripTaskExecuteResponse:
+        """
+        @summary 执行审批任务
+        
+        @param request: ApplyTripTaskExecuteRequest
+        @return: ApplyTripTaskExecuteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ApplyTripTaskExecuteHeaders()
+        return await self.apply_trip_task_execute_with_options_async(request, headers, runtime)
+
     def base_city_info_search_with_options(
         self,
         request: btrip_open_20220520_models.BaseCityInfoSearchRequest,
@@ -3361,6 +3495,8 @@ class Client(OpenApiClient):
             query['apply_id'] = request.apply_id
         if not UtilClient.is_unset(request.biz_category):
             query['biz_category'] = request.biz_category
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
         if not UtilClient.is_unset(request.user_id):
             query['user_id'] = request.user_id
         real_headers = {}
@@ -3408,6 +3544,8 @@ class Client(OpenApiClient):
             query['apply_id'] = request.apply_id
         if not UtilClient.is_unset(request.biz_category):
             query['biz_category'] = request.biz_category
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
         if not UtilClient.is_unset(request.user_id):
             query['user_id'] = request.user_id
         real_headers = {}
@@ -6711,6 +6849,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -6754,6 +6894,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -11223,6 +11365,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -11266,6 +11410,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -20259,6 +20405,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -20302,6 +20450,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.apply_id):
             query['apply_id'] = request.apply_id
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -22584,6 +22734,380 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TravelStandardQueryHeaders()
         return await self.travel_standard_query_with_options_async(request, headers, runtime)
+
+    def trip_business_instance_query_with_options(
+        self,
+        request: btrip_open_20220520_models.TripBusinessInstanceQueryRequest,
+        headers: btrip_open_20220520_models.TripBusinessInstanceQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TripBusinessInstanceQueryResponse:
+        """
+        @summary 查询业务流程
+        
+        @param request: TripBusinessInstanceQueryRequest
+        @param headers: TripBusinessInstanceQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TripBusinessInstanceQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
+        if not UtilClient.is_unset(request.third_business_id):
+            query['third_business_id'] = request.third_business_id
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            query['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TripBusinessInstanceQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/business',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TripBusinessInstanceQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trip_business_instance_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TripBusinessInstanceQueryRequest,
+        headers: btrip_open_20220520_models.TripBusinessInstanceQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TripBusinessInstanceQueryResponse:
+        """
+        @summary 查询业务流程
+        
+        @param request: TripBusinessInstanceQueryRequest
+        @param headers: TripBusinessInstanceQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TripBusinessInstanceQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
+        if not UtilClient.is_unset(request.third_business_id):
+            query['third_business_id'] = request.third_business_id
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            query['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TripBusinessInstanceQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/business',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TripBusinessInstanceQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trip_business_instance_query(
+        self,
+        request: btrip_open_20220520_models.TripBusinessInstanceQueryRequest,
+    ) -> btrip_open_20220520_models.TripBusinessInstanceQueryResponse:
+        """
+        @summary 查询业务流程
+        
+        @param request: TripBusinessInstanceQueryRequest
+        @return: TripBusinessInstanceQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TripBusinessInstanceQueryHeaders()
+        return self.trip_business_instance_query_with_options(request, headers, runtime)
+
+    async def trip_business_instance_query_async(
+        self,
+        request: btrip_open_20220520_models.TripBusinessInstanceQueryRequest,
+    ) -> btrip_open_20220520_models.TripBusinessInstanceQueryResponse:
+        """
+        @summary 查询业务流程
+        
+        @param request: TripBusinessInstanceQueryRequest
+        @return: TripBusinessInstanceQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TripBusinessInstanceQueryHeaders()
+        return await self.trip_business_instance_query_with_options_async(request, headers, runtime)
+
+    def trip_ccinfo_query_with_options(
+        self,
+        request: btrip_open_20220520_models.TripCCInfoQueryRequest,
+        headers: btrip_open_20220520_models.TripCCInfoQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TripCCInfoQueryResponse:
+        """
+        @summary 查询抄送信息
+        
+        @param request: TripCCInfoQueryRequest
+        @param headers: TripCCInfoQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TripCCInfoQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['node_id'] = request.node_id
+        if not UtilClient.is_unset(request.third_business_id):
+            query['third_business_id'] = request.third_business_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TripCCInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/cc',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TripCCInfoQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trip_ccinfo_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TripCCInfoQueryRequest,
+        headers: btrip_open_20220520_models.TripCCInfoQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TripCCInfoQueryResponse:
+        """
+        @summary 查询抄送信息
+        
+        @param request: TripCCInfoQueryRequest
+        @param headers: TripCCInfoQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TripCCInfoQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['node_id'] = request.node_id
+        if not UtilClient.is_unset(request.third_business_id):
+            query['third_business_id'] = request.third_business_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TripCCInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/cc',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TripCCInfoQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trip_ccinfo_query(
+        self,
+        request: btrip_open_20220520_models.TripCCInfoQueryRequest,
+    ) -> btrip_open_20220520_models.TripCCInfoQueryResponse:
+        """
+        @summary 查询抄送信息
+        
+        @param request: TripCCInfoQueryRequest
+        @return: TripCCInfoQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TripCCInfoQueryHeaders()
+        return self.trip_ccinfo_query_with_options(request, headers, runtime)
+
+    async def trip_ccinfo_query_async(
+        self,
+        request: btrip_open_20220520_models.TripCCInfoQueryRequest,
+    ) -> btrip_open_20220520_models.TripCCInfoQueryResponse:
+        """
+        @summary 查询抄送信息
+        
+        @param request: TripCCInfoQueryRequest
+        @return: TripCCInfoQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TripCCInfoQueryHeaders()
+        return await self.trip_ccinfo_query_with_options_async(request, headers, runtime)
+
+    def trip_task_query_with_options(
+        self,
+        request: btrip_open_20220520_models.TripTaskQueryRequest,
+        headers: btrip_open_20220520_models.TripTaskQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TripTaskQueryResponse:
+        """
+        @summary 查询审批任务列表
+        
+        @param request: TripTaskQueryRequest
+        @param headers: TripTaskQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TripTaskQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
+        if not UtilClient.is_unset(request.third_business_id):
+            query['third_business_id'] = request.third_business_id
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            query['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TripTaskQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TripTaskQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trip_task_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TripTaskQueryRequest,
+        headers: btrip_open_20220520_models.TripTaskQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TripTaskQueryResponse:
+        """
+        @summary 查询审批任务列表
+        
+        @param request: TripTaskQueryRequest
+        @param headers: TripTaskQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TripTaskQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_instance_id):
+            query['business_instance_id'] = request.business_instance_id
+        if not UtilClient.is_unset(request.third_business_id):
+            query['third_business_id'] = request.third_business_id
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            query['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TripTaskQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/apply/v1/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TripTaskQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trip_task_query(
+        self,
+        request: btrip_open_20220520_models.TripTaskQueryRequest,
+    ) -> btrip_open_20220520_models.TripTaskQueryResponse:
+        """
+        @summary 查询审批任务列表
+        
+        @param request: TripTaskQueryRequest
+        @return: TripTaskQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TripTaskQueryHeaders()
+        return self.trip_task_query_with_options(request, headers, runtime)
+
+    async def trip_task_query_async(
+        self,
+        request: btrip_open_20220520_models.TripTaskQueryRequest,
+    ) -> btrip_open_20220520_models.TripTaskQueryResponse:
+        """
+        @summary 查询审批任务列表
+        
+        @param request: TripTaskQueryRequest
+        @return: TripTaskQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TripTaskQueryHeaders()
+        return await self.trip_task_query_with_options_async(request, headers, runtime)
 
     def update_custom_role_with_options(
         self,

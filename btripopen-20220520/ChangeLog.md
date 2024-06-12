@@ -1,3 +1,22 @@
+2024-06-12 Version: 3.2.0
+- Support API ApplyTripTaskExecute.
+- Support API TripBusinessInstanceQuery.
+- Support API TripCCInfoQuery.
+- Support API TripTaskQuery.
+- Update API CommonApplyQuery: add param business_instance_id.
+- Update API CommonApplyQuery: update param apply_id.
+- Update API CommonApplyQuery: update response param.
+- Update API FlightExceedApplyQuery: add param business_instance_id.
+- Update API FlightExceedApplyQuery: update param apply_id.
+- Update API FlightExceedApplyQuery: update response param.
+- Update API HotelExceedApplyQuery: add param business_instance_id.
+- Update API HotelExceedApplyQuery: update param apply_id.
+- Update API HotelExceedApplyQuery: update response param.
+- Update API TrainExceedApplyQuery: add param business_instance_id.
+- Update API TrainExceedApplyQuery: update param apply_id.
+- Update API TrainExceedApplyQuery: update response param.
+
+
 2024-06-03 Version: 3.1.1
 - Update API FlightExceedApplyQuery: update response param.
 - Update API VatInvoiceScanQuery: update response param.
