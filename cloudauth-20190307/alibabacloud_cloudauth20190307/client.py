@@ -2265,6 +2265,8 @@ class Client(OpenApiClient):
             query['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.suitable_type):
             query['SuitableType'] = request.suitable_type
+        if not UtilClient.is_unset(request.ui_custom_url):
+            query['UiCustomUrl'] = request.ui_custom_url
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.validity_date):
@@ -2364,6 +2366,8 @@ class Client(OpenApiClient):
             query['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.suitable_type):
             query['SuitableType'] = request.suitable_type
+        if not UtilClient.is_unset(request.ui_custom_url):
+            query['UiCustomUrl'] = request.ui_custom_url
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.validity_date):

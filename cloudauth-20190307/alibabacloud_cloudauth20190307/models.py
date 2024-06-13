@@ -4014,6 +4014,7 @@ class InitFaceVerifyRequest(TeaModel):
         return_url: str = None,
         scene_id: int = None,
         suitable_type: str = None,
+        ui_custom_url: str = None,
         user_id: str = None,
         validity_date: str = None,
         voluntary_customized_content: str = None,
@@ -4048,6 +4049,7 @@ class InitFaceVerifyRequest(TeaModel):
         self.return_url = return_url
         self.scene_id = scene_id
         self.suitable_type = suitable_type
+        self.ui_custom_url = ui_custom_url
         self.user_id = user_id
         self.validity_date = validity_date
         self.voluntary_customized_content = voluntary_customized_content
@@ -4121,6 +4123,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['SceneId'] = self.scene_id
         if self.suitable_type is not None:
             result['SuitableType'] = self.suitable_type
+        if self.ui_custom_url is not None:
+            result['UiCustomUrl'] = self.ui_custom_url
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.validity_date is not None:
@@ -4191,6 +4195,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('SuitableType') is not None:
             self.suitable_type = m.get('SuitableType')
+        if m.get('UiCustomUrl') is not None:
+            self.ui_custom_url = m.get('UiCustomUrl')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('ValidityDate') is not None:

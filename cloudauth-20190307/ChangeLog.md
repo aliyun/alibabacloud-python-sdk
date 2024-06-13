@@ -1,3 +1,7 @@
+2024-06-13 Version: 2.6.2
+- Update API InitFaceVerify: add param UiCustomUrl.
+
+
 2024-05-30 Version: 2.6.1
 - Update API CompareFaceVerify: update param SourceFaceContrastPicture.
 - Update API CompareFaceVerify: update param TargetFaceContrastPicture.
