@@ -1,3 +1,7 @@
+2024-06-13 Version: 2.1.0
+- Support API GetBotSessionData.
+
+
 2024-05-20 Version: 2.0.0
 - Support API ApplyForStreamAccessToken.
 - Support API CreateDoc.

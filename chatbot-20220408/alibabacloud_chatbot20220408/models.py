@@ -7825,6 +7825,134 @@ class GetAsyncResultResponse(TeaModel):
         return self
 
 
+class GetBotSessionDataRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        end_time: str = None,
+        robot_instance_id: str = None,
+        start_time: str = None,
+    ):
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.robot_instance_id = robot_instance_id
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.robot_instance_id is not None:
+            result['RobotInstanceId'] = self.robot_instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RobotInstanceId') is not None:
+            self.robot_instance_id = m.get('RobotInstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetBotSessionDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost_time: str = None,
+        datas: List[Dict[str, Any]] = None,
+        request_id: str = None,
+    ):
+        self.cost_time = cost_time
+        self.datas = datas
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_time is not None:
+            result['CostTime'] = self.cost_time
+        if self.datas is not None:
+            result['Datas'] = self.datas
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostTime') is not None:
+            self.cost_time = m.get('CostTime')
+        if m.get('Datas') is not None:
+            self.datas = m.get('Datas')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetBotSessionDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBotSessionDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBotSessionDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetInstancePublishTaskStateRequest(TeaModel):
     def __init__(
         self,

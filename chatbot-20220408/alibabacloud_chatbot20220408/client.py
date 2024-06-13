@@ -5025,6 +5025,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_async_result_with_options_async(request, runtime)
 
+    def get_bot_session_data_with_options(
+        self,
+        request: chatbot_20220408_models.GetBotSessionDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.GetBotSessionDataResponse:
+        """
+        @summary 查询机器人接待人次和对话轮次
+        
+        @param request: GetBotSessionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBotSessionDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotSessionData',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.GetBotSessionDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_bot_session_data_with_options_async(
+        self,
+        request: chatbot_20220408_models.GetBotSessionDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.GetBotSessionDataResponse:
+        """
+        @summary 查询机器人接待人次和对话轮次
+        
+        @param request: GetBotSessionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBotSessionDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotSessionData',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.GetBotSessionDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_bot_session_data(
+        self,
+        request: chatbot_20220408_models.GetBotSessionDataRequest,
+    ) -> chatbot_20220408_models.GetBotSessionDataResponse:
+        """
+        @summary 查询机器人接待人次和对话轮次
+        
+        @param request: GetBotSessionDataRequest
+        @return: GetBotSessionDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_bot_session_data_with_options(request, runtime)
+
+    async def get_bot_session_data_async(
+        self,
+        request: chatbot_20220408_models.GetBotSessionDataRequest,
+    ) -> chatbot_20220408_models.GetBotSessionDataResponse:
+        """
+        @summary 查询机器人接待人次和对话轮次
+        
+        @param request: GetBotSessionDataRequest
+        @return: GetBotSessionDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_bot_session_data_with_options_async(request, runtime)
+
     def get_instance_publish_task_state_with_options(
         self,
         request: chatbot_20220408_models.GetInstancePublishTaskStateRequest,
