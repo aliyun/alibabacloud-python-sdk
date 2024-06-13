@@ -239,7 +239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
         """
-        @summary You can call the AttachInstancesToNodePool operation to add existing nodes to a node pool.
+        @summary Adds existing nodes to a specific node pool. You can add existing ECS instances to a specific node pool in a Container Service for Kubernetes (ACK) cluster as worker nodes. You can also add removed worker nodes back to the node pool.
         
         @param request: AttachInstancesToNodePoolRequest
         @param headers: map
@@ -285,7 +285,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
         """
-        @summary You can call the AttachInstancesToNodePool operation to add existing nodes to a node pool.
+        @summary Adds existing nodes to a specific node pool. You can add existing ECS instances to a specific node pool in a Container Service for Kubernetes (ACK) cluster as worker nodes. You can also add removed worker nodes back to the node pool.
         
         @param request: AttachInstancesToNodePoolRequest
         @param headers: map
@@ -329,7 +329,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.AttachInstancesToNodePoolRequest,
     ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
         """
-        @summary You can call the AttachInstancesToNodePool operation to add existing nodes to a node pool.
+        @summary Adds existing nodes to a specific node pool. You can add existing ECS instances to a specific node pool in a Container Service for Kubernetes (ACK) cluster as worker nodes. You can also add removed worker nodes back to the node pool.
         
         @param request: AttachInstancesToNodePoolRequest
         @return: AttachInstancesToNodePoolResponse
@@ -345,7 +345,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.AttachInstancesToNodePoolRequest,
     ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
         """
-        @summary You can call the AttachInstancesToNodePool operation to add existing nodes to a node pool.
+        @summary Adds existing nodes to a specific node pool. You can add existing ECS instances to a specific node pool in a Container Service for Kubernetes (ACK) cluster as worker nodes. You can also add removed worker nodes back to the node pool.
         
         @param request: AttachInstancesToNodePoolRequest
         @return: AttachInstancesToNodePoolResponse
@@ -557,7 +557,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelOperationPlanResponse:
         """
-        @summary 取消自动运维执行计划
+        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\&M plan.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -589,7 +589,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelOperationPlanResponse:
         """
-        @summary 取消自动运维执行计划
+        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\&M plan.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -619,7 +619,7 @@ class Client(OpenApiClient):
         plan_id: str,
     ) -> cs20151215_models.CancelOperationPlanResponse:
         """
-        @summary 取消自动运维执行计划
+        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\&M plan.
         
         @return: CancelOperationPlanResponse
         """
@@ -632,7 +632,7 @@ class Client(OpenApiClient):
         plan_id: str,
     ) -> cs20151215_models.CancelOperationPlanResponse:
         """
-        @summary 取消自动运维执行计划
+        @summary You can call the CancelOperationPlan operation to cancel a pending auto O\\\\\\&M plan.
         
         @return: CancelOperationPlanResponse
         """
@@ -647,7 +647,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelTaskResponse:
         """
-        @summary You can call the CancelTask operation to cancel a task.
+        @summary Cancels the execution of a cluster task.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -679,7 +679,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelTaskResponse:
         """
-        @summary You can call the CancelTask operation to cancel a task.
+        @summary Cancels the execution of a cluster task.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -709,7 +709,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cs20151215_models.CancelTaskResponse:
         """
-        @summary You can call the CancelTask operation to cancel a task.
+        @summary Cancels the execution of a cluster task.
         
         @return: CancelTaskResponse
         """
@@ -722,7 +722,7 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cs20151215_models.CancelTaskResponse:
         """
-        @summary You can call the CancelTask operation to cancel a task.
+        @summary Cancels the execution of a cluster task.
         
         @return: CancelTaskResponse
         """
@@ -738,12 +738,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelWorkflowResponse:
         """
+        @deprecated OpenAPI CancelWorkflow is deprecated
+        
         @summary You can call the CancelWorkflow operation to cancel an ongoing workflow.
         
         @param request: CancelWorkflowRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelWorkflowResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -777,12 +780,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelWorkflowResponse:
         """
+        @deprecated OpenAPI CancelWorkflow is deprecated
+        
         @summary You can call the CancelWorkflow operation to cancel an ongoing workflow.
         
         @param request: CancelWorkflowRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelWorkflowResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -814,10 +820,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.CancelWorkflowRequest,
     ) -> cs20151215_models.CancelWorkflowResponse:
         """
+        @deprecated OpenAPI CancelWorkflow is deprecated
+        
         @summary You can call the CancelWorkflow operation to cancel an ongoing workflow.
         
         @param request: CancelWorkflowRequest
         @return: CancelWorkflowResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -829,10 +838,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.CancelWorkflowRequest,
     ) -> cs20151215_models.CancelWorkflowResponse:
         """
+        @deprecated OpenAPI CancelWorkflow is deprecated
+        
         @summary You can call the CancelWorkflow operation to cancel an ongoing workflow.
         
         @param request: CancelWorkflowRequest
         @return: CancelWorkflowResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2632,7 +2644,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterResponse:
         """
-        @summary You can call the DeleteCluster operation to delete a cluster by cluster ID and release all nodes in the cluster.
+        @summary You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
         
         @param tmp_req: DeleteClusterRequest
         @param headers: map
@@ -2683,7 +2695,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterResponse:
         """
-        @summary You can call the DeleteCluster operation to delete a cluster by cluster ID and release all nodes in the cluster.
+        @summary You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
         
         @param tmp_req: DeleteClusterRequest
         @param headers: map
@@ -2732,7 +2744,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteClusterRequest,
     ) -> cs20151215_models.DeleteClusterResponse:
         """
-        @summary You can call the DeleteCluster operation to delete a cluster by cluster ID and release all nodes in the cluster.
+        @summary You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -2747,7 +2759,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteClusterRequest,
     ) -> cs20151215_models.DeleteClusterResponse:
         """
-        @summary You can call the DeleteCluster operation to delete a cluster by cluster ID and release all nodes in the cluster.
+        @summary You can call the DeleteCluster operation to delete a cluster and specify whether to delete or retain the relevant cluster resources. Before you delete a cluster, you must manually delete workloads in the cluster, such as Deployments, StatefulSets, Jobs, and CronJobs. Otherwise, you may fail to delete the cluster.
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -3313,7 +3325,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTemplateResponse:
         """
-        @summary You can call the DeleteTemplate operation to delete an orchestration template by template ID.
+        @summary Deletes the orchestration templates that you no longer need.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3345,7 +3357,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTemplateResponse:
         """
-        @summary You can call the DeleteTemplate operation to delete an orchestration template by template ID.
+        @summary Deletes the orchestration templates that you no longer need.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3375,7 +3387,7 @@ class Client(OpenApiClient):
         template_id: str,
     ) -> cs20151215_models.DeleteTemplateResponse:
         """
-        @summary You can call the DeleteTemplate operation to delete an orchestration template by template ID.
+        @summary Deletes the orchestration templates that you no longer need.
         
         @return: DeleteTemplateResponse
         """
@@ -3388,7 +3400,7 @@ class Client(OpenApiClient):
         template_id: str,
     ) -> cs20151215_models.DeleteTemplateResponse:
         """
-        @summary You can call the DeleteTemplate operation to delete an orchestration template by template ID.
+        @summary Deletes the orchestration templates that you no longer need.
         
         @return: DeleteTemplateResponse
         """
@@ -3499,7 +3511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
         """
-        @summary You can call the DeployPolicyInstance operation to deploy a policy instance in a cluster.
+        @summary Deploys a policy in the specified namespaces of a specific Container Service for Kubernetes (ACK) cluster. You can create and deploy a security policy by specifying the policy type, action of the policy such as alerting or denying, and namespaces to which the policy applies.
         
         @param request: DeployPolicyInstanceRequest
         @param headers: map
@@ -3543,7 +3555,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
         """
-        @summary You can call the DeployPolicyInstance operation to deploy a policy instance in a cluster.
+        @summary Deploys a policy in the specified namespaces of a specific Container Service for Kubernetes (ACK) cluster. You can create and deploy a security policy by specifying the policy type, action of the policy such as alerting or denying, and namespaces to which the policy applies.
         
         @param request: DeployPolicyInstanceRequest
         @param headers: map
@@ -3585,7 +3597,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeployPolicyInstanceRequest,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
         """
-        @summary You can call the DeployPolicyInstance operation to deploy a policy instance in a cluster.
+        @summary Deploys a policy in the specified namespaces of a specific Container Service for Kubernetes (ACK) cluster. You can create and deploy a security policy by specifying the policy type, action of the policy such as alerting or denying, and namespaces to which the policy applies.
         
         @param request: DeployPolicyInstanceRequest
         @return: DeployPolicyInstanceResponse
@@ -3601,7 +3613,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeployPolicyInstanceRequest,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
         """
-        @summary You can call the DeployPolicyInstance operation to deploy a policy instance in a cluster.
+        @summary Deploys a policy in the specified namespaces of a specific Container Service for Kubernetes (ACK) cluster. You can create and deploy a security policy by specifying the policy type, action of the policy such as alerting or denying, and namespaces to which the policy applies.
         
         @param request: DeployPolicyInstanceRequest
         @return: DeployPolicyInstanceResponse
@@ -3617,11 +3629,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
         """
+        @deprecated OpenAPI DescirbeWorkflow is deprecated
+        
         @summary You can call the DescirbeWorkflow operation to query detailed information about a workflow.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescirbeWorkflowResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -3649,11 +3664,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
         """
+        @deprecated OpenAPI DescirbeWorkflow is deprecated
+        
         @summary You can call the DescirbeWorkflow operation to query detailed information about a workflow.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescirbeWorkflowResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -3679,9 +3697,12 @@ class Client(OpenApiClient):
         workflow_name: str,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
         """
+        @deprecated OpenAPI DescirbeWorkflow is deprecated
+        
         @summary You can call the DescirbeWorkflow operation to query detailed information about a workflow.
         
         @return: DescirbeWorkflowResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -3692,9 +3713,12 @@ class Client(OpenApiClient):
         workflow_name: str,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
         """
+        @deprecated OpenAPI DescirbeWorkflow is deprecated
+        
         @summary You can call the DescirbeWorkflow operation to query detailed information about a workflow.
         
         @return: DescirbeWorkflowResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -5751,7 +5775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterVulsResponse:
         """
-        @summary You can call the DescribeClusterVuls operation to query the vulnerability information of a cluster.
+        @summary Queries the security vulnerability details of a cluster by cluster ID. The details include vulnerability name, vulnerability type, and vulnerability severity. We recommend that you scan your cluster on a regular basis to ensure cluster security.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5783,7 +5807,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterVulsResponse:
         """
-        @summary You can call the DescribeClusterVuls operation to query the vulnerability information of a cluster.
+        @summary Queries the security vulnerability details of a cluster by cluster ID. The details include vulnerability name, vulnerability type, and vulnerability severity. We recommend that you scan your cluster on a regular basis to ensure cluster security.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5813,7 +5837,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterVulsResponse:
         """
-        @summary You can call the DescribeClusterVuls operation to query the vulnerability information of a cluster.
+        @summary Queries the security vulnerability details of a cluster by cluster ID. The details include vulnerability name, vulnerability type, and vulnerability severity. We recommend that you scan your cluster on a regular basis to ensure cluster security.
         
         @return: DescribeClusterVulsResponse
         """
@@ -5826,7 +5850,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterVulsResponse:
         """
-        @summary You can call the DescribeClusterVuls operation to query the vulnerability information of a cluster.
+        @summary Queries the security vulnerability details of a cluster by cluster ID. The details include vulnerability name, vulnerability type, and vulnerability severity. We recommend that you scan your cluster on a regular basis to ensure cluster security.
         
         @return: DescribeClusterVulsResponse
         """
@@ -6954,7 +6978,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePoliciesResponse:
         """
-        @summary You can call the DescribePolicies operation to query a list of policies.
+        @summary Queries the policies for a Container Service for Kubernetes (ACK) cluster. Container security policies for ACK clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6985,7 +7009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePoliciesResponse:
         """
-        @summary You can call the DescribePolicies operation to query a list of policies.
+        @summary Queries the policies for a Container Service for Kubernetes (ACK) cluster. Container security policies for ACK clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7012,7 +7036,7 @@ class Client(OpenApiClient):
 
     def describe_policies(self) -> cs20151215_models.DescribePoliciesResponse:
         """
-        @summary You can call the DescribePolicies operation to query a list of policies.
+        @summary Queries the policies for a Container Service for Kubernetes (ACK) cluster. Container security policies for ACK clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
         
         @return: DescribePoliciesResponse
         """
@@ -7022,7 +7046,7 @@ class Client(OpenApiClient):
 
     async def describe_policies_async(self) -> cs20151215_models.DescribePoliciesResponse:
         """
-        @summary You can call the DescribePolicies operation to query a list of policies.
+        @summary Queries the policies for a Container Service for Kubernetes (ACK) cluster. Container security policies for ACK clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
         
         @return: DescribePoliciesResponse
         """
@@ -7127,7 +7151,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         """
-        @summary You can call the DescribePolicyGovernanceInCluster operation to query information about policies in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries the details of policies for a Container Service for Kubernetes (ACK) cluster. For example, you can query the number of multi-level policies that are enabled for the cluster, audit logs of the policies, and denying and alerting information. Container security policies for ACK clusters offer a variety of built-in policies, such as cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7159,7 +7183,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         """
-        @summary You can call the DescribePolicyGovernanceInCluster operation to query information about policies in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries the details of policies for a Container Service for Kubernetes (ACK) cluster. For example, you can query the number of multi-level policies that are enabled for the cluster, audit logs of the policies, and denying and alerting information. Container security policies for ACK clusters offer a variety of built-in policies, such as cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7189,7 +7213,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         """
-        @summary You can call the DescribePolicyGovernanceInCluster operation to query information about policies in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries the details of policies for a Container Service for Kubernetes (ACK) cluster. For example, you can query the number of multi-level policies that are enabled for the cluster, audit logs of the policies, and denying and alerting information. Container security policies for ACK clusters offer a variety of built-in policies, such as cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
         
         @return: DescribePolicyGovernanceInClusterResponse
         """
@@ -7202,7 +7226,7 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
         """
-        @summary You can call the DescribePolicyGovernanceInCluster operation to query information about policies in a Container Service for Kubernetes (ACK) cluster.
+        @summary Queries the details of policies for a Container Service for Kubernetes (ACK) cluster. For example, you can query the number of multi-level policies that are enabled for the cluster, audit logs of the policies, and denying and alerting information. Container security policies for ACK clusters offer a variety of built-in policies, such as cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment.
         
         @return: DescribePolicyGovernanceInClusterResponse
         """
@@ -7421,7 +7445,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
         """
-        @summary You can use an Alibaba Cloud account to call the DescribeSubaccountK8sClusterUserConfig operation to obtain the cluster kubeconfig file of a RAM user or RAM role.
+        @summary Queries or issues the kubeconfig credentials of a Resource Access Management (RAM) user or RAM role of the account. If you are the permission manager of a Container Service for Kubernetes (ACK) cluster, you can issue the kubeconfig credentials to a specific RAM user or RAM role of the account by using the Alibaba Cloud account. The kubeconfig credentials, which are used to connect to the ACK cluster, contain the identity information about the RAM user or RAM role.
         
         @description *\
         ***Only Alibaba Cloud accounts can call this API operation.
@@ -7466,7 +7490,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
         """
-        @summary You can use an Alibaba Cloud account to call the DescribeSubaccountK8sClusterUserConfig operation to obtain the cluster kubeconfig file of a RAM user or RAM role.
+        @summary Queries or issues the kubeconfig credentials of a Resource Access Management (RAM) user or RAM role of the account. If you are the permission manager of a Container Service for Kubernetes (ACK) cluster, you can issue the kubeconfig credentials to a specific RAM user or RAM role of the account by using the Alibaba Cloud account. The kubeconfig credentials, which are used to connect to the ACK cluster, contain the identity information about the RAM user or RAM role.
         
         @description *\
         ***Only Alibaba Cloud accounts can call this API operation.
@@ -7509,7 +7533,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeSubaccountK8sClusterUserConfigRequest,
     ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
         """
-        @summary You can use an Alibaba Cloud account to call the DescribeSubaccountK8sClusterUserConfig operation to obtain the cluster kubeconfig file of a RAM user or RAM role.
+        @summary Queries or issues the kubeconfig credentials of a Resource Access Management (RAM) user or RAM role of the account. If you are the permission manager of a Container Service for Kubernetes (ACK) cluster, you can issue the kubeconfig credentials to a specific RAM user or RAM role of the account by using the Alibaba Cloud account. The kubeconfig credentials, which are used to connect to the ACK cluster, contain the identity information about the RAM user or RAM role.
         
         @description *\
         ***Only Alibaba Cloud accounts can call this API operation.
@@ -7528,7 +7552,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeSubaccountK8sClusterUserConfigRequest,
     ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
         """
-        @summary You can use an Alibaba Cloud account to call the DescribeSubaccountK8sClusterUserConfig operation to obtain the cluster kubeconfig file of a RAM user or RAM role.
+        @summary Queries or issues the kubeconfig credentials of a Resource Access Management (RAM) user or RAM role of the account. If you are the permission manager of a Container Service for Kubernetes (ACK) cluster, you can issue the kubeconfig credentials to a specific RAM user or RAM role of the account by using the Alibaba Cloud account. The kubeconfig credentials, which are used to connect to the ACK cluster, contain the identity information about the RAM user or RAM role.
         
         @description *\
         ***Only Alibaba Cloud accounts can call this API operation.
@@ -8238,11 +8262,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeWorkflowsResponse:
         """
+        @deprecated OpenAPI DescribeWorkflows is deprecated
+        
         @summary You can call the DescribeWorkflows operation to query all workflows.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeWorkflowsResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -8269,11 +8296,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeWorkflowsResponse:
         """
+        @deprecated OpenAPI DescribeWorkflows is deprecated
+        
         @summary You can call the DescribeWorkflows operation to query all workflows.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeWorkflowsResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -8296,9 +8326,12 @@ class Client(OpenApiClient):
 
     def describe_workflows(self) -> cs20151215_models.DescribeWorkflowsResponse:
         """
+        @deprecated OpenAPI DescribeWorkflows is deprecated
+        
         @summary You can call the DescribeWorkflows operation to query all workflows.
         
         @return: DescribeWorkflowsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -8306,9 +8339,12 @@ class Client(OpenApiClient):
 
     async def describe_workflows_async(self) -> cs20151215_models.DescribeWorkflowsResponse:
         """
+        @deprecated OpenAPI DescribeWorkflows is deprecated
+        
         @summary You can call the DescribeWorkflows operation to query all workflows.
         
         @return: DescribeWorkflowsResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -9172,12 +9208,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GrantPermissionsResponse:
         """
-        @summary You can call the GrantPermissions operation to grant a Resource Access Management (RAM) user the permissions to manage Container Service for Kubernetes (ACK) clusters.
+        @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
         
-        @description ***\
-        Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
-        If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
-        This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        @description *Precautions**:
+        Make sure that you have attached a RAM policy that has at least the read-only permissions on the cluster to the RAM user or RAM role in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned when you call the operation. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
+        If you use a RAM user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned when you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        If you update full permissions, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation.
         
         @param request: GrantPermissionsRequest
         @param headers: map
@@ -9213,12 +9249,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GrantPermissionsResponse:
         """
-        @summary You can call the GrantPermissions operation to grant a Resource Access Management (RAM) user the permissions to manage Container Service for Kubernetes (ACK) clusters.
+        @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
         
-        @description ***\
-        Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
-        If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
-        This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        @description *Precautions**:
+        Make sure that you have attached a RAM policy that has at least the read-only permissions on the cluster to the RAM user or RAM role in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned when you call the operation. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
+        If you use a RAM user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned when you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        If you update full permissions, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation.
         
         @param request: GrantPermissionsRequest
         @param headers: map
@@ -9252,12 +9288,12 @@ class Client(OpenApiClient):
         request: cs20151215_models.GrantPermissionsRequest,
     ) -> cs20151215_models.GrantPermissionsResponse:
         """
-        @summary You can call the GrantPermissions operation to grant a Resource Access Management (RAM) user the permissions to manage Container Service for Kubernetes (ACK) clusters.
+        @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
         
-        @description ***\
-        Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
-        If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
-        This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        @description *Precautions**:
+        Make sure that you have attached a RAM policy that has at least the read-only permissions on the cluster to the RAM user or RAM role in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned when you call the operation. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
+        If you use a RAM user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned when you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        If you update full permissions, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation.
         
         @param request: GrantPermissionsRequest
         @return: GrantPermissionsResponse
@@ -9272,12 +9308,12 @@ class Client(OpenApiClient):
         request: cs20151215_models.GrantPermissionsRequest,
     ) -> cs20151215_models.GrantPermissionsResponse:
         """
-        @summary You can call the GrantPermissions operation to grant a Resource Access Management (RAM) user the permissions to manage Container Service for Kubernetes (ACK) clusters.
+        @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
         
-        @description ***\
-        Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
-        If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
-        This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        @description *Precautions**:
+        Make sure that you have attached a RAM policy that has at least the read-only permissions on the cluster to the RAM user or RAM role in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned when you call the operation. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
+        If you use a RAM user to call the operation, make sure that the RAM user has the permissions to modify the permissions of other RAM users or RAM roles. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned when you call the operation. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        If you update full permissions, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation.
         
         @param request: GrantPermissionsRequest
         @return: GrantPermissionsResponse
@@ -10845,7 +10881,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
         """
-        @summary You can call the ModifyPolicyInstance operation to update policy instances in a Container Service for Kubernetes (ACK) cluster.
+        @summary Updates a policy in a specific Container Service for Kubernetes (ACK) cluster. You can modify the action of the policy such as alerting or denying and namespaces to which the policy applies.
         
         @param request: ModifyPolicyInstanceRequest
         @param headers: map
@@ -10891,7 +10927,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
         """
-        @summary You can call the ModifyPolicyInstance operation to update policy instances in a Container Service for Kubernetes (ACK) cluster.
+        @summary Updates a policy in a specific Container Service for Kubernetes (ACK) cluster. You can modify the action of the policy such as alerting or denying and namespaces to which the policy applies.
         
         @param request: ModifyPolicyInstanceRequest
         @param headers: map
@@ -10935,7 +10971,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyPolicyInstanceRequest,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
         """
-        @summary You can call the ModifyPolicyInstance operation to update policy instances in a Container Service for Kubernetes (ACK) cluster.
+        @summary Updates a policy in a specific Container Service for Kubernetes (ACK) cluster. You can modify the action of the policy such as alerting or denying and namespaces to which the policy applies.
         
         @param request: ModifyPolicyInstanceRequest
         @return: ModifyPolicyInstanceResponse
@@ -10951,7 +10987,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyPolicyInstanceRequest,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
         """
-        @summary You can call the ModifyPolicyInstance operation to update policy instances in a Container Service for Kubernetes (ACK) cluster.
+        @summary Updates a policy in a specific Container Service for Kubernetes (ACK) cluster. You can modify the action of the policy such as alerting or denying and namespaces to which the policy applies.
         
         @param request: ModifyPolicyInstanceRequest
         @return: ModifyPolicyInstanceResponse
@@ -11677,11 +11713,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveWorkflowResponse:
         """
+        @deprecated OpenAPI RemoveWorkflow is deprecated
+        
         @summary You can call the RemoveWorkflow operation to delete a workflow.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveWorkflowResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -11709,11 +11748,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveWorkflowResponse:
         """
+        @deprecated OpenAPI RemoveWorkflow is deprecated
+        
         @summary You can call the RemoveWorkflow operation to delete a workflow.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveWorkflowResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -11739,9 +11781,12 @@ class Client(OpenApiClient):
         workflow_name: str,
     ) -> cs20151215_models.RemoveWorkflowResponse:
         """
+        @deprecated OpenAPI RemoveWorkflow is deprecated
+        
         @summary You can call the RemoveWorkflow operation to delete a workflow.
         
         @return: RemoveWorkflowResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -11752,9 +11797,12 @@ class Client(OpenApiClient):
         workflow_name: str,
     ) -> cs20151215_models.RemoveWorkflowResponse:
         """
+        @deprecated OpenAPI RemoveWorkflow is deprecated
+        
         @summary You can call the RemoveWorkflow operation to delete a workflow.
         
         @return: RemoveWorkflowResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -12174,7 +12222,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RunClusterCheckResponse:
         """
-        @summary You can call the RunClusterCheck operation to initiate cluster checks, such as cluster update prechecks.
+        @summary Initiates cluster checks such as cluster update checks.
         
         @param request: RunClusterCheckRequest
         @param headers: map
@@ -12217,7 +12265,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RunClusterCheckResponse:
         """
-        @summary You can call the RunClusterCheck operation to initiate cluster checks, such as cluster update prechecks.
+        @summary Initiates cluster checks such as cluster update checks.
         
         @param request: RunClusterCheckRequest
         @param headers: map
@@ -12258,7 +12306,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.RunClusterCheckRequest,
     ) -> cs20151215_models.RunClusterCheckResponse:
         """
-        @summary You can call the RunClusterCheck operation to initiate cluster checks, such as cluster update prechecks.
+        @summary Initiates cluster checks such as cluster update checks.
         
         @param request: RunClusterCheckRequest
         @return: RunClusterCheckResponse
@@ -12273,7 +12321,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.RunClusterCheckRequest,
     ) -> cs20151215_models.RunClusterCheckResponse:
         """
-        @summary You can call the RunClusterCheck operation to initiate cluster checks, such as cluster update prechecks.
+        @summary Initiates cluster checks such as cluster update checks.
         
         @param request: RunClusterCheckRequest
         @return: RunClusterCheckResponse
@@ -12987,12 +13035,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartWorkflowResponse:
         """
+        @deprecated OpenAPI StartWorkflow is deprecated
+        
         @summary You can call the StartWorkflow operation to create a workflow.
         
         @param request: StartWorkflowRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartWorkflowResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -13061,12 +13112,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartWorkflowResponse:
         """
+        @deprecated OpenAPI StartWorkflow is deprecated
+        
         @summary You can call the StartWorkflow operation to create a workflow.
         
         @param request: StartWorkflowRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartWorkflowResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         body = {}
@@ -13133,10 +13187,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.StartWorkflowRequest,
     ) -> cs20151215_models.StartWorkflowResponse:
         """
+        @deprecated OpenAPI StartWorkflow is deprecated
+        
         @summary You can call the StartWorkflow operation to create a workflow.
         
         @param request: StartWorkflowRequest
         @return: StartWorkflowResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -13147,10 +13204,13 @@ class Client(OpenApiClient):
         request: cs20151215_models.StartWorkflowRequest,
     ) -> cs20151215_models.StartWorkflowResponse:
         """
+        @deprecated OpenAPI StartWorkflow is deprecated
+        
         @summary You can call the StartWorkflow operation to create a workflow.
         
         @param request: StartWorkflowRequest
         @return: StartWorkflowResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -13482,7 +13542,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
         """
-        @summary You can call the UnInstallClusterAddons operation to uninstall the components in a cluster by component names.
+        @summary Uninstalls components that you no longer need from a cluster. You must specify the name of the components and specify whether to release associated Alibaba Cloud resources from the cluster.
         
         @param request: UnInstallClusterAddonsRequest
         @param headers: map
@@ -13518,7 +13578,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
         """
-        @summary You can call the UnInstallClusterAddons operation to uninstall the components in a cluster by component names.
+        @summary Uninstalls components that you no longer need from a cluster. You must specify the name of the components and specify whether to release associated Alibaba Cloud resources from the cluster.
         
         @param request: UnInstallClusterAddonsRequest
         @param headers: map
@@ -13552,7 +13612,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UnInstallClusterAddonsRequest,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
         """
-        @summary You can call the UnInstallClusterAddons operation to uninstall the components in a cluster by component names.
+        @summary Uninstalls components that you no longer need from a cluster. You must specify the name of the components and specify whether to release associated Alibaba Cloud resources from the cluster.
         
         @param request: UnInstallClusterAddonsRequest
         @return: UnInstallClusterAddonsResponse
@@ -13567,7 +13627,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UnInstallClusterAddonsRequest,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
         """
-        @summary You can call the UnInstallClusterAddons operation to uninstall the components in a cluster by component names.
+        @summary Uninstalls components that you no longer need from a cluster. You must specify the name of the components and specify whether to release associated Alibaba Cloud resources from the cluster.
         
         @param request: UnInstallClusterAddonsRequest
         @return: UnInstallClusterAddonsResponse
@@ -14042,7 +14102,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateTemplateResponse:
         """
-        @summary You can call the UpdateTemplate operation to update an orchestration template by template ID.
+        @summary Updates the configurations of an orchestration template. An orchestration template defines and describes a group of Container Service for Kubernetes (ACK) resources. An orchestration template describes the configurations of an application or how an application runs in a declarative manner.
         
         @param request: UpdateTemplateRequest
         @param headers: map
@@ -14089,7 +14149,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateTemplateResponse:
         """
-        @summary You can call the UpdateTemplate operation to update an orchestration template by template ID.
+        @summary Updates the configurations of an orchestration template. An orchestration template defines and describes a group of Container Service for Kubernetes (ACK) resources. An orchestration template describes the configurations of an application or how an application runs in a declarative manner.
         
         @param request: UpdateTemplateRequest
         @param headers: map
@@ -14134,7 +14194,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateTemplateRequest,
     ) -> cs20151215_models.UpdateTemplateResponse:
         """
-        @summary You can call the UpdateTemplate operation to update an orchestration template by template ID.
+        @summary Updates the configurations of an orchestration template. An orchestration template defines and describes a group of Container Service for Kubernetes (ACK) resources. An orchestration template describes the configurations of an application or how an application runs in a declarative manner.
         
         @param request: UpdateTemplateRequest
         @return: UpdateTemplateResponse
@@ -14149,7 +14209,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateTemplateRequest,
     ) -> cs20151215_models.UpdateTemplateResponse:
         """
-        @summary You can call the UpdateTemplate operation to update an orchestration template by template ID.
+        @summary Updates the configurations of an orchestration template. An orchestration template defines and describes a group of Container Service for Kubernetes (ACK) resources. An orchestration template describes the configurations of an application or how an application runs in a declarative manner.
         
         @param request: UpdateTemplateRequest
         @return: UpdateTemplateResponse
@@ -14166,7 +14226,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateUserPermissionsResponse:
         """
-        @summary 更新指定RAM用户/角色的RBAC权限
+        @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
+        
+        @description *Precautions**:
+        You can update the permissions of a RAM user or RAM role on a cluster by using full update or incremental update. If you use full update, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation. If you use incremental update, you can grant permissions to or revoke permissions from the RAM user or RAM role on the cluster. In this case, only the permissions that you specify in the request parameters when you call the operation are granted or revoked, other permissions of the RAM user or RAM role on the cluster are not affected.
         
         @param request: UpdateUserPermissionsRequest
         @param headers: map
@@ -14206,7 +14269,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateUserPermissionsResponse:
         """
-        @summary 更新指定RAM用户/角色的RBAC权限
+        @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
+        
+        @description *Precautions**:
+        You can update the permissions of a RAM user or RAM role on a cluster by using full update or incremental update. If you use full update, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation. If you use incremental update, you can grant permissions to or revoke permissions from the RAM user or RAM role on the cluster. In this case, only the permissions that you specify in the request parameters when you call the operation are granted or revoked, other permissions of the RAM user or RAM role on the cluster are not affected.
         
         @param request: UpdateUserPermissionsRequest
         @param headers: map
@@ -14244,7 +14310,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateUserPermissionsRequest,
     ) -> cs20151215_models.UpdateUserPermissionsResponse:
         """
-        @summary 更新指定RAM用户/角色的RBAC权限
+        @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
+        
+        @description *Precautions**:
+        You can update the permissions of a RAM user or RAM role on a cluster by using full update or incremental update. If you use full update, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation. If you use incremental update, you can grant permissions to or revoke permissions from the RAM user or RAM role on the cluster. In this case, only the permissions that you specify in the request parameters when you call the operation are granted or revoked, other permissions of the RAM user or RAM role on the cluster are not affected.
         
         @param request: UpdateUserPermissionsRequest
         @return: UpdateUserPermissionsResponse
@@ -14259,7 +14328,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateUserPermissionsRequest,
     ) -> cs20151215_models.UpdateUserPermissionsResponse:
         """
-        @summary 更新指定RAM用户/角色的RBAC权限
+        @summary Updates the role-based access control (RBAC) permissions of a Resource Access Management (RAM) user or RAM role. By default, you do not have the RBAC permissions on a Container Service for Kubernetes (ACK) cluster if you are not the cluster owner or you are not using an Alibaba Cloud account. You can call this operation to specify the resources that can be accessed, permission scope, and predefined roles. This helps you better manage the access control on resources in ACK clusters.
+        
+        @description *Precautions**:
+        You can update the permissions of a RAM user or RAM role on a cluster by using full update or incremental update. If you use full update, the existing permissions of the RAM user or RAM role on the cluster are overwritten. You must specify all the permissions that you want to grant to the RAM user or RAM role in the request parameters when you call the operation. If you use incremental update, you can grant permissions to or revoke permissions from the RAM user or RAM role on the cluster. In this case, only the permissions that you specify in the request parameters when you call the operation are granted or revoked, other permissions of the RAM user or RAM role on the cluster are not affected.
         
         @param request: UpdateUserPermissionsRequest
         @return: UpdateUserPermissionsResponse
