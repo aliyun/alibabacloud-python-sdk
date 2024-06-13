@@ -4,6 +4,39 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class DataImageRegionDistributeMapValue(TeaModel):
+    def __init__(
+        self,
+        distribute_status: str = None,
+        progress: str = None,
+    ):
+        self.distribute_status = distribute_status
+        self.progress = progress
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distribute_status is not None:
+            result['DistributeStatus'] = self.distribute_status
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributeStatus') is not None:
+            self.distribute_status = m.get('DistributeStatus')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        return self
+
+
 class AttachKeyPairRequest(TeaModel):
     def __init__(
         self,
@@ -3020,6 +3053,259 @@ class DescribeBackupFilesResponse(TeaModel):
         return self
 
 
+class DescribeImageListRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        image_name: str = None,
+        image_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        status: str = None,
+    ):
+        self.image_id = image_id
+        self.image_name = image_name
+        # This parameter is required.
+        self.image_type = image_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeImageListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        image_region_distribute_map: Dict[str, DataImageRegionDistributeMapValue] = None,
+        image_region_list: List[str] = None,
+        image_type: str = None,
+        language: str = None,
+        status: str = None,
+        system_type: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.image_id = image_id
+        self.image_name = image_name
+        self.image_region_distribute_map = image_region_distribute_map
+        self.image_region_list = image_region_list
+        self.image_type = image_type
+        self.language = language
+        self.status = status
+        self.system_type = system_type
+
+    def validate(self):
+        if self.image_region_distribute_map:
+            for v in self.image_region_distribute_map.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        result['ImageRegionDistributeMap'] = {}
+        if self.image_region_distribute_map is not None:
+            for k, v in self.image_region_distribute_map.items():
+                result['ImageRegionDistributeMap'][k] = v.to_map()
+        if self.image_region_list is not None:
+            result['ImageRegionList'] = self.image_region_list
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.system_type is not None:
+            result['SystemType'] = self.system_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        self.image_region_distribute_map = {}
+        if m.get('ImageRegionDistributeMap') is not None:
+            for k, v in m.get('ImageRegionDistributeMap').items():
+                temp_model = DataImageRegionDistributeMapValue()
+                self.image_region_distribute_map[k] = temp_model.from_map(v)
+        if m.get('ImageRegionList') is not None:
+            self.image_region_list = m.get('ImageRegionList')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SystemType') is not None:
+            self.system_type = m.get('SystemType')
+        return self
+
+
+class DescribeImageListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeImageListResponseBodyData] = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeImageListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeImageListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeImageListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeImageListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInvocationsRequest(TeaModel):
     def __init__(
         self,
@@ -5388,6 +5674,101 @@ class ModifyPolicyGroupResponse(TeaModel):
         return self
 
 
+class RebootAndroidInstancesInGroupRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        return self
+
+
+class RebootAndroidInstancesInGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RebootAndroidInstancesInGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RebootAndroidInstancesInGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RebootAndroidInstancesInGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RecoveryFileRequest(TeaModel):
     def __init__(
         self,
@@ -6213,6 +6594,101 @@ class StartAndroidInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartAndroidInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopAndroidInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        return self
+
+
+class StopAndroidInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopAndroidInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopAndroidInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopAndroidInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

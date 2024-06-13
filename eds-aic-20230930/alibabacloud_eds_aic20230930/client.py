@@ -2014,6 +2014,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_files_with_options_async(request, runtime)
 
+    def describe_image_list_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeImageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeImageListResponse:
+        """
+        @param request: DescribeImageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.image_type):
+            body['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageList',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeImageListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_list_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeImageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeImageListResponse:
+        """
+        @param request: DescribeImageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.image_type):
+            body['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageList',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeImageListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_list(
+        self,
+        request: eds_aic_20230930_models.DescribeImageListRequest,
+    ) -> eds_aic_20230930_models.DescribeImageListResponse:
+        """
+        @param request: DescribeImageListRequest
+        @return: DescribeImageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_list_with_options(request, runtime)
+
+    async def describe_image_list_async(
+        self,
+        request: eds_aic_20230930_models.DescribeImageListRequest,
+    ) -> eds_aic_20230930_models.DescribeImageListResponse:
+        """
+        @param request: DescribeImageListRequest
+        @return: DescribeImageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_list_with_options_async(request, runtime)
+
     def describe_invocations_with_options(
         self,
         request: eds_aic_20230930_models.DescribeInvocationsRequest,
@@ -3748,6 +3856,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_policy_group_with_options_async(request, runtime)
 
+    def reboot_android_instances_in_group_with_options(
+        self,
+        request: eds_aic_20230930_models.RebootAndroidInstancesInGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse:
+        """
+        @summary 重启安卓实例
+        
+        @param request: RebootAndroidInstancesInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootAndroidInstancesInGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            query['AndroidInstanceIds'] = request.android_instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootAndroidInstancesInGroup',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reboot_android_instances_in_group_with_options_async(
+        self,
+        request: eds_aic_20230930_models.RebootAndroidInstancesInGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse:
+        """
+        @summary 重启安卓实例
+        
+        @param request: RebootAndroidInstancesInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootAndroidInstancesInGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            query['AndroidInstanceIds'] = request.android_instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootAndroidInstancesInGroup',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reboot_android_instances_in_group(
+        self,
+        request: eds_aic_20230930_models.RebootAndroidInstancesInGroupRequest,
+    ) -> eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse:
+        """
+        @summary 重启安卓实例
+        
+        @param request: RebootAndroidInstancesInGroupRequest
+        @return: RebootAndroidInstancesInGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reboot_android_instances_in_group_with_options(request, runtime)
+
+    async def reboot_android_instances_in_group_async(
+        self,
+        request: eds_aic_20230930_models.RebootAndroidInstancesInGroupRequest,
+    ) -> eds_aic_20230930_models.RebootAndroidInstancesInGroupResponse:
+        """
+        @summary 重启安卓实例
+        
+        @param request: RebootAndroidInstancesInGroupRequest
+        @return: RebootAndroidInstancesInGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reboot_android_instances_in_group_with_options_async(request, runtime)
+
     def recovery_file_with_options(
         self,
         request: eds_aic_20230930_models.RecoveryFileRequest,
@@ -4459,6 +4663,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_android_instance_with_options_async(request, runtime)
+
+    def stop_android_instance_with_options(
+        self,
+        request: eds_aic_20230930_models.StopAndroidInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.StopAndroidInstanceResponse:
+        """
+        @summary 实例关机
+        
+        @param request: StopAndroidInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAndroidInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            query['AndroidInstanceIds'] = request.android_instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopAndroidInstance',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.StopAndroidInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_android_instance_with_options_async(
+        self,
+        request: eds_aic_20230930_models.StopAndroidInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.StopAndroidInstanceResponse:
+        """
+        @summary 实例关机
+        
+        @param request: StopAndroidInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAndroidInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            query['AndroidInstanceIds'] = request.android_instance_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopAndroidInstance',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.StopAndroidInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_android_instance(
+        self,
+        request: eds_aic_20230930_models.StopAndroidInstanceRequest,
+    ) -> eds_aic_20230930_models.StopAndroidInstanceResponse:
+        """
+        @summary 实例关机
+        
+        @param request: StopAndroidInstanceRequest
+        @return: StopAndroidInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_android_instance_with_options(request, runtime)
+
+    async def stop_android_instance_async(
+        self,
+        request: eds_aic_20230930_models.StopAndroidInstanceRequest,
+    ) -> eds_aic_20230930_models.StopAndroidInstanceResponse:
+        """
+        @summary 实例关机
+        
+        @param request: StopAndroidInstanceRequest
+        @return: StopAndroidInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_android_instance_with_options_async(request, runtime)
 
     def uninstall_app_with_options(
         self,
