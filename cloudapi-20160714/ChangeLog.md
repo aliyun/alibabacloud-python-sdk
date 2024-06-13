@@ -1,3 +1,7 @@
+2024-06-13 Version: 4.3.1
+- Update API DescribeAuthorizedApps: update response param.
+
+
 2024-05-29 Version: 4.3.0
 - Support API DescribeInstanceClusterInfo.
 - Support API DescribeInstanceClusterList.

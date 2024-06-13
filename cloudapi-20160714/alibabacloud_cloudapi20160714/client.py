@@ -2423,7 +2423,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateInstanceResponse:
         """
-        @summary 创建网关实例
+        @summary Creates an API Gateway instance.
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2484,7 +2484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateInstanceResponse:
         """
-        @summary 创建网关实例
+        @summary Creates an API Gateway instance.
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2544,7 +2544,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateInstanceRequest,
     ) -> cloud_api20160714_models.CreateInstanceResponse:
         """
-        @summary 创建网关实例
+        @summary Creates an API Gateway instance.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -2557,7 +2557,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateInstanceRequest,
     ) -> cloud_api20160714_models.CreateInstanceResponse:
         """
-        @summary 创建网关实例
+        @summary Creates an API Gateway instance.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -8691,6 +8691,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByAppResponse:
         """
+        @summary Queries the APIs with which an application is associated.
+        
         @param request: DescribeApisByAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeApisByAppResponse
@@ -8740,6 +8742,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByAppResponse:
         """
+        @summary Queries the APIs with which an application is associated.
+        
         @param request: DescribeApisByAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeApisByAppResponse
@@ -8788,6 +8792,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByAppRequest,
     ) -> cloud_api20160714_models.DescribeApisByAppResponse:
         """
+        @summary Queries the APIs with which an application is associated.
+        
         @param request: DescribeApisByAppRequest
         @return: DescribeApisByAppResponse
         """
@@ -8799,6 +8805,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByAppRequest,
     ) -> cloud_api20160714_models.DescribeApisByAppResponse:
         """
+        @summary Queries the APIs with which an application is associated.
+        
         @param request: DescribeApisByAppRequest
         @return: DescribeApisByAppResponse
         """
@@ -11911,6 +11919,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeHistoryApisResponse:
         """
+        @summary Queries the historical versions of an API.
+        
         @param request: DescribeHistoryApisRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeHistoryApisResponse
@@ -11956,6 +11966,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeHistoryApisResponse:
         """
+        @summary Queries the historical versions of an API.
+        
         @param request: DescribeHistoryApisRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeHistoryApisResponse
@@ -12000,6 +12012,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeHistoryApisRequest,
     ) -> cloud_api20160714_models.DescribeHistoryApisResponse:
         """
+        @summary Queries the historical versions of an API.
+        
         @param request: DescribeHistoryApisRequest
         @return: DescribeHistoryApisResponse
         """
@@ -12011,6 +12025,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeHistoryApisRequest,
     ) -> cloud_api20160714_models.DescribeHistoryApisResponse:
         """
+        @summary Queries the historical versions of an API.
+        
         @param request: DescribeHistoryApisRequest
         @return: DescribeHistoryApisResponse
         """
@@ -14031,7 +14047,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginApisResponse:
         """
-        @summary 根据查询查询绑定的API列表
+        @summary Queries the APIs to which a specified plug-in is bound.
         
         @param request: DescribePluginApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14084,7 +14100,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginApisResponse:
         """
-        @summary 根据查询查询绑定的API列表
+        @summary Queries the APIs to which a specified plug-in is bound.
         
         @param request: DescribePluginApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14136,7 +14152,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginApisRequest,
     ) -> cloud_api20160714_models.DescribePluginApisResponse:
         """
-        @summary 根据查询查询绑定的API列表
+        @summary Queries the APIs to which a specified plug-in is bound.
         
         @param request: DescribePluginApisRequest
         @return: DescribePluginApisResponse
@@ -14149,7 +14165,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginApisRequest,
     ) -> cloud_api20160714_models.DescribePluginApisResponse:
         """
-        @summary 根据查询查询绑定的API列表
+        @summary Queries the APIs to which a specified plug-in is bound.
         
         @param request: DescribePluginApisRequest
         @return: DescribePluginApisResponse
@@ -23267,9 +23283,6 @@ class Client(OpenApiClient):
         """
         @summary Binds a signature key to APIs.
         
-        @description    This API is intended for API providers.
-        This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
-        
         @param request: SetSignatureApisRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetSignatureApisResponse
@@ -23313,9 +23326,6 @@ class Client(OpenApiClient):
         """
         @summary Binds a signature key to APIs.
         
-        @description    This API is intended for API providers.
-        This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
-        
         @param request: SetSignatureApisRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetSignatureApisResponse
@@ -23358,9 +23368,6 @@ class Client(OpenApiClient):
         """
         @summary Binds a signature key to APIs.
         
-        @description    This API is intended for API providers.
-        This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
-        
         @param request: SetSignatureApisRequest
         @return: SetSignatureApisResponse
         """
@@ -23373,9 +23380,6 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.SetSignatureApisResponse:
         """
         @summary Binds a signature key to APIs.
-        
-        @description    This API is intended for API providers.
-        This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
         
         @param request: SetSignatureApisRequest
         @return: SetSignatureApisResponse
