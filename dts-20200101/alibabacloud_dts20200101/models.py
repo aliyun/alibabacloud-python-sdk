@@ -2131,6 +2131,11 @@ class ConfigureSubscriptionRequest(TeaModel):
         source_endpoint_region: str = None,
         source_endpoint_role: str = None,
         source_endpoint_user_name: str = None,
+        src_ca_certificate_oss_url: str = None,
+        src_ca_certificate_password: str = None,
+        src_client_cert_oss_url: str = None,
+        src_client_key_oss_url: str = None,
+        src_client_password: str = None,
         subscription_data_type_ddl: bool = None,
         subscription_data_type_dml: bool = None,
         subscription_instance_network_type: str = None,
@@ -2244,6 +2249,11 @@ class ConfigureSubscriptionRequest(TeaModel):
         # 
         # >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Prepare the source database account for change tracking](https://help.aliyun.com/document_detail/212653.html).
         self.source_endpoint_user_name = source_endpoint_user_name
+        self.src_ca_certificate_oss_url = src_ca_certificate_oss_url
+        self.src_ca_certificate_password = src_ca_certificate_password
+        self.src_client_cert_oss_url = src_client_cert_oss_url
+        self.src_client_key_oss_url = src_client_key_oss_url
+        self.src_client_password = src_client_password
         # Specifies whether to track DDL statements. Default value: true. Valid values:
         # 
         # *   **true**: tracks DDL statements.
@@ -2338,6 +2348,16 @@ class ConfigureSubscriptionRequest(TeaModel):
             result['SourceEndpointRole'] = self.source_endpoint_role
         if self.source_endpoint_user_name is not None:
             result['SourceEndpointUserName'] = self.source_endpoint_user_name
+        if self.src_ca_certificate_oss_url is not None:
+            result['SrcCaCertificateOssUrl'] = self.src_ca_certificate_oss_url
+        if self.src_ca_certificate_password is not None:
+            result['SrcCaCertificatePassword'] = self.src_ca_certificate_password
+        if self.src_client_cert_oss_url is not None:
+            result['SrcClientCertOssUrl'] = self.src_client_cert_oss_url
+        if self.src_client_key_oss_url is not None:
+            result['SrcClientKeyOssUrl'] = self.src_client_key_oss_url
+        if self.src_client_password is not None:
+            result['SrcClientPassword'] = self.src_client_password
         if self.subscription_data_type_ddl is not None:
             result['SubscriptionDataTypeDDL'] = self.subscription_data_type_ddl
         if self.subscription_data_type_dml is not None:
@@ -2410,6 +2430,16 @@ class ConfigureSubscriptionRequest(TeaModel):
             self.source_endpoint_role = m.get('SourceEndpointRole')
         if m.get('SourceEndpointUserName') is not None:
             self.source_endpoint_user_name = m.get('SourceEndpointUserName')
+        if m.get('SrcCaCertificateOssUrl') is not None:
+            self.src_ca_certificate_oss_url = m.get('SrcCaCertificateOssUrl')
+        if m.get('SrcCaCertificatePassword') is not None:
+            self.src_ca_certificate_password = m.get('SrcCaCertificatePassword')
+        if m.get('SrcClientCertOssUrl') is not None:
+            self.src_client_cert_oss_url = m.get('SrcClientCertOssUrl')
+        if m.get('SrcClientKeyOssUrl') is not None:
+            self.src_client_key_oss_url = m.get('SrcClientKeyOssUrl')
+        if m.get('SrcClientPassword') is not None:
+            self.src_client_password = m.get('SrcClientPassword')
         if m.get('SubscriptionDataTypeDDL') is not None:
             self.subscription_data_type_ddl = m.get('SubscriptionDataTypeDDL')
         if m.get('SubscriptionDataTypeDML') is not None:

@@ -1,3 +1,11 @@
+2024-06-13 Version: 5.6.3
+- Update API ConfigureSubscription: add param SrcCaCertificateOssUrl.
+- Update API ConfigureSubscription: add param SrcCaCertificatePassword.
+- Update API ConfigureSubscription: add param SrcClientCertOssUrl.
+- Update API ConfigureSubscription: add param SrcClientKeyOssUrl.
+- Update API ConfigureSubscription: add param SrcClientPassword.
+
+
 2024-06-06 Version: 5.6.2
 - Update API ConfigureDtsJob: add param DestClientCertOssUrl.
 - Update API ConfigureDtsJob: add param DestClientKeyOssUrl.

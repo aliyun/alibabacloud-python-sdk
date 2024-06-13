@@ -946,6 +946,16 @@ class Client(OpenApiClient):
             query['SourceEndpointRole'] = request.source_endpoint_role
         if not UtilClient.is_unset(request.source_endpoint_user_name):
             query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.src_ca_certificate_oss_url):
+            query['SrcCaCertificateOssUrl'] = request.src_ca_certificate_oss_url
+        if not UtilClient.is_unset(request.src_ca_certificate_password):
+            query['SrcCaCertificatePassword'] = request.src_ca_certificate_password
+        if not UtilClient.is_unset(request.src_client_cert_oss_url):
+            query['SrcClientCertOssUrl'] = request.src_client_cert_oss_url
+        if not UtilClient.is_unset(request.src_client_key_oss_url):
+            query['SrcClientKeyOssUrl'] = request.src_client_key_oss_url
+        if not UtilClient.is_unset(request.src_client_password):
+            query['SrcClientPassword'] = request.src_client_password
         if not UtilClient.is_unset(request.subscription_data_type_ddl):
             query['SubscriptionDataTypeDDL'] = request.subscription_data_type_ddl
         if not UtilClient.is_unset(request.subscription_data_type_dml):
@@ -1045,6 +1055,16 @@ class Client(OpenApiClient):
             query['SourceEndpointRole'] = request.source_endpoint_role
         if not UtilClient.is_unset(request.source_endpoint_user_name):
             query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.src_ca_certificate_oss_url):
+            query['SrcCaCertificateOssUrl'] = request.src_ca_certificate_oss_url
+        if not UtilClient.is_unset(request.src_ca_certificate_password):
+            query['SrcCaCertificatePassword'] = request.src_ca_certificate_password
+        if not UtilClient.is_unset(request.src_client_cert_oss_url):
+            query['SrcClientCertOssUrl'] = request.src_client_cert_oss_url
+        if not UtilClient.is_unset(request.src_client_key_oss_url):
+            query['SrcClientKeyOssUrl'] = request.src_client_key_oss_url
+        if not UtilClient.is_unset(request.src_client_password):
+            query['SrcClientPassword'] = request.src_client_password
         if not UtilClient.is_unset(request.subscription_data_type_ddl):
             query['SubscriptionDataTypeDDL'] = request.subscription_data_type_ddl
         if not UtilClient.is_unset(request.subscription_data_type_dml):
