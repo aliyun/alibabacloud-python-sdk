@@ -1,3 +1,9 @@
+2024-06-13 Version: 1.1.3
+- Update API CreateFlowlog: update response param.
+- Update API DescribeFlowlogs: update response param.
+- Update API ListTransitRouterVpnAttachments: update response param.
+
+
 2024-05-22 Version: 1.1.2
 - Update API CreateFlowlog: update response param.
 - Update API DescribeFlowlogs: update response param.

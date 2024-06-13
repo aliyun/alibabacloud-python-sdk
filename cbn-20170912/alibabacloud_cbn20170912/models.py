@@ -29143,6 +29143,7 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         cen_id: str = None,
         charge_type: str = None,
         creation_time: str = None,
+        order_type: str = None,
         resource_type: str = None,
         status: str = None,
         tags: List[ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags] = None,
@@ -29170,6 +29171,7 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         # 
         # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        self.order_type = order_type
         # The type of resource attached to the transit router.
         # 
         # Only **VPN** may be returned, which indicates that an IPsec-VPN connection is attached to the transit router.
@@ -29225,6 +29227,8 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             result['ChargeType'] = self.charge_type
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.status is not None:
@@ -29263,6 +29267,8 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             self.charge_type = m.get('ChargeType')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
