@@ -46,6 +46,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvicesResponse:
+        """
+        @param request: DescribeAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advice_id):
@@ -84,6 +89,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvicesResponse:
+        """
+        @param request: DescribeAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advice_id):
@@ -121,6 +131,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvicesRequest,
     ) -> advisor_20180120_models.DescribeAdvicesResponse:
+        """
+        @param request: DescribeAdvicesRequest
+        @return: DescribeAdvicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_advices_with_options(request, runtime)
 
@@ -128,6 +142,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvicesRequest,
     ) -> advisor_20180120_models.DescribeAdvicesResponse:
+        """
+        @param request: DescribeAdvicesRequest
+        @return: DescribeAdvicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_advices_with_options_async(request, runtime)
 
@@ -136,6 +154,13 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvicesFlatPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvicesFlatPageResponse:
+        """
+        @summary DescribeAdvicesFlat分页
+        
+        @param request: DescribeAdvicesFlatPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvicesFlatPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advice_id):
@@ -176,6 +201,13 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvicesFlatPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvicesFlatPageResponse:
+        """
+        @summary DescribeAdvicesFlat分页
+        
+        @param request: DescribeAdvicesFlatPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvicesFlatPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advice_id):
@@ -215,6 +247,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvicesFlatPageRequest,
     ) -> advisor_20180120_models.DescribeAdvicesFlatPageResponse:
+        """
+        @summary DescribeAdvicesFlat分页
+        
+        @param request: DescribeAdvicesFlatPageRequest
+        @return: DescribeAdvicesFlatPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_advices_flat_page_with_options(request, runtime)
 
@@ -222,6 +260,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvicesFlatPageRequest,
     ) -> advisor_20180120_models.DescribeAdvicesFlatPageResponse:
+        """
+        @summary DescribeAdvicesFlat分页
+        
+        @param request: DescribeAdvicesFlatPageRequest
+        @return: DescribeAdvicesFlatPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_advices_flat_page_with_options_async(request, runtime)
 
@@ -230,6 +274,13 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvicesPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvicesPageResponse:
+        """
+        @summary DescribeAdvices分页
+        
+        @param request: DescribeAdvicesPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvicesPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advice_id):
@@ -270,6 +321,13 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvicesPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvicesPageResponse:
+        """
+        @summary DescribeAdvices分页
+        
+        @param request: DescribeAdvicesPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvicesPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.advice_id):
@@ -309,6 +367,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvicesPageRequest,
     ) -> advisor_20180120_models.DescribeAdvicesPageResponse:
+        """
+        @summary DescribeAdvices分页
+        
+        @param request: DescribeAdvicesPageRequest
+        @return: DescribeAdvicesPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_advices_page_with_options(request, runtime)
 
@@ -316,6 +380,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvicesPageRequest,
     ) -> advisor_20180120_models.DescribeAdvicesPageResponse:
+        """
+        @summary DescribeAdvices分页
+        
+        @param request: DescribeAdvicesPageRequest
+        @return: DescribeAdvicesPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_advices_page_with_options_async(request, runtime)
 
@@ -324,6 +394,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvisorChecksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvisorChecksResponse:
+        """
+        @param request: DescribeAdvisorChecksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvisorChecksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -354,6 +429,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvisorChecksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvisorChecksResponse:
+        """
+        @param request: DescribeAdvisorChecksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvisorChecksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -383,6 +463,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvisorChecksRequest,
     ) -> advisor_20180120_models.DescribeAdvisorChecksResponse:
+        """
+        @param request: DescribeAdvisorChecksRequest
+        @return: DescribeAdvisorChecksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_advisor_checks_with_options(request, runtime)
 
@@ -390,6 +474,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvisorChecksRequest,
     ) -> advisor_20180120_models.DescribeAdvisorChecksResponse:
+        """
+        @param request: DescribeAdvisorChecksRequest
+        @return: DescribeAdvisorChecksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_advisor_checks_with_options_async(request, runtime)
 
@@ -398,6 +486,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvisorResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvisorResourcesResponse:
+        """
+        @param request: DescribeAdvisorResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvisorResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -436,6 +529,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.DescribeAdvisorResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeAdvisorResourcesResponse:
+        """
+        @param request: DescribeAdvisorResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdvisorResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -473,6 +571,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvisorResourcesRequest,
     ) -> advisor_20180120_models.DescribeAdvisorResourcesResponse:
+        """
+        @param request: DescribeAdvisorResourcesRequest
+        @return: DescribeAdvisorResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_advisor_resources_with_options(request, runtime)
 
@@ -480,6 +582,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeAdvisorResourcesRequest,
     ) -> advisor_20180120_models.DescribeAdvisorResourcesResponse:
+        """
+        @param request: DescribeAdvisorResourcesRequest
+        @return: DescribeAdvisorResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_advisor_resources_with_options_async(request, runtime)
 
@@ -488,14 +594,29 @@ class Client(OpenApiClient):
         tmp_req: advisor_20180120_models.DescribeCostCheckAdvicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeCostCheckAdvicesResponse:
+        """
+        @summary 查询成本优化结果详情
+        
+        @param tmp_req: DescribeCostCheckAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCostCheckAdvicesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = advisor_20180120_models.DescribeCostCheckAdvicesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_aliyun_id_list):
+            request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.resource_ids):
             request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_values):
+            request.tag_values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_values, 'TagValues', 'json')
         query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
+            query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.language):
@@ -512,6 +633,10 @@ class Client(OpenApiClient):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.severity):
             query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['TagKeys'] = request.tag_keys_shrink
+        if not UtilClient.is_unset(request.tag_values_shrink):
+            query['TagValues'] = request.tag_values_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -536,14 +661,29 @@ class Client(OpenApiClient):
         tmp_req: advisor_20180120_models.DescribeCostCheckAdvicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeCostCheckAdvicesResponse:
+        """
+        @summary 查询成本优化结果详情
+        
+        @param tmp_req: DescribeCostCheckAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCostCheckAdvicesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = advisor_20180120_models.DescribeCostCheckAdvicesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_aliyun_id_list):
+            request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.resource_ids):
             request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_values):
+            request.tag_values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_values, 'TagValues', 'json')
         query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
+            query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.language):
@@ -560,6 +700,10 @@ class Client(OpenApiClient):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.severity):
             query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['TagKeys'] = request.tag_keys_shrink
+        if not UtilClient.is_unset(request.tag_values_shrink):
+            query['TagValues'] = request.tag_values_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -583,6 +727,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeCostCheckAdvicesRequest,
     ) -> advisor_20180120_models.DescribeCostCheckAdvicesResponse:
+        """
+        @summary 查询成本优化结果详情
+        
+        @param request: DescribeCostCheckAdvicesRequest
+        @return: DescribeCostCheckAdvicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cost_check_advices_with_options(request, runtime)
 
@@ -590,6 +740,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeCostCheckAdvicesRequest,
     ) -> advisor_20180120_models.DescribeCostCheckAdvicesResponse:
+        """
+        @summary 查询成本优化结果详情
+        
+        @param request: DescribeCostCheckAdvicesRequest
+        @return: DescribeCostCheckAdvicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cost_check_advices_with_options_async(request, runtime)
 
@@ -598,16 +754,31 @@ class Client(OpenApiClient):
         tmp_req: advisor_20180120_models.DescribeCostCheckResultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeCostCheckResultsResponse:
+        """
+        @summary 查询巡检项聚合成本优化结果概览
+        
+        @param tmp_req: DescribeCostCheckResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCostCheckResultsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = advisor_20180120_models.DescribeCostCheckResultsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_aliyun_id_list):
+            request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
         if not UtilClient.is_unset(tmp_req.check_ids):
             request.check_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_ids, 'CheckIds', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.resource_ids):
             request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_values):
+            request.tag_values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_values, 'TagValues', 'json')
         query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
+            query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_ids_shrink):
             query['CheckIds'] = request.check_ids_shrink
         if not UtilClient.is_unset(request.group_by):
@@ -622,6 +793,10 @@ class Client(OpenApiClient):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.severity):
             query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['TagKeys'] = request.tag_keys_shrink
+        if not UtilClient.is_unset(request.tag_values_shrink):
+            query['TagValues'] = request.tag_values_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -646,16 +821,31 @@ class Client(OpenApiClient):
         tmp_req: advisor_20180120_models.DescribeCostCheckResultsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.DescribeCostCheckResultsResponse:
+        """
+        @summary 查询巡检项聚合成本优化结果概览
+        
+        @param tmp_req: DescribeCostCheckResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCostCheckResultsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = advisor_20180120_models.DescribeCostCheckResultsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_aliyun_id_list):
+            request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
         if not UtilClient.is_unset(tmp_req.check_ids):
             request.check_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_ids, 'CheckIds', 'json')
         if not UtilClient.is_unset(tmp_req.region_ids):
             request.region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.region_ids, 'RegionIds', 'json')
         if not UtilClient.is_unset(tmp_req.resource_ids):
             request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_keys):
+            request.tag_keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_keys, 'TagKeys', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_values):
+            request.tag_values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_values, 'TagValues', 'json')
         query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
+            query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
         if not UtilClient.is_unset(request.check_ids_shrink):
             query['CheckIds'] = request.check_ids_shrink
         if not UtilClient.is_unset(request.group_by):
@@ -670,6 +860,10 @@ class Client(OpenApiClient):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.severity):
             query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.tag_keys_shrink):
+            query['TagKeys'] = request.tag_keys_shrink
+        if not UtilClient.is_unset(request.tag_values_shrink):
+            query['TagValues'] = request.tag_values_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -693,6 +887,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeCostCheckResultsRequest,
     ) -> advisor_20180120_models.DescribeCostCheckResultsResponse:
+        """
+        @summary 查询巡检项聚合成本优化结果概览
+        
+        @param request: DescribeCostCheckResultsRequest
+        @return: DescribeCostCheckResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cost_check_results_with_options(request, runtime)
 
@@ -700,6 +900,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.DescribeCostCheckResultsRequest,
     ) -> advisor_20180120_models.DescribeCostCheckResultsResponse:
+        """
+        @summary 查询巡检项聚合成本优化结果概览
+        
+        @param request: DescribeCostCheckResultsRequest
+        @return: DescribeCostCheckResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cost_check_results_with_options_async(request, runtime)
 
@@ -708,6 +914,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.GetHistoryAdvicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.GetHistoryAdvicesResponse:
+        """
+        @param request: GetHistoryAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoryAdvicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -750,6 +961,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.GetHistoryAdvicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.GetHistoryAdvicesResponse:
+        """
+        @param request: GetHistoryAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoryAdvicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -791,6 +1007,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.GetHistoryAdvicesRequest,
     ) -> advisor_20180120_models.GetHistoryAdvicesResponse:
+        """
+        @param request: GetHistoryAdvicesRequest
+        @return: GetHistoryAdvicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_history_advices_with_options(request, runtime)
 
@@ -798,6 +1018,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.GetHistoryAdvicesRequest,
     ) -> advisor_20180120_models.GetHistoryAdvicesResponse:
+        """
+        @param request: GetHistoryAdvicesRequest
+        @return: GetHistoryAdvicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_history_advices_with_options_async(request, runtime)
 
@@ -806,6 +1030,13 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.GetTaskStatusByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.GetTaskStatusByIdResponse:
+        """
+        @summary 根据id获取任务状态
+        
+        @param request: GetTaskStatusByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatusByIdResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -832,6 +1063,13 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.GetTaskStatusByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.GetTaskStatusByIdResponse:
+        """
+        @summary 根据id获取任务状态
+        
+        @param request: GetTaskStatusByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatusByIdResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -857,6 +1095,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.GetTaskStatusByIdRequest,
     ) -> advisor_20180120_models.GetTaskStatusByIdResponse:
+        """
+        @summary 根据id获取任务状态
+        
+        @param request: GetTaskStatusByIdRequest
+        @return: GetTaskStatusByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_task_status_by_id_with_options(request, runtime)
 
@@ -864,6 +1108,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.GetTaskStatusByIdRequest,
     ) -> advisor_20180120_models.GetTaskStatusByIdResponse:
+        """
+        @summary 根据id获取任务状态
+        
+        @param request: GetTaskStatusByIdRequest
+        @return: GetTaskStatusByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_task_status_by_id_with_options_async(request, runtime)
 
@@ -872,6 +1122,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.RefreshAdvisorCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.RefreshAdvisorCheckResponse:
+        """
+        @param request: RefreshAdvisorCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAdvisorCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.check_id):
@@ -906,6 +1161,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.RefreshAdvisorCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.RefreshAdvisorCheckResponse:
+        """
+        @param request: RefreshAdvisorCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAdvisorCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.check_id):
@@ -939,6 +1199,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.RefreshAdvisorCheckRequest,
     ) -> advisor_20180120_models.RefreshAdvisorCheckResponse:
+        """
+        @param request: RefreshAdvisorCheckRequest
+        @return: RefreshAdvisorCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refresh_advisor_check_with_options(request, runtime)
 
@@ -946,14 +1210,151 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.RefreshAdvisorCheckRequest,
     ) -> advisor_20180120_models.RefreshAdvisorCheckResponse:
+        """
+        @param request: RefreshAdvisorCheckRequest
+        @return: RefreshAdvisorCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refresh_advisor_check_with_options_async(request, runtime)
+
+    def refresh_advisor_cost_check_with_options(
+        self,
+        tmp_req: advisor_20180120_models.RefreshAdvisorCostCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.RefreshAdvisorCostCheckResponse:
+        """
+        @summary 发起成本优化巡检
+        
+        @param tmp_req: RefreshAdvisorCostCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAdvisorCostCheckResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.RefreshAdvisorCostCheckShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_aliyun_id_list):
+            request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.check_ids):
+            request.check_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_ids, 'CheckIds', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
+            query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
+        if not UtilClient.is_unset(request.check_ids_shrink):
+            query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.refresh_resource):
+            query['RefreshResource'] = request.refresh_resource
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['ResourceIds'] = request.resource_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshAdvisorCostCheck',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            advisor_20180120_models.RefreshAdvisorCostCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_advisor_cost_check_with_options_async(
+        self,
+        tmp_req: advisor_20180120_models.RefreshAdvisorCostCheckRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> advisor_20180120_models.RefreshAdvisorCostCheckResponse:
+        """
+        @summary 发起成本优化巡检
+        
+        @param tmp_req: RefreshAdvisorCostCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAdvisorCostCheckResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = advisor_20180120_models.RefreshAdvisorCostCheckShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assume_aliyun_id_list):
+            request.assume_aliyun_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assume_aliyun_id_list, 'AssumeAliyunIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.check_ids):
+            request.check_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_ids, 'CheckIds', 'json')
+        if not UtilClient.is_unset(tmp_req.resource_ids):
+            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.assume_aliyun_id_list_shrink):
+            query['AssumeAliyunIdList'] = request.assume_aliyun_id_list_shrink
+        if not UtilClient.is_unset(request.check_ids_shrink):
+            query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        if not UtilClient.is_unset(request.refresh_resource):
+            query['RefreshResource'] = request.refresh_resource
+        if not UtilClient.is_unset(request.resource_ids_shrink):
+            query['ResourceIds'] = request.resource_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshAdvisorCostCheck',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            advisor_20180120_models.RefreshAdvisorCostCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_advisor_cost_check(
+        self,
+        request: advisor_20180120_models.RefreshAdvisorCostCheckRequest,
+    ) -> advisor_20180120_models.RefreshAdvisorCostCheckResponse:
+        """
+        @summary 发起成本优化巡检
+        
+        @param request: RefreshAdvisorCostCheckRequest
+        @return: RefreshAdvisorCostCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_advisor_cost_check_with_options(request, runtime)
+
+    async def refresh_advisor_cost_check_async(
+        self,
+        request: advisor_20180120_models.RefreshAdvisorCostCheckRequest,
+    ) -> advisor_20180120_models.RefreshAdvisorCostCheckResponse:
+        """
+        @summary 发起成本优化巡检
+        
+        @param request: RefreshAdvisorCostCheckRequest
+        @return: RefreshAdvisorCostCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_advisor_cost_check_with_options_async(request, runtime)
 
     def refresh_advisor_resource_with_options(
         self,
         request: advisor_20180120_models.RefreshAdvisorResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.RefreshAdvisorResourceResponse:
+        """
+        @param request: RefreshAdvisorResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAdvisorResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.product):
@@ -984,6 +1385,11 @@ class Client(OpenApiClient):
         request: advisor_20180120_models.RefreshAdvisorResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.RefreshAdvisorResourceResponse:
+        """
+        @param request: RefreshAdvisorResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAdvisorResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.product):
@@ -1013,6 +1419,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.RefreshAdvisorResourceRequest,
     ) -> advisor_20180120_models.RefreshAdvisorResourceResponse:
+        """
+        @param request: RefreshAdvisorResourceRequest
+        @return: RefreshAdvisorResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refresh_advisor_resource_with_options(request, runtime)
 
@@ -1020,6 +1430,10 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.RefreshAdvisorResourceRequest,
     ) -> advisor_20180120_models.RefreshAdvisorResourceResponse:
+        """
+        @param request: RefreshAdvisorResourceRequest
+        @return: RefreshAdvisorResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refresh_advisor_resource_with_options_async(request, runtime)
 
@@ -1028,6 +1442,13 @@ class Client(OpenApiClient):
         tmp_req: advisor_20180120_models.ReportBizAlertInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.ReportBizAlertInfoResponse:
+        """
+        @summary 上报用户业务报警信息
+        
+        @param tmp_req: ReportBizAlertInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportBizAlertInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = advisor_20180120_models.ReportBizAlertInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1074,6 +1495,13 @@ class Client(OpenApiClient):
         tmp_req: advisor_20180120_models.ReportBizAlertInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> advisor_20180120_models.ReportBizAlertInfoResponse:
+        """
+        @summary 上报用户业务报警信息
+        
+        @param tmp_req: ReportBizAlertInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportBizAlertInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = advisor_20180120_models.ReportBizAlertInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1119,6 +1547,12 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.ReportBizAlertInfoRequest,
     ) -> advisor_20180120_models.ReportBizAlertInfoResponse:
+        """
+        @summary 上报用户业务报警信息
+        
+        @param request: ReportBizAlertInfoRequest
+        @return: ReportBizAlertInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.report_biz_alert_info_with_options(request, runtime)
 
@@ -1126,5 +1560,11 @@ class Client(OpenApiClient):
         self,
         request: advisor_20180120_models.ReportBizAlertInfoRequest,
     ) -> advisor_20180120_models.ReportBizAlertInfoResponse:
+        """
+        @summary 上报用户业务报警信息
+        
+        @param request: ReportBizAlertInfoRequest
+        @return: ReportBizAlertInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.report_biz_alert_info_with_options_async(request, runtime)
