@@ -1,3 +1,29 @@
+2024-06-13 Version: 1.4.0
+- Support API CreateCsr.
+- Support API CreateDeploymentJob.
+- Support API DeleteCsr.
+- Support API DeleteDeploymentJob.
+- Support API DeleteWorkerResource.
+- Support API DescribeCloudResourceStatus.
+- Support API DescribeDeploymentJob.
+- Support API DescribeDeploymentJobStatus.
+- Support API GetCsrDetail.
+- Support API ListCloudAccess.
+- Support API ListCloudResources.
+- Support API ListContact.
+- Support API ListCsr.
+- Support API ListDeploymentJob.
+- Support API ListDeploymentJobCert.
+- Support API ListDeploymentJobResource.
+- Support API ListWorkerResource.
+- Support API MoveResourceGroup.
+- Support API UpdateCsr.
+- Support API UpdateDeploymentJob.
+- Support API UpdateDeploymentJobStatus.
+- Support API UpdateWorkerResourceStatus.
+- Support API UploadCsr.
+
+
 2024-05-06 Version: 1.3.0
 - Support API CreateCsr.
 - Support API CreateDeploymentJob.

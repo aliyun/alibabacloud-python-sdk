@@ -9,6 +9,7 @@ class CancelCertificateForPackageRequestRequest(TeaModel):
         self,
         order_id: int = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -107,6 +108,8 @@ class CancelOrderRequestRequest(TeaModel):
         # The ID of the certificate application order that you want to cancel.
         # 
         # >  After you call the [CreateCertificateForPackageRequest](~~CreateCertificateForPackageRequest~~), [CreateCertificateRequest](~~CreateCertificateRequest~~), or [CreateCertificateWithCsrRequest](~~CreateCertificateWithCsrRequest~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+        # 
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -212,11 +215,11 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
     ):
         # The company name of the certificate application.
         # 
-        # > This parameter is available only when you apply for OV certificates. If you want to apply for an OV certificate, you must add a company profile to the **Information Management** module of the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/). For more information, see [Manage company profiles](~~198289~~). If you want to apply for a DV certificate, you do not need to add a company profile.
+        # > This parameter is available only when you apply for OV certificates. If you want to apply for an OV certificate, you must add a company profile to the **Information Management** module of the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/). For more information, see [Manage company profiles](https://help.aliyun.com/document_detail/198289.html). If you want to apply for a DV certificate, you do not need to add a company profile.
         # 
         # If you specify a company name, the information about the company that is configured in the **Information Management** module is used. If you do not specify this parameter, the information about the most recent company that is added to the **Information Management** module is used.
         self.company_name = company_name
-        # The content of the certificate signing request (CSR) file that is manually generated for the domain name by using OpenSSL or Keytool. The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [Create a CSR file](~~313297~~). If you do not specify this parameter, Certificate Management Service automatically creates a CSR file.
+        # The content of the certificate signing request (CSR) file that is manually generated for the domain name by using OpenSSL or Keytool. The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [Create a CSR file](https://help.aliyun.com/document_detail/313297.html). If you do not specify this parameter, Certificate Management Service automatically creates a CSR file.
         # 
         # A CSR file contains the information about your server and company. When you apply for a certificate, you must submit the CSR file to the CA. The CA signs the CSR file by using the private key of the root certificate and generates a public key file to issue your certificate.
         # 
@@ -236,11 +239,11 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
         self.domain = domain
         # The email address of the applicant. After the CA receives your certificate application, the CA sends a verification email to the email address that you specify. You must log on to the mailbox, open the mail, and complete the verification of the domain name ownership based on the steps that are described in the email.
         # 
-        # If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](~~198262~~).
+        # If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](https://help.aliyun.com/document_detail/198262.html).
         self.email = email
         # The phone number of the applicant. CA staff can call the phone number to confirm the information in your certificate application.
         # 
-        # If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](~~198262~~).
+        # If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](https://help.aliyun.com/document_detail/198262.html).
         self.phone = phone
         # The specifications of the certificate. Valid values:
         # 
@@ -262,14 +265,14 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
         self.product_code = product_code
         # The name of the applicant.
         # 
-        # If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](~~198262~~).
+        # If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](https://help.aliyun.com/document_detail/198262.html).
         self.username = username
         # The verification method of the domain name ownership. Valid values:
         # 
         # *   **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name. You must have operation permissions on domain name resolution to verify the ownership of the domain name.
         # *   **FILE**: file verification. If you use this method, you must create a specified file on the DNS server. You must have administrative rights on the DNS server to verify the ownership of the domain name.
         # 
-        # For more information about the verification methods, see [Verify the ownership of a domain name](~~48016~~).
+        # For more information about the verification methods, see [Verify the ownership of a domain name](https://help.aliyun.com/document_detail/48016.html).
         self.validate_type = validate_type
 
     def validate(self):
@@ -328,7 +331,7 @@ class CreateCertificateForPackageRequestResponseBody(TeaModel):
     ):
         # The ID of the certificate application order.
         # 
-        # > You can use the ID to query the status of the certificate application order. For more information, see [DescribeCertificateState](~~455800~~).
+        # > You can use the ID to query the status of the certificate application order. For more information, see [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html).
         self.order_id = order_id
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -411,10 +414,16 @@ class CreateCertificateRequestRequest(TeaModel):
         # The domain name that you want to bind to the certificate. You can specify only one domain name.
         # 
         # > The domain name must match the certificate specifications that you specify for the **ProductCode** parameter. If you apply for a single-domain certificate, you must specify a single domain name for this parameter. If you apply for a wildcard certificate, you must specify a wildcard domain name such as `*.aliyundoc.com` for this parameter.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The email address of the applicant.
+        # 
+        # This parameter is required.
         self.email = email
         # The phone number of the applicant.
+        # 
+        # This parameter is required.
         self.phone = phone
         # The specifications of the certificate. Valid values:
         # 
@@ -427,13 +436,17 @@ class CreateCertificateRequestRequest(TeaModel):
         # *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
         self.product_code = product_code
         # The name of the applicant.
+        # 
+        # This parameter is required.
         self.username = username
         # The verification method of the domain name ownership. Valid values:
         # 
         # *   **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name. You must have operation permissions on domain name resolution to verify the ownership of the domain name.
         # *   **FILE**: file verification. If you use this method, you must create a specified file on the DNS server. You must have administrative rights on the DNS server to verify the ownership of the domain name.
         # 
-        # For more information about the verification methods, see [Verify the ownership of a domain name](~~48016~~).
+        # For more information about the verification methods, see [Verify the ownership of a domain name](https://help.aliyun.com/document_detail/48016.html).
+        # 
+        # This parameter is required.
         self.validate_type = validate_type
 
     def validate(self):
@@ -484,7 +497,7 @@ class CreateCertificateRequestResponseBody(TeaModel):
     ):
         # The ID of the certificate application order.
         # 
-        # > You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](~~455800~~).
+        # > You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html).
         self.order_id = order_id
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -564,15 +577,21 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
         username: str = None,
         validate_type: str = None,
     ):
-        # The content of the existing CSR file.\
-        # The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [How do I create a CSR file?](~~42218~~) You can also create a CSR in the [Certificate Management Service console](https://yundunnext.console.aliyun.com/?\&p=cas). For more information, see [Create a CSR](~~313297~~).\
+        # The content of the existing CSR file.\\
+        # The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [How do I create a CSR file?](https://help.aliyun.com/document_detail/42218.html) You can also create a CSR in the [Certificate Management Service console](https://yundunnext.console.aliyun.com/?\\&p=cas). For more information, see [Create a CSR](https://help.aliyun.com/document_detail/313297.html).\\
         # A CSR file contains the information about your server and company. When you apply for a certificate, you must submit the CSR file to the CA. The CA signs the CSR file by using the private key of the root certificate and generates a public key file to issue your certificate.
         # 
         # >  The **CN** field in the CSR file specifies the domain name that is bound to the certificate.
+        # 
+        # This parameter is required.
         self.csr = csr
         # The contact email address of the applicant.
+        # 
+        # This parameter is required.
         self.email = email
         # The phone number of the applicant.
+        # 
+        # This parameter is required.
         self.phone = phone
         # The specifications of the certificate. Valid values:
         # 
@@ -585,13 +604,17 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
         # *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
         self.product_code = product_code
         # The name of the applicant.
+        # 
+        # This parameter is required.
         self.username = username
         # The method to verify the ownership of a domain name. Valid values:
         # 
         # *   **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name. You must have operation permissions on domain name resolution to verify the ownership of the domain name.
         # *   **FILE**: file verification. If you use this method, you must create a specified file on the DNS server. You must have administrative rights on the DNS server to verify the ownership of the domain name.
         # 
-        # For more information about the verification methods, see [Verify the ownership of a domain name](~~48016~~).
+        # For more information about the verification methods, see [Verify the ownership of a domain name](https://help.aliyun.com/document_detail/48016.html).
+        # 
+        # This parameter is required.
         self.validate_type = validate_type
 
     def validate(self):
@@ -642,7 +665,7 @@ class CreateCertificateWithCsrRequestResponseBody(TeaModel):
     ):
         # The ID of the certificate application order.
         # 
-        # >  You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](~~164111~~).
+        # >  You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](https://help.aliyun.com/document_detail/164111.html).
         self.order_id = order_id
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -726,14 +749,20 @@ class CreateCsrRequest(TeaModel):
         province: str = None,
         sans: str = None,
     ):
+        # This parameter is required.
         self.algorithm = algorithm
+        # This parameter is required.
         self.common_name = common_name
         self.corp_name = corp_name
+        # This parameter is required.
         self.country_code = country_code
         self.department = department
+        # This parameter is required.
         self.key_size = key_size
+        # This parameter is required.
         self.locality = locality
         self.name = name
+        # This parameter is required.
         self.province = province
         self.sans = sans
 
@@ -884,10 +913,15 @@ class CreateDeploymentJobRequest(TeaModel):
         resource_ids: str = None,
         schedule_time: int = None,
     ):
+        # This parameter is required.
         self.cert_ids = cert_ids
+        # This parameter is required.
         self.contact_ids = contact_ids
+        # This parameter is required.
         self.job_type = job_type
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.resource_ids = resource_ids
         self.schedule_time = schedule_time
 
@@ -1038,6 +1072,7 @@ class CreateWHClientCertificateRequest(TeaModel):
         self.months = months
         self.organization = organization
         self.organization_unit = organization_unit
+        # This parameter is required.
         self.parent_identifier = parent_identifier
         self.san_type = san_type
         self.san_value = san_value
@@ -1234,8 +1269,11 @@ class DecryptRequest(TeaModel):
         ciphertext_blob: str = None,
         message_type: str = None,
     ):
+        # This parameter is required.
         self.algorithm = algorithm
+        # This parameter is required.
         self.cert_identifier = cert_identifier
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
         self.message_type = message_type
 
@@ -1358,7 +1396,9 @@ class DeleteCertificateRequestRequest(TeaModel):
     ):
         # The ID of the certificate application order that you want to delete.
         # 
-        # >  After you call the [CreateCertificateForPackageRequest](~~455296~~), [CreateCertificateRequest](~~455292~~), or [CreateCertificateWithCsrRequest](~~455801~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+        # >  After you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html), [CreateCertificateRequest](https://help.aliyun.com/document_detail/455292.html), or [CreateCertificateWithCsrRequest](https://help.aliyun.com/document_detail/455801.html) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+        # 
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -1456,6 +1496,8 @@ class DeleteCsrRequest(TeaModel):
         csr_id: int = None,
     ):
         # CSR ID。
+        # 
+        # This parameter is required.
         self.csr_id = csr_id
 
     def validate(self):
@@ -1551,6 +1593,7 @@ class DeleteDeploymentJobRequest(TeaModel):
         self,
         job_id: int = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -1646,6 +1689,7 @@ class DeletePCACertRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # This parameter is required.
         self.identifier = identifier
 
     def validate(self):
@@ -1742,6 +1786,8 @@ class DeleteUserCertificateRequest(TeaModel):
         cert_id: int = None,
     ):
         # The ID of the certificate.
+        # 
+        # This parameter is required.
         self.cert_id = cert_id
 
     def validate(self):
@@ -1839,7 +1885,9 @@ class DeleteWorkerResourceRequest(TeaModel):
         job_id: int = None,
         worker_id: int = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
+        # This parameter is required.
         self.worker_id = worker_id
 
     def validate(self):
@@ -1941,7 +1989,9 @@ class DescribeCertificateStateRequest(TeaModel):
     ):
         # The ID of the certificate application order that you want to query.
         # 
-        # > After you call the [CreateCertificateForPackageRequest](~~455296~~), [CreateCertificateRequest](~~455292~~), or [CreateCertificateWithCsrRequest](~~455801~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+        # > After you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html), [CreateCertificateRequest](https://help.aliyun.com/document_detail/455292.html), or [CreateCertificateWithCsrRequest](https://help.aliyun.com/document_detail/455801.html) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+        # 
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -1979,36 +2029,36 @@ class DescribeCertificateStateResponseBody(TeaModel):
         uri: str = None,
         validate_type: str = None,
     ):
-        # The content of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](~~42214~~)
+        # The content of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](https://help.aliyun.com/document_detail/42214.html)
         # 
         # > This parameter is returned only when the value of the **Type** parameter is **certificate**. The value certificate indicates that the certificate is issued.
         self.certificate = certificate
         # The content that you need to write to the newly created file when you use the file verification method.
         # 
-        # > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+        # > This parameter is returned only when the value of the **Type** parameter is **domain_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
         self.content = content
         # The domain name to be verified when you use the file verification method. You must connect to the DNS server of the domain name and create a file on the server. The file is specified by the **Uri** parameter.
         # 
-        # > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+        # > This parameter is returned only when the value of the **Type** parameter is **domain_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
         self.domain = domain
-        # The private key of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](~~42214~~)
+        # The private key of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](https://help.aliyun.com/document_detail/42214.html)
         # 
         # > This parameter is returned only when the value of the **Type** parameter is **certificate**. The value certificate indicates that the certificate is issued.
         self.private_key = private_key
         # The DNS record that you need to manage when you use the DNS verification method.
         # 
-        # > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value DNS indicates that the DNS verification method is used.
+        # > This parameter is returned only when the value of the **Type** parameter is **domain_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value DNS indicates that the DNS verification method is used.
         self.record_domain = record_domain
         # The type of the DNS record that you need to add when you use the DNS verification method. Valid values:
         # 
         # *   **TXT**\
         # *   **CNAME**\
         # 
-        # > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain\_verify indicates that the verification of the domain name ownership is not complete.
+        # > This parameter is returned only when the value of the **Type** parameter is **domain_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain_verify indicates that the verification of the domain name ownership is not complete.
         self.record_type = record_type
         # You need to add a TXT record to the DNS records only when you use the DNS verification method.
         # 
-        # > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value DNS indicates that the DNS verification method is used.
+        # > This parameter is returned only when the value of the **Type** parameter is **domain_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value DNS indicates that the DNS verification method is used.
         self.record_value = record_value
         # The ID of the request.
         self.request_id = request_id
@@ -2022,7 +2072,7 @@ class DescribeCertificateStateResponseBody(TeaModel):
         # 
         # *   **verify_fail**: **review failed**, which indicates that the certificate application failed to be reviewed.
         # 
-        #     > If a certificate application fails to be reviewed, the information that you specified in the certificate application may be incorrect. We recommend that you call the [DeleteCertificateRequest](~~455294~~) operation to delete the certificate application order and resubmit a certificate application. After the order is deleted, the quota that is consumed for the order is released.
+        #     > If a certificate application fails to be reviewed, the information that you specified in the certificate application may be incorrect. We recommend that you call the [DeleteCertificateRequest](https://help.aliyun.com/document_detail/455294.html) operation to delete the certificate application order and resubmit a certificate application. After the order is deleted, the quota that is consumed for the order is released.
         # 
         # *   **certificate**: **issued**, which indicates that the certificate is issued.
         # *   **payed**: **pending application**, which indicates that you have not submitted a certificate application.
@@ -2030,14 +2080,14 @@ class DescribeCertificateStateResponseBody(TeaModel):
         self.type = type
         # The file that you need to create on the DNS server when you use the file verification method. **The value of this parameter contains the file path and file name.**\
         # 
-        # > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+        # > This parameter is returned only when the value of the **Type** parameter is **domain_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
         self.uri = uri
         # The verification method of the domain name ownership. Valid values:
         # 
         # *   **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name.
         # *   **FILE**: file verification. If you use this method, you must create a specified file on the DNS server.
         # 
-        # > This parameter is returned only when the value of the **Type** parameter is **domain\_verify**. The value domain\_verify indicates that the verification of the domain name ownership is not complete.
+        # > This parameter is returned only when the value of the **Type** parameter is **domain_verify**. The value domain_verify indicates that the verification of the domain name ownership is not complete.
         self.validate_type = validate_type
 
     def validate(self):
@@ -2294,6 +2344,7 @@ class DescribeDeploymentJobRequest(TeaModel):
         self,
         job_id: int = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -2838,7 +2889,7 @@ class DescribePackageStateResponseBody(TeaModel):
         self.total_count = total_count
         # The number of certificate applications that you submitted for certificates of the specified specifications.
         # 
-        # > A successful call of the [CreateCertificateForPackageRequest](~~455296~~), [CreateCertificateRequest](~~455292~~), or [CreateCertificateWithCsrRequest](~~455801~~) operation is counted as one a certificate application, regardless of whether the certificate is issued.
+        # > A successful call of the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html), [CreateCertificateRequest](https://help.aliyun.com/document_detail/455292.html), or [CreateCertificateWithCsrRequest](https://help.aliyun.com/document_detail/455801.html) operation is counted as one a certificate application, regardless of whether the certificate is issued.
         self.used_count = used_count
 
     def validate(self):
@@ -2926,9 +2977,12 @@ class EncryptRequest(TeaModel):
         message_type: str = None,
         plaintext: str = None,
     ):
+        # This parameter is required.
         self.algorithm = algorithm
+        # This parameter is required.
         self.cert_identifier = cert_identifier
         self.message_type = message_type
+        # This parameter is required.
         self.plaintext = plaintext
 
     def validate(self):
@@ -3129,6 +3183,8 @@ class GetCsrDetailRequest(TeaModel):
         csr_id: int = None,
     ):
         # CSR ID。
+        # 
+        # This parameter is required.
         self.csr_id = csr_id
 
     def validate(self):
@@ -3234,6 +3290,8 @@ class GetUserCertificateDetailRequest(TeaModel):
         # If true, the Cert, Key, EncryptCert, EncryptPrivateKey, SignCert, SignPrivateKey will return null, default is false.
         self.cert_filter = cert_filter
         # The ID of the certificate.
+        # 
+        # This parameter is required.
         self.cert_id = cert_id
 
     def validate(self):
@@ -5231,6 +5289,7 @@ class ListDeploymentJobCertRequest(TeaModel):
         self,
         job_id: int = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -5445,6 +5504,7 @@ class ListDeploymentJobResourceRequest(TeaModel):
         self,
         job_id: int = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -6194,6 +6254,7 @@ class ListWorkerResourceRequest(TeaModel):
     ):
         self.cloud_product = cloud_product
         self.current_page = current_page
+        # This parameter is required.
         self.job_id = job_id
         self.show_size = show_size
         self.status = status
@@ -6493,13 +6554,140 @@ class ListWorkerResourceResponse(TeaModel):
         return self
 
 
+class MoveResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
+        self.region_id = region_id
+        # The ID of the resource group.
+        # 
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+        # The resource ID.
+        # 
+        # This parameter is required.
+        self.resource_id = resource_id
+        # The type of the resource.
+        # 
+        # This parameter is required.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class MoveResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class MoveResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MoveResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MoveResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RenewCertificateOrderForPackageRequestRequest(TeaModel):
     def __init__(
         self,
         csr: str = None,
         order_id: int = None,
     ):
-        # The content of the certificate signing request (CSR) file that is manually generated for the domain name by using OpenSSL or Keytool. The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [How do I create a CSR file?](~~42218~~)
+        # The content of the certificate signing request (CSR) file that is manually generated for the domain name by using OpenSSL or Keytool. The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [How do I create a CSR file?](https://help.aliyun.com/document_detail/42218.html)
         # 
         # If you do not specify this parameter, Certificate Management Service automatically generates a CSR file for the domain name in the certificate application order that you want to renew.
         # 
@@ -6509,7 +6697,9 @@ class RenewCertificateOrderForPackageRequestRequest(TeaModel):
         self.csr = csr
         # The ID of the certificate application order that you want to renew.
         # 
-        # > After you call the [CreateCertificateForPackageRequest](~~455296~~), [CreateCertificateRequest](~~455292~~), or [CreateCertificateWithCsrRequest](~~455801~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+        # > After you call the [CreateCertificateForPackageRequest](https://help.aliyun.com/document_detail/455296.html), [CreateCertificateRequest](https://help.aliyun.com/document_detail/455292.html), or [CreateCertificateWithCsrRequest](https://help.aliyun.com/document_detail/455801.html) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+        # 
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -6544,7 +6734,7 @@ class RenewCertificateOrderForPackageRequestResponseBody(TeaModel):
     ):
         # The ID of the certificate application order that is renewed.
         # 
-        # > You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](~~455800~~).
+        # > You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](https://help.aliyun.com/document_detail/455800.html).
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id
@@ -6619,6 +6809,7 @@ class RevokeWHClientCertificateRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # This parameter is required.
         self.identifier = identifier
 
     def validate(self):
@@ -6717,9 +6908,13 @@ class SignRequest(TeaModel):
         message_type: str = None,
         signing_algorithm: str = None,
     ):
+        # This parameter is required.
         self.cert_identifier = cert_identifier
+        # This parameter is required.
         self.message = message
+        # This parameter is required.
         self.message_type = message_type
+        # This parameter is required.
         self.signing_algorithm = signing_algorithm
 
     def validate(self):
@@ -6835,7 +7030,10 @@ class UpdateCsrRequest(TeaModel):
         key: str = None,
     ):
         # CSR ID。
+        # 
+        # This parameter is required.
         self.csr_id = csr_id
+        # This parameter is required.
         self.key = key
 
     def validate(self):
@@ -6942,6 +7140,7 @@ class UpdateDeploymentJobRequest(TeaModel):
     ):
         self.cert_ids = cert_ids
         self.contact_ids = contact_ids
+        # This parameter is required.
         self.job_id = job_id
         self.name = name
         self.resource_ids = resource_ids
@@ -7061,7 +7260,9 @@ class UpdateDeploymentJobStatusRequest(TeaModel):
         job_id: int = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -7169,8 +7370,11 @@ class UpdateWorkerResourceStatusRequest(TeaModel):
         status: str = None,
         worker_id: int = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
+        # This parameter is required.
         self.status = status
+        # This parameter is required.
         self.worker_id = worker_id
 
     def validate(self):
@@ -7282,6 +7486,7 @@ class UploadCsrRequest(TeaModel):
         key: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.csr = csr
         self.key = key
         self.name = name
@@ -7400,6 +7605,8 @@ class UploadPCACertRequest(TeaModel):
         # <UploadPCACertResponse>
         #     <RequestId>15C66C7B-671A-4297-9187-2C4477247A74</RequestId>
         # </UploadPCACertResponse>
+        # 
+        # This parameter is required.
         self.cert = cert
         # UploadPCACert
         self.name = name
@@ -7408,6 +7615,8 @@ class UploadPCACertRequest(TeaModel):
         # {
         #     "RequestId": "15C66C7B-671A-4297-9187-2C4477247A74"
         # }
+        # 
+        # This parameter is required.
         self.warehouse_id = warehouse_id
 
     def validate(self):
@@ -7536,7 +7745,7 @@ class UploadUserCertificateRequest(TeaModel):
         self.encrypt_private_key = encrypt_private_key
         # The private key of the certificate in the PEM format.
         self.key = key
-        # The name of the certificate. The name can contain up to 128 characters in length. The name can contain all types of characters, such as letters, digits, and underscores (\_).
+        # The name of the certificate. The name can contain up to 128 characters in length. The name can contain all types of characters, such as letters, digits, and underscores (_).
         # 
         # >  The name must be unique within an Alibaba Cloud account.
         self.name = name
@@ -7680,10 +7889,15 @@ class VerifyRequest(TeaModel):
         signature_value: str = None,
         signing_algorithm: str = None,
     ):
+        # This parameter is required.
         self.cert_identifier = cert_identifier
+        # This parameter is required.
         self.message = message
+        # This parameter is required.
         self.message_type = message_type
+        # This parameter is required.
         self.signature_value = signature_value
+        # This parameter is required.
         self.signing_algorithm = signing_algorithm
 
     def validate(self):
