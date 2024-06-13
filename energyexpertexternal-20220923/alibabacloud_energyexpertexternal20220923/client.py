@@ -3601,12 +3601,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             query['fileUrl'] = request.file_url
         if not UtilClient.is_unset(request.folder_id):
             query['folderId'] = request.folder_id
-        if not UtilClient.is_unset(request.oss_url):
-            query['ossUrl'] = request.oss_url
         if not UtilClient.is_unset(request.template_id):
             query['templateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -3645,12 +3645,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
         if not UtilClient.is_unset(request.file_url):
             query['fileUrl'] = request.file_url
         if not UtilClient.is_unset(request.folder_id):
             query['folderId'] = request.folder_id
-        if not UtilClient.is_unset(request.oss_url):
-            query['ossUrl'] = request.oss_url
         if not UtilClient.is_unset(request.template_id):
             query['templateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -3747,14 +3747,14 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         submit_document_analyze_job_req = energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest()
         OpenApiUtilClient.convert(request, submit_document_analyze_job_req)
-        if not UtilClient.is_unset(request.oss_url_object):
+        if not UtilClient.is_unset(request.file_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
             oss_config.access_key_id = auth_response.body.access_key_id
             oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
                 filename=auth_response.body.object_key,
-                content=request.oss_url_object,
+                content=request.file_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
@@ -3770,7 +3770,7 @@ class Client(OpenApiClient):
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            submit_document_analyze_job_req.oss_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            submit_document_analyze_job_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         submit_document_analyze_job_resp = self.submit_document_analyze_job_with_options(submit_document_analyze_job_req, headers, runtime)
         return submit_document_analyze_job_resp
 
@@ -3820,14 +3820,14 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(runtime, oss_runtime)
         submit_document_analyze_job_req = energy_expert_external_20220923_models.SubmitDocumentAnalyzeJobRequest()
         OpenApiUtilClient.convert(request, submit_document_analyze_job_req)
-        if not UtilClient.is_unset(request.oss_url_object):
+        if not UtilClient.is_unset(request.file_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
             oss_config.access_key_id = auth_response.body.access_key_id
             oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
                 filename=auth_response.body.object_key,
-                content=request.oss_url_object,
+                content=request.file_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
@@ -3843,6 +3843,6 @@ class Client(OpenApiClient):
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            submit_document_analyze_job_req.oss_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            submit_document_analyze_job_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         submit_document_analyze_job_resp = await self.submit_document_analyze_job_with_options_async(submit_document_analyze_job_req, headers, runtime)
         return submit_document_analyze_job_resp

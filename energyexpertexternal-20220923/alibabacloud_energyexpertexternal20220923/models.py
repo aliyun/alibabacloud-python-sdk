@@ -5465,8 +5465,6 @@ class GetGasConstituteRequest(TeaModel):
         # This parameter is required.
         self.code = code
         # Module code.
-        # 
-        # This parameter is required.
         self.module_code = module_code
         # Module type.
         # 
@@ -8252,14 +8250,14 @@ class SendDocumentAskQuestionResponse(TeaModel):
 class SubmitDocumentAnalyzeJobRequest(TeaModel):
     def __init__(
         self,
+        file_name: str = None,
         file_url: str = None,
         folder_id: str = None,
-        oss_url: str = None,
         template_id: str = None,
     ):
+        self.file_name = file_name
         self.file_url = file_url
         self.folder_id = folder_id
-        self.oss_url = oss_url
         # This parameter is required.
         self.template_id = template_id
 
@@ -8272,24 +8270,24 @@ class SubmitDocumentAnalyzeJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
         if self.file_url is not None:
             result['fileUrl'] = self.file_url
         if self.folder_id is not None:
             result['folderId'] = self.folder_id
-        if self.oss_url is not None:
-            result['ossUrl'] = self.oss_url
         if self.template_id is not None:
             result['templateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
         if m.get('fileUrl') is not None:
             self.file_url = m.get('fileUrl')
         if m.get('folderId') is not None:
             self.folder_id = m.get('folderId')
-        if m.get('ossUrl') is not None:
-            self.oss_url = m.get('ossUrl')
         if m.get('templateId') is not None:
             self.template_id = m.get('templateId')
         return self
@@ -8298,14 +8296,14 @@ class SubmitDocumentAnalyzeJobRequest(TeaModel):
 class SubmitDocumentAnalyzeJobAdvanceRequest(TeaModel):
     def __init__(
         self,
-        file_url: str = None,
+        file_name: str = None,
+        file_url_object: BinaryIO = None,
         folder_id: str = None,
-        oss_url_object: BinaryIO = None,
         template_id: str = None,
     ):
-        self.file_url = file_url
+        self.file_name = file_name
+        self.file_url_object = file_url_object
         self.folder_id = folder_id
-        self.oss_url_object = oss_url_object
         # This parameter is required.
         self.template_id = template_id
 
@@ -8318,24 +8316,24 @@ class SubmitDocumentAnalyzeJobAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.file_url is not None:
-            result['fileUrl'] = self.file_url
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_url_object is not None:
+            result['fileUrl'] = self.file_url_object
         if self.folder_id is not None:
             result['folderId'] = self.folder_id
-        if self.oss_url_object is not None:
-            result['ossUrl'] = self.oss_url_object
         if self.template_id is not None:
             result['templateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
         if m.get('fileUrl') is not None:
-            self.file_url = m.get('fileUrl')
+            self.file_url_object = m.get('fileUrl')
         if m.get('folderId') is not None:
             self.folder_id = m.get('folderId')
-        if m.get('ossUrl') is not None:
-            self.oss_url_object = m.get('ossUrl')
         if m.get('templateId') is not None:
             self.template_id = m.get('templateId')
         return self

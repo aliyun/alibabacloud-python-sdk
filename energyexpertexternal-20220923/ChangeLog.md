@@ -1,3 +1,10 @@
+2024-06-13 Version: 2.0.0
+- Update API GetGasConstitute: update param body.
+- Update API SubmitDocumentAnalyzeJob: add param fileName.
+- Update API SubmitDocumentAnalyzeJob: delete param ossUrl.
+- Update API SubmitDocumentAnalyzeJob: update param fileUrl.
+
+
 2024-06-06 Version: 1.2.0
 - Support API GetDocumentAnalyzeResult.
 - Support API SendDocumentAskQuestion.
