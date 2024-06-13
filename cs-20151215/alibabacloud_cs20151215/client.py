@@ -7436,6 +7436,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_policy_instances_status_with_options_async(cluster_id, headers, runtime)
 
+    def describe_resources_delete_protection_with_options(
+        self,
+        cluster_id: str,
+        resource_type: str,
+        request: cs20151215_models.DescribeResourcesDeleteProtectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeResourcesDeleteProtectionResponse:
+        """
+        @summary 修改资源删除保护配置
+        
+        @param request: DescribeResourcesDeleteProtectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourcesDeleteProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.resources):
+            query['resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourcesDeleteProtection',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_type)}/protection',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeResourcesDeleteProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resources_delete_protection_with_options_async(
+        self,
+        cluster_id: str,
+        resource_type: str,
+        request: cs20151215_models.DescribeResourcesDeleteProtectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DescribeResourcesDeleteProtectionResponse:
+        """
+        @summary 修改资源删除保护配置
+        
+        @param request: DescribeResourcesDeleteProtectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourcesDeleteProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace):
+            query['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.resources):
+            query['resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourcesDeleteProtection',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_type)}/protection',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DescribeResourcesDeleteProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resources_delete_protection(
+        self,
+        cluster_id: str,
+        resource_type: str,
+        request: cs20151215_models.DescribeResourcesDeleteProtectionRequest,
+    ) -> cs20151215_models.DescribeResourcesDeleteProtectionResponse:
+        """
+        @summary 修改资源删除保护配置
+        
+        @param request: DescribeResourcesDeleteProtectionRequest
+        @return: DescribeResourcesDeleteProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_resources_delete_protection_with_options(cluster_id, resource_type, request, headers, runtime)
+
+    async def describe_resources_delete_protection_async(
+        self,
+        cluster_id: str,
+        resource_type: str,
+        request: cs20151215_models.DescribeResourcesDeleteProtectionRequest,
+    ) -> cs20151215_models.DescribeResourcesDeleteProtectionResponse:
+        """
+        @summary 修改资源删除保护配置
+        
+        @param request: DescribeResourcesDeleteProtectionRequest
+        @return: DescribeResourcesDeleteProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_resources_delete_protection_with_options_async(cluster_id, resource_type, request, headers, runtime)
+
     def describe_subaccount_k8s_cluster_user_config_with_options(
         self,
         cluster_id: str,
@@ -14093,6 +14209,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_k8s_cluster_user_config_expire_with_options_async(cluster_id, request, headers, runtime)
+
+    def update_resources_delete_protection_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateResourcesDeleteProtectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
+        """
+        @summary 修改资源删除保护配置
+        
+        @param request: UpdateResourcesDeleteProtectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourcesDeleteProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace):
+            body['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.resource_type):
+            body['resource_type'] = request.resource_type
+        if not UtilClient.is_unset(request.resources):
+            body['resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourcesDeleteProtection',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/resources/protection',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateResourcesDeleteProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_resources_delete_protection_with_options_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateResourcesDeleteProtectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
+        """
+        @summary 修改资源删除保护配置
+        
+        @param request: UpdateResourcesDeleteProtectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourcesDeleteProtectionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace):
+            body['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.resource_type):
+            body['resource_type'] = request.resource_type
+        if not UtilClient.is_unset(request.resources):
+            body['resources'] = request.resources
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourcesDeleteProtection',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/resources/protection',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateResourcesDeleteProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_resources_delete_protection(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateResourcesDeleteProtectionRequest,
+    ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
+        """
+        @summary 修改资源删除保护配置
+        
+        @param request: UpdateResourcesDeleteProtectionRequest
+        @return: UpdateResourcesDeleteProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_resources_delete_protection_with_options(cluster_id, request, headers, runtime)
+
+    async def update_resources_delete_protection_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateResourcesDeleteProtectionRequest,
+    ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
+        """
+        @summary 修改资源删除保护配置
+        
+        @param request: UpdateResourcesDeleteProtectionRequest
+        @return: UpdateResourcesDeleteProtectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_resources_delete_protection_with_options_async(cluster_id, request, headers, runtime)
 
     def update_template_with_options(
         self,

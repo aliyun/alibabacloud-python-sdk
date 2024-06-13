@@ -1,3 +1,12 @@
+2024-06-13 Version: 4.3.0
+- Support API DescribeResourcesDeleteProtection.
+- Support API UpdateResourcesDeleteProtection.
+- Update API CreateClusterNodePool: update param body.
+- Update API DescribeClusterNodePoolDetail: update response param.
+- Update API DescribeClusterNodePools: update response param.
+- Update API ModifyClusterNodePool: update param body.
+
+
 2024-06-13 Version: 4.2.1
 - Update API CreateClusterNodePool: update param body.
 - Update API DescribeClusterNodePoolDetail: update response param.

@@ -4810,7 +4810,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
-        instance_patterns: InstancePatterns = None,
+        instance_patterns: List[InstancePatterns] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
         internet_max_bandwidth_out: int = None,
@@ -5051,7 +5051,9 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
                 if k:
                     k.validate()
         if self.instance_patterns:
-            self.instance_patterns.validate()
+            for k in self.instance_patterns:
+                if k:
+                    k.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.spot_price_limit:
@@ -5091,8 +5093,10 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             result['image_type'] = self.image_type
         if self.instance_charge_type is not None:
             result['instance_charge_type'] = self.instance_charge_type
+        result['instance_patterns'] = []
         if self.instance_patterns is not None:
-            result['instance_patterns'] = self.instance_patterns.to_map()
+            for k in self.instance_patterns:
+                result['instance_patterns'].append(k.to_map() if k else None)
         if self.instance_types is not None:
             result['instance_types'] = self.instance_types
         if self.internet_charge_type is not None:
@@ -5192,9 +5196,11 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             self.image_type = m.get('image_type')
         if m.get('instance_charge_type') is not None:
             self.instance_charge_type = m.get('instance_charge_type')
+        self.instance_patterns = []
         if m.get('instance_patterns') is not None:
-            temp_model = InstancePatterns()
-            self.instance_patterns = temp_model.from_map(m['instance_patterns'])
+            for k in m.get('instance_patterns'):
+                temp_model = InstancePatterns()
+                self.instance_patterns.append(temp_model.from_map(k))
         if m.get('instance_types') is not None:
             self.instance_types = m.get('instance_types')
         if m.get('internet_charge_type') is not None:
@@ -9844,7 +9850,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
-        instance_patterns: InstancePatterns = None,
+        instance_patterns: List[InstancePatterns] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
         internet_max_bandwidth_out: int = None,
@@ -10052,7 +10058,9 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
                 if k:
                     k.validate()
         if self.instance_patterns:
-            self.instance_patterns.validate()
+            for k in self.instance_patterns:
+                if k:
+                    k.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.spot_price_limit:
@@ -10092,8 +10100,10 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['image_type'] = self.image_type
         if self.instance_charge_type is not None:
             result['instance_charge_type'] = self.instance_charge_type
+        result['instance_patterns'] = []
         if self.instance_patterns is not None:
-            result['instance_patterns'] = self.instance_patterns.to_map()
+            for k in self.instance_patterns:
+                result['instance_patterns'].append(k.to_map() if k else None)
         if self.instance_types is not None:
             result['instance_types'] = self.instance_types
         if self.internet_charge_type is not None:
@@ -10197,9 +10207,11 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             self.image_type = m.get('image_type')
         if m.get('instance_charge_type') is not None:
             self.instance_charge_type = m.get('instance_charge_type')
+        self.instance_patterns = []
         if m.get('instance_patterns') is not None:
-            temp_model = InstancePatterns()
-            self.instance_patterns = temp_model.from_map(m['instance_patterns'])
+            for k in m.get('instance_patterns'):
+                temp_model = InstancePatterns()
+                self.instance_patterns.append(temp_model.from_map(k))
         if m.get('instance_types') is not None:
             self.instance_types = m.get('instance_types')
         if m.get('internet_charge_type') is not None:
@@ -11299,7 +11311,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
-        instance_patterns: InstancePatterns = None,
+        instance_patterns: List[InstancePatterns] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
         internet_max_bandwidth_out: int = None,
@@ -11500,7 +11512,9 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
                 if k:
                     k.validate()
         if self.instance_patterns:
-            self.instance_patterns.validate()
+            for k in self.instance_patterns:
+                if k:
+                    k.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.spot_price_limit:
@@ -11540,8 +11554,10 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             result['image_type'] = self.image_type
         if self.instance_charge_type is not None:
             result['instance_charge_type'] = self.instance_charge_type
+        result['instance_patterns'] = []
         if self.instance_patterns is not None:
-            result['instance_patterns'] = self.instance_patterns.to_map()
+            for k in self.instance_patterns:
+                result['instance_patterns'].append(k.to_map() if k else None)
         if self.instance_types is not None:
             result['instance_types'] = self.instance_types
         if self.internet_charge_type is not None:
@@ -11645,9 +11661,11 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             self.image_type = m.get('image_type')
         if m.get('instance_charge_type') is not None:
             self.instance_charge_type = m.get('instance_charge_type')
+        self.instance_patterns = []
         if m.get('instance_patterns') is not None:
-            temp_model = InstancePatterns()
-            self.instance_patterns = temp_model.from_map(m['instance_patterns'])
+            for k in m.get('instance_patterns'):
+                temp_model = InstancePatterns()
+                self.instance_patterns.append(temp_model.from_map(k))
         if m.get('instance_types') is not None:
             self.instance_types = m.get('instance_types')
         if m.get('internet_charge_type') is not None:
@@ -16870,6 +16888,132 @@ class DescribePolicyInstancesStatusResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribePolicyInstancesStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourcesDeleteProtectionRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        resources: str = None,
+    ):
+        self.namespace = namespace
+        self.resources = resources
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.resources is not None:
+            result['resources'] = self.resources
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('resources') is not None:
+            self.resources = m.get('resources')
+        return self
+
+
+class DescribeResourcesDeleteProtectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        namespace: str = None,
+        resource: str = None,
+        protection: bool = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        self.namespace = namespace
+        self.resource = resource
+        self.protection = protection
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.resource is not None:
+            result['resource'] = self.resource
+        if self.protection is not None:
+            result['protection'] = self.protection
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('resource') is not None:
+            self.resource = m.get('resource')
+        if m.get('protection') is not None:
+            self.protection = m.get('protection')
+        return self
+
+
+class DescribeResourcesDeleteProtectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: List[DescribeResourcesDeleteProtectionResponseBody] = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = DescribeResourcesDeleteProtectionResponseBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
@@ -22271,7 +22415,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
-        instance_patterns: InstancePatterns = None,
+        instance_patterns: List[InstancePatterns] = None,
         instance_types: List[str] = None,
         internet_charge_type: str = None,
         internet_max_bandwidth_out: int = None,
@@ -22452,7 +22596,9 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
                 if k:
                     k.validate()
         if self.instance_patterns:
-            self.instance_patterns.validate()
+            for k in self.instance_patterns:
+                if k:
+                    k.validate()
         if self.private_pool_options:
             self.private_pool_options.validate()
         if self.spot_price_limit:
@@ -22488,8 +22634,10 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             result['image_type'] = self.image_type
         if self.instance_charge_type is not None:
             result['instance_charge_type'] = self.instance_charge_type
+        result['instance_patterns'] = []
         if self.instance_patterns is not None:
-            result['instance_patterns'] = self.instance_patterns.to_map()
+            for k in self.instance_patterns:
+                result['instance_patterns'].append(k.to_map() if k else None)
         if self.instance_types is not None:
             result['instance_types'] = self.instance_types
         if self.internet_charge_type is not None:
@@ -22575,9 +22723,11 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             self.image_type = m.get('image_type')
         if m.get('instance_charge_type') is not None:
             self.instance_charge_type = m.get('instance_charge_type')
+        self.instance_patterns = []
         if m.get('instance_patterns') is not None:
-            temp_model = InstancePatterns()
-            self.instance_patterns = temp_model.from_map(m['instance_patterns'])
+            for k in m.get('instance_patterns'):
+                temp_model = InstancePatterns()
+                self.instance_patterns.append(temp_model.from_map(k))
         if m.get('instance_types') is not None:
             self.instance_types = m.get('instance_types')
         if m.get('internet_charge_type') is not None:
@@ -26244,6 +26394,144 @@ class UpdateK8sClusterUserConfigExpireResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        return self
+
+
+class UpdateResourcesDeleteProtectionRequest(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        namespace: str = None,
+        resource_type: str = None,
+        resources: List[str] = None,
+    ):
+        self.enable = enable
+        self.namespace = namespace
+        self.resource_type = resource_type
+        self.resources = resources
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.resource_type is not None:
+            result['resource_type'] = self.resource_type
+        if self.resources is not None:
+            result['resources'] = self.resources
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
+        if m.get('resources') is not None:
+            self.resources = m.get('resources')
+        return self
+
+
+class UpdateResourcesDeleteProtectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        protection: str = None,
+        request_id: str = None,
+        resource_type: str = None,
+        resources: List[str] = None,
+    ):
+        self.namespace = namespace
+        self.protection = protection
+        # Id of the request
+        self.request_id = request_id
+        self.resource_type = resource_type
+        self.resources = resources
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.protection is not None:
+            result['protection'] = self.protection
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.resource_type is not None:
+            result['resource_type'] = self.resource_type
+        if self.resources is not None:
+            result['resources'] = self.resources
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('protection') is not None:
+            self.protection = m.get('protection')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
+        if m.get('resources') is not None:
+            self.resources = m.get('resources')
+        return self
+
+
+class UpdateResourcesDeleteProtectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateResourcesDeleteProtectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateResourcesDeleteProtectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
