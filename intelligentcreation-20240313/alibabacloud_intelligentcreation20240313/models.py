@@ -361,6 +361,8 @@ class ReferenceTag(TeaModel):
 class Text(TeaModel):
     def __init__(
         self,
+        agent_id: str = None,
+        agent_name: str = None,
         desc: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -378,6 +380,8 @@ class Text(TeaModel):
         user_name_create: str = None,
         user_name_modified: str = None,
     ):
+        self.agent_id = agent_id
+        self.agent_name = agent_name
         # This parameter is required.
         self.desc = desc
         self.gmt_create = gmt_create
@@ -410,6 +414,10 @@ class Text(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['agentName'] = self.agent_name
         if self.desc is not None:
             result['desc'] = self.desc
         if self.gmt_create is not None:
@@ -446,6 +454,10 @@ class Text(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('agentName') is not None:
+            self.agent_name = m.get('agentName')
         if m.get('desc') is not None:
             self.desc = m.get('desc')
         if m.get('gmtCreate') is not None:
@@ -567,6 +579,8 @@ class TextResult(TeaModel):
 class TextTask(TeaModel):
     def __init__(
         self,
+        agent_id: str = None,
+        agent_name: str = None,
         content_requirement: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -581,9 +595,12 @@ class TextTask(TeaModel):
         text_mode_type: str = None,
         text_task_id: int = None,
         text_task_status: str = None,
+        texts: Text = None,
         theme: str = None,
         theme_desc: str = None,
     ):
+        self.agent_id = agent_id
+        self.agent_name = agent_name
         self.content_requirement = content_requirement
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
@@ -601,12 +618,15 @@ class TextTask(TeaModel):
         self.text_mode_type = text_mode_type
         self.text_task_id = text_task_id
         self.text_task_status = text_task_status
+        self.texts = texts
         self.theme = theme
         self.theme_desc = theme_desc
 
     def validate(self):
         if self.reference_tag:
             self.reference_tag.validate()
+        if self.texts:
+            self.texts.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -614,6 +634,10 @@ class TextTask(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['agentName'] = self.agent_name
         if self.content_requirement is not None:
             result['contentRequirement'] = self.content_requirement
         if self.gmt_create is not None:
@@ -642,6 +666,8 @@ class TextTask(TeaModel):
             result['textTaskId'] = self.text_task_id
         if self.text_task_status is not None:
             result['textTaskStatus'] = self.text_task_status
+        if self.texts is not None:
+            result['texts'] = self.texts.to_map()
         if self.theme is not None:
             result['theme'] = self.theme
         if self.theme_desc is not None:
@@ -650,6 +676,10 @@ class TextTask(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('agentName') is not None:
+            self.agent_name = m.get('agentName')
         if m.get('contentRequirement') is not None:
             self.content_requirement = m.get('contentRequirement')
         if m.get('gmtCreate') is not None:
@@ -679,6 +709,9 @@ class TextTask(TeaModel):
             self.text_task_id = m.get('textTaskId')
         if m.get('textTaskStatus') is not None:
             self.text_task_status = m.get('textTaskStatus')
+        if m.get('texts') is not None:
+            temp_model = Text()
+            self.texts = temp_model.from_map(m['texts'])
         if m.get('theme') is not None:
             self.theme = m.get('theme')
         if m.get('themeDesc') is not None:
@@ -689,6 +722,7 @@ class TextTask(TeaModel):
 class TextTaskCreateCmd(TeaModel):
     def __init__(
         self,
+        agent_id: str = None,
         content_requirement: str = None,
         idempotent_id: str = None,
         industry: str = None,
@@ -703,6 +737,7 @@ class TextTaskCreateCmd(TeaModel):
         theme: str = None,
         themes: List[str] = None,
     ):
+        self.agent_id = agent_id
         self.content_requirement = content_requirement
         self.idempotent_id = idempotent_id
         self.industry = industry
@@ -730,6 +765,8 @@ class TextTaskCreateCmd(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
         if self.content_requirement is not None:
             result['contentRequirement'] = self.content_requirement
         if self.idempotent_id is not None:
@@ -760,6 +797,8 @@ class TextTaskCreateCmd(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
         if m.get('contentRequirement') is not None:
             self.content_requirement = m.get('contentRequirement')
         if m.get('idempotentId') is not None:
