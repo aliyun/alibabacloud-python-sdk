@@ -2303,6 +2303,8 @@ class CreateSqlLogTaskRequestFilters(TeaModel):
         value: str = None,
     ):
         # The name of the filter parameter.
+        # 
+        # >  For more information about the supported filter parameters and their valid values, see the following **supplement about the Key parameter**.
         self.key = key
         # The value of the filter parameter.
         self.value = value
@@ -2343,27 +2345,30 @@ class CreateSqlLogTaskRequest(TeaModel):
         start_time: int = None,
         type: str = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
         # The filter conditions.
         self.filters = filters
-        # The instance ID.
+        # The ID of the database instance.
         self.instance_id = instance_id
-        # The task name.
+        # The name of the task.
         self.name = name
         # The node ID.
-        self.node_id = node_id
-        # The role of the node in the PolarDB-X 2.0 instance. Valid values:
         # 
-        # *   **polarx_cn**: compute node.
-        # *   **polarx_dn**: data node.
+        # >  This parameter is available only for instances that run in a cluster architecture. You can specify this parameter to query the offline tasks of a specific node. By default, if this parameter is not specified, the information about the offline tasks of the primary node is returned.
+        self.node_id = node_id
+        # The role of the node of the PolarDB-X 2.0 database instance. Valid values:
+        # 
+        # *   **polarx_cn**: compute node
+        # *   **polarx_dn**: data node
         self.role = role
-        # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
         # The type of the task. Valid values:
         # 
-        # *   Export
-        # *   Query
+        # *   **Export**\
+        # *   **Query**\
+        # *   **Insight**\
         self.type = type
 
     def validate(self):
@@ -2433,17 +2438,25 @@ class CreateSqlLogTaskResponseBodyData(TeaModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The time when the task was created.
+        # The time when the task was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # The end of the time range to query.
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end = end
-        # The instance ID.
+        # The ID of the database instance.
         self.instance_id = instance_id
-        # The task name.
+        # The name of the task.
         self.name = name
-        # The beginning of the time range to query.
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start = start
-        # The status of the task.
+        # The state of the task. Valid values:
+        # 
+        # *   **INIT**: The task is to be scheduled.
+        # *   **RUNNING**: The task is running.
+        # *   **FAILED**: The task failed.
+        # *   **CANCELED**: The task is canceled.
+        # *   **COMPLETED**: The task is complete.
+        # 
+        # >  You can view the result of a task that is in the **COMPLETED** state.
         self.status = status
         # The task ID.
         self.task_id = task_id
@@ -2501,13 +2514,13 @@ class CreateSqlLogTaskResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The response code.
         self.code = code
-        # SqlLogTask
+        # The returned data.
         self.data = data
         # The returned message.
         # 
-        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+        # >  If the request was successful, **Successful** is returned. If the request failed, error information such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -2610,9 +2623,12 @@ class CreateStorageAnalysisTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The node ID.
+        # The node ID. For ApsaraDB for MongoDB instances, you can use this parameter to specify a node for storage analysis. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/123802.html) operation to query the information about nodes of an ApsaraDB for MongoDB instance.
         # 
-        # >  This parameter is reserved.
+        # *   If you set this parameter to a value in the **InsName** format, such as `d-bp1872fa24d5****`, you can call this operation to analyze the hidden node that corresponds to the node ID.
+        # *   If you set this parameter to a value in the `InsName#RoleId` format, such as `d-bp1872fa24d5****#299****5`, you can call this operation to analyze the specified node.
+        # 
+        # >  If you run a storage analysis task on an ApsaraDB for MongoDB replica set instances and you do not specify this parameter, only the hidden node of the instance is analyzed by default. If you run a storage analysis task on an ApsaraDB for MongoDB sharded cluster instance, we recommend that you set this parameter to specify a node.
         self.node_id = node_id
         # The table name. If you specify a table in the specified database, the operation analyzes the storage usage of the specified table. If you specify a table, you must also specify the database to which the table belongs by using **DbName**.
         self.table_name = table_name
@@ -4259,6 +4275,86 @@ class DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum(TeaModel):
         return self
 
 
+class DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel(TeaModel):
+    def __init__(
+        self,
+        analysis_ts: int = None,
+        level: int = None,
+        total_bytes: int = None,
+        total_keys: int = None,
+    ):
+        self.analysis_ts = analysis_ts
+        self.level = level
+        self.total_bytes = total_bytes
+        self.total_keys = total_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_ts is not None:
+            result['AnalysisTs'] = self.analysis_ts
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.total_bytes is not None:
+            result['TotalBytes'] = self.total_bytes
+        if self.total_keys is not None:
+            result['TotalKeys'] = self.total_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnalysisTs') is not None:
+            self.analysis_ts = m.get('AnalysisTs')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('TotalBytes') is not None:
+            self.total_bytes = m.get('TotalBytes')
+        if m.get('TotalKeys') is not None:
+            self.total_keys = m.get('TotalKeys')
+        return self
+
+
+class DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount(TeaModel):
+    def __init__(
+        self,
+        expiry_level: List[DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel] = None,
+    ):
+        self.expiry_level = expiry_level
+
+    def validate(self):
+        if self.expiry_level:
+            for k in self.expiry_level:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExpiryLevel'] = []
+        if self.expiry_level is not None:
+            for k in self.expiry_level:
+                result['ExpiryLevel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.expiry_level = []
+        if m.get('ExpiryLevel') is not None:
+            for k in m.get('ExpiryLevel'):
+                temp_model = DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel()
+                self.expiry_level.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeCacheAnalysisJobResponseBodyDataKeyPrefixesPrefix(TeaModel):
     def __init__(
         self,
@@ -4579,6 +4675,7 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
         self,
         big_keys: DescribeCacheAnalysisJobResponseBodyDataBigKeys = None,
         big_keys_of_num: DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum = None,
+        expiry_keys_level_count: DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount = None,
         instance_id: str = None,
         job_id: str = None,
         key_prefixes: DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes = None,
@@ -4592,6 +4689,7 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
         self.big_keys = big_keys
         # The details of the large keys. The returned large keys are sorted in descending order based on the number of keys.
         self.big_keys_of_num = big_keys_of_num
+        self.expiry_keys_level_count = expiry_keys_level_count
         # The instance ID.
         self.instance_id = instance_id
         # The ID of the cache analysis task.
@@ -4621,6 +4719,8 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
             self.big_keys.validate()
         if self.big_keys_of_num:
             self.big_keys_of_num.validate()
+        if self.expiry_keys_level_count:
+            self.expiry_keys_level_count.validate()
         if self.key_prefixes:
             self.key_prefixes.validate()
         if self.unex_big_keys_of_bytes:
@@ -4638,6 +4738,8 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
             result['BigKeys'] = self.big_keys.to_map()
         if self.big_keys_of_num is not None:
             result['BigKeysOfNum'] = self.big_keys_of_num.to_map()
+        if self.expiry_keys_level_count is not None:
+            result['ExpiryKeysLevelCount'] = self.expiry_keys_level_count.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.job_id is not None:
@@ -4664,6 +4766,9 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
         if m.get('BigKeysOfNum') is not None:
             temp_model = DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum()
             self.big_keys_of_num = temp_model.from_map(m['BigKeysOfNum'])
+        if m.get('ExpiryKeysLevelCount') is not None:
+            temp_model = DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount()
+            self.expiry_keys_level_count = temp_model.from_map(m['ExpiryKeysLevelCount'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('JobId') is not None:
@@ -7659,7 +7764,7 @@ class DescribeSqlLogConfigRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # The instance ID.
+        # The ID of the database instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -7705,41 +7810,77 @@ class DescribeSqlLogConfigResponseBodyData(TeaModel):
         support_version: str = None,
         version: str = None,
     ):
-        # The cold storage duration.
+        # Indicates whether the cold data storage is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.cold_enable = cold_enable
-        # The cold storage duration.
+        # The number of days for which the SQL Explorer and Audit data is stored in cold storage.
         self.cold_retention = cold_retention
-        # The time when cold storage was enabled.
+        # The time when the cold data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.cold_start_time = cold_start_time
-        # The version of the collector.
+        # The collector version. Valid values:
+        # 
+        # *   **MYSQL_V0**\
+        # *   **MYSQL_V1**\
+        # *   **MYSQL_V2**\
+        # *   **MYSQL_V3**\
+        # *   **PG_V1**\
+        # *   **rdspg_v1**\
+        # *   **polarpg_v1**\
         self.collector_version = collector_version
-        # Indicates whether hot storage was enabled.
+        # Indicates whether the hot data storage is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.hot_enable = hot_enable
-        # The hot storage duration.
+        # The number of days for which the SQL Explorer and Audit data is stored in hot storage.
         self.hot_retention = hot_retention
-        # The time when hot storage was enabled.
+        # The time when the hot data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.hot_start_time = hot_start_time
         # A reserved parameter.
         self.log_filter = log_filter
-        # Indicates whether SQL Explorer and Audit was enabled.
-        self.request_enable = request_enable
-        # The time when SQL Explorer and Audit was enabled.
-        self.request_start_time = request_start_time
-        # The time when SQL Explorer and Audit was disabled.
+        # Indicates whether the SQL Explorer feature is enabled. Valid values:
         # 
-        # >  If DAS Enterprise Edition V1 was enabled, this parameter indicates the time when DAS Enterprise Edition expired.
+        # *   **true**\
+        # *   **false**\
+        self.request_enable = request_enable
+        # The time when the SQL Explorer feature was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        self.request_start_time = request_start_time
+        # The time when DAS Enterprise Edition V1 expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.request_stop_time = request_stop_time
-        # The storage duration of the SQL Explorer and Audit data.
+        # The total storage duration of the SQL Explorer and Audit data. The value of this parameter is the sum of the values of **HotRetention** and **ColdRetention**. Unit: day.
         self.retention = retention
-        # Indicates whether DAS Enterprise Edition was enabled.
+        # Indicates whether DAS Enterprise Edition is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.sql_log_enable = sql_log_enable
-        # The status of data migration.
+        # The state of data migration. Valid values:
+        # 
+        # *   **FINISH**: The historical data is migrated.
+        # *   **RUNNING**: The historical data is being migrated.
+        # *   **FAILURE**: The historical data fails to be migrated.
         self.sql_log_state = sql_log_state
-        # The time when SQL Explorer and Audit was enabled.
+        # The time when DAS Enterprise Edition was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.sql_log_visible_time = sql_log_visible_time
-        # The supported versions of Database Autonomy Service (DAS) Enterprise Edition.
+        # The latest version of DAS Enterprise Edition that supports the database instance. Valid values:
+        # 
+        # *   **SQL_LOG_V0**: DAS Enterprise Edition V0.
+        # *   **SQL_LOG_V1**: DAS Enterprise version V1.
+        # *   **SQL_LOG_V2**: DAS Enterprise Edition V2.
+        # *   **SQL_LOG_V3**: DAS Enterprise Edition V3.
+        # *   **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
+        # *   **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
         self.support_version = support_version
-        # The version of SQL Explorer and Audit.
+        # The version of DAS Enterprise Edition that is enabled for the database instance. Valid values:
+        # 
+        # *   **SQL_LOG_V0**: DAS Enterprise Edition V0.
+        # *   **SQL_LOG_V1**: DAS Enterprise version V1.
+        # *   **SQL_LOG_V2**: DAS Enterprise Edition V2.
+        # *   **SQL_LOG_V3**: DAS Enterprise Edition V3.
+        # *   **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
+        # *   **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
         self.version = version
 
     def validate(self):
@@ -7835,20 +7976,20 @@ class DescribeSqlLogConfigResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The response code.
         self.code = code
-        # SqlLogConfig
+        # The data returned.
         self.data = data
         # The returned message.
         # 
-        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -7936,8 +8077,11 @@ class DescribeSqlLogRecordsRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Parameter filtering
+        # The name of the filter parameter.
+        # 
+        # >  For more information about the supported filter parameters and their valid values, see the following **supplement about the Key parameter**.
         self.key = key
+        # The value of the filter parameter.
         self.value = value
 
     def validate(self):
@@ -7976,14 +8120,29 @@ class DescribeSqlLogRecordsRequest(TeaModel):
         role: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
+        # The filter conditions.
         self.filters = filters
+        # The ID of the database instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # *   For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter is available only for Cluster Edition instances. By default, if this parameter is not specified, the information about the logs of the primary node is returned.
+        # *   Set this parameter to **polarx_cn** or **polarx_dn** if the node that you want to query belongs to a PolarDB-X 2.0 database instance. A value of polarx_cn indicates a compute node. A value of polarx_dn indicates a data node.
         self.node_id = node_id
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The role of the node of the PolarDB-X 2.0 database instance. Valid values:
+        # 
+        # *   \\*\\*polarx_cn\\*\\*: compute node
+        # *   \\*\\*polarx_dn\\*\\*: data node
         self.role = role
+        # The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -8073,45 +8232,83 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(TeaModel):
         state: str = None,
         thread_id: int = None,
         trace_id: str = None,
-        trx_id: int = None,
+        trx_id: str = None,
         update_rows: int = None,
         use_imci_engine: str = None,
         vip: str = None,
         writes: int = None,
     ):
+        # The account of the database.
         self.account_name = account_name
+        # This is a reserved parameter.
         self.collection = collection
+        # The duration of the query. Unit: milliseconds.
         self.consume = consume
+        # The CPU execution duration. Unit: microseconds.
         self.cpu_time = cpu_time
+        # The name of the database.
         self.dbname = dbname
+        # The time when the query was performed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.execute_time = execute_time
+        # The extended information. This parameter is a reserved parameter.
         self.ext = ext
+        # The number of rows that are pulled by the compute nodes of the PolarDB-X 2.0 database instance.
         self.frows = frows
+        # The IP address of the client.
         self.host_address = host_address
+        # The lock wait duration. Unit: milliseconds.
         self.lock_time = lock_time
+        # The number of logical reads.
         self.logic_read = logic_read
+        # The node ID.
         self.node_id = node_id
+        # The time when the query was performed. The value of this parameter is a UNIX timestamp. Unit: milliseconds.
         self.origin_time = origin_time
+        # The parallel queue time of the PolarDB for MySQL instance. Unit: milliseconds.
         self.parallel_degree = parallel_degree
+        # The parallelism of the PolarDB for MySQL instance.
         self.parallel_queue_time = parallel_queue_time
+        # The number of physical asynchronous reads.
         self.physic_async_read = physic_async_read
+        # The number of physical reads.
         self.physic_read = physic_read
+        # The number of physical synchronous reads.
         self.physic_sync_read = physic_sync_read
+        # The number of rows that are returned.
         self.return_rows = return_rows
+        # The total number of rows that are updated or returned by the compute nodes of the PolarDB-X 2.0 database instance.
         self.rows = rows
+        # The number of rows that are scanned.
         self.scan_rows = scan_rows
+        # The number of requests that are sent to the data nodes by the compute nodes of the PolarDB-X 2.0 database instance.
         self.scnt = scnt
-        # SQL ID。
+        # The SQL statement ID.
         self.sql_id = sql_id
+        # The SQL statement.
         self.sql_text = sql_text
+        # The type of the SQL statement.
         self.sql_type = sql_type
+        # The state of the query. Valid values:
+        # 
+        # *   **0**: The query was successful.
+        # *   **1**: The query failed to be performed.
         self.state = state
+        # The thread ID.
         self.thread_id = thread_id
+        # The trace ID of the PolarDB-X 2.0 database instance. The value is the execution ID of the SQL statement on the data nodes.
         self.trace_id = trace_id
+        # The transaction ID.
         self.trx_id = trx_id
+        # The number of rows that are updated.
         self.update_rows = update_rows
+        # Indicates whether the In-Memory Column Index (IMCI) feature is enabled for the PolarDB for MySQL instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.use_imci_engine = use_imci_engine
+        # The IP address that is resolved from the endpoint of the query link.
         self.vip = vip
+        # The number of writes that are performed by the ApsaraDB RDS for SQL Server engine.
         self.writes = writes
 
     def validate(self):
@@ -8267,6 +8464,7 @@ class DescribeSqlLogRecordsResponseBodyDataItems(TeaModel):
         self,
         sqllog_record: List[DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord] = None,
     ):
+        # The SQL log data.
         self.sqllog_record = sqllog_record
 
     def validate(self):
@@ -8307,11 +8505,22 @@ class DescribeSqlLogRecordsResponseBodyData(TeaModel):
         start_time: int = None,
         total_records: int = None,
     ):
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # Indicates whether the task was complete. Valid values:
+        # 
+        # *   **0**: The task failed.
+        # *   **1**: The task was complete.
+        # 
+        # >  If the value of **Finish** is 0 and the value of **JobId** is returned, the request is an asynchronous request and the return result cannot be directly obtained. You must query the return result by using the value of **JobId**. Specify JobId as the key of **Filters** and the value of **JobId** as the value of Filters. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
         self.finish = finish
+        # The data.
         self.items = items
+        # The ID of the asynchronous task.
         self.job_id = job_id
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The total number of entries returned.
         self.total_records = total_records
 
     def validate(self):
@@ -8365,11 +8574,20 @@ class DescribeSqlLogRecordsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response code.
         self.code = code
-        # SqlLogDetailResult
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, error information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -8456,6 +8674,8 @@ class DescribeSqlLogStatisticRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the database instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -8489,11 +8709,17 @@ class DescribeSqlLogStatisticResponseBodyData(TeaModel):
         import_sql_size: int = None,
         timestamp: int = None,
     ):
+        # The size of the SQL Explorer and Audit data that is stored in cold storage. Unit: bytes.
         self.cold_sql_size = cold_sql_size
+        # The free quota for cold data storage. Unit: bytes.
         self.free_cold_sql_size = free_cold_sql_size
+        # The free quota for hot data storage. Unit: bytes.
         self.free_hot_sql_size = free_hot_sql_size
+        # The size of the SQL Explorer and Audit data that is stored in hot storage. Unit: bytes.
         self.hot_sql_size = hot_sql_size
+        # The size of the SQL Explorer and Audit data that was generated in the most recent day. Unit: bytes.
         self.import_sql_size = import_sql_size
+        # The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -8545,11 +8771,20 @@ class DescribeSqlLogStatisticResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response code.
         self.code = code
-        # SqlLogStatistic
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -8639,9 +8874,13 @@ class DescribeSqlLogTaskRequest(TeaModel):
         page_size: int = None,
         task_id: str = None,
     ):
+        # The ID of the database instance.
         self.instance_id = instance_id
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -8682,7 +8921,11 @@ class DescribeSqlLogTaskResponseBodyDataFilters(TeaModel):
         key: str = None,
         value: Any = None,
     ):
+        # The name of the filter parameter.
+        # 
+        # >  For more information about the filter parameters, see the **Valid values of Key** section of this topic.
         self.key = key
+        # The value of the filter parameter.
         self.value = value
 
     def validate(self):
@@ -8739,45 +8982,85 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
         state: str = None,
         thread_id: int = None,
         trace_id: str = None,
-        trx_id: int = None,
+        trx_id: str = None,
         update_rows: int = None,
         use_imci_engine: str = None,
         vip: str = None,
         writes: int = None,
     ):
+        # The database account.
         self.account_name = account_name
+        # The execution duration. Unit: millisecond.
         self.consume = consume
+        # The CPU execution time. Unit: microsecond.
         self.cpu_time = cpu_time
+        # The database name.
         self.dbname = dbname
-        # yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\"
+        # The execution time. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.execute_time = execute_time
+        # The extended information. This parameter is a reserved parameter.
         self.ext = ext
+        # The number of rows pulled by the CNs of the PolarDB-X 2.0 instance.
         self.frows = frows
+        # The IP address of the client.
         self.host_address = host_address
+        # The lock wait time. Unit: millisecond.
         self.lock_time = lock_time
+        # The number of logical reads.
         self.logic_read = logic_read
+        # The ID of the child node.
         self.node_id = node_id
-        # ts unix
+        # The execution timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.origin_time = origin_time
+        # The wait time of parallel queries in the queue in the PolarDB for MySQL instance. Unit: millisecond.
         self.parallel_degree = parallel_degree
+        # The degree of parallelism (DOP) value of the PolarDB for MySQL instance.
         self.parallel_queue_time = parallel_queue_time
+        # The number of physical asynchronous reads.
         self.physic_async_read = physic_async_read
+        # The total number of physical reads.
         self.physic_read = physic_read
+        # The number of physical synchronous reads.
         self.physic_sync_read = physic_sync_read
+        # The number of rows returned.
         self.return_rows = return_rows
+        # The total number of rows updated or returned by the CNs of the PolarDB-X 2.0 instance.
         self.rows = rows
+        # The number of rows scanned.
         self.scan_rows = scan_rows
+        # The number of requests from the compute nodes (CNs) to the data nodes (DNs) in the PolarDB-X 2.0 instance.
         self.scnt = scnt
+        # The ID of the SQL statement.
         self.sql_id = sql_id
+        # The queried SQL statement.
         self.sql_text = sql_text
+        # The type of the SQL statement. Valid values:
+        # 
+        # *   **SELECT**\
+        # *   **UPDATE**\
+        # *   **DELETE**\
         self.sql_type = sql_type
+        # The execution result of the SQL statement. Valid values:
+        # 
+        # *   **0**: The execution was successful.
+        # *   **1**: The execution failed.
         self.state = state
+        # The thread ID.
         self.thread_id = thread_id
+        # The trace ID of the PolarDB-X 2.0 instance, which is the execution ID of the SQL statement on the DN.
         self.trace_id = trace_id
+        # The transaction ID.
         self.trx_id = trx_id
+        # The number of rows updated.
         self.update_rows = update_rows
+        # Indicates whether the PolarDB for MySQL instance uses In-Memory Column Indexes (IMCIs). Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.use_imci_engine = use_imci_engine
+        # The IP address to which the endpoint used for query is resolved.
         self.vip = vip
+        # The number of writes to the ApsaraDB RDS for SQL Server instance.
         self.writes = writes
 
     def validate(self):
@@ -8940,17 +9223,43 @@ class DescribeSqlLogTaskResponseBodyData(TeaModel):
         task_type: str = None,
         total: int = None,
     ):
+        # The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end = end
+        # Indicates whether the task has expired. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.expire = expire
+        # The download URL of the export task.
         self.export = export
+        # The filter parameters.
         self.filters = filters
+        # The task name.
         self.name = name
+        # The results of the offline querying task.
         self.queries = queries
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start = start
+        # The task state. Valid values:
+        # 
+        # *   **INIT**: The task is to be scheduled.
+        # *   **RUNNING**: The task is running.
+        # *   **FAILED**: The task failed.
+        # *   **CANCELED**: The task is canceled.
+        # *   **COMPLETED**: The task is complete.
+        # 
+        # >  If a task is in the **COMPLETED** state, you can view the results of the task.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The task type. Valid values:
+        # 
+        # *   **Export**\
+        # *   **Query**\
         self.task_type = task_type
+        # The total number of tasks.
         self.total = total
 
     def validate(self):
@@ -9043,11 +9352,20 @@ class DescribeSqlLogTaskResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response code.
         self.code = code
-        # SqlLogTaskDetail
+        # The data returned.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -9136,6 +9454,8 @@ class DescribeSqlLogTasksRequestFilters(TeaModel):
         value: str = None,
     ):
         # The name of the filter parameter.
+        # 
+        # >  For more information about the filter parameters, see the **Valid values of Key** section of this topic.
         self.key = key
         # The value of the filter parameter.
         self.value = value
@@ -9175,21 +9495,21 @@ class DescribeSqlLogTasksRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # The filter conditions.
+        # The filter parameters.
         self.filters = filters
         # The ID of the database instance.
         self.instance_id = instance_id
         # The node ID.
         # 
-        # > This parameter is available only for instances that run in a cluster architecture. You can specify this parameter to query the logs of a specific node. If this parameter is not specified, the logs of the primary node are returned by default.
+        # >  This parameter is available only for instances that are deployed in the cluster architecture. You can specify this parameter to query the tasks of a specific node. If this parameter is not specified, the tasks of the primary node are returned by default.
         self.node_id = node_id
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -9251,6 +9571,8 @@ class DescribeSqlLogTasksResponseBodyDataListFilters(TeaModel):
         value: str = None,
     ):
         # The name of the filter parameter.
+        # 
+        # >  For more information about the filter parameters, see the **Valid values of Key** section of this topic.
         self.key = key
         # The value of the filter parameter.
         self.value = value
@@ -9299,40 +9621,53 @@ class DescribeSqlLogTasksResponseBodyDataList(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The time when the analysis task was complete.
+        # The time when the analysis task was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.analysis_task_finish_time = analysis_task_finish_time
-        # The status of the analysis task.
+        # The state of the analysis task.
+        # 
+        # >  This parameter is a system parameter. You do not need to pay attention to the parameter.
         self.analysis_task_status = analysis_task_status
-        # The time when the task was created.
+        # The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The end of the time range to query.
+        # The time when the task ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end = end
-        # Indicates whether the task expires.
+        # Indicates whether the task expired. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.expire = expire
-        # The filter conditions.
+        # The filter parameters.
         self.filters = filters
-        # The instance ID.
+        # The ID of the database instance.
         self.instance_id = instance_id
-        # The number of log records
+        # The number of log records.
         self.log_count = log_count
         # The task name.
         self.name = name
         # The task progress.
         self.progress = progress
-        # The Object Storage Service (OSS) URL or other information.
+        # The URL that is returned if the value of TaskType is **Export**.
         self.result = result
-        # The number of files scanned
+        # The number of files that are scanned.
         self.scan_file_size = scan_file_size
-        # The beginning of the time range to query.
+        # The time when the task started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start = start
-        # The status of the task.
+        # The task state. Valid values:
+        # 
+        # *   **INIT**: The task is to be scheduled.
+        # *   **RUNNING**: The task is running.
+        # *   **FAILED**: The task failed.
+        # *   **CANCELED**: The task is canceled.
+        # *   **COMPLETED**: The task is complete.
+        # 
+        # >  If a task is in the **COMPLETED** state, you can view the results of the task.
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
-        # *   Export
-        # *   Query
+        # *   **Export**\
+        # *   **Query**\
         self.task_type = task_type
 
     def validate(self):
@@ -9437,7 +9772,7 @@ class DescribeSqlLogTasksResponseBodyData(TeaModel):
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The number of tasks.
         self.total = total
 
     def validate(self):
@@ -9489,13 +9824,13 @@ class DescribeSqlLogTasksResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The response code.
         self.code = code
-        # ListResult
+        # The data returned.
         self.data = data
         # The returned message.
         # 
-        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -15151,9 +15486,9 @@ class GetDasSQLLogHotDataRequest(TeaModel):
         # *   **UPDATE**\
         # *   **DELETE**\
         self.sql_type = sql_type
-        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: millisecond.
         # 
-        # >  You can query only the data that is generated after the new SQL Explorer and Audit feature is enabled. The start time can be up to seven days earlier than the current time.
+        # >  You can query only the data generated after DAS Enterprise Edition V2 or V3 was enabled. The beginning of the time range to query can be up to seven days earlier than the current time.
         # 
         # This parameter is required.
         self.start = start
@@ -21263,9 +21598,9 @@ class GetMySQLAllSessionAsyncRequest(TeaModel):
         # 
         # >  You must specify this parameter for PolarDB for MySQL clusters. If you do not specify a node ID, the session data of the primary node is returned by default.
         self.node_id = node_id
-        # The ID of the asynchronous request.
+        # The asynchronous request ID.
         # 
-        # >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
+        # >  GetMySQLAllSessionAsync is an asynchronous operation. After a request is sent, the system does not return complete results but returns a **request ID**. You need to use the **request ID** to initiate requests until the value of the **isFinish** field in the returned results is **true**, the complete results are returned. This indicates that to obtain complete data, you must call this operation at least twice.
         self.result_id = result_id
 
     def validate(self):
@@ -28459,7 +28794,7 @@ class GetStorageAnalysisResultRequest(TeaModel):
         # 
         # >  This parameter is reserved.
         self.node_id = node_id
-        # The task ID, which is returned after you call the CreateStorageAnalysisTask operation.
+        # The task ID. You can obtain the task ID from the response of the [CreateStorageAnalysisTask](https://help.aliyun.com/document_detail/2639140.html) operation.
         # 
         # This parameter is required.
         self.task_id = task_id
@@ -28501,21 +28836,34 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeI
         optimize_item_name: str = None,
         table_name: str = None,
     ):
-        # The data associated with items to be optimized.
+        # The data associated with the items to be optimized, which is in the JSON format.
         self.associated_data = associated_data
-        # The database name.
+        # The name of the database.
         self.db_name = db_name
         # The optimization suggestion. Valid values:
         # 
-        # *   **NEED_ANALYZE_TABLE**: You can execute the ANALYZE TABLE statement on the related table during off-peak hours.
-        # *   **NEED_OPTIMIZE_TABLE**: You can reclaim fragments during off-peak hours.
+        # *   **NEED_ANALYZE_TABLE**: Execute the `ANALYZE TABLE` statement on the table during off-peak hours.
+        # *   **NEED_OPTIMIZE_TABLE**: Reclaim space fragments during off-peak hours.
+        # *   **CHANGE_TABLE_ENGINE_IF_NECESSARY**: Change the storage engine type of a table after risk assessment.
+        # *   **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: Pay attention to the usage of auto-increment IDs.
+        # *   **DUPLICATE_INDEX**: Optimize indexes of tables.
+        # *   **TABLE_SIZE**: Pay attention to the table size.
+        # *   **TABLE_ROWS_AND_AVG_ROW_LENGTH**: Pay attention to the number of rows in a table and the average row length.
+        # *   **STORAGE_USED_PERCENT**: Pay attention to the space usage to prevent the instance from being locked if the instance is full.
         self.optimize_advice = optimize_advice
         # The item to be optimized. Valid values:
         # 
-        # *   **NEED_ANALYZE_TABLE**: The statistical data in information_schema.tables differs greatly from the physical file size.
-        # *   **NEED_OPTIMIZE_TABLE**: The fragmentation degree of the table is high.
+        # *   **NEED_ANALYZE_TABLE**: tables whose storage statistics obtained from `information_schema.tables` are 50 GB larger or smaller than the physical file sizes.
+        # *   **NEED_OPTIMIZE_TABLE**: tables whose space fragments are larger than 6 GB and whose fragmentation rates are greater than 30%. The fragmentation rate of a table is generally calculated based on the following formula: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, PhyTotalSize = DataSize + IndexSize + DataFree. Thus, the fragmentation rate can be calculated based on the following formula: `Fragmentation rate = DataFree/PhyTotalSize`.
+        # *   **TABLE_ENGINE**: tables whose storage engines are not InnoDB or XEngine.
+        # *   **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: tables whose usages of auto-increment IDs exceed 80%.
+        # *   **DUPLICATE_INDEX**: tables whose indexes are redundant or duplicate.
+        # *   **TABLE_SIZE**: single tables whose sizes are larger than 50 GB.
+        # *   **TABLE_ROWS_AND_AVG_ROW_LENGTH**: single tables that contain more than 5 million rows and whose average row lengths exceed 10 KB.
+        # *   **TOTAL_DATA_FREE**: instances whose reclaimable spaces are larger than 60 GB and whose total fragmentation rate is larger than 5%.
+        # *   **STORAGE_USED_PERCENT**: instances whose space usage is larger than 90%.
         self.optimize_item_name = optimize_item_name
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -28571,44 +28919,39 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats(Te
         table_type: str = None,
         total_size: int = None,
     ):
-        # The average row length.
-        # 
-        # >  Unit: bytes.
+        # The average length of rows. Unit: bytes.
         self.avg_row_length = avg_row_length
-        # The size of storage occupied by fragments.
-        # 
-        # >  Unit: bytes.
+        # The size of space fragments. Unit: bytes.
         self.data_free = data_free
-        # The size of storage occupied by the table data.
-        # 
-        # >  Unit: bytes.
+        # The storage space occupied by data. Unit: bytes.
         self.data_size = data_size
-        # The database name.
+        # The name of the database.
         self.db_name = db_name
-        # The type of the engine used by the table.
+        # The type of the storage engine used by the table.
         self.engine = engine
+        # 可回收空间大小（碎片空间大小），单位为Byte。
+        # 
+        # > 该参数仅适用于MongoDB实例。表碎片率计算方式为：`FragmentSize/PhyTotalSize`。
         self.fragment_size = fragment_size
-        # The size of storage occupied by indexes.
-        # 
-        # >  Unit: bytes.
+        # The storage space occupied by indexes. Unit: bytes.
         self.index_size = index_size
-        # The size of the table storage.
+        # The storage space of the table. Unit: bytes.
         # 
-        # >  Unit: byte. The value of the parameter is the sum of DataSize, IndexSize, and DataFree.
+        # >  The value of this parameter is the sum of the values of **DataSize**, **IndexSize**, and **DataFree**.
         self.phy_total_size = phy_total_size
-        # The physical file size of the table.
+        # The physical file size of the table. Unit: bytes.
         # 
-        # >  Unit: byte. You may fail to obtain the physical file size because of the deployment mode of the database instance.
+        # >  You may fail to obtain the physical file size because of the deployment mode of the database instance.
         self.physical_file_size = physical_file_size
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
         # The number of rows in the table.
         self.table_rows = table_rows
-        # The table type.
+        # The type of the table.
         self.table_type = table_type
-        # The size of storage occupied by table data and indexes.
+        # The storage space occupied by table data and indexes. Unit: bytes.
         # 
-        # >  Unit: byte. The value of the parameter is the sum of DataSize and IndexSize.
+        # >  The value of this parameter is the sum of the values of **DataSize** and **IndexSize**.
         self.total_size = total_size
 
     def validate(self):
@@ -28699,13 +29042,11 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult(TeaModel):
         self.analysis_error_type = analysis_error_type
         # Indicates whether the analysis on the database and table is successful.
         self.analysis_success = analysis_success
-        # The estimated daily storage usage increment in the last seven days.
-        # 
-        # >  Unit: bytes.
+        # The estimated average daily growth of the used storage space in the previous seven days. Unit: bytes.
         self.daily_increment = daily_increment
-        # The estimated number of days before the remaining storage runs out.
+        # The estimated number of days for which the remaining storage space is available.
         self.estimate_available_days = estimate_available_days
-        # The list of items to be optimized.
+        # The items to be optimized, which are generated based on DAS default rules. You can ignore these items based on your business requirements, and create custom rules to generate items to be optimized based on other basic data that is returned.
         self.need_optimize_item_list = need_optimize_item_list
         # The information about the table.
         self.table_stats = table_stats
@@ -29823,23 +30164,33 @@ class ModifySqlLogConfigRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         # 
-        # >  By default, the latest version of DAS Enterprise Edition is enabled.
+        # >  This parameter is required if you want to enable DAS Enterprise Edition. By default, the latest version of DAS Enterprise Edition that supports the database instance is enabled.
         self.enable = enable
         # A reserved parameter.
         self.filters = filters
-        # The number of days for which data is stored in hot storage.
+        # The number of days for which the SQL Explorer and Audit data is stored in hot storage. Valid values: 1 to 7.
         # 
-        # >  This parameter is applicable only to DAS Enterprise Edition V3.
+        # >  This parameter is required if only DAS Enterprise Edition V3 can be enabled for the database instance.
         self.hot_retention = hot_retention
-        # The instance ID.
+        # The ID of the database instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to enable SQL Explorer.
+        # Specifies whether to enable the SQL Explorer feature. Valid values:
         # 
-        # >  This parameter is applicable only to DAS Enterprise Edition V3.
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  This parameter is required if only DAS Enterprise Edition V3 can be enabled for the database instance.
         self.request_enable = request_enable
-        # The number of days for which data generated by SQL Audit is retained.
+        # The total storage duration of the SQL Explorer and Audit data. Unit: day. Valid values:
+        # 
+        # *   7
+        # *   30
+        # *   180
+        # *   365
+        # 
+        # >  If you want to enable DAS Enterprise Edition V3, the value of this parameter must be greater than or equal to 30.
         self.retention = retention
 
     def validate(self):
@@ -29911,39 +30262,77 @@ class ModifySqlLogConfigResponseBodyData(TeaModel):
         support_version: str = None,
         version: str = None,
     ):
-        # Indicates whether cold storage is enabled.
+        # Indicates whether the cold data storage is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.cold_enable = cold_enable
-        # The number of days for which data is stored in cold storage. The value of this parameter is the value of Retention minus the value of HotRetention.
+        # The number of days for which the SQL Explorer and Audit data is stored in cold storage. The value is calculated by using the following formula: Value of ColdRetention = Value of Retention - Value of HotRetention.``
         self.cold_retention = cold_retention
-        # The time when cold storage was enabled.
+        # The time when the cold data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.cold_start_time = cold_start_time
-        # The collector version.
+        # The collector version. Valid values:
+        # 
+        # *   **MYSQL_V0**\
+        # *   **MYSQL_V1**\
+        # *   **MYSQL_V2**\
+        # *   **MYSQL_V3**\
+        # *   **PG_V1**\
+        # *   **rdspg_v1**\
+        # *   **polarpg_v1**\
         self.collector_version = collector_version
-        # Indicates whether hot storage is enabled.
+        # Indicates whether the hot data storage is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.hot_enable = hot_enable
-        # The number of days for which data is stored in hot storage.
+        # The number of days for which the SQL Explorer and Audit data is stored in hot storage.
         self.hot_retention = hot_retention
-        # The time when hot storage was enabled.
+        # The time when the hot data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.hot_start_time = hot_start_time
         # A reserved parameter.
         self.log_filter = log_filter
-        # Indicates whether SQL Explorer is enabled.
+        # Indicates whether the SQL Explorer feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.request_enable = request_enable
-        # The time when SQL Explorer was enabled.
+        # The time when the SQL Explorer feature was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.request_start_time = request_start_time
-        # The time when SQL Explorer will be disabled.
+        # The time when DAS Enterprise Edition V1 expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.request_stop_time = request_stop_time
-        # The number of days for which data generated by SQL Audit is retained.
+        # The total storage duration of the SQL Explorer and Audit data. Unit: day.
         self.retention = retention
-        # Indicates whether DAS Enterprise Edition is enabled.
+        # Indicates whether DAS Enterprise Edition is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.sql_log_enable = sql_log_enable
-        # The state of data migration.
+        # The state of data migration. Valid values:
+        # 
+        # *   **FINISH**: The historical data is migrated.
+        # *   **RUNNING**: The historical data is being migrated.
+        # *   **FAILURE**: The historical data fails to be migrated.
         self.sql_log_state = sql_log_state
-        # The time when SQL Audit was enabled.
+        # The time when DAS Enterprise Edition was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.sql_log_visible_time = sql_log_visible_time
-        # The latest version of DAS Enterprise Edition that is supported by the database instance.
+        # The latest version of DAS Enterprise Edition that supports the database instance. Valid values:
+        # 
+        # *   **SQL_LOG_V0**: DAS Enterprise Edition V0.
+        # *   **SQL_LOG_V1**: DAS Enterprise Edition V1.
+        # *   **SQL_LOG_V2**: DAS Enterprise Edition V2.
+        # *   **SQL_LOG_V3**: DAS Enterprise Edition V3.
+        # *   **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
+        # *   **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
         self.support_version = support_version
-        # The version of DAS Enterprise Edition that is enabled.
+        # The version of DAS Enterprise Edition that is enabled for the database instance. Valid values:
+        # 
+        # *   **SQL_LOG_V0**: DAS Enterprise Edition V0.
+        # *   **SQL_LOG_V1**: DAS Enterprise Edition V1.
+        # *   **SQL_LOG_V2**: DAS Enterprise Edition V2.
+        # *   **SQL_LOG_V3**: DAS Enterprise Edition V3.
+        # *   **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
+        # *   **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
         self.version = version
 
     def validate(self):
@@ -30043,9 +30432,9 @@ class ModifySqlLogConfigResponseBody(TeaModel):
         self.code = code
         # The data returned.
         self.data = data
-        # The message that is returned for the request.
+        # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, error information such as an error code is returned.
+        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -31070,7 +31459,7 @@ class UpdateAutoResourceOptimizeRulesAsyncRequest(TeaModel):
         self.instance_ids = instance_ids
         # The ID of the asynchronous request.
         # 
-        # >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
+        # >  Asynchronous calls do not immediately return the complete results. To obtain the complete results, you must use the value of **ResultId** returned in the response to re-initiate the call until the value of **isFinish** is **true**.**** In this case, you must call this operation at least twice.
         self.result_id = result_id
         # The fragmentation rate that triggers automatic fragment recycling of a single physical table. Valid values: **0.10** to **0.99**.
         # 
@@ -31678,14 +32067,14 @@ class UpdateAutoThrottleRulesAsyncRequest(TeaModel):
         max_throttle_time: float = None,
         result_id: str = None,
     ):
-        # The duration threshold for triggering automatic SQL throttling. Set this parameter to a positive integer that is greater than or equal to 2. Unit: minutes.
+        # The duration threshold for triggering automatic SQL throttling. Set this parameter to an integer that is greater than or equal to 2. Unit: minutes.
         # 
         # This parameter is required.
         self.abnormal_duration = abnormal_duration
-        # The maximum number of active sessions.
+        # The threshold for the number of active sessions.
         # 
-        # *   Specify an integer that is greater than or equal to 16 when the CPU utilization threshold and the maximum number of active sessions are in the **OR** relationship.
-        # *   Specify an integer that is greater than or equal to 2 when the CPU utilization threshold and the maximum number of active sessions are in the **AND** relationship.
+        # *   If this parameter and CpuUsage are in the **OR** relationship, set this parameter to an integer that is greater than or equal to 16.
+        # *   If this parameter and CpuUsage are in the **AND** relationship, set this parameter to an integer that is greater than or equal to 2.
         # 
         # This parameter is required.
         self.active_sessions = active_sessions
@@ -31699,7 +32088,7 @@ class UpdateAutoThrottleRulesAsyncRequest(TeaModel):
         self.allow_throttle_start_time = allow_throttle_start_time
         # Specifies whether to terminate abnormal SQL statements in execution at the same time. Valid values:
         # 
-        # >  Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
+        # >  Abnormal SQL statements use the same template as the SQL statements to be throttled.
         # 
         # *   **true**\
         # *   **false**\
@@ -31715,7 +32104,7 @@ class UpdateAutoThrottleRulesAsyncRequest(TeaModel):
         # 
         # This parameter is required.
         self.cpu_session_relation = cpu_session_relation
-        # The CPU utilization threshold, in percentages. Valid values: 70 to 100.
+        # The threshold for CPU utilization. Valid values: 70% to 100%.
         # 
         # This parameter is required.
         self.cpu_usage = cpu_usage
