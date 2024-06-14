@@ -165,11 +165,15 @@ class CreateTaskRequestParametersCustomPrompt(TeaModel):
 class CreateTaskRequestParametersExtraParams(TeaModel):
     def __init__(
         self,
+        domain_education_enabled: bool = None,
         max_keywords: int = None,
         nfix_enabled: bool = None,
+        ocr_auxiliary_enabled: bool = None,
     ):
+        self.domain_education_enabled = domain_education_enabled
         self.max_keywords = max_keywords
         self.nfix_enabled = nfix_enabled
+        self.ocr_auxiliary_enabled = ocr_auxiliary_enabled
 
     def validate(self):
         pass
@@ -180,18 +184,26 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
             return _map
 
         result = dict()
+        if self.domain_education_enabled is not None:
+            result['DomainEducationEnabled'] = self.domain_education_enabled
         if self.max_keywords is not None:
             result['MaxKeywords'] = self.max_keywords
         if self.nfix_enabled is not None:
             result['NfixEnabled'] = self.nfix_enabled
+        if self.ocr_auxiliary_enabled is not None:
+            result['OcrAuxiliaryEnabled'] = self.ocr_auxiliary_enabled
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DomainEducationEnabled') is not None:
+            self.domain_education_enabled = m.get('DomainEducationEnabled')
         if m.get('MaxKeywords') is not None:
             self.max_keywords = m.get('MaxKeywords')
         if m.get('NfixEnabled') is not None:
             self.nfix_enabled = m.get('NfixEnabled')
+        if m.get('OcrAuxiliaryEnabled') is not None:
+            self.ocr_auxiliary_enabled = m.get('OcrAuxiliaryEnabled')
         return self
 
 
