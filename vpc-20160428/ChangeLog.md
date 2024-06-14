@@ -1,3 +1,7 @@
+2024-06-14 Version: 6.6.8
+- Update API DeleteIpv4Gateway: add param InternetMode.
+
+
 2024-06-06 Version: 6.6.7
 - Update API CreateFullNatEntry: update param NatIpPort.
 - Update API DeleteRouteEntry: update param RouteEntryId.

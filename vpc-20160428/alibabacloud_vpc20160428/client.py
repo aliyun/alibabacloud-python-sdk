@@ -18210,6 +18210,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.internet_mode):
+            query['InternetMode'] = request.internet_mode
         if not UtilClient.is_unset(request.ipv_4gateway_id):
             query['Ipv4GatewayId'] = request.ipv_4gateway_id
         if not UtilClient.is_unset(request.owner_account):
@@ -18268,6 +18270,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.internet_mode):
+            query['InternetMode'] = request.internet_mode
         if not UtilClient.is_unset(request.ipv_4gateway_id):
             query['Ipv4GatewayId'] = request.ipv_4gateway_id
         if not UtilClient.is_unset(request.owner_account):
@@ -28935,11 +28939,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteTablesResponse:
         """
+        @deprecated OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
+        
         @summary Queries route tables.
         
         @param request: DescribeRouteTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRouteTablesResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -28996,11 +29003,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeRouteTablesResponse:
         """
+        @deprecated OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
+        
         @summary Queries route tables.
         
         @param request: DescribeRouteTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRouteTablesResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -29056,10 +29066,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeRouteTablesRequest,
     ) -> vpc_20160428_models.DescribeRouteTablesResponse:
         """
+        @deprecated OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
+        
         @summary Queries route tables.
         
         @param request: DescribeRouteTablesRequest
         @return: DescribeRouteTablesResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_route_tables_with_options(request, runtime)
@@ -29069,10 +29082,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeRouteTablesRequest,
     ) -> vpc_20160428_models.DescribeRouteTablesResponse:
         """
+        @deprecated OpenAPI DescribeRouteTables is deprecated, please use Vpc::2016-04-28::DescribeRouteTableList instead.
+        
         @summary Queries route tables.
         
         @param request: DescribeRouteTablesRequest
         @return: DescribeRouteTablesResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_route_tables_with_options_async(request, runtime)

@@ -25963,6 +25963,7 @@ class DeleteIpv4GatewayRequest(TeaModel):
         self,
         client_token: str = None,
         dry_run: bool = None,
+        internet_mode: str = None,
         ipv_4gateway_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -25981,6 +25982,7 @@ class DeleteIpv4GatewayRequest(TeaModel):
         # *   **true**: performs only a dry run, without performing the actual request. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        self.internet_mode = internet_mode
         # The ID of the IPv4 gateway that you want to delete.
         # 
         # This parameter is required.
@@ -26009,6 +26011,8 @@ class DeleteIpv4GatewayRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.internet_mode is not None:
+            result['InternetMode'] = self.internet_mode
         if self.ipv_4gateway_id is not None:
             result['Ipv4GatewayId'] = self.ipv_4gateway_id
         if self.owner_account is not None:
@@ -26029,6 +26033,8 @@ class DeleteIpv4GatewayRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('InternetMode') is not None:
+            self.internet_mode = m.get('InternetMode')
         if m.get('Ipv4GatewayId') is not None:
             self.ipv_4gateway_id = m.get('Ipv4GatewayId')
         if m.get('OwnerAccount') is not None:
