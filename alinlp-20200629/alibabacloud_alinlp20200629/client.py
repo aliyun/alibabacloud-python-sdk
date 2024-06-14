@@ -6019,6 +6019,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.post_isconv_rewriter_with_options_async(request, runtime)
 
+    def post_isrerank_with_options(
+        self,
+        tmp_req: alinlp_20200629_models.PostISRerankRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.PostISRerankResponse:
+        """
+        @summary 通用排序模型
+        
+        @param tmp_req: PostISRerankRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostISRerankResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.PostISRerankShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.algorithm):
+            body['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.debug):
+            body['Debug'] = request.debug
+        if not UtilClient.is_unset(request.input_shrink):
+            body['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PostISRerank',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.PostISRerankResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def post_isrerank_with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.PostISRerankRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.PostISRerankResponse:
+        """
+        @summary 通用排序模型
+        
+        @param tmp_req: PostISRerankRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostISRerankResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.PostISRerankShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.algorithm):
+            body['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.debug):
+            body['Debug'] = request.debug
+        if not UtilClient.is_unset(request.input_shrink):
+            body['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PostISRerank',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.PostISRerankResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def post_isrerank(
+        self,
+        request: alinlp_20200629_models.PostISRerankRequest,
+    ) -> alinlp_20200629_models.PostISRerankResponse:
+        """
+        @summary 通用排序模型
+        
+        @param request: PostISRerankRequest
+        @return: PostISRerankResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.post_isrerank_with_options(request, runtime)
+
+    async def post_isrerank_async(
+        self,
+        request: alinlp_20200629_models.PostISRerankRequest,
+    ) -> alinlp_20200629_models.PostISRerankResponse:
+        """
+        @summary 通用排序模型
+        
+        @param request: PostISRerankRequest
+        @return: PostISRerankResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.post_isrerank_with_options_async(request, runtime)
+
     def post_isretrieve_router_with_options(
         self,
         tmp_req: alinlp_20200629_models.PostISRetrieveRouterRequest,

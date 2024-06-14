@@ -7386,6 +7386,200 @@ class PostISConvRewriterResponse(TeaModel):
         return self
 
 
+class PostISRerankRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        debug: bool = None,
+        input: Dict[str, Any] = None,
+        model: str = None,
+        parameters: Dict[str, Any] = None,
+    ):
+        self.algorithm = algorithm
+        self.debug = debug
+        self.input = input
+        self.model = model
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.debug is not None:
+            result['Debug'] = self.debug
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Debug') is not None:
+            self.debug = m.get('Debug')
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        return self
+
+
+class PostISRerankShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        debug: bool = None,
+        input_shrink: str = None,
+        model: str = None,
+        parameters_shrink: str = None,
+    ):
+        self.algorithm = algorithm
+        self.debug = debug
+        self.input_shrink = input_shrink
+        self.model = model
+        self.parameters_shrink = parameters_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.debug is not None:
+            result['Debug'] = self.debug
+        if self.input_shrink is not None:
+            result['Input'] = self.input_shrink
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Debug') is not None:
+            self.debug = m.get('Debug')
+        if m.get('Input') is not None:
+            self.input_shrink = m.get('Input')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        return self
+
+
+class PostISRerankResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, Any] = None,
+        debug_info: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+        status: int = None,
+    ):
+        self.data = data
+        self.debug_info = debug_info
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.debug_info is not None:
+            result['DebugInfo'] = self.debug_info
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('DebugInfo') is not None:
+            self.debug_info = m.get('DebugInfo')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class PostISRerankResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PostISRerankResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PostISRerankResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PostISRetrieveRouterRequest(TeaModel):
     def __init__(
         self,

@@ -1,3 +1,7 @@
+2024-06-14 Version: 3.1.0
+- Support API PostISRerank.
+
+
 2024-05-20 Version: 3.0.0
 - Update API DeleteServiceDataByConditions: add param X-DashScope-OpenAPISource.
 - Update API PostISConvRewriter: add param Model.
