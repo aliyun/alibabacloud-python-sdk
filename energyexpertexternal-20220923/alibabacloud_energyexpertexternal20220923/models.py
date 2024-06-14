@@ -8255,6 +8255,7 @@ class SubmitDocumentAnalyzeJobRequest(TeaModel):
         folder_id: str = None,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.file_name = file_name
         self.file_url = file_url
         self.folder_id = folder_id
@@ -8301,6 +8302,7 @@ class SubmitDocumentAnalyzeJobAdvanceRequest(TeaModel):
         folder_id: str = None,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.file_name = file_name
         self.file_url_object = file_url_object
         self.folder_id = folder_id
