@@ -1,3 +1,18 @@
+2024-06-14 Version: 3.0.0
+- Support API StartIndex.
+- Support API StopIndex.
+- Update API CreateCluster: update param body.
+- Update API CreateCluster: update response param.
+- Update API CreateIndex: update param body.
+- Update API GetCluster: update response param.
+- Update API GetIndex: update response param.
+- Update API ListAdvanceConfigs: add param newMode.
+- Update API ListAdvanceConfigs: update response param.
+- Update API ListClusters: update response param.
+- Update API ModifyClusterOfflineConfig: update param body.
+- Update API PublishAdvanceConfig: update param body.
+
+
 2024-05-09 Version: 2.1.1
 - Update API GetTable: update response param.
 - Update API ListTables: update response param.

@@ -43,6 +43,39 @@ class ErrorResponse(TeaModel):
         return self
 
 
+class ResultClusterValue(TeaModel):
+    def __init__(
+        self,
+        build_parallel_num: int = None,
+        merge_parallel_num: int = None,
+    ):
+        self.build_parallel_num = build_parallel_num
+        self.merge_parallel_num = merge_parallel_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_parallel_num is not None:
+            result['buildParallelNum'] = self.build_parallel_num
+        if self.merge_parallel_num is not None:
+            result['mergeParallelNum'] = self.merge_parallel_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('buildParallelNum') is not None:
+            self.build_parallel_num = m.get('buildParallelNum')
+        if m.get('mergeParallelNum') is not None:
+            self.merge_parallel_num = m.get('mergeParallelNum')
+        return self
+
+
 class VariablesValueFuncValue(TeaModel):
     def __init__(
         self,
@@ -153,6 +186,57 @@ class VariablesValue(TeaModel):
         return self
 
 
+class FilesConfigVariablesValue(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        disable_modify: bool = None,
+        is_modify: bool = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.disable_modify = disable_modify
+        self.is_modify = is_modify
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.disable_modify is not None:
+            result['disableModify'] = self.disable_modify
+        if self.is_modify is not None:
+            result['isModify'] = self.is_modify
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('disableModify') is not None:
+            self.disable_modify = m.get('disableModify')
+        if m.get('isModify') is not None:
+            self.is_modify = m.get('isModify')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class BuildIndexRequest(TeaModel):
     def __init__(
         self,
@@ -170,13 +254,13 @@ class BuildIndexRequest(TeaModel):
         self.data_source_name = data_source_name
         # The type of the data source.
         self.data_source_type = data_source_type
-        # The timestamp in seconds. It is of the INT type. This parameter is required for the API-pushed data source.
+        # The timestamp in seconds. The value must be of the INTEGER type. This parameter is required if you specify an API data source.
         self.data_time_sec = data_time_sec
-        # The data center where the data source is deployed.
+        # The data center in which the data source resides.
         self.domain = domain
         # The data restoration version.
         self.generation = generation
-        # This parameter is required for the odps data source.
+        # The data partition. This parameter is required if dataSourceType is set to odps.
         self.partition = partition
 
     def validate(self):
@@ -303,9 +387,11 @@ class CreateClusterRequestDataNode(TeaModel):
     def __init__(
         self,
         number: int = None,
+        partition: str = None,
     ):
         # The number of data nodes
         self.number = number
+        self.partition = partition
 
     def validate(self):
         pass
@@ -318,12 +404,16 @@ class CreateClusterRequestDataNode(TeaModel):
         result = dict()
         if self.number is not None:
             result['number'] = self.number
+        if self.partition is not None:
+            result['partition'] = self.partition
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('number') is not None:
             self.number = m.get('number')
+        if m.get('partition') is not None:
+            self.partition = m.get('partition')
         return self
 
 
@@ -880,6 +970,7 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
         data_time_sec: int = None,
         domain: str = None,
         name: str = None,
+        process_parallel_num: int = None,
         process_partition_count: int = None,
         saro_config: CreateIndexRequestDataSourceInfoSaroConfig = None,
         type: str = None,
@@ -893,6 +984,7 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
         self.domain = domain
         # The name of the index.
         self.name = name
+        self.process_parallel_num = process_parallel_num
         # The number of resources used for data update.
         self.process_partition_count = process_partition_count
         self.saro_config = saro_config
@@ -921,6 +1013,8 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
             result['domain'] = self.domain
         if self.name is not None:
             result['name'] = self.name
+        if self.process_parallel_num is not None:
+            result['processParallelNum'] = self.process_parallel_num
         if self.process_partition_count is not None:
             result['processPartitionCount'] = self.process_partition_count
         if self.saro_config is not None:
@@ -942,6 +1036,8 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
             self.domain = m.get('domain')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('processParallelNum') is not None:
+            self.process_parallel_num = m.get('processParallelNum')
         if m.get('processPartitionCount') is not None:
             self.process_partition_count = m.get('processPartitionCount')
         if m.get('saroConfig') is not None:
@@ -955,15 +1051,18 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
 class CreateIndexRequest(TeaModel):
     def __init__(
         self,
+        build_parallel_num: int = None,
         content: str = None,
         data_source: str = None,
         data_source_info: CreateIndexRequestDataSourceInfo = None,
         domain: str = None,
         extend: Dict[str, Any] = None,
+        merge_parallel_num: int = None,
         name: str = None,
         partition: int = None,
         dry_run: bool = None,
     ):
+        self.build_parallel_num = build_parallel_num
         # The content of the index.
         self.content = content
         # Optional. The data source, which can be MaxCompute, Message Service (MNS), Realtime Compute for Apache Flink, or StreamCompute.
@@ -974,6 +1073,7 @@ class CreateIndexRequest(TeaModel):
         self.domain = domain
         # The extended configurations of the field. Keys such as vector and embedding are included. Vector indicates the vector field. Embedding indicates the field that requires embedding.
         self.extend = extend
+        self.merge_parallel_num = merge_parallel_num
         # The name of the index.
         self.name = name
         # The data partition.
@@ -990,6 +1090,8 @@ class CreateIndexRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.build_parallel_num is not None:
+            result['buildParallelNum'] = self.build_parallel_num
         if self.content is not None:
             result['content'] = self.content
         if self.data_source is not None:
@@ -1000,6 +1102,8 @@ class CreateIndexRequest(TeaModel):
             result['domain'] = self.domain
         if self.extend is not None:
             result['extend'] = self.extend
+        if self.merge_parallel_num is not None:
+            result['mergeParallelNum'] = self.merge_parallel_num
         if self.name is not None:
             result['name'] = self.name
         if self.partition is not None:
@@ -1010,6 +1114,8 @@ class CreateIndexRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('buildParallelNum') is not None:
+            self.build_parallel_num = m.get('buildParallelNum')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('dataSource') is not None:
@@ -1021,6 +1127,8 @@ class CreateIndexRequest(TeaModel):
             self.domain = m.get('domain')
         if m.get('extend') is not None:
             self.extend = m.get('extend')
+        if m.get('mergeParallelNum') is not None:
+            self.merge_parallel_num = m.get('mergeParallelNum')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('partition') is not None:
@@ -2045,6 +2153,8 @@ class DeleteIndexRequest(TeaModel):
         delete_data_source: bool = None,
     ):
         # The data source
+        # 
+        # This parameter is required.
         self.data_source = data_source
         self.delete_data_source = delete_data_source
 
@@ -2838,6 +2948,8 @@ class GetAdvanceConfigFileRequest(TeaModel):
         file_name: str = None,
     ):
         # The name of the file
+        # 
+        # This parameter is required.
         self.file_name = file_name
 
     def validate(self):
@@ -3053,7 +3165,9 @@ class GetClusterResponseBodyResultQueryNode(TeaModel):
 class GetClusterResponseBodyResult(TeaModel):
     def __init__(
         self,
+        config: Dict[str, dict] = None,
         config_update_time: str = None,
+        create_time: str = None,
         current_advance_config_version: str = None,
         current_online_config_version: str = None,
         data_node: GetClusterResponseBodyResultDataNode = None,
@@ -3064,8 +3178,10 @@ class GetClusterResponseBodyResult(TeaModel):
         query_node: GetClusterResponseBodyResultQueryNode = None,
         status: str = None,
     ):
+        self.config = config
         # The time when the cluster was updated.
         self.config_update_time = config_update_time
+        self.create_time = create_time
         # The effective advanced configuration version.
         self.current_advance_config_version = current_advance_config_version
         # The effective online configuration version.
@@ -3097,8 +3213,12 @@ class GetClusterResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config
         if self.config_update_time is not None:
             result['configUpdateTime'] = self.config_update_time
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
         if self.current_advance_config_version is not None:
             result['currentAdvanceConfigVersion'] = self.current_advance_config_version
         if self.current_online_config_version is not None:
@@ -3121,8 +3241,12 @@ class GetClusterResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
         if m.get('configUpdateTime') is not None:
             self.config_update_time = m.get('configUpdateTime')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
         if m.get('currentAdvanceConfigVersion') is not None:
             self.current_advance_config_version = m.get('currentAdvanceConfigVersion')
         if m.get('currentOnlineConfigVersion') is not None:
@@ -4912,6 +5036,8 @@ class GetFileRequest(TeaModel):
         file_name: str = None,
     ):
         # The name of the file in full path
+        # 
+        # This parameter is required.
         self.file_name = file_name
 
     def validate(self):
@@ -5201,6 +5327,7 @@ class GetIndexResponseBodyResultDataSourceInfo(TeaModel):
         config: GetIndexResponseBodyResultDataSourceInfoConfig = None,
         domain: str = None,
         name: str = None,
+        process_parallel_num: int = None,
         process_partition_count: int = None,
         saro_config: GetIndexResponseBodyResultDataSourceInfoSaroConfig = None,
         type: str = None,
@@ -5213,6 +5340,7 @@ class GetIndexResponseBodyResultDataSourceInfo(TeaModel):
         self.domain = domain
         # The name of the data source.
         self.name = name
+        self.process_parallel_num = process_parallel_num
         # The number of resources used for data update.
         self.process_partition_count = process_partition_count
         # The configuration of SARO data sources.
@@ -5240,6 +5368,8 @@ class GetIndexResponseBodyResultDataSourceInfo(TeaModel):
             result['domain'] = self.domain
         if self.name is not None:
             result['name'] = self.name
+        if self.process_parallel_num is not None:
+            result['processParallelNum'] = self.process_parallel_num
         if self.process_partition_count is not None:
             result['processPartitionCount'] = self.process_partition_count
         if self.saro_config is not None:
@@ -5259,6 +5389,8 @@ class GetIndexResponseBodyResultDataSourceInfo(TeaModel):
             self.domain = m.get('domain')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('processParallelNum') is not None:
+            self.process_parallel_num = m.get('processParallelNum')
         if m.get('processPartitionCount') is not None:
             self.process_partition_count = m.get('processPartitionCount')
         if m.get('saroConfig') is not None:
@@ -5391,6 +5523,9 @@ class GetIndexResponseBodyResultVersions(TeaModel):
 class GetIndexResponseBodyResult(TeaModel):
     def __init__(
         self,
+        cluster: Dict[str, ResultClusterValue] = None,
+        config: Dict[str, dict] = None,
+        config_when_build: Dict[str, dict] = None,
         content: str = None,
         data_source: str = None,
         data_source_info: GetIndexResponseBodyResultDataSourceInfo = None,
@@ -5405,6 +5540,9 @@ class GetIndexResponseBodyResult(TeaModel):
         partition: int = None,
         versions: List[GetIndexResponseBodyResultVersions] = None,
     ):
+        self.cluster = cluster
+        self.config = config
+        self.config_when_build = config_when_build
         # The content of the index.
         self.content = content
         self.data_source = data_source
@@ -5430,6 +5568,10 @@ class GetIndexResponseBodyResult(TeaModel):
         self.versions = versions
 
     def validate(self):
+        if self.cluster:
+            for v in self.cluster.values():
+                if v:
+                    v.validate()
         if self.data_source_info:
             self.data_source_info.validate()
         if self.versions:
@@ -5443,6 +5585,14 @@ class GetIndexResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        result['cluster'] = {}
+        if self.cluster is not None:
+            for k, v in self.cluster.items():
+                result['cluster'][k] = v.to_map()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.config_when_build is not None:
+            result['configWhenBuild'] = self.config_when_build
         if self.content is not None:
             result['content'] = self.content
         if self.data_source is not None:
@@ -5475,6 +5625,15 @@ class GetIndexResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.cluster = {}
+        if m.get('cluster') is not None:
+            for k, v in m.get('cluster').items():
+                temp_model = ResultClusterValue()
+                self.cluster[k] = temp_model.from_map(v)
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('configWhenBuild') is not None:
+            self.config_when_build = m.get('configWhenBuild')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('dataSource') is not None:
@@ -6044,6 +6203,7 @@ class GetNodeConfigResponseBodyResult(TeaModel):
         self.data_duplicate_number = data_duplicate_number
         # The number of data shards.
         self.data_fragment_number = data_fragment_number
+        # The traffic percentage.
         self.flow_ratio = flow_ratio
         # The minimum service ratio.
         self.min_service_percent = min_service_percent
@@ -6098,7 +6258,7 @@ class GetNodeConfigResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The result set.
+        # The configurations of the node.
         self.result = result
 
     def validate(self):
@@ -6844,6 +7004,8 @@ class ListAdvanceConfigDirRequest(TeaModel):
         dir_name: str = None,
     ):
         # The name of the directory
+        # 
+        # This parameter is required.
         self.dir_name = dir_name
 
     def validate(self):
@@ -7004,10 +7166,12 @@ class ListAdvanceConfigsRequest(TeaModel):
         self,
         data_source_name: str = None,
         index_name: str = None,
+        new_mode: bool = None,
         type: str = None,
     ):
         self.data_source_name = data_source_name
         self.index_name = index_name
+        self.new_mode = new_mode
         # The type of the advanced configurations. Valid values: online and offline. - online The default value is offline.
         self.type = type
 
@@ -7024,6 +7188,8 @@ class ListAdvanceConfigsRequest(TeaModel):
             result['dataSourceName'] = self.data_source_name
         if self.index_name is not None:
             result['indexName'] = self.index_name
+        if self.new_mode is not None:
+            result['newMode'] = self.new_mode
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -7034,6 +7200,8 @@ class ListAdvanceConfigsRequest(TeaModel):
             self.data_source_name = m.get('dataSourceName')
         if m.get('indexName') is not None:
             self.index_name = m.get('indexName')
+        if m.get('newMode') is not None:
+            self.new_mode = m.get('newMode')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -7091,16 +7259,20 @@ class ListAdvanceConfigsResponseBodyResultFiles(TeaModel):
 class ListAdvanceConfigsResponseBodyResult(TeaModel):
     def __init__(
         self,
+        advance_config_type: str = None,
         content: str = None,
         content_type: str = None,
+        creator: str = None,
         desc: str = None,
         files: List[ListAdvanceConfigsResponseBodyResultFiles] = None,
         name: str = None,
         status: str = None,
         update_time: int = None,
     ):
+        self.advance_config_type = advance_config_type
         self.content = content
         self.content_type = content_type
+        self.creator = creator
         # The description.
         self.desc = desc
         # The list of file names.
@@ -7124,10 +7296,14 @@ class ListAdvanceConfigsResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.advance_config_type is not None:
+            result['advanceConfigType'] = self.advance_config_type
         if self.content is not None:
             result['content'] = self.content
         if self.content_type is not None:
             result['contentType'] = self.content_type
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.desc is not None:
             result['desc'] = self.desc
         result['files'] = []
@@ -7144,10 +7320,14 @@ class ListAdvanceConfigsResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('advanceConfigType') is not None:
+            self.advance_config_type = m.get('advanceConfigType')
         if m.get('content') is not None:
             self.content = m.get('content')
         if m.get('contentType') is not None:
             self.content_type = m.get('contentType')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('desc') is not None:
             self.desc = m.get('desc')
         self.files = []
@@ -7738,7 +7918,9 @@ class ListClustersResponseBodyResultQueryNode(TeaModel):
 class ListClustersResponseBodyResult(TeaModel):
     def __init__(
         self,
+        config: Dict[str, dict] = None,
         config_update_time: str = None,
+        create_time: str = None,
         current_advance_config_version: str = None,
         current_offline_dict_config_version: str = None,
         current_online_config_version: str = None,
@@ -7753,8 +7935,10 @@ class ListClustersResponseBodyResult(TeaModel):
         query_node: ListClustersResponseBodyResultQueryNode = None,
         status: str = None,
     ):
+        self.config = config
         # The time when the configuration was updated.
         self.config_update_time = config_update_time
+        self.create_time = create_time
         # The effective advanced version.
         self.current_advance_config_version = current_advance_config_version
         # 词典配置生效版本
@@ -7794,8 +7978,12 @@ class ListClustersResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config
         if self.config_update_time is not None:
             result['configUpdateTime'] = self.config_update_time
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
         if self.current_advance_config_version is not None:
             result['currentAdvanceConfigVersion'] = self.current_advance_config_version
         if self.current_offline_dict_config_version is not None:
@@ -7826,8 +8014,12 @@ class ListClustersResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
         if m.get('configUpdateTime') is not None:
             self.config_update_time = m.get('configUpdateTime')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
         if m.get('currentAdvanceConfigVersion') is not None:
             self.current_advance_config_version = m.get('currentAdvanceConfigVersion')
         if m.get('currentOfflineDictConfigVersion') is not None:
@@ -8578,6 +8770,8 @@ class ListDateSourceGenerationsRequest(TeaModel):
         valid_status: bool = None,
     ):
         # The data center where the data source is deployed.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The valid state of the data source. Valid values: true and false. The default value of this parameter is true.
         # 
@@ -9325,6 +9519,8 @@ class ListInstanceSpecsRequest(TeaModel):
         type: str = None,
     ):
         # The node type. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -9960,6 +10156,8 @@ class ListOnlineConfigsRequest(TeaModel):
         domain: str = None,
     ):
         # The name of the domain
+        # 
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -10479,6 +10677,8 @@ class ModifyAdvanceConfigFileRequest(TeaModel):
         # The variable.
         self.variables = variables
         # The name of the file.
+        # 
+        # This parameter is required.
         self.file_name = file_name
 
     def validate(self):
@@ -11087,9 +11287,11 @@ class ModifyFileRequest(TeaModel):
     ):
         # The content of the file.
         self.content = content
-        # The data partition. This parameter is required if the dataSourceType parameter is set to odps.
+        # This parameter is required when index building for full data in a MaxCompute data source is triggered.
         self.partition = partition
         # The name of the file in the full path
+        # 
+        # This parameter is required.
         self.file_name = file_name
 
     def validate(self):
@@ -11539,17 +11741,25 @@ class ModifyNodeConfigRequest(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # Specifies whether to enable the index.
         self.active = active
+        # The number of data replicas.
         self.data_duplicate_number = data_duplicate_number
+        # The number of data shards.
         self.data_fragment_number = data_fragment_number
+        # The traffic percentage.
         self.flow_ratio = flow_ratio
+        # The minimum service ratio.
         self.min_service_percent = min_service_percent
+        # Specifies whether to mount the cluster.
         self.published = published
         # The name of the cluster.
         self.cluster_name = cluster_name
         # The name of the data source. Valid values: search and not_search. search indicates to search data. not_search indicates not to search data.
         self.data_source_name = data_source_name
         # The original name of the node.
+        # 
+        # This parameter is required.
         self.name = name
         # The type of the algorithm. Valid values: pop, cp, hot, hint, and suggest.
         # 
@@ -11558,6 +11768,8 @@ class ModifyNodeConfigRequest(TeaModel):
         # *   hot indicates the top search model.
         # *   hint indicates the hint model.
         # *   suggest indicates the drop-down suggestion model.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -12434,16 +12646,20 @@ class ModifyTableResponse(TeaModel):
         return self
 
 
-class PublishAdvanceConfigRequest(TeaModel):
+class PublishAdvanceConfigRequestFilesConfig(TeaModel):
     def __init__(
         self,
-        body: Dict[str, Any] = None,
+        content: str = None,
+        variables: Dict[str, FilesConfigVariablesValue] = None,
     ):
-        # The structure of the request
-        self.body = body
+        self.content = content
+        self.variables = variables
 
     def validate(self):
-        pass
+        if self.variables:
+            for v in self.variables.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12451,14 +12667,123 @@ class PublishAdvanceConfigRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.body is not None:
-            result['body'] = self.body
+        if self.content is not None:
+            result['content'] = self.content
+        result['variables'] = {}
+        if self.variables is not None:
+            for k, v in self.variables.items():
+                result['variables'][k] = v.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('body') is not None:
-            self.body = m.get('body')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        self.variables = {}
+        if m.get('variables') is not None:
+            for k, v in m.get('variables').items():
+                temp_model = FilesConfigVariablesValue()
+                self.variables[k] = temp_model.from_map(v)
+        return self
+
+
+class PublishAdvanceConfigRequestFiles(TeaModel):
+    def __init__(
+        self,
+        config: PublishAdvanceConfigRequestFilesConfig = None,
+        dir_name: str = None,
+        file_name: str = None,
+        operate_type: str = None,
+        oss_path: str = None,
+        parent_full_path: str = None,
+    ):
+        self.config = config
+        self.dir_name = dir_name
+        self.file_name = file_name
+        self.operate_type = operate_type
+        self.oss_path = oss_path
+        self.parent_full_path = parent_full_path
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
+        if self.dir_name is not None:
+            result['dirName'] = self.dir_name
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.operate_type is not None:
+            result['operateType'] = self.operate_type
+        if self.oss_path is not None:
+            result['ossPath'] = self.oss_path
+        if self.parent_full_path is not None:
+            result['parentFullPath'] = self.parent_full_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            temp_model = PublishAdvanceConfigRequestFilesConfig()
+            self.config = temp_model.from_map(m['config'])
+        if m.get('dirName') is not None:
+            self.dir_name = m.get('dirName')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('operateType') is not None:
+            self.operate_type = m.get('operateType')
+        if m.get('ossPath') is not None:
+            self.oss_path = m.get('ossPath')
+        if m.get('parentFullPath') is not None:
+            self.parent_full_path = m.get('parentFullPath')
+        return self
+
+
+class PublishAdvanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        files: List[PublishAdvanceConfigRequestFiles] = None,
+    ):
+        self.desc = desc
+        self.files = files
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['desc'] = self.desc
+        result['files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['files'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        self.files = []
+        if m.get('files') is not None:
+            for k in m.get('files'):
+                temp_model = PublishAdvanceConfigRequestFiles()
+                self.files.append(temp_model.from_map(k))
         return self
 
 
@@ -12954,6 +13279,158 @@ class RemoveClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartIndexResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: Dict[str, Any] = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # Map
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class StartIndexResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartIndexResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartIndexResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopIndexResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: Dict[str, Any] = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # Map
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class StopIndexResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopIndexResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopIndexResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

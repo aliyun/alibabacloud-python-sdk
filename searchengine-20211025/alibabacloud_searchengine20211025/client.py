@@ -49,7 +49,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.BuildIndexResponse:
         """
-        ## Method
+        @summary Triggers reindexing.
+        
+        @description ## Method
         POST
         ## URI
         /openapi/ha3/instances/{instanceId}/actions/build-index
@@ -103,7 +105,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.BuildIndexResponse:
         """
-        ## Method
+        @summary Triggers reindexing.
+        
+        @description ## Method
         POST
         ## URI
         /openapi/ha3/instances/{instanceId}/actions/build-index
@@ -155,7 +159,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.BuildIndexRequest,
     ) -> searchengine_20211025_models.BuildIndexResponse:
         """
-        ## Method
+        @summary Triggers reindexing.
+        
+        @description ## Method
         POST
         ## URI
         /openapi/ha3/instances/{instanceId}/actions/build-index
@@ -173,7 +179,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.BuildIndexRequest,
     ) -> searchengine_20211025_models.BuildIndexResponse:
         """
-        ## Method
+        @summary Triggers reindexing.
+        
+        @description ## Method
         POST
         ## URI
         /openapi/ha3/instances/{instanceId}/actions/build-index
@@ -193,7 +201,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateClusterResponse:
         """
-        ### Method
+        @summary Creates a cluster.
+        
+        @description ### Method
         `POST`
         ### URI
         `/openapi/ha3/instances/{instanceId}/clusters`
@@ -243,7 +253,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateClusterResponse:
         """
-        ### Method
+        @summary Creates a cluster.
+        
+        @description ### Method
         `POST`
         ### URI
         `/openapi/ha3/instances/{instanceId}/clusters`
@@ -291,7 +303,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.CreateClusterRequest,
     ) -> searchengine_20211025_models.CreateClusterResponse:
         """
-        ### Method
+        @summary Creates a cluster.
+        
+        @description ### Method
         `POST`
         ### URI
         `/openapi/ha3/instances/{instanceId}/clusters`
@@ -309,7 +323,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.CreateClusterRequest,
     ) -> searchengine_20211025_models.CreateClusterResponse:
         """
-        ### Method
+        @summary Creates a cluster.
+        
+        @description ### Method
         `POST`
         ### URI
         `/openapi/ha3/instances/{instanceId}/clusters`
@@ -328,6 +344,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateDataSourceResponse:
+        """
+        @summary Creates data sources.
+        
+        @param request: CreateDataSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -373,6 +397,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateDataSourceResponse:
+        """
+        @summary Creates data sources.
+        
+        @param request: CreateDataSourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -416,6 +448,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: searchengine_20211025_models.CreateDataSourceRequest,
     ) -> searchengine_20211025_models.CreateDataSourceResponse:
+        """
+        @summary Creates data sources.
+        
+        @param request: CreateDataSourceRequest
+        @return: CreateDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_data_source_with_options(instance_id, request, headers, runtime)
@@ -425,6 +463,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: searchengine_20211025_models.CreateDataSourceRequest,
     ) -> searchengine_20211025_models.CreateDataSourceResponse:
+        """
+        @summary Creates data sources.
+        
+        @param request: CreateDataSourceRequest
+        @return: CreateDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_data_source_with_options_async(instance_id, request, headers, runtime)
@@ -437,7 +481,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateIndexResponse:
         """
-        ### Method
+        @summary Creates an index.
+        
+        @description ### Method
         ```java
         POST
         ```
@@ -456,6 +502,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
+        if not UtilClient.is_unset(request.build_parallel_num):
+            body['buildParallelNum'] = request.build_parallel_num
         if not UtilClient.is_unset(request.content):
             body['content'] = request.content
         if not UtilClient.is_unset(request.data_source):
@@ -466,6 +514,8 @@ class Client(OpenApiClient):
             body['domain'] = request.domain
         if not UtilClient.is_unset(request.extend):
             body['extend'] = request.extend
+        if not UtilClient.is_unset(request.merge_parallel_num):
+            body['mergeParallelNum'] = request.merge_parallel_num
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.partition):
@@ -499,7 +549,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateIndexResponse:
         """
-        ### Method
+        @summary Creates an index.
+        
+        @description ### Method
         ```java
         POST
         ```
@@ -518,6 +570,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
+        if not UtilClient.is_unset(request.build_parallel_num):
+            body['buildParallelNum'] = request.build_parallel_num
         if not UtilClient.is_unset(request.content):
             body['content'] = request.content
         if not UtilClient.is_unset(request.data_source):
@@ -528,6 +582,8 @@ class Client(OpenApiClient):
             body['domain'] = request.domain
         if not UtilClient.is_unset(request.extend):
             body['extend'] = request.extend
+        if not UtilClient.is_unset(request.merge_parallel_num):
+            body['mergeParallelNum'] = request.merge_parallel_num
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         if not UtilClient.is_unset(request.partition):
@@ -559,7 +615,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.CreateIndexRequest,
     ) -> searchengine_20211025_models.CreateIndexResponse:
         """
-        ### Method
+        @summary Creates an index.
+        
+        @description ### Method
         ```java
         POST
         ```
@@ -581,7 +639,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.CreateIndexRequest,
     ) -> searchengine_20211025_models.CreateIndexResponse:
         """
-        ### Method
+        @summary Creates an index.
+        
+        @description ### Method
         ```java
         POST
         ```
@@ -604,7 +664,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateInstanceResponse:
         """
-        ### Method
+        @summary Creates a Havenask instance.
+        
+        @description ### Method
         `POST`
         ### URI
         `/api/instances?dryRun=false`
@@ -649,7 +711,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateInstanceResponse:
         """
-        ### Method
+        @summary Creates a Havenask instance.
+        
+        @description ### Method
         `POST`
         ### URI
         `/api/instances?dryRun=false`
@@ -692,7 +756,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.CreateInstanceRequest,
     ) -> searchengine_20211025_models.CreateInstanceResponse:
         """
-        ### Method
+        @summary Creates a Havenask instance.
+        
+        @description ### Method
         `POST`
         ### URI
         `/api/instances?dryRun=false`
@@ -709,7 +775,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.CreateInstanceRequest,
     ) -> searchengine_20211025_models.CreateInstanceResponse:
         """
-        ### Method
+        @summary Creates a Havenask instance.
+        
+        @description ### Method
         `POST`
         ### URI
         `/api/instances?dryRun=false`
@@ -728,6 +796,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateTableResponse:
+        """
+        @summary 创建索引V2
+        
+        @param request: CreateTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -779,6 +855,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.CreateTableResponse:
+        """
+        @summary 创建索引V2
+        
+        @param request: CreateTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -828,6 +912,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: searchengine_20211025_models.CreateTableRequest,
     ) -> searchengine_20211025_models.CreateTableResponse:
+        """
+        @summary 创建索引V2
+        
+        @param request: CreateTableRequest
+        @return: CreateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_table_with_options(instance_id, request, headers, runtime)
@@ -837,6 +927,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: searchengine_20211025_models.CreateTableRequest,
     ) -> searchengine_20211025_models.CreateTableResponse:
+        """
+        @summary 创建索引V2
+        
+        @param request: CreateTableRequest
+        @return: CreateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_table_with_options_async(instance_id, request, headers, runtime)
@@ -849,7 +945,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteAdvanceConfigResponse:
         """
-        ## Method
+        @summary Deletes the details about advanced configurations.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
@@ -885,7 +983,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteAdvanceConfigResponse:
         """
-        ## Method
+        @summary Deletes the details about advanced configurations.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
@@ -919,7 +1019,9 @@ class Client(OpenApiClient):
         config_name: str,
     ) -> searchengine_20211025_models.DeleteAdvanceConfigResponse:
         """
-        ## Method
+        @summary Deletes the details about advanced configurations.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
@@ -936,7 +1038,9 @@ class Client(OpenApiClient):
         config_name: str,
     ) -> searchengine_20211025_models.DeleteAdvanceConfigResponse:
         """
-        ## Method
+        @summary Deletes the details about advanced configurations.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
@@ -955,7 +1059,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteDataSourceResponse:
         """
-        ## Method
+        @summary Deletes a specified data source.
+        
+        @description ## Method
         `DELETE`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -991,7 +1097,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteDataSourceResponse:
         """
-        ## Method
+        @summary Deletes a specified data source.
+        
+        @description ## Method
         `DELETE`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -1025,7 +1133,9 @@ class Client(OpenApiClient):
         data_source_name: str,
     ) -> searchengine_20211025_models.DeleteDataSourceResponse:
         """
-        ## Method
+        @summary Deletes a specified data source.
+        
+        @description ## Method
         `DELETE`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -1042,7 +1152,9 @@ class Client(OpenApiClient):
         data_source_name: str,
     ) -> searchengine_20211025_models.DeleteDataSourceResponse:
         """
-        ## Method
+        @summary Deletes a specified data source.
+        
+        @description ## Method
         `DELETE`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -1062,7 +1174,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteIndexResponse:
         """
-        ## Method
+        @summary Deletes an index.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
@@ -1107,7 +1221,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteIndexResponse:
         """
-        ## Method
+        @summary Deletes an index.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
@@ -1150,7 +1266,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.DeleteIndexRequest,
     ) -> searchengine_20211025_models.DeleteIndexResponse:
         """
-        ## Method
+        @summary Deletes an index.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
@@ -1169,7 +1287,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.DeleteIndexRequest,
     ) -> searchengine_20211025_models.DeleteIndexResponse:
         """
-        ## Method
+        @summary Deletes an index.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}?dataSource=xxx
@@ -1190,7 +1310,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteIndexVersionResponse:
         """
-        ## Method
+        @summary Deletes the version of an index.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
@@ -1227,7 +1349,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteIndexVersionResponse:
         """
-        ## Method
+        @summary Deletes the version of an index.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
@@ -1262,7 +1386,9 @@ class Client(OpenApiClient):
         version_name: str,
     ) -> searchengine_20211025_models.DeleteIndexVersionResponse:
         """
-        ## Method
+        @summary Deletes the version of an index.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
@@ -1280,7 +1406,9 @@ class Client(OpenApiClient):
         version_name: str,
     ) -> searchengine_20211025_models.DeleteIndexVersionResponse:
         """
-        ## Method
+        @summary Deletes the version of an index.
+        
+        @description ## Method
         DELETE
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}
@@ -1298,7 +1426,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteInstanceResponse:
         """
-        ### Method
+        @summary Deletes a specified instance.
+        
+        @description ### Method
         `DELETE`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -1333,7 +1463,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteInstanceResponse:
         """
-        ### Method
+        @summary Deletes a specified instance.
+        
+        @description ### Method
         `DELETE`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -1366,7 +1498,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.DeleteInstanceResponse:
         """
-        ### Method
+        @summary Deletes a specified instance.
+        
+        @description ### Method
         `DELETE`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -1382,7 +1516,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.DeleteInstanceResponse:
         """
-        ### Method
+        @summary Deletes a specified instance.
+        
+        @description ### Method
         `DELETE`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -1400,6 +1536,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteTableResponse:
+        """
+        @summary 删除索引表V2
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1426,6 +1569,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteTableResponse:
+        """
+        @summary 删除索引表V2
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1450,6 +1600,11 @@ class Client(OpenApiClient):
         instance_id: str,
         table_name: str,
     ) -> searchengine_20211025_models.DeleteTableResponse:
+        """
+        @summary 删除索引表V2
+        
+        @return: DeleteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_table_with_options(instance_id, table_name, headers, runtime)
@@ -1459,6 +1614,11 @@ class Client(OpenApiClient):
         instance_id: str,
         table_name: str,
     ) -> searchengine_20211025_models.DeleteTableResponse:
+        """
+        @summary 删除索引表V2
+        
+        @return: DeleteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_table_with_options_async(instance_id, table_name, headers, runtime)
@@ -1469,6 +1629,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1499,6 +1665,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1527,6 +1699,10 @@ class Client(OpenApiClient):
         self,
         request: searchengine_20211025_models.DescribeRegionsRequest,
     ) -> searchengine_20211025_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_regions_with_options(request, headers, runtime)
@@ -1535,6 +1711,10 @@ class Client(OpenApiClient):
         self,
         request: searchengine_20211025_models.DescribeRegionsRequest,
     ) -> searchengine_20211025_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(request, headers, runtime)
@@ -1547,7 +1727,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ForceSwitchResponse:
         """
-        \\### Method
+        @summary Performs a forced switchover.
+        
+        @description \\### Method
         ```java
         PUT
         ```
@@ -1587,7 +1769,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ForceSwitchResponse:
         """
-        \\### Method
+        @summary Performs a forced switchover.
+        
+        @description \\### Method
         ```java
         PUT
         ```
@@ -1625,7 +1809,9 @@ class Client(OpenApiClient):
         fsm_id: str,
     ) -> searchengine_20211025_models.ForceSwitchResponse:
         """
-        \\### Method
+        @summary Performs a forced switchover.
+        
+        @description \\### Method
         ```java
         PUT
         ```
@@ -1646,7 +1832,9 @@ class Client(OpenApiClient):
         fsm_id: str,
     ) -> searchengine_20211025_models.ForceSwitchResponse:
         """
-        \\### Method
+        @summary Performs a forced switchover.
+        
+        @description \\### Method
         ```java
         PUT
         ```
@@ -1670,7 +1858,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetAdvanceConfigResponse:
         """
-        ## Method
+        @summary Queries the information about a dictionary.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
@@ -1713,7 +1903,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetAdvanceConfigResponse:
         """
-        ## Method
+        @summary Queries the information about a dictionary.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
@@ -1754,7 +1946,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.GetAdvanceConfigRequest,
     ) -> searchengine_20211025_models.GetAdvanceConfigResponse:
         """
-        ## Method
+        @summary Queries the information about a dictionary.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
@@ -1773,7 +1967,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.GetAdvanceConfigRequest,
     ) -> searchengine_20211025_models.GetAdvanceConfigResponse:
         """
-        ## Method
+        @summary Queries the information about a dictionary.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}
@@ -1794,7 +1990,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetAdvanceConfigFileResponse:
         """
-        ## Method
+        @summary Obtains the information in a specified advanced configuration file.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
@@ -1837,7 +2035,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetAdvanceConfigFileResponse:
         """
-        ## Method
+        @summary Obtains the information in a specified advanced configuration file.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
@@ -1878,7 +2078,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.GetAdvanceConfigFileRequest,
     ) -> searchengine_20211025_models.GetAdvanceConfigFileResponse:
         """
-        ## Method
+        @summary Obtains the information in a specified advanced configuration file.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
@@ -1897,7 +2099,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.GetAdvanceConfigFileRequest,
     ) -> searchengine_20211025_models.GetAdvanceConfigFileResponse:
         """
-        ## Method
+        @summary Obtains the information in a specified advanced configuration file.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
@@ -1917,7 +2121,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetClusterResponse:
         """
-        ### Method
+        @summary Queries the details of a cluster.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instance/{instanceId}/clusters/{clusterName}`
@@ -1953,7 +2159,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetClusterResponse:
         """
-        ### Method
+        @summary Queries the details of a cluster.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instance/{instanceId}/clusters/{clusterName}`
@@ -1987,7 +2195,9 @@ class Client(OpenApiClient):
         cluster_name: str,
     ) -> searchengine_20211025_models.GetClusterResponse:
         """
-        ### Method
+        @summary Queries the details of a cluster.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instance/{instanceId}/clusters/{clusterName}`
@@ -2004,7 +2214,9 @@ class Client(OpenApiClient):
         cluster_name: str,
     ) -> searchengine_20211025_models.GetClusterResponse:
         """
-        ### Method
+        @summary Queries the details of a cluster.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instance/{instanceId}/clusters/{clusterName}`
@@ -2022,7 +2234,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetClusterRunTimeInfoResponse:
         """
-        ### Method
+        @summary Queries the runtime information about a specified cluster.
+        
+        @description ### Method
         GET
         ### URI
         /openapi/ha3/instances/{instanceId}/cluster-run-time-info
@@ -2057,7 +2271,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetClusterRunTimeInfoResponse:
         """
-        ### Method
+        @summary Queries the runtime information about a specified cluster.
+        
+        @description ### Method
         GET
         ### URI
         /openapi/ha3/instances/{instanceId}/cluster-run-time-info
@@ -2090,7 +2306,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.GetClusterRunTimeInfoResponse:
         """
-        ### Method
+        @summary Queries the runtime information about a specified cluster.
+        
+        @description ### Method
         GET
         ### URI
         /openapi/ha3/instances/{instanceId}/cluster-run-time-info
@@ -2106,7 +2324,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.GetClusterRunTimeInfoResponse:
         """
-        ### Method
+        @summary Queries the runtime information about a specified cluster.
+        
+        @description ### Method
         GET
         ### URI
         /openapi/ha3/instances/{instanceId}/cluster-run-time-info
@@ -2125,7 +2345,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetDataSourceResponse:
         """
-        ### Method
+        @summary Obtains a data source.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -2161,7 +2383,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetDataSourceResponse:
         """
-        ### Method
+        @summary Obtains a data source.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -2195,7 +2419,9 @@ class Client(OpenApiClient):
         data_source_name: str,
     ) -> searchengine_20211025_models.GetDataSourceResponse:
         """
-        ### Method
+        @summary Obtains a data source.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -2212,7 +2438,9 @@ class Client(OpenApiClient):
         data_source_name: str,
     ) -> searchengine_20211025_models.GetDataSourceResponse:
         """
-        ### Method
+        @summary Obtains a data source.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -2231,6 +2459,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetDataSourceDeployResponse:
+        """
+        @summary 获取数据源部署信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceDeployResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2258,6 +2493,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetDataSourceDeployResponse:
+        """
+        @summary 获取数据源部署信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceDeployResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2283,6 +2525,11 @@ class Client(OpenApiClient):
         deploy_name: str,
         data_source_name: str,
     ) -> searchengine_20211025_models.GetDataSourceDeployResponse:
+        """
+        @summary 获取数据源部署信息
+        
+        @return: GetDataSourceDeployResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_data_source_deploy_with_options(instance_id, deploy_name, data_source_name, headers, runtime)
@@ -2293,6 +2540,11 @@ class Client(OpenApiClient):
         deploy_name: str,
         data_source_name: str,
     ) -> searchengine_20211025_models.GetDataSourceDeployResponse:
+        """
+        @summary 获取数据源部署信息
+        
+        @return: GetDataSourceDeployResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_data_source_deploy_with_options_async(instance_id, deploy_name, data_source_name, headers, runtime)
@@ -2304,7 +2556,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetDeployGraphResponse:
         """
-        ## Method
+        @summary Displays the overview of the deployment.
+        
+        @description ## Method
         GET
         ## URI
         ```java
@@ -2341,7 +2595,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetDeployGraphResponse:
         """
-        ## Method
+        @summary Displays the overview of the deployment.
+        
+        @description ## Method
         GET
         ## URI
         ```java
@@ -2376,7 +2632,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.GetDeployGraphResponse:
         """
-        ## Method
+        @summary Displays the overview of the deployment.
+        
+        @description ## Method
         GET
         ## URI
         ```java
@@ -2394,7 +2652,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.GetDeployGraphResponse:
         """
-        ## Method
+        @summary Displays the overview of the deployment.
+        
+        @description ## Method
         GET
         ## URI
         ```java
@@ -2417,7 +2677,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetFileResponse:
         """
-        ## Method
+        @summary Queries details about the version information of an index table.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
@@ -2461,7 +2723,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetFileResponse:
         """
-        ## Method
+        @summary Queries details about the version information of an index table.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
@@ -2503,7 +2767,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.GetFileRequest,
     ) -> searchengine_20211025_models.GetFileResponse:
         """
-        ## Method
+        @summary Queries details about the version information of an index table.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
@@ -2523,7 +2789,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.GetFileRequest,
     ) -> searchengine_20211025_models.GetFileResponse:
         """
-        ## Method
+        @summary Queries details about the version information of an index table.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
@@ -2542,6 +2810,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetIndexResponse:
+        """
+        @summary Queries the information about an index version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIndexResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2568,6 +2843,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetIndexResponse:
+        """
+        @summary Queries the information about an index version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIndexResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2592,6 +2874,11 @@ class Client(OpenApiClient):
         instance_id: str,
         index_name: str,
     ) -> searchengine_20211025_models.GetIndexResponse:
+        """
+        @summary Queries the information about an index version.
+        
+        @return: GetIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_index_with_options(instance_id, index_name, headers, runtime)
@@ -2601,6 +2888,11 @@ class Client(OpenApiClient):
         instance_id: str,
         index_name: str,
     ) -> searchengine_20211025_models.GetIndexResponse:
+        """
+        @summary Queries the information about an index version.
+        
+        @return: GetIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_index_with_options_async(instance_id, index_name, headers, runtime)
@@ -2613,7 +2905,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetIndexVersionResponse:
         """
-        ## Method
+        @summary Obtains the information about index versions that the current index version can be rolled back to.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
@@ -2649,7 +2943,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetIndexVersionResponse:
         """
-        ## Method
+        @summary Obtains the information about index versions that the current index version can be rolled back to.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
@@ -2683,7 +2979,9 @@ class Client(OpenApiClient):
         cluster_name: str,
     ) -> searchengine_20211025_models.GetIndexVersionResponse:
         """
-        ## Method
+        @summary Obtains the information about index versions that the current index version can be rolled back to.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
@@ -2700,7 +2998,9 @@ class Client(OpenApiClient):
         cluster_name: str,
     ) -> searchengine_20211025_models.GetIndexVersionResponse:
         """
-        ## Method
+        @summary Obtains the information about index versions that the current index version can be rolled back to.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
@@ -2718,7 +3018,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetInstanceResponse:
         """
-        ### Method
+        @summary Queries the details of an instance based on a specified instance ID.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -2753,7 +3055,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetInstanceResponse:
         """
-        ### Method
+        @summary Queries the details of an instance based on a specified instance ID.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -2786,7 +3090,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.GetInstanceResponse:
         """
-        ### Method
+        @summary Queries the details of an instance based on a specified instance ID.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -2802,7 +3108,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.GetInstanceResponse:
         """
-        ### Method
+        @summary Queries the details of an instance based on a specified instance ID.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -2820,6 +3128,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetNodeConfigResponse:
+        """
+        @summary Gets the configuration information of a node.
+        
+        @param request: GetNodeConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_name):
@@ -2855,6 +3171,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetNodeConfigResponse:
+        """
+        @summary Gets the configuration information of a node.
+        
+        @param request: GetNodeConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_name):
@@ -2888,6 +3212,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: searchengine_20211025_models.GetNodeConfigRequest,
     ) -> searchengine_20211025_models.GetNodeConfigResponse:
+        """
+        @summary Gets the configuration information of a node.
+        
+        @param request: GetNodeConfigRequest
+        @return: GetNodeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_node_config_with_options(instance_id, request, headers, runtime)
@@ -2897,6 +3227,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: searchengine_20211025_models.GetNodeConfigRequest,
     ) -> searchengine_20211025_models.GetNodeConfigResponse:
+        """
+        @summary Gets the configuration information of a node.
+        
+        @param request: GetNodeConfigRequest
+        @return: GetNodeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_node_config_with_options_async(instance_id, request, headers, runtime)
@@ -2908,6 +3244,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetTableResponse:
+        """
+        @summary 获取索引表信息V2
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2934,6 +3277,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetTableResponse:
+        """
+        @summary 获取索引表信息V2
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2958,6 +3308,11 @@ class Client(OpenApiClient):
         instance_id: str,
         table_name: str,
     ) -> searchengine_20211025_models.GetTableResponse:
+        """
+        @summary 获取索引表信息V2
+        
+        @return: GetTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_table_with_options(instance_id, table_name, headers, runtime)
@@ -2967,6 +3322,11 @@ class Client(OpenApiClient):
         instance_id: str,
         table_name: str,
     ) -> searchengine_20211025_models.GetTableResponse:
+        """
+        @summary 获取索引表信息V2
+        
+        @return: GetTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_table_with_options_async(instance_id, table_name, headers, runtime)
@@ -2979,6 +3339,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetTableGenerationResponse:
+        """
+        @summary 根据generationId获取某个索引版本状态V2
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableGenerationResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3006,6 +3373,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.GetTableGenerationResponse:
+        """
+        @summary 根据generationId获取某个索引版本状态V2
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableGenerationResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3031,6 +3405,11 @@ class Client(OpenApiClient):
         table_name: str,
         generation_id: str,
     ) -> searchengine_20211025_models.GetTableGenerationResponse:
+        """
+        @summary 根据generationId获取某个索引版本状态V2
+        
+        @return: GetTableGenerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_table_generation_with_options(instance_id, table_name, generation_id, headers, runtime)
@@ -3041,6 +3420,11 @@ class Client(OpenApiClient):
         table_name: str,
         generation_id: str,
     ) -> searchengine_20211025_models.GetTableGenerationResponse:
+        """
+        @summary 根据generationId获取某个索引版本状态V2
+        
+        @return: GetTableGenerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_table_generation_with_options_async(instance_id, table_name, generation_id, headers, runtime)
@@ -3054,7 +3438,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListAdvanceConfigDirResponse:
         """
-        ## Method
+        @summary Obtains the file list in an advanced configuration directory.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/dir?dirName={dirName}`
@@ -3097,7 +3483,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListAdvanceConfigDirResponse:
         """
-        ## Method
+        @summary Obtains the file list in an advanced configuration directory.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/dir?dirName={dirName}`
@@ -3138,7 +3526,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListAdvanceConfigDirRequest,
     ) -> searchengine_20211025_models.ListAdvanceConfigDirResponse:
         """
-        ## Method
+        @summary Obtains the file list in an advanced configuration directory.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/dir?dirName={dirName}`
@@ -3157,7 +3547,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListAdvanceConfigDirRequest,
     ) -> searchengine_20211025_models.ListAdvanceConfigDirResponse:
         """
-        ## Method
+        @summary Obtains the file list in an advanced configuration directory.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/dir?dirName={dirName}`
@@ -3177,7 +3569,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListAdvanceConfigsResponse:
         """
-        ## Sample requests
+        @summary Obtains a list of advanced configurations.
+        
+        @description ## Sample requests
         `GET /openapi/ha3/instances/ose-test1/advanced-configs`
         
         @param request: ListAdvanceConfigsRequest
@@ -3191,6 +3585,8 @@ class Client(OpenApiClient):
             query['dataSourceName'] = request.data_source_name
         if not UtilClient.is_unset(request.index_name):
             query['indexName'] = request.index_name
+        if not UtilClient.is_unset(request.new_mode):
+            query['newMode'] = request.new_mode
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -3221,7 +3617,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListAdvanceConfigsResponse:
         """
-        ## Sample requests
+        @summary Obtains a list of advanced configurations.
+        
+        @description ## Sample requests
         `GET /openapi/ha3/instances/ose-test1/advanced-configs`
         
         @param request: ListAdvanceConfigsRequest
@@ -3235,6 +3633,8 @@ class Client(OpenApiClient):
             query['dataSourceName'] = request.data_source_name
         if not UtilClient.is_unset(request.index_name):
             query['indexName'] = request.index_name
+        if not UtilClient.is_unset(request.new_mode):
+            query['newMode'] = request.new_mode
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -3263,7 +3663,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListAdvanceConfigsRequest,
     ) -> searchengine_20211025_models.ListAdvanceConfigsResponse:
         """
-        ## Sample requests
+        @summary Obtains a list of advanced configurations.
+        
+        @description ## Sample requests
         `GET /openapi/ha3/instances/ose-test1/advanced-configs`
         
         @param request: ListAdvanceConfigsRequest
@@ -3279,7 +3681,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListAdvanceConfigsRequest,
     ) -> searchengine_20211025_models.ListAdvanceConfigsResponse:
         """
-        ## Sample requests
+        @summary Obtains a list of advanced configurations.
+        
+        @description ## Sample requests
         `GET /openapi/ha3/instances/ose-test1/advanced-configs`
         
         @param request: ListAdvanceConfigsRequest
@@ -3295,7 +3699,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListClusterNamesResponse:
         """
-        ### Method
+        @summary Queries cluster names.
+        
+        @description ### Method
         GET
         ### URI
         /openapi/ha3/instances/{instanceId}/cluster-names
@@ -3329,7 +3735,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListClusterNamesResponse:
         """
-        ### Method
+        @summary Queries cluster names.
+        
+        @description ### Method
         GET
         ### URI
         /openapi/ha3/instances/{instanceId}/cluster-names
@@ -3359,7 +3767,9 @@ class Client(OpenApiClient):
 
     def list_cluster_names(self) -> searchengine_20211025_models.ListClusterNamesResponse:
         """
-        ### Method
+        @summary Queries cluster names.
+        
+        @description ### Method
         GET
         ### URI
         /openapi/ha3/instances/{instanceId}/cluster-names
@@ -3372,7 +3782,9 @@ class Client(OpenApiClient):
 
     async def list_cluster_names_async(self) -> searchengine_20211025_models.ListClusterNamesResponse:
         """
-        ### Method
+        @summary Queries cluster names.
+        
+        @description ### Method
         GET
         ### URI
         /openapi/ha3/instances/{instanceId}/cluster-names
@@ -3390,7 +3802,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListClusterTasksResponse:
         """
-        ### Method
+        @summary Displays cluster tasks .
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3429,7 +3843,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListClusterTasksResponse:
         """
-        ### Method
+        @summary Displays cluster tasks .
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3466,7 +3882,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.ListClusterTasksResponse:
         """
-        ### Method
+        @summary Displays cluster tasks .
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3486,7 +3904,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.ListClusterTasksResponse:
         """
-        ### Method
+        @summary Displays cluster tasks .
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3508,7 +3928,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListClustersResponse:
         """
-        ### Method
+        @summary Queries the list of clusters.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3547,7 +3969,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListClustersResponse:
         """
-        ### Method
+        @summary Queries the list of clusters.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3584,7 +4008,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.ListClustersResponse:
         """
-        ### Method
+        @summary Queries the list of clusters.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3604,7 +4030,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.ListClustersResponse:
         """
-        ### Method
+        @summary Queries the list of clusters.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3627,7 +4055,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDataSourceSchemasResponse:
         """
-        ## Method
+        @summary Obtains the schema information of a specified data source.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/schemas`
@@ -3663,7 +4093,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDataSourceSchemasResponse:
         """
-        ## Method
+        @summary Obtains the schema information of a specified data source.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/schemas`
@@ -3697,7 +4129,9 @@ class Client(OpenApiClient):
         data_source_name: str,
     ) -> searchengine_20211025_models.ListDataSourceSchemasResponse:
         """
-        ## Method
+        @summary Obtains the schema information of a specified data source.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/schemas`
@@ -3714,7 +4148,9 @@ class Client(OpenApiClient):
         data_source_name: str,
     ) -> searchengine_20211025_models.ListDataSourceSchemasResponse:
         """
-        ## Method
+        @summary Obtains the schema information of a specified data source.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/schemas`
@@ -3732,7 +4168,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDataSourceTasksResponse:
         """
-        ### Method
+        @summary Displays data source tasks.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3771,7 +4209,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDataSourceTasksResponse:
         """
-        ### Method
+        @summary Displays data source tasks.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3808,7 +4248,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.ListDataSourceTasksResponse:
         """
-        ### Method
+        @summary Displays data source tasks.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3828,7 +4270,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.ListDataSourceTasksResponse:
         """
-        ### Method
+        @summary Displays data source tasks.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -3850,7 +4294,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDataSourcesResponse:
         """
-        ## Method
+        @summary Obtains the list of data sources.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources`
@@ -3885,7 +4331,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDataSourcesResponse:
         """
-        ## Method
+        @summary Obtains the list of data sources.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources`
@@ -3918,7 +4366,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.ListDataSourcesResponse:
         """
-        ## Method
+        @summary Obtains the list of data sources.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources`
@@ -3934,7 +4384,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.ListDataSourcesResponse:
         """
-        ## Method
+        @summary Obtains the list of data sources.
+        
+        @description ## Method
         `GET`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources`
@@ -3954,7 +4406,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDateSourceGenerationsResponse:
         """
-        ### Method
+        @summary Obtains the data restoration version of a data source.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/generations?domainName={domainName}`
@@ -3999,7 +4453,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDateSourceGenerationsResponse:
         """
-        ### Method
+        @summary Obtains the data restoration version of a data source.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/generations?domainName={domainName}`
@@ -4042,7 +4498,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListDateSourceGenerationsRequest,
     ) -> searchengine_20211025_models.ListDateSourceGenerationsResponse:
         """
-        ### Method
+        @summary Obtains the data restoration version of a data source.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/generations?domainName={domainName}`
@@ -4061,7 +4519,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListDateSourceGenerationsRequest,
     ) -> searchengine_20211025_models.ListDateSourceGenerationsResponse:
         """
-        ### Method
+        @summary Obtains the data restoration version of a data source.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/generations?domainName={domainName}`
@@ -4081,7 +4541,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListIndexesResponse:
         """
-        ## Method
+        @summary Obtains the index list.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes
@@ -4123,7 +4585,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListIndexesResponse:
         """
-        ## Method
+        @summary Obtains the index list.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes
@@ -4163,7 +4627,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListIndexesRequest,
     ) -> searchengine_20211025_models.ListIndexesResponse:
         """
-        ## Method
+        @summary Obtains the index list.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes
@@ -4181,7 +4647,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListIndexesRequest,
     ) -> searchengine_20211025_models.ListIndexesResponse:
         """
-        ## Method
+        @summary Obtains the index list.
+        
+        @description ## Method
         GET
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes
@@ -4201,7 +4669,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListInstanceSpecsResponse:
         """
-        ### Method
+        @summary Queries instances.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/specs?type=qrs`
@@ -4243,7 +4713,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListInstanceSpecsResponse:
         """
-        ### Method
+        @summary Queries instances.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/specs?type=qrs`
@@ -4283,7 +4755,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListInstanceSpecsRequest,
     ) -> searchengine_20211025_models.ListInstanceSpecsResponse:
         """
-        ### Method
+        @summary Queries instances.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/specs?type=qrs`
@@ -4301,7 +4775,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListInstanceSpecsRequest,
     ) -> searchengine_20211025_models.ListInstanceSpecsResponse:
         """
-        ### Method
+        @summary Queries instances.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/specs?type=qrs`
@@ -4320,7 +4796,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListInstancesResponse:
         """
-        ### Method
+        @summary Queries instances.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/[code]/instances`
@@ -4377,7 +4855,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListInstancesResponse:
         """
-        ### Method
+        @summary Queries instances.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/[code]/instances`
@@ -4432,7 +4912,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListInstancesRequest,
     ) -> searchengine_20211025_models.ListInstancesResponse:
         """
-        ### Method
+        @summary Queries instances.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/[code]/instances`
@@ -4449,7 +4931,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListInstancesRequest,
     ) -> searchengine_20211025_models.ListInstancesResponse:
         """
-        ### Method
+        @summary Queries instances.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/[code]/instances`
@@ -4470,7 +4954,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListOnlineConfigsResponse:
         """
-        ### Method
+        @summary Obtains the details of online configurations.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -4517,7 +5003,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListOnlineConfigsResponse:
         """
-        ### Method
+        @summary Obtains the details of online configurations.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -4562,7 +5050,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListOnlineConfigsRequest,
     ) -> searchengine_20211025_models.ListOnlineConfigsResponse:
         """
-        ### Method
+        @summary Obtains the details of online configurations.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -4585,7 +5075,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListOnlineConfigsRequest,
     ) -> searchengine_20211025_models.ListOnlineConfigsResponse:
         """
-        ### Method
+        @summary Obtains the details of online configurations.
+        
+        @description ### Method
         ```java
         GET
         ```
@@ -4609,7 +5101,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListQueryResultResponse:
         """
-        ### Method
+        @summary Queries the query result.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/query?query=xxxx`
@@ -4653,7 +5147,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListQueryResultResponse:
         """
-        ### Method
+        @summary Queries the query result.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/query?query=xxxx`
@@ -4695,7 +5191,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListQueryResultRequest,
     ) -> searchengine_20211025_models.ListQueryResultResponse:
         """
-        ### Method
+        @summary Queries the query result.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/query?query=xxxx`
@@ -4713,7 +5211,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ListQueryResultRequest,
     ) -> searchengine_20211025_models.ListQueryResultResponse:
         """
-        ### Method
+        @summary Queries the query result.
+        
+        @description ### Method
         `GET`
         ### URI
         `/openapi/ha3/instances/{instanceId}/query?query=xxxx`
@@ -4732,6 +5232,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListTableGenerationsResponse:
+        """
+        @summary 获取索引generation列表V2
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableGenerationsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4758,6 +5265,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListTableGenerationsResponse:
+        """
+        @summary 获取索引generation列表V2
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableGenerationsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4782,6 +5296,11 @@ class Client(OpenApiClient):
         instance_id: str,
         table_name: str,
     ) -> searchengine_20211025_models.ListTableGenerationsResponse:
+        """
+        @summary 获取索引generation列表V2
+        
+        @return: ListTableGenerationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_table_generations_with_options(instance_id, table_name, headers, runtime)
@@ -4791,6 +5310,11 @@ class Client(OpenApiClient):
         instance_id: str,
         table_name: str,
     ) -> searchengine_20211025_models.ListTableGenerationsResponse:
+        """
+        @summary 获取索引generation列表V2
+        
+        @return: ListTableGenerationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_table_generations_with_options_async(instance_id, table_name, headers, runtime)
@@ -4802,6 +5326,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListTablesResponse:
+        """
+        @summary 获取索引列表V2
+        
+        @param request: ListTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_mode):
@@ -4833,6 +5365,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListTablesResponse:
+        """
+        @summary 获取索引列表V2
+        
+        @param request: ListTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_mode):
@@ -4862,6 +5402,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: searchengine_20211025_models.ListTablesRequest,
     ) -> searchengine_20211025_models.ListTablesResponse:
+        """
+        @summary 获取索引列表V2
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tables_with_options(instance_id, request, headers, runtime)
@@ -4871,6 +5417,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: searchengine_20211025_models.ListTablesRequest,
     ) -> searchengine_20211025_models.ListTablesResponse:
+        """
+        @summary 获取索引列表V2
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tables_with_options_async(instance_id, request, headers, runtime)
@@ -4884,7 +5436,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyAdvanceConfigFileResponse:
         """
-        ## Method
+        @summary Modifies the advanced configurations.
+        
+        @description ## Method
         put
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
@@ -4933,7 +5487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyAdvanceConfigFileResponse:
         """
-        ## Method
+        @summary Modifies the advanced configurations.
+        
+        @description ## Method
         put
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
@@ -4980,7 +5536,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyAdvanceConfigFileRequest,
     ) -> searchengine_20211025_models.ModifyAdvanceConfigFileResponse:
         """
-        ## Method
+        @summary Modifies the advanced configurations.
+        
+        @description ## Method
         put
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
@@ -4999,7 +5557,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyAdvanceConfigFileRequest,
     ) -> searchengine_20211025_models.ModifyAdvanceConfigFileResponse:
         """
-        ## Method
+        @summary Modifies the advanced configurations.
+        
+        @description ## Method
         put
         ## URI
         /openapi/ha3/instances/{instanceId}/advanced-configs/{configName}/file?fileName={fileName}
@@ -5020,7 +5580,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyClusterDescResponse:
         """
-        ### Method
+        @summary Modifies the description of a specified cluster.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
@@ -5063,7 +5625,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyClusterDescResponse:
         """
-        ### Method
+        @summary Modifies the description of a specified cluster.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
@@ -5104,7 +5668,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyClusterDescRequest,
     ) -> searchengine_20211025_models.ModifyClusterDescResponse:
         """
-        ### Method
+        @summary Modifies the description of a specified cluster.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
@@ -5123,7 +5689,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyClusterDescRequest,
     ) -> searchengine_20211025_models.ModifyClusterDescResponse:
         """
-        ### Method
+        @summary Modifies the description of a specified cluster.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
@@ -5143,7 +5711,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyClusterOfflineConfigResponse:
         """
-        ## Request syntax
+        @summary Modifies the configuration information of a cluster.
+        
+        @description ## Request syntax
         PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
         
         @param request: ModifyClusterOfflineConfigRequest
@@ -5199,7 +5769,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyClusterOfflineConfigResponse:
         """
-        ## Request syntax
+        @summary Modifies the configuration information of a cluster.
+        
+        @description ## Request syntax
         PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
         
         @param request: ModifyClusterOfflineConfigRequest
@@ -5253,7 +5825,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyClusterOfflineConfigRequest,
     ) -> searchengine_20211025_models.ModifyClusterOfflineConfigResponse:
         """
-        ## Request syntax
+        @summary Modifies the configuration information of a cluster.
+        
+        @description ## Request syntax
         PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
         
         @param request: ModifyClusterOfflineConfigRequest
@@ -5269,7 +5843,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyClusterOfflineConfigRequest,
     ) -> searchengine_20211025_models.ModifyClusterOfflineConfigResponse:
         """
-        ## Request syntax
+        @summary Modifies the configuration information of a cluster.
+        
+        @description ## Request syntax
         PUT /openapi/ha3/instances/{instanceId}/cluster-offline-config
         
         @param request: ModifyClusterOfflineConfigRequest
@@ -5287,7 +5863,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyClusterOnlineConfigResponse:
         """
-        ### Method
+        @summary Modifies the online configurations of a cluster.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/cluster-online-config`
@@ -5331,7 +5909,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyClusterOnlineConfigResponse:
         """
-        ### Method
+        @summary Modifies the online configurations of a cluster.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/cluster-online-config`
@@ -5373,7 +5953,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyClusterOnlineConfigRequest,
     ) -> searchengine_20211025_models.ModifyClusterOnlineConfigResponse:
         """
-        ### Method
+        @summary Modifies the online configurations of a cluster.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/cluster-online-config`
@@ -5391,7 +5973,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyClusterOnlineConfigRequest,
     ) -> searchengine_20211025_models.ModifyClusterOnlineConfigResponse:
         """
-        ### Method
+        @summary Modifies the online configurations of a cluster.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/cluster-online-config`
@@ -5412,7 +5996,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyDataSourceResponse:
         """
-        ## Method
+        @summary Modifies a data source.
+        
+        @description ## Method
         `PUT`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -5459,7 +6045,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyDataSourceResponse:
         """
-        ## Method
+        @summary Modifies a data source.
+        
+        @description ## Method
         `PUT`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -5504,7 +6092,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyDataSourceRequest,
     ) -> searchengine_20211025_models.ModifyDataSourceResponse:
         """
-        ## Method
+        @summary Modifies a data source.
+        
+        @description ## Method
         `PUT`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -5523,7 +6113,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyDataSourceRequest,
     ) -> searchengine_20211025_models.ModifyDataSourceResponse:
         """
-        ## Method
+        @summary Modifies a data source.
+        
+        @description ## Method
         `PUT`
         ## URI
         `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
@@ -5545,7 +6137,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyFileResponse:
         """
-        ## Method
+        @summary Modifies a file.
+        
+        @description ## Method
         PUT
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
@@ -5595,7 +6189,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyFileResponse:
         """
-        ## Method
+        @summary Modifies a file.
+        
+        @description ## Method
         PUT
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
@@ -5643,7 +6239,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyFileRequest,
     ) -> searchengine_20211025_models.ModifyFileResponse:
         """
-        ## Method
+        @summary Modifies a file.
+        
+        @description ## Method
         PUT
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
@@ -5663,7 +6261,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyFileRequest,
     ) -> searchengine_20211025_models.ModifyFileResponse:
         """
-        ## Method
+        @summary Modifies a file.
+        
+        @description ## Method
         PUT
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
@@ -5683,7 +6283,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyIndexPartitionResponse:
         """
-        ### Method
+        @summary Modifies the information about index partitions.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/index-partition`
@@ -5731,7 +6333,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyIndexPartitionResponse:
         """
-        ### Method
+        @summary Modifies the information about index partitions.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/index-partition`
@@ -5777,7 +6381,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyIndexPartitionRequest,
     ) -> searchengine_20211025_models.ModifyIndexPartitionResponse:
         """
-        ### Method
+        @summary Modifies the information about index partitions.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/index-partition`
@@ -5795,7 +6401,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyIndexPartitionRequest,
     ) -> searchengine_20211025_models.ModifyIndexPartitionResponse:
         """
-        ### Method
+        @summary Modifies the information about index partitions.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/index-partition`
@@ -5816,7 +6424,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyIndexVersionResponse:
         """
-        ## Method
+        @summary Modifies the index version of a cluster (an index version rollback).
+        
+        @description ## Method
         PUT
         ## URI
         /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
@@ -5856,7 +6466,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyIndexVersionResponse:
         """
-        ## Method
+        @summary Modifies the index version of a cluster (an index version rollback).
+        
+        @description ## Method
         PUT
         ## URI
         /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
@@ -5894,7 +6506,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyIndexVersionRequest,
     ) -> searchengine_20211025_models.ModifyIndexVersionResponse:
         """
-        ## Method
+        @summary Modifies the index version of a cluster (an index version rollback).
+        
+        @description ## Method
         PUT
         ## URI
         /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
@@ -5913,7 +6527,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyIndexVersionRequest,
     ) -> searchengine_20211025_models.ModifyIndexVersionResponse:
         """
-        ## Method
+        @summary Modifies the index version of a cluster (an index version rollback).
+        
+        @description ## Method
         PUT
         ## URI
         /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
@@ -5933,7 +6549,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyNodeConfigResponse:
         """
-        ### Method
+        @summary Modifies the configurations of a node.
+        
+        @description ### Method
         ```java
         PUT
         ```
@@ -5999,7 +6617,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyNodeConfigResponse:
         """
-        ### Method
+        @summary Modifies the configurations of a node.
+        
+        @description ### Method
         ```java
         PUT
         ```
@@ -6063,7 +6683,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyNodeConfigRequest,
     ) -> searchengine_20211025_models.ModifyNodeConfigResponse:
         """
-        ### Method
+        @summary Modifies the configurations of a node.
+        
+        @description ### Method
         ```java
         PUT
         ```
@@ -6085,7 +6707,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyNodeConfigRequest,
     ) -> searchengine_20211025_models.ModifyNodeConfigResponse:
         """
-        ### Method
+        @summary Modifies the configurations of a node.
+        
+        @description ### Method
         ```java
         PUT
         ```
@@ -6111,7 +6735,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyOnlineConfigResponse:
         """
-        ### Method
+        @summary Modifies online configurations.
+        
+        @description ### Method
         ```java
         put
         ```
@@ -6159,7 +6785,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyOnlineConfigResponse:
         """
-        ### Method
+        @summary Modifies online configurations.
+        
+        @description ### Method
         ```java
         put
         ```
@@ -6205,7 +6833,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyOnlineConfigRequest,
     ) -> searchengine_20211025_models.ModifyOnlineConfigResponse:
         """
-        ### Method
+        @summary Modifies online configurations.
+        
+        @description ### Method
         ```java
         put
         ```
@@ -6229,7 +6859,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyOnlineConfigRequest,
     ) -> searchengine_20211025_models.ModifyOnlineConfigResponse:
         """
-        ### Method
+        @summary Modifies online configurations.
+        
+        @description ### Method
         ```java
         put
         ```
@@ -6253,7 +6885,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyPasswordResponse:
         """
-        ### Method
+        @summary 修改实例的密码
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/password`
@@ -6297,7 +6931,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyPasswordResponse:
         """
-        ### Method
+        @summary 修改实例的密码
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/password`
@@ -6339,7 +6975,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyPasswordRequest,
     ) -> searchengine_20211025_models.ModifyPasswordResponse:
         """
-        ### Method
+        @summary 修改实例的密码
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/password`
@@ -6357,7 +6995,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyPasswordRequest,
     ) -> searchengine_20211025_models.ModifyPasswordResponse:
         """
-        ### Method
+        @summary 修改实例的密码
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}/password`
@@ -6377,6 +7017,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyTableResponse:
+        """
+        @summary 修改索引V2
+        
+        @param request: ModifyTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -6425,6 +7073,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyTableResponse:
+        """
+        @summary 修改索引V2
+        
+        @param request: ModifyTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -6471,6 +7127,12 @@ class Client(OpenApiClient):
         table_name: str,
         request: searchengine_20211025_models.ModifyTableRequest,
     ) -> searchengine_20211025_models.ModifyTableResponse:
+        """
+        @summary 修改索引V2
+        
+        @param request: ModifyTableRequest
+        @return: ModifyTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_table_with_options(instance_id, table_name, request, headers, runtime)
@@ -6481,6 +7143,12 @@ class Client(OpenApiClient):
         table_name: str,
         request: searchengine_20211025_models.ModifyTableRequest,
     ) -> searchengine_20211025_models.ModifyTableResponse:
+        """
+        @summary 修改索引V2
+        
+        @param request: ModifyTableRequest
+        @return: ModifyTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_table_with_options_async(instance_id, table_name, request, headers, runtime)
@@ -6494,7 +7162,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.PublishAdvanceConfigResponse:
         """
-        ## Method
+        @summary Publishes a version of advanced configurations.
+        
+        @description ## Method
         ~~~
         POST
         ~~~
@@ -6510,8 +7180,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
+        if not UtilClient.is_unset(request.desc):
+            body['desc'] = request.desc
+        if not UtilClient.is_unset(request.files):
+            body['files'] = request.files
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6541,7 +7213,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.PublishAdvanceConfigResponse:
         """
-        ## Method
+        @summary Publishes a version of advanced configurations.
+        
+        @description ## Method
         ~~~
         POST
         ~~~
@@ -6557,8 +7231,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
+        if not UtilClient.is_unset(request.desc):
+            body['desc'] = request.desc
+        if not UtilClient.is_unset(request.files):
+            body['files'] = request.files
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6586,7 +7262,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.PublishAdvanceConfigRequest,
     ) -> searchengine_20211025_models.PublishAdvanceConfigResponse:
         """
-        ## Method
+        @summary Publishes a version of advanced configurations.
+        
+        @description ## Method
         ~~~
         POST
         ~~~
@@ -6609,7 +7287,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.PublishAdvanceConfigRequest,
     ) -> searchengine_20211025_models.PublishAdvanceConfigResponse:
         """
-        ## Method
+        @summary Publishes a version of advanced configurations.
+        
+        @description ## Method
         ~~~
         POST
         ~~~
@@ -6634,7 +7314,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.PublishIndexVersionResponse:
         """
-        ## Method
+        @summary Publishes a specified index version.
+        
+        @description ## Method
         POST
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
@@ -6677,7 +7359,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.PublishIndexVersionResponse:
         """
-        ## Method
+        @summary Publishes a specified index version.
+        
+        @description ## Method
         POST
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
@@ -6718,7 +7402,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.PublishIndexVersionRequest,
     ) -> searchengine_20211025_models.PublishIndexVersionResponse:
         """
-        ## Method
+        @summary Publishes a specified index version.
+        
+        @description ## Method
         POST
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
@@ -6737,7 +7423,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.PublishIndexVersionRequest,
     ) -> searchengine_20211025_models.PublishIndexVersionResponse:
         """
-        ## Method
+        @summary Publishes a specified index version.
+        
+        @description ## Method
         POST
         ## URI
         /openapi/ha3/instances/{instanceId}/indexes/{indexName}/actions/publish
@@ -6757,7 +7445,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.RecoverIndexResponse:
         """
-        ### Method
+        @summary Restores data from an index.
+        
+        @description ### Method
         `POST`
         ### URI
         `/openapi/ha3/instances/{instanceId}/recover-index`
@@ -6805,7 +7495,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.RecoverIndexResponse:
         """
-        ### Method
+        @summary Restores data from an index.
+        
+        @description ### Method
         `POST`
         ### URI
         `/openapi/ha3/instances/{instanceId}/recover-index`
@@ -6851,7 +7543,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.RecoverIndexRequest,
     ) -> searchengine_20211025_models.RecoverIndexResponse:
         """
-        ### Method
+        @summary Restores data from an index.
+        
+        @description ### Method
         `POST`
         ### URI
         `/openapi/ha3/instances/{instanceId}/recover-index`
@@ -6869,7 +7563,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.RecoverIndexRequest,
     ) -> searchengine_20211025_models.RecoverIndexResponse:
         """
-        ### Method
+        @summary Restores data from an index.
+        
+        @description ### Method
         `POST`
         ### URI
         `/openapi/ha3/instances/{instanceId}/recover-index`
@@ -6889,6 +7585,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ReindexResponse:
+        """
+        @summary 索引重建V2
+        
+        @param request: ReindexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReindexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_time_sec):
@@ -6925,6 +7629,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ReindexResponse:
+        """
+        @summary 索引重建V2
+        
+        @param request: ReindexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReindexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_time_sec):
@@ -6959,6 +7671,12 @@ class Client(OpenApiClient):
         table_name: str,
         request: searchengine_20211025_models.ReindexRequest,
     ) -> searchengine_20211025_models.ReindexResponse:
+        """
+        @summary 索引重建V2
+        
+        @param request: ReindexRequest
+        @return: ReindexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.reindex_with_options(instance_id, table_name, request, headers, runtime)
@@ -6969,6 +7687,12 @@ class Client(OpenApiClient):
         table_name: str,
         request: searchengine_20211025_models.ReindexRequest,
     ) -> searchengine_20211025_models.ReindexResponse:
+        """
+        @summary 索引重建V2
+        
+        @param request: ReindexRequest
+        @return: ReindexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.reindex_with_options_async(instance_id, table_name, request, headers, runtime)
@@ -6981,7 +7705,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.RemoveClusterResponse:
         """
-        ### Method
+        @summary Deletes a cluster.
+        
+        @description ### Method
         ```java
         DELETE
         ```
@@ -7021,7 +7747,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.RemoveClusterResponse:
         """
-        ### Method
+        @summary Deletes a cluster.
+        
+        @description ### Method
         ```java
         DELETE
         ```
@@ -7059,7 +7787,9 @@ class Client(OpenApiClient):
         cluster_name: str,
     ) -> searchengine_20211025_models.RemoveClusterResponse:
         """
-        ### Method
+        @summary Deletes a cluster.
+        
+        @description ### Method
         ```java
         DELETE
         ```
@@ -7080,7 +7810,9 @@ class Client(OpenApiClient):
         cluster_name: str,
     ) -> searchengine_20211025_models.RemoveClusterResponse:
         """
-        ### Method
+        @summary Deletes a cluster.
+        
+        @description ### Method
         ```java
         DELETE
         ```
@@ -7095,6 +7827,178 @@ class Client(OpenApiClient):
         headers = {}
         return await self.remove_cluster_with_options_async(instance_id, cluster_name, headers, runtime)
 
+    def start_index_with_options(
+        self,
+        instance_id: str,
+        index_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.StartIndexResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartIndexResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartIndex',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/startIndex',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.StartIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_index_with_options_async(
+        self,
+        instance_id: str,
+        index_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.StartIndexResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartIndexResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartIndex',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/startIndex',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.StartIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_index(
+        self,
+        instance_id: str,
+        index_name: str,
+    ) -> searchengine_20211025_models.StartIndexResponse:
+        """
+        @return: StartIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_index_with_options(instance_id, index_name, headers, runtime)
+
+    async def start_index_async(
+        self,
+        instance_id: str,
+        index_name: str,
+    ) -> searchengine_20211025_models.StartIndexResponse:
+        """
+        @return: StartIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_index_with_options_async(instance_id, index_name, headers, runtime)
+
+    def stop_index_with_options(
+        self,
+        instance_id: str,
+        index_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.StopIndexResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopIndexResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopIndex',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/stopIndex',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.StopIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_index_with_options_async(
+        self,
+        instance_id: str,
+        index_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.StopIndexResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopIndexResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopIndex',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/stopIndex',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.StopIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_index(
+        self,
+        instance_id: str,
+        index_name: str,
+    ) -> searchengine_20211025_models.StopIndexResponse:
+        """
+        @return: StopIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_index_with_options(instance_id, index_name, headers, runtime)
+
+    async def stop_index_async(
+        self,
+        instance_id: str,
+        index_name: str,
+    ) -> searchengine_20211025_models.StopIndexResponse:
+        """
+        @return: StopIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_index_with_options_async(instance_id, index_name, headers, runtime)
+
     def stop_task_with_options(
         self,
         instance_id: str,
@@ -7103,7 +8007,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.StopTaskResponse:
         """
-        ### Method
+        @summary Stops an FSM task.
+        
+        @description ### Method
         ```java
         PUT
         ```
@@ -7143,7 +8049,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.StopTaskResponse:
         """
-        ### Method
+        @summary Stops an FSM task.
+        
+        @description ### Method
         ```java
         PUT
         ```
@@ -7181,7 +8089,9 @@ class Client(OpenApiClient):
         fsm_id: str,
     ) -> searchengine_20211025_models.StopTaskResponse:
         """
-        ### Method
+        @summary Stops an FSM task.
+        
+        @description ### Method
         ```java
         PUT
         ```
@@ -7202,7 +8112,9 @@ class Client(OpenApiClient):
         fsm_id: str,
     ) -> searchengine_20211025_models.StopTaskResponse:
         """
-        ### Method
+        @summary Stops an FSM task.
+        
+        @description ### Method
         ```java
         PUT
         ```
@@ -7225,7 +8137,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.UpdateInstanceResponse:
         """
-        ### Method
+        @summary Modifies the configuration of a specified instance.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -7271,7 +8185,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.UpdateInstanceResponse:
         """
-        ### Method
+        @summary Modifies the configuration of a specified instance.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -7315,7 +8231,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.UpdateInstanceRequest,
     ) -> searchengine_20211025_models.UpdateInstanceResponse:
         """
-        ### Method
+        @summary Modifies the configuration of a specified instance.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
@@ -7333,7 +8251,9 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.UpdateInstanceRequest,
     ) -> searchengine_20211025_models.UpdateInstanceResponse:
         """
-        ### Method
+        @summary Modifies the configuration of a specified instance.
+        
+        @description ### Method
         `PUT`
         ### URI
         `/openapi/ha3/instances/{instanceId}`
