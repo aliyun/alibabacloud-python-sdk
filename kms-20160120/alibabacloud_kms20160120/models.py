@@ -13,17 +13,25 @@ class AsymmetricDecryptRequest(TeaModel):
         key_version_id: str = None,
     ):
         # The decryption algorithm.
+        # 
+        # This parameter is required.
         self.algorithm = algorithm
         # The ciphertext that you want to decrypt.
         # 
         # > * The value is encoded in Base64.
-        # > * You can call the [AsymmetricEncrypt](~~148131~~) operation to generate the ciphertext.
+        # > * You can call the [AsymmetricEncrypt](https://help.aliyun.com/document_detail/148131.html) operation to generate the ciphertext.
+        # 
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
         # The ID of the customer master key (CMK). The ID must be globally unique.
         # 
-        # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+        # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The version ID of the CMK. The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_version_id = key_version_id
 
     def validate(self):
@@ -159,16 +167,24 @@ class AsymmetricEncryptRequest(TeaModel):
         plaintext: str = None,
     ):
         # The encryption algorithm.
+        # 
+        # This parameter is required.
         self.algorithm = algorithm
         # The ID of the CMK. The ID must be globally unique.
         # 
-        # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](~~68522~~).
+        # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The version ID of the CMK. The ID must be globally unique.
         # 
-        # >  You can call the [ListKeyVersions](~~133966~~) operation to query the versions of a CMK. The ID of a version is specified by the KeyVersionId parameter.
+        # >  You can call the [ListKeyVersions](https://help.aliyun.com/document_detail/133966.html) operation to query the versions of a CMK. The ID of a version is specified by the KeyVersionId parameter.
+        # 
+        # This parameter is required.
         self.key_version_id = key_version_id
         # The plaintext that you want to encrypt. The plaintext must be Base64-encoded.
+        # 
+        # This parameter is required.
         self.plaintext = plaintext
 
     def validate(self):
@@ -304,14 +320,22 @@ class AsymmetricSignRequest(TeaModel):
         key_version_id: str = None,
     ):
         # The version ID of the CMK. The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.algorithm = algorithm
         # The signature algorithm.
+        # 
+        # This parameter is required.
         self.digest = digest
         # The operation that you want to perform. Set the value to **AsymmetricSign**.
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The ID of the customer master key (CMK). The ID must be globally unique.
         # 
-        # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+        # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_version_id = key_version_id
 
     def validate(self):
@@ -359,7 +383,7 @@ class AsymmetricSignResponseBody(TeaModel):
         # The digest that is generated for the original message by using a hash algorithm. The hash algorithm is specified by the Algorithm parameter.
         # 
         # > * The value is encoded in Base64.
-        # > * For more information about how to calculate message digests, see the **Preprocess signature: compute a message digest** section of the [Generate and verify a signature by using an asymmetric CMK](~~148146~~) topic.
+        # > * For more information about how to calculate message digests, see the **Preprocess signature: compute a message digest** section of the [Generate and verify a signature by using an asymmetric CMK](https://help.aliyun.com/document_detail/148146.html) topic.
         self.key_version_id = key_version_id
         # The calculated signature.
         # 
@@ -453,20 +477,30 @@ class AsymmetricVerifyRequest(TeaModel):
         value: str = None,
     ):
         # The signature algorithm.
+        # 
+        # This parameter is required.
         self.algorithm = algorithm
         # The digest that is generated for the original message by using a hash algorithm. The hash algorithm is specified by the **Algorithm** parameter.
         # 
         # >  The value is encoded in Base64.
+        # 
+        # This parameter is required.
         self.digest = digest
         # The ID of the CMK. The ID must be globally unique.
         # 
-        # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](~~68522~~).
+        # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The version ID of the CMK. The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_version_id = key_version_id
         # The signature value to be verified.
         # 
         # >  The value is encoded in Base64.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -603,6 +637,8 @@ class CancelKeyDeletionRequest(TeaModel):
         key_id: str = None,
     ):
         # The ID of the CMK. The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -703,19 +739,25 @@ class CertificatePrivateKeyDecryptRequest(TeaModel):
     ):
         # The encryption algorithm. Valid values:
         # 
-        # *   RSAES_OAEP_SHA\_1
+        # *   RSAES_OAEP_SHA_1
         # 
-        # *   RSAES_OAEP_SHA\_256
+        # *   RSAES_OAEP_SHA_256
         # 
         # *   SM2PKE
         # 
-        # > The SM2PKE encryption algorithm is supported only in regions in mainland China. In these regions, managed hardware security modules (HSMs) are used. For more information, see [Managed HSM overview](~~125803~~).
+        # > The SM2PKE encryption algorithm is supported only in regions in mainland China. In these regions, managed hardware security modules (HSMs) are used. For more information, see [Managed HSM overview](https://help.aliyun.com/document_detail/125803.html).
+        # 
+        # This parameter is required.
         self.algorithm = algorithm
         # The ID of the certificate. The ID must be globally unique in Certificates Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
         # The data that you want to decrypt.
         # 
         # The value is encoded in Base64.
+        # 
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
 
     def validate(self):
@@ -841,17 +883,21 @@ class CertificatePrivateKeySignRequest(TeaModel):
     ):
         # The signature algorithm. Valid values:
         # 
-        # *   RSA_PKCS1\_SHA\_256
+        # *   RSA_PKCS1_SHA_256
         # 
-        # *   RSA_PSS_SHA\_256
+        # *   RSA_PSS_SHA_256
         # 
-        # *   ECDSA_SHA\_256
+        # *   ECDSA_SHA_256
         # 
         # *   SM2DSA
         # 
-        # >* The SM2DSA signature algorithm is supported only in regions where managed hardware security modules (HSMs) are used in mainland China. For more information, see [Managed HSM overview](~~125803~~).
+        # >* The SM2DSA signature algorithm is supported only in regions where managed hardware security modules (HSMs) are used in mainland China. For more information, see [Managed HSM overview](https://help.aliyun.com/document_detail/125803.html).
+        # 
+        # This parameter is required.
         self.algorithm = algorithm
         # The ID of the certificate. The ID must be globally unique in Certificates Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
         # The data to be signed.
         # 
@@ -861,15 +907,19 @@ class CertificatePrivateKeySignRequest(TeaModel):
         # 
         # If the size of the data is greater than 4 KB, you can set the MessageType parameter to DIGEST and set the Message parameter to the digest of the data. The digest is also called hash value. You can compute the digest of the data on an on-premises machine. Certificates Manager uses the digest that you compute in your own certificate application system. The message digest algorithm that you use must match the specified signature algorithm. Comply with the following mapping between signature algorithms and message digest algorithms:
         # 
-        # *   If the signature algorithm is RSA_PKCS1\_SHA\_256, RSA_PSS_SHA\_256, or ECDSA_SHA\_256, the message digest algorithm must be SHA-256.
+        # *   If the signature algorithm is RSA_PKCS1_SHA_256, RSA_PSS_SHA_256, or ECDSA_SHA_256, the message digest algorithm must be SHA-256.
         # *   If the signature algorithm is SM2DSA, the message digest algorithm must be SM3.
         # 
         # >  If the key type of the certificate is EC_SM2 and the MessageType parameter is set to DIGEST, the value of the Message parameter is `e` that is described in GB/T 32918.2-2016 6.1.
+        # 
+        # This parameter is required.
         self.message = message
         # The type of the message. Valid values:
         # 
         # *   RAW: the raw data. This is the default value.
         # *   DIGEST: the message digest (hash value) of the raw data.
+        # 
+        # This parameter is required.
         self.message_type = message_type
 
     def validate(self):
@@ -998,15 +1048,19 @@ class CertificatePublicKeyEncryptRequest(TeaModel):
     ):
         # The encryption algorithm. Valid values:
         # 
-        # *   RSAES_OAEP_SHA\_1
+        # *   RSAES_OAEP_SHA_1
         # 
-        # *   RSAES_OAEP_SHA\_256
+        # *   RSAES_OAEP_SHA_256
         # 
         # *   SM2PKE
         # 
-        # >The SM2PKE encryption algorithm is supported only in regions in mainland China. In these regions, managed hardware security modules (HSMs) are used. For more information, see [Managed HSM overview](~~125803~~).
+        # >The SM2PKE encryption algorithm is supported only in regions in mainland China. In these regions, managed hardware security modules (HSMs) are used. For more information, see [Managed HSM overview](https://help.aliyun.com/document_detail/125803.html).
+        # 
+        # This parameter is required.
         self.algorithm = algorithm
         # The ID of the certificate. The ID must be globally unique in Certificates Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
         # The data that you want to encrypt.
         # 
@@ -1014,11 +1068,13 @@ class CertificatePublicKeyEncryptRequest(TeaModel):
         # 
         # The size of data that can be encrypted varies based on the encryption algorithm that you use:
         # 
-        # *   RSAES_OAEP_SHA\_1: 214 bytes
-        # *   RSAES_OAEP_SHA\_256: 190 bytes
+        # *   RSAES_OAEP_SHA_1: 214 bytes
+        # *   RSAES_OAEP_SHA_256: 190 bytes
         # *   SM2PKE: 6,047 bytes
         # 
-        # If the size of data that you want to encrypt exceeds the preceding limits, you can call the [GenerateDataKey](~~28948~~) operation to generate a data key to encrypt the data. Then, call the CertificatePublicKeyEncrypt operation to encrypt the data key.
+        # If the size of data that you want to encrypt exceeds the preceding limits, you can call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html) operation to generate a data key to encrypt the data. Then, call the CertificatePublicKeyEncrypt operation to encrypt the data key.
+        # 
+        # This parameter is required.
         self.plaintext = plaintext
 
     def validate(self):
@@ -1145,17 +1201,21 @@ class CertificatePublicKeyVerifyRequest(TeaModel):
     ):
         # The signature algorithm. Valid values:
         # 
-        # *   RSA_PKCS1\_SHA\_256
+        # *   RSA_PKCS1_SHA_256
         # 
-        # *   RSA_PSS_SHA\_256
+        # *   RSA_PSS_SHA_256
         # 
-        # *   ECDSA_SHA\_256
+        # *   ECDSA_SHA_256
         # 
         # *   SM2DSA
         # 
-        # > The SM2DSA signature algorithm is supported only in regions where managed hardware security modules (HSMs) are used in the Chinese mainland. For more information, see [Managed HSM overview](~~125803~~).
+        # > The SM2DSA signature algorithm is supported only in regions where managed hardware security modules (HSMs) are used in the Chinese mainland. For more information, see [Managed HSM overview](https://help.aliyun.com/document_detail/125803.html).
+        # 
+        # This parameter is required.
         self.algorithm = algorithm
         # The ID of the certificate. The ID must be globally unique in Certificates Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
         # The raw data that is signed.
         # 
@@ -1165,19 +1225,25 @@ class CertificatePublicKeyVerifyRequest(TeaModel):
         # 
         # If the size of the data is greater than 4 KB, you can set the MessageType parameter to DIGEST and set the Message parameter to the digest of the data. The digest is also called hash value. You can compute the digest of the data on an on-premises device. Certificates Manager uses the digest that you compute in your own certificate application system. The message digest algorithm that you use must match the specified signature algorithm. Comply with the following mapping between signature algorithms and message digest algorithms:
         # 
-        # *   If the signature algorithm is RSA_PKCS1\_SHA\_256, RSA_PSS_SHA\_256, or ECDSA_SHA\_256, the message digest algorithm must be SHA-256.
+        # *   If the signature algorithm is RSA_PKCS1_SHA_256, RSA_PSS_SHA_256, or ECDSA_SHA_256, the message digest algorithm must be SHA-256.
         # *   If the signature algorithm is SM2DSA, the message digest algorithm must be SM3.
         # 
         # >  If the key type of the certificate is EC_SM2 and the MessageType parameter is set to DIGEST, the value of the Message parameter is `e` that is described in GB/T 32918.2-2016 6.1.
+        # 
+        # This parameter is required.
         self.message = message
         # The type of the message. Valid values:
         # 
         # *   RAW: the raw data. This is the default value.
         # *   DIGEST: the message digest (hash value) of the raw data.
+        # 
+        # This parameter is required.
         self.message_type = message_type
         # The signature value.
         # 
         # The value is encoded in Base64.
+        # 
+        # This parameter is required.
         self.signature_value = signature_value
 
     def validate(self):
@@ -1312,14 +1378,24 @@ class ConnectKmsInstanceRequest(TeaModel):
         zone_ids: str = None,
     ):
         # The provider of the KMS instance. Set the value to Aliyun.
+        # 
+        # This parameter is required.
         self.kmprovider = kmprovider
         # The ID of the KMS instance that you want to enable.
+        # 
+        # This parameter is required.
         self.kms_instance_id = kms_instance_id
         # The vSwitch in the two zones. The vSwitch must have at least one available IP address.
+        # 
+        # This parameter is required.
         self.v_switch_ids = v_switch_ids
         # The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # The two zones for the KMS instance. Dual-zone deployment improves service availability and disaster recovery capabilities.
+        # 
+        # This parameter is required.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -1436,8 +1512,12 @@ class CreateAliasRequest(TeaModel):
         # The alias of the CMK.
         # 
         # The alias must be 1 to 255 characters in length and must contain the prefix `alias/`. The alias cannot be prefixed with the reserved word `alias/acs`.
+        # 
+        # This parameter is required.
         self.alias_name = alias_name
         # The ID of the CMK. The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -1546,10 +1626,14 @@ class CreateApplicationAccessPointRequest(TeaModel):
         # The description of the AAP.
         self.description = description
         # The name of the AAP.
+        # 
+        # This parameter is required.
         self.name = name
         # The permission policy.
         # 
         # > You can bind up to three permission policies to each AAP.
+        # 
+        # This parameter is required.
         self.policies = policies
 
     def validate(self):
@@ -1703,9 +1787,11 @@ class CreateCertificateRequest(TeaModel):
         self.exportable_private_key = exportable_private_key
         # The type of the key. Valid values:
         # 
-        # *   RSA\_2048
+        # *   RSA_2048
         # *   EC_P256
         # *   EC_SM2
+        # 
+        # This parameter is required.
         self.key_spec = key_spec
         # The certificate subject, which is the owner of the certificate.
         # 
@@ -1721,6 +1807,8 @@ class CreateCertificateRequest(TeaModel):
         # *   OU: required. The name of the department.
         # *   ST: optional. The name of the province, municipality, autonomous region, or special administrative region.
         # *   L: optional. The name of the city.
+        # 
+        # This parameter is required.
         self.subject = subject
         # The subject alternative names.
         # 
@@ -1774,9 +1862,11 @@ class CreateCertificateShrinkRequest(TeaModel):
         self.exportable_private_key = exportable_private_key
         # The type of the key. Valid values:
         # 
-        # *   RSA\_2048
+        # *   RSA_2048
         # *   EC_P256
         # *   EC_SM2
+        # 
+        # This parameter is required.
         self.key_spec = key_spec
         # The certificate subject, which is the owner of the certificate.
         # 
@@ -1792,6 +1882,8 @@ class CreateCertificateShrinkRequest(TeaModel):
         # *   OU: required. The name of the department.
         # *   ST: optional. The name of the province, municipality, autonomous region, or special administrative region.
         # *   L: optional. The name of the city.
+        # 
+        # This parameter is required.
         self.subject = subject
         # The subject alternative names.
         # 
@@ -1929,6 +2021,8 @@ class CreateClientKeyRequest(TeaModel):
         password: str = None,
     ):
         # The operation that you want to perform. Set the value to **CreateClientKey**.
+        # 
+        # This parameter is required.
         self.aap_name = aap_name
         # The encryption password of the client key.
         # 
@@ -1944,6 +2038,8 @@ class CreateClientKeyRequest(TeaModel):
         # *   If you configure NotAfter, you must configure NotBefore.
         self.not_before = not_before
         # The name of the AAP.
+        # 
+        # This parameter is required.
         self.password = password
 
     def validate(self):
@@ -1996,7 +2092,7 @@ class CreateClientKeyResponseBody(TeaModel):
         self.not_after = not_after
         # The private key of the client key.
         self.not_before = not_before
-        # The algorithm that is used to encrypt the private key of the client key. Currently, only RSA\_2048 is supported.
+        # The algorithm that is used to encrypt the private key of the client key. Currently, only RSA_2048 is supported.
         self.private_key_data = private_key_data
         # The beginning of the validity period of the client key.
         # 
@@ -2116,9 +2212,9 @@ class CreateKeyRequest(TeaModel):
         # - true
         # - false (default)
         # 
-        # This parameter is valid only when the key belongs to an instance type that supports automatic rotation. For more information, see [Key rotation](~~2358146~~).
+        # This parameter is valid only when the key belongs to an instance type that supports automatic rotation. For more information, see [Key rotation](https://help.aliyun.com/document_detail/2358146.html).
         self.enable_automatic_rotation = enable_automatic_rotation
-        # The key specification. The valid values vary based on the KMS instance type. For more information, see [Overview](~~480159~~).
+        # The key specification. The valid values vary based on the KMS instance type. For more information, see [Overview](https://help.aliyun.com/document_detail/480159.html).
         # 
         # > If you do not specify a value for this parameter, the default key specification is Aliyun_AES_256.
         self.key_spec = key_spec
@@ -2137,7 +2233,7 @@ class CreateKeyRequest(TeaModel):
         # 
         # > - The value of this parameter is case-sensitive.
         # > - Default keys of the customer master key (CMK) type support Aliyun_KMS and EXTERNAL. Keys in instances of the software key management type support only Aliyun_KMS. Keys in instances of the hardware key management type support Aliyun_KMS and EXTERNAL.
-        # > - If you set Origin to EXTERNAL, you must import key material. For more information, see [Import key material into a symmetric key](~~607841~~) or [Import key material into an asymmetric key](~~608827~~).
+        # > - If you set Origin to EXTERNAL, you must import key material. For more information, see [Import key material into a symmetric key](https://help.aliyun.com/document_detail/607841.html) or [Import key material into an asymmetric key](https://help.aliyun.com/document_detail/608827.html).
         self.origin = origin
         self.policy = policy
         # You do not need to specify this parameter. KMS sets a protection level for your key.
@@ -2163,7 +2259,7 @@ class CreateKeyRequest(TeaModel):
         # 
         # You can enter up to 20 tags. Enter multiple tags in the [{"TagKey":"key1","TagValue":"value1"},{"TagKey":"key2","TagValue":"value2"},..] format.
         # 
-        # Each tag key or tag value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+        # Each tag key or tag value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
         # 
         # > The tag key cannot start with aliyun or acs:.
         self.tags = tags
@@ -2272,7 +2368,7 @@ class CreateKeyResponseBodyKeyMetadata(TeaModel):
         self.key_spec = key_spec
         # The status of the key.
         # 
-        # For more information, see [Impacts of key status on API operations](~~44211~~).
+        # For more information, see [Impacts of key status on API operations](https://help.aliyun.com/document_detail/44211.html).
         self.key_state = key_state
         # The usage of the key.
         self.key_usage = key_usage
@@ -2472,7 +2568,9 @@ class CreateKeyVersionRequest(TeaModel):
     ):
         # The ID of the CMK. The ID must be globally unique.
         # 
-        # >  You can also set the value to an alias that is bound to the CMK. For more information, see [Overview of aliases](~~68522~~).
+        # >  You can also set the value to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -2626,12 +2724,16 @@ class CreateNetworkRuleRequest(TeaModel):
         # The description.
         self.description = description
         # The name of the access control rule.
+        # 
+        # This parameter is required.
         self.name = name
         # The private IP address or private CIDR block. Separate multiple items with commas (,).
         self.source_private_ip = source_private_ip
         # The network type.
         # 
         # Only private IP addresses are supported. Set the value to Private.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2782,13 +2884,15 @@ class CreatePolicyRequest(TeaModel):
     ):
         # The name of the access control rule.
         # 
-        # > For more information about how to query created access control rules, see [ListNetworkRules](~~2539433~~).
+        # > For more information about how to query created access control rules, see [ListNetworkRules](https://help.aliyun.com/document_detail/2539433.html).
         self.access_control_rules = access_control_rules
         # The description.
         self.description = description
         # The scope of the permission policy. You need to specify the KMS instance that you want to access.
         self.kms_instance = kms_instance
         # The name of the permission policy.
+        # 
+        # This parameter is required.
         self.name = name
         # The operations that can be performed. Valid values:
         # 
@@ -2796,11 +2900,15 @@ class CreatePolicyRequest(TeaModel):
         # *   RbacPermission/Template/CryptoServiceSecretUser: allows you to perform secret-related operations.
         # 
         # You can select both.
+        # 
+        # This parameter is required.
         self.permissions = permissions
         # The key and secret that are allowed to access.
         # 
-        # *   Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\*.
-        # *   Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\*.
+        # *   Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\\*.
+        # *   Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\\*.
+        # 
+        # This parameter is required.
         self.resources = resources
 
     def validate(self):
@@ -3006,6 +3114,8 @@ class CreateSecretRequest(TeaModel):
         # The name of the secret.
         self.rotation_interval = rotation_interval
         # The tags of the secret.
+        # 
+        # This parameter is required.
         self.secret_data = secret_data
         # The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length.
         # 
@@ -3055,6 +3165,8 @@ class CreateSecretRequest(TeaModel):
         # 
         #     *   `{"UserName":"","Password": ""}`: In the format, `UserName` specifies the username that is used to log on to the ECS instance, and `Password` specifies the password that is used to log on to the ECS instance.
         #     *   `{"UserName":"","PublicKey": "", "PrivateKey": ""}`: In the format, `PublicKey` indicates the SSH public key that is used to log on to the ECS instance, and `PrivateKey` specifies the SSH private key that is used to log on to the ECS instance.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
         # The ID of the dedicated KMS instance.
         self.secret_type = secret_type
@@ -3072,6 +3184,8 @@ class CreateSecretRequest(TeaModel):
         # *   binary
         # 
         # >  If you set the SecretType parameter to Rds, RAMCredentials, or ECS, the SecretDataType parameter must be set to text.
+        # 
+        # This parameter is required.
         self.version_id = version_id
 
     def validate(self):
@@ -3184,6 +3298,8 @@ class CreateSecretShrinkRequest(TeaModel):
         # The name of the secret.
         self.rotation_interval = rotation_interval
         # The tags of the secret.
+        # 
+        # This parameter is required.
         self.secret_data = secret_data
         # The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length.
         # 
@@ -3233,6 +3349,8 @@ class CreateSecretShrinkRequest(TeaModel):
         # 
         #     *   `{"UserName":"","Password": ""}`: In the format, `UserName` specifies the username that is used to log on to the ECS instance, and `Password` specifies the password that is used to log on to the ECS instance.
         #     *   `{"UserName":"","PublicKey": "", "PrivateKey": ""}`: In the format, `PublicKey` indicates the SSH public key that is used to log on to the ECS instance, and `PrivateKey` specifies the SSH private key that is used to log on to the ECS instance.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
         # The ID of the dedicated KMS instance.
         self.secret_type = secret_type
@@ -3250,6 +3368,8 @@ class CreateSecretShrinkRequest(TeaModel):
         # *   binary
         # 
         # >  If you set the SecretType parameter to Rds, RAMCredentials, or ECS, the SecretDataType parameter must be set to text.
+        # 
+        # This parameter is required.
         self.version_id = version_id
 
     def validate(self):
@@ -3471,13 +3591,15 @@ class DecryptRequest(TeaModel):
         # 
         # You can generate the ciphertext by calling the following operations:
         # 
-        # *   [GenerateDataKey](~~28948~~)
-        # *   [Encrypt](~~28949~~)
-        # *   [GenerateDataKeyWithoutPlaintext](~~134043~~)
+        # *   [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html)
+        # *   [Encrypt](https://help.aliyun.com/document_detail/28949.html)
+        # *   [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html)
+        # 
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
         # The JSON string that consists of key-value pairs.
         # 
-        # >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](~~28948~~), [Encrypt](~~28949~~), or [GenerateDataKeyWithoutPlaintext](~~134043~~) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+        # >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [Encrypt](https://help.aliyun.com/document_detail/28949.html), or [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
 
     def validate(self):
@@ -3514,13 +3636,15 @@ class DecryptShrinkRequest(TeaModel):
         # 
         # You can generate the ciphertext by calling the following operations:
         # 
-        # *   [GenerateDataKey](~~28948~~)
-        # *   [Encrypt](~~28949~~)
-        # *   [GenerateDataKeyWithoutPlaintext](~~134043~~)
+        # *   [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html)
+        # *   [Encrypt](https://help.aliyun.com/document_detail/28949.html)
+        # *   [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html)
+        # 
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
         # The JSON string that consists of key-value pairs.
         # 
-        # >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](~~28948~~), [Encrypt](~~28949~~), or [GenerateDataKeyWithoutPlaintext](~~134043~~) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+        # >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [Encrypt](https://help.aliyun.com/document_detail/28949.html), or [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
 
     def validate(self):
@@ -3647,6 +3771,8 @@ class DeleteAliasRequest(TeaModel):
         # The alias that you want to delete.
         # 
         # The value must be 1 to 255 characters in length and must include the alias/ prefix.
+        # 
+        # This parameter is required.
         self.alias_name = alias_name
 
     def validate(self):
@@ -3744,6 +3870,8 @@ class DeleteApplicationAccessPointRequest(TeaModel):
         name: str = None,
     ):
         # The name of the AAP that you want to delete.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -3841,6 +3969,8 @@ class DeleteCertificateRequest(TeaModel):
         certificate_id: str = None,
     ):
         # The ID of the certificate. It is the globally unique identifier (GUID) of the certificate in Alibaba Cloud Certificate Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -3938,6 +4068,8 @@ class DeleteClientKeyRequest(TeaModel):
         client_key_id: str = None,
     ):
         # The ID of the client key.
+        # 
+        # This parameter is required.
         self.client_key_id = client_key_id
 
     def validate(self):
@@ -4035,6 +4167,8 @@ class DeleteKeyMaterialRequest(TeaModel):
         key_id: str = None,
     ):
         # The globally unique ID of the CMK.
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -4132,6 +4266,8 @@ class DeleteNetworkRuleRequest(TeaModel):
         name: str = None,
     ):
         # The name of the network access rule that you want to delete.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -4229,6 +4365,8 @@ class DeletePolicyRequest(TeaModel):
         name: str = None,
     ):
         # The name of the permission policy that you want to delete.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -4337,6 +4475,8 @@ class DeleteSecretRequest(TeaModel):
         # Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. Unit: Days.
         self.recovery_window_in_days = recovery_window_in_days
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -4542,6 +4682,8 @@ class DescribeApplicationAccessPointRequest(TeaModel):
         name: str = None,
     ):
         # The name of the AAP that you want to query.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -4674,6 +4816,8 @@ class DescribeCertificateRequest(TeaModel):
         certificate_id: str = None,
     ):
         # The ID of the certificate. The ID must be globally unique in Certificates Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -4905,7 +5049,9 @@ class DescribeKeyRequest(TeaModel):
     ):
         # The ID of the CMK. The ID must be globally unique.
         # 
-        # You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](~~68522~~).
+        # You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -4960,7 +5106,7 @@ class DescribeKeyResponseBodyKeyMetadata(TeaModel):
         # *   Disabled
         # *   Suspended
         # 
-        # For more information, see [Automatic key rotation](~~134270~~).
+        # For more information, see [Automatic key rotation](https://help.aliyun.com/document_detail/134270.html).
         # 
         # >  Only symmetric CMKs support automatic key rotation.
         self.automatic_rotation = automatic_rotation
@@ -4972,7 +5118,7 @@ class DescribeKeyResponseBodyKeyMetadata(TeaModel):
         self.dkmsinstance_id = dkmsinstance_id
         # The time at which the CMK is scheduled for deletion. The time is displayed in UTC.
         # 
-        # For more information, see [ScheduleKeyDeletion](~~44196~~).
+        # For more information, see [ScheduleKeyDeletion](https://help.aliyun.com/document_detail/44196.html).
         # 
         # >  This parameter is returned only when the value of the KeyState parameter is PendingDeletion.
         self.delete_date = delete_date
@@ -4991,7 +5137,7 @@ class DescribeKeyResponseBodyKeyMetadata(TeaModel):
         self.key_spec = key_spec
         # The status of the CMK.
         # 
-        # For more information, see [Impact of CMK status on API operations](~~44211~~).
+        # For more information, see [Impact of CMK status on API operations](https://help.aliyun.com/document_detail/44211.html).
         self.key_state = key_state
         # The usage of the CMK.
         self.key_usage = key_usage
@@ -5200,11 +5346,15 @@ class DescribeKeyVersionRequest(TeaModel):
     ):
         # The globally unique ID of the CMK.
         # 
-        # You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+        # You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The globally unique ID of the CMK version.
         # 
-        # You can call the [ListKeyVersions](~~133966~~) operation to query the versions of the CMK.
+        # You can call the [ListKeyVersions](https://help.aliyun.com/document_detail/133966.html) operation to query the versions of the CMK.
+        # 
+        # This parameter is required.
         self.key_version_id = key_version_id
 
     def validate(self):
@@ -5359,6 +5509,8 @@ class DescribeNetworkRuleRequest(TeaModel):
         name: str = None,
     ):
         # The name of the access control rule that you want to query.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -5484,6 +5636,8 @@ class DescribePolicyRequest(TeaModel):
         name: str = None,
     ):
         # The name of the permission policy that you want to query.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -5777,6 +5931,8 @@ class DescribeSecretRequest(TeaModel):
         # *   false: The resource tags are not returned. This is the default value.
         self.fetch_tags = fetch_tags
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -6078,6 +6234,8 @@ class DisableKeyRequest(TeaModel):
         key_id: str = None,
     ):
         # The ID of the CMK. The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -6175,6 +6333,8 @@ class EnableKeyRequest(TeaModel):
         key_id: str = None,
     ):
         # The globally unique ID of the CMK.
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -6273,11 +6433,15 @@ class EncryptRequest(TeaModel):
         key_id: str = None,
         plaintext: str = None,
     ):
-        # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
-        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The plaintext to be encrypted. The plaintext must be Base64 encoded.
+        # 
+        # This parameter is required.
         self.plaintext = plaintext
 
     def validate(self):
@@ -6315,11 +6479,15 @@ class EncryptShrinkRequest(TeaModel):
         key_id: str = None,
         plaintext: str = None,
     ):
-        # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
-        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The plaintext to be encrypted. The plaintext must be Base64 encoded.
+        # 
+        # This parameter is required.
         self.plaintext = plaintext
 
     def validate(self):
@@ -6450,25 +6618,33 @@ class ExportDataKeyRequest(TeaModel):
         wrapping_key_spec: str = None,
     ):
         # The ciphertext of the data key encrypted by using a CMK.
+        # 
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
-        # A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
         # A Base64-encoded public key.
+        # 
+        # This parameter is required.
         self.public_key_blob = public_key_blob
-        # The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+        # The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
         # 
         # Valid values:
         # 
-        # *   RSAES_OAEP_SHA\_256
-        # *   RSAES_OAEP_SHA\_1
+        # *   RSAES_OAEP_SHA_256
+        # *   RSAES_OAEP_SHA_1
         # *   SM2PKE
+        # 
+        # This parameter is required.
         self.wrapping_algorithm = wrapping_algorithm
-        # The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](~~148147~~).
+        # The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
         # 
         # Valid values:
         # 
-        # *   RSA\_2048
+        # *   RSA_2048
         # *   EC_SM2
+        # 
+        # This parameter is required.
         self.wrapping_key_spec = wrapping_key_spec
 
     def validate(self):
@@ -6517,25 +6693,33 @@ class ExportDataKeyShrinkRequest(TeaModel):
         wrapping_key_spec: str = None,
     ):
         # The ciphertext of the data key encrypted by using a CMK.
+        # 
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
-        # A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
         # A Base64-encoded public key.
+        # 
+        # This parameter is required.
         self.public_key_blob = public_key_blob
-        # The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+        # The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
         # 
         # Valid values:
         # 
-        # *   RSAES_OAEP_SHA\_256
-        # *   RSAES_OAEP_SHA\_1
+        # *   RSAES_OAEP_SHA_256
+        # *   RSAES_OAEP_SHA_1
         # *   SM2PKE
+        # 
+        # This parameter is required.
         self.wrapping_algorithm = wrapping_algorithm
-        # The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](~~148147~~).
+        # The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
         # 
         # Valid values:
         # 
-        # *   RSA\_2048
+        # *   RSA_2048
         # *   EC_SM2
+        # 
+        # This parameter is required.
         self.wrapping_key_spec = wrapping_key_spec
 
     def validate(self):
@@ -6677,14 +6861,16 @@ class GenerateAndExportDataKeyRequest(TeaModel):
         wrapping_algorithm: str = None,
         wrapping_key_spec: str = None,
     ):
-        # A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
-        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The length of the data key that you want to generate. Valid values:
         # 
-        # *   AES\_256: a 256-bit symmetric key
-        # *   AES\_128: a 128-bit symmetric key
+        # *   AES_256: a 256-bit symmetric key
+        # *   AES_128: a 128-bit symmetric key
         # 
         # >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both parameters are not specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
         self.key_spec = key_spec
@@ -6695,21 +6881,27 @@ class GenerateAndExportDataKeyRequest(TeaModel):
         # Unit: bytes.
         self.number_of_bytes = number_of_bytes
         # A Base64-encoded public key.
+        # 
+        # This parameter is required.
         self.public_key_blob = public_key_blob
-        # The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+        # The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
         # 
         # Valid values:
         # 
-        # *   RSAES_OAEP_SHA\_256
-        # *   RSAES_OAEP_SHA\_1
+        # *   RSAES_OAEP_SHA_256
+        # *   RSAES_OAEP_SHA_1
         # *   SM2PKE
+        # 
+        # This parameter is required.
         self.wrapping_algorithm = wrapping_algorithm
-        # The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](~~148147~~).
+        # The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
         # 
         # Valid values:
         # 
-        # *   RSA\_2048
+        # *   RSA_2048
         # *   EC_SM2
+        # 
+        # This parameter is required.
         self.wrapping_key_spec = wrapping_key_spec
 
     def validate(self):
@@ -6767,14 +6959,16 @@ class GenerateAndExportDataKeyShrinkRequest(TeaModel):
         wrapping_algorithm: str = None,
         wrapping_key_spec: str = None,
     ):
-        # A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
-        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The length of the data key that you want to generate. Valid values:
         # 
-        # *   AES\_256: a 256-bit symmetric key
-        # *   AES\_128: a 128-bit symmetric key
+        # *   AES_256: a 256-bit symmetric key
+        # *   AES_128: a 128-bit symmetric key
         # 
         # >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both parameters are not specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
         self.key_spec = key_spec
@@ -6785,21 +6979,27 @@ class GenerateAndExportDataKeyShrinkRequest(TeaModel):
         # Unit: bytes.
         self.number_of_bytes = number_of_bytes
         # A Base64-encoded public key.
+        # 
+        # This parameter is required.
         self.public_key_blob = public_key_blob
-        # The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+        # The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
         # 
         # Valid values:
         # 
-        # *   RSAES_OAEP_SHA\_256
-        # *   RSAES_OAEP_SHA\_1
+        # *   RSAES_OAEP_SHA_256
+        # *   RSAES_OAEP_SHA_1
         # *   SM2PKE
+        # 
+        # This parameter is required.
         self.wrapping_algorithm = wrapping_algorithm
-        # The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](~~148147~~).
+        # The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
         # 
         # Valid values:
         # 
-        # *   RSA\_2048
+        # *   RSA_2048
         # *   EC_SM2
+        # 
+        # This parameter is required.
         self.wrapping_key_spec = wrapping_key_spec
 
     def validate(self):
@@ -6955,16 +7155,18 @@ class GenerateDataKeyRequest(TeaModel):
     ):
         # The JSON string that consists of key-value pairs.
         # 
-        # If you specify this parameter, an equivalent value is required when you call the [Decrypt](~~28950~~) operation. For more information, see [EncryptionContext](~~42975~~).
+        # If you specify this parameter, an equivalent value is required when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
         # The ID of the CMK. The ID must be globally unique.
         # 
-        # You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+        # You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The type of the data key that you want to generate. Valid values:
         # 
-        # *   AES\_256: a 256-bit symmetric key
-        # *   AES\_128: a 128-bit symmetric key
+        # *   AES_256: a 256-bit symmetric key
+        # *   AES_128: a 128-bit symmetric key
         # 
         # >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If none of the parameters are specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
         self.key_spec = key_spec
@@ -6974,8 +7176,8 @@ class GenerateDataKeyRequest(TeaModel):
         # 
         # Default value:
         # 
-        # *   If the KeySpec parameter is set to AES\_256, set the value of the NumberOfBytes parameter to 32.
-        # *   If the KeySpec parameter is set to AES\_128, set the value of the NumberOfBytes parameter to 16.
+        # *   If the KeySpec parameter is set to AES_256, set the value of the NumberOfBytes parameter to 32.
+        # *   If the KeySpec parameter is set to AES_128, set the value of the NumberOfBytes parameter to 16.
         self.number_of_bytes = number_of_bytes
 
     def validate(self):
@@ -7020,16 +7222,18 @@ class GenerateDataKeyShrinkRequest(TeaModel):
     ):
         # The JSON string that consists of key-value pairs.
         # 
-        # If you specify this parameter, an equivalent value is required when you call the [Decrypt](~~28950~~) operation. For more information, see [EncryptionContext](~~42975~~).
+        # If you specify this parameter, an equivalent value is required when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
         # The ID of the CMK. The ID must be globally unique.
         # 
-        # You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+        # You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The type of the data key that you want to generate. Valid values:
         # 
-        # *   AES\_256: a 256-bit symmetric key
-        # *   AES\_128: a 128-bit symmetric key
+        # *   AES_256: a 256-bit symmetric key
+        # *   AES_128: a 128-bit symmetric key
         # 
         # >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If none of the parameters are specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
         self.key_spec = key_spec
@@ -7039,8 +7243,8 @@ class GenerateDataKeyShrinkRequest(TeaModel):
         # 
         # Default value:
         # 
-        # *   If the KeySpec parameter is set to AES\_256, set the value of the NumberOfBytes parameter to 32.
-        # *   If the KeySpec parameter is set to AES\_128, set the value of the NumberOfBytes parameter to 16.
+        # *   If the KeySpec parameter is set to AES_256, set the value of the NumberOfBytes parameter to 32.
+        # *   If the KeySpec parameter is set to AES_128, set the value of the NumberOfBytes parameter to 16.
         self.number_of_bytes = number_of_bytes
 
     def validate(self):
@@ -7182,14 +7386,16 @@ class GenerateDataKeyWithoutPlaintextRequest(TeaModel):
         key_spec: str = None,
         number_of_bytes: int = None,
     ):
-        # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see Use aliases.
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The length of the data key that you want to generate. Valid values:
         # 
-        # *   AES\_256: 256-bit symmetric key
-        # *   AES\_128: 128-bit symmetric key
+        # *   AES_256: 256-bit symmetric key
+        # *   AES_128: 128-bit symmetric key
         # 
         # >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both of them are not specified, KMS generates a 256-bit data key. If both of them are specified, KMS ignores the KeySpec parameter.
         self.key_spec = key_spec
@@ -7240,14 +7446,16 @@ class GenerateDataKeyWithoutPlaintextShrinkRequest(TeaModel):
         key_spec: str = None,
         number_of_bytes: int = None,
     ):
-        # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see Use aliases.
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The length of the data key that you want to generate. Valid values:
         # 
-        # *   AES\_256: 256-bit symmetric key
-        # *   AES\_128: 128-bit symmetric key
+        # *   AES_256: 256-bit symmetric key
+        # *   AES_128: 128-bit symmetric key
         # 
         # >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both of them are not specified, KMS generates a 256-bit data key. If both of them are specified, KMS ignores the KeySpec parameter.
         self.key_spec = key_spec
@@ -7388,6 +7596,8 @@ class GetCertificateRequest(TeaModel):
         certificate_id: str = None,
     ):
         # The ID of the certificate. It is the globally unique identifier (GUID) of the certificate in Certificates Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
 
     def validate(self):
@@ -7513,6 +7723,8 @@ class GetClientKeyRequest(TeaModel):
         client_key_id: str = None,
     ):
         # The ID of the client key.
+        # 
+        # This parameter is required.
         self.client_key_id = client_key_id
 
     def validate(self):
@@ -7668,6 +7880,7 @@ class GetKeyPolicyRequest(TeaModel):
         key_id: str = None,
         policy_name: str = None,
     ):
+        # This parameter is required.
         self.key_id = key_id
         self.policy_name = policy_name
 
@@ -7775,6 +7988,8 @@ class GetKmsInstanceRequest(TeaModel):
         kms_instance_id: str = None,
     ):
         # The ID of the KMS instance that you want to query.
+        # 
+        # This parameter is required.
         self.kms_instance_id = kms_instance_id
 
     def validate(self):
@@ -8105,10 +8320,16 @@ class GetParametersForImportRequest(TeaModel):
         # The globally unique ID of the CMK.
         # 
         # >  You can import key material only for CMKs whose Origin parameter is set to EXTERNAL.
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The algorithm that is used to encrypt key material.
+        # 
+        # This parameter is required.
         self.wrapping_algorithm = wrapping_algorithm
         # The type of the public key that is used to encrypt key material.
+        # 
+        # This parameter is required.
         self.wrapping_key_spec = wrapping_key_spec
 
     def validate(self):
@@ -8150,11 +8371,11 @@ class GetParametersForImportResponseBody(TeaModel):
     ):
         # The token that is used to import key material.
         # 
-        # The token is valid for 24 hours. The value of this parameter is required when you call the [ImportKeyMaterial](~~68622~~) operation.
+        # The token is valid for 24 hours. The value of this parameter is required when you call the [ImportKeyMaterial](https://help.aliyun.com/document_detail/68622.html) operation.
         self.import_token = import_token
         # The globally unique ID of the CMK.
         # 
-        # The value of this parameter is required when you call the [ImportKeyMaterial](~~68622~~) operation.
+        # The value of this parameter is required when you call the [ImportKeyMaterial](https://help.aliyun.com/document_detail/68622.html) operation.
         self.key_id = key_id
         # The public key that is used to encrypt key material.
         # 
@@ -8248,9 +8469,13 @@ class GetPublicKeyRequest(TeaModel):
         key_id: str = None,
         key_version_id: str = None,
     ):
-        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The globally unique ID of the CMK version.
+        # 
+        # This parameter is required.
         self.key_version_id = key_version_id
 
     def validate(self):
@@ -8384,7 +8609,7 @@ class GetRandomPasswordRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # ` Valid characters: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ! \"#$%&\"()*+,-. /:;<=>? @[\] your_project_id} ~  `.
+        # ` Valid characters: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ! \\"#$%&\\"()*+,-. /:;<=>? @[\\] your_project_id} ~  `.
         # 
         # This parameter is empty by default.
         self.exclude_characters = exclude_characters
@@ -8557,6 +8782,7 @@ class GetSecretPolicyRequest(TeaModel):
         secret_name: str = None,
     ):
         self.policy_name = policy_name
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -8673,6 +8899,8 @@ class GetSecretValueRequest(TeaModel):
         # >  This parameter is ignored for a generic secret.
         self.fetch_extended_config = fetch_extended_config
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
         # The version number of the secret value. If you specify this parameter, Secrets Manager returns the secret value of the specified version.
         # 
@@ -8943,16 +9171,24 @@ class ImportKeyMaterialRequest(TeaModel):
         key_material_expire_unix: int = None,
     ):
         # Use **GetParametersForImport** the Returned public key and the base64-encoded key material.
+        # 
+        # This parameter is required.
         self.encrypted_key_material = encrypted_key_material
         # By calling **GetParametersForImport** the import token.
+        # 
+        # This parameter is required.
         self.import_token = import_token
         # The ID of the CMK to be imported.
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The time when the key material expires.
         # 
         # If this parameter is not specified or set this parameter to 0, the key material does not expire.
         # 
         # >  The value cannot be earlier than the time when the API is called (based on the server time).
+        # 
+        # This parameter is required.
         self.key_material_expire_unix = key_material_expire_unix
 
     def validate(self):
@@ -9283,6 +9519,8 @@ class ListAliasesByKeyIdRequest(TeaModel):
         page_size: int = None,
     ):
         # The globally unique ID of the CMK.
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The number of the page to return.
         # 
@@ -9903,7 +10141,9 @@ class ListKeyVersionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+        # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The number of the page to return.
         # 
@@ -10159,15 +10399,15 @@ class ListKeysRequest(TeaModel):
         # 
         #         *   When Key is set to KeyState, the value can be Enabled, Disabled, PendingDeletion, or PendingImport.
         # 
-        #         *   When Key is set to KeySpec, the value can be Aliyun_AES\_256, Aliyun_SM4, RSA\_2048, EC_P256, EC_P256K, or EC_SM2.
+        #         *   When Key is set to KeySpec, the value can be Aliyun_AES_256, Aliyun_SM4, RSA_2048, EC_P256, EC_P256K, or EC_SM2.
         # 
-        #             Note: You can create CMKs of the EC_SM2 or Aliyun_SM4 type only in regions where State Cryptography Administration (SCA)-certified managed HSMs reside. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support EC_SM2 or Aliyun_SM4, the two values are ignored if they are specified.
+        #             Note: You can create CMKs of the EC_SM2 or Aliyun_SM4 type only in regions where State Cryptography Administration (SCA)-certified managed HSMs reside. For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/125803.html). If your region does not support EC_SM2 or Aliyun_SM4, the two values are ignored if they are specified.
         # 
         #         *   When Key is set to KeyUsage, the value can be ENCRYPT/DECRYPT or SIGN/VERIFY. ENCRYPT/DECRYPT indicates that the CMK is used to encrypt and decrypt data. SIGN/VERIFY indicates that the CMK is used to generate and verify digital signatures.
         # 
         #         *   When Key is set to ProtectionLevel, the value can be SOFTWARE (software) or HSM (hardware).
         # 
-        #             You can set ProtectionLevel to HSM in only specific regions. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support the value HSM, the value is ignored if the value is specified.
+        #             You can set ProtectionLevel to HSM in only specific regions. For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/125803.html). If your region does not support the value HSM, the value is ignored if the value is specified.
         # 
         #         *   If Key is set to CreatorType, the value can be User or Service. User indicates that CMKs created by the current account are queried. Service indicates that CMKs automatically created by other cloud services authorized by the current account are queried.
         # 
@@ -10996,6 +11236,8 @@ class ListResourceTagsRequest(TeaModel):
         key_id: str = None,
     ):
         # The globally unique ID of the CMK.
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -11195,6 +11437,8 @@ class ListSecretVersionIdsRequest(TeaModel):
         # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -11457,7 +11701,7 @@ class ListSecretsRequest(TeaModel):
         self.fetch_tags = fetch_tags
         # The number of entries returned per page.
         self.filters = filters
-        # The secret filter. The filter consists of one or more key-value pairs. You can specify one key-value pair or leave this parameter empty. If you use one tag key or tag value to filter resources, up to 4,000 resources can be queried. If you want to query more than 4,000 resources, call the [ListResourceTags](~~120090~~) operation.
+        # The secret filter. The filter consists of one or more key-value pairs. You can specify one key-value pair or leave this parameter empty. If you use one tag key or tag value to filter resources, up to 4,000 resources can be queried. If you want to query more than 4,000 resources, call the [ListResourceTags](https://help.aliyun.com/document_detail/120090.html) operation.
         # 
         # *   Key
         # 
@@ -11852,7 +12096,9 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the resource.
         # 
-        # >  You can call the [DescribeRegions](~~601478~~) to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # A list of resource IDs for which you want to query tags. You can enter a maximum of 50 resource IDs.
         # 
@@ -11862,6 +12108,8 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # *   key
         # *   secret
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # A list of tags that you want to query. Valid values of N: 1 to 20.
         self.tag = tag
@@ -12161,6 +12409,8 @@ class PutSecretValueRequest(TeaModel):
         version_stages: str = None,
     ):
         # The secret value. The value is encrypted and then stored in the new version.
+        # 
+        # This parameter is required.
         self.secret_data = secret_data
         # The type of the secret value. Valid values:
         # 
@@ -12168,8 +12418,12 @@ class PutSecretValueRequest(TeaModel):
         # *   binary
         self.secret_data_type = secret_data_type
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
         # The new version of the secret value. Version numbers must be unique in each secret.
+        # 
+        # This parameter is required.
         self.version_id = version_id
         # The stage labels that are used to mark the new version. If you do not specify this parameter, Secrets Manager marks the new version with ACSCurrent.
         self.version_stages = version_stages
@@ -12344,24 +12598,28 @@ class ReEncryptRequest(TeaModel):
         # 
         # You can set this parameter to the ciphertext that is returned after a symmetric or asymmetric encryption operation.
         # 
-        # *   Symmetric encryption: the ciphertext returned after you call the [Encrypt](~~28949~~), [GenerateDataKey](~~28948~~), [GenerateDataKeyWithoutPlaintext](~~134043~~), or [GenerateAndExportDataKey](~~176804~~) operation
-        # *   Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](~~176804~~) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+        # *   Symmetric encryption: the ciphertext returned after you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation
+        # *   Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+        # 
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
         # A JSON string that consists of key-value pairs. This parameter specifies the EncryptionContext that is used to re-encrypt the decrypted data or data key.
         self.destination_encryption_context = destination_encryption_context
         # The ID of the symmetric CMK that is used to re-encrypt the ciphertext after the ciphertext is decrypted.
+        # 
+        # This parameter is required.
         self.destination_key_id = destination_key_id
-        # The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+        # The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
         # 
         # Valid values:
         # 
-        # *   RSAES_OAEP_SHA\_256
-        # *   RSAES_OAEP_SHA\_1
+        # *   RSAES_OAEP_SHA_256
+        # *   RSAES_OAEP_SHA_1
         # *   SM2PKE
         # 
         # >  If you set CiphertextBlob to the public key-encrypted ciphertext that is returned after an asymmetric encryption operation, specify this parameter.
         self.source_encryption_algorithm = source_encryption_algorithm
-        # A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](~~28949~~), [GenerateDataKey](~~28948~~), [GenerateDataKeyWithoutPlaintext](~~134043~~), or [GenerateAndExportDataKey](~~176804~~) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         # 
         # >  If you set CiphertextBlob to the ciphertext that is returned after a symmetric encryption operation, specify this parameter.
         self.source_encryption_context = source_encryption_context
@@ -12435,24 +12693,28 @@ class ReEncryptShrinkRequest(TeaModel):
         # 
         # You can set this parameter to the ciphertext that is returned after a symmetric or asymmetric encryption operation.
         # 
-        # *   Symmetric encryption: the ciphertext returned after you call the [Encrypt](~~28949~~), [GenerateDataKey](~~28948~~), [GenerateDataKeyWithoutPlaintext](~~134043~~), or [GenerateAndExportDataKey](~~176804~~) operation
-        # *   Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](~~176804~~) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+        # *   Symmetric encryption: the ciphertext returned after you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation
+        # *   Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+        # 
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
         # A JSON string that consists of key-value pairs. This parameter specifies the EncryptionContext that is used to re-encrypt the decrypted data or data key.
         self.destination_encryption_context_shrink = destination_encryption_context_shrink
         # The ID of the symmetric CMK that is used to re-encrypt the ciphertext after the ciphertext is decrypted.
+        # 
+        # This parameter is required.
         self.destination_key_id = destination_key_id
-        # The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+        # The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
         # 
         # Valid values:
         # 
-        # *   RSAES_OAEP_SHA\_256
-        # *   RSAES_OAEP_SHA\_1
+        # *   RSAES_OAEP_SHA_256
+        # *   RSAES_OAEP_SHA_1
         # *   SM2PKE
         # 
         # >  If you set CiphertextBlob to the public key-encrypted ciphertext that is returned after an asymmetric encryption operation, specify this parameter.
         self.source_encryption_algorithm = source_encryption_algorithm
-        # A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](~~28949~~), [GenerateDataKey](~~28948~~), [GenerateDataKeyWithoutPlaintext](~~134043~~), or [GenerateAndExportDataKey](~~176804~~) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](~~42975~~).
+        # A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         # 
         # >  If you set CiphertextBlob to the ciphertext that is returned after a symmetric encryption operation, specify this parameter.
         self.source_encryption_context_shrink = source_encryption_context_shrink
@@ -12609,6 +12871,8 @@ class RestoreSecretRequest(TeaModel):
         secret_name: str = None,
     ):
         # The name of the secret you want to restore.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -12714,10 +12978,14 @@ class RotateSecretRequest(TeaModel):
         version_id: str = None,
     ):
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
         # The version number of the secret after the secret is rotated.
         # 
         # >  The version number is used to ensure the idempotence of the request. Secrets Manager uses this version number to prevent your application from creating the same version of the secret when the application retries a request. If a version number already exists, Secrets Manager ignores the request for rotation and returns a success message.
+        # 
+        # This parameter is required.
         self.version_id = version_id
 
     def validate(self):
@@ -12841,12 +13109,16 @@ class ScheduleKeyDeletionRequest(TeaModel):
         pending_window_in_days: int = None,
     ):
         # The ID of the customer master key (CMK). The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_id = key_id
         # The scheduled period after which the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the key deletion task.
         # 
         # Valid values: 7 to 366.
         # 
         # Unit: days.
+        # 
+        # This parameter is required.
         self.pending_window_in_days = pending_window_in_days
 
     def validate(self):
@@ -12957,10 +13229,14 @@ class SetDeletionProtectionRequest(TeaModel):
         # 
         # *   true: enables deletion protection.
         # *   false: disables deletion protection.
+        # 
+        # This parameter is required.
         self.enable_deletion_protection = enable_deletion_protection
         # The ARN of the CMK for which you want to set deletion protection.
         # 
-        # You can call the [DescribeKey](~~28952~~) operation to query the CMK ARN.
+        # You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the CMK ARN.
+        # 
+        # This parameter is required.
         self.protected_resource_arn = protected_resource_arn
 
     def validate(self):
@@ -13067,7 +13343,9 @@ class SetKeyPolicyRequest(TeaModel):
         policy: str = None,
         policy_name: str = None,
     ):
+        # This parameter is required.
         self.key_id = key_id
+        # This parameter is required.
         self.policy = policy
         self.policy_name = policy_name
 
@@ -13174,8 +13452,10 @@ class SetSecretPolicyRequest(TeaModel):
         policy_name: str = None,
         secret_name: str = None,
     ):
+        # This parameter is required.
         self.policy = policy
         self.policy_name = policy_name
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -13300,6 +13580,8 @@ class TagResourceRequest(TeaModel):
         # 
         # *   TagKey: the tag key.
         # *   TagValue: the tag value.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -13413,7 +13695,7 @@ class TagResourcesRequestTag(TeaModel):
         # 
         # You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
         # 
-        # Each key can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (\_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+        # Each key can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
         # 
         # >  The key cannot start with aliyun or acs:.
         self.key = key
@@ -13421,7 +13703,7 @@ class TagResourcesRequestTag(TeaModel):
         # 
         # You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
         # 
-        # Each value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (\_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+        # Each value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
         self.value = value
 
     def validate(self):
@@ -13458,20 +13740,28 @@ class TagResourcesRequest(TeaModel):
     ):
         # The region ID of the resource.
         # 
-        # >  You can call the [DescribeRegions](~~601478~~) to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources to which you want to add tags. You can enter a maximum of 50 resource IDs.
         # 
         # Enter multiple resource IDs in the `["ResourceId. 1","ResourceId. 2",...]` format.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource to which you want to add tags. Valid values:
         # 
         # *   key
         # *   secret
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # A list of tags. You can enter up to 20 tags.
         # 
         # A tag consists of a key-value pair. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -13595,6 +13885,7 @@ class UntagResourceRequest(TeaModel):
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.key_id = key_id
         self.secret_name = secret_name
+        # This parameter is required.
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -13715,16 +14006,22 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         # The region ID of the resource.
         # 
-        # >  You can call the [DescribeRegions](~~601478~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources from which you want to remove tags. You can enter up to 50 resource IDs.
         # 
         # Enter multiple resource IDs in the `["ResourceId.1","ResourceId.2",...]` format.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource from which you want to remove tags. Valid values:
         # 
         # *   key
         # *   secret
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The keys of the tags that you want to remove. You can enter up to 20 tag keys.
         # 
@@ -13847,8 +14144,12 @@ class UpdateAliasRequest(TeaModel):
         # The alias that you want to bind.
         # 
         # The value must be 1 to 255 characters in length and must include the alias/ prefix.
+        # 
+        # This parameter is required.
         self.alias_name = alias_name
         # The ID of the CMK. The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -13954,6 +14255,8 @@ class UpdateApplicationAccessPointRequest(TeaModel):
         # The description.
         self.description = description
         # The name of the AAP that you want to update.
+        # 
+        # This parameter is required.
         self.name = name
         # The permission policy that you want to update.
         # > You can associate up to three permission policies with each AAP.
@@ -14063,6 +14366,8 @@ class UpdateCertificateStatusRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the certificate. The ID must be globally unique in Certificates Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
         # The status of the certificate. Valid values:
         # 
@@ -14073,6 +14378,8 @@ class UpdateCertificateStatusRequest(TeaModel):
         # *   REVOKED: The certificate is revoked.
         # 
         # > If the certificate is in the REVOKED state, you can use the certificate only to verify a signature, but not to generate a signature.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -14175,8 +14482,12 @@ class UpdateKeyDescriptionRequest(TeaModel):
         key_id: str = None,
     ):
         # The description of the CMK. This description includes the purpose of the CMK, such as the types of data that you want to protect and applications that can use the CMK.
+        # 
+        # This parameter is required.
         self.description = description
         # The ID of the CMK. The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_id = key_id
 
     def validate(self):
@@ -14286,8 +14597,12 @@ class UpdateKmsInstanceBindVpcRequest(TeaModel):
         # *   VpcOwnerId: the Alibaba Cloud account to which the VPC belongs.
         # 
         # Format: `[{"VpcId":"${VpcId}","VSwitchId":"${VSwitchId}","RegionId":"${RegionId}","VpcOwnerId":${VpcOwnerId}},..]`.
+        # 
+        # This parameter is required.
         self.bind_vpcs = bind_vpcs
         # The ID of the KMS instance.
+        # 
+        # This parameter is required.
         self.kms_instance_id = kms_instance_id
 
     def validate(self):
@@ -14393,6 +14708,8 @@ class UpdateNetworkRuleRequest(TeaModel):
         # The description after the update.
         self.description = description
         # The name of the access control rule that you want to update.
+        # 
+        # This parameter is required.
         self.name = name
         # The private IP address or CIDR block after the update. Separate multiple items with commas (,).
         self.source_private_ip = source_private_ip
@@ -14505,11 +14822,13 @@ class UpdatePolicyRequest(TeaModel):
     ):
         # The access control rule.
         # 
-        # > For more information about how to query created access control rules, see [ListNetworkRules](~~2539433~~).
+        # > For more information about how to query created access control rules, see [ListNetworkRules](https://help.aliyun.com/document_detail/2539433.html).
         self.access_control_rules = access_control_rules
         # The description.
         self.description = description
         # The name of the permission policy that you want to update.
+        # 
+        # This parameter is required.
         self.name = name
         # The operations that are supported by the updated policy. Valid values:
         # 
@@ -14520,8 +14839,8 @@ class UpdatePolicyRequest(TeaModel):
         self.permissions = permissions
         # The key and secret that are allowed to access after the update.
         # 
-        # *   Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\*.
-        # *   Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\*.
+        # *   Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\\*.
+        # *   Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\\*.
         self.resources = resources
 
     def validate(self):
@@ -14640,10 +14959,14 @@ class UpdateRotationPolicyRequest(TeaModel):
         # 
         # *   true: enables automatic key rotation.
         # *   false: disables automatic key rotation.
+        # 
+        # This parameter is required.
         self.enable_automatic_rotation = enable_automatic_rotation
         # The ID of the customer master key (CMK). The ID must be globally unique.
+        # 
+        # This parameter is required.
         self.key_id = key_id
-        # The period of automatic key rotation. Specify the value in the integer\[unit] format. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
+        # The period of automatic key rotation. Specify the value in the integer[unit] format. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
         # 
         # >  If you set the EnableAutomaticRotation parameter to true, you must also specify this parameter. If you set the EnableAutomaticRotation parameter to false, you can leave this parameter unspecified.
         self.rotation_interval = rotation_interval
@@ -14787,6 +15110,8 @@ class UpdateSecretRequest(TeaModel):
         # The description of the secret.
         self.description = description
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -14861,6 +15186,8 @@ class UpdateSecretShrinkRequest(TeaModel):
         # The description of the secret.
         self.description = description
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -14980,6 +15307,8 @@ class UpdateSecretRotationPolicyRequest(TeaModel):
         # 
         # *   true: enables automatic rotation.
         # *   false: does not enable automatic rotation. This is the default value.
+        # 
+        # This parameter is required.
         self.enable_automatic_rotation = enable_automatic_rotation
         # The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
         # 
@@ -14990,6 +15319,8 @@ class UpdateSecretRotationPolicyRequest(TeaModel):
         # >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or does not specify the EnableAutomaticRotation parameter.
         self.rotation_interval = rotation_interval
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
 
     def validate(self):
@@ -15115,8 +15446,12 @@ class UpdateSecretVersionStageRequest(TeaModel):
         # *   Custom stage label
         self.remove_from_version = remove_from_version
         # The operation that you want to perform. Set the value to **UpdateSecretVersionStage**.
+        # 
+        # This parameter is required.
         self.secret_name = secret_name
         # The name of the secret.
+        # 
+        # This parameter is required.
         self.version_stage = version_stage
 
     def validate(self):
@@ -15238,10 +15573,14 @@ class UploadCertificateRequest(TeaModel):
         certificate_id: str = None,
     ):
         # The certificate issued by the CA, which is in the Privacy Enhanced Mail (PEM) format.
+        # 
+        # This parameter is required.
         self.certificate = certificate
         # The certificate chain issued by the CA, which is in the PEM format.
         self.certificate_chain = certificate_chain
         # The ID of the certificate. The ID must be globally unique in Certificates Manager.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
 
     def validate(self):
