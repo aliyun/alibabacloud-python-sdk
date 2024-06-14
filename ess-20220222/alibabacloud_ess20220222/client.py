@@ -4827,6 +4827,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alarms_with_options_async(request, runtime)
 
+    def describe_alert_configuration_with_options(
+        self,
+        request: ess_20220222_models.DescribeAlertConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeAlertConfigurationResponse:
+        """
+        @param request: DescribeAlertConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlertConfiguration',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeAlertConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_alert_configuration_with_options_async(
+        self,
+        request: ess_20220222_models.DescribeAlertConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeAlertConfigurationResponse:
+        """
+        @param request: DescribeAlertConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlertConfiguration',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeAlertConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_alert_configuration(
+        self,
+        request: ess_20220222_models.DescribeAlertConfigurationRequest,
+    ) -> ess_20220222_models.DescribeAlertConfigurationResponse:
+        """
+        @param request: DescribeAlertConfigurationRequest
+        @return: DescribeAlertConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_alert_configuration_with_options(request, runtime)
+
+    async def describe_alert_configuration_async(
+        self,
+        request: ess_20220222_models.DescribeAlertConfigurationRequest,
+    ) -> ess_20220222_models.DescribeAlertConfigurationResponse:
+        """
+        @param request: DescribeAlertConfigurationRequest
+        @return: DescribeAlertConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_alert_configuration_with_options_async(request, runtime)
+
     def describe_eci_scaling_configuration_detail_with_options(
         self,
         request: ess_20220222_models.DescribeEciScalingConfigurationDetailRequest,
@@ -9282,6 +9382,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_alarm_with_options_async(request, runtime)
+
+    def modify_alert_configuration_with_options(
+        self,
+        request: ess_20220222_models.ModifyAlertConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.ModifyAlertConfigurationResponse:
+        """
+        @param request: ModifyAlertConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAlertConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scale_statuses):
+            query['ScaleStatuses'] = request.scale_statuses
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAlertConfiguration',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.ModifyAlertConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_alert_configuration_with_options_async(
+        self,
+        request: ess_20220222_models.ModifyAlertConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.ModifyAlertConfigurationResponse:
+        """
+        @param request: ModifyAlertConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAlertConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scale_statuses):
+            query['ScaleStatuses'] = request.scale_statuses
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAlertConfiguration',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.ModifyAlertConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_alert_configuration(
+        self,
+        request: ess_20220222_models.ModifyAlertConfigurationRequest,
+    ) -> ess_20220222_models.ModifyAlertConfigurationResponse:
+        """
+        @param request: ModifyAlertConfigurationRequest
+        @return: ModifyAlertConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_alert_configuration_with_options(request, runtime)
+
+    async def modify_alert_configuration_async(
+        self,
+        request: ess_20220222_models.ModifyAlertConfigurationRequest,
+    ) -> ess_20220222_models.ModifyAlertConfigurationResponse:
+        """
+        @param request: ModifyAlertConfigurationRequest
+        @return: ModifyAlertConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_alert_configuration_with_options_async(request, runtime)
 
     def modify_eci_scaling_configuration_with_options(
         self,

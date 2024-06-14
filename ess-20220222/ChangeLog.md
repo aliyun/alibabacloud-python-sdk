@@ -1,3 +1,8 @@
+2024-06-14 Version: 1.7.0
+- Support API DescribeAlertConfiguration.
+- Support API ModifyAlertConfiguration.
+
+
 2024-06-12 Version: 1.6.2
 - Update API CreateScalingConfiguration: update param InstancePatternInfos.
 - Update API DescribePatternTypes: add param CpuArchitectures.
