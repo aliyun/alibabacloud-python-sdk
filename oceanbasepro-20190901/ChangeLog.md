@@ -1,3 +1,35 @@
+2024-06-14 Version: 5.0.0
+- Support API DescribeTenantReadableScn.
+- Support API ModifyInstanceSSL.
+- Update API CreateInstance: update param InstanceClass.
+- Update API CreateTag: update param Key.
+- Update API CreateTag: update response param.
+- Update API CreateTagValue: update param Key.
+- Update API CreateTagValue: update param Value.
+- Update API CreateTagValue: update response param.
+- Update API DeleteTag: update param Key.
+- Update API DeleteTag: update response param.
+- Update API DeleteTagValue: update param Key.
+- Update API DeleteTagValue: update param Value.
+- Update API DeleteTagValue: update response param.
+- Update API DescribeInstance: add param MaxConnectionLimit.
+- Update API DescribeInstance: update response param.
+- Update API DescribeInstanceTopology: update response param.
+- Update API DescribeInstances: update response param.
+- Update API DescribeOasSlowSQLList: update response param.
+- Update API DescribeTagValues: update param ResourceType.
+- Update API DescribeTagValues: update response param.
+- Update API DescribeTenant: update response param.
+- Update API ModifyInstanceSpec: add param UpgradeSpecNative.
+- Update API ModifyTagName: update param Key.
+- Update API ModifyTagName: update param NewKey.
+- Update API ModifyTagName: update response param.
+- Update API ModifyTagValueName: update param Key.
+- Update API ModifyTagValueName: update param NewValue.
+- Update API ModifyTagValueName: update param Value.
+- Update API ModifyTagValueName: update response param.
+
+
 2024-05-27 Version: 4.1.1
 - Update API DescribeProcessStatsComposition: update response param.
 

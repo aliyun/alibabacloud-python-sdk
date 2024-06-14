@@ -1799,6 +1799,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTagValueResponse:
         """
+        @summary You can call this operation to create a tag.
+        
         @param request: CreateTagValueRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateTagValueResponse
@@ -1836,6 +1838,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTagValueResponse:
         """
+        @summary You can call this operation to create a tag.
+        
         @param request: CreateTagValueRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateTagValueResponse
@@ -1872,6 +1876,8 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateTagValueRequest,
     ) -> ocean_base_pro_20190901_models.CreateTagValueResponse:
         """
+        @summary You can call this operation to create a tag.
+        
         @param request: CreateTagValueRequest
         @return: CreateTagValueResponse
         """
@@ -1883,6 +1889,8 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateTagValueRequest,
     ) -> ocean_base_pro_20190901_models.CreateTagValueResponse:
         """
+        @summary You can call this operation to create a tag.
+        
         @param request: CreateTagValueRequest
         @return: CreateTagValueResponse
         """
@@ -4477,6 +4485,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_connection_limit):
+            body['MaxConnectionLimit'] = request.max_connection_limit
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
@@ -4514,6 +4524,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_connection_limit):
+            body['MaxConnectionLimit'] = request.max_connection_limit
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
         req = open_api_models.OpenApiRequest(
@@ -8829,6 +8841,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_metrics_with_options_async(request, runtime)
 
+    def describe_tenant_readable_scn_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantReadableScnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse:
+        """
+        @summary 查询租户同步位点信息
+        
+        @param request: DescribeTenantReadableScnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantReadableScnResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTenantReadableScn',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tenant_readable_scn_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantReadableScnRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse:
+        """
+        @summary 查询租户同步位点信息
+        
+        @param request: DescribeTenantReadableScnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantReadableScnResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTenantReadableScn',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tenant_readable_scn(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantReadableScnRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse:
+        """
+        @summary 查询租户同步位点信息
+        
+        @param request: DescribeTenantReadableScnRequest
+        @return: DescribeTenantReadableScnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tenant_readable_scn_with_options(request, runtime)
+
+    async def describe_tenant_readable_scn_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantReadableScnRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse:
+        """
+        @summary 查询租户同步位点信息
+        
+        @param request: DescribeTenantReadableScnRequest
+        @return: DescribeTenantReadableScnResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tenant_readable_scn_with_options_async(request, runtime)
+
     def describe_tenant_security_configs_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
@@ -9039,7 +9151,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
         """
-        @summary You can call this operation to view tenant tags.
+        @summary You can call this operation to query the tags of tenants in a cluster.
         
         @param request: DescribeTenantTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9078,7 +9190,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
         """
-        @summary You can call this operation to view tenant tags.
+        @summary You can call this operation to query the tags of tenants in a cluster.
         
         @param request: DescribeTenantTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9116,7 +9228,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
         """
-        @summary You can call this operation to view tenant tags.
+        @summary You can call this operation to query the tags of tenants in a cluster.
         
         @param request: DescribeTenantTagsRequest
         @return: DescribeTenantTagsResponse
@@ -9129,7 +9241,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
         """
-        @summary You can call this operation to view tenant tags.
+        @summary You can call this operation to query the tags of tenants in a cluster.
         
         @param request: DescribeTenantTagsRequest
         @return: DescribeTenantTagsResponse
@@ -11233,6 +11345,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_node_num_with_options_async(request, runtime)
 
+    def modify_instance_sslwith_options(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyInstanceSSLResponse:
+        """
+        @summary You can call this operation to modify the Secure Sockets Layer (SSL) setting for an OceanBase cluster instance.
+        
+        @description There is currently no authorization information disclosed in the API.
+        
+        @param request: ModifyInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceSSLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable_ssl):
+            body['EnableSSL'] = request.enable_ssl
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceSSL',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_sslwith_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyInstanceSSLResponse:
+        """
+        @summary You can call this operation to modify the Secure Sockets Layer (SSL) setting for an OceanBase cluster instance.
+        
+        @description There is currently no authorization information disclosed in the API.
+        
+        @param request: ModifyInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceSSLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable_ssl):
+            body['EnableSSL'] = request.enable_ssl
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceSSL',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_ssl(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyInstanceSSLRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyInstanceSSLResponse:
+        """
+        @summary You can call this operation to modify the Secure Sockets Layer (SSL) setting for an OceanBase cluster instance.
+        
+        @description There is currently no authorization information disclosed in the API.
+        
+        @param request: ModifyInstanceSSLRequest
+        @return: ModifyInstanceSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_sslwith_options(request, runtime)
+
+    async def modify_instance_ssl_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyInstanceSSLRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyInstanceSSLResponse:
+        """
+        @summary You can call this operation to modify the Secure Sockets Layer (SSL) setting for an OceanBase cluster instance.
+        
+        @description There is currently no authorization information disclosed in the API.
+        
+        @param request: ModifyInstanceSSLRequest
+        @return: ModifyInstanceSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_sslwith_options_async(request, runtime)
+
     def modify_instance_spec_with_options(
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceSpecRequest,
@@ -11257,6 +11477,8 @@ class Client(OpenApiClient):
             body['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.upgrade_spec_native):
+            body['UpgradeSpecNative'] = request.upgrade_spec_native
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -11300,6 +11522,8 @@ class Client(OpenApiClient):
             body['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.upgrade_spec_native):
+            body['UpgradeSpecNative'] = request.upgrade_spec_native
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -11351,7 +11575,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
         """
-        @summary The returned response.
+        @summary You can call this operation to modify the tags of a cluster.
         
         @param request: ModifyInstanceTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11388,7 +11612,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
         """
-        @summary The returned response.
+        @summary You can call this operation to modify the tags of a cluster.
         
         @param request: ModifyInstanceTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11424,7 +11648,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
         """
-        @summary The returned response.
+        @summary You can call this operation to modify the tags of a cluster.
         
         @param request: ModifyInstanceTagsRequest
         @return: ModifyInstanceTagsResponse
@@ -11437,7 +11661,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
         """
-        @summary The returned response.
+        @summary You can call this operation to modify the tags of a cluster.
         
         @param request: ModifyInstanceTagsRequest
         @return: ModifyInstanceTagsResponse
@@ -12431,7 +12655,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
         """
-        @summary You can call this operation to modify tenant tags.
+        @summary You can call this operation to modify the tags of a tenant.
         
         @param request: ModifyTenantTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12470,7 +12694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
         """
-        @summary You can call this operation to modify tenant tags.
+        @summary You can call this operation to modify the tags of a tenant.
         
         @param request: ModifyTenantTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12508,7 +12732,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
         """
-        @summary You can call this operation to modify tenant tags.
+        @summary You can call this operation to modify the tags of a tenant.
         
         @param request: ModifyTenantTagsRequest
         @return: ModifyTenantTagsResponse
@@ -12521,7 +12745,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
         """
-        @summary You can call this operation to modify tenant tags.
+        @summary You can call this operation to modify the tags of a tenant.
         
         @param request: ModifyTenantTagsRequest
         @return: ModifyTenantTagsResponse

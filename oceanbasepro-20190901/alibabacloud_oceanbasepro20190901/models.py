@@ -6051,9 +6051,14 @@ class CreateTagValueRequest(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The identifier of the client.
         self.client_token = client_token
+        # The name of the tag group.
+        # 
         # This parameter is required.
         self.key = key
+        # The name of the tag.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -6091,7 +6096,9 @@ class CreateTagValueResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The tag creation result.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -11466,12 +11473,14 @@ class DescribeInstanceRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        max_connection_limit: str = None,
         page_number: int = None,
     ):
         # The size of the data disk, in GB.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.max_connection_limit = max_connection_limit
         # The information about the storage resources of the cluster.
         self.page_number = page_number
 
@@ -11486,6 +11495,8 @@ class DescribeInstanceRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.max_connection_limit is not None:
+            result['MaxConnectionLimit'] = self.max_connection_limit
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         return result
@@ -11494,6 +11505,8 @@ class DescribeInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MaxConnectionLimit') is not None:
+            self.max_connection_limit = m.get('MaxConnectionLimit')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         return self
@@ -12290,6 +12303,7 @@ class DescribeInstanceResponseBodyInstanceTenantCreatable(TeaModel):
 class DescribeInstanceResponseBodyInstance(TeaModel):
     def __init__(
         self,
+        allow_modify_internet_address_connection_limit: bool = None,
         auto_renewal: bool = None,
         auto_upgrade_ob_version: bool = None,
         available_zones: List[str] = None,
@@ -12329,12 +12343,14 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         resource: DescribeInstanceResponseBodyInstanceResource = None,
         series: str = None,
         shared_unit_num_limit: int = None,
+        spec_type: str = None,
         status: str = None,
         tenant_creatable: DescribeInstanceResponseBodyInstanceTenantCreatable = None,
         unit_spec: str = None,
         version: str = None,
         zones: List[str] = None,
     ):
+        self.allow_modify_internet_address_connection_limit = allow_modify_internet_address_connection_limit
         # The operation that you want to perform. <br>Set the value to **DescribeInstance**.
         self.auto_renewal = auto_renewal
         # Example 1
@@ -12390,6 +12406,7 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         # Indicates whether the OBServer version is the latest.
         self.series = series
         self.shared_unit_num_limit = shared_unit_num_limit
+        self.spec_type = spec_type
         # The information about cluster resources.
         self.status = status
         self.tenant_creatable = tenant_creatable
@@ -12414,6 +12431,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_modify_internet_address_connection_limit is not None:
+            result['AllowModifyInternetAddressConnectionLimit'] = self.allow_modify_internet_address_connection_limit
         if self.auto_renewal is not None:
             result['AutoRenewal'] = self.auto_renewal
         if self.auto_upgrade_ob_version is not None:
@@ -12492,6 +12511,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             result['Series'] = self.series
         if self.shared_unit_num_limit is not None:
             result['SharedUnitNumLimit'] = self.shared_unit_num_limit
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
         if self.status is not None:
             result['Status'] = self.status
         if self.tenant_creatable is not None:
@@ -12506,6 +12527,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowModifyInternetAddressConnectionLimit') is not None:
+            self.allow_modify_internet_address_connection_limit = m.get('AllowModifyInternetAddressConnectionLimit')
         if m.get('AutoRenewal') is not None:
             self.auto_renewal = m.get('AutoRenewal')
         if m.get('AutoUpgradeObVersion') is not None:
@@ -12587,6 +12610,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             self.series = m.get('Series')
         if m.get('SharedUnitNumLimit') is not None:
             self.shared_unit_num_limit = m.get('SharedUnitNumLimit')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TenantCreatable') is not None:
@@ -13533,6 +13558,223 @@ class DescribeInstanceTopologyRequest(TeaModel):
         return self
 
 
+class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu(TeaModel):
+    def __init__(
+        self,
+        total_cpu: int = None,
+        used_cpu: int = None,
+    ):
+        self.total_cpu = total_cpu
+        self.used_cpu = used_cpu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_cpu is not None:
+            result['TotalCpu'] = self.total_cpu
+        if self.used_cpu is not None:
+            result['UsedCpu'] = self.used_cpu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCpu') is not None:
+            self.total_cpu = m.get('TotalCpu')
+        if m.get('UsedCpu') is not None:
+            self.used_cpu = m.get('UsedCpu')
+        return self
+
+
+class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize(TeaModel):
+    def __init__(
+        self,
+        total_disk_size: int = None,
+        used_disk_size: float = None,
+    ):
+        self.total_disk_size = total_disk_size
+        self.used_disk_size = used_disk_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_disk_size is not None:
+            result['TotalDiskSize'] = self.total_disk_size
+        if self.used_disk_size is not None:
+            result['UsedDiskSize'] = self.used_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalDiskSize') is not None:
+            self.total_disk_size = m.get('TotalDiskSize')
+        if m.get('UsedDiskSize') is not None:
+            self.used_disk_size = m.get('UsedDiskSize')
+        return self
+
+
+class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory(TeaModel):
+    def __init__(
+        self,
+        total_memory: int = None,
+        used_memory: int = None,
+    ):
+        self.total_memory = total_memory
+        self.used_memory = used_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_memory is not None:
+            result['TotalMemory'] = self.total_memory
+        if self.used_memory is not None:
+            result['UsedMemory'] = self.used_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalMemory') is not None:
+            self.total_memory = m.get('TotalMemory')
+        if m.get('UsedMemory') is not None:
+            self.used_memory = m.get('UsedMemory')
+        return self
+
+
+class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource(TeaModel):
+    def __init__(
+        self,
+        cpu: DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu = None,
+        disk_size: DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize = None,
+        memory: DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory = None,
+    ):
+        self.cpu = cpu
+        self.disk_size = disk_size
+        self.memory = memory
+
+    def validate(self):
+        if self.cpu:
+            self.cpu.validate()
+        if self.disk_size:
+            self.disk_size.validate()
+        if self.memory:
+            self.memory.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu.to_map()
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size.to_map()
+        if self.memory is not None:
+            result['Memory'] = self.memory.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            temp_model = DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu()
+            self.cpu = temp_model.from_map(m['Cpu'])
+        if m.get('DiskSize') is not None:
+            temp_model = DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize()
+            self.disk_size = temp_model.from_map(m['DiskSize'])
+        if m.get('Memory') is not None:
+            temp_model = DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory()
+            self.memory = temp_model.from_map(m['Memory'])
+        return self
+
+
+class DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas(TeaModel):
+    def __init__(
+        self,
+        logical_zone: str = None,
+        node_num: int = None,
+        replica_resource: DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource = None,
+        replica_type: str = None,
+        status: str = None,
+        zone_logical_id: int = None,
+        zone_logical_name: str = None,
+        zone_region_name: str = None,
+    ):
+        self.logical_zone = logical_zone
+        self.node_num = node_num
+        self.replica_resource = replica_resource
+        self.replica_type = replica_type
+        self.status = status
+        self.zone_logical_id = zone_logical_id
+        self.zone_logical_name = zone_logical_name
+        self.zone_region_name = zone_region_name
+
+    def validate(self):
+        if self.replica_resource:
+            self.replica_resource.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logical_zone is not None:
+            result['LogicalZone'] = self.logical_zone
+        if self.node_num is not None:
+            result['NodeNum'] = self.node_num
+        if self.replica_resource is not None:
+            result['ReplicaResource'] = self.replica_resource.to_map()
+        if self.replica_type is not None:
+            result['ReplicaType'] = self.replica_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.zone_logical_id is not None:
+            result['ZoneLogicalId'] = self.zone_logical_id
+        if self.zone_logical_name is not None:
+            result['ZoneLogicalName'] = self.zone_logical_name
+        if self.zone_region_name is not None:
+            result['ZoneRegionName'] = self.zone_region_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogicalZone') is not None:
+            self.logical_zone = m.get('LogicalZone')
+        if m.get('NodeNum') is not None:
+            self.node_num = m.get('NodeNum')
+        if m.get('ReplicaResource') is not None:
+            temp_model = DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource()
+            self.replica_resource = temp_model.from_map(m['ReplicaResource'])
+        if m.get('ReplicaType') is not None:
+            self.replica_type = m.get('ReplicaType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ZoneLogicalId') is not None:
+            self.zone_logical_id = m.get('ZoneLogicalId')
+        if m.get('ZoneLogicalName') is not None:
+            self.zone_logical_name = m.get('ZoneLogicalName')
+        if m.get('ZoneRegionName') is not None:
+            self.zone_region_name = m.get('ZoneRegionName')
+        return self
+
+
 class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits(TeaModel):
     def __init__(
         self,
@@ -13629,12 +13871,16 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones(Tea
     def __init__(
         self,
         is_primary_tenant_zone: bool = None,
+        logical_zone: str = None,
+        replica_type: str = None,
         tenant_zone_id: str = None,
         tenant_zone_role: str = None,
         units: List[DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnits] = None,
     ):
         # The maximum disk usage, in percentage.
         self.is_primary_tenant_zone = is_primary_tenant_zone
+        self.logical_zone = logical_zone
+        self.replica_type = replica_type
         # The server with the highest disk usage.
         self.tenant_zone_id = tenant_zone_id
         # The information of zones.
@@ -13656,6 +13902,10 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones(Tea
         result = dict()
         if self.is_primary_tenant_zone is not None:
             result['IsPrimaryTenantZone'] = self.is_primary_tenant_zone
+        if self.logical_zone is not None:
+            result['LogicalZone'] = self.logical_zone
+        if self.replica_type is not None:
+            result['ReplicaType'] = self.replica_type
         if self.tenant_zone_id is not None:
             result['TenantZoneId'] = self.tenant_zone_id
         if self.tenant_zone_role is not None:
@@ -13670,6 +13920,10 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones(Tea
         m = m or dict()
         if m.get('IsPrimaryTenantZone') is not None:
             self.is_primary_tenant_zone = m.get('IsPrimaryTenantZone')
+        if m.get('LogicalZone') is not None:
+            self.logical_zone = m.get('LogicalZone')
+        if m.get('ReplicaType') is not None:
+            self.replica_type = m.get('ReplicaType')
         if m.get('TenantZoneId') is not None:
             self.tenant_zone_id = m.get('TenantZoneId')
         if m.get('TenantZoneRole') is not None:
@@ -13688,11 +13942,14 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenants(TeaModel):
         primary_zone_deploy_type: str = None,
         tenant_cpu: float = None,
         tenant_deploy_type: str = None,
+        tenant_disk_size: float = None,
         tenant_id: str = None,
         tenant_memory: float = None,
         tenant_mode: str = None,
         tenant_name: str = None,
         tenant_status: str = None,
+        tenant_unit_cpu: float = None,
+        tenant_unit_memory: float = None,
         tenant_unit_num: int = None,
         tenant_zones: List[DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones] = None,
     ):
@@ -13702,6 +13959,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenants(TeaModel):
         self.tenant_cpu = tenant_cpu
         # The name of the tenant.
         self.tenant_deploy_type = tenant_deploy_type
+        self.tenant_disk_size = tenant_disk_size
         # The size of used memory of the node, in GB.
         self.tenant_id = tenant_id
         # The total storage space of the node, in GB.
@@ -13712,6 +13970,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenants(TeaModel):
         self.tenant_name = tenant_name
         # The size of used memory of the node, in GB.
         self.tenant_status = tenant_status
+        self.tenant_unit_cpu = tenant_unit_cpu
+        self.tenant_unit_memory = tenant_unit_memory
         # The number of CPU cores of the tenant.
         self.tenant_unit_num = tenant_unit_num
         # The information about the storage resources of the node.
@@ -13735,6 +13995,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenants(TeaModel):
             result['TenantCpu'] = self.tenant_cpu
         if self.tenant_deploy_type is not None:
             result['TenantDeployType'] = self.tenant_deploy_type
+        if self.tenant_disk_size is not None:
+            result['TenantDiskSize'] = self.tenant_disk_size
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.tenant_memory is not None:
@@ -13745,6 +14007,10 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenants(TeaModel):
             result['TenantName'] = self.tenant_name
         if self.tenant_status is not None:
             result['TenantStatus'] = self.tenant_status
+        if self.tenant_unit_cpu is not None:
+            result['TenantUnitCpu'] = self.tenant_unit_cpu
+        if self.tenant_unit_memory is not None:
+            result['TenantUnitMemory'] = self.tenant_unit_memory
         if self.tenant_unit_num is not None:
             result['TenantUnitNum'] = self.tenant_unit_num
         result['TenantZones'] = []
@@ -13761,6 +14027,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenants(TeaModel):
             self.tenant_cpu = m.get('TenantCpu')
         if m.get('TenantDeployType') is not None:
             self.tenant_deploy_type = m.get('TenantDeployType')
+        if m.get('TenantDiskSize') is not None:
+            self.tenant_disk_size = m.get('TenantDiskSize')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('TenantMemory') is not None:
@@ -13771,6 +14039,10 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenants(TeaModel):
             self.tenant_name = m.get('TenantName')
         if m.get('TenantStatus') is not None:
             self.tenant_status = m.get('TenantStatus')
+        if m.get('TenantUnitCpu') is not None:
+            self.tenant_unit_cpu = m.get('TenantUnitCpu')
+        if m.get('TenantUnitMemory') is not None:
+            self.tenant_unit_memory = m.get('TenantUnitMemory')
         if m.get('TenantUnitNum') is not None:
             self.tenant_unit_num = m.get('TenantUnitNum')
         self.tenant_zones = []
@@ -13951,6 +14223,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
     def __init__(
         self,
         full_copy_id: int = None,
+        logical_zone: str = None,
         node_copy_id: int = None,
         node_id: str = None,
         node_resource: List[DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource] = None,
@@ -13959,6 +14232,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
         replica_type: str = None,
     ):
         self.full_copy_id = full_copy_id
+        self.logical_zone = logical_zone
         # The information of zones.
         self.node_copy_id = node_copy_id
         # The ID of the resource unit.
@@ -13984,6 +14258,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
         result = dict()
         if self.full_copy_id is not None:
             result['FullCopyId'] = self.full_copy_id
+        if self.logical_zone is not None:
+            result['LogicalZone'] = self.logical_zone
         if self.node_copy_id is not None:
             result['NodeCopyId'] = self.node_copy_id
         if self.node_id is not None:
@@ -14004,6 +14280,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
         m = m or dict()
         if m.get('FullCopyId') is not None:
             self.full_copy_id = m.get('FullCopyId')
+        if m.get('LogicalZone') is not None:
+            self.logical_zone = m.get('LogicalZone')
         if m.get('NodeCopyId') is not None:
             self.node_copy_id = m.get('NodeCopyId')
         if m.get('NodeId') is not None:
@@ -14155,15 +14433,21 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZones(TeaModel):
 class DescribeInstanceTopologyResponseBodyInstanceTopology(TeaModel):
     def __init__(
         self,
+        replicas: List[DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas] = None,
         tenants: List[DescribeInstanceTopologyResponseBodyInstanceTopologyTenants] = None,
         zones: List[DescribeInstanceTopologyResponseBodyInstanceTopologyZones] = None,
     ):
+        self.replicas = replicas
         # The total number of CPU cores for the node.
         self.tenants = tenants
         # The information about resource units.
         self.zones = zones
 
     def validate(self):
+        if self.replicas:
+            for k in self.replicas:
+                if k:
+                    k.validate()
         if self.tenants:
             for k in self.tenants:
                 if k:
@@ -14179,6 +14463,10 @@ class DescribeInstanceTopologyResponseBodyInstanceTopology(TeaModel):
             return _map
 
         result = dict()
+        result['Replicas'] = []
+        if self.replicas is not None:
+            for k in self.replicas:
+                result['Replicas'].append(k.to_map() if k else None)
         result['Tenants'] = []
         if self.tenants is not None:
             for k in self.tenants:
@@ -14191,6 +14479,11 @@ class DescribeInstanceTopologyResponseBodyInstanceTopology(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.replicas = []
+        if m.get('Replicas') is not None:
+            for k in m.get('Replicas'):
+                temp_model = DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas()
+                self.replicas.append(temp_model.from_map(k))
         self.tenants = []
         if m.get('Tenants') is not None:
             for k in m.get('Tenants'):
@@ -14711,6 +15004,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         resource: DescribeInstancesResponseBodyInstancesResource = None,
         resource_group_id: str = None,
         series: str = None,
+        spec_type: str = None,
         state: str = None,
         used_disk_size: int = None,
         version: str = None,
@@ -14788,6 +15082,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         # - NORMAL: the high availability edition.   
         # - BASIC: the basic edition.
         self.series = series
+        self.spec_type = spec_type
         # The status of the cluster. Valid values:   
         # - ONLINE: The cluster is running.  
         # - PENDING_CREATE: The cluster is being created.  
@@ -14904,6 +15199,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.series is not None:
             result['Series'] = self.series
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
         if self.state is not None:
             result['State'] = self.state
         if self.used_disk_size is not None:
@@ -14970,6 +15267,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Series') is not None:
             self.series = m.get('Series')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('UsedDiskSize') is not None:
@@ -18171,8 +18470,8 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
         miss_plans: float = None,
         remote_plan_percentage: float = None,
         remote_plans: float = None,
-        ret_code_4012count: float = None,
-        ret_code_4013count: float = None,
+        ret_code_4012count: int = None,
+        ret_code_4013count: int = None,
         ret_code_5001count: float = None,
         ret_code_5024count: float = None,
         ret_code_5167count: float = None,
@@ -30752,19 +31051,26 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
     def __init__(
         self,
         address_type: str = None,
+        connection_logical_zones: List[str] = None,
         connection_replica_type: str = None,
         connection_zones: List[str] = None,
         enable_transaction_split: bool = None,
         internet_address: str = None,
         internet_address_status: str = None,
+        internet_max_connection_limit: int = None,
+        internet_max_connection_num: int = None,
         internet_port: int = None,
+        internet_rpc_port: int = None,
         intranet_address: str = None,
         intranet_address_master_zone_id: str = None,
         intranet_address_slave_zone_id: str = None,
         intranet_address_status: str = None,
         intranet_port: int = None,
+        intranet_rpc_port: int = None,
+        max_connection_limit: int = None,
         max_connection_num: int = None,
         parallel_query_degree: int = None,
+        proxy_cluster_id: str = None,
         tenant_endpoint_id: str = None,
         transaction_split: bool = None,
         v_switch_id: str = None,
@@ -30772,6 +31078,7 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
     ):
         # The primary zone of the tenant.
         self.address_type = address_type
+        self.connection_logical_zones = connection_logical_zones
         self.connection_replica_type = connection_replica_type
         # The Internet address for accessing the tenant.
         self.connection_zones = connection_zones
@@ -30780,8 +31087,11 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         self.internet_address = internet_address
         # 实例系列
         self.internet_address_status = internet_address_status
+        self.internet_max_connection_limit = internet_max_connection_limit
+        self.internet_max_connection_num = internet_max_connection_num
         # 实例类型
         self.internet_port = internet_port
+        self.internet_rpc_port = internet_rpc_port
         # The deployment type of the cluster. Valid values:  
         # - multiple: multi-IDC deployment   
         # - single: single-IDC deployment   
@@ -30795,8 +31105,11 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         self.intranet_address_status = intranet_address_status
         # The ID of the tenant.
         self.intranet_port = intranet_port
+        self.intranet_rpc_port = intranet_rpc_port
+        self.max_connection_limit = max_connection_limit
         self.max_connection_num = max_connection_num
         self.parallel_query_degree = parallel_query_degree
+        self.proxy_cluster_id = proxy_cluster_id
         self.tenant_endpoint_id = tenant_endpoint_id
         # The primary zone corresponding to the address for accessing the tenant.
         self.transaction_split = transaction_split
@@ -30819,6 +31132,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         result = dict()
         if self.address_type is not None:
             result['AddressType'] = self.address_type
+        if self.connection_logical_zones is not None:
+            result['ConnectionLogicalZones'] = self.connection_logical_zones
         if self.connection_replica_type is not None:
             result['ConnectionReplicaType'] = self.connection_replica_type
         if self.connection_zones is not None:
@@ -30829,8 +31144,14 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             result['InternetAddress'] = self.internet_address
         if self.internet_address_status is not None:
             result['InternetAddressStatus'] = self.internet_address_status
+        if self.internet_max_connection_limit is not None:
+            result['InternetMaxConnectionLimit'] = self.internet_max_connection_limit
+        if self.internet_max_connection_num is not None:
+            result['InternetMaxConnectionNum'] = self.internet_max_connection_num
         if self.internet_port is not None:
             result['InternetPort'] = self.internet_port
+        if self.internet_rpc_port is not None:
+            result['InternetRpcPort'] = self.internet_rpc_port
         if self.intranet_address is not None:
             result['IntranetAddress'] = self.intranet_address
         if self.intranet_address_master_zone_id is not None:
@@ -30841,10 +31162,16 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             result['IntranetAddressStatus'] = self.intranet_address_status
         if self.intranet_port is not None:
             result['IntranetPort'] = self.intranet_port
+        if self.intranet_rpc_port is not None:
+            result['IntranetRpcPort'] = self.intranet_rpc_port
+        if self.max_connection_limit is not None:
+            result['MaxConnectionLimit'] = self.max_connection_limit
         if self.max_connection_num is not None:
             result['MaxConnectionNum'] = self.max_connection_num
         if self.parallel_query_degree is not None:
             result['ParallelQueryDegree'] = self.parallel_query_degree
+        if self.proxy_cluster_id is not None:
+            result['ProxyClusterId'] = self.proxy_cluster_id
         if self.tenant_endpoint_id is not None:
             result['TenantEndpointId'] = self.tenant_endpoint_id
         if self.transaction_split is not None:
@@ -30859,6 +31186,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         m = m or dict()
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
+        if m.get('ConnectionLogicalZones') is not None:
+            self.connection_logical_zones = m.get('ConnectionLogicalZones')
         if m.get('ConnectionReplicaType') is not None:
             self.connection_replica_type = m.get('ConnectionReplicaType')
         if m.get('ConnectionZones') is not None:
@@ -30869,8 +31198,14 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             self.internet_address = m.get('InternetAddress')
         if m.get('InternetAddressStatus') is not None:
             self.internet_address_status = m.get('InternetAddressStatus')
+        if m.get('InternetMaxConnectionLimit') is not None:
+            self.internet_max_connection_limit = m.get('InternetMaxConnectionLimit')
+        if m.get('InternetMaxConnectionNum') is not None:
+            self.internet_max_connection_num = m.get('InternetMaxConnectionNum')
         if m.get('InternetPort') is not None:
             self.internet_port = m.get('InternetPort')
+        if m.get('InternetRpcPort') is not None:
+            self.internet_rpc_port = m.get('InternetRpcPort')
         if m.get('IntranetAddress') is not None:
             self.intranet_address = m.get('IntranetAddress')
         if m.get('IntranetAddressMasterZoneId') is not None:
@@ -30881,10 +31216,16 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             self.intranet_address_status = m.get('IntranetAddressStatus')
         if m.get('IntranetPort') is not None:
             self.intranet_port = m.get('IntranetPort')
+        if m.get('IntranetRpcPort') is not None:
+            self.intranet_rpc_port = m.get('IntranetRpcPort')
+        if m.get('MaxConnectionLimit') is not None:
+            self.max_connection_limit = m.get('MaxConnectionLimit')
         if m.get('MaxConnectionNum') is not None:
             self.max_connection_num = m.get('MaxConnectionNum')
         if m.get('ParallelQueryDegree') is not None:
             self.parallel_query_degree = m.get('ParallelQueryDegree')
+        if m.get('ProxyClusterId') is not None:
+            self.proxy_cluster_id = m.get('ProxyClusterId')
         if m.get('TenantEndpointId') is not None:
             self.tenant_endpoint_id = m.get('TenantEndpointId')
         if m.get('TransactionSplit') is not None:
@@ -31310,6 +31651,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         primary_zone: str = None,
         primary_zone_deploy_type: str = None,
         read_only_resource: DescribeTenantResponseBodyTenantReadOnlyResource = None,
+        recycle_bin_status: str = None,
         series: str = None,
         status: str = None,
         tenant_connections: List[DescribeTenantResponseBodyTenantTenantConnections] = None,
@@ -31423,6 +31765,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         # Example 1
         self.primary_zone_deploy_type = primary_zone_deploy_type
         self.read_only_resource = read_only_resource
+        self.recycle_bin_status = recycle_bin_status
         # <DescribeTenantResponse>
         #     <RequestId>EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C</RequestId>
         #     <Tenant>
@@ -31573,6 +31916,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             result['PrimaryZoneDeployType'] = self.primary_zone_deploy_type
         if self.read_only_resource is not None:
             result['ReadOnlyResource'] = self.read_only_resource.to_map()
+        if self.recycle_bin_status is not None:
+            result['RecycleBinStatus'] = self.recycle_bin_status
         if self.series is not None:
             result['Series'] = self.series
         if self.status is not None:
@@ -31652,6 +31997,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         if m.get('ReadOnlyResource') is not None:
             temp_model = DescribeTenantResponseBodyTenantReadOnlyResource()
             self.read_only_resource = temp_model.from_map(m['ReadOnlyResource'])
+        if m.get('RecycleBinStatus') is not None:
+            self.recycle_bin_status = m.get('RecycleBinStatus')
         if m.get('Series') is not None:
             self.series = m.get('Series')
         if m.get('Status') is not None:
@@ -32135,6 +32482,144 @@ class DescribeTenantMetricsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeTenantMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTenantReadableScnRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        tenant_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DescribeTenantReadableScnResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        readable_scn: int = None,
+    ):
+        self.readable_scn = readable_scn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.readable_scn is not None:
+            result['ReadableScn'] = self.readable_scn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReadableScn') is not None:
+            self.readable_scn = m.get('ReadableScn')
+        return self
+
+
+class DescribeTenantReadableScnResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeTenantReadableScnResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeTenantReadableScnResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeTenantReadableScnResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTenantReadableScnResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTenantReadableScnResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32679,7 +33164,7 @@ class DescribeTenantTagsResponseBodyTagResources(TeaModel):
         resource_type: str = None,
         tag: str = None,
     ):
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
         # The type of the resource.
         self.resource_type = resource_type
@@ -41589,6 +42074,170 @@ class ModifyInstanceNodeNumResponse(TeaModel):
         return self
 
 
+class ModifyInstanceSSLRequest(TeaModel):
+    def __init__(
+        self,
+        enable_ssl: str = None,
+        instance_id: str = None,
+    ):
+        # The operation to modify the SSL status. Valid values:
+        # 
+        # - open: Enable SSL encryption.
+        # 
+        # - update: Update the CA certificate.
+        # 
+        # - close: Disable SSL encryption.
+        # 
+        # This parameter is required.
+        self.enable_ssl = enable_ssl
+        # The ID of the OceanBase cluster.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ModifyInstanceSSLResponseBodyInstanceSSL(TeaModel):
+    def __init__(
+        self,
+        enable_ssl: str = None,
+        instance_id: str = None,
+    ):
+        # The operation to modify the SSL status. Valid values:
+        # 
+        # - open: Enable SSL encryption.
+        # 
+        # - update: Update the CA certificate.
+        # 
+        # - close: Disable SSL encryption.
+        self.enable_ssl = enable_ssl
+        # The ID of the OceanBase cluster.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ModifyInstanceSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_ssl: ModifyInstanceSSLResponseBodyInstanceSSL = None,
+        request_id: str = None,
+    ):
+        # The SSL setting of the OceanBase cluster instance.
+        self.instance_ssl = instance_ssl
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_ssl:
+            self.instance_ssl.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ssl is not None:
+            result['InstanceSSL'] = self.instance_ssl.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceSSL') is not None:
+            temp_model = ModifyInstanceSSLResponseBodyInstanceSSL()
+            self.instance_ssl = temp_model.from_map(m['InstanceSSL'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyInstanceSpecRequest(TeaModel):
     def __init__(
         self,
@@ -41597,6 +42246,7 @@ class ModifyInstanceSpecRequest(TeaModel):
         dry_run: bool = None,
         instance_class: str = None,
         instance_id: str = None,
+        upgrade_spec_native: bool = None,
     ):
         # The size of the storage space, in GB. The required storage space varies based on the cluster specifications:
         # - 8C32G: 100 GB to 10 TB.
@@ -41620,6 +42270,7 @@ class ModifyInstanceSpecRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.upgrade_spec_native = upgrade_spec_native
 
     def validate(self):
         pass
@@ -41640,6 +42291,8 @@ class ModifyInstanceSpecRequest(TeaModel):
             result['InstanceClass'] = self.instance_class
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.upgrade_spec_native is not None:
+            result['UpgradeSpecNative'] = self.upgrade_spec_native
         return result
 
     def from_map(self, m: dict = None):
@@ -41654,6 +42307,8 @@ class ModifyInstanceSpecRequest(TeaModel):
             self.instance_class = m.get('InstanceClass')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('UpgradeSpecNative') is not None:
+            self.upgrade_spec_native = m.get('UpgradeSpecNative')
         return self
 
 
@@ -41778,11 +42433,11 @@ class ModifyInstanceTagsRequest(TeaModel):
         instance_id: str = None,
         tags: str = None,
     ):
-        # The tags.
+        # The ID of the OceanBase cluster.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # You can call this operation to modify the value of the cluster tags.
+        # The tags.
         # 
         # This parameter is required.
         self.tags = tags
@@ -41817,7 +42472,9 @@ class ModifyInstanceTagsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The tag modification result.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -43296,9 +43953,9 @@ class ModifyTenantTagsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The update status of the tags.
+        # The tag modification result.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
