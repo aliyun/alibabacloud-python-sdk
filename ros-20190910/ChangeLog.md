@@ -1,3 +1,7 @@
+2024-06-17 Version: 3.3.15
+- Update API CreateStackInstances: update param DeploymentTargets.
+
+
 2024-05-10 Version: 3.3.14
 - Update API GetStackGroup: update response param.
 - Update API ListStackGroups: update response param.

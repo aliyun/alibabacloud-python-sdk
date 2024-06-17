@@ -2390,8 +2390,10 @@ class CreateStackGroupResponse(TeaModel):
 class CreateStackInstancesRequestDeploymentTargets(TeaModel):
     def __init__(
         self,
+        account_ids: List[str] = None,
         rd_folder_ids: List[str] = None,
     ):
+        self.account_ids = account_ids
         # The folder IDs of the resource directory. You can add up to five folder IDs.
         # 
         # You can create stacks within all the member accounts in the specified folders. If you create stacks in the Root folder, the stacks are created within all member accounts in the resource directory.
@@ -2408,12 +2410,16 @@ class CreateStackInstancesRequestDeploymentTargets(TeaModel):
             return _map
 
         result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
         if self.rd_folder_ids is not None:
             result['RdFolderIds'] = self.rd_folder_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
         if m.get('RdFolderIds') is not None:
             self.rd_folder_ids = m.get('RdFolderIds')
         return self
@@ -5909,15 +5915,15 @@ class GenerateTemplateByScratchRequest(TeaModel):
     ):
         # The region ID of the new node.
         self.provision_region_id = provision_region_id
-        # The region ID of the scenario.
+        # The region ID of the resource scenario.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the scenario.
+        # The ID of the resource scenario.
         # 
-        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](https://help.aliyun.com/document_detail/363050.html).
+        # For more information about how to query the IDs of resource scenarios, see [ListTemplateScratches](https://help.aliyun.com/document_detail/363050.html).
         # 
         # This parameter is required.
         self.template_scratch_id = template_scratch_id
@@ -6008,11 +6014,11 @@ class GenerateTemplateByScratchResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The resources that you want to import into a stack in the scenario.
+        # The resources that you want to import into a stack in the resource management scenario.
         # 
-        # > This parameter is returned only if the scenario is of the Resource Management type.
+        # > This parameter is returned only for a resource management scenario.
         self.resources_to_import = resources_to_import
-        # The template content of the scenario.
+        # The template content of the resource scenario.
         self.template_body = template_body
 
     def validate(self):
@@ -14550,7 +14556,7 @@ class ListResourceTypeRegistrationsResponseBodyRegistrations(TeaModel):
         status_reason: str = None,
         version_id: str = None,
     ):
-        # The time when the version was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
+        # The creation time. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
         self.create_time = create_time
         # The entity type. Only Module may be returned.
         self.entity_type = entity_type
@@ -14560,9 +14566,9 @@ class ListResourceTypeRegistrationsResponseBodyRegistrations(TeaModel):
         self.resource_type = resource_type
         # The registration state. Valid values:
         # 
-        # *   IN_PROGRESS
-        # *   COMPLETE
-        # *   FAILED
+        # *   IN_PROGRESS: The registration is in progress.
+        # *   COMPLETE: The registration is successful.
+        # *   FAILED: The registration failed.
         self.status = status
         # The reason for the state.
         self.status_reason = status_reason
@@ -14623,7 +14629,7 @@ class ListResourceTypeRegistrationsResponseBody(TeaModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The registration records.
+        # The registration records of the resource.
         self.registrations = registrations
         # The request ID.
         self.request_id = request_id
@@ -24050,7 +24056,7 @@ class UpdateTemplateScratchRequestSourceResourceGroup(TeaModel):
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # The resource types.
+        # The resource types for filtering resources.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -24122,11 +24128,11 @@ class UpdateTemplateScratchRequestSourceTag(TeaModel):
         resource_tags: Dict[str, Any] = None,
         resource_type_filter: List[str] = None,
     ):
-        # The source tags that consist of key-value pairs.
+        # The source tags. A tag contains a tag key and a tag value.
         # 
-        # If you want to specify only the tag key, you must set the tag value to an empty string. Example: {"TagKey": ""}.
+        # If you want to specify only the tag key, you must leave the tag value empty. Example: {"TagKey": ""}.
         # 
-        # If you set TemplateScratchType to ArchitectureDetection, you can add up to five source tags. In other cases, you can add up to 10 source tags.
+        # If you set TemplateScratchType to ArchitectureDetection, you can add up to 5 source tags. In other cases, you can add up to 10 source tags.
         # 
         # This parameter is required.
         self.resource_tags = resource_tags
@@ -24204,16 +24210,22 @@ class UpdateTemplateScratchRequest(TeaModel):
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The source resource group.
+        # 
+        # >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
         self.source_resource_group = source_resource_group
         # The source resources.
         # 
-        # If you specify SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the architecture of all resources that are associated with the specified source resources. For example, if you set the value of SourceResources to an ID of a Classic Load Balancer (CLB) instance, the system detects the architecture of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and virtual private clouds (VPCs), that are associated with the CLB instance.
-        # 
-        # If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources for SourceResources. In other cases, you can specify up to 200 source resources.
+        # >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
         self.source_resources = source_resources
         # The source tag.
+        # 
+        # >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
         self.source_tag = source_tag
-        # The ID of the scenario.
+        # The ID of the resource scenario.
+        # 
+        # The valid values of the ParameterKey and ParameterValue request parameters vary based on the IDs of different types of resource scenarios. For more information, see the "Additional information about request parameters" section of this topic.
+        # 
+        # >  You can call the [ListTemplateScratches](https://help.aliyun.com/document_detail/610832.html) operation to query the ID of a resource scenario.
         # 
         # This parameter is required.
         self.template_scratch_id = template_scratch_id
@@ -24348,16 +24360,22 @@ class UpdateTemplateScratchShrinkRequest(TeaModel):
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The source resource group.
+        # 
+        # >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
         self.source_resource_group_shrink = source_resource_group_shrink
         # The source resources.
         # 
-        # If you specify SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the architecture of all resources that are associated with the specified source resources. For example, if you set the value of SourceResources to an ID of a Classic Load Balancer (CLB) instance, the system detects the architecture of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and virtual private clouds (VPCs), that are associated with the CLB instance.
-        # 
-        # If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources for SourceResources. In other cases, you can specify up to 200 source resources.
+        # >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
         self.source_resources_shrink = source_resources_shrink
         # The source tag.
+        # 
+        # >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
         self.source_tag_shrink = source_tag_shrink
-        # The ID of the scenario.
+        # The ID of the resource scenario.
+        # 
+        # The valid values of the ParameterKey and ParameterValue request parameters vary based on the IDs of different types of resource scenarios. For more information, see the "Additional information about request parameters" section of this topic.
+        # 
+        # >  You can call the [ListTemplateScratches](https://help.aliyun.com/document_detail/610832.html) operation to query the ID of a resource scenario.
         # 
         # This parameter is required.
         self.template_scratch_id = template_scratch_id
