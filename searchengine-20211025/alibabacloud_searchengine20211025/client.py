@@ -337,6 +337,226 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_cluster_with_options_async(instance_id, request, headers, runtime)
 
+    def create_config_dir_with_options(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.CreateConfigDirRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateConfigDirResponse:
+        """
+        @param request: CreateConfigDirRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigDirResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dir_name):
+            body['dirName'] = request.dir_name
+        if not UtilClient.is_unset(request.parent_full_path):
+            body['parentFullPath'] = request.parent_full_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConfigDir',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}/dir',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateConfigDirResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_config_dir_with_options_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.CreateConfigDirRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateConfigDirResponse:
+        """
+        @param request: CreateConfigDirRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigDirResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dir_name):
+            body['dirName'] = request.dir_name
+        if not UtilClient.is_unset(request.parent_full_path):
+            body['parentFullPath'] = request.parent_full_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConfigDir',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}/dir',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateConfigDirResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_config_dir(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.CreateConfigDirRequest,
+    ) -> searchengine_20211025_models.CreateConfigDirResponse:
+        """
+        @param request: CreateConfigDirRequest
+        @return: CreateConfigDirResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_config_dir_with_options(instance_id, config_name, request, headers, runtime)
+
+    async def create_config_dir_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.CreateConfigDirRequest,
+    ) -> searchengine_20211025_models.CreateConfigDirResponse:
+        """
+        @param request: CreateConfigDirRequest
+        @return: CreateConfigDirResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_config_dir_with_options_async(instance_id, config_name, request, headers, runtime)
+
+    def create_config_file_with_options(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.CreateConfigFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateConfigFileResponse:
+        """
+        @param request: CreateConfigFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.oss_path):
+            body['ossPath'] = request.oss_path
+        if not UtilClient.is_unset(request.parent_full_path):
+            body['parentFullPath'] = request.parent_full_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConfigFile',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}/file',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateConfigFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_config_file_with_options_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.CreateConfigFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateConfigFileResponse:
+        """
+        @param request: CreateConfigFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigFileResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.oss_path):
+            body['ossPath'] = request.oss_path
+        if not UtilClient.is_unset(request.parent_full_path):
+            body['parentFullPath'] = request.parent_full_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConfigFile',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}/file',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateConfigFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_config_file(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.CreateConfigFileRequest,
+    ) -> searchengine_20211025_models.CreateConfigFileResponse:
+        """
+        @param request: CreateConfigFileRequest
+        @return: CreateConfigFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_config_file_with_options(instance_id, config_name, request, headers, runtime)
+
+    async def create_config_file_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.CreateConfigFileRequest,
+    ) -> searchengine_20211025_models.CreateConfigFileResponse:
+        """
+        @param request: CreateConfigFileRequest
+        @return: CreateConfigFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_config_file_with_options_async(instance_id, config_name, request, headers, runtime)
+
     def create_data_source_with_options(
         self,
         instance_id: str,
@@ -789,6 +1009,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
 
+    def create_public_url_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreatePublicUrlResponse:
+        """
+        @summary 开通公网域名
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePublicUrlResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreatePublicUrl',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-url',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreatePublicUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_public_url_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreatePublicUrlResponse:
+        """
+        @summary 开通公网域名
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePublicUrlResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreatePublicUrl',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-url',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreatePublicUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_public_url(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.CreatePublicUrlResponse:
+        """
+        @summary 开通公网域名
+        
+        @return: CreatePublicUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_public_url_with_options(instance_id, headers, runtime)
+
+    async def create_public_url_async(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.CreatePublicUrlResponse:
+        """
+        @summary 开通公网域名
+        
+        @return: CreatePublicUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_public_url_with_options_async(instance_id, headers, runtime)
+
     def create_table_with_options(
         self,
         instance_id: str,
@@ -1050,6 +1360,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_advance_config_with_options_async(instance_id, config_name, headers, runtime)
+
+    def delete_config_dir_with_options(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.DeleteConfigDirRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteConfigDirResponse:
+        """
+        @param request: DeleteConfigDirRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigDirResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dir_name):
+            query['dirName'] = request.dir_name
+        if not UtilClient.is_unset(request.parent_full_path):
+            query['parentFullPath'] = request.parent_full_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConfigDir',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}/dir',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteConfigDirResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_config_dir_with_options_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.DeleteConfigDirRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteConfigDirResponse:
+        """
+        @param request: DeleteConfigDirRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigDirResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dir_name):
+            query['dirName'] = request.dir_name
+        if not UtilClient.is_unset(request.parent_full_path):
+            query['parentFullPath'] = request.parent_full_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConfigDir',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}/dir',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteConfigDirResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_config_dir(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.DeleteConfigDirRequest,
+    ) -> searchengine_20211025_models.DeleteConfigDirResponse:
+        """
+        @param request: DeleteConfigDirRequest
+        @return: DeleteConfigDirResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_config_dir_with_options(instance_id, config_name, request, headers, runtime)
+
+    async def delete_config_dir_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.DeleteConfigDirRequest,
+    ) -> searchengine_20211025_models.DeleteConfigDirResponse:
+        """
+        @param request: DeleteConfigDirRequest
+        @return: DeleteConfigDirResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_config_dir_with_options_async(instance_id, config_name, request, headers, runtime)
+
+    def delete_config_file_with_options(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.DeleteConfigFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteConfigFileResponse:
+        """
+        @param request: DeleteConfigFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.parent_full_path):
+            query['parentFullPath'] = request.parent_full_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConfigFile',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}/file',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteConfigFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_config_file_with_options_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.DeleteConfigFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteConfigFileResponse:
+        """
+        @param request: DeleteConfigFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.parent_full_path):
+            query['parentFullPath'] = request.parent_full_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConfigFile',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}/file',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteConfigFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_config_file(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.DeleteConfigFileRequest,
+    ) -> searchengine_20211025_models.DeleteConfigFileResponse:
+        """
+        @param request: DeleteConfigFileRequest
+        @return: DeleteConfigFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_config_file_with_options(instance_id, config_name, request, headers, runtime)
+
+    async def delete_config_file_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.DeleteConfigFileRequest,
+    ) -> searchengine_20211025_models.DeleteConfigFileResponse:
+        """
+        @param request: DeleteConfigFileRequest
+        @return: DeleteConfigFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_config_file_with_options_async(instance_id, config_name, request, headers, runtime)
 
     def delete_data_source_with_options(
         self,
@@ -1528,6 +2054,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, headers, runtime)
+
+    def delete_public_url_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeletePublicUrlResponse:
+        """
+        @summary 删除公网域名
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePublicUrlResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeletePublicUrl',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-url',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeletePublicUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_public_url_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeletePublicUrlResponse:
+        """
+        @summary 删除公网域名
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePublicUrlResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeletePublicUrl',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-url',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeletePublicUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_public_url(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.DeletePublicUrlResponse:
+        """
+        @summary 删除公网域名
+        
+        @return: DeletePublicUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_public_url_with_options(instance_id, headers, runtime)
+
+    async def delete_public_url_async(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.DeletePublicUrlResponse:
+        """
+        @summary 删除公网域名
+        
+        @return: DeletePublicUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_public_url_with_options_async(instance_id, headers, runtime)
 
     def delete_table_with_options(
         self,
@@ -2896,6 +3512,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_index_with_options_async(instance_id, index_name, headers, runtime)
+
+    def get_index_online_strategy_with_options(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        deploy_name: str,
+        index_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetIndexOnlineStrategyResponse:
+        """
+        @summary 获取索引在线生效策略
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIndexOnlineStrategyResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIndexOnlineStrategy',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}/deploys/{OpenApiUtilClient.get_encode_param(deploy_name)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/online-strategy',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetIndexOnlineStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_index_online_strategy_with_options_async(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        deploy_name: str,
+        index_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetIndexOnlineStrategyResponse:
+        """
+        @summary 获取索引在线生效策略
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIndexOnlineStrategyResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIndexOnlineStrategy',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}/deploys/{OpenApiUtilClient.get_encode_param(deploy_name)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/online-strategy',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetIndexOnlineStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_index_online_strategy(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        deploy_name: str,
+        index_name: str,
+    ) -> searchengine_20211025_models.GetIndexOnlineStrategyResponse:
+        """
+        @summary 获取索引在线生效策略
+        
+        @return: GetIndexOnlineStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_index_online_strategy_with_options(instance_id, data_source_name, deploy_name, index_name, headers, runtime)
+
+    async def get_index_online_strategy_async(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        deploy_name: str,
+        index_name: str,
+    ) -> searchengine_20211025_models.GetIndexOnlineStrategyResponse:
+        """
+        @summary 获取索引在线生效策略
+        
+        @return: GetIndexOnlineStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_index_online_strategy_with_options_async(instance_id, data_source_name, deploy_name, index_name, headers, runtime)
 
     def get_index_version_with_options(
         self,
@@ -4533,6 +5251,92 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_date_source_generations_with_options_async(instance_id, data_source_name, request, headers, runtime)
 
+    def list_index_recover_records_with_options(
+        self,
+        index_name: str,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListIndexRecoverRecordsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexRecoverRecordsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListIndexRecoverRecords',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/actions/list-recover-records',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListIndexRecoverRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_index_recover_records_with_options_async(
+        self,
+        index_name: str,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListIndexRecoverRecordsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexRecoverRecordsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListIndexRecoverRecords',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/actions/list-recover-records',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListIndexRecoverRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_index_recover_records(
+        self,
+        index_name: str,
+        instance_id: str,
+    ) -> searchengine_20211025_models.ListIndexRecoverRecordsResponse:
+        """
+        @return: ListIndexRecoverRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_index_recover_records_with_options(index_name, instance_id, headers, runtime)
+
+    async def list_index_recover_records_async(
+        self,
+        index_name: str,
+        instance_id: str,
+    ) -> searchengine_20211025_models.ListIndexRecoverRecordsResponse:
+        """
+        @return: ListIndexRecoverRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_index_recover_records_with_options_async(index_name, instance_id, headers, runtime)
+
     def list_indexes_with_options(
         self,
         instance_id: str,
@@ -5093,6 +5897,200 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_online_configs_with_options_async(instance_id, node_name, request, headers, runtime)
 
+    def list_pause_policys_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListPausePolicysResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPausePolicysResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListPausePolicys',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/pause-policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListPausePolicysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pause_policys_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListPausePolicysResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPausePolicysResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListPausePolicys',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/pause-policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListPausePolicysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pause_policys(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.ListPausePolicysResponse:
+        """
+        @return: ListPausePolicysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_pause_policys_with_options(instance_id, headers, runtime)
+
+    async def list_pause_policys_async(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.ListPausePolicysResponse:
+        """
+        @return: ListPausePolicysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_pause_policys_with_options_async(instance_id, headers, runtime)
+
+    def list_post_query_result_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListPostQueryResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListPostQueryResultResponse:
+        """
+        @param request: ListPostQueryResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPostQueryResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['address'] = request.address
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPostQueryResult',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListPostQueryResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_post_query_result_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListPostQueryResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListPostQueryResultResponse:
+        """
+        @param request: ListPostQueryResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPostQueryResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['address'] = request.address
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPostQueryResult',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListPostQueryResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_post_query_result(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListPostQueryResultRequest,
+    ) -> searchengine_20211025_models.ListPostQueryResultResponse:
+        """
+        @param request: ListPostQueryResultRequest
+        @return: ListPostQueryResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_post_query_result_with_options(instance_id, request, headers, runtime)
+
+    async def list_post_query_result_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListPostQueryResultRequest,
+    ) -> searchengine_20211025_models.ListPostQueryResultResponse:
+        """
+        @param request: ListPostQueryResultRequest
+        @return: ListPostQueryResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_post_query_result_with_options_async(instance_id, request, headers, runtime)
+
     def list_query_result_with_options(
         self,
         instance_id: str,
@@ -5224,6 +6222,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_query_result_with_options_async(instance_id, request, headers, runtime)
+
+    def list_rest_query_result_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListRestQueryResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListRestQueryResultResponse:
+        """
+        @param request: ListRestQueryResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRestQueryResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['address'] = request.address
+        body = {}
+        if not UtilClient.is_unset(request.index_name):
+            body['indexName'] = request.index_name
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListRestQueryResult',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/rest-query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListRestQueryResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rest_query_result_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListRestQueryResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListRestQueryResultResponse:
+        """
+        @param request: ListRestQueryResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRestQueryResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['address'] = request.address
+        body = {}
+        if not UtilClient.is_unset(request.index_name):
+            body['indexName'] = request.index_name
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListRestQueryResult',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/rest-query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListRestQueryResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rest_query_result(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListRestQueryResultRequest,
+    ) -> searchengine_20211025_models.ListRestQueryResultResponse:
+        """
+        @param request: ListRestQueryResultRequest
+        @return: ListRestQueryResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_rest_query_result_with_options(instance_id, request, headers, runtime)
+
+    async def list_rest_query_result_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListRestQueryResultRequest,
+    ) -> searchengine_20211025_models.ListRestQueryResultResponse:
+        """
+        @param request: ListRestQueryResultRequest
+        @return: ListRestQueryResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_rest_query_result_with_options_async(instance_id, request, headers, runtime)
+
+    def list_schemas_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListSchemasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListSchemasResponse:
+        """
+        @summary 通过数据源配置获取schema信息
+        
+        @param request: ListSchemasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSchemasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_key):
+            query['accessKey'] = request.access_key
+        if not UtilClient.is_unset(request.access_secret):
+            query['accessSecret'] = request.access_secret
+        if not UtilClient.is_unset(request.endpoint):
+            query['endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.namespace):
+            query['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.partition):
+            query['partition'] = request.partition
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
+        if not UtilClient.is_unset(request.table):
+            query['table'] = request.table
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSchemas',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/schemas',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListSchemasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_schemas_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListSchemasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListSchemasResponse:
+        """
+        @summary 通过数据源配置获取schema信息
+        
+        @param request: ListSchemasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSchemasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_key):
+            query['accessKey'] = request.access_key
+        if not UtilClient.is_unset(request.access_secret):
+            query['accessSecret'] = request.access_secret
+        if not UtilClient.is_unset(request.endpoint):
+            query['endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.namespace):
+            query['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.partition):
+            query['partition'] = request.partition
+        if not UtilClient.is_unset(request.project):
+            query['project'] = request.project
+        if not UtilClient.is_unset(request.table):
+            query['table'] = request.table
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSchemas',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/schemas',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListSchemasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_schemas(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListSchemasRequest,
+    ) -> searchengine_20211025_models.ListSchemasResponse:
+        """
+        @summary 通过数据源配置获取schema信息
+        
+        @param request: ListSchemasRequest
+        @return: ListSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_schemas_with_options(instance_id, request, headers, runtime)
+
+    async def list_schemas_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListSchemasRequest,
+    ) -> searchengine_20211025_models.ListSchemasResponse:
+        """
+        @summary 通过数据源配置获取schema信息
+        
+        @param request: ListSchemasRequest
+        @return: ListSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_schemas_with_options_async(instance_id, request, headers, runtime)
 
     def list_table_generations_with_options(
         self,
@@ -5426,6 +6672,362 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tables_with_options_async(instance_id, request, headers, runtime)
+
+    def list_tasks_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListTasksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListTasksResponse:
+        """
+        @summary 获取集群任务列表（数据源+集群）
+        
+        @param request: ListTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end):
+            query['end'] = request.end
+        if not UtilClient.is_unset(request.start):
+            query['start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTasks',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tasks_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListTasksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListTasksResponse:
+        """
+        @summary 获取集群任务列表（数据源+集群）
+        
+        @param request: ListTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end):
+            query['end'] = request.end
+        if not UtilClient.is_unset(request.start):
+            query['start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTasks',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tasks',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tasks(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListTasksRequest,
+    ) -> searchengine_20211025_models.ListTasksResponse:
+        """
+        @summary 获取集群任务列表（数据源+集群）
+        
+        @param request: ListTasksRequest
+        @return: ListTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_tasks_with_options(instance_id, request, headers, runtime)
+
+    async def list_tasks_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListTasksRequest,
+    ) -> searchengine_20211025_models.ListTasksResponse:
+        """
+        @summary 获取集群任务列表（数据源+集群）
+        
+        @param request: ListTasksRequest
+        @return: ListTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_tasks_with_options_async(instance_id, request, headers, runtime)
+
+    def list_vector_query_result_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListVectorQueryResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListVectorQueryResultResponse:
+        """
+        @param request: ListVectorQueryResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVectorQueryResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['address'] = request.address
+        if not UtilClient.is_unset(request.query_type):
+            query['queryType'] = request.query_type
+        if not UtilClient.is_unset(request.vector_query_type):
+            query['vectorQueryType'] = request.vector_query_type
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVectorQueryResult',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/vector-query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListVectorQueryResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vector_query_result_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListVectorQueryResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListVectorQueryResultResponse:
+        """
+        @param request: ListVectorQueryResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVectorQueryResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['address'] = request.address
+        if not UtilClient.is_unset(request.query_type):
+            query['queryType'] = request.query_type
+        if not UtilClient.is_unset(request.vector_query_type):
+            query['vectorQueryType'] = request.vector_query_type
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListVectorQueryResult',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/vector-query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListVectorQueryResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vector_query_result(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListVectorQueryResultRequest,
+    ) -> searchengine_20211025_models.ListVectorQueryResultResponse:
+        """
+        @param request: ListVectorQueryResultRequest
+        @return: ListVectorQueryResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_vector_query_result_with_options(instance_id, request, headers, runtime)
+
+    async def list_vector_query_result_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListVectorQueryResultRequest,
+    ) -> searchengine_20211025_models.ListVectorQueryResultResponse:
+        """
+        @param request: ListVectorQueryResultRequest
+        @return: ListVectorQueryResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_vector_query_result_with_options_async(instance_id, request, headers, runtime)
+
+    def modify_advance_config_with_options(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.ModifyAdvanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyAdvanceConfigResponse:
+        """
+        @param request: ModifyAdvanceConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAdvanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.content_type):
+            body['contentType'] = request.content_type
+        if not UtilClient.is_unset(request.desc):
+            body['desc'] = request.desc
+        if not UtilClient.is_unset(request.files):
+            body['files'] = request.files
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.update_time):
+            body['updateTime'] = request.update_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyAdvanceConfig',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyAdvanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_advance_config_with_options_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.ModifyAdvanceConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyAdvanceConfigResponse:
+        """
+        @param request: ModifyAdvanceConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAdvanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.content_type):
+            body['contentType'] = request.content_type
+        if not UtilClient.is_unset(request.desc):
+            body['desc'] = request.desc
+        if not UtilClient.is_unset(request.files):
+            body['files'] = request.files
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.status):
+            body['status'] = request.status
+        if not UtilClient.is_unset(request.update_time):
+            body['updateTime'] = request.update_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyAdvanceConfig',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/advanced-configs/{OpenApiUtilClient.get_encode_param(config_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyAdvanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_advance_config(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.ModifyAdvanceConfigRequest,
+    ) -> searchengine_20211025_models.ModifyAdvanceConfigResponse:
+        """
+        @param request: ModifyAdvanceConfigRequest
+        @return: ModifyAdvanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_advance_config_with_options(instance_id, config_name, request, headers, runtime)
+
+    async def modify_advance_config_async(
+        self,
+        instance_id: str,
+        config_name: str,
+        request: searchengine_20211025_models.ModifyAdvanceConfigRequest,
+    ) -> searchengine_20211025_models.ModifyAdvanceConfigResponse:
+        """
+        @param request: ModifyAdvanceConfigRequest
+        @return: ModifyAdvanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_advance_config_with_options_async(instance_id, config_name, request, headers, runtime)
 
     def modify_advance_config_file_with_options(
         self,
@@ -6127,6 +7729,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_data_source_with_options_async(instance_id, data_source_name, request, headers, runtime)
 
+    def modify_data_source_deploy_with_options(
+        self,
+        instance_id: str,
+        deploy_name: str,
+        data_source_name: str,
+        request: searchengine_20211025_models.ModifyDataSourceDeployRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyDataSourceDeployResponse:
+        """
+        @summary 修改数据源部署信息
+        
+        @param request: ModifyDataSourceDeployRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataSourceDeployResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.generation_id):
+            query['generationId'] = request.generation_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_build_index):
+            body['autoBuildIndex'] = request.auto_build_index
+        if not UtilClient.is_unset(request.extend):
+            body['extend'] = request.extend
+        if not UtilClient.is_unset(request.processor):
+            body['processor'] = request.processor
+        if not UtilClient.is_unset(request.storage):
+            body['storage'] = request.storage
+        if not UtilClient.is_unset(request.swift):
+            body['swift'] = request.swift
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDataSourceDeploy',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}/deploys/{OpenApiUtilClient.get_encode_param(deploy_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyDataSourceDeployResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_data_source_deploy_with_options_async(
+        self,
+        instance_id: str,
+        deploy_name: str,
+        data_source_name: str,
+        request: searchengine_20211025_models.ModifyDataSourceDeployRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyDataSourceDeployResponse:
+        """
+        @summary 修改数据源部署信息
+        
+        @param request: ModifyDataSourceDeployRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataSourceDeployResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.generation_id):
+            query['generationId'] = request.generation_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_build_index):
+            body['autoBuildIndex'] = request.auto_build_index
+        if not UtilClient.is_unset(request.extend):
+            body['extend'] = request.extend
+        if not UtilClient.is_unset(request.processor):
+            body['processor'] = request.processor
+        if not UtilClient.is_unset(request.storage):
+            body['storage'] = request.storage
+        if not UtilClient.is_unset(request.swift):
+            body['swift'] = request.swift
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDataSourceDeploy',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}/deploys/{OpenApiUtilClient.get_encode_param(deploy_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyDataSourceDeployResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_data_source_deploy(
+        self,
+        instance_id: str,
+        deploy_name: str,
+        data_source_name: str,
+        request: searchengine_20211025_models.ModifyDataSourceDeployRequest,
+    ) -> searchengine_20211025_models.ModifyDataSourceDeployResponse:
+        """
+        @summary 修改数据源部署信息
+        
+        @param request: ModifyDataSourceDeployRequest
+        @return: ModifyDataSourceDeployResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_data_source_deploy_with_options(instance_id, deploy_name, data_source_name, request, headers, runtime)
+
+    async def modify_data_source_deploy_async(
+        self,
+        instance_id: str,
+        deploy_name: str,
+        data_source_name: str,
+        request: searchengine_20211025_models.ModifyDataSourceDeployRequest,
+    ) -> searchengine_20211025_models.ModifyDataSourceDeployResponse:
+        """
+        @summary 修改数据源部署信息
+        
+        @param request: ModifyDataSourceDeployRequest
+        @return: ModifyDataSourceDeployResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_data_source_deploy_with_options_async(instance_id, deploy_name, data_source_name, request, headers, runtime)
+
     def modify_file_with_options(
         self,
         instance_id: str,
@@ -6274,6 +8020,282 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_file_with_options_async(instance_id, index_name, version_name, request, headers, runtime)
+
+    def modify_index_with_options(
+        self,
+        instance_id: str,
+        index_name: str,
+        request: searchengine_20211025_models.ModifyIndexRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyIndexResponse:
+        """
+        @param request: ModifyIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.build_parallel_num):
+            body['buildParallelNum'] = request.build_parallel_num
+        if not UtilClient.is_unset(request.cluster):
+            body['cluster'] = request.cluster
+        if not UtilClient.is_unset(request.cluster_config_name):
+            body['clusterConfigName'] = request.cluster_config_name
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.data_source):
+            body['dataSource'] = request.data_source
+        if not UtilClient.is_unset(request.data_source_info):
+            body['dataSourceInfo'] = request.data_source_info
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain):
+            body['domain'] = request.domain
+        if not UtilClient.is_unset(request.merge_parallel_num):
+            body['mergeParallelNum'] = request.merge_parallel_num
+        if not UtilClient.is_unset(request.partition):
+            body['partition'] = request.partition
+        if not UtilClient.is_unset(request.push_mode):
+            body['pushMode'] = request.push_mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyIndex',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_index_with_options_async(
+        self,
+        instance_id: str,
+        index_name: str,
+        request: searchengine_20211025_models.ModifyIndexRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyIndexResponse:
+        """
+        @param request: ModifyIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.build_parallel_num):
+            body['buildParallelNum'] = request.build_parallel_num
+        if not UtilClient.is_unset(request.cluster):
+            body['cluster'] = request.cluster
+        if not UtilClient.is_unset(request.cluster_config_name):
+            body['clusterConfigName'] = request.cluster_config_name
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.data_source):
+            body['dataSource'] = request.data_source
+        if not UtilClient.is_unset(request.data_source_info):
+            body['dataSourceInfo'] = request.data_source_info
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain):
+            body['domain'] = request.domain
+        if not UtilClient.is_unset(request.merge_parallel_num):
+            body['mergeParallelNum'] = request.merge_parallel_num
+        if not UtilClient.is_unset(request.partition):
+            body['partition'] = request.partition
+        if not UtilClient.is_unset(request.push_mode):
+            body['pushMode'] = request.push_mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyIndex',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_index(
+        self,
+        instance_id: str,
+        index_name: str,
+        request: searchengine_20211025_models.ModifyIndexRequest,
+    ) -> searchengine_20211025_models.ModifyIndexResponse:
+        """
+        @param request: ModifyIndexRequest
+        @return: ModifyIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_index_with_options(instance_id, index_name, request, headers, runtime)
+
+    async def modify_index_async(
+        self,
+        instance_id: str,
+        index_name: str,
+        request: searchengine_20211025_models.ModifyIndexRequest,
+    ) -> searchengine_20211025_models.ModifyIndexResponse:
+        """
+        @param request: ModifyIndexRequest
+        @return: ModifyIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_index_with_options_async(instance_id, index_name, request, headers, runtime)
+
+    def modify_index_online_strategy_with_options(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        deploy_name: str,
+        index_name: str,
+        request: searchengine_20211025_models.ModifyIndexOnlineStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyIndexOnlineStrategyResponse:
+        """
+        @summary 修改索引在线策略
+        
+        @param request: ModifyIndexOnlineStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIndexOnlineStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.change_rate):
+            body['changeRate'] = request.change_rate
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyIndexOnlineStrategy',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}/deploys/{OpenApiUtilClient.get_encode_param(deploy_name)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/online-strategy',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyIndexOnlineStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_index_online_strategy_with_options_async(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        deploy_name: str,
+        index_name: str,
+        request: searchengine_20211025_models.ModifyIndexOnlineStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyIndexOnlineStrategyResponse:
+        """
+        @summary 修改索引在线策略
+        
+        @param request: ModifyIndexOnlineStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIndexOnlineStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.change_rate):
+            body['changeRate'] = request.change_rate
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyIndexOnlineStrategy',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}/deploys/{OpenApiUtilClient.get_encode_param(deploy_name)}/indexes/{OpenApiUtilClient.get_encode_param(index_name)}/online-strategy',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyIndexOnlineStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_index_online_strategy(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        deploy_name: str,
+        index_name: str,
+        request: searchengine_20211025_models.ModifyIndexOnlineStrategyRequest,
+    ) -> searchengine_20211025_models.ModifyIndexOnlineStrategyResponse:
+        """
+        @summary 修改索引在线策略
+        
+        @param request: ModifyIndexOnlineStrategyRequest
+        @return: ModifyIndexOnlineStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_index_online_strategy_with_options(instance_id, data_source_name, deploy_name, index_name, request, headers, runtime)
+
+    async def modify_index_online_strategy_async(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        deploy_name: str,
+        index_name: str,
+        request: searchengine_20211025_models.ModifyIndexOnlineStrategyRequest,
+    ) -> searchengine_20211025_models.ModifyIndexOnlineStrategyResponse:
+        """
+        @summary 修改索引在线策略
+        
+        @param request: ModifyIndexOnlineStrategyRequest
+        @return: ModifyIndexOnlineStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_index_online_strategy_with_options_async(instance_id, data_source_name, deploy_name, index_name, request, headers, runtime)
 
     def modify_index_partition_with_options(
         self,
@@ -7009,6 +9031,214 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_password_with_options_async(instance_id, request, headers, runtime)
 
+    def modify_pause_policy_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ModifyPausePolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyPausePolicyResponse:
+        """
+        @param request: ModifyPausePolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPausePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyPausePolicy',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/pause-policies',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyPausePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_pause_policy_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ModifyPausePolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyPausePolicyResponse:
+        """
+        @param request: ModifyPausePolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPausePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyPausePolicy',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/pause-policies',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyPausePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_pause_policy(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ModifyPausePolicyRequest,
+    ) -> searchengine_20211025_models.ModifyPausePolicyResponse:
+        """
+        @param request: ModifyPausePolicyRequest
+        @return: ModifyPausePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_pause_policy_with_options(instance_id, request, headers, runtime)
+
+    async def modify_pause_policy_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ModifyPausePolicyRequest,
+    ) -> searchengine_20211025_models.ModifyPausePolicyResponse:
+        """
+        @param request: ModifyPausePolicyRequest
+        @return: ModifyPausePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_pause_policy_with_options_async(instance_id, request, headers, runtime)
+
+    def modify_public_url_ip_list_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ModifyPublicUrlIpListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyPublicUrlIpListResponse:
+        """
+        @summary 修改公网域名访问白名单
+        
+        @param request: ModifyPublicUrlIpListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPublicUrlIpListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyPublicUrlIpList',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-url-ip-list',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyPublicUrlIpListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_public_url_ip_list_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ModifyPublicUrlIpListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyPublicUrlIpListResponse:
+        """
+        @summary 修改公网域名访问白名单
+        
+        @param request: ModifyPublicUrlIpListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPublicUrlIpListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['body'] = request.body
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyPublicUrlIpList',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-url-ip-list',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyPublicUrlIpListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_public_url_ip_list(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ModifyPublicUrlIpListRequest,
+    ) -> searchengine_20211025_models.ModifyPublicUrlIpListResponse:
+        """
+        @summary 修改公网域名访问白名单
+        
+        @param request: ModifyPublicUrlIpListRequest
+        @return: ModifyPublicUrlIpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_public_url_ip_list_with_options(instance_id, request, headers, runtime)
+
+    async def modify_public_url_ip_list_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ModifyPublicUrlIpListRequest,
+    ) -> searchengine_20211025_models.ModifyPublicUrlIpListResponse:
+        """
+        @summary 修改公网域名访问白名单
+        
+        @param request: ModifyPublicUrlIpListRequest
+        @return: ModifyPublicUrlIpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_public_url_ip_list_with_options_async(instance_id, request, headers, runtime)
+
     def modify_table_with_options(
         self,
         instance_id: str,
@@ -7436,6 +9666,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.publish_index_version_with_options_async(instance_id, index_name, request, headers, runtime)
+
+    def push_documents_with_options(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        request: searchengine_20211025_models.PushDocumentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.PushDocumentsResponse:
+        """
+        @param request: PushDocumentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pk_field):
+            query['pkField'] = request.pk_field
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='PushDocuments',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}/actions/bulk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.PushDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_documents_with_options_async(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        request: searchengine_20211025_models.PushDocumentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.PushDocumentsResponse:
+        """
+        @param request: PushDocumentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pk_field):
+            query['pkField'] = request.pk_field
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='PushDocuments',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}/actions/bulk',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.PushDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_documents(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        request: searchengine_20211025_models.PushDocumentsRequest,
+    ) -> searchengine_20211025_models.PushDocumentsResponse:
+        """
+        @param request: PushDocumentsRequest
+        @return: PushDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.push_documents_with_options(instance_id, data_source_name, request, headers, runtime)
+
+    async def push_documents_async(
+        self,
+        instance_id: str,
+        data_source_name: str,
+        request: searchengine_20211025_models.PushDocumentsRequest,
+    ) -> searchengine_20211025_models.PushDocumentsResponse:
+        """
+        @param request: PushDocumentsRequest
+        @return: PushDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.push_documents_with_options_async(instance_id, data_source_name, request, headers, runtime)
 
     def recover_index_with_options(
         self,

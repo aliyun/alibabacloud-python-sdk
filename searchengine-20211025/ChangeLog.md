@@ -1,3 +1,27 @@
+2024-06-17 Version: 3.1.0
+- Support API CreateConfigDir.
+- Support API CreateConfigFile.
+- Support API CreatePublicUrl.
+- Support API DeleteConfigDir.
+- Support API DeleteConfigFile.
+- Support API DeletePublicUrl.
+- Support API GetIndexOnlineStrategy.
+- Support API ListIndexRecoverRecords.
+- Support API ListPausePolicys.
+- Support API ListPostQueryResult.
+- Support API ListRestQueryResult.
+- Support API ListSchemas.
+- Support API ListTasks.
+- Support API ListVectorQueryResult.
+- Support API ModifyAdvanceConfig.
+- Support API ModifyDataSourceDeploy.
+- Support API ModifyIndex.
+- Support API ModifyIndexOnlineStrategy.
+- Support API ModifyPausePolicy.
+- Support API ModifyPublicUrlIpList.
+- Support API PushDocuments.
+
+
 2024-06-14 Version: 3.0.0
 - Support API StartIndex.
 - Support API StopIndex.
