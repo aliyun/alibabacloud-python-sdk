@@ -6478,6 +6478,7 @@ class CreateEnvironmentRequest(TeaModel):
         environment_type: str = None,
         fee_package: str = None,
         grafana_workspace_id: str = None,
+        init_environment: bool = None,
         managed_type: str = None,
         prometheus_instance_id: str = None,
         region_id: str = None,
@@ -6547,6 +6548,7 @@ class CreateEnvironmentRequest(TeaModel):
         self.fee_package = fee_package
         # 环境绑定的grafana工作区id。传空时，表示使用默认的共享grafana。
         self.grafana_workspace_id = grafana_workspace_id
+        self.init_environment = init_environment
         # Specifies whether agents or exporters are managed. Valid values:
         # 
         # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
@@ -6590,6 +6592,8 @@ class CreateEnvironmentRequest(TeaModel):
             result['FeePackage'] = self.fee_package
         if self.grafana_workspace_id is not None:
             result['GrafanaWorkspaceId'] = self.grafana_workspace_id
+        if self.init_environment is not None:
+            result['InitEnvironment'] = self.init_environment
         if self.managed_type is not None:
             result['ManagedType'] = self.managed_type
         if self.prometheus_instance_id is not None:
@@ -6620,6 +6624,8 @@ class CreateEnvironmentRequest(TeaModel):
             self.fee_package = m.get('FeePackage')
         if m.get('GrafanaWorkspaceId') is not None:
             self.grafana_workspace_id = m.get('GrafanaWorkspaceId')
+        if m.get('InitEnvironment') is not None:
+            self.init_environment = m.get('InitEnvironment')
         if m.get('ManagedType') is not None:
             self.managed_type = m.get('ManagedType')
         if m.get('PrometheusInstanceId') is not None:

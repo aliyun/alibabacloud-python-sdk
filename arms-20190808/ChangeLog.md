@@ -1,3 +1,7 @@
+2024-06-17 Version: 4.10.7
+- Update API CreateEnvironment: add param InitEnvironment.
+
+
 2024-06-07 Version: 4.10.6
 - Update API DeleteAddonRelease: add param AddonName.
 - Update API ListAddons: update response param.

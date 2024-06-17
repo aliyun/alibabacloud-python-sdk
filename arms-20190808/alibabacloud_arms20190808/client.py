@@ -3069,6 +3069,8 @@ class Client(OpenApiClient):
             query['FeePackage'] = request.fee_package
         if not UtilClient.is_unset(request.grafana_workspace_id):
             query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not UtilClient.is_unset(request.init_environment):
+            query['InitEnvironment'] = request.init_environment
         if not UtilClient.is_unset(request.managed_type):
             query['ManagedType'] = request.managed_type
         if not UtilClient.is_unset(request.prometheus_instance_id):
@@ -3126,6 +3128,8 @@ class Client(OpenApiClient):
             query['FeePackage'] = request.fee_package
         if not UtilClient.is_unset(request.grafana_workspace_id):
             query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not UtilClient.is_unset(request.init_environment):
+            query['InitEnvironment'] = request.init_environment
         if not UtilClient.is_unset(request.managed_type):
             query['ManagedType'] = request.managed_type
         if not UtilClient.is_unset(request.prometheus_instance_id):
