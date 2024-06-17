@@ -8118,6 +8118,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_znode_with_options_async(request, runtime)
 
+    def enable_proxy_protocol_with_options(
+        self,
+        request: mse_20190531_models.EnableProxyProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.EnableProxyProtocolResponse:
+        """
+        @summary Proxy Protocol开关
+        
+        @param request: EnableProxyProtocolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableProxyProtocolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable_proxy_protocol):
+            query['EnableProxyProtocol'] = request.enable_proxy_protocol
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableProxyProtocol',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.EnableProxyProtocolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_proxy_protocol_with_options_async(
+        self,
+        request: mse_20190531_models.EnableProxyProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.EnableProxyProtocolResponse:
+        """
+        @summary Proxy Protocol开关
+        
+        @param request: EnableProxyProtocolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableProxyProtocolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable_proxy_protocol):
+            query['EnableProxyProtocol'] = request.enable_proxy_protocol
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableProxyProtocol',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.EnableProxyProtocolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_proxy_protocol(
+        self,
+        request: mse_20190531_models.EnableProxyProtocolRequest,
+    ) -> mse_20190531_models.EnableProxyProtocolResponse:
+        """
+        @summary Proxy Protocol开关
+        
+        @param request: EnableProxyProtocolRequest
+        @return: EnableProxyProtocolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_proxy_protocol_with_options(request, runtime)
+
+    async def enable_proxy_protocol_async(
+        self,
+        request: mse_20190531_models.EnableProxyProtocolRequest,
+    ) -> mse_20190531_models.EnableProxyProtocolResponse:
+        """
+        @summary Proxy Protocol开关
+        
+        @param request: EnableProxyProtocolRequest
+        @return: EnableProxyProtocolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_proxy_protocol_with_options_async(request, runtime)
+
     def export_nacos_config_with_options(
         self,
         request: mse_20190531_models.ExportNacosConfigRequest,
