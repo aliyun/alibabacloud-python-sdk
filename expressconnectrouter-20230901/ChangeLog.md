@@ -1,3 +1,10 @@
+2024-06-17 Version: 3.1.0
+- Support API ListTagResources.
+- Support API MoveResourceGroup.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2024-05-16 Version: 3.0.2
 - Update API CreateExpressConnectRouter: add param Tags.
 - Update API CreateExpressConnectRouterAssociation: update param AllowedPrefixes.
