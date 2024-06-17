@@ -595,7 +595,7 @@ class TextTask(TeaModel):
         text_mode_type: str = None,
         text_task_id: int = None,
         text_task_status: str = None,
-        texts: Text = None,
+        texts: List[Text] = None,
         theme: str = None,
         theme_desc: str = None,
     ):
@@ -626,7 +626,9 @@ class TextTask(TeaModel):
         if self.reference_tag:
             self.reference_tag.validate()
         if self.texts:
-            self.texts.validate()
+            for k in self.texts:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -666,8 +668,10 @@ class TextTask(TeaModel):
             result['textTaskId'] = self.text_task_id
         if self.text_task_status is not None:
             result['textTaskStatus'] = self.text_task_status
+        result['texts'] = []
         if self.texts is not None:
-            result['texts'] = self.texts.to_map()
+            for k in self.texts:
+                result['texts'].append(k.to_map() if k else None)
         if self.theme is not None:
             result['theme'] = self.theme
         if self.theme_desc is not None:
@@ -709,9 +713,11 @@ class TextTask(TeaModel):
             self.text_task_id = m.get('textTaskId')
         if m.get('textTaskStatus') is not None:
             self.text_task_status = m.get('textTaskStatus')
+        self.texts = []
         if m.get('texts') is not None:
-            temp_model = Text()
-            self.texts = temp_model.from_map(m['texts'])
+            for k in m.get('texts'):
+                temp_model = Text()
+                self.texts.append(temp_model.from_map(k))
         if m.get('theme') is not None:
             self.theme = m.get('theme')
         if m.get('themeDesc') is not None:

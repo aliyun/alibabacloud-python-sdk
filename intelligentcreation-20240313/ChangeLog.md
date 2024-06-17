@@ -1,3 +1,6 @@
+2024-06-17 Version: 2.0.2
+- Generated python 2024-03-13 for IntelligentCreation.
+
 2024-06-13 Version: 2.0.1
 - Generated python 2024-03-13 for IntelligentCreation.
 
