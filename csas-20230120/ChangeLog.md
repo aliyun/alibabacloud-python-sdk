@@ -1,3 +1,10 @@
+2024-06-18 Version: 1.6.1
+- Update API CreatePrivateAccessPolicy: add param DeviceAttributeAction.
+- Update API GetPrivateAccessPolicy: update response param.
+- Update API ListPrivateAccessPolices: update response param.
+- Update API UpdatePrivateAccessPolicy: add param DeviceAttributeAction.
+
+
 2024-06-11 Version: 1.6.0
 - Support API DeleteUserDevices.
 - Support API ExportUserDevices.

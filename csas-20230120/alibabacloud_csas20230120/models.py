@@ -794,6 +794,7 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         application_type: str = None,
         custom_user_attributes: List[CreatePrivateAccessPolicyRequestCustomUserAttributes] = None,
         description: str = None,
+        device_attribute_action: str = None,
         device_attribute_id: str = None,
         name: str = None,
         policy_action: str = None,
@@ -808,6 +809,7 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         self.application_type = application_type
         self.custom_user_attributes = custom_user_attributes
         self.description = description
+        self.device_attribute_action = device_attribute_action
         self.device_attribute_id = device_attribute_id
         # This parameter is required.
         self.name = name
@@ -849,6 +851,8 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
                 result['CustomUserAttributes'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_attribute_action is not None:
+            result['DeviceAttributeAction'] = self.device_attribute_action
         if self.device_attribute_id is not None:
             result['DeviceAttributeId'] = self.device_attribute_id
         if self.name is not None:
@@ -880,6 +884,8 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
                 self.custom_user_attributes.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAttributeAction') is not None:
+            self.device_attribute_action = m.get('DeviceAttributeAction')
         if m.get('DeviceAttributeId') is not None:
             self.device_attribute_id = m.get('DeviceAttributeId')
         if m.get('Name') is not None:
@@ -4054,6 +4060,7 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
         create_time: str = None,
         custom_user_attributes: List[GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes] = None,
         description: str = None,
+        device_attribute_action: str = None,
         device_attribute_id: str = None,
         name: str = None,
         policy_action: str = None,
@@ -4069,6 +4076,7 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
         self.create_time = create_time
         self.custom_user_attributes = custom_user_attributes
         self.description = description
+        self.device_attribute_action = device_attribute_action
         self.device_attribute_id = device_attribute_id
         self.name = name
         self.policy_action = policy_action
@@ -4103,6 +4111,8 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
                 result['CustomUserAttributes'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_attribute_action is not None:
+            result['DeviceAttributeAction'] = self.device_attribute_action
         if self.device_attribute_id is not None:
             result['DeviceAttributeId'] = self.device_attribute_id
         if self.name is not None:
@@ -4138,6 +4148,8 @@ class GetPrivateAccessPolicyResponseBodyPolicy(TeaModel):
                 self.custom_user_attributes.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAttributeAction') is not None:
+            self.device_attribute_action = m.get('DeviceAttributeAction')
         if m.get('DeviceAttributeId') is not None:
             self.device_attribute_id = m.get('DeviceAttributeId')
         if m.get('Name') is not None:
@@ -8901,6 +8913,7 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
         create_time: str = None,
         custom_user_attributes: List[ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes] = None,
         description: str = None,
+        device_attribute_action: str = None,
         device_attribute_id: str = None,
         name: str = None,
         policy_action: str = None,
@@ -8916,6 +8929,7 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
         self.create_time = create_time
         self.custom_user_attributes = custom_user_attributes
         self.description = description
+        self.device_attribute_action = device_attribute_action
         self.device_attribute_id = device_attribute_id
         self.name = name
         self.policy_action = policy_action
@@ -8950,6 +8964,8 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
                 result['CustomUserAttributes'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_attribute_action is not None:
+            result['DeviceAttributeAction'] = self.device_attribute_action
         if self.device_attribute_id is not None:
             result['DeviceAttributeId'] = self.device_attribute_id
         if self.name is not None:
@@ -8985,6 +9001,8 @@ class ListPrivateAccessPolicesResponseBodyPolices(TeaModel):
                 self.custom_user_attributes.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAttributeAction') is not None:
+            self.device_attribute_action = m.get('DeviceAttributeAction')
         if m.get('DeviceAttributeId') is not None:
             self.device_attribute_id = m.get('DeviceAttributeId')
         if m.get('Name') is not None:
@@ -13292,6 +13310,7 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
         application_type: str = None,
         custom_user_attributes: List[UpdatePrivateAccessPolicyRequestCustomUserAttributes] = None,
         description: str = None,
+        device_attribute_action: str = None,
         device_attribute_id: str = None,
         modify_type: str = None,
         policy_action: str = None,
@@ -13306,6 +13325,7 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
         self.application_type = application_type
         self.custom_user_attributes = custom_user_attributes
         self.description = description
+        self.device_attribute_action = device_attribute_action
         self.device_attribute_id = device_attribute_id
         self.modify_type = modify_type
         self.policy_action = policy_action
@@ -13343,6 +13363,8 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
                 result['CustomUserAttributes'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_attribute_action is not None:
+            result['DeviceAttributeAction'] = self.device_attribute_action
         if self.device_attribute_id is not None:
             result['DeviceAttributeId'] = self.device_attribute_id
         if self.modify_type is not None:
@@ -13376,6 +13398,8 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
                 self.custom_user_attributes.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAttributeAction') is not None:
+            self.device_attribute_action = m.get('DeviceAttributeAction')
         if m.get('DeviceAttributeId') is not None:
             self.device_attribute_id = m.get('DeviceAttributeId')
         if m.get('ModifyType') is not None:

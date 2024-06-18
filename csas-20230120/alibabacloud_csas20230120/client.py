@@ -656,6 +656,8 @@ class Client(OpenApiClient):
             body_flat['CustomUserAttributes'] = request.custom_user_attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.device_attribute_action):
+            body['DeviceAttributeAction'] = request.device_attribute_action
         if not UtilClient.is_unset(request.device_attribute_id):
             body['DeviceAttributeId'] = request.device_attribute_id
         if not UtilClient.is_unset(request.name):
@@ -716,6 +718,8 @@ class Client(OpenApiClient):
             body_flat['CustomUserAttributes'] = request.custom_user_attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.device_attribute_action):
+            body['DeviceAttributeAction'] = request.device_attribute_action
         if not UtilClient.is_unset(request.device_attribute_id):
             body['DeviceAttributeId'] = request.device_attribute_id
         if not UtilClient.is_unset(request.name):
@@ -6582,6 +6586,8 @@ class Client(OpenApiClient):
             body_flat['CustomUserAttributes'] = request.custom_user_attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.device_attribute_action):
+            body['DeviceAttributeAction'] = request.device_attribute_action
         if not UtilClient.is_unset(request.device_attribute_id):
             body['DeviceAttributeId'] = request.device_attribute_id
         if not UtilClient.is_unset(request.modify_type):
@@ -6644,6 +6650,8 @@ class Client(OpenApiClient):
             body_flat['CustomUserAttributes'] = request.custom_user_attributes
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.device_attribute_action):
+            body['DeviceAttributeAction'] = request.device_attribute_action
         if not UtilClient.is_unset(request.device_attribute_id):
             body['DeviceAttributeId'] = request.device_attribute_id
         if not UtilClient.is_unset(request.modify_type):
