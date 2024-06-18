@@ -1,3 +1,9 @@
+2024-06-18 Version: 1.2.2
+- Update API QueryAuctions: add param AuctionEndTimeOrder.
+- Update API QueryAuctions: add param Statuses.
+- Update API QueryBrokerDemand: update response param.
+
+
 2024-04-17 Version: 1.2.1
 - Update API QueryBookingDomainInfo: update response param.
 

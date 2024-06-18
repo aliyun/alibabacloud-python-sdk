@@ -10,6 +10,7 @@ class AcceptDemandRequest(TeaModel):
         biz_id: str = None,
         message: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
         self.message = message
 
@@ -118,8 +119,11 @@ class BidDomainRequest(TeaModel):
         currency: str = None,
         max_bid: float = None,
     ):
+        # This parameter is required.
         self.auction_id = auction_id
+        # This parameter is required.
         self.currency = currency
+        # This parameter is required.
         self.max_bid = max_bid
 
     def validate(self):
@@ -231,8 +235,11 @@ class ChangeAuctionRequestAuctionListBidRecords(TeaModel):
         price: float = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.create_time = create_time
+        # This parameter is required.
         self.price = price
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -278,14 +285,18 @@ class ChangeAuctionRequestAuctionList(TeaModel):
         winner_price: float = None,
     ):
         self.bid_records = bid_records
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.end_time = end_time
         self.is_reserve = is_reserve
         self.reserve_price = reserve_price
         self.reserve_range = reserve_range
         self.status = status
         self.time_left = time_left
+        # This parameter is required.
         self.winner = winner
+        # This parameter is required.
         self.winner_price = winner_price
 
     def validate(self):
@@ -460,6 +471,7 @@ class CheckDomainStatusRequest(TeaModel):
         self,
         domain: str = None,
     ):
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -632,6 +644,7 @@ class CheckSelectedDomainStatusRequest(TeaModel):
         self,
         domain: str = None,
     ):
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -993,8 +1006,11 @@ class CreateFixedPriceSelectedOrderRequest(TeaModel):
         source: str = None,
     ):
         self.code = code
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.expected_price = expected_price
         self.source = source
 
@@ -1173,6 +1189,7 @@ class FailDemandRequest(TeaModel):
         biz_id: str = None,
         message: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
         self.message = message
 
@@ -1274,6 +1291,7 @@ class FinishDemandRequest(TeaModel):
         biz_id: str = None,
         message: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
         self.message = message
 
@@ -1578,8 +1596,11 @@ class PurchaseIntlDomainRequest(TeaModel):
         currency: str = None,
         price: float = None,
     ):
+        # This parameter is required.
         self.auction_id = auction_id
+        # This parameter is required.
         self.currency = currency
+        # This parameter is required.
         self.price = price
 
     def validate(self):
@@ -1743,6 +1764,7 @@ class QueryAuctionDetailRequest(TeaModel):
         self,
         auction_id: str = None,
     ):
+        # This parameter is required.
         self.auction_id = auction_id
 
     def validate(self):
@@ -1974,13 +1996,17 @@ class QueryAuctionDetailResponse(TeaModel):
 class QueryAuctionsRequest(TeaModel):
     def __init__(
         self,
+        auction_end_time_order: str = None,
         current_page: int = None,
         page_size: int = None,
         status: str = None,
+        statuses: str = None,
     ):
+        self.auction_end_time_order = auction_end_time_order
         self.current_page = current_page
         self.page_size = page_size
         self.status = status
+        self.statuses = statuses
 
     def validate(self):
         pass
@@ -1991,22 +2017,30 @@ class QueryAuctionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auction_end_time_order is not None:
+            result['AuctionEndTimeOrder'] = self.auction_end_time_order
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.status is not None:
             result['Status'] = self.status
+        if self.statuses is not None:
+            result['Statuses'] = self.statuses
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuctionEndTimeOrder') is not None:
+            self.auction_end_time_order = m.get('AuctionEndTimeOrder')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Statuses') is not None:
+            self.statuses = m.get('Statuses')
         return self
 
 
@@ -2294,6 +2328,7 @@ class QueryBidRecordsRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.auction_id = auction_id
         self.current_page = current_page
         self.page_size = page_size
@@ -2488,6 +2523,7 @@ class QueryBookingDomainInfoRequest(TeaModel):
         self,
         domain_name: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -2686,6 +2722,7 @@ class QueryBrokerDemandResponseBodyData(TeaModel):
         publish_time: int = None,
         purchase_status: int = None,
         service_pay_price: float = None,
+        settle_base_price: float = None,
         status: str = None,
     ):
         self.audit_status = audit_status
@@ -2706,6 +2743,7 @@ class QueryBrokerDemandResponseBodyData(TeaModel):
         self.publish_time = publish_time
         self.purchase_status = purchase_status
         self.service_pay_price = service_pay_price
+        self.settle_base_price = settle_base_price
         self.status = status
 
     def validate(self):
@@ -2753,6 +2791,8 @@ class QueryBrokerDemandResponseBodyData(TeaModel):
             result['PurchaseStatus'] = self.purchase_status
         if self.service_pay_price is not None:
             result['ServicePayPrice'] = self.service_pay_price
+        if self.settle_base_price is not None:
+            result['SettleBasePrice'] = self.settle_base_price
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -2795,6 +2835,8 @@ class QueryBrokerDemandResponseBodyData(TeaModel):
             self.purchase_status = m.get('PurchaseStatus')
         if m.get('ServicePayPrice') is not None:
             self.service_pay_price = m.get('ServicePayPrice')
+        if m.get('SettleBasePrice') is not None:
+            self.settle_base_price = m.get('SettleBasePrice')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -2913,6 +2955,7 @@ class QueryBrokerDemandRecordRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
         self.current_page = current_page
         self.page_size = page_size
@@ -3505,7 +3548,9 @@ class RecordDemandRequest(TeaModel):
         biz_id: str = None,
         message: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.message = message
 
     def validate(self):
@@ -3606,6 +3651,7 @@ class RefuseDemandRequest(TeaModel):
         biz_id: str = None,
         message: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
         self.message = message
 
@@ -3710,9 +3756,12 @@ class RequestPayDemandRequest(TeaModel):
         price: float = None,
         produce_type: int = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.domain_name = domain_name
         self.message = message
+        # This parameter is required.
         self.price = price
         self.produce_type = produce_type
 
@@ -3827,6 +3876,7 @@ class ReserveDomainRequest(TeaModel):
         domain_name: str = None,
     ):
         self.channels = channels
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -3932,6 +3982,7 @@ class ReserveIntlDomainRequest(TeaModel):
         self,
         domain_name: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -4087,6 +4138,7 @@ class SelectedDomainListRequest(TeaModel):
         self,
         list_date: str = None,
     ):
+        # This parameter is required.
         self.list_date = list_date
 
     def validate(self):
@@ -4406,9 +4458,13 @@ class UpdatePartnerReservePriceRequest(TeaModel):
         partner_type: str = None,
         reserve_price: float = None,
     ):
+        # This parameter is required.
         self.bidding_id = bidding_id
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.partner_type = partner_type
+        # This parameter is required.
         self.reserve_price = reserve_price
 
     def validate(self):

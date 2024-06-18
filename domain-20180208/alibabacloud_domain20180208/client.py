@@ -46,6 +46,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.AcceptDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.AcceptDemandResponse:
+        """
+        @param request: AcceptDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -76,6 +81,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.AcceptDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.AcceptDemandResponse:
+        """
+        @param request: AcceptDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -105,6 +115,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.AcceptDemandRequest,
     ) -> domain_20180208_models.AcceptDemandResponse:
+        """
+        @param request: AcceptDemandRequest
+        @return: AcceptDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.accept_demand_with_options(request, runtime)
 
@@ -112,6 +126,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.AcceptDemandRequest,
     ) -> domain_20180208_models.AcceptDemandResponse:
+        """
+        @param request: AcceptDemandRequest
+        @return: AcceptDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.accept_demand_with_options_async(request, runtime)
 
@@ -120,6 +138,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.BidDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.BidDomainResponse:
+        """
+        @param request: BidDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BidDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_id):
@@ -152,6 +175,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.BidDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.BidDomainResponse:
+        """
+        @param request: BidDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BidDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_id):
@@ -183,6 +211,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.BidDomainRequest,
     ) -> domain_20180208_models.BidDomainResponse:
+        """
+        @param request: BidDomainRequest
+        @return: BidDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bid_domain_with_options(request, runtime)
 
@@ -190,6 +222,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.BidDomainRequest,
     ) -> domain_20180208_models.BidDomainResponse:
+        """
+        @param request: BidDomainRequest
+        @return: BidDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bid_domain_with_options_async(request, runtime)
 
@@ -198,6 +234,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.ChangeAuctionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.ChangeAuctionResponse:
+        """
+        @param request: ChangeAuctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeAuctionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_list):
@@ -226,6 +267,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.ChangeAuctionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.ChangeAuctionResponse:
+        """
+        @param request: ChangeAuctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeAuctionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_list):
@@ -253,6 +299,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.ChangeAuctionRequest,
     ) -> domain_20180208_models.ChangeAuctionResponse:
+        """
+        @param request: ChangeAuctionRequest
+        @return: ChangeAuctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_auction_with_options(request, runtime)
 
@@ -260,6 +310,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.ChangeAuctionRequest,
     ) -> domain_20180208_models.ChangeAuctionResponse:
+        """
+        @param request: ChangeAuctionRequest
+        @return: ChangeAuctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_auction_with_options_async(request, runtime)
 
@@ -268,6 +322,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.CheckDomainStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.CheckDomainStatusResponse:
+        """
+        @summary 校验域名在售状态
+        
+        @param request: CheckDomainStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDomainStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -294,6 +355,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.CheckDomainStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.CheckDomainStatusResponse:
+        """
+        @summary 校验域名在售状态
+        
+        @param request: CheckDomainStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDomainStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -319,6 +387,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.CheckDomainStatusRequest,
     ) -> domain_20180208_models.CheckDomainStatusResponse:
+        """
+        @summary 校验域名在售状态
+        
+        @param request: CheckDomainStatusRequest
+        @return: CheckDomainStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_domain_status_with_options(request, runtime)
 
@@ -326,6 +400,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.CheckDomainStatusRequest,
     ) -> domain_20180208_models.CheckDomainStatusResponse:
+        """
+        @summary 校验域名在售状态
+        
+        @param request: CheckDomainStatusRequest
+        @return: CheckDomainStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_domain_status_with_options_async(request, runtime)
 
@@ -334,6 +414,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.CheckSelectedDomainStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.CheckSelectedDomainStatusResponse:
+        """
+        @summary 一口价严选询价接口
+        
+        @param request: CheckSelectedDomainStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckSelectedDomainStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain):
@@ -362,6 +449,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.CheckSelectedDomainStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.CheckSelectedDomainStatusResponse:
+        """
+        @summary 一口价严选询价接口
+        
+        @param request: CheckSelectedDomainStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckSelectedDomainStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain):
@@ -389,6 +483,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.CheckSelectedDomainStatusRequest,
     ) -> domain_20180208_models.CheckSelectedDomainStatusResponse:
+        """
+        @summary 一口价严选询价接口
+        
+        @param request: CheckSelectedDomainStatusRequest
+        @return: CheckSelectedDomainStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_selected_domain_status_with_options(request, runtime)
 
@@ -396,6 +496,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.CheckSelectedDomainStatusRequest,
     ) -> domain_20180208_models.CheckSelectedDomainStatusResponse:
+        """
+        @summary 一口价严选询价接口
+        
+        @param request: CheckSelectedDomainStatusRequest
+        @return: CheckSelectedDomainStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_selected_domain_status_with_options_async(request, runtime)
 
@@ -404,6 +510,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.CreateFixedPriceDemandOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.CreateFixedPriceDemandOrderResponse:
+        """
+        @summary 创建一口价需求单
+        
+        @param request: CreateFixedPriceDemandOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFixedPriceDemandOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.code):
@@ -438,6 +551,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.CreateFixedPriceDemandOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.CreateFixedPriceDemandOrderResponse:
+        """
+        @summary 创建一口价需求单
+        
+        @param request: CreateFixedPriceDemandOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFixedPriceDemandOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.code):
@@ -471,6 +591,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.CreateFixedPriceDemandOrderRequest,
     ) -> domain_20180208_models.CreateFixedPriceDemandOrderResponse:
+        """
+        @summary 创建一口价需求单
+        
+        @param request: CreateFixedPriceDemandOrderRequest
+        @return: CreateFixedPriceDemandOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fixed_price_demand_order_with_options(request, runtime)
 
@@ -478,6 +604,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.CreateFixedPriceDemandOrderRequest,
     ) -> domain_20180208_models.CreateFixedPriceDemandOrderResponse:
+        """
+        @summary 创建一口价需求单
+        
+        @param request: CreateFixedPriceDemandOrderRequest
+        @return: CreateFixedPriceDemandOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fixed_price_demand_order_with_options_async(request, runtime)
 
@@ -486,6 +618,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.CreateFixedPriceSelectedOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.CreateFixedPriceSelectedOrderResponse:
+        """
+        @summary 一口价严选下单购买接口，阿里云账户余额直接扣费
+        
+        @param request: CreateFixedPriceSelectedOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFixedPriceSelectedOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.code):
@@ -522,6 +661,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.CreateFixedPriceSelectedOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.CreateFixedPriceSelectedOrderResponse:
+        """
+        @summary 一口价严选下单购买接口，阿里云账户余额直接扣费
+        
+        @param request: CreateFixedPriceSelectedOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFixedPriceSelectedOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.code):
@@ -557,6 +703,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.CreateFixedPriceSelectedOrderRequest,
     ) -> domain_20180208_models.CreateFixedPriceSelectedOrderResponse:
+        """
+        @summary 一口价严选下单购买接口，阿里云账户余额直接扣费
+        
+        @param request: CreateFixedPriceSelectedOrderRequest
+        @return: CreateFixedPriceSelectedOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fixed_price_selected_order_with_options(request, runtime)
 
@@ -564,6 +716,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.CreateFixedPriceSelectedOrderRequest,
     ) -> domain_20180208_models.CreateFixedPriceSelectedOrderResponse:
+        """
+        @summary 一口价严选下单购买接口，阿里云账户余额直接扣费
+        
+        @param request: CreateFixedPriceSelectedOrderRequest
+        @return: CreateFixedPriceSelectedOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fixed_price_selected_order_with_options_async(request, runtime)
 
@@ -572,6 +730,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.FailDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.FailDemandResponse:
+        """
+        @param request: FailDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FailDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -602,6 +765,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.FailDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.FailDemandResponse:
+        """
+        @param request: FailDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FailDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -631,6 +799,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.FailDemandRequest,
     ) -> domain_20180208_models.FailDemandResponse:
+        """
+        @param request: FailDemandRequest
+        @return: FailDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.fail_demand_with_options(request, runtime)
 
@@ -638,6 +810,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.FailDemandRequest,
     ) -> domain_20180208_models.FailDemandResponse:
+        """
+        @param request: FailDemandRequest
+        @return: FailDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.fail_demand_with_options_async(request, runtime)
 
@@ -646,6 +822,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.FinishDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.FinishDemandResponse:
+        """
+        @param request: FinishDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -676,6 +857,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.FinishDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.FinishDemandResponse:
+        """
+        @param request: FinishDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -705,6 +891,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.FinishDemandRequest,
     ) -> domain_20180208_models.FinishDemandResponse:
+        """
+        @param request: FinishDemandRequest
+        @return: FinishDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.finish_demand_with_options(request, runtime)
 
@@ -712,6 +902,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.FinishDemandRequest,
     ) -> domain_20180208_models.FinishDemandResponse:
+        """
+        @param request: FinishDemandRequest
+        @return: FinishDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.finish_demand_with_options_async(request, runtime)
 
@@ -719,6 +913,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.GetIntlDomainDownloadUrlResponse:
+        """
+        @param request: GetIntlDomainDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntlDomainDownloadUrlResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetIntlDomainDownloadUrl',
@@ -740,6 +939,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.GetIntlDomainDownloadUrlResponse:
+        """
+        @param request: GetIntlDomainDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIntlDomainDownloadUrlResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetIntlDomainDownloadUrl',
@@ -758,10 +962,16 @@ class Client(OpenApiClient):
         )
 
     def get_intl_domain_download_url(self) -> domain_20180208_models.GetIntlDomainDownloadUrlResponse:
+        """
+        @return: GetIntlDomainDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_intl_domain_download_url_with_options(runtime)
 
     async def get_intl_domain_download_url_async(self) -> domain_20180208_models.GetIntlDomainDownloadUrlResponse:
+        """
+        @return: GetIntlDomainDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_intl_domain_download_url_with_options_async(runtime)
 
@@ -769,6 +979,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.GetReserveDomainUrlResponse:
+        """
+        @param request: GetReserveDomainUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReserveDomainUrlResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetReserveDomainUrl',
@@ -790,6 +1005,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.GetReserveDomainUrlResponse:
+        """
+        @param request: GetReserveDomainUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReserveDomainUrlResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetReserveDomainUrl',
@@ -808,10 +1028,16 @@ class Client(OpenApiClient):
         )
 
     def get_reserve_domain_url(self) -> domain_20180208_models.GetReserveDomainUrlResponse:
+        """
+        @return: GetReserveDomainUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_reserve_domain_url_with_options(runtime)
 
     async def get_reserve_domain_url_async(self) -> domain_20180208_models.GetReserveDomainUrlResponse:
+        """
+        @return: GetReserveDomainUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_reserve_domain_url_with_options_async(runtime)
 
@@ -820,6 +1046,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.PurchaseIntlDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.PurchaseIntlDomainResponse:
+        """
+        @summary 购买国际站预释放域名
+        
+        @param request: PurchaseIntlDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PurchaseIntlDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_id):
@@ -852,6 +1085,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.PurchaseIntlDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.PurchaseIntlDomainResponse:
+        """
+        @summary 购买国际站预释放域名
+        
+        @param request: PurchaseIntlDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PurchaseIntlDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_id):
@@ -883,6 +1123,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.PurchaseIntlDomainRequest,
     ) -> domain_20180208_models.PurchaseIntlDomainResponse:
+        """
+        @summary 购买国际站预释放域名
+        
+        @param request: PurchaseIntlDomainRequest
+        @return: PurchaseIntlDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.purchase_intl_domain_with_options(request, runtime)
 
@@ -890,6 +1136,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.PurchaseIntlDomainRequest,
     ) -> domain_20180208_models.PurchaseIntlDomainResponse:
+        """
+        @summary 购买国际站预释放域名
+        
+        @param request: PurchaseIntlDomainRequest
+        @return: PurchaseIntlDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.purchase_intl_domain_with_options_async(request, runtime)
 
@@ -898,6 +1150,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryAuctionDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryAuctionDetailResponse:
+        """
+        @param request: QueryAuctionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAuctionDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_id):
@@ -926,6 +1183,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryAuctionDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryAuctionDetailResponse:
+        """
+        @param request: QueryAuctionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAuctionDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_id):
@@ -953,6 +1215,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryAuctionDetailRequest,
     ) -> domain_20180208_models.QueryAuctionDetailResponse:
+        """
+        @param request: QueryAuctionDetailRequest
+        @return: QueryAuctionDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_auction_detail_with_options(request, runtime)
 
@@ -960,6 +1226,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryAuctionDetailRequest,
     ) -> domain_20180208_models.QueryAuctionDetailResponse:
+        """
+        @param request: QueryAuctionDetailRequest
+        @return: QueryAuctionDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_auction_detail_with_options_async(request, runtime)
 
@@ -968,14 +1238,23 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryAuctionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryAuctionsResponse:
+        """
+        @param request: QueryAuctionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAuctionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auction_end_time_order):
+            body['AuctionEndTimeOrder'] = request.auction_end_time_order
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.statuses):
+            body['Statuses'] = request.statuses
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1000,14 +1279,23 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryAuctionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryAuctionsResponse:
+        """
+        @param request: QueryAuctionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAuctionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.auction_end_time_order):
+            body['AuctionEndTimeOrder'] = request.auction_end_time_order
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
+        if not UtilClient.is_unset(request.statuses):
+            body['Statuses'] = request.statuses
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1031,6 +1319,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryAuctionsRequest,
     ) -> domain_20180208_models.QueryAuctionsResponse:
+        """
+        @param request: QueryAuctionsRequest
+        @return: QueryAuctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_auctions_with_options(request, runtime)
 
@@ -1038,6 +1330,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryAuctionsRequest,
     ) -> domain_20180208_models.QueryAuctionsResponse:
+        """
+        @param request: QueryAuctionsRequest
+        @return: QueryAuctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_auctions_with_options_async(request, runtime)
 
@@ -1046,6 +1342,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryBidRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryBidRecordsResponse:
+        """
+        @param request: QueryBidRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBidRecordsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_id):
@@ -1078,6 +1379,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryBidRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryBidRecordsResponse:
+        """
+        @param request: QueryBidRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBidRecordsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auction_id):
@@ -1109,6 +1415,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryBidRecordsRequest,
     ) -> domain_20180208_models.QueryBidRecordsResponse:
+        """
+        @param request: QueryBidRecordsRequest
+        @return: QueryBidRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_bid_records_with_options(request, runtime)
 
@@ -1116,6 +1426,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryBidRecordsRequest,
     ) -> domain_20180208_models.QueryBidRecordsResponse:
+        """
+        @param request: QueryBidRecordsRequest
+        @return: QueryBidRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_bid_records_with_options_async(request, runtime)
 
@@ -1124,6 +1438,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryBookingDomainInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryBookingDomainInfoResponse:
+        """
+        @param request: QueryBookingDomainInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBookingDomainInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -1152,6 +1471,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryBookingDomainInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryBookingDomainInfoResponse:
+        """
+        @param request: QueryBookingDomainInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBookingDomainInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -1179,6 +1503,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryBookingDomainInfoRequest,
     ) -> domain_20180208_models.QueryBookingDomainInfoResponse:
+        """
+        @param request: QueryBookingDomainInfoRequest
+        @return: QueryBookingDomainInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_booking_domain_info_with_options(request, runtime)
 
@@ -1186,6 +1514,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryBookingDomainInfoRequest,
     ) -> domain_20180208_models.QueryBookingDomainInfoResponse:
+        """
+        @param request: QueryBookingDomainInfoRequest
+        @return: QueryBookingDomainInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_booking_domain_info_with_options_async(request, runtime)
 
@@ -1194,6 +1526,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryBrokerDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryBrokerDemandResponse:
+        """
+        @summary 查询回购订单列表
+        
+        @param request: QueryBrokerDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBrokerDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1228,6 +1567,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryBrokerDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryBrokerDemandResponse:
+        """
+        @summary 查询回购订单列表
+        
+        @param request: QueryBrokerDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBrokerDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1261,6 +1607,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryBrokerDemandRequest,
     ) -> domain_20180208_models.QueryBrokerDemandResponse:
+        """
+        @summary 查询回购订单列表
+        
+        @param request: QueryBrokerDemandRequest
+        @return: QueryBrokerDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_broker_demand_with_options(request, runtime)
 
@@ -1268,6 +1620,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryBrokerDemandRequest,
     ) -> domain_20180208_models.QueryBrokerDemandResponse:
+        """
+        @summary 查询回购订单列表
+        
+        @param request: QueryBrokerDemandRequest
+        @return: QueryBrokerDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_broker_demand_with_options_async(request, runtime)
 
@@ -1276,6 +1634,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryBrokerDemandRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryBrokerDemandRecordResponse:
+        """
+        @param request: QueryBrokerDemandRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBrokerDemandRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1308,6 +1671,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryBrokerDemandRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryBrokerDemandRecordResponse:
+        """
+        @param request: QueryBrokerDemandRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBrokerDemandRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1339,6 +1707,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryBrokerDemandRecordRequest,
     ) -> domain_20180208_models.QueryBrokerDemandRecordResponse:
+        """
+        @param request: QueryBrokerDemandRecordRequest
+        @return: QueryBrokerDemandRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_broker_demand_record_with_options(request, runtime)
 
@@ -1346,6 +1718,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryBrokerDemandRecordRequest,
     ) -> domain_20180208_models.QueryBrokerDemandRecordResponse:
+        """
+        @param request: QueryBrokerDemandRecordRequest
+        @return: QueryBrokerDemandRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_broker_demand_record_with_options_async(request, runtime)
 
@@ -1354,6 +1730,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryDomainTransferStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryDomainTransferStatusResponse:
+        """
+        @param request: QueryDomainTransferStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDomainTransferStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -1382,6 +1763,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryDomainTransferStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryDomainTransferStatusResponse:
+        """
+        @param request: QueryDomainTransferStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDomainTransferStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -1409,6 +1795,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryDomainTransferStatusRequest,
     ) -> domain_20180208_models.QueryDomainTransferStatusResponse:
+        """
+        @param request: QueryDomainTransferStatusRequest
+        @return: QueryDomainTransferStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_domain_transfer_status_with_options(request, runtime)
 
@@ -1416,6 +1806,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryDomainTransferStatusRequest,
     ) -> domain_20180208_models.QueryDomainTransferStatusResponse:
+        """
+        @param request: QueryDomainTransferStatusRequest
+        @return: QueryDomainTransferStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_domain_transfer_status_with_options_async(request, runtime)
 
@@ -1424,6 +1818,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryPurchasedDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryPurchasedDomainsResponse:
+        """
+        @param request: QueryPurchasedDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPurchasedDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -1468,6 +1867,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.QueryPurchasedDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.QueryPurchasedDomainsResponse:
+        """
+        @param request: QueryPurchasedDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPurchasedDomainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -1511,6 +1915,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryPurchasedDomainsRequest,
     ) -> domain_20180208_models.QueryPurchasedDomainsResponse:
+        """
+        @param request: QueryPurchasedDomainsRequest
+        @return: QueryPurchasedDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_purchased_domains_with_options(request, runtime)
 
@@ -1518,6 +1926,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.QueryPurchasedDomainsRequest,
     ) -> domain_20180208_models.QueryPurchasedDomainsResponse:
+        """
+        @param request: QueryPurchasedDomainsRequest
+        @return: QueryPurchasedDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_purchased_domains_with_options_async(request, runtime)
 
@@ -1526,6 +1938,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.RecordDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.RecordDemandResponse:
+        """
+        @param request: RecordDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecordDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1556,6 +1973,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.RecordDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.RecordDemandResponse:
+        """
+        @param request: RecordDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecordDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1585,6 +2007,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.RecordDemandRequest,
     ) -> domain_20180208_models.RecordDemandResponse:
+        """
+        @param request: RecordDemandRequest
+        @return: RecordDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.record_demand_with_options(request, runtime)
 
@@ -1592,6 +2018,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.RecordDemandRequest,
     ) -> domain_20180208_models.RecordDemandResponse:
+        """
+        @param request: RecordDemandRequest
+        @return: RecordDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.record_demand_with_options_async(request, runtime)
 
@@ -1600,6 +2030,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.RefuseDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.RefuseDemandResponse:
+        """
+        @param request: RefuseDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefuseDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1630,6 +2065,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.RefuseDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.RefuseDemandResponse:
+        """
+        @param request: RefuseDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefuseDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1659,6 +2099,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.RefuseDemandRequest,
     ) -> domain_20180208_models.RefuseDemandResponse:
+        """
+        @param request: RefuseDemandRequest
+        @return: RefuseDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refuse_demand_with_options(request, runtime)
 
@@ -1666,6 +2110,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.RefuseDemandRequest,
     ) -> domain_20180208_models.RefuseDemandResponse:
+        """
+        @param request: RefuseDemandRequest
+        @return: RefuseDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refuse_demand_with_options_async(request, runtime)
 
@@ -1674,6 +2122,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.RequestPayDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.RequestPayDemandResponse:
+        """
+        @param request: RequestPayDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RequestPayDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1710,6 +2163,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.RequestPayDemandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.RequestPayDemandResponse:
+        """
+        @param request: RequestPayDemandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RequestPayDemandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1745,6 +2203,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.RequestPayDemandRequest,
     ) -> domain_20180208_models.RequestPayDemandResponse:
+        """
+        @param request: RequestPayDemandRequest
+        @return: RequestPayDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.request_pay_demand_with_options(request, runtime)
 
@@ -1752,6 +2214,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.RequestPayDemandRequest,
     ) -> domain_20180208_models.RequestPayDemandResponse:
+        """
+        @param request: RequestPayDemandRequest
+        @return: RequestPayDemandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.request_pay_demand_with_options_async(request, runtime)
 
@@ -1760,6 +2226,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.ReserveDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.ReserveDomainResponse:
+        """
+        @param request: ReserveDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReserveDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.channels):
@@ -1790,6 +2261,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.ReserveDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.ReserveDomainResponse:
+        """
+        @param request: ReserveDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReserveDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.channels):
@@ -1819,6 +2295,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.ReserveDomainRequest,
     ) -> domain_20180208_models.ReserveDomainResponse:
+        """
+        @param request: ReserveDomainRequest
+        @return: ReserveDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reserve_domain_with_options(request, runtime)
 
@@ -1826,6 +2306,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.ReserveDomainRequest,
     ) -> domain_20180208_models.ReserveDomainResponse:
+        """
+        @param request: ReserveDomainRequest
+        @return: ReserveDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reserve_domain_with_options_async(request, runtime)
 
@@ -1834,6 +2318,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.ReserveIntlDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.ReserveIntlDomainResponse:
+        """
+        @param request: ReserveIntlDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReserveIntlDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -1862,6 +2351,11 @@ class Client(OpenApiClient):
         request: domain_20180208_models.ReserveIntlDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.ReserveIntlDomainResponse:
+        """
+        @param request: ReserveIntlDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReserveIntlDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -1889,6 +2383,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.ReserveIntlDomainRequest,
     ) -> domain_20180208_models.ReserveIntlDomainResponse:
+        """
+        @param request: ReserveIntlDomainRequest
+        @return: ReserveIntlDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reserve_intl_domain_with_options(request, runtime)
 
@@ -1896,6 +2394,10 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.ReserveIntlDomainRequest,
     ) -> domain_20180208_models.ReserveIntlDomainResponse:
+        """
+        @param request: ReserveIntlDomainRequest
+        @return: ReserveIntlDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reserve_intl_domain_with_options_async(request, runtime)
 
@@ -1904,6 +2406,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.SelectedDomainListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.SelectedDomainListResponse:
+        """
+        @summary 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
+        
+        @param request: SelectedDomainListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectedDomainListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.list_date):
@@ -1932,6 +2441,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.SelectedDomainListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.SelectedDomainListResponse:
+        """
+        @summary 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
+        
+        @param request: SelectedDomainListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectedDomainListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.list_date):
@@ -1959,6 +2475,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.SelectedDomainListRequest,
     ) -> domain_20180208_models.SelectedDomainListResponse:
+        """
+        @summary 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
+        
+        @param request: SelectedDomainListRequest
+        @return: SelectedDomainListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.selected_domain_list_with_options(request, runtime)
 
@@ -1966,6 +2488,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.SelectedDomainListRequest,
     ) -> domain_20180208_models.SelectedDomainListResponse:
+        """
+        @summary 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
+        
+        @param request: SelectedDomainListRequest
+        @return: SelectedDomainListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.selected_domain_list_with_options_async(request, runtime)
 
@@ -1974,6 +2502,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.SubmitPurchaseInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
+        """
+        @summary 提交采购信息
+        
+        @param request: SubmitPurchaseInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitPurchaseInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2008,6 +2543,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.SubmitPurchaseInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
+        """
+        @summary 提交采购信息
+        
+        @param request: SubmitPurchaseInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitPurchaseInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -2041,6 +2583,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.SubmitPurchaseInfoRequest,
     ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
+        """
+        @summary 提交采购信息
+        
+        @param request: SubmitPurchaseInfoRequest
+        @return: SubmitPurchaseInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_purchase_info_with_options(request, runtime)
 
@@ -2048,6 +2596,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.SubmitPurchaseInfoRequest,
     ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
+        """
+        @summary 提交采购信息
+        
+        @param request: SubmitPurchaseInfoRequest
+        @return: SubmitPurchaseInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_purchase_info_with_options_async(request, runtime)
 
@@ -2056,6 +2610,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.UpdatePartnerReservePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.UpdatePartnerReservePriceResponse:
+        """
+        @summary 合作方同步报价
+        
+        @param request: UpdatePartnerReservePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePartnerReservePriceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bidding_id):
@@ -2090,6 +2651,13 @@ class Client(OpenApiClient):
         request: domain_20180208_models.UpdatePartnerReservePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> domain_20180208_models.UpdatePartnerReservePriceResponse:
+        """
+        @summary 合作方同步报价
+        
+        @param request: UpdatePartnerReservePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePartnerReservePriceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bidding_id):
@@ -2123,6 +2691,12 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.UpdatePartnerReservePriceRequest,
     ) -> domain_20180208_models.UpdatePartnerReservePriceResponse:
+        """
+        @summary 合作方同步报价
+        
+        @param request: UpdatePartnerReservePriceRequest
+        @return: UpdatePartnerReservePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_partner_reserve_price_with_options(request, runtime)
 
@@ -2130,5 +2704,11 @@ class Client(OpenApiClient):
         self,
         request: domain_20180208_models.UpdatePartnerReservePriceRequest,
     ) -> domain_20180208_models.UpdatePartnerReservePriceResponse:
+        """
+        @summary 合作方同步报价
+        
+        @param request: UpdatePartnerReservePriceRequest
+        @return: UpdatePartnerReservePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_partner_reserve_price_with_options_async(request, runtime)
