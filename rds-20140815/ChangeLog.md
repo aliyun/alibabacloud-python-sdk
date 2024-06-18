@@ -1,3 +1,7 @@
+2024-06-18 Version: 5.0.2
+- Update API DescribeDiagnosticReportList: update param AccessKeyId.
+
+
 2024-05-23 Version: 5.0.1
 - Update API DescribeDBInstanceAttribute: update response param.
 

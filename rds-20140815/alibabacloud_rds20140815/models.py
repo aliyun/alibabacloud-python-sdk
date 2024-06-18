@@ -2364,12 +2364,12 @@ class CloneDBInstanceRequest(TeaModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Specifies whether to enable the automatic payment feature. Valid values:
         # 
-        # 1.  **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
-        # 2.  **false**: does not automatically complete the payment. An unpaid order is generated.
+        # 1.  **true**: enables the feature. You must make sure that your account balance is sufficient.
+        # 2.  **false**: disables the feature. An unpaid order is generated.
         # 
-        # > The default value is true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can pay for the order in the ApsaraDB RDS console.
+        # >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
         # The backup set ID.
         # 
@@ -2430,8 +2430,8 @@ class CloneDBInstanceRequest(TeaModel):
         self.dedicated_host_group_id = dedicated_host_group_id
         # Specifies whether to enable the release protection feature for the instance. Valid values:
         # 
-        # *   **true**: enables the feature.
-        # *   **false** (default): disables the feature.
+        # *   **true**\
+        # *   **false** (default)
         self.deletion_protection = deletion_protection
         # The network type of the new instance. Valid values:
         # 
@@ -2455,7 +2455,7 @@ class CloneDBInstanceRequest(TeaModel):
         # *   **Year**\
         # *   **Month**\
         # 
-        # > If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
+        # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
         self.period = period
         # The internal IP address of the new instance, which must be within the CIDR block supported by the specified vSwitch. The system automatically assigns an internal IP address based on the values of the **VPCId** and **VSwitchId** parameters.
         self.private_ip_address = private_ip_address
@@ -2671,12 +2671,12 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Specifies whether to enable the automatic payment feature. Valid values:
         # 
-        # 1.  **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
-        # 2.  **false**: does not automatically complete the payment. An unpaid order is generated.
+        # 1.  **true**: enables the feature. You must make sure that your account balance is sufficient.
+        # 2.  **false**: disables the feature. An unpaid order is generated.
         # 
-        # > The default value is true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can pay for the order in the ApsaraDB RDS console.
+        # >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
         # The backup set ID.
         # 
@@ -2737,8 +2737,8 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         self.dedicated_host_group_id = dedicated_host_group_id
         # Specifies whether to enable the release protection feature for the instance. Valid values:
         # 
-        # *   **true**: enables the feature.
-        # *   **false** (default): disables the feature.
+        # *   **true**\
+        # *   **false** (default)
         self.deletion_protection = deletion_protection
         # The network type of the new instance. Valid values:
         # 
@@ -2762,7 +2762,7 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         # *   **Year**\
         # *   **Month**\
         # 
-        # > If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
+        # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
         self.period = period
         # The internal IP address of the new instance, which must be within the CIDR block supported by the specified vSwitch. The system automatically assigns an internal IP address based on the values of the **VPCId** and **VSwitchId** parameters.
         self.private_ip_address = private_ip_address
@@ -4390,8 +4390,11 @@ class CreateDBInstanceRequestServerlessConfig(TeaModel):
         # *   **true**\
         # *   **false** (default)
         # 
-        # > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
-        # > *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+        # > 
+        # 
+        # *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
+        # 
+        # *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
         self.switch_force = switch_force
 
     def validate(self):
@@ -4538,12 +4541,12 @@ class CreateDBInstanceRequest(TeaModel):
         # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
         # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
         self.amount = amount
-        # Specifies whether to automatically complete the payment. Default value: true. Valid values:
+        # Specifies whether to enable the automatic payment feature. Valid values:
         # 
         # *   **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
         # *   **false**: does not automatically complete the payment. An unpaid order is generated.
         # 
-        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can pay for the order in the ApsaraDB RDS console.
+        # >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. You must specify this parameter only if the instance uses the subscription billing method. Valid values:
         # 
@@ -4687,16 +4690,15 @@ class CreateDBInstanceRequest(TeaModel):
         self.deletion_protection = deletion_protection
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run but does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+        # *   **true**: performs a dry run but does not create the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
+        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
         self.dry_run = dry_run
-        # The ID of the key that was used to encrypt the disk in the region where the disk is deployed. If this parameter is specified, disk encryption is enabled and you must also specify the **RoleARN** parameter. Disk encryption cannot be disabled after it is enabled.
+        # The ID of the key that is used for cloud disk encryption in the region in which the instance is deployed. If this parameter is specified, cloud disk encryption is enabled and you must also specify the **RoleARN** parameter. Cloud disk encryption cannot be disabled after it is enabled.
         # 
-        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](https://help.aliyun.com/document_detail/181610.html).
+        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
         # 
-        # > *   This parameter is not required when you create an RDS instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        # > *   This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
         # > *   You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: `{"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}`
-        # 
         # 
         # 
         # >Warning: The configuration also affects the CreateOrder operation that is called to create instances in the console.
@@ -4717,7 +4719,7 @@ class CreateDBInstanceRequest(TeaModel):
         #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
         #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**\
-        #     *   Valid values when you set Engine to MariaDB: **10.3**\
+        #     *   Valid value if you set Engine to MariaDB: **10.3**\
         # 
         # *   Serverless instance
         # 
@@ -4733,18 +4735,22 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
         # 
-        # *   Babelfish is supported only for ApsaraDB RDS for PostgreSQL instances that run PostgreSQL 15.
+        # *   Babelfish is supported only for RDS instances that run PostgreSQL 15.
         # 
         # This parameter is required.
         self.engine_version = engine_version
         # The network type of the instance. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC).
+        # *   **VPC**: virtual private cloud (VPC)
         # *   **Classic**: the classic network
         # 
-        # > *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
-        # > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-        # > *   RDS instances that run SQL Server Basic and SQL Server Web can reside in the classic network and virtual private clouds (VPCs). If the instance runs other database engines, you must set this parameter to **VPC**.
+        # > 
+        # 
+        # *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+        # 
+        # *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+        # 
+        # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
         # A reserved parameter.
         self.io_acceleration_enabled = io_acceleration_enabled
@@ -4763,7 +4769,7 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **Year**\
         # *   **Month**\
         # 
-        # >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
+        # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
         self.period = period
         # The port. You can initialize the port when you create the instance.
         # 
@@ -4792,14 +4798,14 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # >  ApsaraDB RDS for MariaDB does not support serverless instances.
         self.serverless_config = serverless_config
-        # Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if your RDS instance runs MySQL or PostgreSQL. Valid values:
+        # Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if the instance runs MySQL or PostgreSQL. Valid values:
         # 
         # *   **Enable**\
         # *   **Disable** (default)
         # 
-        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
+        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
         self.storage_auto_scale = storage_auto_scale
-        # The threshold in percentage based on which automatic storage expansion is triggered.
+        # The threshold in percentage based on which automatic storage expansion is triggered. Valid values:
         # 
         # *   **10**\
         # *   **20**\
@@ -4861,7 +4867,7 @@ class CreateDBInstanceRequest(TeaModel):
         # *   If you set the **Period** parameter to **Year**, the value of the **UsedTime** parameter ranges from **1 to 5**.
         # *   If you set the **Period** parameter to **Month**, the value of the **UsedTime** parameter ranges from **1 to 11**.
         # 
-        # >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
+        # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
         self.used_time = used_time
         # The ID of the full backup file. You can call the ListUserBackupFiles operation to query the ID of the full backup file. If you want to create an instance by using the data of a backup file, you must specify this parameter.
         # 
@@ -4881,7 +4887,7 @@ class CreateDBInstanceRequest(TeaModel):
         # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
         # *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         self.v_switch_id = v_switch_id
-        # The whitelists. If you enter more than one IP address or CIDR block, you must separate these IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
+        # The entries in the whitelist. If you enter multiple IP addresses or CIDR blocks, you must separate the IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
         self.whitelist_template_list = whitelist_template_list
         # The zone ID of the primary instance.
         # 
@@ -5262,12 +5268,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
         # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
         self.amount = amount
-        # Specifies whether to automatically complete the payment. Default value: true. Valid values:
+        # Specifies whether to enable the automatic payment feature. Valid values:
         # 
         # *   **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
         # *   **false**: does not automatically complete the payment. An unpaid order is generated.
         # 
-        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can pay for the order in the ApsaraDB RDS console.
+        # >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. You must specify this parameter only if the instance uses the subscription billing method. Valid values:
         # 
@@ -5411,16 +5417,15 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.deletion_protection = deletion_protection
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run but does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+        # *   **true**: performs a dry run but does not create the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
+        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
         self.dry_run = dry_run
-        # The ID of the key that was used to encrypt the disk in the region where the disk is deployed. If this parameter is specified, disk encryption is enabled and you must also specify the **RoleARN** parameter. Disk encryption cannot be disabled after it is enabled.
+        # The ID of the key that is used for cloud disk encryption in the region in which the instance is deployed. If this parameter is specified, cloud disk encryption is enabled and you must also specify the **RoleARN** parameter. Cloud disk encryption cannot be disabled after it is enabled.
         # 
-        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](https://help.aliyun.com/document_detail/181610.html).
+        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
         # 
-        # > *   This parameter is not required when you create an RDS instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        # > *   This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
         # > *   You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: `{"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}`
-        # 
         # 
         # 
         # >Warning: The configuration also affects the CreateOrder operation that is called to create instances in the console.
@@ -5441,7 +5446,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
         #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**\
-        #     *   Valid values when you set Engine to MariaDB: **10.3**\
+        #     *   Valid value if you set Engine to MariaDB: **10.3**\
         # 
         # *   Serverless instance
         # 
@@ -5457,18 +5462,22 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
         # 
-        # *   Babelfish is supported only for ApsaraDB RDS for PostgreSQL instances that run PostgreSQL 15.
+        # *   Babelfish is supported only for RDS instances that run PostgreSQL 15.
         # 
         # This parameter is required.
         self.engine_version = engine_version
         # The network type of the instance. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC).
+        # *   **VPC**: virtual private cloud (VPC)
         # *   **Classic**: the classic network
         # 
-        # > *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
-        # > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-        # > *   RDS instances that run SQL Server Basic and SQL Server Web can reside in the classic network and virtual private clouds (VPCs). If the instance runs other database engines, you must set this parameter to **VPC**.
+        # > 
+        # 
+        # *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+        # 
+        # *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+        # 
+        # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
         # A reserved parameter.
         self.io_acceleration_enabled = io_acceleration_enabled
@@ -5487,7 +5496,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   **Year**\
         # *   **Month**\
         # 
-        # >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
+        # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
         self.period = period
         # The port. You can initialize the port when you create the instance.
         # 
@@ -5516,14 +5525,14 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # >  ApsaraDB RDS for MariaDB does not support serverless instances.
         self.serverless_config_shrink = serverless_config_shrink
-        # Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if your RDS instance runs MySQL or PostgreSQL. Valid values:
+        # Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if the instance runs MySQL or PostgreSQL. Valid values:
         # 
         # *   **Enable**\
         # *   **Disable** (default)
         # 
-        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
+        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
         self.storage_auto_scale = storage_auto_scale
-        # The threshold in percentage based on which automatic storage expansion is triggered.
+        # The threshold in percentage based on which automatic storage expansion is triggered. Valid values:
         # 
         # *   **10**\
         # *   **20**\
@@ -5585,7 +5594,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   If you set the **Period** parameter to **Year**, the value of the **UsedTime** parameter ranges from **1 to 5**.
         # *   If you set the **Period** parameter to **Month**, the value of the **UsedTime** parameter ranges from **1 to 11**.
         # 
-        # >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
+        # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
         self.used_time = used_time
         # The ID of the full backup file. You can call the ListUserBackupFiles operation to query the ID of the full backup file. If you want to create an instance by using the data of a backup file, you must specify this parameter.
         # 
@@ -5605,7 +5614,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
         # *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         self.v_switch_id = v_switch_id
-        # The whitelists. If you enter more than one IP address or CIDR block, you must separate these IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
+        # The entries in the whitelist. If you enter multiple IP addresses or CIDR blocks, you must separate the IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
         self.whitelist_template_list = whitelist_template_list
         # The zone ID of the primary instance.
         # 
@@ -8223,20 +8232,16 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # *   The name must be **2 to 255** characters in length.
         # *   The name can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
         # *   The name cannot start with `http://` or `https://`.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.dbinstance_description = dbinstance_description
         # The storage capacity of the unit node that you want to create. Unit: GB You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
         # *   **local_ssd**: local SSD. This is the recommended storage type.
         # *   **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
-        # *   **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
-        # *   **cloud_essd2**: ESSD of PL2.
-        # *   **cloud_essd3**: ESSD of PL3.
+        # *   **cloud_essd**: PL1 ESSD
+        # *   **cloud_essd2**: PL2 ESSD
+        # *   **cloud_essd3**: PL3 ESSD
         # 
         # The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
         # 
@@ -8244,16 +8249,12 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # *   If the instance type specifies the cloud disk storage type, the default value of this parameter is **cloud_essd**.
         self.dbinstance_storage_type = dbinstance_storage_type
         # The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can call the DescribeAvailableResource operation to query the available instance types in a region.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.db_instance_class = db_instance_class
         # The conflict resolution policy based on which Data Transmission Service (DTS) responds to primary key conflicts during data synchronization to the unit node that you want to create. Valid values:
         # 
         # *   **overwrite**: DTS overwrites the conflicting primary key on the destination node.
         # *   **interrupt**: DTS stops the synchronization task, reports an error, and then exits.
         # *   **ignore**: DTS hides the conflicting primary key on the node.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         # 
         # This parameter is required.
         self.dts_conflict = dts_conflict
@@ -8266,13 +8267,9 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # 
         # >  For more information, see [Specifications of data synchronization tasks](https://help.aliyun.com/document_detail/26605.html).
         # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-        # 
         # This parameter is required.
         self.dts_instance_class = dts_instance_class
         # The database engine of the unit node that you want to create. Set the value to **MySQL**.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.engine = engine
         # The database engine version of the unit node that you want to create. Valid values:
         # 
@@ -8280,8 +8277,6 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # *   **5.7**\
         # *   **5.6**\
         # *   **5.5**\
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.engine_version = engine_version
         # The billing method of the unit node that you want to create. Valid values:
         # 
@@ -8289,12 +8284,8 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # *   **Prepaid**: subscription
         # 
         # >  The system automatically generates a purchase order and completes the payment. You do not need to manually confirm the purchase order or complete the payment.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.pay_type = pay_type
         # The region ID of the unit node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -8302,34 +8293,22 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # 
         # *   IP addresses, such as `10.10.10.10`.
         # *   CIDR blocks, such as `10.10.10.10/24`. In this example, **24** indicates that the prefix of the IP address in the whitelist is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.security_iplist = security_iplist
         # The vSwitch ID of the unit node that you want to create.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.v_switch_id = v_switch_id
         # The virtual private cloud (VPC) ID of the unit node that you want to create.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.vpc_id = vpc_id
         # The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.zone_id = zone_id
-        # The zone ID of the secondary node of the unit node that you want to create. You can call the DescribeRegions operation to query the ID of the zone.
+        # The zone ID of the secondary node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
         # 
         # *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
         # *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.zone_idslave_1 = zone_idslave_1
-        # The zone ID of the logger node of the unit node that you want to create. You can call the DescribeRegions operation to query the ID of the zone.
+        # The zone ID of the logger node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
         # 
         # *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
         # *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
-        # 
-        # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.zone_idslave_2 = zone_idslave_2
 
     def validate(self):
@@ -8678,32 +8657,24 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # *   The name must be **2 to 255** characters in length.
         # *   The name can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
         # *   The name cannot start with `http://` or `https://`.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.dbinstance_description = dbinstance_description
-        # The storage capacity of the unit node that you want to create. Unit: GB. You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is available for a specific instance type in a region.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # The storage capacity of the unit node that you want to create. Unit: GB The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the new instance. Valid values:
+        # The storage type of the instance. Valid values:
         # 
-        # *   **local_ssd**: local SSDs
-        # *   **cloud_ssd**: standard SSDs
-        # *   **cloud_essd**: PL1 ESSDs
-        # *   **cloud_essd2**: PL2 ESSDs
+        # *   **local_ssd**: local SSD
+        # *   **cloud_ssd**: standard SSD
+        # *   **cloud_essd**: PL1 ESSD
+        # *   **cloud_essd2**: PL2 ESSD
         # *   **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
         # The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can call the DescribeAvailableResource operation to query the available instance types in a region.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.db_instance_class = db_instance_class
         # The conflict resolution policy based on which Data Transmission Service (DTS) responds to primary key conflicts during data synchronization to the unit node that you want to create. Valid values:
         # 
         # *   **overwrite**: DTS overwrites the conflicting primary key on the destination node.
         # *   **interrupt**: DTS stops the synchronization task, reports an error, and then exits.
         # *   **ignore**: DTS overwrites the conflicting primary key on the logger node.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         # 
         # This parameter is required.
         self.dts_conflict = dts_conflict
@@ -8714,15 +8685,11 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # *   **large**\
         # *   **micro**\
         # 
-        # >  For more information, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # >  For more information, see [Specifications of data synchronization tasks](https://help.aliyun.com/document_detail/26605.html).
         # 
         # This parameter is required.
         self.dts_instance_class = dts_instance_class
         # The database engine of the unit node that you want to create. Set the value to **MySQL**.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.engine = engine
         # The database engine version of the unit node that you want to create. Valid values:
         # 
@@ -8730,51 +8697,35 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # *   **5.7**\
         # *   **5.6**\
         # *   **5.5**\
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.engine_version = engine_version
-        # The region ID of the unit node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # The region ID of the unit node or secondary node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IP address whitelist of the unit node that you want to create. For more information, see [IP address whitelist](https://help.aliyun.com/document_detail/43185.html). If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the unit node that you want to create. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as `10.10.XX.XX`.
         # *   CIDR blocks, such as `10.10.XX.XX/24`. In this example, **24** indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.security_iplist = security_iplist
         # The vSwitch ID of the unit node that you want to create.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
         # The virtual private cloud (VPC) ID of the unit node that you want to create.
         # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-        # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query zone ID.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
         self.zone_id = zone_id
         # The zone ID of the secondary node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
         # 
         # *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
         # *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.zone_idslave_1 = zone_idslave_1
         # The zone ID of the logger node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
         # 
         # *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
         # *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
-        # 
-        # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.zone_idslave_2 = zone_idslave_2
 
     def validate(self):
@@ -14915,7 +14866,7 @@ class DescribeAccountsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The page number. Default value: **1**. Valid values: any non-zero positive integer.
+        # The page number. Default value: **1**. Pages start from page 1.
         self.page_number = page_number
         # The number of entries to return on each page. Valid value: **30 to 200**. Default value: **30**.
         self.page_size = page_size
@@ -22944,7 +22895,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNo
     ):
         # The node specification.
         self.class_code = class_code
-        # The node type. Valid values:
+        # The node type. Default value: true. Valid values:
         # 
         # *   d: dedicated node type
         # *   x: general-purpose node type
@@ -22964,7 +22915,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNo
         self.node_role = node_role
         # The zone ID.
         self.node_zone_id = node_zone_id
-        # The node status. Valid values:
+        # The node status. Default value: true. Valid values:
         # 
         # *   active
         # *   creating
@@ -23432,7 +23383,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # >  We recommend that you use the **ProxyType** parameter instead of this parameter.
         self.console_version = console_version
-        # The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The minor engine version.
         self.current_kernel_version = current_kernel_version
@@ -23462,7 +23413,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **Internet**\
         # *   **Intranet**\
         self.dbinstance_net_type = dbinstance_net_type
-        # The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/26315.html).
+        # The instance status. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The storage capacity of the instance. Unit: GB.
         self.dbinstance_storage = dbinstance_storage
@@ -23470,7 +23421,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # *   **local_ssd** or **ephemeral_ssd**: local SSD
         # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: enhanced SSD (ESSD).
+        # *   **cloud_essd**: Enterprise SSD (ESSD)
         # *   **general_essd**: general ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
         # The instance type. Valid values:
@@ -23502,7 +23453,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # >  Pay-as-you-go instances never expire.
         self.expire_time = expire_time
-        # The extended information.
+        # The extended information of the instance.
         self.extra = extra
         # The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.general_group_name = general_group_name
@@ -23559,7 +23510,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
-        # *   **SERVERLESS**\
+        # *   **SERVERLESS**: serverless
         self.pay_type = pay_type
         # The port that is used to connect to the instance over an internal network.
         self.port = port
@@ -23604,13 +23555,13 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # The severity of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
         # 
         # *   **1**: The instance is normal.
-        # *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance, and instance performance may be affected. You must adjust the specifications of these instances based on your business requirements.
+        # *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance. You must adjust the specifications of these instances based on your business requirements.
         self.tips_level = tips_level
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The ID of the instance. This parameter is returned only when the instance resides in a VPC.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id
@@ -28360,7 +28311,7 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
         # The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
         # 
         # *   **cert**\
-        # *   **perfer**\
+        # *   **prefer**\
         # *   **verify-ca**\
         # *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
         self.acl = acl
@@ -28393,7 +28344,7 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
         # The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
         # 
         # *   **cert**\
-        # *   **perfer**\
+        # *   **prefer**\
         # *   **verify-ca**\
         # *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
         self.replication_acl = replication_acl
@@ -29924,9 +29875,9 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         # The connection mode of the instance. Valid values:
         # 
         # *   **Performance**: standard mode.
-        # *   **Safety**: safe mode.
+        # *   **Safety**: enhanced mode
         self.connection_mode = connection_mode
-        # The internal endpoint of the instance.
+        # The internal endpoint.
         self.connection_string = connection_string
         # The creation time.
         self.creation_time = creation_time
@@ -29936,7 +29887,7 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_class = dbinstance_class
         # The instance family.
         self.dbinstance_class_type = dbinstance_class_type
-        # The description of the instance.
+        # The instance description.
         self.dbinstance_description = dbinstance_description
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -29944,17 +29895,17 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_memory = dbinstance_memory
         # The network type of the instance. Valid values:
         # 
-        # *   **Internet**: Internet
-        # *   **Intranet**: internal network
+        # *   **Internet**\
+        # *   **Intranet**\
         self.dbinstance_net_type = dbinstance_net_type
-        # The status of the instance.
+        # The instance status.
         self.dbinstance_status = dbinstance_status
         # The storage capacity of the instance. Unit: GB.
         self.dbinstance_storage = dbinstance_storage
-        # The type of the instance. Valid values:
+        # The instance type. Valid values:
         # 
         # *   **Primary**: primary instance
-        # *   **Readonly**: read-only instance
+        # *   **ReadOnly**: read-only instance
         # *   **Guard**: disaster recovery instance
         # *   **Temp**: temporary instance
         self.dbinstance_type = dbinstance_type
@@ -29962,15 +29913,15 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbmax_quantity = dbmax_quantity
         # The database engine of the instance.
         self.engine = engine
-        # The engine version of the instance.
+        # The engine version.
         self.engine_version = engine_version
         # The expiration time.
         self.expire_time = expire_time
-        # A deprecated parameter. You do not need to configure this parameter.
+        # A deprecated parameter. You do not need to specify this parameter.
         self.export_key = export_key
-        # The ID of the disaster recovery instance that is attached to the instance.
+        # The ID of the disaster recovery instance that is attached to the primary instance.
         self.guard_dbinstance_id = guard_dbinstance_id
-        # The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance or read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
+        # The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance comes from its primary instance. The incremental data of a read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
         self.increment_source_dbinstance_id = increment_source_dbinstance_id
         # The network type.
         self.instance_network_type = instance_network_type
@@ -29978,9 +29929,9 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.lock_mode = lock_mode
         # The reason why the instance was locked.
         self.lock_reason = lock_reason
-        # The maintenance window of the instance. The time is displayed in UTC. Take note that the maintenance window that is displayed in the ApsaraDB RDS console is equal to the value of this parameter plus 8 hours.
+        # The maintenance window of the instance. The time follows the ISO 8601 standard and is displayed in UTC. In the ApsaraDB RDS console, the maintenance window is displayed in UTC+8.
         self.maintain_time = maintain_time
-        # The ID of the primary instance.
+        # The primary instance ID.
         self.master_instance_id = master_instance_id
         # The maximum number of concurrent connections.
         self.max_connections = max_connections
@@ -29994,19 +29945,19 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.read_delay_time = read_delay_time
         # The region ID.
         self.region_id = region_id
-        # The IP address whitelist.
+        # The IP addresses in the whitelist.
         self.security_iplist = security_iplist
-        # A deprecated parameter. You do not need to configure this parameter.
+        # A deprecated parameter. You do not need to specify this parameter.
         self.slave_zones = slave_zones
         # N/A.
         self.support_upgrade_account_type = support_upgrade_account_type
         # The tags.
         self.tags = tags
-        # The ID of the temporary instance that is attached to the instance.
+        # The ID of the temporary instance that is attached to the primary instance.
         self.temp_dbinstance_id = temp_dbinstance_id
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id
@@ -33532,7 +33483,7 @@ class DescribeDatabasesRequest(TeaModel):
         self.dbstatus = dbstatus
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The number of the page to return. Valid values: any non-zero positive integer.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -33802,7 +33753,7 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         self.basic_info = basic_info
         # The name of the character set.
         self.character_set_name = character_set_name
-        # The collation of the character set. The example value C stands for localization.
+        # The collation of the character set. The example value C indicates localization.
         # 
         # >  This parameter is returned only for instances that run PostgreSQL.
         self.collate = collate
@@ -33825,10 +33776,11 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         # *   **Creating**\
         # *   **Running**\
         # *   **Deleting**\
+        # *   **Cold**\
         self.dbstatus = dbstatus
         # The database engine of the instance.
         self.engine = engine
-        # The page number.
+        # The page number of the page to return.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -33987,7 +33939,7 @@ class DescribeDatabasesResponseBody(TeaModel):
         databases: DescribeDatabasesResponseBodyDatabases = None,
         request_id: str = None,
     ):
-        # The information about the database.
+        # The information about the databases.
         self.databases = databases
         # The ID of the request.
         self.request_id = request_id
@@ -39185,6 +39137,7 @@ class DescribeInstanceLinkedWhitelistTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.ins_name = ins_name
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         # The resource group ID. You can leave this parameter empty.
         self.resource_group_id = resource_group_id
@@ -45668,15 +45621,15 @@ class DescribePriceResponseBodyPriceInfo(TeaModel):
         self.currency = currency
         # The discount.
         self.discount_price = discount_price
-        # Order Information
+        # The order information.
         self.order_lines = order_lines
         # The original price.
         self.original_price = original_price
         # An array that consists of the ID of the promotion rule.
         self.rule_ids = rule_ids
-        # Estimated hourly cost calculated based on the maximum RCU selected by the user.
+        # The estimated hourly cost that is calculated based on the maximum number of RCUs you specify.
         self.trade_max_rcuamount = trade_max_rcuamount
-        # Estimated hourly cost calculated based on the minimum RCU selected by the user.
+        # The estimated hourly cost that is calculated based on the minimum number of RCUs you specify.
         self.trade_min_rcuamount = trade_min_rcuamount
         # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
@@ -45836,25 +45789,25 @@ class DescribePriceResponseBodyServerlessPrice(TeaModel):
         trade_min_rcuamount: float = None,
         storage_discount_amount: float = None,
     ):
-        # MaxRCU discount amount.
+        # The discount amount of the maximum number of RCUs.
         self.rcudiscount_max_amount = rcudiscount_max_amount
-        # MinRCU discount amount.
+        # The discount amount of the minimum number of RCUs.
         self.rcudiscount_min_amount = rcudiscount_min_amount
-        # MaxRCU price.
+        # The price of the maximum number of RCUs.
         self.rcuoriginal_max_amount = rcuoriginal_max_amount
-        # MinRCU price.
+        # The price of the minimum number of RCUs.
         self.rcuoriginal_min_amount = rcuoriginal_min_amount
-        # Original price of the disk.
+        # The original price of the disk capacity.
         self.storage_original_amount = storage_original_amount
-        # Maximum total price before discount.
+        # The maximum total price before the discount.
         self.total_original_max_amount = total_original_max_amount
         # The minimum total price before the discount.
         self.total_original_min_amount = total_original_min_amount
-        # MaxRCU transaction price.
+        # The transaction price of the maximum number of RCUs.
         self.trade_max_rcuamount = trade_max_rcuamount
-        # MinRCU transaction price.
+        # The transaction price of the minimum number of RCUs.
         self.trade_min_rcuamount = trade_min_rcuamount
-        # Disk discount price.
+        # The discounted price of the disk capacity.
         self.storage_discount_amount = storage_discount_amount
 
     def validate(self):
@@ -45925,7 +45878,9 @@ class DescribePriceResponseBody(TeaModel):
         trade_max_rcuamount: float = None,
         trade_min_rcuamount: float = None,
     ):
-        # Order parameters.
+        # The order parameters.
+        # 
+        # >  If the **OrderParamOut** parameter is set to **true**, the value of the OrderParams parameter is returned.
         self.order_params = order_params
         # The price information.
         self.price_info = price_info
@@ -45933,7 +45888,7 @@ class DescribePriceResponseBody(TeaModel):
         self.request_id = request_id
         # The details of the promotion rule.
         self.rules = rules
-        # Serverless price information.
+        # The pricing information about a serverless RDS instance.
         self.serverless_price = serverless_price
         # Indicates whether discounts can be used.
         self.show_discount = show_discount
@@ -47086,7 +47041,7 @@ class DescribeRegionsResponseBodyRegionsRDSRegion(TeaModel):
     ):
         # The region name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
         # 
-        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value `华东1（杭州）` is returned for the LocalName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value  1()is returned for the LocalName parameter.
         # *   If the value of the **AcceptLanguage** parameter is **en-US**, the value China (Hangzhou) is returned for the LocalName parameter.
         self.local_name = local_name
         # The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Endpoints](https://help.aliyun.com/document_detail/610370.html).
@@ -47095,10 +47050,10 @@ class DescribeRegionsResponseBodyRegionsRDSRegion(TeaModel):
         self.region_id = region_id
         # The zone ID.
         self.zone_id = zone_id
-        # The zone name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is cn-hangzhou-h, the following values are returned for the ZoneName parameter:
+        # The zone name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is cn-hangzhou-j, the following values are returned for the ZoneName parameter:
         # 
-        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the `杭州 可用区 H` is returned for the ZoneName parameter.
-        # *   If the value of the **AcceptLanguage** parameter is **en-US**, the value Hangzhou Zone H is returned for the ZoneName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value   J is returned for the ZoneName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **en-US**, the value Hangzhou Zone J is returned for the ZoneName parameter.
         self.zone_name = zone_name
 
     def validate(self):
@@ -48887,7 +48842,7 @@ class DescribeSQLLogRecordsRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -48899,18 +48854,18 @@ class DescribeSQLLogRecordsRequest(TeaModel):
         self.end_time = end_time
         # Specifies whether to generate an SQL audit log file or return SQL audit log entries. Valid values:
         # 
-        # *   **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the [DescribeSQLLogFiles](https://help.aliyun.com/document_detail/26295.html) operation to obtain the download URL of the SQL audit log file.
+        # *   **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the DescribeSQLLogFiles operation to obtain the download URL of the SQL audit log file.
         # *   **Stream** (default): If you set this parameter to Stream, this operation returns SQL audit log entries.
         # 
-        # > If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of 1 million log entries are returned.
+        # >  If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of one million log entries are returned.
         self.form = form
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: any non-zero positive integer.
+        # The page number. Pages start from 1.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30** to **100**. Default value: **30**.
+        # The number of entries per page. Valid values: **30** to **100**. Default value: **30**.
         self.page_size = page_size
         # The keyword that is used for the query.
         # 
@@ -52887,7 +52842,7 @@ class DescribeVSwitchesRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID. If you specify this parameter, the details of all vSwitches in the VPC to which the dedicated cluster belongs are returned.
+        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID. If you specify this parameter, the details of all VSwitches in the VPC to which the dedicated cluster belongs are returned.
         # 
         # >  You must specify this parameter or the **VpcId** parameter.
         self.dedicated_host_group_id = dedicated_host_group_id
@@ -52897,18 +52852,18 @@ class DescribeVSwitchesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: **1 to 50**. Default value: **30**.
         self.page_size = page_size
-        # The region ID of the vSwitch. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID of the VSwitch. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The ID of the VPC to which the vSwitch belongs.
+        # The ID of the VPC to which the VSwitch belongs.
         # 
         # > You must configure this parameter or **DedicatedHostGroupId**.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitch belongs. You can call the DescribeAvailableZones operation to query zone IDs. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the vSwitch that is deployed in the specified zone are returned.
+        # The ID of the zone to which the VSwitch belongs. You can call the DescribeAvailableZones operation to query zone IDs. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the VSwitch that is deployed in the specified zone are returned.
         self.zone_id = zone_id
 
     def validate(self):
@@ -57970,11 +57925,11 @@ class ModifyBackupPolicyRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable the log backup feature. Valid values:
         # 
-        # *   **True** or **1**: enables the feature.
-        # *   **False** or **0**: disables the feature.
+        # *   **True** or **1**: enables the log backup feature.
+        # *   **False** or **0**: enables the log backup feature.
         # 
-        # > *   This parameter must be specified when **BackupPolicyMode** is set to **LogBackupPolicy**.
-        # > *   This parameter takes effect only when **BackupPolicyMode** is set to **LogBackupPolicy**.
+        # > *   You must specify this parameter when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
+        # > *   This parameter takes effect only when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
         self.enable_backup_log = enable_backup_log
         # Specifies whether to enable incremental backup. Valid values:
         # 
@@ -58009,8 +57964,8 @@ class ModifyBackupPolicyRequest(TeaModel):
         self.log_backup_frequency = log_backup_frequency
         # The number of binary log files that you want to retain on the instance. Default value: **60**. Valid values: **6** to **100**.
         # 
-        # > *   This parameter takes effect only when **BackupPolicyMode** is set to **LogBackupPolicy**.
-        # > *   If the instance runs MySQL, you can set this parameter to \\*\\*-1\\*\\*. The value -1 specifies that no limits are imposed on the number of binary log files retained on the instance.
+        # > *   This parameter takes effect only when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
+        # > *   If the instance runs MySQL, you can set this parameter to **-1**. The value **-1** specifies that an unlimited number of binary log files can be retained on the instance.
         self.log_backup_local_retention_number = log_backup_local_retention_number
         # The number of days for which the log backup is retained. Valid values: **7 to 730**. The log backup retention period cannot be longer than the data backup retention period.
         # 
@@ -58324,11 +58279,8 @@ class ModifyCollationTimeZoneRequest(TeaModel):
         # *   **Chinese_Taiwan_Stroke_CI_AS**\
         # *   **Chinese_Taiwan_Stroke_CS_AS**\
         # 
-        # > 
-        # 
-        # *   The default character set collation of the instance is **Chinese_PRC_CI_AS**.
-        # 
-        # *   You must specify one of the **Collation** and **Timezone** parameters.
+        # > *   The default character set collation of the instance is **Chinese_PRC_CI_AS**.
+        # > *   You must specify one of the **Collation** and **Timezone** parameters.
         self.collation = collation
         # The instance ID.
         # 
@@ -58339,11 +58291,8 @@ class ModifyCollationTimeZoneRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The time zone of the instance. By default, the system does not modify the time zone.
         # 
-        # > 
-        # 
-        # *   The default time zone of the instance is **China Standard Time**.
-        # 
-        # *   You must specify one of the **Collation** and **Timezone** parameters.
+        # > *   The default time zone of the instance is **China Standard Time**.
+        # > *   You must specify one of the **Collation** and **Timezone** parameters.
         self.timezone = timezone
 
     def validate(self):
@@ -61811,7 +61760,8 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         # *   **true**\
         # *   **false** (default)
         # 
-        # >  This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is resumed.
+        # > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
+        # > *   This parameter is available only on the China site (aliyun.com).
         self.auto_pause = auto_pause
         # The maximum number of RDS Capacity Units (RCUs). Valid values:
         # 
@@ -61819,7 +61769,8 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**\
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**\
         # 
-        # >  The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
+        # > *   The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
+        # > *   This parameter is available only on the China site (aliyun.com).
         self.max_capacity = max_capacity
         # The minimum number of RCUs. Valid values:
         # 
@@ -61827,7 +61778,8 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
         # 
-        # >  The value of this parameter must be less than or equal to the value of **MaxCapacity**.
+        # > *   The value of this parameter must be less than or equal to the value of MaxCapacity.
+        # > *   This parameter is available only on the China site (aliyun.com).
         self.min_capacity = min_capacity
         # Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
         # 
@@ -61836,6 +61788,7 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         # 
         # > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
         # > *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+        # > *   This parameter is available only on the China site (aliyun.com).
         self.switch_force = switch_force
 
     def validate(self):
@@ -62001,6 +61954,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The specifications that you want to change for a serverless instance.
+        # 
+        # >  This parameter is available only on the China site (aliyun.com).
         self.serverless_configuration = serverless_configuration
         # A deprecated parameter. You do not need to specify this parameter.
         self.source_biz = source_biz
@@ -62275,6 +62230,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The specifications that you want to change for a serverless instance.
+        # 
+        # >  This parameter is available only on the China site (aliyun.com).
         self.serverless_configuration_shrink = serverless_configuration_shrink
         # A deprecated parameter. You do not need to specify this parameter.
         self.source_biz = source_biz
@@ -64271,11 +64228,17 @@ class ModifyDatabaseConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbname = dbname
-        # The name of the database property that you want to modify.
+        # The database property that you want to modify.
+        # 
+        # *   **If you want to modify a property of the database**, set this parameter to the name of the database property.
+        # *   **If you want to archive data from the database to an OSS bucket**, specify the database status. If you set this parameter to `covert_online_db_to_cold_storage`, the system converts an online database to a cold storage database. If you set this parameter to `convert_cold_storage_db_to_online`, the system converts a cold storage database to an online database.
         # 
         # This parameter is required.
         self.database_property_name = database_property_name
         # The value of the database property that you want to modify.
+        # 
+        # *   **If you want to modify a property of the database**, set this parameter to the property value.
+        # *   **If you want to archive data from the database to an OSS bucket**, set this parameter to **1**. The system converts a database to a cold storage database or an online database.
         # 
         # This parameter is required.
         self.database_property_value = database_property_value
@@ -66157,11 +66120,11 @@ class ModifyParameterGroupRequest(TeaModel):
         # 
         # *   **Collectivity** (default): adds new parameters or modifies parameters in the original parameter template.
         # 
-        # > If ModifyMode is set to Collectivity, the system adds the value of **Parameters** to the parameter template or modifies the corresponding parameters in the parameter template. Other parameters in the original parameter template are not affected.
+        # >  If you set the ModifyMode parameter to Collectivity, the system adds the value of the **Parameters** parameter to the original parameter template or modifies the corresponding parameters in the original parameter template. Other parameters in the original parameter template are not affected.
         # 
         # *   **Individual**: overwrites original parameters.
         # 
-        # > If ModifyMode is set to Individual, the system uses the value of **Parameters** to overwrite the original parameter in the parameter template.
+        # >  If you set the ModifyMode parameter to Individual, the system uses the value of the **Parameters** parameter to overwrite the parameter settings in the original parameter template.
         self.modify_mode = modify_mode
         self.owner_id = owner_id
         # The new description of the parameter template. The description can be up to 200 characters in length.
