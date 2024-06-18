@@ -1,3 +1,9 @@
+2024-06-18 Version: 1.2.0
+- Support API LoadBalancerJoinSecurityGroup.
+- Support API LoadBalancerLeaveSecurityGroup.
+- Update API GetLoadBalancerAttribute: update response param.
+
+
 2024-06-11 Version: 1.1.8
 - Update API CreateAScripts: update param AScripts.
 - Update API UpdateAScripts: update param AScripts.

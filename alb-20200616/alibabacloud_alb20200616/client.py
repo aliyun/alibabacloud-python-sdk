@@ -7051,6 +7051,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
+    def load_balancer_join_security_group_with_options(
+        self,
+        request: alb_20200616_models.LoadBalancerJoinSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.LoadBalancerJoinSecurityGroupResponse:
+        """
+        @summary 创建访问控制信息
+        
+        @param request: LoadBalancerJoinSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadBalancerJoinSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LoadBalancerJoinSecurityGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.LoadBalancerJoinSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def load_balancer_join_security_group_with_options_async(
+        self,
+        request: alb_20200616_models.LoadBalancerJoinSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.LoadBalancerJoinSecurityGroupResponse:
+        """
+        @summary 创建访问控制信息
+        
+        @param request: LoadBalancerJoinSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadBalancerJoinSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LoadBalancerJoinSecurityGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.LoadBalancerJoinSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def load_balancer_join_security_group(
+        self,
+        request: alb_20200616_models.LoadBalancerJoinSecurityGroupRequest,
+    ) -> alb_20200616_models.LoadBalancerJoinSecurityGroupResponse:
+        """
+        @summary 创建访问控制信息
+        
+        @param request: LoadBalancerJoinSecurityGroupRequest
+        @return: LoadBalancerJoinSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.load_balancer_join_security_group_with_options(request, runtime)
+
+    async def load_balancer_join_security_group_async(
+        self,
+        request: alb_20200616_models.LoadBalancerJoinSecurityGroupRequest,
+    ) -> alb_20200616_models.LoadBalancerJoinSecurityGroupResponse:
+        """
+        @summary 创建访问控制信息
+        
+        @param request: LoadBalancerJoinSecurityGroupRequest
+        @return: LoadBalancerJoinSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.load_balancer_join_security_group_with_options_async(request, runtime)
+
+    def load_balancer_leave_security_group_with_options(
+        self,
+        request: alb_20200616_models.LoadBalancerLeaveSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.LoadBalancerLeaveSecurityGroupResponse:
+        """
+        @summary 创建访问控制信息
+        
+        @param request: LoadBalancerLeaveSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadBalancerLeaveSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LoadBalancerLeaveSecurityGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.LoadBalancerLeaveSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def load_balancer_leave_security_group_with_options_async(
+        self,
+        request: alb_20200616_models.LoadBalancerLeaveSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.LoadBalancerLeaveSecurityGroupResponse:
+        """
+        @summary 创建访问控制信息
+        
+        @param request: LoadBalancerLeaveSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadBalancerLeaveSecurityGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LoadBalancerLeaveSecurityGroup',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.LoadBalancerLeaveSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def load_balancer_leave_security_group(
+        self,
+        request: alb_20200616_models.LoadBalancerLeaveSecurityGroupRequest,
+    ) -> alb_20200616_models.LoadBalancerLeaveSecurityGroupResponse:
+        """
+        @summary 创建访问控制信息
+        
+        @param request: LoadBalancerLeaveSecurityGroupRequest
+        @return: LoadBalancerLeaveSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.load_balancer_leave_security_group_with_options(request, runtime)
+
+    async def load_balancer_leave_security_group_async(
+        self,
+        request: alb_20200616_models.LoadBalancerLeaveSecurityGroupRequest,
+    ) -> alb_20200616_models.LoadBalancerLeaveSecurityGroupResponse:
+        """
+        @summary 创建访问控制信息
+        
+        @param request: LoadBalancerLeaveSecurityGroupRequest
+        @return: LoadBalancerLeaveSecurityGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.load_balancer_leave_security_group_with_options_async(request, runtime)
+
     def move_resource_group_with_options(
         self,
         request: alb_20200616_models.MoveResourceGroupRequest,
