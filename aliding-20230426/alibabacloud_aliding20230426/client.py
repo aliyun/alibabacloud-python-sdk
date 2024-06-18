@@ -2325,6 +2325,140 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.ClearDataHeaders()
         return await self.clear_data_with_options_async(request, headers, runtime)
 
+    def close_video_conference_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CloseVideoConferenceRequest,
+        tmp_header: aliding_20230426_models.CloseVideoConferenceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CloseVideoConferenceResponse:
+        """
+        @summary 关闭视频会议
+        
+        @param tmp_req: CloseVideoConferenceRequest
+        @param tmp_header: CloseVideoConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseVideoConferenceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CloseVideoConferenceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CloseVideoConferenceShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseVideoConference',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/closeVideoConference',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CloseVideoConferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_video_conference_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CloseVideoConferenceRequest,
+        tmp_header: aliding_20230426_models.CloseVideoConferenceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CloseVideoConferenceResponse:
+        """
+        @summary 关闭视频会议
+        
+        @param tmp_req: CloseVideoConferenceRequest
+        @param tmp_header: CloseVideoConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseVideoConferenceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CloseVideoConferenceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CloseVideoConferenceShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseVideoConference',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/closeVideoConference',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CloseVideoConferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_video_conference(
+        self,
+        request: aliding_20230426_models.CloseVideoConferenceRequest,
+    ) -> aliding_20230426_models.CloseVideoConferenceResponse:
+        """
+        @summary 关闭视频会议
+        
+        @param request: CloseVideoConferenceRequest
+        @return: CloseVideoConferenceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CloseVideoConferenceHeaders()
+        return self.close_video_conference_with_options(request, headers, runtime)
+
+    async def close_video_conference_async(
+        self,
+        request: aliding_20230426_models.CloseVideoConferenceRequest,
+    ) -> aliding_20230426_models.CloseVideoConferenceResponse:
+        """
+        @summary 关闭视频会议
+        
+        @param request: CloseVideoConferenceRequest
+        @return: CloseVideoConferenceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CloseVideoConferenceHeaders()
+        return await self.close_video_conference_with_options_async(request, headers, runtime)
+
     def comment_list_report_with_options(
         self,
         tmp_req: aliding_20230426_models.CommentListReportRequest,
@@ -19014,6 +19148,294 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomListHeaders()
         return await self.query_meeting_room_list_with_options_async(request, headers, runtime)
+
+    def query_minutes_summary_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryMinutesSummaryRequest,
+        tmp_header: aliding_20230426_models.QueryMinutesSummaryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryMinutesSummaryResponse:
+        """
+        @summary 查询会议闪记智能纪要
+        
+        @param tmp_req: QueryMinutesSummaryRequest
+        @param tmp_header: QueryMinutesSummaryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMinutesSummaryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryMinutesSummaryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryMinutesSummaryShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.summary_type_list):
+            request.summary_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.summary_type_list, 'summaryTypeList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.summary_type_list_shrink):
+            body['summaryTypeList'] = request.summary_type_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryMinutesSummary',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryMinutesSummary',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryMinutesSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_minutes_summary_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryMinutesSummaryRequest,
+        tmp_header: aliding_20230426_models.QueryMinutesSummaryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryMinutesSummaryResponse:
+        """
+        @summary 查询会议闪记智能纪要
+        
+        @param tmp_req: QueryMinutesSummaryRequest
+        @param tmp_header: QueryMinutesSummaryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMinutesSummaryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryMinutesSummaryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryMinutesSummaryShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.summary_type_list):
+            request.summary_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.summary_type_list, 'summaryTypeList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.summary_type_list_shrink):
+            body['summaryTypeList'] = request.summary_type_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryMinutesSummary',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryMinutesSummary',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryMinutesSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_minutes_summary(
+        self,
+        request: aliding_20230426_models.QueryMinutesSummaryRequest,
+    ) -> aliding_20230426_models.QueryMinutesSummaryResponse:
+        """
+        @summary 查询会议闪记智能纪要
+        
+        @param request: QueryMinutesSummaryRequest
+        @return: QueryMinutesSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryMinutesSummaryHeaders()
+        return self.query_minutes_summary_with_options(request, headers, runtime)
+
+    async def query_minutes_summary_async(
+        self,
+        request: aliding_20230426_models.QueryMinutesSummaryRequest,
+    ) -> aliding_20230426_models.QueryMinutesSummaryResponse:
+        """
+        @summary 查询会议闪记智能纪要
+        
+        @param request: QueryMinutesSummaryRequest
+        @return: QueryMinutesSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryMinutesSummaryHeaders()
+        return await self.query_minutes_summary_with_options_async(request, headers, runtime)
+
+    def query_minutes_text_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryMinutesTextRequest,
+        tmp_header: aliding_20230426_models.QueryMinutesTextHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryMinutesTextResponse:
+        """
+        @summary 查询会议闪记的文本信息
+        
+        @param tmp_req: QueryMinutesTextRequest
+        @param tmp_header: QueryMinutesTextHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMinutesTextResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryMinutesTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryMinutesTextShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.direction):
+            body['direction'] = request.direction
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryMinutesText',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryMinutesText',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryMinutesTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_minutes_text_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryMinutesTextRequest,
+        tmp_header: aliding_20230426_models.QueryMinutesTextHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryMinutesTextResponse:
+        """
+        @summary 查询会议闪记的文本信息
+        
+        @param tmp_req: QueryMinutesTextRequest
+        @param tmp_header: QueryMinutesTextHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMinutesTextResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryMinutesTextShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryMinutesTextShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.direction):
+            body['direction'] = request.direction
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryMinutesText',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryMinutesText',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryMinutesTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_minutes_text(
+        self,
+        request: aliding_20230426_models.QueryMinutesTextRequest,
+    ) -> aliding_20230426_models.QueryMinutesTextResponse:
+        """
+        @summary 查询会议闪记的文本信息
+        
+        @param request: QueryMinutesTextRequest
+        @return: QueryMinutesTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryMinutesTextHeaders()
+        return self.query_minutes_text_with_options(request, headers, runtime)
+
+    async def query_minutes_text_async(
+        self,
+        request: aliding_20230426_models.QueryMinutesTextRequest,
+    ) -> aliding_20230426_models.QueryMinutesTextResponse:
+        """
+        @summary 查询会议闪记的文本信息
+        
+        @param request: QueryMinutesTextRequest
+        @return: QueryMinutesTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryMinutesTextHeaders()
+        return await self.query_minutes_text_with_options_async(request, headers, runtime)
 
     def query_org_honors_with_options(
         self,

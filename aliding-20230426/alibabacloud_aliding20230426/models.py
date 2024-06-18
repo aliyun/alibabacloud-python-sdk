@@ -5259,6 +5259,291 @@ class ClearDataResponse(TeaModel):
         return self
 
 
+class CloseVideoConferenceHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class CloseVideoConferenceHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: CloseVideoConferenceHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = CloseVideoConferenceHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class CloseVideoConferenceShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class CloseVideoConferenceRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class CloseVideoConferenceRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: CloseVideoConferenceRequestTenantContext = None,
+        conference_id: str = None,
+    ):
+        self.tenant_context = tenant_context
+        # This parameter is required.
+        self.conference_id = conference_id
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = CloseVideoConferenceRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        return self
+
+
+class CloseVideoConferenceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        conference_id: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
+        self.conference_id = conference_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        return self
+
+
+class CloseVideoConferenceResponseBody(TeaModel):
+    def __init__(
+        self,
+        cause: str = None,
+        code: int = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.cause = cause
+        self.code = code
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cause is not None:
+            result['cause'] = self.cause
+        if self.code is not None:
+            result['code'] = self.code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cause') is not None:
+            self.cause = m.get('cause')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class CloseVideoConferenceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloseVideoConferenceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloseVideoConferenceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CommentListReportHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -52083,6 +52368,1149 @@ class QueryMeetingRoomListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryMeetingRoomListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryMinutesSummaryHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class QueryMinutesSummaryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: QueryMinutesSummaryHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = QueryMinutesSummaryHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class QueryMinutesSummaryShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class QueryMinutesSummaryRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class QueryMinutesSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: QueryMinutesSummaryRequestTenantContext = None,
+        conference_id: str = None,
+        summary_type_list: List[str] = None,
+    ):
+        self.tenant_context = tenant_context
+        # This parameter is required.
+        self.conference_id = conference_id
+        self.summary_type_list = summary_type_list
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        if self.summary_type_list is not None:
+            result['summaryTypeList'] = self.summary_type_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = QueryMinutesSummaryRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        if m.get('summaryTypeList') is not None:
+            self.summary_type_list = m.get('summaryTypeList')
+        return self
+
+
+class QueryMinutesSummaryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        conference_id: str = None,
+        summary_type_list_shrink: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
+        self.conference_id = conference_id
+        self.summary_type_list_shrink = summary_type_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        if self.summary_type_list_shrink is not None:
+            result['summaryTypeList'] = self.summary_type_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        if m.get('summaryTypeList') is not None:
+            self.summary_type_list_shrink = m.get('summaryTypeList')
+        return self
+
+
+class QueryMinutesSummaryResponseBodySummaryActions(TeaModel):
+    def __init__(
+        self,
+        end: int = None,
+        id: int = None,
+        sentence_id: int = None,
+        start: int = None,
+        text: str = None,
+    ):
+        self.end = end
+        self.id = id
+        self.sentence_id = sentence_id
+        self.start = start
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.sentence_id is not None:
+            result['SentenceId'] = self.sentence_id
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SentenceId') is not None:
+            self.sentence_id = m.get('SentenceId')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class QueryMinutesSummaryResponseBodySummaryAutoChapters(TeaModel):
+    def __init__(
+        self,
+        end: int = None,
+        headline: str = None,
+        id: int = None,
+        start: int = None,
+        summary: str = None,
+    ):
+        self.end = end
+        self.headline = headline
+        self.id = id
+        self.start = start
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.headline is not None:
+            result['Headline'] = self.headline
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Headline') is not None:
+            self.headline = m.get('Headline')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class QueryMinutesSummaryResponseBodySummaryConversationalSummary(TeaModel):
+    def __init__(
+        self,
+        speaker_id: str = None,
+        speaker_name: str = None,
+        summary: str = None,
+    ):
+        self.speaker_id = speaker_id
+        self.speaker_name = speaker_name
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.speaker_id is not None:
+            result['SpeakerId'] = self.speaker_id
+        if self.speaker_name is not None:
+            result['SpeakerName'] = self.speaker_name
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpeakerId') is not None:
+            self.speaker_id = m.get('SpeakerId')
+        if m.get('SpeakerName') is not None:
+            self.speaker_name = m.get('SpeakerName')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class QueryMinutesSummaryResponseBodySummaryKeySentences(TeaModel):
+    def __init__(
+        self,
+        end: int = None,
+        id: int = None,
+        sentence_id: int = None,
+        start: int = None,
+        text: str = None,
+    ):
+        self.end = end
+        self.id = id
+        self.sentence_id = sentence_id
+        self.start = start
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.sentence_id is not None:
+            result['SentenceId'] = self.sentence_id
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SentenceId') is not None:
+            self.sentence_id = m.get('SentenceId')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class QueryMinutesSummaryResponseBodySummaryQuestionsAnsweringSummary(TeaModel):
+    def __init__(
+        self,
+        answer: str = None,
+        question: str = None,
+        sentence_ids_of_answer: List[int] = None,
+        sentence_ids_of_question: List[int] = None,
+    ):
+        self.answer = answer
+        self.question = question
+        self.sentence_ids_of_answer = sentence_ids_of_answer
+        self.sentence_ids_of_question = sentence_ids_of_question
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['Answer'] = self.answer
+        if self.question is not None:
+            result['Question'] = self.question
+        if self.sentence_ids_of_answer is not None:
+            result['SentenceIdsOfAnswer'] = self.sentence_ids_of_answer
+        if self.sentence_ids_of_question is not None:
+            result['SentenceIdsOfQuestion'] = self.sentence_ids_of_question
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Answer') is not None:
+            self.answer = m.get('Answer')
+        if m.get('Question') is not None:
+            self.question = m.get('Question')
+        if m.get('SentenceIdsOfAnswer') is not None:
+            self.sentence_ids_of_answer = m.get('SentenceIdsOfAnswer')
+        if m.get('SentenceIdsOfQuestion') is not None:
+            self.sentence_ids_of_question = m.get('SentenceIdsOfQuestion')
+        return self
+
+
+class QueryMinutesSummaryResponseBodySummary(TeaModel):
+    def __init__(
+        self,
+        actions: QueryMinutesSummaryResponseBodySummaryActions = None,
+        auto_chapters: List[QueryMinutesSummaryResponseBodySummaryAutoChapters] = None,
+        conversational_summary: List[QueryMinutesSummaryResponseBodySummaryConversationalSummary] = None,
+        key_sentences: QueryMinutesSummaryResponseBodySummaryKeySentences = None,
+        keywords: List[str] = None,
+        paragraph_summary: str = None,
+        questions_answering_summary: List[QueryMinutesSummaryResponseBodySummaryQuestionsAnsweringSummary] = None,
+    ):
+        self.actions = actions
+        self.auto_chapters = auto_chapters
+        self.conversational_summary = conversational_summary
+        self.key_sentences = key_sentences
+        self.keywords = keywords
+        self.paragraph_summary = paragraph_summary
+        self.questions_answering_summary = questions_answering_summary
+
+    def validate(self):
+        if self.actions:
+            self.actions.validate()
+        if self.auto_chapters:
+            for k in self.auto_chapters:
+                if k:
+                    k.validate()
+        if self.conversational_summary:
+            for k in self.conversational_summary:
+                if k:
+                    k.validate()
+        if self.key_sentences:
+            self.key_sentences.validate()
+        if self.questions_answering_summary:
+            for k in self.questions_answering_summary:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actions is not None:
+            result['Actions'] = self.actions.to_map()
+        result['AutoChapters'] = []
+        if self.auto_chapters is not None:
+            for k in self.auto_chapters:
+                result['AutoChapters'].append(k.to_map() if k else None)
+        result['ConversationalSummary'] = []
+        if self.conversational_summary is not None:
+            for k in self.conversational_summary:
+                result['ConversationalSummary'].append(k.to_map() if k else None)
+        if self.key_sentences is not None:
+            result['KeySentences'] = self.key_sentences.to_map()
+        if self.keywords is not None:
+            result['Keywords'] = self.keywords
+        if self.paragraph_summary is not None:
+            result['ParagraphSummary'] = self.paragraph_summary
+        result['QuestionsAnsweringSummary'] = []
+        if self.questions_answering_summary is not None:
+            for k in self.questions_answering_summary:
+                result['QuestionsAnsweringSummary'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Actions') is not None:
+            temp_model = QueryMinutesSummaryResponseBodySummaryActions()
+            self.actions = temp_model.from_map(m['Actions'])
+        self.auto_chapters = []
+        if m.get('AutoChapters') is not None:
+            for k in m.get('AutoChapters'):
+                temp_model = QueryMinutesSummaryResponseBodySummaryAutoChapters()
+                self.auto_chapters.append(temp_model.from_map(k))
+        self.conversational_summary = []
+        if m.get('ConversationalSummary') is not None:
+            for k in m.get('ConversationalSummary'):
+                temp_model = QueryMinutesSummaryResponseBodySummaryConversationalSummary()
+                self.conversational_summary.append(temp_model.from_map(k))
+        if m.get('KeySentences') is not None:
+            temp_model = QueryMinutesSummaryResponseBodySummaryKeySentences()
+            self.key_sentences = temp_model.from_map(m['KeySentences'])
+        if m.get('Keywords') is not None:
+            self.keywords = m.get('Keywords')
+        if m.get('ParagraphSummary') is not None:
+            self.paragraph_summary = m.get('ParagraphSummary')
+        self.questions_answering_summary = []
+        if m.get('QuestionsAnsweringSummary') is not None:
+            for k in m.get('QuestionsAnsweringSummary'):
+                temp_model = QueryMinutesSummaryResponseBodySummaryQuestionsAnsweringSummary()
+                self.questions_answering_summary.append(temp_model.from_map(k))
+        return self
+
+
+class QueryMinutesSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        summary: QueryMinutesSummaryResponseBodySummary = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.summary = summary
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.summary:
+            self.summary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.summary is not None:
+            result['summary'] = self.summary.to_map()
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('summary') is not None:
+            temp_model = QueryMinutesSummaryResponseBodySummary()
+            self.summary = temp_model.from_map(m['summary'])
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class QueryMinutesSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryMinutesSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryMinutesSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryMinutesTextHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class QueryMinutesTextHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: QueryMinutesTextHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = QueryMinutesTextHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class QueryMinutesTextShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class QueryMinutesTextRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class QueryMinutesTextRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: QueryMinutesTextRequestTenantContext = None,
+        conference_id: str = None,
+        direction: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.tenant_context = tenant_context
+        # This parameter is required.
+        self.conference_id = conference_id
+        # This parameter is required.
+        self.direction = direction
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = QueryMinutesTextRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        if m.get('direction') is not None:
+            self.direction = m.get('direction')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class QueryMinutesTextShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+        conference_id: str = None,
+        direction: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
+        self.conference_id = conference_id
+        # This parameter is required.
+        self.direction = direction
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        if m.get('direction') is not None:
+            self.direction = m.get('direction')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class QueryMinutesTextResponseBodyParagraphListSentenceListWordList(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+        word: str = None,
+        word_id: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.word = word
+        self.word_id = word_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.word is not None:
+            result['Word'] = self.word
+        if self.word_id is not None:
+            result['WordId'] = self.word_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Word') is not None:
+            self.word = m.get('Word')
+        if m.get('WordId') is not None:
+            self.word_id = m.get('WordId')
+        return self
+
+
+class QueryMinutesTextResponseBodyParagraphListSentenceList(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        sentence: str = None,
+        start_time: int = None,
+        user_id: str = None,
+        word_list: List[QueryMinutesTextResponseBodyParagraphListSentenceListWordList] = None,
+    ):
+        self.end_time = end_time
+        self.sentence = sentence
+        self.start_time = start_time
+        self.user_id = user_id
+        self.word_list = word_list
+
+    def validate(self):
+        if self.word_list:
+            for k in self.word_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.sentence is not None:
+            result['Sentence'] = self.sentence
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        result['WordList'] = []
+        if self.word_list is not None:
+            for k in self.word_list:
+                result['WordList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Sentence') is not None:
+            self.sentence = m.get('Sentence')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        self.word_list = []
+        if m.get('WordList') is not None:
+            for k in m.get('WordList'):
+                temp_model = QueryMinutesTextResponseBodyParagraphListSentenceListWordList()
+                self.word_list.append(temp_model.from_map(k))
+        return self
+
+
+class QueryMinutesTextResponseBodyParagraphList(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        nick_name: str = None,
+        paragraph: str = None,
+        paragraph_id: int = None,
+        record_id: int = None,
+        sentence_list: List[QueryMinutesTextResponseBodyParagraphListSentenceList] = None,
+        start_time: int = None,
+        user_id: str = None,
+    ):
+        self.end_time = end_time
+        self.nick_name = nick_name
+        self.paragraph = paragraph
+        self.paragraph_id = paragraph_id
+        self.record_id = record_id
+        self.sentence_list = sentence_list
+        self.start_time = start_time
+        self.user_id = user_id
+
+    def validate(self):
+        if self.sentence_list:
+            for k in self.sentence_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.paragraph is not None:
+            result['Paragraph'] = self.paragraph
+        if self.paragraph_id is not None:
+            result['ParagraphId'] = self.paragraph_id
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        result['SentenceList'] = []
+        if self.sentence_list is not None:
+            for k in self.sentence_list:
+                result['SentenceList'].append(k.to_map() if k else None)
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('Paragraph') is not None:
+            self.paragraph = m.get('Paragraph')
+        if m.get('ParagraphId') is not None:
+            self.paragraph_id = m.get('ParagraphId')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        self.sentence_list = []
+        if m.get('SentenceList') is not None:
+            for k in m.get('SentenceList'):
+                temp_model = QueryMinutesTextResponseBodyParagraphListSentenceList()
+                self.sentence_list.append(temp_model.from_map(k))
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryMinutesTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        has_more: bool = None,
+        next_token: str = None,
+        paragraph_list: List[QueryMinutesTextResponseBodyParagraphList] = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.has_more = has_more
+        self.next_token = next_token
+        self.paragraph_list = paragraph_list
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.paragraph_list:
+            for k in self.paragraph_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.has_more is not None:
+            result['hasMore'] = self.has_more
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['paragraphList'] = []
+        if self.paragraph_list is not None:
+            for k in self.paragraph_list:
+                result['paragraphList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hasMore') is not None:
+            self.has_more = m.get('hasMore')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.paragraph_list = []
+        if m.get('paragraphList') is not None:
+            for k in m.get('paragraphList'):
+                temp_model = QueryMinutesTextResponseBodyParagraphList()
+                self.paragraph_list.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class QueryMinutesTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryMinutesTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryMinutesTextResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

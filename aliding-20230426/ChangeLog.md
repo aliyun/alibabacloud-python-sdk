@@ -1,3 +1,9 @@
+2024-06-18 Version: 2.19.0
+- Support API CloseVideoConference.
+- Support API QueryMinutesSummary.
+- Support API QueryMinutesText.
+
+
 2024-05-29 Version: 2.18.0
 - Support API QueryReportDetail.
 - Update API UpdateScheduleConfSettings: update param ScheduleConfSettingModel.
