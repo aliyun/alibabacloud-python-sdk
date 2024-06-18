@@ -3053,6 +3053,318 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_artifact_with_options_async(request, runtime)
 
+    def restart_service_instance_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.RestartServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.RestartServiceInstanceResponse:
+        """
+        @summary 重启服务实例
+        
+        @param request: RestartServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartServiceInstance',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.RestartServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_service_instance_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.RestartServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.RestartServiceInstanceResponse:
+        """
+        @summary 重启服务实例
+        
+        @param request: RestartServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartServiceInstance',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.RestartServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_service_instance(
+        self,
+        request: compute_nest_supplier_20210521_models.RestartServiceInstanceRequest,
+    ) -> compute_nest_supplier_20210521_models.RestartServiceInstanceResponse:
+        """
+        @summary 重启服务实例
+        
+        @param request: RestartServiceInstanceRequest
+        @return: RestartServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restart_service_instance_with_options(request, runtime)
+
+    async def restart_service_instance_async(
+        self,
+        request: compute_nest_supplier_20210521_models.RestartServiceInstanceRequest,
+    ) -> compute_nest_supplier_20210521_models.RestartServiceInstanceResponse:
+        """
+        @summary 重启服务实例
+        
+        @param request: RestartServiceInstanceRequest
+        @return: RestartServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_service_instance_with_options_async(request, runtime)
+
+    def start_service_instance_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.StartServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.StartServiceInstanceResponse:
+        """
+        @summary 启动服务实例
+        
+        @param request: StartServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartServiceInstance',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.StartServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_service_instance_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.StartServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.StartServiceInstanceResponse:
+        """
+        @summary 启动服务实例
+        
+        @param request: StartServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartServiceInstance',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.StartServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_service_instance(
+        self,
+        request: compute_nest_supplier_20210521_models.StartServiceInstanceRequest,
+    ) -> compute_nest_supplier_20210521_models.StartServiceInstanceResponse:
+        """
+        @summary 启动服务实例
+        
+        @param request: StartServiceInstanceRequest
+        @return: StartServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_service_instance_with_options(request, runtime)
+
+    async def start_service_instance_async(
+        self,
+        request: compute_nest_supplier_20210521_models.StartServiceInstanceRequest,
+    ) -> compute_nest_supplier_20210521_models.StartServiceInstanceResponse:
+        """
+        @summary 启动服务实例
+        
+        @param request: StartServiceInstanceRequest
+        @return: StartServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_service_instance_with_options_async(request, runtime)
+
+    def stop_service_instance_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.StopServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.StopServiceInstanceResponse:
+        """
+        @summary 停止服务实例
+        
+        @param request: StopServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopServiceInstance',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.StopServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_service_instance_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.StopServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.StopServiceInstanceResponse:
+        """
+        @summary 停止服务实例
+        
+        @param request: StopServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopServiceInstance',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.StopServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_service_instance(
+        self,
+        request: compute_nest_supplier_20210521_models.StopServiceInstanceRequest,
+    ) -> compute_nest_supplier_20210521_models.StopServiceInstanceResponse:
+        """
+        @summary 停止服务实例
+        
+        @param request: StopServiceInstanceRequest
+        @return: StopServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_service_instance_with_options(request, runtime)
+
+    async def stop_service_instance_async(
+        self,
+        request: compute_nest_supplier_20210521_models.StopServiceInstanceRequest,
+    ) -> compute_nest_supplier_20210521_models.StopServiceInstanceResponse:
+        """
+        @summary 停止服务实例
+        
+        @param request: StopServiceInstanceRequest
+        @return: StopServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_service_instance_with_options_async(request, runtime)
+
     def update_artifact_with_options(
         self,
         tmp_req: compute_nest_supplier_20210521_models.UpdateArtifactRequest,
