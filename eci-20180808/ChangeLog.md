@@ -1,3 +1,10 @@
+2024-06-19 Version: 2.1.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+- Update API CreateContainerGroup: update param Container.
+
+
 2024-04-12 Version: 2.0.5
 - Update API CreateContainerGroup: add param ComputeCategory.
 - Update API CreateContainerGroup: add param GpuDriverVersion.

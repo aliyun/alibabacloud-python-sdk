@@ -12,13 +12,13 @@ class CommitContainerRequestAcrRegistryInfo(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The RAM role ARN of the account to which permissions are granted during a cross-account authorization.
+        # The Alibaba Cloud Resource Access (ARN) of the RAM role that is assigned to the user (the authorized account) in cross-account authorization scenarios.
         self.arn_service = arn_service
-        # The RAM role ARN of the account that is used to grant permissions during a cross-account authorization.
+        # The ARN of the RAM role that is assigned to the authorizer in cross-account authorization scenarios.
         self.arn_user = arn_user
         # The ID of the Container Registry Enterprise Edition instance.
         self.instance_id = instance_id
-        # The ID of the region where the Container Registry Enterprise Edition instance resides.
+        # The region ID of the Container Registry Enterprise Edition instance.
         self.region_id = region_id
 
     def validate(self):
@@ -59,9 +59,9 @@ class CommitContainerRequestArn(TeaModel):
         role_arn: str = None,
         role_type: str = None,
     ):
-        # The ARN of the RAM role of the Container Registry Enterprise Edition instance.
+        # The ARN of the authorized role.
         self.role_arn = role_arn
-        # The type of the authorization.
+        # The authorization type. A value of service indicates that RAM roles are used for authorization.
         self.role_type = role_type
 
     def validate(self):
@@ -101,8 +101,12 @@ class CommitContainerRequestImage(TeaModel):
         # The message about the image.
         self.message = message
         # The image repository.
+        # 
+        # This parameter is required.
         self.repository = repository
         # The tag of the image. This parameter is empty by default, which indicates that the tag is not modified.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -151,20 +155,27 @@ class CommitContainerRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The access credential configurations of the Container Registry Enterprise Edition instance.\
-        # If you use a Container Registry Personal Edition instance, you can leave this parameter empty.
+        # The access credential configurations of the Container Registry Enterprise Edition instance.
+        # 
+        # >  If you use a Container Registry Personal Edition instance, you do not need to configure this parameter. If you use a Container Registry Enterprise Edition instance, you must configure this parameter.
         self.acr_registry_info = acr_registry_info
-        # The ARN that is required for authorization.
+        # The details about the ARN that is required for authorization.
         self.arn = arn
         # The ID of the container group.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         # The name of the container.
+        # 
+        # This parameter is required.
         self.container_name = container_name
         # The image of the container.
         self.image = image
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -364,11 +375,15 @@ class CopyDataCacheRequest(TeaModel):
     ):
         # The bucket in which the DataCache is stored.
         self.bucket = bucket
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the DataCache in the source region.
+        # 
+        # This parameter is required.
         self.data_cache_id = data_cache_id
         # The destination region of the DataCache.
+        # 
+        # This parameter is required.
         self.destination_region_id = destination_region_id
         # The DataCache name.
         self.name = name
@@ -377,6 +392,8 @@ class CopyDataCacheRequest(TeaModel):
         # The storage path of the data.
         self.path = path
         # The source region of the DataCache.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group to which the DataCache belongs.
         self.resource_group_id = resource_group_id
@@ -585,11 +602,11 @@ class CreateContainerGroupRequestDnsConfig(TeaModel):
         option: List[CreateContainerGroupRequestDnsConfigOption] = None,
         search: List[str] = None,
     ):
-        # The IP addresses of the DNS servers.
+        # The IP addresses of DNS servers.
         self.name_server = name_server
         # Configuration options of the DNS server.
         self.option = option
-        # The search domains of the DNS server.
+        # The search domains of DNS servers.
         self.search = search
 
     def validate(self):
@@ -634,12 +651,13 @@ class CreateContainerGroupRequestHostSecurityContextSysctl(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # The key of the unsafe sysctl when you modify sysctls by configuring a security context. Valid values:
+        # The name of the unsafe sysctl when you modify sysctls by configuring a security context. Valid values:
         # 
-        # *   kernel.shm \* (except kernel.shm_rmid_forced)
-        # *   kernel.msg\*kernel.sem
-        # *   fs.mqueue.\*\
-        # *   net.\*(except net.ipv4.tcp_syncookies, net.ipv4.ping_group_range, and net.ipv4.ip_unprivileged_port_start)
+        # *   kernel.shm \\* (except kernel.shm_rmid_forced)
+        # *   kernel.msg\\*\
+        # *   kernel.sem
+        # *   fs.mqueue.\\*\
+        # *   net.\\*(except net.ipv4.tcp_syncookies, net.ipv4.ping_group_range, and net.ipv4.ip_unprivileged_port_start)
         self.name = name
         # The value of the unsafe sysctl when you modify sysctls by configuring a security context.
         self.value = value
@@ -673,7 +691,7 @@ class CreateContainerGroupRequestHostSecurityContext(TeaModel):
         self,
         sysctl: List[CreateContainerGroupRequestHostSecurityContextSysctl] = None,
     ):
-        # Configure a security context to modify unsafe sysctls. For more information, see [Configure a security context](~~462313~~).
+        # Configure a security context to modify unsafe sysctls. For more information, see [Configure a security context](https://help.aliyun.com/document_detail/462313.html).
         self.sysctl = sysctl
 
     def validate(self):
@@ -710,12 +728,12 @@ class CreateContainerGroupRequestSecurityContextSysctl(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the safe sysctl when you configure a security context to modify sysctls. Valid values:
+        # The name of the safe sysctl when you modify sysctls by configuring a security context. Valid values:
         # 
         # *   net.ipv4.ping_group_range
         # *   net.ipv4.ip_unprivileged_port_start
         self.name = name
-        # The value of the safe sysctl when you configure a security context to modify sysctls.
+        # The value of the safe sysctl when you modify sysctls by configuring a security context.
         self.value = value
 
     def validate(self):
@@ -747,7 +765,7 @@ class CreateContainerGroupRequestSecurityContext(TeaModel):
         self,
         sysctl: List[CreateContainerGroupRequestSecurityContextSysctl] = None,
     ):
-        # Configure a security context to modify sysctls. For more information, see [Configure a security context](~~462313~~)
+        # Configure a security context to modify safe sysctls. For more information, see [Configure a security context](https://help.aliyun.com/document_detail/462313.html).
         self.sysctl = sysctl
 
     def validate(self):
@@ -788,9 +806,9 @@ class CreateContainerGroupRequestAcrRegistryInfo(TeaModel):
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM roles in the Alibaba Cloud account to which the elastic container instance belongs.
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role in the Alibaba Cloud account to which the elastic container instance belongs.
         self.arn_service = arn_service
-        # The ARN of the RAM roles in the Alibaba Cloud account to which the Container Registry instance belongs.
+        # The ARN of the RAM role in the Alibaba Cloud account to which the Container Registry Enterprise Edition instance belongs.
         self.arn_user = arn_user
         # The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. You can specify multiple domain names. Separate multiple domain names with commas (,).
         self.domain = domain
@@ -1284,9 +1302,9 @@ class CreateContainerGroupRequestContainerEnvironmentVar(TeaModel):
         value: str = None,
     ):
         self.field_ref = field_ref
-        # The name of the environment variable. The name must be 1 to 128 bits in length and can contain letters, digits, and underscores (\_). It cannot start with a digit.``
+        # The name of the environment variable. The name must be 1 to 128 bits in length and can contain letters, digits, and underscores (_). It cannot start with a digit.``
         self.key = key
-        # The value of the environment variable. The value must be 0 to 256 bits in length.
+        # The value of the environment variable. The value can be up to 256 characters in length.
         self.value = value
 
     def validate(self):
@@ -1325,9 +1343,9 @@ class CreateContainerGroupRequestContainerLifecyclePostStartHandlerHttpGetHttpHe
         name: str = None,
         value: str = None,
     ):
-        # The name of the custom field in the HTTP GET request header when you use HTTP requests to specify the postStart callback function.
+        # The name of the custom field in the HTTP GET request header when you use HTTP requests to specify a postStart hook.
         self.name = name
-        # The value of the custom field in the HTTP GET request header when you use HTTP requests to specify the postStart callback function.
+        # The value of the custom field in the HTTP GET request header when you use HTTP requests to specify a postStart hook.
         self.value = value
 
     def validate(self):
@@ -1360,9 +1378,9 @@ class CreateContainerGroupRequestContainerLifecyclePreStopHandlerHttpGetHttpHead
         name: str = None,
         value: str = None,
     ):
-        # The key of the custom field in the HTTP GET request header when you use HTTP requests to specify the preStop callback function.
+        # The name of the custom field in the HTTP GET request header when you use HTTP requests to specify a presto hook.
         self.name = name
-        # The value of the custom field in the HTTP GET request header when you use HTTP requests to specify the preStop callback function.
+        # The value of the custom field in the HTTP GET request header when you use HTTP requests to specify a preStop hook.
         self.value = value
 
     def validate(self):
@@ -1397,7 +1415,7 @@ class CreateContainerGroupRequestContainerPort(TeaModel):
     ):
         # The port number. Valid values: 1 to 65535.
         self.port = port
-        # The protocol type. Valid values:
+        # The type of the protocol. Valid values:
         # 
         # *   TCP
         # *   UDP
@@ -1448,7 +1466,7 @@ class CreateContainerGroupRequestContainerVolumeMount(TeaModel):
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The name of the volume. The name of this parameter is the same as the name of the volume that is mounted to the containers.
+        # The name of the volume. The value of this parameter is the same as the value of Volume.N.Name.
         self.name = name
         # Specifies whether the volume is read-only. Default value: false.
         self.read_only = read_only
@@ -1524,6 +1542,7 @@ class CreateContainerGroupRequestContainer(TeaModel):
         memory: float = None,
         name: str = None,
         port: List[CreateContainerGroupRequestContainerPort] = None,
+        security_context_privileged: bool = None,
         security_context_run_as_group: int = None,
         security_context_run_as_non_root: bool = None,
         stdin: bool = None,
@@ -1539,13 +1558,15 @@ class CreateContainerGroupRequestContainer(TeaModel):
         self.security_context = security_context
         # The arguments that are passed to the startup command of the container. You can specify up to 10 arguments.
         self.arg = arg
-        # The commands that you want to run to perform health checks on containers.
+        # The commands to be executed in containers when you use a CLI to perform health checks.
+        # 
+        # >  When you configure ReadinessProbe-related parameters, you can select only one of the HttpGet, Exec, and TcpSocket check methods.
         self.command = command
-        # The number of vCPUs that you want to allocate to the container.
+        # The number of vCPUs that are allocated to the container.
         self.cpu = cpu
-        # The value of the environment variable for the container.
+        # The environment variables of the container.
         self.environment_var = environment_var
-        # Specifies whether to hide the information about environment variables when you query the details of an elastic container instance. Default value: false. Valid values:
+        # Specifies whether to hide the information about environment variables when you query the details of an elastic container instance. Valid values:
         # 
         # *   false
         # *   true If environment variables contain sensitive information, you can set this parameter to true to improve security of the information.
@@ -1553,64 +1574,71 @@ class CreateContainerGroupRequestContainer(TeaModel):
         # The number of GPUs that you want to allocate to the container.
         self.gpu = gpu
         # The image of the container.
+        # 
+        # This parameter is required.
         self.image = image
-        # The policy that you want to use to pull an image. Valid values:
+        # The policy that you want to use to pull images. Valid values:
         # 
         # *   Always: Each time instances are created, image pulling is performed.
         # *   IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
-        # The commands to be executed in containers when you use a CLI to specify the postStart callback function.
+        # The commands to be executed in containers when you use a CLI to specify a postStart hook.
         self.lifecycle_post_start_handler_exec = lifecycle_post_start_handler_exec
-        # The IP address of the host that receives the HTTP GET request when you use an HTTP request to specify the postStart callback function.
+        # The IP address of the host that receives the HTTP GET request when you use an HTTP request to specify a postStart hook.
         self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
         # The HTTP GET request header.
         self.lifecycle_post_start_handler_http_get_http_header = lifecycle_post_start_handler_http_get_http_header
-        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify the postStart callback function.
+        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify a postStart hook.
         self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
-        # The port to which the system sends an HTTP GET request when you use an HTTP request to specify the postStart callback function.
+        # The port to which the system sends an HTTP GET request when you use an HTTP request to specify a postStart hook.
         self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
-        # The protocol type of HTTP GET requests when you use HTTP requests to specify the postStart callback function. Valid values:
+        # The protocol type of HTTP GET requests when you use HTTP requests to specify a postStart hook. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
-        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify the postStart callback function.
+        # The IP address of the host that receives the TCP socket request when you use a TCP socket request to specify a postStart hook.
         self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
-        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify the postStart callback function.
+        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify a postStart hook.
         self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
-        # The commands to be executed in containers when you use a CLI to specify the preStop callback function.
+        # The commands to be executed in containers when you use a CLI to specify a preStop hook.
         self.lifecycle_pre_stop_handler_exec = lifecycle_pre_stop_handler_exec
-        # The IP address of the host that receives the HTTP GET request when you use an HTTP request to specify the preStop callback function.
+        # The IP address of the host that receives the HTTP GET request when you use an HTTP request to specify a preStop hook.
         self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
         # The HTTP GET request header.
         self.lifecycle_pre_stop_handler_http_get_http_header = lifecycle_pre_stop_handler_http_get_http_header
-        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify the preSop callback function.
+        # The path to which the system sends an HTTP GET request for a health check when you use an HTTP request to specify a preSop hook.
         self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
-        # The port to which the system sends an HTTP GET request for a health check when you use HTTP requests to specify the preStop callback function.
+        # The port to which the system sends an HTTP GET request for a health check when you use HTTP requests to specify a preStop hook.
         self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
-        # The protocol type of the HTTP GET request when you use an HTTP request to specify the preStop callback function. Valid values:
+        # The protocol type of the HTTP GET request when you use an HTTP request to specify a preStop hook. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
-        # The IP address of the host that receives the TCP socket request when you use a TCP socket request to specify the preStop callback function.
+        # The IP address of the host that receives the TCP socket request when you use a TCP socket request to specify a preStop hook.
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
-        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify the preStop callback function.
+        # The port to which the system sends a TCP socket request for a health check when you use TCP sockets to specify a preStop hook.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
-        # The memory size that you want to allocate to the container. Unit: GiB
+        # The memory size of the container. Unit: GiB.
         self.memory = memory
         # The name of the container.
+        # 
+        # This parameter is required.
         self.name = name
         # The port to which the system sends an HTTP GET request for a health check when you use HTTP requests to perform health checks.
+        # 
+        # >  When you configure LivenessProbe-related parameters, you can select only one of the HttpGet, Exec, and TcpSocket check methods.
         self.port = port
+        self.security_context_privileged = security_context_privileged
         # The user group that runs the container.
         self.security_context_run_as_group = security_context_run_as_group
         # Specifies whether to run the container as a non-root user.
         self.security_context_run_as_non_root = security_context_run_as_non_root
         # Specifies whether the container allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
         self.stdin = stdin
-        # Specifies whether standard input streams are disconnected from multiple sessions after a client is disconnected.\
+        # Specifies whether standard input streams are disconnected from multiple sessions after a client is disconnected.\\
         # If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, standard input streams are also disconnected, and remain disconnected until the container restarts.
         self.stdin_once = stdin_once
         # The path of the file from which the system retrieves termination messages of the container when the container exits.
@@ -1621,7 +1649,7 @@ class CreateContainerGroupRequestContainer(TeaModel):
         # 
         # If the command is a /bin/bash command, set the value to true.
         self.tty = tty
-        # The information about the volume that you want to mount to the container.
+        # The information about the volume that you want to mount on the container.
         self.volume_mount = volume_mount
         # The working directory of the container.
         self.working_dir = working_dir
@@ -1728,6 +1756,8 @@ class CreateContainerGroupRequestContainer(TeaModel):
         if self.port is not None:
             for k in self.port:
                 result['Port'].append(k.to_map() if k else None)
+        if self.security_context_privileged is not None:
+            result['SecurityContextPrivileged'] = self.security_context_privileged
         if self.security_context_run_as_group is not None:
             result['SecurityContextRunAsGroup'] = self.security_context_run_as_group
         if self.security_context_run_as_non_root is not None:
@@ -1827,6 +1857,8 @@ class CreateContainerGroupRequestContainer(TeaModel):
             for k in m.get('Port'):
                 temp_model = CreateContainerGroupRequestContainerPort()
                 self.port.append(temp_model.from_map(k))
+        if m.get('SecurityContextPrivileged') is not None:
+            self.security_context_privileged = m.get('SecurityContextPrivileged')
         if m.get('SecurityContextRunAsGroup') is not None:
             self.security_context_run_as_group = m.get('SecurityContextRunAsGroup')
         if m.get('SecurityContextRunAsNonRoot') is not None:
@@ -1857,9 +1889,9 @@ class CreateContainerGroupRequestHostAliase(TeaModel):
         hostname: List[str] = None,
         ip: str = None,
     ):
-        # The hostname of the elastic container instance.
+        # The hostnames of the elastic container instance.
         self.hostname = hostname
-        # The IP address of the host.
+        # The IP address of the elastic container instance.
         self.ip = ip
 
     def validate(self):
@@ -2031,9 +2063,9 @@ class CreateContainerGroupRequestInitContainerEnvironmentVar(TeaModel):
         value: str = None,
     ):
         self.field_ref = field_ref
-        # The name of the environment variable. The name must be 1 to 128 characters in length, and can contain letters, digits, and underscores (\_). It cannot start with a digit.``
+        # The name of the environment variable. The name must be 1 to 128 bits in length and can contain letters, digits, and underscores (_). It cannot start with a digit.``
         self.key = key
-        # The value of the environment variable. The value can be up to 256 characters in length.
+        # The value of the environment variable. The value must be 0 to 256 bits in length.
         self.value = value
 
     def validate(self):
@@ -2115,19 +2147,19 @@ class CreateContainerGroupRequestInitContainerVolumeMount(TeaModel):
     ):
         # The directory to which the volume is mounted. The data stored in this directory is overwritten by the data on the volume. Specify this parameter with caution.
         self.mount_path = mount_path
-        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one init container to be shared with other init containers in the same pod, or even with other pods on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are mounted to the volume or to the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives subsequent mounts that are mounted to the volume or to the subdirectories of the volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToCotainer mount. The volume mount receives subsequent mounts that are mounted to the volume or to the subdirectories of the volume. In addition, all volume mounts created by the container are propagated back to the host and to all containers of all pods that use the same volume.
+        # *   None: The volume mount does not receive subsequent mounts that are performed on this volume or subdirectories of this volume.
+        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume.
+        # *   Bidirectional: This value is similar to HostToContainer. The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume. In addition, all volume mounts that are mounted on the init container are propagated back to the host and all init containers of all pods that use the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The volume name.
+        # The name of the volume.
         self.name = name
         # Specifies whether the mount path is read-only. Default value: false.
         self.read_only = read_only
-        # The subdirectory of the volume. The pod can mount different directories of the same volume to different directories of the init container.
+        # The subdirectory of the volume. The pod can mount different directories of the same volume to different subdirectories of init containers.
         self.sub_path = sub_path
 
     def validate(self):
@@ -2190,7 +2222,7 @@ class CreateContainerGroupRequestInitContainer(TeaModel):
         self.arg = arg
         # The startup commands of the init container.
         self.command = command
-        # The number of vCPUs that you want to allocate to the init container. Unit: cores.
+        # The number of vCPUs that you want to allocate to the init container.
         self.cpu = cpu
         # The environment variable of the init container.
         self.environment_var = environment_var
@@ -2198,23 +2230,23 @@ class CreateContainerGroupRequestInitContainer(TeaModel):
         self.gpu = gpu
         # The image of the init container.
         self.image = image
-        # The policy for image pulling. Valid values:
+        # The policy that you want to use to pull images. Valid values:
         # 
         # *   Always: Each time instances are created, image pulling is performed.
         # *   IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
-        # The memory size of the init container. Unit: GiB.
+        # The memory size that you want to allocate to the init container. Unit: GiB.
         self.memory = memory
-        # The container name.
+        # The name of the init container.
         self.name = name
-        # The port number of the init container.
+        # The information about the port.
         self.port = port
         # The path of the file from which the system retrieves termination messages of the init container when the init container exits.
         self.termination_message_path = termination_message_path
         # The message notification policy. This parameter is empty by default.
         self.termination_message_policy = termination_message_policy
-        # The information about the volume that you want to mount on the init container.
+        # The information about the volumes that you want to mount to the init containers.
         self.volume_mount = volume_mount
         # The working directory of the init container.
         self.working_dir = working_dir
@@ -2358,9 +2390,9 @@ class CreateContainerGroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag. The tag key cannot be an empty string and must be unique. The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key. The tag key cannot be an empty string and must be unique. The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.key = key
-        # The value of a tag. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+        # The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2670,10 +2702,12 @@ class CreateContainerGroupRequestVolume(TeaModel):
         self.nfsvolume = nfsvolume
         # The name of the volume.
         self.name = name
-        # The type of the volume when you set the Type parameter to HostPathVolume. Valid values:
+        # The type of the HostPath volume. Valid values:
         # 
         # *   Directory
         # *   File
+        # 
+        # >  Only users in the whitelist can mount HostPath volumes.
         self.type = type
 
     def validate(self):
@@ -2819,129 +2853,139 @@ class CreateContainerGroupRequest(TeaModel):
         self.dns_config = dns_config
         self.host_security_context = host_security_context
         self.security_context = security_context
-        # The information about the Container Registry Enterprise Edition instance. For more information, see [Pull images from a Container Registry Enterprise Edition instance without using secrets](~~194250~~).
+        # The information about the Container Registry Enterprise Edition instance that provides the image for the creation of the elastic container instance. For more information, see [Pull images from a Container Registry Enterprise Edition instance without using a secret](https://help.aliyun.com/document_detail/194250.html).
         self.acr_registry_info = acr_registry_info
-        # The validity period of the elastic container instance. When this period expires, the instance is forced to exit. Unit: seconds.
+        # The active period of the elastic container instance. After this period expires, the instance is forced to exit. Unit: seconds.
         self.active_deadline_seconds = active_deadline_seconds
         # Specifies whether to automatically create an EIP and associate it with the elastic container instance.
         self.auto_create_eip = auto_create_eip
         # Specifies whether to automatically match image caches. Default value: false.
         self.auto_match_image_cache = auto_match_image_cache
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The computing power type of the instance.
+        # The computing power type of the instance. For more information, see [Set the computing power type to economy when you create an elastic container instance](https://help.aliyun.com/document_detail/2638061.html).
         self.compute_category = compute_category
-        # The information about the containers.
-        self.container = container
-        # The name of the elastic container instance. Format requirements:
+        # The information about the container.
         # 
-        # *   The name must be 2 to 128 characters in length
+        # This parameter is required.
+        self.container = container
+        # The name of the elastic container instance (container group). The name must meet the following requirements:
+        # 
+        # *   The name must be 2 to 128 characters in length.
         # *   The name can contain lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen (-).
+        # 
+        # This parameter is required.
         self.container_group_name = container_group_name
         # Specifies whether to enable container resource view. Container resource view displays the actual container resource data instead of data of the host. If the specifications of the generated elastic container instance are larger than the specifications that you request for when you create the instance, you can enable the ContainerResourceView feature to ensure that the resources that you view in the container are the same as the resources that you request for.
         self.container_resource_view = container_resource_view
-        # The path to store core dump files. For more information, see [Save core files to volumes](~~167801~~).
+        # The path to core dump files. For more information, see [Save core files to volumes](https://help.aliyun.com/document_detail/167801.html).
         # 
-        # > The path cannot start with a vertical bar (`|`). You cannot use core dump files to configure executable programs.
+        # >  The path cannot start with |. You cannot use core dump files to configure executable programs.``
         self.core_pattern = core_pattern
-        # The number of vCPUs that you want to allocate to the elastic container instance.
+        # The number of vCPUs that you want to allocate to the instance.
         self.cpu = cpu
         # The CPU architecture of the instance. Default value: AMD64. Valid values:
         # 
         # *   AMD64
         # *   ARM64
         self.cpu_architecture = cpu_architecture
-        # The number of physical CPU cores. You can specify this parameter only for specific instance types. For more information, see [Specify custom CPU options](~~197781~~).
+        # The number of physical CPU cores. You can specify this parameter for only specific ECS instance types.
         self.cpu_options_core = cpu_options_core
         # This parameter is not available.
         self.cpu_options_numa = cpu_options_numa
-        # The number of threads per core. You can specify this parameter only for specific instance types. If you set this parameter to 1, Hyper-Threading is disabled. For more information, see [Specify custom CPU options](~~197781~~).
+        # The number of threads per core. You can specify this parameter for only specific ECS instance types. A value of 1 specifies that Hyper-Threading is disabled.
         self.cpu_options_threads_per_core = cpu_options_threads_per_core
-        # The bucket to store data caches.
+        # The bucket that stores the data cache.
         self.data_cache_bucket = data_cache_bucket
-        # Specifies whether to enable the performance burst feature when ESSDs AutoPL are used for data caching. For more information, see [ESSDs AutoPL](~~368372~~).
+        # Specifies whether to enable the performance burst feature when ESSDs AutoPL are used to store data caches. For more information, see [ESSDs AutoPL](https://help.aliyun.com/document_detail/368372.html).
         self.data_cache_bursting_enabled = data_cache_bursting_enabled
-        # The performance level of the disk used by data caches.\
-        # Enhanced SSDs (ESSDs) are preferentially used. The default performance level is PL1.
+        # The performance level (PL) of the disk that you want to use to store data caches.\\
+        # Enhanced SSDs (ESSDs) are preferentially used to store data caches. The default performance level is PL1.
         self.data_cache_pl = data_cache_pl
-        # The input/output operations per second (IOPS) provisioned for ESSDs AutoPL when ESSDs AutoPL are used for data caching.\
-        # Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.\
-        # For more information, see [ESSDs AutoPL](~~368372~~).
+        # The input/output operations per second (IOPS) provisioned for ESSDs AutoPL when ESSDs AutoPL are used to store data caches.\\
+        # Valid values: 0 to min{50000, 1000 × Storage capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Storage capacity, 50,000}.\\
+        # For more information, see [ESSDs AutoPL](https://help.aliyun.com/document_detail/368372.html).
         self.data_cache_provisioned_iops = data_cache_provisioned_iops
         # The Domain Name System (DNS) policy. Valid values:
         # 
-        # *   None: uses the DNS that is specified for DnsConfig-related parameters.
+        # *   None: uses the DNS that is specified by DnsConfig.
         # *   Default: uses the DNS that is specified for the runtime environment.
         self.dns_policy = dns_policy
-        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   true: performs only a dry run without creating an elastic container instance. The check items include the request format, service limits, resource inventory, and whether the required parameters are specified. If the request fails the dry run, an error is returned. If the request passes the dry run, the DryRun.Success error code is returned.
-        # *   false (default): performs a dry run, and creates an elastic container instance after the request passes the dry run.
+        # *   true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and available resources. If the request passes the dry run, the DryRunOperation error code is returned. Otherwise, an error message is returned.
+        # *   false (default): performs a dry run and performs the actual request. If the request passes the dry run, the elastic container instance is created.
         self.dry_run = dry_run
-        # The maximum outbound bandwidth. Unit: bytes.
+        # The maximum outbound bandwidth. Unit: bit/s.
         self.egress_bandwidth = egress_bandwidth
-        # The bandwidth of the EIP. Unit: Mbit/s. Default value: 5.\
-        # You can specify this parameter when you set AutoCreateEip to true.
+        # The maximum bandwidth value for the EIP. Unit: Mbit/s. Default value: 5.\\
+        # This parameter is valid only when AutoCreateEip is set to true.
         self.eip_bandwidth = eip_bandwidth
-        # Specifies the EIP bandwidth plan that you want to use.
+        # The EIP bandwidth plan that you want to associate with the instance.
         self.eip_common_bandwidth_package = eip_common_bandwidth_package
-        # The line type of the elastic IP address (EIP). Valid values:
+        # The line type of the EIP. Default value: BGP. Valid values:
         # 
-        # *   BGP: BGP (Multi-ISP) lines
-        # *   BGP_PRO: BGP (Multi-ISP) Pro lines
+        # *   BGP: BGP (Multi-ISP) line
+        # *   BGP_PRO: BGP (Multi-ISP) Pro line
         self.eip_isp = eip_isp
         # The ID of the elastic IP address (EIP).
         self.eip_instance_id = eip_instance_id
-        # The increased storage capacity of the temporary storage space. Unit: GiB.\
-        # For more information, see [Increase the storage capacity of the temporary storage space](~~204066~~).
+        # The increased capacity of the temporary storage space. Unit: GiB.\\
+        # For more information, see [Increase the size of the temporary storage space](https://help.aliyun.com/document_detail/204066.html).
         self.ephemeral_storage = ephemeral_storage
-        # Specifies whether to configure the instance to use a fixed IP address. For more information, see [Configure an elastic container instance to use a fixed IP address](~~2381086~~).
+        # Specifies whether to configure the instance to use a fixed IP address. For more information, see [Configure an elastic container instance to use a fixed IP address](https://help.aliyun.com/document_detail/2381086.html).
         self.fixed_ip = fixed_ip
         # The retention period of the fixed IP address after the original instance is released and the fixed IP address becomes idle. Unit: hours. Default value: 48.
         self.fixed_ip_retain_hour = fixed_ip_retain_hour
+        # The version of the GPU driver. Default value: tesla=470.82.01. Valid values:
+        # 
+        # *   tesla=470.82.01
+        # *   tesla=525.85.12
+        # 
+        # >  You can switch the GPU driver version only for a few Elastic Compute Service (ECS) instance types. For more information, see [Specify GPU-accelerated ECS instance types to create an elastic container instance](https://help.aliyun.com/document_detail/2579486.html).
         self.gpu_driver_version = gpu_driver_version
         # The alias of the elastic container instance.
         self.host_aliase = host_aliase
-        # The hostname of the instance.
+        # The hostname.
         self.host_name = host_name
         # The image acceleration mode. Valid values:
         # 
-        # *   nydus: Nydus is used to accelerate image pulling. The images must support Nydus.
-        # *   dadi: DADI is used to accelerate image pulling. The images must support DADI.
-        # *   p2p: P2P is used to accelerate image pulling. The images must support P2P.
-        # *   imc: Image caches are used to accelerate image pulling.
+        # *   nydus: uses Nydus to accelerate image pulling. The images must support Nydus.
+        # *   dadi: uses DADI to accelerate image pulling. The images must support DADI.
+        # *   p2p: uses P2P to accelerate image pulling. The images must support p2p.
+        # *   imc: uses image caches to accelerate image pulling.
         self.image_accelerate_mode = image_accelerate_mode
-        # The information about the image repository.
+        # The information about the logon credentials.
         self.image_registry_credential = image_registry_credential
-        # The ID of the image cache. For more information, see [Use image caches to accelerate the creation of instances](~~141281~~).
+        # The ID of the image cache. For more information, see [Use image caches to accelerate the creation of instances](https://help.aliyun.com/document_detail/141281.html).
         self.image_snapshot_id = image_snapshot_id
-        # The maximum inbound bandwidth. Unit: bytes.
+        # The maximum inbound bandwidth. Unit: bit/s.
         self.ingress_bandwidth = ingress_bandwidth
         # The information about the init containers.
         self.init_container = init_container
         # The address of the self-managed image repository. When you create an elastic container instance by using an image in a self-managed image repository that uses a self-signed certificate, you must specify this parameter to skip the certificate authentication. This prevents image pull failures caused by certificate authentication failures.
         self.insecure_registry = insecure_registry
-        # The ECS instance type. Different instance types are supported. For more information, see [Specify an ECS instance type to create an elastic container instance](~~114664~~).
+        # The ECS instance types that you specify to create the elastic container instance. Multiple instance types are supported. For more information, see [Specify ECS instance types to create an elastic container instance](https://help.aliyun.com/document_detail/114664.html).
         self.instance_type = instance_type
-        # The number of IPv6 addresses. Set the value to 1. You can assign only one IPv6 address to an elastic container instance.
+        # The number of IPv6 addresses that are assigned to the instance. Set the value to 1. You can assign only one IPv6 address to an elastic container instance.
         self.ipv_6address_count = ipv_6address_count
-        # The peak Internet bandwidth of the IPv6 address when the Ipv6GatewayBandwidthEnable parameter is set to true. Valid values:
+        # The maximum IPv6 Internet bandwidth when you set Ipv6GatewayBandwidthEnable to true. Valid values:
         # 
-        # *   If the billing method for the Internet bandwidth of the IPv6 gateway is pay-by-bandwidth, the Internet bandwidth of the IPv6 address ranges from 1 to 2,000 Mbit/s.
+        # *   If the billing method for IPv6 network usage is pay-by-bandwidth, the maximum IPv6 Internet bandwidth ranges from 1 to 2,000 Mbit/s.
         # 
-        # *   If the billing method for the Internet bandwidth of the IPv6 gateway is pay-by-traffic, the Internet bandwidth range of the IPv6 address is based on the edition of the IPv6 gateway.
+        # *   If the billing method for IPv6 network usage is pay-by-traffic, the maximum IPv6 Internet bandwidth varies based on the edition of the IPv6 gateway.
         # 
-        #     *   If the IPv6 gateway is of Free Edition, the Internet bandwidth of the IPv6 address ranges from 1 to 200 Mbit/s.
-        #     *   If the IPv6 gateway is of Enterprise Edition, the Internet bandwidth of the IPv6 address ranges from 1 to 500 Mbit/s.
-        #     *   If the IPv6 gateway is of Enhanced Enterprise Edition, the Internet bandwidth of the IPv6 address ranges from 1 to 1,000 Mbit/s.
+        #     *   If the IPv6 gateway is of Free Edition, the maximum IPv6 Internet bandwidth ranges from 1 to 200 Mbit/s.
+        #     *   If the IPv6 gateway is of Enterprise Edition, the maximum IPv6 Internet bandwidth ranges from 1 to 500 Mbit/s.
+        #     *   If the IPv6 gateway is of Enhanced Enterprise Edition, the maximum IPv6 Internet bandwidth ranges from 1 to 1000 Mbit/s.
         # 
         # The default value is the maximum value in the Internet bandwidth range of the IPv6 gateway.
         self.ipv_6gateway_bandwidth = ipv_6gateway_bandwidth
-        # Specifies whether to enable IPv6 Internet access for the elastic container instance.
+        # Specifies whether to enable Internet access to the elastic container instance over IPv6 addresses.
         self.ipv_6gateway_bandwidth_enable = ipv_6gateway_bandwidth_enable
-        # The memory size that you want to allocate to the elastic container instance. Unit: GiB.
+        # The memory size that you want to allocate to the instance. Unit: GiB.
         self.memory = memory
-        # The domain names of the NTP server.
+        # The endpoints of the Network Time Protocol (NTP) servers.
         self.ntp_server = ntp_server
         # The operating system of the elastic container instance. Default value: Linux. Valid values:
         # 
@@ -2954,23 +2998,25 @@ class CreateContainerGroupRequest(TeaModel):
         self.overhead_reservation_option = overhead_reservation_option
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The address of the self-managed image repository. When you create an elastic container instance by using an image in a self-managed image repository that uses the HTTP protocol, you must specify this parameter. This allows Elastic Container Instance to pull the image over the HTTP protocol instead over the default HTTPS protocol. This prevents image pull failures caused by different protocols.
+        # The address of the self-managed image repository. When you create an elastic container instance by using an image in a self-managed image repository that uses the HTTP protocol, you must specify this parameter. This way, Elastic Container Instance pulls the image over the HTTP protocol instead of the default HTTPS protocol. This prevents image pull failures caused by different protocols.
         self.plain_http_registry = plain_http_registry
         # The private IP address of the elastic container instance. Only IPv4 addresses are supported. Make sure that the IP address is idle.
         self.private_ip_address = private_ip_address
-        # The name of the RAM role that you want to associate with the elastic container instance. You can use the RAM role to access elastic container instances and ECS instances. For more information, see [Use an instance RAM role by calling API operations](~~61178~~).
+        # The name of the instance Resource Access Management (RAM) role. You can use the same RAM role to access elastic container instances and ECS instances. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
         self.ram_role_name = ram_role_name
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The restart policy of the elastic container instance. Valid values:
+        # The restart policy of the instance. Valid values:
         # 
-        # *   Always: Always restarts the instance.
-        # *   Never: Never restarts the instance.
-        # *   OnFailure: Restarts the instance when the last start failed.
+        # *   Always: Always restarts the instance if a container in the instance exits upon termination.
+        # *   Never: Never restarts the instance if a container in the instance exits upon termination.
+        # *   OnFailure: Restarts the instance only if a container in the instance exists upon failure with a status code of non-zero.
         # 
         # Default value: Always.
         self.restart_policy = restart_policy
@@ -2979,25 +3025,25 @@ class CreateContainerGroupRequest(TeaModel):
         # *   VSwitchOrdered: The system schedules resources in the sequence of the vSwitches.
         # *   VSwitchRandom: The system schedules resources at random.
         # 
-        # For more information, see [Specify multiple zones to create an elastic container instance](~~157290~~).
+        # For more information, see [Specify multiple zones to create an elastic container instance](https://help.aliyun.com/document_detail/157290.html).
         self.schedule_strategy = schedule_strategy
-        # The ID of the security group to which the instance is assigned. Instances within the same security group can access each other.
+        # The ID of the security group to which the instance belongs. Instances in the same security group can access each other.
         # 
         # If you do not specify a security group, the system automatically uses the default security group in the region that you selected. Make sure that the inbound rules of the security group contain the container protocols and port numbers that you want to expose. If you do not have a default security group in the region, the system creates a default security group, and then adds the container protocols and port numbers that you specified to the inbound rules of the security group.
         self.security_group_id = security_group_id
         # Specifies whether to use a shared namespace. Default value: false.
         self.share_process_namespace = share_process_namespace
-        # The protection period of the preemptible instance. Unit: hours. Default value: 1. A value of 0 indicates no protection period.
+        # The protection period of the preemptible elastic container instance. Unit: hours. Default value: 1. A value of 0 indicates no protection period.
         self.spot_duration = spot_duration
-        # The maximum hourly price of the preemptible elastic container instance. The value can contain up to three decimal places.
+        # The maximum hourly price of the preemptible elastic container instance. The value can be accurate to three decimal places.
         # 
-        # If you set SpotStrategy to SpotWithPriceLimit, you must specify SpotPriceLimit.
+        # If you set SpotStrategy to SpotWithPriceLimit, you must specify the SpotPriceLimit parameter.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the instance. Valid values:
+        # The bid policy for the instance. Valid values:
         # 
-        # *   NoSpot: The instance is created as a regular pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is created as a preemptible instance whose bidding price is based on the market price at the time of purchase.
+        # *   NoSpot: The instance is created as a pay-as-you-go instance.
+        # *   SpotWithPriceLimit: The instance is created as a preemptible instance for which you specify the maximum hourly price.
+        # *   SpotAsPriceGo: The instance is created as a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
@@ -3006,19 +3052,19 @@ class CreateContainerGroupRequest(TeaModel):
         # *   true: enables periodical execution.
         # *   false: disables periodical execution.
         self.strict_spot = strict_spot
-        # The tags that you want to bind with the instance. You can bind a maximum of 20 tags. For more information, see [Use tags to manage elastic container instances](~~146608~~).
+        # The tags that you want to add to the instance. You can bind a maximum of 20 tags. For more information, see [Use tags to manage elastic container instances](https://help.aliyun.com/document_detail/146608.html).
         self.tag = tag
-        # The buffer time during which the program handles operations before the program stops. Unit: seconds.
+        # The buffer period of time during which the program handles operations before the program is stopped. Unit: seconds.
         self.termination_grace_period_seconds = termination_grace_period_seconds
-        # The ID of the vSwitch to which the instance is connected. You can specify up to 10 vSwitch IDs. Separate multiple vSwitch IDs with commas (,). Example: `vsw-***,vsw-***`.
+        # The IDs of the vSwitches that connect to the instance. You can specify up to 10 vSwitch IDs at a time. Separate multiple vSwitch IDs with commas (,). Example: `vsw-***,vsw-***`.
         # 
-        # If no vSwitch is specified, the system automatically uses the default vSwitch in the default VPC in the region that you selected. If you do not have a default VPC or a default vSwitch in the region, the system automatically creates a default VPC and a default vSwitch.
+        # If you do not specify a vSwitch, the system automatically uses the default vSwitch in the default VPC in the region that you selected. If you do not have a default VPC or a default vSwitch in the region, the system automatically creates a default VPC and a default vSwitch.
         # 
-        # > The number of IP addresses in the vSwitch CIDR block determines the maximum number of elastic container instances that can be created for the vSwitch. Before you create elastic container instances, plan the CIDR block of the vSwitch.
+        # >  The number of IP addresses in the vSwitch CIDR block determines the maximum number of elastic container instances that you can create for the vSwitch. Before you create elastic container instances, you must plan the CIDR block of the vSwitch.
         self.v_switch_id = v_switch_id
-        # Information about volumes.
+        # The information about the volume that you want to mount to the container.
         self.volume = volume
-        # The ID of the zone in which the elastic container instance is deployed. If you do not specify this parameter, the system selects a zone.
+        # The zone ID of the instance. If you do not specify this parameter, the system selects a zone.
         # 
         # This parameter is empty by default.
         self.zone_id = zone_id
@@ -3403,9 +3449,9 @@ class CreateContainerGroupResponseBody(TeaModel):
         container_group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the elastic container instance.
+        # The ID of the instance.
         self.container_group_id = container_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3636,7 +3682,7 @@ class CreateDataCacheRequest(TeaModel):
         # 
         # >  eci-system is the reserved bucket of the ECI and cannot be used.
         self.bucket = bucket
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The data source.
         self.data_source = data_source
@@ -3651,6 +3697,8 @@ class CreateDataCacheRequest(TeaModel):
         # The storage path of the data.
         self.path = path
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -4015,7 +4063,7 @@ class CreateImageCacheRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # Information about the Container Registry Enterprise Edition instance. For more information, see [Pull images from a Container Registry Enterprise Edition instance without using secrets](~~194250~~).
+        # Information about the Container Registry Enterprise Edition instance. For more information, see [Pull images from a Container Registry Enterprise Edition instance without using secrets](https://help.aliyun.com/document_detail/194250.html).
         self.acr_registry_info = acr_registry_info
         # Comments.
         self.annotations = annotations
@@ -4026,7 +4074,7 @@ class CreateImageCacheRequest(TeaModel):
         # 
         # Default value: false.
         self.auto_match_image_cache = auto_match_image_cache
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the elastic IP address (EIP). If you want to pull images over the Internet, make sure that the elastic container instance can access the Internet. You can configure an EIP or a NAT gateway for the elastic container instance to access the Internet.
         self.eip_instance_id = eip_instance_id
@@ -4046,8 +4094,12 @@ class CreateImageCacheRequest(TeaModel):
         # >  If you set the Flash parameter to true, instant image cache is enabled. During the creation of the image cache, the system first creates a temporary local snapshot for you to instantly use the snapshot. After the temporary local snapshot is created, the system begins to create a regular snapshot. After the regular snapshot is created, the temporary local snapshot is automatically deleted.
         self.flash_copy_count = flash_copy_count
         # Container image N that is used to create the image cache.
+        # 
+        # This parameter is required.
         self.image = image
         # The name of the image cache.
+        # 
+        # This parameter is required.
         self.image_cache_name = image_cache_name
         # The size of the image cache. Unit: GiB. Default value: 20.
         self.image_cache_size = image_cache_size
@@ -4062,6 +4114,8 @@ class CreateImageCacheRequest(TeaModel):
         # The address of the self-managed image repository. When you create an image cache by using an image in a self-managed image repository that uses the HTTP protocol, you must specify this parameter. This way, Elastic Container Instance uses the HTTP protocol instead of the default HTTPS protocol to pull the image. This can prevent the image from failing to pull due to different protocols.
         self.plain_http_registry = plain_http_registry
         # The region ID of the image cache.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -4326,13 +4380,17 @@ class CreateInstanceOpsTaskRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the container group.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         # The type of the O&M task. Valid values:
         # 
         # *   coredump
         # *   tcpdump
+        # 
+        # This parameter is required.
         self.ops_type = ops_type
-        # The value of the O\&M task. You can set this parameter based on the value of OpsType.
+        # The value of the O\\&M task. You can set this parameter based on the value of OpsType.
         # 
         # *   If OpsType is set to coredump, the valid values of OpsValue are:
         # 
@@ -4354,10 +4412,14 @@ class CreateInstanceOpsTaskRequest(TeaModel):
         #     *   Duration: the captured period. Unit: seconds.
         #     *   PacketNum: the number of packets to be captured.
         #     *   FileSize: the size of the destination files on packets. Unit: bytes. Maximum value: 1073741824. 1073741824 bytes is equal to 1 GB.
+        # 
+        # This parameter is required.
         self.ops_value = ops_value
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the O&M task.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4591,7 +4653,7 @@ class CreateVirtualNodeRequest(TeaModel):
         virtual_node_name: str = None,
         zone_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The IP address of the DNS server. If dnsPolicy=ClusterFirst is configured for the Elastic Container Instance pod, Elastic Container Instance uses the configuration to provide DNS services to containers. You can configure multiple IP addresses. Separate multiple IP addresses with commas (,).
         self.cluster_dns = cluster_dns
@@ -4610,12 +4672,16 @@ class CreateVirtualNodeRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the virtual node.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the security group. The VNode and the elastic container instances in the VNode are added to the security group.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
         # Tag.
         self.tag = tag
@@ -4631,6 +4697,8 @@ class CreateVirtualNodeRequest(TeaModel):
         # The ID of the vSwitch. The vSwitch is connected to the VNode and the elastic container instances in the VNode.
         # 
         # You can specify 1 to 10 vSwitches for a VPC.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The name of the VNode. The name must be 2 to 128 characters in length, and can contain lowercase letters, digits, periods (.), and hyphens (-).
         self.virtual_node_name = virtual_node_name
@@ -4837,13 +4905,17 @@ class DeleteContainerGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4976,7 +5048,7 @@ class DeleteDataCacheRequest(TeaModel):
     ):
         # The bucket that stores the DataCache. By default, the bucket is named default.
         self.bucket = bucket
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the DataCache.
         self.data_cache_id = data_cache_id
@@ -4985,6 +5057,8 @@ class DeleteDataCacheRequest(TeaModel):
         # The directory in which the virtual host of the DataCache is located.
         self.path = path
         # The region ID of the DataCache.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5121,13 +5195,17 @@ class DeleteImageCacheRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the image cache.
+        # 
+        # This parameter is required.
         self.image_cache_id = image_cache_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the image cache.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5256,15 +5334,19 @@ class DeleteVirtualNodeRequest(TeaModel):
         resource_owner_id: int = None,
         virtual_node_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the virtual node.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the virtual node.
+        # 
+        # This parameter is required.
         self.virtual_node_id = virtual_node_id
 
     def validate(self):
@@ -5392,6 +5474,8 @@ class DescribeAvailableResourceRequestDestinationResource(TeaModel):
         # 
         # *   InstanceTypeFamily: queries instance families. If you use this parameter value, you must also specify the Value parameter.
         # *   InstanceType: queries instance types. If you use this parameter value, you must also specify the Value, Cores, and Memory parameters.
+        # 
+        # This parameter is required.
         self.category = category
         # The number of vCPUs. This parameter is available only when the Category parameter is set to InstanceType.
         self.cores = cores
@@ -5498,12 +5582,16 @@ class DescribeAvailableResourceRequest(TeaModel):
         zone_id: str = None,
     ):
         # The information about the resource that you want to query.
+        # 
+        # This parameter is required.
         self.destination_resource = destination_resource
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the ECS instance families.
         # 
-        # You can call the [DescribeRegions](~~146965~~) operation to query the most recent list of regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/146965.html) operation to query the most recent list of regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5891,11 +5979,11 @@ class DescribeCommitContainerTaskRequest(TeaModel):
         task_id: List[str] = None,
         task_status: str = None,
     ):
-        # The ID of the elastic container instance on which the CommitContainer task is executed.\
+        # The ID of the elastic container instance on which the CommitContainer task is executed.\\
         # You must enter the instance ID, the task ID, or both for the request.
         self.container_group_id = container_group_id
-        # The number of entries to return on each page.\
-        # Maximum value: 50.\
+        # The number of entries to return on each page.\\
+        # Maximum value: 50.\\
         # Default value: 10.
         self.max_results = max_results
         # The token that determines the start point of the query. Set the value to the value of NextToken that is returned from the last request.
@@ -5903,6 +5991,8 @@ class DescribeCommitContainerTaskRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6285,6 +6375,8 @@ class DescribeContainerGroupEventsRequest(TeaModel):
         # You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -6772,6 +6864,8 @@ class DescribeContainerGroupMetricRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         # The end of the time range to query. The default value is the current time.
         # 
@@ -7553,19 +7647,21 @@ class DescribeContainerGroupPriceRequest(TeaModel):
     ):
         # The computing power type. A value of economy specifies economic instances.
         self.compute_category = compute_category
-        # The number of vCPUs. For information about the vCPU and memory specifications that are supported by Elastic Container Instance, see [vCPU and memory specifications](~~114662~~).
+        # The number of vCPUs. For information about the vCPU and memory specifications that are supported by Elastic Container Instance, see [vCPU and memory specifications](https://help.aliyun.com/document_detail/114662.html).
         self.cpu = cpu
         # The storage size of the temporary storage space. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
-        # The instance type of the Elastic Compute Service (ECS) instance that is used to create the elastic container instance. For information about the ECS instance types that are supported by Elastic Container Instance, see [ECS instance types that are supported by Elastic Container Instance](~~114664~~).
+        # The instance type of the Elastic Compute Service (ECS) instance that is used to create the elastic container instance. For information about the ECS instance types that are supported by Elastic Container Instance, see [ECS instance types that are supported by Elastic Container Instance](https://help.aliyun.com/document_detail/114664.html).
         # 
         # > If you specify this parameter, the specified specifications of vCPUs and memory are ignored. Only the price of the ECS instance type is returned.
         self.instance_type = instance_type
-        # The size of the memory. Unit: GiB. For information about the vCPU and memory specifications that are supported by Elastic Container Instance, see [vCPU and memory specifications](~~114662~~).
+        # The size of the memory. Unit: GiB. For information about the vCPU and memory specifications that are supported by Elastic Container Instance, see [vCPU and memory specifications](https://help.aliyun.com/document_detail/114662.html).
         self.memory = memory
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~146965~~) operation to query the most recent region and zone list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/146965.html) operation to query the most recent region and zone list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7581,7 +7677,7 @@ class DescribeContainerGroupPriceRequest(TeaModel):
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
-        # The zone ID of the instance. You can call the [DescribeRegions](~~146965~~) operation to query the most recent region and zone list.
+        # The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/146965.html) operation to query the most recent region and zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -8216,10 +8312,12 @@ class DescribeContainerGroupStatusRequest(TeaModel):
         # 
         # > The number of returned resources can be less than or equal to the value of this parameter.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.\
+        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.\\
         # You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         # The region ID of the instances.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instances belong.
         self.resource_group_id = resource_group_id
@@ -8303,17 +8401,21 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusConditions(TeaModel):
     ):
         # The message about the event.
         self.message = message
-        # The cause of the event.
+        # The reason for the transition into the current status of the event.
         self.reason = reason
         # The time when the status last changed.
         self.last_transition_time = last_transition_time
-        # The state of the pod condition.
+        # The status of the condition.
         self.status = status
-        # The type of the pod condition. Valid values:
+        # The type of the condition. Valid values:
         # 
-        # *   PodScheduled
-        # *   Ready
+        # *   PodReadyToStartContainers
         # *   Initialized
+        # *   Ready
+        # *   ContainersReady
+        # *   PodScheduled
+        # *   ContainerHasSufficientDisk
+        # *   ContainerInstanceCreated
         # *   Unschedulable
         self.type = type
 
@@ -8358,7 +8460,7 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLast
         self,
         started_atstarted_at: str = None,
     ):
-        # The start time.
+        # The time when the container started to run.
         self.started_atstarted_at = started_atstarted_at
 
     def validate(self):
@@ -8396,15 +8498,15 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLast
         self.container_id = container_id
         # The exit code.
         self.exit_code = exit_code
-        # The end time.
+        # The time when the container ends running.
         self.finished_at = finished_at
         # The message about the event.
         self.message = message
-        # The cause of the event.
+        # The reason for the transition into the current status of the event.
         self.reason = reason
         # The signal code.
         self.signal = signal
-        # The start time.
+        # The time when the container started to run.
         self.started_at = started_at
 
     def validate(self):
@@ -8459,7 +8561,7 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLast
     ):
         # The message about the event.
         self.message = message
-        # The cause of the event.
+        # The reason for the transition into the current status of the event.
         self.reason = reason
 
     def validate(self):
@@ -8495,7 +8597,7 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesLast
     ):
         # The container is created and running.
         self.running = running
-        # The container is terminated and exits after a successful or failed run.
+        # The container is terminated and exits after a successful or failed running.
         self.terminated = terminated
         # The container is waiting for being created.
         self.waiting = waiting
@@ -8541,7 +8643,7 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStat
         self,
         started_atstarted_at: str = None,
     ):
-        # The start time.
+        # The time when the container started to run.
         self.started_atstarted_at = started_atstarted_at
 
     def validate(self):
@@ -8579,15 +8681,15 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStat
         self.container_id = container_id
         # The exit code.
         self.exit_code = exit_code
-        # The end time.
+        # The time when the container ends running.
         self.finished_at = finished_at
         # The message about the event.
         self.message = message
-        # The cause of the event.
+        # The reason for the transition into the current status of the event.
         self.reason = reason
         # The signal code.
         self.signal = signal
-        # The start time.
+        # The time when the container started to run.
         self.started_at = started_at
 
     def validate(self):
@@ -8642,7 +8744,7 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStat
     ):
         # The message about the event.
         self.message = message
-        # The cause of the event.
+        # The reason for the transition into the current status of the event.
         self.reason = reason
 
     def validate(self):
@@ -8678,7 +8780,7 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatusesStat
     ):
         # The container is created and running.
         self.running = running
-        # The container is terminated and exits after a successful or failed run.
+        # The container is terminated and exits after a successful or failed running.
         self.terminated = terminated
         # The container is waiting for being created.
         self.waiting = waiting
@@ -8735,17 +8837,17 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusContainerStatuses(Tea
         self.image = image
         # The image ID.
         self.image_id = image_id
-        # The most recent state of the container.
+        # The last status of the container.
         self.last_state = last_state
-        # The container name.
+        # The name of the container.
         self.name = name
-        # Indicates whether the container is ready for use.
+        # Indicates whether the container is ready.
         self.ready = ready
-        # The number of restarts.
+        # The number of times that the container restarted.
         self.restart_count = restart_count
         # Indicates whether the container is started.
         self.started = started
-        # The state of the container. Valid values:
+        # The status of the container. Valid values:
         # 
         # *   Waiting
         # *   Running
@@ -8810,7 +8912,7 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatusPodIps(TeaModel):
         self,
         ip: str = None,
     ):
-        # The IP address of the pod.
+        # The IP address of the container group.
         self.ip = ip
 
     def validate(self):
@@ -8845,19 +8947,19 @@ class DescribeContainerGroupStatusResponseBodyDataPodStatus(TeaModel):
         qos_class: str = None,
         start_time: str = None,
     ):
-        # The information about the pod conditions.
+        # The conditions of the container group.
         self.conditions = conditions
-        # The state information about the container.
+        # The statuses about the containers.
         self.container_statuses = container_statuses
         # The IP address of the host.
         self.host_ip = host_ip
-        # The lifecycle phase of the pod.
+        # The lifecycle phase of the container group.
         self.phase = phase
-        # The IP address of the pod.
+        # The IP address of the container group.
         self.pod_ip = pod_ip
-        # The collection of pod IP addresses.
+        # The IP addresses of the container groups.
         self.pod_ips = pod_ips
-        # The quality of service (QoS) of the pod.
+        # The quality of service (QoS) of the container group.
         self.qos_class = qos_class
         # The time when the container started to run.
         self.start_time = start_time
@@ -8947,19 +9049,19 @@ class DescribeContainerGroupStatusResponseBodyData(TeaModel):
         status: str = None,
         uuid: str = None,
     ):
-        # The annotations of the elastic container instance.
+        # Annotations that are added to the container groups.
         self.annotations = annotations
-        # The ID of the elastic container instance.
+        # The ID of the container group.
         self.container_group_id = container_group_id
-        # The name of the elastic container instance.
+        # The name of the container group.
         self.name = name
-        # The namespace where the elastic container instance resides.
+        # The namespace in which the container group resides.
         self.namespace = namespace
-        # The state information about the elastic container instance.
+        # The status of the container group.
         self.pod_status = pod_status
-        # The state of the elastic container instance.
+        # The status of the container group.
         self.status = status
-        # The UUID of the elastic container instance. The UUID of an elastic container instance is similar to the UID of a Kubernetes pod in concept and usage.
+        # The universally unique identifier (UUID) of the container group, which is similar to the unique identifier (UID) of the Kubernetes pod in terms of the concept and usage.
         self.uuid = uuid
 
     def validate(self):
@@ -9016,7 +9118,7 @@ class DescribeContainerGroupStatusResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The collection of status of the elastic container instances.
+        # The collection of the statuses of the container groups.
         self.data = data
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -9179,6 +9281,8 @@ class DescribeContainerGroupsRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -9322,7 +9426,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersCurrentState(T
         self.finish_time = finish_time
         # The message about the container status.
         self.message = message
-        # The reason why the container is in this state.
+        # The reason why the container is in this status.
         self.reason = reason
         # The code of the container status.
         self.signal = signal
@@ -9452,7 +9556,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersEnvironmentVar
         self.key = key
         # The value of the environment variable.
         self.value = value
-        # The source of the environment variable value. This parameter has a value only when the Value parameter is not empty.
+        # The source of the environment variable value. This parameter has a value only when the Value parameter is left empty.
         self.value_from = value_from
 
     def validate(self):
@@ -9578,13 +9682,13 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersLivenessProbe(
         self.execs = execs
         # The minimum number of consecutive failures that must occur for the check to be considered failed. Default value: 3.
         self.failure_threshold = failure_threshold
-        # The HTTP GET method used to check the container.
+        # The HTTP GET method that is used to check the container.
         self.http_get = http_get
         # The number of seconds between the time when the startup of the container ends and the time when the probe starts.
         self.initial_delay_seconds = initial_delay_seconds
-        # The interval at which the health check is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        # The interval at which the health check is performed. Default value: 10. Minimum value: 1. Unit: seconds.
         self.period_seconds = period_seconds
-        # The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. Set the value to 1.
+        # The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. The value must be 1.
         self.success_threshold = success_threshold
         # The TCP socket method that is used to check the container.
         self.tcp_socket = tcp_socket
@@ -9699,7 +9803,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersPreviousState(
         self.finish_time = finish_time
         # The message about the container status.
         self.message = message
-        # The reason why the container is in this state.
+        # The reason why the container is in this status.
         self.reason = reason
         # The code of the container status.
         self.signal = signal
@@ -9857,9 +9961,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersReadinessProbe
         self.http_get = http_get
         # The number of seconds between the time when the startup of the container ends and the time when the probe starts.
         self.initial_delay_seconds = initial_delay_seconds
-        # The interval at which the health check is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        # The interval at which the health check is performed. Default value: 10. Minimum value: 1. Unit: seconds.
         self.period_seconds = period_seconds
-        # The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. Set the value to 1.
+        # The minimum number of consecutive successes that must occur for the check to be considered successful. Default value: 1. The value must be 1.
         self.success_threshold = success_threshold
         # The TCP socket method that is used to check the container.
         self.tcp_socket = tcp_socket
@@ -9924,7 +10028,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContex
         self,
         adds: List[str] = None,
     ):
-        # The permissions specific to the processes in the container.
+        # The permissions specific to the process in the container.
         self.adds = adds
 
     def validate(self):
@@ -9956,7 +10060,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersSecurityContex
     ):
         # The permissions specific to the processes in the container.
         self.capability = capability
-        # Indicates whether permissions on the root file system are read-only.
+        # Indicates whether permissions on the root file system are read-only. Valid value: true.
         self.read_only_root_filesystem = read_only_root_filesystem
         # The user ID (UID) that is used to run the container.
         self.run_as_user = run_as_user
@@ -10002,11 +10106,11 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainersVolumeMounts(T
     ):
         # The directory of the volume that is mounted to the container. The data in this directory is overwritten by the data on the volume.
         self.mount_path = mount_path
-        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+        # *   None: The volume mount does not receive subsequent mounts that are performed on this volume or on the subdirectories of this volume.
+        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or on the subdirectories of this volume.
+        # *   Bidirectional: This value is similar to HostToCotainer. The volume mount receives subsequent mounts that are performed on this volume or on the subdirectories of this volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
         self.mount_propagation = mount_propagation
         # The volume name.
         self.name = name
@@ -10094,7 +10198,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainers(TeaModel):
         # The image pulling policy. Valid values:
         # 
         # *   Always: Each time the instance is updated, image pulling is performed.
-        # *   IfNotPresent: On-premises images are used first. If no on-premises images are available, image pulling is performed.
+        # *   IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
         # The liveness probe of the container.
@@ -10103,9 +10207,9 @@ class DescribeContainerGroupsResponseBodyContainerGroupsContainers(TeaModel):
         self.memory = memory
         # The name of the container.
         self.name = name
-        # The exposed ports and protocols of the container.
+        # The exposed port and protocol of the container.
         self.ports = ports
-        # The previous status of the container.
+        # The previous state of the container.
         self.previous_state = previous_state
         # The readiness probe that is used to check whether the container is ready to serve a request.
         self.readiness_probe = readiness_probe
@@ -10317,7 +10421,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsDnsConfig(TeaModel):
         self.name_servers = name_servers
         # The options. Each option is a name-value pair. The value in the name-value pair is optional.
         self.options = options
-        # The search domain of the DNS server.
+        # The search domains of DNS servers.
         self.searches = searches
 
     def validate(self):
@@ -10555,7 +10659,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersCurrentSta
         self.finish_time = finish_time
         # The event message.
         self.message = message
-        # The reason why the container is in this state.
+        # The reason why the container is in this status.
         self.reason = reason
         # The code of the container status.
         self.signal = signal
@@ -10685,7 +10789,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersEnvironmen
         self.key = key
         # The value of the environment variable.
         self.value = value
-        # The source of the environment variable value. This parameter has a value only when the Value parameter is not empty.
+        # The source of the environment variable value. This parameter has a value only when the Value parameter is left empty.
         self.value_from = value_from
 
     def validate(self):
@@ -10773,7 +10877,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersPreviousSt
         self.finish_time = finish_time
         # The message about the container status.
         self.message = message
-        # The reason why the container is in this state.
+        # The reason why the container is in this status.
         self.reason = reason
         # The code of the container status.
         self.signal = signal
@@ -10869,7 +10973,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersSecurityCo
         self.capability = capability
         # Indicates whether permissions on the root file system are read-only.
         self.read_only_root_filesystem = read_only_root_filesystem
-        # The UID this is used to run the entry point of the container process.
+        # The UID that is used to run the entry point of the container process.
         self.run_as_user = run_as_user
 
     def validate(self):
@@ -10912,15 +11016,15 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainersVolumeMoun
     ):
         # The directory of the volume that is mounted to the container. The data in this directory is overwritten by the data on the volume.
         self.mount_path = mount_path
-        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or the subdirectories of this volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+        # *   None: The volume mount does not receive subsequent mounts that are performed on this volume or on the subdirectories of this volume.
+        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on this volume or on the subdirectories of this volume.
+        # *   Bidirectional: This value is similar to HostToCotainer. The volume mount receives subsequent mounts that are performed on this volume or on the subdirectories of this volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
         self.mount_propagation = mount_propagation
         # The name of the volume. The value of this parameter is the same as the name of the volume that you selected when you purchased the container.
         self.name = name
-        # Default value: false.
+        # Indicates whether the volume is read-only.
         self.read_only = read_only
 
     def validate(self):
@@ -10984,7 +11088,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainers(TeaModel)
         self.cpu = cpu
         # The current container status.
         self.current_state = current_state
-        # The environment variables of the container.
+        # The environment variables of the init container.
         self.environment_vars = environment_vars
         # The number of GPUs.
         self.gpu = gpu
@@ -10993,20 +11097,20 @@ class DescribeContainerGroupsResponseBodyContainerGroupsInitContainers(TeaModel)
         # The image pulling policy. Valid values:
         # 
         # *   Always: Each time the instance is updated, image pulling is performed.
-        # *   IfNotPresent: On-premises images are used first. If no on-premises images are available, image pulling is performed.
+        # *   IfNotPresent: On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
         # The memory size of the init container. Unit: GiB.
         self.memory = memory
         # The name of the init container.
         self.name = name
-        # The exposed ports and protocols of the container.
+        # The exposed port and protocol of the container.
         self.ports = ports
         # The previous state of the container.
         self.previous_state = previous_state
         # Indicates whether the container passed the readiness probe.
         self.ready = ready
-        # The number of times the container restarted.
+        # The number of times that the container restarted.
         self.restart_count = restart_count
         # The security context of the container.
         self.security_context = security_context
@@ -11223,14 +11327,14 @@ class DescribeContainerGroupsResponseBodyContainerGroupsVolumes(TeaModel):
     ):
         # The path of the ConfigFile volume.
         self.config_file_volume_config_file_to_paths = config_file_volume_config_file_to_paths
-        # The ID of the disk when you set the Type parameter to DiskVolume.
+        # The ID of the disk when you set Type to DiskVolume.
         self.disk_volume_disk_id = disk_volume_disk_id
         # The file system type of the disk volume.
         self.disk_volume_fs_type = disk_volume_fs_type
         # The storage media for the emptyDir volume. This parameter is empty by default, indicating that the node file system is used as the storage media. Valid values:
         # 
         # *   Memory: Memory is used as the storage media.
-        # *   LocalRaid0: Local disks are formed into RAID 0. This value is valid only if an elastic container instance that has local disks mounted is created. For more information, see [Create an elastic container instance that has local disks mounted](~~114664~~).
+        # *   LocalRaid0: Local disks are formed into RAID 0. This value is valid only if an elastic container instance that has local disks mounted is created. For more information, see [Create an elastic container instance that has local disks mounted](https://help.aliyun.com/document_detail/114664.html).
         self.empty_dir_volume_medium = empty_dir_volume_medium
         # The storage size of the emptyDir volume.
         self.empty_dir_volume_size_limit = empty_dir_volume_size_limit
@@ -11244,7 +11348,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsVolumes(TeaModel):
         self.nfsvolume_path = nfsvolume_path
         # Indicates whether the NFS volume is read-only.
         self.nfsvolume_read_only = nfsvolume_read_only
-        # The endpoint of the server when you set the Type parameter to NFSVolume.
+        # The address of the NFS server.
         self.nfsvolume_server = nfsvolume_server
         # The volume name.
         self.name = name
@@ -11375,7 +11479,10 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The computing power type of the elastic container instance. A value of economy indicates economic instances.
+        # The computing power type of the elastic container instance. Valid values:
+        # 
+        # *   economy: economic computing power.
+        # *   general: general-purpose computing power.
         self.compute_category = compute_category
         # The instance ID.
         self.container_group_id = container_group_id
@@ -11385,7 +11492,7 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         self.containers = containers
         # The number of vCPUs that are allocated to the elastic container instance.
         self.cpu = cpu
-        # The time when the system created the elastic container instance after the system received the request. The time follows the RFC 3339 standard. The time is displayed in UTC.
+        # The time when the instance was created. The time follows the RFC 3339 standard. The time is displayed in UTC.
         self.creation_time = creation_time
         # The discount.
         self.discount = discount
@@ -11417,19 +11524,19 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         self.ipv_6address = ipv_6address
         # The memory size of the instance. Unit: GiB.
         self.memory = memory
-        # The name of the instance RAM role. The elastic container instance and the ECS instance share a RAM role. For more information, see [Use an instance RAM role by calling API operations](~~61178~~).
+        # The name of the instance RAM role. The elastic container instance and the ECS instance share a RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
         self.ram_role_name = ram_role_name
         # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The restart policy of the elastic container instance. Valid values:
         # 
-        # *   Never: Never restarts the instance if a container in the instance exits.
-        # *   Always: Always restarts the instance if a container in the instance exits.
+        # *   Never: Never restarts the instance if a container in the instance exits upon termination.
+        # *   Always: Always restarts the instance if a container in the instance exits upon termination.
         # *   OnFailure: Restarts the instance only if a container in the instance exists upon failure with a status code of non-zero.
         self.restart_policy = restart_policy
-        # The security group ID.
+        # The ID of the security group to which the instances belong.
         self.security_group_id = security_group_id
         # The maximum hourly price for the preemptible elastic container instance.
         # 
@@ -11438,10 +11545,10 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         # The bid policy for the instance. Default value: NoSpot. Valid values:
         # 
         # *   NoSpot: The instance is a regular pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is a preemptible instance that has a maximum price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.
+        # *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
-        # The state of the instance. Valid values:
+        # The status of the instance. Valid values:
         # 
         # *   Pending: The instance is being started.
         # *   Running: The instance is running.
@@ -11456,7 +11563,7 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         self.status = status
         # The time when all containers exited on success. The time follows the RFC 3339 standard. The time is displayed in UTC.
         self.succeeded_time = succeeded_time
-        # The tags of the instance.
+        # The tags that are added to the instance.
         self.tags = tags
         # This parameter is not publicly available.
         self.tenant_eni_instance_id = tenant_eni_instance_id
@@ -11468,7 +11575,7 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         self.tenant_vswitch_id = tenant_vswitch_id
         # The ID of the vSwitch to which the instance is connected.
         self.v_switch_id = v_switch_id
-        # Information about the volumes.
+        # The information about the volumes.
         self.volumes = volumes
         # The ID of the VPC to which the instance belongs.
         self.vpc_id = vpc_id
@@ -11714,7 +11821,7 @@ class DescribeContainerGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the elastic container instances.
+        # Details about the queried elastic container instances.
         self.container_groups = container_groups
         # The token that determines the start point of the query.
         self.next_token = next_token
@@ -11822,8 +11929,12 @@ class DescribeContainerLogRequest(TeaModel):
         timestamps: bool = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         # The name of the container.
+        # 
+        # This parameter is required.
         self.container_name = container_name
         # Specifies whether to query the logs of the previous container if the container exits and restarts. Valid values:
         # 
@@ -11844,7 +11955,8 @@ class DescribeContainerLogRequest(TeaModel):
         self.since_seconds = since_seconds
         # The beginning of the time range to query. Specify the time in the RFC 3339 standard. The time must be in UTC.
         self.start_time = start_time
-        # The number of log entries that you want to query. Default value: 500. Maximum value: 2000. A maximum of 1 MB of logs can be returned.
+        # The number of the most recent log entries that you want to query. Default value: 500. Maximum value: 2000.\\
+        # A maximum of 1 MB log data can be returned.
         self.tail = tail
         # Specifies whether to return the timestamps of logs. Valid values:
         # 
@@ -12069,6 +12181,8 @@ class DescribeDataCachesRequest(TeaModel):
         # The virtual host (vHost) directory in which the data cache resides.
         self.path = path
         # The region ID of the data caches that you want to query.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the data cache belongs.
         self.resource_group_id = resource_group_id
@@ -12632,10 +12746,10 @@ class DescribeImageCachesRequest(TeaModel):
         self.image_cache_id = image_cache_id
         # The names of the image caches.
         self.image_cache_name = image_cache_name
-        # Specifies whether the image layers of the image caches must contain all image layers of the container image.\
+        # Specifies whether the image layers of the image caches must contain all image layers of the container image.\\
         # If you configure MatchImage, you can configure this parameter to further filter query results.
         self.image_full_match = image_full_match
-        # The quantity of image caches whose image layers contain all image layers of the container image.\
+        # The quantity of image caches whose image layers contain all image layers of the container image.\\
         # If you configure MatchImage, you can configure this parameter to further filter query results.
         self.image_match_count_request = image_match_count_request
         # The maximum entries of query results that are allowed to be displayed.
@@ -12647,6 +12761,8 @@ class DescribeImageCachesRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the image caches.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the image caches belong.
         self.resource_group_id = resource_group_id
@@ -13130,15 +13246,21 @@ class DescribeInstanceOpsRecordsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the elastic container instance.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
-        # The type of the O\&M task. Valid values:
+        # The type of the O\\&M task. Valid values:
         # 
         # *   coredump
         # *   tcpdump
+        # 
+        # This parameter is required.
         self.ops_type = ops_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13197,17 +13319,22 @@ class DescribeInstanceOpsRecordsResponseBodyRecords(TeaModel):
         result_content: str = None,
         result_type: str = None,
     ):
-        # The time when the O\&M task was created.
+        # The time when the O\\&M task was created.
         self.create_time = create_time
-        # The time when the O\&M task expires.
+        # The time when the O\\&M task expires.
         self.expire_time = expire_time
-        # The status of the O\&M task.
+        # The status of the O\\&M task.
+        # - Ready
+        # - Failed
+        # - Expired
+        # - Closed
+        # - Success
         self.ops_status = ops_status
-        # The type of the O\&M task.
+        # The type of the O\\&M task.
         self.ops_type = ops_type
-        # The content of the O\&M result. The content is the download URL of the files that are generated for the O\&M task.
+        # The content of the O\\&M result. The content is the download URL of the files that are generated for the O\\&M task.
         self.result_content = result_content
-        # The type of the O\&M result. Valid value: OSS. This value indicates that the files generated for the O\&M task are saved to Object Storage Service (OSS) buckets.
+        # The type of the O\\&M result. Valid value: OSS. This value indicates that the files generated for the O\\&M task are saved to Object Storage Service (OSS) buckets.
         self.result_type = result_type
 
     def validate(self):
@@ -13256,7 +13383,7 @@ class DescribeInstanceOpsRecordsResponseBody(TeaModel):
         records: List[DescribeInstanceOpsRecordsResponseBodyRecords] = None,
         request_id: str = None,
     ):
-        # The details of the O\&M tasks.
+        # The details of the O\\&M tasks.
         self.records = records
         # The request ID.
         self.request_id = request_id
@@ -13347,12 +13474,16 @@ class DescribeMultiContainerGroupMetricRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. The value is a JSON array. You can specify up to 20 instance IDs at a time.
+        # 
+        # This parameter is required.
         self.container_group_ids = container_group_ids
         # The type of the monitoring data. Set the value to summary. This value indicates that records are returned.
         self.metric_type = metric_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the elastic container instances belong.
         self.resource_group_id = resource_group_id
@@ -14358,7 +14489,7 @@ class DescribeVirtualNodesRequest(TeaModel):
         virtual_node_ids: str = None,
         virtual_node_name: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests?](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
         # The maximum number of resources that are allowed to return for this request. Default value: 20. Maximum value: 20.
         # 
@@ -14371,6 +14502,8 @@ class DescribeVirtualNodesRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the virtual nodes.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -14819,26 +14952,34 @@ class ExecContainerCommandRequest(TeaModel):
         sync: bool = None,
         tty: bool = None,
     ):
-        # The commands to run in the container. You can specify up to 20 commands. Each command can be up to 256 characters in length.\
+        # The commands to run in the container. You can specify up to 20 commands. Each command can be up to 256 characters in length.\\
         # The strings must be in the JSON format. Example: `["/bin/sh", "-c", "ls -a"]`.
+        # 
+        # This parameter is required.
         self.command = command
         # The ID of the elastic container instance.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         # The name of the container.
+        # 
+        # This parameter is required.
         self.container_name = container_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to read the commands from standard input (stdin). Default value: true.
         self.stdin = stdin
-        # Specifies whether to run the command immediately and return the result. Default value: false.\
-        # If you set this parameter to true, set the value of TTY to false.
+        # Specifies whether to immediately run the command and synchronously return the result. Default value: false.\\
+        # If this parameter is set to true, TTY must be set to false. Command cannot be set to `/bin/bash`.
         self.sync = sync
-        # Specifies whether to enable interaction. Default value: false.\
-        # If the command is a /bin/bash command, set the value to true.
+        # Specifies whether to enable interaction. Default value: false.\\
+        # If the Command parameter is set to `/bin/bash`, set this parameter to true.
         self.tty = tty
 
     def validate(self):
@@ -14909,7 +15050,7 @@ class ExecContainerCommandResponseBody(TeaModel):
         sync_response: str = None,
         web_socket_uri: str = None,
     ):
-        # The HTTP URL. You can use this URL to enter the container within 30 seconds after this operation is called. For more information, see [Use and integrate the Elastic Container Instance terminal](~~202846~~).
+        # The HTTP URL. You can use this URL to enter the container within 30 seconds after this operation is called. For more information, see [Use and integrate the Elastic Container Instance terminal](https://help.aliyun.com/document_detail/202846.html).
         self.http_url = http_url
         # The request ID.
         self.request_id = request_id
@@ -14991,6 +15132,263 @@ class ExecContainerCommandResponse(TeaModel):
         return self
 
 
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        limit: str = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.limit = limit
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = ListTagResourcesResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUsageRequest(TeaModel):
     def __init__(
         self,
@@ -15003,6 +15401,8 @@ class ListUsageRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15141,9 +15541,11 @@ class ResizeContainerGroupVolumeRequest(TeaModel):
         resource_owner_id: int = None,
         volume_name: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the elastic container instance.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         # The size of the volume after the volume is scaled up. Unit: GiB. Valid values:
         # 
@@ -15153,14 +15555,20 @@ class ResizeContainerGroupVolumeRequest(TeaModel):
         # *   Basic disk (cloud): 5 to 2000
         # 
         # >  The capacity of the volume after the volume is scaled up must be greater than the original capacity of the volume. If the new capacity is equal to the original capacity of the volume, only the file system is scaled up.
+        # 
+        # This parameter is required.
         self.new_size = new_size
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the volume that you want to scale up. The volume must be an Alibaba Cloud disk.
+        # 
+        # This parameter is required.
         self.volume_name = volume_name
 
     def validate(self):
@@ -15295,13 +15703,17 @@ class RestartContainerGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15415,6 +15827,340 @@ class RestartContainerGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RestartContainerGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17313,11 +18059,13 @@ class UpdateContainerGroupRequest(TeaModel):
         self.dns_config = dns_config
         # Details of the Container Registry Enterprise Edition instance that hosts the image of the init container.
         self.acr_registry_info = acr_registry_info
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The new configurations of the container group.
         self.container = container
         # The ID of the elastic container instance that you want to update.
+        # 
+        # This parameter is required.
         self.container_group_id = container_group_id
         # The number of vCPUs that are allocated to the elastic container instance.
         self.cpu = cpu
@@ -17330,6 +18078,8 @@ class UpdateContainerGroupRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -17731,7 +18481,7 @@ class UpdateDataCacheRequest(TeaModel):
     ):
         # The bucket in which the data cache is stored. Default value: default.
         self.bucket = bucket
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The data cache ID.
         self.data_cache_id = data_cache_id
@@ -17746,6 +18496,8 @@ class UpdateDataCacheRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -18095,7 +18847,7 @@ class UpdateImageCacheRequest(TeaModel):
         # 
         # Default value: false.
         self.auto_match_image_cache = auto_match_image_cache
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
         # The ID of the elastic IP address (EIP). If you want to pull public images, you must make sure that the elastic container instance can access the Internet. To enable Internet access, you can configure an EIP or a NAT gateway for the instance.
         self.eip_instance_id = eip_instance_id
@@ -18117,6 +18869,8 @@ class UpdateImageCacheRequest(TeaModel):
         # Container images that are used to create the image cache.
         self.image = image
         # The ID of the image cache.
+        # 
+        # This parameter is required.
         self.image_cache_id = image_cache_id
         # The name of the image cache.
         self.image_cache_name = image_cache_name
@@ -18127,6 +18881,8 @@ class UpdateImageCacheRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the image cache.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the image cache belongs.
         self.resource_group_id = resource_group_id
@@ -18401,7 +19157,7 @@ class UpdateVirtualNodeRequest(TeaModel):
         virtual_node_id: str = None,
         virtual_node_name: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency of requests?](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
         # The IP address of the DNS server. If `dnsPolicy=ClusterFirst` is configured for the Elastic Container Instance pod, Elastic Container Instance uses the configuration to provide DNS services to containers. You can configure multiple IP addresses. Separate multiple IP addresses with commas (,).
         self.cluster_dns = cluster_dns
@@ -18412,12 +19168,16 @@ class UpdateVirtualNodeRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the virtual node.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tags to add to the virtual node.
         self.tag = tag
         # The ID of the virtual node.
+        # 
+        # This parameter is required.
         self.virtual_node_id = virtual_node_id
         # The name of the virtual node.
         self.virtual_node_name = virtual_node_name
