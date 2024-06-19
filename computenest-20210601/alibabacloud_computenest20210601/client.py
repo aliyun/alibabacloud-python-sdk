@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源组转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -80,6 +87,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源组转组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -113,6 +127,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ChangeResourceGroupRequest,
     ) -> compute_nest_20210601_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源组转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -120,6 +140,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ChangeResourceGroupRequest,
     ) -> compute_nest_20210601_models.ChangeResourceGroupResponse:
+        """
+        @summary 资源组转组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -128,6 +154,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
+        """
+        @summary 继续部署服务实例
+        
+        @param request: ContinueDeployServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinueDeployServiceInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -166,6 +199,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
+        """
+        @summary 继续部署服务实例
+        
+        @param request: ContinueDeployServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinueDeployServiceInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -203,6 +243,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
     ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
+        """
+        @summary 继续部署服务实例
+        
+        @param request: ContinueDeployServiceInstanceRequest
+        @return: ContinueDeployServiceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.continue_deploy_service_instance_with_options(request, runtime)
 
@@ -210,6 +256,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ContinueDeployServiceInstanceRequest,
     ) -> compute_nest_20210601_models.ContinueDeployServiceInstanceResponse:
+        """
+        @summary 继续部署服务实例
+        
+        @param request: ContinueDeployServiceInstanceRequest
+        @return: ContinueDeployServiceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.continue_deploy_service_instance_with_options_async(request, runtime)
 
@@ -218,16 +270,17 @@ class Client(OpenApiClient):
         tmp_req: compute_nest_20210601_models.CreateServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.CreateServiceInstanceResponse:
+        """
+        @param tmp_req: CreateServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = compute_nest_20210601_models.CreateServiceInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.business_info):
-            request.business_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_info, 'BusinessInfo', 'json')
         if not UtilClient.is_unset(tmp_req.parameters):
             request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
-        if not UtilClient.is_unset(request.business_info_shrink):
-            query['BusinessInfo'] = request.business_info_shrink
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.commodity):
@@ -288,16 +341,17 @@ class Client(OpenApiClient):
         tmp_req: compute_nest_20210601_models.CreateServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.CreateServiceInstanceResponse:
+        """
+        @param tmp_req: CreateServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = compute_nest_20210601_models.CreateServiceInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.business_info):
-            request.business_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_info, 'BusinessInfo', 'json')
         if not UtilClient.is_unset(tmp_req.parameters):
             request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
-        if not UtilClient.is_unset(request.business_info_shrink):
-            query['BusinessInfo'] = request.business_info_shrink
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.commodity):
@@ -357,6 +411,10 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.CreateServiceInstanceRequest,
     ) -> compute_nest_20210601_models.CreateServiceInstanceResponse:
+        """
+        @param request: CreateServiceInstanceRequest
+        @return: CreateServiceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_service_instance_with_options(request, runtime)
 
@@ -364,6 +422,10 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.CreateServiceInstanceRequest,
     ) -> compute_nest_20210601_models.CreateServiceInstanceResponse:
+        """
+        @param request: CreateServiceInstanceRequest
+        @return: CreateServiceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_service_instance_with_options_async(request, runtime)
 
@@ -372,6 +434,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
+        """
+        @summary 删除服务实例
+        
+        @param request: DeleteServiceInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -404,6 +473,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
+        """
+        @summary 删除服务实例
+        
+        @param request: DeleteServiceInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -435,6 +511,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
     ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
+        """
+        @summary 删除服务实例
+        
+        @param request: DeleteServiceInstancesRequest
+        @return: DeleteServiceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_service_instances_with_options(request, runtime)
 
@@ -442,6 +524,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.DeleteServiceInstancesRequest,
     ) -> compute_nest_20210601_models.DeleteServiceInstancesResponse:
+        """
+        @summary 删除服务实例
+        
+        @param request: DeleteServiceInstancesRequest
+        @return: DeleteServiceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_service_instances_with_options_async(request, runtime)
 
@@ -450,6 +538,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.GetServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        """
+        @summary 查询服务实例详情
+        
+        @param request: GetServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.market_instance_id):
@@ -482,6 +577,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.GetServiceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        """
+        @summary 查询服务实例详情
+        
+        @param request: GetServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.market_instance_id):
@@ -513,6 +615,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.GetServiceInstanceRequest,
     ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        """
+        @summary 查询服务实例详情
+        
+        @param request: GetServiceInstanceRequest
+        @return: GetServiceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_service_instance_with_options(request, runtime)
 
@@ -520,6 +628,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.GetServiceInstanceRequest,
     ) -> compute_nest_20210601_models.GetServiceInstanceResponse:
+        """
+        @summary 查询服务实例详情
+        
+        @param request: GetServiceInstanceRequest
+        @return: GetServiceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_instance_with_options_async(request, runtime)
 
@@ -528,6 +642,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.GetServiceTemplateParameterConstraintsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.GetServiceTemplateParameterConstraintsResponse:
+        """
+        @summary 获取ROS参数限制
+        
+        @param request: GetServiceTemplateParameterConstraintsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceTemplateParameterConstraintsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -576,6 +697,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.GetServiceTemplateParameterConstraintsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.GetServiceTemplateParameterConstraintsResponse:
+        """
+        @summary 获取ROS参数限制
+        
+        @param request: GetServiceTemplateParameterConstraintsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceTemplateParameterConstraintsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -623,6 +751,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.GetServiceTemplateParameterConstraintsRequest,
     ) -> compute_nest_20210601_models.GetServiceTemplateParameterConstraintsResponse:
+        """
+        @summary 获取ROS参数限制
+        
+        @param request: GetServiceTemplateParameterConstraintsRequest
+        @return: GetServiceTemplateParameterConstraintsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_service_template_parameter_constraints_with_options(request, runtime)
 
@@ -630,6 +764,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.GetServiceTemplateParameterConstraintsRequest,
     ) -> compute_nest_20210601_models.GetServiceTemplateParameterConstraintsResponse:
+        """
+        @summary 获取ROS参数限制
+        
+        @param request: GetServiceTemplateParameterConstraintsRequest
+        @return: GetServiceTemplateParameterConstraintsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_template_parameter_constraints_with_options_async(request, runtime)
 
@@ -638,6 +778,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ListServiceInstanceLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ListServiceInstanceLogsResponse:
+        """
+        @summary 查询服务实例部署升级以及应用日志
+        
+        @param request: ListServiceInstanceLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_source):
@@ -676,6 +823,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ListServiceInstanceLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ListServiceInstanceLogsResponse:
+        """
+        @summary 查询服务实例部署升级以及应用日志
+        
+        @param request: ListServiceInstanceLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_source):
@@ -713,6 +867,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ListServiceInstanceLogsRequest,
     ) -> compute_nest_20210601_models.ListServiceInstanceLogsResponse:
+        """
+        @summary 查询服务实例部署升级以及应用日志
+        
+        @param request: ListServiceInstanceLogsRequest
+        @return: ListServiceInstanceLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_service_instance_logs_with_options(request, runtime)
 
@@ -720,6 +880,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ListServiceInstanceLogsRequest,
     ) -> compute_nest_20210601_models.ListServiceInstanceLogsResponse:
+        """
+        @summary 查询服务实例部署升级以及应用日志
+        
+        @param request: ListServiceInstanceLogsRequest
+        @return: ListServiceInstanceLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_service_instance_logs_with_options_async(request, runtime)
 
@@ -728,6 +894,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ListServiceInstanceResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ListServiceInstanceResourcesResponse:
+        """
+        @summary 展示实例资源
+        
+        @param request: ListServiceInstanceResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time_end):
@@ -774,6 +947,13 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ListServiceInstanceResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ListServiceInstanceResourcesResponse:
+        """
+        @summary 展示实例资源
+        
+        @param request: ListServiceInstanceResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time_end):
@@ -819,6 +999,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ListServiceInstanceResourcesRequest,
     ) -> compute_nest_20210601_models.ListServiceInstanceResourcesResponse:
+        """
+        @summary 展示实例资源
+        
+        @param request: ListServiceInstanceResourcesRequest
+        @return: ListServiceInstanceResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_service_instance_resources_with_options(request, runtime)
 
@@ -826,6 +1012,12 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ListServiceInstanceResourcesRequest,
     ) -> compute_nest_20210601_models.ListServiceInstanceResourcesResponse:
+        """
+        @summary 展示实例资源
+        
+        @param request: ListServiceInstanceResourcesRequest
+        @return: ListServiceInstanceResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_service_instance_resources_with_options_async(request, runtime)
 
@@ -834,6 +1026,11 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ListServiceInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ListServiceInstancesResponse:
+        """
+        @param request: ListServiceInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -872,6 +1069,11 @@ class Client(OpenApiClient):
         request: compute_nest_20210601_models.ListServiceInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_20210601_models.ListServiceInstancesResponse:
+        """
+        @param request: ListServiceInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -909,6 +1111,10 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ListServiceInstancesRequest,
     ) -> compute_nest_20210601_models.ListServiceInstancesResponse:
+        """
+        @param request: ListServiceInstancesRequest
+        @return: ListServiceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_service_instances_with_options(request, runtime)
 
@@ -916,5 +1122,321 @@ class Client(OpenApiClient):
         self,
         request: compute_nest_20210601_models.ListServiceInstancesRequest,
     ) -> compute_nest_20210601_models.ListServiceInstancesResponse:
+        """
+        @param request: ListServiceInstancesRequest
+        @return: ListServiceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_service_instances_with_options_async(request, runtime)
+
+    def restart_service_instance_with_options(
+        self,
+        request: compute_nest_20210601_models.RestartServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.RestartServiceInstanceResponse:
+        """
+        @summary 重启服务实例
+        
+        @param request: RestartServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.RestartServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_service_instance_with_options_async(
+        self,
+        request: compute_nest_20210601_models.RestartServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.RestartServiceInstanceResponse:
+        """
+        @summary 重启服务实例
+        
+        @param request: RestartServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.RestartServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_service_instance(
+        self,
+        request: compute_nest_20210601_models.RestartServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.RestartServiceInstanceResponse:
+        """
+        @summary 重启服务实例
+        
+        @param request: RestartServiceInstanceRequest
+        @return: RestartServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restart_service_instance_with_options(request, runtime)
+
+    async def restart_service_instance_async(
+        self,
+        request: compute_nest_20210601_models.RestartServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.RestartServiceInstanceResponse:
+        """
+        @summary 重启服务实例
+        
+        @param request: RestartServiceInstanceRequest
+        @return: RestartServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_service_instance_with_options_async(request, runtime)
+
+    def start_service_instance_with_options(
+        self,
+        request: compute_nest_20210601_models.StartServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.StartServiceInstanceResponse:
+        """
+        @summary 启动服务实例
+        
+        @param request: StartServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.StartServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_service_instance_with_options_async(
+        self,
+        request: compute_nest_20210601_models.StartServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.StartServiceInstanceResponse:
+        """
+        @summary 启动服务实例
+        
+        @param request: StartServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.StartServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_service_instance(
+        self,
+        request: compute_nest_20210601_models.StartServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.StartServiceInstanceResponse:
+        """
+        @summary 启动服务实例
+        
+        @param request: StartServiceInstanceRequest
+        @return: StartServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_service_instance_with_options(request, runtime)
+
+    async def start_service_instance_async(
+        self,
+        request: compute_nest_20210601_models.StartServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.StartServiceInstanceResponse:
+        """
+        @summary 启动服务实例
+        
+        @param request: StartServiceInstanceRequest
+        @return: StartServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_service_instance_with_options_async(request, runtime)
+
+    def stop_service_instance_with_options(
+        self,
+        request: compute_nest_20210601_models.StopServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.StopServiceInstanceResponse:
+        """
+        @summary 停止服务实例
+        
+        @param request: StopServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.StopServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_service_instance_with_options_async(
+        self,
+        request: compute_nest_20210601_models.StopServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.StopServiceInstanceResponse:
+        """
+        @summary 停止服务实例
+        
+        @param request: StopServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.StopServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_service_instance(
+        self,
+        request: compute_nest_20210601_models.StopServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.StopServiceInstanceResponse:
+        """
+        @summary 停止服务实例
+        
+        @param request: StopServiceInstanceRequest
+        @return: StopServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_service_instance_with_options(request, runtime)
+
+    async def stop_service_instance_async(
+        self,
+        request: compute_nest_20210601_models.StopServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.StopServiceInstanceResponse:
+        """
+        @summary 停止服务实例
+        
+        @param request: StopServiceInstanceRequest
+        @return: StopServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_service_instance_with_options_async(request, runtime)

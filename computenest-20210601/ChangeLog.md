@@ -1,3 +1,15 @@
+2024-06-19 Version: 3.0.0
+- Support API RestartServiceInstance.
+- Support API StartServiceInstance.
+- Support API StopServiceInstance.
+- Update API CreateServiceInstance: delete param BusinessInfo.
+- Update API CreateServiceInstance: update param Commodity.
+- Update API CreateServiceInstance: update response param.
+- Update API GetServiceInstance: update response param.
+- Update API GetServiceTemplateParameterConstraints: update response param.
+- Update API ListServiceInstances: update response param.
+
+
 2024-02-01 Version: 2.0.1
 - Update API CreateServiceInstanceadd BusinessInfo param.
 
