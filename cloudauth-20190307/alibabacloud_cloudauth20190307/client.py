@@ -1183,6 +1183,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.credential_verify_with_options_async(request, runtime)
 
+    def deepfake_detect_with_options(
+        self,
+        request: cloudauth_20190307_models.DeepfakeDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
+        """
+        @summary 人脸凭证核验服务
+        
+        @param request: DeepfakeDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeepfakeDetectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.face_input_type):
+            query['FaceInputType'] = request.face_input_type
+        if not UtilClient.is_unset(request.face_url):
+            query['FaceUrl'] = request.face_url
+        if not UtilClient.is_unset(request.outer_order_no):
+            query['OuterOrderNo'] = request.outer_order_no
+        body = {}
+        if not UtilClient.is_unset(request.face_base_64):
+            body['FaceBase64'] = request.face_base_64
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeepfakeDetect',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeepfakeDetectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deepfake_detect_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DeepfakeDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
+        """
+        @summary 人脸凭证核验服务
+        
+        @param request: DeepfakeDetectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeepfakeDetectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.face_input_type):
+            query['FaceInputType'] = request.face_input_type
+        if not UtilClient.is_unset(request.face_url):
+            query['FaceUrl'] = request.face_url
+        if not UtilClient.is_unset(request.outer_order_no):
+            query['OuterOrderNo'] = request.outer_order_no
+        body = {}
+        if not UtilClient.is_unset(request.face_base_64):
+            body['FaceBase64'] = request.face_base_64
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeepfakeDetect',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DeepfakeDetectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deepfake_detect(
+        self,
+        request: cloudauth_20190307_models.DeepfakeDetectRequest,
+    ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
+        """
+        @summary 人脸凭证核验服务
+        
+        @param request: DeepfakeDetectRequest
+        @return: DeepfakeDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.deepfake_detect_with_options(request, runtime)
+
+    async def deepfake_detect_async(
+        self,
+        request: cloudauth_20190307_models.DeepfakeDetectRequest,
+    ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
+        """
+        @summary 人脸凭证核验服务
+        
+        @param request: DeepfakeDetectRequest
+        @return: DeepfakeDetectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.deepfake_detect_with_options_async(request, runtime)
+
     def describe_device_info_with_options(
         self,
         request: cloudauth_20190307_models.DescribeDeviceInfoRequest,

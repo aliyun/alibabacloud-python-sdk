@@ -1694,6 +1694,179 @@ class CredentialVerifyResponse(TeaModel):
         return self
 
 
+class DeepfakeDetectRequest(TeaModel):
+    def __init__(
+        self,
+        face_base_64: str = None,
+        face_input_type: str = None,
+        face_url: str = None,
+        outer_order_no: str = None,
+    ):
+        self.face_base_64 = face_base_64
+        self.face_input_type = face_input_type
+        self.face_url = face_url
+        self.outer_order_no = outer_order_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_base_64 is not None:
+            result['FaceBase64'] = self.face_base_64
+        if self.face_input_type is not None:
+            result['FaceInputType'] = self.face_input_type
+        if self.face_url is not None:
+            result['FaceUrl'] = self.face_url
+        if self.outer_order_no is not None:
+            result['OuterOrderNo'] = self.outer_order_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceBase64') is not None:
+            self.face_base_64 = m.get('FaceBase64')
+        if m.get('FaceInputType') is not None:
+            self.face_input_type = m.get('FaceInputType')
+        if m.get('FaceUrl') is not None:
+            self.face_url = m.get('FaceUrl')
+        if m.get('OuterOrderNo') is not None:
+            self.outer_order_no = m.get('OuterOrderNo')
+        return self
+
+
+class DeepfakeDetectResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        result: str = None,
+        risk_score: Dict[str, str] = None,
+        risk_tag: str = None,
+    ):
+        self.result = result
+        self.risk_score = risk_score
+        self.risk_tag = risk_tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.risk_score is not None:
+            result['RiskScore'] = self.risk_score
+        if self.risk_tag is not None:
+            result['RiskTag'] = self.risk_tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('RiskScore') is not None:
+            self.risk_score = m.get('RiskScore')
+        if m.get('RiskTag') is not None:
+            self.risk_tag = m.get('RiskTag')
+        return self
+
+
+class DeepfakeDetectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: DeepfakeDetectResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DeepfakeDetectResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DeepfakeDetectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeepfakeDetectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeepfakeDetectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDeviceInfoRequest(TeaModel):
     def __init__(
         self,

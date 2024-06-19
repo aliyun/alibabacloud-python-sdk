@@ -1,3 +1,7 @@
+2024-06-19 Version: 2.7.0
+- Support API DeepfakeDetect.
+
+
 2024-06-13 Version: 2.6.2
 - Update API InitFaceVerify: add param UiCustomUrl.
 
