@@ -2511,6 +2511,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_apisec_event_domain_statistic_with_options_async(request, runtime)
 
+    def describe_apisec_log_deliveries_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecLogDeliveriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse:
+        """
+        @summary 获取API安全日志订阅列表
+        
+        @param request: DescribeApisecLogDeliveriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecLogDeliveriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecLogDeliveries',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_log_deliveries_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecLogDeliveriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse:
+        """
+        @summary 获取API安全日志订阅列表
+        
+        @param request: DescribeApisecLogDeliveriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecLogDeliveriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecLogDeliveries',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_log_deliveries(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecLogDeliveriesRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse:
+        """
+        @summary 获取API安全日志订阅列表
+        
+        @param request: DescribeApisecLogDeliveriesRequest
+        @return: DescribeApisecLogDeliveriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_log_deliveries_with_options(request, runtime)
+
+    async def describe_apisec_log_deliveries_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecLogDeliveriesRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse:
+        """
+        @summary 获取API安全日志订阅列表
+        
+        @param request: DescribeApisecLogDeliveriesRequest
+        @return: DescribeApisecLogDeliveriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_log_deliveries_with_options_async(request, runtime)
+
     def describe_apisec_sensitive_domain_statistic_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeApisecSensitiveDomainStatisticRequest,
@@ -2646,6 +2750,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apisec_sensitive_domain_statistic_with_options_async(request, runtime)
+
+    def describe_apisec_sls_log_stores_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSlsLogStoresRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse:
+        """
+        @summary 查询日志服务SLS的LogStore列表
+        
+        @param request: DescribeApisecSlsLogStoresRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecSlsLogStoresResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_region_id):
+            query['LogRegionId'] = request.log_region_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecSlsLogStores',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_sls_log_stores_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSlsLogStoresRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse:
+        """
+        @summary 查询日志服务SLS的LogStore列表
+        
+        @param request: DescribeApisecSlsLogStoresRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecSlsLogStoresResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_region_id):
+            query['LogRegionId'] = request.log_region_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecSlsLogStores',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_sls_log_stores(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSlsLogStoresRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse:
+        """
+        @summary 查询日志服务SLS的LogStore列表
+        
+        @param request: DescribeApisecSlsLogStoresRequest
+        @return: DescribeApisecSlsLogStoresResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_sls_log_stores_with_options(request, runtime)
+
+    async def describe_apisec_sls_log_stores_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSlsLogStoresRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse:
+        """
+        @summary 查询日志服务SLS的LogStore列表
+        
+        @param request: DescribeApisecSlsLogStoresRequest
+        @return: DescribeApisecSlsLogStoresResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_sls_log_stores_with_options_async(request, runtime)
+
+    def describe_apisec_sls_projects_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSlsProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse:
+        """
+        @summary 查询日志服务SLS的Project列表
+        
+        @param request: DescribeApisecSlsProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecSlsProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_region_id):
+            query['LogRegionId'] = request.log_region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecSlsProjects',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apisec_sls_projects_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSlsProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse:
+        """
+        @summary 查询日志服务SLS的Project列表
+        
+        @param request: DescribeApisecSlsProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisecSlsProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_region_id):
+            query['LogRegionId'] = request.log_region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisecSlsProjects',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apisec_sls_projects(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSlsProjectsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse:
+        """
+        @summary 查询日志服务SLS的Project列表
+        
+        @param request: DescribeApisecSlsProjectsRequest
+        @return: DescribeApisecSlsProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apisec_sls_projects_with_options(request, runtime)
+
+    async def describe_apisec_sls_projects_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeApisecSlsProjectsRequest,
+    ) -> waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse:
+        """
+        @summary 查询日志服务SLS的Project列表
+        
+        @param request: DescribeApisecSlsProjectsRequest
+        @return: DescribeApisecSlsProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apisec_sls_projects_with_options_async(request, runtime)
 
     def describe_cert_detail_with_options(
         self,
@@ -9062,6 +9386,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
+
+    def modify_apisec_log_delivery_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecLogDeliveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse:
+        """
+        @summary 修改API安全日志订阅
+        
+        @param request: ModifyApisecLogDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecLogDeliveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assert_key):
+            query['AssertKey'] = request.assert_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_region_id):
+            query['LogRegionId'] = request.log_region_id
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecLogDelivery',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_apisec_log_delivery_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecLogDeliveryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse:
+        """
+        @summary 修改API安全日志订阅
+        
+        @param request: ModifyApisecLogDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecLogDeliveryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assert_key):
+            query['AssertKey'] = request.assert_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_region_id):
+            query['LogRegionId'] = request.log_region_id
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecLogDelivery',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_apisec_log_delivery(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecLogDeliveryRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse:
+        """
+        @summary 修改API安全日志订阅
+        
+        @param request: ModifyApisecLogDeliveryRequest
+        @return: ModifyApisecLogDeliveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_apisec_log_delivery_with_options(request, runtime)
+
+    async def modify_apisec_log_delivery_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecLogDeliveryRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse:
+        """
+        @summary 修改API安全日志订阅
+        
+        @param request: ModifyApisecLogDeliveryRequest
+        @return: ModifyApisecLogDeliveryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_apisec_log_delivery_with_options_async(request, runtime)
+
+    def modify_apisec_log_delivery_status_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse:
+        """
+        @summary 修改API安全日志订阅状态
+        
+        @param request: ModifyApisecLogDeliveryStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecLogDeliveryStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assert_key):
+            query['AssertKey'] = request.assert_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecLogDeliveryStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_apisec_log_delivery_status_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse:
+        """
+        @summary 修改API安全日志订阅状态
+        
+        @param request: ModifyApisecLogDeliveryStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApisecLogDeliveryStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assert_key):
+            query['AssertKey'] = request.assert_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApisecLogDeliveryStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_apisec_log_delivery_status(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse:
+        """
+        @summary 修改API安全日志订阅状态
+        
+        @param request: ModifyApisecLogDeliveryStatusRequest
+        @return: ModifyApisecLogDeliveryStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_apisec_log_delivery_status_with_options(request, runtime)
+
+    async def modify_apisec_log_delivery_status_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse:
+        """
+        @summary 修改API安全日志订阅状态
+        
+        @param request: ModifyApisecLogDeliveryStatusRequest
+        @return: ModifyApisecLogDeliveryStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_apisec_log_delivery_status_with_options_async(request, runtime)
 
     def modify_defense_resource_group_with_options(
         self,

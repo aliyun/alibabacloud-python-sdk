@@ -1,3 +1,12 @@
+2024-06-19 Version: 4.0.0
+- Support API DescribeApisecLogDeliveries.
+- Support API DescribeApisecSlsLogStores.
+- Support API DescribeApisecSlsProjects.
+- Support API ModifyApisecLogDelivery.
+- Support API ModifyApisecLogDeliveryStatus.
+- Update API DescribeDomainDetail: update response param.
+
+
 2024-06-04 Version: 3.5.0
 - Support API DeleteApisecAbnormal.
 - Support API DeleteApisecEvent.
