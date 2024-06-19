@@ -916,20 +916,33 @@ class Client(OpenApiClient):
             body['DefaultEnable'] = request.default_enable
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.region_ids_scope):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.tag_key_scope):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
         if not UtilClient.is_unset(request.template_content):
             body['TemplateContent'] = request.template_content
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -984,20 +997,33 @@ class Client(OpenApiClient):
             body['DefaultEnable'] = request.default_enable
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.region_ids_scope):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.tag_key_scope):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
         if not UtilClient.is_unset(request.template_content):
             body['TemplateContent'] = request.template_content
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1222,6 +1248,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
         body = {}
+        if not UtilClient.is_unset(request.account_ids_scope):
+            body['AccountIdsScope'] = request.account_ids_scope
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.client_token):
@@ -1236,8 +1264,15 @@ class Client(OpenApiClient):
             body['ExcludeAccountIdsScope'] = request.exclude_account_ids_scope
         if not UtilClient.is_unset(request.exclude_folder_ids_scope):
             body['ExcludeFolderIdsScope'] = request.exclude_folder_ids_scope
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.folder_ids_scope):
             body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
@@ -1248,6 +1283,8 @@ class Client(OpenApiClient):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -1262,6 +1299,10 @@ class Client(OpenApiClient):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1306,6 +1347,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
         body = {}
+        if not UtilClient.is_unset(request.account_ids_scope):
+            body['AccountIdsScope'] = request.account_ids_scope
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.client_token):
@@ -1320,8 +1363,15 @@ class Client(OpenApiClient):
             body['ExcludeAccountIdsScope'] = request.exclude_account_ids_scope
         if not UtilClient.is_unset(request.exclude_folder_ids_scope):
             body['ExcludeFolderIdsScope'] = request.exclude_folder_ids_scope
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.folder_ids_scope):
             body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
@@ -1332,6 +1382,8 @@ class Client(OpenApiClient):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -1346,6 +1398,10 @@ class Client(OpenApiClient):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1722,20 +1778,33 @@ class Client(OpenApiClient):
             body['DefaultEnable'] = request.default_enable
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.region_ids_scope):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.tag_key_scope):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
         if not UtilClient.is_unset(request.template_content):
             body['TemplateContent'] = request.template_content
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1788,20 +1857,33 @@ class Client(OpenApiClient):
             body['DefaultEnable'] = request.default_enable
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.region_ids_scope):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.tag_key_scope):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
         if not UtilClient.is_unset(request.template_content):
             body['TemplateContent'] = request.template_content
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2028,8 +2110,15 @@ class Client(OpenApiClient):
             body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -2038,6 +2127,8 @@ class Client(OpenApiClient):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -2052,6 +2143,10 @@ class Client(OpenApiClient):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2102,8 +2197,15 @@ class Client(OpenApiClient):
             body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -2112,6 +2214,8 @@ class Client(OpenApiClient):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -2126,6 +2230,10 @@ class Client(OpenApiClient):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5485,6 +5593,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
+        @summary 获取账号组规则详情
+        
         @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
         @param request: GetAggregateConfigRuleRequest
@@ -5522,6 +5632,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
+        @summary 获取账号组规则详情
+        
         @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
         @param request: GetAggregateConfigRuleRequest
@@ -5558,6 +5670,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
+        @summary 获取账号组规则详情
+        
         @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
         @param request: GetAggregateConfigRuleRequest
@@ -5571,6 +5685,8 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
+        @summary 获取账号组规则详情
+        
         @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
         @param request: GetAggregateConfigRuleRequest
@@ -14351,18 +14467,31 @@ class Client(OpenApiClient):
             body['ConfigRules'] = request.config_rules_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.region_ids_scope):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.tag_key_scope):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -14414,18 +14543,31 @@ class Client(OpenApiClient):
             body['ConfigRules'] = request.config_rules_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.region_ids_scope):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.tag_key_scope):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -14649,6 +14791,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
         body = {}
+        if not UtilClient.is_unset(request.account_ids_scope):
+            body['AccountIdsScope'] = request.account_ids_scope
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.client_token):
@@ -14665,8 +14809,15 @@ class Client(OpenApiClient):
             body['ExcludeAccountIdsScope'] = request.exclude_account_ids_scope
         if not UtilClient.is_unset(request.exclude_folder_ids_scope):
             body['ExcludeFolderIdsScope'] = request.exclude_folder_ids_scope
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.folder_ids_scope):
             body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
@@ -14677,6 +14828,8 @@ class Client(OpenApiClient):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -14687,6 +14840,10 @@ class Client(OpenApiClient):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -14728,6 +14885,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
         body = {}
+        if not UtilClient.is_unset(request.account_ids_scope):
+            body['AccountIdsScope'] = request.account_ids_scope
         if not UtilClient.is_unset(request.aggregator_id):
             body['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.client_token):
@@ -14744,8 +14903,15 @@ class Client(OpenApiClient):
             body['ExcludeAccountIdsScope'] = request.exclude_account_ids_scope
         if not UtilClient.is_unset(request.exclude_folder_ids_scope):
             body['ExcludeFolderIdsScope'] = request.exclude_folder_ids_scope
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.folder_ids_scope):
             body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
@@ -14756,6 +14922,8 @@ class Client(OpenApiClient):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -14766,6 +14934,10 @@ class Client(OpenApiClient):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -15101,18 +15273,31 @@ class Client(OpenApiClient):
             body['ConfigRules'] = request.config_rules_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.region_ids_scope):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.tag_key_scope):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -15162,18 +15347,31 @@ class Client(OpenApiClient):
             body['ConfigRules'] = request.config_rules_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.region_ids_scope):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.risk_level):
             body['RiskLevel'] = request.risk_level
         if not UtilClient.is_unset(request.tag_key_scope):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -15403,8 +15601,15 @@ class Client(OpenApiClient):
             body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -15413,6 +15618,8 @@ class Client(OpenApiClient):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -15423,6 +15630,10 @@ class Client(OpenApiClient):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -15474,8 +15685,15 @@ class Client(OpenApiClient):
             body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+            body['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
+        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+            body['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        body_flat = {}
+        if not UtilClient.is_unset(request.exclude_tags_scope):
+            body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -15484,6 +15702,8 @@ class Client(OpenApiClient):
             body['RegionIdsScope'] = request.region_ids_scope
         if not UtilClient.is_unset(request.resource_group_ids_scope):
             body['ResourceGroupIdsScope'] = request.resource_group_ids_scope
+        if not UtilClient.is_unset(request.resource_ids_scope):
+            body['ResourceIdsScope'] = request.resource_ids_scope
         if not UtilClient.is_unset(request.resource_types_scope_shrink):
             body['ResourceTypesScope'] = request.resource_types_scope_shrink
         if not UtilClient.is_unset(request.risk_level):
@@ -15494,6 +15714,10 @@ class Client(OpenApiClient):
             body['TagKeyScope'] = request.tag_key_scope
         if not UtilClient.is_unset(request.tag_value_scope):
             body['TagValueScope'] = request.tag_value_scope
+        if not UtilClient.is_unset(request.tags_scope):
+            body_flat['TagsScope'] = request.tags_scope
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
