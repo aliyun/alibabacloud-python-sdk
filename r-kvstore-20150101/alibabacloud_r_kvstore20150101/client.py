@@ -32,7 +32,6 @@ class Client(OpenApiClient):
             'cn-heyuan': 'r-kvstore.aliyuncs.com',
             'cn-guangzhou': 'r-kvstore.aliyuncs.com',
             'cn-hongkong': 'r-kvstore.aliyuncs.com',
-            'ap-southeast-1': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou-finance': 'r-kvstore.aliyuncs.com',
             'cn-shanghai-finance-1': 'r-kvstore.aliyuncs.com',
             'cn-shenzhen-finance-1': 'r-kvstore.aliyuncs.com',
@@ -94,7 +93,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AddShardingNodeResponse:
         """
-        This operation is available only for cluster instances that use cloud disks.
+        @summary Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+        
+        @description This operation is available only for cluster instances that use cloud disks.
         
         @param request: AddShardingNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -153,7 +154,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AddShardingNodeResponse:
         """
-        This operation is available only for cluster instances that use cloud disks.
+        @summary Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+        
+        @description This operation is available only for cluster instances that use cloud disks.
         
         @param request: AddShardingNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -211,7 +214,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AddShardingNodeRequest,
     ) -> r_kvstore_20150101_models.AddShardingNodeResponse:
         """
-        This operation is available only for cluster instances that use cloud disks.
+        @summary Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+        
+        @description This operation is available only for cluster instances that use cloud disks.
         
         @param request: AddShardingNodeRequest
         @return: AddShardingNodeResponse
@@ -224,7 +229,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AddShardingNodeRequest,
     ) -> r_kvstore_20150101_models.AddShardingNodeResponse:
         """
-        This operation is available only for cluster instances that use cloud disks.
+        @summary Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+        
+        @description This operation is available only for cluster instances that use cloud disks.
         
         @param request: AddShardingNodeRequest
         @return: AddShardingNodeResponse
@@ -238,13 +245,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AllocateDirectConnectionResponse:
         """
-        In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](~~146901~~).
+        @summary Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+        
+        @description In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
         To call this operation, the instance must meet the following requirements:
-        *   The instance is an ApsaraDB for Redis cluster instance.
-        *   The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
-        *   The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](~~61005~~) operation to change the network type to VPC.
-        *   SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](~~96194~~) operation to disable it.
-        *   The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](~~183151~~).
+        The instance is an ApsaraDB for Redis cluster instance.
+        The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
+        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
+        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
+        The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
         
         @param request: AllocateDirectConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -293,13 +302,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AllocateDirectConnectionResponse:
         """
-        In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](~~146901~~).
+        @summary Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+        
+        @description In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
         To call this operation, the instance must meet the following requirements:
-        *   The instance is an ApsaraDB for Redis cluster instance.
-        *   The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
-        *   The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](~~61005~~) operation to change the network type to VPC.
-        *   SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](~~96194~~) operation to disable it.
-        *   The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](~~183151~~).
+        The instance is an ApsaraDB for Redis cluster instance.
+        The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
+        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
+        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
+        The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
         
         @param request: AllocateDirectConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -347,13 +358,15 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AllocateDirectConnectionRequest,
     ) -> r_kvstore_20150101_models.AllocateDirectConnectionResponse:
         """
-        In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](~~146901~~).
+        @summary Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+        
+        @description In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
         To call this operation, the instance must meet the following requirements:
-        *   The instance is an ApsaraDB for Redis cluster instance.
-        *   The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
-        *   The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](~~61005~~) operation to change the network type to VPC.
-        *   SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](~~96194~~) operation to disable it.
-        *   The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](~~183151~~).
+        The instance is an ApsaraDB for Redis cluster instance.
+        The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
+        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
+        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
+        The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
         
         @param request: AllocateDirectConnectionRequest
         @return: AllocateDirectConnectionResponse
@@ -366,13 +379,15 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AllocateDirectConnectionRequest,
     ) -> r_kvstore_20150101_models.AllocateDirectConnectionResponse:
         """
-        In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](~~146901~~).
+        @summary Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+        
+        @description In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
         To call this operation, the instance must meet the following requirements:
-        *   The instance is an ApsaraDB for Redis cluster instance.
-        *   The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
-        *   The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](~~61005~~) operation to change the network type to VPC.
-        *   SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](~~96194~~) operation to disable it.
-        *   The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](~~183151~~).
+        The instance is an ApsaraDB for Redis cluster instance.
+        The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
+        The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
+        SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
+        The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
         
         @param request: AllocateDirectConnectionRequest
         @return: AllocateDirectConnectionResponse
@@ -386,7 +401,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse:
         """
-        You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
+        @summary Applies for a public endpoint for an ApsaraDB for Redis instance.
+        
+        @description You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/43850.html).
         
         @param request: AllocateInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -435,7 +452,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse:
         """
-        You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
+        @summary Applies for a public endpoint for an ApsaraDB for Redis instance.
+        
+        @description You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/43850.html).
         
         @param request: AllocateInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -483,7 +502,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AllocateInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse:
         """
-        You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
+        @summary Applies for a public endpoint for an ApsaraDB for Redis instance.
+        
+        @description You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/43850.html).
         
         @param request: AllocateInstancePublicConnectionRequest
         @return: AllocateInstancePublicConnectionResponse
@@ -496,7 +517,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AllocateInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse:
         """
-        You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
+        @summary Applies for a public endpoint for an ApsaraDB for Redis instance.
+        
+        @description You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/43850.html).
         
         @param request: AllocateInstancePublicConnectionRequest
         @return: AllocateInstancePublicConnectionResponse
@@ -510,8 +533,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse:
         """
-        For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](~~265913~~).
-        *   If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](~~302337~~) operation to enable TDE.
+        @summary Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+        
+        @description    For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
         
         @param request: CheckCloudResourceAuthorizedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -558,8 +583,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse:
         """
-        For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](~~265913~~).
-        *   If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](~~302337~~) operation to enable TDE.
+        @summary Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+        
+        @description    For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
         
         @param request: CheckCloudResourceAuthorizedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -605,8 +632,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CheckCloudResourceAuthorizedRequest,
     ) -> r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse:
         """
-        For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](~~265913~~).
-        *   If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](~~302337~~) operation to enable TDE.
+        @summary Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+        
+        @description    For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
         
         @param request: CheckCloudResourceAuthorizedRequest
         @return: CheckCloudResourceAuthorizedResponse
@@ -619,8 +648,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CheckCloudResourceAuthorizedRequest,
     ) -> r_kvstore_20150101_models.CheckCloudResourceAuthorizedResponse:
         """
-        For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](~~265913~~).
-        *   If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](~~302337~~) operation to enable TDE.
+        @summary Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+        
+        @description    For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
         
         @param request: CheckCloudResourceAuthorizedRequest
         @return: CheckCloudResourceAuthorizedResponse
@@ -634,11 +665,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateAccountResponse:
         """
-        >
-        *   This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
-        *   The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
-        *   You can create up to 18 accounts for an ApsaraDB for Redis instance.
-        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](~~92665~~).
+        @summary Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+        
+        @description >
+        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
+        The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
+        You can create up to 18 accounts for an ApsaraDB for Redis instance.
+        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
         
         @param request: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -693,11 +726,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateAccountResponse:
         """
-        >
-        *   This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
-        *   The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
-        *   You can create up to 18 accounts for an ApsaraDB for Redis instance.
-        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](~~92665~~).
+        @summary Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+        
+        @description >
+        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
+        The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
+        You can create up to 18 accounts for an ApsaraDB for Redis instance.
+        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
         
         @param request: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -751,11 +786,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateAccountRequest,
     ) -> r_kvstore_20150101_models.CreateAccountResponse:
         """
-        >
-        *   This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
-        *   The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
-        *   You can create up to 18 accounts for an ApsaraDB for Redis instance.
-        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](~~92665~~).
+        @summary Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+        
+        @description >
+        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
+        The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
+        You can create up to 18 accounts for an ApsaraDB for Redis instance.
+        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
         
         @param request: CreateAccountRequest
         @return: CreateAccountResponse
@@ -768,11 +805,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateAccountRequest,
     ) -> r_kvstore_20150101_models.CreateAccountResponse:
         """
-        >
-        *   This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
-        *   The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
-        *   You can create up to 18 accounts for an ApsaraDB for Redis instance.
-        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](~~92665~~).
+        @summary Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+        
+        @description >
+        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0 or later.
+        The ApsaraDB for Redis instance for which you want to call this operation must be in the running state.
+        You can create up to 18 accounts for an ApsaraDB for Redis instance.
+        You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
         
         @param request: CreateAccountRequest
         @return: CreateAccountResponse
@@ -786,7 +825,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateBackupResponse:
         """
-        You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](~~43886~~).
+        @summary Backs up an ApsaraDB for Redis instance.
+        
+        @description You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
         
         @param request: CreateBackupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -831,7 +872,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateBackupResponse:
         """
-        You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](~~43886~~).
+        @summary Backs up an ApsaraDB for Redis instance.
+        
+        @description You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
         
         @param request: CreateBackupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -875,7 +918,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateBackupRequest,
     ) -> r_kvstore_20150101_models.CreateBackupResponse:
         """
-        You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](~~43886~~).
+        @summary Backs up an ApsaraDB for Redis instance.
+        
+        @description You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
         
         @param request: CreateBackupRequest
         @return: CreateBackupResponse
@@ -888,7 +933,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateBackupRequest,
     ) -> r_kvstore_20150101_models.CreateBackupResponse:
         """
-        You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](~~43886~~).
+        @summary Backs up an ApsaraDB for Redis instance.
+        
+        @description You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
         
         @param request: CreateBackupRequest
         @return: CreateBackupResponse
@@ -902,13 +949,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
-        Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance is a Community Edition instance or an Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        This feature is unavailable for cloud disk-based cluster instances. For more information, see [Comparison between ApsaraDB for Redis instances that use local disks and those that use cloud disks](~~188068~~).
-        *   The instance is of the latest minor version. For more information about whether you must update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
-        After you call this operation, you can call the [DescribeCacheAnalysisReport](~~128808~~) operation to view the analytic results.
+        @summary Manually creates a cache analytics task.
+        
+        @description This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
         
         @param request: CreateCacheAnalysisTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -953,13 +996,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
-        Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance is a Community Edition instance or an Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        This feature is unavailable for cloud disk-based cluster instances. For more information, see [Comparison between ApsaraDB for Redis instances that use local disks and those that use cloud disks](~~188068~~).
-        *   The instance is of the latest minor version. For more information about whether you must update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
-        After you call this operation, you can call the [DescribeCacheAnalysisReport](~~128808~~) operation to view the analytic results.
+        @summary Manually creates a cache analytics task.
+        
+        @description This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
         
         @param request: CreateCacheAnalysisTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1003,13 +1042,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateCacheAnalysisTaskRequest,
     ) -> r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
-        Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance is a Community Edition instance or an Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        This feature is unavailable for cloud disk-based cluster instances. For more information, see [Comparison between ApsaraDB for Redis instances that use local disks and those that use cloud disks](~~188068~~).
-        *   The instance is of the latest minor version. For more information about whether you must update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
-        After you call this operation, you can call the [DescribeCacheAnalysisReport](~~128808~~) operation to view the analytic results.
+        @summary Manually creates a cache analytics task.
+        
+        @description This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
         
         @param request: CreateCacheAnalysisTaskRequest
         @return: CreateCacheAnalysisTaskResponse
@@ -1022,13 +1057,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateCacheAnalysisTaskRequest,
     ) -> r_kvstore_20150101_models.CreateCacheAnalysisTaskResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
-        Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance is a Community Edition instance or an Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        This feature is unavailable for cloud disk-based cluster instances. For more information, see [Comparison between ApsaraDB for Redis instances that use local disks and those that use cloud disks](~~188068~~).
-        *   The instance is of the latest minor version. For more information about whether you must update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
-        After you call this operation, you can call the [DescribeCacheAnalysisReport](~~128808~~) operation to view the analytic results.
+        @summary Manually creates a cache analytics task.
+        
+        @description This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
         
         @param request: CreateCacheAnalysisTaskRequest
         @return: CreateCacheAnalysisTaskResponse
@@ -1042,10 +1073,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse:
         """
-        You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
-        *   A [DRAM-based instance](~~126164~~) of Enhanced Edition is used.
-        *   If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](~~150047~~).
-        > You can also call the [CreateInstance](~~60873~~) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+        @summary Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+        
+        @description You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+        A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
+        If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
+        > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
         
         @param request: CreateGlobalDistributeCacheRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1094,10 +1127,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse:
         """
-        You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
-        *   A [DRAM-based instance](~~126164~~) of Enhanced Edition is used.
-        *   If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](~~150047~~).
-        > You can also call the [CreateInstance](~~60873~~) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+        @summary Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+        
+        @description You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+        A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
+        If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
+        > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
         
         @param request: CreateGlobalDistributeCacheRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1145,10 +1180,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateGlobalDistributeCacheRequest,
     ) -> r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse:
         """
-        You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
-        *   A [DRAM-based instance](~~126164~~) of Enhanced Edition is used.
-        *   If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](~~150047~~).
-        > You can also call the [CreateInstance](~~60873~~) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+        @summary Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+        
+        @description You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+        A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
+        If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
+        > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
         
         @param request: CreateGlobalDistributeCacheRequest
         @return: CreateGlobalDistributeCacheResponse
@@ -1161,10 +1198,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateGlobalDistributeCacheRequest,
     ) -> r_kvstore_20150101_models.CreateGlobalDistributeCacheResponse:
         """
-        You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
-        *   A [DRAM-based instance](~~126164~~) of Enhanced Edition is used.
-        *   If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](~~150047~~).
-        > You can also call the [CreateInstance](~~60873~~) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+        @summary Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+        
+        @description You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
+        A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
+        If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
+        > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
         
         @param request: CreateGlobalDistributeCacheRequest
         @return: CreateGlobalDistributeCacheResponse
@@ -1177,6 +1216,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateGlobalSecurityIPGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse:
+        """
+        @summary Creates a global IP whitelist template.
+        
+        @param request: CreateGlobalSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalSecurityIPGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gip_list):
@@ -1221,6 +1267,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateGlobalSecurityIPGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse:
+        """
+        @summary Creates a global IP whitelist template.
+        
+        @param request: CreateGlobalSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalSecurityIPGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gip_list):
@@ -1264,6 +1317,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.CreateGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse:
+        """
+        @summary Creates a global IP whitelist template.
+        
+        @param request: CreateGlobalSecurityIPGroupRequest
+        @return: CreateGlobalSecurityIPGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_global_security_ipgroup_with_options(request, runtime)
 
@@ -1271,6 +1330,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.CreateGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.CreateGlobalSecurityIPGroupResponse:
+        """
+        @summary Creates a global IP whitelist template.
+        
+        @param request: CreateGlobalSecurityIPGroupRequest
+        @return: CreateGlobalSecurityIPGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_global_security_ipgroup_with_options_async(request, runtime)
 
@@ -1280,9 +1345,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
-        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+        @summary Creates an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
+        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1350,6 +1417,8 @@ class Client(OpenApiClient):
             query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.read_only_count):
             query['ReadOnlyCount'] = request.read_only_count
+        if not UtilClient.is_unset(request.recover_config_mode):
+            query['RecoverConfigMode'] = request.recover_config_mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1366,6 +1435,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.shard_count):
             query['ShardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.slave_read_only_count):
+            query['SlaveReadOnlyCount'] = request.slave_read_only_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.tag):
@@ -1403,9 +1474,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
-        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+        @summary Creates an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
+        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1473,6 +1546,8 @@ class Client(OpenApiClient):
             query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.read_only_count):
             query['ReadOnlyCount'] = request.read_only_count
+        if not UtilClient.is_unset(request.recover_config_mode):
+            query['RecoverConfigMode'] = request.recover_config_mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1489,6 +1564,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.shard_count):
             query['ShardCount'] = request.shard_count
+        if not UtilClient.is_unset(request.slave_read_only_count):
+            query['SlaveReadOnlyCount'] = request.slave_read_only_count
         if not UtilClient.is_unset(request.src_dbinstance_id):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.tag):
@@ -1525,9 +1602,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
-        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+        @summary Creates an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
+        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -1540,9 +1619,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
-        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+        @summary Creates an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
+        > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -1556,9 +1637,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstancesResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >  For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see Step 1: Create an ApsaraDB for Redis instance.[](~~26351~~)
-        This operation can only be used to create ApsaraDB for Redis Community Edition instances and ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based classic instances.
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
+        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
+        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
         
         @param request: CreateInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1619,9 +1701,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstancesResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >  For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see Step 1: Create an ApsaraDB for Redis instance.[](~~26351~~)
-        This operation can only be used to create ApsaraDB for Redis Community Edition instances and ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based classic instances.
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
+        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
+        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
         
         @param request: CreateInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1681,9 +1764,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateInstancesRequest,
     ) -> r_kvstore_20150101_models.CreateInstancesResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >  For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see Step 1: Create an ApsaraDB for Redis instance.[](~~26351~~)
-        This operation can only be used to create ApsaraDB for Redis Community Edition instances and ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based classic instances.
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
+        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
+        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
         
         @param request: CreateInstancesRequest
         @return: CreateInstancesResponse
@@ -1696,9 +1780,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateInstancesRequest,
     ) -> r_kvstore_20150101_models.CreateInstancesResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        >  For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see Step 1: Create an ApsaraDB for Redis instance.[](~~26351~~)
-        This operation can only be used to create ApsaraDB for Redis Community Edition instances and ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based classic instances.
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
+        [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
+        [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
         
         @param request: CreateInstancesRequest
         @return: CreateInstancesResponse
@@ -1706,16 +1791,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_instances_with_options_async(request, runtime)
 
+    def create_parameter_group_with_options(
+        self,
+        request: r_kvstore_20150101_models.CreateParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateParameterGroupResponse:
+        """
+        @summary 创建实例参数模板。
+        
+        @param request: CreateParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateParameterGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_desc):
+            query['ParameterGroupDesc'] = request.parameter_group_desc
+        if not UtilClient.is_unset(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateParameterGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_parameter_group_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.CreateParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateParameterGroupResponse:
+        """
+        @summary 创建实例参数模板。
+        
+        @param request: CreateParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateParameterGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_desc):
+            query['ParameterGroupDesc'] = request.parameter_group_desc
+        if not UtilClient.is_unset(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateParameterGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_parameter_group(
+        self,
+        request: r_kvstore_20150101_models.CreateParameterGroupRequest,
+    ) -> r_kvstore_20150101_models.CreateParameterGroupResponse:
+        """
+        @summary 创建实例参数模板。
+        
+        @param request: CreateParameterGroupRequest
+        @return: CreateParameterGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_parameter_group_with_options(request, runtime)
+
+    async def create_parameter_group_async(
+        self,
+        request: r_kvstore_20150101_models.CreateParameterGroupRequest,
+    ) -> r_kvstore_20150101_models.CreateParameterGroupResponse:
+        """
+        @summary 创建实例参数模板。
+        
+        @param request: CreateParameterGroupRequest
+        @return: CreateParameterGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_parameter_group_with_options_async(request, runtime)
+
     def create_tair_instance_with_options(
         self,
         request: r_kvstore_20150101_models.CreateTairInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
-        *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
+        @summary Creates a Tair instance.
+        
+        @description For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
+        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
+        If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
         
         @param request: CreateTairInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1773,6 +2000,8 @@ class Client(OpenApiClient):
             query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.read_only_count):
             query['ReadOnlyCount'] = request.read_only_count
+        if not UtilClient.is_unset(request.recover_config_mode):
+            query['RecoverConfigMode'] = request.recover_config_mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1832,10 +2061,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
-        *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
+        @summary Creates a Tair instance.
+        
+        @description For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
+        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
+        If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
         
         @param request: CreateTairInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1893,6 +2124,8 @@ class Client(OpenApiClient):
             query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.read_only_count):
             query['ReadOnlyCount'] = request.read_only_count
+        if not UtilClient.is_unset(request.recover_config_mode):
+            query['RecoverConfigMode'] = request.recover_config_mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1951,10 +2184,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateTairInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
-        *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
+        @summary Creates a Tair instance.
+        
+        @description For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
+        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
+        If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
         
         @param request: CreateTairInstanceRequest
         @return: CreateTairInstanceResponse
@@ -1967,10 +2202,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateTairInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateTairInstanceResponse:
         """
-        For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        *   For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
-        *   If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
+        @summary Creates a Tair instance.
+        
+        @description For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
+        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
+        If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
         
         @param request: CreateTairInstanceRequest
         @return: CreateTairInstanceResponse
@@ -1984,8 +2221,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteAccountResponse:
         """
-        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
-        *   The ApsaraDB for Redis instance must be in the Running state.
+        @summary Deletes an account from an ApsaraDB for Redis instance.
+        
+        @description    This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
+        The ApsaraDB for Redis instance must be in the Running state.
         
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2032,8 +2271,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteAccountResponse:
         """
-        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
-        *   The ApsaraDB for Redis instance must be in the Running state.
+        @summary Deletes an account from an ApsaraDB for Redis instance.
+        
+        @description    This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
+        The ApsaraDB for Redis instance must be in the Running state.
         
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2079,8 +2320,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteAccountRequest,
     ) -> r_kvstore_20150101_models.DeleteAccountResponse:
         """
-        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
-        *   The ApsaraDB for Redis instance must be in the Running state.
+        @summary Deletes an account from an ApsaraDB for Redis instance.
+        
+        @description    This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
+        The ApsaraDB for Redis instance must be in the Running state.
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -2093,8 +2336,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteAccountRequest,
     ) -> r_kvstore_20150101_models.DeleteAccountResponse:
         """
-        This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
-        *   The ApsaraDB for Redis instance must be in the Running state.
+        @summary Deletes an account from an ApsaraDB for Redis instance.
+        
+        @description    This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
+        The ApsaraDB for Redis instance must be in the Running state.
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -2108,7 +2353,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
         """
-        Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
+        @summary Deletes a global IP whitelist template.
+        
+        @description Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
         
         @param request: DeleteGlobalSecurityIPGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2159,7 +2406,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
         """
-        Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
+        @summary Deletes a global IP whitelist template.
+        
+        @description Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
         
         @param request: DeleteGlobalSecurityIPGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2209,7 +2458,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
         """
-        Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
+        @summary Deletes a global IP whitelist template.
+        
+        @description Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
         
         @param request: DeleteGlobalSecurityIPGroupRequest
         @return: DeleteGlobalSecurityIPGroupResponse
@@ -2222,7 +2473,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
         """
-        Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
+        @summary Deletes a global IP whitelist template.
+        
+        @description Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
         
         @param request: DeleteGlobalSecurityIPGroupRequest
         @return: DeleteGlobalSecurityIPGroupResponse
@@ -2236,10 +2489,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteInstanceResponse:
         """
-        For more information about how to perform the corresponding operation in the console, see [Release an instance](~~43882~~).
+        @summary Release the Redis instance.
+        
+        @description For more information about how to perform the corresponding operation in the console, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
         Before you call this operation, make sure that the following requirements are met:
-        *   The instance is in the running state.
-        *   The instance is charged on a pay-as-you-go basis.
+        The instance is in the running state.
+        The instance is charged on a pay-as-you-go basis.
         >  You cannot call this operation to release a subscription instance, which is automatically released when it expires. To release a subscription instance before it expires, submit a ticket.
         
         @param request: DeleteInstanceRequest
@@ -2287,10 +2542,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteInstanceResponse:
         """
-        For more information about how to perform the corresponding operation in the console, see [Release an instance](~~43882~~).
+        @summary Release the Redis instance.
+        
+        @description For more information about how to perform the corresponding operation in the console, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
         Before you call this operation, make sure that the following requirements are met:
-        *   The instance is in the running state.
-        *   The instance is charged on a pay-as-you-go basis.
+        The instance is in the running state.
+        The instance is charged on a pay-as-you-go basis.
         >  You cannot call this operation to release a subscription instance, which is automatically released when it expires. To release a subscription instance before it expires, submit a ticket.
         
         @param request: DeleteInstanceRequest
@@ -2337,10 +2594,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteInstanceRequest,
     ) -> r_kvstore_20150101_models.DeleteInstanceResponse:
         """
-        For more information about how to perform the corresponding operation in the console, see [Release an instance](~~43882~~).
+        @summary Release the Redis instance.
+        
+        @description For more information about how to perform the corresponding operation in the console, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
         Before you call this operation, make sure that the following requirements are met:
-        *   The instance is in the running state.
-        *   The instance is charged on a pay-as-you-go basis.
+        The instance is in the running state.
+        The instance is charged on a pay-as-you-go basis.
         >  You cannot call this operation to release a subscription instance, which is automatically released when it expires. To release a subscription instance before it expires, submit a ticket.
         
         @param request: DeleteInstanceRequest
@@ -2354,10 +2613,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteInstanceRequest,
     ) -> r_kvstore_20150101_models.DeleteInstanceResponse:
         """
-        For more information about how to perform the corresponding operation in the console, see [Release an instance](~~43882~~).
+        @summary Release the Redis instance.
+        
+        @description For more information about how to perform the corresponding operation in the console, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
         Before you call this operation, make sure that the following requirements are met:
-        *   The instance is in the running state.
-        *   The instance is charged on a pay-as-you-go basis.
+        The instance is in the running state.
+        The instance is charged on a pay-as-you-go basis.
         >  You cannot call this operation to release a subscription instance, which is automatically released when it expires. To release a subscription instance before it expires, submit a ticket.
         
         @param request: DeleteInstanceRequest
@@ -2366,16 +2627,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_with_options_async(request, runtime)
 
+    def delete_parameter_group_with_options(
+        self,
+        request: r_kvstore_20150101_models.DeleteParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DeleteParameterGroupResponse:
+        """
+        @summary Deletes a parameter template.
+        
+        @param request: DeleteParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteParameterGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteParameterGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_parameter_group_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DeleteParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DeleteParameterGroupResponse:
+        """
+        @summary Deletes a parameter template.
+        
+        @param request: DeleteParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteParameterGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteParameterGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_parameter_group(
+        self,
+        request: r_kvstore_20150101_models.DeleteParameterGroupRequest,
+    ) -> r_kvstore_20150101_models.DeleteParameterGroupResponse:
+        """
+        @summary Deletes a parameter template.
+        
+        @param request: DeleteParameterGroupRequest
+        @return: DeleteParameterGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_parameter_group_with_options(request, runtime)
+
+    async def delete_parameter_group_async(
+        self,
+        request: r_kvstore_20150101_models.DeleteParameterGroupRequest,
+    ) -> r_kvstore_20150101_models.DeleteParameterGroupResponse:
+        """
+        @summary Deletes a parameter template.
+        
+        @param request: DeleteParameterGroupRequest
+        @return: DeleteParameterGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_parameter_group_with_options_async(request, runtime)
+
     def delete_sharding_node_with_options(
         self,
         request: r_kvstore_20150101_models.DeleteShardingNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteShardingNodeResponse:
         """
-        You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](~~198082~~).\\
+        @summary Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+        
+        @description You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](~~183956~~).
-        *   The instance has more than one data shard.
+        The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
+        The instance has more than one data shard.
         
         @param request: DeleteShardingNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2426,10 +2805,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteShardingNodeResponse:
         """
-        You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](~~198082~~).\\
+        @summary Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+        
+        @description You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](~~183956~~).
-        *   The instance has more than one data shard.
+        The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
+        The instance has more than one data shard.
         
         @param request: DeleteShardingNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2479,10 +2860,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteShardingNodeRequest,
     ) -> r_kvstore_20150101_models.DeleteShardingNodeResponse:
         """
-        You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](~~198082~~).\\
+        @summary Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+        
+        @description You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](~~183956~~).
-        *   The instance has more than one data shard.
+        The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
+        The instance has more than one data shard.
         
         @param request: DeleteShardingNodeRequest
         @return: DeleteShardingNodeResponse
@@ -2495,10 +2878,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteShardingNodeRequest,
     ) -> r_kvstore_20150101_models.DeleteShardingNodeResponse:
         """
-        You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](~~198082~~).\\
+        @summary Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+        
+        @description You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](~~183956~~).
-        *   The instance has more than one data shard.
+        The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
+        The instance has more than one data shard.
         
         @param request: DeleteShardingNodeRequest
         @return: DeleteShardingNodeResponse
@@ -2512,7 +2897,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @summary Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+        
+        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2559,7 +2946,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @summary Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+        
+        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2605,7 +2994,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAccountsRequest,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @summary Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+        
+        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @return: DescribeAccountsResponse
@@ -2618,7 +3009,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAccountsRequest,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @summary Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+        
+        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @return: DescribeAccountsResponse
@@ -2632,7 +3025,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         """
-        After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
+        @summary Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+        
+        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
         
         @param request: DescribeActiveOperationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2685,7 +3080,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         """
-        After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
+        @summary Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+        
+        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
         
         @param request: DescribeActiveOperationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2737,7 +3134,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         """
-        After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
+        @summary Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+        
+        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
         
         @param request: DescribeActiveOperationTaskRequest
         @return: DescribeActiveOperationTaskResponse
@@ -2750,7 +3149,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         """
-        After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
+        @summary Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+        
+        @description After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
         
         @param request: DescribeActiveOperationTaskRequest
         @return: DescribeActiveOperationTaskResponse
@@ -2764,11 +3165,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAuditLogConfigResponse:
         """
-        > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
+        @summary Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+        
+        @description > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
         Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest minor version.
-        *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
+        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
         
         @param request: DescribeAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2815,11 +3218,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAuditLogConfigResponse:
         """
-        > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
+        @summary Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+        
+        @description > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
         Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest minor version.
-        *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
+        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
         
         @param request: DescribeAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2865,11 +3270,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAuditLogConfigRequest,
     ) -> r_kvstore_20150101_models.DescribeAuditLogConfigResponse:
         """
-        > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
+        @summary Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+        
+        @description > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
         Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest minor version.
-        *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
+        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
         
         @param request: DescribeAuditLogConfigRequest
         @return: DescribeAuditLogConfigResponse
@@ -2882,11 +3289,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAuditLogConfigRequest,
     ) -> r_kvstore_20150101_models.DescribeAuditLogConfigResponse:
         """
-        > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
+        @summary Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+        
+        @description > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
         Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest minor version.
-        *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
+        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
         
         @param request: DescribeAuditLogConfigRequest
         @return: DescribeAuditLogConfigResponse
@@ -2900,11 +3309,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         """
-        This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](~~101937~~).
+        @summary Queries the audit logs of an ApsaraDB for Redis instance.
+        
+        @description This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+        The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
+        The engine version of the instance is Redis 4.0 or later.
+        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
         
         @param request: DescribeAuditRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2967,11 +3378,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         """
-        This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](~~101937~~).
+        @summary Queries the audit logs of an ApsaraDB for Redis instance.
+        
+        @description This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+        The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
+        The engine version of the instance is Redis 4.0 or later.
+        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
         
         @param request: DescribeAuditRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3033,11 +3446,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAuditRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         """
-        This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](~~101937~~).
+        @summary Queries the audit logs of an ApsaraDB for Redis instance.
+        
+        @description This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+        The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
+        The engine version of the instance is Redis 4.0 or later.
+        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
         
         @param request: DescribeAuditRecordsRequest
         @return: DescribeAuditRecordsResponse
@@ -3050,11 +3465,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAuditRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeAuditRecordsResponse:
         """
-        This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](~~101937~~).
+        @summary Queries the audit logs of an ApsaraDB for Redis instance.
+        
+        @description This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+        The instance is an ApsaraDB for Redis Community Edition instance or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance.
+        The engine version of the instance is Redis 4.0 or later.
+        The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
         
         @param request: DescribeAuditRecordsRequest
         @return: DescribeAuditRecordsResponse
@@ -3067,6 +3484,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
+        """
+        @summary Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+        
+        @param request: DescribeAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3125,6 +3549,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
+        """
+        @summary Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+        
+        @param request: DescribeAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3182,6 +3613,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
     ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
+        """
+        @summary Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+        
+        @param request: DescribeAvailableResourceRequest
+        @return: DescribeAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_resource_with_options(request, runtime)
 
@@ -3189,6 +3626,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeAvailableResourceRequest,
     ) -> r_kvstore_20150101_models.DescribeAvailableResourceResponse:
+        """
+        @summary Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+        
+        @param request: DescribeAvailableResourceRequest
+        @return: DescribeAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_resource_with_options_async(request, runtime)
 
@@ -3197,6 +3640,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupPolicyResponse:
+        """
+        @summary Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+        
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3235,6 +3685,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupPolicyResponse:
+        """
+        @summary Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+        
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3272,6 +3729,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeBackupPolicyRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupPolicyResponse:
+        """
+        @summary Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+        
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_policy_with_options(request, runtime)
 
@@ -3279,6 +3742,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeBackupPolicyRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupPolicyResponse:
+        """
+        @summary Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+        
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
@@ -3287,6 +3756,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupTasksResponse:
+        """
+        @summary Queries the states of backup tasks for an ApsaraDB for Redis instance.
+        
+        @param request: DescribeBackupTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_job_id):
@@ -3329,6 +3805,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupTasksResponse:
+        """
+        @summary Queries the states of backup tasks for an ApsaraDB for Redis instance.
+        
+        @param request: DescribeBackupTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_job_id):
@@ -3370,6 +3853,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeBackupTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupTasksResponse:
+        """
+        @summary Queries the states of backup tasks for an ApsaraDB for Redis instance.
+        
+        @param request: DescribeBackupTasksRequest
+        @return: DescribeBackupTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_tasks_with_options(request, runtime)
 
@@ -3377,6 +3866,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeBackupTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupTasksResponse:
+        """
+        @summary Queries the states of backup tasks for an ApsaraDB for Redis instance.
+        
+        @param request: DescribeBackupTasksRequest
+        @return: DescribeBackupTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_tasks_with_options_async(request, runtime)
 
@@ -3385,6 +3880,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
+        """
+        @summary Queries the backup files of the ApsaraDB for Redis instance.
+        
+        @param request: DescribeBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -3437,6 +3939,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
+        """
+        @summary Queries the backup files of the ApsaraDB for Redis instance.
+        
+        @param request: DescribeBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -3488,6 +3997,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
+        """
+        @summary Queries the backup files of the ApsaraDB for Redis instance.
+        
+        @param request: DescribeBackupsRequest
+        @return: DescribeBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backups_with_options(request, runtime)
 
@@ -3495,6 +4010,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeBackupsRequest,
     ) -> r_kvstore_20150101_models.DescribeBackupsResponse:
+        """
+        @summary Queries the backup files of the ApsaraDB for Redis instance.
+        
+        @param request: DescribeBackupsRequest
+        @return: DescribeBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
 
@@ -3504,10 +4025,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+        @summary Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+        
+        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+        The engine version of the instance is Redis 4.0 or later.
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3562,10 +4085,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+        @summary Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+        
+        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+        The engine version of the instance is Redis 4.0 or later.
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3619,10 +4144,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeCacheAnalysisReportRequest,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+        @summary Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+        
+        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+        The engine version of the instance is Redis 4.0 or later.
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportRequest
         @return: DescribeCacheAnalysisReportResponse
@@ -3635,10 +4162,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeCacheAnalysisReportRequest,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+        @summary Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+        
+        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+        The engine version of the instance is Redis 4.0 or later.
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportRequest
         @return: DescribeCacheAnalysisReportResponse
@@ -3652,10 +4181,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+        @summary Queries the cache analytics reports of an ApsaraDB for Redis instance.
+        
+        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+        The engine version of the instance is Redis 4.0 or later.
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3708,10 +4239,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+        @summary Queries the cache analytics reports of an ApsaraDB for Redis instance.
+        
+        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+        The engine version of the instance is Redis 4.0 or later.
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3763,10 +4296,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeCacheAnalysisReportListRequest,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+        @summary Queries the cache analytics reports of an ApsaraDB for Redis instance.
+        
+        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+        The engine version of the instance is Redis 4.0 or later.
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportListRequest
         @return: DescribeCacheAnalysisReportListResponse
@@ -3779,10 +4314,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeCacheAnalysisReportListRequest,
     ) -> r_kvstore_20150101_models.DescribeCacheAnalysisReportListResponse:
         """
-        > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+        @summary Queries the cache analytics reports of an ApsaraDB for Redis instance.
+        
+        @description > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
         Before you call this operation, make sure that the instance meets the following requirements:
-        *   The engine version of the instance is Redis 4.0 or later.
-        *   The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+        The engine version of the instance is Redis 4.0 or later.
+        The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
         
         @param request: DescribeCacheAnalysisReportListRequest
         @return: DescribeCacheAnalysisReportListResponse
@@ -3795,6 +4332,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
+        """
+        @summary Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+        
+        @param request: DescribeClusterBackupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterBackupListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3821,6 +4365,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
+        """
+        @summary Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+        
+        @param request: DescribeClusterBackupListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterBackupListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3846,6 +4397,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
     ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
+        """
+        @summary Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+        
+        @param request: DescribeClusterBackupListRequest
+        @return: DescribeClusterBackupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_backup_list_with_options(request, runtime)
 
@@ -3853,6 +4410,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeClusterBackupListRequest,
     ) -> r_kvstore_20150101_models.DescribeClusterBackupListResponse:
+        """
+        @summary Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+        
+        @param request: DescribeClusterBackupListRequest
+        @return: DescribeClusterBackupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_backup_list_with_options_async(request, runtime)
 
@@ -3862,7 +4425,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeClusterMemberInfoResponse:
         """
-        > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](~~188068~~) and the [cluster architecture](~~52228~~).
+        @summary Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+        
+        @description > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         
         @param request: DescribeClusterMemberInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3911,7 +4476,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeClusterMemberInfoResponse:
         """
-        > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](~~188068~~) and the [cluster architecture](~~52228~~).
+        @summary Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+        
+        @description > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         
         @param request: DescribeClusterMemberInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3959,7 +4526,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeClusterMemberInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeClusterMemberInfoResponse:
         """
-        > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](~~188068~~) and the [cluster architecture](~~52228~~).
+        @summary Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+        
+        @description > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         
         @param request: DescribeClusterMemberInfoRequest
         @return: DescribeClusterMemberInfoResponse
@@ -3972,7 +4541,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeClusterMemberInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeClusterMemberInfoResponse:
         """
-        > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](~~188068~~) and the [cluster architecture](~~52228~~).
+        @summary Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+        
+        @description > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         
         @param request: DescribeClusterMemberInfoRequest
         @return: DescribeClusterMemberInfoResponse
@@ -3985,6 +4556,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeDBInstanceNetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse:
+        """
+        @summary Queries the network information of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeDBInstanceNetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceNetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4023,6 +4601,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeDBInstanceNetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse:
+        """
+        @summary Queries the network information of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeDBInstanceNetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceNetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4060,6 +4645,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeDBInstanceNetInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse:
+        """
+        @summary Queries the network information of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeDBInstanceNetInfoRequest
+        @return: DescribeDBInstanceNetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_net_info_with_options(request, runtime)
 
@@ -4067,6 +4658,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeDBInstanceNetInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeDBInstanceNetInfoResponse:
+        """
+        @summary Queries the network information of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeDBInstanceNetInfoRequest
+        @return: DescribeDBInstanceNetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_net_info_with_options_async(request, runtime)
 
@@ -4076,7 +4673,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse:
         """
-        > Only instances that use cloud disks support this operation.
+        @summary Queries the information about virtual IP addresses (VIPs) of child instances of a cluster instance in direct connection mode.
+        
+        @description > Only instances that use cloud disks support this operation.
         
         @param request: DescribeDBNodeDirectVipInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4119,7 +4718,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse:
         """
-        > Only instances that use cloud disks support this operation.
+        @summary Queries the information about virtual IP addresses (VIPs) of child instances of a cluster instance in direct connection mode.
+        
+        @description > Only instances that use cloud disks support this operation.
         
         @param request: DescribeDBNodeDirectVipInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4161,7 +4762,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse:
         """
-        > Only instances that use cloud disks support this operation.
+        @summary Queries the information about virtual IP addresses (VIPs) of child instances of a cluster instance in direct connection mode.
+        
+        @description > Only instances that use cloud disks support this operation.
         
         @param request: DescribeDBNodeDirectVipInfoRequest
         @return: DescribeDBNodeDirectVipInfoResponse
@@ -4174,7 +4777,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeDBNodeDirectVipInfoResponse:
         """
-        > Only instances that use cloud disks support this operation.
+        @summary Queries the information about virtual IP addresses (VIPs) of child instances of a cluster instance in direct connection mode.
+        
+        @description > Only instances that use cloud disks support this operation.
         
         @param request: DescribeDBNodeDirectVipInfoRequest
         @return: DescribeDBNodeDirectVipInfoResponse
@@ -4188,7 +4793,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse:
         """
-        > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](~~60996~~) operation.
+        @summary Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+        
+        @description > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
         
         @param request: DescribeDedicatedClusterInstanceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4253,7 +4860,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse:
         """
-        > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](~~60996~~) operation.
+        @summary Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+        
+        @description > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
         
         @param request: DescribeDedicatedClusterInstanceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4317,7 +4926,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListRequest,
     ) -> r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse:
         """
-        > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](~~60996~~) operation.
+        @summary Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+        
+        @description > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
         
         @param request: DescribeDedicatedClusterInstanceListRequest
         @return: DescribeDedicatedClusterInstanceListResponse
@@ -4330,7 +4941,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListRequest,
     ) -> r_kvstore_20150101_models.DescribeDedicatedClusterInstanceListResponse:
         """
-        > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](~~60996~~) operation.
+        @summary Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+        
+        @description > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
         
         @param request: DescribeDedicatedClusterInstanceListRequest
         @return: DescribeDedicatedClusterInstanceListResponse
@@ -4344,8 +4957,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyResponse:
         """
-        Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](~~302337~~).
-        > For more information about TDE, see [Enable TDE](~~265913~~).
+        @summary Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
+        > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4392,8 +5007,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyResponse:
         """
-        Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](~~302337~~).
-        > For more information about TDE, see [Enable TDE](~~265913~~).
+        @summary Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
+        > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4439,8 +5056,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEncryptionKeyRequest,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyResponse:
         """
-        Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](~~302337~~).
-        > For more information about TDE, see [Enable TDE](~~265913~~).
+        @summary Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
+        > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyRequest
         @return: DescribeEncryptionKeyResponse
@@ -4453,8 +5072,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEncryptionKeyRequest,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyResponse:
         """
-        Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](~~302337~~).
-        > For more information about TDE, see [Enable TDE](~~265913~~).
+        @summary Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
+        > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyRequest
         @return: DescribeEncryptionKeyResponse
@@ -4468,8 +5089,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyListResponse:
         """
-        You can specify a custom key when you call the [ModifyInstanceTDE](~~302337~~) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](~~28947~~) operation of Key Management Service (KMS).
-        *   For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+        @summary Queries the custom keys used by an ApsaraDB for Redis instance.
+        
+        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
+        For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4514,8 +5137,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyListResponse:
         """
-        You can specify a custom key when you call the [ModifyInstanceTDE](~~302337~~) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](~~28947~~) operation of Key Management Service (KMS).
-        *   For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+        @summary Queries the custom keys used by an ApsaraDB for Redis instance.
+        
+        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
+        For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4559,8 +5184,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEncryptionKeyListRequest,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyListResponse:
         """
-        You can specify a custom key when you call the [ModifyInstanceTDE](~~302337~~) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](~~28947~~) operation of Key Management Service (KMS).
-        *   For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+        @summary Queries the custom keys used by an ApsaraDB for Redis instance.
+        
+        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
+        For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyListRequest
         @return: DescribeEncryptionKeyListResponse
@@ -4573,8 +5200,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEncryptionKeyListRequest,
     ) -> r_kvstore_20150101_models.DescribeEncryptionKeyListResponse:
         """
-        You can specify a custom key when you call the [ModifyInstanceTDE](~~302337~~) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](~~28947~~) operation of Key Management Service (KMS).
-        *   For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+        @summary Queries the custom keys used by an ApsaraDB for Redis instance.
+        
+        @description    You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
+        For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: DescribeEncryptionKeyListRequest
         @return: DescribeEncryptionKeyListResponse
@@ -4588,7 +5217,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEngineVersionResponse:
         """
-        ## Debugging
+        @summary Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeEngineVersion\\&type=RPC\\&version=2015-01-01)
         
         @param request: DescribeEngineVersionRequest
@@ -4634,7 +5265,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeEngineVersionResponse:
         """
-        ## Debugging
+        @summary Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeEngineVersion\\&type=RPC\\&version=2015-01-01)
         
         @param request: DescribeEngineVersionRequest
@@ -4679,7 +5312,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEngineVersionRequest,
     ) -> r_kvstore_20150101_models.DescribeEngineVersionResponse:
         """
-        ## Debugging
+        @summary Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeEngineVersion\\&type=RPC\\&version=2015-01-01)
         
         @param request: DescribeEngineVersionRequest
@@ -4693,7 +5328,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeEngineVersionRequest,
     ) -> r_kvstore_20150101_models.DescribeEngineVersionResponse:
         """
-        ## Debugging
+        @summary Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeEngineVersion\\&type=RPC\\&version=2015-01-01)
         
         @param request: DescribeEngineVersionRequest
@@ -4708,7 +5345,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse:
         """
-        ## Debugging
+        @summary Queries the details of a distributed ApsaraDB for Redis instance.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeGlobalDistributeCache\\&type=RPC\\&version=2015-01-01)
         
         @param request: DescribeGlobalDistributeCacheRequest
@@ -4760,7 +5399,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse:
         """
-        ## Debugging
+        @summary Queries the details of a distributed ApsaraDB for Redis instance.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeGlobalDistributeCache\\&type=RPC\\&version=2015-01-01)
         
         @param request: DescribeGlobalDistributeCacheRequest
@@ -4811,7 +5452,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeGlobalDistributeCacheRequest,
     ) -> r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse:
         """
-        ## Debugging
+        @summary Queries the details of a distributed ApsaraDB for Redis instance.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeGlobalDistributeCache\\&type=RPC\\&version=2015-01-01)
         
         @param request: DescribeGlobalDistributeCacheRequest
@@ -4825,7 +5468,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeGlobalDistributeCacheRequest,
     ) -> r_kvstore_20150101_models.DescribeGlobalDistributeCacheResponse:
         """
-        ## Debugging
+        @summary Queries the details of a distributed ApsaraDB for Redis instance.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeGlobalDistributeCache\\&type=RPC\\&version=2015-01-01)
         
         @param request: DescribeGlobalDistributeCacheRequest
@@ -4839,6 +5484,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse:
+        """
+        @summary Queries global IP whitelist templates.
+        
+        @param request: DescribeGlobalSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalSecurityIPGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4865,6 +5517,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse:
+        """
+        @summary Queries global IP whitelist templates.
+        
+        @param request: DescribeGlobalSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalSecurityIPGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4890,6 +5549,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse:
+        """
+        @summary Queries global IP whitelist templates.
+        
+        @param request: DescribeGlobalSecurityIPGroupRequest
+        @return: DescribeGlobalSecurityIPGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_global_security_ipgroup_with_options(request, runtime)
 
@@ -4897,6 +5562,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse:
+        """
+        @summary Queries global IP whitelist templates.
+        
+        @param request: DescribeGlobalSecurityIPGroupRequest
+        @return: DescribeGlobalSecurityIPGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_security_ipgroup_with_options_async(request, runtime)
 
@@ -4905,6 +5576,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        """
+        @summary Queries information about the global IP whitelist templates associated with an instance.
+        
+        @param request: DescribeGlobalSecurityIPGroupRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalSecurityIPGroupRelationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4931,6 +5609,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        """
+        @summary Queries information about the global IP whitelist templates associated with an instance.
+        
+        @param request: DescribeGlobalSecurityIPGroupRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalSecurityIPGroupRelationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4956,6 +5641,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationRequest,
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        """
+        @summary Queries information about the global IP whitelist templates associated with an instance.
+        
+        @param request: DescribeGlobalSecurityIPGroupRelationRequest
+        @return: DescribeGlobalSecurityIPGroupRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_global_security_ipgroup_relation_with_options(request, runtime)
 
@@ -4963,6 +5654,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationRequest,
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        """
+        @summary Queries information about the global IP whitelist templates associated with an instance.
+        
+        @param request: DescribeGlobalSecurityIPGroupRelationRequest
+        @return: DescribeGlobalSecurityIPGroupRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_security_ipgroup_relation_with_options_async(request, runtime)
 
@@ -4972,7 +5669,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse:
         """
-        You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](~~43887~~).
+        @summary Queries the performance monitoring data of an ApsaraDB for Redis instance.
+        
+        @description You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
         
         @param request: DescribeHistoryMonitorValuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5029,7 +5728,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse:
         """
-        You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](~~43887~~).
+        @summary Queries the performance monitoring data of an ApsaraDB for Redis instance.
+        
+        @description You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
         
         @param request: DescribeHistoryMonitorValuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5085,7 +5786,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeHistoryMonitorValuesRequest,
     ) -> r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse:
         """
-        You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](~~43887~~).
+        @summary Queries the performance monitoring data of an ApsaraDB for Redis instance.
+        
+        @description You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
         
         @param request: DescribeHistoryMonitorValuesRequest
         @return: DescribeHistoryMonitorValuesResponse
@@ -5098,7 +5801,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeHistoryMonitorValuesRequest,
     ) -> r_kvstore_20150101_models.DescribeHistoryMonitorValuesResponse:
         """
-        You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](~~43887~~).
+        @summary Queries the performance monitoring data of an ApsaraDB for Redis instance.
+        
+        @description You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
         
         @param request: DescribeHistoryMonitorValuesRequest
         @return: DescribeHistoryMonitorValuesResponse
@@ -5111,6 +5816,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeHistoryTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeHistoryTasksResponse:
+        """
+        @summary Queries a list of tasks in the task center.
+        
+        @param request: DescribeHistoryTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_exec_time):
@@ -5167,6 +5879,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeHistoryTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeHistoryTasksResponse:
+        """
+        @summary Queries a list of tasks in the task center.
+        
+        @param request: DescribeHistoryTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_exec_time):
@@ -5222,6 +5941,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeHistoryTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeHistoryTasksResponse:
+        """
+        @summary Queries a list of tasks in the task center.
+        
+        @param request: DescribeHistoryTasksRequest
+        @return: DescribeHistoryTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_history_tasks_with_options(request, runtime)
 
@@ -5229,6 +5954,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeHistoryTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeHistoryTasksResponse:
+        """
+        @summary Queries a list of tasks in the task center.
+        
+        @param request: DescribeHistoryTasksRequest
+        @return: DescribeHistoryTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_history_tasks_with_options_async(request, runtime)
 
@@ -5237,6 +5968,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceAttributeResponse:
+        """
+        @summary Queries the details of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5275,6 +6013,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceAttributeResponse:
+        """
+        @summary Queries the details of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5312,6 +6057,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeInstanceAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceAttributeResponse:
+        """
+        @summary Queries the details of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeInstanceAttributeRequest
+        @return: DescribeInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_attribute_with_options(request, runtime)
 
@@ -5319,6 +6070,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeInstanceAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceAttributeResponse:
+        """
+        @summary Queries the details of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeInstanceAttributeRequest
+        @return: DescribeInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_attribute_with_options_async(request, runtime)
 
@@ -5327,6 +6084,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse:
+        """
+        @summary Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+        
+        @param request: DescribeInstanceAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAutoRenewalAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5371,6 +6135,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse:
+        """
+        @summary Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+        
+        @param request: DescribeInstanceAutoRenewalAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAutoRenewalAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5414,6 +6185,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse:
+        """
+        @summary Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+        
+        @param request: DescribeInstanceAutoRenewalAttributeRequest
+        @return: DescribeInstanceAutoRenewalAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_auto_renewal_attribute_with_options(request, runtime)
 
@@ -5421,6 +6198,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceAutoRenewalAttributeResponse:
+        """
+        @summary Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+        
+        @param request: DescribeInstanceAutoRenewalAttributeRequest
+        @return: DescribeInstanceAutoRenewalAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_auto_renewal_attribute_with_options_async(request, runtime)
 
@@ -5430,8 +6213,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceConfigResponse:
         """
-        This operation is available only for instances that use cloud disks.
-        > You can call the [DescribeParameters](~~473847~~) operation to query the parameter settings of instances that use local disks.
+        @summary Queries the parameter settings of an ApsaraDB for Redis instance.
+        
+        @description This operation is available only for instances that use cloud disks.
+        > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
         
         @param request: DescribeInstanceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5476,8 +6261,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceConfigResponse:
         """
-        This operation is available only for instances that use cloud disks.
-        > You can call the [DescribeParameters](~~473847~~) operation to query the parameter settings of instances that use local disks.
+        @summary Queries the parameter settings of an ApsaraDB for Redis instance.
+        
+        @description This operation is available only for instances that use cloud disks.
+        > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
         
         @param request: DescribeInstanceConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5521,8 +6308,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceConfigRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceConfigResponse:
         """
-        This operation is available only for instances that use cloud disks.
-        > You can call the [DescribeParameters](~~473847~~) operation to query the parameter settings of instances that use local disks.
+        @summary Queries the parameter settings of an ApsaraDB for Redis instance.
+        
+        @description This operation is available only for instances that use cloud disks.
+        > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
         
         @param request: DescribeInstanceConfigRequest
         @return: DescribeInstanceConfigResponse
@@ -5535,8 +6324,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceConfigRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceConfigResponse:
         """
-        This operation is available only for instances that use cloud disks.
-        > You can call the [DescribeParameters](~~473847~~) operation to query the parameter settings of instances that use local disks.
+        @summary Queries the parameter settings of an ApsaraDB for Redis instance.
+        
+        @description This operation is available only for instances that use cloud disks.
+        > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
         
         @param request: DescribeInstanceConfigRequest
         @return: DescribeInstanceConfigResponse
@@ -5550,10 +6341,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceSSLResponse:
         """
-        SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
+        @summary Queries whether TLS (SSL) encryption is enabled for an instance.
+        
+        @description SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
         You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
-        *   Call the [ModifyInstanceSSL](~~96194~~) operation.
-        *   Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
+        Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         > After SSL encryption is enabled, the instance may respond slower.
         
         @param request: DescribeInstanceSSLRequest
@@ -5599,10 +6392,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceSSLResponse:
         """
-        SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
+        @summary Queries whether TLS (SSL) encryption is enabled for an instance.
+        
+        @description SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
         You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
-        *   Call the [ModifyInstanceSSL](~~96194~~) operation.
-        *   Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
+        Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         > After SSL encryption is enabled, the instance may respond slower.
         
         @param request: DescribeInstanceSSLRequest
@@ -5647,10 +6442,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceSSLRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceSSLResponse:
         """
-        SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
+        @summary Queries whether TLS (SSL) encryption is enabled for an instance.
+        
+        @description SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
         You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
-        *   Call the [ModifyInstanceSSL](~~96194~~) operation.
-        *   Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
+        Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         > After SSL encryption is enabled, the instance may respond slower.
         
         @param request: DescribeInstanceSSLRequest
@@ -5664,10 +6461,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceSSLRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceSSLResponse:
         """
-        SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
+        @summary Queries whether TLS (SSL) encryption is enabled for an instance.
+        
+        @description SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
         You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
-        *   Call the [ModifyInstanceSSL](~~96194~~) operation.
-        *   Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
+        Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         > After SSL encryption is enabled, the instance may respond slower.
         
         @param request: DescribeInstanceSSLRequest
@@ -5682,8 +6481,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse:
         """
-        For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
-        >  You can call the [ModifyInstanceTDE](~~302337~~) to enable or disable TDE.
+        @summary Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+        
+        @description For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
         
         @param request: DescribeInstanceTDEStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5728,8 +6529,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse:
         """
-        For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
-        >  You can call the [ModifyInstanceTDE](~~302337~~) to enable or disable TDE.
+        @summary Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+        
+        @description For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
         
         @param request: DescribeInstanceTDEStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5773,8 +6576,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceTDEStatusRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse:
         """
-        For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
-        >  You can call the [ModifyInstanceTDE](~~302337~~) to enable or disable TDE.
+        @summary Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+        
+        @description For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
         
         @param request: DescribeInstanceTDEStatusRequest
         @return: DescribeInstanceTDEStatusResponse
@@ -5787,8 +6592,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstanceTDEStatusRequest,
     ) -> r_kvstore_20150101_models.DescribeInstanceTDEStatusResponse:
         """
-        For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
-        >  You can call the [ModifyInstanceTDE](~~302337~~) to enable or disable TDE.
+        @summary Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+        
+        @description For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
         
         @param request: DescribeInstanceTDEStatusRequest
         @return: DescribeInstanceTDEStatusResponse
@@ -5801,6 +6608,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstancesResponse:
+        """
+        @summary Queries the information about one or more ApsaraDB for Redis instances.
+        
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.architecture_type):
@@ -5879,6 +6693,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstancesResponse:
+        """
+        @summary Queries the information about one or more ApsaraDB for Redis instances.
+        
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.architecture_type):
@@ -5956,6 +6777,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeInstancesRequest,
     ) -> r_kvstore_20150101_models.DescribeInstancesResponse:
+        """
+        @summary Queries the information about one or more ApsaraDB for Redis instances.
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instances_with_options(request, runtime)
 
@@ -5963,6 +6790,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeInstancesRequest,
     ) -> r_kvstore_20150101_models.DescribeInstancesResponse:
+        """
+        @summary Queries the information about one or more ApsaraDB for Redis instances.
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
 
@@ -5972,7 +6805,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstancesOverviewResponse:
         """
-        If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
+        @summary Queries the overview information of one or more ApsaraDB for Redis instances.
+        
+        @description If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
         > This operation returns non-paged results.
         
         @param request: DescribeInstancesOverviewRequest
@@ -6048,7 +6883,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeInstancesOverviewResponse:
         """
-        If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
+        @summary Queries the overview information of one or more ApsaraDB for Redis instances.
+        
+        @description If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
         > This operation returns non-paged results.
         
         @param request: DescribeInstancesOverviewRequest
@@ -6123,7 +6960,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstancesOverviewRequest,
     ) -> r_kvstore_20150101_models.DescribeInstancesOverviewResponse:
         """
-        If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
+        @summary Queries the overview information of one or more ApsaraDB for Redis instances.
+        
+        @description If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
         > This operation returns non-paged results.
         
         @param request: DescribeInstancesOverviewRequest
@@ -6137,7 +6976,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeInstancesOverviewRequest,
     ) -> r_kvstore_20150101_models.DescribeInstancesOverviewResponse:
         """
-        If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
+        @summary Queries the overview information of one or more ApsaraDB for Redis instances.
+        
+        @description If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
         > This operation returns non-paged results.
         
         @param request: DescribeInstancesOverviewRequest
@@ -6152,7 +6993,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeIntranetAttributeResponse:
         """
-        You can call the [EnableAdditionalBandwidth](~~206173~~) operation to increase the internal bandwidth of an instance.
+        @summary Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+        
+        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
         
         @param request: DescribeIntranetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6199,7 +7042,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeIntranetAttributeResponse:
         """
-        You can call the [EnableAdditionalBandwidth](~~206173~~) operation to increase the internal bandwidth of an instance.
+        @summary Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+        
+        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
         
         @param request: DescribeIntranetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6245,7 +7090,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeIntranetAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeIntranetAttributeResponse:
         """
-        You can call the [EnableAdditionalBandwidth](~~206173~~) operation to increase the internal bandwidth of an instance.
+        @summary Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+        
+        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
         
         @param request: DescribeIntranetAttributeRequest
         @return: DescribeIntranetAttributeResponse
@@ -6258,7 +7105,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeIntranetAttributeRequest,
     ) -> r_kvstore_20150101_models.DescribeIntranetAttributeResponse:
         """
-        You can call the [EnableAdditionalBandwidth](~~206173~~) operation to increase the internal bandwidth of an instance.
+        @summary Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+        
+        @description You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
         
         @param request: DescribeIntranetAttributeRequest
         @return: DescribeIntranetAttributeResponse
@@ -6272,7 +7121,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse:
         """
-        This parameter is supported only for cluster and read/write splitting instances.
+        @summary Queries the logical topology of an ApsaraDB for Redis instance.
+        
+        @description This parameter is supported only for cluster and read/write splitting instances.
         
         @param request: DescribeLogicInstanceTopologyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6317,7 +7168,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse:
         """
-        This parameter is supported only for cluster and read/write splitting instances.
+        @summary Queries the logical topology of an ApsaraDB for Redis instance.
+        
+        @description This parameter is supported only for cluster and read/write splitting instances.
         
         @param request: DescribeLogicInstanceTopologyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6361,7 +7214,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeLogicInstanceTopologyRequest,
     ) -> r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse:
         """
-        This parameter is supported only for cluster and read/write splitting instances.
+        @summary Queries the logical topology of an ApsaraDB for Redis instance.
+        
+        @description This parameter is supported only for cluster and read/write splitting instances.
         
         @param request: DescribeLogicInstanceTopologyRequest
         @return: DescribeLogicInstanceTopologyResponse
@@ -6374,7 +7229,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeLogicInstanceTopologyRequest,
     ) -> r_kvstore_20150101_models.DescribeLogicInstanceTopologyResponse:
         """
-        This parameter is supported only for cluster and read/write splitting instances.
+        @summary Queries the logical topology of an ApsaraDB for Redis instance.
+        
+        @description This parameter is supported only for cluster and read/write splitting instances.
         
         @param request: DescribeLogicInstanceTopologyRequest
         @return: DescribeLogicInstanceTopologyResponse
@@ -6388,7 +7245,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
-        >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
+        @summary Queries the metrics of an ApsaraDB for Redis instance.
+        
+        @description >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
         After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
@@ -6432,7 +7291,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
-        >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
+        @summary Queries the metrics of an ApsaraDB for Redis instance.
+        
+        @description >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
         After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
@@ -6475,7 +7336,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeMonitorItemsRequest,
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
-        >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
+        @summary Queries the metrics of an ApsaraDB for Redis instance.
+        
+        @description >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
         After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
@@ -6489,7 +7352,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeMonitorItemsRequest,
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
-        >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
+        @summary Queries the metrics of an ApsaraDB for Redis instance.
+        
+        @description >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
         After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
@@ -6498,11 +7363,474 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_monitor_items_with_options_async(request, runtime)
 
+    def describe_parameter_group_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupResponse:
+        """
+        @summary Queries the basic information about a parameter template.
+        
+        @param request: DescribeParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_parameter_group_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupResponse:
+        """
+        @summary Queries the basic information about a parameter template.
+        
+        @param request: DescribeParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_parameter_group(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupResponse:
+        """
+        @summary Queries the basic information about a parameter template.
+        
+        @param request: DescribeParameterGroupRequest
+        @return: DescribeParameterGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameter_group_with_options(request, runtime)
+
+    async def describe_parameter_group_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupResponse:
+        """
+        @summary Queries the basic information about a parameter template.
+        
+        @param request: DescribeParameterGroupRequest
+        @return: DescribeParameterGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameter_group_with_options_async(request, runtime)
+
+    def describe_parameter_group_support_param_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupSupportParamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse:
+        """
+        @summary Queries a list of parameters that can be configured for different versions of parameter templates.
+        
+        @param request: DescribeParameterGroupSupportParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupSupportParamResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroupSupportParam',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_parameter_group_support_param_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupSupportParamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse:
+        """
+        @summary Queries a list of parameters that can be configured for different versions of parameter templates.
+        
+        @param request: DescribeParameterGroupSupportParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupSupportParamResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroupSupportParam',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_parameter_group_support_param(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupSupportParamRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse:
+        """
+        @summary Queries a list of parameters that can be configured for different versions of parameter templates.
+        
+        @param request: DescribeParameterGroupSupportParamRequest
+        @return: DescribeParameterGroupSupportParamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameter_group_support_param_with_options(request, runtime)
+
+    async def describe_parameter_group_support_param_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupSupportParamRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse:
+        """
+        @summary Queries a list of parameters that can be configured for different versions of parameter templates.
+        
+        @param request: DescribeParameterGroupSupportParamRequest
+        @return: DescribeParameterGroupSupportParamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameter_group_support_param_with_options_async(request, runtime)
+
+    def describe_parameter_group_template_list_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupTemplateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse:
+        """
+        @summary 查询参数模板支持设置的参数列表
+        
+        @param request: DescribeParameterGroupTemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupTemplateListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroupTemplateList',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_parameter_group_template_list_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupTemplateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse:
+        """
+        @summary 查询参数模板支持设置的参数列表
+        
+        @param request: DescribeParameterGroupTemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupTemplateListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroupTemplateList',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_parameter_group_template_list(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupTemplateListRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse:
+        """
+        @summary 查询参数模板支持设置的参数列表
+        
+        @param request: DescribeParameterGroupTemplateListRequest
+        @return: DescribeParameterGroupTemplateListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameter_group_template_list_with_options(request, runtime)
+
+    async def describe_parameter_group_template_list_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupTemplateListRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupTemplateListResponse:
+        """
+        @summary 查询参数模板支持设置的参数列表
+        
+        @param request: DescribeParameterGroupTemplateListRequest
+        @return: DescribeParameterGroupTemplateListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameter_group_template_list_with_options_async(request, runtime)
+
+    def describe_parameter_groups_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupsResponse:
+        """
+        @summary Queries a list of available parameter templates.
+        
+        @param request: DescribeParameterGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroups',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_parameter_groups_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupsResponse:
+        """
+        @summary Queries a list of available parameter templates.
+        
+        @param request: DescribeParameterGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroups',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_parameter_groups(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupsRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupsResponse:
+        """
+        @summary Queries a list of available parameter templates.
+        
+        @param request: DescribeParameterGroupsRequest
+        @return: DescribeParameterGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameter_groups_with_options(request, runtime)
+
+    async def describe_parameter_groups_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterGroupsRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterGroupsResponse:
+        """
+        @summary Queries a list of available parameter templates.
+        
+        @param request: DescribeParameterGroupsRequest
+        @return: DescribeParameterGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameter_groups_with_options_async(request, runtime)
+
     def describe_parameter_modification_history_with_options(
         self,
         request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
+        """
+        @summary Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+        
+        @param request: DescribeParameterModificationHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterModificationHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6549,6 +7877,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
+        """
+        @summary Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+        
+        @param request: DescribeParameterModificationHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterModificationHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6594,6 +7929,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
+        """
+        @summary Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+        
+        @param request: DescribeParameterModificationHistoryRequest
+        @return: DescribeParameterModificationHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parameter_modification_history_with_options(request, runtime)
 
@@ -6601,6 +7942,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
+        """
+        @summary Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+        
+        @param request: DescribeParameterModificationHistoryRequest
+        @return: DescribeParameterModificationHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameter_modification_history_with_options_async(request, runtime)
 
@@ -6610,7 +7957,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterTemplatesResponse:
         """
-        After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](~~61113~~) operation to reconfigure the parameters of the instance.
+        @summary Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+        
+        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
         
         @param request: DescribeParameterTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6663,7 +8012,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterTemplatesResponse:
         """
-        After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](~~61113~~) operation to reconfigure the parameters of the instance.
+        @summary Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+        
+        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
         
         @param request: DescribeParameterTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6715,7 +8066,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParameterTemplatesRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterTemplatesResponse:
         """
-        After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](~~61113~~) operation to reconfigure the parameters of the instance.
+        @summary Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+        
+        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
         
         @param request: DescribeParameterTemplatesRequest
         @return: DescribeParameterTemplatesResponse
@@ -6728,7 +8081,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParameterTemplatesRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterTemplatesResponse:
         """
-        After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](~~61113~~) operation to reconfigure the parameters of the instance.
+        @summary Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+        
+        @description After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
         
         @param request: DescribeParameterTemplatesRequest
         @return: DescribeParameterTemplatesResponse
@@ -6742,8 +8097,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParametersResponse:
         """
-        This operation is available only for instances that use local disks.
-        > You can call the [DescribeInstanceConfig](~~473846~~) operation to query the parameter settings of instances that use cloud disks.
+        @summary Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+        
+        @description This operation is available only for instances that use local disks.
+        > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
         
         @param request: DescribeParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6792,8 +8149,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParametersResponse:
         """
-        This operation is available only for instances that use local disks.
-        > You can call the [DescribeInstanceConfig](~~473846~~) operation to query the parameter settings of instances that use cloud disks.
+        @summary Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+        
+        @description This operation is available only for instances that use local disks.
+        > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
         
         @param request: DescribeParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6841,8 +8200,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParametersRequest,
     ) -> r_kvstore_20150101_models.DescribeParametersResponse:
         """
-        This operation is available only for instances that use local disks.
-        > You can call the [DescribeInstanceConfig](~~473846~~) operation to query the parameter settings of instances that use cloud disks.
+        @summary Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+        
+        @description This operation is available only for instances that use local disks.
+        > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
         
         @param request: DescribeParametersRequest
         @return: DescribeParametersResponse
@@ -6855,8 +8216,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParametersRequest,
     ) -> r_kvstore_20150101_models.DescribeParametersResponse:
         """
-        This operation is available only for instances that use local disks.
-        > You can call the [DescribeInstanceConfig](~~473846~~) operation to query the parameter settings of instances that use cloud disks.
+        @summary Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+        
+        @description This operation is available only for instances that use local disks.
+        > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
         
         @param request: DescribeParametersRequest
         @return: DescribeParametersResponse
@@ -6869,6 +8232,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribePriceResponse:
+        """
+        @summary Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+        
+        @param request: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_info):
@@ -6935,6 +8305,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribePriceResponse:
+        """
+        @summary Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+        
+        @param request: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_info):
@@ -7000,6 +8377,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribePriceRequest,
     ) -> r_kvstore_20150101_models.DescribePriceResponse:
+        """
+        @summary Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+        
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_with_options(request, runtime)
 
@@ -7007,6 +8390,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribePriceRequest,
     ) -> r_kvstore_20150101_models.DescribePriceResponse:
+        """
+        @summary Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+        
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
 
@@ -7015,6 +8404,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions in which ApsaraDB for Redis instances can be created.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7053,6 +8449,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions in which ApsaraDB for Redis instances can be created.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7090,6 +8493,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeRegionsRequest,
     ) -> r_kvstore_20150101_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions in which ApsaraDB for Redis instances can be created.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -7097,6 +8506,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeRegionsRequest,
     ) -> r_kvstore_20150101_models.DescribeRegionsResponse:
+        """
+        @summary Queries the regions in which ApsaraDB for Redis instances can be created.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -7105,6 +8520,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
+        """
+        @summary Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+        
+        @param request: DescribeRoleZoneInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRoleZoneInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7149,6 +8571,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
+        """
+        @summary Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+        
+        @param request: DescribeRoleZoneInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRoleZoneInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7192,6 +8621,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
+        """
+        @summary Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+        
+        @param request: DescribeRoleZoneInfoRequest
+        @return: DescribeRoleZoneInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_role_zone_info_with_options(request, runtime)
 
@@ -7199,6 +8634,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
+        """
+        @summary Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+        
+        @param request: DescribeRoleZoneInfoRequest
+        @return: DescribeRoleZoneInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_role_zone_info_with_options_async(request, runtime)
 
@@ -7208,7 +8649,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRunningLogRecordsResponse:
         """
-        For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](~~101713~~).
+        @summary Queries the active logs of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
         This operation can be called up to 100 times per minute.
         
         @param request: DescribeRunningLogRecordsRequest
@@ -7276,7 +8719,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRunningLogRecordsResponse:
         """
-        For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](~~101713~~).
+        @summary Queries the active logs of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
         This operation can be called up to 100 times per minute.
         
         @param request: DescribeRunningLogRecordsRequest
@@ -7343,7 +8788,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRunningLogRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeRunningLogRecordsResponse:
         """
-        For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](~~101713~~).
+        @summary Queries the active logs of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
         This operation can be called up to 100 times per minute.
         
         @param request: DescribeRunningLogRecordsRequest
@@ -7357,7 +8804,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRunningLogRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeRunningLogRecordsResponse:
         """
-        For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](~~101713~~).
+        @summary Queries the active logs of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
         This operation can be called up to 100 times per minute.
         
         @param request: DescribeRunningLogRecordsRequest
@@ -7371,6 +8820,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSecurityGroupConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse:
+        """
+        @summary Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeSecurityGroupConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7409,6 +8865,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSecurityGroupConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse:
+        """
+        @summary Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeSecurityGroupConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7446,6 +8909,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeSecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse:
+        """
+        @summary Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeSecurityGroupConfigurationRequest
+        @return: DescribeSecurityGroupConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_security_group_configuration_with_options(request, runtime)
 
@@ -7453,6 +8922,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeSecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.DescribeSecurityGroupConfigurationResponse:
+        """
+        @summary Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeSecurityGroupConfigurationRequest
+        @return: DescribeSecurityGroupConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_group_configuration_with_options_async(request, runtime)
 
@@ -7461,6 +8936,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSecurityIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSecurityIpsResponse:
+        """
+        @summary Queries the IP address whitelists of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeSecurityIpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7499,6 +8981,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSecurityIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSecurityIpsResponse:
+        """
+        @summary Queries the IP address whitelists of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeSecurityIpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7536,6 +9025,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeSecurityIpsRequest,
     ) -> r_kvstore_20150101_models.DescribeSecurityIpsResponse:
+        """
+        @summary Queries the IP address whitelists of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeSecurityIpsRequest
+        @return: DescribeSecurityIpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_security_ips_with_options(request, runtime)
 
@@ -7543,6 +9038,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeSecurityIpsRequest,
     ) -> r_kvstore_20150101_models.DescribeSecurityIpsResponse:
+        """
+        @summary Queries the IP address whitelists of an ApsaraDB for Redis instance.
+        
+        @param request: DescribeSecurityIpsRequest
+        @return: DescribeSecurityIpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_ips_with_options_async(request, runtime)
 
@@ -7552,7 +9053,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSlowLogRecordsResponse:
         """
-        You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](~~95874~~). This operation can be called up to 100 times per minute.
+        @summary Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+        
+        @description You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
         
         @param request: DescribeSlowLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7617,7 +9120,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeSlowLogRecordsResponse:
         """
-        You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](~~95874~~). This operation can be called up to 100 times per minute.
+        @summary Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+        
+        @description You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
         
         @param request: DescribeSlowLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7681,7 +9186,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSlowLogRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeSlowLogRecordsResponse:
         """
-        You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](~~95874~~). This operation can be called up to 100 times per minute.
+        @summary Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+        
+        @description You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
         
         @param request: DescribeSlowLogRecordsRequest
         @return: DescribeSlowLogRecordsResponse
@@ -7694,7 +9201,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeSlowLogRecordsRequest,
     ) -> r_kvstore_20150101_models.DescribeSlowLogRecordsResponse:
         """
-        You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](~~95874~~). This operation can be called up to 100 times per minute.
+        @summary Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+        
+        @description You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
         
         @param request: DescribeSlowLogRecordsRequest
         @return: DescribeSlowLogRecordsResponse
@@ -7708,7 +9217,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeTasksResponse:
         """
-        You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
+        @summary Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+        
+        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
         
         @param request: DescribeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7763,7 +9274,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeTasksResponse:
         """
-        You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
+        @summary Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+        
+        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
         
         @param request: DescribeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7817,7 +9330,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeTasksResponse:
         """
-        You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
+        @summary Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+        
+        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
         
         @param request: DescribeTasksRequest
         @return: DescribeTasksResponse
@@ -7830,7 +9345,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeTasksRequest,
     ) -> r_kvstore_20150101_models.DescribeTasksResponse:
         """
-        You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
+        @summary Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+        
+        @description You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the *Instance Information** page to view the progress of the current task.
         
         @param request: DescribeTasksRequest
         @return: DescribeTasksResponse
@@ -7843,6 +9360,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones available for ApsaraDB for Redis.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7883,6 +9407,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones available for ApsaraDB for Redis.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7922,6 +9453,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeZonesRequest,
     ) -> r_kvstore_20150101_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones available for ApsaraDB for Redis.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -7929,6 +9466,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeZonesRequest,
     ) -> r_kvstore_20150101_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones available for ApsaraDB for Redis.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -7938,8 +9481,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
+        @summary Adjusts the bandwidth of an ApsaraDB for Redis instance.
+        
+        @description If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8002,8 +9547,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
+        @summary Adjusts the bandwidth of an ApsaraDB for Redis instance.
+        
+        @description If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8065,8 +9612,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
+        @summary Adjusts the bandwidth of an ApsaraDB for Redis instance.
+        
+        @description If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @return: EnableAdditionalBandwidthResponse
@@ -8079,8 +9628,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.EnableAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.EnableAdditionalBandwidthResponse:
         """
-        If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
-        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
+        @summary Adjusts the bandwidth of an ApsaraDB for Redis instance.
+        
+        @description If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
+        >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
         
         @param request: EnableAdditionalBandwidthRequest
         @return: EnableAdditionalBandwidthResponse
@@ -8094,7 +9645,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+        @summary Deletes the expired keys from an ApsaraDB for Redis instance.
+        
+        @description For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
         >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
@@ -8142,7 +9695,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+        @summary Deletes the expired keys from an ApsaraDB for Redis instance.
+        
+        @description For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
         >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
@@ -8189,7 +9744,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushExpireKeysRequest,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+        @summary Deletes the expired keys from an ApsaraDB for Redis instance.
+        
+        @description For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
         >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
@@ -8203,7 +9760,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushExpireKeysRequest,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+        @summary Deletes the expired keys from an ApsaraDB for Redis instance.
+        
+        @description For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
         >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
@@ -8217,6 +9776,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
+        """
+        @summary Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+        
+        @param request: FlushInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlushInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8255,6 +9821,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
+        """
+        @summary Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+        
+        @param request: FlushInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlushInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8292,6 +9865,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.FlushInstanceRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
+        """
+        @summary Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+        
+        @param request: FlushInstanceRequest
+        @return: FlushInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.flush_instance_with_options(request, runtime)
 
@@ -8299,6 +9878,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.FlushInstanceRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
+        """
+        @summary Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+        
+        @param request: FlushInstanceRequest
+        @return: FlushInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.flush_instance_with_options_async(request, runtime)
 
@@ -8308,7 +9893,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceForDBResponse:
         """
-        Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](~~38688~~)
+        @summary Cleans the data of specified databases in an instance.
+        
+        @description Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
         >  This operation is available only for cloud-native instances that use cloud disks.
         
         @param request: FlushInstanceForDBRequest
@@ -8354,7 +9941,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceForDBResponse:
         """
-        Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](~~38688~~)
+        @summary Cleans the data of specified databases in an instance.
+        
+        @description Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
         >  This operation is available only for cloud-native instances that use cloud disks.
         
         @param request: FlushInstanceForDBRequest
@@ -8399,7 +9988,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushInstanceForDBRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceForDBResponse:
         """
-        Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](~~38688~~)
+        @summary Cleans the data of specified databases in an instance.
+        
+        @description Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
         >  This operation is available only for cloud-native instances that use cloud disks.
         
         @param request: FlushInstanceForDBRequest
@@ -8413,7 +10004,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushInstanceForDBRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceForDBResponse:
         """
-        Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](~~38688~~)
+        @summary Cleans the data of specified databases in an instance.
+        
+        @description Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
         >  This operation is available only for cloud-native instances that use cloud disks.
         
         @param request: FlushInstanceForDBRequest
@@ -8428,9 +10021,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        >
-        *   Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
-        *   The ApsaraDB for Redis instance must be in the running state.
+        @summary Modifies the permissions of an account for an ApsaraDB for Redis instance.
+        
+        @description >
+        Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        The ApsaraDB for Redis instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8479,9 +10074,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        >
-        *   Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
-        *   The ApsaraDB for Redis instance must be in the running state.
+        @summary Modifies the permissions of an account for an ApsaraDB for Redis instance.
+        
+        @description >
+        Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        The ApsaraDB for Redis instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8529,9 +10126,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.GrantAccountPrivilegeRequest,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        >
-        *   Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
-        *   The ApsaraDB for Redis instance must be in the running state.
+        @summary Modifies the permissions of an account for an ApsaraDB for Redis instance.
+        
+        @description >
+        Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        The ApsaraDB for Redis instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @return: GrantAccountPrivilegeResponse
@@ -8544,9 +10143,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.GrantAccountPrivilegeRequest,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        >
-        *   Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
-        *   The ApsaraDB for Redis instance must be in the running state.
+        @summary Modifies the permissions of an account for an ApsaraDB for Redis instance.
+        
+        @description >
+        Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        The ApsaraDB for Redis instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @return: GrantAccountPrivilegeResponse
@@ -8560,7 +10161,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
+        @summary Assigns a service-linked role to ApsaraDB for Redis.
+        
+        @description The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
         
         @param request: InitializeKvstorePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8605,7 +10208,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
+        @summary Assigns a service-linked role to ApsaraDB for Redis.
+        
+        @description The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
         
         @param request: InitializeKvstorePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8649,7 +10254,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.InitializeKvstorePermissionRequest,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
+        @summary Assigns a service-linked role to ApsaraDB for Redis.
+        
+        @description The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
         
         @param request: InitializeKvstorePermissionRequest
         @return: InitializeKvstorePermissionResponse
@@ -8662,7 +10269,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.InitializeKvstorePermissionRequest,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
+        @summary Assigns a service-linked role to ApsaraDB for Redis.
+        
+        @description The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
         
         @param request: InitializeKvstorePermissionRequest
         @return: InitializeKvstorePermissionResponse
@@ -8676,7 +10285,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ListTagResourcesResponse:
         """
-        You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](~~119160~~) and [View tags bound to an instance](~~134038~~).
+        @summary Queries the relationships between ApsaraDB for Redis instances and tags.
+        
+        @description You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8727,7 +10338,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ListTagResourcesResponse:
         """
-        You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](~~119160~~) and [View tags bound to an instance](~~134038~~).
+        @summary Queries the relationships between ApsaraDB for Redis instances and tags.
+        
+        @description You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8777,7 +10390,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ListTagResourcesRequest,
     ) -> r_kvstore_20150101_models.ListTagResourcesResponse:
         """
-        You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](~~119160~~) and [View tags bound to an instance](~~134038~~).
+        @summary Queries the relationships between ApsaraDB for Redis instances and tags.
+        
+        @description You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -8790,7 +10405,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ListTagResourcesRequest,
     ) -> r_kvstore_20150101_models.ListTagResourcesResponse:
         """
-        You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](~~119160~~) and [View tags bound to an instance](~~134038~~).
+        @summary Queries the relationships between ApsaraDB for Redis instances and tags.
+        
+        @description You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -8803,6 +10420,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.LockDBInstanceWriteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.LockDBInstanceWriteResponse:
+        """
+        @summary Places a write lock on an instance. After the instance is locked, it supports only read operations.
+        
+        @param request: LockDBInstanceWriteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LockDBInstanceWriteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8843,6 +10467,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.LockDBInstanceWriteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.LockDBInstanceWriteResponse:
+        """
+        @summary Places a write lock on an instance. After the instance is locked, it supports only read operations.
+        
+        @param request: LockDBInstanceWriteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LockDBInstanceWriteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8882,6 +10513,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.LockDBInstanceWriteRequest,
     ) -> r_kvstore_20150101_models.LockDBInstanceWriteResponse:
+        """
+        @summary Places a write lock on an instance. After the instance is locked, it supports only read operations.
+        
+        @param request: LockDBInstanceWriteRequest
+        @return: LockDBInstanceWriteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.lock_dbinstance_write_with_options(request, runtime)
 
@@ -8889,6 +10526,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.LockDBInstanceWriteRequest,
     ) -> r_kvstore_20150101_models.LockDBInstanceWriteResponse:
+        """
+        @summary Places a write lock on an instance. After the instance is locked, it supports only read operations.
+        
+        @param request: LockDBInstanceWriteRequest
+        @return: LockDBInstanceWriteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.lock_dbinstance_write_with_options_async(request, runtime)
 
@@ -8898,9 +10541,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.MigrateToOtherZoneResponse:
         """
-        For more information about how to migrate an instance across zones in the ApsaraDB for Redis console, see [Migrate an instance across zones](~~106272~~).
-        > *   If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the endpoint of the classic network is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
-        > *   After the data is migrated, the endpoint of an instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
+        @summary Migrates an ApsaraDB for Redis instance to another zone in the same region.
+        
+        @description Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
+        >
+        If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+        After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
         
         @param request: MigrateToOtherZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8953,9 +10599,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.MigrateToOtherZoneResponse:
         """
-        For more information about how to migrate an instance across zones in the ApsaraDB for Redis console, see [Migrate an instance across zones](~~106272~~).
-        > *   If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the endpoint of the classic network is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
-        > *   After the data is migrated, the endpoint of an instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
+        @summary Migrates an ApsaraDB for Redis instance to another zone in the same region.
+        
+        @description Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
+        >
+        If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+        After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
         
         @param request: MigrateToOtherZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9007,9 +10656,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.MigrateToOtherZoneRequest,
     ) -> r_kvstore_20150101_models.MigrateToOtherZoneResponse:
         """
-        For more information about how to migrate an instance across zones in the ApsaraDB for Redis console, see [Migrate an instance across zones](~~106272~~).
-        > *   If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the endpoint of the classic network is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
-        > *   After the data is migrated, the endpoint of an instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
+        @summary Migrates an ApsaraDB for Redis instance to another zone in the same region.
+        
+        @description Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
+        >
+        If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+        After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
         
         @param request: MigrateToOtherZoneRequest
         @return: MigrateToOtherZoneResponse
@@ -9022,9 +10674,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.MigrateToOtherZoneRequest,
     ) -> r_kvstore_20150101_models.MigrateToOtherZoneResponse:
         """
-        For more information about how to migrate an instance across zones in the ApsaraDB for Redis console, see [Migrate an instance across zones](~~106272~~).
-        > *   If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the endpoint of the classic network is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
-        > *   After the data is migrated, the endpoint of an instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
+        @summary Migrates an ApsaraDB for Redis instance to another zone in the same region.
+        
+        @description Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
+        >
+        If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+        After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
         
         @param request: MigrateToOtherZoneRequest
         @return: MigrateToOtherZoneResponse
@@ -9038,7 +10693,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAccountDescriptionResponse:
         """
-        > This operation is supported only for instances that run Redis 4.0 or later.
+        @summary Modifies the description of an account for an ApsaraDB for Redis instance.
+        
+        @description > This operation is supported only for instances that run Redis 4.0 or later.
         
         @param request: ModifyAccountDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9087,7 +10744,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAccountDescriptionResponse:
         """
-        > This operation is supported only for instances that run Redis 4.0 or later.
+        @summary Modifies the description of an account for an ApsaraDB for Redis instance.
+        
+        @description > This operation is supported only for instances that run Redis 4.0 or later.
         
         @param request: ModifyAccountDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9135,7 +10794,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAccountDescriptionRequest,
     ) -> r_kvstore_20150101_models.ModifyAccountDescriptionResponse:
         """
-        > This operation is supported only for instances that run Redis 4.0 or later.
+        @summary Modifies the description of an account for an ApsaraDB for Redis instance.
+        
+        @description > This operation is supported only for instances that run Redis 4.0 or later.
         
         @param request: ModifyAccountDescriptionRequest
         @return: ModifyAccountDescriptionResponse
@@ -9148,7 +10809,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAccountDescriptionRequest,
     ) -> r_kvstore_20150101_models.ModifyAccountDescriptionResponse:
         """
-        > This operation is supported only for instances that run Redis 4.0 or later.
+        @summary Modifies the description of an account for an ApsaraDB for Redis instance.
+        
+        @description > This operation is supported only for instances that run Redis 4.0 or later.
         
         @param request: ModifyAccountDescriptionRequest
         @return: ModifyAccountDescriptionResponse
@@ -9161,6 +10824,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAccountPasswordResponse:
+        """
+        @summary Changes the password of a specific account for an ApsaraDB for Redis instance.
+        
+        @param request: ModifyAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -9205,6 +10875,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAccountPasswordResponse:
+        """
+        @summary Changes the password of a specific account for an ApsaraDB for Redis instance.
+        
+        @param request: ModifyAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -9248,6 +10925,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ModifyAccountPasswordResponse:
+        """
+        @summary Changes the password of a specific account for an ApsaraDB for Redis instance.
+        
+        @param request: ModifyAccountPasswordRequest
+        @return: ModifyAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_account_password_with_options(request, runtime)
 
@@ -9255,6 +10938,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ModifyAccountPasswordResponse:
+        """
+        @summary Changes the password of a specific account for an ApsaraDB for Redis instance.
+        
+        @param request: ModifyAccountPasswordRequest
+        @return: ModifyAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_password_with_options_async(request, runtime)
 
@@ -9264,7 +10953,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](~~187022~~).
+        @summary Changes the scheduled switchover time of an O&M task.
+        
+        @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
         @param request: ModifyActiveOperationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9311,7 +11002,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](~~187022~~).
+        @summary Changes the scheduled switchover time of an O&M task.
+        
+        @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
         @param request: ModifyActiveOperationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9357,7 +11050,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](~~187022~~).
+        @summary Changes the scheduled switchover time of an O&M task.
+        
+        @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
         @param request: ModifyActiveOperationTaskRequest
         @return: ModifyActiveOperationTaskResponse
@@ -9370,7 +11065,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
     ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         """
-        You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](~~187022~~).
+        @summary Changes the scheduled switchover time of an O&M task.
+        
+        @description You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
         
         @param request: ModifyActiveOperationTaskRequest
         @return: ModifyActiveOperationTaskResponse
@@ -9384,10 +11081,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of the audit log feature.
+        @summary Modifies the audit log settings of an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
         Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
+        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
         
         @param request: ModifyAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9436,10 +11135,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of the audit log feature.
+        @summary Modifies the audit log settings of an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
         Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
+        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
         
         @param request: ModifyAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9487,10 +11188,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAuditLogConfigRequest,
     ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of the audit log feature.
+        @summary Modifies the audit log settings of an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
         Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
+        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
         
         @param request: ModifyAuditLogConfigRequest
         @return: ModifyAuditLogConfigResponse
@@ -9503,10 +11206,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyAuditLogConfigRequest,
     ) -> r_kvstore_20150101_models.ModifyAuditLogConfigResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of the audit log feature.
+        @summary Modifies the audit log settings of an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
         Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
-        *   The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-        *   The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
+        The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
+        The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
         
         @param request: ModifyAuditLogConfigRequest
         @return: ModifyAuditLogConfigResponse
@@ -9519,6 +11224,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyBackupPolicyResponse:
+        """
+        @summary Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_retention_period):
@@ -9565,6 +11277,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyBackupPolicyResponse:
+        """
+        @summary Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_retention_period):
@@ -9610,6 +11329,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyBackupPolicyRequest,
     ) -> r_kvstore_20150101_models.ModifyBackupPolicyResponse:
+        """
+        @summary Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_policy_with_options(request, runtime)
 
@@ -9617,8 +11342,134 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyBackupPolicyRequest,
     ) -> r_kvstore_20150101_models.ModifyBackupPolicyResponse:
+        """
+        @summary Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
+
+    def modify_dbinstance_auto_upgrade_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse:
+        """
+        @summary 修改小版本自动升级开关
+        
+        @param request: ModifyDBInstanceAutoUpgradeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceAutoUpgradeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceAutoUpgrade',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_auto_upgrade_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse:
+        """
+        @summary 修改小版本自动升级开关
+        
+        @param request: ModifyDBInstanceAutoUpgradeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceAutoUpgradeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceAutoUpgrade',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_auto_upgrade(
+        self,
+        request: r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeRequest,
+    ) -> r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse:
+        """
+        @summary 修改小版本自动升级开关
+        
+        @param request: ModifyDBInstanceAutoUpgradeRequest
+        @return: ModifyDBInstanceAutoUpgradeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_auto_upgrade_with_options(request, runtime)
+
+    async def modify_dbinstance_auto_upgrade_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeRequest,
+    ) -> r_kvstore_20150101_models.ModifyDBInstanceAutoUpgradeResponse:
+        """
+        @summary 修改小版本自动升级开关
+        
+        @param request: ModifyDBInstanceAutoUpgradeRequest
+        @return: ModifyDBInstanceAutoUpgradeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_auto_upgrade_with_options_async(request, runtime)
 
     def modify_dbinstance_connection_string_with_options(
         self,
@@ -9626,7 +11477,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse:
         """
-        You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](~~85683~~).
+        @summary Changes the endpoint or port number of an ApsaraDB for Redis instance.
+        
+        @description You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9679,7 +11532,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse:
         """
-        You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](~~85683~~).
+        @summary Changes the endpoint or port number of an ApsaraDB for Redis instance.
+        
+        @description You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9731,7 +11586,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyDBInstanceConnectionStringRequest,
     ) -> r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse:
         """
-        You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](~~85683~~).
+        @summary Changes the endpoint or port number of an ApsaraDB for Redis instance.
+        
+        @description You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @return: ModifyDBInstanceConnectionStringResponse
@@ -9744,7 +11601,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyDBInstanceConnectionStringRequest,
     ) -> r_kvstore_20150101_models.ModifyDBInstanceConnectionStringResponse:
         """
-        You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](~~85683~~).
+        @summary Changes the endpoint or port number of an ApsaraDB for Redis instance.
+        
+        @description You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @return: ModifyDBInstanceConnectionStringResponse
@@ -9757,6 +11616,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse:
+        """
+        @summary Modifies a global IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGlobalSecurityIPGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gip_list):
@@ -9803,6 +11669,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse:
+        """
+        @summary Modifies a global IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGlobalSecurityIPGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gip_list):
@@ -9848,6 +11721,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse:
+        """
+        @summary Modifies a global IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupRequest
+        @return: ModifyGlobalSecurityIPGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_global_security_ipgroup_with_options(request, runtime)
 
@@ -9855,6 +11734,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse:
+        """
+        @summary Modifies a global IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupRequest
+        @return: ModifyGlobalSecurityIPGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_global_security_ipgroup_with_options_async(request, runtime)
 
@@ -9863,6 +11748,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse:
+        """
+        @summary Modifies the name of a global IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGlobalSecurityIPGroupNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.global_ig_name):
@@ -9907,6 +11799,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse:
+        """
+        @summary Modifies the name of a global IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGlobalSecurityIPGroupNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.global_ig_name):
@@ -9950,6 +11849,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameRequest,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse:
+        """
+        @summary Modifies the name of a global IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupNameRequest
+        @return: ModifyGlobalSecurityIPGroupNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_global_security_ipgroup_name_with_options(request, runtime)
 
@@ -9957,6 +11862,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameRequest,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse:
+        """
+        @summary Modifies the name of a global IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupNameRequest
+        @return: ModifyGlobalSecurityIPGroupNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_global_security_ipgroup_name_with_options_async(request, runtime)
 
@@ -9965,6 +11876,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        """
+        @summary Adds a specified instance to a specified IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGlobalSecurityIPGroupRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -10009,6 +11927,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        """
+        @summary Adds a specified instance to a specified IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGlobalSecurityIPGroupRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -10052,6 +11977,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationRequest,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        """
+        @summary Adds a specified instance to a specified IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupRelationRequest
+        @return: ModifyGlobalSecurityIPGroupRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_global_security_ipgroup_relation_with_options(request, runtime)
 
@@ -10059,6 +11990,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationRequest,
     ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        """
+        @summary Adds a specified instance to a specified IP whitelist template.
+        
+        @param request: ModifyGlobalSecurityIPGroupRelationRequest
+        @return: ModifyGlobalSecurityIPGroupRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_global_security_ipgroup_relation_with_options_async(request, runtime)
 
@@ -10068,7 +12005,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceAttributeResponse:
         """
-        You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](~~43874~~).
+        @summary Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+        
+        @description You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
         
         @param request: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10119,7 +12058,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceAttributeResponse:
         """
-        You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](~~43874~~).
+        @summary Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+        
+        @description You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
         
         @param request: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10169,7 +12110,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceAttributeResponse:
         """
-        You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](~~43874~~).
+        @summary Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+        
+        @description You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -10182,7 +12125,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceAttributeResponse:
         """
-        You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](~~43874~~).
+        @summary Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+        
+        @description You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -10196,7 +12141,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        > Auto-renewal is triggered seven days before the expiration date of the instance.
+        @summary Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+        
+        @description > Auto-renewal is triggered seven days before the expiration date of the instance.
         
         @param request: ModifyInstanceAutoRenewalAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10245,7 +12192,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        > Auto-renewal is triggered seven days before the expiration date of the instance.
+        @summary Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+        
+        @description > Auto-renewal is triggered seven days before the expiration date of the instance.
         
         @param request: ModifyInstanceAutoRenewalAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10293,7 +12242,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        > Auto-renewal is triggered seven days before the expiration date of the instance.
+        @summary Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+        
+        @description > Auto-renewal is triggered seven days before the expiration date of the instance.
         
         @param request: ModifyInstanceAutoRenewalAttributeRequest
         @return: ModifyInstanceAutoRenewalAttributeResponse
@@ -10306,7 +12257,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        > Auto-renewal is triggered seven days before the expiration date of the instance.
+        @summary Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+        
+        @description > Auto-renewal is triggered seven days before the expiration date of the instance.
         
         @param request: ModifyInstanceAutoRenewalAttributeRequest
         @return: ModifyInstanceAutoRenewalAttributeResponse
@@ -10319,6 +12272,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceConfigResponse:
+        """
+        @summary Modifies the parameter settings of an ApsaraDB for Redis instance.
+        
+        @param request: ModifyInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config):
@@ -10359,6 +12319,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceConfigResponse:
+        """
+        @summary Modifies the parameter settings of an ApsaraDB for Redis instance.
+        
+        @param request: ModifyInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config):
@@ -10398,6 +12365,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyInstanceConfigRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceConfigResponse:
+        """
+        @summary Modifies the parameter settings of an ApsaraDB for Redis instance.
+        
+        @param request: ModifyInstanceConfigRequest
+        @return: ModifyInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_config_with_options(request, runtime)
 
@@ -10405,6 +12378,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyInstanceConfigRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceConfigResponse:
+        """
+        @summary Modifies the parameter settings of an ApsaraDB for Redis instance.
+        
+        @param request: ModifyInstanceConfigRequest
+        @return: ModifyInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_config_with_options_async(request, runtime)
 
@@ -10414,7 +12393,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse:
         """
-        You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+        @summary Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+        
+        @description You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
         
         @param request: ModifyInstanceMaintainTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10463,7 +12444,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse:
         """
-        You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+        @summary Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+        
+        @description You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
         
         @param request: ModifyInstanceMaintainTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10511,7 +12494,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMaintainTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse:
         """
-        You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+        @summary Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+        
+        @description You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
         
         @param request: ModifyInstanceMaintainTimeRequest
         @return: ModifyInstanceMaintainTimeResponse
@@ -10524,7 +12509,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMaintainTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMaintainTimeResponse:
         """
-        You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+        @summary Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+        
+        @description You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
         
         @param request: ModifyInstanceMaintainTimeRequest
         @return: ModifyInstanceMaintainTimeResponse
@@ -10538,7 +12525,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse:
         """
-        For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](~~101764~~).
+        @summary Upgrades the major version of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
         
         @param request: ModifyInstanceMajorVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10587,7 +12576,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse:
         """
-        For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](~~101764~~).
+        @summary Upgrades the major version of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
         
         @param request: ModifyInstanceMajorVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10635,7 +12626,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMajorVersionRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse:
         """
-        For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](~~101764~~).
+        @summary Upgrades the major version of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
         
         @param request: ModifyInstanceMajorVersionRequest
         @return: ModifyInstanceMajorVersionResponse
@@ -10648,7 +12641,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMajorVersionRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMajorVersionResponse:
         """
-        For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](~~101764~~).
+        @summary Upgrades the major version of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
         
         @param request: ModifyInstanceMajorVersionRequest
         @return: ModifyInstanceMajorVersionResponse
@@ -10662,10 +12657,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse:
         """
-        The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](~~56450~~).
+        @summary Updates the minor version of an ApsaraDB for Redis instance.
+        
+        @description The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         >
-        *   Before you call this operation, you can call the [DescribeEngineVersion](~~95268~~) operation to query the minor version of the current instance.
-        *   When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
+        When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
         
         @param request: ModifyInstanceMinorVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10714,10 +12711,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse:
         """
-        The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](~~56450~~).
+        @summary Updates the minor version of an ApsaraDB for Redis instance.
+        
+        @description The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         >
-        *   Before you call this operation, you can call the [DescribeEngineVersion](~~95268~~) operation to query the minor version of the current instance.
-        *   When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
+        When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
         
         @param request: ModifyInstanceMinorVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10765,10 +12764,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMinorVersionRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse:
         """
-        The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](~~56450~~).
+        @summary Updates the minor version of an ApsaraDB for Redis instance.
+        
+        @description The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         >
-        *   Before you call this operation, you can call the [DescribeEngineVersion](~~95268~~) operation to query the minor version of the current instance.
-        *   When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
+        When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
         
         @param request: ModifyInstanceMinorVersionRequest
         @return: ModifyInstanceMinorVersionResponse
@@ -10781,10 +12782,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceMinorVersionRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceMinorVersionResponse:
         """
-        The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](~~56450~~).
+        @summary Updates the minor version of an ApsaraDB for Redis instance.
+        
+        @description The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         >
-        *   Before you call this operation, you can call the [DescribeEngineVersion](~~95268~~) operation to query the minor version of the current instance.
-        *   When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
+        Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
+        When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
         
         @param request: ModifyInstanceMinorVersionRequest
         @return: ModifyInstanceMinorVersionResponse
@@ -10798,8 +12801,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse:
         """
-        You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](~~60062~~).
-        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](~~61005~~).
+        @summary Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+        
+        @description You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
+        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
         
         @param request: ModifyInstanceNetExpireTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10848,8 +12853,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse:
         """
-        You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](~~60062~~).
-        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](~~61005~~).
+        @summary Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+        
+        @description You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
+        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
         
         @param request: ModifyInstanceNetExpireTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10897,8 +12904,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceNetExpireTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse:
         """
-        You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](~~60062~~).
-        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](~~61005~~).
+        @summary Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+        
+        @description You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
+        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
         
         @param request: ModifyInstanceNetExpireTimeRequest
         @return: ModifyInstanceNetExpireTimeResponse
@@ -10911,8 +12920,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceNetExpireTimeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceNetExpireTimeResponse:
         """
-        You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](~~60062~~).
-        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](~~61005~~).
+        @summary Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+        
+        @description You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
+        > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
         
         @param request: ModifyInstanceNetExpireTimeRequest
         @return: ModifyInstanceNetExpireTimeResponse
@@ -10925,6 +12936,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceParameterResponse:
+        """
+        @summary 修改实例参数
+        
+        @param request: ModifyInstanceParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10967,6 +12985,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceParameterResponse:
+        """
+        @summary 修改实例参数
+        
+        @param request: ModifyInstanceParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -11008,6 +13033,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyInstanceParameterRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceParameterResponse:
+        """
+        @summary 修改实例参数
+        
+        @param request: ModifyInstanceParameterRequest
+        @return: ModifyInstanceParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_parameter_with_options(request, runtime)
 
@@ -11015,6 +13046,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.ModifyInstanceParameterRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceParameterResponse:
+        """
+        @summary 修改实例参数
+        
+        @param request: ModifyInstanceParameterRequest
+        @return: ModifyInstanceParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_parameter_with_options_async(request, runtime)
 
@@ -11024,7 +13061,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        @summary Modifies the SSL settings of an ApsaraDB for Redis instance.
+        
+        @description You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
@@ -11072,7 +13111,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        @summary Modifies the SSL settings of an ApsaraDB for Redis instance.
+        
+        @description You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
@@ -11119,7 +13160,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceSSLRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        @summary Modifies the SSL settings of an ApsaraDB for Redis instance.
+        
+        @description You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
@@ -11133,7 +13176,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceSSLRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        @summary Modifies the SSL settings of an ApsaraDB for Redis instance.
+        
+        @description You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
         >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
@@ -11148,7 +13193,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSpecResponse:
         """
-        >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](~~26353~~).
+        @summary Changes the specifications of an ApsaraDB for Redis instance.
+        
+        @description >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
         
         @param request: ModifyInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11225,7 +13272,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSpecResponse:
         """
-        >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](~~26353~~).
+        @summary Changes the specifications of an ApsaraDB for Redis instance.
+        
+        @description >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
         
         @param request: ModifyInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11301,7 +13350,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceSpecRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSpecResponse:
         """
-        >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](~~26353~~).
+        @summary Changes the specifications of an ApsaraDB for Redis instance.
+        
+        @description >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
         
         @param request: ModifyInstanceSpecRequest
         @return: ModifyInstanceSpecResponse
@@ -11314,7 +13365,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceSpecRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSpecResponse:
         """
-        >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](~~26353~~).
+        @summary Changes the specifications of an ApsaraDB for Redis instance.
+        
+        @description >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
         
         @param request: ModifyInstanceSpecRequest
         @return: ModifyInstanceSpecResponse
@@ -11328,7 +13381,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceTDEResponse:
         """
-        > For more information about TDE and the impact of TDE, see [Enable TDE](~~265913~~).
+        @summary Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+        
+        @description > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: ModifyInstanceTDERequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11381,7 +13436,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceTDEResponse:
         """
-        > For more information about TDE and the impact of TDE, see [Enable TDE](~~265913~~).
+        @summary Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+        
+        @description > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: ModifyInstanceTDERequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11433,7 +13490,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceTDERequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceTDEResponse:
         """
-        > For more information about TDE and the impact of TDE, see [Enable TDE](~~265913~~).
+        @summary Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+        
+        @description > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: ModifyInstanceTDERequest
         @return: ModifyInstanceTDEResponse
@@ -11446,7 +13505,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceTDERequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceTDEResponse:
         """
-        > For more information about TDE and the impact of TDE, see [Enable TDE](~~265913~~).
+        @summary Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+        
+        @description > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
         
         @param request: ModifyInstanceTDERequest
         @return: ModifyInstanceTDEResponse
@@ -11460,8 +13521,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse:
         """
-        When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
-        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](~~85168~~).
+        @summary Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+        
+        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
+        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11508,8 +13571,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse:
         """
-        When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
-        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](~~85168~~).
+        @summary Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+        
+        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
+        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11555,8 +13620,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceVpcAuthModeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse:
         """
-        When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
-        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](~~85168~~).
+        @summary Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+        
+        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
+        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @return: ModifyInstanceVpcAuthModeResponse
@@ -11569,8 +13636,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceVpcAuthModeRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceVpcAuthModeResponse:
         """
-        When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
-        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](~~85168~~).
+        @summary Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+        
+        @description When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
+        > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
         
         @param request: ModifyInstanceVpcAuthModeRequest
         @return: ModifyInstanceVpcAuthModeResponse
@@ -11584,8 +13653,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         """
-        >
-        *   This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](~~206173~~) operation.
+        @summary Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+        
+        @description >
+        This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
         
         @param request: ModifyIntranetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11634,8 +13705,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         """
-        >
-        *   This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](~~206173~~) operation.
+        @summary Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+        
+        @description >
+        This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
         
         @param request: ModifyIntranetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11683,8 +13756,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyIntranetAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         """
-        >
-        *   This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](~~206173~~) operation.
+        @summary Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+        
+        @description >
+        This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
         
         @param request: ModifyIntranetAttributeRequest
         @return: ModifyIntranetAttributeResponse
@@ -11697,8 +13772,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyIntranetAttributeRequest,
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         """
-        >
-        *   This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](~~206173~~) operation.
+        @summary Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+        
+        @description >
+        This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
         
         @param request: ModifyIntranetAttributeRequest
         @return: ModifyIntranetAttributeResponse
@@ -11706,14 +13783,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_intranet_attribute_with_options_async(request, runtime)
 
+    def modify_parameter_group_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyParameterGroupResponse:
+        """
+        @summary Modifies the settings of a parameter template.
+        
+        @param request: ModifyParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParameterGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_desc):
+            query['ParameterGroupDesc'] = request.parameter_group_desc
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyParameterGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_parameter_group_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyParameterGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyParameterGroupResponse:
+        """
+        @summary Modifies the settings of a parameter template.
+        
+        @param request: ModifyParameterGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParameterGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_desc):
+            query['ParameterGroupDesc'] = request.parameter_group_desc
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyParameterGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_parameter_group(
+        self,
+        request: r_kvstore_20150101_models.ModifyParameterGroupRequest,
+    ) -> r_kvstore_20150101_models.ModifyParameterGroupResponse:
+        """
+        @summary Modifies the settings of a parameter template.
+        
+        @param request: ModifyParameterGroupRequest
+        @return: ModifyParameterGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_parameter_group_with_options(request, runtime)
+
+    async def modify_parameter_group_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyParameterGroupRequest,
+    ) -> r_kvstore_20150101_models.ModifyParameterGroupResponse:
+        """
+        @summary Modifies the settings of a parameter template.
+        
+        @param request: ModifyParameterGroupRequest
+        @return: ModifyParameterGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_parameter_group_with_options_async(request, runtime)
+
     def modify_resource_group_with_options(
         self,
         request: r_kvstore_20150101_models.ModifyResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyResourceGroupResponse:
         """
-        Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
-        > For more information about resource group API operations, see [Resource Management API overview](~~160024~~).
+        @summary Changes the resource group to which an ApsaraDB for Redis instance belongs.
+        
+        @description Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
         
         @param request: ModifyResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11762,8 +13977,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyResourceGroupResponse:
         """
-        Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
-        > For more information about resource group API operations, see [Resource Management API overview](~~160024~~).
+        @summary Changes the resource group to which an ApsaraDB for Redis instance belongs.
+        
+        @description Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
         
         @param request: ModifyResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11811,8 +14028,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyResourceGroupRequest,
     ) -> r_kvstore_20150101_models.ModifyResourceGroupResponse:
         """
-        Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
-        > For more information about resource group API operations, see [Resource Management API overview](~~160024~~).
+        @summary Changes the resource group to which an ApsaraDB for Redis instance belongs.
+        
+        @description Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
         
         @param request: ModifyResourceGroupRequest
         @return: ModifyResourceGroupResponse
@@ -11825,8 +14044,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyResourceGroupRequest,
     ) -> r_kvstore_20150101_models.ModifyResourceGroupResponse:
         """
-        Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
-        > For more information about resource group API operations, see [Resource Management API overview](~~160024~~).
+        @summary Changes the resource group to which an ApsaraDB for Redis instance belongs.
+        
+        @description Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
         
         @param request: ModifyResourceGroupRequest
         @return: ModifyResourceGroupResponse
@@ -11840,7 +14061,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+        @summary Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        
+        @description > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11887,7 +14110,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+        @summary Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        
+        @description > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11933,7 +14158,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifySecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+        @summary Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        
+        @description > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @return: ModifySecurityGroupConfigurationResponse
@@ -11946,7 +14173,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifySecurityGroupConfigurationRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityGroupConfigurationResponse:
         """
-        > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+        @summary Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+        
+        @description > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the *SecurityGroupId** parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
         
         @param request: ModifySecurityGroupConfigurationRequest
         @return: ModifySecurityGroupConfigurationResponse
@@ -11960,7 +14189,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityIpsResponse:
         """
-        You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](~~56464~~).
+        @summary Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+        
+        @description You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
         
         @param request: ModifySecurityIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12013,7 +14244,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifySecurityIpsResponse:
         """
-        You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](~~56464~~).
+        @summary Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+        
+        @description You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
         
         @param request: ModifySecurityIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12065,7 +14298,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifySecurityIpsRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityIpsResponse:
         """
-        You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](~~56464~~).
+        @summary Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+        
+        @description You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
         
         @param request: ModifySecurityIpsRequest
         @return: ModifySecurityIpsResponse
@@ -12078,7 +14313,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifySecurityIpsRequest,
     ) -> r_kvstore_20150101_models.ModifySecurityIpsResponse:
         """
-        You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](~~56464~~).
+        @summary Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+        
+        @description You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
         
         @param request: ModifySecurityIpsRequest
         @return: ModifySecurityIpsResponse
@@ -12092,7 +14329,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ReleaseDirectConnectionResponse:
         """
-        In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](~~146901~~).
+        @summary Releases the private endpoint of an ApsaraDB for Redis cluster instance.
+        
+        @description In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
         
         @param request: ReleaseDirectConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12137,7 +14376,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ReleaseDirectConnectionResponse:
         """
-        In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](~~146901~~).
+        @summary Releases the private endpoint of an ApsaraDB for Redis cluster instance.
+        
+        @description In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
         
         @param request: ReleaseDirectConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12181,7 +14422,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ReleaseDirectConnectionRequest,
     ) -> r_kvstore_20150101_models.ReleaseDirectConnectionResponse:
         """
-        In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](~~146901~~).
+        @summary Releases the private endpoint of an ApsaraDB for Redis cluster instance.
+        
+        @description In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
         
         @param request: ReleaseDirectConnectionRequest
         @return: ReleaseDirectConnectionResponse
@@ -12194,7 +14437,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ReleaseDirectConnectionRequest,
     ) -> r_kvstore_20150101_models.ReleaseDirectConnectionResponse:
         """
-        In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](~~146901~~).
+        @summary Releases the private endpoint of an ApsaraDB for Redis cluster instance.
+        
+        @description In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
         
         @param request: ReleaseDirectConnectionRequest
         @return: ReleaseDirectConnectionResponse
@@ -12208,7 +14453,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
+        @summary Releases the public endpoint of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12255,7 +14502,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
+        @summary Releases the public endpoint of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12301,7 +14550,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ReleaseInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
+        @summary Releases the public endpoint of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -12314,7 +14565,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ReleaseInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
+        @summary Releases the public endpoint of an ApsaraDB for Redis instance.
+        
+        @description For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -12328,7 +14581,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RemoveSubInstanceResponse:
         """
-        The operation that you want to perform. Set the value to *RemoveSubInstance**.
+        @summary Removes a child instance from a distributed instance.
+        
+        @description The operation that you want to perform. Set the value to *RemoveSubInstance**.
         
         @param request: RemoveSubInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12373,7 +14628,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RemoveSubInstanceResponse:
         """
-        The operation that you want to perform. Set the value to *RemoveSubInstance**.
+        @summary Removes a child instance from a distributed instance.
+        
+        @description The operation that you want to perform. Set the value to *RemoveSubInstance**.
         
         @param request: RemoveSubInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12417,7 +14674,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RemoveSubInstanceRequest,
     ) -> r_kvstore_20150101_models.RemoveSubInstanceResponse:
         """
-        The operation that you want to perform. Set the value to *RemoveSubInstance**.
+        @summary Removes a child instance from a distributed instance.
+        
+        @description The operation that you want to perform. Set the value to *RemoveSubInstance**.
         
         @param request: RemoveSubInstanceRequest
         @return: RemoveSubInstanceResponse
@@ -12430,7 +14689,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RemoveSubInstanceRequest,
     ) -> r_kvstore_20150101_models.RemoveSubInstanceResponse:
         """
-        The operation that you want to perform. Set the value to *RemoveSubInstance**.
+        @summary Removes a child instance from a distributed instance.
+        
+        @description The operation that you want to perform. Set the value to *RemoveSubInstance**.
         
         @param request: RemoveSubInstanceRequest
         @return: RemoveSubInstanceResponse
@@ -12444,9 +14705,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~). You can also call the [EnableAdditionalBandwidth](~~206173~~) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
-        > Before you call this operation, you can call the [DescribeIntranetAttribute](~~128715~~) operation, which returns the expiration time of the purchased bandwidth in the **BandwidthExpireTime** parameter.
+        @summary Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
+        > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the *BandwidthExpireTime** parameter.
         
         @param request: RenewAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12499,9 +14762,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~). You can also call the [EnableAdditionalBandwidth](~~206173~~) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
-        > Before you call this operation, you can call the [DescribeIntranetAttribute](~~128715~~) operation, which returns the expiration time of the purchased bandwidth in the **BandwidthExpireTime** parameter.
+        @summary Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
+        > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the *BandwidthExpireTime** parameter.
         
         @param request: RenewAdditionalBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12553,9 +14818,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RenewAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~). You can also call the [EnableAdditionalBandwidth](~~206173~~) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
-        > Before you call this operation, you can call the [DescribeIntranetAttribute](~~128715~~) operation, which returns the expiration time of the purchased bandwidth in the **BandwidthExpireTime** parameter.
+        @summary Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
+        > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the *BandwidthExpireTime** parameter.
         
         @param request: RenewAdditionalBandwidthRequest
         @return: RenewAdditionalBandwidthResponse
@@ -12568,9 +14835,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RenewAdditionalBandwidthRequest,
     ) -> r_kvstore_20150101_models.RenewAdditionalBandwidthResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~). You can also call the [EnableAdditionalBandwidth](~~206173~~) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
-        > Before you call this operation, you can call the [DescribeIntranetAttribute](~~128715~~) operation, which returns the expiration time of the purchased bandwidth in the **BandwidthExpireTime** parameter.
+        @summary Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
+        You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
+        > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the *BandwidthExpireTime** parameter.
         
         @param request: RenewAdditionalBandwidthRequest
         @return: RenewAdditionalBandwidthResponse
@@ -12584,7 +14853,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RenewInstanceResponse:
         """
-        This operation is applicable only to subscription instances.
+        @summary Renews an ApsaraDB for Redis instance.
+        
+        @description This operation is applicable only to subscription instances.
         
         @param request: RenewInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12647,7 +14918,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RenewInstanceResponse:
         """
-        This operation is applicable only to subscription instances.
+        @summary Renews an ApsaraDB for Redis instance.
+        
+        @description This operation is applicable only to subscription instances.
         
         @param request: RenewInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12709,7 +14982,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RenewInstanceRequest,
     ) -> r_kvstore_20150101_models.RenewInstanceResponse:
         """
-        This operation is applicable only to subscription instances.
+        @summary Renews an ApsaraDB for Redis instance.
+        
+        @description This operation is applicable only to subscription instances.
         
         @param request: RenewInstanceRequest
         @return: RenewInstanceResponse
@@ -12722,7 +14997,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RenewInstanceRequest,
     ) -> r_kvstore_20150101_models.RenewInstanceResponse:
         """
-        This operation is applicable only to subscription instances.
+        @summary Renews an ApsaraDB for Redis instance.
+        
+        @description This operation is applicable only to subscription instances.
         
         @param request: RenewInstanceRequest
         @return: RenewInstanceResponse
@@ -12736,7 +15013,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @summary Resets the password of an account for an ApsaraDB for Redis instance.
+        
+        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12785,7 +15064,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @summary Resets the password of an account for an ApsaraDB for Redis instance.
+        
+        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12833,7 +15114,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ResetAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @summary Resets the password of an account for an ApsaraDB for Redis instance.
+        
+        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -12846,7 +15129,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ResetAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        @summary Resets the password of an account for an ApsaraDB for Redis instance.
+        
+        @description >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -12859,6 +15144,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RestartInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RestartInstanceResponse:
+        """
+        @summary Restarts a running ApsaraDB for Redis instance.
+        
+        @param request: RestartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_time):
@@ -12901,6 +15193,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RestartInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RestartInstanceResponse:
+        """
+        @summary Restarts a running ApsaraDB for Redis instance.
+        
+        @param request: RestartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_time):
@@ -12942,6 +15241,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.RestartInstanceRequest,
     ) -> r_kvstore_20150101_models.RestartInstanceResponse:
+        """
+        @summary Restarts a running ApsaraDB for Redis instance.
+        
+        @param request: RestartInstanceRequest
+        @return: RestartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_instance_with_options(request, runtime)
 
@@ -12949,6 +15254,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.RestartInstanceRequest,
     ) -> r_kvstore_20150101_models.RestartInstanceResponse:
+        """
+        @summary Restarts a running ApsaraDB for Redis instance.
+        
+        @param request: RestartInstanceRequest
+        @return: RestartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_instance_with_options_async(request, runtime)
 
@@ -12958,8 +15269,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RestoreInstanceResponse:
         """
-        If your instance is a [persistent memory-optimized instance](~~443828~~) or [DRAM-based instance](~~443827~~) that is compatible with Redis 5.0 and the [data flashback](~~443784~~) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
-        *   For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](~~60873~~) operation to create an instance. Then, you can restore data to the new instance.
+        @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+        
+        @description    If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
+        For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
         
         @param request: RestoreInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13014,8 +15327,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.RestoreInstanceResponse:
         """
-        If your instance is a [persistent memory-optimized instance](~~443828~~) or [DRAM-based instance](~~443827~~) that is compatible with Redis 5.0 and the [data flashback](~~443784~~) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
-        *   For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](~~60873~~) operation to create an instance. Then, you can restore data to the new instance.
+        @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+        
+        @description    If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
+        For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
         
         @param request: RestoreInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13069,8 +15384,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RestoreInstanceRequest,
     ) -> r_kvstore_20150101_models.RestoreInstanceResponse:
         """
-        If your instance is a [persistent memory-optimized instance](~~443828~~) or [DRAM-based instance](~~443827~~) that is compatible with Redis 5.0 and the [data flashback](~~443784~~) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
-        *   For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](~~60873~~) operation to create an instance. Then, you can restore data to the new instance.
+        @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+        
+        @description    If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
+        For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
         
         @param request: RestoreInstanceRequest
         @return: RestoreInstanceResponse
@@ -13083,8 +15400,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.RestoreInstanceRequest,
     ) -> r_kvstore_20150101_models.RestoreInstanceResponse:
         """
-        If your instance is a [persistent memory-optimized instance](~~443828~~) or [DRAM-based instance](~~443827~~) that is compatible with Redis 5.0 and the [data flashback](~~443784~~) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
-        *   For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](~~60873~~) operation to create an instance. Then, you can restore data to the new instance.
+        @summary Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+        
+        @description    If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
+        For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
         
         @param request: RestoreInstanceRequest
         @return: RestoreInstanceResponse
@@ -13098,11 +15417,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchInstanceHAResponse:
         """
-        > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](~~164222~~).
-        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](~~126164~~) instance that uses local disks.
+        @summary Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
+        
+        @description > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
+        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
         A call to this operation has the following impacts on your instance:
-        *   The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
-        *   If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
+        The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
+        If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
         
         @param request: SwitchInstanceHARequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13153,11 +15474,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchInstanceHAResponse:
         """
-        > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](~~164222~~).
-        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](~~126164~~) instance that uses local disks.
+        @summary Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
+        
+        @description > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
+        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
         A call to this operation has the following impacts on your instance:
-        *   The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
-        *   If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
+        The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
+        If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
         
         @param request: SwitchInstanceHARequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13207,11 +15530,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SwitchInstanceHARequest,
     ) -> r_kvstore_20150101_models.SwitchInstanceHAResponse:
         """
-        > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](~~164222~~).
-        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](~~126164~~) instance that uses local disks.
+        @summary Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
+        
+        @description > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
+        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
         A call to this operation has the following impacts on your instance:
-        *   The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
-        *   If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
+        The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
+        If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
         
         @param request: SwitchInstanceHARequest
         @return: SwitchInstanceHAResponse
@@ -13224,11 +15549,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SwitchInstanceHARequest,
     ) -> r_kvstore_20150101_models.SwitchInstanceHAResponse:
         """
-        > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](~~164222~~).
-        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](~~126164~~) instance that uses local disks.
+        @summary Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
+        
+        @description > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
+        The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
         A call to this operation has the following impacts on your instance:
-        *   The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
-        *   If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
+        The data shards in the instance may change to the read-only state and experience transient connections within seconds. Make sure that your application is configured to automatically reconnect to the instance.
+        If the instance enters the switching state, you cannot manage this instance. For example, you cannot modify the instance configurations or migrate the instance to another zone.
         
         @param request: SwitchInstanceHARequest
         @return: SwitchInstanceHAResponse
@@ -13242,10 +15569,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
         """
-        For more information about the proxy mode, see [Features of proxy nodes](~~142959~~). Before you call this operation, make sure that the following requirements are met:
-        *   Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](~~141455~~)
-        *   The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
-        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](~~229522~~) operation and view the value of the **ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+        @summary Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+        
+        @description For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
+        Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
+        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
         
         @param request: SwitchInstanceProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13290,10 +15619,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
         """
-        For more information about the proxy mode, see [Features of proxy nodes](~~142959~~). Before you call this operation, make sure that the following requirements are met:
-        *   Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](~~141455~~)
-        *   The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
-        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](~~229522~~) operation and view the value of the **ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+        @summary Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+        
+        @description For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
+        Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
+        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
         
         @param request: SwitchInstanceProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13337,10 +15668,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SwitchInstanceProxyRequest,
     ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
         """
-        For more information about the proxy mode, see [Features of proxy nodes](~~142959~~). Before you call this operation, make sure that the following requirements are met:
-        *   Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](~~141455~~)
-        *   The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
-        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](~~229522~~) operation and view the value of the **ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+        @summary Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+        
+        @description For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
+        Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
+        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
         
         @param request: SwitchInstanceProxyRequest
         @return: SwitchInstanceProxyResponse
@@ -13353,10 +15686,12 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SwitchInstanceProxyRequest,
     ) -> r_kvstore_20150101_models.SwitchInstanceProxyResponse:
         """
-        For more information about the proxy mode, see [Features of proxy nodes](~~142959~~). Before you call this operation, make sure that the following requirements are met:
-        *   Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](~~141455~~)
-        *   The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
-        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](~~229522~~) operation and view the value of the **ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+        @summary Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+        
+        @description For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
+        Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
+        > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the *ProxyCount** response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
         
         @param request: SwitchInstanceProxyRequest
         @return: SwitchInstanceProxyResponse
@@ -13369,6 +15704,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SwitchNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchNetworkResponse:
+        """
+        @summary Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+        
+        @param request: SwitchNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.classic_expired_days):
@@ -13417,6 +15759,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SwitchNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SwitchNetworkResponse:
+        """
+        @summary Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+        
+        @param request: SwitchNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.classic_expired_days):
@@ -13464,6 +15813,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.SwitchNetworkRequest,
     ) -> r_kvstore_20150101_models.SwitchNetworkResponse:
+        """
+        @summary Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+        
+        @param request: SwitchNetworkRequest
+        @return: SwitchNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_network_with_options(request, runtime)
 
@@ -13471,6 +15826,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.SwitchNetworkRequest,
     ) -> r_kvstore_20150101_models.SwitchNetworkResponse:
+        """
+        @summary Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+        
+        @param request: SwitchNetworkRequest
+        @return: SwitchNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_network_with_options_async(request, runtime)
 
@@ -13479,6 +15840,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SyncDtsStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SyncDtsStatusResponse:
+        """
+        @summary Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+        
+        @param request: SyncDtsStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDtsStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13523,6 +15891,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.SyncDtsStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.SyncDtsStatusResponse:
+        """
+        @summary Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+        
+        @param request: SyncDtsStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDtsStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13566,6 +15941,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.SyncDtsStatusRequest,
     ) -> r_kvstore_20150101_models.SyncDtsStatusResponse:
+        """
+        @summary Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+        
+        @param request: SyncDtsStatusRequest
+        @return: SyncDtsStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sync_dts_status_with_options(request, runtime)
 
@@ -13573,6 +15954,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.SyncDtsStatusRequest,
     ) -> r_kvstore_20150101_models.SyncDtsStatusResponse:
+        """
+        @summary Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+        
+        @param request: SyncDtsStatusRequest
+        @return: SyncDtsStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sync_dts_status_with_options_async(request, runtime)
 
@@ -13582,13 +15969,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TagResourcesResponse:
         """
-        If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
-        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
-        *   If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
-        *   If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
-        *   You can add up to 20 tags to each instance.
-        *   You can add tags to up to 50 instances in each request.
-        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](~~118779~~).
+        @summary Adds specified tags to one or more ApsaraDB for Redis instances.
+        
+        @description If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
+        A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+        If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
+        If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+        You can add up to 20 tags to each instance.
+        You can add tags to up to 50 instances in each request.
+        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13637,13 +16026,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TagResourcesResponse:
         """
-        If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
-        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
-        *   If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
-        *   If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
-        *   You can add up to 20 tags to each instance.
-        *   You can add tags to up to 50 instances in each request.
-        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](~~118779~~).
+        @summary Adds specified tags to one or more ApsaraDB for Redis instances.
+        
+        @description If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
+        A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+        If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
+        If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+        You can add up to 20 tags to each instance.
+        You can add tags to up to 50 instances in each request.
+        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13691,13 +16082,15 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TagResourcesRequest,
     ) -> r_kvstore_20150101_models.TagResourcesResponse:
         """
-        If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
-        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
-        *   If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
-        *   If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
-        *   You can add up to 20 tags to each instance.
-        *   You can add tags to up to 50 instances in each request.
-        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](~~118779~~).
+        @summary Adds specified tags to one or more ApsaraDB for Redis instances.
+        
+        @description If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
+        A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+        If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
+        If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+        You can add up to 20 tags to each instance.
+        You can add tags to up to 50 instances in each request.
+        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -13710,13 +16103,15 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TagResourcesRequest,
     ) -> r_kvstore_20150101_models.TagResourcesResponse:
         """
-        If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
-        *   A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
-        *   If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
-        *   If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
-        *   You can add up to 20 tags to each instance.
-        *   You can add tags to up to 50 instances in each request.
-        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](~~118779~~).
+        @summary Adds specified tags to one or more ApsaraDB for Redis instances.
+        
+        @description If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
+        A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+        If the tag that you specify does not exist, this tag is automatically created and added to the specified instance.
+        If the key of the specified tag is the same as that of an existing tag, the specified tag overwrites the existing tag.
+        You can add up to 20 tags to each instance.
+        You can add tags to up to 50 instances in each request.
+        You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -13730,9 +16125,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
-        *   [Change the billing method to subscription](~~54542~~).
-        *   [Change the billing method to pay-as-you-go](~~211549~~).
+        @summary Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+        
+        @description Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+        [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
+        [Change the billing method to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
         
         @param request: TransformInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13787,9 +16184,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
-        *   [Change the billing method to subscription](~~54542~~).
-        *   [Change the billing method to pay-as-you-go](~~211549~~).
+        @summary Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+        
+        @description Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+        [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
+        [Change the billing method to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
         
         @param request: TransformInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13843,9 +16242,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
-        *   [Change the billing method to subscription](~~54542~~).
-        *   [Change the billing method to pay-as-you-go](~~211549~~).
+        @summary Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+        
+        @description Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+        [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
+        [Change the billing method to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
         
         @param request: TransformInstanceChargeTypeRequest
         @return: TransformInstanceChargeTypeResponse
@@ -13858,9 +16259,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
-        *   [Change the billing method to subscription](~~54542~~).
-        *   [Change the billing method to pay-as-you-go](~~211549~~).
+        @summary Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+        
+        @description Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+        [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
+        [Change the billing method to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
         
         @param request: TransformInstanceChargeTypeRequest
         @return: TransformInstanceChargeTypeResponse
@@ -13874,7 +16277,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+        @summary Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+        
+        @description For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
         >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
@@ -13924,7 +16329,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+        @summary Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+        
+        @description For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
         >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
@@ -13973,7 +16380,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformToPrePaidRequest,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+        @summary Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+        
+        @description For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
         >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
@@ -13987,7 +16396,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformToPrePaidRequest,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+        @summary Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+        
+        @description For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
         >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
@@ -14001,6 +16412,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.UnlockDBInstanceWriteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.UnlockDBInstanceWriteResponse:
+        """
+        @summary Removes the write lock from an instance. After the instance is unlocked, it supports both read and write operations.
+        
+        @param request: UnlockDBInstanceWriteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnlockDBInstanceWriteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -14039,6 +16457,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.UnlockDBInstanceWriteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.UnlockDBInstanceWriteResponse:
+        """
+        @summary Removes the write lock from an instance. After the instance is unlocked, it supports both read and write operations.
+        
+        @param request: UnlockDBInstanceWriteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnlockDBInstanceWriteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -14076,6 +16501,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.UnlockDBInstanceWriteRequest,
     ) -> r_kvstore_20150101_models.UnlockDBInstanceWriteResponse:
+        """
+        @summary Removes the write lock from an instance. After the instance is unlocked, it supports both read and write operations.
+        
+        @param request: UnlockDBInstanceWriteRequest
+        @return: UnlockDBInstanceWriteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unlock_dbinstance_write_with_options(request, runtime)
 
@@ -14083,6 +16514,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.UnlockDBInstanceWriteRequest,
     ) -> r_kvstore_20150101_models.UnlockDBInstanceWriteResponse:
+        """
+        @summary Removes the write lock from an instance. After the instance is unlocked, it supports both read and write operations.
+        
+        @param request: UnlockDBInstanceWriteRequest
+        @return: UnlockDBInstanceWriteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unlock_dbinstance_write_with_options_async(request, runtime)
 
@@ -14092,9 +16529,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.UntagResourcesResponse:
         """
-        You can remove up to 20 tags at a time.
-        *   If a tag is removed from an instance and is not added to other instances, the tag is deleted.
-        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](~~119157~~).
+        @summary Removes tags from one or more ApsaraDB for Redis instances.
+        
+        @description    You can remove up to 20 tags at a time.
+        If a tag is removed from an instance and is not added to other instances, the tag is deleted.
+        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14145,9 +16584,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.UntagResourcesResponse:
         """
-        You can remove up to 20 tags at a time.
-        *   If a tag is removed from an instance and is not added to other instances, the tag is deleted.
-        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](~~119157~~).
+        @summary Removes tags from one or more ApsaraDB for Redis instances.
+        
+        @description    You can remove up to 20 tags at a time.
+        If a tag is removed from an instance and is not added to other instances, the tag is deleted.
+        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14197,9 +16638,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.UntagResourcesRequest,
     ) -> r_kvstore_20150101_models.UntagResourcesResponse:
         """
-        You can remove up to 20 tags at a time.
-        *   If a tag is removed from an instance and is not added to other instances, the tag is deleted.
-        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](~~119157~~).
+        @summary Removes tags from one or more ApsaraDB for Redis instances.
+        
+        @description    You can remove up to 20 tags at a time.
+        If a tag is removed from an instance and is not added to other instances, the tag is deleted.
+        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -14212,9 +16655,11 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.UntagResourcesRequest,
     ) -> r_kvstore_20150101_models.UntagResourcesResponse:
         """
-        You can remove up to 20 tags at a time.
-        *   If a tag is removed from an instance and is not added to other instances, the tag is deleted.
-        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](~~119157~~).
+        @summary Removes tags from one or more ApsaraDB for Redis instances.
+        
+        @description    You can remove up to 20 tags at a time.
+        If a tag is removed from an instance and is not added to other instances, the tag is deleted.
+        You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse

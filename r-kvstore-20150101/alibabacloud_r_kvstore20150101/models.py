@@ -24,7 +24,7 @@ class AddShardingNodeRequest(TeaModel):
         # Specifies whether to enable automatic payment. Valid values:
         # 
         # *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-        # *   **false**: disables automatic payment. In this case, you must manually renew the instance in the console before the instance expires. For more information, see [Renewal](~~26352~~).
+        # *   **false**: disables automatic payment. In this case, you must manually renew the instance in the console before the instance expires. For more information, see [Renewal](https://help.aliyun.com/document_detail/26352.html).
         # 
         # > The default value is **true**.
         self.auto_pay = auto_pay
@@ -38,6 +38,8 @@ class AddShardingNodeRequest(TeaModel):
         # *   **true**: The system skips the version check and directly performs the configuration change.
         self.force_trans = force_trans
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -219,6 +221,8 @@ class AllocateDirectConnectionRequest(TeaModel):
         # The prefix of the private endpoint. The prefix must start with a lowercase letter and can contain lowercase letters and digits. The prefix must be 8 to 40 characters in length.
         self.connection_string = connection_string
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -360,12 +364,18 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
         # The prefix of the public endpoint. The prefix must start with a lowercase letter and can contain lowercase letters and digits. The prefix can be 8 to 40 characters in length.
         # 
         # >  The endpoint is in the `<prefix>.redis.rds.aliyuncs.com` format.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The service port number of the instance. Valid values: **1024** to **65535**.
+        # 
+        # This parameter is required.
         self.port = port
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -499,7 +509,9 @@ class CheckCloudResourceAuthorizedRequest(TeaModel):
         role_arn: str = None,
         security_token: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -569,7 +581,7 @@ class CheckCloudResourceAuthorizedResponseBody(TeaModel):
         # 
         # *   **0**: The instance is authorized to use KMS.
         # *   **1**: The instance is not authorized to use KMS.
-        # *   **2**: KMS is not activated. For more information, see [Activate KMS](~~153781~~).
+        # *   **2**: KMS is not activated. For more information, see [Activate KMS](https://help.aliyun.com/document_detail/153781.html).
         self.authorization_state = authorization_state
         # The ID of the request.
         self.request_id = request_id
@@ -657,16 +669,20 @@ class CreateAccountRequest(TeaModel):
         # The description of the account.
         # 
         # *   The description must start with a letter, and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, underscores (_), and hyphens (-).
         # *   The description must be 2 to 256 characters in length.
         self.account_description = account_description
         # The name of the account. The name must meet the following requirements:
         # 
         # *   The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
         # *   The name can be up to 100 characters in length.
-        # *   The name cannot be one of the reserved words in the [Reserved words for Redis account names](~~92665~~#title-84o-mok-b6h) section.
+        # *   The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://help.aliyun.com/document_detail/92665.html#title-84o-mok-b6h) section.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the account. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The permissions of the account. Valid values:
         # 
@@ -676,6 +692,8 @@ class CreateAccountRequest(TeaModel):
         # The type of the account. Set the value to **Normal**, which indicates that the account is a standard account.
         self.account_type = account_type
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -837,6 +855,8 @@ class CreateBackupRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -890,8 +910,8 @@ class CreateBackupResponseBody(TeaModel):
         backup_job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the backup task.\
-        # For cluster instances created before December 5, 2023, the return value is a comma-separated list composed of the job ID of each node within an instance. For example, if you have a cluster instance with two shards, the return value of BackupJobID is "10000,10001".\
+        # The ID of the backup task.\\
+        # For cluster instances created before December 5, 2023, the return value is a comma-separated list composed of the job ID of each node within an instance. For example, if you have a cluster instance with two shards, the return value of BackupJobID is "10000,10001".\\
         # For cluster instance created after December 5, 2023, all jobs for nodes in an instance are represented by a single job ID.
         self.backup_job_id = backup_job_id
         # The ID of the request.
@@ -972,7 +992,9 @@ class CreateCacheAnalysisTaskRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1112,6 +1134,8 @@ class CreateGlobalDistributeCacheRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The ID of the existing instance.
+        # 
+        # This parameter is required.
         self.seed_sub_instance_id = seed_sub_instance_id
 
     def validate(self):
@@ -1247,16 +1271,22 @@ class CreateGlobalSecurityIPGroupRequest(TeaModel):
         # The IP addresses in the IP whitelist template.
         # 
         # >  Separate multiple IP addresses with commas (,). The maximum number of IP addresses is 1,000.
+        # 
+        # This parameter is required.
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or digit.
         # *   The name must be 2 to 120 characters in length.
+        # 
+        # This parameter is required.
         self.global_ig_name = global_ig_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -1525,6 +1555,7 @@ class CreateInstanceRequest(TeaModel):
         port: str = None,
         private_ip_address: str = None,
         read_only_count: int = None,
+        recover_config_mode: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
@@ -1533,6 +1564,7 @@ class CreateInstanceRequest(TeaModel):
         secondary_zone_id: str = None,
         security_token: str = None,
         shard_count: int = None,
+        slave_read_only_count: int = None,
         src_dbinstance_id: str = None,
         tag: List[CreateInstanceRequestTag] = None,
         token: str = None,
@@ -1563,7 +1595,7 @@ class CreateInstanceRequest(TeaModel):
         # *   **true**: uses a coupon.
         # *   **false**: does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The ID of the backup file of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter after you specify the **SrcDBInstanceId** parameter. Then, the system creates an instance based on the backup file that is specified by this parameter. You can call the [DescribeBackups](~~61081~~) operation to query the IDs of backup files.
+        # The ID of the backup file of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter after you specify the **SrcDBInstanceId** parameter. Then, the system creates an instance based on the backup file that is specified by this parameter. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the IDs of backup files.
         # 
         # > After you specify the **SrcDBInstanceId** parameter, you must use the **BackupId** or **RestoreTime** parameter to specify the backup file.
         self.backup_id = backup_id
@@ -1607,7 +1639,7 @@ class CreateInstanceRequest(TeaModel):
         self.global_instance_id = global_instance_id
         # The global IP whitelist template for the instance. Multiple IP whitelist templates should be separated by English commas (,) and cannot be duplicated.
         self.global_security_group_ids = global_security_group_ids
-        # The instance type. For example, redis.master.small.default indicates a Community Edition standard master-replica instance that has 1 GB of memory. For more information, see [Overview](~~26350~~).
+        # The instance type. For example, redis.master.small.default indicates a Community Edition standard master-replica instance that has 1 GB of memory. For more information, see [Overview](https://help.aliyun.com/document_detail/26350.html).
         # 
         # **\
         # 
@@ -1651,7 +1683,10 @@ class CreateInstanceRequest(TeaModel):
         self.private_ip_address = private_ip_address
         # The number of read-only nodes in the instance. This parameter is available only if you create a read/write splitting instance that uses cloud disks. Valid values: 1 to 5.
         self.read_only_count = read_only_count
-        # The ID of the region where you want to create the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        self.recover_config_mode = recover_config_mode
+        # The ID of the region where you want to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -1661,7 +1696,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # > After you specify the **SrcDBInstanceId** parameter, you must use the **BackupId** or **RestoreTime** parameter to specify the backup file.
         self.restore_time = restore_time
-        # The secondary zone ID of the instance. You can call the [DescribeZones](~~472448~~) operation to query the most recent zone list.
+        # The secondary zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/472448.html) operation to query the most recent zone list.
         # 
         # > If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         self.secondary_zone_id = secondary_zone_id
@@ -1669,6 +1704,7 @@ class CreateInstanceRequest(TeaModel):
         self.security_token = security_token
         # The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks.
         self.shard_count = shard_count
+        self.slave_read_only_count = slave_read_only_count
         # The ID of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter and use the **BackupId** or **RestoreTime** parameter to specify the backup file.
         self.src_dbinstance_id = src_dbinstance_id
         # The tags of the instance.
@@ -1679,7 +1715,7 @@ class CreateInstanceRequest(TeaModel):
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The primary zone ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent zone list.
+        # The primary zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1754,6 +1790,8 @@ class CreateInstanceRequest(TeaModel):
             result['PrivateIpAddress'] = self.private_ip_address
         if self.read_only_count is not None:
             result['ReadOnlyCount'] = self.read_only_count
+        if self.recover_config_mode is not None:
+            result['RecoverConfigMode'] = self.recover_config_mode
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -1770,6 +1808,8 @@ class CreateInstanceRequest(TeaModel):
             result['SecurityToken'] = self.security_token
         if self.shard_count is not None:
             result['ShardCount'] = self.shard_count
+        if self.slave_read_only_count is not None:
+            result['SlaveReadOnlyCount'] = self.slave_read_only_count
         if self.src_dbinstance_id is not None:
             result['SrcDBInstanceId'] = self.src_dbinstance_id
         result['Tag'] = []
@@ -1848,6 +1888,8 @@ class CreateInstanceRequest(TeaModel):
             self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('ReadOnlyCount') is not None:
             self.read_only_count = m.get('ReadOnlyCount')
+        if m.get('RecoverConfigMode') is not None:
+            self.recover_config_mode = m.get('RecoverConfigMode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -1864,6 +1906,8 @@ class CreateInstanceRequest(TeaModel):
             self.security_token = m.get('SecurityToken')
         if m.get('ShardCount') is not None:
             self.shard_count = m.get('ShardCount')
+        if m.get('SlaveReadOnlyCount') is not None:
+            self.slave_read_only_count = m.get('SlaveReadOnlyCount')
         if m.get('SrcDBInstanceId') is not None:
             self.src_dbinstance_id = m.get('SrcDBInstanceId')
         self.tag = []
@@ -1942,6 +1986,8 @@ class CreateInstanceResponseBody(TeaModel):
         # *   **MASTER_SLAVE**: master-replica
         self.node_type = node_type
         # The ID of the order.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The port number that is used to connect to the instance.
         self.port = port
@@ -2154,6 +2200,8 @@ class CreateInstancesRequest(TeaModel):
         # *   5.0
         self.engine_version = engine_version
         # The JSON-formatted configurations of the instance. For more information, see the "Description of the Instances parameter" section of this topic.
+        # 
+        # This parameter is required.
         self.instances = instances
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2356,6 +2404,179 @@ class CreateInstancesResponse(TeaModel):
         return self
 
 
+class CreateParameterGroupRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        engine_type: str = None,
+        engine_version: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        parameter_group_desc: str = None,
+        parameter_group_name: str = None,
+        parameters: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.category = category
+        # This parameter is required.
+        self.engine_type = engine_type
+        # This parameter is required.
+        self.engine_version = engine_version
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.parameter_group_desc = parameter_group_desc
+        # This parameter is required.
+        self.parameter_group_name = parameter_group_name
+        # This parameter is required.
+        self.parameters = parameters
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.parameter_group_desc is not None:
+            result['ParameterGroupDesc'] = self.parameter_group_desc
+        if self.parameter_group_name is not None:
+            result['ParameterGroupName'] = self.parameter_group_name
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ParameterGroupDesc') is not None:
+            self.parameter_group_desc = m.get('ParameterGroupDesc')
+        if m.get('ParameterGroupName') is not None:
+            self.parameter_group_name = m.get('ParameterGroupName')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class CreateParameterGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        param_group_id: str = None,
+        request_id: str = None,
+    ):
+        self.param_group_id = param_group_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.param_group_id is not None:
+            result['ParamGroupId'] = self.param_group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParamGroupId') is not None:
+            self.param_group_id = m.get('ParamGroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateParameterGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateParameterGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateParameterGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTairInstanceRequestTag(TeaModel):
     def __init__(
         self,
@@ -2423,6 +2644,7 @@ class CreateTairInstanceRequest(TeaModel):
         port: int = None,
         private_ip_address: str = None,
         read_only_count: int = None,
+        recover_config_mode: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
@@ -2457,9 +2679,7 @@ class CreateTairInstanceRequest(TeaModel):
         # *   **true**: uses a coupon.
         # *   **false**: does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The ID of the backup set of the source instance. If you want to create an instance based on a backup set of a specified instance, you can specify this parameter after you specify the **SrcDBInstanceId** parameter. Then, the system creates an instance based on the backup set that is specified by this parameter. You can call the [DescribeBackups](~~61081~~) operation to query the IDs of backup sets.
-        # 
-        # >  If you want to create an instance based on a backup set of a specified instance, you must specify this parameter after you use the **SrcDBInstanceId** parameter to specify the ID of the source instance. Then, the system creates an instance based on the backup set that is specified by this parameter.
+        # The ID of the backup set of the source instance. The system uses the data stored in the backup set to create an instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the backup set ID.
         self.backup_id = backup_id
         # The ID of the promotion event or the business information.
         self.business_info = business_info
@@ -2470,13 +2690,10 @@ class CreateTairInstanceRequest(TeaModel):
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # This parameter is supported for specific new cluster instances. You can query the backup set ID by using the [DescribeClusterBackupList](~~2679158~~) operation.
+        # This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679158.html) operation.
         # 
         # *   If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the **BackupId** parameter.
-        # 
-        # <!---->
-        # 
-        # *   If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,). Example: "11101,11102".
+        # *   If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,). Example: "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22".
         self.cluster_backup_id = cluster_backup_id
         # The coupon code.
         self.coupon_no = coupon_no
@@ -2491,15 +2708,23 @@ class CreateTairInstanceRequest(TeaModel):
         # *   For Tair persistent memory-optimized instances (tair_scm) that are compatible with Redis 6.0, set this parameter to 1.0.
         # *   For Tair ESSD-based instances (tair_essd) that are compatible with Redis 4.0 or 6.0, set this parameter to 1.0 or 2.0.
         self.engine_version = engine_version
-        # The ID of the distributed instance.
+        # Specifies whether to use the created instance as a child instance of a distributed instance.
+        # 
+        # *   If you want the created instance to be used as the first child instance, enter **true**.
+        # *   If you want the created instance to be used as the second or third child instance, enter the ID of the distributed instance, such as gr-bp14rkqrhac\\*\\*\\*\\*.
+        # *   If you do not want the created instance to be used as a distributed instance, leave the parameter empty.
+        # 
+        # >  If you want the created instance to be used as a distributed instance, the created instance must be a Tair DRAM-based instance.
         self.global_instance_id = global_instance_id
         # The global IP whitelist template of the instance. Separate multiple IP whitelist templates with commas (,) and make sure that each IP whitelist template is unique.
         self.global_security_group_ids = global_security_group_ids
         # The instance type. For more information, see the following topics:
         # 
-        # *   [DRAM-based instances](~~443844~~)
-        # *   [Persistent memory-optimized instances](~~443845~~)
-        # *   [ESSD-based instances](~~443846~~)
+        # *   [DRAM-based instances](https://help.aliyun.com/document_detail/443844.html)
+        # *   [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/443845.html)
+        # *   [ESSD-based instances](https://help.aliyun.com/document_detail/443846.html)
+        # 
+        # This parameter is required.
         self.instance_class = instance_class
         # The name of the instance. The name must meet the following requirements:
         # 
@@ -2511,6 +2736,8 @@ class CreateTairInstanceRequest(TeaModel):
         # *   **tair_rdb**: ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance
         # *   **tair_scm**: ApsaraDB for Redis Enhanced Edition (Tair) persistent memory-optimized instance
         # *   **tair_essd**: ApsaraDB for Redis Enhanced Edition (Tair) ESSD-based instance
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2529,49 +2756,55 @@ class CreateTairInstanceRequest(TeaModel):
         self.port = port
         # The private IP address of the instance.
         # 
-        # > The IP address must be within the CIDR block of the vSwitch to which you want the instance to connect. You can call the [DescribeVSwitches](~~35748~~) operation of the VPC API to query the CIDR block information.
+        # > The IP address must be within the CIDR block of the vSwitch to which you want the instance to connect. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation of the VPC API to query the CIDR block information.
         self.private_ip_address = private_ip_address
-        # The number of read-only nodes of the instance. This parameter is available only if you create a read/write splitting instance that uses cloud disks. You can use this parameter to specify a custom number of read-only nodes for the instance. Valid value: 1 to 5.
+        # The number of read replicas in the primary zone. This parameter applies only to read/write splitting instances that use cloud disks. You can use this parameter to customize the number of read replicas. Valid values: 1 to 9.
+        # 
+        # >  The sum of the values of this parameter and SlaveReadOnlyCount cannot be greater than 9.
         self.read_only_count = read_only_count
-        # The ID of the region where you want to create the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        self.recover_config_mode = recover_config_mode
+        # The ID of the region where you want to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which you want to assign the instance.
         # 
         # > 
         # 
-        # *   You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+        # *   You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         # 
-        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the current resource group of the instance.
+        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # If data flashback is enabled for the source instance, you can use this parameter to specify a point in time within the backup retention period of the source instance. The system uses the backup data of the source instance at the point in time to create an instance. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.restore_time = restore_time
-        # The ID of the secondary zone. You can call the [DescribeRegions](~~61012~~) operation to query the ID of the secondary zone.
+        # The ID of the secondary zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the ID of the secondary zone.
         # 
         # > You cannot specify multiple zone IDs or set this parameter to a value that is the same as that of the ZoneId parameter.
         self.secondary_zone_id = secondary_zone_id
         self.security_token = security_token
         # The number of data nodes in the instance. Valid values:
         # 
-        # *   **1**: You can create an instance in the standard architecture that contains only one data node. For more information about the standard architecture, see [Cluster master-replica instances](~~52228~~). This is the default value.
-        # *   **2** to **32**: You can create an instance in the cluster architecture that contains the specified number of data nodes. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
+        # *   **1** (default): You can create a [standard instance](https://help.aliyun.com/document_detail/52228.html) that contains only a single data node.
+        # *   **2** to **32**: You can create a [cluster instance](https://help.aliyun.com/document_detail/52228.html) that contains the specified number of data nodes.
         # 
-        # > Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from **2** to **32** only if you set the **InstanceType** parameter to **tair_scm**.
+        # >  When the **InstanceType** parameter is set to **tair_rdb** or **tair_scm**, this parameter can be set to **2** to **32**. Only DRAM-based and persistent memory-optimized instances support the cluster architecture.
         self.shard_count = shard_count
         # The data shard type of the instance. Default value: MASTER_SLAVE. Valid values:
         # 
         # *   **MASTER_SLAVE**: runs in a master-replica architecture that provides high availability.
         # *   **STAND_ALONE**: runs in a standalone architecture. If the only node fails, the system creates a new instance and switches the workloads to the new instance. This may cause data loss. You can set this parameter to this value only if the instance uses the **single-zone** deployment type. If you set this parameter to this value, you cannot create cluster or read/write splitting instances.
         self.shard_type = shard_type
-        # The number of read replicas in the secondary zone. This parameter is used to create a read/write splitting instance that is deployed across multiple zones.
+        # The number of read replicas in the secondary zone when you create a multi-zone read/write splitting instance. The sum of the values of this parameter and ReadOnlyCount cannot be greater than 9.
         # 
-        # > To create a read/write splitting instance that is deployed across multiple zones, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
+        # > When you create a multi-zone read/write splitting instance, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
         self.slave_read_only_count = slave_read_only_count
-        # The ID of the source instance.
+        # If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
         # 
-        # > If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance and the **BackupId** parameter to the backup set that you want to use.
+        # >  Then, you can use the **BackupId**, **ClusterBackupId**, or **RestoreTime** parameter to specify the backup set that you want to use or the point in time. This parameter must be used in combination with one of the preceding three parameters.
         self.src_dbinstance_id = src_dbinstance_id
-        # The storage space of cloud disks. Valid values vary based on the instance specifications. For more information, see [ESSD-based instances](~~443846~~).
+        # The storage space of cloud disks. Valid values vary based on the instance specifications. For more information, see [ESSD-based instances](https://help.aliyun.com/document_detail/443846.html).
         # 
         # > This parameter is available and required only if the **InstanceType** parameter is set to **tair_essd**.
         self.storage = storage
@@ -2581,11 +2814,15 @@ class CreateTairInstanceRequest(TeaModel):
         self.storage_type = storage_type
         # The tags to add to the instance.
         self.tag = tag
-        # The ID of the vSwitch that belongs to the VPC. You can call the [DescribeVpcs](~~35739~~) operation to query the ID of the vSwitch.
+        # The ID of the vSwitch that belongs to the VPC. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the ID of the vSwitch.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC). You can call the [DescribeVpcs](~~35739~~) operation to query the ID of the VPC.
+        # The ID of the virtual private cloud (VPC). You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the ID of the VPC.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
-        # The primary zone ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the IDs of available zones.
+        # The primary zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the IDs of available zones.
         # 
         # >  You can also set the SecondaryZoneId parameter to specify the secondary zone. The primary and secondary nodes will then be deployed in the specified primary and secondary zones to implement the master-replica zone-disaster recovery architecture. For example, you can set the ZoneId parameter to cn-hangzhou-h and the SecondaryZoneId parameter to cn-hangzhou-g.
         self.zone_id = zone_id
@@ -2652,6 +2889,8 @@ class CreateTairInstanceRequest(TeaModel):
             result['PrivateIpAddress'] = self.private_ip_address
         if self.read_only_count is not None:
             result['ReadOnlyCount'] = self.read_only_count
+        if self.recover_config_mode is not None:
+            result['RecoverConfigMode'] = self.recover_config_mode
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -2742,6 +2981,8 @@ class CreateTairInstanceRequest(TeaModel):
             self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('ReadOnlyCount') is not None:
             self.read_only_count = m.get('ReadOnlyCount')
+        if m.get('RecoverConfigMode') is not None:
+            self.recover_config_mode = m.get('RecoverConfigMode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -2808,7 +3049,7 @@ class CreateTairInstanceResponseBody(TeaModel):
         # *   **PrePaid**: subscription
         # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # The detailed configurations of the instance. The value is a JSON string. For more information about the parameter description, see [Modify the parameters of an ApsaraDB for Redis instance](~~43885~~).
+        # The detailed configurations of the instance. The value is a JSON string. For more information about the parameter description, see [Modify the parameters of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
         # The internal endpoint of the instance.
         self.connection_domain = connection_domain
@@ -2824,7 +3065,7 @@ class CreateTairInstanceResponseBody(TeaModel):
         self.instance_name = instance_name
         # The state of the instance. The return value is **Creating**.
         self.instance_status = instance_status
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
         # The port number that is used to connect to the instance.
         self.port = port
@@ -2967,9 +3208,13 @@ class DeleteAccountRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The username of the account. You can call the [DescribeAccounts](~~95802~~) operation to query the username of the account.
+        # The username of the account. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/95802.html) operation to query the username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3105,15 +3350,19 @@ class DeleteGlobalSecurityIPGroupRequest(TeaModel):
     ):
         # The name of the global IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
         # The ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -3256,6 +3505,8 @@ class DeleteInstanceRequest(TeaModel):
         # The ID of the distributed instance to which the instance belongs. This parameter is applicable to only China site (aliyun.com).
         self.global_instance_id = global_instance_id
         # The ID of the instance that you want to release.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3376,6 +3627,142 @@ class DeleteInstanceResponse(TeaModel):
         return self
 
 
+class DeleteParameterGroupRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        parameter_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the parameter template.
+        # 
+        # This parameter is required.
+        self.parameter_group_id = parameter_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.parameter_group_id is not None:
+            result['ParameterGroupId'] = self.parameter_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ParameterGroupId') is not None:
+            self.parameter_group_id = m.get('ParameterGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DeleteParameterGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        param_group_id: str = None,
+        request_id: str = None,
+    ):
+        # The parameter template ID, which is globally unique.
+        self.param_group_id = param_group_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.param_group_id is not None:
+            result['ParamGroupId'] = self.param_group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParamGroupId') is not None:
+            self.param_group_id = m.get('ParamGroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteParameterGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteParameterGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteParameterGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteShardingNodeRequest(TeaModel):
     def __init__(
         self,
@@ -3395,6 +3782,8 @@ class DeleteShardingNodeRequest(TeaModel):
         # *   **true**: The system skips the version check and directly performs the configuration change.
         self.force_trans = force_trans
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the data shard that you want to remove. You can specify multiple IDs at a time. Separate multiple IDs with commas (,).
         # 
@@ -3552,6 +3941,8 @@ class DescribeAccountsRequest(TeaModel):
         # The name of the account that you want to query.
         self.account_name = account_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3881,15 +4272,19 @@ class DescribeActiveOperationTaskRequest(TeaModel):
         # The region ID of the O&M task. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
         # 
         # > A value of **all** indicates all region IDs.
+        # 
+        # This parameter is required.
         self.region = region
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The type of the O\&M task. Valid values:
+        # The type of the O\\&M task. Valid values:
         # 
         # *   **rds_apsaradb_ha**: master-replica switchover
         # *   **rds_apsaradb_transfer**: instance migration
         # *   **rds_apsaradb_upgrade**: minor version update
+        # 
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -3964,7 +4359,7 @@ class DescribeActiveOperationTaskResponseBodyItems(TeaModel):
         switch_time: str = None,
         task_type: str = None,
     ):
-        # The time when the O\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the O\\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.created_time = created_time
         # The database type of the instance. The return value is **Redis**.
         self.db_type = db_type
@@ -3974,13 +4369,13 @@ class DescribeActiveOperationTaskResponseBodyItems(TeaModel):
         self.id = id
         # The ID of the instance.
         self.ins_name = ins_name
-        # The time when the O\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the O\\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.modified_time = modified_time
         # The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
         self.prepare_interval = prepare_interval
         # The region ID of the instance.
         self.region = region
-        # The time when the O\&M task was preformed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the O\\&M task was preformed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
         # The state of the O&M task. Valid values:
         # 
@@ -4074,7 +4469,7 @@ class DescribeActiveOperationTaskResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # Details of O\&M tasks.
+        # Details of O\\&M tasks.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -4181,11 +4576,15 @@ class DescribeAuditLogConfigRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeInstanceAttribute](~~60996~~) operation to query the region ID of the instance.
+        # The region ID of the instance. You can call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation to query the region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4247,7 +4646,7 @@ class DescribeAuditLogConfigResponseBody(TeaModel):
         # *   **true**: enabled
         # *   **false**: disabled
         # 
-        # > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance.
+        # > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance.
         self.db_audit = db_audit
         # The ID of the request.
         self.request_id = request_id
@@ -4349,10 +4748,14 @@ class DescribeAuditRecordsRequest(TeaModel):
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
         # > We recommend that you specify a time range of 10 minutes or less because audit logs contain a great number of entries. Do not specify a time range that is longer than one day.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The IP address of the client. If you do not specify this parameter, this call applies to all clients.
         self.host_address = host_address
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the node in the instance. You can set this parameter to query the data of a specified node.
         # 
@@ -4360,7 +4763,7 @@ class DescribeAuditRecordsRequest(TeaModel):
         # 
         # *   This parameter is available only for read/write splitting or cluster instances of ApsaraDB for Redis.
         # 
-        # *   You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query node IDs.
+        # *   You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query node IDs.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4376,6 +4779,8 @@ class DescribeAuditRecordsRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -4740,7 +5145,7 @@ class DescribeAvailableResourceRequest(TeaModel):
         # 
         # *   **professional**: Standard Edition. This edition supports the standalone, master-replica, read /write splitting, and cluster architectures and provides high scalability.
         self.instance_scene = instance_scene
-        # The ID of the data node for which you want to query available resources that can be created. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the ID of the data node. Remove the number sign (`#`) and the content that follows the number sign. For example, retain only r-bp10noxlhcoim2\*\*\*\*-db-0.
+        # The ID of the data node for which you want to query available resources that can be created. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query the ID of the data node. Remove the number sign (`#`) and the content that follows the number sign. For example, retain only r-bp10noxlhcoim2\\*\\*\\*\\*-db-0.
         # 
         # > Before you specify this parameter, you must set the **InstanceId** parameter to the ID of an instance that uses the cluster or read/write splitting architecture.
         self.node_id = node_id
@@ -4760,16 +5165,18 @@ class DescribeAvailableResourceRequest(TeaModel):
         # *   **Tair_essd**: ESSD-based instance
         # *   **OnECS**: cloud-native ApsaraDB for Redis Community Edition instance
         self.product_type = product_type
-        # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
-        self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](~~158855~~) operation to query the IDs of resource groups.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
         # 
-        # > You can also query the IDs of resource groups in the Resource Management console. For more information, see [View basic information about a resource group](~~151181~~).
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the IDs of resource groups.
+        # 
+        # > You can also query the IDs of resource groups in the Resource Management console. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The zone ID of the instance. You can call the [DescribeZones](~~94527~~) operation to query the most recent zone list.
+        # The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5621,6 +6028,8 @@ class DescribeBackupPolicyRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5887,10 +6296,12 @@ class DescribeBackupTasksRequest(TeaModel):
         # The progress of the backup task in percentage.
         self.backup_job_id = backup_job_id
         # The details of the backup tasks.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The backup mode. Valid values:
         # 
-        # *   **Automated**: automatic backup. You can call the [DescribeBackupPolicy](~~61078~~) operation to query the automatic backup policy.
+        # *   **Automated**: automatic backup. You can call the [DescribeBackupPolicy](https://help.aliyun.com/document_detail/61078.html) operation to query the automatic backup policy.
         # *   **Manual**: manual backup.
         # 
         # > By default, the information about backup tasks in both modes is returned.
@@ -6231,8 +6642,12 @@ class DescribeBackupsRequest(TeaModel):
         self.backup_id = backup_id
         self.backup_job_id = backup_job_id
         # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance whose backup files you want to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether to enable append-only files (AOFs) persistence. Valid values:
         # 
@@ -6251,6 +6666,8 @@ class DescribeBackupsRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -6408,6 +6825,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         backup_type: str = None,
         engine_version: str = None,
         node_instance_id: str = None,
+        recover_config_mode: str = None,
     ):
         # The names of the databases that are backed up. The default value is **all**, which indicates that all databases are backed up.
         self.backup_dbnames = backup_dbnames
@@ -6453,6 +6871,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         # 
         # >  If the instance uses the standard architecture, this parameter returns the instance ID.
         self.node_instance_id = node_instance_id
+        self.recover_config_mode = recover_config_mode
 
     def validate(self):
         pass
@@ -6491,6 +6910,8 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
             result['EngineVersion'] = self.engine_version
         if self.node_instance_id is not None:
             result['NodeInstanceId'] = self.node_instance_id
+        if self.recover_config_mode is not None:
+            result['RecoverConfigMode'] = self.recover_config_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -6523,6 +6944,8 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
             self.engine_version = m.get('EngineVersion')
         if m.get('NodeInstanceId') is not None:
             self.node_instance_id = m.get('NodeInstanceId')
+        if m.get('RecoverConfigMode') is not None:
+            self.recover_config_mode = m.get('RecoverConfigMode')
         return self
 
 
@@ -6711,10 +7134,16 @@ class DescribeCacheAnalysisReportRequest(TeaModel):
         security_token: str = None,
     ):
         # The type of analytics. Set the value to **BigKey**.
+        # 
+        # This parameter is required.
         self.analysis_type = analysis_type
         # The date to query. You can query the report for one day each time. Specify the date in the *yyyy-MM-dd*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.date = date
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the child node in the cluster instance.
         # 
@@ -6926,6 +7355,8 @@ class DescribeCacheAnalysisReportListRequest(TeaModel):
         # > If daily automatic analysis has not started and manual analysis is not performed, no records are returned.
         self.days = days
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the child node in the cluster instance.
         # 
@@ -7262,8 +7693,12 @@ class DescribeClusterBackupListRequest(TeaModel):
         # The backup set ID.
         self.cluster_backup_id = cluster_backup_id
         # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7271,12 +7706,16 @@ class DescribeClusterBackupListRequest(TeaModel):
         self.page_number = page_number
         # The maximum number of entries returned per page.
         self.page_size = page_size
-        # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7386,6 +7825,7 @@ class DescribeClusterBackupListResponseBodyClusterBackupsBackups(TeaModel):
         extra_info: DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo = None,
         instance_name: str = None,
         is_avail: str = None,
+        recover_config_mode: str = None,
     ):
         # The public download URL of the backup file.
         self.backup_download_url = backup_download_url
@@ -7419,6 +7859,7 @@ class DescribeClusterBackupListResponseBodyClusterBackupsBackups(TeaModel):
         # *   **0**: unavailable
         # *   **1**: available
         self.is_avail = is_avail
+        self.recover_config_mode = recover_config_mode
 
     def validate(self):
         if self.extra_info:
@@ -7454,6 +7895,8 @@ class DescribeClusterBackupListResponseBodyClusterBackupsBackups(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.is_avail is not None:
             result['IsAvail'] = self.is_avail
+        if self.recover_config_mode is not None:
+            result['RecoverConfigMode'] = self.recover_config_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -7483,6 +7926,8 @@ class DescribeClusterBackupListResponseBodyClusterBackupsBackups(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('IsAvail') is not None:
             self.is_avail = m.get('IsAvail')
+        if m.get('RecoverConfigMode') is not None:
+            self.recover_config_mode = m.get('RecoverConfigMode')
         return self
 
 
@@ -7733,7 +8178,9 @@ class DescribeClusterMemberInfoRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7824,7 +8271,7 @@ class DescribeClusterMemberInfoResponseBodyClusterChildren(TeaModel):
         # 
         # > This parameter is returned only if the return value of **Service** is **redis**, which indicates a data node.
         self.capacity = capacity
-        # The specifications of the data node. For more information, see [Community Edition instances that use cloud disks](~~164477~~).
+        # The specifications of the data node. For more information, see [Community Edition instances that use cloud disks](https://help.aliyun.com/document_detail/164477.html).
         self.class_code = class_code
         # The maximum number of connections supported by the data node.
         self.connections = connections
@@ -7832,7 +8279,7 @@ class DescribeClusterMemberInfoResponseBodyClusterChildren(TeaModel):
         # 
         # > This parameter is returned only if the instance is created in a dedicated cluster.
         self.current_band_width = current_band_width
-        # The storage capacity of the [enhanced SSD (ESSD)](~~122389~~) that is used by the data node. Unit: MB.
+        # The storage capacity of the [enhanced SSD (ESSD)](https://help.aliyun.com/document_detail/122389.html) that is used by the data node. Unit: MB.
         # 
         # > The ESSD is used only to store system operating data, such as Persistent Memory (PMEM). It is not used as a medium to write and read data.
         self.disk_size_mb = disk_size_mb
@@ -8025,6 +8472,8 @@ class DescribeDBInstanceNetInfoRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8325,6 +8774,8 @@ class DescribeDBNodeDirectVipInfoRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8562,7 +9013,7 @@ class DescribeDedicatedClusterInstanceListRequest(TeaModel):
         # 
         # > Separate multiple IDs with commas (,).
         self.cluster_id = cluster_id
-        # The ID of the host in the dedicated cluster. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+        # The ID of the host in the dedicated cluster. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
         # 
         # > Separate multiple IDs with commas (,).
         self.dedicated_host_name = dedicated_host_name
@@ -8572,7 +9023,7 @@ class DescribeDedicatedClusterInstanceListRequest(TeaModel):
         self.engine_version = engine_version
         # The ID of the instance.
         # 
-        # > The instance must be created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](~~141455~~)
+        # > The instance must be created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](https://help.aliyun.com/document_detail/141455.html)
         self.instance_id = instance_id
         # The network type of the instance. Valid values:
         # 
@@ -8597,12 +9048,14 @@ class DescribeDedicatedClusterInstanceListRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The zone ID of the instance. You can call the [DescribeZones](~~94527~~) operation to query the most recent zone list.
+        # The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -8856,15 +9309,15 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(TeaModel):
         # 
         # *   If the return value is **0**, the proxy mode is disabled for the instance. If the return value is an integer greater than **0**, such as **1**, the proxy mode is enabled for the instance.
         # 
-        # *   This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](~~52228~~).
+        # *   This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
         self.proxy_count = proxy_count
         # The ID of the region.
         self.region_id = region_id
         # The number of shards.
         # 
-        # >  This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](~~52228~~).
+        # >  This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
         self.shard_count = shard_count
-        # The storage type of the instance. The return value is LOCAL_SSD, which indicates [enhanced SSDs (ESSDs)](~~122389~~).
+        # The storage type of the instance. The return value is LOCAL_SSD, which indicates [enhanced SSDs (ESSDs)](https://help.aliyun.com/document_detail/122389.html).
         self.storage_type = storage_type
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -9109,9 +9562,11 @@ class DescribeEncryptionKeyRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the custom key. You can call the [DescribeEncryptionKeyList](~~302339~~) operation to query the ID of the key.
+        # The ID of the custom key. You can call the [DescribeEncryptionKeyList](https://help.aliyun.com/document_detail/302339.html) operation to query the ID of the key.
         self.encryption_key = encryption_key
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9201,7 +9656,7 @@ class DescribeEncryptionKeyResponseBody(TeaModel):
         # 
         # > If the return value is an empty string, the custom key does not expire.
         self.material_expire_time = material_expire_time
-        # The source of the custom key. A value of **Aliyun_KMS** indicates [Key Management Service (KMS)](~~28935~~) of Alibaba Cloud.
+        # The source of the custom key. A value of **Aliyun_KMS** indicates [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html) of Alibaba Cloud.
         self.origin = origin
         # The ID of the request.
         self.request_id = request_id
@@ -9319,7 +9774,9 @@ class DescribeEncryptionKeyListRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9482,7 +9939,9 @@ class DescribeEngineVersionRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9919,14 +10378,14 @@ class DescribeEngineVersionResponseBody(TeaModel):
         # *   **true**: The major version can be upgraded.
         # *   **false**: The major version is the latest version and cannot be upgraded.
         # 
-        # >  To upgrade the major version, call the [ModifyInstanceMajorVersion](~~95259~~) operation.
+        # >  To upgrade the major version, call the [ModifyInstanceMajorVersion](https://help.aliyun.com/document_detail/95259.html) operation.
         self.enable_upgrade_major_version = enable_upgrade_major_version
         # Indicates whether the minor version can be updated for the instance. Valid values:
         # 
         # *   **true**: The minor version can be updated.
         # *   **false**: The minor version is the latest version and cannot be updated.
         # 
-        # >  To update the minor version, call the [ModifyInstanceMinorVersion](~~129381~~) operation.
+        # >  To update the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) operation.
         self.enable_upgrade_minor_version = enable_upgrade_minor_version
         # The database engine of the instance. Valid values: **redis** and **memcache**.
         self.engine = engine
@@ -10183,9 +10642,9 @@ class DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstance
         self.global_instance_id = global_instance_id
         # The instance type of the child instance. For more information, see the following topics:
         # 
-        # *   [Standard DRAM-based instances](~~145228~~)
-        # *   [Cluster DRAM-based instances](~~150458~~)
-        # *   [Read/write splitting DRAM-based instances](~~150459~~)
+        # *   [Standard DRAM-based instances](https://help.aliyun.com/document_detail/145228.html)
+        # *   [Cluster DRAM-based instances](https://help.aliyun.com/document_detail/150458.html)
+        # *   [Read/write splitting DRAM-based instances](https://help.aliyun.com/document_detail/150459.html)
         self.instance_class = instance_class
         # The ID of the child instance.
         self.instance_id = instance_id
@@ -10207,7 +10666,7 @@ class DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstance
         # *   **SSLModifying**: The SSL certificate of the instance is being changed.
         # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains available during the upgrade.
         # 
-        # >  For more information about instance states, see [Instance states and impacts](~~200740~~).
+        # >  For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
         # The ID of the region.
         self.region_id = region_id
@@ -10424,6 +10883,8 @@ class DescribeGlobalSecurityIPGroupRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -10634,10 +11095,14 @@ class DescribeGlobalSecurityIPGroupRelationRequest(TeaModel):
         security_token: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -10855,22 +11320,41 @@ class DescribeHistoryMonitorValuesRequest(TeaModel):
         # 
         # *   You can query the monitoring data of the last month. The maximum time range that you can specify for a query is seven days.
         # *   If the number of data nodes in the instance is greater than 32, the time range to query for the Data Node Aggregation and Proxy Node Aggregation metrics cannot exceed 1 hour.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The interval at which to collect monitoring data. Unit: minutes. Set the value to `01m`.
+        # 
+        # This parameter is required.
         self.interval_for_history = interval_for_history
-        # The monitoring metrics. Separate the metrics with commas (,).
-        # *   This parameter is empty by default. The UsedMemory and quotaMemory metrics are returned. For information about the metrics that are supported by ApsaraDB for Redis instances and their descriptions, see [View performance monitoring data](~~122091~~).
+        # The monitoring metrics. Separate the metrics with commas (,). Take CpuUsage as an example:
+        # 
+        # *   To query the overall CPU utilization of all data nodes, specify **CpuUsage$db**.
+        # *   To query the CPU utilization of a single data node, specify **CpuUsage** and NodeId.
+        # 
+        # For more information about the monitoring metrics, see **Additional description of MonitorKeys**.
+        # 
+        # > 
+        # 
+        # *   This parameter is empty by default, which indicates that the UsedMemory and quotaMemory metrics are returned.
         # 
         # *   To ensure query efficiency, we recommend that you specify no more than five metrics for a single node at a time, and specify only a single metric when you query aggregate metrics.
+        # 
+        # [Additional description of MonitorKeys](https://help.aliyun.com/zh/redis/developer-reference/api-r-kvstore-2015-01-01-describehistorymonitorvalues-redis)
         self.monitor_keys = monitor_keys
         # The ID of the node in the instance. You can set this parameter to query the data of a specified node.
         # 
         # *   This parameter is available only for read/write splitting or cluster instances of ApsaraDB for Redis.
         # 
-        # *   You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query node IDs.
+        # *   You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query node IDs.
         self.node_id = node_id
+        # If you want to query the metrics of the read replicas in a cloud-native read/write splitting instance, you must set this parameter to **READONLY** and specify **NodeId**.
+        # 
+        # > In other cases, you do not need to specify this parameter or you can set this parameter to **MASTER**.
         self.node_role = node_role
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10878,6 +11362,8 @@ class DescribeHistoryMonitorValuesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -10950,7 +11436,7 @@ class DescribeHistoryMonitorValuesResponseBody(TeaModel):
         monitor_history: str = None,
         request_id: str = None,
     ):
-        # The monitoring information returned in the JSON format. For more information, see [View performance monitoring data](~~122091~~).
+        # The monitoring information returned in the JSON format. For more information, see [View performance monitoring data](https://help.aliyun.com/document_detail/122091.html).
         # 
         # *   Only metrics whose values are not 0 are returned. This improves data transmission efficiency. Metrics that are not displayed are represented by the **0** default value.
         # 
@@ -11046,6 +11532,8 @@ class DescribeHistoryTasksRequest(TeaModel):
         # The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.from_exec_time = from_exec_time
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time.
+        # 
+        # This parameter is required.
         self.from_start_time = from_start_time
         # The instance ID. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs.
         self.instance_id = instance_id
@@ -11055,7 +11543,7 @@ class DescribeHistoryTasksRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 10 to 100. Default value: 10.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11089,6 +11577,8 @@ class DescribeHistoryTasksRequest(TeaModel):
         # The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.to_exec_time = to_exec_time
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried.
+        # 
+        # This parameter is required.
         self.to_start_time = to_start_time
 
     def validate(self):
@@ -11490,6 +11980,8 @@ class DescribeInstanceAttributeRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11670,7 +12162,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         # *   **standard**: standard architecture
         # *   **rwsplit**: read/write splitting architecture
         self.architecture_type = architecture_type
-        # The retention period of audit logs. Unit: day. A value of 0 indicates that the audit log feature is disabled. For information about how to enable the feature, see [Enable the audit log feature](~~102015~~).
+        # The retention period of audit logs. Unit: day. A value of 0 indicates that the audit log feature is disabled. For information about how to enable the feature, see [Enable the audit log feature](https://help.aliyun.com/document_detail/102015.html).
         self.audit_log_retention = audit_log_retention
         # The availability metric of the current month.
         self.availability_value = availability_value
@@ -11678,9 +12170,9 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         # 
         # > 
         # 
-        # *   This parameter is returned only when the data flashback feature is enabled for the instance. For more information, see [Restore data to a point in time by using the data flashback feature](~~148479~~).
+        # *   This parameter is returned only when the data flashback feature is enabled for the instance. For more information, see [Restore data to a point in time by using the data flashback feature](https://help.aliyun.com/document_detail/148479.html).
         # 
-        # *   When you call the [RestoreInstance](~~61083~~) operation to implement data flashback, you can obtain the earliest point in time for data flashback from the return value of this parameter and set the **RestoreTime** parameter to this point in time.
+        # *   When you call the [RestoreInstance](https://help.aliyun.com/document_detail/61083.html) operation to implement data flashback, you can obtain the earliest point in time for data flashback from the return value of this parameter and set the **RestoreTime** parameter to this point in time.
         self.backup_log_start_time = backup_log_start_time
         # The bandwidth of the instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
@@ -11693,7 +12185,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         self.charge_type = charge_type
         # This parameter is returned only when the instance is in a cloud box.
         self.cloud_type = cloud_type
-        # The parameter configurations of the instance in the JSON format. For more information, see [Parameter descriptions](~~43885~~). You can use the [DescribeAuditLogConfig](~~473830~~) operation to query audit log configurations.
+        # The parameter configurations of the instance in the JSON format. For more information, see [Parameter descriptions](https://help.aliyun.com/document_detail/43885.html). You can use the [DescribeAuditLogConfig](https://help.aliyun.com/document_detail/473830.html) operation to query audit log configurations.
         self.config = config
         # The internal endpoint of the instance.
         self.connection_domain = connection_domain
@@ -11716,7 +12208,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         # *   **true**\
         # *   **false**\
         self.has_renew_change_order = has_renew_change_order
-        # The instance type. For more information, see [Instance types](~~107984~~).
+        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
         self.instance_class = instance_class
         # The ID of the instance.
         self.instance_id = instance_id
@@ -11745,7 +12237,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         # *   **SSLModifying**: The SSL configurations of the instance are being changed.
         # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
         # 
-        # >  For more information about instance states, see [Instance states and impacts](~~200740~~).
+        # >  For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
         # The database engine of the instance. Valid values:
         # 
@@ -11765,7 +12257,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         self.is_rds = is_rds
         # Indicates whether the transparent data encryption (TDE) feature is supported for the instance. Valid values:
         # 
-        # *   **true**: This feature is supported. This feature is available only for [DRAM-based](~~443827~~) instances that use local disks.
+        # *   **true**: This feature is supported. This feature is available only for [DRAM-based](https://help.aliyun.com/document_detail/443827.html) instances that use local disks.
         # *   **false**: This feature is not supported.
         self.is_support_tde = is_support_tde
         # The end time of the maintenance window. The time is in the *HH:mmZ* format. The time is displayed in UTC.
@@ -11799,7 +12291,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         self.read_only_count = read_only_count
         # If the instance is a cluster instance that uses cloud disks, this parameter indicates the actual instance type of individual shards in the instance. The InstanceClass parameter indicates the virtual instance type.
         # 
-        # >  To query fees for instances of the instance type, you can specify the instance type that is returned by this parameter in the [DescribePrice](~~95612~~) operation.
+        # >  To query fees for instances of the instance type, you can specify the instance type that is returned by this parameter in the [DescribePrice](https://help.aliyun.com/document_detail/95612.html) operation.
         self.real_instance_class = real_instance_class
         # The region ID.
         self.region_id = region_id
@@ -11833,7 +12325,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         # Indicates whether password authentication is enabled. Valid values:
         # 
         # *   **Open**: Password authentication is enabled.
-        # *   **Close**: Password authentication is disabled and [password-free access](~~85168~~) is enabled.
+        # *   **Close**: Password authentication is disabled and [password-free access](https://help.aliyun.com/document_detail/85168.html) is enabled.
         self.vpc_auth_mode = vpc_auth_mode
         # The ID of the instance in the VPC.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
@@ -12218,6 +12710,8 @@ class DescribeInstanceAutoRenewalAttributeRequest(TeaModel):
         # > The default value is **30**.
         self.page_size = page_size
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12470,7 +12964,9 @@ class DescribeInstanceConfigRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The instance ID. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12524,7 +13020,7 @@ class DescribeInstanceConfigResponseBody(TeaModel):
         config: str = None,
         request_id: str = None,
     ):
-        # The parameter settings of the instance. For more information, see [Parameter overview and configuration guide](~~43885~~).
+        # The parameter settings of the instance. For more information, see [Parameter overview and configuration guide](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
         # The request ID.
         self.request_id = request_id
@@ -12605,6 +13101,8 @@ class DescribeInstanceSSLRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12769,7 +13267,9 @@ class DescribeInstanceTDEStatusRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13000,7 +13500,7 @@ class DescribeInstancesRequest(TeaModel):
         # *   **true**: Only child instances are returned.
         # *   **false**: Child instances are not returned.
         self.global_instance = global_instance
-        # The instance type of the instance. For more information, see [Instance types](~~107984~~).
+        # The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
         self.instance_class = instance_class
         # The IDs of the instances that you want to query.
         # 
@@ -13024,7 +13524,7 @@ class DescribeInstancesRequest(TeaModel):
         # *   **SSLModifying**: The SSL certificate of the instance is being changed.
         # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
         # 
-        # > For more information about instance states, see [Instance states and impacts](~~200740~~).
+        # > For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
         # The database engine of the instance. Valid values:
         # 
@@ -13051,7 +13551,7 @@ class DescribeInstancesRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         # 
-        # > You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+        # > You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13326,7 +13826,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
         self.charge_type = charge_type
         # This parameter is returned only when the instance is in a cloud box.
         self.cloud_type = cloud_type
-        # The parameter configurations of the instance. For more information, see [Modify parameters of an instance](~~43885~~).
+        # The parameter configurations of the instance. For more information, see [Modify parameters of an instance](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
         # The internal endpoint of the instance.
         self.connection_domain = connection_domain
@@ -13427,7 +13927,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
         # 
         # >  If multiple zones are returned for **ZoneId**, such as cn-hangzhou-MAZ10(h,i), this parameter is ignored.
         self.secondary_zone_id = secondary_zone_id
-        # The shard class. For more information about shard classes, see [Overview](~~26350~~).
+        # The shard class. For more information about shard classes, see [Overview](https://help.aliyun.com/document_detail/26350.html).
         # 
         # >  The overall performance of a cluster instance is calculated by multiplying the class of a single shard (ShardClass) by the number of shards (ShardCount).
         self.shard_class = shard_class
@@ -13797,7 +14297,7 @@ class DescribeInstancesOverviewRequest(TeaModel):
         self.edition_type = edition_type
         # The database engine version of the instance.
         self.engine_version = engine_version
-        # The instance type of the instance. For more information, see [Instance types](~~107984~~).
+        # The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
         self.instance_class = instance_class
         # The IDs of instances.
         # 
@@ -13821,7 +14321,7 @@ class DescribeInstancesOverviewRequest(TeaModel):
         # *   **SSLModifying**: The SSL certificate of the instance is being changed.
         # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
         # 
-        # > For more information about instance states, see [Instance states and impacts](~~200740~~).
+        # > For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
         # The category of the instance. Valid values:
         # 
@@ -13838,11 +14338,11 @@ class DescribeInstancesOverviewRequest(TeaModel):
         self.owner_id = owner_id
         # The private IP address of the instance.
         self.private_ip = private_ip
-        # The ID of the region in which the instances you want to query reside. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        # The ID of the region in which the instances you want to query reside. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the instances you want to query belong.
         # 
-        # > You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+        # > You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14049,7 +14549,7 @@ class DescribeInstancesOverviewResponseBodyInstances(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # Instance\"s secondary zone id.
+        # Instance\\"s secondary zone id.
         # > This parameter is only returned when the instance has a secondary zone ID.
         self.secondary_zone_id = secondary_zone_id
         # The ID of the vSwitch to which the instance is connected.
@@ -14262,6 +14762,8 @@ class DescribeIntranetAttributeRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14453,6 +14955,8 @@ class DescribeLogicInstanceTopologyRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance whose topology information you want to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14922,8 +15426,8 @@ class DescribeMonitorItemsResponseBody(TeaModel):
     ):
         # The returned metrics.
         # 
-        # > *   **memoryUsage**, **GetQps**, and **PutQps** are supported only by ApsaraDB for Redis instances that use Redis 4.0 or later. **GetQps** and **PutQps** require the latest minor version. You can upgrade the major version or minor version of the instance as needed. For more information, see [Upgrade the major version](~~101764~~) and [Upgrade the minor version](~~56450~~).
-        # > *   When you use instances of Redis 2.8, if the **hit_rate** metric is not displayed, you must upgrade the minor version of the instance. For more information, see [Upgrade the minor version](~~56450~~).
+        # > *   **memoryUsage**, **GetQps**, and **PutQps** are supported only by ApsaraDB for Redis instances that use Redis 4.0 or later. **GetQps** and **PutQps** require the latest minor version. You can upgrade the major version or minor version of the instance as needed. For more information, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html) and [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
+        # > *   When you use instances of Redis 2.8, if the **hit_rate** metric is not displayed, you must upgrade the minor version of the instance. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
         self.monitor_items = monitor_items
         # The ID of the request.
         self.request_id = request_id
@@ -14995,6 +15499,997 @@ class DescribeMonitorItemsResponse(TeaModel):
         return self
 
 
+class DescribeParameterGroupRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        parameter_group_id: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the parameter template.
+        # 
+        # This parameter is required.
+        self.parameter_group_id = parameter_group_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.parameter_group_id is not None:
+            result['ParameterGroupId'] = self.parameter_group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ParameterGroupId') is not None:
+            self.parameter_group_id = m.get('ParameterGroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails(TeaModel):
+    def __init__(
+        self,
+        param_name: str = None,
+        param_value: str = None,
+    ):
+        # The name of the parameter.
+        self.param_name = param_name
+        # The value of the parameter.
+        self.param_value = param_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.param_name is not None:
+            result['ParamName'] = self.param_name
+        if self.param_value is not None:
+            result['ParamValue'] = self.param_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParamName') is not None:
+            self.param_name = m.get('ParamName')
+        if m.get('ParamValue') is not None:
+            self.param_value = m.get('ParamValue')
+        return self
+
+
+class DescribeParameterGroupResponseBodyParameterGroup(TeaModel):
+    def __init__(
+        self,
+        category: int = None,
+        created: str = None,
+        engine: str = None,
+        engine_version: str = None,
+        modified: str = None,
+        param_group_id: str = None,
+        param_groups_details: List[DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails] = None,
+        parameter_group_desc: str = None,
+        parameter_group_name: str = None,
+    ):
+        # The service category. Valid values:
+        # 
+        # *   **0**: Community Edition
+        # *   **1**: Enhanced Edition (Tair)
+        self.category = category
+        # The time when the parameter template was created.
+        self.created = created
+        self.engine = engine
+        # The compatible engine version.
+        self.engine_version = engine_version
+        # The time when the parameter template was last modified.
+        self.modified = modified
+        # The parameter template ID, which is globally unique.
+        self.param_group_id = param_group_id
+        # The parameter details of the parameter template.
+        self.param_groups_details = param_groups_details
+        # The description of the parameter template.
+        self.parameter_group_desc = parameter_group_desc
+        # The name of the parameter template.
+        self.parameter_group_name = parameter_group_name
+
+    def validate(self):
+        if self.param_groups_details:
+            for k in self.param_groups_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.created is not None:
+            result['Created'] = self.created
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.modified is not None:
+            result['Modified'] = self.modified
+        if self.param_group_id is not None:
+            result['ParamGroupId'] = self.param_group_id
+        result['ParamGroupsDetails'] = []
+        if self.param_groups_details is not None:
+            for k in self.param_groups_details:
+                result['ParamGroupsDetails'].append(k.to_map() if k else None)
+        if self.parameter_group_desc is not None:
+            result['ParameterGroupDesc'] = self.parameter_group_desc
+        if self.parameter_group_name is not None:
+            result['ParameterGroupName'] = self.parameter_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('Modified') is not None:
+            self.modified = m.get('Modified')
+        if m.get('ParamGroupId') is not None:
+            self.param_group_id = m.get('ParamGroupId')
+        self.param_groups_details = []
+        if m.get('ParamGroupsDetails') is not None:
+            for k in m.get('ParamGroupsDetails'):
+                temp_model = DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails()
+                self.param_groups_details.append(temp_model.from_map(k))
+        if m.get('ParameterGroupDesc') is not None:
+            self.parameter_group_desc = m.get('ParameterGroupDesc')
+        if m.get('ParameterGroupName') is not None:
+            self.parameter_group_name = m.get('ParameterGroupName')
+        return self
+
+
+class DescribeParameterGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        parameter_group: DescribeParameterGroupResponseBodyParameterGroup = None,
+        request_id: str = None,
+    ):
+        # The information about the parameter template.
+        self.parameter_group = parameter_group
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.parameter_group:
+            self.parameter_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameter_group is not None:
+            result['ParameterGroup'] = self.parameter_group.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParameterGroup') is not None:
+            temp_model = DescribeParameterGroupResponseBodyParameterGroup()
+            self.parameter_group = temp_model.from_map(m['ParameterGroup'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeParameterGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeParameterGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeParameterGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeParameterGroupSupportParamRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        engine_type: str = None,
+        engine_version: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # The service category. Valid values:
+        # 
+        # *   **standard**: Community Edition
+        # *   **enterprise**: Enhanced Edition (Tair)
+        self.category = category
+        # The engine type. Valid values:
+        # 
+        # *   **redis**: Redis or Tair DRAM-based instances
+        # *   **tair_pena**: Tair persistent memory-optimized instances
+        # *   **tair_pdb**: Tair ESSD-based instances
+        self.engine_type = engine_type
+        # The engine version.
+        # 
+        # This parameter is required.
+        self.engine_version = engine_version
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeParameterGroupSupportParamResponseBodyResourceList(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        db_type: str = None,
+        db_version: str = None,
+        param_name: str = None,
+    ):
+        # The service category.
+        self.category = category
+        # The engine type.
+        self.db_type = db_type
+        # The engine version.
+        self.db_version = db_version
+        # The name of the parameter.
+        self.param_name = param_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.db_version is not None:
+            result['DbVersion'] = self.db_version
+        if self.param_name is not None:
+            result['ParamName'] = self.param_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('DbVersion') is not None:
+            self.db_version = m.get('DbVersion')
+        if m.get('ParamName') is not None:
+            self.param_name = m.get('ParamName')
+        return self
+
+
+class DescribeParameterGroupSupportParamResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_list: List[DescribeParameterGroupSupportParamResponseBodyResourceList] = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The parameters.
+        self.resource_list = resource_list
+
+    def validate(self):
+        if self.resource_list:
+            for k in self.resource_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceList'] = []
+        if self.resource_list is not None:
+            for k in self.resource_list:
+                result['ResourceList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_list = []
+        if m.get('ResourceList') is not None:
+            for k in m.get('ResourceList'):
+                temp_model = DescribeParameterGroupSupportParamResponseBodyResourceList()
+                self.resource_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeParameterGroupSupportParamResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeParameterGroupSupportParamResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeParameterGroupSupportParamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeParameterGroupTemplateListRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        character_type: str = None,
+        engine_type: str = None,
+        engine_version: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # The service category. Valid values:
+        # 
+        # standard: Community Edition enterprise: Enhanced Edition (Tair)
+        # 
+        # This parameter is required.
+        self.category = category
+        # The role of the instance. Valid values: logic: logical instance. db: database instance. proxy: proxy node. cs: ConfigServer node. normal: master-replica database instance.
+        self.character_type = character_type
+        # The engine type. Valid values:
+        # 
+        # redis: Redis or Tair DRAM-based instance tair_pena: Tair persistent memory-optimized instance tair_pdb: Tair ESSD-based instance
+        # 
+        # This parameter is required.
+        self.engine_type = engine_type
+        # The compatible engine version. Valid values:
+        # 
+        # ApsaraDB for Redis Community Edition: 5.0, 6.0, and 7.0. Tair DRAM-based instances: 5.0 and 6.0. Tair persistent memory-optimized instances: 6.0. Tair ESSD-based instances: 4.0.
+        # 
+        # This parameter is required.
+        self.engine_version = engine_version
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.character_type is not None:
+            result['CharacterType'] = self.character_type
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CharacterType') is not None:
+            self.character_type = m.get('CharacterType')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeParameterGroupTemplateListResponseBodyParameters(TeaModel):
+    def __init__(
+        self,
+        checking_code: str = None,
+        effective: int = None,
+        factor: int = None,
+        parameter_description: str = None,
+        parameter_name: str = None,
+        parameter_value: str = None,
+        revisable: int = None,
+        support_modify_for_minor_version: bool = None,
+        unit: str = None,
+    ):
+        # The regular expression used to validate input.
+        self.checking_code = checking_code
+        # Indicates whether the modification takes effect. Valid values: 0 and 1. A value of 0 indicates that the modification does not take effect. A value of 1 indicates that the modification takes effect.
+        self.effective = effective
+        # A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
+        self.factor = factor
+        # The description of the parameter.
+        self.parameter_description = parameter_description
+        # The parameter name.
+        self.parameter_name = parameter_name
+        # The default value of the parameter.
+        self.parameter_value = parameter_value
+        # Indicates whether the parameter can be modified. Valid values:
+        # 
+        # *   **0: The parameter cannot be modified.**\
+        # *   **1**: The parameter can be modified.
+        self.revisable = revisable
+        # Indicates whether the minor version can be changed. Valid values: true and false.
+        self.support_modify_for_minor_version = support_modify_for_minor_version
+        # The unit of the parameter value. Valid values: INT (ordinary integer), STRING (fixed string), and B (byte).
+        self.unit = unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checking_code is not None:
+            result['CheckingCode'] = self.checking_code
+        if self.effective is not None:
+            result['Effective'] = self.effective
+        if self.factor is not None:
+            result['Factor'] = self.factor
+        if self.parameter_description is not None:
+            result['ParameterDescription'] = self.parameter_description
+        if self.parameter_name is not None:
+            result['ParameterName'] = self.parameter_name
+        if self.parameter_value is not None:
+            result['ParameterValue'] = self.parameter_value
+        if self.revisable is not None:
+            result['Revisable'] = self.revisable
+        if self.support_modify_for_minor_version is not None:
+            result['SupportModifyForMinorVersion'] = self.support_modify_for_minor_version
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckingCode') is not None:
+            self.checking_code = m.get('CheckingCode')
+        if m.get('Effective') is not None:
+            self.effective = m.get('Effective')
+        if m.get('Factor') is not None:
+            self.factor = m.get('Factor')
+        if m.get('ParameterDescription') is not None:
+            self.parameter_description = m.get('ParameterDescription')
+        if m.get('ParameterName') is not None:
+            self.parameter_name = m.get('ParameterName')
+        if m.get('ParameterValue') is not None:
+            self.parameter_value = m.get('ParameterValue')
+        if m.get('Revisable') is not None:
+            self.revisable = m.get('Revisable')
+        if m.get('SupportModifyForMinorVersion') is not None:
+            self.support_modify_for_minor_version = m.get('SupportModifyForMinorVersion')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
+class DescribeParameterGroupTemplateListResponseBody(TeaModel):
+    def __init__(
+        self,
+        engine_version: str = None,
+        parameters: List[DescribeParameterGroupTemplateListResponseBodyParameters] = None,
+        request_id: str = None,
+    ):
+        # The compatible engine version. Valid values:
+        # 
+        # ApsaraDB for Redis Community Edition: 5.0, 6.0, and 7.0. Tair DRAM-based instances: 5.0 and 6.0. Tair persistent memory-optimized instances: 6.0. Tair ESSD-based instances: 4.0.
+        self.engine_version = engine_version
+        # The information about parameters.
+        self.parameters = parameters
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = DescribeParameterGroupTemplateListResponseBodyParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeParameterGroupTemplateListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeParameterGroupTemplateListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeParameterGroupTemplateListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeParameterGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        db_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # The database type. Valid values: **redis** (default) and **tair**.
+        self.db_type = db_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeParameterGroupsResponseBodyParameterGroups(TeaModel):
+    def __init__(
+        self,
+        category: int = None,
+        created: str = None,
+        engine: str = None,
+        engine_version: str = None,
+        modified: str = None,
+        param_group_id: str = None,
+        parameter_group_desc: str = None,
+        parameter_group_name: str = None,
+    ):
+        # The service category. Valid values:
+        # 
+        # *   **0**: Community Edition
+        # *   **1**: Enhanced Edition (Tair)
+        self.category = category
+        # The time when the parameter template was created.
+        self.created = created
+        # The engine type. Valid values:
+        # 
+        # *   **redis**: Redis or Tair DRAM-based instance
+        # *   **tair_pena**: Tair persistent memory-optimized instance
+        # *   **tair_pdb**: Tair ESSD-based instance
+        self.engine = engine
+        # The compatible engine version.
+        self.engine_version = engine_version
+        # The time when the parameter template was last modified.
+        self.modified = modified
+        # The parameter template ID.
+        self.param_group_id = param_group_id
+        # The description of the parameter template.
+        self.parameter_group_desc = parameter_group_desc
+        # The name of the parameter template.
+        self.parameter_group_name = parameter_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.created is not None:
+            result['Created'] = self.created
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
+        if self.modified is not None:
+            result['Modified'] = self.modified
+        if self.param_group_id is not None:
+            result['ParamGroupId'] = self.param_group_id
+        if self.parameter_group_desc is not None:
+            result['ParameterGroupDesc'] = self.parameter_group_desc
+        if self.parameter_group_name is not None:
+            result['ParameterGroupName'] = self.parameter_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
+        if m.get('Modified') is not None:
+            self.modified = m.get('Modified')
+        if m.get('ParamGroupId') is not None:
+            self.param_group_id = m.get('ParamGroupId')
+        if m.get('ParameterGroupDesc') is not None:
+            self.parameter_group_desc = m.get('ParameterGroupDesc')
+        if m.get('ParameterGroupName') is not None:
+            self.parameter_group_name = m.get('ParameterGroupName')
+        return self
+
+
+class DescribeParameterGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        parameter_groups: List[DescribeParameterGroupsResponseBodyParameterGroups] = None,
+        request_id: str = None,
+    ):
+        # The list of parameter templates.
+        self.parameter_groups = parameter_groups
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.parameter_groups:
+            for k in self.parameter_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ParameterGroups'] = []
+        if self.parameter_groups is not None:
+            for k in self.parameter_groups:
+                result['ParameterGroups'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.parameter_groups = []
+        if m.get('ParameterGroups') is not None:
+            for k in m.get('ParameterGroups'):
+                temp_model = DescribeParameterGroupsResponseBodyParameterGroups()
+                self.parameter_groups.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeParameterGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeParameterGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeParameterGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeParameterModificationHistoryRequest(TeaModel):
     def __init__(
         self,
@@ -15010,8 +16505,12 @@ class DescribeParameterModificationHistoryRequest(TeaModel):
         start_time: str = None,
     ):
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the node.
         # 
@@ -15025,6 +16524,8 @@ class DescribeParameterModificationHistoryRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -15259,22 +16760,28 @@ class DescribeParameterTemplatesRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The architecture of the instance. For more information, see [Overview](~~86132~~). Valid values:
+        # The architecture of the instance. For more information, see [Overview](https://help.aliyun.com/document_detail/86132.html). Valid values:
         # 
         # *   **logic**: The instance is a cluster master-replica instance or a read/write splitting instance.
         # *   **normal**: The instance is a standard master-replica instance.
+        # 
+        # This parameter is required.
         self.character_type = character_type
         # The database engine that is run on the instance. Set the value to **Redis**.
+        # 
+        # This parameter is required.
         self.engine = engine
         # The major version that is run on the instance. Valid values: **2.8**, **4.0**, and **5.0**.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the IDs of instances.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](~~158855~~) operation to query the IDs of resource groups.
+        # The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the IDs of resource groups.
         # 
-        # >  You can also query the ID of a resource group in the Resource Management console. For more information, see [View the basic information of a resource group](~~151181~~).
+        # >  You can also query the ID of a resource group in the Resource Management console. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15360,7 +16867,7 @@ class DescribeParameterTemplatesResponseBodyParametersTemplateRecord(TeaModel):
         self.force_restart = force_restart
         # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter. For more information about the parameters and the parameter settings, see [Parameters](~~259681~~).
+        # The name of the parameter. For more information about the parameters and the parameter settings, see [Parameters](https://help.aliyun.com/document_detail/259681.html).
         self.parameter_name = parameter_name
         # The default value of the parameter.
         self.parameter_value = parameter_value
@@ -15552,6 +17059,8 @@ class DescribeParametersRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The ID of the node.
         # 
@@ -15559,7 +17068,7 @@ class DescribeParametersRequest(TeaModel):
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15969,7 +17478,7 @@ class DescribePriceRequest(TeaModel):
         # 
         # **To view the instance type, perform the following steps:**\
         # 
-        # 1.  In the [Overview](~~26350~~) topic, click the link in the **Reference** column corresponding to the instance type that you want to view.
+        # 1.  In the [Overview](https://help.aliyun.com/document_detail/26350.html) topic, click the link in the **Reference** column corresponding to the instance type that you want to view.
         # 2.  In the instance type table of the page that appears, find the instance type in the **InstanceClass** column.
         # 
         # When you query cloud-native cluster instances, you must set this parameter to one of the following values and use the Instances parameter to specify the instance type that you want to query.
@@ -16000,6 +17509,8 @@ class DescribePriceRequest(TeaModel):
         # *   **UPGRADE**: The order is used to change the configurations of instances.
         # *   **RENEW**: The order is used to renew instances.
         # *   **CONVERT**: The order is used to change the billing methods of instances.
+        # 
+        # This parameter is required.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -16007,12 +17518,12 @@ class DescribePriceRequest(TeaModel):
         self.period = period
         # The number of instances that you want to purchase. Valid values: **1** to **30**. Default value: **1**.
         self.quantity = quantity
-        # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The zone ID of the instance. You can call the [DescribeZones](~~94527~~) operation to query the most recent zone list.
+        # The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -17843,7 +19354,9 @@ class DescribeRoleZoneInfoRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -17933,7 +19446,7 @@ class DescribeRoleZoneInfoResponseBodyNodeNodeInfo(TeaModel):
     ):
         # The current bandwidth of the node, which consists of the default bandwidth and the increased bandwidth. Unit: MB/s.
         # 
-        # > *   You can call the [EnableAdditionalBandwidth](~~206173~~) operation to specify the increased bandwidth.
+        # > *   You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to specify the increased bandwidth.
         # > *   You can also use this parameter to calculate the increased bandwidth. For example, if the default bandwidth of the node is 96 MB/s and the returned value of this parameter is 100, the increased bandwidth is 4 MB/s.
         self.current_band_width = current_band_width
         # The minor version of the node.
@@ -17953,7 +19466,7 @@ class DescribeRoleZoneInfoResponseBodyNodeNodeInfo(TeaModel):
         # *   **0**: The minor version is not the latest version.
         # *   **1**: The minor version is the latest version.
         # 
-        # >  To update the minor version, call the [ModifyInstanceMinorVersion](~~129381~~) operation.
+        # >  To update the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) operation.
         self.is_latest_version = is_latest_version
         # Indicates whether the bandwidth of the node is increased. Valid values:
         # 
@@ -18206,8 +19719,12 @@ class DescribeRunningLogRecordsRequest(TeaModel):
         # The name of the database.
         self.dbname = dbname
         # The end of the time range to query. The end time must be later than the start time. The time range cannot exceed one day. We recommend that you specify 1 hour. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the node in the instance. You can set this parameter to query the operational logs of a specified node.
         # 
@@ -18238,6 +19755,8 @@ class DescribeRunningLogRecordsRequest(TeaModel):
         self.role_type = role_type
         self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -18548,6 +20067,8 @@ class DescribeSecurityGroupConfigurationRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18764,6 +20285,8 @@ class DescribeSecurityIpsRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18991,8 +20514,12 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         # The name of the database.
         self.dbname = dbname
         # The end of the time range to query. The end time must be later than the start time. The time range cannot exceed one day. We recommend that you specify 1 hour. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the node in the instance. You can specify this parameter to query the slow logs of a specified node.
         # 
@@ -19025,6 +20552,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         # *   **db**: slow logs of data nodes
         self.slow_log_record_type = slow_log_record_type
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -19369,8 +20898,12 @@ class DescribeTasksRequest(TeaModel):
         status: str = None,
     ):
         # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -19382,6 +20915,8 @@ class DescribeTasksRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The status of the task. Separate multiple values with commas (,). Valid values:
         # 
@@ -19391,6 +20926,8 @@ class DescribeTasksRequest(TeaModel):
         # *   **4**: The task is closed.
         # *   **7**: The task is paused.
         # *   **8**: The task is interrupted.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -19949,7 +21486,7 @@ class EnableAdditionalBandwidthRequest(TeaModel):
         # 
         # > 
         # 
-        # *   You can call the [DescribeRoleZoneInfo](~~190794~~) operation to obtain the default maximum bandwidth returned by the **DefaultBandWidth** response parameter. For more information about instance types, see [Overview](~~26350~~).
+        # *   You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to obtain the default maximum bandwidth returned by the **DefaultBandWidth** response parameter. For more information about instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html).
         # 
         # *   If you specify multiple data shard IDs in the **NodeId** parameter, you must specify the amount of bandwidth that you want to purchase for each specified data shard in the Bandwidth parameter. The bandwidth values that you specify in the Bandwidth parameter must be in the same sequence as the data shard IDs that you specify in the NodeId parameter. In addition, you must separate the bandwidth values with commas (,).
         self.bandwidth = bandwidth
@@ -19960,15 +21497,17 @@ class EnableAdditionalBandwidthRequest(TeaModel):
         self.charge_type = charge_type
         # The coupon ID.
         self.coupon_no = coupon_no
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the IDs of instances.
-        self.instance_id = instance_id
-        # The ID of the data shard for which you want to purchase a specific amount of bandwidth. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the IDs of the data shards in an instance. If you specify multiple data shard IDs, separate the data shard IDs with commas (,). You can also set this parameter to **All**, which specifies all the data shards of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the IDs of instances.
         # 
-        # > This parameter is available and required only if the instance is a [cluster master-replica](~~52228~~) or [read/write splitting](~~62870~~) instance.
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The ID of the data shard for which you want to purchase a specific amount of bandwidth. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query the IDs of the data shards in an instance. If you specify multiple data shard IDs, separate the data shard IDs with commas (,). You can also set this parameter to **All**, which specifies all the data shards of the instance.
+        # 
+        # > This parameter is available and required only if the instance is a [cluster master-replica](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting](https://help.aliyun.com/document_detail/62870.html) instance.
         self.node_id = node_id
         # The validity period of the bandwidth that you purchase. Unit: day. Valid values: **1**, **2**, **3**, **7**, **14**, **30**, **60**, **90**, **180**, **365**, **730**, **1095**, and **1825**.
         # 
-        # > If you want to continue using the purchased bandwidth after the specified period of time elapses, you must call the [RenewAdditionalBandwidth](~~211199~~) operation to submit a renewal order.
+        # > If you want to continue using the purchased bandwidth after the specified period of time elapses, you must call the [RenewAdditionalBandwidth](https://help.aliyun.com/document_detail/211199.html) operation to submit a renewal order.
         self.order_time_length = order_time_length
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20146,9 +21685,11 @@ class FlushExpireKeysRequest(TeaModel):
         # *   **Immediately**: immediately deletes expired keys.
         # *   **MaintainTime**:deletes expired key in the maintenance window.
         # 
-        # >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+        # >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to modify the maintenance window of an ApsaraDB for Redis instance.
         self.effective_time = effective_time
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20294,6 +21835,8 @@ class FlushInstanceRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20421,8 +21964,12 @@ class FlushInstanceForDBRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The index number of the database. Valid values: 0 to 255.
+        # 
+        # This parameter is required.
         self.db_index = db_index
-        # The instance ID. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20551,13 +22098,19 @@ class GrantAccountPrivilegeRequest(TeaModel):
         security_token: str = None,
     ):
         # The name of the account. You can call the [DescribeAccounts](~~DescribeAccounts~~) operation to obtain the name of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The permissions of the account. Default value: RoleReadWrite. Valid values:
         # 
         # *   RoleReadOnly: The account has the read-only permissions.
         # *   RoleReadWrite: The account has the read and write permissions.
+        # 
+        # This parameter is required.
         self.account_privilege = account_privilege
         # The ID of the instance to which the account belongs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20864,6 +22417,8 @@ class ListTagResourcesRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the instances.
         # 
@@ -20872,6 +22427,8 @@ class ListTagResourcesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags of the instance. You must specify this parameter or the **ResourceId** parameter.
         self.tag = tag
@@ -21117,8 +22674,12 @@ class LockDBInstanceWriteRequest(TeaModel):
         security_token: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The reason why write operations on the instance are locked.
+        # 
+        # This parameter is required.
         self.lock_reason = lock_reason
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21275,6 +22836,8 @@ class MigrateToOtherZoneRequest(TeaModel):
         zone_id: str = None,
     ):
         # The ID of the ApsaraDB for Redis instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies the time when the database is switched after data is migrated. Valid values:
         # 
@@ -21299,7 +22862,9 @@ class MigrateToOtherZoneRequest(TeaModel):
         # > *   The vSwitch must be deployed in the zone that is specified by the ZoneId parameter.
         # > *   If the network type of the instance is VPC, this parameter is required.
         self.v_switch_id = v_switch_id
-        # The ID of the destination primary zone. You can call the [DescribeZones](~~94527~~) operation to query zone IDs.
+        # The ID of the destination primary zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query zone IDs.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -21442,12 +23007,18 @@ class ModifyAccountDescriptionRequest(TeaModel):
         # The description of the account.
         # 
         # *   The description must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The description can contain letters, digits, underscores (_), and hyphens (-).
         # *   The description must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.account_description = account_description
-        # The username of the account. You can call the [DescribeAccounts](~~95802~~) operation to query the username of the account.
+        # The username of the account. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/95802.html) operation to query the username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21585,15 +23156,23 @@ class ModifyAccountPasswordRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The username of the account for which you want to change the password. You can call the [DescribeAccounts](~~95802~~) operation to query the username of the account.
+        # The username of the account for which you want to change the password. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/95802.html) operation to query the username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The new password to be set for the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # 
+        # This parameter is required.
         self.new_account_password = new_account_password
         # The current password of the account.
         # 
-        # > If you forget your password, you can call the [ResetAccountPassword](~~95941~~) operation to reset your password.
+        # > If you forget your password, you can call the [ResetAccountPassword](https://help.aliyun.com/document_detail/95941.html) operation to reset your password.
+        # 
+        # This parameter is required.
         self.old_account_password = old_account_password
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21733,9 +23312,11 @@ class ModifyActiveOperationTaskRequest(TeaModel):
         security_token: str = None,
         switch_time: str = None,
     ):
-        # The ID of the O\&M task. Separate multiple IDs with commas (,).
+        # The ID of the O\\&M task. Separate multiple IDs with commas (,).
         # 
-        # > You can call the [DescribeActiveOperationTask](~~197387~~) operation to query the ID of an O\&M task.
+        # > You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/197387.html) operation to query the ID of an O\\&M task.
+        # 
+        # This parameter is required.
         self.ids = ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21744,7 +23325,9 @@ class ModifyActiveOperationTaskRequest(TeaModel):
         self.security_token = security_token
         # The scheduled switchover time to be specified. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](~~197387~~) operation to obtain the latest operation time, which is the value of the **Deadline** parameter in the response.
+        # > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/197387.html) operation to obtain the latest operation time, which is the value of the **Deadline** parameter in the response.
+        # 
+        # This parameter is required.
         self.switch_time = switch_time
 
     def validate(self):
@@ -21797,7 +23380,7 @@ class ModifyActiveOperationTaskResponseBody(TeaModel):
         ids: str = None,
         request_id: str = None,
     ):
-        # The ID of the O\&M task. IDs are separated by commas (,).
+        # The ID of the O\\&M task. IDs are separated by commas (,).
         self.ids = ids
         # The ID of the request.
         self.request_id = request_id
@@ -21884,9 +23467,11 @@ class ModifyAuditLogConfigRequest(TeaModel):
         # *   **true**: enables the audit log feature.
         # *   **false**: disables the audit log feature.
         # 
-        # > If the instance uses the [cluster architecture](~~52228~~) or [read/write splitting architecture](~~62870~~), the audit log feature is enabled or disabled for both the data nodes and proxy nodes. You cannot separately enable the audit log feature for the data nodes or proxy nodes.
+        # > If the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting architecture](https://help.aliyun.com/document_detail/62870.html), the audit log feature is enabled or disabled for both the data nodes and proxy nodes. You cannot separately enable the audit log feature for the data nodes or proxy nodes.
         self.db_audit = db_audit
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22030,15 +23615,18 @@ class ModifyBackupPolicyRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The number of days for which data backup files are retained. Valid values: 7 to 730. Default value: 7.
+        # The number of days for which you want to retain data backup files. Valid values: 7 to 730. Default value: 7.
         self.backup_retention_period = backup_retention_period
-        # Specifies whether to enable incremental data backup. Default value: 0. Valid values:
+        # Enables or disables the data flashback feature for the instance. Valid values:
         # 
-        # *   **1**: enables incremental data backup.
-        # *   **0**: disables incremental data backup.
-        # >This parameter is available only for ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](~~443784~~).
+        # *   **1**: enables the data flashback feature. You must also enable AOF persistence by setting `appendonly` to `yes` in the parameter settings of the instance. Then, you can use the data flashback feature.
+        # *   **0** (default): disables the data flashback feature.
+        # 
+        # >  This parameter is available only for ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/443784.html).
         self.enable_backup_log = enable_backup_log
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22053,10 +23641,14 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **Sunday**\
         # 
         # > Separate multiple options with commas (,).
+        # 
+        # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
         # The time range to back up data. Specify the time in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
         # 
         # > The beginning and end of the time range must be on the hour. The duration must be an hour.
+        # 
+        # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22187,6 +23779,140 @@ class ModifyBackupPolicyResponse(TeaModel):
         return self
 
 
+class ModifyDBInstanceAutoUpgradeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyDBInstanceAutoUpgradeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBInstanceAutoUpgradeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBInstanceAutoUpgradeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBInstanceAutoUpgradeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBInstanceConnectionStringRequest(TeaModel):
     def __init__(
         self,
@@ -22202,8 +23928,12 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         security_token: str = None,
     ):
         # The current endpoint of the instance.
+        # 
+        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type of the endpoint. Valid values:
         # 
@@ -22364,18 +24094,26 @@ class ModifyGlobalSecurityIPGroupRequest(TeaModel):
         security_token: str = None,
     ):
         # The IP addresses in the IP whitelist template.
+        # 
+        # This parameter is required.
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
+        # 
+        # This parameter is required.
         self.global_ig_name = global_ig_name
         # The ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -22523,15 +24261,21 @@ class ModifyGlobalSecurityIPGroupNameRequest(TeaModel):
     ):
         # The name of the global IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
+        # 
+        # This parameter is required.
         self.global_ig_name = global_ig_name
         # The ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -22674,12 +24418,18 @@ class ModifyGlobalSecurityIPGroupRelationRequest(TeaModel):
         security_token: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -22822,17 +24572,19 @@ class ModifyInstanceAttributeRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The new name of the instance. The name must be 2 to 80 characters in length. The name must start with a letter and cannot contain spaces and the following special characters: `@ / : = " < > { [ ] }`
         self.instance_name = instance_name
-        # [The release protection state of the instance.](~~165005~~) Valid values:
+        # [The release protection state of the instance.](https://help.aliyun.com/document_detail/165005.html) Valid values:
         # 
         # *   **true**: enabled
         # *   **false**: disabled
         # 
         # > This parameter is available only for pay-as-you-go instances.
         self.instance_release_protection = instance_release_protection
-        # The new password for the default account. The default account is named after the instance ID. Example: r-bp10noxlhcoim2\*\*\*\*.
+        # The new password for the default account. The default account is named after the instance ID. Example: r-bp10noxlhcoim2\\*\\*\\*\\*.
         # 
         # > The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
         self.new_password = new_password
@@ -22985,6 +24737,8 @@ class ModifyInstanceAutoRenewalAttributeRequest(TeaModel):
         # The ID of the instance. Separate multiple instance IDs with commas (,).
         # 
         # > You can specify up to 30 instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The auto-renewal period. Valid values: **1** to **12**. Unit: months. When the instance is about to expire, the instance is automatically renewed based on the number of months specified by this parameter.
         # 
@@ -23128,9 +24882,13 @@ class ModifyInstanceConfigRequest(TeaModel):
         # 
         # **\
         # 
-        # **Description** For more information, see [Supported parameters](~~259681~~).
+        # **Description** For more information, see [Supported parameters](https://help.aliyun.com/document_detail/259681.html).
+        # 
+        # This parameter is required.
         self.config = config
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23264,12 +25022,18 @@ class ModifyInstanceMaintainTimeRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance window to end at 2:00 (UTC+8), set this parameter to `18:00Z`.
         # 
         # >  The interval between the start time and the end time cannot be less than 1 hour.
+        # 
+        # This parameter is required.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance to start at 1:00 (UTC+8), set this parameter to `17:00Z`. After you call the API operation, you can view the actual time in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+        # The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance to start at 1:00 (UTC+8), set this parameter to `17:00Z`. After you call the API operation, you can view the actual time in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
+        # 
+        # This parameter is required.
         self.maintain_start_time = maintain_start_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23411,11 +25175,15 @@ class ModifyInstanceMajorVersionRequest(TeaModel):
         # *   **Immediately**: immediately upgrades the major version. This is the default value.
         # *   **MaintainTime**: upgrades the major version in the maintenance window.
         # 
-        # >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+        # >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to modify the maintenance window of an ApsaraDB for Redis instance.
         self.effective_time = effective_time
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The major version to which you want to upgrade the instance. Valid values: **4.0** and **5.0**.
+        # 
+        # This parameter is required.
         self.major_version = major_version
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23557,9 +25325,11 @@ class ModifyInstanceMinorVersionRequest(TeaModel):
         # *   **Immediately**: The minor version is immediately updated.
         # *   **MaintainTime**: The minor version is updated within the maintenance window.
         # 
-        # >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+        # >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to modify the maintenance window of an ApsaraDB for Redis instance.
         self.effective_time = effective_time
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The minor version to which you want to update. Default value: **latest_version**.
         self.minorversion = minorversion
@@ -23699,10 +25469,16 @@ class ModifyInstanceNetExpireTimeRequest(TeaModel):
         security_token: str = None,
     ):
         # The extension period to retain the classic network endpoint of the instance. Unit: days. Valid values: **14**, **30**, **60**, and **120**.
+        # 
+        # This parameter is required.
         self.classic_expired_days = classic_expired_days
         # The endpoint of the classic network.
+        # 
+        # This parameter is required.
         self.connection_string = connection_string
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23946,6 +25722,7 @@ class ModifyInstanceParameterRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24096,6 +25873,8 @@ class ModifyInstanceSSLRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24106,6 +25885,8 @@ class ModifyInstanceSSLRequest(TeaModel):
         # *   **Disable**: The SSL encryption is disabled.
         # *   **Enable**: The SSL encryption is enabled.
         # *   **Update**: The SSL certificate is updated.
+        # 
+        # This parameter is required.
         self.sslenabled = sslenabled
         self.security_token = security_token
 
@@ -24265,7 +26046,7 @@ class ModifyInstanceSpecRequest(TeaModel):
         # Specifies whether to enable auto-renewal. Default value: true. Valid values:
         # 
         # *   **true**: enables auto-renewal.
-        # *   **false**: disables auto-renewal. If you set this parameter to **false**, the instance must be manually renewed before it expires. For more information, see [Renew an instance](~~26352~~).
+        # *   **false**: disables auto-renewal. If you set this parameter to **false**, the instance must be manually renewed before it expires. For more information, see [Renew an instance](https://help.aliyun.com/document_detail/26352.html).
         self.auto_pay = auto_pay
         # The ID of the promotional event or business information.
         self.business_info = business_info
@@ -24276,7 +26057,7 @@ class ModifyInstanceSpecRequest(TeaModel):
         # The time when to change the configurations. Default value: Immediately. Valid values:
         # 
         # *   **Immediately**: The configurations are immediately changed.
-        # *   **MaintainTime**: The configurations are changed within the maintenance window. You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to change the maintenance window.
+        # *   **MaintainTime**: The configurations are changed within the maintenance window. You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to change the maintenance window.
         self.effective_time = effective_time
         # Specifies whether to enable forced transmission during a configuration change. Valid values:
         # 
@@ -24288,11 +26069,13 @@ class ModifyInstanceSpecRequest(TeaModel):
         # *   **false**: The system does not forcefully change the configurations.
         # *   **true**: The system forcefully changes the configurations.
         self.force_upgrade = force_upgrade
-        # The new instance type. You can call the [DescribeAvailableResource](~~120580~~) operation to query the instance types available for configuration change within the zone to which the instance belongs.
+        # The new instance type. You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/120580.html) operation to query the instance types available for configuration change within the zone to which the instance belongs.
         # 
-        # >  For more information about the instance types, see [Overview](~~26350~~).
+        # >  For more information about the instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html).
         self.instance_class = instance_class
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The major version to which you want to upgrade. When you change the configurations of an instance, you can upgrade the major version of the instance by setting this parameter. Valid values: **4.0** and **5.0**.
         self.major_version = major_version
@@ -24312,7 +26095,7 @@ class ModifyInstanceSpecRequest(TeaModel):
         # *   If the instance is a standard instance that uses cloud disks, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
         # *   If the instance is a read/write splitting instance that uses cloud disks, you can use this parameter to customize the number of read replicas. You can also set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         self.read_only_count = read_only_count
-        # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24518,19 +26301,21 @@ class ModifyInstanceTDERequest(TeaModel):
         security_token: str = None,
         tdestatus: str = None,
     ):
-        # The ID of the custom key. You can call the [DescribeEncryptionKeyList](~~302339~~) operation to query the key ID.
+        # The ID of the custom key. You can call the [DescribeEncryptionKeyList](https://help.aliyun.com/document_detail/302339.html) operation to query the key ID.
         # 
         # > 
         # 
-        # *   If you do not specify this parameter, [Key Management Service (KMS)](~~28935~~) automatically generates a key.
+        # *   If you do not specify this parameter, [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html) automatically generates a key.
         # 
-        # *   To create a custom key, you can call the [CreateKey](~~28947~~) operation of the KMS API.
+        # *   To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of the KMS API.
         self.encryption_key = encryption_key
         # The encryption algorithm. Default value: AES-CTR-256.
         # 
         # > This parameter is available only if the **TDEStatus** parameter is set to **Enabled**.
         self.encryption_name = encryption_name
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24547,7 +26332,9 @@ class ModifyInstanceTDERequest(TeaModel):
         self.security_token = security_token
         # Specifies whether to enable TDE. Set the value to **Enabled**.
         # 
-        # > TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects your business. For more information, see [Enable TDE](~~265913~~).
+        # > TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects your business. For more information, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+        # 
+        # This parameter is required.
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -24687,6 +26474,8 @@ class ModifyInstanceVpcAuthModeRequest(TeaModel):
         vpc_auth_mode: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24701,6 +26490,8 @@ class ModifyInstanceVpcAuthModeRequest(TeaModel):
         # **\
         # 
         # **Description** Default value: **Open**.
+        # 
+        # This parameter is required.
         self.vpc_auth_mode = vpc_auth_mode
 
     def validate(self):
@@ -24828,18 +26619,20 @@ class ModifyIntranetAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The amount of bandwidth that you want to add. Unit: Mbit/s. The value must be an integer greater than or equal to 0. In most cases, the maximum bandwidth that can be added can be two times the default maximum bandwidth of the current instance type. For more information about the bandwidth specifications supported by different instance types, see [Overview](~~26350~~). The bandwidth is also subject to the following limits:
+        # The amount of bandwidth that you want to add. Unit: Mbit/s. The value must be an integer greater than or equal to 0. In most cases, the maximum bandwidth that can be added can be two times the default maximum bandwidth of the current instance type. For more information about the bandwidth specifications supported by different instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html). The bandwidth is also subject to the following limits:
         # 
-        # *   The bandwidth of an individual instance cannot exceed 75% of the bandwidth of the host. For more information about the host specifications and bandwidth, see [Instance types of hosts](~~206343~~).
-        # *   The total bandwidth of all of the instances on the host cannot exceed 150% of the bandwidth of the host. You can configure resource overcommitment to handle traffic spikes. For more information, see [Configure resource overcommitment to reduce costs](~~183798~~).
+        # *   The bandwidth of an individual instance cannot exceed 75% of the bandwidth of the host. For more information about the host specifications and bandwidth, see [Instance types of hosts](https://help.aliyun.com/document_detail/206343.html).
+        # *   The total bandwidth of all of the instances on the host cannot exceed 150% of the bandwidth of the host. You can configure resource overcommitment to handle traffic spikes. For more information, see [Configure resource overcommitment to reduce costs](https://help.aliyun.com/document_detail/183798.html).
         # 
         # > If you do not specify this parameter for a standard instance, the bandwidth of the instance is set to two times that of the current bandwidth.
         self.band_width = band_width
         # The ID of the instance.
-        self.instance_id = instance_id
-        # The ID of the data node. You can call the [DescribeClusterMemberInfo](~~193462~~) operation to query the node ID. Separate multiple IDs with commas (,).
         # 
-        # > This parameter is available and required only when the instance uses the [cluster architecture](~~52228~~).
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The ID of the data node. You can call the [DescribeClusterMemberInfo](https://help.aliyun.com/document_detail/193462.html) operation to query the node ID. Separate multiple IDs with commas (,).
+        # 
+        # > This parameter is available and required only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24964,6 +26757,188 @@ class ModifyIntranetAttributeResponse(TeaModel):
         return self
 
 
+class ModifyParameterGroupRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        parameter_group_desc: str = None,
+        parameter_group_id: str = None,
+        parameter_group_name: str = None,
+        parameters: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # The service category. Valid values:
+        # 
+        # *   **standard**: Community Edition
+        # *   **enterprise**: Enhanced Edition (Tair)
+        # 
+        # This parameter is required.
+        self.category = category
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The description of the parameter template. The description must be 0 to 200 characters in length.
+        self.parameter_group_desc = parameter_group_desc
+        # The parameter template ID.
+        # 
+        # This parameter is required.
+        self.parameter_group_id = parameter_group_id
+        # The new name of the parameter template. The name must meet the following requirements:
+        # 
+        # *   The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        # *   The name can be 8 to 64 characters in length.
+        self.parameter_group_name = parameter_group_name
+        # A JSON-formatted object that specifies the parameter-value pairs. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. The specified value overwrites the original content.
+        # 
+        # >  The parameters that can be added for different editions are displayed in the console.
+        # 
+        # This parameter is required.
+        self.parameters = parameters
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.parameter_group_desc is not None:
+            result['ParameterGroupDesc'] = self.parameter_group_desc
+        if self.parameter_group_id is not None:
+            result['ParameterGroupId'] = self.parameter_group_id
+        if self.parameter_group_name is not None:
+            result['ParameterGroupName'] = self.parameter_group_name
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ParameterGroupDesc') is not None:
+            self.parameter_group_desc = m.get('ParameterGroupDesc')
+        if m.get('ParameterGroupId') is not None:
+            self.parameter_group_id = m.get('ParameterGroupId')
+        if m.get('ParameterGroupName') is not None:
+            self.parameter_group_name = m.get('ParameterGroupName')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ModifyParameterGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        param_group_id: str = None,
+        request_id: str = None,
+    ):
+        # The parameter template ID.
+        self.param_group_id = param_group_id
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.param_group_id is not None:
+            result['ParamGroupId'] = self.param_group_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParamGroupId') is not None:
+            self.param_group_id = m.get('ParamGroupId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyParameterGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyParameterGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyParameterGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -24979,18 +26954,24 @@ class ModifyResourceGroupRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the generated token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which you want to move the instance.
         # 
         # > 
         # 
-        # *   You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+        # *   You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         # 
-        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the resource group of the instance.
+        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the resource group of the instance.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25124,12 +27105,16 @@ class ModifySecurityGroupConfigurationRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the security group that you want to manage. You can specify up to 10 security groups. Separate multiple security group IDs with commas (,).
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
         self.security_token = security_token
 
@@ -25261,6 +27246,8 @@ class ModifySecurityIpsRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The method that is used to modify the whitelist. Valid values:
         # 
@@ -25275,9 +27262,11 @@ class ModifySecurityIpsRequest(TeaModel):
         # By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is **hidden**.
         self.security_ip_group_attribute = security_ip_group_attribute
         # The name of the IP address whitelist.
-        # ><warning>You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.></warning>
+        # >Warning: You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
         self.security_ip_group_name = security_ip_group_name
         # The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+        # 
+        # This parameter is required.
         self.security_ips = security_ips
         self.security_token = security_token
 
@@ -25417,6 +27406,8 @@ class ReleaseDirectConnectionRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25545,8 +27536,12 @@ class ReleaseInstancePublicConnectionRequest(TeaModel):
         security_token: str = None,
     ):
         # The public endpoint to be released.
+        # 
+        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The ID of the instance for which you want to release a public endpoint.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25678,6 +27673,8 @@ class RemoveSubInstanceRequest(TeaModel):
         security_token: str = None,
     ):
         # Instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25815,9 +27812,13 @@ class RenewAdditionalBandwidthRequest(TeaModel):
         self.auto_pay = auto_pay
         # The ID of the coupon.
         self.coupon_no = coupon_no
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The validity period of the bandwidth that you purchase. Unit: days. Valid values: **1**, **2**, **3**, **7**, **14**, **30**, **60**, **90**, **180**, **365**, **730**, **1095**, and **1825**.
+        # 
+        # This parameter is required.
         self.order_time_length = order_time_length
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26002,15 +28003,19 @@ class RenewInstanceRequest(TeaModel):
         self.coupon_no = coupon_no
         # The source of the request. The default value is **OpenAPI** and cannot be changed.
         self.from_app = from_app
-        # The instance type code. For more information, see [Instance specifications overview](~~26350~~). When you renew the instance, you can specify this parameter to change specifications of the instance.
+        # The instance type code. For more information, see [Instance specifications overview](https://help.aliyun.com/document_detail/26350.html). When you renew the instance, you can specify this parameter to change specifications of the instance.
         # 
         # > To change the specifications when you renew the instance, you must specify at least one of the `Capacity` and `InstanceClass` parameters.
         self.instance_class = instance_class
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The renewal period. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**, and **36**. Unit: months.
+        # 
+        # This parameter is required.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26188,10 +28193,16 @@ class ResetAccountPasswordRequest(TeaModel):
         security_token: str = None,
     ):
         # The name of the account. You can call the [DescribeAccounts](~~DescribeAccounts~~) operation to obtain the name of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The new password for the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The ID of the instance to which the account belongs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26334,6 +28345,8 @@ class RestartInstanceRequest(TeaModel):
         # *   **MaintainTime**: restarts the instance during the maintenance window.
         self.effective_time = effective_time
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26494,7 +28507,7 @@ class RestoreInstanceRequest(TeaModel):
         security_token: str = None,
         time_shift: str = None,
     ):
-        # The ID of the backup file. You can call the [DescribeBackups](~~61081~~) operation to query the IDs of backup files.
+        # The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the IDs of backup files.
         self.backup_id = backup_id
         # The key that you want to restore. You can specify multiple keys. Separate multiple keys with commas (,). Regular expressions are supported.
         # 
@@ -26505,6 +28518,8 @@ class RestoreInstanceRequest(TeaModel):
         # *   This parameter is available only if you set the **RestoreType** parameter to **1**.
         self.filter_key = filter_key
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26514,14 +28529,14 @@ class RestoreInstanceRequest(TeaModel):
         # 
         # > 
         # 
-        # *   If the [data flashback](~~148479~~) feature is enabled for the instance, you can specify this parameter and the **FilterKey** parameter to restore the data of the specified key to the specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
+        # *   If the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature is enabled for the instance, you can specify this parameter and the **FilterKey** parameter to restore the data of the specified key to the specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
         # 
         # *   This parameter is available only if you set the **RestoreType** parameter to **1**.
         self.restore_time = restore_time
         # The restoration mode. Default value: 0. Valid values:
         # 
         # *   **0**: restores data from the specified backup set.
-        # *   **1**: restores data to a specified point in time. You can specify this value only if the [data flashback](~~148479~~) feature is enabled for the instance. If you specify this value, you must also specify the **RestoreTime** parameter.
+        # *   **1**: restores data to a specified point in time. You can specify this value only if the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature is enabled for the instance. If you specify this value, you must also specify the **RestoreTime** parameter.
         self.restore_type = restore_type
         self.security_token = security_token
         # The expiration offset time point of a key. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The key expires after the remaining validity period of the key elapses based on the expiration offset time point.
@@ -26671,9 +28686,11 @@ class SwitchInstanceHARequest(TeaModel):
         switch_mode: int = None,
         switch_type: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to obtain the value of the CustinsId parameter. Separate multiple data shard IDs with commas (,). `all` indicates that all data shards are specified.
+        # The ID of the data shard. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to obtain the value of the CustinsId parameter. Separate multiple data shard IDs with commas (,). `all` indicates that all data shards are specified.
         # 
         # > This parameter is available and required only for read/write splitting and cluster instances.
         self.node_id = node_id
@@ -26687,7 +28704,7 @@ class SwitchInstanceHARequest(TeaModel):
         # *   **0**: immediately performs the switchover.
         # *   **1**: performs the switchover during the maintenance window.
         # 
-        # > You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+        # > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to modify the maintenance window of an ApsaraDB for Redis instance.
         self.switch_mode = switch_mode
         # The switching mode. Valid values:
         # 
@@ -26828,7 +28845,9 @@ class SwitchInstanceProxyRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26966,9 +28985,11 @@ class SwitchNetworkRequest(TeaModel):
         # 
         # *   This parameter is available and required only when the **RetainClassic** parameter is set to **True**.
         # 
-        # *   After you complete the switchover operation, you can also call the [ModifyInstanceNetExpireTime](~~61010~~) operation to modify the retention period of the classic network endpoint.
+        # *   After you complete the switchover operation, you can also call the [ModifyInstanceNetExpireTime](https://help.aliyun.com/document_detail/61010.html) operation to modify the retention period of the classic network endpoint.
         self.classic_expired_days = classic_expired_days
-        # The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26984,11 +29005,11 @@ class SwitchNetworkRequest(TeaModel):
         self.security_token = security_token
         # The network type to which you want to switch. If you want to switch to VPC network, Set the value to **VPC**.
         self.target_network_type = target_network_type
-        # The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query the VPC ID.
+        # The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the VPC ID.
         # 
         # > The vSwitch and the ApsaraDB for Redis instance must be deployed in the same zone.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query the VPC ID.
+        # The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the VPC ID.
         # 
         # > 
         # 
@@ -27147,6 +29168,8 @@ class SyncDtsStatusRequest(TeaModel):
         task_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27296,10 +29319,14 @@ class TagResourcesRequestTag(TeaModel):
         # 
         # > * **N** specifies the serial number of the tag. For example, **Tag.1.Key** specifies the key of the first tag and **Tag.2.Key** specifies the key of the second tag.
         # > * If the key of the tag does not exist, the key is automatically created.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag associated with the instance.
         # 
         # > **N** specifies the serial number of the tag. For example, **Tag.1.Value** specifies the value of the first tag and **Tag.2.Value** specifies the value of the second tag.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -27341,14 +29368,22 @@ class TagResourcesRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags of the instance.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -27509,8 +29544,12 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         # 
         # *   **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period** parameter.
         # *   **PostPaid**: pay-as-you-go
+        # 
+        # This parameter is required.
         self.charge_type = charge_type
         # The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27682,13 +29721,17 @@ class TransformToPrePaidRequest(TeaModel):
         # Specifies whether to enable auto-renewal. Default value: false. Valid values:
         # 
         # *   **true**: yes
-        # *   **false**: no. In this case, you can renew your instance in the ApsaraDB for Redis console. For more information, see [Manually renew an instance](~~26352~~).
+        # *   **false**: no. In this case, you can renew your instance in the ApsaraDB for Redis console. For more information, see [Manually renew an instance](https://help.aliyun.com/document_detail/26352.html).
         self.auto_pay = auto_pay
         # The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The subscription duration of the instance. Unit: months. Valid values: **1** to **9**, **12**, **24**, and **36**.
+        # 
+        # This parameter is required.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -27836,6 +29879,8 @@ class UnlockDBInstanceWriteRequest(TeaModel):
         security_token: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27988,13 +30033,19 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the instances.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tag keys.
         self.tag_key = tag_key

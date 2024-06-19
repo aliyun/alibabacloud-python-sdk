@@ -1,3 +1,20 @@
+2024-06-19 Version: 4.1.0
+- Support API CreateParameterGroup.
+- Support API DeleteParameterGroup.
+- Support API DescribeParameterGroup.
+- Support API DescribeParameterGroupSupportParam.
+- Support API DescribeParameterGroupTemplateList.
+- Support API DescribeParameterGroups.
+- Support API ModifyDBInstanceAutoUpgrade.
+- Support API ModifyParameterGroup.
+- Update API CreateInstance: add param RecoverConfigMode.
+- Update API CreateInstance: add param SlaveReadOnlyCount.
+- Update API CreateTairInstance: add param RecoverConfigMode.
+- Update API DescribeBackups: update response param.
+- Update API DescribeClusterBackupList: update response param.
+- Update API ModifyBackupPolicy: update param BackupRetentionPeriod.
+
+
 2024-05-08 Version: 4.0.1
 - Update API DescribeHistoryMonitorValues: add param NodeRole.
 
