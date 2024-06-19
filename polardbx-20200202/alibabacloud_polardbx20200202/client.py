@@ -93,6 +93,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.AlignStoragePrimaryAzoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.AlignStoragePrimaryAzoneResponse:
+        """
+        @param request: AlignStoragePrimaryAzoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AlignStoragePrimaryAzoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -129,6 +134,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.AlignStoragePrimaryAzoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.AlignStoragePrimaryAzoneResponse:
+        """
+        @param request: AlignStoragePrimaryAzoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AlignStoragePrimaryAzoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -164,6 +174,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.AlignStoragePrimaryAzoneRequest,
     ) -> polardbx_20200202_models.AlignStoragePrimaryAzoneResponse:
+        """
+        @param request: AlignStoragePrimaryAzoneRequest
+        @return: AlignStoragePrimaryAzoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.align_storage_primary_azone_with_options(request, runtime)
 
@@ -171,6 +185,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.AlignStoragePrimaryAzoneRequest,
     ) -> polardbx_20200202_models.AlignStoragePrimaryAzoneResponse:
+        """
+        @param request: AlignStoragePrimaryAzoneRequest
+        @return: AlignStoragePrimaryAzoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.align_storage_primary_azone_with_options_async(request, runtime)
 
@@ -179,6 +197,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.AllocateColdDataVolumeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.AllocateColdDataVolumeResponse:
+        """
+        @summary 开通冷存储
+        
+        @param request: AllocateColdDataVolumeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateColdDataVolumeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -209,6 +234,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.AllocateColdDataVolumeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.AllocateColdDataVolumeResponse:
+        """
+        @summary 开通冷存储
+        
+        @param request: AllocateColdDataVolumeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateColdDataVolumeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -238,6 +270,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.AllocateColdDataVolumeRequest,
     ) -> polardbx_20200202_models.AllocateColdDataVolumeResponse:
+        """
+        @summary 开通冷存储
+        
+        @param request: AllocateColdDataVolumeRequest
+        @return: AllocateColdDataVolumeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.allocate_cold_data_volume_with_options(request, runtime)
 
@@ -245,6 +283,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.AllocateColdDataVolumeRequest,
     ) -> polardbx_20200202_models.AllocateColdDataVolumeResponse:
+        """
+        @summary 开通冷存储
+        
+        @param request: AllocateColdDataVolumeRequest
+        @return: AllocateColdDataVolumeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_cold_data_volume_with_options_async(request, runtime)
 
@@ -253,6 +297,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.AllocateInstancePublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.AllocateInstancePublicConnectionResponse:
+        """
+        @param request: AllocateInstancePublicConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateInstancePublicConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -295,6 +344,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.AllocateInstancePublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.AllocateInstancePublicConnectionResponse:
+        """
+        @param request: AllocateInstancePublicConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateInstancePublicConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -336,6 +390,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.AllocateInstancePublicConnectionRequest,
     ) -> polardbx_20200202_models.AllocateInstancePublicConnectionResponse:
+        """
+        @param request: AllocateInstancePublicConnectionRequest
+        @return: AllocateInstancePublicConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.allocate_instance_public_connection_with_options(request, runtime)
 
@@ -343,6 +401,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.AllocateInstancePublicConnectionRequest,
     ) -> polardbx_20200202_models.AllocateInstancePublicConnectionResponse:
+        """
+        @param request: AllocateInstancePublicConnectionRequest
+        @return: AllocateInstancePublicConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_instance_public_connection_with_options_async(request, runtime)
 
@@ -351,6 +413,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CancelActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 取消主动运维任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -377,6 +446,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CancelActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 取消主动运维任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -402,6 +478,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CancelActiveOperationTasksRequest,
     ) -> polardbx_20200202_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 取消主动运维任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_active_operation_tasks_with_options(request, runtime)
 
@@ -409,6 +491,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CancelActiveOperationTasksRequest,
     ) -> polardbx_20200202_models.CancelActiveOperationTasksResponse:
+        """
+        @summary 取消主动运维任务
+        
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
 
@@ -417,6 +505,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改实例所在资源组.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -451,6 +546,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改实例所在资源组.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -484,6 +586,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ChangeResourceGroupRequest,
     ) -> polardbx_20200202_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改实例所在资源组.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -491,6 +599,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ChangeResourceGroupRequest,
     ) -> polardbx_20200202_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改实例所在资源组.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -499,6 +613,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CheckCloudResourceAuthorizedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
+        """
+        @param request: CheckCloudResourceAuthorizedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCloudResourceAuthorizedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -531,6 +650,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CheckCloudResourceAuthorizedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
+        """
+        @param request: CheckCloudResourceAuthorizedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCloudResourceAuthorizedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -562,6 +686,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CheckCloudResourceAuthorizedRequest,
     ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
+        """
+        @param request: CheckCloudResourceAuthorizedRequest
+        @return: CheckCloudResourceAuthorizedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_cloud_resource_authorized_with_options(request, runtime)
 
@@ -569,6 +697,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CheckCloudResourceAuthorizedRequest,
     ) -> polardbx_20200202_models.CheckCloudResourceAuthorizedResponse:
+        """
+        @param request: CheckCloudResourceAuthorizedRequest
+        @return: CheckCloudResourceAuthorizedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_cloud_resource_authorized_with_options_async(request, runtime)
 
@@ -577,6 +709,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateAccountResponse:
+        """
+        @param request: CreateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -621,6 +758,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateAccountResponse:
+        """
+        @param request: CreateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -664,6 +806,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateAccountRequest,
     ) -> polardbx_20200202_models.CreateAccountResponse:
+        """
+        @param request: CreateAccountRequest
+        @return: CreateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_account_with_options(request, runtime)
 
@@ -671,6 +817,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateAccountRequest,
     ) -> polardbx_20200202_models.CreateAccountResponse:
+        """
+        @param request: CreateAccountRequest
+        @return: CreateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
@@ -679,6 +829,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateBackupResponse:
+        """
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_type):
@@ -711,6 +866,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateBackupResponse:
+        """
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_type):
@@ -742,6 +902,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateBackupRequest,
     ) -> polardbx_20200202_models.CreateBackupResponse:
+        """
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backup_with_options(request, runtime)
 
@@ -749,6 +913,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateBackupRequest,
     ) -> polardbx_20200202_models.CreateBackupResponse:
+        """
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
@@ -757,6 +925,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateDBResponse:
+        """
+        @param request: CreateDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -805,6 +978,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateDBResponse:
+        """
+        @param request: CreateDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -852,6 +1030,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateDBRequest,
     ) -> polardbx_20200202_models.CreateDBResponse:
+        """
+        @param request: CreateDBRequest
+        @return: CreateDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dbwith_options(request, runtime)
 
@@ -859,6 +1041,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateDBRequest,
     ) -> polardbx_20200202_models.CreateDBResponse:
+        """
+        @param request: CreateDBRequest
+        @return: CreateDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbwith_options_async(request, runtime)
 
@@ -867,6 +1053,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
+        """
+        @param request: CreateDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -885,6 +1076,8 @@ class Client(OpenApiClient):
             query['DNNodeCount'] = request.dnnode_count
         if not UtilClient.is_unset(request.dn_class):
             query['DnClass'] = request.dn_class
+        if not UtilClient.is_unset(request.dn_storage_space):
+            query['DnStorageSpace'] = request.dn_storage_space
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.is_columnar_read_dbinstance):
@@ -907,6 +1100,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.secondary_zone):
             query['SecondaryZone'] = request.secondary_zone
+        if not UtilClient.is_unset(request.series):
+            query['Series'] = request.series
         if not UtilClient.is_unset(request.tertiary_zone):
             query['TertiaryZone'] = request.tertiary_zone
         if not UtilClient.is_unset(request.topology_type):
@@ -943,6 +1138,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
+        """
+        @param request: CreateDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -961,6 +1161,8 @@ class Client(OpenApiClient):
             query['DNNodeCount'] = request.dnnode_count
         if not UtilClient.is_unset(request.dn_class):
             query['DnClass'] = request.dn_class
+        if not UtilClient.is_unset(request.dn_storage_space):
+            query['DnStorageSpace'] = request.dn_storage_space
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.is_columnar_read_dbinstance):
@@ -983,6 +1185,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.secondary_zone):
             query['SecondaryZone'] = request.secondary_zone
+        if not UtilClient.is_unset(request.series):
+            query['Series'] = request.series
         if not UtilClient.is_unset(request.tertiary_zone):
             query['TertiaryZone'] = request.tertiary_zone
         if not UtilClient.is_unset(request.topology_type):
@@ -1018,6 +1222,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateDBInstanceRequest,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
+        """
+        @param request: CreateDBInstanceRequest
+        @return: CreateDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dbinstance_with_options(request, runtime)
 
@@ -1025,6 +1233,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateDBInstanceRequest,
     ) -> polardbx_20200202_models.CreateDBInstanceResponse:
+        """
+        @param request: CreateDBInstanceRequest
+        @return: CreateDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbinstance_with_options_async(request, runtime)
 
@@ -1033,6 +1245,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateSuperAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateSuperAccountResponse:
+        """
+        @param request: CreateSuperAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSuperAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -1069,6 +1286,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.CreateSuperAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.CreateSuperAccountResponse:
+        """
+        @param request: CreateSuperAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSuperAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -1104,6 +1326,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateSuperAccountRequest,
     ) -> polardbx_20200202_models.CreateSuperAccountResponse:
+        """
+        @param request: CreateSuperAccountRequest
+        @return: CreateSuperAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_super_account_with_options(request, runtime)
 
@@ -1111,6 +1337,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.CreateSuperAccountRequest,
     ) -> polardbx_20200202_models.CreateSuperAccountResponse:
+        """
+        @param request: CreateSuperAccountRequest
+        @return: CreateSuperAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_super_account_with_options_async(request, runtime)
 
@@ -1119,6 +1349,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DeleteAccountResponse:
+        """
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1155,6 +1390,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DeleteAccountResponse:
+        """
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1190,6 +1430,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DeleteAccountRequest,
     ) -> polardbx_20200202_models.DeleteAccountResponse:
+        """
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_account_with_options(request, runtime)
 
@@ -1197,6 +1441,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DeleteAccountRequest,
     ) -> polardbx_20200202_models.DeleteAccountResponse:
+        """
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
@@ -1205,6 +1453,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DeleteDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DeleteDBResponse:
+        """
+        @param request: DeleteDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1237,6 +1490,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DeleteDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DeleteDBResponse:
+        """
+        @param request: DeleteDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1268,6 +1526,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DeleteDBRequest,
     ) -> polardbx_20200202_models.DeleteDBResponse:
+        """
+        @param request: DeleteDBRequest
+        @return: DeleteDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbwith_options(request, runtime)
 
@@ -1275,6 +1537,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DeleteDBRequest,
     ) -> polardbx_20200202_models.DeleteDBResponse:
+        """
+        @param request: DeleteDBRequest
+        @return: DeleteDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbwith_options_async(request, runtime)
 
@@ -1283,6 +1549,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DeleteDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
+        """
+        @param request: DeleteDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1313,6 +1584,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DeleteDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
+        """
+        @param request: DeleteDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1342,6 +1618,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DeleteDBInstanceRequest,
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
+        """
+        @param request: DeleteDBInstanceRequest
+        @return: DeleteDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbinstance_with_options(request, runtime)
 
@@ -1349,6 +1629,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DeleteDBInstanceRequest,
     ) -> polardbx_20200202_models.DeleteDBInstanceResponse:
+        """
+        @param request: DeleteDBInstanceRequest
+        @return: DeleteDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
@@ -1357,6 +1641,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeAccountListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeAccountListResponse:
+        """
+        @param request: DescribeAccountListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1391,6 +1680,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeAccountListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeAccountListResponse:
+        """
+        @param request: DescribeAccountListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1424,6 +1718,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeAccountListRequest,
     ) -> polardbx_20200202_models.DescribeAccountListResponse:
+        """
+        @param request: DescribeAccountListRequest
+        @return: DescribeAccountListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_account_list_with_options(request, runtime)
 
@@ -1431,6 +1729,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeAccountListRequest,
     ) -> polardbx_20200202_models.DescribeAccountListResponse:
+        """
+        @param request: DescribeAccountListRequest
+        @return: DescribeAccountListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_list_with_options_async(request, runtime)
 
@@ -1439,6 +1741,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeActiveOperationMaintainConfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary 展示全局运维窗口配置
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1467,6 +1776,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeActiveOperationMaintainConfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary 展示全局运维窗口配置
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1494,6 +1810,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeActiveOperationMaintainConfRequest,
     ) -> polardbx_20200202_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary 展示全局运维窗口配置
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_active_operation_maintain_conf_with_options(request, runtime)
 
@@ -1501,6 +1823,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeActiveOperationMaintainConfRequest,
     ) -> polardbx_20200202_models.DescribeActiveOperationMaintainConfResponse:
+        """
+        @summary 展示全局运维窗口配置
+        
+        @param request: DescribeActiveOperationMaintainConfRequest
+        @return: DescribeActiveOperationMaintainConfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_maintain_conf_with_options_async(request, runtime)
 
@@ -1509,6 +1837,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeActiveOperationTaskCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeActiveOperationTaskCountResponse:
+        """
+        @summary 获取主动运维任务数量
+        
+        @param request: DescribeActiveOperationTaskCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTaskCountResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1535,6 +1870,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeActiveOperationTaskCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeActiveOperationTaskCountResponse:
+        """
+        @summary 获取主动运维任务数量
+        
+        @param request: DescribeActiveOperationTaskCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTaskCountResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1560,6 +1902,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeActiveOperationTaskCountRequest,
     ) -> polardbx_20200202_models.DescribeActiveOperationTaskCountResponse:
+        """
+        @summary 获取主动运维任务数量
+        
+        @param request: DescribeActiveOperationTaskCountRequest
+        @return: DescribeActiveOperationTaskCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_active_operation_task_count_with_options(request, runtime)
 
@@ -1567,6 +1915,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeActiveOperationTaskCountRequest,
     ) -> polardbx_20200202_models.DescribeActiveOperationTaskCountResponse:
+        """
+        @summary 获取主动运维任务数量
+        
+        @param request: DescribeActiveOperationTaskCountRequest
+        @return: DescribeActiveOperationTaskCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_task_count_with_options_async(request, runtime)
 
@@ -1575,6 +1929,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary 获取待执行自动运维任务列表
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1601,6 +1962,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary 获取待执行自动运维任务列表
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1626,6 +1994,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeActiveOperationTasksRequest,
     ) -> polardbx_20200202_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary 获取待执行自动运维任务列表
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_active_operation_tasks_with_options(request, runtime)
 
@@ -1633,6 +2007,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeActiveOperationTasksRequest,
     ) -> polardbx_20200202_models.DescribeActiveOperationTasksResponse:
+        """
+        @summary 获取待执行自动运维任务列表
+        
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_tasks_with_options_async(request, runtime)
 
@@ -1641,6 +2021,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeArchiveTableListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeArchiveTableListResponse:
+        """
+        @summary 冷存储表列表
+        
+        @param request: DescribeArchiveTableListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeArchiveTableListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1681,6 +2068,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeArchiveTableListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeArchiveTableListResponse:
+        """
+        @summary 冷存储表列表
+        
+        @param request: DescribeArchiveTableListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeArchiveTableListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1720,6 +2114,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeArchiveTableListRequest,
     ) -> polardbx_20200202_models.DescribeArchiveTableListResponse:
+        """
+        @summary 冷存储表列表
+        
+        @param request: DescribeArchiveTableListRequest
+        @return: DescribeArchiveTableListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_archive_table_list_with_options(request, runtime)
 
@@ -1727,6 +2127,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeArchiveTableListRequest,
     ) -> polardbx_20200202_models.DescribeArchiveTableListResponse:
+        """
+        @summary 冷存储表列表
+        
+        @param request: DescribeArchiveTableListRequest
+        @return: DescribeArchiveTableListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_archive_table_list_with_options_async(request, runtime)
 
@@ -1735,6 +2141,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeBackupPolicyResponse:
+        """
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1765,6 +2176,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeBackupPolicyResponse:
+        """
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1794,6 +2210,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeBackupPolicyRequest,
     ) -> polardbx_20200202_models.DescribeBackupPolicyResponse:
+        """
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_policy_with_options(request, runtime)
 
@@ -1801,6 +2221,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeBackupPolicyRequest,
     ) -> polardbx_20200202_models.DescribeBackupPolicyResponse:
+        """
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
@@ -1809,6 +2233,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeBackupSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeBackupSetResponse:
+        """
+        @summary 备份集详情
+        
+        @param request: DescribeBackupSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
@@ -1843,6 +2274,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeBackupSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeBackupSetResponse:
+        """
+        @summary 备份集详情
+        
+        @param request: DescribeBackupSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
@@ -1876,6 +2314,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeBackupSetRequest,
     ) -> polardbx_20200202_models.DescribeBackupSetResponse:
+        """
+        @summary 备份集详情
+        
+        @param request: DescribeBackupSetRequest
+        @return: DescribeBackupSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_set_with_options(request, runtime)
 
@@ -1883,6 +2327,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeBackupSetRequest,
     ) -> polardbx_20200202_models.DescribeBackupSetResponse:
+        """
+        @summary 备份集详情
+        
+        @param request: DescribeBackupSetRequest
+        @return: DescribeBackupSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_set_with_options_async(request, runtime)
 
@@ -1891,6 +2341,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeBackupSetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeBackupSetListResponse:
+        """
+        @param request: DescribeBackupSetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSetListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1917,6 +2372,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeBackupSetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeBackupSetListResponse:
+        """
+        @param request: DescribeBackupSetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSetListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1942,6 +2402,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeBackupSetListRequest,
     ) -> polardbx_20200202_models.DescribeBackupSetListResponse:
+        """
+        @param request: DescribeBackupSetListRequest
+        @return: DescribeBackupSetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_set_list_with_options(request, runtime)
 
@@ -1949,6 +2413,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeBackupSetListRequest,
     ) -> polardbx_20200202_models.DescribeBackupSetListResponse:
+        """
+        @param request: DescribeBackupSetListRequest
+        @return: DescribeBackupSetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_set_list_with_options_async(request, runtime)
 
@@ -1957,6 +2425,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeBinaryLogListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
+        """
+        @param request: DescribeBinaryLogListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBinaryLogListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -1997,6 +2470,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeBinaryLogListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
+        """
+        @param request: DescribeBinaryLogListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBinaryLogListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2036,6 +2514,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeBinaryLogListRequest,
     ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
+        """
+        @param request: DescribeBinaryLogListRequest
+        @return: DescribeBinaryLogListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_binary_log_list_with_options(request, runtime)
 
@@ -2043,6 +2525,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeBinaryLogListRequest,
     ) -> polardbx_20200202_models.DescribeBinaryLogListResponse:
+        """
+        @param request: DescribeBinaryLogListRequest
+        @return: DescribeBinaryLogListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_binary_log_list_with_options_async(request, runtime)
 
@@ -2051,6 +2537,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeCharacterSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeCharacterSetResponse:
+        """
+        @param request: DescribeCharacterSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCharacterSetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2081,6 +2572,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeCharacterSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeCharacterSetResponse:
+        """
+        @param request: DescribeCharacterSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCharacterSetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2110,6 +2606,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeCharacterSetRequest,
     ) -> polardbx_20200202_models.DescribeCharacterSetResponse:
+        """
+        @param request: DescribeCharacterSetRequest
+        @return: DescribeCharacterSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_character_set_with_options(request, runtime)
 
@@ -2117,6 +2617,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeCharacterSetRequest,
     ) -> polardbx_20200202_models.DescribeCharacterSetResponse:
+        """
+        @param request: DescribeCharacterSetRequest
+        @return: DescribeCharacterSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_character_set_with_options_async(request, runtime)
 
@@ -2125,6 +2629,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeColdDataBasicInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeColdDataBasicInfoResponse:
+        """
+        @summary 冷存储基础信息
+        
+        @param request: DescribeColdDataBasicInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeColdDataBasicInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2151,6 +2662,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeColdDataBasicInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeColdDataBasicInfoResponse:
+        """
+        @summary 冷存储基础信息
+        
+        @param request: DescribeColdDataBasicInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeColdDataBasicInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2176,6 +2694,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeColdDataBasicInfoRequest,
     ) -> polardbx_20200202_models.DescribeColdDataBasicInfoResponse:
+        """
+        @summary 冷存储基础信息
+        
+        @param request: DescribeColdDataBasicInfoRequest
+        @return: DescribeColdDataBasicInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cold_data_basic_info_with_options(request, runtime)
 
@@ -2183,6 +2707,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeColdDataBasicInfoRequest,
     ) -> polardbx_20200202_models.DescribeColdDataBasicInfoResponse:
+        """
+        @summary 冷存储基础信息
+        
+        @param request: DescribeColdDataBasicInfoRequest
+        @return: DescribeColdDataBasicInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cold_data_basic_info_with_options_async(request, runtime)
 
@@ -2191,6 +2721,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceAttributeResponse:
+        """
+        @param request: DescribeDBInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2223,6 +2758,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceAttributeResponse:
+        """
+        @param request: DescribeDBInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2254,6 +2794,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceAttributeRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceAttributeResponse:
+        """
+        @param request: DescribeDBInstanceAttributeRequest
+        @return: DescribeDBInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_attribute_with_options(request, runtime)
 
@@ -2261,6 +2805,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceAttributeRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceAttributeResponse:
+        """
+        @param request: DescribeDBInstanceAttributeRequest
+        @return: DescribeDBInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_attribute_with_options_async(request, runtime)
 
@@ -2269,6 +2817,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceConfigResponse:
+        """
+        @param request: DescribeDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_name):
@@ -2301,6 +2854,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceConfigResponse:
+        """
+        @param request: DescribeDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_name):
@@ -2332,6 +2890,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceConfigRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceConfigResponse:
+        """
+        @param request: DescribeDBInstanceConfigRequest
+        @return: DescribeDBInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_config_with_options(request, runtime)
 
@@ -2339,6 +2901,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceConfigRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceConfigResponse:
+        """
+        @param request: DescribeDBInstanceConfigRequest
+        @return: DescribeDBInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_config_with_options_async(request, runtime)
 
@@ -2347,6 +2913,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceHARequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceHAResponse:
+        """
+        @param request: DescribeDBInstanceHARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceHAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2377,6 +2948,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceHARequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceHAResponse:
+        """
+        @param request: DescribeDBInstanceHARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceHAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2406,6 +2982,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceHARequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceHAResponse:
+        """
+        @param request: DescribeDBInstanceHARequest
+        @return: DescribeDBInstanceHAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_hawith_options(request, runtime)
 
@@ -2413,6 +2993,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceHARequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceHAResponse:
+        """
+        @param request: DescribeDBInstanceHARequest
+        @return: DescribeDBInstanceHAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_hawith_options_async(request, runtime)
 
@@ -2421,6 +3005,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
+        """
+        @param request: DescribeDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2451,6 +3040,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
+        """
+        @param request: DescribeDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2480,6 +3074,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceSSLRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
+        """
+        @param request: DescribeDBInstanceSSLRequest
+        @return: DescribeDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_sslwith_options(request, runtime)
 
@@ -2487,6 +3085,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceSSLRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceSSLResponse:
+        """
+        @param request: DescribeDBInstanceSSLRequest
+        @return: DescribeDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_sslwith_options_async(request, runtime)
 
@@ -2495,6 +3097,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
+        """
+        @param request: DescribeDBInstanceTDERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceTDEResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2525,6 +3132,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
+        """
+        @param request: DescribeDBInstanceTDERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceTDEResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2554,6 +3166,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceTDERequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
+        """
+        @param request: DescribeDBInstanceTDERequest
+        @return: DescribeDBInstanceTDEResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_tdewith_options(request, runtime)
 
@@ -2561,6 +3177,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceTDERequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceTDEResponse:
+        """
+        @param request: DescribeDBInstanceTDERequest
+        @return: DescribeDBInstanceTDEResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_tdewith_options_async(request, runtime)
 
@@ -2569,6 +3189,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceTopologyResponse:
+        """
+        @param request: DescribeDBInstanceTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceTopologyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2603,6 +3228,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceTopologyResponse:
+        """
+        @param request: DescribeDBInstanceTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceTopologyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2636,6 +3266,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceTopologyRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceTopologyResponse:
+        """
+        @param request: DescribeDBInstanceTopologyRequest
+        @return: DescribeDBInstanceTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_topology_with_options(request, runtime)
 
@@ -2643,6 +3277,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceTopologyRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceTopologyResponse:
+        """
+        @param request: DescribeDBInstanceTopologyRequest
+        @return: DescribeDBInstanceTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_topology_with_options_async(request, runtime)
 
@@ -2651,6 +3289,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceViaEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceViaEndpointResponse:
+        """
+        @summary 通过Endpoint查询实例
+        
+        @param request: DescribeDBInstanceViaEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceViaEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint):
@@ -2681,6 +3326,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstanceViaEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstanceViaEndpointResponse:
+        """
+        @summary 通过Endpoint查询实例
+        
+        @param request: DescribeDBInstanceViaEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceViaEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint):
@@ -2710,6 +3362,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceViaEndpointRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceViaEndpointResponse:
+        """
+        @summary 通过Endpoint查询实例
+        
+        @param request: DescribeDBInstanceViaEndpointRequest
+        @return: DescribeDBInstanceViaEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_via_endpoint_with_options(request, runtime)
 
@@ -2717,6 +3375,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstanceViaEndpointRequest,
     ) -> polardbx_20200202_models.DescribeDBInstanceViaEndpointResponse:
+        """
+        @summary 通过Endpoint查询实例
+        
+        @param request: DescribeDBInstanceViaEndpointRequest
+        @return: DescribeDBInstanceViaEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_via_endpoint_with_options_async(request, runtime)
 
@@ -2725,6 +3389,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstancesResponse:
+        """
+        @param request: DescribeDBInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2767,6 +3436,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBInstancesResponse:
+        """
+        @param request: DescribeDBInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2808,6 +3482,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstancesRequest,
     ) -> polardbx_20200202_models.DescribeDBInstancesResponse:
+        """
+        @param request: DescribeDBInstancesRequest
+        @return: DescribeDBInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstances_with_options(request, runtime)
 
@@ -2815,6 +3493,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBInstancesRequest,
     ) -> polardbx_20200202_models.DescribeDBInstancesResponse:
+        """
+        @param request: DescribeDBInstancesRequest
+        @return: DescribeDBInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_with_options_async(request, runtime)
 
@@ -2823,6 +3505,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBNodePerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
+        """
+        @param request: DescribeDBNodePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBNodePerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.character_type):
@@ -2865,6 +3552,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDBNodePerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
+        """
+        @param request: DescribeDBNodePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBNodePerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.character_type):
@@ -2906,6 +3598,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBNodePerformanceRequest,
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
+        """
+        @param request: DescribeDBNodePerformanceRequest
+        @return: DescribeDBNodePerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbnode_performance_with_options(request, runtime)
 
@@ -2913,6 +3609,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDBNodePerformanceRequest,
     ) -> polardbx_20200202_models.DescribeDBNodePerformanceResponse:
+        """
+        @param request: DescribeDBNodePerformanceRequest
+        @return: DescribeDBNodePerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbnode_performance_with_options_async(request, runtime)
 
@@ -2921,6 +3621,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDbListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDbListResponse:
+        """
+        @param request: DescribeDbListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDbListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2953,6 +3658,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDbListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDbListResponse:
+        """
+        @param request: DescribeDbListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDbListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -2984,6 +3694,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDbListRequest,
     ) -> polardbx_20200202_models.DescribeDbListResponse:
+        """
+        @param request: DescribeDbListRequest
+        @return: DescribeDbListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_db_list_with_options(request, runtime)
 
@@ -2991,6 +3705,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDbListRequest,
     ) -> polardbx_20200202_models.DescribeDbListResponse:
+        """
+        @param request: DescribeDbListRequest
+        @return: DescribeDbListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_db_list_with_options_async(request, runtime)
 
@@ -2999,6 +3717,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDistributeTableListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDistributeTableListResponse:
+        """
+        @param request: DescribeDistributeTableListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDistributeTableListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3031,6 +3754,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeDistributeTableListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeDistributeTableListResponse:
+        """
+        @param request: DescribeDistributeTableListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDistributeTableListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3062,6 +3790,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDistributeTableListRequest,
     ) -> polardbx_20200202_models.DescribeDistributeTableListResponse:
+        """
+        @param request: DescribeDistributeTableListRequest
+        @return: DescribeDistributeTableListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_distribute_table_list_with_options(request, runtime)
 
@@ -3069,6 +3801,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeDistributeTableListRequest,
     ) -> polardbx_20200202_models.DescribeDistributeTableListResponse:
+        """
+        @param request: DescribeDistributeTableListRequest
+        @return: DescribeDistributeTableListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_distribute_table_list_with_options_async(request, runtime)
 
@@ -3077,6 +3813,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeEventsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeEventsResponse:
+        """
+        @summary 历史事件
+        
+        @param request: DescribeEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3103,6 +3846,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeEventsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeEventsResponse:
+        """
+        @summary 历史事件
+        
+        @param request: DescribeEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3128,6 +3878,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeEventsRequest,
     ) -> polardbx_20200202_models.DescribeEventsResponse:
+        """
+        @summary 历史事件
+        
+        @param request: DescribeEventsRequest
+        @return: DescribeEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_events_with_options(request, runtime)
 
@@ -3135,6 +3891,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeEventsRequest,
     ) -> polardbx_20200202_models.DescribeEventsResponse:
+        """
+        @summary 历史事件
+        
+        @param request: DescribeEventsRequest
+        @return: DescribeEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_events_with_options_async(request, runtime)
 
@@ -3143,6 +3905,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeParameterTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeParameterTemplatesResponse:
+        """
+        @param request: DescribeParameterTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3175,6 +3942,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeParameterTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeParameterTemplatesResponse:
+        """
+        @param request: DescribeParameterTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParameterTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3206,6 +3978,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeParameterTemplatesRequest,
     ) -> polardbx_20200202_models.DescribeParameterTemplatesResponse:
+        """
+        @param request: DescribeParameterTemplatesRequest
+        @return: DescribeParameterTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parameter_templates_with_options(request, runtime)
 
@@ -3213,6 +3989,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeParameterTemplatesRequest,
     ) -> polardbx_20200202_models.DescribeParameterTemplatesResponse:
+        """
+        @param request: DescribeParameterTemplatesRequest
+        @return: DescribeParameterTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameter_templates_with_options_async(request, runtime)
 
@@ -3221,6 +4001,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeParametersResponse:
+        """
+        @param request: DescribeParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3253,6 +4038,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeParametersResponse:
+        """
+        @param request: DescribeParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3284,6 +4074,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeParametersRequest,
     ) -> polardbx_20200202_models.DescribeParametersResponse:
+        """
+        @param request: DescribeParametersRequest
+        @return: DescribeParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parameters_with_options(request, runtime)
 
@@ -3291,6 +4085,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeParametersRequest,
     ) -> polardbx_20200202_models.DescribeParametersResponse:
+        """
+        @param request: DescribeParametersRequest
+        @return: DescribeParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameters_with_options_async(request, runtime)
 
@@ -3298,6 +4096,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -3319,6 +4122,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -3337,10 +4145,16 @@ class Client(OpenApiClient):
         )
 
     def describe_regions(self) -> polardbx_20200202_models.DescribeRegionsResponse:
+        """
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(runtime)
 
     async def describe_regions_async(self) -> polardbx_20200202_models.DescribeRegionsResponse:
+        """
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(runtime)
 
@@ -3349,6 +4163,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeScaleOutMigrateTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeScaleOutMigrateTaskListResponse:
+        """
+        @param request: DescribeScaleOutMigrateTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScaleOutMigrateTaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3357,6 +4176,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3385,6 +4206,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeScaleOutMigrateTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeScaleOutMigrateTaskListResponse:
+        """
+        @param request: DescribeScaleOutMigrateTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScaleOutMigrateTaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3393,6 +4219,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -3420,6 +4248,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeScaleOutMigrateTaskListRequest,
     ) -> polardbx_20200202_models.DescribeScaleOutMigrateTaskListResponse:
+        """
+        @param request: DescribeScaleOutMigrateTaskListRequest
+        @return: DescribeScaleOutMigrateTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_scale_out_migrate_task_list_with_options(request, runtime)
 
@@ -3427,6 +4259,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeScaleOutMigrateTaskListRequest,
     ) -> polardbx_20200202_models.DescribeScaleOutMigrateTaskListResponse:
+        """
+        @param request: DescribeScaleOutMigrateTaskListRequest
+        @return: DescribeScaleOutMigrateTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_scale_out_migrate_task_list_with_options_async(request, runtime)
 
@@ -3435,6 +4271,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeSecurityIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeSecurityIpsResponse:
+        """
+        @param request: DescribeSecurityIpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3465,6 +4306,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeSecurityIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeSecurityIpsResponse:
+        """
+        @param request: DescribeSecurityIpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3494,6 +4340,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeSecurityIpsRequest,
     ) -> polardbx_20200202_models.DescribeSecurityIpsResponse:
+        """
+        @param request: DescribeSecurityIpsRequest
+        @return: DescribeSecurityIpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_security_ips_with_options(request, runtime)
 
@@ -3501,6 +4351,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeSecurityIpsRequest,
     ) -> polardbx_20200202_models.DescribeSecurityIpsResponse:
+        """
+        @param request: DescribeSecurityIpsRequest
+        @return: DescribeSecurityIpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_ips_with_options_async(request, runtime)
 
@@ -3509,6 +4363,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeTagsResponse:
+        """
+        @summary 标签列表查询
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3541,6 +4402,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeTagsResponse:
+        """
+        @summary 标签列表查询
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3572,6 +4440,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeTagsRequest,
     ) -> polardbx_20200202_models.DescribeTagsResponse:
+        """
+        @summary 标签列表查询
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tags_with_options(request, runtime)
 
@@ -3579,6 +4453,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeTagsRequest,
     ) -> polardbx_20200202_models.DescribeTagsResponse:
+        """
+        @summary 标签列表查询
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
 
@@ -3587,6 +4467,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeTasksResponse:
+        """
+        @param request: DescribeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3633,6 +4518,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeTasksResponse:
+        """
+        @param request: DescribeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3678,6 +4568,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeTasksRequest,
     ) -> polardbx_20200202_models.DescribeTasksResponse:
+        """
+        @param request: DescribeTasksRequest
+        @return: DescribeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tasks_with_options(request, runtime)
 
@@ -3685,6 +4579,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeTasksRequest,
     ) -> polardbx_20200202_models.DescribeTasksResponse:
+        """
+        @param request: DescribeTasksRequest
+        @return: DescribeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tasks_with_options_async(request, runtime)
 
@@ -3693,6 +4591,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeUserEncryptionKeyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @param request: DescribeUserEncryptionKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3723,6 +4626,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DescribeUserEncryptionKeyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @param request: DescribeUserEncryptionKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3752,6 +4660,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeUserEncryptionKeyListRequest,
     ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @param request: DescribeUserEncryptionKeyListRequest
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_encryption_key_list_with_options(request, runtime)
 
@@ -3759,6 +4671,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DescribeUserEncryptionKeyListRequest,
     ) -> polardbx_20200202_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @param request: DescribeUserEncryptionKeyListRequest
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
 
@@ -3767,6 +4683,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DisableRightsSeparationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DisableRightsSeparationResponse:
+        """
+        @param request: DisableRightsSeparationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableRightsSeparationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3801,6 +4722,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.DisableRightsSeparationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.DisableRightsSeparationResponse:
+        """
+        @param request: DisableRightsSeparationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableRightsSeparationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -3834,6 +4760,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DisableRightsSeparationRequest,
     ) -> polardbx_20200202_models.DisableRightsSeparationResponse:
+        """
+        @param request: DisableRightsSeparationRequest
+        @return: DisableRightsSeparationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_rights_separation_with_options(request, runtime)
 
@@ -3841,6 +4771,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.DisableRightsSeparationRequest,
     ) -> polardbx_20200202_models.DisableRightsSeparationResponse:
+        """
+        @param request: DisableRightsSeparationRequest
+        @return: DisableRightsSeparationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_rights_separation_with_options_async(request, runtime)
 
@@ -3849,6 +4783,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.EnableRightsSeparationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.EnableRightsSeparationResponse:
+        """
+        @summary 开启三权分立
+        
+        @param request: EnableRightsSeparationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableRightsSeparationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_account_description):
@@ -3891,6 +4832,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.EnableRightsSeparationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.EnableRightsSeparationResponse:
+        """
+        @summary 开启三权分立
+        
+        @param request: EnableRightsSeparationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableRightsSeparationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_account_description):
@@ -3932,6 +4880,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.EnableRightsSeparationRequest,
     ) -> polardbx_20200202_models.EnableRightsSeparationResponse:
+        """
+        @summary 开启三权分立
+        
+        @param request: EnableRightsSeparationRequest
+        @return: EnableRightsSeparationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_rights_separation_with_options(request, runtime)
 
@@ -3939,6 +4893,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.EnableRightsSeparationRequest,
     ) -> polardbx_20200202_models.EnableRightsSeparationResponse:
+        """
+        @summary 开启三权分立
+        
+        @param request: EnableRightsSeparationRequest
+        @return: EnableRightsSeparationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_rights_separation_with_options_async(request, runtime)
 
@@ -3947,6 +4907,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ListTagResourcesResponse:
+        """
+        @summary 查标签接口
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -3983,6 +4950,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ListTagResourcesResponse:
+        """
+        @summary 查标签接口
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -4018,6 +4992,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ListTagResourcesRequest,
     ) -> polardbx_20200202_models.ListTagResourcesResponse:
+        """
+        @summary 查标签接口
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -4025,6 +5005,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ListTagResourcesRequest,
     ) -> polardbx_20200202_models.ListTagResourcesResponse:
+        """
+        @summary 查标签接口
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -4033,6 +5019,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyAccountDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyAccountDescriptionResponse:
+        """
+        @param request: ModifyAccountDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -4067,6 +5058,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyAccountDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyAccountDescriptionResponse:
+        """
+        @param request: ModifyAccountDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -4100,6 +5096,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyAccountDescriptionRequest,
     ) -> polardbx_20200202_models.ModifyAccountDescriptionResponse:
+        """
+        @param request: ModifyAccountDescriptionRequest
+        @return: ModifyAccountDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_account_description_with_options(request, runtime)
 
@@ -4107,6 +5107,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyAccountDescriptionRequest,
     ) -> polardbx_20200202_models.ModifyAccountDescriptionResponse:
+        """
+        @param request: ModifyAccountDescriptionRequest
+        @return: ModifyAccountDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
 
@@ -4115,6 +5119,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyAccountPrivilegeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyAccountPrivilegeResponse:
+        """
+        @param request: ModifyAccountPrivilegeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountPrivilegeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -4155,6 +5164,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyAccountPrivilegeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyAccountPrivilegeResponse:
+        """
+        @param request: ModifyAccountPrivilegeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountPrivilegeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -4194,6 +5208,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyAccountPrivilegeRequest,
     ) -> polardbx_20200202_models.ModifyAccountPrivilegeResponse:
+        """
+        @param request: ModifyAccountPrivilegeRequest
+        @return: ModifyAccountPrivilegeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_account_privilege_with_options(request, runtime)
 
@@ -4201,6 +5219,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyAccountPrivilegeRequest,
     ) -> polardbx_20200202_models.ModifyAccountPrivilegeResponse:
+        """
+        @param request: ModifyAccountPrivilegeRequest
+        @return: ModifyAccountPrivilegeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_privilege_with_options_async(request, runtime)
 
@@ -4209,6 +5231,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyActiveOperationMaintainConfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary 修改全局运维窗口信息
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4235,6 +5264,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyActiveOperationMaintainConfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary 修改全局运维窗口信息
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4260,6 +5296,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyActiveOperationMaintainConfRequest,
     ) -> polardbx_20200202_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary 修改全局运维窗口信息
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_active_operation_maintain_conf_with_options(request, runtime)
 
@@ -4267,6 +5309,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyActiveOperationMaintainConfRequest,
     ) -> polardbx_20200202_models.ModifyActiveOperationMaintainConfResponse:
+        """
+        @summary 修改全局运维窗口信息
+        
+        @param request: ModifyActiveOperationMaintainConfRequest
+        @return: ModifyActiveOperationMaintainConfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_active_operation_maintain_conf_with_options_async(request, runtime)
 
@@ -4275,6 +5323,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary 修改主动运维任务
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ids):
@@ -4309,6 +5364,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary 修改主动运维任务
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ids):
@@ -4342,6 +5404,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyActiveOperationTasksRequest,
     ) -> polardbx_20200202_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary 修改主动运维任务
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_active_operation_tasks_with_options(request, runtime)
 
@@ -4349,6 +5417,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyActiveOperationTasksRequest,
     ) -> polardbx_20200202_models.ModifyActiveOperationTasksResponse:
+        """
+        @summary 修改主动运维任务
+        
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_active_operation_tasks_with_options_async(request, runtime)
 
@@ -4357,6 +5431,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDBInstanceClassRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDBInstanceClassResponse:
+        """
+        @param request: ModifyDBInstanceClassRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceClassResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4403,6 +5482,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDBInstanceClassRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDBInstanceClassResponse:
+        """
+        @param request: ModifyDBInstanceClassRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceClassResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4448,6 +5532,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDBInstanceClassRequest,
     ) -> polardbx_20200202_models.ModifyDBInstanceClassResponse:
+        """
+        @param request: ModifyDBInstanceClassRequest
+        @return: ModifyDBInstanceClassResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_class_with_options(request, runtime)
 
@@ -4455,6 +5543,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDBInstanceClassRequest,
     ) -> polardbx_20200202_models.ModifyDBInstanceClassResponse:
+        """
+        @param request: ModifyDBInstanceClassRequest
+        @return: ModifyDBInstanceClassResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_class_with_options_async(request, runtime)
 
@@ -4463,6 +5555,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDBInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary 修改实例配置
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_name):
@@ -4497,6 +5596,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDBInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary 修改实例配置
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_name):
@@ -4530,6 +5636,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDBInstanceConfigRequest,
     ) -> polardbx_20200202_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary 修改实例配置
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @return: ModifyDBInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_config_with_options(request, runtime)
 
@@ -4537,6 +5649,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDBInstanceConfigRequest,
     ) -> polardbx_20200202_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary 修改实例配置
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @return: ModifyDBInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_config_with_options_async(request, runtime)
 
@@ -4545,6 +5663,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDBInstanceConnectionStringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse:
+        """
+        @summary 修改实例链接串
+        
+        @param request: ModifyDBInstanceConnectionStringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConnectionStringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string):
@@ -4581,6 +5706,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDBInstanceConnectionStringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse:
+        """
+        @summary 修改实例链接串
+        
+        @param request: ModifyDBInstanceConnectionStringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConnectionStringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string):
@@ -4616,6 +5748,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDBInstanceConnectionStringRequest,
     ) -> polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse:
+        """
+        @summary 修改实例链接串
+        
+        @param request: ModifyDBInstanceConnectionStringRequest
+        @return: ModifyDBInstanceConnectionStringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_connection_string_with_options(request, runtime)
 
@@ -4623,6 +5761,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDBInstanceConnectionStringRequest,
     ) -> polardbx_20200202_models.ModifyDBInstanceConnectionStringResponse:
+        """
+        @summary 修改实例链接串
+        
+        @param request: ModifyDBInstanceConnectionStringRequest
+        @return: ModifyDBInstanceConnectionStringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
 
@@ -4631,6 +5775,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDBInstanceDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDBInstanceDescriptionResponse:
+        """
+        @param request: ModifyDBInstanceDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -4663,6 +5812,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDBInstanceDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDBInstanceDescriptionResponse:
+        """
+        @param request: ModifyDBInstanceDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -4694,6 +5848,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDBInstanceDescriptionRequest,
     ) -> polardbx_20200202_models.ModifyDBInstanceDescriptionResponse:
+        """
+        @param request: ModifyDBInstanceDescriptionRequest
+        @return: ModifyDBInstanceDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_description_with_options(request, runtime)
 
@@ -4701,6 +5859,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDBInstanceDescriptionRequest,
     ) -> polardbx_20200202_models.ModifyDBInstanceDescriptionResponse:
+        """
+        @param request: ModifyDBInstanceDescriptionRequest
+        @return: ModifyDBInstanceDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_description_with_options_async(request, runtime)
 
@@ -4709,6 +5871,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDatabaseDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDatabaseDescriptionResponse:
+        """
+        @param request: ModifyDatabaseDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatabaseDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -4743,6 +5910,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyDatabaseDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyDatabaseDescriptionResponse:
+        """
+        @param request: ModifyDatabaseDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatabaseDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -4776,6 +5948,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDatabaseDescriptionRequest,
     ) -> polardbx_20200202_models.ModifyDatabaseDescriptionResponse:
+        """
+        @param request: ModifyDatabaseDescriptionRequest
+        @return: ModifyDatabaseDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_database_description_with_options(request, runtime)
 
@@ -4783,6 +5959,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyDatabaseDescriptionRequest,
     ) -> polardbx_20200202_models.ModifyDatabaseDescriptionResponse:
+        """
+        @param request: ModifyDatabaseDescriptionRequest
+        @return: ModifyDatabaseDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_database_description_with_options_async(request, runtime)
 
@@ -4791,6 +5971,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyParameterResponse:
+        """
+        @param request: ModifyParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4827,6 +6012,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifyParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifyParameterResponse:
+        """
+        @param request: ModifyParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4862,6 +6052,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyParameterRequest,
     ) -> polardbx_20200202_models.ModifyParameterResponse:
+        """
+        @param request: ModifyParameterRequest
+        @return: ModifyParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_parameter_with_options(request, runtime)
 
@@ -4869,6 +6063,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifyParameterRequest,
     ) -> polardbx_20200202_models.ModifyParameterResponse:
+        """
+        @param request: ModifyParameterRequest
+        @return: ModifyParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_parameter_with_options_async(request, runtime)
 
@@ -4877,6 +6075,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifySecurityIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifySecurityIpsResponse:
+        """
+        @param request: ModifySecurityIpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityIpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -4913,6 +6116,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ModifySecurityIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ModifySecurityIpsResponse:
+        """
+        @param request: ModifySecurityIpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityIpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -4948,6 +6156,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifySecurityIpsRequest,
     ) -> polardbx_20200202_models.ModifySecurityIpsResponse:
+        """
+        @param request: ModifySecurityIpsRequest
+        @return: ModifySecurityIpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_security_ips_with_options(request, runtime)
 
@@ -4955,6 +6167,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ModifySecurityIpsRequest,
     ) -> polardbx_20200202_models.ModifySecurityIpsResponse:
+        """
+        @param request: ModifySecurityIpsRequest
+        @return: ModifySecurityIpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
 
@@ -4963,6 +6179,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ReleaseColdDataVolumeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ReleaseColdDataVolumeResponse:
+        """
+        @summary 关闭冷存储
+        
+        @param request: ReleaseColdDataVolumeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseColdDataVolumeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -4993,6 +6216,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ReleaseColdDataVolumeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ReleaseColdDataVolumeResponse:
+        """
+        @summary 关闭冷存储
+        
+        @param request: ReleaseColdDataVolumeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseColdDataVolumeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -5022,6 +6252,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ReleaseColdDataVolumeRequest,
     ) -> polardbx_20200202_models.ReleaseColdDataVolumeResponse:
+        """
+        @summary 关闭冷存储
+        
+        @param request: ReleaseColdDataVolumeRequest
+        @return: ReleaseColdDataVolumeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_cold_data_volume_with_options(request, runtime)
 
@@ -5029,6 +6265,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ReleaseColdDataVolumeRequest,
     ) -> polardbx_20200202_models.ReleaseColdDataVolumeResponse:
+        """
+        @summary 关闭冷存储
+        
+        @param request: ReleaseColdDataVolumeRequest
+        @return: ReleaseColdDataVolumeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_cold_data_volume_with_options_async(request, runtime)
 
@@ -5037,6 +6279,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ReleaseInstancePublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ReleaseInstancePublicConnectionResponse:
+        """
+        @param request: ReleaseInstancePublicConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstancePublicConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_connection_string):
@@ -5077,6 +6324,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ReleaseInstancePublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ReleaseInstancePublicConnectionResponse:
+        """
+        @param request: ReleaseInstancePublicConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstancePublicConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_connection_string):
@@ -5116,6 +6368,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ReleaseInstancePublicConnectionRequest,
     ) -> polardbx_20200202_models.ReleaseInstancePublicConnectionResponse:
+        """
+        @param request: ReleaseInstancePublicConnectionRequest
+        @return: ReleaseInstancePublicConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_instance_public_connection_with_options(request, runtime)
 
@@ -5123,6 +6379,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ReleaseInstancePublicConnectionRequest,
     ) -> polardbx_20200202_models.ReleaseInstancePublicConnectionResponse:
+        """
+        @param request: ReleaseInstancePublicConnectionRequest
+        @return: ReleaseInstancePublicConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_instance_public_connection_with_options_async(request, runtime)
 
@@ -5131,6 +6391,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ResetAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ResetAccountPasswordResponse:
+        """
+        @param request: ResetAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -5169,6 +6434,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.ResetAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.ResetAccountPasswordResponse:
+        """
+        @param request: ResetAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -5206,6 +6476,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ResetAccountPasswordRequest,
     ) -> polardbx_20200202_models.ResetAccountPasswordResponse:
+        """
+        @param request: ResetAccountPasswordRequest
+        @return: ResetAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_account_password_with_options(request, runtime)
 
@@ -5213,6 +6487,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.ResetAccountPasswordRequest,
     ) -> polardbx_20200202_models.ResetAccountPasswordResponse:
+        """
+        @param request: ResetAccountPasswordRequest
+        @return: ResetAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_account_password_with_options_async(request, runtime)
 
@@ -5221,6 +6499,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.RestartDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.RestartDBInstanceResponse:
+        """
+        @param request: RestartDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -5251,6 +6534,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.RestartDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.RestartDBInstanceResponse:
+        """
+        @param request: RestartDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -5280,6 +6568,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.RestartDBInstanceRequest,
     ) -> polardbx_20200202_models.RestartDBInstanceResponse:
+        """
+        @param request: RestartDBInstanceRequest
+        @return: RestartDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_dbinstance_with_options(request, runtime)
 
@@ -5287,6 +6579,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.RestartDBInstanceRequest,
     ) -> polardbx_20200202_models.RestartDBInstanceResponse:
+        """
+        @param request: RestartDBInstanceRequest
+        @return: RestartDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_dbinstance_with_options_async(request, runtime)
 
@@ -5295,6 +6591,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.SwitchDBInstanceHARequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.SwitchDBInstanceHAResponse:
+        """
+        @param request: SwitchDBInstanceHARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchDBInstanceHAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -5333,6 +6634,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.SwitchDBInstanceHARequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.SwitchDBInstanceHAResponse:
+        """
+        @param request: SwitchDBInstanceHARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchDBInstanceHAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -5370,6 +6676,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.SwitchDBInstanceHARequest,
     ) -> polardbx_20200202_models.SwitchDBInstanceHAResponse:
+        """
+        @param request: SwitchDBInstanceHARequest
+        @return: SwitchDBInstanceHAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_dbinstance_hawith_options(request, runtime)
 
@@ -5377,6 +6687,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.SwitchDBInstanceHARequest,
     ) -> polardbx_20200202_models.SwitchDBInstanceHAResponse:
+        """
+        @param request: SwitchDBInstanceHARequest
+        @return: SwitchDBInstanceHAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_dbinstance_hawith_options_async(request, runtime)
 
@@ -5385,6 +6699,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.TagResourcesResponse:
+        """
+        @summary 打标签接口
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5419,6 +6740,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.TagResourcesResponse:
+        """
+        @summary 打标签接口
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5452,6 +6780,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.TagResourcesRequest,
     ) -> polardbx_20200202_models.TagResourcesResponse:
+        """
+        @summary 打标签接口
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -5459,6 +6793,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.TagResourcesRequest,
     ) -> polardbx_20200202_models.TagResourcesResponse:
+        """
+        @summary 打标签接口
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -5467,6 +6807,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UntagResourcesResponse:
+        """
+        @summary 删标签接口
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -5503,6 +6850,13 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UntagResourcesResponse:
+        """
+        @summary 删标签接口
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -5538,6 +6892,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UntagResourcesRequest,
     ) -> polardbx_20200202_models.UntagResourcesResponse:
+        """
+        @summary 删标签接口
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -5545,6 +6905,12 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UntagResourcesRequest,
     ) -> polardbx_20200202_models.UntagResourcesResponse:
+        """
+        @summary 删标签接口
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -5553,6 +6919,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdateBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdateBackupPolicyResponse:
+        """
+        @param request: UpdateBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_period):
@@ -5619,6 +6990,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdateBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdateBackupPolicyResponse:
+        """
+        @param request: UpdateBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_period):
@@ -5684,6 +7060,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpdateBackupPolicyRequest,
     ) -> polardbx_20200202_models.UpdateBackupPolicyResponse:
+        """
+        @param request: UpdateBackupPolicyRequest
+        @return: UpdateBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_backup_policy_with_options(request, runtime)
 
@@ -5691,6 +7071,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpdateBackupPolicyRequest,
     ) -> polardbx_20200202_models.UpdateBackupPolicyResponse:
+        """
+        @param request: UpdateBackupPolicyRequest
+        @return: UpdateBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_backup_policy_with_options_async(request, runtime)
 
@@ -5699,6 +7083,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdateDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
+        """
+        @param request: UpdateDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_common_name):
@@ -5733,6 +7122,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdateDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
+        """
+        @param request: UpdateDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_common_name):
@@ -5766,6 +7160,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpdateDBInstanceSSLRequest,
     ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
+        """
+        @param request: UpdateDBInstanceSSLRequest
+        @return: UpdateDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dbinstance_sslwith_options(request, runtime)
 
@@ -5773,6 +7171,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpdateDBInstanceSSLRequest,
     ) -> polardbx_20200202_models.UpdateDBInstanceSSLResponse:
+        """
+        @param request: UpdateDBInstanceSSLRequest
+        @return: UpdateDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dbinstance_sslwith_options_async(request, runtime)
 
@@ -5781,6 +7183,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdateDBInstanceTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
+        """
+        @param request: UpdateDBInstanceTDERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDBInstanceTDEResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -5817,6 +7224,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdateDBInstanceTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
+        """
+        @param request: UpdateDBInstanceTDERequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDBInstanceTDEResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -5852,6 +7264,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpdateDBInstanceTDERequest,
     ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
+        """
+        @param request: UpdateDBInstanceTDERequest
+        @return: UpdateDBInstanceTDEResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dbinstance_tdewith_options(request, runtime)
 
@@ -5859,6 +7275,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpdateDBInstanceTDERequest,
     ) -> polardbx_20200202_models.UpdateDBInstanceTDEResponse:
+        """
+        @param request: UpdateDBInstanceTDERequest
+        @return: UpdateDBInstanceTDEResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dbinstance_tdewith_options_async(request, runtime)
 
@@ -5867,6 +7287,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdatePolarDBXInstanceNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
+        """
+        @param request: UpdatePolarDBXInstanceNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePolarDBXInstanceNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_dnspec):
@@ -5911,6 +7336,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpdatePolarDBXInstanceNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
+        """
+        @param request: UpdatePolarDBXInstanceNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePolarDBXInstanceNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_dnspec):
@@ -5954,6 +7384,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpdatePolarDBXInstanceNodeRequest,
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
+        """
+        @param request: UpdatePolarDBXInstanceNodeRequest
+        @return: UpdatePolarDBXInstanceNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_polar_dbxinstance_node_with_options(request, runtime)
 
@@ -5961,6 +7395,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpdatePolarDBXInstanceNodeRequest,
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
+        """
+        @param request: UpdatePolarDBXInstanceNodeRequest
+        @return: UpdatePolarDBXInstanceNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_polar_dbxinstance_node_with_options_async(request, runtime)
 
@@ -5969,6 +7407,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpgradeDBInstanceKernelVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        @param request: UpgradeDBInstanceKernelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBInstanceKernelVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -6003,6 +7446,11 @@ class Client(OpenApiClient):
         request: polardbx_20200202_models.UpgradeDBInstanceKernelVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardbx_20200202_models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        @param request: UpgradeDBInstanceKernelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBInstanceKernelVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_name):
@@ -6036,6 +7484,10 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpgradeDBInstanceKernelVersionRequest,
     ) -> polardbx_20200202_models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        @param request: UpgradeDBInstanceKernelVersionRequest
+        @return: UpgradeDBInstanceKernelVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_dbinstance_kernel_version_with_options(request, runtime)
 
@@ -6043,5 +7495,9 @@ class Client(OpenApiClient):
         self,
         request: polardbx_20200202_models.UpgradeDBInstanceKernelVersionRequest,
     ) -> polardbx_20200202_models.UpgradeDBInstanceKernelVersionResponse:
+        """
+        @param request: UpgradeDBInstanceKernelVersionRequest
+        @return: UpgradeDBInstanceKernelVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_dbinstance_kernel_version_with_options_async(request, runtime)

@@ -28,7 +28,7 @@ pip install alibabacloud_polardbx20200202
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/polardbx-20200202/ChangeLog.md).
 
 ## References
 

@@ -1,3 +1,19 @@
+2024-06-19 Version: 1.0.15
+- Update API CreateBackup: update response param.
+- Update API CreateDBInstance: add param DnStorageSpace.
+- Update API CreateDBInstance: add param Series.
+- Update API DescribeArchiveTableList: add param Action.
+- Update API DescribeBackupPolicy: update response param.
+- Update API DescribeBackupSetList: update response param.
+- Update API DescribeColdDataBasicInfo: add param Action.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBInstanceTopology: update response param.
+- Update API DescribeDBInstances: update param RegionId.
+- Update API DescribeDBInstances: update response param.
+- Update API DescribeScaleOutMigrateTaskList: add param RegionId.
+- Update API UpdateBackupPolicy: update response param.
+
+
 2023-12-21 Version: 1.0.14
 - Generated python 2020-02-02 for polardbx.
 

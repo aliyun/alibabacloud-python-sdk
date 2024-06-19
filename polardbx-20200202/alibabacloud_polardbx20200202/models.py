@@ -13,7 +13,9 @@ class AlignStoragePrimaryAzoneRequest(TeaModel):
         switch_time: str = None,
         switch_time_mode: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
         self.storage_instance_name = storage_instance_name
         self.switch_time = switch_time
@@ -106,9 +108,6 @@ class AlignStoragePrimaryAzoneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -144,7 +143,9 @@ class AllocateColdDataVolumeRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -210,9 +211,6 @@ class AllocateColdDataVolumeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -254,10 +252,13 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.port = port
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -350,9 +351,6 @@ class AllocateInstancePublicConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -388,7 +386,9 @@ class CancelActiveOperationTasksRequest(TeaModel):
         ids: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ids = ids
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -460,9 +460,6 @@ class CancelActiveOperationTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -500,9 +497,13 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -576,9 +577,6 @@ class ChangeResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -615,7 +613,9 @@ class CheckCloudResourceAuthorizedRequest(TeaModel):
         region_id: str = None,
         role_arn: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
         self.role_arn = role_arn
 
@@ -727,9 +727,6 @@ class CheckCloudResourceAuthorizedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -773,11 +770,15 @@ class CreateAccountRequest(TeaModel):
         security_account_password: str = None,
     ):
         self.account_description = account_description
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.account_password = account_password
         self.account_privilege = account_privilege
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dbname = dbname
+        # This parameter is required.
         self.region_id = region_id
         self.security_account_name = security_account_name
         self.security_account_password = security_account_password
@@ -885,9 +886,6 @@ class CreateAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -925,7 +923,9 @@ class CreateBackupRequest(TeaModel):
         region_id: str = None,
     ):
         self.backup_type = backup_type
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -959,7 +959,7 @@ class CreateBackupRequest(TeaModel):
 class CreateBackupResponseBodyData(TeaModel):
     def __init__(
         self,
-        backup_set_id: int = None,
+        backup_set_id: str = None,
     ):
         self.backup_set_id = backup_set_id
 
@@ -986,7 +986,7 @@ class CreateBackupResponseBodyData(TeaModel):
 class CreateBackupResponseBody(TeaModel):
     def __init__(
         self,
-        data: List[CreateBackupResponseBodyData] = None,
+        data: CreateBackupResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -998,9 +998,7 @@ class CreateBackupResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1008,10 +1006,8 @@ class CreateBackupResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -1022,11 +1018,9 @@ class CreateBackupResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = CreateBackupResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = CreateBackupResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -1048,9 +1042,6 @@ class CreateBackupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1095,13 +1086,18 @@ class CreateDBRequest(TeaModel):
         security_account_password: str = None,
         storage_pool_name: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
         self.account_privilege = account_privilege
+        # This parameter is required.
         self.charset = charset
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.db_description = db_description
+        # This parameter is required.
         self.db_name = db_name
         self.mode = mode
+        # This parameter is required.
         self.region_id = region_id
         self.security_account_name = security_account_name
         self.security_account_password = security_account_password
@@ -1218,9 +1214,6 @@ class CreateDBResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1261,6 +1254,7 @@ class CreateDBInstanceRequest(TeaModel):
         dbnode_count: int = None,
         dnnode_count: str = None,
         dn_class: str = None,
+        dn_storage_space: str = None,
         engine_version: str = None,
         is_columnar_read_dbinstance: bool = None,
         is_read_dbinstance: bool = None,
@@ -1272,6 +1266,7 @@ class CreateDBInstanceRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         secondary_zone: str = None,
+        series: str = None,
         tertiary_zone: str = None,
         topology_type: str = None,
         used_time: int = None,
@@ -1287,18 +1282,24 @@ class CreateDBInstanceRequest(TeaModel):
         self.dbnode_count = dbnode_count
         self.dnnode_count = dnnode_count
         self.dn_class = dn_class
+        self.dn_storage_space = dn_storage_space
+        # This parameter is required.
         self.engine_version = engine_version
         self.is_columnar_read_dbinstance = is_columnar_read_dbinstance
         self.is_read_dbinstance = is_read_dbinstance
         self.network_type = network_type
+        # This parameter is required.
         self.pay_type = pay_type
         self.period = period
         self.primary_dbinstance_name = primary_dbinstance_name
         self.primary_zone = primary_zone
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.secondary_zone = secondary_zone
+        self.series = series
         self.tertiary_zone = tertiary_zone
+        # This parameter is required.
         self.topology_type = topology_type
         self.used_time = used_time
         # VPC ID。
@@ -1331,6 +1332,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['DNNodeCount'] = self.dnnode_count
         if self.dn_class is not None:
             result['DnClass'] = self.dn_class
+        if self.dn_storage_space is not None:
+            result['DnStorageSpace'] = self.dn_storage_space
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
         if self.is_columnar_read_dbinstance is not None:
@@ -1353,6 +1356,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.secondary_zone is not None:
             result['SecondaryZone'] = self.secondary_zone
+        if self.series is not None:
+            result['Series'] = self.series
         if self.tertiary_zone is not None:
             result['TertiaryZone'] = self.tertiary_zone
         if self.topology_type is not None:
@@ -1385,6 +1390,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.dnnode_count = m.get('DNNodeCount')
         if m.get('DnClass') is not None:
             self.dn_class = m.get('DnClass')
+        if m.get('DnStorageSpace') is not None:
+            self.dn_storage_space = m.get('DnStorageSpace')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
         if m.get('IsColumnarReadDBInstance') is not None:
@@ -1407,6 +1414,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecondaryZone') is not None:
             self.secondary_zone = m.get('SecondaryZone')
+        if m.get('Series') is not None:
+            self.series = m.get('Series')
         if m.get('TertiaryZone') is not None:
             self.tertiary_zone = m.get('TertiaryZone')
         if m.get('TopologyType') is not None:
@@ -1473,9 +1482,6 @@ class CreateDBInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1515,9 +1521,13 @@ class CreateSuperAccountRequest(TeaModel):
         region_id: str = None,
     ):
         self.account_description = account_description
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.account_password = account_password
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1607,9 +1617,6 @@ class CreateSuperAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1648,8 +1655,11 @@ class DeleteAccountRequest(TeaModel):
         security_account_name: str = None,
         security_account_password: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
         self.security_account_name = security_account_name
         self.security_account_password = security_account_password
@@ -1741,9 +1751,6 @@ class DeleteAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1780,8 +1787,11 @@ class DeleteDBRequest(TeaModel):
         db_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.db_name = db_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1863,9 +1873,6 @@ class DeleteDBResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1901,7 +1908,9 @@ class DeleteDBInstanceRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1967,9 +1976,6 @@ class DeleteDBInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2009,7 +2015,9 @@ class DescribeAccountListRequest(TeaModel):
     ):
         self.account_name = account_name
         self.account_type = account_type
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2172,9 +2180,6 @@ class DescribeAccountListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2209,6 +2214,7 @@ class DescribeActiveOperationMaintainConfRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2347,9 +2353,6 @@ class DescribeActiveOperationMaintainConfResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2388,6 +2391,7 @@ class DescribeActiveOperationTaskCountRequest(TeaModel):
     ):
         self.category = category
         self.product = product
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2469,9 +2473,6 @@ class DescribeActiveOperationTaskCountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2526,6 +2527,7 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         self.page_size = page_size
         self.product_id = product_id
         self.region = region
+        # This parameter is required.
         self.region_id = region_id
         self.status = status
         self.task_type = task_type
@@ -2848,9 +2850,6 @@ class DescribeActiveOperationTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2891,9 +2890,13 @@ class DescribeArchiveTableListRequest(TeaModel):
         status: str = None,
         table_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.page_index = page_index
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.schema_name = schema_name
         self.status = status
@@ -3130,9 +3133,6 @@ class DescribeArchiveTableListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3168,7 +3168,9 @@ class DescribeBackupPolicyRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3333,7 +3335,7 @@ class DescribeBackupPolicyResponseBodyData(TeaModel):
 class DescribeBackupPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        data: List[DescribeBackupPolicyResponseBodyData] = None,
+        data: DescribeBackupPolicyResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -3345,9 +3347,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3355,10 +3355,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -3369,11 +3367,9 @@ class DescribeBackupPolicyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = DescribeBackupPolicyResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = DescribeBackupPolicyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -3395,9 +3391,6 @@ class DescribeBackupPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3435,7 +3428,9 @@ class DescribeBackupSetRequest(TeaModel):
         dest_cross_region: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.backup_set_id = backup_set_id
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dest_cross_region = dest_cross_region
         self.region_id = region_id
@@ -3659,9 +3654,6 @@ class DescribeBackupSetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3702,11 +3694,13 @@ class DescribeBackupSetListRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dest_cross_region = dest_cross_region
         self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.start_time = start_time
 
@@ -3758,7 +3752,7 @@ class DescribeBackupSetListResponseBodyData(TeaModel):
     def __init__(
         self,
         backup_model: int = None,
-        backup_set_id: int = None,
+        backup_set_id: str = None,
         backup_set_size: int = None,
         backup_type: int = None,
         begin_time: int = None,
@@ -3882,9 +3876,6 @@ class DescribeBackupSetListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3925,12 +3916,16 @@ class DescribeBinaryLogListRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.end_time = end_time
         self.instance_name = instance_name
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -4135,9 +4130,6 @@ class DescribeBinaryLogListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4173,7 +4165,9 @@ class DescribeCharacterSetRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4292,9 +4286,6 @@ class DescribeCharacterSetResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4330,7 +4321,9 @@ class DescribeColdDataBasicInfoRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4485,9 +4478,6 @@ class DescribeColdDataBasicInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4524,7 +4514,9 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -4748,6 +4740,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         rights_separation_status: str = None,
         secondary_zone: str = None,
         series: str = None,
+        spec_category: str = None,
         status: str = None,
         storage_used: int = None,
         tag_set: List[DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet] = None,
@@ -4782,6 +4775,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         self.expired = expired
         self.id = id
         self.kind_code = kind_code
+        # This parameter is required.
         self.ltsversions = ltsversions
         self.latest_minor_version = latest_minor_version
         self.lock_mode = lock_mode
@@ -4792,6 +4786,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         self.pay_type = pay_type
         self.port = port
         # 主可用区。
+        # 
+        # This parameter is required.
         self.primary_zone = primary_zone
         self.read_dbinstances = read_dbinstances
         self.region_id = region_id
@@ -4801,6 +4797,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         # 次可用区。
         self.secondary_zone = secondary_zone
         self.series = series
+        self.spec_category = spec_category
         self.status = status
         self.storage_used = storage_used
         self.tag_set = tag_set
@@ -4810,6 +4807,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
         # 
         # - **3azones**：三可用区；
         # - **1azone**：单可用区。
+        # 
+        # This parameter is required.
         self.topology_type = topology_type
         self.type = type
         # VPC ID。
@@ -4923,6 +4922,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             result['SecondaryZone'] = self.secondary_zone
         if self.series is not None:
             result['Series'] = self.series
+        if self.spec_category is not None:
+            result['SpecCategory'] = self.spec_category
         if self.status is not None:
             result['Status'] = self.status
         if self.storage_used is not None:
@@ -5035,6 +5036,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(TeaModel):
             self.secondary_zone = m.get('SecondaryZone')
         if m.get('Series') is not None:
             self.series = m.get('Series')
+        if m.get('SpecCategory') is not None:
+            self.spec_category = m.get('SpecCategory')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StorageUsed') is not None:
@@ -5106,9 +5109,6 @@ class DescribeDBInstanceAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5145,8 +5145,11 @@ class DescribeDBInstanceConfigRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.config_name = config_name
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5263,9 +5266,6 @@ class DescribeDBInstanceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5301,7 +5301,9 @@ class DescribeDBInstanceHARequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5438,9 +5440,6 @@ class DescribeDBInstanceHAResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5589,9 +5588,6 @@ class DescribeDBInstanceSSLResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5728,9 +5724,6 @@ class DescribeDBInstanceTDEResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5768,8 +5761,10 @@ class DescribeDBInstanceTopologyRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.end_time = end_time
+        # This parameter is required.
         self.region_id = region_id
         self.start_time = start_time
 
@@ -5975,6 +5970,7 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(TeaMo
         region: str = None,
         role: str = None,
         status: str = None,
+        storage_used: str = None,
         version: str = None,
     ):
         self.activated = activated
@@ -6003,6 +5999,7 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(TeaMo
         self.region = region
         self.role = role
         self.status = status
+        self.storage_used = storage_used
         self.version = version
 
     def validate(self):
@@ -6077,6 +6074,8 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(TeaMo
             result['Role'] = self.role
         if self.status is not None:
             result['Status'] = self.status
+        if self.storage_used is not None:
+            result['StorageUsed'] = self.storage_used
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -6141,6 +6140,8 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(TeaMo
             self.role = m.get('Role')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StorageUsed') is not None:
+            self.storage_used = m.get('StorageUsed')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self
@@ -6356,9 +6357,6 @@ class DescribeDBInstanceTopologyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6394,7 +6392,9 @@ class DescribeDBInstanceViaEndpointRequest(TeaModel):
         endpoint: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.endpoint = endpoint
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -6635,6 +6635,7 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(TeaModel):
         self.expired = expired
         self.id = id
         self.kind_code = kind_code
+        # This parameter is required.
         self.ltsversions = ltsversions
         self.latest_minor_version = latest_minor_version
         self.lock_mode = lock_mode
@@ -6916,9 +6917,6 @@ class DescribeDBInstanceViaEndpointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6964,6 +6962,7 @@ class DescribeDBInstancesRequest(TeaModel):
         self.must_has_cdc = must_has_cdc
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.series = series
@@ -7105,6 +7104,7 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         columnar_read_dbinstances: List[str] = None,
         commodity_code: str = None,
         contain_binlog_x: bool = None,
+        cpu_type: str = None,
         create_time: str = None,
         dbinstance_name: str = None,
         dbtype: str = None,
@@ -7139,6 +7139,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         type: str = None,
         vpcid: str = None,
         zone_id: str = None,
+        gdn_role: str = None,
+        is_in_gdn: bool = None,
     ):
         self.cdc_instance_name = cdc_instance_name
         self.cn_node_class_code = cn_node_class_code
@@ -7147,6 +7149,7 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         self.columnar_read_dbinstances = columnar_read_dbinstances
         self.commodity_code = commodity_code
         self.contain_binlog_x = contain_binlog_x
+        self.cpu_type = cpu_type
         self.create_time = create_time
         self.dbinstance_name = dbinstance_name
         self.dbtype = dbtype
@@ -7167,6 +7170,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         self.nodes = nodes
         self.pay_type = pay_type
         # 主可用区。
+        # 
+        # This parameter is required.
         self.primary_zone = primary_zone
         self.read_dbinstances = read_dbinstances
         self.region_id = region_id
@@ -7184,11 +7189,15 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
         # 
         # - **3azones**：三可用区；
         # - **1azone**：单可用区。
+        # 
+        # This parameter is required.
         self.topology_type = topology_type
         self.type = type
         # VPC ID。
         self.vpcid = vpcid
         self.zone_id = zone_id
+        self.gdn_role = gdn_role
+        self.is_in_gdn = is_in_gdn
 
     def validate(self):
         if self.nodes:
@@ -7220,6 +7229,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
             result['CommodityCode'] = self.commodity_code
         if self.contain_binlog_x is not None:
             result['ContainBinlogX'] = self.contain_binlog_x
+        if self.cpu_type is not None:
+            result['CpuType'] = self.cpu_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.dbinstance_name is not None:
@@ -7292,6 +7303,10 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
             result['VPCId'] = self.vpcid
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
+        if self.gdn_role is not None:
+            result['gdnRole'] = self.gdn_role
+        if self.is_in_gdn is not None:
+            result['isInGdn'] = self.is_in_gdn
         return result
 
     def from_map(self, m: dict = None):
@@ -7310,6 +7325,8 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
             self.commodity_code = m.get('CommodityCode')
         if m.get('ContainBinlogX') is not None:
             self.contain_binlog_x = m.get('ContainBinlogX')
+        if m.get('CpuType') is not None:
+            self.cpu_type = m.get('CpuType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DBInstanceName') is not None:
@@ -7384,6 +7401,10 @@ class DescribeDBInstancesResponseBodyDBInstances(TeaModel):
             self.vpcid = m.get('VPCId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        if m.get('gdnRole') is not None:
+            self.gdn_role = m.get('gdnRole')
+        if m.get('isInGdn') is not None:
+            self.is_in_gdn = m.get('isInGdn')
         return self
 
 
@@ -7458,9 +7479,6 @@ class DescribeDBInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7502,13 +7520,20 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.character_type = character_type
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.dbnode_ids = dbnode_ids
         self.dbnode_role = dbnode_role
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7774,9 +7799,6 @@ class DescribeDBNodePerformanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7813,8 +7835,10 @@ class DescribeDbListRequest(TeaModel):
         dbname: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dbname = dbname
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8002,9 +8026,6 @@ class DescribeDbListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8041,8 +8062,11 @@ class DescribeDistributeTableListRequest(TeaModel):
         db_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.db_name = db_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8212,9 +8236,6 @@ class DescribeDistributeTableListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8256,6 +8277,7 @@ class DescribeEventsRequest(TeaModel):
         self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.start_time = start_time
 
@@ -8453,9 +8475,6 @@ class DescribeEventsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8492,8 +8511,10 @@ class DescribeParameterTemplatesRequest(TeaModel):
         param_level: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.param_level = param_level
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8681,9 +8702,6 @@ class DescribeParameterTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8720,8 +8738,10 @@ class DescribeParametersRequest(TeaModel):
         param_level: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.param_level = param_level
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8939,9 +8959,6 @@ class DescribeParametersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9192,9 +9209,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9230,12 +9244,16 @@ class DescribeScaleOutMigrateTaskListRequest(TeaModel):
         dbinstance_name: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -9254,6 +9272,8 @@ class DescribeScaleOutMigrateTaskListRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9268,6 +9288,8 @@ class DescribeScaleOutMigrateTaskListRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -9320,9 +9342,6 @@ class DescribeScaleOutMigrateTaskListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9358,7 +9377,9 @@ class DescribeSecurityIpsRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9518,9 +9539,6 @@ class DescribeSecurityIpsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9558,6 +9576,7 @@ class DescribeTagsRequest(TeaModel):
         tag_key: str = None,
     ):
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
         self.tag_key = tag_key
 
@@ -9682,9 +9701,6 @@ class DescribeTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9728,15 +9744,19 @@ class DescribeTasksRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9953,9 +9973,6 @@ class DescribeTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10092,9 +10109,6 @@ class DescribeUserEncryptionKeyListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10132,9 +10146,13 @@ class DisableRightsSeparationRequest(TeaModel):
         dba_account_password: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.dba_account_name = dba_account_name
+        # This parameter is required.
         self.dba_account_password = dba_account_password
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10220,9 +10238,6 @@ class DisableRightsSeparationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10265,12 +10280,18 @@ class EnableRightsSeparationRequest(TeaModel):
         security_account_password: str = None,
     ):
         self.audit_account_description = audit_account_description
+        # This parameter is required.
         self.audit_account_name = audit_account_name
+        # This parameter is required.
         self.audit_account_password = audit_account_password
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
         self.security_account_description = security_account_description
+        # This parameter is required.
         self.security_account_name = security_account_name
+        # This parameter is required.
         self.security_account_password = security_account_password
 
     def validate(self):
@@ -10372,9 +10393,6 @@ class EnableRightsSeparationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10447,8 +10465,10 @@ class ListTagResourcesRequest(TeaModel):
         tag: List[ListTagResourcesRequestTag] = None,
     ):
         self.next_token = next_token
+        # This parameter is required.
         self.region_id = region_id
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -10629,9 +10649,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10670,8 +10687,11 @@ class ModifyAccountDescriptionRequest(TeaModel):
         region_id: str = None,
     ):
         self.account_description = account_description
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10757,9 +10777,6 @@ class ModifyAccountDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10800,10 +10817,13 @@ class ModifyAccountPrivilegeRequest(TeaModel):
         security_account_name: str = None,
         security_account_password: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
         self.account_privilege = account_privilege
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.db_name = db_name
+        # This parameter is required.
         self.region_id = region_id
         self.security_account_name = security_account_name
         self.security_account_password = security_account_password
@@ -10903,9 +10923,6 @@ class ModifyAccountPrivilegeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10945,11 +10962,17 @@ class ModifyActiveOperationMaintainConfRequest(TeaModel):
         region_id: str = None,
         status: int = None,
     ):
+        # This parameter is required.
         self.cycle_time = cycle_time
+        # This parameter is required.
         self.cycle_type = cycle_type
+        # This parameter is required.
         self.maintain_end_time = maintain_end_time
+        # This parameter is required.
         self.maintain_start_time = maintain_start_time
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -11031,9 +11054,6 @@ class ModifyActiveOperationMaintainConfResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11071,8 +11091,10 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         region_id: str = None,
         switch_time: str = None,
     ):
+        # This parameter is required.
         self.ids = ids
         self.immediate_start = immediate_start
+        # This parameter is required.
         self.region_id = region_id
         self.switch_time = switch_time
 
@@ -11153,9 +11175,6 @@ class ModifyActiveOperationTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11201,8 +11220,10 @@ class ModifyDBInstanceClassRequest(TeaModel):
     ):
         self.client_token = client_token
         self.cn_class = cn_class
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dn_class = dn_class
+        # This parameter is required.
         self.region_id = region_id
         self.specified_dnscale = specified_dnscale
         self.specified_dnspec_map_json = specified_dnspec_map_json
@@ -11311,9 +11332,6 @@ class ModifyDBInstanceClassResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11351,9 +11369,13 @@ class ModifyDBInstanceConfigRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.config_name = config_name
+        # This parameter is required.
         self.config_value = config_value
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11427,9 +11449,6 @@ class ModifyDBInstanceConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11468,10 +11487,15 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         new_prefix: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.connection_string = connection_string
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.new_port = new_port
+        # This parameter is required.
         self.new_prefix = new_prefix
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11614,9 +11638,6 @@ class ModifyDBInstanceConnectionStringResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11653,8 +11674,11 @@ class ModifyDBInstanceDescriptionRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_description = dbinstance_description
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11724,9 +11748,6 @@ class ModifyDBInstanceDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11764,9 +11785,13 @@ class ModifyDatabaseDescriptionRequest(TeaModel):
         db_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.db_description = db_description
+        # This parameter is required.
         self.db_name = db_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11852,9 +11877,6 @@ class ModifyDatabaseDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11894,9 +11916,12 @@ class ModifyParameterRequest(TeaModel):
         region_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.param_level = param_level
+        # This parameter is required.
         self.parameters = parameters
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11974,9 +11999,6 @@ class ModifyParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12015,10 +12037,13 @@ class ModifySecurityIpsRequest(TeaModel):
         region_id: str = None,
         security_iplist: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.group_name = group_name
         self.modify_mode = modify_mode
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.security_iplist = security_iplist
 
     def validate(self):
@@ -12108,9 +12133,6 @@ class ModifySecurityIpsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12146,7 +12168,9 @@ class ReleaseColdDataVolumeRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12212,9 +12236,6 @@ class ReleaseColdDataVolumeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12255,7 +12276,9 @@ class ReleaseInstancePublicConnectionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.current_connection_string = current_connection_string
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12346,9 +12369,6 @@ class ReleaseInstancePublicConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12388,9 +12408,13 @@ class ResetAccountPasswordRequest(TeaModel):
         security_account_name: str = None,
         security_account_password: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.account_password = account_password
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
         self.security_account_name = security_account_name
         self.security_account_password = security_account_password
@@ -12486,9 +12510,6 @@ class ResetAccountPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12524,7 +12545,9 @@ class RestartDBInstanceRequest(TeaModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12590,9 +12613,6 @@ class RestartDBInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12632,7 +12652,9 @@ class SwitchDBInstanceHARequest(TeaModel):
         target_primary_azone_id: str = None,
         target_primary_region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.region_id = region_id
         self.switch_time = switch_time
         self.switch_time_mode = switch_time_mode
@@ -12730,9 +12752,6 @@ class SwitchDBInstanceHAResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12803,9 +12822,13 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -12888,9 +12911,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12930,8 +12950,11 @@ class UntagResourcesRequest(TeaModel):
         tag_key: List[str] = None,
     ):
         self.all = all
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -13011,9 +13034,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13076,6 +13096,7 @@ class UpdateBackupPolicyRequest(TeaModel):
         self.cold_data_backup_retention = cold_data_backup_retention
         self.cross_region_data_backup_retention = cross_region_data_backup_retention
         self.cross_region_log_backup_retention = cross_region_log_backup_retention
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dest_cross_region = dest_cross_region
         self.force_clean_on_high_space_usage = force_clean_on_high_space_usage
@@ -13085,6 +13106,7 @@ class UpdateBackupPolicyRequest(TeaModel):
         self.local_log_retention = local_log_retention
         self.local_log_retention_number = local_log_retention_number
         self.log_local_retention_space = log_local_retention_space
+        # This parameter is required.
         self.region_id = region_id
         self.remove_log_retention = remove_log_retention
 
@@ -13322,7 +13344,7 @@ class UpdateBackupPolicyResponseBodyData(TeaModel):
 class UpdateBackupPolicyResponseBody(TeaModel):
     def __init__(
         self,
-        data: List[UpdateBackupPolicyResponseBodyData] = None,
+        data: UpdateBackupPolicyResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -13334,9 +13356,7 @@ class UpdateBackupPolicyResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13344,10 +13364,8 @@ class UpdateBackupPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -13358,11 +13376,9 @@ class UpdateBackupPolicyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = UpdateBackupPolicyResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = UpdateBackupPolicyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -13384,9 +13400,6 @@ class UpdateBackupPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13425,7 +13438,9 @@ class UpdateDBInstanceSSLRequest(TeaModel):
         region_id: str = None,
     ):
         self.cert_common_name = cert_common_name
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # This parameter is required.
         self.enable_ssl = enable_ssl
         self.region_id = region_id
 
@@ -13535,9 +13550,6 @@ class UpdateDBInstanceSSLResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13576,10 +13588,13 @@ class UpdateDBInstanceTDERequest(TeaModel):
         role_arn: str = None,
         tdestatus: int = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.encryption_key = encryption_key
+        # This parameter is required.
         self.region_id = region_id
         self.role_arn = role_arn
+        # This parameter is required.
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -13692,9 +13707,6 @@ class UpdateDBInstanceTDEResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13740,10 +13752,12 @@ class UpdatePolarDBXInstanceNodeRequest(TeaModel):
         self.add_dnspec = add_dnspec
         self.cnnode_count = cnnode_count
         self.client_token = client_token
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.dnnode_count = dnnode_count
         self.db_instance_node_count = db_instance_node_count
         self.delete_dnids = delete_dnids
+        # This parameter is required.
         self.region_id = region_id
         self.storage_pool_name = storage_pool_name
 
@@ -13844,9 +13858,6 @@ class UpdatePolarDBXInstanceNodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13884,8 +13895,10 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         region_id: str = None,
         switch_mode: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.minor_version = minor_version
+        # This parameter is required.
         self.region_id = region_id
         self.switch_mode = switch_mode
 
@@ -13978,9 +13991,6 @@ class UpgradeDBInstanceKernelVersionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
