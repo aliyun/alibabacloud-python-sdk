@@ -4807,6 +4807,8 @@ class CheckCommercialStatusRequest(TeaModel):
         # - rum: Real User Monitoring
         # - prometheus: Managed Service for Prometheus
         # - xtrace: Managed Service for OpenTelemetry
+        # 
+        # This parameter is required.
         self.service = service
 
     def validate(self):
@@ -9322,6 +9324,7 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         repeat: bool = None,
         repeat_interval: int = None,
         send_recover_message: bool = None,
+        state: str = None,
     ):
         # Specifies whether to enable simple mode.
         self.directed_mode = directed_mode
@@ -9407,6 +9410,7 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         # *   `true`: The system sends a notification.
         # *   `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
+        self.state = state
 
     def validate(self):
         pass
@@ -9443,6 +9447,8 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
             result['RepeatInterval'] = self.repeat_interval
         if self.send_recover_message is not None:
             result['SendRecoverMessage'] = self.send_recover_message
+        if self.state is not None:
+            result['State'] = self.state
         return result
 
     def from_map(self, m: dict = None):
@@ -9473,6 +9479,8 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
             self.repeat_interval = m.get('RepeatInterval')
         if m.get('SendRecoverMessage') is not None:
             self.send_recover_message = m.get('SendRecoverMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
         return self
 
 
@@ -9819,6 +9827,7 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
         repeat: bool = None,
         repeat_interval: int = None,
         send_recover_message: bool = None,
+        state: str = None,
     ):
         # 极简模式
         self.directed_mode = directed_mode
@@ -9850,6 +9859,7 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
         # - `true`: The system sends a notification.
         # - `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
+        self.state = state
 
     def validate(self):
         if self.group_rule:
@@ -9895,6 +9905,8 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
             result['RepeatInterval'] = self.repeat_interval
         if self.send_recover_message is not None:
             result['SendRecoverMessage'] = self.send_recover_message
+        if self.state is not None:
+            result['State'] = self.state
         return result
 
     def from_map(self, m: dict = None):
@@ -9929,6 +9941,8 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
             self.repeat_interval = m.get('RepeatInterval')
         if m.get('SendRecoverMessage') is not None:
             self.send_recover_message = m.get('SendRecoverMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
         return self
 
 
@@ -26372,6 +26386,7 @@ class GetCommercialStatusRequest(TeaModel):
         commodity_code: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.commodity_code = commodity_code
         self.region_id = region_id
 
@@ -29652,6 +29667,8 @@ class GetRetcodeAppByPidRequest(TeaModel):
         tags: List[GetRetcodeAppByPidRequestTags] = None,
     ):
         # The PID of the application. To obtain the PID of the application, perform the following steps: Log on to the Application Real-Time Monitoring Service (ARMS) console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of the application. The URL in the address bar contains the PID of the application. The PID is in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with the at sign (@) to obtain xxx@74xxx.
+        # 
+        # This parameter is required.
         self.pid = pid
         # The ID of the region.
         self.region_id = region_id
@@ -31356,6 +31373,7 @@ class GetRumExceptionStackRequest(TeaModel):
         exception_thread_id: str = None,
         pid: str = None,
         region_id: str = None,
+        sourcemap_type: str = None,
     ):
         self.exception_binary_images = exception_binary_images
         self.exception_stack = exception_stack
@@ -31363,6 +31381,7 @@ class GetRumExceptionStackRequest(TeaModel):
         # This parameter is required.
         self.pid = pid
         self.region_id = region_id
+        self.sourcemap_type = sourcemap_type
 
     def validate(self):
         pass
@@ -31383,6 +31402,8 @@ class GetRumExceptionStackRequest(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.sourcemap_type is not None:
+            result['SourcemapType'] = self.sourcemap_type
         return result
 
     def from_map(self, m: dict = None):
@@ -31397,6 +31418,8 @@ class GetRumExceptionStackRequest(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SourcemapType') is not None:
+            self.sourcemap_type = m.get('SourcemapType')
         return self
 
 
@@ -36541,6 +36564,126 @@ class GetTraceAppResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTraceAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTraceAppConfigRequest(TeaModel):
+    def __init__(
+        self,
+        pid: str = None,
+    ):
+        # This parameter is required.
+        self.pid = pid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        return self
+
+
+class GetTraceAppConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetTraceAppConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTraceAppConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTraceAppConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -45511,6 +45654,7 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
         repeat: bool = None,
         repeat_interval: int = None,
         send_recover_message: bool = None,
+        state: str = None,
     ):
         # Indicates whether simple mode is enabled.
         self.directed_mode = directed_mode
@@ -45542,6 +45686,7 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
         # *   `true` (default): The system sends a notification.
         # *   `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
+        self.state = state
 
     def validate(self):
         if self.group_rule:
@@ -45587,6 +45732,8 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
             result['RepeatInterval'] = self.repeat_interval
         if self.send_recover_message is not None:
             result['SendRecoverMessage'] = self.send_recover_message
+        if self.state is not None:
+            result['State'] = self.state
         return result
 
     def from_map(self, m: dict = None):
@@ -45621,6 +45768,8 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
             self.repeat_interval = m.get('RepeatInterval')
         if m.get('SendRecoverMessage') is not None:
             self.send_recover_message = m.get('SendRecoverMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
         return self
 
 
@@ -65237,6 +65386,8 @@ class UploadRequest(TeaModel):
         # The version of the SourceMap file.
         self.edition = edition
         # The content of the SourceMap file.
+        # 
+        # This parameter is required.
         self.file = file
         # The name of the SourceMap file.
         # 

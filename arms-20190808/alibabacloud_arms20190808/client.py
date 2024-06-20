@@ -4185,6 +4185,8 @@ class Client(OpenApiClient):
             body['RepeatInterval'] = request.repeat_interval
         if not UtilClient.is_unset(request.send_recover_message):
             body['SendRecoverMessage'] = request.send_recover_message
+        if not UtilClient.is_unset(request.state):
+            body['State'] = request.state
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4244,6 +4246,8 @@ class Client(OpenApiClient):
             body['RepeatInterval'] = request.repeat_interval
         if not UtilClient.is_unset(request.send_recover_message):
             body['SendRecoverMessage'] = request.send_recover_message
+        if not UtilClient.is_unset(request.state):
+            body['State'] = request.state
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -14125,6 +14129,8 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sourcemap_type):
+            query['SourcemapType'] = request.sourcemap_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14168,6 +14174,8 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sourcemap_type):
+            query['SourcemapType'] = request.sourcemap_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15284,6 +15292,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_trace_app_with_options_async(request, runtime)
+
+    def get_trace_app_config_with_options(
+        self,
+        request: arms20190808_models.GetTraceAppConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetTraceAppConfigResponse:
+        """
+        @summary 获取应用监控自定义配置
+        
+        @param request: GetTraceAppConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTraceAppConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTraceAppConfig',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetTraceAppConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_trace_app_config_with_options_async(
+        self,
+        request: arms20190808_models.GetTraceAppConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetTraceAppConfigResponse:
+        """
+        @summary 获取应用监控自定义配置
+        
+        @param request: GetTraceAppConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTraceAppConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTraceAppConfig',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetTraceAppConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_trace_app_config(
+        self,
+        request: arms20190808_models.GetTraceAppConfigRequest,
+    ) -> arms20190808_models.GetTraceAppConfigResponse:
+        """
+        @summary 获取应用监控自定义配置
+        
+        @param request: GetTraceAppConfigRequest
+        @return: GetTraceAppConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_trace_app_config_with_options(request, runtime)
+
+    async def get_trace_app_config_async(
+        self,
+        request: arms20190808_models.GetTraceAppConfigRequest,
+    ) -> arms20190808_models.GetTraceAppConfigResponse:
+        """
+        @summary 获取应用监控自定义配置
+        
+        @param request: GetTraceAppConfigRequest
+        @return: GetTraceAppConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_trace_app_config_with_options_async(request, runtime)
 
     def import_app_alert_rules_with_options(
         self,

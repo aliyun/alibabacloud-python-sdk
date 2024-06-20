@@ -1,3 +1,15 @@
+2024-06-20 Version: 4.11.0
+- Support API GetTraceAppConfig.
+- Update API CheckCommercialStatus: update param Service.
+- Update API CreateOrUpdateNotificationPolicy: add param State.
+- Update API CreateOrUpdateNotificationPolicy: update response param.
+- Update API GetCommercialStatus: update param CommodityCode.
+- Update API GetRetcodeAppByPid: update param Pid.
+- Update API GetRumExceptionStack: add param SourcemapType.
+- Update API ListNotificationPolicies: update response param.
+- Update API Upload: update param File.
+
+
 2024-06-17 Version: 4.10.7
 - Update API CreateEnvironment: add param InitEnvironment.
 
