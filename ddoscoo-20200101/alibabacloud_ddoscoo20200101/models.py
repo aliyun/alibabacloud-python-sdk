@@ -504,6 +504,115 @@ class AttachSceneDefenseObjectResponse(TeaModel):
         return self
 
 
+class ConfigDomainSecurityProfileRequest(TeaModel):
+    def __init__(
+        self,
+        cluster: str = None,
+        config: str = None,
+        domain: str = None,
+    ):
+        self.cluster = cluster
+        # This parameter is required.
+        self.config = config
+        # This parameter is required.
+        self.domain = domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster is not None:
+            result['Cluster'] = self.cluster
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cluster') is not None:
+            self.cluster = m.get('Cluster')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        return self
+
+
+class ConfigDomainSecurityProfileResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ConfigDomainSecurityProfileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfigDomainSecurityProfileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfigDomainSecurityProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ConfigL7RsPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -639,6 +748,108 @@ class ConfigL7RsPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ConfigL7RsPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ConfigL7UsKeepaliveRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        upstream_keepalive: str = None,
+    ):
+        self.domain = domain
+        # This parameter is required.
+        self.upstream_keepalive = upstream_keepalive
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.upstream_keepalive is not None:
+            result['UpstreamKeepalive'] = self.upstream_keepalive
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('UpstreamKeepalive') is not None:
+            self.upstream_keepalive = m.get('UpstreamKeepalive')
+        return self
+
+
+class ConfigL7UsKeepaliveResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ConfigL7UsKeepaliveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfigL7UsKeepaliveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfigL7UsKeepaliveResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12338,13 +12549,19 @@ class DescribeInstanceDetailsRequest(TeaModel):
 class DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos(TeaModel):
     def __init__(
         self,
+        cert_configured: bool = None,
         eip: str = None,
+        function_version: str = None,
         ip_mode: str = None,
         ip_version: str = None,
+        ssl_13enabled: bool = None,
         status: str = None,
+        tls_version: str = None,
     ):
+        self.cert_configured = cert_configured
         # The IP address of the instance.
         self.eip = eip
+        self.function_version = function_version
         # The IP address-based forwarding mode of the instance. Valid values:
         # 
         # *   **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
@@ -12355,6 +12572,7 @@ class DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos(TeaModel):
         # *   **Ipv4**: IPv4
         # *   **Ipv6**: IPv6
         self.ip_version = ip_version
+        self.ssl_13enabled = ssl_13enabled
         # The status of the instance. Valid values:
         # 
         # *   **normal**: indicates that the instance is normal.
@@ -12363,6 +12581,7 @@ class DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos(TeaModel):
         # *   **blackhole**: indicates that blackhole filtering is triggered for the asset that is protected by the instance.
         # *   **punished**: indicates that the instance is in penalty.
         self.status = status
+        self.tls_version = tls_version
 
     def validate(self):
         pass
@@ -12373,26 +12592,42 @@ class DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos(TeaModel):
             return _map
 
         result = dict()
+        if self.cert_configured is not None:
+            result['CertConfigured'] = self.cert_configured
         if self.eip is not None:
             result['Eip'] = self.eip
+        if self.function_version is not None:
+            result['FunctionVersion'] = self.function_version
         if self.ip_mode is not None:
             result['IpMode'] = self.ip_mode
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
+        if self.ssl_13enabled is not None:
+            result['Ssl13Enabled'] = self.ssl_13enabled
         if self.status is not None:
             result['Status'] = self.status
+        if self.tls_version is not None:
+            result['TlsVersion'] = self.tls_version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CertConfigured') is not None:
+            self.cert_configured = m.get('CertConfigured')
         if m.get('Eip') is not None:
             self.eip = m.get('Eip')
+        if m.get('FunctionVersion') is not None:
+            self.function_version = m.get('FunctionVersion')
         if m.get('IpMode') is not None:
             self.ip_mode = m.get('IpMode')
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')
+        if m.get('Ssl13Enabled') is not None:
+            self.ssl_13enabled = m.get('Ssl13Enabled')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TlsVersion') is not None:
+            self.tls_version = m.get('TlsVersion')
         return self
 
 
@@ -14124,6 +14359,148 @@ class DescribeL7RsPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeL7RsPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeL7UsKeepaliveRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+    ):
+        self.domain = domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        return self
+
+
+class DescribeL7UsKeepaliveResponseBodyRsKeepalive(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        keepalive_requests: int = None,
+        keepalive_timeout: int = None,
+    ):
+        self.enabled = enabled
+        self.keepalive_requests = keepalive_requests
+        self.keepalive_timeout = keepalive_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.keepalive_requests is not None:
+            result['KeepaliveRequests'] = self.keepalive_requests
+        if self.keepalive_timeout is not None:
+            result['KeepaliveTimeout'] = self.keepalive_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('KeepaliveRequests') is not None:
+            self.keepalive_requests = m.get('KeepaliveRequests')
+        if m.get('KeepaliveTimeout') is not None:
+            self.keepalive_timeout = m.get('KeepaliveTimeout')
+        return self
+
+
+class DescribeL7UsKeepaliveResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        rs_keepalive: DescribeL7UsKeepaliveResponseBodyRsKeepalive = None,
+    ):
+        self.request_id = request_id
+        self.rs_keepalive = rs_keepalive
+
+    def validate(self):
+        if self.rs_keepalive:
+            self.rs_keepalive.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rs_keepalive is not None:
+            result['RsKeepalive'] = self.rs_keepalive.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RsKeepalive') is not None:
+            temp_model = DescribeL7UsKeepaliveResponseBodyRsKeepalive()
+            self.rs_keepalive = temp_model.from_map(m['RsKeepalive'])
+        return self
+
+
+class DescribeL7UsKeepaliveResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeL7UsKeepaliveResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeL7UsKeepaliveResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

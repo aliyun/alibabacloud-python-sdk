@@ -493,6 +493,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_scene_defense_object_with_options_async(request, runtime)
 
+    def config_domain_security_profile_with_options(
+        self,
+        request: ddoscoo_20200101_models.ConfigDomainSecurityProfileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigDomainSecurityProfileResponse:
+        """
+        @summary 配置安全概要属性
+        
+        @param request: ConfigDomainSecurityProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigDomainSecurityProfileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster):
+            query['Cluster'] = request.cluster
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigDomainSecurityProfile',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigDomainSecurityProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_domain_security_profile_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigDomainSecurityProfileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigDomainSecurityProfileResponse:
+        """
+        @summary 配置安全概要属性
+        
+        @param request: ConfigDomainSecurityProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigDomainSecurityProfileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster):
+            query['Cluster'] = request.cluster
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigDomainSecurityProfile',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigDomainSecurityProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_domain_security_profile(
+        self,
+        request: ddoscoo_20200101_models.ConfigDomainSecurityProfileRequest,
+    ) -> ddoscoo_20200101_models.ConfigDomainSecurityProfileResponse:
+        """
+        @summary 配置安全概要属性
+        
+        @param request: ConfigDomainSecurityProfileRequest
+        @return: ConfigDomainSecurityProfileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_domain_security_profile_with_options(request, runtime)
+
+    async def config_domain_security_profile_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigDomainSecurityProfileRequest,
+    ) -> ddoscoo_20200101_models.ConfigDomainSecurityProfileResponse:
+        """
+        @summary 配置安全概要属性
+        
+        @param request: ConfigDomainSecurityProfileRequest
+        @return: ConfigDomainSecurityProfileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_domain_security_profile_with_options_async(request, runtime)
+
     def config_l7rs_policy_with_options(
         self,
         request: ddoscoo_20200101_models.ConfigL7RsPolicyRequest,
@@ -608,6 +712,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.config_l7rs_policy_with_options_async(request, runtime)
+
+    def config_l7us_keepalive_with_options(
+        self,
+        request: ddoscoo_20200101_models.ConfigL7UsKeepaliveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigL7UsKeepaliveResponse:
+        """
+        @summary 配置长连接
+        
+        @param request: ConfigL7UsKeepaliveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigL7UsKeepaliveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.upstream_keepalive):
+            query['UpstreamKeepalive'] = request.upstream_keepalive
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigL7UsKeepalive',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigL7UsKeepaliveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_l7us_keepalive_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigL7UsKeepaliveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigL7UsKeepaliveResponse:
+        """
+        @summary 配置长连接
+        
+        @param request: ConfigL7UsKeepaliveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigL7UsKeepaliveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.upstream_keepalive):
+            query['UpstreamKeepalive'] = request.upstream_keepalive
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigL7UsKeepalive',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigL7UsKeepaliveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_l7us_keepalive(
+        self,
+        request: ddoscoo_20200101_models.ConfigL7UsKeepaliveRequest,
+    ) -> ddoscoo_20200101_models.ConfigL7UsKeepaliveResponse:
+        """
+        @summary 配置长连接
+        
+        @param request: ConfigL7UsKeepaliveRequest
+        @return: ConfigL7UsKeepaliveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_l7us_keepalive_with_options(request, runtime)
+
+    async def config_l7us_keepalive_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigL7UsKeepaliveRequest,
+    ) -> ddoscoo_20200101_models.ConfigL7UsKeepaliveResponse:
+        """
+        @summary 配置长连接
+        
+        @param request: ConfigL7UsKeepaliveRequest
+        @return: ConfigL7UsKeepaliveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_l7us_keepalive_with_options_async(request, runtime)
 
     def config_layer_4real_limit_with_options(
         self,
@@ -9140,6 +9344,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_l7rs_policy_with_options_async(request, runtime)
+
+    def describe_l7us_keepalive_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeL7UsKeepaliveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeL7UsKeepaliveResponse:
+        """
+        @summary 查询长连接
+        
+        @param request: DescribeL7UsKeepaliveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeL7UsKeepaliveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeL7UsKeepalive',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeL7UsKeepaliveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_l7us_keepalive_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeL7UsKeepaliveRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeL7UsKeepaliveResponse:
+        """
+        @summary 查询长连接
+        
+        @param request: DescribeL7UsKeepaliveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeL7UsKeepaliveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeL7UsKeepalive',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeL7UsKeepaliveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_l7us_keepalive(
+        self,
+        request: ddoscoo_20200101_models.DescribeL7UsKeepaliveRequest,
+    ) -> ddoscoo_20200101_models.DescribeL7UsKeepaliveResponse:
+        """
+        @summary 查询长连接
+        
+        @param request: DescribeL7UsKeepaliveRequest
+        @return: DescribeL7UsKeepaliveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_l7us_keepalive_with_options(request, runtime)
+
+    async def describe_l7us_keepalive_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeL7UsKeepaliveRequest,
+    ) -> ddoscoo_20200101_models.DescribeL7UsKeepaliveResponse:
+        """
+        @summary 查询长连接
+        
+        @param request: DescribeL7UsKeepaliveRequest
+        @return: DescribeL7UsKeepaliveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_l7us_keepalive_with_options_async(request, runtime)
 
     def describe_layer_4rule_policy_with_options(
         self,

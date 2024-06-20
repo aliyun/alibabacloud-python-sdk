@@ -1,3 +1,10 @@
+2024-06-20 Version: 2.3.0
+- Support API ConfigDomainSecurityProfile.
+- Support API ConfigL7UsKeepalive.
+- Support API DescribeL7UsKeepalive.
+- Update API DescribeInstanceDetails: update response param.
+
+
 2024-05-30 Version: 2.2.0
 - Support API ConfigWebCCRuleV2.
 - Support API DescribeWebCCRulesV2.
