@@ -1,3 +1,9 @@
+2024-06-20 Version: 2.20.0
+- Support API QueryMinutes.
+- Support API StartMinutes.
+- Support API StopMinutes.
+
+
 2024-06-18 Version: 2.19.0
 - Support API CloseVideoConference.
 - Support API QueryMinutesSummary.
