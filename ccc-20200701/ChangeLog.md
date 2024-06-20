@@ -1,3 +1,10 @@
+2024-06-20 Version: 2.20.0
+- Support API AcceptChat.
+- Support API ClaimChat.
+- Support API GetVisitorLoginDetails.
+- Support API StartChat.
+
+
 2024-06-06 Version: 2.19.2
 - Update API GetCampaign: update response param.
 - Update API ListCampaigns: update response param.

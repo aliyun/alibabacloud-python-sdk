@@ -165,6 +165,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.abort_campaign_with_options_async(request, runtime)
 
+    def accept_chat_with_options(
+        self,
+        request: ccc20200701_models.AcceptChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AcceptChatResponse:
+        """
+        @param request: AcceptChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptChatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AcceptChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def accept_chat_with_options_async(
+        self,
+        request: ccc20200701_models.AcceptChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AcceptChatResponse:
+        """
+        @param request: AcceptChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptChatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AcceptChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def accept_chat(
+        self,
+        request: ccc20200701_models.AcceptChatRequest,
+    ) -> ccc20200701_models.AcceptChatResponse:
+        """
+        @param request: AcceptChatRequest
+        @return: AcceptChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.accept_chat_with_options(request, runtime)
+
+    async def accept_chat_async(
+        self,
+        request: ccc20200701_models.AcceptChatRequest,
+    ) -> ccc20200701_models.AcceptChatResponse:
+        """
+        @param request: AcceptChatRequest
+        @return: AcceptChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.accept_chat_with_options_async(request, runtime)
+
     def add_blacklist_call_tagging_with_options(
         self,
         request: ccc20200701_models.AddBlacklistCallTaggingRequest,
@@ -2188,6 +2280,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.change_work_mode_with_options_async(request, runtime)
+
+    def claim_chat_with_options(
+        self,
+        request: ccc20200701_models.ClaimChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ClaimChatResponse:
+        """
+        @param request: ClaimChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClaimChatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.skill_group_id):
+            query['SkillGroupId'] = request.skill_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClaimChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ClaimChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def claim_chat_with_options_async(
+        self,
+        request: ccc20200701_models.ClaimChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ClaimChatResponse:
+        """
+        @param request: ClaimChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClaimChatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.skill_group_id):
+            query['SkillGroupId'] = request.skill_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClaimChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ClaimChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def claim_chat(
+        self,
+        request: ccc20200701_models.ClaimChatRequest,
+    ) -> ccc20200701_models.ClaimChatResponse:
+        """
+        @param request: ClaimChatRequest
+        @return: ClaimChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.claim_chat_with_options(request, runtime)
+
+    async def claim_chat_async(
+        self,
+        request: ccc20200701_models.ClaimChatRequest,
+    ) -> ccc20200701_models.ClaimChatResponse:
+        """
+        @param request: ClaimChatRequest
+        @return: ClaimChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.claim_chat_with_options_async(request, runtime)
 
     def coach_call_with_options(
         self,
@@ -7964,6 +8152,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_video_with_options_async(request, runtime)
+
+    def get_visitor_login_details_with_options(
+        self,
+        request: ccc20200701_models.GetVisitorLoginDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetVisitorLoginDetailsResponse:
+        """
+        @param request: GetVisitorLoginDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVisitorLoginDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chat_device_id):
+            query['ChatDeviceId'] = request.chat_device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.visitor_id):
+            query['VisitorId'] = request.visitor_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVisitorLoginDetails',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetVisitorLoginDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_visitor_login_details_with_options_async(
+        self,
+        request: ccc20200701_models.GetVisitorLoginDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetVisitorLoginDetailsResponse:
+        """
+        @param request: GetVisitorLoginDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVisitorLoginDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chat_device_id):
+            query['ChatDeviceId'] = request.chat_device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.visitor_id):
+            query['VisitorId'] = request.visitor_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVisitorLoginDetails',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetVisitorLoginDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_visitor_login_details(
+        self,
+        request: ccc20200701_models.GetVisitorLoginDetailsRequest,
+    ) -> ccc20200701_models.GetVisitorLoginDetailsResponse:
+        """
+        @param request: GetVisitorLoginDetailsRequest
+        @return: GetVisitorLoginDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_visitor_login_details_with_options(request, runtime)
+
+    async def get_visitor_login_details_async(
+        self,
+        request: ccc20200701_models.GetVisitorLoginDetailsRequest,
+    ) -> ccc20200701_models.GetVisitorLoginDetailsResponse:
+        """
+        @param request: GetVisitorLoginDetailsRequest
+        @return: GetVisitorLoginDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_visitor_login_details_with_options_async(request, runtime)
 
     def get_voicemail_recording_with_options(
         self,
@@ -19320,6 +19608,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_back_2back_call_with_options_async(request, runtime)
+
+    def start_chat_with_options(
+        self,
+        tmp_req: ccc20200701_models.StartChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.StartChatResponse:
+        """
+        @param tmp_req: StartChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartChatResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.StartChatShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_list):
+            request.user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_list, 'UserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.access_channel_id):
+            query['AccessChannelId'] = request.access_channel_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.user_list_shrink):
+            query['UserList'] = request.user_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.StartChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_chat_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.StartChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.StartChatResponse:
+        """
+        @param tmp_req: StartChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartChatResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.StartChatShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_list):
+            request.user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_list, 'UserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.access_channel_id):
+            query['AccessChannelId'] = request.access_channel_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.user_list_shrink):
+            query['UserList'] = request.user_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.StartChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_chat(
+        self,
+        request: ccc20200701_models.StartChatRequest,
+    ) -> ccc20200701_models.StartChatResponse:
+        """
+        @param request: StartChatRequest
+        @return: StartChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_chat_with_options(request, runtime)
+
+    async def start_chat_async(
+        self,
+        request: ccc20200701_models.StartChatRequest,
+    ) -> ccc20200701_models.StartChatResponse:
+        """
+        @param request: StartChatRequest
+        @return: StartChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_chat_with_options_async(request, runtime)
 
     def start_conference_with_options(
         self,
