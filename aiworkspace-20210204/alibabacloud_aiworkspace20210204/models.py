@@ -1110,8 +1110,10 @@ class AddImageRequest(TeaModel):
         self.accessibility = accessibility
         self.description = description
         self.image_id = image_id
+        # This parameter is required.
         self.image_uri = image_uri
         self.labels = labels
+        # This parameter is required.
         self.name = name
         self.size = size
         self.workspace_id = workspace_id
@@ -1284,6 +1286,7 @@ class AddImageLabelsRequest(TeaModel):
         self,
         labels: List[AddImageLabelsRequestLabels] = None,
     ):
+        # This parameter is required.
         self.labels = labels
 
     def validate(self):
@@ -1469,8 +1472,10 @@ class CreateCodeSourceRequest(TeaModel):
         self.code_repo_access_token = code_repo_access_token
         self.code_repo_user_name = code_repo_user_name
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
         self.mount_path = mount_path
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1615,21 +1620,27 @@ class CreateDatasetRequest(TeaModel):
         source_id: str = None,
         source_type: str = None,
         uri: str = None,
+        user_id: str = None,
         workspace_id: str = None,
     ):
         self.accessibility = accessibility
+        # This parameter is required.
         self.data_source_type = data_source_type
         self.data_type = data_type
         self.description = description
         self.labels = labels
+        # This parameter is required.
         self.name = name
         self.options = options
+        # This parameter is required.
         self.property = property
         self.provider = provider
         self.provider_type = provider_type
         self.source_id = source_id
         self.source_type = source_type
+        # This parameter is required.
         self.uri = uri
+        self.user_id = user_id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1672,6 +1683,8 @@ class CreateDatasetRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.uri is not None:
             result['Uri'] = self.uri
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -1707,6 +1720,8 @@ class CreateDatasetRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -1895,7 +1910,9 @@ class CreateMemberRequestMembers(TeaModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.roles = roles
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -1927,6 +1944,7 @@ class CreateMemberRequest(TeaModel):
         self,
         members: List[CreateMemberRequestMembers] = None,
     ):
+        # This parameter is required.
         self.members = members
 
     def validate(self):
@@ -2106,6 +2124,7 @@ class CreateModelRequest(TeaModel):
         self.labels = labels
         self.model_description = model_description
         self.model_doc = model_doc
+        # This parameter is required.
         self.model_name = model_name
         self.model_type = model_type
         self.order_number = order_number
@@ -2393,6 +2412,7 @@ class CreateModelVersionRequest(TeaModel):
         self.source_id = source_id
         self.source_type = source_type
         self.training_spec = training_spec
+        # This parameter is required.
         self.uri = uri
         self.version_description = version_description
         self.version_name = version_name
@@ -2903,9 +2923,12 @@ class CreateWorkspaceRequest(TeaModel):
         env_types: List[str] = None,
         workspace_name: str = None,
     ):
+        # This parameter is required.
         self.description = description
         self.display_name = display_name
+        # This parameter is required.
         self.env_types = env_types
+        # This parameter is required.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -3052,6 +3075,7 @@ class CreateWorkspaceResourceRequestResourcesQuotas(TeaModel):
         self,
         id: str = None,
     ):
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -3088,15 +3112,18 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
         spec: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.env_type = env_type
         self.group_name = group_name
         self.is_default = is_default
         self.labels = labels
+        # This parameter is required.
         self.name = name
         self.product_type = product_type
         self.quotas = quotas
         self.resource_type = resource_type
         self.spec = spec
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3179,6 +3206,7 @@ class CreateWorkspaceResourceRequest(TeaModel):
         resources: List[CreateWorkspaceResourceRequestResources] = None,
     ):
         self.option = option
+        # This parameter is required.
         self.resources = resources
 
     def validate(self):
@@ -3570,6 +3598,7 @@ class DeleteMembersRequest(TeaModel):
         self,
         member_ids: str = None,
     ):
+        # This parameter is required.
         self.member_ids = member_ids
 
     def validate(self):
