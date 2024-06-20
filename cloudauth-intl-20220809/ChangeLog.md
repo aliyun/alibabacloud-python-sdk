@@ -1,3 +1,7 @@
+2024-06-20 Version: 2.0.1
+- Update API Initialize: add param ExperienceCode.
+
+
 2024-04-25 Version: 2.0.0
 - Delete API DeletePicture.
 - Update API CheckResult: update response param.

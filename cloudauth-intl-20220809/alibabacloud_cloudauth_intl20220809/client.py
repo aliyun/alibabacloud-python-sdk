@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CardOcrResponse:
         """
-        @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        @deprecated OpenAPI CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        
+        @summary 证件OCR识别纯服务端接口
         
         @param request: CardOcrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -101,7 +103,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CardOcrResponse:
         """
-        @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        @deprecated OpenAPI CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        
+        @summary 证件OCR识别纯服务端接口
         
         @param request: CardOcrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -154,7 +158,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CardOcrRequest,
     ) -> cloudauth_intl_20220809_models.CardOcrResponse:
         """
-        @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        @deprecated OpenAPI CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        
+        @summary 证件OCR识别纯服务端接口
         
         @param request: CardOcrRequest
         @return: CardOcrResponse
@@ -168,7 +174,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CardOcrRequest,
     ) -> cloudauth_intl_20220809_models.CardOcrResponse:
         """
-        @deprecated : CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        @deprecated OpenAPI CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
+        
+        @summary 证件OCR识别纯服务端接口
         
         @param request: CardOcrRequest
         @return: CardOcrResponse
@@ -182,6 +190,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CheckResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CheckResultResponse:
+        """
+        @summary 结果查询
+        
+        @param request: CheckResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extra_image_control_list):
@@ -218,6 +233,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CheckResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CheckResultResponse:
+        """
+        @summary 结果查询
+        
+        @param request: CheckResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extra_image_control_list):
@@ -253,6 +275,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.CheckResultRequest,
     ) -> cloudauth_intl_20220809_models.CheckResultResponse:
+        """
+        @summary 结果查询
+        
+        @param request: CheckResultRequest
+        @return: CheckResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_result_with_options(request, runtime)
 
@@ -260,6 +288,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.CheckResultRequest,
     ) -> cloudauth_intl_20220809_models.CheckResultResponse:
+        """
+        @summary 结果查询
+        
+        @param request: CheckResultRequest
+        @return: CheckResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_result_with_options_async(request, runtime)
 
@@ -268,6 +302,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
+        """
+        @summary 删除用户认证记录结果
+        
+        @param request: DeleteVerifyResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVerifyResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_after_query):
@@ -300,6 +341,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
+        """
+        @summary 删除用户认证记录结果
+        
+        @param request: DeleteVerifyResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVerifyResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_after_query):
@@ -331,6 +379,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
     ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
+        """
+        @summary 删除用户认证记录结果
+        
+        @param request: DeleteVerifyResultRequest
+        @return: DeleteVerifyResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_verify_result_with_options(request, runtime)
 
@@ -338,6 +392,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
     ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
+        """
+        @summary 删除用户认证记录结果
+        
+        @param request: DeleteVerifyResultRequest
+        @return: DeleteVerifyResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_verify_result_with_options_async(request, runtime)
 
@@ -346,6 +406,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeAddressLabelsResponse:
+        """
+        @summary 查询地址标签接口
+        
+        @param request: DescribeAddressLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAddressLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -378,6 +445,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeAddressLabelsResponse:
+        """
+        @summary 查询地址标签接口
+        
+        @param request: DescribeAddressLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAddressLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -409,6 +483,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
     ) -> cloudauth_intl_20220809_models.DescribeAddressLabelsResponse:
+        """
+        @summary 查询地址标签接口
+        
+        @param request: DescribeAddressLabelsRequest
+        @return: DescribeAddressLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_address_labels_with_options(request, runtime)
 
@@ -416,6 +496,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeAddressLabelsRequest,
     ) -> cloudauth_intl_20220809_models.DescribeAddressLabelsResponse:
+        """
+        @summary 查询地址标签接口
+        
+        @param request: DescribeAddressLabelsRequest
+        @return: DescribeAddressLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_address_labels_with_options_async(request, runtime)
 
@@ -424,6 +510,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeAddressOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeAddressOverviewResponse:
+        """
+        @summary 查询地址详情接口
+        
+        @param request: DescribeAddressOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAddressOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -456,6 +549,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeAddressOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeAddressOverviewResponse:
+        """
+        @summary 查询地址详情接口
+        
+        @param request: DescribeAddressOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAddressOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -487,6 +587,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeAddressOverviewRequest,
     ) -> cloudauth_intl_20220809_models.DescribeAddressOverviewResponse:
+        """
+        @summary 查询地址详情接口
+        
+        @param request: DescribeAddressOverviewRequest
+        @return: DescribeAddressOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_address_overview_with_options(request, runtime)
 
@@ -494,6 +600,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeAddressOverviewRequest,
     ) -> cloudauth_intl_20220809_models.DescribeAddressOverviewResponse:
+        """
+        @summary 查询地址详情接口
+        
+        @param request: DescribeAddressOverviewRequest
+        @return: DescribeAddressOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_address_overview_with_options_async(request, runtime)
 
@@ -502,6 +614,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeMaliciousAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse:
+        """
+        @summary 恶意地址查询
+        
+        @param request: DescribeMaliciousAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMaliciousAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.coin):
@@ -536,6 +655,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeMaliciousAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse:
+        """
+        @summary 恶意地址查询
+        
+        @param request: DescribeMaliciousAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMaliciousAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.coin):
@@ -569,6 +695,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeMaliciousAddressRequest,
     ) -> cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse:
+        """
+        @summary 恶意地址查询
+        
+        @param request: DescribeMaliciousAddressRequest
+        @return: DescribeMaliciousAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_malicious_address_with_options(request, runtime)
 
@@ -576,6 +708,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeMaliciousAddressRequest,
     ) -> cloudauth_intl_20220809_models.DescribeMaliciousAddressResponse:
+        """
+        @summary 恶意地址查询
+        
+        @param request: DescribeMaliciousAddressRequest
+        @return: DescribeMaliciousAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_malicious_address_with_options_async(request, runtime)
 
@@ -584,6 +722,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeRiskScoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeRiskScoreResponse:
+        """
+        @summary 查询地址风险接口
+        
+        @param request: DescribeRiskScoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskScoreResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -616,6 +761,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeRiskScoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeRiskScoreResponse:
+        """
+        @summary 查询地址风险接口
+        
+        @param request: DescribeRiskScoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskScoreResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -647,6 +799,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeRiskScoreRequest,
     ) -> cloudauth_intl_20220809_models.DescribeRiskScoreResponse:
+        """
+        @summary 查询地址风险接口
+        
+        @param request: DescribeRiskScoreRequest
+        @return: DescribeRiskScoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_risk_score_with_options(request, runtime)
 
@@ -654,6 +812,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeRiskScoreRequest,
     ) -> cloudauth_intl_20220809_models.DescribeRiskScoreResponse:
+        """
+        @summary 查询地址风险接口
+        
+        @param request: DescribeRiskScoreRequest
+        @return: DescribeRiskScoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_risk_score_with_options_async(request, runtime)
 
@@ -662,6 +826,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeTransactionsListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
+        """
+        @summary 查询交易接口
+        
+        @param request: DescribeTransactionsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTransactionsListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -702,6 +873,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeTransactionsListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
+        """
+        @summary 查询交易接口
+        
+        @param request: DescribeTransactionsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTransactionsListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -741,6 +919,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeTransactionsListRequest,
     ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
+        """
+        @summary 查询交易接口
+        
+        @param request: DescribeTransactionsListRequest
+        @return: DescribeTransactionsListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_transactions_list_with_options(request, runtime)
 
@@ -748,6 +932,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeTransactionsListRequest,
     ) -> cloudauth_intl_20220809_models.DescribeTransactionsListResponse:
+        """
+        @summary 查询交易接口
+        
+        @param request: DescribeTransactionsListRequest
+        @return: DescribeTransactionsListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_transactions_list_with_options_async(request, runtime)
 
@@ -756,6 +946,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse:
+        """
+        @summary Query the Information of address.
+        
+        @param request: DescribeWeb3AddressLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWeb3AddressLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -788,6 +985,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse:
+        """
+        @summary Query the Information of address.
+        
+        @param request: DescribeWeb3AddressLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWeb3AddressLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -819,6 +1023,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsRequest,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse:
+        """
+        @summary Query the Information of address.
+        
+        @param request: DescribeWeb3AddressLabelsRequest
+        @return: DescribeWeb3AddressLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_web_3address_labels_with_options(request, runtime)
 
@@ -826,6 +1036,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsRequest,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3AddressLabelsResponse:
+        """
+        @summary Query the Information of address.
+        
+        @param request: DescribeWeb3AddressLabelsRequest
+        @return: DescribeWeb3AddressLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_3address_labels_with_options_async(request, runtime)
 
@@ -834,6 +1050,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeWeb3RiskScoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse:
+        """
+        @summary Query risk score, risk detail list for a given address
+        
+        @param request: DescribeWeb3RiskScoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWeb3RiskScoreResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.chain_short_name):
@@ -870,6 +1093,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeWeb3RiskScoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse:
+        """
+        @summary Query risk score, risk detail list for a given address
+        
+        @param request: DescribeWeb3RiskScoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWeb3RiskScoreResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.chain_short_name):
@@ -905,6 +1135,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeWeb3RiskScoreRequest,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse:
+        """
+        @summary Query risk score, risk detail list for a given address
+        
+        @param request: DescribeWeb3RiskScoreRequest
+        @return: DescribeWeb3RiskScoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_web_3risk_score_with_options(request, runtime)
 
@@ -912,6 +1148,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeWeb3RiskScoreRequest,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3RiskScoreResponse:
+        """
+        @summary Query risk score, risk detail list for a given address
+        
+        @param request: DescribeWeb3RiskScoreRequest
+        @return: DescribeWeb3RiskScoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_3risk_score_with_options_async(request, runtime)
 
@@ -920,6 +1162,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse:
+        """
+        @summary Query the Information of transaction.
+        
+        @param request: DescribeWeb3TransactionLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWeb3TransactionLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.chain_short_name):
@@ -952,6 +1201,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse:
+        """
+        @summary Query the Information of transaction.
+        
+        @param request: DescribeWeb3TransactionLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWeb3TransactionLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.chain_short_name):
@@ -983,6 +1239,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsRequest,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse:
+        """
+        @summary Query the Information of transaction.
+        
+        @param request: DescribeWeb3TransactionLabelsRequest
+        @return: DescribeWeb3TransactionLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_web_3transaction_labels_with_options(request, runtime)
 
@@ -990,6 +1252,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsRequest,
     ) -> cloudauth_intl_20220809_models.DescribeWeb3TransactionLabelsResponse:
+        """
+        @summary Query the Information of transaction.
+        
+        @param request: DescribeWeb3TransactionLabelsRequest
+        @return: DescribeWeb3TransactionLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_3transaction_labels_with_options_async(request, runtime)
 
@@ -998,6 +1266,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DocOcrRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DocOcrResponse:
+        """
+        @summary 卡证ocr纯服务端
+        
+        @param request: DocOcrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocOcrResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.doc_type):
@@ -1044,6 +1319,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DocOcrRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DocOcrResponse:
+        """
+        @summary 卡证ocr纯服务端
+        
+        @param request: DocOcrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocOcrResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.doc_type):
@@ -1089,6 +1371,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DocOcrRequest,
     ) -> cloudauth_intl_20220809_models.DocOcrResponse:
+        """
+        @summary 卡证ocr纯服务端
+        
+        @param request: DocOcrRequest
+        @return: DocOcrResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.doc_ocr_with_options(request, runtime)
 
@@ -1096,6 +1384,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.DocOcrRequest,
     ) -> cloudauth_intl_20220809_models.DocOcrResponse:
+        """
+        @summary 卡证ocr纯服务端
+        
+        @param request: DocOcrRequest
+        @return: DocOcrResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.doc_ocr_with_options_async(request, runtime)
 
@@ -1104,6 +1398,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.EkycVerifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.EkycVerifyResponse:
+        """
+        @summary ekyc纯服务端接口
+        
+        @param request: EkycVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EkycVerifyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authorize):
@@ -1156,6 +1457,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.EkycVerifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.EkycVerifyResponse:
+        """
+        @summary ekyc纯服务端接口
+        
+        @param request: EkycVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EkycVerifyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authorize):
@@ -1207,6 +1515,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.EkycVerifyRequest,
     ) -> cloudauth_intl_20220809_models.EkycVerifyResponse:
+        """
+        @summary ekyc纯服务端接口
+        
+        @param request: EkycVerifyRequest
+        @return: EkycVerifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.ekyc_verify_with_options(request, runtime)
 
@@ -1214,6 +1528,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.EkycVerifyRequest,
     ) -> cloudauth_intl_20220809_models.EkycVerifyResponse:
+        """
+        @summary ekyc纯服务端接口
+        
+        @param request: EkycVerifyRequest
+        @return: EkycVerifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.ekyc_verify_with_options_async(request, runtime)
 
@@ -1222,6 +1542,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceCompareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceCompareResponse:
+        """
+        @summary 人脸比对
+        
+        @param request: FaceCompareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceCompareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -1260,6 +1587,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceCompareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceCompareResponse:
+        """
+        @summary 人脸比对
+        
+        @param request: FaceCompareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceCompareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.merchant_biz_id):
@@ -1297,6 +1631,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.FaceCompareRequest,
     ) -> cloudauth_intl_20220809_models.FaceCompareResponse:
+        """
+        @summary 人脸比对
+        
+        @param request: FaceCompareRequest
+        @return: FaceCompareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.face_compare_with_options(request, runtime)
 
@@ -1304,6 +1644,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.FaceCompareRequest,
     ) -> cloudauth_intl_20220809_models.FaceCompareResponse:
+        """
+        @summary 人脸比对
+        
+        @param request: FaceCompareRequest
+        @return: FaceCompareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.face_compare_with_options_async(request, runtime)
 
@@ -1312,6 +1658,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceLivenessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
+        """
+        @summary 静默活体API 纯服务端
+        
+        @param request: FaceLivenessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceLivenessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.crop):
@@ -1356,6 +1709,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceLivenessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
+        """
+        @summary 静默活体API 纯服务端
+        
+        @param request: FaceLivenessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FaceLivenessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.crop):
@@ -1399,6 +1759,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.FaceLivenessRequest,
     ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
+        """
+        @summary 静默活体API 纯服务端
+        
+        @param request: FaceLivenessRequest
+        @return: FaceLivenessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.face_liveness_with_options(request, runtime)
 
@@ -1406,6 +1772,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.FaceLivenessRequest,
     ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
+        """
+        @summary 静默活体API 纯服务端
+        
+        @param request: FaceLivenessRequest
+        @return: FaceLivenessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.face_liveness_with_options_async(request, runtime)
 
@@ -1414,6 +1786,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
+        """
+        @summary 防伪回调接口
+        
+        @param request: FraudResultCallBackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FraudResultCallBackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certify_id):
@@ -1448,6 +1827,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
+        """
+        @summary 防伪回调接口
+        
+        @param request: FraudResultCallBackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FraudResultCallBackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certify_id):
@@ -1481,6 +1867,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
     ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
+        """
+        @summary 防伪回调接口
+        
+        @param request: FraudResultCallBackRequest
+        @return: FraudResultCallBackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.fraud_result_call_back_with_options(request, runtime)
 
@@ -1488,6 +1880,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.FraudResultCallBackRequest,
     ) -> cloudauth_intl_20220809_models.FraudResultCallBackResponse:
+        """
+        @summary 防伪回调接口
+        
+        @param request: FraudResultCallBackRequest
+        @return: FraudResultCallBackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.fraud_result_call_back_with_options_async(request, runtime)
 
@@ -1496,6 +1894,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
+        """
+        @summary 身份二要素国际版接口
+        
+        @param request: Id2MetaVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id2MetaVerifyIntlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identify_num):
@@ -1530,6 +1935,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
+        """
+        @summary 身份二要素国际版接口
+        
+        @param request: Id2MetaVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id2MetaVerifyIntlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identify_num):
@@ -1563,6 +1975,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
+        """
+        @summary 身份二要素国际版接口
+        
+        @param request: Id2MetaVerifyIntlRequest
+        @return: Id2MetaVerifyIntlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.id_2meta_verify_intl_with_options(request, runtime)
 
@@ -1570,6 +1988,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
+        """
+        @summary 身份二要素国际版接口
+        
+        @param request: Id2MetaVerifyIntlRequest
+        @return: Id2MetaVerifyIntlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.id_2meta_verify_intl_with_options_async(request, runtime)
 
@@ -1578,6 +2002,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.InitializeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
+        """
+        @summary 认证初始化
+        
+        @param request: InitializeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authorize):
@@ -1592,6 +2023,8 @@ class Client(OpenApiClient):
             query['DocScanMode'] = request.doc_scan_mode
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.experience_code):
+            query['ExperienceCode'] = request.experience_code
         if not UtilClient.is_unset(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
         if not UtilClient.is_unset(request.id_face_quality):
@@ -1648,6 +2081,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.InitializeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
+        """
+        @summary 认证初始化
+        
+        @param request: InitializeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authorize):
@@ -1662,6 +2102,8 @@ class Client(OpenApiClient):
             query['DocScanMode'] = request.doc_scan_mode
         if not UtilClient.is_unset(request.doc_type):
             query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.experience_code):
+            query['ExperienceCode'] = request.experience_code
         if not UtilClient.is_unset(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
         if not UtilClient.is_unset(request.id_face_quality):
@@ -1717,6 +2159,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.InitializeRequest,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
+        """
+        @summary 认证初始化
+        
+        @param request: InitializeRequest
+        @return: InitializeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.initialize_with_options(request, runtime)
 
@@ -1724,6 +2172,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.InitializeRequest,
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
+        """
+        @summary 认证初始化
+        
+        @param request: InitializeRequest
+        @return: InitializeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.initialize_with_options_async(request, runtime)
 
@@ -1732,6 +2186,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
+        """
+        @summary 手机号三要素国际版接口
+        
+        @param request: Mobile3MetaVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile3MetaVerifyIntlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identify_num):
@@ -1768,6 +2229,13 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
+        """
+        @summary 手机号三要素国际版接口
+        
+        @param request: Mobile3MetaVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile3MetaVerifyIntlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identify_num):
@@ -1803,6 +2271,12 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
+        """
+        @summary 手机号三要素国际版接口
+        
+        @param request: Mobile3MetaVerifyIntlRequest
+        @return: Mobile3MetaVerifyIntlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.mobile_3meta_verify_intl_with_options(request, runtime)
 
@@ -1810,5 +2284,11 @@ class Client(OpenApiClient):
         self,
         request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
+        """
+        @summary 手机号三要素国际版接口
+        
+        @param request: Mobile3MetaVerifyIntlRequest
+        @return: Mobile3MetaVerifyIntlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.mobile_3meta_verify_intl_with_options_async(request, runtime)

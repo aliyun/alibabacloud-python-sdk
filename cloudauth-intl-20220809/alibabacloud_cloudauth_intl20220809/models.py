@@ -1662,7 +1662,7 @@ class DescribeWeb3AddressLabelsRequest(TeaModel):
         # This is the short name of blockchain。
         # [ ETH, MATIC, BNB ]
         self.chain_short_name = chain_short_name
-        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\\"s business-related database.
         self.merchant_biz_id = merchant_biz_id
 
     def validate(self):
@@ -1963,7 +1963,7 @@ class DescribeWeb3RiskScoreRequest(TeaModel):
         # the maximum depth for risk analysis. For UTXO-based blockchains, default and maximum is enforced at 100.
         # For account-based blockchains, default and maximum is enforced at 6
         self.depth = depth
-        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\\"s business-related database.
         self.merchant_biz_id = merchant_biz_id
         # For TRANSACTION objects, you need to provide the transaction hash。
         # For ADDRESS objects, you need to provide the address or reference address hash。
@@ -2208,7 +2208,7 @@ class DescribeWeb3TransactionLabelsRequest(TeaModel):
         # This is the short name of blockchain。
         # [ ETH, MATIC, BNB ]
         self.chain_short_name = chain_short_name
-        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\"s business-related database.
+        # A unique business ID for tracing purpose. For example，the sequence ID from the merchant\\"s business-related database.
         self.merchant_biz_id = merchant_biz_id
         # The Transaction hash.
         self.transaction = transaction
@@ -2522,7 +2522,7 @@ class DescribeWeb3TransactionLabelsResponseBodyData(TeaModel):
         self.input_data = input_data
         # input details
         self.input_details = input_details
-        # the method name of contract call. For external transaction method: [\"CALL\",\"CALLCODE\",\"DELEGATECALL\",\"STATICCALL\"]; for internal transaction method: the first 4 bytes of the hash of the method name
+        # the method name of contract call. For external transaction method: [\\"CALL\\",\\"CALLCODE\\",\\"DELEGATECALL\\",\\"STATICCALL\\"]; for internal transaction method: the first 4 bytes of the hash of the method name
         self.method_id = method_id
         # nonce
         self.nonce = nonce
@@ -3945,6 +3945,7 @@ class InitializeRequest(TeaModel):
         crop: str = None,
         doc_scan_mode: str = None,
         doc_type: str = None,
+        experience_code: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
         id_face_quality: str = None,
@@ -3967,6 +3968,7 @@ class InitializeRequest(TeaModel):
         self.crop = crop
         self.doc_scan_mode = doc_scan_mode
         self.doc_type = doc_type
+        self.experience_code = experience_code
         self.face_picture_base_64 = face_picture_base_64
         self.face_picture_url = face_picture_url
         self.id_face_quality = id_face_quality
@@ -4005,6 +4007,8 @@ class InitializeRequest(TeaModel):
             result['DocScanMode'] = self.doc_scan_mode
         if self.doc_type is not None:
             result['DocType'] = self.doc_type
+        if self.experience_code is not None:
+            result['ExperienceCode'] = self.experience_code
         if self.face_picture_base_64 is not None:
             result['FacePictureBase64'] = self.face_picture_base_64
         if self.face_picture_url is not None:
@@ -4051,6 +4055,8 @@ class InitializeRequest(TeaModel):
             self.doc_scan_mode = m.get('DocScanMode')
         if m.get('DocType') is not None:
             self.doc_type = m.get('DocType')
+        if m.get('ExperienceCode') is not None:
+            self.experience_code = m.get('ExperienceCode')
         if m.get('FacePictureBase64') is not None:
             self.face_picture_base_64 = m.get('FacePictureBase64')
         if m.get('FacePictureUrl') is not None:
