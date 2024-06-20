@@ -13605,18 +13605,16 @@ class RemoveUsersResponse(TeaModel):
         return self
 
 
-class StartCloudRecordRequestPanes(TeaModel):
+class StartCloudRecordRequestClockWidgetsBoxColor(TeaModel):
     def __init__(
         self,
-        pane_id: int = None,
-        source_type: str = None,
+        b: int = None,
+        g: int = None,
+        r: int = None,
     ):
-        # paneId
-        # 
-        # This parameter is required.
-        self.pane_id = pane_id
-        # sourceType
-        self.source_type = source_type
+        self.b = b
+        self.g = g
+        self.r = r
 
     def validate(self):
         pass
@@ -13627,18 +13625,567 @@ class StartCloudRecordRequestPanes(TeaModel):
             return _map
 
         result = dict()
-        if self.pane_id is not None:
-            result['PaneId'] = self.pane_id
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartCloudRecordRequestClockWidgetsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartCloudRecordRequestClockWidgets(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: StartCloudRecordRequestClockWidgetsBoxColor = None,
+        font: int = None,
+        font_color: StartCloudRecordRequestClockWidgetsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        x: float = None,
+        y: float = None,
+        zone: int = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+        self.zone = zone
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = StartCloudRecordRequestClockWidgetsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = StartCloudRecordRequestClockWidgetsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class StartCloudRecordRequestImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        image_crop_mode: int = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.image_crop_mode = image_crop_mode
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.image_crop_mode is not None:
+            result['ImageCropMode'] = self.image_crop_mode
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ImageCropMode') is not None:
+            self.image_crop_mode = m.get('ImageCropMode')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class StartCloudRecordRequestPanesImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        layer: int = None,
+        pane_image_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_image_crop_mode = pane_image_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_image_crop_mode is not None:
+            result['PaneImageCropMode'] = self.pane_image_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneImageCropMode') is not None:
+            self.pane_image_crop_mode = m.get('PaneImageCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class StartCloudRecordRequestPanesTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartCloudRecordRequestPanesTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartCloudRecordRequestPanesTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: StartCloudRecordRequestPanesTextsBoxColor = None,
+        font: int = None,
+        font_color: StartCloudRecordRequestPanesTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = StartCloudRecordRequestPanesTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = StartCloudRecordRequestPanesTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class StartCloudRecordRequestPanes(TeaModel):
+    def __init__(
+        self,
+        images: List[StartCloudRecordRequestPanesImages] = None,
+        pane_crop_mode: int = None,
+        pane_id: int = None,
+        source: str = None,
+        source_type: str = None,
+        texts: List[StartCloudRecordRequestPanesTexts] = None,
+    ):
+        self.images = images
+        self.pane_crop_mode = pane_crop_mode
+        # paneId
+        # 
+        # This parameter is required.
+        self.pane_id = pane_id
+        # source
+        self.source = source
+        # sourceType
+        self.source_type = source_type
+        self.texts = texts
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.pane_crop_mode is not None:
+            result['PaneCropMode'] = self.pane_crop_mode
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = StartCloudRecordRequestPanesImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('PaneCropMode') is not None:
+            self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = StartCloudRecordRequestPanesTexts()
+                self.texts.append(temp_model.from_map(k))
         return self
 
 
@@ -13708,15 +14255,198 @@ class StartCloudRecordRequestStorageConfig(TeaModel):
         return self
 
 
+class StartCloudRecordRequestTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartCloudRecordRequestTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartCloudRecordRequestTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: StartCloudRecordRequestTextsBoxColor = None,
+        font: int = None,
+        font_color: StartCloudRecordRequestTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = StartCloudRecordRequestTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = StartCloudRecordRequestTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class StartCloudRecordRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
         channel_id: str = None,
+        clock_widgets: List[StartCloudRecordRequestClockWidgets] = None,
+        crop_mode: int = None,
+        images: List[StartCloudRecordRequestImages] = None,
         panes: List[StartCloudRecordRequestPanes] = None,
         storage_config: StartCloudRecordRequestStorageConfig = None,
         task_id: str = None,
         template_id: str = None,
+        texts: List[StartCloudRecordRequestTexts] = None,
     ):
         # appId
         # 
@@ -13726,6 +14456,9 @@ class StartCloudRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.channel_id = channel_id
+        self.clock_widgets = clock_widgets
+        self.crop_mode = crop_mode
+        self.images = images
         # panes
         self.panes = panes
         # storageConfig
@@ -13738,14 +14471,27 @@ class StartCloudRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_id = template_id
+        self.texts = texts
 
     def validate(self):
+        if self.clock_widgets:
+            for k in self.clock_widgets:
+                if k:
+                    k.validate()
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
         if self.panes:
             for k in self.panes:
                 if k:
                     k.validate()
         if self.storage_config:
             self.storage_config.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13757,6 +14503,16 @@ class StartCloudRecordRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
+        result['ClockWidgets'] = []
+        if self.clock_widgets is not None:
+            for k in self.clock_widgets:
+                result['ClockWidgets'].append(k.to_map() if k else None)
+        if self.crop_mode is not None:
+            result['CropMode'] = self.crop_mode
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
         result['Panes'] = []
         if self.panes is not None:
             for k in self.panes:
@@ -13767,6 +14523,10 @@ class StartCloudRecordRequest(TeaModel):
             result['TaskId'] = self.task_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -13775,6 +14535,18 @@ class StartCloudRecordRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
+        self.clock_widgets = []
+        if m.get('ClockWidgets') is not None:
+            for k in m.get('ClockWidgets'):
+                temp_model = StartCloudRecordRequestClockWidgets()
+                self.clock_widgets.append(temp_model.from_map(k))
+        if m.get('CropMode') is not None:
+            self.crop_mode = m.get('CropMode')
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = StartCloudRecordRequestImages()
+                self.images.append(temp_model.from_map(k))
         self.panes = []
         if m.get('Panes') is not None:
             for k in m.get('Panes'):
@@ -13787,6 +14559,11 @@ class StartCloudRecordRequest(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = StartCloudRecordRequestTexts()
+                self.texts.append(temp_model.from_map(k))
         return self
 
 
@@ -15079,15 +15856,16 @@ class StartRecordTaskResponse(TeaModel):
         return self
 
 
-class StartStreamingOutRequestPanes(TeaModel):
+class StartStreamingOutRequestClockWidgetsBoxColor(TeaModel):
     def __init__(
         self,
-        pane_id: str = None,
-        source_type: str = None,
+        b: int = None,
+        g: int = None,
+        r: int = None,
     ):
-        # This parameter is required.
-        self.pane_id = pane_id
-        self.source_type = source_type
+        self.b = b
+        self.g = g
+        self.r = r
 
     def validate(self):
         pass
@@ -15098,18 +15876,742 @@ class StartStreamingOutRequestPanes(TeaModel):
             return _map
 
         result = dict()
-        if self.pane_id is not None:
-            result['PaneId'] = self.pane_id
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartStreamingOutRequestClockWidgetsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartStreamingOutRequestClockWidgets(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: StartStreamingOutRequestClockWidgetsBoxColor = None,
+        font: int = None,
+        font_color: StartStreamingOutRequestClockWidgetsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        x: float = None,
+        y: float = None,
+        zone: int = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+        self.zone = zone
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = StartStreamingOutRequestClockWidgetsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = StartStreamingOutRequestClockWidgetsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class StartStreamingOutRequestImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        image_crop_mode: int = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.image_crop_mode = image_crop_mode
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.image_crop_mode is not None:
+            result['ImageCropMode'] = self.image_crop_mode
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ImageCropMode') is not None:
+            self.image_crop_mode = m.get('ImageCropMode')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class StartStreamingOutRequestPanesImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        layer: int = None,
+        pane_image_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_image_crop_mode = pane_image_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_image_crop_mode is not None:
+            result['PaneImageCropMode'] = self.pane_image_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneImageCropMode') is not None:
+            self.pane_image_crop_mode = m.get('PaneImageCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class StartStreamingOutRequestPanesTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartStreamingOutRequestPanesTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartStreamingOutRequestPanesTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: StartStreamingOutRequestPanesTextsBoxColor = None,
+        font: int = None,
+        font_color: StartStreamingOutRequestPanesTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = StartStreamingOutRequestPanesTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = StartStreamingOutRequestPanesTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class StartStreamingOutRequestPanes(TeaModel):
+    def __init__(
+        self,
+        images: List[StartStreamingOutRequestPanesImages] = None,
+        pane_crop_mode: int = None,
+        pane_id: str = None,
+        source: str = None,
+        source_type: str = None,
+        texts: List[StartStreamingOutRequestPanesTexts] = None,
+    ):
+        self.images = images
+        self.pane_crop_mode = pane_crop_mode
+        # This parameter is required.
+        self.pane_id = pane_id
+        self.source = source
+        self.source_type = source_type
+        self.texts = texts
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.pane_crop_mode is not None:
+            result['PaneCropMode'] = self.pane_crop_mode
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = StartStreamingOutRequestPanesImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('PaneCropMode') is not None:
+            self.pane_crop_mode = m.get('PaneCropMode')
         if m.get('PaneId') is not None:
             self.pane_id = m.get('PaneId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = StartStreamingOutRequestPanesTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class StartStreamingOutRequestTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartStreamingOutRequestTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class StartStreamingOutRequestTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: StartStreamingOutRequestTextsBoxColor = None,
+        font: int = None,
+        font_color: StartStreamingOutRequestTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = StartStreamingOutRequestTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = StartStreamingOutRequestTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
         return self
 
 
@@ -15118,25 +16620,45 @@ class StartStreamingOutRequest(TeaModel):
         self,
         app_id: str = None,
         channel_id: str = None,
+        clock_widgets: List[StartStreamingOutRequestClockWidgets] = None,
+        crop_mode: int = None,
+        images: List[StartStreamingOutRequestImages] = None,
         panes: List[StartStreamingOutRequestPanes] = None,
         task_id: str = None,
         template_id: str = None,
+        texts: List[StartStreamingOutRequestTexts] = None,
         url: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
         # This parameter is required.
         self.channel_id = channel_id
+        self.clock_widgets = clock_widgets
+        self.crop_mode = crop_mode
+        self.images = images
         self.panes = panes
         self.task_id = task_id
         # This parameter is required.
         self.template_id = template_id
+        self.texts = texts
         # This parameter is required.
         self.url = url
 
     def validate(self):
+        if self.clock_widgets:
+            for k in self.clock_widgets:
+                if k:
+                    k.validate()
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
         if self.panes:
             for k in self.panes:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
                 if k:
                     k.validate()
 
@@ -15150,6 +16672,16 @@ class StartStreamingOutRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
+        result['ClockWidgets'] = []
+        if self.clock_widgets is not None:
+            for k in self.clock_widgets:
+                result['ClockWidgets'].append(k.to_map() if k else None)
+        if self.crop_mode is not None:
+            result['CropMode'] = self.crop_mode
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
         result['Panes'] = []
         if self.panes is not None:
             for k in self.panes:
@@ -15158,6 +16690,10 @@ class StartStreamingOutRequest(TeaModel):
             result['TaskId'] = self.task_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
         if self.url is not None:
             result['Url'] = self.url
         return result
@@ -15168,6 +16704,18 @@ class StartStreamingOutRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
+        self.clock_widgets = []
+        if m.get('ClockWidgets') is not None:
+            for k in m.get('ClockWidgets'):
+                temp_model = StartStreamingOutRequestClockWidgets()
+                self.clock_widgets.append(temp_model.from_map(k))
+        if m.get('CropMode') is not None:
+            self.crop_mode = m.get('CropMode')
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = StartStreamingOutRequestImages()
+                self.images.append(temp_model.from_map(k))
         self.panes = []
         if m.get('Panes') is not None:
             for k in m.get('Panes'):
@@ -15177,6 +16725,11 @@ class StartStreamingOutRequest(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = StartStreamingOutRequestTexts()
+                self.texts.append(temp_model.from_map(k))
         if m.get('Url') is not None:
             self.url = m.get('Url')
         return self
@@ -15951,6 +17504,947 @@ class UpdateAutoLiveStreamRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAutoLiveStreamRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudRecordRequestClockWidgetsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateCloudRecordRequestClockWidgetsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateCloudRecordRequestClockWidgets(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: UpdateCloudRecordRequestClockWidgetsBoxColor = None,
+        font: int = None,
+        font_color: UpdateCloudRecordRequestClockWidgetsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        x: float = None,
+        y: float = None,
+        zone: int = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+        self.zone = zone
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = UpdateCloudRecordRequestClockWidgetsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = UpdateCloudRecordRequestClockWidgetsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class UpdateCloudRecordRequestImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        image_crop_mode: int = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.image_crop_mode = image_crop_mode
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.image_crop_mode is not None:
+            result['ImageCropMode'] = self.image_crop_mode
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ImageCropMode') is not None:
+            self.image_crop_mode = m.get('ImageCropMode')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class UpdateCloudRecordRequestPanesImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        layer: int = None,
+        pane_image_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_image_crop_mode = pane_image_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_image_crop_mode is not None:
+            result['PaneImageCropMode'] = self.pane_image_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneImageCropMode') is not None:
+            self.pane_image_crop_mode = m.get('PaneImageCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class UpdateCloudRecordRequestPanesTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateCloudRecordRequestPanesTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateCloudRecordRequestPanesTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: UpdateCloudRecordRequestPanesTextsBoxColor = None,
+        font: int = None,
+        font_color: UpdateCloudRecordRequestPanesTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = UpdateCloudRecordRequestPanesTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = UpdateCloudRecordRequestPanesTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class UpdateCloudRecordRequestPanes(TeaModel):
+    def __init__(
+        self,
+        images: List[UpdateCloudRecordRequestPanesImages] = None,
+        pane_crop_mode: int = None,
+        pane_id: int = None,
+        source: str = None,
+        source_type: str = None,
+        texts: List[UpdateCloudRecordRequestPanesTexts] = None,
+    ):
+        self.images = images
+        self.pane_crop_mode = pane_crop_mode
+        # This parameter is required.
+        self.pane_id = pane_id
+        self.source = source
+        self.source_type = source_type
+        self.texts = texts
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.pane_crop_mode is not None:
+            result['PaneCropMode'] = self.pane_crop_mode
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = UpdateCloudRecordRequestPanesImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('PaneCropMode') is not None:
+            self.pane_crop_mode = m.get('PaneCropMode')
+        if m.get('PaneId') is not None:
+            self.pane_id = m.get('PaneId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = UpdateCloudRecordRequestPanesTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateCloudRecordRequestTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateCloudRecordRequestTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateCloudRecordRequestTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: UpdateCloudRecordRequestTextsBoxColor = None,
+        font: int = None,
+        font_color: UpdateCloudRecordRequestTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = UpdateCloudRecordRequestTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = UpdateCloudRecordRequestTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class UpdateCloudRecordRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        clock_widgets: List[UpdateCloudRecordRequestClockWidgets] = None,
+        images: List[UpdateCloudRecordRequestImages] = None,
+        panes: List[UpdateCloudRecordRequestPanes] = None,
+        task_id: str = None,
+        template_id: str = None,
+        texts: List[UpdateCloudRecordRequestTexts] = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        self.clock_widgets = clock_widgets
+        self.images = images
+        self.panes = panes
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.texts = texts
+
+    def validate(self):
+        if self.clock_widgets:
+            for k in self.clock_widgets:
+                if k:
+                    k.validate()
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.panes:
+            for k in self.panes:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        result['ClockWidgets'] = []
+        if self.clock_widgets is not None:
+            for k in self.clock_widgets:
+                result['ClockWidgets'].append(k.to_map() if k else None)
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        result['Panes'] = []
+        if self.panes is not None:
+            for k in self.panes:
+                result['Panes'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        self.clock_widgets = []
+        if m.get('ClockWidgets') is not None:
+            for k in m.get('ClockWidgets'):
+                temp_model = UpdateCloudRecordRequestClockWidgets()
+                self.clock_widgets.append(temp_model.from_map(k))
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = UpdateCloudRecordRequestImages()
+                self.images.append(temp_model.from_map(k))
+        self.panes = []
+        if m.get('Panes') is not None:
+            for k in m.get('Panes'):
+                temp_model = UpdateCloudRecordRequestPanes()
+                self.panes.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = UpdateCloudRecordRequestTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateCloudRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UpdateCloudRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudRecordResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17501,6 +19995,946 @@ class UpdateRecordTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateRecordTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateStreamingOutRequestClockWidgetsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateStreamingOutRequestClockWidgetsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateStreamingOutRequestClockWidgets(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: UpdateStreamingOutRequestClockWidgetsBoxColor = None,
+        font: int = None,
+        font_color: UpdateStreamingOutRequestClockWidgetsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        x: float = None,
+        y: float = None,
+        zone: int = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+        self.zone = zone
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zone is not None:
+            result['Zone'] = self.zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = UpdateStreamingOutRequestClockWidgetsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = UpdateStreamingOutRequestClockWidgetsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
+        return self
+
+
+class UpdateStreamingOutRequestImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        image_crop_mode: int = None,
+        layer: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.image_crop_mode = image_crop_mode
+        self.layer = layer
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.image_crop_mode is not None:
+            result['ImageCropMode'] = self.image_crop_mode
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ImageCropMode') is not None:
+            self.image_crop_mode = m.get('ImageCropMode')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class UpdateStreamingOutRequestPanesImages(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        height: float = None,
+        layer: int = None,
+        pane_image_crop_mode: int = None,
+        url: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        # This parameter is required.
+        self.height = height
+        self.layer = layer
+        self.pane_image_crop_mode = pane_image_crop_mode
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.width = width
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.pane_image_crop_mode is not None:
+            result['PaneImageCropMode'] = self.pane_image_crop_mode
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('PaneImageCropMode') is not None:
+            self.pane_image_crop_mode = m.get('PaneImageCropMode')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class UpdateStreamingOutRequestPanesTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateStreamingOutRequestPanesTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateStreamingOutRequestPanesTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: UpdateStreamingOutRequestPanesTextsBoxColor = None,
+        font: int = None,
+        font_color: UpdateStreamingOutRequestPanesTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = UpdateStreamingOutRequestPanesTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = UpdateStreamingOutRequestPanesTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class UpdateStreamingOutRequestPanes(TeaModel):
+    def __init__(
+        self,
+        images: List[UpdateStreamingOutRequestPanesImages] = None,
+        pane_crop_mode: int = None,
+        pane_id: int = None,
+        source: str = None,
+        source_type: str = None,
+        texts: List[UpdateStreamingOutRequestPanesTexts] = None,
+    ):
+        self.images = images
+        self.pane_crop_mode = pane_crop_mode
+        self.pane_id = pane_id
+        self.source = source
+        self.source_type = source_type
+        self.texts = texts
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.pane_crop_mode is not None:
+            result['PaneCropMode'] = self.pane_crop_mode
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = UpdateStreamingOutRequestPanesImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('PaneCropMode') is not None:
+            self.pane_crop_mode = m.get('PaneCropMode')
+        if m.get('PaneId') is not None:
+            self.pane_id = m.get('PaneId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = UpdateStreamingOutRequestPanesTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateStreamingOutRequestTextsBoxColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateStreamingOutRequestTextsFontColor(TeaModel):
+    def __init__(
+        self,
+        b: int = None,
+        g: int = None,
+        r: int = None,
+    ):
+        self.b = b
+        self.g = g
+        self.r = r
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.b is not None:
+            result['B'] = self.b
+        if self.g is not None:
+            result['G'] = self.g
+        if self.r is not None:
+            result['R'] = self.r
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('B') is not None:
+            self.b = m.get('B')
+        if m.get('G') is not None:
+            self.g = m.get('G')
+        if m.get('R') is not None:
+            self.r = m.get('R')
+        return self
+
+
+class UpdateStreamingOutRequestTexts(TeaModel):
+    def __init__(
+        self,
+        alpha: float = None,
+        box_alpha: float = None,
+        box_borderw: int = None,
+        box_color: UpdateStreamingOutRequestTextsBoxColor = None,
+        font: int = None,
+        font_color: UpdateStreamingOutRequestTextsFontColor = None,
+        font_size: int = None,
+        has_box: bool = None,
+        layer: int = None,
+        texture: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alpha = alpha
+        self.box_alpha = box_alpha
+        self.box_borderw = box_borderw
+        self.box_color = box_color
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.has_box = has_box
+        self.layer = layer
+        # This parameter is required.
+        self.texture = texture
+        # This parameter is required.
+        self.x = x
+        # This parameter is required.
+        self.y = y
+
+    def validate(self):
+        if self.box_color:
+            self.box_color.validate()
+        if self.font_color:
+            self.font_color.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alpha is not None:
+            result['Alpha'] = self.alpha
+        if self.box_alpha is not None:
+            result['BoxAlpha'] = self.box_alpha
+        if self.box_borderw is not None:
+            result['BoxBorderw'] = self.box_borderw
+        if self.box_color is not None:
+            result['BoxColor'] = self.box_color.to_map()
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color.to_map()
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.has_box is not None:
+            result['HasBox'] = self.has_box
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.texture is not None:
+            result['Texture'] = self.texture
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alpha') is not None:
+            self.alpha = m.get('Alpha')
+        if m.get('BoxAlpha') is not None:
+            self.box_alpha = m.get('BoxAlpha')
+        if m.get('BoxBorderw') is not None:
+            self.box_borderw = m.get('BoxBorderw')
+        if m.get('BoxColor') is not None:
+            temp_model = UpdateStreamingOutRequestTextsBoxColor()
+            self.box_color = temp_model.from_map(m['BoxColor'])
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            temp_model = UpdateStreamingOutRequestTextsFontColor()
+            self.font_color = temp_model.from_map(m['FontColor'])
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HasBox') is not None:
+            self.has_box = m.get('HasBox')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('Texture') is not None:
+            self.texture = m.get('Texture')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class UpdateStreamingOutRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        clock_widgets: List[UpdateStreamingOutRequestClockWidgets] = None,
+        images: List[UpdateStreamingOutRequestImages] = None,
+        panes: List[UpdateStreamingOutRequestPanes] = None,
+        task_id: str = None,
+        template_id: str = None,
+        texts: List[UpdateStreamingOutRequestTexts] = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        self.clock_widgets = clock_widgets
+        self.images = images
+        self.panes = panes
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.template_id = template_id
+        self.texts = texts
+
+    def validate(self):
+        if self.clock_widgets:
+            for k in self.clock_widgets:
+                if k:
+                    k.validate()
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.panes:
+            for k in self.panes:
+                if k:
+                    k.validate()
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        result['ClockWidgets'] = []
+        if self.clock_widgets is not None:
+            for k in self.clock_widgets:
+                result['ClockWidgets'].append(k.to_map() if k else None)
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        result['Panes'] = []
+        if self.panes is not None:
+            for k in self.panes:
+                result['Panes'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        result['Texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['Texts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        self.clock_widgets = []
+        if m.get('ClockWidgets') is not None:
+            for k in m.get('ClockWidgets'):
+                temp_model = UpdateStreamingOutRequestClockWidgets()
+                self.clock_widgets.append(temp_model.from_map(k))
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = UpdateStreamingOutRequestImages()
+                self.images.append(temp_model.from_map(k))
+        self.panes = []
+        if m.get('Panes') is not None:
+            for k in m.get('Panes'):
+                temp_model = UpdateStreamingOutRequestPanes()
+                self.panes.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        self.texts = []
+        if m.get('Texts') is not None:
+            for k in m.get('Texts'):
+                temp_model = UpdateStreamingOutRequestTexts()
+                self.texts.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateStreamingOutResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class UpdateStreamingOutResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateStreamingOutResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateStreamingOutResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

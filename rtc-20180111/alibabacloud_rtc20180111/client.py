@@ -6539,6 +6539,12 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.clock_widgets):
+            query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.crop_mode):
+            query['CropMode'] = request.crop_mode
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.storage_config):
@@ -6547,6 +6553,8 @@ class Client(OpenApiClient):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6584,6 +6592,12 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.clock_widgets):
+            query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.crop_mode):
+            query['CropMode'] = request.crop_mode
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.storage_config):
@@ -6592,6 +6606,8 @@ class Client(OpenApiClient):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7033,12 +7049,20 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.clock_widgets):
+            query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.crop_mode):
+            query['CropMode'] = request.crop_mode
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -7078,12 +7102,20 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.clock_widgets):
+            query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.crop_mode):
+            query['CropMode'] = request.crop_mode
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
         if not UtilClient.is_unset(request.panes):
             query['Panes'] = request.panes
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -7751,6 +7783,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_auto_live_stream_rule_with_options_async(request, runtime)
 
+    def update_cloud_record_with_options(
+        self,
+        request: rtc_20180111_models.UpdateCloudRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.UpdateCloudRecordResponse:
+        """
+        @summary 更新云端录制任务
+        
+        @param request: UpdateCloudRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.clock_widgets):
+            query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.panes):
+            query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudRecord',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateCloudRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_record_with_options_async(
+        self,
+        request: rtc_20180111_models.UpdateCloudRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.UpdateCloudRecordResponse:
+        """
+        @summary 更新云端录制任务
+        
+        @param request: UpdateCloudRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.clock_widgets):
+            query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.panes):
+            query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudRecord',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateCloudRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_record(
+        self,
+        request: rtc_20180111_models.UpdateCloudRecordRequest,
+    ) -> rtc_20180111_models.UpdateCloudRecordResponse:
+        """
+        @summary 更新云端录制任务
+        
+        @param request: UpdateCloudRecordRequest
+        @return: UpdateCloudRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_record_with_options(request, runtime)
+
+    async def update_cloud_record_async(
+        self,
+        request: rtc_20180111_models.UpdateCloudRecordRequest,
+    ) -> rtc_20180111_models.UpdateCloudRecordResponse:
+        """
+        @summary 更新云端录制任务
+        
+        @param request: UpdateCloudRecordRequest
+        @return: UpdateCloudRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_record_with_options_async(request, runtime)
+
     def update_mputask_with_options(
         self,
         request: rtc_20180111_models.UpdateMPUTaskRequest,
@@ -8234,3 +8390,127 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_record_template_with_options_async(request, runtime)
+
+    def update_streaming_out_with_options(
+        self,
+        request: rtc_20180111_models.UpdateStreamingOutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.UpdateStreamingOutResponse:
+        """
+        @summary 更新旁路推流任务
+        
+        @param request: UpdateStreamingOutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStreamingOutResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.clock_widgets):
+            query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.panes):
+            query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateStreamingOut',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateStreamingOutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_streaming_out_with_options_async(
+        self,
+        request: rtc_20180111_models.UpdateStreamingOutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.UpdateStreamingOutResponse:
+        """
+        @summary 更新旁路推流任务
+        
+        @param request: UpdateStreamingOutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStreamingOutResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.clock_widgets):
+            query['ClockWidgets'] = request.clock_widgets
+        if not UtilClient.is_unset(request.images):
+            query['Images'] = request.images
+        if not UtilClient.is_unset(request.panes):
+            query['Panes'] = request.panes
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.texts):
+            query['Texts'] = request.texts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateStreamingOut',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.UpdateStreamingOutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_streaming_out(
+        self,
+        request: rtc_20180111_models.UpdateStreamingOutRequest,
+    ) -> rtc_20180111_models.UpdateStreamingOutResponse:
+        """
+        @summary 更新旁路推流任务
+        
+        @param request: UpdateStreamingOutRequest
+        @return: UpdateStreamingOutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_streaming_out_with_options(request, runtime)
+
+    async def update_streaming_out_async(
+        self,
+        request: rtc_20180111_models.UpdateStreamingOutRequest,
+    ) -> rtc_20180111_models.UpdateStreamingOutResponse:
+        """
+        @summary 更新旁路推流任务
+        
+        @param request: UpdateStreamingOutRequest
+        @return: UpdateStreamingOutResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_streaming_out_with_options_async(request, runtime)

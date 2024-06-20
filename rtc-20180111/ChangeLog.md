@@ -1,3 +1,21 @@
+2024-06-20 Version: 3.1.0
+- Support API UpdateCloudRecord.
+- Support API UpdateStreamingOut.
+- Update API StartCloudRecord: add param ClockWidgets.
+- Update API StartCloudRecord: add param CropMode.
+- Update API StartCloudRecord: add param Images.
+- Update API StartCloudRecord: add param Texts.
+- Update API StartCloudRecord: update param Panes.
+- Update API StartCloudRecord: update param StorageConfig.
+- Update API StartCloudRecord: update param TemplateId.
+- Update API StartStreamingOut: add param ClockWidgets.
+- Update API StartStreamingOut: add param CropMode.
+- Update API StartStreamingOut: add param Images.
+- Update API StartStreamingOut: add param Texts.
+- Update API StartStreamingOut: update param Panes.
+- Update API StartStreamingOut: update param Url.
+
+
 2024-05-22 Version: 3.0.1
 - Update API DescribeApps: add param AppVersion.
 
