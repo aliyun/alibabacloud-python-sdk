@@ -1,3 +1,13 @@
+2024-06-20 Version: 2.30.1
+- Update API DescribeCommonOverallConfigList: update response param.
+- Update API ListHoneypotEventFlows: update param CurrentPage.
+- Update API ListHoneypotEventFlows: update param Dealed.
+- Update API ListHoneypotEventFlows: update param Lang.
+- Update API ListHoneypotEventFlows: update param PageSize.
+- Update API ListHoneypotEventFlows: update param RequestId.
+- Update API ListHoneypotEventFlows: update param SecurityEventId.
+
+
 2024-06-11 Version: 2.30.0
 - Support API DescribeVulDefendCountStatistics.
 - Support API DescribeVulMetaCountStatistics.

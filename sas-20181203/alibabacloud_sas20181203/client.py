@@ -52199,7 +52199,19 @@ class Client(OpenApiClient):
         @return: ListHoneypotEventFlowsResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dealed):
+            query['Dealed'] = request.dealed
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.security_event_id):
+            query['SecurityEventId'] = request.security_event_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -52208,7 +52220,7 @@ class Client(OpenApiClient):
             version='2018-12-03',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -52232,7 +52244,19 @@ class Client(OpenApiClient):
         @return: ListHoneypotEventFlowsResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dealed):
+            query['Dealed'] = request.dealed
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.security_event_id):
+            query['SecurityEventId'] = request.security_event_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -52241,7 +52265,7 @@ class Client(OpenApiClient):
             version='2018-12-03',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
