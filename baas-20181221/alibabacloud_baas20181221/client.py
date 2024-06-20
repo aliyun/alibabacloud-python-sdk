@@ -62,6 +62,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.AcceptFabricInvitationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.AcceptFabricInvitationResponse:
+        """
+        @param request: AcceptFabricInvitationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptFabricInvitationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -92,6 +97,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.AcceptFabricInvitationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.AcceptFabricInvitationResponse:
+        """
+        @param request: AcceptFabricInvitationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptFabricInvitationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -121,6 +131,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.AcceptFabricInvitationRequest,
     ) -> baas_20181221_models.AcceptFabricInvitationResponse:
+        """
+        @param request: AcceptFabricInvitationRequest
+        @return: AcceptFabricInvitationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.accept_fabric_invitation_with_options(request, runtime)
 
@@ -128,6 +142,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.AcceptFabricInvitationRequest,
     ) -> baas_20181221_models.AcceptFabricInvitationResponse:
+        """
+        @param request: AcceptFabricInvitationRequest
+        @return: AcceptFabricInvitationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.accept_fabric_invitation_with_options_async(request, runtime)
 
@@ -136,6 +154,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ApplyAntChainCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApplyAntChainCertificateResponse:
+        """
+        @param request: ApplyAntChainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAntChainCertificateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -166,6 +189,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ApplyAntChainCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApplyAntChainCertificateResponse:
+        """
+        @param request: ApplyAntChainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAntChainCertificateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -195,6 +223,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ApplyAntChainCertificateRequest,
     ) -> baas_20181221_models.ApplyAntChainCertificateResponse:
+        """
+        @param request: ApplyAntChainCertificateRequest
+        @return: ApplyAntChainCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_ant_chain_certificate_with_options(request, runtime)
 
@@ -202,6 +234,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ApplyAntChainCertificateRequest,
     ) -> baas_20181221_models.ApplyAntChainCertificateResponse:
+        """
+        @param request: ApplyAntChainCertificateRequest
+        @return: ApplyAntChainCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_ant_chain_certificate_with_options_async(request, runtime)
 
@@ -210,6 +246,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse:
+        """
+        @param request: ApplyAntChainCertificateWithKeyAutoCreationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAntChainCertificateWithKeyAutoCreationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -254,6 +295,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse:
+        """
+        @param request: ApplyAntChainCertificateWithKeyAutoCreationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAntChainCertificateWithKeyAutoCreationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -297,6 +343,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationRequest,
     ) -> baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse:
+        """
+        @param request: ApplyAntChainCertificateWithKeyAutoCreationRequest
+        @return: ApplyAntChainCertificateWithKeyAutoCreationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_ant_chain_certificate_with_key_auto_creation_with_options(request, runtime)
 
@@ -304,6 +354,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationRequest,
     ) -> baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse:
+        """
+        @param request: ApplyAntChainCertificateWithKeyAutoCreationRequest
+        @return: ApplyAntChainCertificateWithKeyAutoCreationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_ant_chain_certificate_with_key_auto_creation_with_options_async(request, runtime)
 
@@ -312,6 +366,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ApproveFabricChaincodeDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApproveFabricChaincodeDefinitionResponse:
+        """
+        @summary ApproveFabricChaincodeDefinition
+        
+        @param request: ApproveFabricChaincodeDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveFabricChaincodeDefinitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -346,6 +407,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ApproveFabricChaincodeDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApproveFabricChaincodeDefinitionResponse:
+        """
+        @summary ApproveFabricChaincodeDefinition
+        
+        @param request: ApproveFabricChaincodeDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveFabricChaincodeDefinitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -379,6 +447,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ApproveFabricChaincodeDefinitionRequest,
     ) -> baas_20181221_models.ApproveFabricChaincodeDefinitionResponse:
+        """
+        @summary ApproveFabricChaincodeDefinition
+        
+        @param request: ApproveFabricChaincodeDefinitionRequest
+        @return: ApproveFabricChaincodeDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.approve_fabric_chaincode_definition_with_options(request, runtime)
 
@@ -386,6 +460,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ApproveFabricChaincodeDefinitionRequest,
     ) -> baas_20181221_models.ApproveFabricChaincodeDefinitionResponse:
+        """
+        @summary ApproveFabricChaincodeDefinition
+        
+        @param request: ApproveFabricChaincodeDefinitionRequest
+        @return: ApproveFabricChaincodeDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.approve_fabric_chaincode_definition_with_options_async(request, runtime)
 
@@ -394,6 +474,11 @@ class Client(OpenApiClient):
         tmp_req: baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse:
+        """
+        @param tmp_req: BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -428,6 +513,11 @@ class Client(OpenApiClient):
         tmp_req: baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse:
+        """
+        @param tmp_req: BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -461,6 +551,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest,
     ) -> baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse:
+        """
+        @param request: BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest
+        @return: BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_add_ant_chain_mini_app_qrcode_authorized_users_with_options(request, runtime)
 
@@ -468,6 +562,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest,
     ) -> baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse:
+        """
+        @param request: BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest
+        @return: BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_ant_chain_mini_app_qrcode_authorized_users_with_options_async(request, runtime)
 
@@ -476,6 +574,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CheckFabricConsortiumDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CheckFabricConsortiumDomainResponse:
+        """
+        @param request: CheckFabricConsortiumDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckFabricConsortiumDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_code):
@@ -504,6 +607,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CheckFabricConsortiumDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CheckFabricConsortiumDomainResponse:
+        """
+        @param request: CheckFabricConsortiumDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckFabricConsortiumDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain_code):
@@ -531,6 +639,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CheckFabricConsortiumDomainRequest,
     ) -> baas_20181221_models.CheckFabricConsortiumDomainResponse:
+        """
+        @param request: CheckFabricConsortiumDomainRequest
+        @return: CheckFabricConsortiumDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_fabric_consortium_domain_with_options(request, runtime)
 
@@ -538,6 +650,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CheckFabricConsortiumDomainRequest,
     ) -> baas_20181221_models.CheckFabricConsortiumDomainResponse:
+        """
+        @param request: CheckFabricConsortiumDomainRequest
+        @return: CheckFabricConsortiumDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_fabric_consortium_domain_with_options_async(request, runtime)
 
@@ -546,6 +662,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CheckFabricOrganizationDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CheckFabricOrganizationDomainResponse:
+        """
+        @param request: CheckFabricOrganizationDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckFabricOrganizationDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain):
@@ -576,6 +697,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CheckFabricOrganizationDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CheckFabricOrganizationDomainResponse:
+        """
+        @param request: CheckFabricOrganizationDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckFabricOrganizationDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.domain):
@@ -605,6 +731,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CheckFabricOrganizationDomainRequest,
     ) -> baas_20181221_models.CheckFabricOrganizationDomainResponse:
+        """
+        @param request: CheckFabricOrganizationDomainRequest
+        @return: CheckFabricOrganizationDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_fabric_organization_domain_with_options(request, runtime)
 
@@ -612,6 +742,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CheckFabricOrganizationDomainRequest,
     ) -> baas_20181221_models.CheckFabricOrganizationDomainResponse:
+        """
+        @param request: CheckFabricOrganizationDomainRequest
+        @return: CheckFabricOrganizationDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_fabric_organization_domain_with_options_async(request, runtime)
 
@@ -620,6 +754,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ConfirmFabricConsortiumMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ConfirmFabricConsortiumMemberResponse:
+        """
+        @param request: ConfirmFabricConsortiumMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmFabricConsortiumMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -650,6 +789,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ConfirmFabricConsortiumMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ConfirmFabricConsortiumMemberResponse:
+        """
+        @param request: ConfirmFabricConsortiumMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmFabricConsortiumMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -679,6 +823,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ConfirmFabricConsortiumMemberRequest,
     ) -> baas_20181221_models.ConfirmFabricConsortiumMemberResponse:
+        """
+        @param request: ConfirmFabricConsortiumMemberRequest
+        @return: ConfirmFabricConsortiumMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.confirm_fabric_consortium_member_with_options(request, runtime)
 
@@ -686,6 +834,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ConfirmFabricConsortiumMemberRequest,
     ) -> baas_20181221_models.ConfirmFabricConsortiumMemberResponse:
+        """
+        @param request: ConfirmFabricConsortiumMemberRequest
+        @return: ConfirmFabricConsortiumMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.confirm_fabric_consortium_member_with_options_async(request, runtime)
 
@@ -694,6 +846,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CopyAntChainContractProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CopyAntChainContractProjectResponse:
+        """
+        @param request: CopyAntChainContractProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyAntChainContractProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_description):
@@ -728,6 +885,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CopyAntChainContractProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CopyAntChainContractProjectResponse:
+        """
+        @param request: CopyAntChainContractProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyAntChainContractProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_description):
@@ -761,6 +923,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CopyAntChainContractProjectRequest,
     ) -> baas_20181221_models.CopyAntChainContractProjectResponse:
+        """
+        @param request: CopyAntChainContractProjectRequest
+        @return: CopyAntChainContractProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_ant_chain_contract_project_with_options(request, runtime)
 
@@ -768,6 +934,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CopyAntChainContractProjectRequest,
     ) -> baas_20181221_models.CopyAntChainContractProjectResponse:
+        """
+        @param request: CopyAntChainContractProjectRequest
+        @return: CopyAntChainContractProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_ant_chain_contract_project_with_options_async(request, runtime)
 
@@ -776,6 +946,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainAccountResponse:
+        """
+        @param request: CreateAntChainAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -810,6 +985,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainAccountResponse:
+        """
+        @param request: CreateAntChainAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -843,6 +1023,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainAccountRequest,
     ) -> baas_20181221_models.CreateAntChainAccountResponse:
+        """
+        @param request: CreateAntChainAccountRequest
+        @return: CreateAntChainAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ant_chain_account_with_options(request, runtime)
 
@@ -850,6 +1034,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainAccountRequest,
     ) -> baas_20181221_models.CreateAntChainAccountResponse:
+        """
+        @param request: CreateAntChainAccountRequest
+        @return: CreateAntChainAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ant_chain_account_with_options_async(request, runtime)
 
@@ -858,6 +1046,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse:
+        """
+        @param request: CreateAntChainAccountWithKeyPairAutoCreationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainAccountWithKeyPairAutoCreationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -892,6 +1085,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse:
+        """
+        @param request: CreateAntChainAccountWithKeyPairAutoCreationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainAccountWithKeyPairAutoCreationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -925,6 +1123,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationRequest,
     ) -> baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse:
+        """
+        @param request: CreateAntChainAccountWithKeyPairAutoCreationRequest
+        @return: CreateAntChainAccountWithKeyPairAutoCreationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ant_chain_account_with_key_pair_auto_creation_with_options(request, runtime)
 
@@ -932,6 +1134,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationRequest,
     ) -> baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse:
+        """
+        @param request: CreateAntChainAccountWithKeyPairAutoCreationRequest
+        @return: CreateAntChainAccountWithKeyPairAutoCreationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ant_chain_account_with_key_pair_auto_creation_with_options_async(request, runtime)
 
@@ -940,6 +1146,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainConsortiumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainConsortiumResponse:
+        """
+        @param request: CreateAntChainConsortiumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainConsortiumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_description):
@@ -970,6 +1181,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainConsortiumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainConsortiumResponse:
+        """
+        @param request: CreateAntChainConsortiumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainConsortiumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_description):
@@ -999,6 +1215,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainConsortiumRequest,
     ) -> baas_20181221_models.CreateAntChainConsortiumResponse:
+        """
+        @param request: CreateAntChainConsortiumRequest
+        @return: CreateAntChainConsortiumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ant_chain_consortium_with_options(request, runtime)
 
@@ -1006,6 +1226,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainConsortiumRequest,
     ) -> baas_20181221_models.CreateAntChainConsortiumResponse:
+        """
+        @param request: CreateAntChainConsortiumRequest
+        @return: CreateAntChainConsortiumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ant_chain_consortium_with_options_async(request, runtime)
 
@@ -1014,6 +1238,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainContractContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainContractContentResponse:
+        """
+        @param request: CreateAntChainContractContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainContractContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -1050,6 +1279,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainContractContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainContractContentResponse:
+        """
+        @param request: CreateAntChainContractContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainContractContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -1085,6 +1319,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainContractContentRequest,
     ) -> baas_20181221_models.CreateAntChainContractContentResponse:
+        """
+        @param request: CreateAntChainContractContentRequest
+        @return: CreateAntChainContractContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ant_chain_contract_content_with_options(request, runtime)
 
@@ -1092,6 +1330,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainContractContentRequest,
     ) -> baas_20181221_models.CreateAntChainContractContentResponse:
+        """
+        @param request: CreateAntChainContractContentRequest
+        @return: CreateAntChainContractContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ant_chain_contract_content_with_options_async(request, runtime)
 
@@ -1100,6 +1342,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainContractProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainContractProjectResponse:
+        """
+        @param request: CreateAntChainContractProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainContractProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -1134,6 +1381,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainContractProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainContractProjectResponse:
+        """
+        @param request: CreateAntChainContractProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainContractProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -1167,6 +1419,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainContractProjectRequest,
     ) -> baas_20181221_models.CreateAntChainContractProjectResponse:
+        """
+        @param request: CreateAntChainContractProjectRequest
+        @return: CreateAntChainContractProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ant_chain_contract_project_with_options(request, runtime)
 
@@ -1174,6 +1430,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainContractProjectRequest,
     ) -> baas_20181221_models.CreateAntChainContractProjectResponse:
+        """
+        @param request: CreateAntChainContractProjectRequest
+        @return: CreateAntChainContractProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ant_chain_contract_project_with_options_async(request, runtime)
 
@@ -1182,6 +1442,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainKmsAccountNewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainKmsAccountNewResponse:
+        """
+        @summary 创建MyChain托管账户
+        
+        @param request: CreateAntChainKmsAccountNewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainKmsAccountNewResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -1212,6 +1479,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateAntChainKmsAccountNewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainKmsAccountNewResponse:
+        """
+        @summary 创建MyChain托管账户
+        
+        @param request: CreateAntChainKmsAccountNewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAntChainKmsAccountNewResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -1241,6 +1515,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainKmsAccountNewRequest,
     ) -> baas_20181221_models.CreateAntChainKmsAccountNewResponse:
+        """
+        @summary 创建MyChain托管账户
+        
+        @param request: CreateAntChainKmsAccountNewRequest
+        @return: CreateAntChainKmsAccountNewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ant_chain_kms_account_new_with_options(request, runtime)
 
@@ -1248,6 +1528,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateAntChainKmsAccountNewRequest,
     ) -> baas_20181221_models.CreateAntChainKmsAccountNewResponse:
+        """
+        @summary 创建MyChain托管账户
+        
+        @param request: CreateAntChainKmsAccountNewRequest
+        @return: CreateAntChainKmsAccountNewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ant_chain_kms_account_new_with_options_async(request, runtime)
 
@@ -1256,6 +1542,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChaincodeResponse:
+        """
+        @param request: CreateFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -1296,6 +1587,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChaincodeResponse:
+        """
+        @param request: CreateFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -1335,6 +1631,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricChaincodeRequest,
     ) -> baas_20181221_models.CreateFabricChaincodeResponse:
+        """
+        @param request: CreateFabricChaincodeRequest
+        @return: CreateFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fabric_chaincode_with_options(request, runtime)
 
@@ -1342,6 +1642,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricChaincodeRequest,
     ) -> baas_20181221_models.CreateFabricChaincodeResponse:
+        """
+        @param request: CreateFabricChaincodeRequest
+        @return: CreateFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_chaincode_with_options_async(request, runtime)
 
@@ -1350,6 +1654,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricChaincodePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChaincodePackageResponse:
+        """
+        @summary CreateFabricChaincodePackage
+        
+        @param request: CreateFabricChaincodePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricChaincodePackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -1382,6 +1693,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricChaincodePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChaincodePackageResponse:
+        """
+        @summary CreateFabricChaincodePackage
+        
+        @param request: CreateFabricChaincodePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricChaincodePackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -1413,6 +1731,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricChaincodePackageRequest,
     ) -> baas_20181221_models.CreateFabricChaincodePackageResponse:
+        """
+        @summary CreateFabricChaincodePackage
+        
+        @param request: CreateFabricChaincodePackageRequest
+        @return: CreateFabricChaincodePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fabric_chaincode_package_with_options(request, runtime)
 
@@ -1420,6 +1744,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricChaincodePackageRequest,
     ) -> baas_20181221_models.CreateFabricChaincodePackageResponse:
+        """
+        @summary CreateFabricChaincodePackage
+        
+        @param request: CreateFabricChaincodePackageRequest
+        @return: CreateFabricChaincodePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_chaincode_package_with_options_async(request, runtime)
 
@@ -1428,6 +1758,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChannelResponse:
+        """
+        @param request: CreateFabricChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_name):
@@ -1468,6 +1803,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChannelResponse:
+        """
+        @param request: CreateFabricChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_name):
@@ -1507,6 +1847,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricChannelRequest,
     ) -> baas_20181221_models.CreateFabricChannelResponse:
+        """
+        @param request: CreateFabricChannelRequest
+        @return: CreateFabricChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fabric_channel_with_options(request, runtime)
 
@@ -1514,6 +1858,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricChannelRequest,
     ) -> baas_20181221_models.CreateFabricChannelResponse:
+        """
+        @param request: CreateFabricChannelRequest
+        @return: CreateFabricChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_channel_with_options_async(request, runtime)
 
@@ -1522,6 +1870,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricChannelMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChannelMemberResponse:
+        """
+        @param request: CreateFabricChannelMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricChannelMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -1552,6 +1905,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricChannelMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChannelMemberResponse:
+        """
+        @param request: CreateFabricChannelMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricChannelMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -1581,6 +1939,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricChannelMemberRequest,
     ) -> baas_20181221_models.CreateFabricChannelMemberResponse:
+        """
+        @param request: CreateFabricChannelMemberRequest
+        @return: CreateFabricChannelMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fabric_channel_member_with_options(request, runtime)
 
@@ -1588,6 +1950,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricChannelMemberRequest,
     ) -> baas_20181221_models.CreateFabricChannelMemberResponse:
+        """
+        @param request: CreateFabricChannelMemberRequest
+        @return: CreateFabricChannelMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_channel_member_with_options_async(request, runtime)
 
@@ -1596,6 +1962,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricConsortiumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricConsortiumResponse:
+        """
+        @param request: CreateFabricConsortiumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricConsortiumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.channel_policy):
@@ -1648,6 +2019,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricConsortiumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricConsortiumResponse:
+        """
+        @param request: CreateFabricConsortiumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricConsortiumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.channel_policy):
@@ -1699,6 +2075,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricConsortiumRequest,
     ) -> baas_20181221_models.CreateFabricConsortiumResponse:
+        """
+        @param request: CreateFabricConsortiumRequest
+        @return: CreateFabricConsortiumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fabric_consortium_with_options(request, runtime)
 
@@ -1706,6 +2086,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricConsortiumRequest,
     ) -> baas_20181221_models.CreateFabricConsortiumResponse:
+        """
+        @param request: CreateFabricConsortiumRequest
+        @return: CreateFabricConsortiumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_consortium_with_options_async(request, runtime)
 
@@ -1714,6 +2098,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricConsortiumMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricConsortiumMemberResponse:
+        """
+        @param request: CreateFabricConsortiumMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricConsortiumMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.code):
@@ -1746,6 +2135,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricConsortiumMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricConsortiumMemberResponse:
+        """
+        @param request: CreateFabricConsortiumMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricConsortiumMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.code):
@@ -1777,6 +2171,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricConsortiumMemberRequest,
     ) -> baas_20181221_models.CreateFabricConsortiumMemberResponse:
+        """
+        @param request: CreateFabricConsortiumMemberRequest
+        @return: CreateFabricConsortiumMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fabric_consortium_member_with_options(request, runtime)
 
@@ -1784,6 +2182,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricConsortiumMemberRequest,
     ) -> baas_20181221_models.CreateFabricConsortiumMemberResponse:
+        """
+        @param request: CreateFabricConsortiumMemberRequest
+        @return: CreateFabricConsortiumMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_consortium_member_with_options_async(request, runtime)
 
@@ -1792,6 +2194,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricOrganizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricOrganizationResponse:
+        """
+        @param request: CreateFabricOrganizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricOrganizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1836,6 +2243,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricOrganizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricOrganizationResponse:
+        """
+        @param request: CreateFabricOrganizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricOrganizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1879,6 +2291,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricOrganizationRequest,
     ) -> baas_20181221_models.CreateFabricOrganizationResponse:
+        """
+        @param request: CreateFabricOrganizationRequest
+        @return: CreateFabricOrganizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fabric_organization_with_options(request, runtime)
 
@@ -1886,6 +2302,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricOrganizationRequest,
     ) -> baas_20181221_models.CreateFabricOrganizationResponse:
+        """
+        @param request: CreateFabricOrganizationRequest
+        @return: CreateFabricOrganizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_organization_with_options_async(request, runtime)
 
@@ -1894,6 +2314,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricOrganizationUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricOrganizationUserResponse:
+        """
+        @param request: CreateFabricOrganizationUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricOrganizationUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.attrs):
@@ -1928,6 +2353,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.CreateFabricOrganizationUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricOrganizationUserResponse:
+        """
+        @param request: CreateFabricOrganizationUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFabricOrganizationUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.attrs):
@@ -1961,6 +2391,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricOrganizationUserRequest,
     ) -> baas_20181221_models.CreateFabricOrganizationUserResponse:
+        """
+        @param request: CreateFabricOrganizationUserRequest
+        @return: CreateFabricOrganizationUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_fabric_organization_user_with_options(request, runtime)
 
@@ -1968,6 +2402,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.CreateFabricOrganizationUserRequest,
     ) -> baas_20181221_models.CreateFabricOrganizationUserResponse:
+        """
+        @param request: CreateFabricOrganizationUserRequest
+        @return: CreateFabricOrganizationUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_organization_user_with_options_async(request, runtime)
 
@@ -1976,6 +2414,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteAntChainConsortiumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainConsortiumResponse:
+        """
+        @param request: DeleteAntChainConsortiumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntChainConsortiumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -2004,6 +2447,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteAntChainConsortiumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainConsortiumResponse:
+        """
+        @param request: DeleteAntChainConsortiumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntChainConsortiumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -2031,6 +2479,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteAntChainConsortiumRequest,
     ) -> baas_20181221_models.DeleteAntChainConsortiumResponse:
+        """
+        @param request: DeleteAntChainConsortiumRequest
+        @return: DeleteAntChainConsortiumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ant_chain_consortium_with_options(request, runtime)
 
@@ -2038,6 +2490,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteAntChainConsortiumRequest,
     ) -> baas_20181221_models.DeleteAntChainConsortiumResponse:
+        """
+        @param request: DeleteAntChainConsortiumRequest
+        @return: DeleteAntChainConsortiumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ant_chain_consortium_with_options_async(request, runtime)
 
@@ -2046,6 +2502,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteAntChainContractContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainContractContentResponse:
+        """
+        @param request: DeleteAntChainContractContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntChainContractContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content_id):
@@ -2074,6 +2535,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteAntChainContractContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainContractContentResponse:
+        """
+        @param request: DeleteAntChainContractContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntChainContractContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content_id):
@@ -2101,6 +2567,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteAntChainContractContentRequest,
     ) -> baas_20181221_models.DeleteAntChainContractContentResponse:
+        """
+        @param request: DeleteAntChainContractContentRequest
+        @return: DeleteAntChainContractContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ant_chain_contract_content_with_options(request, runtime)
 
@@ -2108,6 +2578,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteAntChainContractContentRequest,
     ) -> baas_20181221_models.DeleteAntChainContractContentResponse:
+        """
+        @param request: DeleteAntChainContractContentRequest
+        @return: DeleteAntChainContractContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ant_chain_contract_content_with_options_async(request, runtime)
 
@@ -2116,6 +2590,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteAntChainContractProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainContractProjectResponse:
+        """
+        @param request: DeleteAntChainContractProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntChainContractProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -2144,6 +2623,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteAntChainContractProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainContractProjectResponse:
+        """
+        @param request: DeleteAntChainContractProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntChainContractProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -2171,6 +2655,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteAntChainContractProjectRequest,
     ) -> baas_20181221_models.DeleteAntChainContractProjectResponse:
+        """
+        @param request: DeleteAntChainContractProjectRequest
+        @return: DeleteAntChainContractProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ant_chain_contract_project_with_options(request, runtime)
 
@@ -2178,6 +2666,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteAntChainContractProjectRequest,
     ) -> baas_20181221_models.DeleteAntChainContractProjectResponse:
+        """
+        @param request: DeleteAntChainContractProjectRequest
+        @return: DeleteAntChainContractProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ant_chain_contract_project_with_options_async(request, runtime)
 
@@ -2186,6 +2678,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse:
+        """
+        @param request: DeleteAntChainMiniAppQRCodeAuthorizedUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntChainMiniAppQRCodeAuthorizedUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2216,6 +2713,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse:
+        """
+        @param request: DeleteAntChainMiniAppQRCodeAuthorizedUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAntChainMiniAppQRCodeAuthorizedUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2245,6 +2747,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserRequest,
     ) -> baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse:
+        """
+        @param request: DeleteAntChainMiniAppQRCodeAuthorizedUserRequest
+        @return: DeleteAntChainMiniAppQRCodeAuthorizedUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ant_chain_mini_app_qrcode_authorized_user_with_options(request, runtime)
 
@@ -2252,6 +2758,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserRequest,
     ) -> baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse:
+        """
+        @param request: DeleteAntChainMiniAppQRCodeAuthorizedUserRequest
+        @return: DeleteAntChainMiniAppQRCodeAuthorizedUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ant_chain_mini_app_qrcode_authorized_user_with_options_async(request, runtime)
 
@@ -2260,6 +2770,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteFabricChaincodeResponse:
+        """
+        @param request: DeleteFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -2288,6 +2803,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DeleteFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteFabricChaincodeResponse:
+        """
+        @param request: DeleteFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -2315,6 +2835,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteFabricChaincodeRequest,
     ) -> baas_20181221_models.DeleteFabricChaincodeResponse:
+        """
+        @param request: DeleteFabricChaincodeRequest
+        @return: DeleteFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_fabric_chaincode_with_options(request, runtime)
 
@@ -2322,6 +2846,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DeleteFabricChaincodeRequest,
     ) -> baas_20181221_models.DeleteFabricChaincodeResponse:
+        """
+        @param request: DeleteFabricChaincodeRequest
+        @return: DeleteFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_fabric_chaincode_with_options_async(request, runtime)
 
@@ -2330,6 +2858,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainAccountsResponse:
+        """
+        @param request: DescribeAntChainAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainAccountsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2362,6 +2895,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainAccountsResponse:
+        """
+        @param request: DescribeAntChainAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainAccountsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2393,6 +2931,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainAccountsRequest,
     ) -> baas_20181221_models.DescribeAntChainAccountsResponse:
+        """
+        @param request: DescribeAntChainAccountsRequest
+        @return: DescribeAntChainAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_accounts_with_options(request, runtime)
 
@@ -2400,6 +2942,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainAccountsRequest,
     ) -> baas_20181221_models.DescribeAntChainAccountsResponse:
+        """
+        @param request: DescribeAntChainAccountsRequest
+        @return: DescribeAntChainAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_accounts_with_options_async(request, runtime)
 
@@ -2408,6 +2954,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainAccountsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainAccountsV2Response:
+        """
+        @param request: DescribeAntChainAccountsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainAccountsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2442,6 +2993,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainAccountsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainAccountsV2Response:
+        """
+        @param request: DescribeAntChainAccountsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainAccountsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2475,6 +3031,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainAccountsV2Request,
     ) -> baas_20181221_models.DescribeAntChainAccountsV2Response:
+        """
+        @param request: DescribeAntChainAccountsV2Request
+        @return: DescribeAntChainAccountsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_accounts_v2with_options(request, runtime)
 
@@ -2482,6 +3042,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainAccountsV2Request,
     ) -> baas_20181221_models.DescribeAntChainAccountsV2Response:
+        """
+        @param request: DescribeAntChainAccountsV2Request
+        @return: DescribeAntChainAccountsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_accounts_v2with_options_async(request, runtime)
 
@@ -2490,6 +3054,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainBlockRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainBlockResponse:
+        """
+        @param request: DescribeAntChainBlockRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainBlockResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2520,6 +3089,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainBlockRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainBlockResponse:
+        """
+        @param request: DescribeAntChainBlockRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainBlockResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2549,6 +3123,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainBlockRequest,
     ) -> baas_20181221_models.DescribeAntChainBlockResponse:
+        """
+        @param request: DescribeAntChainBlockRequest
+        @return: DescribeAntChainBlockResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_block_with_options(request, runtime)
 
@@ -2556,6 +3134,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainBlockRequest,
     ) -> baas_20181221_models.DescribeAntChainBlockResponse:
+        """
+        @param request: DescribeAntChainBlockRequest
+        @return: DescribeAntChainBlockResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_block_with_options_async(request, runtime)
 
@@ -2564,6 +3146,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainBlockV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainBlockV2Response:
+        """
+        @param request: DescribeAntChainBlockV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainBlockV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2596,6 +3183,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainBlockV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainBlockV2Response:
+        """
+        @param request: DescribeAntChainBlockV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainBlockV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2627,6 +3219,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainBlockV2Request,
     ) -> baas_20181221_models.DescribeAntChainBlockV2Response:
+        """
+        @param request: DescribeAntChainBlockV2Request
+        @return: DescribeAntChainBlockV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_block_v2with_options(request, runtime)
 
@@ -2634,6 +3230,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainBlockV2Request,
     ) -> baas_20181221_models.DescribeAntChainBlockV2Response:
+        """
+        @param request: DescribeAntChainBlockV2Request
+        @return: DescribeAntChainBlockV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_block_v2with_options_async(request, runtime)
 
@@ -2642,6 +3242,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsResponse:
+        """
+        @param request: DescribeAntChainCertificateApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainCertificateApplicationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2676,6 +3281,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsResponse:
+        """
+        @param request: DescribeAntChainCertificateApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainCertificateApplicationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2709,6 +3319,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsRequest,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsResponse:
+        """
+        @param request: DescribeAntChainCertificateApplicationsRequest
+        @return: DescribeAntChainCertificateApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_certificate_applications_with_options(request, runtime)
 
@@ -2716,6 +3330,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsRequest,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsResponse:
+        """
+        @param request: DescribeAntChainCertificateApplicationsRequest
+        @return: DescribeAntChainCertificateApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_certificate_applications_with_options_async(request, runtime)
 
@@ -2724,6 +3342,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response:
+        """
+        @param request: DescribeAntChainCertificateApplicationsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainCertificateApplicationsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2760,6 +3383,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response:
+        """
+        @param request: DescribeAntChainCertificateApplicationsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainCertificateApplicationsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -2795,6 +3423,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsV2Request,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response:
+        """
+        @param request: DescribeAntChainCertificateApplicationsV2Request
+        @return: DescribeAntChainCertificateApplicationsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_certificate_applications_v2with_options(request, runtime)
 
@@ -2802,6 +3434,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsV2Request,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response:
+        """
+        @param request: DescribeAntChainCertificateApplicationsV2Request
+        @return: DescribeAntChainCertificateApplicationsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_certificate_applications_v2with_options_async(request, runtime)
 
@@ -2810,6 +3446,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainConsortiumsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsResponse:
+        """
+        @param request: DescribeAntChainConsortiumsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainConsortiumsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2840,6 +3481,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainConsortiumsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsResponse:
+        """
+        @param request: DescribeAntChainConsortiumsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainConsortiumsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2869,6 +3515,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainConsortiumsRequest,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsResponse:
+        """
+        @param request: DescribeAntChainConsortiumsRequest
+        @return: DescribeAntChainConsortiumsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_consortiums_with_options(request, runtime)
 
@@ -2876,6 +3526,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainConsortiumsRequest,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsResponse:
+        """
+        @param request: DescribeAntChainConsortiumsRequest
+        @return: DescribeAntChainConsortiumsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_consortiums_with_options_async(request, runtime)
 
@@ -2884,6 +3538,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainConsortiumsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsV2Response:
+        """
+        @param request: DescribeAntChainConsortiumsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainConsortiumsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2914,6 +3573,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainConsortiumsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsV2Response:
+        """
+        @param request: DescribeAntChainConsortiumsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainConsortiumsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2943,6 +3607,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainConsortiumsV2Request,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsV2Response:
+        """
+        @param request: DescribeAntChainConsortiumsV2Request
+        @return: DescribeAntChainConsortiumsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_consortiums_v2with_options(request, runtime)
 
@@ -2950,6 +3618,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainConsortiumsV2Request,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsV2Response:
+        """
+        @param request: DescribeAntChainConsortiumsV2Request
+        @return: DescribeAntChainConsortiumsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_consortiums_v2with_options_async(request, runtime)
 
@@ -2958,6 +3630,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse:
+        """
+        @param request: DescribeAntChainContractProjectContentTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainContractProjectContentTreeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -2986,6 +3663,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse:
+        """
+        @param request: DescribeAntChainContractProjectContentTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainContractProjectContentTreeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -3013,6 +3695,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeRequest,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse:
+        """
+        @param request: DescribeAntChainContractProjectContentTreeRequest
+        @return: DescribeAntChainContractProjectContentTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_contract_project_content_tree_with_options(request, runtime)
 
@@ -3020,6 +3706,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeRequest,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse:
+        """
+        @param request: DescribeAntChainContractProjectContentTreeRequest
+        @return: DescribeAntChainContractProjectContentTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_contract_project_content_tree_with_options_async(request, runtime)
 
@@ -3028,6 +3718,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response:
+        """
+        @param request: DescribeAntChainContractProjectContentTreeV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainContractProjectContentTreeV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3058,6 +3753,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response:
+        """
+        @param request: DescribeAntChainContractProjectContentTreeV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainContractProjectContentTreeV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3087,6 +3787,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Request,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response:
+        """
+        @param request: DescribeAntChainContractProjectContentTreeV2Request
+        @return: DescribeAntChainContractProjectContentTreeV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_contract_project_content_tree_v2with_options(request, runtime)
 
@@ -3094,6 +3798,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Request,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response:
+        """
+        @param request: DescribeAntChainContractProjectContentTreeV2Request
+        @return: DescribeAntChainContractProjectContentTreeV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_contract_project_content_tree_v2with_options_async(request, runtime)
 
@@ -3102,6 +3810,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainContractProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsResponse:
+        """
+        @param request: DescribeAntChainContractProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainContractProjectsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3134,6 +3847,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainContractProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsResponse:
+        """
+        @param request: DescribeAntChainContractProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainContractProjectsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3165,6 +3883,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectsRequest,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsResponse:
+        """
+        @param request: DescribeAntChainContractProjectsRequest
+        @return: DescribeAntChainContractProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_contract_projects_with_options(request, runtime)
 
@@ -3172,6 +3894,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectsRequest,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsResponse:
+        """
+        @param request: DescribeAntChainContractProjectsRequest
+        @return: DescribeAntChainContractProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_contract_projects_with_options_async(request, runtime)
 
@@ -3180,6 +3906,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainContractProjectsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsV2Response:
+        """
+        @param request: DescribeAntChainContractProjectsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainContractProjectsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3212,6 +3943,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainContractProjectsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsV2Response:
+        """
+        @param request: DescribeAntChainContractProjectsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainContractProjectsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3243,6 +3979,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectsV2Request,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsV2Response:
+        """
+        @param request: DescribeAntChainContractProjectsV2Request
+        @return: DescribeAntChainContractProjectsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_contract_projects_v2with_options(request, runtime)
 
@@ -3250,6 +3990,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectsV2Request,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsV2Response:
+        """
+        @param request: DescribeAntChainContractProjectsV2Request
+        @return: DescribeAntChainContractProjectsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_contract_projects_v2with_options_async(request, runtime)
 
@@ -3258,6 +4002,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainDownloadPathsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsResponse:
+        """
+        @param request: DescribeAntChainDownloadPathsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainDownloadPathsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3286,6 +4035,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainDownloadPathsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsResponse:
+        """
+        @param request: DescribeAntChainDownloadPathsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainDownloadPathsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3313,6 +4067,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainDownloadPathsRequest,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsResponse:
+        """
+        @param request: DescribeAntChainDownloadPathsRequest
+        @return: DescribeAntChainDownloadPathsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_download_paths_with_options(request, runtime)
 
@@ -3320,6 +4078,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainDownloadPathsRequest,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsResponse:
+        """
+        @param request: DescribeAntChainDownloadPathsRequest
+        @return: DescribeAntChainDownloadPathsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_download_paths_with_options_async(request, runtime)
 
@@ -3328,6 +4090,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainDownloadPathsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsV2Response:
+        """
+        @param request: DescribeAntChainDownloadPathsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainDownloadPathsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3358,6 +4125,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainDownloadPathsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsV2Response:
+        """
+        @param request: DescribeAntChainDownloadPathsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainDownloadPathsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3387,6 +4159,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainDownloadPathsV2Request,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsV2Response:
+        """
+        @param request: DescribeAntChainDownloadPathsV2Request
+        @return: DescribeAntChainDownloadPathsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_download_paths_v2with_options(request, runtime)
 
@@ -3394,6 +4170,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainDownloadPathsV2Request,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsV2Response:
+        """
+        @param request: DescribeAntChainDownloadPathsV2Request
+        @return: DescribeAntChainDownloadPathsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_download_paths_v2with_options_async(request, runtime)
 
@@ -3402,6 +4182,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainInformationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainInformationResponse:
+        """
+        @param request: DescribeAntChainInformationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainInformationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3430,6 +4215,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainInformationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainInformationResponse:
+        """
+        @param request: DescribeAntChainInformationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainInformationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3457,6 +4247,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainInformationRequest,
     ) -> baas_20181221_models.DescribeAntChainInformationResponse:
+        """
+        @param request: DescribeAntChainInformationRequest
+        @return: DescribeAntChainInformationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_information_with_options(request, runtime)
 
@@ -3464,6 +4258,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainInformationRequest,
     ) -> baas_20181221_models.DescribeAntChainInformationResponse:
+        """
+        @param request: DescribeAntChainInformationRequest
+        @return: DescribeAntChainInformationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_information_with_options_async(request, runtime)
 
@@ -3472,6 +4270,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainInformationV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainInformationV2Response:
+        """
+        @param request: DescribeAntChainInformationV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainInformationV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3502,6 +4305,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainInformationV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainInformationV2Response:
+        """
+        @param request: DescribeAntChainInformationV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainInformationV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3531,6 +4339,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainInformationV2Request,
     ) -> baas_20181221_models.DescribeAntChainInformationV2Response:
+        """
+        @param request: DescribeAntChainInformationV2Request
+        @return: DescribeAntChainInformationV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_information_v2with_options(request, runtime)
 
@@ -3538,6 +4350,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainInformationV2Request,
     ) -> baas_20181221_models.DescribeAntChainInformationV2Response:
+        """
+        @param request: DescribeAntChainInformationV2Request
+        @return: DescribeAntChainInformationV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_information_v2with_options_async(request, runtime)
 
@@ -3546,6 +4362,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainLatestBlocksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksResponse:
+        """
+        @param request: DescribeAntChainLatestBlocksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainLatestBlocksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3574,6 +4395,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainLatestBlocksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksResponse:
+        """
+        @param request: DescribeAntChainLatestBlocksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainLatestBlocksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3601,6 +4427,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainLatestBlocksRequest,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksResponse:
+        """
+        @param request: DescribeAntChainLatestBlocksRequest
+        @return: DescribeAntChainLatestBlocksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_latest_blocks_with_options(request, runtime)
 
@@ -3608,6 +4438,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainLatestBlocksRequest,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksResponse:
+        """
+        @param request: DescribeAntChainLatestBlocksRequest
+        @return: DescribeAntChainLatestBlocksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_latest_blocks_with_options_async(request, runtime)
 
@@ -3616,6 +4450,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainLatestBlocksV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksV2Response:
+        """
+        @param request: DescribeAntChainLatestBlocksV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainLatestBlocksV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3646,6 +4485,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainLatestBlocksV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksV2Response:
+        """
+        @param request: DescribeAntChainLatestBlocksV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainLatestBlocksV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3675,6 +4519,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainLatestBlocksV2Request,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksV2Response:
+        """
+        @param request: DescribeAntChainLatestBlocksV2Request
+        @return: DescribeAntChainLatestBlocksV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_latest_blocks_v2with_options(request, runtime)
 
@@ -3682,6 +4530,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainLatestBlocksV2Request,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksV2Response:
+        """
+        @param request: DescribeAntChainLatestBlocksV2Request
+        @return: DescribeAntChainLatestBlocksV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_latest_blocks_v2with_options_async(request, runtime)
 
@@ -3690,6 +4542,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse:
+        """
+        @param request: DescribeAntChainLatestTransactionDigestsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainLatestTransactionDigestsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3718,6 +4575,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse:
+        """
+        @param request: DescribeAntChainLatestTransactionDigestsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainLatestTransactionDigestsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3745,6 +4607,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsRequest,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse:
+        """
+        @param request: DescribeAntChainLatestTransactionDigestsRequest
+        @return: DescribeAntChainLatestTransactionDigestsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_latest_transaction_digests_with_options(request, runtime)
 
@@ -3752,6 +4618,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsRequest,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse:
+        """
+        @param request: DescribeAntChainLatestTransactionDigestsRequest
+        @return: DescribeAntChainLatestTransactionDigestsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_latest_transaction_digests_with_options_async(request, runtime)
 
@@ -3760,6 +4630,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response:
+        """
+        @param request: DescribeAntChainLatestTransactionDigestsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainLatestTransactionDigestsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3790,6 +4665,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response:
+        """
+        @param request: DescribeAntChainLatestTransactionDigestsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainLatestTransactionDigestsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -3819,6 +4699,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Request,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response:
+        """
+        @param request: DescribeAntChainLatestTransactionDigestsV2Request
+        @return: DescribeAntChainLatestTransactionDigestsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_latest_transaction_digests_v2with_options(request, runtime)
 
@@ -3826,6 +4710,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Request,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response:
+        """
+        @param request: DescribeAntChainLatestTransactionDigestsV2Request
+        @return: DescribeAntChainLatestTransactionDigestsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_latest_transaction_digests_v2with_options_async(request, runtime)
 
@@ -3834,6 +4722,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMembersResponse:
+        """
+        @param request: DescribeAntChainMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMembersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3866,6 +4759,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMembersResponse:
+        """
+        @param request: DescribeAntChainMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMembersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3897,6 +4795,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMembersRequest,
     ) -> baas_20181221_models.DescribeAntChainMembersResponse:
+        """
+        @param request: DescribeAntChainMembersRequest
+        @return: DescribeAntChainMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_members_with_options(request, runtime)
 
@@ -3904,6 +4806,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMembersRequest,
     ) -> baas_20181221_models.DescribeAntChainMembersResponse:
+        """
+        @param request: DescribeAntChainMembersRequest
+        @return: DescribeAntChainMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_members_with_options_async(request, runtime)
 
@@ -3912,6 +4818,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMembersV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMembersV2Response:
+        """
+        @param request: DescribeAntChainMembersV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMembersV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3944,6 +4855,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMembersV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMembersV2Response:
+        """
+        @param request: DescribeAntChainMembersV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMembersV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -3975,6 +4891,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMembersV2Request,
     ) -> baas_20181221_models.DescribeAntChainMembersV2Response:
+        """
+        @param request: DescribeAntChainMembersV2Request
+        @return: DescribeAntChainMembersV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_members_v2with_options(request, runtime)
 
@@ -3982,6 +4902,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMembersV2Request,
     ) -> baas_20181221_models.DescribeAntChainMembersV2Response:
+        """
+        @param request: DescribeAntChainMembersV2Request
+        @return: DescribeAntChainMembersV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_members_v2with_options_async(request, runtime)
 
@@ -3990,6 +4914,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4020,6 +4949,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4049,6 +4983,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest
+        @return: DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_mini_app_browser_qrcode_access_log_with_options(request, runtime)
 
@@ -4056,6 +4994,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest
+        @return: DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_qrcode_access_log_with_options_async(request, runtime)
 
@@ -4064,6 +5006,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4094,6 +5041,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4123,6 +5075,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request
+        @return: DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_mini_app_browser_qrcode_access_log_v2with_options(request, runtime)
 
@@ -4130,6 +5086,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request
+        @return: DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_qrcode_access_log_v2with_options_async(request, runtime)
 
@@ -4138,6 +5098,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4172,6 +5137,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4205,6 +5175,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest
+        @return: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_mini_app_browser_qrcode_authorized_users_with_options(request, runtime)
 
@@ -4212,6 +5186,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest
+        @return: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_qrcode_authorized_users_with_options_async(request, runtime)
 
@@ -4220,6 +5198,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4254,6 +5237,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4287,6 +5275,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request
+        @return: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_mini_app_browser_qrcode_authorized_users_v2with_options(request, runtime)
 
@@ -4294,6 +5286,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response:
+        """
+        @param request: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request
+        @return: DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_qrcode_authorized_users_v2with_options_async(request, runtime)
 
@@ -4302,6 +5298,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserTransactionQRCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserTransactionQRCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4332,6 +5333,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserTransactionQRCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserTransactionQRCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4361,6 +5367,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeRequest,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserTransactionQRCodeRequest
+        @return: DescribeAntChainMiniAppBrowserTransactionQRCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_mini_app_browser_transaction_qrcode_with_options(request, runtime)
 
@@ -4368,6 +5378,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeRequest,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserTransactionQRCodeRequest
+        @return: DescribeAntChainMiniAppBrowserTransactionQRCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_transaction_qrcode_with_options_async(request, runtime)
 
@@ -4376,6 +5390,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4408,6 +5427,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4439,6 +5463,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest
+        @return: DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_mini_app_browser_transaction_qrcode_new_with_options(request, runtime)
 
@@ -4446,6 +5474,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse:
+        """
+        @param request: DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest
+        @return: DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_transaction_qrcode_new_with_options_async(request, runtime)
 
@@ -4454,6 +5486,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainNodesResponse:
+        """
+        @param request: DescribeAntChainNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4482,6 +5519,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainNodesResponse:
+        """
+        @param request: DescribeAntChainNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4509,6 +5551,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainNodesRequest,
     ) -> baas_20181221_models.DescribeAntChainNodesResponse:
+        """
+        @param request: DescribeAntChainNodesRequest
+        @return: DescribeAntChainNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_nodes_with_options(request, runtime)
 
@@ -4516,6 +5562,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainNodesRequest,
     ) -> baas_20181221_models.DescribeAntChainNodesResponse:
+        """
+        @param request: DescribeAntChainNodesRequest
+        @return: DescribeAntChainNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_nodes_with_options_async(request, runtime)
 
@@ -4524,6 +5574,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainNodesV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainNodesV2Response:
+        """
+        @param request: DescribeAntChainNodesV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainNodesV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4554,6 +5609,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainNodesV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainNodesV2Response:
+        """
+        @param request: DescribeAntChainNodesV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainNodesV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4583,6 +5643,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainNodesV2Request,
     ) -> baas_20181221_models.DescribeAntChainNodesV2Response:
+        """
+        @param request: DescribeAntChainNodesV2Request
+        @return: DescribeAntChainNodesV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_nodes_v2with_options(request, runtime)
 
@@ -4590,6 +5654,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainNodesV2Request,
     ) -> baas_20181221_models.DescribeAntChainNodesV2Response:
+        """
+        @param request: DescribeAntChainNodesV2Request
+        @return: DescribeAntChainNodesV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_nodes_v2with_options_async(request, runtime)
 
@@ -4598,6 +5666,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse:
+        """
+        @param request: DescribeAntChainQRCodeAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainQRCodeAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4628,6 +5701,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse:
+        """
+        @param request: DescribeAntChainQRCodeAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainQRCodeAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4657,6 +5735,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationRequest,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse:
+        """
+        @param request: DescribeAntChainQRCodeAuthorizationRequest
+        @return: DescribeAntChainQRCodeAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_qrcode_authorization_with_options(request, runtime)
 
@@ -4664,6 +5746,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationRequest,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse:
+        """
+        @param request: DescribeAntChainQRCodeAuthorizationRequest
+        @return: DescribeAntChainQRCodeAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_qrcode_authorization_with_options_async(request, runtime)
 
@@ -4672,6 +5758,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response:
+        """
+        @param request: DescribeAntChainQRCodeAuthorizationV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainQRCodeAuthorizationV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4702,6 +5793,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response:
+        """
+        @param request: DescribeAntChainQRCodeAuthorizationV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainQRCodeAuthorizationV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4731,6 +5827,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Request,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response:
+        """
+        @param request: DescribeAntChainQRCodeAuthorizationV2Request
+        @return: DescribeAntChainQRCodeAuthorizationV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_qrcode_authorization_v2with_options(request, runtime)
 
@@ -4738,6 +5838,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Request,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response:
+        """
+        @param request: DescribeAntChainQRCodeAuthorizationV2Request
+        @return: DescribeAntChainQRCodeAuthorizationV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_qrcode_authorization_v2with_options_async(request, runtime)
 
@@ -4746,6 +5850,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionResponse:
+        """
+        @param request: DescribeAntChainTransactionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4776,6 +5885,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionResponse:
+        """
+        @param request: DescribeAntChainTransactionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4805,6 +5919,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionRequest,
     ) -> baas_20181221_models.DescribeAntChainTransactionResponse:
+        """
+        @param request: DescribeAntChainTransactionRequest
+        @return: DescribeAntChainTransactionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_transaction_with_options(request, runtime)
 
@@ -4812,6 +5930,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionRequest,
     ) -> baas_20181221_models.DescribeAntChainTransactionResponse:
+        """
+        @param request: DescribeAntChainTransactionRequest
+        @return: DescribeAntChainTransactionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_transaction_with_options_async(request, runtime)
 
@@ -4820,6 +5942,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionReceiptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptResponse:
+        """
+        @param request: DescribeAntChainTransactionReceiptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionReceiptResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4850,6 +5977,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionReceiptRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptResponse:
+        """
+        @param request: DescribeAntChainTransactionReceiptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionReceiptResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4879,6 +6011,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionReceiptRequest,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptResponse:
+        """
+        @param request: DescribeAntChainTransactionReceiptRequest
+        @return: DescribeAntChainTransactionReceiptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_transaction_receipt_with_options(request, runtime)
 
@@ -4886,6 +6022,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionReceiptRequest,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptResponse:
+        """
+        @param request: DescribeAntChainTransactionReceiptRequest
+        @return: DescribeAntChainTransactionReceiptResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_transaction_receipt_with_options_async(request, runtime)
 
@@ -4894,6 +6034,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionReceiptV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptV2Response:
+        """
+        @param request: DescribeAntChainTransactionReceiptV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionReceiptV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4926,6 +6071,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionReceiptV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptV2Response:
+        """
+        @param request: DescribeAntChainTransactionReceiptV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionReceiptV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -4957,6 +6107,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionReceiptV2Request,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptV2Response:
+        """
+        @param request: DescribeAntChainTransactionReceiptV2Request
+        @return: DescribeAntChainTransactionReceiptV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_transaction_receipt_v2with_options(request, runtime)
 
@@ -4964,6 +6118,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionReceiptV2Request,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptV2Response:
+        """
+        @param request: DescribeAntChainTransactionReceiptV2Request
+        @return: DescribeAntChainTransactionReceiptV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_transaction_receipt_v2with_options_async(request, runtime)
 
@@ -4972,6 +6130,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsResponse:
+        """
+        @param request: DescribeAntChainTransactionStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionStatisticsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -5004,6 +6167,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsResponse:
+        """
+        @param request: DescribeAntChainTransactionStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionStatisticsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -5035,6 +6203,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsRequest,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsResponse:
+        """
+        @param request: DescribeAntChainTransactionStatisticsRequest
+        @return: DescribeAntChainTransactionStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_transaction_statistics_with_options(request, runtime)
 
@@ -5042,6 +6214,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsRequest,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsResponse:
+        """
+        @param request: DescribeAntChainTransactionStatisticsRequest
+        @return: DescribeAntChainTransactionStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_transaction_statistics_with_options_async(request, runtime)
 
@@ -5050,6 +6226,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response:
+        """
+        @param request: DescribeAntChainTransactionStatisticsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionStatisticsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -5084,6 +6265,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response:
+        """
+        @param request: DescribeAntChainTransactionStatisticsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionStatisticsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -5117,6 +6303,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsV2Request,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response:
+        """
+        @param request: DescribeAntChainTransactionStatisticsV2Request
+        @return: DescribeAntChainTransactionStatisticsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_transaction_statistics_v2with_options(request, runtime)
 
@@ -5124,6 +6314,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsV2Request,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response:
+        """
+        @param request: DescribeAntChainTransactionStatisticsV2Request
+        @return: DescribeAntChainTransactionStatisticsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_transaction_statistics_v2with_options_async(request, runtime)
 
@@ -5132,6 +6326,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionV2Response:
+        """
+        @param request: DescribeAntChainTransactionV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -5164,6 +6363,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainTransactionV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionV2Response:
+        """
+        @param request: DescribeAntChainTransactionV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainTransactionV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -5195,6 +6399,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionV2Request,
     ) -> baas_20181221_models.DescribeAntChainTransactionV2Response:
+        """
+        @param request: DescribeAntChainTransactionV2Request
+        @return: DescribeAntChainTransactionV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chain_transaction_v2with_options(request, runtime)
 
@@ -5202,6 +6410,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainTransactionV2Request,
     ) -> baas_20181221_models.DescribeAntChainTransactionV2Response:
+        """
+        @param request: DescribeAntChainTransactionV2Request
+        @return: DescribeAntChainTransactionV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_transaction_v2with_options_async(request, runtime)
 
@@ -5210,6 +6422,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainsResponse:
+        """
+        @param request: DescribeAntChainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -5242,6 +6459,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainsResponse:
+        """
+        @param request: DescribeAntChainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -5273,6 +6495,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainsRequest,
     ) -> baas_20181221_models.DescribeAntChainsResponse:
+        """
+        @param request: DescribeAntChainsRequest
+        @return: DescribeAntChainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chains_with_options(request, runtime)
 
@@ -5280,6 +6506,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainsRequest,
     ) -> baas_20181221_models.DescribeAntChainsResponse:
+        """
+        @param request: DescribeAntChainsRequest
+        @return: DescribeAntChainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chains_with_options_async(request, runtime)
 
@@ -5288,6 +6518,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainsV2Response:
+        """
+        @param request: DescribeAntChainsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -5320,6 +6555,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeAntChainsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainsV2Response:
+        """
+        @param request: DescribeAntChainsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAntChainsV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -5351,6 +6591,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainsV2Request,
     ) -> baas_20181221_models.DescribeAntChainsV2Response:
+        """
+        @param request: DescribeAntChainsV2Request
+        @return: DescribeAntChainsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ant_chains_v2with_options(request, runtime)
 
@@ -5358,6 +6602,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeAntChainsV2Request,
     ) -> baas_20181221_models.DescribeAntChainsV2Response:
+        """
+        @param request: DescribeAntChainsV2Request
+        @return: DescribeAntChainsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chains_v2with_options_async(request, runtime)
 
@@ -5366,6 +6614,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeEthereumDeletableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeEthereumDeletableResponse:
+        """
+        @param request: DescribeEthereumDeletableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEthereumDeletableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ethereum_id):
@@ -5394,6 +6647,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeEthereumDeletableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeEthereumDeletableResponse:
+        """
+        @param request: DescribeEthereumDeletableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEthereumDeletableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ethereum_id):
@@ -5421,6 +6679,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeEthereumDeletableRequest,
     ) -> baas_20181221_models.DescribeEthereumDeletableResponse:
+        """
+        @param request: DescribeEthereumDeletableRequest
+        @return: DescribeEthereumDeletableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ethereum_deletable_with_options(request, runtime)
 
@@ -5428,6 +6690,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeEthereumDeletableRequest,
     ) -> baas_20181221_models.DescribeEthereumDeletableResponse:
+        """
+        @param request: DescribeEthereumDeletableRequest
+        @return: DescribeEthereumDeletableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ethereum_deletable_with_options_async(request, runtime)
 
@@ -5436,6 +6702,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricCandidateOrganizationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricCandidateOrganizationsResponse:
+        """
+        @param request: DescribeFabricCandidateOrganizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricCandidateOrganizationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -5464,6 +6735,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricCandidateOrganizationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricCandidateOrganizationsResponse:
+        """
+        @param request: DescribeFabricCandidateOrganizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricCandidateOrganizationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -5491,6 +6767,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricCandidateOrganizationsRequest,
     ) -> baas_20181221_models.DescribeFabricCandidateOrganizationsResponse:
+        """
+        @param request: DescribeFabricCandidateOrganizationsRequest
+        @return: DescribeFabricCandidateOrganizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_candidate_organizations_with_options(request, runtime)
 
@@ -5498,6 +6778,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricCandidateOrganizationsRequest,
     ) -> baas_20181221_models.DescribeFabricCandidateOrganizationsResponse:
+        """
+        @param request: DescribeFabricCandidateOrganizationsRequest
+        @return: DescribeFabricCandidateOrganizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_candidate_organizations_with_options_async(request, runtime)
 
@@ -5506,6 +6790,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricChaincodeDefinitionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse:
+        """
+        @summary DescribeFabricChaincodeDefinitionTask
+        
+        @param request: DescribeFabricChaincodeDefinitionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricChaincodeDefinitionTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -5536,6 +6827,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricChaincodeDefinitionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse:
+        """
+        @summary DescribeFabricChaincodeDefinitionTask
+        
+        @param request: DescribeFabricChaincodeDefinitionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricChaincodeDefinitionTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -5565,6 +6863,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricChaincodeDefinitionTaskRequest,
     ) -> baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse:
+        """
+        @summary DescribeFabricChaincodeDefinitionTask
+        
+        @param request: DescribeFabricChaincodeDefinitionTaskRequest
+        @return: DescribeFabricChaincodeDefinitionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_chaincode_definition_task_with_options(request, runtime)
 
@@ -5572,6 +6876,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricChaincodeDefinitionTaskRequest,
     ) -> baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse:
+        """
+        @summary DescribeFabricChaincodeDefinitionTask
+        
+        @param request: DescribeFabricChaincodeDefinitionTaskRequest
+        @return: DescribeFabricChaincodeDefinitionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_chaincode_definition_task_with_options_async(request, runtime)
 
@@ -5580,6 +6890,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricChaincodeUploadPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse:
+        """
+        @param request: DescribeFabricChaincodeUploadPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricChaincodeUploadPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -5608,6 +6923,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricChaincodeUploadPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse:
+        """
+        @param request: DescribeFabricChaincodeUploadPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricChaincodeUploadPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -5635,6 +6955,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricChaincodeUploadPolicyRequest,
     ) -> baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse:
+        """
+        @param request: DescribeFabricChaincodeUploadPolicyRequest
+        @return: DescribeFabricChaincodeUploadPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_chaincode_upload_policy_with_options(request, runtime)
 
@@ -5642,6 +6966,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricChaincodeUploadPolicyRequest,
     ) -> baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse:
+        """
+        @param request: DescribeFabricChaincodeUploadPolicyRequest
+        @return: DescribeFabricChaincodeUploadPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_chaincode_upload_policy_with_options_async(request, runtime)
 
@@ -5650,6 +6978,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricChannelMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChannelMembersResponse:
+        """
+        @param request: DescribeFabricChannelMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricChannelMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -5678,6 +7011,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricChannelMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChannelMembersResponse:
+        """
+        @param request: DescribeFabricChannelMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricChannelMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -5705,6 +7043,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricChannelMembersRequest,
     ) -> baas_20181221_models.DescribeFabricChannelMembersResponse:
+        """
+        @param request: DescribeFabricChannelMembersRequest
+        @return: DescribeFabricChannelMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_channel_members_with_options(request, runtime)
 
@@ -5712,6 +7054,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricChannelMembersRequest,
     ) -> baas_20181221_models.DescribeFabricChannelMembersResponse:
+        """
+        @param request: DescribeFabricChannelMembersRequest
+        @return: DescribeFabricChannelMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_channel_members_with_options_async(request, runtime)
 
@@ -5720,6 +7066,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumAdminStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse:
+        """
+        @param request: DescribeFabricConsortiumAdminStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumAdminStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -5748,6 +7099,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumAdminStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse:
+        """
+        @param request: DescribeFabricConsortiumAdminStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumAdminStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -5775,6 +7131,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumAdminStatusRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse:
+        """
+        @param request: DescribeFabricConsortiumAdminStatusRequest
+        @return: DescribeFabricConsortiumAdminStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_admin_status_with_options(request, runtime)
 
@@ -5782,6 +7142,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumAdminStatusRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse:
+        """
+        @param request: DescribeFabricConsortiumAdminStatusRequest
+        @return: DescribeFabricConsortiumAdminStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_admin_status_with_options_async(request, runtime)
 
@@ -5790,6 +7154,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumChaincodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumChaincodesResponse:
+        """
+        @param request: DescribeFabricConsortiumChaincodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumChaincodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -5820,6 +7189,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumChaincodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumChaincodesResponse:
+        """
+        @param request: DescribeFabricConsortiumChaincodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumChaincodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -5849,6 +7223,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumChaincodesRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumChaincodesResponse:
+        """
+        @param request: DescribeFabricConsortiumChaincodesRequest
+        @return: DescribeFabricConsortiumChaincodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_chaincodes_with_options(request, runtime)
 
@@ -5856,6 +7234,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumChaincodesRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumChaincodesResponse:
+        """
+        @param request: DescribeFabricConsortiumChaincodesRequest
+        @return: DescribeFabricConsortiumChaincodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_chaincodes_with_options_async(request, runtime)
 
@@ -5864,6 +7246,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumChannelsResponse:
+        """
+        @param request: DescribeFabricConsortiumChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -5896,6 +7283,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumChannelsResponse:
+        """
+        @param request: DescribeFabricConsortiumChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -5927,6 +7319,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumChannelsRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumChannelsResponse:
+        """
+        @param request: DescribeFabricConsortiumChannelsRequest
+        @return: DescribeFabricConsortiumChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_channels_with_options(request, runtime)
 
@@ -5934,6 +7330,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumChannelsRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumChannelsResponse:
+        """
+        @param request: DescribeFabricConsortiumChannelsRequest
+        @return: DescribeFabricConsortiumChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_channels_with_options_async(request, runtime)
 
@@ -5941,6 +7341,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumConfigResponse:
+        """
+        @param request: DescribeFabricConsortiumConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumConfigResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeFabricConsortiumConfig',
@@ -5962,6 +7367,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumConfigResponse:
+        """
+        @param request: DescribeFabricConsortiumConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumConfigResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeFabricConsortiumConfig',
@@ -5980,10 +7390,16 @@ class Client(OpenApiClient):
         )
 
     def describe_fabric_consortium_config(self) -> baas_20181221_models.DescribeFabricConsortiumConfigResponse:
+        """
+        @return: DescribeFabricConsortiumConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_config_with_options(runtime)
 
     async def describe_fabric_consortium_config_async(self) -> baas_20181221_models.DescribeFabricConsortiumConfigResponse:
+        """
+        @return: DescribeFabricConsortiumConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_config_with_options_async(runtime)
 
@@ -5992,6 +7408,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumDeletableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumDeletableResponse:
+        """
+        @param request: DescribeFabricConsortiumDeletableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumDeletableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6024,6 +7445,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumDeletableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumDeletableResponse:
+        """
+        @param request: DescribeFabricConsortiumDeletableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumDeletableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6055,6 +7481,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumDeletableRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumDeletableResponse:
+        """
+        @param request: DescribeFabricConsortiumDeletableRequest
+        @return: DescribeFabricConsortiumDeletableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_deletable_with_options(request, runtime)
 
@@ -6062,6 +7492,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumDeletableRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumDeletableResponse:
+        """
+        @param request: DescribeFabricConsortiumDeletableRequest
+        @return: DescribeFabricConsortiumDeletableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_deletable_with_options_async(request, runtime)
 
@@ -6070,6 +7504,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumMemberApprovalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse:
+        """
+        @param request: DescribeFabricConsortiumMemberApprovalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumMemberApprovalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6102,6 +7541,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumMemberApprovalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse:
+        """
+        @param request: DescribeFabricConsortiumMemberApprovalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumMemberApprovalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6133,6 +7577,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumMemberApprovalRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse:
+        """
+        @param request: DescribeFabricConsortiumMemberApprovalRequest
+        @return: DescribeFabricConsortiumMemberApprovalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_member_approval_with_options(request, runtime)
 
@@ -6140,6 +7588,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumMemberApprovalRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse:
+        """
+        @param request: DescribeFabricConsortiumMemberApprovalRequest
+        @return: DescribeFabricConsortiumMemberApprovalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_member_approval_with_options_async(request, runtime)
 
@@ -6148,6 +7600,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumMembersResponse:
+        """
+        @param request: DescribeFabricConsortiumMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumMembersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6178,6 +7635,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumMembersResponse:
+        """
+        @param request: DescribeFabricConsortiumMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumMembersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6207,6 +7669,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumMembersRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumMembersResponse:
+        """
+        @param request: DescribeFabricConsortiumMembersRequest
+        @return: DescribeFabricConsortiumMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_members_with_options(request, runtime)
 
@@ -6214,6 +7680,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumMembersRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumMembersResponse:
+        """
+        @param request: DescribeFabricConsortiumMembersRequest
+        @return: DescribeFabricConsortiumMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_members_with_options_async(request, runtime)
 
@@ -6222,6 +7692,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumOrderersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumOrderersResponse:
+        """
+        @param request: DescribeFabricConsortiumOrderersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumOrderersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6252,6 +7727,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumOrderersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumOrderersResponse:
+        """
+        @param request: DescribeFabricConsortiumOrderersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumOrderersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6281,6 +7761,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumOrderersRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumOrderersResponse:
+        """
+        @param request: DescribeFabricConsortiumOrderersRequest
+        @return: DescribeFabricConsortiumOrderersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_orderers_with_options(request, runtime)
 
@@ -6288,6 +7772,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumOrderersRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumOrderersResponse:
+        """
+        @param request: DescribeFabricConsortiumOrderersRequest
+        @return: DescribeFabricConsortiumOrderersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_orderers_with_options_async(request, runtime)
 
@@ -6295,6 +7783,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
+        """
+        @param request: DescribeFabricConsortiumSpecsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumSpecsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeFabricConsortiumSpecs',
@@ -6316,6 +7809,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
+        """
+        @param request: DescribeFabricConsortiumSpecsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumSpecsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeFabricConsortiumSpecs',
@@ -6334,10 +7832,16 @@ class Client(OpenApiClient):
         )
 
     def describe_fabric_consortium_specs(self) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
+        """
+        @return: DescribeFabricConsortiumSpecsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortium_specs_with_options(runtime)
 
     async def describe_fabric_consortium_specs_async(self) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
+        """
+        @return: DescribeFabricConsortiumSpecsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_specs_with_options_async(runtime)
 
@@ -6346,6 +7850,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumsResponse:
+        """
+        @param request: DescribeFabricConsortiumsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6380,6 +7889,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricConsortiumsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumsResponse:
+        """
+        @param request: DescribeFabricConsortiumsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricConsortiumsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6413,6 +7927,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumsRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumsResponse:
+        """
+        @param request: DescribeFabricConsortiumsRequest
+        @return: DescribeFabricConsortiumsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_consortiums_with_options(request, runtime)
 
@@ -6420,6 +7938,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricConsortiumsRequest,
     ) -> baas_20181221_models.DescribeFabricConsortiumsResponse:
+        """
+        @param request: DescribeFabricConsortiumsRequest
+        @return: DescribeFabricConsortiumsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortiums_with_options_async(request, runtime)
 
@@ -6428,6 +7950,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricExplorerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricExplorerResponse:
+        """
+        @param request: DescribeFabricExplorerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricExplorerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ex_body):
@@ -6464,6 +7991,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricExplorerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricExplorerResponse:
+        """
+        @param request: DescribeFabricExplorerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricExplorerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ex_body):
@@ -6499,6 +8031,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricExplorerRequest,
     ) -> baas_20181221_models.DescribeFabricExplorerResponse:
+        """
+        @param request: DescribeFabricExplorerRequest
+        @return: DescribeFabricExplorerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_explorer_with_options(request, runtime)
 
@@ -6506,6 +8042,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricExplorerRequest,
     ) -> baas_20181221_models.DescribeFabricExplorerResponse:
+        """
+        @param request: DescribeFabricExplorerRequest
+        @return: DescribeFabricExplorerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_explorer_with_options_async(request, runtime)
 
@@ -6514,6 +8054,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricInvitationCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricInvitationCodeResponse:
+        """
+        @param request: DescribeFabricInvitationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricInvitationCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6542,6 +8087,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricInvitationCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricInvitationCodeResponse:
+        """
+        @param request: DescribeFabricInvitationCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricInvitationCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6569,6 +8119,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricInvitationCodeRequest,
     ) -> baas_20181221_models.DescribeFabricInvitationCodeResponse:
+        """
+        @param request: DescribeFabricInvitationCodeRequest
+        @return: DescribeFabricInvitationCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_invitation_code_with_options(request, runtime)
 
@@ -6576,6 +8130,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricInvitationCodeRequest,
     ) -> baas_20181221_models.DescribeFabricInvitationCodeResponse:
+        """
+        @param request: DescribeFabricInvitationCodeRequest
+        @return: DescribeFabricInvitationCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_invitation_code_with_options_async(request, runtime)
 
@@ -6584,6 +8142,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricInviterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricInviterResponse:
+        """
+        @param request: DescribeFabricInviterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricInviterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -6612,6 +8175,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricInviterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricInviterResponse:
+        """
+        @param request: DescribeFabricInviterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricInviterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -6639,6 +8207,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricInviterRequest,
     ) -> baas_20181221_models.DescribeFabricInviterResponse:
+        """
+        @param request: DescribeFabricInviterRequest
+        @return: DescribeFabricInviterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_inviter_with_options(request, runtime)
 
@@ -6646,6 +8218,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricInviterRequest,
     ) -> baas_20181221_models.DescribeFabricInviterResponse:
+        """
+        @param request: DescribeFabricInviterRequest
+        @return: DescribeFabricInviterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_inviter_with_options_async(request, runtime)
 
@@ -6654,6 +8230,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrdererLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrdererLogsResponse:
+        """
+        @param request: DescribeFabricOrdererLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrdererLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6686,6 +8267,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrdererLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrdererLogsResponse:
+        """
+        @param request: DescribeFabricOrdererLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrdererLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -6717,6 +8303,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrdererLogsRequest,
     ) -> baas_20181221_models.DescribeFabricOrdererLogsResponse:
+        """
+        @param request: DescribeFabricOrdererLogsRequest
+        @return: DescribeFabricOrdererLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_orderer_logs_with_options(request, runtime)
 
@@ -6724,6 +8314,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrdererLogsRequest,
     ) -> baas_20181221_models.DescribeFabricOrdererLogsResponse:
+        """
+        @param request: DescribeFabricOrdererLogsRequest
+        @return: DescribeFabricOrdererLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_orderer_logs_with_options_async(request, runtime)
 
@@ -6732,6 +8326,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationResponse:
+        """
+        @param request: DescribeFabricOrganizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -6766,6 +8365,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationResponse:
+        """
+        @param request: DescribeFabricOrganizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -6799,6 +8403,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationResponse:
+        """
+        @param request: DescribeFabricOrganizationRequest
+        @return: DescribeFabricOrganizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_with_options(request, runtime)
 
@@ -6806,6 +8414,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationResponse:
+        """
+        @param request: DescribeFabricOrganizationRequest
+        @return: DescribeFabricOrganizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_with_options_async(request, runtime)
 
@@ -6814,6 +8426,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationChaincodePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse:
+        """
+        @summary DescribeFabricOrganizationChaincodePackage
+        
+        @param request: DescribeFabricOrganizationChaincodePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationChaincodePackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -6842,6 +8461,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationChaincodePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse:
+        """
+        @summary DescribeFabricOrganizationChaincodePackage
+        
+        @param request: DescribeFabricOrganizationChaincodePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationChaincodePackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -6869,6 +8495,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationChaincodePackageRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse:
+        """
+        @summary DescribeFabricOrganizationChaincodePackage
+        
+        @param request: DescribeFabricOrganizationChaincodePackageRequest
+        @return: DescribeFabricOrganizationChaincodePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_chaincode_package_with_options(request, runtime)
 
@@ -6876,6 +8508,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationChaincodePackageRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse:
+        """
+        @summary DescribeFabricOrganizationChaincodePackage
+        
+        @param request: DescribeFabricOrganizationChaincodePackageRequest
+        @return: DescribeFabricOrganizationChaincodePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_chaincode_package_with_options_async(request, runtime)
 
@@ -6884,6 +8522,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationChaincodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodesResponse:
+        """
+        @param request: DescribeFabricOrganizationChaincodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationChaincodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -6914,6 +8557,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationChaincodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodesResponse:
+        """
+        @param request: DescribeFabricOrganizationChaincodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationChaincodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -6943,6 +8591,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationChaincodesRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodesResponse:
+        """
+        @param request: DescribeFabricOrganizationChaincodesRequest
+        @return: DescribeFabricOrganizationChaincodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_chaincodes_with_options(request, runtime)
 
@@ -6950,6 +8602,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationChaincodesRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodesResponse:
+        """
+        @param request: DescribeFabricOrganizationChaincodesRequest
+        @return: DescribeFabricOrganizationChaincodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_chaincodes_with_options_async(request, runtime)
 
@@ -6958,6 +8614,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationChannelsResponse:
+        """
+        @param request: DescribeFabricOrganizationChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -6990,6 +8651,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationChannelsResponse:
+        """
+        @param request: DescribeFabricOrganizationChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7021,6 +8687,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationChannelsRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationChannelsResponse:
+        """
+        @param request: DescribeFabricOrganizationChannelsRequest
+        @return: DescribeFabricOrganizationChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_channels_with_options(request, runtime)
 
@@ -7028,6 +8698,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationChannelsRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationChannelsResponse:
+        """
+        @param request: DescribeFabricOrganizationChannelsRequest
+        @return: DescribeFabricOrganizationChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_channels_with_options_async(request, runtime)
 
@@ -7036,6 +8710,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationDeletableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationDeletableResponse:
+        """
+        @param request: DescribeFabricOrganizationDeletableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationDeletableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7068,6 +8747,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationDeletableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationDeletableResponse:
+        """
+        @param request: DescribeFabricOrganizationDeletableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationDeletableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7099,6 +8783,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationDeletableRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationDeletableResponse:
+        """
+        @param request: DescribeFabricOrganizationDeletableRequest
+        @return: DescribeFabricOrganizationDeletableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_deletable_with_options(request, runtime)
 
@@ -7106,6 +8794,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationDeletableRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationDeletableResponse:
+        """
+        @param request: DescribeFabricOrganizationDeletableRequest
+        @return: DescribeFabricOrganizationDeletableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_deletable_with_options_async(request, runtime)
 
@@ -7114,6 +8806,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationMembersResponse:
+        """
+        @param request: DescribeFabricOrganizationMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationMembersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -7144,6 +8841,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationMembersResponse:
+        """
+        @param request: DescribeFabricOrganizationMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationMembersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -7173,6 +8875,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationMembersRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationMembersResponse:
+        """
+        @param request: DescribeFabricOrganizationMembersRequest
+        @return: DescribeFabricOrganizationMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_members_with_options(request, runtime)
 
@@ -7180,6 +8886,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationMembersRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationMembersResponse:
+        """
+        @param request: DescribeFabricOrganizationMembersRequest
+        @return: DescribeFabricOrganizationMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_members_with_options_async(request, runtime)
 
@@ -7188,6 +8898,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationPeersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationPeersResponse:
+        """
+        @param request: DescribeFabricOrganizationPeersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationPeersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7220,6 +8935,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationPeersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationPeersResponse:
+        """
+        @param request: DescribeFabricOrganizationPeersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationPeersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7251,6 +8971,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationPeersRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationPeersResponse:
+        """
+        @param request: DescribeFabricOrganizationPeersRequest
+        @return: DescribeFabricOrganizationPeersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_peers_with_options(request, runtime)
 
@@ -7258,6 +8982,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationPeersRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationPeersResponse:
+        """
+        @param request: DescribeFabricOrganizationPeersRequest
+        @return: DescribeFabricOrganizationPeersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_peers_with_options_async(request, runtime)
 
@@ -7265,6 +8993,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationSpecsResponse:
+        """
+        @param request: DescribeFabricOrganizationSpecsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationSpecsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeFabricOrganizationSpecs',
@@ -7286,6 +9019,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationSpecsResponse:
+        """
+        @param request: DescribeFabricOrganizationSpecsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationSpecsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeFabricOrganizationSpecs',
@@ -7304,10 +9042,16 @@ class Client(OpenApiClient):
         )
 
     def describe_fabric_organization_specs(self) -> baas_20181221_models.DescribeFabricOrganizationSpecsResponse:
+        """
+        @return: DescribeFabricOrganizationSpecsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_specs_with_options(runtime)
 
     async def describe_fabric_organization_specs_async(self) -> baas_20181221_models.DescribeFabricOrganizationSpecsResponse:
+        """
+        @return: DescribeFabricOrganizationSpecsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_specs_with_options_async(runtime)
 
@@ -7316,6 +9060,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationUsersResponse:
+        """
+        @param request: DescribeFabricOrganizationUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7348,6 +9097,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationUsersResponse:
+        """
+        @param request: DescribeFabricOrganizationUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7379,6 +9133,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationUsersRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationUsersResponse:
+        """
+        @param request: DescribeFabricOrganizationUsersRequest
+        @return: DescribeFabricOrganizationUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organization_users_with_options(request, runtime)
 
@@ -7386,6 +9144,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationUsersRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationUsersResponse:
+        """
+        @param request: DescribeFabricOrganizationUsersRequest
+        @return: DescribeFabricOrganizationUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_users_with_options_async(request, runtime)
 
@@ -7394,6 +9156,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
+        """
+        @param request: DescribeFabricOrganizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag):
@@ -7426,6 +9193,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricOrganizationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
+        """
+        @param request: DescribeFabricOrganizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricOrganizationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag):
@@ -7457,6 +9229,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationsRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
+        """
+        @param request: DescribeFabricOrganizationsRequest
+        @return: DescribeFabricOrganizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_organizations_with_options(request, runtime)
 
@@ -7464,6 +9240,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricOrganizationsRequest,
     ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
+        """
+        @param request: DescribeFabricOrganizationsRequest
+        @return: DescribeFabricOrganizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organizations_with_options_async(request, runtime)
 
@@ -7472,6 +9252,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricPeerLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricPeerLogsResponse:
+        """
+        @param request: DescribeFabricPeerLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricPeerLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lines):
@@ -7504,6 +9289,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeFabricPeerLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricPeerLogsResponse:
+        """
+        @param request: DescribeFabricPeerLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFabricPeerLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lines):
@@ -7535,6 +9325,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricPeerLogsRequest,
     ) -> baas_20181221_models.DescribeFabricPeerLogsResponse:
+        """
+        @param request: DescribeFabricPeerLogsRequest
+        @return: DescribeFabricPeerLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fabric_peer_logs_with_options(request, runtime)
 
@@ -7542,6 +9336,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeFabricPeerLogsRequest,
     ) -> baas_20181221_models.DescribeFabricPeerLogsResponse:
+        """
+        @param request: DescribeFabricPeerLogsRequest
+        @return: DescribeFabricPeerLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_peer_logs_with_options_async(request, runtime)
 
@@ -7550,6 +9348,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7580,6 +9383,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7609,6 +9417,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeRegionsRequest,
     ) -> baas_20181221_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -7616,6 +9428,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DescribeRegionsRequest,
     ) -> baas_20181221_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -7623,6 +9439,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeRootDomainResponse:
+        """
+        @param request: DescribeRootDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRootDomainResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRootDomain',
@@ -7644,6 +9465,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeRootDomainResponse:
+        """
+        @param request: DescribeRootDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRootDomainResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRootDomain',
@@ -7662,10 +9488,16 @@ class Client(OpenApiClient):
         )
 
     def describe_root_domain(self) -> baas_20181221_models.DescribeRootDomainResponse:
+        """
+        @return: DescribeRootDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_root_domain_with_options(runtime)
 
     async def describe_root_domain_async(self) -> baas_20181221_models.DescribeRootDomainResponse:
+        """
+        @return: DescribeRootDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_root_domain_with_options_async(runtime)
 
@@ -7673,6 +9505,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeTasksResponse:
+        """
+        @param request: DescribeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTasksResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeTasks',
@@ -7694,6 +9531,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeTasksResponse:
+        """
+        @param request: DescribeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTasksResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeTasks',
@@ -7712,10 +9554,16 @@ class Client(OpenApiClient):
         )
 
     def describe_tasks(self) -> baas_20181221_models.DescribeTasksResponse:
+        """
+        @return: DescribeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tasks_with_options(runtime)
 
     async def describe_tasks_async(self) -> baas_20181221_models.DescribeTasksResponse:
+        """
+        @return: DescribeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tasks_with_options_async(runtime)
 
@@ -7724,6 +9572,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DownloadFabricOrganizationSDKRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DownloadFabricOrganizationSDKResponse:
+        """
+        @param request: DownloadFabricOrganizationSDKRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadFabricOrganizationSDKResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7758,6 +9611,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.DownloadFabricOrganizationSDKRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DownloadFabricOrganizationSDKResponse:
+        """
+        @param request: DownloadFabricOrganizationSDKRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadFabricOrganizationSDKResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -7791,6 +9649,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DownloadFabricOrganizationSDKRequest,
     ) -> baas_20181221_models.DownloadFabricOrganizationSDKResponse:
+        """
+        @param request: DownloadFabricOrganizationSDKRequest
+        @return: DownloadFabricOrganizationSDKResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.download_fabric_organization_sdkwith_options(request, runtime)
 
@@ -7798,6 +9660,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.DownloadFabricOrganizationSDKRequest,
     ) -> baas_20181221_models.DownloadFabricOrganizationSDKResponse:
+        """
+        @param request: DownloadFabricOrganizationSDKRequest
+        @return: DownloadFabricOrganizationSDKResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.download_fabric_organization_sdkwith_options_async(request, runtime)
 
@@ -7806,6 +9672,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.FreezeAntChainAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.FreezeAntChainAccountResponse:
+        """
+        @param request: FreezeAntChainAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FreezeAntChainAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -7836,6 +9707,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.FreezeAntChainAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.FreezeAntChainAccountResponse:
+        """
+        @param request: FreezeAntChainAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FreezeAntChainAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -7865,6 +9741,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.FreezeAntChainAccountRequest,
     ) -> baas_20181221_models.FreezeAntChainAccountResponse:
+        """
+        @param request: FreezeAntChainAccountRequest
+        @return: FreezeAntChainAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.freeze_ant_chain_account_with_options(request, runtime)
 
@@ -7872,6 +9752,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.FreezeAntChainAccountRequest,
     ) -> baas_20181221_models.FreezeAntChainAccountResponse:
+        """
+        @param request: FreezeAntChainAccountRequest
+        @return: FreezeAntChainAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.freeze_ant_chain_account_with_options_async(request, runtime)
 
@@ -7880,6 +9764,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.InstallFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstallFabricChaincodeResponse:
+        """
+        @param request: InstallFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -7912,6 +9801,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.InstallFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstallFabricChaincodeResponse:
+        """
+        @param request: InstallFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -7943,6 +9837,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.InstallFabricChaincodeRequest,
     ) -> baas_20181221_models.InstallFabricChaincodeResponse:
+        """
+        @param request: InstallFabricChaincodeRequest
+        @return: InstallFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.install_fabric_chaincode_with_options(request, runtime)
 
@@ -7950,6 +9848,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.InstallFabricChaincodeRequest,
     ) -> baas_20181221_models.InstallFabricChaincodeResponse:
+        """
+        @param request: InstallFabricChaincodeRequest
+        @return: InstallFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.install_fabric_chaincode_with_options_async(request, runtime)
 
@@ -7958,6 +9860,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.InstallFabricChaincodePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstallFabricChaincodePackageResponse:
+        """
+        @summary InstallFabricChaincodePackage
+        
+        @param request: InstallFabricChaincodePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallFabricChaincodePackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_package_id):
@@ -7990,6 +9899,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.InstallFabricChaincodePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstallFabricChaincodePackageResponse:
+        """
+        @summary InstallFabricChaincodePackage
+        
+        @param request: InstallFabricChaincodePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallFabricChaincodePackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_package_id):
@@ -8021,6 +9937,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.InstallFabricChaincodePackageRequest,
     ) -> baas_20181221_models.InstallFabricChaincodePackageResponse:
+        """
+        @summary InstallFabricChaincodePackage
+        
+        @param request: InstallFabricChaincodePackageRequest
+        @return: InstallFabricChaincodePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.install_fabric_chaincode_package_with_options(request, runtime)
 
@@ -8028,6 +9950,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.InstallFabricChaincodePackageRequest,
     ) -> baas_20181221_models.InstallFabricChaincodePackageResponse:
+        """
+        @summary InstallFabricChaincodePackage
+        
+        @param request: InstallFabricChaincodePackageRequest
+        @return: InstallFabricChaincodePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.install_fabric_chaincode_package_with_options_async(request, runtime)
 
@@ -8036,6 +9964,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.InstantiateFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstantiateFabricChaincodeResponse:
+        """
+        @param request: InstantiateFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstantiateFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -8072,6 +10005,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.InstantiateFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstantiateFabricChaincodeResponse:
+        """
+        @param request: InstantiateFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstantiateFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -8107,6 +10045,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.InstantiateFabricChaincodeRequest,
     ) -> baas_20181221_models.InstantiateFabricChaincodeResponse:
+        """
+        @param request: InstantiateFabricChaincodeRequest
+        @return: InstantiateFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.instantiate_fabric_chaincode_with_options(request, runtime)
 
@@ -8114,6 +10056,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.InstantiateFabricChaincodeRequest,
     ) -> baas_20181221_models.InstantiateFabricChaincodeResponse:
+        """
+        @param request: InstantiateFabricChaincodeRequest
+        @return: InstantiateFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.instantiate_fabric_chaincode_with_options_async(request, runtime)
 
@@ -8122,6 +10068,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.JoinFabricChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.JoinFabricChannelResponse:
+        """
+        @param request: JoinFabricChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinFabricChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -8156,6 +10107,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.JoinFabricChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.JoinFabricChannelResponse:
+        """
+        @param request: JoinFabricChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinFabricChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -8189,6 +10145,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.JoinFabricChannelRequest,
     ) -> baas_20181221_models.JoinFabricChannelResponse:
+        """
+        @param request: JoinFabricChannelRequest
+        @return: JoinFabricChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.join_fabric_channel_with_options(request, runtime)
 
@@ -8196,6 +10156,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.JoinFabricChannelRequest,
     ) -> baas_20181221_models.JoinFabricChannelResponse:
+        """
+        @param request: JoinFabricChannelRequest
+        @return: JoinFabricChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.join_fabric_channel_with_options_async(request, runtime)
 
@@ -8204,6 +10168,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ListTagResourcesResponse:
+        """
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -8238,6 +10207,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ListTagResourcesResponse:
+        """
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -8271,6 +10245,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ListTagResourcesRequest,
     ) -> baas_20181221_models.ListTagResourcesResponse:
+        """
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -8278,6 +10256,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ListTagResourcesRequest,
     ) -> baas_20181221_models.ListTagResourcesResponse:
+        """
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -8286,6 +10268,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ResetAntChainCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetAntChainCertificateResponse:
+        """
+        @param request: ResetAntChainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAntChainCertificateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -8314,6 +10301,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ResetAntChainCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetAntChainCertificateResponse:
+        """
+        @param request: ResetAntChainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAntChainCertificateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -8341,6 +10333,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ResetAntChainCertificateRequest,
     ) -> baas_20181221_models.ResetAntChainCertificateResponse:
+        """
+        @param request: ResetAntChainCertificateRequest
+        @return: ResetAntChainCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_ant_chain_certificate_with_options(request, runtime)
 
@@ -8348,6 +10344,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ResetAntChainCertificateRequest,
     ) -> baas_20181221_models.ResetAntChainCertificateResponse:
+        """
+        @param request: ResetAntChainCertificateRequest
+        @return: ResetAntChainCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_ant_chain_certificate_with_options_async(request, runtime)
 
@@ -8356,6 +10356,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ResetAntChainUserCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetAntChainUserCertificateResponse:
+        """
+        @param request: ResetAntChainUserCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAntChainUserCertificateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -8386,6 +10391,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ResetAntChainUserCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetAntChainUserCertificateResponse:
+        """
+        @param request: ResetAntChainUserCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAntChainUserCertificateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -8415,6 +10425,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ResetAntChainUserCertificateRequest,
     ) -> baas_20181221_models.ResetAntChainUserCertificateResponse:
+        """
+        @param request: ResetAntChainUserCertificateRequest
+        @return: ResetAntChainUserCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_ant_chain_user_certificate_with_options(request, runtime)
 
@@ -8422,6 +10436,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ResetAntChainUserCertificateRequest,
     ) -> baas_20181221_models.ResetAntChainUserCertificateResponse:
+        """
+        @param request: ResetAntChainUserCertificateRequest
+        @return: ResetAntChainUserCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_ant_chain_user_certificate_with_options_async(request, runtime)
 
@@ -8430,6 +10448,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ResetFabricOrganizationUserPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetFabricOrganizationUserPasswordResponse:
+        """
+        @param request: ResetFabricOrganizationUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetFabricOrganizationUserPasswordResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -8464,6 +10487,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.ResetFabricOrganizationUserPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetFabricOrganizationUserPasswordResponse:
+        """
+        @param request: ResetFabricOrganizationUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetFabricOrganizationUserPasswordResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.location):
@@ -8497,6 +10525,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ResetFabricOrganizationUserPasswordRequest,
     ) -> baas_20181221_models.ResetFabricOrganizationUserPasswordResponse:
+        """
+        @param request: ResetFabricOrganizationUserPasswordRequest
+        @return: ResetFabricOrganizationUserPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_fabric_organization_user_password_with_options(request, runtime)
 
@@ -8504,6 +10536,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.ResetFabricOrganizationUserPasswordRequest,
     ) -> baas_20181221_models.ResetFabricOrganizationUserPasswordResponse:
+        """
+        @param request: ResetFabricOrganizationUserPasswordRequest
+        @return: ResetFabricOrganizationUserPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_fabric_organization_user_password_with_options_async(request, runtime)
 
@@ -8512,6 +10548,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.SubmitFabricChaincodeDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.SubmitFabricChaincodeDefinitionResponse:
+        """
+        @summary SubmitFabricChaincodeDefinition
+        
+        @param request: SubmitFabricChaincodeDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitFabricChaincodeDefinitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_package_id):
@@ -8556,6 +10599,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.SubmitFabricChaincodeDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.SubmitFabricChaincodeDefinitionResponse:
+        """
+        @summary SubmitFabricChaincodeDefinition
+        
+        @param request: SubmitFabricChaincodeDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitFabricChaincodeDefinitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_package_id):
@@ -8599,6 +10649,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.SubmitFabricChaincodeDefinitionRequest,
     ) -> baas_20181221_models.SubmitFabricChaincodeDefinitionResponse:
+        """
+        @summary SubmitFabricChaincodeDefinition
+        
+        @param request: SubmitFabricChaincodeDefinitionRequest
+        @return: SubmitFabricChaincodeDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_fabric_chaincode_definition_with_options(request, runtime)
 
@@ -8606,6 +10662,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.SubmitFabricChaincodeDefinitionRequest,
     ) -> baas_20181221_models.SubmitFabricChaincodeDefinitionResponse:
+        """
+        @summary SubmitFabricChaincodeDefinition
+        
+        @param request: SubmitFabricChaincodeDefinitionRequest
+        @return: SubmitFabricChaincodeDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_fabric_chaincode_definition_with_options_async(request, runtime)
 
@@ -8614,6 +10676,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.SynchronizeFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.SynchronizeFabricChaincodeResponse:
+        """
+        @param request: SynchronizeFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SynchronizeFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -8644,6 +10711,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.SynchronizeFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.SynchronizeFabricChaincodeResponse:
+        """
+        @param request: SynchronizeFabricChaincodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SynchronizeFabricChaincodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -8673,6 +10745,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.SynchronizeFabricChaincodeRequest,
     ) -> baas_20181221_models.SynchronizeFabricChaincodeResponse:
+        """
+        @param request: SynchronizeFabricChaincodeRequest
+        @return: SynchronizeFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.synchronize_fabric_chaincode_with_options(request, runtime)
 
@@ -8680,6 +10756,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.SynchronizeFabricChaincodeRequest,
     ) -> baas_20181221_models.SynchronizeFabricChaincodeResponse:
+        """
+        @param request: SynchronizeFabricChaincodeRequest
+        @return: SynchronizeFabricChaincodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.synchronize_fabric_chaincode_with_options_async(request, runtime)
 
@@ -8688,6 +10768,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.TagResourcesResponse:
+        """
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -8720,6 +10805,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.TagResourcesResponse:
+        """
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -8751,6 +10841,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.TagResourcesRequest,
     ) -> baas_20181221_models.TagResourcesResponse:
+        """
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -8758,6 +10852,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.TagResourcesRequest,
     ) -> baas_20181221_models.TagResourcesResponse:
+        """
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -8766,6 +10864,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UnfreezeAntChainAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UnfreezeAntChainAccountResponse:
+        """
+        @param request: UnfreezeAntChainAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnfreezeAntChainAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -8796,6 +10899,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UnfreezeAntChainAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UnfreezeAntChainAccountResponse:
+        """
+        @param request: UnfreezeAntChainAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnfreezeAntChainAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -8825,6 +10933,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UnfreezeAntChainAccountRequest,
     ) -> baas_20181221_models.UnfreezeAntChainAccountResponse:
+        """
+        @param request: UnfreezeAntChainAccountRequest
+        @return: UnfreezeAntChainAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unfreeze_ant_chain_account_with_options(request, runtime)
 
@@ -8832,6 +10944,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UnfreezeAntChainAccountRequest,
     ) -> baas_20181221_models.UnfreezeAntChainAccountResponse:
+        """
+        @param request: UnfreezeAntChainAccountRequest
+        @return: UnfreezeAntChainAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unfreeze_ant_chain_account_with_options_async(request, runtime)
 
@@ -8840,6 +10956,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -8874,6 +10995,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -8907,6 +11033,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UntagResourcesRequest,
     ) -> baas_20181221_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -8914,6 +11044,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UntagResourcesRequest,
     ) -> baas_20181221_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -8922,6 +11056,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainResponse:
+        """
+        @param request: UpdateAntChainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -8952,6 +11091,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainResponse:
+        """
+        @param request: UpdateAntChainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -8981,6 +11125,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainRequest,
     ) -> baas_20181221_models.UpdateAntChainResponse:
+        """
+        @param request: UpdateAntChainRequest
+        @return: UpdateAntChainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ant_chain_with_options(request, runtime)
 
@@ -8988,6 +11136,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainRequest,
     ) -> baas_20181221_models.UpdateAntChainResponse:
+        """
+        @param request: UpdateAntChainRequest
+        @return: UpdateAntChainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ant_chain_with_options_async(request, runtime)
 
@@ -8996,6 +11148,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainConsortiumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainConsortiumResponse:
+        """
+        @param request: UpdateAntChainConsortiumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainConsortiumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_description):
@@ -9028,6 +11185,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainConsortiumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainConsortiumResponse:
+        """
+        @param request: UpdateAntChainConsortiumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainConsortiumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_description):
@@ -9059,6 +11221,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainConsortiumRequest,
     ) -> baas_20181221_models.UpdateAntChainConsortiumResponse:
+        """
+        @param request: UpdateAntChainConsortiumRequest
+        @return: UpdateAntChainConsortiumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ant_chain_consortium_with_options(request, runtime)
 
@@ -9066,6 +11232,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainConsortiumRequest,
     ) -> baas_20181221_models.UpdateAntChainConsortiumResponse:
+        """
+        @param request: UpdateAntChainConsortiumRequest
+        @return: UpdateAntChainConsortiumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ant_chain_consortium_with_options_async(request, runtime)
 
@@ -9074,6 +11244,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainContractContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainContractContentResponse:
+        """
+        @param request: UpdateAntChainContractContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainContractContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -9108,6 +11283,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainContractContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainContractContentResponse:
+        """
+        @param request: UpdateAntChainContractContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainContractContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -9141,6 +11321,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainContractContentRequest,
     ) -> baas_20181221_models.UpdateAntChainContractContentResponse:
+        """
+        @param request: UpdateAntChainContractContentRequest
+        @return: UpdateAntChainContractContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ant_chain_contract_content_with_options(request, runtime)
 
@@ -9148,6 +11332,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainContractContentRequest,
     ) -> baas_20181221_models.UpdateAntChainContractContentResponse:
+        """
+        @param request: UpdateAntChainContractContentRequest
+        @return: UpdateAntChainContractContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ant_chain_contract_content_with_options_async(request, runtime)
 
@@ -9156,6 +11344,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainContractProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainContractProjectResponse:
+        """
+        @param request: UpdateAntChainContractProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainContractProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_description):
@@ -9190,6 +11383,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainContractProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainContractProjectResponse:
+        """
+        @param request: UpdateAntChainContractProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainContractProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_description):
@@ -9223,6 +11421,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainContractProjectRequest,
     ) -> baas_20181221_models.UpdateAntChainContractProjectResponse:
+        """
+        @param request: UpdateAntChainContractProjectRequest
+        @return: UpdateAntChainContractProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ant_chain_contract_project_with_options(request, runtime)
 
@@ -9230,6 +11432,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainContractProjectRequest,
     ) -> baas_20181221_models.UpdateAntChainContractProjectResponse:
+        """
+        @param request: UpdateAntChainContractProjectRequest
+        @return: UpdateAntChainContractProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ant_chain_contract_project_with_options_async(request, runtime)
 
@@ -9238,6 +11444,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainMemberResponse:
+        """
+        @param request: UpdateAntChainMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -9270,6 +11481,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainMemberResponse:
+        """
+        @param request: UpdateAntChainMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.consortium_id):
@@ -9301,6 +11517,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainMemberRequest,
     ) -> baas_20181221_models.UpdateAntChainMemberResponse:
+        """
+        @param request: UpdateAntChainMemberRequest
+        @return: UpdateAntChainMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ant_chain_member_with_options(request, runtime)
 
@@ -9308,6 +11528,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainMemberRequest,
     ) -> baas_20181221_models.UpdateAntChainMemberResponse:
+        """
+        @param request: UpdateAntChainMemberRequest
+        @return: UpdateAntChainMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ant_chain_member_with_options_async(request, runtime)
 
@@ -9316,6 +11540,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainQRCodeAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse:
+        """
+        @param request: UpdateAntChainQRCodeAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainQRCodeAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -9348,6 +11577,11 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpdateAntChainQRCodeAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse:
+        """
+        @param request: UpdateAntChainQRCodeAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAntChainQRCodeAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ant_chain_id):
@@ -9379,6 +11613,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainQRCodeAuthorizationRequest,
     ) -> baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse:
+        """
+        @param request: UpdateAntChainQRCodeAuthorizationRequest
+        @return: UpdateAntChainQRCodeAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ant_chain_qrcode_authorization_with_options(request, runtime)
 
@@ -9386,6 +11624,10 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpdateAntChainQRCodeAuthorizationRequest,
     ) -> baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse:
+        """
+        @param request: UpdateAntChainQRCodeAuthorizationRequest
+        @return: UpdateAntChainQRCodeAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ant_chain_qrcode_authorization_with_options_async(request, runtime)
 
@@ -9395,7 +11637,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
         """
-        ***\
+        @description ***\
         
         @param request: UpgradeFabricChaincodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9438,7 +11680,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
         """
-        ***\
+        @description ***\
         
         @param request: UpgradeFabricChaincodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9480,7 +11722,7 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpgradeFabricChaincodeRequest,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
         """
-        ***\
+        @description ***\
         
         @param request: UpgradeFabricChaincodeRequest
         @return: UpgradeFabricChaincodeResponse
@@ -9493,7 +11735,7 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpgradeFabricChaincodeRequest,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
         """
-        ***\
+        @description ***\
         
         @param request: UpgradeFabricChaincodeRequest
         @return: UpgradeFabricChaincodeResponse
@@ -9506,6 +11748,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpgradeFabricChaincodeDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse:
+        """
+        @summary UpgradeFabricChaincodeDefinition
+        
+        @param request: UpgradeFabricChaincodeDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeFabricChaincodeDefinitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -9548,6 +11797,13 @@ class Client(OpenApiClient):
         request: baas_20181221_models.UpgradeFabricChaincodeDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse:
+        """
+        @summary UpgradeFabricChaincodeDefinition
+        
+        @param request: UpgradeFabricChaincodeDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeFabricChaincodeDefinitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.chaincode_id):
@@ -9589,6 +11845,12 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpgradeFabricChaincodeDefinitionRequest,
     ) -> baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse:
+        """
+        @summary UpgradeFabricChaincodeDefinition
+        
+        @param request: UpgradeFabricChaincodeDefinitionRequest
+        @return: UpgradeFabricChaincodeDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_fabric_chaincode_definition_with_options(request, runtime)
 
@@ -9596,5 +11858,11 @@ class Client(OpenApiClient):
         self,
         request: baas_20181221_models.UpgradeFabricChaincodeDefinitionRequest,
     ) -> baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse:
+        """
+        @summary UpgradeFabricChaincodeDefinition
+        
+        @param request: UpgradeFabricChaincodeDefinitionRequest
+        @return: UpgradeFabricChaincodeDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_fabric_chaincode_definition_with_options_async(request, runtime)

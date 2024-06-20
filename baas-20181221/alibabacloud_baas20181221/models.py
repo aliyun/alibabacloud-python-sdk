@@ -274,6 +274,7 @@ class AcceptFabricInvitationRequest(TeaModel):
         code: str = None,
         is_accepted: bool = None,
     ):
+        # This parameter is required.
         self.code = code
         self.is_accepted = is_accepted
 
@@ -352,9 +353,6 @@ class AcceptFabricInvitationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -390,7 +388,9 @@ class ApplyAntChainCertificateRequest(TeaModel):
         ant_chain_id: str = None,
         upload_req: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.upload_req = upload_req
 
     def validate(self):
@@ -462,9 +462,6 @@ class ApplyAntChainCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -507,14 +504,23 @@ class ApplyAntChainCertificateWithKeyAutoCreationRequest(TeaModel):
         password: str = None,
         state_or_province_name: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.common_name = common_name
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.country_name = country_name
+        # This parameter is required.
         self.locality_name = locality_name
+        # This parameter is required.
         self.organization_name = organization_name
+        # This parameter is required.
         self.organization_unit_name = organization_unit_name
+        # This parameter is required.
         self.password = password
+        # This parameter is required.
         self.state_or_province_name = state_or_province_name
 
     def validate(self):
@@ -696,9 +702,6 @@ class ApplyAntChainCertificateWithKeyAutoCreationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -736,9 +739,11 @@ class ApproveFabricChaincodeDefinitionRequest(TeaModel):
         location: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_id = chaincode_id
         self.chaincode_package_id = chaincode_package_id
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -838,9 +843,6 @@ class ApproveFabricChaincodeDefinitionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -876,7 +878,9 @@ class BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest(TeaModel):
         ant_chain_id: str = None,
         phone_list: Dict[str, Any] = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.phone_list = phone_list
 
     def validate(self):
@@ -909,7 +913,9 @@ class BatchAddAntChainMiniAppQRCodeAuthorizedUsersShrinkRequest(TeaModel):
         ant_chain_id: str = None,
         phone_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.phone_list_shrink = phone_list_shrink
 
     def validate(self):
@@ -981,9 +987,6 @@ class BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1018,6 +1021,7 @@ class CheckFabricConsortiumDomainRequest(TeaModel):
         self,
         domain_code: str = None,
     ):
+        # This parameter is required.
         self.domain_code = domain_code
 
     def validate(self):
@@ -1138,9 +1142,6 @@ class CheckFabricConsortiumDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1301,9 +1302,6 @@ class CheckFabricOrganizationDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1338,6 +1336,7 @@ class ConfirmFabricConsortiumMemberRequestOrganization(TeaModel):
         self,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -1366,7 +1365,9 @@ class ConfirmFabricConsortiumMemberRequest(TeaModel):
         consortium_id: str = None,
         organization: List[ConfirmFabricConsortiumMemberRequestOrganization] = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.organization = organization
 
     def validate(self):
@@ -1458,9 +1459,6 @@ class ConfirmFabricConsortiumMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1499,8 +1497,11 @@ class CopyAntChainContractProjectRequest(TeaModel):
         project_version: str = None,
     ):
         self.project_description = project_description
+        # This parameter is required.
         self.project_id = project_id
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.project_version = project_version
 
     def validate(self):
@@ -1645,9 +1646,6 @@ class CopyAntChainContractProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1685,9 +1683,13 @@ class CreateAntChainAccountRequest(TeaModel):
         account_recover_pub_key: str = None,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.account = account
+        # This parameter is required.
         self.account_pub_key = account_pub_key
+        # This parameter is required.
         self.account_recover_pub_key = account_recover_pub_key
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -1802,9 +1804,6 @@ class CreateAntChainAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1842,9 +1841,13 @@ class CreateAntChainAccountWithKeyPairAutoCreationRequest(TeaModel):
         password: str = None,
         recover_password: str = None,
     ):
+        # This parameter is required.
         self.account = account
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.password = password
+        # This parameter is required.
         self.recover_password = recover_password
 
     def validate(self):
@@ -1983,9 +1986,6 @@ class CreateAntChainAccountWithKeyPairAutoCreationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2022,6 +2022,7 @@ class CreateAntChainConsortiumRequest(TeaModel):
         consortium_name: str = None,
     ):
         self.consortium_description = consortium_description
+        # This parameter is required.
         self.consortium_name = consortium_name
 
     def validate(self):
@@ -2122,9 +2123,6 @@ class CreateAntChainConsortiumResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2164,9 +2162,12 @@ class CreateAntChainContractContentRequest(TeaModel):
         project_id: str = None,
     ):
         self.content = content
+        # This parameter is required.
         self.content_name = content_name
+        # This parameter is required.
         self.is_directory = is_directory
         self.parent_content_id = parent_content_id
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -2321,9 +2322,6 @@ class CreateAntChainContractContentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2361,9 +2359,12 @@ class CreateAntChainContractProjectRequest(TeaModel):
         project_name: str = None,
         project_version: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.project_description = project_description
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.project_version = project_version
 
     def validate(self):
@@ -2508,9 +2509,6 @@ class CreateAntChainContractProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2689,9 +2687,6 @@ class CreateAntChainKmsAccountNewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2732,12 +2727,17 @@ class CreateFabricChaincodeRequest(TeaModel):
         oss_bucket: str = None,
         oss_url: str = None,
     ):
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.endorse_policy = endorse_policy
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.oss_bucket = oss_bucket
+        # This parameter is required.
         self.oss_url = oss_url
 
     def validate(self):
@@ -2960,9 +2960,6 @@ class CreateFabricChaincodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3000,7 +2997,9 @@ class CreateFabricChaincodePackageRequest(TeaModel):
         oss_url: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.oss_url = oss_url
 
     def validate(self):
@@ -3096,9 +3095,6 @@ class CreateFabricChaincodePackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3166,9 +3162,12 @@ class CreateFabricChannelRequest(TeaModel):
         preferred_max_bytes: int = None,
     ):
         self.batch_timeout = batch_timeout
+        # This parameter is required.
         self.channel_name = channel_name
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.max_message_count = max_message_count
+        # This parameter is required.
         self.organization = organization
         self.preferred_max_bytes = preferred_max_bytes
 
@@ -3408,9 +3407,6 @@ class CreateFabricChannelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3445,6 +3441,7 @@ class CreateFabricChannelMemberRequestOrganization(TeaModel):
         self,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -3473,7 +3470,9 @@ class CreateFabricChannelMemberRequest(TeaModel):
         channel_id: str = None,
         organization: List[CreateFabricChannelMemberRequestOrganization] = None,
     ):
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.organization = organization
 
     def validate(self):
@@ -3565,9 +3564,6 @@ class CreateFabricChannelMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3641,17 +3637,25 @@ class CreateFabricConsortiumRequest(TeaModel):
         spec_name: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.channel_policy = channel_policy
         self.consortium_description = consortium_description
+        # This parameter is required.
         self.consortium_name = consortium_name
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.location = location
+        # This parameter is required.
         self.orderer_type = orderer_type
         self.orderers_count = orderers_count
         self.organization = organization
+        # This parameter is required.
         self.payment_duration = payment_duration
+        # This parameter is required.
         self.payment_duration_unit = payment_duration_unit
         self.peers_count = peers_count
+        # This parameter is required.
         self.spec_name = spec_name
         self.zone_id = zone_id
 
@@ -3919,9 +3923,6 @@ class CreateFabricConsortiumResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3985,8 +3986,11 @@ class CreateFabricConsortiumMemberRequest(TeaModel):
         consortium_id: str = None,
         organization: List[CreateFabricConsortiumMemberRequestOrganization] = None,
     ):
+        # This parameter is required.
         self.code = code
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.organization = organization
 
     def validate(self):
@@ -4082,9 +4086,6 @@ class CreateFabricConsortiumMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4127,12 +4128,18 @@ class CreateFabricOrganizationRequest(TeaModel):
         spec_name: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.location = location
+        # This parameter is required.
         self.organization_name = organization_name
+        # This parameter is required.
         self.payment_duration = payment_duration
+        # This parameter is required.
         self.payment_duration_unit = payment_duration_unit
         self.peers_count = peers_count
+        # This parameter is required.
         self.spec_name = spec_name
 
     def validate(self):
@@ -4371,9 +4378,6 @@ class CreateFabricOrganizationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4412,8 +4416,11 @@ class CreateFabricOrganizationUserRequest(TeaModel):
         username: str = None,
     ):
         self.attrs = attrs
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.password = password
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -4564,9 +4571,6 @@ class CreateFabricOrganizationUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4601,6 +4605,7 @@ class DeleteAntChainConsortiumRequest(TeaModel):
         self,
         consortium_id: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
 
     def validate(self):
@@ -4668,9 +4673,6 @@ class DeleteAntChainConsortiumResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4705,6 +4707,7 @@ class DeleteAntChainContractContentRequest(TeaModel):
         self,
         content_id: str = None,
     ):
+        # This parameter is required.
         self.content_id = content_id
 
     def validate(self):
@@ -4772,9 +4775,6 @@ class DeleteAntChainContractContentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4809,6 +4809,7 @@ class DeleteAntChainContractProjectRequest(TeaModel):
         self,
         project_id: str = None,
     ):
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -4876,9 +4877,6 @@ class DeleteAntChainContractProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4914,7 +4912,9 @@ class DeleteAntChainMiniAppQRCodeAuthorizedUserRequest(TeaModel):
         ant_chain_id: str = None,
         phone: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.phone = phone
 
     def validate(self):
@@ -4986,9 +4986,6 @@ class DeleteAntChainMiniAppQRCodeAuthorizedUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5023,6 +5020,7 @@ class DeleteFabricChaincodeRequest(TeaModel):
         self,
         chaincode_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_id = chaincode_id
 
     def validate(self):
@@ -5096,9 +5094,6 @@ class DeleteFabricChaincodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5135,8 +5130,10 @@ class DescribeAntChainAccountsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -5348,9 +5345,6 @@ class DescribeAntChainAccountsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5388,9 +5382,11 @@ class DescribeAntChainAccountsV2Request(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -5642,9 +5638,6 @@ class DescribeAntChainAccountsV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5680,7 +5673,9 @@ class DescribeAntChainBlockRequest(TeaModel):
         ant_chain_id: str = None,
         height: int = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.height = height
 
     def validate(self):
@@ -5829,9 +5824,6 @@ class DescribeAntChainBlockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5868,8 +5860,10 @@ class DescribeAntChainBlockV2Request(TeaModel):
         consortium_id: str = None,
         height: int = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.height = height
 
     def validate(self):
@@ -6159,9 +6153,6 @@ class DescribeAntChainBlockV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6199,9 +6190,13 @@ class DescribeAntChainCertificateApplicationsRequest(TeaModel):
         page_size: int = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -6424,9 +6419,6 @@ class DescribeAntChainCertificateApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6465,10 +6457,14 @@ class DescribeAntChainCertificateApplicationsV2Request(TeaModel):
         page_size: int = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -6730,9 +6726,6 @@ class DescribeAntChainCertificateApplicationsV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6769,6 +6762,7 @@ class DescribeAntChainConsortiumsRequest(TeaModel):
         page_size: int = None,
     ):
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -6994,9 +6988,6 @@ class DescribeAntChainConsortiumsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7033,6 +7024,7 @@ class DescribeAntChainConsortiumsV2Request(TeaModel):
         page_size: int = None,
     ):
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -7300,9 +7292,6 @@ class DescribeAntChainConsortiumsV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7337,6 +7326,7 @@ class DescribeAntChainContractProjectContentTreeRequest(TeaModel):
         self,
         project_id: str = None,
     ):
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -7457,9 +7447,6 @@ class DescribeAntChainContractProjectContentTreeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7495,7 +7482,9 @@ class DescribeAntChainContractProjectContentTreeV2Request(TeaModel):
         consortium_id: str = None,
         project_id: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -7603,9 +7592,6 @@ class DescribeAntChainContractProjectContentTreeV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7642,8 +7628,11 @@ class DescribeAntChainContractProjectsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -7867,9 +7856,6 @@ class DescribeAntChainContractProjectsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7906,8 +7892,11 @@ class DescribeAntChainContractProjectsV2Request(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -8167,9 +8156,6 @@ class DescribeAntChainContractProjectsV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8204,6 +8190,7 @@ class DescribeAntChainDownloadPathsRequest(TeaModel):
         self,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -8318,9 +8305,6 @@ class DescribeAntChainDownloadPathsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8356,6 +8340,7 @@ class DescribeAntChainDownloadPathsV2Request(TeaModel):
         ant_chain_id: str = None,
         consortium_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
 
@@ -8511,9 +8496,6 @@ class DescribeAntChainDownloadPathsV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8548,6 +8530,7 @@ class DescribeAntChainInformationRequest(TeaModel):
         self,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -8745,9 +8728,6 @@ class DescribeAntChainInformationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8783,6 +8763,7 @@ class DescribeAntChainInformationV2Request(TeaModel):
         ant_chain_id: str = None,
         consortium_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
 
@@ -9027,9 +9008,6 @@ class DescribeAntChainInformationV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9064,6 +9042,7 @@ class DescribeAntChainLatestBlocksRequest(TeaModel):
         self,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -9131,9 +9110,6 @@ class DescribeAntChainLatestBlocksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9169,6 +9145,7 @@ class DescribeAntChainLatestBlocksV2Request(TeaModel):
         ant_chain_id: str = None,
         consortium_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
 
@@ -9366,9 +9343,6 @@ class DescribeAntChainLatestBlocksV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9403,6 +9377,7 @@ class DescribeAntChainLatestTransactionDigestsRequest(TeaModel):
         self,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -9470,9 +9445,6 @@ class DescribeAntChainLatestTransactionDigestsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9508,6 +9480,7 @@ class DescribeAntChainLatestTransactionDigestsV2Request(TeaModel):
         ant_chain_id: str = None,
         consortium_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
 
@@ -9616,9 +9589,6 @@ class DescribeAntChainLatestTransactionDigestsV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9655,8 +9625,10 @@ class DescribeAntChainMembersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -9868,9 +9840,6 @@ class DescribeAntChainMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9907,8 +9876,10 @@ class DescribeAntChainMembersV2Request(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -10156,9 +10127,6 @@ class DescribeAntChainMembersV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10194,7 +10162,9 @@ class DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest(TeaModel):
         ant_chain_id: str = None,
         qrcode_type: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.qrcode_type = qrcode_type
 
     def validate(self):
@@ -10301,9 +10271,6 @@ class DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10339,7 +10306,9 @@ class DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request(TeaModel):
         ant_chain_id: str = None,
         qrcode_type: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.qrcode_type = qrcode_type
 
     def validate(self):
@@ -10482,9 +10451,6 @@ class DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10522,9 +10488,13 @@ class DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest(TeaModel):
         page_size: int = None,
         qrcode_type: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.qrcode_type = qrcode_type
 
     def validate(self):
@@ -10740,9 +10710,6 @@ class DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10780,9 +10747,13 @@ class DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request(TeaModel):
         page_size: int = None,
         qrcode_type: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.qrcode_type = qrcode_type
 
     def validate(self):
@@ -11034,9 +11005,6 @@ class DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11072,7 +11040,9 @@ class DescribeAntChainMiniAppBrowserTransactionQRCodeRequest(TeaModel):
         ant_chain_id: str = None,
         transaction_hash: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.transaction_hash = transaction_hash
 
     def validate(self):
@@ -11191,9 +11161,6 @@ class DescribeAntChainMiniAppBrowserTransactionQRCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11230,8 +11197,10 @@ class DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest(TeaModel):
         contract_id: str = None,
         transaction_hash: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.contract_id = contract_id
+        # This parameter is required.
         self.transaction_hash = transaction_hash
 
     def validate(self):
@@ -11390,9 +11359,6 @@ class DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11427,6 +11393,7 @@ class DescribeAntChainNodesRequest(TeaModel):
         self,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -11494,9 +11461,6 @@ class DescribeAntChainNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11532,6 +11496,7 @@ class DescribeAntChainNodesV2Request(TeaModel):
         ant_chain_id: str = None,
         consortium_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
 
@@ -11640,9 +11605,6 @@ class DescribeAntChainNodesV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11678,7 +11640,9 @@ class DescribeAntChainQRCodeAuthorizationRequest(TeaModel):
         ant_chain_id: str = None,
         qrcode_type: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.qrcode_type = qrcode_type
 
     def validate(self):
@@ -11791,9 +11755,6 @@ class DescribeAntChainQRCodeAuthorizationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11829,7 +11790,9 @@ class DescribeAntChainQRCodeAuthorizationV2Request(TeaModel):
         ant_chain_id: str = None,
         qrcode_type: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.qrcode_type = qrcode_type
 
     def validate(self):
@@ -11978,9 +11941,6 @@ class DescribeAntChainQRCodeAuthorizationV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12016,7 +11976,9 @@ class DescribeAntChainTransactionRequest(TeaModel):
         ant_chain_id: str = None,
         hash: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.hash = hash
 
     def validate(self):
@@ -12243,9 +12205,6 @@ class DescribeAntChainTransactionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12281,7 +12240,9 @@ class DescribeAntChainTransactionReceiptRequest(TeaModel):
         ant_chain_id: str = None,
         hash: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.hash = hash
 
     def validate(self):
@@ -12400,9 +12361,6 @@ class DescribeAntChainTransactionReceiptResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12439,8 +12397,10 @@ class DescribeAntChainTransactionReceiptV2Request(TeaModel):
         consortium_id: str = None,
         hash: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.hash = hash
 
     def validate(self):
@@ -12599,9 +12559,6 @@ class DescribeAntChainTransactionReceiptV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12638,8 +12595,11 @@ class DescribeAntChainTransactionStatisticsRequest(TeaModel):
         end: int = None,
         start: int = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.end = end
+        # This parameter is required.
         self.start = start
 
     def validate(self):
@@ -12774,9 +12734,6 @@ class DescribeAntChainTransactionStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12814,6 +12771,7 @@ class DescribeAntChainTransactionStatisticsV2Request(TeaModel):
         end: int = None,
         start: int = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
         self.end = end
@@ -12991,9 +12949,6 @@ class DescribeAntChainTransactionStatisticsV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13030,8 +12985,10 @@ class DescribeAntChainTransactionV2Request(TeaModel):
         consortium_id: str = None,
         hash: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.hash = hash
 
     def validate(self):
@@ -13297,9 +13254,6 @@ class DescribeAntChainTransactionV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13336,8 +13290,11 @@ class DescribeAntChainsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -13615,9 +13572,6 @@ class DescribeAntChainsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13654,8 +13608,10 @@ class DescribeAntChainsV2Request(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -13987,9 +13943,6 @@ class DescribeAntChainsV2Response(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14024,6 +13977,7 @@ class DescribeEthereumDeletableRequest(TeaModel):
         self,
         ethereum_id: str = None,
     ):
+        # This parameter is required.
         self.ethereum_id = ethereum_id
 
     def validate(self):
@@ -14138,9 +14092,6 @@ class DescribeEthereumDeletableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14307,9 +14258,6 @@ class DescribeFabricCandidateOrganizationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14345,7 +14293,9 @@ class DescribeFabricChaincodeDefinitionTaskRequest(TeaModel):
         chaincode_id: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_id = chaincode_id
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -14606,9 +14556,6 @@ class DescribeFabricChaincodeDefinitionTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14643,6 +14590,7 @@ class DescribeFabricChaincodeUploadPolicyRequest(TeaModel):
         self,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -14781,9 +14729,6 @@ class DescribeFabricChaincodeUploadPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14818,6 +14763,7 @@ class DescribeFabricChannelMembersRequest(TeaModel):
         self,
         channel_id: str = None,
     ):
+        # This parameter is required.
         self.channel_id = channel_id
 
     def validate(self):
@@ -14980,9 +14926,6 @@ class DescribeFabricChannelMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15137,9 +15080,6 @@ class DescribeFabricConsortiumAdminStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15175,6 +15115,7 @@ class DescribeFabricConsortiumChaincodesRequest(TeaModel):
         consortium_id: str = None,
         location: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.location = location
 
@@ -15390,9 +15331,6 @@ class DescribeFabricConsortiumChaincodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15428,6 +15366,7 @@ class DescribeFabricConsortiumChannelsRequest(TeaModel):
         consortium_id: str = None,
         location: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.location = location
 
@@ -15679,9 +15618,6 @@ class DescribeFabricConsortiumChannelsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15803,9 +15739,6 @@ class DescribeFabricConsortiumConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15841,6 +15774,7 @@ class DescribeFabricConsortiumDeletableRequest(TeaModel):
         consortium_id: str = None,
         location: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.location = location
 
@@ -16002,9 +15936,6 @@ class DescribeFabricConsortiumDeletableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16040,6 +15971,7 @@ class DescribeFabricConsortiumMemberApprovalRequest(TeaModel):
         consortium_id: str = None,
         location: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.location = location
 
@@ -16201,9 +16133,6 @@ class DescribeFabricConsortiumMemberApprovalResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16239,6 +16168,7 @@ class DescribeFabricConsortiumMembersRequest(TeaModel):
         consortium_id: str = None,
         location: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.location = location
 
@@ -16388,9 +16318,6 @@ class DescribeFabricConsortiumMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16426,6 +16353,7 @@ class DescribeFabricConsortiumOrderersRequest(TeaModel):
         consortium_id: str = None,
         location: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.location = location
 
@@ -16575,9 +16503,6 @@ class DescribeFabricConsortiumOrderersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16711,9 +16636,6 @@ class DescribeFabricConsortiumSpecsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16749,6 +16671,7 @@ class DescribeFabricConsortiumsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
         self.value = value
 
@@ -17064,9 +16987,6 @@ class DescribeFabricConsortiumsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17105,8 +17025,11 @@ class DescribeFabricExplorerRequest(TeaModel):
         organization_id: str = None,
     ):
         self.ex_body = ex_body
+        # This parameter is required.
         self.ex_method = ex_method
+        # This parameter is required.
         self.ex_url = ex_url
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -17210,9 +17133,6 @@ class DescribeFabricExplorerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17247,6 +17167,7 @@ class DescribeFabricInvitationCodeRequest(TeaModel):
         self,
         consortium_id: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
 
     def validate(self):
@@ -17427,9 +17348,6 @@ class DescribeFabricInvitationCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17464,6 +17382,7 @@ class DescribeFabricInviterRequest(TeaModel):
         self,
         code: str = None,
     ):
+        # This parameter is required.
         self.code = code
 
     def validate(self):
@@ -17596,9 +17515,6 @@ class DescribeFabricInviterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17635,8 +17551,10 @@ class DescribeFabricOrdererLogsRequest(TeaModel):
         lines: str = None,
         orderer_name: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
         self.lines = lines
+        # This parameter is required.
         self.orderer_name = orderer_name
 
     def validate(self):
@@ -17724,9 +17642,6 @@ class DescribeFabricOrdererLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17762,6 +17677,7 @@ class DescribeFabricOrganizationRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
         self.value = value
 
@@ -17797,6 +17713,7 @@ class DescribeFabricOrganizationRequest(TeaModel):
         tag: List[DescribeFabricOrganizationRequestTag] = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
         self.tag = tag
 
@@ -18083,9 +18000,6 @@ class DescribeFabricOrganizationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18120,6 +18034,7 @@ class DescribeFabricOrganizationChaincodePackageRequest(TeaModel):
         self,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -18213,9 +18128,6 @@ class DescribeFabricOrganizationChaincodePackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18252,6 +18164,7 @@ class DescribeFabricOrganizationChaincodesRequest(TeaModel):
         organization_id: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -18442,9 +18355,6 @@ class DescribeFabricOrganizationChaincodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18481,6 +18391,7 @@ class DescribeFabricOrganizationChannelsRequest(TeaModel):
         organization_id: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -18713,9 +18624,6 @@ class DescribeFabricOrganizationChannelsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18752,6 +18660,7 @@ class DescribeFabricOrganizationDeletableRequest(TeaModel):
         organization_id: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -18912,9 +18821,6 @@ class DescribeFabricOrganizationDeletableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18951,6 +18857,7 @@ class DescribeFabricOrganizationMembersRequest(TeaModel):
         organization_id: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -19111,9 +19018,6 @@ class DescribeFabricOrganizationMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19150,6 +19054,7 @@ class DescribeFabricOrganizationPeersRequest(TeaModel):
         organization_id: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -19316,9 +19221,6 @@ class DescribeFabricOrganizationPeersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19452,9 +19354,6 @@ class DescribeFabricOrganizationSpecsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19491,6 +19390,7 @@ class DescribeFabricOrganizationUsersRequest(TeaModel):
         organization_id: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -19657,9 +19557,6 @@ class DescribeFabricOrganizationUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19695,6 +19592,7 @@ class DescribeFabricOrganizationsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
         self.value = value
 
@@ -20004,9 +19902,6 @@ class DescribeFabricOrganizationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20044,7 +19939,9 @@ class DescribeFabricPeerLogsRequest(TeaModel):
         peer_name: str = None,
     ):
         self.lines = lines
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.peer_name = peer_name
 
     def validate(self):
@@ -20132,9 +20029,6 @@ class DescribeFabricPeerLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20301,9 +20195,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20390,9 +20281,6 @@ class DescribeRootDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20574,9 +20462,6 @@ class DescribeTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20614,7 +20499,9 @@ class DownloadFabricOrganizationSDKRequest(TeaModel):
         username: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -20743,9 +20630,6 @@ class DownloadFabricOrganizationSDKResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20781,7 +20665,9 @@ class FreezeAntChainAccountRequest(TeaModel):
         account: str = None,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.account = account
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -20853,9 +20739,6 @@ class FreezeAntChainAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20892,8 +20775,10 @@ class InstallFabricChaincodeRequest(TeaModel):
         location: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_id = chaincode_id
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -21100,9 +20985,6 @@ class InstallFabricChaincodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21139,8 +21021,10 @@ class InstallFabricChaincodePackageRequest(TeaModel):
         location: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_package_id = chaincode_package_id
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -21236,9 +21120,6 @@ class InstallFabricChaincodePackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21277,10 +21158,12 @@ class InstantiateFabricChaincodeRequest(TeaModel):
         location: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_id = chaincode_id
         self.collection_config = collection_config
         self.endorse_policy = endorse_policy
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -21495,9 +21378,6 @@ class InstantiateFabricChaincodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21534,7 +21414,9 @@ class JoinFabricChannelRequest(TeaModel):
         do: str = None,
         location: str = None,
     ):
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.do = do
         self.location = location
 
@@ -21706,9 +21588,6 @@ class JoinFabricChannelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21781,6 +21660,7 @@ class ListTagResourcesRequest(TeaModel):
     ):
         self.next_token = next_token
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -21928,9 +21808,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21965,6 +21842,7 @@ class ResetAntChainCertificateRequest(TeaModel):
         self,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -22032,9 +21910,6 @@ class ResetAntChainCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22070,7 +21945,9 @@ class ResetAntChainUserCertificateRequest(TeaModel):
         ant_chain_id: str = None,
         username: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -22142,9 +22019,6 @@ class ResetAntChainUserCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22183,8 +22057,11 @@ class ResetFabricOrganizationUserPasswordRequest(TeaModel):
         username: str = None,
     ):
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.password = password
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -22335,9 +22212,6 @@ class ResetFabricOrganizationUserPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22380,14 +22254,20 @@ class SubmitFabricChaincodeDefinitionRequest(TeaModel):
         name: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_package_id = chaincode_package_id
+        # This parameter is required.
         self.chaincode_version = chaincode_version
+        # This parameter is required.
         self.channel_id = channel_id
         self.collection_config = collection_config
+        # This parameter is required.
         self.endorse_policy = endorse_policy
         self.init_required = init_required
         self.location = location
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -22507,9 +22387,6 @@ class SubmitFabricChaincodeDefinitionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22545,7 +22422,9 @@ class SynchronizeFabricChaincodeRequest(TeaModel):
         chaincode_id: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_id = chaincode_id
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -22748,9 +22627,6 @@ class SynchronizeFabricChaincodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22821,6 +22697,7 @@ class TagResourcesRequest(TeaModel):
         tag: List[TagResourcesRequestTag] = None,
     ):
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -22917,9 +22794,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22955,7 +22829,9 @@ class UnfreezeAntChainAccountRequest(TeaModel):
         account: str = None,
         ant_chain_id: str = None,
     ):
+        # This parameter is required.
         self.account = account
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
 
     def validate(self):
@@ -23027,9 +22903,6 @@ class UnfreezeAntChainAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23069,6 +22942,7 @@ class UntagResourcesRequest(TeaModel):
     ):
         self.all = all
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -23161,9 +23035,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23199,7 +23070,9 @@ class UpdateAntChainRequest(TeaModel):
         ant_chain_id: str = None,
         ant_chain_name: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.ant_chain_name = ant_chain_name
 
     def validate(self):
@@ -23271,9 +23144,6 @@ class UpdateAntChainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23311,7 +23181,9 @@ class UpdateAntChainConsortiumRequest(TeaModel):
         consortium_name: str = None,
     ):
         self.consortium_description = consortium_description
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.consortium_name = consortium_name
 
     def validate(self):
@@ -23387,9 +23259,6 @@ class UpdateAntChainConsortiumResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23428,6 +23297,7 @@ class UpdateAntChainContractContentRequest(TeaModel):
         parent_content_id: str = None,
     ):
         self.content = content
+        # This parameter is required.
         self.content_id = content_id
         self.content_name = content_name
         self.parent_content_id = parent_content_id
@@ -23509,9 +23379,6 @@ class UpdateAntChainContractContentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23550,6 +23417,7 @@ class UpdateAntChainContractProjectRequest(TeaModel):
         project_version: str = None,
     ):
         self.project_description = project_description
+        # This parameter is required.
         self.project_id = project_id
         self.project_name = project_name
         self.project_version = project_version
@@ -23631,9 +23499,6 @@ class UpdateAntChainContractProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23670,8 +23535,11 @@ class UpdateAntChainMemberRequest(TeaModel):
         member_id: str = None,
         member_name: str = None,
     ):
+        # This parameter is required.
         self.consortium_id = consortium_id
+        # This parameter is required.
         self.member_id = member_id
+        # This parameter is required.
         self.member_name = member_name
 
     def validate(self):
@@ -23747,9 +23615,6 @@ class UpdateAntChainMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23786,8 +23651,11 @@ class UpdateAntChainQRCodeAuthorizationRequest(TeaModel):
         authorization_type: str = None,
         qrcode_type: str = None,
     ):
+        # This parameter is required.
         self.ant_chain_id = ant_chain_id
+        # This parameter is required.
         self.authorization_type = authorization_type
+        # This parameter is required.
         self.qrcode_type = qrcode_type
 
     def validate(self):
@@ -23863,9 +23731,6 @@ class UpdateAntChainQRCodeAuthorizationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23904,10 +23769,12 @@ class UpgradeFabricChaincodeRequest(TeaModel):
         location: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_id = chaincode_id
         self.collection_config = collection_config
         self.endorse_policy = endorse_policy
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -24122,9 +23989,6 @@ class UpgradeFabricChaincodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24166,13 +24030,18 @@ class UpgradeFabricChaincodeDefinitionRequest(TeaModel):
         location: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.chaincode_id = chaincode_id
+        # This parameter is required.
         self.chaincode_package_id = chaincode_package_id
+        # This parameter is required.
         self.chaincode_version = chaincode_version
         self.collection_config = collection_config
+        # This parameter is required.
         self.endorse_policy = endorse_policy
         self.init_required = init_required
         self.location = location
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -24288,9 +24157,6 @@ class UpgradeFabricChaincodeDefinitionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
