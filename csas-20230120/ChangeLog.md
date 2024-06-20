@@ -1,3 +1,13 @@
+2024-06-20 Version: 1.7.0
+- Support API CreateWmBaseImage.
+- Support API CreateWmEmbedTask.
+- Support API CreateWmExtractTask.
+- Support API CreateWmInfoMapping.
+- Support API GetWmEmbedTask.
+- Support API GetWmExtractTask.
+- Support API LookupWmInfoMapping.
+
+
 2024-06-18 Version: 1.6.1
 - Update API CreatePrivateAccessPolicy: add param DeviceAttributeAction.
 - Update API GetPrivateAccessPolicy: update response param.

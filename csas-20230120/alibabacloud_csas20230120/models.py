@@ -1770,6 +1770,992 @@ class CreateUserGroupResponse(TeaModel):
         return self
 
 
+class CreateWmBaseImageRequest(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        opacity: int = None,
+        scale: int = None,
+        width: int = None,
+        wm_info_bytes_b64: str = None,
+        wm_info_size: int = None,
+        wm_info_uint: str = None,
+        wm_type: str = None,
+    ):
+        # This parameter is required.
+        self.height = height
+        # This parameter is required.
+        self.opacity = opacity
+        # This parameter is required.
+        self.scale = scale
+        # This parameter is required.
+        self.width = width
+        self.wm_info_bytes_b64 = wm_info_bytes_b64
+        self.wm_info_size = wm_info_size
+        self.wm_info_uint = wm_info_uint
+        # This parameter is required.
+        self.wm_type = wm_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        if self.scale is not None:
+            result['Scale'] = self.scale
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.wm_info_bytes_b64 is not None:
+            result['WmInfoBytesB64'] = self.wm_info_bytes_b64
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_info_uint is not None:
+            result['WmInfoUint'] = self.wm_info_uint
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        if m.get('Scale') is not None:
+            self.scale = m.get('Scale')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('WmInfoBytesB64') is not None:
+            self.wm_info_bytes_b64 = m.get('WmInfoBytesB64')
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmInfoUint') is not None:
+            self.wm_info_uint = m.get('WmInfoUint')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class CreateWmBaseImageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        image_url: str = None,
+        image_url_exp: int = None,
+    ):
+        self.image_id = image_id
+        self.image_url = image_url
+        self.image_url_exp = image_url_exp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.image_url_exp is not None:
+            result['ImageUrlExp'] = self.image_url_exp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('ImageUrlExp') is not None:
+            self.image_url_exp = m.get('ImageUrlExp')
+        return self
+
+
+class CreateWmBaseImageResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateWmBaseImageResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateWmBaseImageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateWmBaseImageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWmBaseImageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWmBaseImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl(TeaModel):
+    def __init__(
+        self,
+        opacity: int = None,
+    ):
+        self.opacity = opacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        return self
+
+
+class CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        font_color: str = None,
+        font_size: int = None,
+        horizontal_number: int = None,
+        mode: str = None,
+        opacity: int = None,
+        pos_x: str = None,
+        pos_y: str = None,
+        vertical_number: int = None,
+        visible_text: str = None,
+    ):
+        self.angle = angle
+        self.font_color = font_color
+        self.font_size = font_size
+        self.horizontal_number = horizontal_number
+        self.mode = mode
+        self.opacity = opacity
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.vertical_number = vertical_number
+        self.visible_text = visible_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.horizontal_number is not None:
+            result['HorizontalNumber'] = self.horizontal_number
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        if self.pos_x is not None:
+            result['PosX'] = self.pos_x
+        if self.pos_y is not None:
+            result['PosY'] = self.pos_y
+        if self.vertical_number is not None:
+            result['VerticalNumber'] = self.vertical_number
+        if self.visible_text is not None:
+            result['VisibleText'] = self.visible_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('FontColor') is not None:
+            self.font_color = m.get('FontColor')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('HorizontalNumber') is not None:
+            self.horizontal_number = m.get('HorizontalNumber')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        if m.get('PosX') is not None:
+            self.pos_x = m.get('PosX')
+        if m.get('PosY') is not None:
+            self.pos_y = m.get('PosY')
+        if m.get('VerticalNumber') is not None:
+            self.vertical_number = m.get('VerticalNumber')
+        if m.get('VisibleText') is not None:
+            self.visible_text = m.get('VisibleText')
+        return self
+
+
+class CreateWmEmbedTaskRequestDocumentControlBackgroundControl(TeaModel):
+    def __init__(
+        self,
+        bg_add_invisible: bool = None,
+        bg_add_visible: bool = None,
+        bg_invisible_control: CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl = None,
+        bg_visible_control: CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl = None,
+    ):
+        self.bg_add_invisible = bg_add_invisible
+        self.bg_add_visible = bg_add_visible
+        self.bg_invisible_control = bg_invisible_control
+        self.bg_visible_control = bg_visible_control
+
+    def validate(self):
+        if self.bg_invisible_control:
+            self.bg_invisible_control.validate()
+        if self.bg_visible_control:
+            self.bg_visible_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bg_add_invisible is not None:
+            result['BgAddInvisible'] = self.bg_add_invisible
+        if self.bg_add_visible is not None:
+            result['BgAddVisible'] = self.bg_add_visible
+        if self.bg_invisible_control is not None:
+            result['BgInvisibleControl'] = self.bg_invisible_control.to_map()
+        if self.bg_visible_control is not None:
+            result['BgVisibleControl'] = self.bg_visible_control.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BgAddInvisible') is not None:
+            self.bg_add_invisible = m.get('BgAddInvisible')
+        if m.get('BgAddVisible') is not None:
+            self.bg_add_visible = m.get('BgAddVisible')
+        if m.get('BgInvisibleControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl()
+            self.bg_invisible_control = temp_model.from_map(m['BgInvisibleControl'])
+        if m.get('BgVisibleControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl()
+            self.bg_visible_control = temp_model.from_map(m['BgVisibleControl'])
+        return self
+
+
+class CreateWmEmbedTaskRequestDocumentControl(TeaModel):
+    def __init__(
+        self,
+        background_control: CreateWmEmbedTaskRequestDocumentControlBackgroundControl = None,
+        invisible_anti_all_copy: bool = None,
+        invisible_anti_text_copy: bool = None,
+    ):
+        self.background_control = background_control
+        self.invisible_anti_all_copy = invisible_anti_all_copy
+        self.invisible_anti_text_copy = invisible_anti_text_copy
+
+    def validate(self):
+        if self.background_control:
+            self.background_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background_control is not None:
+            result['BackgroundControl'] = self.background_control.to_map()
+        if self.invisible_anti_all_copy is not None:
+            result['InvisibleAntiAllCopy'] = self.invisible_anti_all_copy
+        if self.invisible_anti_text_copy is not None:
+            result['InvisibleAntiTextCopy'] = self.invisible_anti_text_copy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackgroundControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestDocumentControlBackgroundControl()
+            self.background_control = temp_model.from_map(m['BackgroundControl'])
+        if m.get('InvisibleAntiAllCopy') is not None:
+            self.invisible_anti_all_copy = m.get('InvisibleAntiAllCopy')
+        if m.get('InvisibleAntiTextCopy') is not None:
+            self.invisible_anti_text_copy = m.get('InvisibleAntiTextCopy')
+        return self
+
+
+class CreateWmEmbedTaskRequest(TeaModel):
+    def __init__(
+        self,
+        document_control: CreateWmEmbedTaskRequestDocumentControl = None,
+        file_url: str = None,
+        filename: str = None,
+        image_embed_jpeg_quality: int = None,
+        image_embed_level: int = None,
+        video_bitrate: str = None,
+        video_is_long: bool = None,
+        wm_info_bytes_b64: str = None,
+        wm_info_size: int = None,
+        wm_info_uint: str = None,
+        wm_type: str = None,
+    ):
+        self.document_control = document_control
+        # This parameter is required.
+        self.file_url = file_url
+        # This parameter is required.
+        self.filename = filename
+        self.image_embed_jpeg_quality = image_embed_jpeg_quality
+        self.image_embed_level = image_embed_level
+        self.video_bitrate = video_bitrate
+        self.video_is_long = video_is_long
+        self.wm_info_bytes_b64 = wm_info_bytes_b64
+        self.wm_info_size = wm_info_size
+        self.wm_info_uint = wm_info_uint
+        # This parameter is required.
+        self.wm_type = wm_type
+
+    def validate(self):
+        if self.document_control:
+            self.document_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_control is not None:
+            result['DocumentControl'] = self.document_control.to_map()
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.filename is not None:
+            result['Filename'] = self.filename
+        if self.image_embed_jpeg_quality is not None:
+            result['ImageEmbedJpegQuality'] = self.image_embed_jpeg_quality
+        if self.image_embed_level is not None:
+            result['ImageEmbedLevel'] = self.image_embed_level
+        if self.video_bitrate is not None:
+            result['VideoBitrate'] = self.video_bitrate
+        if self.video_is_long is not None:
+            result['VideoIsLong'] = self.video_is_long
+        if self.wm_info_bytes_b64 is not None:
+            result['WmInfoBytesB64'] = self.wm_info_bytes_b64
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_info_uint is not None:
+            result['WmInfoUint'] = self.wm_info_uint
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestDocumentControl()
+            self.document_control = temp_model.from_map(m['DocumentControl'])
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Filename') is not None:
+            self.filename = m.get('Filename')
+        if m.get('ImageEmbedJpegQuality') is not None:
+            self.image_embed_jpeg_quality = m.get('ImageEmbedJpegQuality')
+        if m.get('ImageEmbedLevel') is not None:
+            self.image_embed_level = m.get('ImageEmbedLevel')
+        if m.get('VideoBitrate') is not None:
+            self.video_bitrate = m.get('VideoBitrate')
+        if m.get('VideoIsLong') is not None:
+            self.video_is_long = m.get('VideoIsLong')
+        if m.get('WmInfoBytesB64') is not None:
+            self.wm_info_bytes_b64 = m.get('WmInfoBytesB64')
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmInfoUint') is not None:
+            self.wm_info_uint = m.get('WmInfoUint')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class CreateWmEmbedTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        document_control_shrink: str = None,
+        file_url: str = None,
+        filename: str = None,
+        image_embed_jpeg_quality: int = None,
+        image_embed_level: int = None,
+        video_bitrate: str = None,
+        video_is_long: bool = None,
+        wm_info_bytes_b64: str = None,
+        wm_info_size: int = None,
+        wm_info_uint: str = None,
+        wm_type: str = None,
+    ):
+        self.document_control_shrink = document_control_shrink
+        # This parameter is required.
+        self.file_url = file_url
+        # This parameter is required.
+        self.filename = filename
+        self.image_embed_jpeg_quality = image_embed_jpeg_quality
+        self.image_embed_level = image_embed_level
+        self.video_bitrate = video_bitrate
+        self.video_is_long = video_is_long
+        self.wm_info_bytes_b64 = wm_info_bytes_b64
+        self.wm_info_size = wm_info_size
+        self.wm_info_uint = wm_info_uint
+        # This parameter is required.
+        self.wm_type = wm_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_control_shrink is not None:
+            result['DocumentControl'] = self.document_control_shrink
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.filename is not None:
+            result['Filename'] = self.filename
+        if self.image_embed_jpeg_quality is not None:
+            result['ImageEmbedJpegQuality'] = self.image_embed_jpeg_quality
+        if self.image_embed_level is not None:
+            result['ImageEmbedLevel'] = self.image_embed_level
+        if self.video_bitrate is not None:
+            result['VideoBitrate'] = self.video_bitrate
+        if self.video_is_long is not None:
+            result['VideoIsLong'] = self.video_is_long
+        if self.wm_info_bytes_b64 is not None:
+            result['WmInfoBytesB64'] = self.wm_info_bytes_b64
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_info_uint is not None:
+            result['WmInfoUint'] = self.wm_info_uint
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentControl') is not None:
+            self.document_control_shrink = m.get('DocumentControl')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Filename') is not None:
+            self.filename = m.get('Filename')
+        if m.get('ImageEmbedJpegQuality') is not None:
+            self.image_embed_jpeg_quality = m.get('ImageEmbedJpegQuality')
+        if m.get('ImageEmbedLevel') is not None:
+            self.image_embed_level = m.get('ImageEmbedLevel')
+        if m.get('VideoBitrate') is not None:
+            self.video_bitrate = m.get('VideoBitrate')
+        if m.get('VideoIsLong') is not None:
+            self.video_is_long = m.get('VideoIsLong')
+        if m.get('WmInfoBytesB64') is not None:
+            self.wm_info_bytes_b64 = m.get('WmInfoBytesB64')
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmInfoUint') is not None:
+            self.wm_info_uint = m.get('WmInfoUint')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class CreateWmEmbedTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateWmEmbedTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateWmEmbedTaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateWmEmbedTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateWmEmbedTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWmEmbedTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWmEmbedTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWmExtractTaskRequest(TeaModel):
+    def __init__(
+        self,
+        document_is_capture: bool = None,
+        file_url: str = None,
+        filename: str = None,
+        video_is_long: bool = None,
+        video_speed: str = None,
+        wm_info_size: int = None,
+        wm_type: str = None,
+    ):
+        self.document_is_capture = document_is_capture
+        # This parameter is required.
+        self.file_url = file_url
+        # This parameter is required.
+        self.filename = filename
+        self.video_is_long = video_is_long
+        self.video_speed = video_speed
+        self.wm_info_size = wm_info_size
+        # This parameter is required.
+        self.wm_type = wm_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_is_capture is not None:
+            result['DocumentIsCapture'] = self.document_is_capture
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.filename is not None:
+            result['Filename'] = self.filename
+        if self.video_is_long is not None:
+            result['VideoIsLong'] = self.video_is_long
+        if self.video_speed is not None:
+            result['VideoSpeed'] = self.video_speed
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentIsCapture') is not None:
+            self.document_is_capture = m.get('DocumentIsCapture')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Filename') is not None:
+            self.filename = m.get('Filename')
+        if m.get('VideoIsLong') is not None:
+            self.video_is_long = m.get('VideoIsLong')
+        if m.get('VideoSpeed') is not None:
+            self.video_speed = m.get('VideoSpeed')
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class CreateWmExtractTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateWmExtractTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateWmExtractTaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateWmExtractTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateWmExtractTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWmExtractTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWmExtractTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWmInfoMappingRequest(TeaModel):
+    def __init__(
+        self,
+        wm_info_bytes_b64: str = None,
+        wm_info_size: int = None,
+        wm_type: str = None,
+    ):
+        # This parameter is required.
+        self.wm_info_bytes_b64 = wm_info_bytes_b64
+        self.wm_info_size = wm_info_size
+        # This parameter is required.
+        self.wm_type = wm_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.wm_info_bytes_b64 is not None:
+            result['WmInfoBytesB64'] = self.wm_info_bytes_b64
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WmInfoBytesB64') is not None:
+            self.wm_info_bytes_b64 = m.get('WmInfoBytesB64')
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class CreateWmInfoMappingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        wm_info_uint: int = None,
+    ):
+        self.wm_info_uint = wm_info_uint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.wm_info_uint is not None:
+            result['WmInfoUint'] = self.wm_info_uint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WmInfoUint') is not None:
+            self.wm_info_uint = m.get('WmInfoUint')
+        return self
+
+
+class CreateWmInfoMappingResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateWmInfoMappingResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateWmInfoMappingResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateWmInfoMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWmInfoMappingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWmInfoMappingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteClientUserRequest(TeaModel):
     def __init__(
         self,
@@ -5017,6 +6003,346 @@ class GetUserGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUserGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWmEmbedTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetWmEmbedTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+        file_url_exp: str = None,
+        filename: str = None,
+        out_file_hash_md_5: str = None,
+        out_file_size: int = None,
+        task_id: str = None,
+        task_status: str = None,
+    ):
+        self.file_url = file_url
+        self.file_url_exp = file_url_exp
+        self.filename = filename
+        self.out_file_hash_md_5 = out_file_hash_md_5
+        self.out_file_size = out_file_size
+        self.task_id = task_id
+        self.task_status = task_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.file_url_exp is not None:
+            result['FileUrlExp'] = self.file_url_exp
+        if self.filename is not None:
+            result['Filename'] = self.filename
+        if self.out_file_hash_md_5 is not None:
+            result['OutFileHashMd5'] = self.out_file_hash_md_5
+        if self.out_file_size is not None:
+            result['OutFileSize'] = self.out_file_size
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('FileUrlExp') is not None:
+            self.file_url_exp = m.get('FileUrlExp')
+        if m.get('Filename') is not None:
+            self.filename = m.get('Filename')
+        if m.get('OutFileHashMd5') is not None:
+            self.out_file_hash_md_5 = m.get('OutFileHashMd5')
+        if m.get('OutFileSize') is not None:
+            self.out_file_size = m.get('OutFileSize')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        return self
+
+
+class GetWmEmbedTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetWmEmbedTaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetWmEmbedTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetWmEmbedTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWmEmbedTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWmEmbedTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWmExtractTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetWmExtractTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        filename: str = None,
+        status: str = None,
+        task_id: str = None,
+        wm_info_bytes_b64: str = None,
+        wm_info_size: int = None,
+        wm_info_uint: int = None,
+        wm_type: str = None,
+    ):
+        self.create_time = create_time
+        self.filename = filename
+        self.status = status
+        self.task_id = task_id
+        self.wm_info_bytes_b64 = wm_info_bytes_b64
+        self.wm_info_size = wm_info_size
+        self.wm_info_uint = wm_info_uint
+        self.wm_type = wm_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.filename is not None:
+            result['Filename'] = self.filename
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.wm_info_bytes_b64 is not None:
+            result['WmInfoBytesB64'] = self.wm_info_bytes_b64
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_info_uint is not None:
+            result['WmInfoUint'] = self.wm_info_uint
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Filename') is not None:
+            self.filename = m.get('Filename')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WmInfoBytesB64') is not None:
+            self.wm_info_bytes_b64 = m.get('WmInfoBytesB64')
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmInfoUint') is not None:
+            self.wm_info_uint = m.get('WmInfoUint')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class GetWmExtractTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetWmExtractTaskResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetWmExtractTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetWmExtractTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWmExtractTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWmExtractTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12157,6 +13483,150 @@ class ListUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LookupWmInfoMappingRequest(TeaModel):
+    def __init__(
+        self,
+        wm_info_size: int = None,
+        wm_info_uint: str = None,
+        wm_type: str = None,
+    ):
+        self.wm_info_size = wm_info_size
+        # This parameter is required.
+        self.wm_info_uint = wm_info_uint
+        # This parameter is required.
+        self.wm_type = wm_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.wm_info_size is not None:
+            result['WmInfoSize'] = self.wm_info_size
+        if self.wm_info_uint is not None:
+            result['WmInfoUint'] = self.wm_info_uint
+        if self.wm_type is not None:
+            result['WmType'] = self.wm_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WmInfoSize') is not None:
+            self.wm_info_size = m.get('WmInfoSize')
+        if m.get('WmInfoUint') is not None:
+            self.wm_info_uint = m.get('WmInfoUint')
+        if m.get('WmType') is not None:
+            self.wm_type = m.get('WmType')
+        return self
+
+
+class LookupWmInfoMappingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        wm_info_bytes_b64: str = None,
+    ):
+        self.wm_info_bytes_b64 = wm_info_bytes_b64
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.wm_info_bytes_b64 is not None:
+            result['WmInfoBytesB64'] = self.wm_info_bytes_b64
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WmInfoBytesB64') is not None:
+            self.wm_info_bytes_b64 = m.get('WmInfoBytesB64')
+        return self
+
+
+class LookupWmInfoMappingResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: LookupWmInfoMappingResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = LookupWmInfoMappingResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class LookupWmInfoMappingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LookupWmInfoMappingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LookupWmInfoMappingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

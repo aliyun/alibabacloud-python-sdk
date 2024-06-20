@@ -1147,6 +1147,498 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_user_group_with_options_async(request, runtime)
 
+    def create_wm_base_image_with_options(
+        self,
+        request: csas_20230120_models.CreateWmBaseImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateWmBaseImageResponse:
+        """
+        @summary 创建数字水印暗水印透明底图
+        
+        @param request: CreateWmBaseImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWmBaseImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
+        if not UtilClient.is_unset(request.opacity):
+            body['Opacity'] = request.opacity
+        if not UtilClient.is_unset(request.scale):
+            body['Scale'] = request.scale
+        if not UtilClient.is_unset(request.width):
+            body['Width'] = request.width
+        if not UtilClient.is_unset(request.wm_info_bytes_b64):
+            body['WmInfoBytesB64'] = request.wm_info_bytes_b64
+        if not UtilClient.is_unset(request.wm_info_size):
+            body['WmInfoSize'] = request.wm_info_size
+        if not UtilClient.is_unset(request.wm_info_uint):
+            body['WmInfoUint'] = request.wm_info_uint
+        if not UtilClient.is_unset(request.wm_type):
+            body['WmType'] = request.wm_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWmBaseImage',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateWmBaseImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_wm_base_image_with_options_async(
+        self,
+        request: csas_20230120_models.CreateWmBaseImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateWmBaseImageResponse:
+        """
+        @summary 创建数字水印暗水印透明底图
+        
+        @param request: CreateWmBaseImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWmBaseImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
+        if not UtilClient.is_unset(request.opacity):
+            body['Opacity'] = request.opacity
+        if not UtilClient.is_unset(request.scale):
+            body['Scale'] = request.scale
+        if not UtilClient.is_unset(request.width):
+            body['Width'] = request.width
+        if not UtilClient.is_unset(request.wm_info_bytes_b64):
+            body['WmInfoBytesB64'] = request.wm_info_bytes_b64
+        if not UtilClient.is_unset(request.wm_info_size):
+            body['WmInfoSize'] = request.wm_info_size
+        if not UtilClient.is_unset(request.wm_info_uint):
+            body['WmInfoUint'] = request.wm_info_uint
+        if not UtilClient.is_unset(request.wm_type):
+            body['WmType'] = request.wm_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWmBaseImage',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateWmBaseImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_wm_base_image(
+        self,
+        request: csas_20230120_models.CreateWmBaseImageRequest,
+    ) -> csas_20230120_models.CreateWmBaseImageResponse:
+        """
+        @summary 创建数字水印暗水印透明底图
+        
+        @param request: CreateWmBaseImageRequest
+        @return: CreateWmBaseImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_wm_base_image_with_options(request, runtime)
+
+    async def create_wm_base_image_async(
+        self,
+        request: csas_20230120_models.CreateWmBaseImageRequest,
+    ) -> csas_20230120_models.CreateWmBaseImageResponse:
+        """
+        @summary 创建数字水印暗水印透明底图
+        
+        @param request: CreateWmBaseImageRequest
+        @return: CreateWmBaseImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_wm_base_image_with_options_async(request, runtime)
+
+    def create_wm_embed_task_with_options(
+        self,
+        tmp_req: csas_20230120_models.CreateWmEmbedTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateWmEmbedTaskResponse:
+        """
+        @summary 创建嵌入水印任务
+        
+        @param tmp_req: CreateWmEmbedTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWmEmbedTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreateWmEmbedTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document_control):
+            request.document_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_control, 'DocumentControl', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.document_control_shrink):
+            body['DocumentControl'] = request.document_control_shrink
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.filename):
+            body['Filename'] = request.filename
+        if not UtilClient.is_unset(request.image_embed_jpeg_quality):
+            body['ImageEmbedJpegQuality'] = request.image_embed_jpeg_quality
+        if not UtilClient.is_unset(request.image_embed_level):
+            body['ImageEmbedLevel'] = request.image_embed_level
+        if not UtilClient.is_unset(request.video_bitrate):
+            body['VideoBitrate'] = request.video_bitrate
+        if not UtilClient.is_unset(request.video_is_long):
+            body['VideoIsLong'] = request.video_is_long
+        if not UtilClient.is_unset(request.wm_info_bytes_b64):
+            body['WmInfoBytesB64'] = request.wm_info_bytes_b64
+        if not UtilClient.is_unset(request.wm_info_size):
+            body['WmInfoSize'] = request.wm_info_size
+        if not UtilClient.is_unset(request.wm_info_uint):
+            body['WmInfoUint'] = request.wm_info_uint
+        if not UtilClient.is_unset(request.wm_type):
+            body['WmType'] = request.wm_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWmEmbedTask',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateWmEmbedTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_wm_embed_task_with_options_async(
+        self,
+        tmp_req: csas_20230120_models.CreateWmEmbedTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateWmEmbedTaskResponse:
+        """
+        @summary 创建嵌入水印任务
+        
+        @param tmp_req: CreateWmEmbedTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWmEmbedTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = csas_20230120_models.CreateWmEmbedTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document_control):
+            request.document_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_control, 'DocumentControl', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.document_control_shrink):
+            body['DocumentControl'] = request.document_control_shrink
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.filename):
+            body['Filename'] = request.filename
+        if not UtilClient.is_unset(request.image_embed_jpeg_quality):
+            body['ImageEmbedJpegQuality'] = request.image_embed_jpeg_quality
+        if not UtilClient.is_unset(request.image_embed_level):
+            body['ImageEmbedLevel'] = request.image_embed_level
+        if not UtilClient.is_unset(request.video_bitrate):
+            body['VideoBitrate'] = request.video_bitrate
+        if not UtilClient.is_unset(request.video_is_long):
+            body['VideoIsLong'] = request.video_is_long
+        if not UtilClient.is_unset(request.wm_info_bytes_b64):
+            body['WmInfoBytesB64'] = request.wm_info_bytes_b64
+        if not UtilClient.is_unset(request.wm_info_size):
+            body['WmInfoSize'] = request.wm_info_size
+        if not UtilClient.is_unset(request.wm_info_uint):
+            body['WmInfoUint'] = request.wm_info_uint
+        if not UtilClient.is_unset(request.wm_type):
+            body['WmType'] = request.wm_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWmEmbedTask',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateWmEmbedTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_wm_embed_task(
+        self,
+        request: csas_20230120_models.CreateWmEmbedTaskRequest,
+    ) -> csas_20230120_models.CreateWmEmbedTaskResponse:
+        """
+        @summary 创建嵌入水印任务
+        
+        @param request: CreateWmEmbedTaskRequest
+        @return: CreateWmEmbedTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_wm_embed_task_with_options(request, runtime)
+
+    async def create_wm_embed_task_async(
+        self,
+        request: csas_20230120_models.CreateWmEmbedTaskRequest,
+    ) -> csas_20230120_models.CreateWmEmbedTaskResponse:
+        """
+        @summary 创建嵌入水印任务
+        
+        @param request: CreateWmEmbedTaskRequest
+        @return: CreateWmEmbedTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_wm_embed_task_with_options_async(request, runtime)
+
+    def create_wm_extract_task_with_options(
+        self,
+        request: csas_20230120_models.CreateWmExtractTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateWmExtractTaskResponse:
+        """
+        @summary 创建文件水印提取任务
+        
+        @param request: CreateWmExtractTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWmExtractTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.document_is_capture):
+            body['DocumentIsCapture'] = request.document_is_capture
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.filename):
+            body['Filename'] = request.filename
+        if not UtilClient.is_unset(request.video_is_long):
+            body['VideoIsLong'] = request.video_is_long
+        if not UtilClient.is_unset(request.video_speed):
+            body['VideoSpeed'] = request.video_speed
+        if not UtilClient.is_unset(request.wm_info_size):
+            body['WmInfoSize'] = request.wm_info_size
+        if not UtilClient.is_unset(request.wm_type):
+            body['WmType'] = request.wm_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWmExtractTask',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateWmExtractTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_wm_extract_task_with_options_async(
+        self,
+        request: csas_20230120_models.CreateWmExtractTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateWmExtractTaskResponse:
+        """
+        @summary 创建文件水印提取任务
+        
+        @param request: CreateWmExtractTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWmExtractTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.document_is_capture):
+            body['DocumentIsCapture'] = request.document_is_capture
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.filename):
+            body['Filename'] = request.filename
+        if not UtilClient.is_unset(request.video_is_long):
+            body['VideoIsLong'] = request.video_is_long
+        if not UtilClient.is_unset(request.video_speed):
+            body['VideoSpeed'] = request.video_speed
+        if not UtilClient.is_unset(request.wm_info_size):
+            body['WmInfoSize'] = request.wm_info_size
+        if not UtilClient.is_unset(request.wm_type):
+            body['WmType'] = request.wm_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWmExtractTask',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateWmExtractTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_wm_extract_task(
+        self,
+        request: csas_20230120_models.CreateWmExtractTaskRequest,
+    ) -> csas_20230120_models.CreateWmExtractTaskResponse:
+        """
+        @summary 创建文件水印提取任务
+        
+        @param request: CreateWmExtractTaskRequest
+        @return: CreateWmExtractTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_wm_extract_task_with_options(request, runtime)
+
+    async def create_wm_extract_task_async(
+        self,
+        request: csas_20230120_models.CreateWmExtractTaskRequest,
+    ) -> csas_20230120_models.CreateWmExtractTaskResponse:
+        """
+        @summary 创建文件水印提取任务
+        
+        @param request: CreateWmExtractTaskRequest
+        @return: CreateWmExtractTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_wm_extract_task_with_options_async(request, runtime)
+
+    def create_wm_info_mapping_with_options(
+        self,
+        request: csas_20230120_models.CreateWmInfoMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateWmInfoMappingResponse:
+        """
+        @summary 创建一条字符串水印信息到数字水印信息的映射记录
+        
+        @param request: CreateWmInfoMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWmInfoMappingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.wm_info_bytes_b64):
+            body['WmInfoBytesB64'] = request.wm_info_bytes_b64
+        if not UtilClient.is_unset(request.wm_info_size):
+            body['WmInfoSize'] = request.wm_info_size
+        if not UtilClient.is_unset(request.wm_type):
+            body['WmType'] = request.wm_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWmInfoMapping',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateWmInfoMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_wm_info_mapping_with_options_async(
+        self,
+        request: csas_20230120_models.CreateWmInfoMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.CreateWmInfoMappingResponse:
+        """
+        @summary 创建一条字符串水印信息到数字水印信息的映射记录
+        
+        @param request: CreateWmInfoMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWmInfoMappingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.wm_info_bytes_b64):
+            body['WmInfoBytesB64'] = request.wm_info_bytes_b64
+        if not UtilClient.is_unset(request.wm_info_size):
+            body['WmInfoSize'] = request.wm_info_size
+        if not UtilClient.is_unset(request.wm_type):
+            body['WmType'] = request.wm_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWmInfoMapping',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.CreateWmInfoMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_wm_info_mapping(
+        self,
+        request: csas_20230120_models.CreateWmInfoMappingRequest,
+    ) -> csas_20230120_models.CreateWmInfoMappingResponse:
+        """
+        @summary 创建一条字符串水印信息到数字水印信息的映射记录
+        
+        @param request: CreateWmInfoMappingRequest
+        @return: CreateWmInfoMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_wm_info_mapping_with_options(request, runtime)
+
+    async def create_wm_info_mapping_async(
+        self,
+        request: csas_20230120_models.CreateWmInfoMappingRequest,
+    ) -> csas_20230120_models.CreateWmInfoMappingResponse:
+        """
+        @summary 创建一条字符串水印信息到数字水印信息的映射记录
+        
+        @param request: CreateWmInfoMappingRequest
+        @return: CreateWmInfoMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_wm_info_mapping_with_options_async(request, runtime)
+
     def delete_client_user_with_options(
         self,
         request: csas_20230120_models.DeleteClientUserRequest,
@@ -3102,6 +3594,190 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_group_with_options_async(request, runtime)
+
+    def get_wm_embed_task_with_options(
+        self,
+        request: csas_20230120_models.GetWmEmbedTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetWmEmbedTaskResponse:
+        """
+        @summary 查询嵌入水印任务
+        
+        @param request: GetWmEmbedTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWmEmbedTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWmEmbedTask',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetWmEmbedTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_wm_embed_task_with_options_async(
+        self,
+        request: csas_20230120_models.GetWmEmbedTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetWmEmbedTaskResponse:
+        """
+        @summary 查询嵌入水印任务
+        
+        @param request: GetWmEmbedTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWmEmbedTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWmEmbedTask',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetWmEmbedTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_wm_embed_task(
+        self,
+        request: csas_20230120_models.GetWmEmbedTaskRequest,
+    ) -> csas_20230120_models.GetWmEmbedTaskResponse:
+        """
+        @summary 查询嵌入水印任务
+        
+        @param request: GetWmEmbedTaskRequest
+        @return: GetWmEmbedTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_wm_embed_task_with_options(request, runtime)
+
+    async def get_wm_embed_task_async(
+        self,
+        request: csas_20230120_models.GetWmEmbedTaskRequest,
+    ) -> csas_20230120_models.GetWmEmbedTaskResponse:
+        """
+        @summary 查询嵌入水印任务
+        
+        @param request: GetWmEmbedTaskRequest
+        @return: GetWmEmbedTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_wm_embed_task_with_options_async(request, runtime)
+
+    def get_wm_extract_task_with_options(
+        self,
+        request: csas_20230120_models.GetWmExtractTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetWmExtractTaskResponse:
+        """
+        @summary 查询文件水印提取任务详情
+        
+        @param request: GetWmExtractTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWmExtractTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWmExtractTask',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetWmExtractTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_wm_extract_task_with_options_async(
+        self,
+        request: csas_20230120_models.GetWmExtractTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.GetWmExtractTaskResponse:
+        """
+        @summary 查询文件水印提取任务详情
+        
+        @param request: GetWmExtractTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWmExtractTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWmExtractTask',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.GetWmExtractTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_wm_extract_task(
+        self,
+        request: csas_20230120_models.GetWmExtractTaskRequest,
+    ) -> csas_20230120_models.GetWmExtractTaskResponse:
+        """
+        @summary 查询文件水印提取任务详情
+        
+        @param request: GetWmExtractTaskRequest
+        @return: GetWmExtractTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_wm_extract_task_with_options(request, runtime)
+
+    async def get_wm_extract_task_async(
+        self,
+        request: csas_20230120_models.GetWmExtractTaskRequest,
+    ) -> csas_20230120_models.GetWmExtractTaskResponse:
+        """
+        @summary 查询文件水印提取任务详情
+        
+        @param request: GetWmExtractTaskRequest
+        @return: GetWmExtractTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_wm_extract_task_with_options_async(request, runtime)
 
     def list_applications_for_private_access_policy_with_options(
         self,
@@ -5660,6 +6336,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
+
+    def lookup_wm_info_mapping_with_options(
+        self,
+        request: csas_20230120_models.LookupWmInfoMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.LookupWmInfoMappingResponse:
+        """
+        @summary 根据数字水印信息查询字符串水印信息
+        
+        @param request: LookupWmInfoMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LookupWmInfoMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LookupWmInfoMapping',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.LookupWmInfoMappingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def lookup_wm_info_mapping_with_options_async(
+        self,
+        request: csas_20230120_models.LookupWmInfoMappingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.LookupWmInfoMappingResponse:
+        """
+        @summary 根据数字水印信息查询字符串水印信息
+        
+        @param request: LookupWmInfoMappingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LookupWmInfoMappingResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LookupWmInfoMapping',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.LookupWmInfoMappingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def lookup_wm_info_mapping(
+        self,
+        request: csas_20230120_models.LookupWmInfoMappingRequest,
+    ) -> csas_20230120_models.LookupWmInfoMappingResponse:
+        """
+        @summary 根据数字水印信息查询字符串水印信息
+        
+        @param request: LookupWmInfoMappingRequest
+        @return: LookupWmInfoMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.lookup_wm_info_mapping_with_options(request, runtime)
+
+    async def lookup_wm_info_mapping_async(
+        self,
+        request: csas_20230120_models.LookupWmInfoMappingRequest,
+    ) -> csas_20230120_models.LookupWmInfoMappingResponse:
+        """
+        @summary 根据数字水印信息查询字符串水印信息
+        
+        @param request: LookupWmInfoMappingRequest
+        @return: LookupWmInfoMappingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.lookup_wm_info_mapping_with_options_async(request, runtime)
 
     def revoke_user_session_with_options(
         self,
