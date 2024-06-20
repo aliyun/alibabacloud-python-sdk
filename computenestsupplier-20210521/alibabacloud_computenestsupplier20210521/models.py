@@ -8872,6 +8872,7 @@ class UpdateServiceRequest(TeaModel):
     def __init__(
         self,
         alarm_metadata: str = None,
+        approval_type: str = None,
         client_token: str = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
@@ -8887,6 +8888,7 @@ class UpdateServiceRequest(TeaModel):
         service_info: List[UpdateServiceRequestServiceInfo] = None,
         service_type: str = None,
         service_version: str = None,
+        share_type: str = None,
         tenant_type: str = None,
         trial_duration: int = None,
         update_option: UpdateServiceRequestUpdateOption = None,
@@ -8894,6 +8896,7 @@ class UpdateServiceRequest(TeaModel):
         version_name: str = None,
     ):
         self.alarm_metadata = alarm_metadata
+        self.approval_type = approval_type
         self.client_token = client_token
         self.deploy_metadata = deploy_metadata
         self.deploy_type = deploy_type
@@ -8911,6 +8914,7 @@ class UpdateServiceRequest(TeaModel):
         self.service_info = service_info
         self.service_type = service_type
         self.service_version = service_version
+        self.share_type = share_type
         self.tenant_type = tenant_type
         self.trial_duration = trial_duration
         self.update_option = update_option
@@ -8933,6 +8937,8 @@ class UpdateServiceRequest(TeaModel):
         result = dict()
         if self.alarm_metadata is not None:
             result['AlarmMetadata'] = self.alarm_metadata
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.deploy_metadata is not None:
@@ -8965,6 +8971,8 @@ class UpdateServiceRequest(TeaModel):
             result['ServiceType'] = self.service_type
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
+        if self.share_type is not None:
+            result['ShareType'] = self.share_type
         if self.tenant_type is not None:
             result['TenantType'] = self.tenant_type
         if self.trial_duration is not None:
@@ -8981,6 +8989,8 @@ class UpdateServiceRequest(TeaModel):
         m = m or dict()
         if m.get('AlarmMetadata') is not None:
             self.alarm_metadata = m.get('AlarmMetadata')
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DeployMetadata') is not None:
@@ -9014,6 +9024,8 @@ class UpdateServiceRequest(TeaModel):
             self.service_type = m.get('ServiceType')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
+        if m.get('ShareType') is not None:
+            self.share_type = m.get('ShareType')
         if m.get('TenantType') is not None:
             self.tenant_type = m.get('TenantType')
         if m.get('TrialDuration') is not None:
@@ -9130,6 +9142,7 @@ class UpdateServiceShrinkRequest(TeaModel):
     def __init__(
         self,
         alarm_metadata: str = None,
+        approval_type: str = None,
         client_token: str = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
@@ -9145,6 +9158,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         service_info: List[UpdateServiceShrinkRequestServiceInfo] = None,
         service_type: str = None,
         service_version: str = None,
+        share_type: str = None,
         tenant_type: str = None,
         trial_duration: int = None,
         update_option_shrink: str = None,
@@ -9152,6 +9166,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         version_name: str = None,
     ):
         self.alarm_metadata = alarm_metadata
+        self.approval_type = approval_type
         self.client_token = client_token
         self.deploy_metadata = deploy_metadata
         self.deploy_type = deploy_type
@@ -9169,6 +9184,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         self.service_info = service_info
         self.service_type = service_type
         self.service_version = service_version
+        self.share_type = share_type
         self.tenant_type = tenant_type
         self.trial_duration = trial_duration
         self.update_option_shrink = update_option_shrink
@@ -9189,6 +9205,8 @@ class UpdateServiceShrinkRequest(TeaModel):
         result = dict()
         if self.alarm_metadata is not None:
             result['AlarmMetadata'] = self.alarm_metadata
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.deploy_metadata is not None:
@@ -9221,6 +9239,8 @@ class UpdateServiceShrinkRequest(TeaModel):
             result['ServiceType'] = self.service_type
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
+        if self.share_type is not None:
+            result['ShareType'] = self.share_type
         if self.tenant_type is not None:
             result['TenantType'] = self.tenant_type
         if self.trial_duration is not None:
@@ -9237,6 +9257,8 @@ class UpdateServiceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AlarmMetadata') is not None:
             self.alarm_metadata = m.get('AlarmMetadata')
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DeployMetadata') is not None:
@@ -9270,6 +9292,8 @@ class UpdateServiceShrinkRequest(TeaModel):
             self.service_type = m.get('ServiceType')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
+        if m.get('ShareType') is not None:
+            self.share_type = m.get('ShareType')
         if m.get('TenantType') is not None:
             self.tenant_type = m.get('TenantType')
         if m.get('TrialDuration') is not None:

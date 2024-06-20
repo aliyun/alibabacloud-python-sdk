@@ -1,3 +1,8 @@
+2024-06-20 Version: 2.4.1
+- Update API UpdateService: add param ApprovalType.
+- Update API UpdateService: add param ShareType.
+
+
 2024-06-18 Version: 2.4.0
 - Support API RestartServiceInstance.
 - Support API StartServiceInstance.

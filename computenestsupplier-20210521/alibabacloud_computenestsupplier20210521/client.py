@@ -3503,6 +3503,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alarm_metadata):
             query['AlarmMetadata'] = request.alarm_metadata
+        if not UtilClient.is_unset(request.approval_type):
+            query['ApprovalType'] = request.approval_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.deploy_metadata):
@@ -3533,6 +3535,8 @@ class Client(OpenApiClient):
             query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.share_type):
+            query['ShareType'] = request.share_type
         if not UtilClient.is_unset(request.tenant_type):
             query['TenantType'] = request.tenant_type
         if not UtilClient.is_unset(request.trial_duration):
@@ -3580,6 +3584,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alarm_metadata):
             query['AlarmMetadata'] = request.alarm_metadata
+        if not UtilClient.is_unset(request.approval_type):
+            query['ApprovalType'] = request.approval_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.deploy_metadata):
@@ -3610,6 +3616,8 @@ class Client(OpenApiClient):
             query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.share_type):
+            query['ShareType'] = request.share_type
         if not UtilClient.is_unset(request.tenant_type):
             query['TenantType'] = request.tenant_type
         if not UtilClient.is_unset(request.trial_duration):
