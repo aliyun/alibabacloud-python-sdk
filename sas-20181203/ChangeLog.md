@@ -1,3 +1,9 @@
+2024-06-21 Version: 2.30.2
+- Update API DescribeSuspEvents: update response param.
+- Update API GetCheckDetail: update response param.
+- Update API ListFileProtectEvent: add param Operation.
+
+
 2024-06-20 Version: 2.30.1
 - Update API DescribeCommonOverallConfigList: update response param.
 - Update API ListHoneypotEventFlows: update param CurrentPage.

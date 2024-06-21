@@ -1400,7 +1400,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.AddSasModuleTrialResponse:
         """
-        @summary Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis.
+        @summary Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
         
         @param request: AddSasModuleTrialRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1437,7 +1437,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.AddSasModuleTrialResponse:
         """
-        @summary Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis.
+        @summary Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
         
         @param request: AddSasModuleTrialRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1473,7 +1473,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.AddSasModuleTrialRequest,
     ) -> sas_20181203_models.AddSasModuleTrialResponse:
         """
-        @summary Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis.
+        @summary Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
         
         @param request: AddSasModuleTrialRequest
         @return: AddSasModuleTrialResponse
@@ -1486,7 +1486,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.AddSasModuleTrialRequest,
     ) -> sas_20181203_models.AddSasModuleTrialResponse:
         """
-        @summary Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis.
+        @summary Enables the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
         
         @param request: AddSasModuleTrialRequest
         @return: AddSasModuleTrialResponse
@@ -44098,7 +44098,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetModuleTrialAuthInfoResponse:
         """
-        @summary Queries the qualification information about the trial use of Security Center value-added features, including vulnerability fixing and threat analysis.
+        @summary Queries the qualification information about the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
         
         @param request: GetModuleTrialAuthInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44135,7 +44135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetModuleTrialAuthInfoResponse:
         """
-        @summary Queries the qualification information about the trial use of Security Center value-added features, including vulnerability fixing and threat analysis.
+        @summary Queries the qualification information about the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
         
         @param request: GetModuleTrialAuthInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44171,7 +44171,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.GetModuleTrialAuthInfoRequest,
     ) -> sas_20181203_models.GetModuleTrialAuthInfoResponse:
         """
-        @summary Queries the qualification information about the trial use of Security Center value-added features, including vulnerability fixing and threat analysis.
+        @summary Queries the qualification information about the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
         
         @param request: GetModuleTrialAuthInfoRequest
         @return: GetModuleTrialAuthInfoResponse
@@ -44184,7 +44184,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.GetModuleTrialAuthInfoRequest,
     ) -> sas_20181203_models.GetModuleTrialAuthInfoResponse:
         """
-        @summary Queries the qualification information about the trial use of Security Center value-added features, including vulnerability fixing and threat analysis.
+        @summary Queries the qualification information about the trial use of Security Center value-added features, including vulnerability fixing and threat analysis and response.
         
         @param request: GetModuleTrialAuthInfoRequest
         @return: GetModuleTrialAuthInfoResponse
@@ -51302,6 +51302,8 @@ class Client(OpenApiClient):
             query['InternetIp'] = request.internet_ip
         if not UtilClient.is_unset(request.intranet_ip):
             query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.rule_name):
@@ -51359,6 +51361,8 @@ class Client(OpenApiClient):
             query['InternetIp'] = request.internet_ip
         if not UtilClient.is_unset(request.intranet_ip):
             query['IntranetIp'] = request.intranet_ip
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.rule_name):
