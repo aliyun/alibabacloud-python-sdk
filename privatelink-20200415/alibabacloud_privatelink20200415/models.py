@@ -23,9 +23,13 @@ class AddUserToVpcEndpointServiceRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The region ID of the endpoint service. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the endpoint service. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The whitelist in the format of Aliyun Resource Name (ARN).
         self.user_arn = user_arn
@@ -162,14 +166,22 @@ class AddZoneToVpcEndpointRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the endpoint to which you want to add the zone.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The region ID of the endpoint.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the vSwitch in the zone that you want to add. The system automatically creates an endpoint ENI in the vSwitch.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The ID of the zone that you want to add.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
         # The IP address of the endpoint elastic network interface (ENI) in the zone that you want to add.
         self.ip = ip
@@ -309,17 +321,25 @@ class AttachResourceToVpcEndpointServiceRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the endpoint service to which you want to add the service resource.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The service resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the service resource. Valid values:
         # 
         # *   **slb**: a Classic Load Balancer (CLB) instance
         # *   **alb**: an Application Load Balancer (ALB) instance
         # *   **nlb**: a Network Load Balancer (NLB) instance
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The ID of the endpoint service to which you want to add the service resource.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The zone ID of the service resource.
         self.zone_id = zone_id
@@ -456,10 +476,16 @@ class AttachSecurityGroupToVpcEndpointRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the endpoint with which you want to associate the security group.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The region ID of the endpoint with which you want to associate with the security group. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the endpoint with which you want to associate with the security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the security group with which you want to associate the endpoint.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -575,13 +601,17 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The resource group ID.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The resource IDs. You can specify up to 50 resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of resource. Valid values:
         # 
-        # *   **vpcendpoint**: endpoint
-        # *   **vpcendpointservice**: endpoint service
+        # *   **VpcEndpoint**: endpoint
+        # *   **VpcEndpointService**: endpoint service
         self.resource_type = resource_type
 
     def validate(self):
@@ -848,6 +878,7 @@ class CreateVpcEndpointRequest(TeaModel):
         endpoint_description: str = None,
         endpoint_name: str = None,
         endpoint_type: str = None,
+        policy_document: str = None,
         protected_enabled: bool = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -874,12 +905,13 @@ class CreateVpcEndpointRequest(TeaModel):
         self.endpoint_description = endpoint_description
         # The name of the endpoint.
         # 
-        # The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.endpoint_name = endpoint_name
         # The type of the endpoint.
         # 
         # Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
         self.endpoint_type = endpoint_type
+        self.policy_document = policy_document
         # Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         # 
         # *   **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
@@ -887,7 +919,9 @@ class CreateVpcEndpointRequest(TeaModel):
         self.protected_enabled = protected_enabled
         # The region ID of the endpoint.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -900,6 +934,8 @@ class CreateVpcEndpointRequest(TeaModel):
         # The tags to add to the resource.
         self.tag = tag
         # The ID of the virtual private cloud (VPC) to which the endpoint belongs.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # The zones where the endpoint is deployed.
         self.zone = zone
@@ -932,6 +968,8 @@ class CreateVpcEndpointRequest(TeaModel):
             result['EndpointName'] = self.endpoint_name
         if self.endpoint_type is not None:
             result['EndpointType'] = self.endpoint_type
+        if self.policy_document is not None:
+            result['PolicyDocument'] = self.policy_document
         if self.protected_enabled is not None:
             result['ProtectedEnabled'] = self.protected_enabled
         if self.region_id is not None:
@@ -970,6 +1008,8 @@ class CreateVpcEndpointRequest(TeaModel):
             self.endpoint_name = m.get('EndpointName')
         if m.get('EndpointType') is not None:
             self.endpoint_type = m.get('EndpointType')
+        if m.get('PolicyDocument') is not None:
+            self.policy_document = m.get('PolicyDocument')
         if m.get('ProtectedEnabled') is not None:
             self.protected_enabled = m.get('ProtectedEnabled')
         if m.get('RegionId') is not None:
@@ -1293,7 +1333,9 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         self.payer = payer
         # The region ID of the endpoint service.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The service resources of the endpoint service.
         self.resource = resource
@@ -1582,8 +1624,12 @@ class DeleteVpcEndpointRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the endpoint that you want to delete.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The region ID of the endpoint that you want to delete. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the endpoint that you want to delete. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1704,9 +1750,13 @@ class DeleteVpcEndpointServiceRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The region ID of the endpoint service. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the endpoint service. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the endpoint service that you want to delete.
+        # 
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -1998,7 +2048,9 @@ class DescribeZonesRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The region ID of the zone. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2191,9 +2243,13 @@ class DetachResourceFromVpcEndpointServiceRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the endpoint.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The service resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the service resource. Valid values:
         # 
@@ -2201,6 +2257,8 @@ class DetachResourceFromVpcEndpointServiceRequest(TeaModel):
         # *   **alb**: an Application Load Balancer (ALB) instance that supports PrivateLink. In addition, the ALB instance is deployed in a VPC.
         self.resource_type = resource_type
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The ID of the zone that you want to remove.
         self.zone_id = zone_id
@@ -2337,10 +2395,16 @@ class DetachSecurityGroupFromVpcEndpointRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the endpoint that you want to disassociate from the security group.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The region ID of the endpoint that you want to disassociate from the security group. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the endpoint that you want to disassociate from the security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the security group from which you want to disassociate the endpoint.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -2467,10 +2531,16 @@ class DisableVpcEndpointConnectionRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The ID of the region where the connection request from the endpoint is rejected. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The ID of the region where the connection request from the endpoint is rejected. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -2599,10 +2669,14 @@ class DisableVpcEndpointZoneConnectionRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The ID of the region where the connection request from the endpoint is rejected.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to disconnect the endpoint from the previous connection after the service resource is smoothly migrated. Valid values:
         # 
@@ -2612,8 +2686,12 @@ class DisableVpcEndpointZoneConnectionRequest(TeaModel):
         # > Set the value to true if you want to disconnect the endpoint from the previous connection in the zone after the service resource is smoothly migrated.
         self.replaced_resource = replaced_resource
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The ID of the zone that is associated with the endpoint.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2753,12 +2831,18 @@ class EnableVpcEndpointConnectionRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The ID of the region where the connection request is accepted.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -2890,12 +2974,20 @@ class EnableVpcEndpointZoneConnectionRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The ID of the region where the endpoint connection request is accepted. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The ID of the region where the endpoint connection request is accepted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The ID of the zone that is associated with the endpoint.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3014,10 +3106,14 @@ class GetVpcEndpointAttributeRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the endpoint whose attributes you want to query.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The region ID of the endpoint whose attributes you want to query.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3058,6 +3154,7 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
         endpoint_status: str = None,
         endpoint_type: str = None,
         payer: str = None,
+        policy_document: str = None,
         region_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
@@ -3110,6 +3207,7 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
         # *   **Endpoint**: the service consumer.
         # *   **EndpointService**: the service provider.
         self.payer = payer
+        self.policy_document = policy_document
         # The region ID of the endpoint.
         self.region_id = region_id
         # The request ID.
@@ -3166,6 +3264,8 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
             result['EndpointType'] = self.endpoint_type
         if self.payer is not None:
             result['Payer'] = self.payer
+        if self.policy_document is not None:
+            result['PolicyDocument'] = self.policy_document
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.request_id is not None:
@@ -3210,6 +3310,8 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
             self.endpoint_type = m.get('EndpointType')
         if m.get('Payer') is not None:
             self.payer = m.get('Payer')
+        if m.get('PolicyDocument') is not None:
+            self.policy_document = m.get('PolicyDocument')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
@@ -3280,9 +3382,13 @@ class GetVpcEndpointServiceAttributeRequest(TeaModel):
     ):
         # The region ID of the endpoint service.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -3545,11 +3651,11 @@ class ListTagResourcesRequestTag(TeaModel):
     ):
         # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -3595,7 +3701,9 @@ class ListTagResourcesRequest(TeaModel):
         # *   If this is your first request or no next requests are to be sent, you do not need to specify this parameter.
         # *   If a next request is to be sent, you must specify the token that is obtained from the previous request as the value of **NextToken**.
         self.next_token = next_token
-        # The ID of the region where the resource resides. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The ID of the region where the resource resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
@@ -3603,6 +3711,8 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # *   **vpcendpoint**: endpoint
         # *   **vpcendpointservice**: endpoint service
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags to add to the resource.
         self.tag = tag
@@ -3841,7 +3951,9 @@ class ListVpcEndpointConnectionsRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the endpoint connection.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replaced service resource in smooth migration scenarios.
         self.replaced_resource_id = replaced_resource_id
@@ -4226,6 +4338,8 @@ class ListVpcEndpointSecurityGroupsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the endpoint that you want to query.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The number of entries to return on each page. Valid values:**1** to **50**. Default value: **50**.
         self.max_results = max_results
@@ -4236,7 +4350,9 @@ class ListVpcEndpointSecurityGroupsRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the endpoint that you want to query.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4275,9 +4391,15 @@ class ListVpcEndpointSecurityGroupsResponseBodySecurityGroups(TeaModel):
     def __init__(
         self,
         security_group_id: str = None,
+        security_group_status: str = None,
     ):
         # The ID of the security group that is associated with the endpoint.
         self.security_group_id = security_group_id
+        # The associate status of the security group, valid values:
+        # - Attaching: The security group is being attached.
+        # - Attached: The security group is attached.
+        # - Detaching: The security group is being detached.
+        self.security_group_status = security_group_status
 
     def validate(self):
         pass
@@ -4290,12 +4412,16 @@ class ListVpcEndpointSecurityGroupsResponseBodySecurityGroups(TeaModel):
         result = dict()
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.security_group_status is not None:
+            result['SecurityGroupStatus'] = self.security_group_status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityGroupStatus') is not None:
+            self.security_group_status = m.get('SecurityGroupStatus')
         return self
 
 
@@ -4306,6 +4432,7 @@ class ListVpcEndpointSecurityGroupsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
         security_groups: List[ListVpcEndpointSecurityGroupsResponseBodySecurityGroups] = None,
+        total_count: int = None,
     ):
         # The number of entries returned per page.
         self.max_results = max_results
@@ -4318,6 +4445,8 @@ class ListVpcEndpointSecurityGroupsResponseBody(TeaModel):
         self.request_id = request_id
         # The information about the security groups.
         self.security_groups = security_groups
+        # The total number of entries returned.
+        self.total_count = total_count
 
     def validate(self):
         if self.security_groups:
@@ -4341,6 +4470,8 @@ class ListVpcEndpointSecurityGroupsResponseBody(TeaModel):
         if self.security_groups is not None:
             for k in self.security_groups:
                 result['SecurityGroups'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -4356,6 +4487,8 @@ class ListVpcEndpointSecurityGroupsResponseBody(TeaModel):
             for k in m.get('SecurityGroups'):
                 temp_model = ListVpcEndpointSecurityGroupsResponseBodySecurityGroups()
                 self.security_groups.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -4417,9 +4550,13 @@ class ListVpcEndpointServiceResourcesRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the service resource.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -4680,9 +4817,13 @@ class ListVpcEndpointServiceUsersRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the endpoint service that you want to query.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         self.user_id = user_id
@@ -4979,7 +5120,9 @@ class ListVpcEndpointServicesRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the endpoint service.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -5482,6 +5625,8 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         # The region ID of the endpoint.
         # 
         # You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -5817,6 +5962,8 @@ class ListVpcEndpointZonesRequest(TeaModel):
         # The ID of the endpoint for which you want to query zones.
         # 
         # After you specify an endpoint ID, the system queries the zones of the specified endpoint.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
         self.max_results = max_results
@@ -5827,7 +5974,9 @@ class ListVpcEndpointZonesRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the endpoint.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5958,6 +6107,7 @@ class ListVpcEndpointZonesResponseBody(TeaModel):
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
+        total_count: int = None,
         zones: List[ListVpcEndpointZonesResponseBodyZones] = None,
     ):
         # The number of entries returned on each page.
@@ -5969,6 +6119,8 @@ class ListVpcEndpointZonesResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
         # The information about the zones.
         self.zones = zones
 
@@ -5990,6 +6142,8 @@ class ListVpcEndpointZonesResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         result['Zones'] = []
         if self.zones is not None:
             for k in self.zones:
@@ -6004,6 +6158,8 @@ class ListVpcEndpointZonesResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         self.zones = []
         if m.get('Zones') is not None:
             for k in m.get('Zones'):
@@ -6142,7 +6298,9 @@ class ListVpcEndpointsRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the endpoint.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -6273,6 +6431,7 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
         endpoint_name: str = None,
         endpoint_status: str = None,
         endpoint_type: str = None,
+        policy_document: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner: bool = None,
@@ -6320,6 +6479,7 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
         # 
         # Only **Interface** may be returned, which indicates an interface endpoint. You can specify Application Load Balancer (ALB) instances, Classic Load Balancer (CLB) instances, and Network Load Balancer (NLB) instances as service resources.
         self.endpoint_type = endpoint_type
+        self.policy_document = policy_document
         # The region ID of the endpoint.
         self.region_id = region_id
         # The ID of the resource group.
@@ -6375,6 +6535,8 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
             result['EndpointStatus'] = self.endpoint_status
         if self.endpoint_type is not None:
             result['EndpointType'] = self.endpoint_type
+        if self.policy_document is not None:
+            result['PolicyDocument'] = self.policy_document
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -6417,6 +6579,8 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
             self.endpoint_status = m.get('EndpointStatus')
         if m.get('EndpointType') is not None:
             self.endpoint_type = m.get('EndpointType')
+        if m.get('PolicyDocument') is not None:
+            self.policy_document = m.get('PolicyDocument')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -6667,9 +6831,13 @@ class RemoveUserFromVpcEndpointServiceRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The region ID of the endpoint service for which you want to remove the account ID from the whitelist. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the endpoint service for which you want to remove the account ID from the whitelist. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The whitelist in the format of Aliyun Resource Name (ARN).
         self.user_arn = user_arn
@@ -6804,10 +6972,16 @@ class RemoveZoneFromVpcEndpointRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the endpoint for which you want to delete the zone.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The region ID of the endpoint for which you want to delete the zone. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the endpoint for which you want to delete the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the zone that you want to delete.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6924,10 +7098,14 @@ class TagResourcesRequestTag(TeaModel):
         # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
         # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
         # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -6977,16 +7155,24 @@ class TagResourcesRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the PrivateLink instance.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. Up to 50 resource IDs are supported.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of resource. Valid values:
         # 
         # *   **vpcendpoint**: endpoint
         # *   **vpcendpointservice**: endpoint service
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags to add to the resources.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -7137,14 +7323,20 @@ class UntagResourcesRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the PrivateLink instance.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. You can specify up to 50 resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
         # *   **vpcendpoint**: endpoint
         # *   **vpcendpointservice**: endpoint service
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The keys of the tags that you want to remove from the resource. You can specify up to 20 tag keys.
         self.tag_key = tag_key
@@ -7270,6 +7462,7 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
         endpoint_description: str = None,
         endpoint_id: str = None,
         endpoint_name: str = None,
+        policy_document: str = None,
         region_id: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
@@ -7286,12 +7479,17 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
         # The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.endpoint_description = endpoint_description
         # The endpoint ID whose attributes you want to modify.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The name of the endpoint.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.endpoint_name = endpoint_name
-        # The region ID of the endpoint whose attributes you want to modify. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        self.policy_document = policy_document
+        # The region ID of the endpoint whose attributes you want to modify. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7313,6 +7511,8 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
             result['EndpointId'] = self.endpoint_id
         if self.endpoint_name is not None:
             result['EndpointName'] = self.endpoint_name
+        if self.policy_document is not None:
+            result['PolicyDocument'] = self.policy_document
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -7329,6 +7529,8 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
             self.endpoint_id = m.get('EndpointId')
         if m.get('EndpointName') is not None:
             self.endpoint_name = m.get('EndpointName')
+        if m.get('PolicyDocument') is not None:
+            self.policy_document = m.get('PolicyDocument')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -7427,10 +7629,16 @@ class UpdateVpcEndpointConnectionAttributeRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The region ID of the endpoint connection whose bandwidth you want to modify. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # The region ID of the endpoint connection whose bandwidth you want to modify. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -7577,11 +7785,15 @@ class UpdateVpcEndpointServiceAttributeRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the endpoint service.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The description of the endpoint service.
         self.service_description = service_description
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # Specifies whether to enable IPv6. Valid values:
         # 
@@ -7730,6 +7942,8 @@ class UpdateVpcEndpointServiceResourceAttributeRequest(TeaModel):
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.auto_allocated_enabled = auto_allocated_enabled
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -7742,11 +7956,17 @@ class UpdateVpcEndpointServiceResourceAttributeRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the region where the service resource is deployed.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The service resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The zone ID of the service resource.
         self.zone_id = zone_id
@@ -7888,10 +8108,14 @@ class UpdateVpcEndpointZoneConnectionResourceAttributeRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The region ID of the endpoint connection whose bandwidth you want to modify.
         # 
-        # You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource allocation mode. You can change the resource allocation mode only if the endpoint connection is in the **Disconnected** state. Valid values:
         # 
@@ -7917,8 +8141,12 @@ class UpdateVpcEndpointZoneConnectionResourceAttributeRequest(TeaModel):
         # > If **ResourceAllocateMode** is set to **Mannual**, or **ResourceReplaceMode** is set, this parameter is required.
         self.resource_type = resource_type
         # The endpoint service ID.
+        # 
+        # This parameter is required.
         self.service_id = service_id
         # The zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):

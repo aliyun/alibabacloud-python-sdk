@@ -47,8 +47,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.AddUserToVpcEndpointServiceResponse:
         """
-        Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
+        @summary Adds an account ID to the whitelist of an endpoint service.
+        
+        @description    Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
         
         @param request: AddUserToVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -95,8 +97,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.AddUserToVpcEndpointServiceResponse:
         """
-        Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
+        @summary Adds an account ID to the whitelist of an endpoint service.
+        
+        @description    Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
         
         @param request: AddUserToVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -142,8 +146,10 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.AddUserToVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.AddUserToVpcEndpointServiceResponse:
         """
-        Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
+        @summary Adds an account ID to the whitelist of an endpoint service.
+        
+        @description    Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
         
         @param request: AddUserToVpcEndpointServiceRequest
         @return: AddUserToVpcEndpointServiceResponse
@@ -156,8 +162,10 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.AddUserToVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.AddUserToVpcEndpointServiceResponse:
         """
-        Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
+        @summary Adds an account ID to the whitelist of an endpoint service.
+        
+        @description    Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
         
         @param request: AddUserToVpcEndpointServiceRequest
         @return: AddUserToVpcEndpointServiceResponse
@@ -171,10 +179,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.AddZoneToVpcEndpointResponse:
         """
-        **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the state of the zone.
-        *   If the zone is in the **Creating** state, the zone is being added.
-        *   If the zone is in the Wait state, the zone is added.
-        *   You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
+        @summary Adds a zone to an endpoint.
+        
+        @description    **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
+        If the zone is in the **Creating** state, the zone is being added.
+        If the zone is in the Wait state, the zone is added.
+        You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
         
         @param request: AddZoneToVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -223,10 +233,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.AddZoneToVpcEndpointResponse:
         """
-        **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the state of the zone.
-        *   If the zone is in the **Creating** state, the zone is being added.
-        *   If the zone is in the Wait state, the zone is added.
-        *   You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
+        @summary Adds a zone to an endpoint.
+        
+        @description    **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
+        If the zone is in the **Creating** state, the zone is being added.
+        If the zone is in the Wait state, the zone is added.
+        You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
         
         @param request: AddZoneToVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -274,10 +286,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.AddZoneToVpcEndpointRequest,
     ) -> privatelink_20200415_models.AddZoneToVpcEndpointResponse:
         """
-        **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the state of the zone.
-        *   If the zone is in the **Creating** state, the zone is being added.
-        *   If the zone is in the Wait state, the zone is added.
-        *   You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
+        @summary Adds a zone to an endpoint.
+        
+        @description    **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
+        If the zone is in the **Creating** state, the zone is being added.
+        If the zone is in the Wait state, the zone is added.
+        You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
         
         @param request: AddZoneToVpcEndpointRequest
         @return: AddZoneToVpcEndpointResponse
@@ -290,10 +304,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.AddZoneToVpcEndpointRequest,
     ) -> privatelink_20200415_models.AddZoneToVpcEndpointResponse:
         """
-        **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the state of the zone.
-        *   If the zone is in the **Creating** state, the zone is being added.
-        *   If the zone is in the Wait state, the zone is added.
-        *   You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
+        @summary Adds a zone to an endpoint.
+        
+        @description    **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
+        If the zone is in the **Creating** state, the zone is being added.
+        If the zone is in the Wait state, the zone is added.
+        You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
         
         @param request: AddZoneToVpcEndpointRequest
         @return: AddZoneToVpcEndpointResponse
@@ -307,8 +323,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.AttachResourceToVpcEndpointServiceResponse:
         """
-        Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
+        @summary Adds a service resource to an endpoint service.
+        
+        @description    Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
         
         @param request: AttachResourceToVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -357,8 +375,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.AttachResourceToVpcEndpointServiceResponse:
         """
-        Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
+        @summary Adds a service resource to an endpoint service.
+        
+        @description    Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
         
         @param request: AttachResourceToVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -406,8 +426,10 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.AttachResourceToVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.AttachResourceToVpcEndpointServiceResponse:
         """
-        Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
+        @summary Adds a service resource to an endpoint service.
+        
+        @description    Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
         
         @param request: AttachResourceToVpcEndpointServiceRequest
         @return: AttachResourceToVpcEndpointServiceResponse
@@ -420,8 +442,10 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.AttachResourceToVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.AttachResourceToVpcEndpointServiceResponse:
         """
-        Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
+        @summary Adds a service resource to an endpoint service.
+        
+        @description    Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
         
         @param request: AttachResourceToVpcEndpointServiceRequest
         @return: AttachResourceToVpcEndpointServiceResponse
@@ -435,10 +459,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.AttachSecurityGroupToVpcEndpointResponse:
         """
-        **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) operation to query the state of the endpoint.
-        *   If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
-        *   If the endpoint is in the **Active** state, the endpoint is associated with the security group.
-        *   You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
+        @summary Associates an endpoint with a security group.
+        
+        @description    **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
+        If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
+        If the endpoint is in the **Active** state, the endpoint is associated with the security group.
+        You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
         
         @param request: AttachSecurityGroupToVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -483,10 +509,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.AttachSecurityGroupToVpcEndpointResponse:
         """
-        **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) operation to query the state of the endpoint.
-        *   If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
-        *   If the endpoint is in the **Active** state, the endpoint is associated with the security group.
-        *   You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
+        @summary Associates an endpoint with a security group.
+        
+        @description    **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
+        If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
+        If the endpoint is in the **Active** state, the endpoint is associated with the security group.
+        You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
         
         @param request: AttachSecurityGroupToVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -530,10 +558,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.AttachSecurityGroupToVpcEndpointRequest,
     ) -> privatelink_20200415_models.AttachSecurityGroupToVpcEndpointResponse:
         """
-        **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) operation to query the state of the endpoint.
-        *   If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
-        *   If the endpoint is in the **Active** state, the endpoint is associated with the security group.
-        *   You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
+        @summary Associates an endpoint with a security group.
+        
+        @description    **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
+        If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
+        If the endpoint is in the **Active** state, the endpoint is associated with the security group.
+        You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
         
         @param request: AttachSecurityGroupToVpcEndpointRequest
         @return: AttachSecurityGroupToVpcEndpointResponse
@@ -546,10 +576,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.AttachSecurityGroupToVpcEndpointRequest,
     ) -> privatelink_20200415_models.AttachSecurityGroupToVpcEndpointResponse:
         """
-        **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) operation to query the state of the endpoint.
-        *   If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
-        *   If the endpoint is in the **Active** state, the endpoint is associated with the security group.
-        *   You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
+        @summary Associates an endpoint with a security group.
+        
+        @description    **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
+        If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
+        If the endpoint is in the **Active** state, the endpoint is associated with the security group.
+        You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
         
         @param request: AttachSecurityGroupToVpcEndpointRequest
         @return: AttachSecurityGroupToVpcEndpointResponse
@@ -562,6 +594,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ChangeResourceGroupResponse:
+        """
+        @summary Modifies a resource group.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -594,6 +633,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ChangeResourceGroupResponse:
+        """
+        @summary Modifies a resource group.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -625,6 +671,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ChangeResourceGroupRequest,
     ) -> privatelink_20200415_models.ChangeResourceGroupResponse:
+        """
+        @summary Modifies a resource group.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -632,6 +684,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ChangeResourceGroupRequest,
     ) -> privatelink_20200415_models.ChangeResourceGroupResponse:
+        """
+        @summary Modifies a resource group.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -639,6 +697,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.CheckProductOpenResponse:
+        """
+        @summary Queries whether PrivateLink is activated.
+        
+        @param request: CheckProductOpenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckProductOpenResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='CheckProductOpen',
@@ -660,6 +725,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.CheckProductOpenResponse:
+        """
+        @summary Queries whether PrivateLink is activated.
+        
+        @param request: CheckProductOpenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckProductOpenResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='CheckProductOpen',
@@ -678,10 +750,20 @@ class Client(OpenApiClient):
         )
 
     def check_product_open(self) -> privatelink_20200415_models.CheckProductOpenResponse:
+        """
+        @summary Queries whether PrivateLink is activated.
+        
+        @return: CheckProductOpenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_product_open_with_options(runtime)
 
     async def check_product_open_async(self) -> privatelink_20200415_models.CheckProductOpenResponse:
+        """
+        @summary Queries whether PrivateLink is activated.
+        
+        @return: CheckProductOpenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_product_open_with_options_async(runtime)
 
@@ -691,9 +773,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.CreateVpcEndpointResponse:
         """
-        *CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is created.
-        *   If the endpoint is in the **Creating** state, the endpoint is being created.
-        *   If the endpoint is in the **Active** state, the endpoint is created.
+        @summary Creates an endpoint.
+        
+        @description *CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
+        If the endpoint is in the **Creating** state, the endpoint is being created.
+        If the endpoint is in the **Active** state, the endpoint is created.
         
         @param request: CreateVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -711,6 +795,8 @@ class Client(OpenApiClient):
             query['EndpointName'] = request.endpoint_name
         if not UtilClient.is_unset(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.policy_document):
+            query['PolicyDocument'] = request.policy_document
         if not UtilClient.is_unset(request.protected_enabled):
             query['ProtectedEnabled'] = request.protected_enabled
         if not UtilClient.is_unset(request.region_id):
@@ -758,9 +844,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.CreateVpcEndpointResponse:
         """
-        *CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is created.
-        *   If the endpoint is in the **Creating** state, the endpoint is being created.
-        *   If the endpoint is in the **Active** state, the endpoint is created.
+        @summary Creates an endpoint.
+        
+        @description *CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
+        If the endpoint is in the **Creating** state, the endpoint is being created.
+        If the endpoint is in the **Active** state, the endpoint is created.
         
         @param request: CreateVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -778,6 +866,8 @@ class Client(OpenApiClient):
             query['EndpointName'] = request.endpoint_name
         if not UtilClient.is_unset(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.policy_document):
+            query['PolicyDocument'] = request.policy_document
         if not UtilClient.is_unset(request.protected_enabled):
             query['ProtectedEnabled'] = request.protected_enabled
         if not UtilClient.is_unset(request.region_id):
@@ -824,9 +914,11 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.CreateVpcEndpointRequest,
     ) -> privatelink_20200415_models.CreateVpcEndpointResponse:
         """
-        *CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is created.
-        *   If the endpoint is in the **Creating** state, the endpoint is being created.
-        *   If the endpoint is in the **Active** state, the endpoint is created.
+        @summary Creates an endpoint.
+        
+        @description *CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
+        If the endpoint is in the **Creating** state, the endpoint is being created.
+        If the endpoint is in the **Active** state, the endpoint is created.
         
         @param request: CreateVpcEndpointRequest
         @return: CreateVpcEndpointResponse
@@ -839,9 +931,11 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.CreateVpcEndpointRequest,
     ) -> privatelink_20200415_models.CreateVpcEndpointResponse:
         """
-        *CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is created.
-        *   If the endpoint is in the **Creating** state, the endpoint is being created.
-        *   If the endpoint is in the **Active** state, the endpoint is created.
+        @summary Creates an endpoint.
+        
+        @description *CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
+        If the endpoint is in the **Creating** state, the endpoint is being created.
+        If the endpoint is in the **Active** state, the endpoint is created.
         
         @param request: CreateVpcEndpointRequest
         @return: CreateVpcEndpointResponse
@@ -855,10 +949,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.CreateVpcEndpointServiceResponse:
         """
-        Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](~~174064~~).
-        *   **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to query the status of the endpoint service.
-        *   If the endpoint service is in the **Creating** state, the endpoint service is being created.
-        *   If the endpoint service is in the **Active** state, the endpoint service is created.
+        @summary Creates an endpoint service.
+        
+        @description    Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
+        **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
+        If the endpoint service is in the **Creating** state, the endpoint service is being created.
+        If the endpoint service is in the **Active** state, the endpoint service is created.
         
         @param request: CreateVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -917,10 +1013,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.CreateVpcEndpointServiceResponse:
         """
-        Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](~~174064~~).
-        *   **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to query the status of the endpoint service.
-        *   If the endpoint service is in the **Creating** state, the endpoint service is being created.
-        *   If the endpoint service is in the **Active** state, the endpoint service is created.
+        @summary Creates an endpoint service.
+        
+        @description    Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
+        **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
+        If the endpoint service is in the **Creating** state, the endpoint service is being created.
+        If the endpoint service is in the **Active** state, the endpoint service is created.
         
         @param request: CreateVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -978,10 +1076,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.CreateVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.CreateVpcEndpointServiceResponse:
         """
-        Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](~~174064~~).
-        *   **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to query the status of the endpoint service.
-        *   If the endpoint service is in the **Creating** state, the endpoint service is being created.
-        *   If the endpoint service is in the **Active** state, the endpoint service is created.
+        @summary Creates an endpoint service.
+        
+        @description    Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
+        **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
+        If the endpoint service is in the **Creating** state, the endpoint service is being created.
+        If the endpoint service is in the **Active** state, the endpoint service is created.
         
         @param request: CreateVpcEndpointServiceRequest
         @return: CreateVpcEndpointServiceResponse
@@ -994,10 +1094,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.CreateVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.CreateVpcEndpointServiceResponse:
         """
-        Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](~~174064~~).
-        *   **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to query the status of the endpoint service.
-        *   If the endpoint service is in the **Creating** state, the endpoint service is being created.
-        *   If the endpoint service is in the **Active** state, the endpoint service is created.
+        @summary Creates an endpoint service.
+        
+        @description    Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
+        **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
+        If the endpoint service is in the **Creating** state, the endpoint service is being created.
+        If the endpoint service is in the **Active** state, the endpoint service is created.
         
         @param request: CreateVpcEndpointServiceRequest
         @return: CreateVpcEndpointServiceResponse
@@ -1011,10 +1113,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DeleteVpcEndpointResponse:
         """
-        Before you delete an endpoint, you must delete the zones that are added to the endpoint.
-        *   **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is deleted.
-        *   If the endpoint is in the **Deleting** state, the endpoint is being deleted.
-        *   If the endpoint cannot be queried, the endpoint is deleted.
+        @summary Deletes an endpoint.
+        
+        @description    Before you delete an endpoint, you must delete the zones that are added to the endpoint.
+        **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
+        If the endpoint is in the **Deleting** state, the endpoint is being deleted.
+        If the endpoint cannot be queried, the endpoint is deleted.
         
         @param request: DeleteVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1057,10 +1161,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DeleteVpcEndpointResponse:
         """
-        Before you delete an endpoint, you must delete the zones that are added to the endpoint.
-        *   **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is deleted.
-        *   If the endpoint is in the **Deleting** state, the endpoint is being deleted.
-        *   If the endpoint cannot be queried, the endpoint is deleted.
+        @summary Deletes an endpoint.
+        
+        @description    Before you delete an endpoint, you must delete the zones that are added to the endpoint.
+        **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
+        If the endpoint is in the **Deleting** state, the endpoint is being deleted.
+        If the endpoint cannot be queried, the endpoint is deleted.
         
         @param request: DeleteVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1102,10 +1208,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DeleteVpcEndpointRequest,
     ) -> privatelink_20200415_models.DeleteVpcEndpointResponse:
         """
-        Before you delete an endpoint, you must delete the zones that are added to the endpoint.
-        *   **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is deleted.
-        *   If the endpoint is in the **Deleting** state, the endpoint is being deleted.
-        *   If the endpoint cannot be queried, the endpoint is deleted.
+        @summary Deletes an endpoint.
+        
+        @description    Before you delete an endpoint, you must delete the zones that are added to the endpoint.
+        **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
+        If the endpoint is in the **Deleting** state, the endpoint is being deleted.
+        If the endpoint cannot be queried, the endpoint is deleted.
         
         @param request: DeleteVpcEndpointRequest
         @return: DeleteVpcEndpointResponse
@@ -1118,10 +1226,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DeleteVpcEndpointRequest,
     ) -> privatelink_20200415_models.DeleteVpcEndpointResponse:
         """
-        Before you delete an endpoint, you must delete the zones that are added to the endpoint.
-        *   **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is deleted.
-        *   If the endpoint is in the **Deleting** state, the endpoint is being deleted.
-        *   If the endpoint cannot be queried, the endpoint is deleted.
+        @summary Deletes an endpoint.
+        
+        @description    Before you delete an endpoint, you must delete the zones that are added to the endpoint.
+        **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
+        If the endpoint is in the **Deleting** state, the endpoint is being deleted.
+        If the endpoint cannot be queried, the endpoint is deleted.
         
         @param request: DeleteVpcEndpointRequest
         @return: DeleteVpcEndpointResponse
@@ -1135,11 +1245,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DeleteVpcEndpointServiceResponse:
         """
-        Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
-        *   **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to check whether the endpoint service is deleted.
-        *   If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
-        *   If the endpoint service cannot be queried, the endpoint service is deleted.
-        *   You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Deletes an endpoint service.
+        
+        @description    Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
+        **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
+        If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
+        If the endpoint service cannot be queried, the endpoint service is deleted.
+        You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: DeleteVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1182,11 +1294,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DeleteVpcEndpointServiceResponse:
         """
-        Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
-        *   **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to check whether the endpoint service is deleted.
-        *   If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
-        *   If the endpoint service cannot be queried, the endpoint service is deleted.
-        *   You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Deletes an endpoint service.
+        
+        @description    Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
+        **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
+        If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
+        If the endpoint service cannot be queried, the endpoint service is deleted.
+        You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: DeleteVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1228,11 +1342,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DeleteVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.DeleteVpcEndpointServiceResponse:
         """
-        Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
-        *   **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to check whether the endpoint service is deleted.
-        *   If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
-        *   If the endpoint service cannot be queried, the endpoint service is deleted.
-        *   You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Deletes an endpoint service.
+        
+        @description    Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
+        **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
+        If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
+        If the endpoint service cannot be queried, the endpoint service is deleted.
+        You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: DeleteVpcEndpointServiceRequest
         @return: DeleteVpcEndpointServiceResponse
@@ -1245,11 +1361,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DeleteVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.DeleteVpcEndpointServiceResponse:
         """
-        Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
-        *   **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to check whether the endpoint service is deleted.
-        *   If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
-        *   If the endpoint service cannot be queried, the endpoint service is deleted.
-        *   You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Deletes an endpoint service.
+        
+        @description    Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
+        **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
+        If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
+        If the endpoint service cannot be queried, the endpoint service is deleted.
+        You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: DeleteVpcEndpointServiceRequest
         @return: DeleteVpcEndpointServiceResponse
@@ -1262,6 +1380,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions and zones.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1292,6 +1417,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions and zones.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1321,6 +1453,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.DescribeRegionsRequest,
     ) -> privatelink_20200415_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions and zones.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -1328,6 +1466,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.DescribeRegionsRequest,
     ) -> privatelink_20200415_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions and zones.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -1336,6 +1480,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DescribeZonesResponse:
+        """
+        @summary Queries a list of zones in a specified region.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1366,6 +1517,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DescribeZonesResponse:
+        """
+        @summary Queries a list of zones in a specified region.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1395,6 +1553,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.DescribeZonesRequest,
     ) -> privatelink_20200415_models.DescribeZonesResponse:
+        """
+        @summary Queries a list of zones in a specified region.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -1402,6 +1566,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.DescribeZonesRequest,
     ) -> privatelink_20200415_models.DescribeZonesResponse:
+        """
+        @summary Queries a list of zones in a specified region.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -1411,8 +1581,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DetachResourceFromVpcEndpointServiceResponse:
         """
-        Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
+        @summary Removes a service resource from an endpoint service.
+        
+        @description    Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
         
         @param request: DetachResourceFromVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1461,8 +1633,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DetachResourceFromVpcEndpointServiceResponse:
         """
-        Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
+        @summary Removes a service resource from an endpoint service.
+        
+        @description    Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
         
         @param request: DetachResourceFromVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1510,8 +1684,10 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DetachResourceFromVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.DetachResourceFromVpcEndpointServiceResponse:
         """
-        Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
+        @summary Removes a service resource from an endpoint service.
+        
+        @description    Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
         
         @param request: DetachResourceFromVpcEndpointServiceRequest
         @return: DetachResourceFromVpcEndpointServiceResponse
@@ -1524,8 +1700,10 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DetachResourceFromVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.DetachResourceFromVpcEndpointServiceResponse:
         """
-        Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
+        @summary Removes a service resource from an endpoint service.
+        
+        @description    Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
         
         @param request: DetachResourceFromVpcEndpointServiceRequest
         @return: DetachResourceFromVpcEndpointServiceResponse
@@ -1539,10 +1717,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DetachSecurityGroupFromVpcEndpointResponse:
         """
-        **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) to check whether the endpoint is disassociated from the security group.
-        *   If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
-        *   If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
-        *   You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
+        @summary Disassociates an endpoint from a security group.
+        
+        @description    **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
+        If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
+        If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+        You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
         
         @param request: DetachSecurityGroupFromVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1587,10 +1767,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DetachSecurityGroupFromVpcEndpointResponse:
         """
-        **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) to check whether the endpoint is disassociated from the security group.
-        *   If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
-        *   If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
-        *   You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
+        @summary Disassociates an endpoint from a security group.
+        
+        @description    **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
+        If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
+        If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+        You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
         
         @param request: DetachSecurityGroupFromVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1634,10 +1816,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DetachSecurityGroupFromVpcEndpointRequest,
     ) -> privatelink_20200415_models.DetachSecurityGroupFromVpcEndpointResponse:
         """
-        **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) to check whether the endpoint is disassociated from the security group.
-        *   If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
-        *   If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
-        *   You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
+        @summary Disassociates an endpoint from a security group.
+        
+        @description    **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
+        If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
+        If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+        You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
         
         @param request: DetachSecurityGroupFromVpcEndpointRequest
         @return: DetachSecurityGroupFromVpcEndpointResponse
@@ -1650,10 +1834,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DetachSecurityGroupFromVpcEndpointRequest,
     ) -> privatelink_20200415_models.DetachSecurityGroupFromVpcEndpointResponse:
         """
-        **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) to check whether the endpoint is disassociated from the security group.
-        *   If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
-        *   If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
-        *   You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
+        @summary Disassociates an endpoint from a security group.
+        
+        @description    **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
+        If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
+        If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+        You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
         
         @param request: DetachSecurityGroupFromVpcEndpointRequest
         @return: DetachSecurityGroupFromVpcEndpointResponse
@@ -1667,10 +1853,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DisableVpcEndpointConnectionResponse:
         """
-        **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
-        *   If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
-        *   If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
-        *   You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
+        @summary Rejects a connection request from an endpoint.
+        
+        @description    **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+        If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
+        If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
+        You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
         
         @param request: DisableVpcEndpointConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1715,10 +1903,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DisableVpcEndpointConnectionResponse:
         """
-        **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
-        *   If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
-        *   If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
-        *   You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
+        @summary Rejects a connection request from an endpoint.
+        
+        @description    **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+        If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
+        If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
+        You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
         
         @param request: DisableVpcEndpointConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1762,10 +1952,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DisableVpcEndpointConnectionRequest,
     ) -> privatelink_20200415_models.DisableVpcEndpointConnectionResponse:
         """
-        **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
-        *   If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
-        *   If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
-        *   You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
+        @summary Rejects a connection request from an endpoint.
+        
+        @description    **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+        If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
+        If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
+        You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
         
         @param request: DisableVpcEndpointConnectionRequest
         @return: DisableVpcEndpointConnectionResponse
@@ -1778,10 +1970,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DisableVpcEndpointConnectionRequest,
     ) -> privatelink_20200415_models.DisableVpcEndpointConnectionResponse:
         """
-        **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
-        *   If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
-        *   If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
-        *   You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
+        @summary Rejects a connection request from an endpoint.
+        
+        @description    **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+        If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
+        If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
+        You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
         
         @param request: DisableVpcEndpointConnectionRequest
         @return: DisableVpcEndpointConnectionResponse
@@ -1795,11 +1989,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse:
         """
-        You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
-        *   **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the status of the task.
-        *   If the zone is in the **Disconnecting** state, the task is running.
-        *   If the zone is in the **Disconnected** state, the task is successful.
-        *   You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
+        @summary Disconnects an endpoint from a connection in the specified zone.
+        
+        @description    You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
+        **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
+        If the zone is in the **Disconnecting** state, the task is running.
+        If the zone is in the **Disconnected** state, the task is successful.
+        You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
         
         @param request: DisableVpcEndpointZoneConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1848,11 +2044,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse:
         """
-        You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
-        *   **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the status of the task.
-        *   If the zone is in the **Disconnecting** state, the task is running.
-        *   If the zone is in the **Disconnected** state, the task is successful.
-        *   You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
+        @summary Disconnects an endpoint from a connection in the specified zone.
+        
+        @description    You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
+        **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
+        If the zone is in the **Disconnecting** state, the task is running.
+        If the zone is in the **Disconnected** state, the task is successful.
+        You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
         
         @param request: DisableVpcEndpointZoneConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1900,11 +2098,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DisableVpcEndpointZoneConnectionRequest,
     ) -> privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse:
         """
-        You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
-        *   **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the status of the task.
-        *   If the zone is in the **Disconnecting** state, the task is running.
-        *   If the zone is in the **Disconnected** state, the task is successful.
-        *   You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
+        @summary Disconnects an endpoint from a connection in the specified zone.
+        
+        @description    You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
+        **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
+        If the zone is in the **Disconnecting** state, the task is running.
+        If the zone is in the **Disconnected** state, the task is successful.
+        You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
         
         @param request: DisableVpcEndpointZoneConnectionRequest
         @return: DisableVpcEndpointZoneConnectionResponse
@@ -1917,11 +2117,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.DisableVpcEndpointZoneConnectionRequest,
     ) -> privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse:
         """
-        You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
-        *   **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the status of the task.
-        *   If the zone is in the **Disconnecting** state, the task is running.
-        *   If the zone is in the **Disconnected** state, the task is successful.
-        *   You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
+        @summary Disconnects an endpoint from a connection in the specified zone.
+        
+        @description    You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
+        **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
+        If the zone is in the **Disconnecting** state, the task is running.
+        If the zone is in the **Disconnected** state, the task is successful.
+        You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
         
         @param request: DisableVpcEndpointZoneConnectionRequest
         @return: DisableVpcEndpointZoneConnectionResponse
@@ -1935,10 +2137,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.EnableVpcEndpointConnectionResponse:
         """
-        **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
-        *   If the state is **Connecting**, the endpoint connection is being established.
-        *   If the state is **Connected**, the endpoint connection is established.
-        *   You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
+        @summary Accepts connection requests from an endpoint.
+        
+        @description    **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+        If the state is **Connecting**, the endpoint connection is being established.
+        If the state is **Connected**, the endpoint connection is established.
+        You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
         
         @param request: EnableVpcEndpointConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1985,10 +2189,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.EnableVpcEndpointConnectionResponse:
         """
-        **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
-        *   If the state is **Connecting**, the endpoint connection is being established.
-        *   If the state is **Connected**, the endpoint connection is established.
-        *   You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
+        @summary Accepts connection requests from an endpoint.
+        
+        @description    **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+        If the state is **Connecting**, the endpoint connection is being established.
+        If the state is **Connected**, the endpoint connection is established.
+        You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
         
         @param request: EnableVpcEndpointConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2034,10 +2240,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.EnableVpcEndpointConnectionRequest,
     ) -> privatelink_20200415_models.EnableVpcEndpointConnectionResponse:
         """
-        **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
-        *   If the state is **Connecting**, the endpoint connection is being established.
-        *   If the state is **Connected**, the endpoint connection is established.
-        *   You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
+        @summary Accepts connection requests from an endpoint.
+        
+        @description    **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+        If the state is **Connecting**, the endpoint connection is being established.
+        If the state is **Connected**, the endpoint connection is established.
+        You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
         
         @param request: EnableVpcEndpointConnectionRequest
         @return: EnableVpcEndpointConnectionResponse
@@ -2050,10 +2258,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.EnableVpcEndpointConnectionRequest,
     ) -> privatelink_20200415_models.EnableVpcEndpointConnectionResponse:
         """
-        **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
-        *   If the state is **Connecting**, the endpoint connection is being established.
-        *   If the state is **Connected**, the endpoint connection is established.
-        *   You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
+        @summary Accepts connection requests from an endpoint.
+        
+        @description    **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+        If the state is **Connecting**, the endpoint connection is being established.
+        If the state is **Connected**, the endpoint connection is established.
+        You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
         
         @param request: EnableVpcEndpointConnectionRequest
         @return: EnableVpcEndpointConnectionResponse
@@ -2067,11 +2277,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse:
         """
-        You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
-        *   **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
-        *   If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
-        *   If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
-        *   You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
+        @summary Accepts a connection request from an endpoint in the specified zone.
+        
+        @description    You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
+        **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
+        If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
+        If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
+        You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
         
         @param request: EnableVpcEndpointZoneConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2118,11 +2330,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse:
         """
-        You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
-        *   **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
-        *   If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
-        *   If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
-        *   You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
+        @summary Accepts a connection request from an endpoint in the specified zone.
+        
+        @description    You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
+        **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
+        If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
+        If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
+        You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
         
         @param request: EnableVpcEndpointZoneConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2168,11 +2382,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.EnableVpcEndpointZoneConnectionRequest,
     ) -> privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse:
         """
-        You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
-        *   **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
-        *   If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
-        *   If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
-        *   You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
+        @summary Accepts a connection request from an endpoint in the specified zone.
+        
+        @description    You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
+        **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
+        If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
+        If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
+        You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
         
         @param request: EnableVpcEndpointZoneConnectionRequest
         @return: EnableVpcEndpointZoneConnectionResponse
@@ -2185,11 +2401,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.EnableVpcEndpointZoneConnectionRequest,
     ) -> privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse:
         """
-        You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
-        *   **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
-        *   If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
-        *   If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
-        *   You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
+        @summary Accepts a connection request from an endpoint in the specified zone.
+        
+        @description    You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
+        **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
+        If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
+        If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
+        You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
         
         @param request: EnableVpcEndpointZoneConnectionRequest
         @return: EnableVpcEndpointZoneConnectionResponse
@@ -2202,6 +2420,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.GetVpcEndpointAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.GetVpcEndpointAttributeResponse:
+        """
+        @summary Queries the attributes of an endpoint.
+        
+        @param request: GetVpcEndpointAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVpcEndpointAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -2234,6 +2459,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.GetVpcEndpointAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.GetVpcEndpointAttributeResponse:
+        """
+        @summary Queries the attributes of an endpoint.
+        
+        @param request: GetVpcEndpointAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVpcEndpointAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -2265,6 +2497,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.GetVpcEndpointAttributeRequest,
     ) -> privatelink_20200415_models.GetVpcEndpointAttributeResponse:
+        """
+        @summary Queries the attributes of an endpoint.
+        
+        @param request: GetVpcEndpointAttributeRequest
+        @return: GetVpcEndpointAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_vpc_endpoint_attribute_with_options(request, runtime)
 
@@ -2272,6 +2510,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.GetVpcEndpointAttributeRequest,
     ) -> privatelink_20200415_models.GetVpcEndpointAttributeResponse:
+        """
+        @summary Queries the attributes of an endpoint.
+        
+        @param request: GetVpcEndpointAttributeRequest
+        @return: GetVpcEndpointAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_vpc_endpoint_attribute_with_options_async(request, runtime)
 
@@ -2280,6 +2524,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.GetVpcEndpointServiceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.GetVpcEndpointServiceAttributeResponse:
+        """
+        @summary Queries the attributes of an endpoint service.
+        
+        @param request: GetVpcEndpointServiceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVpcEndpointServiceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2312,6 +2563,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.GetVpcEndpointServiceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.GetVpcEndpointServiceAttributeResponse:
+        """
+        @summary Queries the attributes of an endpoint service.
+        
+        @param request: GetVpcEndpointServiceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVpcEndpointServiceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2343,6 +2601,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.GetVpcEndpointServiceAttributeRequest,
     ) -> privatelink_20200415_models.GetVpcEndpointServiceAttributeResponse:
+        """
+        @summary Queries the attributes of an endpoint service.
+        
+        @param request: GetVpcEndpointServiceAttributeRequest
+        @return: GetVpcEndpointServiceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_vpc_endpoint_service_attribute_with_options(request, runtime)
 
@@ -2350,6 +2614,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.GetVpcEndpointServiceAttributeRequest,
     ) -> privatelink_20200415_models.GetVpcEndpointServiceAttributeResponse:
+        """
+        @summary Queries the attributes of an endpoint service.
+        
+        @param request: GetVpcEndpointServiceAttributeRequest
+        @return: GetVpcEndpointServiceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_vpc_endpoint_service_attribute_with_options_async(request, runtime)
 
@@ -2359,10 +2629,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListTagResourcesResponse:
         """
-        You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
-        *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-        *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries the tags that are added to resources.
+        
+        @description    You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
+        **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2407,10 +2679,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListTagResourcesResponse:
         """
-        You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
-        *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-        *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries the tags that are added to resources.
+        
+        @description    You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
+        **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2454,10 +2728,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListTagResourcesRequest,
     ) -> privatelink_20200415_models.ListTagResourcesResponse:
         """
-        You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
-        *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-        *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries the tags that are added to resources.
+        
+        @description    You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
+        **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2470,10 +2746,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListTagResourcesRequest,
     ) -> privatelink_20200415_models.ListTagResourcesResponse:
         """
-        You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
-        *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
-        *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries the tags that are added to resources.
+        
+        @description    You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
+        **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2486,6 +2764,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointConnectionsResponse:
+        """
+        @summary Queries endpoint connections.
+        
+        @param request: ListVpcEndpointConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointConnectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_status):
@@ -2536,6 +2821,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointConnectionsResponse:
+        """
+        @summary Queries endpoint connections.
+        
+        @param request: ListVpcEndpointConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointConnectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_status):
@@ -2585,6 +2877,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointConnectionsRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointConnectionsResponse:
+        """
+        @summary Queries endpoint connections.
+        
+        @param request: ListVpcEndpointConnectionsRequest
+        @return: ListVpcEndpointConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_endpoint_connections_with_options(request, runtime)
 
@@ -2592,6 +2890,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointConnectionsRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointConnectionsResponse:
+        """
+        @summary Queries endpoint connections.
+        
+        @param request: ListVpcEndpointConnectionsRequest
+        @return: ListVpcEndpointConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoint_connections_with_options_async(request, runtime)
 
@@ -2600,6 +2904,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointSecurityGroupsResponse:
+        """
+        @summary Queries the security groups that are associated with an endpoint.
+        
+        @param request: ListVpcEndpointSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -2636,6 +2947,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointSecurityGroupsResponse:
+        """
+        @summary Queries the security groups that are associated with an endpoint.
+        
+        @param request: ListVpcEndpointSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -2671,6 +2989,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointSecurityGroupsRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointSecurityGroupsResponse:
+        """
+        @summary Queries the security groups that are associated with an endpoint.
+        
+        @param request: ListVpcEndpointSecurityGroupsRequest
+        @return: ListVpcEndpointSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_endpoint_security_groups_with_options(request, runtime)
 
@@ -2678,6 +3002,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointSecurityGroupsRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointSecurityGroupsResponse:
+        """
+        @summary Queries the security groups that are associated with an endpoint.
+        
+        @param request: ListVpcEndpointSecurityGroupsRequest
+        @return: ListVpcEndpointSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoint_security_groups_with_options_async(request, runtime)
 
@@ -2686,6 +3016,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointServiceResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointServiceResourcesResponse:
+        """
+        @summary Queries the service resources that are added to an endpoint service.
+        
+        @param request: ListVpcEndpointServiceResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointServiceResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2722,6 +3059,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointServiceResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointServiceResourcesResponse:
+        """
+        @summary Queries the service resources that are added to an endpoint service.
+        
+        @param request: ListVpcEndpointServiceResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointServiceResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2757,6 +3101,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointServiceResourcesRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointServiceResourcesResponse:
+        """
+        @summary Queries the service resources that are added to an endpoint service.
+        
+        @param request: ListVpcEndpointServiceResourcesRequest
+        @return: ListVpcEndpointServiceResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_endpoint_service_resources_with_options(request, runtime)
 
@@ -2764,6 +3114,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointServiceResourcesRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointServiceResourcesResponse:
+        """
+        @summary Queries the service resources that are added to an endpoint service.
+        
+        @param request: ListVpcEndpointServiceResourcesRequest
+        @return: ListVpcEndpointServiceResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoint_service_resources_with_options_async(request, runtime)
 
@@ -2772,6 +3128,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointServiceUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointServiceUsersResponse:
+        """
+        @summary Queries the whitelist of an endpoint service.
+        
+        @param request: ListVpcEndpointServiceUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointServiceUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2812,6 +3175,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointServiceUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointServiceUsersResponse:
+        """
+        @summary Queries the whitelist of an endpoint service.
+        
+        @param request: ListVpcEndpointServiceUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointServiceUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2851,6 +3221,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointServiceUsersRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointServiceUsersResponse:
+        """
+        @summary Queries the whitelist of an endpoint service.
+        
+        @param request: ListVpcEndpointServiceUsersRequest
+        @return: ListVpcEndpointServiceUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_endpoint_service_users_with_options(request, runtime)
 
@@ -2858,6 +3234,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointServiceUsersRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointServiceUsersResponse:
+        """
+        @summary Queries the whitelist of an endpoint service.
+        
+        @param request: ListVpcEndpointServiceUsersRequest
+        @return: ListVpcEndpointServiceUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoint_service_users_with_options_async(request, runtime)
 
@@ -2866,6 +3248,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointServicesResponse:
+        """
+        @summary Queries a list of endpoint services.
+        
+        @param request: ListVpcEndpointServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_accept_enabled):
@@ -2920,6 +3309,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointServicesResponse:
+        """
+        @summary Queries a list of endpoint services.
+        
+        @param request: ListVpcEndpointServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_accept_enabled):
@@ -2973,6 +3369,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointServicesRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointServicesResponse:
+        """
+        @summary Queries a list of endpoint services.
+        
+        @param request: ListVpcEndpointServicesRequest
+        @return: ListVpcEndpointServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_endpoint_services_with_options(request, runtime)
 
@@ -2980,6 +3382,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointServicesRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointServicesResponse:
+        """
+        @summary Queries a list of endpoint services.
+        
+        @param request: ListVpcEndpointServicesRequest
+        @return: ListVpcEndpointServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoint_services_with_options_async(request, runtime)
 
@@ -2988,6 +3396,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointServicesByEndUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointServicesByEndUserResponse:
+        """
+        @summary Queries a list of endpoint services that can be associated with the endpoint created within the current account.
+        
+        @param request: ListVpcEndpointServicesByEndUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointServicesByEndUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -3032,6 +3447,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointServicesByEndUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointServicesByEndUserResponse:
+        """
+        @summary Queries a list of endpoint services that can be associated with the endpoint created within the current account.
+        
+        @param request: ListVpcEndpointServicesByEndUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointServicesByEndUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -3075,6 +3497,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointServicesByEndUserRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointServicesByEndUserResponse:
+        """
+        @summary Queries a list of endpoint services that can be associated with the endpoint created within the current account.
+        
+        @param request: ListVpcEndpointServicesByEndUserRequest
+        @return: ListVpcEndpointServicesByEndUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_endpoint_services_by_end_user_with_options(request, runtime)
 
@@ -3082,6 +3510,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointServicesByEndUserRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointServicesByEndUserResponse:
+        """
+        @summary Queries a list of endpoint services that can be associated with the endpoint created within the current account.
+        
+        @param request: ListVpcEndpointServicesByEndUserRequest
+        @return: ListVpcEndpointServicesByEndUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoint_services_by_end_user_with_options_async(request, runtime)
 
@@ -3090,6 +3524,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointZonesResponse:
+        """
+        @summary Queries the zones of an endpoint.
+        
+        @param request: ListVpcEndpointZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -3126,6 +3567,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointZonesResponse:
+        """
+        @summary Queries the zones of an endpoint.
+        
+        @param request: ListVpcEndpointZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -3161,6 +3609,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointZonesRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointZonesResponse:
+        """
+        @summary Queries the zones of an endpoint.
+        
+        @param request: ListVpcEndpointZonesRequest
+        @return: ListVpcEndpointZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_endpoint_zones_with_options(request, runtime)
 
@@ -3168,6 +3622,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointZonesRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointZonesResponse:
+        """
+        @summary Queries the zones of an endpoint.
+        
+        @param request: ListVpcEndpointZonesRequest
+        @return: ListVpcEndpointZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoint_zones_with_options_async(request, runtime)
 
@@ -3176,6 +3636,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointsResponse:
+        """
+        @summary Queries a list of endpoints.
+        
+        @param request: ListVpcEndpointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_status):
@@ -3228,6 +3695,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.ListVpcEndpointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.ListVpcEndpointsResponse:
+        """
+        @summary Queries a list of endpoints.
+        
+        @param request: ListVpcEndpointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_status):
@@ -3279,6 +3753,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointsRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointsResponse:
+        """
+        @summary Queries a list of endpoints.
+        
+        @param request: ListVpcEndpointsRequest
+        @return: ListVpcEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_vpc_endpoints_with_options(request, runtime)
 
@@ -3286,6 +3766,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.ListVpcEndpointsRequest,
     ) -> privatelink_20200415_models.ListVpcEndpointsResponse:
+        """
+        @summary Queries a list of endpoints.
+        
+        @param request: ListVpcEndpointsRequest
+        @return: ListVpcEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_endpoints_with_options_async(request, runtime)
 
@@ -3294,6 +3780,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.OpenPrivateLinkServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.OpenPrivateLinkServiceResponse:
+        """
+        @summary Activates PrivateLink.
+        
+        @param request: OpenPrivateLinkServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenPrivateLinkServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -3322,6 +3815,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.OpenPrivateLinkServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.OpenPrivateLinkServiceResponse:
+        """
+        @summary Activates PrivateLink.
+        
+        @param request: OpenPrivateLinkServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenPrivateLinkServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -3349,6 +3849,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.OpenPrivateLinkServiceRequest,
     ) -> privatelink_20200415_models.OpenPrivateLinkServiceResponse:
+        """
+        @summary Activates PrivateLink.
+        
+        @param request: OpenPrivateLinkServiceRequest
+        @return: OpenPrivateLinkServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_private_link_service_with_options(request, runtime)
 
@@ -3356,6 +3862,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.OpenPrivateLinkServiceRequest,
     ) -> privatelink_20200415_models.OpenPrivateLinkServiceResponse:
+        """
+        @summary Activates PrivateLink.
+        
+        @param request: OpenPrivateLinkServiceRequest
+        @return: OpenPrivateLinkServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_private_link_service_with_options_async(request, runtime)
 
@@ -3365,8 +3877,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.RemoveUserFromVpcEndpointServiceResponse:
         """
-        Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+        @summary Removes an account ID from the whitelist of an endpoint service.
+        
+        @description    Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
         
         @param request: RemoveUserFromVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3413,8 +3927,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.RemoveUserFromVpcEndpointServiceResponse:
         """
-        Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+        @summary Removes an account ID from the whitelist of an endpoint service.
+        
+        @description    Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
         
         @param request: RemoveUserFromVpcEndpointServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3460,8 +3976,10 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.RemoveUserFromVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.RemoveUserFromVpcEndpointServiceResponse:
         """
-        Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+        @summary Removes an account ID from the whitelist of an endpoint service.
+        
+        @description    Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
         
         @param request: RemoveUserFromVpcEndpointServiceRequest
         @return: RemoveUserFromVpcEndpointServiceResponse
@@ -3474,8 +3992,10 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.RemoveUserFromVpcEndpointServiceRequest,
     ) -> privatelink_20200415_models.RemoveUserFromVpcEndpointServiceResponse:
         """
-        Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
-        *   You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+        @summary Removes an account ID from the whitelist of an endpoint service.
+        
+        @description    Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+        You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
         
         @param request: RemoveUserFromVpcEndpointServiceRequest
         @return: RemoveUserFromVpcEndpointServiceResponse
@@ -3489,10 +4009,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.RemoveZoneFromVpcEndpointResponse:
         """
-        **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the zone of the endpoint is deleted.
-        *   If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
-        *   If the zone cannot be queried, the zone is deleted.
-        *   You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
+        @summary Deletes a zone of an endpoint.
+        
+        @description    **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
+        If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
+        If the zone cannot be queried, the zone is deleted.
+        You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
         
         @param request: RemoveZoneFromVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3537,10 +4059,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.RemoveZoneFromVpcEndpointResponse:
         """
-        **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the zone of the endpoint is deleted.
-        *   If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
-        *   If the zone cannot be queried, the zone is deleted.
-        *   You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
+        @summary Deletes a zone of an endpoint.
+        
+        @description    **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
+        If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
+        If the zone cannot be queried, the zone is deleted.
+        You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
         
         @param request: RemoveZoneFromVpcEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3584,10 +4108,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.RemoveZoneFromVpcEndpointRequest,
     ) -> privatelink_20200415_models.RemoveZoneFromVpcEndpointResponse:
         """
-        **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the zone of the endpoint is deleted.
-        *   If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
-        *   If the zone cannot be queried, the zone is deleted.
-        *   You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
+        @summary Deletes a zone of an endpoint.
+        
+        @description    **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
+        If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
+        If the zone cannot be queried, the zone is deleted.
+        You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
         
         @param request: RemoveZoneFromVpcEndpointRequest
         @return: RemoveZoneFromVpcEndpointResponse
@@ -3600,10 +4126,12 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.RemoveZoneFromVpcEndpointRequest,
     ) -> privatelink_20200415_models.RemoveZoneFromVpcEndpointResponse:
         """
-        **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the zone of the endpoint is deleted.
-        *   If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
-        *   If the zone cannot be queried, the zone is deleted.
-        *   You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
+        @summary Deletes a zone of an endpoint.
+        
+        @description    **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
+        If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
+        If the zone cannot be queried, the zone is deleted.
+        You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
         
         @param request: RemoveZoneFromVpcEndpointRequest
         @return: RemoveZoneFromVpcEndpointResponse
@@ -3617,7 +4145,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.TagResourcesResponse:
         """
-        > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+        @summary Adds tags to resources. You can call this API operation to add tags to one or more endpoints or endpoint services.
+        
+        @description > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3665,7 +4195,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.TagResourcesResponse:
         """
-        > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+        @summary Adds tags to resources. You can call this API operation to add tags to one or more endpoints or endpoint services.
+        
+        @description > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3712,7 +4244,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.TagResourcesRequest,
     ) -> privatelink_20200415_models.TagResourcesResponse:
         """
-        > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+        @summary Adds tags to resources. You can call this API operation to add tags to one or more endpoints or endpoint services.
+        
+        @description > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -3725,7 +4259,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.TagResourcesRequest,
     ) -> privatelink_20200415_models.TagResourcesResponse:
         """
-        > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+        @summary Adds tags to resources. You can call this API operation to add tags to one or more endpoints or endpoint services.
+        
+        @description > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -3738,6 +4274,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources. You can call the UntagResources operation to remove tags from one or more endpoints or endpoint services.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.all):
@@ -3783,6 +4326,13 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources. You can call the UntagResources operation to remove tags from one or more endpoints or endpoint services.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.all):
@@ -3827,6 +4377,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.UntagResourcesRequest,
     ) -> privatelink_20200415_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources. You can call the UntagResources operation to remove tags from one or more endpoints or endpoint services.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -3834,6 +4390,12 @@ class Client(OpenApiClient):
         self,
         request: privatelink_20200415_models.UntagResourcesRequest,
     ) -> privatelink_20200415_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources. You can call the UntagResources operation to remove tags from one or more endpoints or endpoint services.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -3843,7 +4405,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3861,6 +4425,8 @@ class Client(OpenApiClient):
             query['EndpointId'] = request.endpoint_id
         if not UtilClient.is_unset(request.endpoint_name):
             query['EndpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.policy_document):
+            query['PolicyDocument'] = request.policy_document
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
@@ -3890,7 +4456,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3908,6 +4476,8 @@ class Client(OpenApiClient):
             query['EndpointId'] = request.endpoint_id
         if not UtilClient.is_unset(request.endpoint_name):
             query['EndpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.policy_document):
+            query['PolicyDocument'] = request.policy_document
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
@@ -3936,7 +4506,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointAttributeRequest
         @return: UpdateVpcEndpointAttributeResponse
@@ -3949,7 +4521,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointAttributeRequest
         @return: UpdateVpcEndpointAttributeResponse
@@ -3963,7 +4537,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointConnectionAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint connection.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointConnectionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4010,7 +4586,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointConnectionAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint connection.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointConnectionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4056,7 +4634,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointConnectionAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointConnectionAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint connection.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointConnectionAttributeRequest
         @return: UpdateVpcEndpointConnectionAttributeResponse
@@ -4069,7 +4649,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointConnectionAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointConnectionAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint connection.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointConnectionAttributeRequest
         @return: UpdateVpcEndpointConnectionAttributeResponse
@@ -4083,7 +4665,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint service.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointServiceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4136,7 +4720,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint service.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointServiceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4188,7 +4774,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointServiceAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint service.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointServiceAttributeRequest
         @return: UpdateVpcEndpointServiceAttributeResponse
@@ -4201,7 +4789,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointServiceAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+        @summary Modifies the attributes of an endpoint service.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
         
         @param request: UpdateVpcEndpointServiceAttributeRequest
         @return: UpdateVpcEndpointServiceAttributeResponse
@@ -4215,7 +4805,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+        @summary Modifies the attributes of a service resource that is added to an endpoint service.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
         
         @param request: UpdateVpcEndpointServiceResourceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4264,7 +4856,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+        @summary Modifies the attributes of a service resource that is added to an endpoint service.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
         
         @param request: UpdateVpcEndpointServiceResourceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4312,7 +4906,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+        @summary Modifies the attributes of a service resource that is added to an endpoint service.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
         
         @param request: UpdateVpcEndpointServiceResourceAttributeRequest
         @return: UpdateVpcEndpointServiceResourceAttributeResponse
@@ -4325,7 +4921,9 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse:
         """
-        You cannot repeatedly call the *UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+        @summary Modifies the attributes of a service resource that is added to an endpoint service.
+        
+        @description You cannot repeatedly call the *UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
         
         @param request: UpdateVpcEndpointServiceResourceAttributeRequest
         @return: UpdateVpcEndpointServiceResourceAttributeResponse
@@ -4339,15 +4937,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse:
         """
-        ### Prerequisites
+        @summary Modifies a service resource of a zone to which an endpoint connection belongs.
+        
+        @description ### Prerequisites
         By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
         ### Usage notes
-        *   If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
-        *   If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
-        *   **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to check whether the service resource is modified.
-        *   If the endpoint service is in the **Pending** state, the service resource is being modified.
-        *   If the endpoint service is in the **Active** state, the service resource is modified.
-        *   You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
+        If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
+        If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
+        **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
+        If the endpoint service is in the **Pending** state, the service resource is being modified.
+        If the endpoint service is in the **Active** state, the service resource is modified.
+        You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
         
         @param request: UpdateVpcEndpointZoneConnectionResourceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4402,15 +5002,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse:
         """
-        ### Prerequisites
+        @summary Modifies a service resource of a zone to which an endpoint connection belongs.
+        
+        @description ### Prerequisites
         By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
         ### Usage notes
-        *   If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
-        *   If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
-        *   **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to check whether the service resource is modified.
-        *   If the endpoint service is in the **Pending** state, the service resource is being modified.
-        *   If the endpoint service is in the **Active** state, the service resource is modified.
-        *   You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
+        If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
+        If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
+        **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
+        If the endpoint service is in the **Pending** state, the service resource is being modified.
+        If the endpoint service is in the **Active** state, the service resource is modified.
+        You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
         
         @param request: UpdateVpcEndpointZoneConnectionResourceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4464,15 +5066,17 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse:
         """
-        ### Prerequisites
+        @summary Modifies a service resource of a zone to which an endpoint connection belongs.
+        
+        @description ### Prerequisites
         By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
         ### Usage notes
-        *   If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
-        *   If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
-        *   **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to check whether the service resource is modified.
-        *   If the endpoint service is in the **Pending** state, the service resource is being modified.
-        *   If the endpoint service is in the **Active** state, the service resource is modified.
-        *   You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
+        If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
+        If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
+        **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
+        If the endpoint service is in the **Pending** state, the service resource is being modified.
+        If the endpoint service is in the **Active** state, the service resource is modified.
+        You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
         
         @param request: UpdateVpcEndpointZoneConnectionResourceAttributeRequest
         @return: UpdateVpcEndpointZoneConnectionResourceAttributeResponse
@@ -4485,15 +5089,17 @@ class Client(OpenApiClient):
         request: privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeRequest,
     ) -> privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse:
         """
-        ### Prerequisites
+        @summary Modifies a service resource of a zone to which an endpoint connection belongs.
+        
+        @description ### Prerequisites
         By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
         ### Usage notes
-        *   If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
-        *   If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
-        *   **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to check whether the service resource is modified.
-        *   If the endpoint service is in the **Pending** state, the service resource is being modified.
-        *   If the endpoint service is in the **Active** state, the service resource is modified.
-        *   You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
+        If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
+        If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
+        **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
+        If the endpoint service is in the **Pending** state, the service resource is being modified.
+        If the endpoint service is in the **Active** state, the service resource is modified.
+        You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
         
         @param request: UpdateVpcEndpointZoneConnectionResourceAttributeRequest
         @return: UpdateVpcEndpointZoneConnectionResourceAttributeResponse
