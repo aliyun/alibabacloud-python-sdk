@@ -3682,3 +3682,275 @@ class StopServiceInstanceResponse(TeaModel):
         return self
 
 
+class UpdateServiceInstanceSpecRequestCommodity(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+    ):
+        self.auto_pay = auto_pay
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        return self
+
+
+class UpdateServiceInstanceSpecRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        commodity: UpdateServiceInstanceSpecRequestCommodity = None,
+        dry_run: bool = None,
+        enable_user_prometheus: bool = None,
+        operation_name: str = None,
+        parameters: Dict[str, Any] = None,
+        predefined_parameters_name: str = None,
+        service_instance_id: str = None,
+    ):
+        self.client_token = client_token
+        self.commodity = commodity
+        self.dry_run = dry_run
+        self.enable_user_prometheus = enable_user_prometheus
+        self.operation_name = operation_name
+        self.parameters = parameters
+        self.predefined_parameters_name = predefined_parameters_name
+        # This parameter is required.
+        self.service_instance_id = service_instance_id
+
+    def validate(self):
+        if self.commodity:
+            self.commodity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.commodity is not None:
+            result['Commodity'] = self.commodity.to_map()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.enable_user_prometheus is not None:
+            result['EnableUserPrometheus'] = self.enable_user_prometheus
+        if self.operation_name is not None:
+            result['OperationName'] = self.operation_name
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.predefined_parameters_name is not None:
+            result['PredefinedParametersName'] = self.predefined_parameters_name
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Commodity') is not None:
+            temp_model = UpdateServiceInstanceSpecRequestCommodity()
+            self.commodity = temp_model.from_map(m['Commodity'])
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('EnableUserPrometheus') is not None:
+            self.enable_user_prometheus = m.get('EnableUserPrometheus')
+        if m.get('OperationName') is not None:
+            self.operation_name = m.get('OperationName')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('PredefinedParametersName') is not None:
+            self.predefined_parameters_name = m.get('PredefinedParametersName')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        return self
+
+
+class UpdateServiceInstanceSpecShrinkRequestCommodity(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+    ):
+        self.auto_pay = auto_pay
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        return self
+
+
+class UpdateServiceInstanceSpecShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        commodity: UpdateServiceInstanceSpecShrinkRequestCommodity = None,
+        dry_run: bool = None,
+        enable_user_prometheus: bool = None,
+        operation_name: str = None,
+        parameters_shrink: str = None,
+        predefined_parameters_name: str = None,
+        service_instance_id: str = None,
+    ):
+        self.client_token = client_token
+        self.commodity = commodity
+        self.dry_run = dry_run
+        self.enable_user_prometheus = enable_user_prometheus
+        self.operation_name = operation_name
+        self.parameters_shrink = parameters_shrink
+        self.predefined_parameters_name = predefined_parameters_name
+        # This parameter is required.
+        self.service_instance_id = service_instance_id
+
+    def validate(self):
+        if self.commodity:
+            self.commodity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.commodity is not None:
+            result['Commodity'] = self.commodity.to_map()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.enable_user_prometheus is not None:
+            result['EnableUserPrometheus'] = self.enable_user_prometheus
+        if self.operation_name is not None:
+            result['OperationName'] = self.operation_name
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.predefined_parameters_name is not None:
+            result['PredefinedParametersName'] = self.predefined_parameters_name
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Commodity') is not None:
+            temp_model = UpdateServiceInstanceSpecShrinkRequestCommodity()
+            self.commodity = temp_model.from_map(m['Commodity'])
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('EnableUserPrometheus') is not None:
+            self.enable_user_prometheus = m.get('EnableUserPrometheus')
+        if m.get('OperationName') is not None:
+            self.operation_name = m.get('OperationName')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        if m.get('PredefinedParametersName') is not None:
+            self.predefined_parameters_name = m.get('PredefinedParametersName')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        return self
+
+
+class UpdateServiceInstanceSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateServiceInstanceSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateServiceInstanceSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateServiceInstanceSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+

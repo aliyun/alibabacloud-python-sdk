@@ -1440,3 +1440,127 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_service_instance_with_options_async(request, runtime)
+
+    def update_service_instance_spec_with_options(
+        self,
+        tmp_req: compute_nest_20210601_models.UpdateServiceInstanceSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.UpdateServiceInstanceSpecResponse:
+        """
+        @param tmp_req: UpdateServiceInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceInstanceSpecResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_20210601_models.UpdateServiceInstanceSpecShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.commodity):
+            query['Commodity'] = request.commodity
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.enable_user_prometheus):
+            query['EnableUserPrometheus'] = request.enable_user_prometheus
+        if not UtilClient.is_unset(request.operation_name):
+            query['OperationName'] = request.operation_name
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.predefined_parameters_name):
+            query['PredefinedParametersName'] = request.predefined_parameters_name
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceInstanceSpec',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.UpdateServiceInstanceSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_instance_spec_with_options_async(
+        self,
+        tmp_req: compute_nest_20210601_models.UpdateServiceInstanceSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.UpdateServiceInstanceSpecResponse:
+        """
+        @param tmp_req: UpdateServiceInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceInstanceSpecResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_20210601_models.UpdateServiceInstanceSpecShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.commodity):
+            query['Commodity'] = request.commodity
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.enable_user_prometheus):
+            query['EnableUserPrometheus'] = request.enable_user_prometheus
+        if not UtilClient.is_unset(request.operation_name):
+            query['OperationName'] = request.operation_name
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.predefined_parameters_name):
+            query['PredefinedParametersName'] = request.predefined_parameters_name
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceInstanceSpec',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.UpdateServiceInstanceSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_instance_spec(
+        self,
+        request: compute_nest_20210601_models.UpdateServiceInstanceSpecRequest,
+    ) -> compute_nest_20210601_models.UpdateServiceInstanceSpecResponse:
+        """
+        @param request: UpdateServiceInstanceSpecRequest
+        @return: UpdateServiceInstanceSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_service_instance_spec_with_options(request, runtime)
+
+    async def update_service_instance_spec_async(
+        self,
+        request: compute_nest_20210601_models.UpdateServiceInstanceSpecRequest,
+    ) -> compute_nest_20210601_models.UpdateServiceInstanceSpecResponse:
+        """
+        @param request: UpdateServiceInstanceSpecRequest
+        @return: UpdateServiceInstanceSpecResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_service_instance_spec_with_options_async(request, runtime)

@@ -1,3 +1,7 @@
+2024-06-21 Version: 3.1.0
+- Support API UpdateServiceInstanceSpec.
+
+
 2024-06-19 Version: 3.0.0
 - Support API RestartServiceInstance.
 - Support API StartServiceInstance.
