@@ -1,3 +1,9 @@
+2024-06-21 Version: 1.4.4
+- Update API CreateChatappTemplate: update param Components.
+- Update API GetChatappTemplateDetail: update response param.
+- Update API ModifyChatappTemplate: update param Components.
+
+
 2024-05-30 Version: 1.4.3
 - Update API ListChatappTemplate: add param Code.
 - Update API QueryChatappBindWaba: add param AccessKeyId.

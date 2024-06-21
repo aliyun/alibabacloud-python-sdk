@@ -2739,6 +2739,39 @@ class CreateChatappMigrationInitiateResponse(TeaModel):
         return self
 
 
+class CreateChatappTemplateRequestComponentsButtonsSupportedApps(TeaModel):
+    def __init__(
+        self,
+        package_name: str = None,
+        signature_hash: str = None,
+    ):
+        self.package_name = package_name
+        self.signature_hash = signature_hash
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.signature_hash is not None:
+            result['SignatureHash'] = self.signature_hash
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('SignatureHash') is not None:
+            self.signature_hash = m.get('SignatureHash')
+        return self
+
+
 class CreateChatappTemplateRequestComponentsButtons(TeaModel):
     def __init__(
         self,
@@ -2751,6 +2784,7 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         package_name: str = None,
         phone_number: str = None,
         signature_hash: str = None,
+        supported_apps: List[CreateChatappTemplateRequestComponentsButtonsSupportedApps] = None,
         text: str = None,
         type: str = None,
         url: str = None,
@@ -2770,6 +2804,7 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         self.phone_number = phone_number
         # The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
         self.signature_hash = signature_hash
+        self.supported_apps = supported_apps
         # The display name of the button.
         self.text = text
         # The type of the button. Valid values:
@@ -2801,7 +2836,10 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         self.url_type = url_type
 
     def validate(self):
-        pass
+        if self.supported_apps:
+            for k in self.supported_apps:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2827,6 +2865,10 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
             result['PhoneNumber'] = self.phone_number
         if self.signature_hash is not None:
             result['SignatureHash'] = self.signature_hash
+        result['SupportedApps'] = []
+        if self.supported_apps is not None:
+            for k in self.supported_apps:
+                result['SupportedApps'].append(k.to_map() if k else None)
         if self.text is not None:
             result['Text'] = self.text
         if self.type is not None:
@@ -2857,6 +2899,11 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
             self.phone_number = m.get('PhoneNumber')
         if m.get('SignatureHash') is not None:
             self.signature_hash = m.get('SignatureHash')
+        self.supported_apps = []
+        if m.get('SupportedApps') is not None:
+            for k in m.get('SupportedApps'):
+                temp_model = CreateChatappTemplateRequestComponentsButtonsSupportedApps()
+                self.supported_apps.append(temp_model.from_map(k))
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Type') is not None:
@@ -5035,6 +5082,39 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs(TeaMo
         return self
 
 
+class GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps(TeaModel):
+    def __init__(
+        self,
+        package_name: str = None,
+        signature_hash: str = None,
+    ):
+        self.package_name = package_name
+        self.signature_hash = signature_hash
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.signature_hash is not None:
+            result['SignatureHash'] = self.signature_hash
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('SignatureHash') is not None:
+            self.signature_hash = m.get('SignatureHash')
+        return self
+
+
 class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
     def __init__(
         self,
@@ -5048,6 +5128,7 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
         package_name: str = None,
         phone_number: str = None,
         signature_hash: str = None,
+        supported_apps: List[GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps] = None,
         text: str = None,
         type: str = None,
         url: str = None,
@@ -5075,6 +5156,7 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
         self.phone_number = phone_number
         # The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.signature_hash = signature_hash
+        self.supported_apps = supported_apps
         # The display name of the button.
         self.text = text
         # The type of the button. Valid values:
@@ -5102,6 +5184,10 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
     def validate(self):
         if self.extend_attrs:
             self.extend_attrs.validate()
+        if self.supported_apps:
+            for k in self.supported_apps:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5129,6 +5215,10 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
             result['PhoneNumber'] = self.phone_number
         if self.signature_hash is not None:
             result['SignatureHash'] = self.signature_hash
+        result['SupportedApps'] = []
+        if self.supported_apps is not None:
+            for k in self.supported_apps:
+                result['SupportedApps'].append(k.to_map() if k else None)
         if self.text is not None:
             result['Text'] = self.text
         if self.type is not None:
@@ -5162,6 +5252,11 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
             self.phone_number = m.get('PhoneNumber')
         if m.get('SignatureHash') is not None:
             self.signature_hash = m.get('SignatureHash')
+        self.supported_apps = []
+        if m.get('SupportedApps') is not None:
+            for k in m.get('SupportedApps'):
+                temp_model = GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps()
+                self.supported_apps.append(temp_model.from_map(k))
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Type') is not None:
@@ -9790,6 +9885,39 @@ class ListProductCatalogResponse(TeaModel):
         return self
 
 
+class ModifyChatappTemplateRequestComponentsButtonsSupportedApps(TeaModel):
+    def __init__(
+        self,
+        package_name: str = None,
+        signature_hash: str = None,
+    ):
+        self.package_name = package_name
+        self.signature_hash = signature_hash
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.signature_hash is not None:
+            result['SignatureHash'] = self.signature_hash
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('SignatureHash') is not None:
+            self.signature_hash = m.get('SignatureHash')
+        return self
+
+
 class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
     def __init__(
         self,
@@ -9802,6 +9930,7 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
         package_name: str = None,
         phone_number: str = None,
         signature_hash: str = None,
+        supported_apps: List[ModifyChatappTemplateRequestComponentsButtonsSupportedApps] = None,
         text: str = None,
         type: str = None,
         url: str = None,
@@ -9821,6 +9950,7 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
         self.phone_number = phone_number
         # The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
         self.signature_hash = signature_hash
+        self.supported_apps = supported_apps
         # The text of the button.
         self.text = text
         # The type of the button. Valid values:
@@ -9852,7 +9982,10 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
         self.url_type = url_type
 
     def validate(self):
-        pass
+        if self.supported_apps:
+            for k in self.supported_apps:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9878,6 +10011,10 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
             result['PhoneNumber'] = self.phone_number
         if self.signature_hash is not None:
             result['SignatureHash'] = self.signature_hash
+        result['SupportedApps'] = []
+        if self.supported_apps is not None:
+            for k in self.supported_apps:
+                result['SupportedApps'].append(k.to_map() if k else None)
         if self.text is not None:
             result['Text'] = self.text
         if self.type is not None:
@@ -9908,6 +10045,11 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
             self.phone_number = m.get('PhoneNumber')
         if m.get('SignatureHash') is not None:
             self.signature_hash = m.get('SignatureHash')
+        self.supported_apps = []
+        if m.get('SupportedApps') is not None:
+            for k in m.get('SupportedApps'):
+                temp_model = ModifyChatappTemplateRequestComponentsButtonsSupportedApps()
+                self.supported_apps.append(temp_model.from_map(k))
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Type') is not None:
