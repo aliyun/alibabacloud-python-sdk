@@ -169,11 +169,13 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
         max_keywords: int = None,
         nfix_enabled: bool = None,
         ocr_auxiliary_enabled: bool = None,
+        translate_llm_scene_enabled: bool = None,
     ):
         self.domain_education_enabled = domain_education_enabled
         self.max_keywords = max_keywords
         self.nfix_enabled = nfix_enabled
         self.ocr_auxiliary_enabled = ocr_auxiliary_enabled
+        self.translate_llm_scene_enabled = translate_llm_scene_enabled
 
     def validate(self):
         pass
@@ -192,6 +194,8 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
             result['NfixEnabled'] = self.nfix_enabled
         if self.ocr_auxiliary_enabled is not None:
             result['OcrAuxiliaryEnabled'] = self.ocr_auxiliary_enabled
+        if self.translate_llm_scene_enabled is not None:
+            result['TranslateLlmSceneEnabled'] = self.translate_llm_scene_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -204,6 +208,8 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
             self.nfix_enabled = m.get('NfixEnabled')
         if m.get('OcrAuxiliaryEnabled') is not None:
             self.ocr_auxiliary_enabled = m.get('OcrAuxiliaryEnabled')
+        if m.get('TranslateLlmSceneEnabled') is not None:
+            self.translate_llm_scene_enabled = m.get('TranslateLlmSceneEnabled')
         return self
 
 
