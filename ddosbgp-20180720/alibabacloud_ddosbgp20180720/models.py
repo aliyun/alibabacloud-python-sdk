@@ -356,7 +356,6 @@ class AttachAssetGroupToInstanceRequest(TeaModel):
         asset_group_list: List[AttachAssetGroupToInstanceRequestAssetGroupList] = None,
         instance_id: str = None,
         region_id: str = None,
-        source_ip: str = None,
     ):
         # The information about the asset to be associated.
         # 
@@ -372,8 +371,6 @@ class AttachAssetGroupToInstanceRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The source IP address of the request. The system specifies this parameter.
-        self.source_ip = source_ip
 
     def validate(self):
         if self.asset_group_list:
@@ -395,8 +392,6 @@ class AttachAssetGroupToInstanceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -410,8 +405,6 @@ class AttachAssetGroupToInstanceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -421,7 +414,6 @@ class AttachAssetGroupToInstanceShrinkRequest(TeaModel):
         asset_group_list_shrink: str = None,
         instance_id: str = None,
         region_id: str = None,
-        source_ip: str = None,
     ):
         # The information about the asset to be associated.
         # 
@@ -437,8 +429,6 @@ class AttachAssetGroupToInstanceShrinkRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The source IP address of the request. The system specifies this parameter.
-        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -455,8 +445,6 @@ class AttachAssetGroupToInstanceShrinkRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -467,8 +455,6 @@ class AttachAssetGroupToInstanceShrinkRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -1003,6 +989,115 @@ class ConfigSchedruleOnDemandResponse(TeaModel):
         return self
 
 
+class CreatePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreatePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSchedruleOnDemandRequest(TeaModel):
     def __init__(
         self,
@@ -1481,6 +1576,102 @@ class DeleteIpResponse(TeaModel):
         return self
 
 
+class DeletePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeletePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeletePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteRdMemberListRequestMemberList(TeaModel):
     def __init__(
         self,
@@ -1765,7 +1956,6 @@ class DescribeAssetGroupRequest(TeaModel):
         name: str = None,
         region: str = None,
         region_id: str = None,
-        source_ip: str = None,
         type: str = None,
     ):
         # The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
@@ -1778,8 +1968,6 @@ class DescribeAssetGroupRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The source IP address of the request. The system specifies this parameter.
-        self.source_ip = source_ip
         # The type of the asset. Valid values:
         # 
         # *   **waf**: WAF instance
@@ -1803,8 +1991,6 @@ class DescribeAssetGroupRequest(TeaModel):
             result['Region'] = self.region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -1817,8 +2003,6 @@ class DescribeAssetGroupRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -1965,7 +2149,6 @@ class DescribeAssetGroupToInstanceRequest(TeaModel):
         name: str = None,
         region: str = None,
         region_id: str = None,
-        source_ip: str = None,
         type: str = None,
     ):
         # The ID of the instance to query.
@@ -1982,8 +2165,6 @@ class DescribeAssetGroupToInstanceRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The source IP address of the request. The system specifies this parameter.
-        self.source_ip = source_ip
         # The type of the asset. Valid values:
         # 
         # *   **waf**: WAF instance
@@ -2009,8 +2190,6 @@ class DescribeAssetGroupToInstanceRequest(TeaModel):
             result['Region'] = self.region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2027,8 +2206,6 @@ class DescribeAssetGroupToInstanceRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -5387,6 +5564,192 @@ class DescribeTrafficResponse(TeaModel):
         return self
 
 
+class DetachFromPolicyRequestIpPortProtocolList(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        port: int = None,
+        protocol: str = None,
+    ):
+        # This parameter is required.
+        self.ip = ip
+        self.port = port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class DetachFromPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        ip_port_protocol_list: List[DetachFromPolicyRequestIpPortProtocolList] = None,
+        policy_type: str = None,
+    ):
+        # This parameter is required.
+        self.ip_port_protocol_list = ip_port_protocol_list
+        # This parameter is required.
+        self.policy_type = policy_type
+
+    def validate(self):
+        if self.ip_port_protocol_list:
+            for k in self.ip_port_protocol_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IpPortProtocolList'] = []
+        if self.ip_port_protocol_list is not None:
+            for k in self.ip_port_protocol_list:
+                result['IpPortProtocolList'].append(k.to_map() if k else None)
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ip_port_protocol_list = []
+        if m.get('IpPortProtocolList') is not None:
+            for k in m.get('IpPortProtocolList'):
+                temp_model = DetachFromPolicyRequestIpPortProtocolList()
+                self.ip_port_protocol_list.append(temp_model.from_map(k))
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class DetachFromPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ip_port_protocol_list_shrink: str = None,
+        policy_type: str = None,
+    ):
+        # This parameter is required.
+        self.ip_port_protocol_list_shrink = ip_port_protocol_list_shrink
+        # This parameter is required.
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_port_protocol_list_shrink is not None:
+            result['IpPortProtocolList'] = self.ip_port_protocol_list_shrink
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpPortProtocolList') is not None:
+            self.ip_port_protocol_list_shrink = m.get('IpPortProtocolList')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class DetachFromPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachFromPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetachFromPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetachFromPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DettachAssetGroupToInstanceRequestAssetGroupList(TeaModel):
     def __init__(
         self,
@@ -5444,7 +5807,6 @@ class DettachAssetGroupToInstanceRequest(TeaModel):
         asset_group_list: List[DettachAssetGroupToInstanceRequestAssetGroupList] = None,
         instance_id: str = None,
         region_id: str = None,
-        source_ip: str = None,
     ):
         # The information about the asset that you want to dissociate.
         # 
@@ -5460,8 +5822,6 @@ class DettachAssetGroupToInstanceRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The source IP address of the request. The system specifies this parameter.
-        self.source_ip = source_ip
 
     def validate(self):
         if self.asset_group_list:
@@ -5483,8 +5843,6 @@ class DettachAssetGroupToInstanceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -5498,8 +5856,6 @@ class DettachAssetGroupToInstanceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -5509,7 +5865,6 @@ class DettachAssetGroupToInstanceShrinkRequest(TeaModel):
         asset_group_list_shrink: str = None,
         instance_id: str = None,
         region_id: str = None,
-        source_ip: str = None,
     ):
         # The information about the asset that you want to dissociate.
         # 
@@ -5525,8 +5880,6 @@ class DettachAssetGroupToInstanceShrinkRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The source IP address of the request. The system specifies this parameter.
-        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -5543,8 +5896,6 @@ class DettachAssetGroupToInstanceShrinkRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -5555,8 +5906,6 @@ class DettachAssetGroupToInstanceShrinkRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -5916,6 +6265,1010 @@ class ListOpenedAccessLogInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListOpenedAccessLogInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.page_no = page_no
+        self.page_size = page_size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListPolicyResponseBodyPolicyListContentFingerPrintRuleList(TeaModel):
+    def __init__(
+        self,
+        dst_port_end: int = None,
+        dst_port_start: int = None,
+        id: str = None,
+        match_action: str = None,
+        max_pkt_len: int = None,
+        min_pkt_len: int = None,
+        offset: int = None,
+        payload_bytes: str = None,
+        protocol: str = None,
+        rate_value: int = None,
+        seq_no: int = None,
+        src_port_end: int = None,
+        src_port_start: int = None,
+    ):
+        self.dst_port_end = dst_port_end
+        self.dst_port_start = dst_port_start
+        self.id = id
+        self.match_action = match_action
+        self.max_pkt_len = max_pkt_len
+        self.min_pkt_len = min_pkt_len
+        self.offset = offset
+        self.payload_bytes = payload_bytes
+        self.protocol = protocol
+        self.rate_value = rate_value
+        self.seq_no = seq_no
+        self.src_port_end = src_port_end
+        self.src_port_start = src_port_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_port_end is not None:
+            result['DstPortEnd'] = self.dst_port_end
+        if self.dst_port_start is not None:
+            result['DstPortStart'] = self.dst_port_start
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.match_action is not None:
+            result['MatchAction'] = self.match_action
+        if self.max_pkt_len is not None:
+            result['MaxPktLen'] = self.max_pkt_len
+        if self.min_pkt_len is not None:
+            result['MinPktLen'] = self.min_pkt_len
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.payload_bytes is not None:
+            result['PayloadBytes'] = self.payload_bytes
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.rate_value is not None:
+            result['RateValue'] = self.rate_value
+        if self.seq_no is not None:
+            result['SeqNo'] = self.seq_no
+        if self.src_port_end is not None:
+            result['SrcPortEnd'] = self.src_port_end
+        if self.src_port_start is not None:
+            result['SrcPortStart'] = self.src_port_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstPortEnd') is not None:
+            self.dst_port_end = m.get('DstPortEnd')
+        if m.get('DstPortStart') is not None:
+            self.dst_port_start = m.get('DstPortStart')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MatchAction') is not None:
+            self.match_action = m.get('MatchAction')
+        if m.get('MaxPktLen') is not None:
+            self.max_pkt_len = m.get('MaxPktLen')
+        if m.get('MinPktLen') is not None:
+            self.min_pkt_len = m.get('MinPktLen')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('PayloadBytes') is not None:
+            self.payload_bytes = m.get('PayloadBytes')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RateValue') is not None:
+            self.rate_value = m.get('RateValue')
+        if m.get('SeqNo') is not None:
+            self.seq_no = m.get('SeqNo')
+        if m.get('SrcPortEnd') is not None:
+            self.src_port_end = m.get('SrcPortEnd')
+        if m.get('SrcPortStart') is not None:
+            self.src_port_start = m.get('SrcPortStart')
+        return self
+
+
+class ListPolicyResponseBodyPolicyListContentL4RuleListConditionList(TeaModel):
+    def __init__(
+        self,
+        arg: str = None,
+        depth: int = None,
+        position: int = None,
+    ):
+        self.arg = arg
+        self.depth = depth
+        self.position = position
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arg is not None:
+            result['Arg'] = self.arg
+        if self.depth is not None:
+            result['Depth'] = self.depth
+        if self.position is not None:
+            result['Position'] = self.position
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arg') is not None:
+            self.arg = m.get('Arg')
+        if m.get('Depth') is not None:
+            self.depth = m.get('Depth')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        return self
+
+
+class ListPolicyResponseBodyPolicyListContentL4RuleList(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        condition_list: List[ListPolicyResponseBodyPolicyListContentL4RuleListConditionList] = None,
+        limited: int = None,
+        match: str = None,
+        method: str = None,
+        name: str = None,
+        priority: int = None,
+    ):
+        self.action = action
+        self.condition_list = condition_list
+        self.limited = limited
+        self.match = match
+        self.method = method
+        self.name = name
+        self.priority = priority
+
+    def validate(self):
+        if self.condition_list:
+            for k in self.condition_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        result['ConditionList'] = []
+        if self.condition_list is not None:
+            for k in self.condition_list:
+                result['ConditionList'].append(k.to_map() if k else None)
+        if self.limited is not None:
+            result['Limited'] = self.limited
+        if self.match is not None:
+            result['Match'] = self.match
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        self.condition_list = []
+        if m.get('ConditionList') is not None:
+            for k in m.get('ConditionList'):
+                temp_model = ListPolicyResponseBodyPolicyListContentL4RuleListConditionList()
+                self.condition_list.append(temp_model.from_map(k))
+        if m.get('Limited') is not None:
+            self.limited = m.get('Limited')
+        if m.get('Match') is not None:
+            self.match = m.get('Match')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        return self
+
+
+class ListPolicyResponseBodyPolicyListContentPortRuleList(TeaModel):
+    def __init__(
+        self,
+        dst_port_end: int = None,
+        dst_port_start: int = None,
+        id: str = None,
+        match_action: str = None,
+        protocol: str = None,
+        seq_no: int = None,
+        src_port_end: int = None,
+        src_port_start: int = None,
+    ):
+        self.dst_port_end = dst_port_end
+        self.dst_port_start = dst_port_start
+        self.id = id
+        self.match_action = match_action
+        self.protocol = protocol
+        self.seq_no = seq_no
+        self.src_port_end = src_port_end
+        self.src_port_start = src_port_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_port_end is not None:
+            result['DstPortEnd'] = self.dst_port_end
+        if self.dst_port_start is not None:
+            result['DstPortStart'] = self.dst_port_start
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.match_action is not None:
+            result['MatchAction'] = self.match_action
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.seq_no is not None:
+            result['SeqNo'] = self.seq_no
+        if self.src_port_end is not None:
+            result['SrcPortEnd'] = self.src_port_end
+        if self.src_port_start is not None:
+            result['SrcPortStart'] = self.src_port_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstPortEnd') is not None:
+            self.dst_port_end = m.get('DstPortEnd')
+        if m.get('DstPortStart') is not None:
+            self.dst_port_start = m.get('DstPortStart')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MatchAction') is not None:
+            self.match_action = m.get('MatchAction')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SeqNo') is not None:
+            self.seq_no = m.get('SeqNo')
+        if m.get('SrcPortEnd') is not None:
+            self.src_port_end = m.get('SrcPortEnd')
+        if m.get('SrcPortStart') is not None:
+            self.src_port_start = m.get('SrcPortStart')
+        return self
+
+
+class ListPolicyResponseBodyPolicyListContentSourceBlockList(TeaModel):
+    def __init__(
+        self,
+        block_expire_seconds: int = None,
+        every_seconds: int = None,
+        exceed_limit_times: int = None,
+        type: int = None,
+    ):
+        self.block_expire_seconds = block_expire_seconds
+        self.every_seconds = every_seconds
+        self.exceed_limit_times = exceed_limit_times
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_expire_seconds is not None:
+            result['BlockExpireSeconds'] = self.block_expire_seconds
+        if self.every_seconds is not None:
+            result['EverySeconds'] = self.every_seconds
+        if self.exceed_limit_times is not None:
+            result['ExceedLimitTimes'] = self.exceed_limit_times
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockExpireSeconds') is not None:
+            self.block_expire_seconds = m.get('BlockExpireSeconds')
+        if m.get('EverySeconds') is not None:
+            self.every_seconds = m.get('EverySeconds')
+        if m.get('ExceedLimitTimes') is not None:
+            self.exceed_limit_times = m.get('ExceedLimitTimes')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListPolicyResponseBodyPolicyListContentSourceLimit(TeaModel):
+    def __init__(
+        self,
+        bps: int = None,
+        pps: int = None,
+        syn_bps: int = None,
+        syn_pps: int = None,
+    ):
+        self.bps = bps
+        self.pps = pps
+        self.syn_bps = syn_bps
+        self.syn_pps = syn_pps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.pps is not None:
+            result['Pps'] = self.pps
+        if self.syn_bps is not None:
+            result['SynBps'] = self.syn_bps
+        if self.syn_pps is not None:
+            result['SynPps'] = self.syn_pps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('Pps') is not None:
+            self.pps = m.get('Pps')
+        if m.get('SynBps') is not None:
+            self.syn_bps = m.get('SynBps')
+        if m.get('SynPps') is not None:
+            self.syn_pps = m.get('SynPps')
+        return self
+
+
+class ListPolicyResponseBodyPolicyListContent(TeaModel):
+    def __init__(
+        self,
+        black_ip_list_expire_at: int = None,
+        enable_drop_icmp: bool = None,
+        enable_intelligence: bool = None,
+        enable_l4defense: bool = None,
+        finger_print_rule_list: List[ListPolicyResponseBodyPolicyListContentFingerPrintRuleList] = None,
+        intelligence_level: str = None,
+        l_4rule_list: List[ListPolicyResponseBodyPolicyListContentL4RuleList] = None,
+        port_rule_list: List[ListPolicyResponseBodyPolicyListContentPortRuleList] = None,
+        reflect_block_udp_port_list: List[int] = None,
+        region_block_country_list: List[int] = None,
+        region_block_province_list: List[int] = None,
+        source_block_list: List[ListPolicyResponseBodyPolicyListContentSourceBlockList] = None,
+        source_limit: ListPolicyResponseBodyPolicyListContentSourceLimit = None,
+        whiten_gfbr_nets: bool = None,
+    ):
+        self.black_ip_list_expire_at = black_ip_list_expire_at
+        self.enable_drop_icmp = enable_drop_icmp
+        self.enable_intelligence = enable_intelligence
+        self.enable_l4defense = enable_l4defense
+        self.finger_print_rule_list = finger_print_rule_list
+        self.intelligence_level = intelligence_level
+        self.l_4rule_list = l_4rule_list
+        self.port_rule_list = port_rule_list
+        self.reflect_block_udp_port_list = reflect_block_udp_port_list
+        self.region_block_country_list = region_block_country_list
+        self.region_block_province_list = region_block_province_list
+        self.source_block_list = source_block_list
+        self.source_limit = source_limit
+        self.whiten_gfbr_nets = whiten_gfbr_nets
+
+    def validate(self):
+        if self.finger_print_rule_list:
+            for k in self.finger_print_rule_list:
+                if k:
+                    k.validate()
+        if self.l_4rule_list:
+            for k in self.l_4rule_list:
+                if k:
+                    k.validate()
+        if self.port_rule_list:
+            for k in self.port_rule_list:
+                if k:
+                    k.validate()
+        if self.source_block_list:
+            for k in self.source_block_list:
+                if k:
+                    k.validate()
+        if self.source_limit:
+            self.source_limit.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.black_ip_list_expire_at is not None:
+            result['BlackIpListExpireAt'] = self.black_ip_list_expire_at
+        if self.enable_drop_icmp is not None:
+            result['EnableDropIcmp'] = self.enable_drop_icmp
+        if self.enable_intelligence is not None:
+            result['EnableIntelligence'] = self.enable_intelligence
+        if self.enable_l4defense is not None:
+            result['EnableL4Defense'] = self.enable_l4defense
+        result['FingerPrintRuleList'] = []
+        if self.finger_print_rule_list is not None:
+            for k in self.finger_print_rule_list:
+                result['FingerPrintRuleList'].append(k.to_map() if k else None)
+        if self.intelligence_level is not None:
+            result['IntelligenceLevel'] = self.intelligence_level
+        result['L4RuleList'] = []
+        if self.l_4rule_list is not None:
+            for k in self.l_4rule_list:
+                result['L4RuleList'].append(k.to_map() if k else None)
+        result['PortRuleList'] = []
+        if self.port_rule_list is not None:
+            for k in self.port_rule_list:
+                result['PortRuleList'].append(k.to_map() if k else None)
+        if self.reflect_block_udp_port_list is not None:
+            result['ReflectBlockUdpPortList'] = self.reflect_block_udp_port_list
+        if self.region_block_country_list is not None:
+            result['RegionBlockCountryList'] = self.region_block_country_list
+        if self.region_block_province_list is not None:
+            result['RegionBlockProvinceList'] = self.region_block_province_list
+        result['SourceBlockList'] = []
+        if self.source_block_list is not None:
+            for k in self.source_block_list:
+                result['SourceBlockList'].append(k.to_map() if k else None)
+        if self.source_limit is not None:
+            result['SourceLimit'] = self.source_limit.to_map()
+        if self.whiten_gfbr_nets is not None:
+            result['WhitenGfbrNets'] = self.whiten_gfbr_nets
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlackIpListExpireAt') is not None:
+            self.black_ip_list_expire_at = m.get('BlackIpListExpireAt')
+        if m.get('EnableDropIcmp') is not None:
+            self.enable_drop_icmp = m.get('EnableDropIcmp')
+        if m.get('EnableIntelligence') is not None:
+            self.enable_intelligence = m.get('EnableIntelligence')
+        if m.get('EnableL4Defense') is not None:
+            self.enable_l4defense = m.get('EnableL4Defense')
+        self.finger_print_rule_list = []
+        if m.get('FingerPrintRuleList') is not None:
+            for k in m.get('FingerPrintRuleList'):
+                temp_model = ListPolicyResponseBodyPolicyListContentFingerPrintRuleList()
+                self.finger_print_rule_list.append(temp_model.from_map(k))
+        if m.get('IntelligenceLevel') is not None:
+            self.intelligence_level = m.get('IntelligenceLevel')
+        self.l_4rule_list = []
+        if m.get('L4RuleList') is not None:
+            for k in m.get('L4RuleList'):
+                temp_model = ListPolicyResponseBodyPolicyListContentL4RuleList()
+                self.l_4rule_list.append(temp_model.from_map(k))
+        self.port_rule_list = []
+        if m.get('PortRuleList') is not None:
+            for k in m.get('PortRuleList'):
+                temp_model = ListPolicyResponseBodyPolicyListContentPortRuleList()
+                self.port_rule_list.append(temp_model.from_map(k))
+        if m.get('ReflectBlockUdpPortList') is not None:
+            self.reflect_block_udp_port_list = m.get('ReflectBlockUdpPortList')
+        if m.get('RegionBlockCountryList') is not None:
+            self.region_block_country_list = m.get('RegionBlockCountryList')
+        if m.get('RegionBlockProvinceList') is not None:
+            self.region_block_province_list = m.get('RegionBlockProvinceList')
+        self.source_block_list = []
+        if m.get('SourceBlockList') is not None:
+            for k in m.get('SourceBlockList'):
+                temp_model = ListPolicyResponseBodyPolicyListContentSourceBlockList()
+                self.source_block_list.append(temp_model.from_map(k))
+        if m.get('SourceLimit') is not None:
+            temp_model = ListPolicyResponseBodyPolicyListContentSourceLimit()
+            self.source_limit = temp_model.from_map(m['SourceLimit'])
+        if m.get('WhitenGfbrNets') is not None:
+            self.whiten_gfbr_nets = m.get('WhitenGfbrNets')
+        return self
+
+
+class ListPolicyResponseBodyPolicyList(TeaModel):
+    def __init__(
+        self,
+        attached_count: int = None,
+        content: ListPolicyResponseBodyPolicyListContent = None,
+        id: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.attached_count = attached_count
+        self.content = content
+        self.id = id
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attached_count is not None:
+            result['AttachedCount'] = self.attached_count
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttachedCount') is not None:
+            self.attached_count = m.get('AttachedCount')
+        if m.get('Content') is not None:
+            temp_model = ListPolicyResponseBodyPolicyListContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policy_list: List[ListPolicyResponseBodyPolicyList] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.policy_list = policy_list
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.policy_list:
+            for k in self.policy_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PolicyList'] = []
+        if self.policy_list is not None:
+            for k in self.policy_list:
+                result['PolicyList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policy_list = []
+        if m.get('PolicyList') is not None:
+            for k in m.get('PolicyList'):
+                temp_model = ListPolicyResponseBodyPolicyList()
+                self.policy_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPolicyAttachmentRequestIpPortProtocolList(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        port: int = None,
+        protocol: str = None,
+    ):
+        # This parameter is required.
+        self.ip = ip
+        self.port = port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class ListPolicyAttachmentRequest(TeaModel):
+    def __init__(
+        self,
+        ip_port_protocol_list: List[ListPolicyAttachmentRequestIpPortProtocolList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        policy_id: str = None,
+        policy_type: str = None,
+    ):
+        self.ip_port_protocol_list = ip_port_protocol_list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.policy_id = policy_id
+        self.policy_type = policy_type
+
+    def validate(self):
+        if self.ip_port_protocol_list:
+            for k in self.ip_port_protocol_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IpPortProtocolList'] = []
+        if self.ip_port_protocol_list is not None:
+            for k in self.ip_port_protocol_list:
+                result['IpPortProtocolList'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ip_port_protocol_list = []
+        if m.get('IpPortProtocolList') is not None:
+            for k in m.get('IpPortProtocolList'):
+                temp_model = ListPolicyAttachmentRequestIpPortProtocolList()
+                self.ip_port_protocol_list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ListPolicyAttachmentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ip_port_protocol_list_shrink: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        policy_id: str = None,
+        policy_type: str = None,
+    ):
+        self.ip_port_protocol_list_shrink = ip_port_protocol_list_shrink
+        self.page_no = page_no
+        self.page_size = page_size
+        self.policy_id = policy_id
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_port_protocol_list_shrink is not None:
+            result['IpPortProtocolList'] = self.ip_port_protocol_list_shrink
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpPortProtocolList') is not None:
+            self.ip_port_protocol_list_shrink = m.get('IpPortProtocolList')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class ListPolicyAttachmentResponseBodyAttachmentList(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        member_uid: str = None,
+        policy_id: str = None,
+        policy_name: str = None,
+        policy_type: str = None,
+        port: int = None,
+        protocol: str = None,
+        region: str = None,
+    ):
+        self.ip = ip
+        self.member_uid = member_uid
+        self.policy_id = policy_id
+        self.policy_name = policy_name
+        self.policy_type = policy_type
+        self.port = port
+        self.protocol = protocol
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class ListPolicyAttachmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        attachment_list: List[ListPolicyAttachmentResponseBodyAttachmentList] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.attachment_list = attachment_list
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.attachment_list:
+            for k in self.attachment_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AttachmentList'] = []
+        if self.attachment_list is not None:
+            for k in self.attachment_list:
+                result['AttachmentList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attachment_list = []
+        if m.get('AttachmentList') is not None:
+            for k in m.get('AttachmentList'):
+                temp_model = ListPolicyAttachmentResponseBodyAttachmentList()
+                self.attachment_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListPolicyAttachmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPolicyAttachmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPolicyAttachmentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6405,6 +7758,1414 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyPolicyRequestContentFingerPrintRuleList(TeaModel):
+    def __init__(
+        self,
+        dst_port_end: int = None,
+        dst_port_start: int = None,
+        id: str = None,
+        match_action: str = None,
+        max_pkt_len: int = None,
+        min_pkt_len: int = None,
+        offset: int = None,
+        payload_bytes: str = None,
+        protocol: str = None,
+        rate_value: int = None,
+        seq_no: int = None,
+        src_port_end: int = None,
+        src_port_start: int = None,
+    ):
+        # This parameter is required.
+        self.dst_port_end = dst_port_end
+        # This parameter is required.
+        self.dst_port_start = dst_port_start
+        self.id = id
+        # This parameter is required.
+        self.match_action = match_action
+        # This parameter is required.
+        self.max_pkt_len = max_pkt_len
+        # This parameter is required.
+        self.min_pkt_len = min_pkt_len
+        self.offset = offset
+        self.payload_bytes = payload_bytes
+        # This parameter is required.
+        self.protocol = protocol
+        self.rate_value = rate_value
+        # This parameter is required.
+        self.seq_no = seq_no
+        # This parameter is required.
+        self.src_port_end = src_port_end
+        # This parameter is required.
+        self.src_port_start = src_port_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_port_end is not None:
+            result['DstPortEnd'] = self.dst_port_end
+        if self.dst_port_start is not None:
+            result['DstPortStart'] = self.dst_port_start
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.match_action is not None:
+            result['MatchAction'] = self.match_action
+        if self.max_pkt_len is not None:
+            result['MaxPktLen'] = self.max_pkt_len
+        if self.min_pkt_len is not None:
+            result['MinPktLen'] = self.min_pkt_len
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.payload_bytes is not None:
+            result['PayloadBytes'] = self.payload_bytes
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.rate_value is not None:
+            result['RateValue'] = self.rate_value
+        if self.seq_no is not None:
+            result['SeqNo'] = self.seq_no
+        if self.src_port_end is not None:
+            result['SrcPortEnd'] = self.src_port_end
+        if self.src_port_start is not None:
+            result['SrcPortStart'] = self.src_port_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstPortEnd') is not None:
+            self.dst_port_end = m.get('DstPortEnd')
+        if m.get('DstPortStart') is not None:
+            self.dst_port_start = m.get('DstPortStart')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MatchAction') is not None:
+            self.match_action = m.get('MatchAction')
+        if m.get('MaxPktLen') is not None:
+            self.max_pkt_len = m.get('MaxPktLen')
+        if m.get('MinPktLen') is not None:
+            self.min_pkt_len = m.get('MinPktLen')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('PayloadBytes') is not None:
+            self.payload_bytes = m.get('PayloadBytes')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RateValue') is not None:
+            self.rate_value = m.get('RateValue')
+        if m.get('SeqNo') is not None:
+            self.seq_no = m.get('SeqNo')
+        if m.get('SrcPortEnd') is not None:
+            self.src_port_end = m.get('SrcPortEnd')
+        if m.get('SrcPortStart') is not None:
+            self.src_port_start = m.get('SrcPortStart')
+        return self
+
+
+class ModifyPolicyRequestContentL4RuleListConditionList(TeaModel):
+    def __init__(
+        self,
+        arg: str = None,
+        depth: int = None,
+        position: int = None,
+    ):
+        # This parameter is required.
+        self.arg = arg
+        # This parameter is required.
+        self.depth = depth
+        # This parameter is required.
+        self.position = position
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arg is not None:
+            result['Arg'] = self.arg
+        if self.depth is not None:
+            result['Depth'] = self.depth
+        if self.position is not None:
+            result['Position'] = self.position
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arg') is not None:
+            self.arg = m.get('Arg')
+        if m.get('Depth') is not None:
+            self.depth = m.get('Depth')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        return self
+
+
+class ModifyPolicyRequestContentL4RuleList(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        condition_list: List[ModifyPolicyRequestContentL4RuleListConditionList] = None,
+        limited: int = None,
+        match: str = None,
+        method: str = None,
+        name: str = None,
+        priority: int = None,
+    ):
+        # This parameter is required.
+        self.action = action
+        # This parameter is required.
+        self.condition_list = condition_list
+        # This parameter is required.
+        self.limited = limited
+        # This parameter is required.
+        self.match = match
+        # This parameter is required.
+        self.method = method
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.priority = priority
+
+    def validate(self):
+        if self.condition_list:
+            for k in self.condition_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        result['ConditionList'] = []
+        if self.condition_list is not None:
+            for k in self.condition_list:
+                result['ConditionList'].append(k.to_map() if k else None)
+        if self.limited is not None:
+            result['Limited'] = self.limited
+        if self.match is not None:
+            result['Match'] = self.match
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        self.condition_list = []
+        if m.get('ConditionList') is not None:
+            for k in m.get('ConditionList'):
+                temp_model = ModifyPolicyRequestContentL4RuleListConditionList()
+                self.condition_list.append(temp_model.from_map(k))
+        if m.get('Limited') is not None:
+            self.limited = m.get('Limited')
+        if m.get('Match') is not None:
+            self.match = m.get('Match')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        return self
+
+
+class ModifyPolicyRequestContentPortRuleList(TeaModel):
+    def __init__(
+        self,
+        dst_port_end: int = None,
+        dst_port_start: int = None,
+        id: str = None,
+        match_action: str = None,
+        protocol: str = None,
+        seq_no: int = None,
+        src_port_end: int = None,
+        src_port_start: int = None,
+    ):
+        # This parameter is required.
+        self.dst_port_end = dst_port_end
+        # This parameter is required.
+        self.dst_port_start = dst_port_start
+        self.id = id
+        # This parameter is required.
+        self.match_action = match_action
+        # This parameter is required.
+        self.protocol = protocol
+        # This parameter is required.
+        self.seq_no = seq_no
+        # This parameter is required.
+        self.src_port_end = src_port_end
+        # This parameter is required.
+        self.src_port_start = src_port_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_port_end is not None:
+            result['DstPortEnd'] = self.dst_port_end
+        if self.dst_port_start is not None:
+            result['DstPortStart'] = self.dst_port_start
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.match_action is not None:
+            result['MatchAction'] = self.match_action
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.seq_no is not None:
+            result['SeqNo'] = self.seq_no
+        if self.src_port_end is not None:
+            result['SrcPortEnd'] = self.src_port_end
+        if self.src_port_start is not None:
+            result['SrcPortStart'] = self.src_port_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstPortEnd') is not None:
+            self.dst_port_end = m.get('DstPortEnd')
+        if m.get('DstPortStart') is not None:
+            self.dst_port_start = m.get('DstPortStart')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MatchAction') is not None:
+            self.match_action = m.get('MatchAction')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SeqNo') is not None:
+            self.seq_no = m.get('SeqNo')
+        if m.get('SrcPortEnd') is not None:
+            self.src_port_end = m.get('SrcPortEnd')
+        if m.get('SrcPortStart') is not None:
+            self.src_port_start = m.get('SrcPortStart')
+        return self
+
+
+class ModifyPolicyRequestContentSourceBlockList(TeaModel):
+    def __init__(
+        self,
+        block_expire_seconds: int = None,
+        every_seconds: int = None,
+        exceed_limit_times: int = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.block_expire_seconds = block_expire_seconds
+        # This parameter is required.
+        self.every_seconds = every_seconds
+        # This parameter is required.
+        self.exceed_limit_times = exceed_limit_times
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_expire_seconds is not None:
+            result['BlockExpireSeconds'] = self.block_expire_seconds
+        if self.every_seconds is not None:
+            result['EverySeconds'] = self.every_seconds
+        if self.exceed_limit_times is not None:
+            result['ExceedLimitTimes'] = self.exceed_limit_times
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockExpireSeconds') is not None:
+            self.block_expire_seconds = m.get('BlockExpireSeconds')
+        if m.get('EverySeconds') is not None:
+            self.every_seconds = m.get('EverySeconds')
+        if m.get('ExceedLimitTimes') is not None:
+            self.exceed_limit_times = m.get('ExceedLimitTimes')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ModifyPolicyRequestContentSourceLimit(TeaModel):
+    def __init__(
+        self,
+        bps: int = None,
+        pps: int = None,
+        syn_bps: int = None,
+        syn_pps: int = None,
+    ):
+        self.bps = bps
+        self.pps = pps
+        self.syn_bps = syn_bps
+        self.syn_pps = syn_pps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.pps is not None:
+            result['Pps'] = self.pps
+        if self.syn_bps is not None:
+            result['SynBps'] = self.syn_bps
+        if self.syn_pps is not None:
+            result['SynPps'] = self.syn_pps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('Pps') is not None:
+            self.pps = m.get('Pps')
+        if m.get('SynBps') is not None:
+            self.syn_bps = m.get('SynBps')
+        if m.get('SynPps') is not None:
+            self.syn_pps = m.get('SynPps')
+        return self
+
+
+class ModifyPolicyRequestContent(TeaModel):
+    def __init__(
+        self,
+        black_ip_list: List[str] = None,
+        black_ip_list_expire_at: int = None,
+        enable_drop_icmp: bool = None,
+        enable_intelligence: bool = None,
+        enable_l4defense: bool = None,
+        finger_print_rule_list: List[ModifyPolicyRequestContentFingerPrintRuleList] = None,
+        intelligence_level: str = None,
+        l_4rule_list: List[ModifyPolicyRequestContentL4RuleList] = None,
+        port_rule_list: List[ModifyPolicyRequestContentPortRuleList] = None,
+        reflect_block_udp_port_list: List[int] = None,
+        region_block_country_list: List[int] = None,
+        region_block_province_list: List[int] = None,
+        source_block_list: List[ModifyPolicyRequestContentSourceBlockList] = None,
+        source_limit: ModifyPolicyRequestContentSourceLimit = None,
+        white_ip_list: List[str] = None,
+        whiten_gfbr_nets: bool = None,
+    ):
+        self.black_ip_list = black_ip_list
+        self.black_ip_list_expire_at = black_ip_list_expire_at
+        self.enable_drop_icmp = enable_drop_icmp
+        self.enable_intelligence = enable_intelligence
+        self.enable_l4defense = enable_l4defense
+        self.finger_print_rule_list = finger_print_rule_list
+        self.intelligence_level = intelligence_level
+        self.l_4rule_list = l_4rule_list
+        self.port_rule_list = port_rule_list
+        self.reflect_block_udp_port_list = reflect_block_udp_port_list
+        self.region_block_country_list = region_block_country_list
+        self.region_block_province_list = region_block_province_list
+        self.source_block_list = source_block_list
+        self.source_limit = source_limit
+        self.white_ip_list = white_ip_list
+        self.whiten_gfbr_nets = whiten_gfbr_nets
+
+    def validate(self):
+        if self.finger_print_rule_list:
+            for k in self.finger_print_rule_list:
+                if k:
+                    k.validate()
+        if self.l_4rule_list:
+            for k in self.l_4rule_list:
+                if k:
+                    k.validate()
+        if self.port_rule_list:
+            for k in self.port_rule_list:
+                if k:
+                    k.validate()
+        if self.source_block_list:
+            for k in self.source_block_list:
+                if k:
+                    k.validate()
+        if self.source_limit:
+            self.source_limit.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.black_ip_list is not None:
+            result['BlackIpList'] = self.black_ip_list
+        if self.black_ip_list_expire_at is not None:
+            result['BlackIpListExpireAt'] = self.black_ip_list_expire_at
+        if self.enable_drop_icmp is not None:
+            result['EnableDropIcmp'] = self.enable_drop_icmp
+        if self.enable_intelligence is not None:
+            result['EnableIntelligence'] = self.enable_intelligence
+        if self.enable_l4defense is not None:
+            result['EnableL4Defense'] = self.enable_l4defense
+        result['FingerPrintRuleList'] = []
+        if self.finger_print_rule_list is not None:
+            for k in self.finger_print_rule_list:
+                result['FingerPrintRuleList'].append(k.to_map() if k else None)
+        if self.intelligence_level is not None:
+            result['IntelligenceLevel'] = self.intelligence_level
+        result['L4RuleList'] = []
+        if self.l_4rule_list is not None:
+            for k in self.l_4rule_list:
+                result['L4RuleList'].append(k.to_map() if k else None)
+        result['PortRuleList'] = []
+        if self.port_rule_list is not None:
+            for k in self.port_rule_list:
+                result['PortRuleList'].append(k.to_map() if k else None)
+        if self.reflect_block_udp_port_list is not None:
+            result['ReflectBlockUdpPortList'] = self.reflect_block_udp_port_list
+        if self.region_block_country_list is not None:
+            result['RegionBlockCountryList'] = self.region_block_country_list
+        if self.region_block_province_list is not None:
+            result['RegionBlockProvinceList'] = self.region_block_province_list
+        result['SourceBlockList'] = []
+        if self.source_block_list is not None:
+            for k in self.source_block_list:
+                result['SourceBlockList'].append(k.to_map() if k else None)
+        if self.source_limit is not None:
+            result['SourceLimit'] = self.source_limit.to_map()
+        if self.white_ip_list is not None:
+            result['WhiteIpList'] = self.white_ip_list
+        if self.whiten_gfbr_nets is not None:
+            result['WhitenGfbrNets'] = self.whiten_gfbr_nets
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlackIpList') is not None:
+            self.black_ip_list = m.get('BlackIpList')
+        if m.get('BlackIpListExpireAt') is not None:
+            self.black_ip_list_expire_at = m.get('BlackIpListExpireAt')
+        if m.get('EnableDropIcmp') is not None:
+            self.enable_drop_icmp = m.get('EnableDropIcmp')
+        if m.get('EnableIntelligence') is not None:
+            self.enable_intelligence = m.get('EnableIntelligence')
+        if m.get('EnableL4Defense') is not None:
+            self.enable_l4defense = m.get('EnableL4Defense')
+        self.finger_print_rule_list = []
+        if m.get('FingerPrintRuleList') is not None:
+            for k in m.get('FingerPrintRuleList'):
+                temp_model = ModifyPolicyRequestContentFingerPrintRuleList()
+                self.finger_print_rule_list.append(temp_model.from_map(k))
+        if m.get('IntelligenceLevel') is not None:
+            self.intelligence_level = m.get('IntelligenceLevel')
+        self.l_4rule_list = []
+        if m.get('L4RuleList') is not None:
+            for k in m.get('L4RuleList'):
+                temp_model = ModifyPolicyRequestContentL4RuleList()
+                self.l_4rule_list.append(temp_model.from_map(k))
+        self.port_rule_list = []
+        if m.get('PortRuleList') is not None:
+            for k in m.get('PortRuleList'):
+                temp_model = ModifyPolicyRequestContentPortRuleList()
+                self.port_rule_list.append(temp_model.from_map(k))
+        if m.get('ReflectBlockUdpPortList') is not None:
+            self.reflect_block_udp_port_list = m.get('ReflectBlockUdpPortList')
+        if m.get('RegionBlockCountryList') is not None:
+            self.region_block_country_list = m.get('RegionBlockCountryList')
+        if m.get('RegionBlockProvinceList') is not None:
+            self.region_block_province_list = m.get('RegionBlockProvinceList')
+        self.source_block_list = []
+        if m.get('SourceBlockList') is not None:
+            for k in m.get('SourceBlockList'):
+                temp_model = ModifyPolicyRequestContentSourceBlockList()
+                self.source_block_list.append(temp_model.from_map(k))
+        if m.get('SourceLimit') is not None:
+            temp_model = ModifyPolicyRequestContentSourceLimit()
+            self.source_limit = temp_model.from_map(m['SourceLimit'])
+        if m.get('WhiteIpList') is not None:
+            self.white_ip_list = m.get('WhiteIpList')
+        if m.get('WhitenGfbrNets') is not None:
+            self.whiten_gfbr_nets = m.get('WhitenGfbrNets')
+        return self
+
+
+class ModifyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        action_type: int = None,
+        content: ModifyPolicyRequestContent = None,
+        id: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.action_type = action_type
+        self.content = content
+        # This parameter is required.
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('Content') is not None:
+            temp_model = ModifyPolicyRequestContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ModifyPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        action_type: int = None,
+        content_shrink: str = None,
+        id: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.action_type = action_type
+        self.content_shrink = content_shrink
+        # This parameter is required.
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.content_shrink is not None:
+            result['Content'] = self.content_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('Content') is not None:
+            self.content_shrink = m.get('Content')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ModifyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyPolicyContentRequestContentFingerPrintRuleList(TeaModel):
+    def __init__(
+        self,
+        dst_port_end: int = None,
+        dst_port_start: int = None,
+        id: str = None,
+        match_action: str = None,
+        max_pkt_len: int = None,
+        min_pkt_len: int = None,
+        offset: int = None,
+        payload_bytes: str = None,
+        protocol: str = None,
+        rate_value: int = None,
+        seq_no: int = None,
+        src_port_end: int = None,
+        src_port_start: int = None,
+    ):
+        # This parameter is required.
+        self.dst_port_end = dst_port_end
+        # This parameter is required.
+        self.dst_port_start = dst_port_start
+        self.id = id
+        # This parameter is required.
+        self.match_action = match_action
+        # This parameter is required.
+        self.max_pkt_len = max_pkt_len
+        # This parameter is required.
+        self.min_pkt_len = min_pkt_len
+        self.offset = offset
+        self.payload_bytes = payload_bytes
+        # This parameter is required.
+        self.protocol = protocol
+        self.rate_value = rate_value
+        # This parameter is required.
+        self.seq_no = seq_no
+        # This parameter is required.
+        self.src_port_end = src_port_end
+        # This parameter is required.
+        self.src_port_start = src_port_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_port_end is not None:
+            result['DstPortEnd'] = self.dst_port_end
+        if self.dst_port_start is not None:
+            result['DstPortStart'] = self.dst_port_start
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.match_action is not None:
+            result['MatchAction'] = self.match_action
+        if self.max_pkt_len is not None:
+            result['MaxPktLen'] = self.max_pkt_len
+        if self.min_pkt_len is not None:
+            result['MinPktLen'] = self.min_pkt_len
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.payload_bytes is not None:
+            result['PayloadBytes'] = self.payload_bytes
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.rate_value is not None:
+            result['RateValue'] = self.rate_value
+        if self.seq_no is not None:
+            result['SeqNo'] = self.seq_no
+        if self.src_port_end is not None:
+            result['SrcPortEnd'] = self.src_port_end
+        if self.src_port_start is not None:
+            result['SrcPortStart'] = self.src_port_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstPortEnd') is not None:
+            self.dst_port_end = m.get('DstPortEnd')
+        if m.get('DstPortStart') is not None:
+            self.dst_port_start = m.get('DstPortStart')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MatchAction') is not None:
+            self.match_action = m.get('MatchAction')
+        if m.get('MaxPktLen') is not None:
+            self.max_pkt_len = m.get('MaxPktLen')
+        if m.get('MinPktLen') is not None:
+            self.min_pkt_len = m.get('MinPktLen')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('PayloadBytes') is not None:
+            self.payload_bytes = m.get('PayloadBytes')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RateValue') is not None:
+            self.rate_value = m.get('RateValue')
+        if m.get('SeqNo') is not None:
+            self.seq_no = m.get('SeqNo')
+        if m.get('SrcPortEnd') is not None:
+            self.src_port_end = m.get('SrcPortEnd')
+        if m.get('SrcPortStart') is not None:
+            self.src_port_start = m.get('SrcPortStart')
+        return self
+
+
+class ModifyPolicyContentRequestContentL4RuleListConditionList(TeaModel):
+    def __init__(
+        self,
+        arg: str = None,
+        depth: int = None,
+        position: int = None,
+    ):
+        # This parameter is required.
+        self.arg = arg
+        # This parameter is required.
+        self.depth = depth
+        # This parameter is required.
+        self.position = position
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arg is not None:
+            result['Arg'] = self.arg
+        if self.depth is not None:
+            result['Depth'] = self.depth
+        if self.position is not None:
+            result['Position'] = self.position
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arg') is not None:
+            self.arg = m.get('Arg')
+        if m.get('Depth') is not None:
+            self.depth = m.get('Depth')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        return self
+
+
+class ModifyPolicyContentRequestContentL4RuleList(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        condition_list: List[ModifyPolicyContentRequestContentL4RuleListConditionList] = None,
+        limited: int = None,
+        match: str = None,
+        method: str = None,
+        name: str = None,
+        priority: int = None,
+    ):
+        # This parameter is required.
+        self.action = action
+        # This parameter is required.
+        self.condition_list = condition_list
+        # This parameter is required.
+        self.limited = limited
+        # This parameter is required.
+        self.match = match
+        # This parameter is required.
+        self.method = method
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.priority = priority
+
+    def validate(self):
+        if self.condition_list:
+            for k in self.condition_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        result['ConditionList'] = []
+        if self.condition_list is not None:
+            for k in self.condition_list:
+                result['ConditionList'].append(k.to_map() if k else None)
+        if self.limited is not None:
+            result['Limited'] = self.limited
+        if self.match is not None:
+            result['Match'] = self.match
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        self.condition_list = []
+        if m.get('ConditionList') is not None:
+            for k in m.get('ConditionList'):
+                temp_model = ModifyPolicyContentRequestContentL4RuleListConditionList()
+                self.condition_list.append(temp_model.from_map(k))
+        if m.get('Limited') is not None:
+            self.limited = m.get('Limited')
+        if m.get('Match') is not None:
+            self.match = m.get('Match')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        return self
+
+
+class ModifyPolicyContentRequestContentPortRuleList(TeaModel):
+    def __init__(
+        self,
+        dst_port_end: int = None,
+        dst_port_start: int = None,
+        id: str = None,
+        match_action: str = None,
+        protocol: str = None,
+        seq_no: int = None,
+        src_port_end: int = None,
+        src_port_start: int = None,
+    ):
+        # This parameter is required.
+        self.dst_port_end = dst_port_end
+        # This parameter is required.
+        self.dst_port_start = dst_port_start
+        self.id = id
+        # This parameter is required.
+        self.match_action = match_action
+        # This parameter is required.
+        self.protocol = protocol
+        # This parameter is required.
+        self.seq_no = seq_no
+        # This parameter is required.
+        self.src_port_end = src_port_end
+        # This parameter is required.
+        self.src_port_start = src_port_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_port_end is not None:
+            result['DstPortEnd'] = self.dst_port_end
+        if self.dst_port_start is not None:
+            result['DstPortStart'] = self.dst_port_start
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.match_action is not None:
+            result['MatchAction'] = self.match_action
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.seq_no is not None:
+            result['SeqNo'] = self.seq_no
+        if self.src_port_end is not None:
+            result['SrcPortEnd'] = self.src_port_end
+        if self.src_port_start is not None:
+            result['SrcPortStart'] = self.src_port_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstPortEnd') is not None:
+            self.dst_port_end = m.get('DstPortEnd')
+        if m.get('DstPortStart') is not None:
+            self.dst_port_start = m.get('DstPortStart')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MatchAction') is not None:
+            self.match_action = m.get('MatchAction')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SeqNo') is not None:
+            self.seq_no = m.get('SeqNo')
+        if m.get('SrcPortEnd') is not None:
+            self.src_port_end = m.get('SrcPortEnd')
+        if m.get('SrcPortStart') is not None:
+            self.src_port_start = m.get('SrcPortStart')
+        return self
+
+
+class ModifyPolicyContentRequestContentSourceBlockList(TeaModel):
+    def __init__(
+        self,
+        block_expire_seconds: int = None,
+        every_seconds: int = None,
+        exceed_limit_times: int = None,
+        type: int = None,
+    ):
+        # This parameter is required.
+        self.block_expire_seconds = block_expire_seconds
+        # This parameter is required.
+        self.every_seconds = every_seconds
+        # This parameter is required.
+        self.exceed_limit_times = exceed_limit_times
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_expire_seconds is not None:
+            result['BlockExpireSeconds'] = self.block_expire_seconds
+        if self.every_seconds is not None:
+            result['EverySeconds'] = self.every_seconds
+        if self.exceed_limit_times is not None:
+            result['ExceedLimitTimes'] = self.exceed_limit_times
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockExpireSeconds') is not None:
+            self.block_expire_seconds = m.get('BlockExpireSeconds')
+        if m.get('EverySeconds') is not None:
+            self.every_seconds = m.get('EverySeconds')
+        if m.get('ExceedLimitTimes') is not None:
+            self.exceed_limit_times = m.get('ExceedLimitTimes')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ModifyPolicyContentRequestContentSourceLimit(TeaModel):
+    def __init__(
+        self,
+        bps: int = None,
+        pps: int = None,
+        syn_bps: int = None,
+        syn_pps: int = None,
+    ):
+        self.bps = bps
+        self.pps = pps
+        self.syn_bps = syn_bps
+        self.syn_pps = syn_pps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.pps is not None:
+            result['Pps'] = self.pps
+        if self.syn_bps is not None:
+            result['SynBps'] = self.syn_bps
+        if self.syn_pps is not None:
+            result['SynPps'] = self.syn_pps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('Pps') is not None:
+            self.pps = m.get('Pps')
+        if m.get('SynBps') is not None:
+            self.syn_bps = m.get('SynBps')
+        if m.get('SynPps') is not None:
+            self.syn_pps = m.get('SynPps')
+        return self
+
+
+class ModifyPolicyContentRequestContent(TeaModel):
+    def __init__(
+        self,
+        black_ip_list_expire_at: int = None,
+        enable_drop_icmp: bool = None,
+        enable_intelligence: bool = None,
+        enable_l4defense: bool = None,
+        finger_print_rule_list: List[ModifyPolicyContentRequestContentFingerPrintRuleList] = None,
+        intelligence_level: str = None,
+        l_4rule_list: List[ModifyPolicyContentRequestContentL4RuleList] = None,
+        port_rule_list: List[ModifyPolicyContentRequestContentPortRuleList] = None,
+        reflect_block_udp_port_list: List[int] = None,
+        region_block_country_list: List[int] = None,
+        region_block_province_list: List[int] = None,
+        source_block_list: List[ModifyPolicyContentRequestContentSourceBlockList] = None,
+        source_limit: ModifyPolicyContentRequestContentSourceLimit = None,
+        whiten_gfbr_nets: bool = None,
+    ):
+        self.black_ip_list_expire_at = black_ip_list_expire_at
+        self.enable_drop_icmp = enable_drop_icmp
+        self.enable_intelligence = enable_intelligence
+        self.enable_l4defense = enable_l4defense
+        self.finger_print_rule_list = finger_print_rule_list
+        self.intelligence_level = intelligence_level
+        self.l_4rule_list = l_4rule_list
+        self.port_rule_list = port_rule_list
+        self.reflect_block_udp_port_list = reflect_block_udp_port_list
+        self.region_block_country_list = region_block_country_list
+        self.region_block_province_list = region_block_province_list
+        self.source_block_list = source_block_list
+        self.source_limit = source_limit
+        self.whiten_gfbr_nets = whiten_gfbr_nets
+
+    def validate(self):
+        if self.finger_print_rule_list:
+            for k in self.finger_print_rule_list:
+                if k:
+                    k.validate()
+        if self.l_4rule_list:
+            for k in self.l_4rule_list:
+                if k:
+                    k.validate()
+        if self.port_rule_list:
+            for k in self.port_rule_list:
+                if k:
+                    k.validate()
+        if self.source_block_list:
+            for k in self.source_block_list:
+                if k:
+                    k.validate()
+        if self.source_limit:
+            self.source_limit.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.black_ip_list_expire_at is not None:
+            result['BlackIpListExpireAt'] = self.black_ip_list_expire_at
+        if self.enable_drop_icmp is not None:
+            result['EnableDropIcmp'] = self.enable_drop_icmp
+        if self.enable_intelligence is not None:
+            result['EnableIntelligence'] = self.enable_intelligence
+        if self.enable_l4defense is not None:
+            result['EnableL4Defense'] = self.enable_l4defense
+        result['FingerPrintRuleList'] = []
+        if self.finger_print_rule_list is not None:
+            for k in self.finger_print_rule_list:
+                result['FingerPrintRuleList'].append(k.to_map() if k else None)
+        if self.intelligence_level is not None:
+            result['IntelligenceLevel'] = self.intelligence_level
+        result['L4RuleList'] = []
+        if self.l_4rule_list is not None:
+            for k in self.l_4rule_list:
+                result['L4RuleList'].append(k.to_map() if k else None)
+        result['PortRuleList'] = []
+        if self.port_rule_list is not None:
+            for k in self.port_rule_list:
+                result['PortRuleList'].append(k.to_map() if k else None)
+        if self.reflect_block_udp_port_list is not None:
+            result['ReflectBlockUdpPortList'] = self.reflect_block_udp_port_list
+        if self.region_block_country_list is not None:
+            result['RegionBlockCountryList'] = self.region_block_country_list
+        if self.region_block_province_list is not None:
+            result['RegionBlockProvinceList'] = self.region_block_province_list
+        result['SourceBlockList'] = []
+        if self.source_block_list is not None:
+            for k in self.source_block_list:
+                result['SourceBlockList'].append(k.to_map() if k else None)
+        if self.source_limit is not None:
+            result['SourceLimit'] = self.source_limit.to_map()
+        if self.whiten_gfbr_nets is not None:
+            result['WhitenGfbrNets'] = self.whiten_gfbr_nets
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlackIpListExpireAt') is not None:
+            self.black_ip_list_expire_at = m.get('BlackIpListExpireAt')
+        if m.get('EnableDropIcmp') is not None:
+            self.enable_drop_icmp = m.get('EnableDropIcmp')
+        if m.get('EnableIntelligence') is not None:
+            self.enable_intelligence = m.get('EnableIntelligence')
+        if m.get('EnableL4Defense') is not None:
+            self.enable_l4defense = m.get('EnableL4Defense')
+        self.finger_print_rule_list = []
+        if m.get('FingerPrintRuleList') is not None:
+            for k in m.get('FingerPrintRuleList'):
+                temp_model = ModifyPolicyContentRequestContentFingerPrintRuleList()
+                self.finger_print_rule_list.append(temp_model.from_map(k))
+        if m.get('IntelligenceLevel') is not None:
+            self.intelligence_level = m.get('IntelligenceLevel')
+        self.l_4rule_list = []
+        if m.get('L4RuleList') is not None:
+            for k in m.get('L4RuleList'):
+                temp_model = ModifyPolicyContentRequestContentL4RuleList()
+                self.l_4rule_list.append(temp_model.from_map(k))
+        self.port_rule_list = []
+        if m.get('PortRuleList') is not None:
+            for k in m.get('PortRuleList'):
+                temp_model = ModifyPolicyContentRequestContentPortRuleList()
+                self.port_rule_list.append(temp_model.from_map(k))
+        if m.get('ReflectBlockUdpPortList') is not None:
+            self.reflect_block_udp_port_list = m.get('ReflectBlockUdpPortList')
+        if m.get('RegionBlockCountryList') is not None:
+            self.region_block_country_list = m.get('RegionBlockCountryList')
+        if m.get('RegionBlockProvinceList') is not None:
+            self.region_block_province_list = m.get('RegionBlockProvinceList')
+        self.source_block_list = []
+        if m.get('SourceBlockList') is not None:
+            for k in m.get('SourceBlockList'):
+                temp_model = ModifyPolicyContentRequestContentSourceBlockList()
+                self.source_block_list.append(temp_model.from_map(k))
+        if m.get('SourceLimit') is not None:
+            temp_model = ModifyPolicyContentRequestContentSourceLimit()
+            self.source_limit = temp_model.from_map(m['SourceLimit'])
+        if m.get('WhitenGfbrNets') is not None:
+            self.whiten_gfbr_nets = m.get('WhitenGfbrNets')
+        return self
+
+
+class ModifyPolicyContentRequest(TeaModel):
+    def __init__(
+        self,
+        content: ModifyPolicyContentRequestContent = None,
+        id: str = None,
+        name: str = None,
+    ):
+        self.content = content
+        # This parameter is required.
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = ModifyPolicyContentRequestContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ModifyPolicyContentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        content_shrink: str = None,
+        id: str = None,
+        name: str = None,
+    ):
+        self.content_shrink = content_shrink
+        # This parameter is required.
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content_shrink is not None:
+            result['Content'] = self.content_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content_shrink = m.get('Content')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ModifyPolicyContentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyPolicyContentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyPolicyContentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyPolicyContentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

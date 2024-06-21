@@ -299,8 +299,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -344,8 +342,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -731,6 +727,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.config_schedrule_on_demand_with_options_async(request, runtime)
 
+    def create_policy_with_options(
+        self,
+        request: ddosbgp_20180720_models.CreatePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.CreatePolicyResponse:
+        """
+        @summary 创建策略
+        
+        @param request: CreatePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.CreatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_policy_with_options_async(
+        self,
+        request: ddosbgp_20180720_models.CreatePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.CreatePolicyResponse:
+        """
+        @summary 创建策略
+        
+        @param request: CreatePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.CreatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_policy(
+        self,
+        request: ddosbgp_20180720_models.CreatePolicyRequest,
+    ) -> ddosbgp_20180720_models.CreatePolicyResponse:
+        """
+        @summary 创建策略
+        
+        @param request: CreatePolicyRequest
+        @return: CreatePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_policy_with_options(request, runtime)
+
+    async def create_policy_async(
+        self,
+        request: ddosbgp_20180720_models.CreatePolicyRequest,
+    ) -> ddosbgp_20180720_models.CreatePolicyResponse:
+        """
+        @summary 创建策略
+        
+        @param request: CreatePolicyRequest
+        @return: CreatePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_policy_with_options_async(request, runtime)
+
     def create_schedrule_on_demand_with_options(
         self,
         request: ddosbgp_20180720_models.CreateSchedruleOnDemandRequest,
@@ -1115,6 +1211,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_ip_with_options_async(request, runtime)
 
+    def delete_policy_with_options(
+        self,
+        request: ddosbgp_20180720_models.DeletePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DeletePolicyResponse:
+        """
+        @summary 删除策略
+        
+        @param request: DeletePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeletePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_policy_with_options_async(
+        self,
+        request: ddosbgp_20180720_models.DeletePolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DeletePolicyResponse:
+        """
+        @summary 删除策略
+        
+        @param request: DeletePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DeletePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_policy(
+        self,
+        request: ddosbgp_20180720_models.DeletePolicyRequest,
+    ) -> ddosbgp_20180720_models.DeletePolicyResponse:
+        """
+        @summary 删除策略
+        
+        @param request: DeletePolicyRequest
+        @return: DeletePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_policy_with_options(request, runtime)
+
+    async def delete_policy_async(
+        self,
+        request: ddosbgp_20180720_models.DeletePolicyRequest,
+    ) -> ddosbgp_20180720_models.DeletePolicyResponse:
+        """
+        @summary 删除策略
+        
+        @param request: DeletePolicyRequest
+        @return: DeletePolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_policy_with_options_async(request, runtime)
+
     def delete_rd_member_list_with_options(
         self,
         tmp_req: ddosbgp_20180720_models.DeleteRdMemberListRequest,
@@ -1335,8 +1527,6 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -1378,8 +1568,6 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -1451,8 +1639,6 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -1498,8 +1684,6 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -3101,6 +3285,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_traffic_with_options_async(request, runtime)
 
+    def detach_from_policy_with_options(
+        self,
+        tmp_req: ddosbgp_20180720_models.DetachFromPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DetachFromPolicyResponse:
+        """
+        @summary 策略解绑
+        
+        @param tmp_req: DetachFromPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachFromPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.DetachFromPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_port_protocol_list):
+            request.ip_port_protocol_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_port_protocol_list, 'IpPortProtocolList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ip_port_protocol_list_shrink):
+            query['IpPortProtocolList'] = request.ip_port_protocol_list_shrink
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachFromPolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DetachFromPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_from_policy_with_options_async(
+        self,
+        tmp_req: ddosbgp_20180720_models.DetachFromPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.DetachFromPolicyResponse:
+        """
+        @summary 策略解绑
+        
+        @param tmp_req: DetachFromPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachFromPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.DetachFromPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_port_protocol_list):
+            request.ip_port_protocol_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_port_protocol_list, 'IpPortProtocolList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ip_port_protocol_list_shrink):
+            query['IpPortProtocolList'] = request.ip_port_protocol_list_shrink
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachFromPolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.DetachFromPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_from_policy(
+        self,
+        request: ddosbgp_20180720_models.DetachFromPolicyRequest,
+    ) -> ddosbgp_20180720_models.DetachFromPolicyResponse:
+        """
+        @summary 策略解绑
+        
+        @param request: DetachFromPolicyRequest
+        @return: DetachFromPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.detach_from_policy_with_options(request, runtime)
+
+    async def detach_from_policy_async(
+        self,
+        request: ddosbgp_20180720_models.DetachFromPolicyRequest,
+    ) -> ddosbgp_20180720_models.DetachFromPolicyResponse:
+        """
+        @summary 策略解绑
+        
+        @param request: DetachFromPolicyRequest
+        @return: DetachFromPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_from_policy_with_options_async(request, runtime)
+
     def dettach_asset_group_to_instance_with_options(
         self,
         tmp_req: ddosbgp_20180720_models.DettachAssetGroupToInstanceRequest,
@@ -3125,8 +3417,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3170,8 +3460,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3421,6 +3709,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_opened_access_log_instances_with_options_async(request, runtime)
 
+    def list_policy_with_options(
+        self,
+        request: ddosbgp_20180720_models.ListPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ListPolicyResponse:
+        """
+        @summary 查询策略
+        
+        @param request: ListPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_policy_with_options_async(
+        self,
+        request: ddosbgp_20180720_models.ListPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ListPolicyResponse:
+        """
+        @summary 查询策略
+        
+        @param request: ListPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_policy(
+        self,
+        request: ddosbgp_20180720_models.ListPolicyRequest,
+    ) -> ddosbgp_20180720_models.ListPolicyResponse:
+        """
+        @summary 查询策略
+        
+        @param request: ListPolicyRequest
+        @return: ListPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_policy_with_options(request, runtime)
+
+    async def list_policy_async(
+        self,
+        request: ddosbgp_20180720_models.ListPolicyRequest,
+    ) -> ddosbgp_20180720_models.ListPolicyResponse:
+        """
+        @summary 查询策略
+        
+        @param request: ListPolicyRequest
+        @return: ListPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_policy_with_options_async(request, runtime)
+
+    def list_policy_attachment_with_options(
+        self,
+        tmp_req: ddosbgp_20180720_models.ListPolicyAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ListPolicyAttachmentResponse:
+        """
+        @summary 查询策略绑定
+        
+        @param tmp_req: ListPolicyAttachmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicyAttachmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.ListPolicyAttachmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_port_protocol_list):
+            request.ip_port_protocol_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_port_protocol_list, 'IpPortProtocolList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ip_port_protocol_list_shrink):
+            query['IpPortProtocolList'] = request.ip_port_protocol_list_shrink
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicyAttachment',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListPolicyAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_policy_attachment_with_options_async(
+        self,
+        tmp_req: ddosbgp_20180720_models.ListPolicyAttachmentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ListPolicyAttachmentResponse:
+        """
+        @summary 查询策略绑定
+        
+        @param tmp_req: ListPolicyAttachmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicyAttachmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.ListPolicyAttachmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_port_protocol_list):
+            request.ip_port_protocol_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_port_protocol_list, 'IpPortProtocolList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ip_port_protocol_list_shrink):
+            query['IpPortProtocolList'] = request.ip_port_protocol_list_shrink
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_type):
+            query['PolicyType'] = request.policy_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicyAttachment',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ListPolicyAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_policy_attachment(
+        self,
+        request: ddosbgp_20180720_models.ListPolicyAttachmentRequest,
+    ) -> ddosbgp_20180720_models.ListPolicyAttachmentResponse:
+        """
+        @summary 查询策略绑定
+        
+        @param request: ListPolicyAttachmentRequest
+        @return: ListPolicyAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_policy_attachment_with_options(request, runtime)
+
+    async def list_policy_attachment_async(
+        self,
+        request: ddosbgp_20180720_models.ListPolicyAttachmentRequest,
+    ) -> ddosbgp_20180720_models.ListPolicyAttachmentResponse:
+        """
+        @summary 查询策略绑定
+        
+        @param request: ListPolicyAttachmentRequest
+        @return: ListPolicyAttachmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_policy_attachment_with_options_async(request, runtime)
+
     def list_tag_keys_with_options(
         self,
         request: ddosbgp_20180720_models.ListTagKeysRequest,
@@ -3648,6 +4164,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def modify_policy_with_options(
+        self,
+        tmp_req: ddosbgp_20180720_models.ModifyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
+        """
+        @summary 修改策略
+        
+        @param tmp_req: ModifyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.ModifyPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.content):
+            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ModifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_policy_with_options_async(
+        self,
+        tmp_req: ddosbgp_20180720_models.ModifyPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
+        """
+        @summary 修改策略
+        
+        @param tmp_req: ModifyPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.ModifyPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.content):
+            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ModifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_policy(
+        self,
+        request: ddosbgp_20180720_models.ModifyPolicyRequest,
+    ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
+        """
+        @summary 修改策略
+        
+        @param request: ModifyPolicyRequest
+        @return: ModifyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_policy_with_options(request, runtime)
+
+    async def modify_policy_async(
+        self,
+        request: ddosbgp_20180720_models.ModifyPolicyRequest,
+    ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
+        """
+        @summary 修改策略
+        
+        @param request: ModifyPolicyRequest
+        @return: ModifyPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_policy_with_options_async(request, runtime)
+
+    def modify_policy_content_with_options(
+        self,
+        tmp_req: ddosbgp_20180720_models.ModifyPolicyContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ModifyPolicyContentResponse:
+        """
+        @summary 修改策略
+        
+        @param tmp_req: ModifyPolicyContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyContentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.ModifyPolicyContentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.content):
+            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPolicyContent',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ModifyPolicyContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_policy_content_with_options_async(
+        self,
+        tmp_req: ddosbgp_20180720_models.ModifyPolicyContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.ModifyPolicyContentResponse:
+        """
+        @summary 修改策略
+        
+        @param tmp_req: ModifyPolicyContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyContentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.ModifyPolicyContentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.content):
+            request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPolicyContent',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.ModifyPolicyContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_policy_content(
+        self,
+        request: ddosbgp_20180720_models.ModifyPolicyContentRequest,
+    ) -> ddosbgp_20180720_models.ModifyPolicyContentResponse:
+        """
+        @summary 修改策略
+        
+        @param request: ModifyPolicyContentRequest
+        @return: ModifyPolicyContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_policy_content_with_options(request, runtime)
+
+    async def modify_policy_content_async(
+        self,
+        request: ddosbgp_20180720_models.ModifyPolicyContentRequest,
+    ) -> ddosbgp_20180720_models.ModifyPolicyContentResponse:
+        """
+        @summary 修改策略
+        
+        @param request: ModifyPolicyContentRequest
+        @return: ModifyPolicyContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_policy_content_with_options_async(request, runtime)
 
     def modify_remark_with_options(
         self,

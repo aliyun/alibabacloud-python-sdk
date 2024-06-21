@@ -1,3 +1,17 @@
+2024-06-21 Version: 2.6.0
+- Support API CreatePolicy.
+- Support API DeletePolicy.
+- Support API DetachFromPolicy.
+- Support API ListPolicy.
+- Support API ListPolicyAttachment.
+- Support API ModifyPolicy.
+- Support API ModifyPolicyContent.
+- Update API AttachAssetGroupToInstance: delete param SourceIp.
+- Update API DescribeAssetGroup: delete param SourceIp.
+- Update API DescribeAssetGroupToInstance: delete param SourceIp.
+- Update API DettachAssetGroupToInstance: delete param SourceIp.
+
+
 2024-05-15 Version: 2.5.0
 - Support API AddRdMemberList.
 - Support API DeleteRdMemberList.
