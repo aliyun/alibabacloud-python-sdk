@@ -9359,6 +9359,10 @@ class Client(OpenApiClient):
             query['SmsMetadataId'] = request.sms_metadata_id
         if not UtilClient.is_unset(request.survey_channel):
             query['SurveyChannel'] = request.survey_channel
+        if not UtilClient.is_unset(request.survey_template_id):
+            query['SurveyTemplateId'] = request.survey_template_id
+        if not UtilClient.is_unset(request.survey_template_variables):
+            query['SurveyTemplateVariables'] = request.survey_template_variables
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -9406,6 +9410,10 @@ class Client(OpenApiClient):
             query['SmsMetadataId'] = request.sms_metadata_id
         if not UtilClient.is_unset(request.survey_channel):
             query['SurveyChannel'] = request.survey_channel
+        if not UtilClient.is_unset(request.survey_template_id):
+            query['SurveyTemplateId'] = request.survey_template_id
+        if not UtilClient.is_unset(request.survey_template_variables):
+            query['SurveyTemplateVariables'] = request.survey_template_variables
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
@@ -13827,6 +13835,8 @@ class Client(OpenApiClient):
             query['CallTypeList'] = request.call_type_list
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.outbound_scenario):
             query['OutboundScenario'] = request.outbound_scenario
         if not UtilClient.is_unset(request.page_number):
@@ -13882,6 +13892,8 @@ class Client(OpenApiClient):
             query['CallTypeList'] = request.call_type_list
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.outbound_scenario):
             query['OutboundScenario'] = request.outbound_scenario
         if not UtilClient.is_unset(request.page_number):
@@ -13955,6 +13967,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -13996,6 +14010,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

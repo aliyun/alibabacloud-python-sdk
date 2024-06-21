@@ -21415,6 +21415,8 @@ class LaunchSurveyRequest(TeaModel):
         job_id: str = None,
         sms_metadata_id: str = None,
         survey_channel: str = None,
+        survey_template_id: str = None,
+        survey_template_variables: str = None,
         user_id: str = None,
     ):
         # This parameter is required.
@@ -21427,6 +21429,8 @@ class LaunchSurveyRequest(TeaModel):
         self.job_id = job_id
         self.sms_metadata_id = sms_metadata_id
         self.survey_channel = survey_channel
+        self.survey_template_id = survey_template_id
+        self.survey_template_variables = survey_template_variables
         self.user_id = user_id
 
     def validate(self):
@@ -21452,6 +21456,10 @@ class LaunchSurveyRequest(TeaModel):
             result['SmsMetadataId'] = self.sms_metadata_id
         if self.survey_channel is not None:
             result['SurveyChannel'] = self.survey_channel
+        if self.survey_template_id is not None:
+            result['SurveyTemplateId'] = self.survey_template_id
+        if self.survey_template_variables is not None:
+            result['SurveyTemplateVariables'] = self.survey_template_variables
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -21472,6 +21480,10 @@ class LaunchSurveyRequest(TeaModel):
             self.sms_metadata_id = m.get('SmsMetadataId')
         if m.get('SurveyChannel') is not None:
             self.survey_channel = m.get('SurveyChannel')
+        if m.get('SurveyTemplateId') is not None:
+            self.survey_template_id = m.get('SurveyTemplateId')
+        if m.get('SurveyTemplateVariables') is not None:
+            self.survey_template_variables = m.get('SurveyTemplateVariables')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -39829,6 +39841,7 @@ class ListRealtimeAgentStatesRequest(TeaModel):
         agent_name: str = None,
         call_type_list: str = None,
         instance_id: str = None,
+        media_type: str = None,
         outbound_scenario: bool = None,
         page_number: int = None,
         page_size: int = None,
@@ -39842,6 +39855,7 @@ class ListRealtimeAgentStatesRequest(TeaModel):
         self.call_type_list = call_type_list
         # This parameter is required.
         self.instance_id = instance_id
+        self.media_type = media_type
         self.outbound_scenario = outbound_scenario
         # This parameter is required.
         self.page_number = page_number
@@ -39869,6 +39883,8 @@ class ListRealtimeAgentStatesRequest(TeaModel):
             result['CallTypeList'] = self.call_type_list
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.outbound_scenario is not None:
             result['OutboundScenario'] = self.outbound_scenario
         if self.page_number is not None:
@@ -39895,6 +39911,8 @@ class ListRealtimeAgentStatesRequest(TeaModel):
             self.call_type_list = m.get('CallTypeList')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('OutboundScenario') is not None:
             self.outbound_scenario = m.get('OutboundScenario')
         if m.get('PageNumber') is not None:
@@ -40174,12 +40192,14 @@ class ListRealtimeSkillGroupStatesRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        media_type: str = None,
         page_number: int = None,
         page_size: int = None,
         skill_group_id_list: str = None,
     ):
         # This parameter is required.
         self.instance_id = instance_id
+        self.media_type = media_type
         # This parameter is required.
         self.page_number = page_number
         # This parameter is required.
@@ -40197,6 +40217,8 @@ class ListRealtimeSkillGroupStatesRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -40209,6 +40231,8 @@ class ListRealtimeSkillGroupStatesRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:

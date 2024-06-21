@@ -1,3 +1,10 @@
+2024-06-21 Version: 2.20.1
+- Update API LaunchSurvey: add param SurveyTemplateId.
+- Update API LaunchSurvey: add param SurveyTemplateVariables.
+- Update API ListRealtimeAgentStates: add param MediaType.
+- Update API ListRealtimeSkillGroupStates: add param MediaType.
+
+
 2024-06-20 Version: 2.20.0
 - Support API AcceptChat.
 - Support API ClaimChat.
