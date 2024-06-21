@@ -1893,6 +1893,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.delete_options):
             query['DeleteOptions'] = request.delete_options
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
         if not UtilClient.is_unset(request.ram_role_name):
             query['RamRoleName'] = request.ram_role_name
         if not UtilClient.is_unset(request.region_id):
@@ -1938,6 +1940,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.delete_options):
             query['DeleteOptions'] = request.delete_options
+        if not UtilClient.is_unset(request.parallelism):
+            query['Parallelism'] = request.parallelism
         if not UtilClient.is_unset(request.ram_role_name):
             query['RamRoleName'] = request.ram_role_name
         if not UtilClient.is_unset(request.region_id):

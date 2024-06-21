@@ -1,3 +1,7 @@
+2024-06-21 Version: 3.3.16
+- Update API DeleteStack: add param Parallelism.
+
+
 2024-06-17 Version: 3.3.15
 - Update API CreateStackInstances: update param DeploymentTargets.
 

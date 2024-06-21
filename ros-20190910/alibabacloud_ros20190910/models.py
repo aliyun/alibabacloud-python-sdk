@@ -4000,6 +4000,7 @@ class DeleteStackRequest(TeaModel):
     def __init__(
         self,
         delete_options: List[str] = None,
+        parallelism: int = None,
         ram_role_name: str = None,
         region_id: str = None,
         retain_all_resources: bool = None,
@@ -4008,6 +4009,7 @@ class DeleteStackRequest(TeaModel):
     ):
         # The options for deleting the stack.
         self.delete_options = delete_options
+        self.parallelism = parallelism
         # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
         # ROS assumes the role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\\
         # If you leave this parameter empty when you call the DeleteStack operation, ROS cannot assume the existing RAM role that is associated with the stack. If you want ROS to assume a RAM role, you must specify this parameter. If no RAM roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\\
@@ -4042,6 +4044,8 @@ class DeleteStackRequest(TeaModel):
         result = dict()
         if self.delete_options is not None:
             result['DeleteOptions'] = self.delete_options
+        if self.parallelism is not None:
+            result['Parallelism'] = self.parallelism
         if self.ram_role_name is not None:
             result['RamRoleName'] = self.ram_role_name
         if self.region_id is not None:
@@ -4058,6 +4062,8 @@ class DeleteStackRequest(TeaModel):
         m = m or dict()
         if m.get('DeleteOptions') is not None:
             self.delete_options = m.get('DeleteOptions')
+        if m.get('Parallelism') is not None:
+            self.parallelism = m.get('Parallelism')
         if m.get('RamRoleName') is not None:
             self.ram_role_name = m.get('RamRoleName')
         if m.get('RegionId') is not None:
