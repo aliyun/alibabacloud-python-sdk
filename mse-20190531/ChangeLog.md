@@ -1,3 +1,8 @@
+2024-06-21 Version: 6.8.1
+- Update API AddGateway: add param ClbNetworkType.
+- Update API AddGateway: update param NlbNetworkType.
+
+
 2024-06-17 Version: 6.8.0
 - Support API EnableProxyProtocol.
 

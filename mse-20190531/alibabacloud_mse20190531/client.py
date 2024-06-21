@@ -464,6 +464,8 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.clb_network_type):
+            query['ClbNetworkType'] = request.clb_network_type
         if not UtilClient.is_unset(request.enable_hardware_acceleration):
             query['EnableHardwareAcceleration'] = request.enable_hardware_acceleration
         if not UtilClient.is_unset(request.enable_sls):
@@ -545,6 +547,8 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.clb_network_type):
+            query['ClbNetworkType'] = request.clb_network_type
         if not UtilClient.is_unset(request.enable_hardware_acceleration):
             query['EnableHardwareAcceleration'] = request.enable_hardware_acceleration
         if not UtilClient.is_unset(request.enable_sls):

@@ -1893,6 +1893,7 @@ class AddGatewayRequest(TeaModel):
         self,
         accept_language: str = None,
         charge_type: str = None,
+        clb_network_type: str = None,
         enable_hardware_acceleration: bool = None,
         enable_sls: bool = None,
         enable_xtrace: bool = None,
@@ -1947,6 +1948,7 @@ class AddGatewayRequest(TeaModel):
         # 
         #     <!-- -->
         self.charge_type = charge_type
+        self.clb_network_type = clb_network_type
         # Specifies whether to activate Tracing Analysis.
         self.enable_hardware_acceleration = enable_hardware_acceleration
         # The tag of the gateway.
@@ -2041,6 +2043,8 @@ class AddGatewayRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.clb_network_type is not None:
+            result['ClbNetworkType'] = self.clb_network_type
         if self.enable_hardware_acceleration is not None:
             result['EnableHardwareAcceleration'] = self.enable_hardware_acceleration
         if self.enable_sls is not None:
@@ -2093,6 +2097,8 @@ class AddGatewayRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClbNetworkType') is not None:
+            self.clb_network_type = m.get('ClbNetworkType')
         if m.get('EnableHardwareAcceleration') is not None:
             self.enable_hardware_acceleration = m.get('EnableHardwareAcceleration')
         if m.get('EnableSls') is not None:
@@ -2182,6 +2188,7 @@ class AddGatewayShrinkRequest(TeaModel):
         self,
         accept_language: str = None,
         charge_type: str = None,
+        clb_network_type: str = None,
         enable_hardware_acceleration: bool = None,
         enable_sls: bool = None,
         enable_xtrace: bool = None,
@@ -2236,6 +2243,7 @@ class AddGatewayShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.charge_type = charge_type
+        self.clb_network_type = clb_network_type
         # Specifies whether to activate Tracing Analysis.
         self.enable_hardware_acceleration = enable_hardware_acceleration
         # The tag of the gateway.
@@ -2326,6 +2334,8 @@ class AddGatewayShrinkRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.clb_network_type is not None:
+            result['ClbNetworkType'] = self.clb_network_type
         if self.enable_hardware_acceleration is not None:
             result['EnableHardwareAcceleration'] = self.enable_hardware_acceleration
         if self.enable_sls is not None:
@@ -2376,6 +2386,8 @@ class AddGatewayShrinkRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClbNetworkType') is not None:
+            self.clb_network_type = m.get('ClbNetworkType')
         if m.get('EnableHardwareAcceleration') is not None:
             self.enable_hardware_acceleration = m.get('EnableHardwareAcceleration')
         if m.get('EnableSls') is not None:
