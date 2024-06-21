@@ -1947,6 +1947,320 @@ class DescribeAppKeyResponse(TeaModel):
         return self
 
 
+class DescribeAppRecordingFilesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        end_ts: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        start_ts: int = None,
+        task_ids: List[str] = None,
+    ):
+        # APP ID。
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        self.channel_id = channel_id
+        self.end_ts = end_ts
+        self.page_no = page_no
+        self.page_size = page_size
+        self.start_ts = start_ts
+        self.task_ids = task_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.end_ts is not None:
+            result['EndTs'] = self.end_ts
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_ts is not None:
+            result['StartTs'] = self.start_ts
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('EndTs') is not None:
+            self.end_ts = m.get('EndTs')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTs') is not None:
+            self.start_ts = m.get('StartTs')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        return self
+
+
+class DescribeAppRecordingFilesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        end_ts: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        start_ts: int = None,
+        task_ids_shrink: str = None,
+    ):
+        # APP ID。
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        self.channel_id = channel_id
+        self.end_ts = end_ts
+        self.page_no = page_no
+        self.page_size = page_size
+        self.start_ts = start_ts
+        self.task_ids_shrink = task_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.end_ts is not None:
+            result['EndTs'] = self.end_ts
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_ts is not None:
+            result['StartTs'] = self.start_ts
+        if self.task_ids_shrink is not None:
+            result['TaskIds'] = self.task_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('EndTs') is not None:
+            self.end_ts = m.get('EndTs')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTs') is not None:
+            self.start_ts = m.get('StartTs')
+        if m.get('TaskIds') is not None:
+            self.task_ids_shrink = m.get('TaskIds')
+        return self
+
+
+class DescribeAppRecordingFilesResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        channel_id: str = None,
+        file_create_ts: int = None,
+        file_duration: int = None,
+        file_path: str = None,
+        file_size: int = None,
+        region: int = None,
+        start_ts: int = None,
+        task_id: str = None,
+        vendor: int = None,
+    ):
+        self.bucket = bucket
+        self.channel_id = channel_id
+        self.file_create_ts = file_create_ts
+        self.file_duration = file_duration
+        self.file_path = file_path
+        self.file_size = file_size
+        self.region = region
+        self.start_ts = start_ts
+        self.task_id = task_id
+        self.vendor = vendor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.file_create_ts is not None:
+            result['FileCreateTs'] = self.file_create_ts
+        if self.file_duration is not None:
+            result['FileDuration'] = self.file_duration
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_ts is not None:
+            result['StartTs'] = self.start_ts
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('FileCreateTs') is not None:
+            self.file_create_ts = m.get('FileCreateTs')
+        if m.get('FileDuration') is not None:
+            self.file_duration = m.get('FileDuration')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTs') is not None:
+            self.start_ts = m.get('StartTs')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
+        return self
+
+
+class DescribeAppRecordingFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeAppRecordingFilesResponseBodyItems] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_cnt: int = None,
+    ):
+        self.items = items
+        self.page_no = page_no
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_cnt = total_cnt
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_cnt is not None:
+            result['TotalCnt'] = self.total_cnt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeAppRecordingFilesResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCnt') is not None:
+            self.total_cnt = m.get('TotalCnt')
+        return self
+
+
+class DescribeAppRecordingFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppRecordingFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppRecordingFilesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAppStreamingOutTemplatesRequestCondition(TeaModel):
     def __init__(
         self,

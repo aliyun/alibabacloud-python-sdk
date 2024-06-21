@@ -1337,6 +1337,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_key_with_options_async(request, runtime)
 
+    def describe_app_recording_files_with_options(
+        self,
+        tmp_req: rtc_20180111_models.DescribeAppRecordingFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppRecordingFilesResponse:
+        """
+        @summary 查询录制列表
+        
+        @param tmp_req: DescribeAppRecordingFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppRecordingFilesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeAppRecordingFilesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_ids):
+            request.task_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_ids, 'TaskIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppRecordingFiles',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppRecordingFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_recording_files_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.DescribeAppRecordingFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppRecordingFilesResponse:
+        """
+        @summary 查询录制列表
+        
+        @param tmp_req: DescribeAppRecordingFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppRecordingFilesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeAppRecordingFilesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_ids):
+            request.task_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_ids, 'TaskIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppRecordingFiles',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppRecordingFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_recording_files(
+        self,
+        request: rtc_20180111_models.DescribeAppRecordingFilesRequest,
+    ) -> rtc_20180111_models.DescribeAppRecordingFilesResponse:
+        """
+        @summary 查询录制列表
+        
+        @param request: DescribeAppRecordingFilesRequest
+        @return: DescribeAppRecordingFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_recording_files_with_options(request, runtime)
+
+    async def describe_app_recording_files_async(
+        self,
+        request: rtc_20180111_models.DescribeAppRecordingFilesRequest,
+    ) -> rtc_20180111_models.DescribeAppRecordingFilesResponse:
+        """
+        @summary 查询录制列表
+        
+        @param request: DescribeAppRecordingFilesRequest
+        @return: DescribeAppRecordingFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_recording_files_with_options_async(request, runtime)
+
     def describe_app_streaming_out_templates_with_options(
         self,
         tmp_req: rtc_20180111_models.DescribeAppStreamingOutTemplatesRequest,

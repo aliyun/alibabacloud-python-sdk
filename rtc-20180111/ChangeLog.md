@@ -1,3 +1,11 @@
+2024-06-21 Version: 3.2.0
+- Support API DescribeAppRecordingFiles.
+- Update API CreateAppStreamingOutTemplate: update param StreamingOutTemplate.
+- Update API CreateAppStreamingOutTemplate: update response param.
+- Update API ModifyAppStreamingOutTemplate: update param StreamingOutTemplate.
+- Update API ModifyAppStreamingOutTemplate: update response param.
+
+
 2024-06-20 Version: 3.1.0
 - Support API UpdateCloudRecord.
 - Support API UpdateStreamingOut.
