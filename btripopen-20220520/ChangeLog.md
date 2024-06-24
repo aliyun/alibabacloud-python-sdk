@@ -1,3 +1,10 @@
+2024-06-24 Version: 3.2.1
+- Update API CarApplyQuery: update response param.
+- Update API FlightExceedApplyQuery: update response param.
+- Update API FlightOrderQuery: update response param.
+- Update API HotelOrderDetailInfo: update response param.
+
+
 2024-06-12 Version: 3.2.0
 - Support API ApplyTripTaskExecute.
 - Support API TripBusinessInstanceQuery.

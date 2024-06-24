@@ -4,6 +4,101 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class KeywordSuggestInfo(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        business_area_with_city: 'KeywordSuggestInfo' = None,
+        city_code: int = None,
+        city_name: str = None,
+        display_name: str = None,
+        hotel_id: str = None,
+        icon: str = None,
+        point: str = None,
+        price: str = None,
+        region: int = None,
+        type: int = None,
+        type_desc: str = None,
+    ):
+        self.address = address
+        self.business_area_with_city = business_area_with_city
+        self.city_code = city_code
+        self.city_name = city_name
+        self.display_name = display_name
+        self.hotel_id = hotel_id
+        self.icon = icon
+        self.point = point
+        self.price = price
+        self.region = region
+        self.type = type
+        self.type_desc = type_desc
+
+    def validate(self):
+        if self.business_area_with_city:
+            self.business_area_with_city.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['address'] = self.address
+        if self.business_area_with_city is not None:
+            result['business_area_with_city'] = self.business_area_with_city.to_map()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        if self.display_name is not None:
+            result['display_name'] = self.display_name
+        if self.hotel_id is not None:
+            result['hotel_id'] = self.hotel_id
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.point is not None:
+            result['point'] = self.point
+        if self.price is not None:
+            result['price'] = self.price
+        if self.region is not None:
+            result['region'] = self.region
+        if self.type is not None:
+            result['type'] = self.type
+        if self.type_desc is not None:
+            result['type_desc'] = self.type_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            self.address = m.get('address')
+        if m.get('business_area_with_city') is not None:
+            temp_model = KeywordSuggestInfo()
+            self.business_area_with_city = temp_model.from_map(m['business_area_with_city'])
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        if m.get('display_name') is not None:
+            self.display_name = m.get('display_name')
+        if m.get('hotel_id') is not None:
+            self.hotel_id = m.get('hotel_id')
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('point') is not None:
+            self.point = m.get('point')
+        if m.get('price') is not None:
+            self.price = m.get('price')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('type_desc') is not None:
+            self.type_desc = m.get('type_desc')
+        return self
+
+
 class ModuleFlightItemListBestPriceItemFlightRuleInfosValue(TeaModel):
     def __init__(
         self,
@@ -15060,6 +15155,7 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
     def __init__(
         self,
         approver_list: List[CarApplyQueryResponseBodyApplyListApproverList] = None,
+        business_type: str = None,
         depart_id: str = None,
         depart_name: str = None,
         gmt_create: str = None,
@@ -15075,6 +15171,7 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
         user_name: str = None,
     ):
         self.approver_list = approver_list
+        self.business_type = business_type
         self.depart_id = depart_id
         self.depart_name = depart_name
         self.gmt_create = gmt_create
@@ -15113,6 +15210,8 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
         if self.approver_list is not None:
             for k in self.approver_list:
                 result['approver_list'].append(k.to_map() if k else None)
+        if self.business_type is not None:
+            result['business_type'] = self.business_type
         if self.depart_id is not None:
             result['depart_id'] = self.depart_id
         if self.depart_name is not None:
@@ -15152,6 +15251,8 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
             for k in m.get('approver_list'):
                 temp_model = CarApplyQueryResponseBodyApplyListApproverList()
                 self.approver_list.append(temp_model.from_map(k))
+        if m.get('business_type') is not None:
+            self.business_type = m.get('business_type')
         if m.get('depart_id') is not None:
             self.depart_id = m.get('depart_id')
         if m.get('depart_name') is not None:
@@ -39676,6 +39777,7 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
         arr_airport_code: str = None,
         arr_city: str = None,
         arr_city_code: str = None,
+        company_refund_ticket_fee: float = None,
         dep_airport: str = None,
         dep_airport_code: str = None,
         dep_city: str = None,
@@ -39684,6 +39786,7 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
         gmt_create: str = None,
         gmt_modify: str = None,
         out_apply_id: str = None,
+        personal_refund_ticket_fee: float = None,
         refund_order_id: int = None,
         refund_reason: str = None,
         refund_ticket_fee: float = None,
@@ -39695,6 +39798,7 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
         self.arr_airport_code = arr_airport_code
         self.arr_city = arr_city
         self.arr_city_code = arr_city_code
+        self.company_refund_ticket_fee = company_refund_ticket_fee
         self.dep_airport = dep_airport
         self.dep_airport_code = dep_airport_code
         self.dep_city = dep_city
@@ -39703,6 +39807,7 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
         self.out_apply_id = out_apply_id
+        self.personal_refund_ticket_fee = personal_refund_ticket_fee
         self.refund_order_id = refund_order_id
         self.refund_reason = refund_reason
         self.refund_ticket_fee = refund_ticket_fee
@@ -39728,6 +39833,8 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
             result['arr_city'] = self.arr_city
         if self.arr_city_code is not None:
             result['arr_city_code'] = self.arr_city_code
+        if self.company_refund_ticket_fee is not None:
+            result['company_refund_ticket_fee'] = self.company_refund_ticket_fee
         if self.dep_airport is not None:
             result['dep_airport'] = self.dep_airport
         if self.dep_airport_code is not None:
@@ -39744,6 +39851,8 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
             result['gmt_modify'] = self.gmt_modify
         if self.out_apply_id is not None:
             result['out_apply_id'] = self.out_apply_id
+        if self.personal_refund_ticket_fee is not None:
+            result['personal_refund_ticket_fee'] = self.personal_refund_ticket_fee
         if self.refund_order_id is not None:
             result['refund_order_id'] = self.refund_order_id
         if self.refund_reason is not None:
@@ -39768,6 +39877,8 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
             self.arr_city = m.get('arr_city')
         if m.get('arr_city_code') is not None:
             self.arr_city_code = m.get('arr_city_code')
+        if m.get('company_refund_ticket_fee') is not None:
+            self.company_refund_ticket_fee = m.get('company_refund_ticket_fee')
         if m.get('dep_airport') is not None:
             self.dep_airport = m.get('dep_airport')
         if m.get('dep_airport_code') is not None:
@@ -39784,6 +39895,8 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
             self.gmt_modify = m.get('gmt_modify')
         if m.get('out_apply_id') is not None:
             self.out_apply_id = m.get('out_apply_id')
+        if m.get('personal_refund_ticket_fee') is not None:
+            self.personal_refund_ticket_fee = m.get('personal_refund_ticket_fee')
         if m.get('refund_order_id') is not None:
             self.refund_order_id = m.get('refund_order_id')
         if m.get('refund_reason') is not None:
@@ -39812,6 +39925,7 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
         gmt_modify: str = None,
         oil_price: float = None,
         pay_type: int = None,
+        personal_price: float = None,
         settle_price: float = None,
         ticket_no: str = None,
         ticket_price: float = None,
@@ -39831,6 +39945,7 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
         self.gmt_modify = gmt_modify
         self.oil_price = oil_price
         self.pay_type = pay_type
+        self.personal_price = personal_price
         self.settle_price = settle_price
         self.ticket_no = ticket_no
         self.ticket_price = ticket_price
@@ -39871,6 +39986,8 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
             result['oil_price'] = self.oil_price
         if self.pay_type is not None:
             result['pay_type'] = self.pay_type
+        if self.personal_price is not None:
+            result['personal_price'] = self.personal_price
         if self.settle_price is not None:
             result['settle_price'] = self.settle_price
         if self.ticket_no is not None:
@@ -39911,6 +40028,8 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
             self.oil_price = m.get('oil_price')
         if m.get('pay_type') is not None:
             self.pay_type = m.get('pay_type')
+        if m.get('personal_price') is not None:
+            self.personal_price = m.get('personal_price')
         if m.get('settle_price') is not None:
             self.settle_price = m.get('settle_price')
         if m.get('ticket_no') is not None:
@@ -59980,6 +60099,7 @@ class HotelOrderDetailInfoResponseBodyModule(TeaModel):
         occupant_info_list: List[HotelOrderDetailInfoResponseBodyModuleOccupantInfoList] = None,
         order_status: int = None,
         order_status_desc: str = None,
+        out_confirm_code: str = None,
         pay_time: str = None,
         product_type: int = None,
         purchase_order_id: str = None,
@@ -60019,6 +60139,7 @@ class HotelOrderDetailInfoResponseBodyModule(TeaModel):
         self.occupant_info_list = occupant_info_list
         self.order_status = order_status
         self.order_status_desc = order_status_desc
+        self.out_confirm_code = out_confirm_code
         self.pay_time = pay_time
         self.product_type = product_type
         self.purchase_order_id = purchase_order_id
@@ -60113,6 +60234,8 @@ class HotelOrderDetailInfoResponseBodyModule(TeaModel):
             result['order_status'] = self.order_status
         if self.order_status_desc is not None:
             result['order_status_desc'] = self.order_status_desc
+        if self.out_confirm_code is not None:
+            result['out_confirm_code'] = self.out_confirm_code
         if self.pay_time is not None:
             result['pay_time'] = self.pay_time
         if self.product_type is not None:
@@ -60205,6 +60328,8 @@ class HotelOrderDetailInfoResponseBodyModule(TeaModel):
             self.order_status = m.get('order_status')
         if m.get('order_status_desc') is not None:
             self.order_status_desc = m.get('order_status_desc')
+        if m.get('out_confirm_code') is not None:
+            self.out_confirm_code = m.get('out_confirm_code')
         if m.get('pay_time') is not None:
             self.pay_time = m.get('pay_time')
         if m.get('product_type') is not None:
