@@ -1,3 +1,10 @@
+2024-06-24 Version: 3.2.0
+- Support API ChangeResourceGroup.
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2024-06-17 Version: 3.1.0
 - Support API CreateConfigDir.
 - Support API CreateConfigFile.
