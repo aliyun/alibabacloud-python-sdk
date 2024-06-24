@@ -1,3 +1,23 @@
+2024-06-24 Version: 4.1.2
+- Update API CreateEventSource: add param ExternalSourceConfig.
+- Update API CreateEventSource: add param ExternalSourceType.
+- Update API CreateEventSource: add param LinkedExternalSource.
+- Update API CreateEventStreaming: update param RunOptions.
+- Update API CreateEventStreaming: update param Sink.
+- Update API CreateEventStreaming: update param Source.
+- Update API DeleteEventBus: update response param.
+- Update API EventCenterQueryEvents: update param Body.
+- Update API GetEventStreaming: update response param.
+- Update API GetRule: update response param.
+- Update API ListEventStreamings: update response param.
+- Update API UpdateEventSource: add param ExternalSourceConfig.
+- Update API UpdateEventSource: add param ExternalSourceType.
+- Update API UpdateEventSource: add param LinkedExternalSource.
+- Update API UpdateEventStreaming: update param RunOptions.
+- Update API UpdateEventStreaming: update param Sink.
+- Update API UpdateEventStreaming: update param Source.
+
+
 2024-05-31 Version: 4.1.1
 - Update API CreateEventStreaming: update param Source.
 - Update API GetEventStreaming: update response param.

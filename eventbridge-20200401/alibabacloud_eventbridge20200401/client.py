@@ -418,6 +418,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = eventbridge_20200401_models.CreateEventSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.external_source_config):
+            request.external_source_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_source_config, 'ExternalSourceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.source_http_event_parameters):
             request.source_http_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_http_event_parameters, 'SourceHttpEventParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_kafka_parameters):
@@ -439,6 +441,12 @@ class Client(OpenApiClient):
             body['EventBusName'] = request.event_bus_name
         if not UtilClient.is_unset(request.event_source_name):
             body['EventSourceName'] = request.event_source_name
+        if not UtilClient.is_unset(request.external_source_config_shrink):
+            body['ExternalSourceConfig'] = request.external_source_config_shrink
+        if not UtilClient.is_unset(request.external_source_type):
+            body['ExternalSourceType'] = request.external_source_type
+        if not UtilClient.is_unset(request.linked_external_source):
+            body['LinkedExternalSource'] = request.linked_external_source
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
         if not UtilClient.is_unset(request.source_kafka_parameters_shrink):
@@ -489,6 +497,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = eventbridge_20200401_models.CreateEventSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.external_source_config):
+            request.external_source_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_source_config, 'ExternalSourceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.source_http_event_parameters):
             request.source_http_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_http_event_parameters, 'SourceHttpEventParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_kafka_parameters):
@@ -510,6 +520,12 @@ class Client(OpenApiClient):
             body['EventBusName'] = request.event_bus_name
         if not UtilClient.is_unset(request.event_source_name):
             body['EventSourceName'] = request.event_source_name
+        if not UtilClient.is_unset(request.external_source_config_shrink):
+            body['ExternalSourceConfig'] = request.external_source_config_shrink
+        if not UtilClient.is_unset(request.external_source_type):
+            body['ExternalSourceType'] = request.external_source_type
+        if not UtilClient.is_unset(request.linked_external_source):
+            body['LinkedExternalSource'] = request.linked_external_source
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
         if not UtilClient.is_unset(request.source_kafka_parameters_shrink):
@@ -4954,6 +4970,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = eventbridge_20200401_models.UpdateEventSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.external_source_config):
+            request.external_source_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_source_config, 'ExternalSourceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.source_http_event_parameters):
             request.source_http_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_http_event_parameters, 'SourceHttpEventParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_kafka_parameters):
@@ -4975,6 +4993,12 @@ class Client(OpenApiClient):
             body['EventBusName'] = request.event_bus_name
         if not UtilClient.is_unset(request.event_source_name):
             body['EventSourceName'] = request.event_source_name
+        if not UtilClient.is_unset(request.external_source_config_shrink):
+            body['ExternalSourceConfig'] = request.external_source_config_shrink
+        if not UtilClient.is_unset(request.external_source_type):
+            body['ExternalSourceType'] = request.external_source_type
+        if not UtilClient.is_unset(request.linked_external_source):
+            body['LinkedExternalSource'] = request.linked_external_source
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
         if not UtilClient.is_unset(request.source_kafka_parameters_shrink):
@@ -5025,6 +5049,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = eventbridge_20200401_models.UpdateEventSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.external_source_config):
+            request.external_source_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_source_config, 'ExternalSourceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.source_http_event_parameters):
             request.source_http_event_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_http_event_parameters, 'SourceHttpEventParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_kafka_parameters):
@@ -5046,6 +5072,12 @@ class Client(OpenApiClient):
             body['EventBusName'] = request.event_bus_name
         if not UtilClient.is_unset(request.event_source_name):
             body['EventSourceName'] = request.event_source_name
+        if not UtilClient.is_unset(request.external_source_config_shrink):
+            body['ExternalSourceConfig'] = request.external_source_config_shrink
+        if not UtilClient.is_unset(request.external_source_type):
+            body['ExternalSourceType'] = request.external_source_type
+        if not UtilClient.is_unset(request.linked_external_source):
+            body['LinkedExternalSource'] = request.linked_external_source
         if not UtilClient.is_unset(request.source_http_event_parameters_shrink):
             body['SourceHttpEventParameters'] = request.source_http_event_parameters_shrink
         if not UtilClient.is_unset(request.source_kafka_parameters_shrink):
