@@ -19194,6 +19194,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_transcode_job_with_options_async(request, runtime)
 
+    def submit_video_translation_job_with_options(
+        self,
+        request: ice20201109_models.SubmitVideoTranslationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
+        """
+        @summary 提交视频翻译任务
+        
+        @param request: SubmitVideoTranslationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVideoTranslationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.editing_config):
+            query['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitVideoTranslationJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitVideoTranslationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_translation_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitVideoTranslationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
+        """
+        @summary 提交视频翻译任务
+        
+        @param request: SubmitVideoTranslationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVideoTranslationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.editing_config):
+            query['EditingConfig'] = request.editing_config
+        if not UtilClient.is_unset(request.input_config):
+            query['InputConfig'] = request.input_config
+        if not UtilClient.is_unset(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitVideoTranslationJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitVideoTranslationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_translation_job(
+        self,
+        request: ice20201109_models.SubmitVideoTranslationJobRequest,
+    ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
+        """
+        @summary 提交视频翻译任务
+        
+        @param request: SubmitVideoTranslationJobRequest
+        @return: SubmitVideoTranslationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_video_translation_job_with_options(request, runtime)
+
+    async def submit_video_translation_job_async(
+        self,
+        request: ice20201109_models.SubmitVideoTranslationJobRequest,
+    ) -> ice20201109_models.SubmitVideoTranslationJobResponse:
+        """
+        @summary 提交视频翻译任务
+        
+        @param request: SubmitVideoTranslationJobRequest
+        @return: SubmitVideoTranslationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_video_translation_job_with_options_async(request, runtime)
+
     def update_avatar_training_job_with_options(
         self,
         request: ice20201109_models.UpdateAvatarTrainingJobRequest,

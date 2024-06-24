@@ -1,3 +1,7 @@
+2024-06-24 Version: 2.6.0
+- Support API SubmitVideoTranslationJob.
+
+
 2024-06-04 Version: 2.5.1
 - Update API GetMediaInfo: update response param.
 

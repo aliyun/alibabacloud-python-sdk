@@ -52352,6 +52352,179 @@ class SubmitTranscodeJobResponse(TeaModel):
         return self
 
 
+class SubmitVideoTranslationJobRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        editing_config: str = None,
+        input_config: str = None,
+        output_config: str = None,
+        title: str = None,
+        user_data: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        self.editing_config = editing_config
+        self.input_config = input_config
+        self.output_config = output_config
+        self.title = title
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.editing_config is not None:
+            result['EditingConfig'] = self.editing_config
+        if self.input_config is not None:
+            result['InputConfig'] = self.input_config
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EditingConfig') is not None:
+            self.editing_config = m.get('EditingConfig')
+        if m.get('InputConfig') is not None:
+            self.input_config = m.get('InputConfig')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitVideoTranslationJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class SubmitVideoTranslationJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SubmitVideoTranslationJobResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = SubmitVideoTranslationJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitVideoTranslationJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitVideoTranslationJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitVideoTranslationJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAvatarTrainingJobRequest(TeaModel):
     def __init__(
         self,
