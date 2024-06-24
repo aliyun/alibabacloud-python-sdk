@@ -104,6 +104,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreatePackageResponse:
+        """
+        @summary Creates a package.
+        
+        @param request: CreatePackageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_install):
@@ -136,6 +144,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreatePackageResponse:
+        """
+        @summary Creates a package.
+        
+        @param request: CreatePackageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_install):
@@ -166,6 +182,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.CreatePackageRequest,
     ) -> max_compute_20220104_models.CreatePackageResponse:
+        """
+        @summary Creates a package.
+        
+        @param request: CreatePackageRequest
+        @return: CreatePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_package_with_options(project_name, request, headers, runtime)
@@ -175,6 +197,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.CreatePackageRequest,
     ) -> max_compute_20220104_models.CreatePackageResponse:
+        """
+        @summary Creates a package.
+        
+        @param request: CreatePackageRequest
+        @return: CreatePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_package_with_options_async(project_name, request, headers, runtime)
@@ -185,6 +213,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateProjectResponse:
+        """
+        @summary Creates a MaxCompute project.
+        
+        @param request: CreateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -212,6 +248,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateProjectResponse:
+        """
+        @summary Creates a MaxCompute project.
+        
+        @param request: CreateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -237,6 +281,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.CreateProjectRequest,
     ) -> max_compute_20220104_models.CreateProjectResponse:
+        """
+        @summary Creates a MaxCompute project.
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_project_with_options(request, headers, runtime)
@@ -245,6 +295,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.CreateProjectRequest,
     ) -> max_compute_20220104_models.CreateProjectResponse:
+        """
+        @summary Creates a MaxCompute project.
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_project_with_options_async(request, headers, runtime)
@@ -256,6 +312,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateQuotaPlanResponse:
+        """
+        @summary Creates a quota plan.
+        
+        @param request: CreateQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -290,6 +354,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateQuotaPlanResponse:
+        """
+        @summary Creates a quota plan.
+        
+        @param request: CreateQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -322,6 +394,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.CreateQuotaPlanRequest,
     ) -> max_compute_20220104_models.CreateQuotaPlanResponse:
+        """
+        @summary Creates a quota plan.
+        
+        @param request: CreateQuotaPlanRequest
+        @return: CreateQuotaPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_quota_plan_with_options(nickname, request, headers, runtime)
@@ -331,6 +409,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.CreateQuotaPlanRequest,
     ) -> max_compute_20220104_models.CreateQuotaPlanResponse:
+        """
+        @summary Creates a quota plan.
+        
+        @param request: CreateQuotaPlanRequest
+        @return: CreateQuotaPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_quota_plan_with_options_async(nickname, request, headers, runtime)
@@ -342,6 +426,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateQuotaScheduleResponse:
+        """
+        @summary Creates a scheduling plan for a quota plan.
+        
+        @param request: CreateQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -376,6 +468,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateQuotaScheduleResponse:
+        """
+        @summary Creates a scheduling plan for a quota plan.
+        
+        @param request: CreateQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -408,6 +508,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.CreateQuotaScheduleRequest,
     ) -> max_compute_20220104_models.CreateQuotaScheduleResponse:
+        """
+        @summary Creates a scheduling plan for a quota plan.
+        
+        @param request: CreateQuotaScheduleRequest
+        @return: CreateQuotaScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_quota_schedule_with_options(nickname, request, headers, runtime)
@@ -417,6 +523,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.CreateQuotaScheduleRequest,
     ) -> max_compute_20220104_models.CreateQuotaScheduleResponse:
+        """
+        @summary Creates a scheduling plan for a quota plan.
+        
+        @param request: CreateQuotaScheduleRequest
+        @return: CreateQuotaScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_quota_schedule_with_options_async(nickname, request, headers, runtime)
@@ -428,6 +540,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateRoleResponse:
+        """
+        @summary Creates a role at the MaxCompute project level.
+        
+        @param request: CreateRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRoleResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -456,6 +576,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.CreateRoleResponse:
+        """
+        @summary Creates a role at the MaxCompute project level.
+        
+        @param request: CreateRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRoleResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -482,6 +610,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.CreateRoleRequest,
     ) -> max_compute_20220104_models.CreateRoleResponse:
+        """
+        @summary Creates a role at the MaxCompute project level.
+        
+        @param request: CreateRoleRequest
+        @return: CreateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_role_with_options(project_name, request, headers, runtime)
@@ -491,6 +625,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.CreateRoleRequest,
     ) -> max_compute_20220104_models.CreateRoleResponse:
+        """
+        @summary Creates a role at the MaxCompute project level.
+        
+        @param request: CreateRoleRequest
+        @return: CreateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_role_with_options_async(project_name, request, headers, runtime)
@@ -503,6 +643,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.DeleteQuotaPlanResponse:
+        """
+        @summary Deletes a quota plan.
+        
+        @param request: DeleteQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQuotaPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -537,6 +685,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.DeleteQuotaPlanResponse:
+        """
+        @summary Deletes a quota plan.
+        
+        @param request: DeleteQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQuotaPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -569,6 +725,12 @@ class Client(OpenApiClient):
         plan_name: str,
         request: max_compute_20220104_models.DeleteQuotaPlanRequest,
     ) -> max_compute_20220104_models.DeleteQuotaPlanResponse:
+        """
+        @summary Deletes a quota plan.
+        
+        @param request: DeleteQuotaPlanRequest
+        @return: DeleteQuotaPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_quota_plan_with_options(nickname, plan_name, request, headers, runtime)
@@ -579,6 +741,12 @@ class Client(OpenApiClient):
         plan_name: str,
         request: max_compute_20220104_models.DeleteQuotaPlanRequest,
     ) -> max_compute_20220104_models.DeleteQuotaPlanResponse:
+        """
+        @summary Deletes a quota plan.
+        
+        @param request: DeleteQuotaPlanRequest
+        @return: DeleteQuotaPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_quota_plan_with_options_async(nickname, plan_name, request, headers, runtime)
@@ -589,6 +757,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetJobResourceUsageResponse:
+        """
+        @summary Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+        
+        @param tmp_req: GetJobResourceUsageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResourceUsageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = max_compute_20220104_models.GetJobResourceUsageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -633,6 +809,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetJobResourceUsageResponse:
+        """
+        @summary Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+        
+        @param tmp_req: GetJobResourceUsageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResourceUsageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = max_compute_20220104_models.GetJobResourceUsageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -675,6 +859,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.GetJobResourceUsageRequest,
     ) -> max_compute_20220104_models.GetJobResourceUsageResponse:
+        """
+        @summary Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+        
+        @param request: GetJobResourceUsageRequest
+        @return: GetJobResourceUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_job_resource_usage_with_options(request, headers, runtime)
@@ -683,6 +873,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.GetJobResourceUsageRequest,
     ) -> max_compute_20220104_models.GetJobResourceUsageResponse:
+        """
+        @summary Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+        
+        @param request: GetJobResourceUsageRequest
+        @return: GetJobResourceUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_resource_usage_with_options_async(request, headers, runtime)
@@ -695,6 +891,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetPackageResponse:
+        """
+        @summary Obtains the information about a package.
+        
+        @param request: GetPackageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.source_project):
@@ -727,6 +931,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetPackageResponse:
+        """
+        @summary Obtains the information about a package.
+        
+        @param request: GetPackageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.source_project):
@@ -757,6 +969,12 @@ class Client(OpenApiClient):
         package_name: str,
         request: max_compute_20220104_models.GetPackageRequest,
     ) -> max_compute_20220104_models.GetPackageResponse:
+        """
+        @summary Obtains the information about a package.
+        
+        @param request: GetPackageRequest
+        @return: GetPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_package_with_options(project_name, package_name, request, headers, runtime)
@@ -767,6 +985,12 @@ class Client(OpenApiClient):
         package_name: str,
         request: max_compute_20220104_models.GetPackageRequest,
     ) -> max_compute_20220104_models.GetPackageResponse:
+        """
+        @summary Obtains the information about a package.
+        
+        @param request: GetPackageRequest
+        @return: GetPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_package_with_options_async(project_name, package_name, request, headers, runtime)
@@ -778,6 +1002,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetProjectResponse:
+        """
+        @summary Queries the information about a MaxCompute project.
+        
+        @param request: GetProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.verbose):
@@ -809,6 +1041,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetProjectResponse:
+        """
+        @summary Queries the information about a MaxCompute project.
+        
+        @param request: GetProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.verbose):
@@ -838,6 +1078,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.GetProjectRequest,
     ) -> max_compute_20220104_models.GetProjectResponse:
+        """
+        @summary Queries the information about a MaxCompute project.
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_with_options(project_name, request, headers, runtime)
@@ -847,6 +1093,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.GetProjectRequest,
     ) -> max_compute_20220104_models.GetProjectResponse:
+        """
+        @summary Queries the information about a MaxCompute project.
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_with_options_async(project_name, request, headers, runtime)
@@ -858,6 +1110,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetQuotaResponse:
+        """
+        @summary Obtains the information about a specified level-1 quota.
+        
+        @param request: GetQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ak_proven):
@@ -895,6 +1155,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetQuotaResponse:
+        """
+        @summary Obtains the information about a specified level-1 quota.
+        
+        @param request: GetQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ak_proven):
@@ -930,6 +1198,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.GetQuotaRequest,
     ) -> max_compute_20220104_models.GetQuotaResponse:
+        """
+        @summary Obtains the information about a specified level-1 quota.
+        
+        @param request: GetQuotaRequest
+        @return: GetQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_quota_with_options(nickname, request, headers, runtime)
@@ -939,6 +1213,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.GetQuotaRequest,
     ) -> max_compute_20220104_models.GetQuotaResponse:
+        """
+        @summary Obtains the information about a specified level-1 quota.
+        
+        @param request: GetQuotaRequest
+        @return: GetQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_quota_with_options_async(nickname, request, headers, runtime)
@@ -951,6 +1231,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetQuotaPlanResponse:
+        """
+        @summary Obtains the information of a quota plan.
+        
+        @param request: GetQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -985,6 +1273,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetQuotaPlanResponse:
+        """
+        @summary Obtains the information of a quota plan.
+        
+        @param request: GetQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -1017,6 +1313,12 @@ class Client(OpenApiClient):
         plan_name: str,
         request: max_compute_20220104_models.GetQuotaPlanRequest,
     ) -> max_compute_20220104_models.GetQuotaPlanResponse:
+        """
+        @summary Obtains the information of a quota plan.
+        
+        @param request: GetQuotaPlanRequest
+        @return: GetQuotaPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_quota_plan_with_options(nickname, plan_name, request, headers, runtime)
@@ -1027,6 +1329,12 @@ class Client(OpenApiClient):
         plan_name: str,
         request: max_compute_20220104_models.GetQuotaPlanRequest,
     ) -> max_compute_20220104_models.GetQuotaPlanResponse:
+        """
+        @summary Obtains the information of a quota plan.
+        
+        @param request: GetQuotaPlanRequest
+        @return: GetQuotaPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_quota_plan_with_options_async(nickname, plan_name, request, headers, runtime)
@@ -1038,6 +1346,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetQuotaScheduleResponse:
+        """
+        @summary Obtains the scheduling plan for a quota plan.
+        
+        @param request: GetQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_timezone):
@@ -1073,6 +1389,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetQuotaScheduleResponse:
+        """
+        @summary Obtains the scheduling plan for a quota plan.
+        
+        @param request: GetQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.display_timezone):
@@ -1106,6 +1430,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.GetQuotaScheduleRequest,
     ) -> max_compute_20220104_models.GetQuotaScheduleResponse:
+        """
+        @summary Obtains the scheduling plan for a quota plan.
+        
+        @param request: GetQuotaScheduleRequest
+        @return: GetQuotaScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_quota_schedule_with_options(nickname, request, headers, runtime)
@@ -1115,6 +1445,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.GetQuotaScheduleRequest,
     ) -> max_compute_20220104_models.GetQuotaScheduleResponse:
+        """
+        @summary Obtains the scheduling plan for a quota plan.
+        
+        @param request: GetQuotaScheduleRequest
+        @return: GetQuotaScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_quota_schedule_with_options_async(nickname, request, headers, runtime)
@@ -1126,6 +1462,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetRoleAclResponse:
+        """
+        @summary Obtains the ACL-based permissions that is granted to a project-level role.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoleAclResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1152,6 +1495,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetRoleAclResponse:
+        """
+        @summary Obtains the ACL-based permissions that is granted to a project-level role.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoleAclResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1176,6 +1526,11 @@ class Client(OpenApiClient):
         project_name: str,
         role_name: str,
     ) -> max_compute_20220104_models.GetRoleAclResponse:
+        """
+        @summary Obtains the ACL-based permissions that is granted to a project-level role.
+        
+        @return: GetRoleAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_role_acl_with_options(project_name, role_name, headers, runtime)
@@ -1185,6 +1540,11 @@ class Client(OpenApiClient):
         project_name: str,
         role_name: str,
     ) -> max_compute_20220104_models.GetRoleAclResponse:
+        """
+        @summary Obtains the ACL-based permissions that is granted to a project-level role.
+        
+        @return: GetRoleAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_role_acl_with_options_async(project_name, role_name, headers, runtime)
@@ -1197,6 +1557,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetRoleAclOnObjectResponse:
+        """
+        @summary Obtains ACL-based permissions on an object that are granted to a project-level role.
+        
+        @param request: GetRoleAclOnObjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoleAclOnObjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.object_name):
@@ -1231,6 +1599,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetRoleAclOnObjectResponse:
+        """
+        @summary Obtains ACL-based permissions on an object that are granted to a project-level role.
+        
+        @param request: GetRoleAclOnObjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoleAclOnObjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.object_name):
@@ -1263,6 +1639,12 @@ class Client(OpenApiClient):
         role_name: str,
         request: max_compute_20220104_models.GetRoleAclOnObjectRequest,
     ) -> max_compute_20220104_models.GetRoleAclOnObjectResponse:
+        """
+        @summary Obtains ACL-based permissions on an object that are granted to a project-level role.
+        
+        @param request: GetRoleAclOnObjectRequest
+        @return: GetRoleAclOnObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_role_acl_on_object_with_options(project_name, role_name, request, headers, runtime)
@@ -1273,6 +1655,12 @@ class Client(OpenApiClient):
         role_name: str,
         request: max_compute_20220104_models.GetRoleAclOnObjectRequest,
     ) -> max_compute_20220104_models.GetRoleAclOnObjectResponse:
+        """
+        @summary Obtains ACL-based permissions on an object that are granted to a project-level role.
+        
+        @param request: GetRoleAclOnObjectRequest
+        @return: GetRoleAclOnObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_role_acl_on_object_with_options_async(project_name, role_name, request, headers, runtime)
@@ -1284,6 +1672,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetRolePolicyResponse:
+        """
+        @summary Obtains the policy that is attached to a project-level role.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRolePolicyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1310,6 +1705,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetRolePolicyResponse:
+        """
+        @summary Obtains the policy that is attached to a project-level role.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRolePolicyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1334,6 +1736,11 @@ class Client(OpenApiClient):
         project_name: str,
         role_name: str,
     ) -> max_compute_20220104_models.GetRolePolicyResponse:
+        """
+        @summary Obtains the policy that is attached to a project-level role.
+        
+        @return: GetRolePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_role_policy_with_options(project_name, role_name, headers, runtime)
@@ -1343,6 +1750,11 @@ class Client(OpenApiClient):
         project_name: str,
         role_name: str,
     ) -> max_compute_20220104_models.GetRolePolicyResponse:
+        """
+        @summary Obtains the policy that is attached to a project-level role.
+        
+        @return: GetRolePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_role_policy_with_options_async(project_name, role_name, headers, runtime)
@@ -1353,6 +1765,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetRunningJobsResponse:
+        """
+        @summary Obtains the running state data of jobs that are in the running state in a specified period of time.
+        
+        @param tmp_req: GetRunningJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRunningJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = max_compute_20220104_models.GetRunningJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1399,6 +1819,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetRunningJobsResponse:
+        """
+        @summary Obtains the running state data of jobs that are in the running state in a specified period of time.
+        
+        @param tmp_req: GetRunningJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRunningJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = max_compute_20220104_models.GetRunningJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1443,6 +1871,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.GetRunningJobsRequest,
     ) -> max_compute_20220104_models.GetRunningJobsResponse:
+        """
+        @summary Obtains the running state data of jobs that are in the running state in a specified period of time.
+        
+        @param request: GetRunningJobsRequest
+        @return: GetRunningJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_running_jobs_with_options(request, headers, runtime)
@@ -1451,6 +1885,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.GetRunningJobsRequest,
     ) -> max_compute_20220104_models.GetRunningJobsResponse:
+        """
+        @summary Obtains the running state data of jobs that are in the running state in a specified period of time.
+        
+        @param request: GetRunningJobsRequest
+        @return: GetRunningJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_running_jobs_with_options_async(request, headers, runtime)
@@ -1463,6 +1903,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetTableInfoResponse:
+        """
+        @param request: GetTableInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.schema_name):
@@ -1497,6 +1943,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetTableInfoResponse:
+        """
+        @param request: GetTableInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.schema_name):
@@ -1529,6 +1981,10 @@ class Client(OpenApiClient):
         table_name: str,
         request: max_compute_20220104_models.GetTableInfoRequest,
     ) -> max_compute_20220104_models.GetTableInfoResponse:
+        """
+        @param request: GetTableInfoRequest
+        @return: GetTableInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_table_info_with_options(project_name, table_name, request, headers, runtime)
@@ -1539,6 +1995,10 @@ class Client(OpenApiClient):
         table_name: str,
         request: max_compute_20220104_models.GetTableInfoRequest,
     ) -> max_compute_20220104_models.GetTableInfoResponse:
+        """
+        @param request: GetTableInfoRequest
+        @return: GetTableInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_table_info_with_options_async(project_name, table_name, request, headers, runtime)
@@ -1549,6 +2009,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetTrustedProjectsResponse:
+        """
+        @summary Obtains the trusted projects of the current project.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrustedProjectsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1574,6 +2041,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetTrustedProjectsResponse:
+        """
+        @summary Obtains the trusted projects of the current project.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrustedProjectsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1597,6 +2071,11 @@ class Client(OpenApiClient):
         self,
         project_name: str,
     ) -> max_compute_20220104_models.GetTrustedProjectsResponse:
+        """
+        @summary Obtains the trusted projects of the current project.
+        
+        @return: GetTrustedProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_trusted_projects_with_options(project_name, headers, runtime)
@@ -1605,6 +2084,11 @@ class Client(OpenApiClient):
         self,
         project_name: str,
     ) -> max_compute_20220104_models.GetTrustedProjectsResponse:
+        """
+        @summary Obtains the trusted projects of the current project.
+        
+        @return: GetTrustedProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_trusted_projects_with_options_async(project_name, headers, runtime)
@@ -1615,6 +2099,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.KillJobsResponse:
+        """
+        @summary Terminates a running job.
+        
+        @param request: KillJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -1648,6 +2140,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.KillJobsResponse:
+        """
+        @summary Terminates a running job.
+        
+        @param request: KillJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -1679,6 +2179,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.KillJobsRequest,
     ) -> max_compute_20220104_models.KillJobsResponse:
+        """
+        @summary Terminates a running job.
+        
+        @param request: KillJobsRequest
+        @return: KillJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.kill_jobs_with_options(request, headers, runtime)
@@ -1687,6 +2193,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.KillJobsRequest,
     ) -> max_compute_20220104_models.KillJobsResponse:
+        """
+        @summary Terminates a running job.
+        
+        @param request: KillJobsRequest
+        @return: KillJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.kill_jobs_with_options_async(request, headers, runtime)
@@ -1698,6 +2210,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListFunctionsResponse:
+        """
+        @summary Obtains functions in a MaxCompute project.
+        
+        @param request: ListFunctionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -1735,6 +2255,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListFunctionsResponse:
+        """
+        @summary Obtains functions in a MaxCompute project.
+        
+        @param request: ListFunctionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -1770,6 +2298,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.ListFunctionsRequest,
     ) -> max_compute_20220104_models.ListFunctionsResponse:
+        """
+        @summary Obtains functions in a MaxCompute project.
+        
+        @param request: ListFunctionsRequest
+        @return: ListFunctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_functions_with_options(project_name, request, headers, runtime)
@@ -1779,6 +2313,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.ListFunctionsRequest,
     ) -> max_compute_20220104_models.ListFunctionsResponse:
+        """
+        @summary Obtains functions in a MaxCompute project.
+        
+        @param request: ListFunctionsRequest
+        @return: ListFunctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_functions_with_options_async(project_name, request, headers, runtime)
@@ -1789,6 +2329,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListJobInfosResponse:
+        """
+        @summary Views a list of jobs.
+        
+        @param request: ListJobInfosRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc_order):
@@ -1830,6 +2378,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListJobInfosResponse:
+        """
+        @summary Views a list of jobs.
+        
+        @param request: ListJobInfosRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asc_order):
@@ -1869,6 +2425,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.ListJobInfosRequest,
     ) -> max_compute_20220104_models.ListJobInfosResponse:
+        """
+        @summary Views a list of jobs.
+        
+        @param request: ListJobInfosRequest
+        @return: ListJobInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_job_infos_with_options(request, headers, runtime)
@@ -1877,6 +2439,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.ListJobInfosRequest,
     ) -> max_compute_20220104_models.ListJobInfosResponse:
+        """
+        @summary Views a list of jobs.
+        
+        @param request: ListJobInfosRequest
+        @return: ListJobInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_job_infos_with_options_async(request, headers, runtime)
@@ -1887,6 +2455,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListPackagesResponse:
+        """
+        @summary Queries the packages in a MaxCompute project.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPackagesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1912,6 +2487,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListPackagesResponse:
+        """
+        @summary Queries the packages in a MaxCompute project.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPackagesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1935,6 +2517,11 @@ class Client(OpenApiClient):
         self,
         project_name: str,
     ) -> max_compute_20220104_models.ListPackagesResponse:
+        """
+        @summary Queries the packages in a MaxCompute project.
+        
+        @return: ListPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_packages_with_options(project_name, headers, runtime)
@@ -1943,6 +2530,11 @@ class Client(OpenApiClient):
         self,
         project_name: str,
     ) -> max_compute_20220104_models.ListPackagesResponse:
+        """
+        @summary Queries the packages in a MaxCompute project.
+        
+        @return: ListPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_packages_with_options_async(project_name, headers, runtime)
@@ -1953,6 +2545,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListProjectUsersResponse:
+        """
+        @summary Queries a list of users in a project.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectUsersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1978,6 +2577,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListProjectUsersResponse:
+        """
+        @summary Queries a list of users in a project.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectUsersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2001,6 +2607,11 @@ class Client(OpenApiClient):
         self,
         project_name: str,
     ) -> max_compute_20220104_models.ListProjectUsersResponse:
+        """
+        @summary Queries a list of users in a project.
+        
+        @return: ListProjectUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_project_users_with_options(project_name, headers, runtime)
@@ -2009,6 +2620,11 @@ class Client(OpenApiClient):
         self,
         project_name: str,
     ) -> max_compute_20220104_models.ListProjectUsersResponse:
+        """
+        @summary Queries a list of users in a project.
+        
+        @return: ListProjectUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_users_with_options_async(project_name, headers, runtime)
@@ -2019,6 +2635,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListProjectsResponse:
+        """
+        @summary Queries a list of MaxCompute projects.
+        
+        @param request: ListProjectsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.list_system_catalog):
@@ -2067,6 +2691,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListProjectsResponse:
+        """
+        @summary Queries a list of MaxCompute projects.
+        
+        @param request: ListProjectsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.list_system_catalog):
@@ -2113,6 +2745,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.ListProjectsRequest,
     ) -> max_compute_20220104_models.ListProjectsResponse:
+        """
+        @summary Queries a list of MaxCompute projects.
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_projects_with_options(request, headers, runtime)
@@ -2121,6 +2759,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.ListProjectsRequest,
     ) -> max_compute_20220104_models.ListProjectsResponse:
+        """
+        @summary Queries a list of MaxCompute projects.
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_projects_with_options_async(request, headers, runtime)
@@ -2131,6 +2775,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListQuotasResponse:
+        """
+        @summary Queries quotas.
+        
+        @param request: ListQuotasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.billing_type):
@@ -2173,6 +2825,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListQuotasResponse:
+        """
+        @summary Queries quotas.
+        
+        @param request: ListQuotasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.billing_type):
@@ -2213,6 +2873,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.ListQuotasRequest,
     ) -> max_compute_20220104_models.ListQuotasResponse:
+        """
+        @summary Queries quotas.
+        
+        @param request: ListQuotasRequest
+        @return: ListQuotasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_quotas_with_options(request, headers, runtime)
@@ -2221,6 +2887,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.ListQuotasRequest,
     ) -> max_compute_20220104_models.ListQuotasResponse:
+        """
+        @summary Queries quotas.
+        
+        @param request: ListQuotasRequest
+        @return: ListQuotasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_quotas_with_options_async(request, headers, runtime)
@@ -2232,6 +2904,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListQuotasPlansResponse:
+        """
+        @summary Obtains quota plans.
+        
+        @param request: ListQuotasPlansRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotasPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -2265,6 +2945,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListQuotasPlansResponse:
+        """
+        @summary Obtains quota plans.
+        
+        @param request: ListQuotasPlansRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotasPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -2296,6 +2984,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.ListQuotasPlansRequest,
     ) -> max_compute_20220104_models.ListQuotasPlansResponse:
+        """
+        @summary Obtains quota plans.
+        
+        @param request: ListQuotasPlansRequest
+        @return: ListQuotasPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_quotas_plans_with_options(nickname, request, headers, runtime)
@@ -2305,6 +2999,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.ListQuotasPlansRequest,
     ) -> max_compute_20220104_models.ListQuotasPlansResponse:
+        """
+        @summary Obtains quota plans.
+        
+        @param request: ListQuotasPlansRequest
+        @return: ListQuotasPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_quotas_plans_with_options_async(nickname, request, headers, runtime)
@@ -2316,6 +3016,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListResourcesResponse:
+        """
+        @summary Obtains resources in a MaxCompute project.
+        
+        @param request: ListResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -2353,6 +3061,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListResourcesResponse:
+        """
+        @summary Obtains resources in a MaxCompute project.
+        
+        @param request: ListResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -2388,6 +3104,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.ListResourcesRequest,
     ) -> max_compute_20220104_models.ListResourcesResponse:
+        """
+        @summary Obtains resources in a MaxCompute project.
+        
+        @param request: ListResourcesRequest
+        @return: ListResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_resources_with_options(project_name, request, headers, runtime)
@@ -2397,6 +3119,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.ListResourcesRequest,
     ) -> max_compute_20220104_models.ListResourcesResponse:
+        """
+        @summary Obtains resources in a MaxCompute project.
+        
+        @param request: ListResourcesRequest
+        @return: ListResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_resources_with_options_async(project_name, request, headers, runtime)
@@ -2407,6 +3135,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListRolesResponse:
+        """
+        @summary Obtains MaxCompute project-level roles.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRolesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2432,6 +3167,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListRolesResponse:
+        """
+        @summary Obtains MaxCompute project-level roles.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRolesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2455,6 +3197,11 @@ class Client(OpenApiClient):
         self,
         project_name: str,
     ) -> max_compute_20220104_models.ListRolesResponse:
+        """
+        @summary Obtains MaxCompute project-level roles.
+        
+        @return: ListRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_roles_with_options(project_name, headers, runtime)
@@ -2463,6 +3210,11 @@ class Client(OpenApiClient):
         self,
         project_name: str,
     ) -> max_compute_20220104_models.ListRolesResponse:
+        """
+        @summary Obtains MaxCompute project-level roles.
+        
+        @return: ListRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_roles_with_options_async(project_name, headers, runtime)
@@ -2474,6 +3226,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListTablesResponse:
+        """
+        @summary Obtains tables in a MaxCompute project.
+        
+        @param request: ListTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -2513,6 +3273,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListTablesResponse:
+        """
+        @summary Obtains tables in a MaxCompute project.
+        
+        @param request: ListTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.marker):
@@ -2550,6 +3318,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.ListTablesRequest,
     ) -> max_compute_20220104_models.ListTablesResponse:
+        """
+        @summary Obtains tables in a MaxCompute project.
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tables_with_options(project_name, request, headers, runtime)
@@ -2559,6 +3333,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.ListTablesRequest,
     ) -> max_compute_20220104_models.ListTablesResponse:
+        """
+        @summary Obtains tables in a MaxCompute project.
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tables_with_options_async(project_name, request, headers, runtime)
@@ -2569,6 +3349,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListUsersResponse:
+        """
+        @summary Queries a list of all users under a tenant.
+        
+        @param request: ListUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2601,6 +3389,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListUsersResponse:
+        """
+        @summary Queries a list of all users under a tenant.
+        
+        @param request: ListUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2631,6 +3427,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.ListUsersRequest,
     ) -> max_compute_20220104_models.ListUsersResponse:
+        """
+        @summary Queries a list of all users under a tenant.
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_users_with_options(request, headers, runtime)
@@ -2639,6 +3441,12 @@ class Client(OpenApiClient):
         self,
         request: max_compute_20220104_models.ListUsersRequest,
     ) -> max_compute_20220104_models.ListUsersResponse:
+        """
+        @summary Queries a list of all users under a tenant.
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_users_with_options_async(request, headers, runtime)
@@ -2650,6 +3458,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListUsersByRoleResponse:
+        """
+        @summary Obtains information about the users who are assigned a project-level role.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersByRoleResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2676,6 +3491,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.ListUsersByRoleResponse:
+        """
+        @summary Obtains information about the users who are assigned a project-level role.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersByRoleResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2700,6 +3522,11 @@ class Client(OpenApiClient):
         project_name: str,
         role_name: str,
     ) -> max_compute_20220104_models.ListUsersByRoleResponse:
+        """
+        @summary Obtains information about the users who are assigned a project-level role.
+        
+        @return: ListUsersByRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_users_by_role_with_options(project_name, role_name, headers, runtime)
@@ -2709,6 +3536,11 @@ class Client(OpenApiClient):
         project_name: str,
         role_name: str,
     ) -> max_compute_20220104_models.ListUsersByRoleResponse:
+        """
+        @summary Obtains information about the users who are assigned a project-level role.
+        
+        @return: ListUsersByRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_users_by_role_with_options_async(project_name, role_name, headers, runtime)
@@ -2721,6 +3553,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdatePackageResponse:
+        """
+        @summary Updates the objects in a package and projects in which the package can be installed.
+        
+        @param request: UpdatePackageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePackageResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -2750,6 +3590,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdatePackageResponse:
+        """
+        @summary Updates the objects in a package and projects in which the package can be installed.
+        
+        @param request: UpdatePackageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePackageResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -2777,6 +3625,12 @@ class Client(OpenApiClient):
         package_name: str,
         request: max_compute_20220104_models.UpdatePackageRequest,
     ) -> max_compute_20220104_models.UpdatePackageResponse:
+        """
+        @summary Updates the objects in a package and projects in which the package can be installed.
+        
+        @param request: UpdatePackageRequest
+        @return: UpdatePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_package_with_options(project_name, package_name, request, headers, runtime)
@@ -2787,6 +3641,12 @@ class Client(OpenApiClient):
         package_name: str,
         request: max_compute_20220104_models.UpdatePackageRequest,
     ) -> max_compute_20220104_models.UpdatePackageResponse:
+        """
+        @summary Updates the objects in a package and projects in which the package can be installed.
+        
+        @param request: UpdatePackageRequest
+        @return: UpdatePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_package_with_options_async(project_name, package_name, request, headers, runtime)
@@ -2798,6 +3658,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdateProjectIpWhiteListResponse:
+        """
+        @summary Modifies the IP address whitelist of a MaxCompute project.
+        
+        @param request: UpdateProjectIpWhiteListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectIpWhiteListResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -2826,6 +3694,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdateProjectIpWhiteListResponse:
+        """
+        @summary Modifies the IP address whitelist of a MaxCompute project.
+        
+        @param request: UpdateProjectIpWhiteListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectIpWhiteListResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -2852,6 +3728,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.UpdateProjectIpWhiteListRequest,
     ) -> max_compute_20220104_models.UpdateProjectIpWhiteListResponse:
+        """
+        @summary Modifies the IP address whitelist of a MaxCompute project.
+        
+        @param request: UpdateProjectIpWhiteListRequest
+        @return: UpdateProjectIpWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_project_ip_white_list_with_options(project_name, request, headers, runtime)
@@ -2861,6 +3743,12 @@ class Client(OpenApiClient):
         project_name: str,
         request: max_compute_20220104_models.UpdateProjectIpWhiteListRequest,
     ) -> max_compute_20220104_models.UpdateProjectIpWhiteListResponse:
+        """
+        @summary Modifies the IP address whitelist of a MaxCompute project.
+        
+        @param request: UpdateProjectIpWhiteListRequest
+        @return: UpdateProjectIpWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_ip_white_list_with_options_async(project_name, request, headers, runtime)
@@ -2872,6 +3760,14 @@ class Client(OpenApiClient):
         headers: max_compute_20220104_models.UpdateQuotaHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdateQuotaResponse:
+        """
+        @summary Updates a quota.
+        
+        @param request: UpdateQuotaRequest
+        @param headers: UpdateQuotaHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -2911,6 +3807,14 @@ class Client(OpenApiClient):
         headers: max_compute_20220104_models.UpdateQuotaHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdateQuotaResponse:
+        """
+        @summary Updates a quota.
+        
+        @param request: UpdateQuotaRequest
+        @param headers: UpdateQuotaHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -2948,6 +3852,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.UpdateQuotaRequest,
     ) -> max_compute_20220104_models.UpdateQuotaResponse:
+        """
+        @summary Updates a quota.
+        
+        @param request: UpdateQuotaRequest
+        @return: UpdateQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = max_compute_20220104_models.UpdateQuotaHeaders()
         return self.update_quota_with_options(nickname, request, headers, runtime)
@@ -2957,6 +3867,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.UpdateQuotaRequest,
     ) -> max_compute_20220104_models.UpdateQuotaResponse:
+        """
+        @summary Updates a quota.
+        
+        @param request: UpdateQuotaRequest
+        @return: UpdateQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = max_compute_20220104_models.UpdateQuotaHeaders()
         return await self.update_quota_with_options_async(nickname, request, headers, runtime)
@@ -2969,6 +3885,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdateQuotaPlanResponse:
+        """
+        @summary Updates a quota plan.
+        
+        @param request: UpdateQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -3004,6 +3928,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdateQuotaPlanResponse:
+        """
+        @summary Updates a quota plan.
+        
+        @param request: UpdateQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -3037,6 +3969,12 @@ class Client(OpenApiClient):
         plan_name: str,
         request: max_compute_20220104_models.UpdateQuotaPlanRequest,
     ) -> max_compute_20220104_models.UpdateQuotaPlanResponse:
+        """
+        @summary Updates a quota plan.
+        
+        @param request: UpdateQuotaPlanRequest
+        @return: UpdateQuotaPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_quota_plan_with_options(nickname, plan_name, request, headers, runtime)
@@ -3047,6 +3985,12 @@ class Client(OpenApiClient):
         plan_name: str,
         request: max_compute_20220104_models.UpdateQuotaPlanRequest,
     ) -> max_compute_20220104_models.UpdateQuotaPlanResponse:
+        """
+        @summary Updates a quota plan.
+        
+        @param request: UpdateQuotaPlanRequest
+        @return: UpdateQuotaPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_quota_plan_with_options_async(nickname, plan_name, request, headers, runtime)
@@ -3058,6 +4002,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdateQuotaScheduleResponse:
+        """
+        @summary Updates the scheduling plan for a quota plan.
+        
+        @param request: UpdateQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -3092,6 +4044,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.UpdateQuotaScheduleResponse:
+        """
+        @summary Updates the scheduling plan for a quota plan.
+        
+        @param request: UpdateQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region):
@@ -3124,6 +4084,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.UpdateQuotaScheduleRequest,
     ) -> max_compute_20220104_models.UpdateQuotaScheduleResponse:
+        """
+        @summary Updates the scheduling plan for a quota plan.
+        
+        @param request: UpdateQuotaScheduleRequest
+        @return: UpdateQuotaScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_quota_schedule_with_options(nickname, request, headers, runtime)
@@ -3133,6 +4099,12 @@ class Client(OpenApiClient):
         nickname: str,
         request: max_compute_20220104_models.UpdateQuotaScheduleRequest,
     ) -> max_compute_20220104_models.UpdateQuotaScheduleResponse:
+        """
+        @summary Updates the scheduling plan for a quota plan.
+        
+        @param request: UpdateQuotaScheduleRequest
+        @return: UpdateQuotaScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_quota_schedule_with_options_async(nickname, request, headers, runtime)

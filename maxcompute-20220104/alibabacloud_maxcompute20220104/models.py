@@ -460,7 +460,7 @@ class CreateRoleRequest(TeaModel):
         self,
         body: str = None,
     ):
-        # The request body parameters. For valid values, see [MaxCompute permissions](~~27935~~).
+        # The request body parameters. For valid values, see [MaxCompute permissions](https://help.aliyun.com/document_detail/27935.html).
         self.body = body
 
     def validate(self):
@@ -680,6 +680,8 @@ class GetJobResourceUsageRequest(TeaModel):
         quota_nickname_list: List[str] = None,
     ):
         # The date that is accurate to the day part for the query. The date must be in the yyyy-MM-dd format.
+        # 
+        # This parameter is required.
         self.date = date
         # The list of job executors.
         self.job_owner_list = job_owner_list
@@ -736,6 +738,8 @@ class GetJobResourceUsageShrinkRequest(TeaModel):
         quota_nickname_list_shrink: str = None,
     ):
         # The date that is accurate to the day part for the query. The date must be in the yyyy-MM-dd format.
+        # 
+        # This parameter is required.
         self.date = date
         # The list of job executors.
         self.job_owner_list_shrink = job_owner_list_shrink
@@ -1622,6 +1626,336 @@ class GetProjectResponseBodyDataPropertiesTableLifecycle(TeaModel):
         return self
 
 
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan(TeaModel):
+    def __init__(
+        self,
+        condition_code: str = None,
+        value: int = None,
+    ):
+        self.condition_code = condition_code
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_code is not None:
+            result['conditionCode'] = self.condition_code
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conditionCode') is not None:
+            self.condition_code = m.get('conditionCode')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan(TeaModel):
+    def __init__(
+        self,
+        condition_code: str = None,
+        value: int = None,
+    ):
+        self.condition_code = condition_code
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_code is not None:
+            result['conditionCode'] = self.condition_code
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conditionCode') is not None:
+            self.condition_code = m.get('conditionCode')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan(TeaModel):
+    def __init__(
+        self,
+        condition_code: str = None,
+        value: int = None,
+    ):
+        self.condition_code = condition_code
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_code is not None:
+            result['conditionCode'] = self.condition_code
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conditionCode') is not None:
+            self.condition_code = m.get('conditionCode')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm(TeaModel):
+    def __init__(
+        self,
+        days_after_last_access_greater_than: GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan = None,
+        days_after_last_modification_greater_than: GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan = None,
+        days_after_last_tier_modification_greater_than: GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan = None,
+    ):
+        self.days_after_last_access_greater_than = days_after_last_access_greater_than
+        self.days_after_last_modification_greater_than = days_after_last_modification_greater_than
+        self.days_after_last_tier_modification_greater_than = days_after_last_tier_modification_greater_than
+
+    def validate(self):
+        if self.days_after_last_access_greater_than:
+            self.days_after_last_access_greater_than.validate()
+        if self.days_after_last_modification_greater_than:
+            self.days_after_last_modification_greater_than.validate()
+        if self.days_after_last_tier_modification_greater_than:
+            self.days_after_last_tier_modification_greater_than.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.days_after_last_access_greater_than is not None:
+            result['daysAfterLastAccessGreaterThan'] = self.days_after_last_access_greater_than.to_map()
+        if self.days_after_last_modification_greater_than is not None:
+            result['daysAfterLastModificationGreaterThan'] = self.days_after_last_modification_greater_than.to_map()
+        if self.days_after_last_tier_modification_greater_than is not None:
+            result['daysAfterLastTierModificationGreaterThan'] = self.days_after_last_tier_modification_greater_than.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('daysAfterLastAccessGreaterThan') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan()
+            self.days_after_last_access_greater_than = temp_model.from_map(m['daysAfterLastAccessGreaterThan'])
+        if m.get('daysAfterLastModificationGreaterThan') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan()
+            self.days_after_last_modification_greater_than = temp_model.from_map(m['daysAfterLastModificationGreaterThan'])
+        if m.get('daysAfterLastTierModificationGreaterThan') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan()
+            self.days_after_last_tier_modification_greater_than = temp_model.from_map(m['daysAfterLastTierModificationGreaterThan'])
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan(TeaModel):
+    def __init__(
+        self,
+        condition_code: str = None,
+        value: int = None,
+    ):
+        self.condition_code = condition_code
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_code is not None:
+            result['conditionCode'] = self.condition_code
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conditionCode') is not None:
+            self.condition_code = m.get('conditionCode')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan(TeaModel):
+    def __init__(
+        self,
+        condition_code: str = None,
+        value: int = None,
+    ):
+        self.condition_code = condition_code
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_code is not None:
+            result['conditionCode'] = self.condition_code
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conditionCode') is not None:
+            self.condition_code = m.get('conditionCode')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan(TeaModel):
+    def __init__(
+        self,
+        condition_code: str = None,
+        value: int = None,
+    ):
+        self.condition_code = condition_code
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition_code is not None:
+            result['conditionCode'] = self.condition_code
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conditionCode') is not None:
+            self.condition_code = m.get('conditionCode')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency(TeaModel):
+    def __init__(
+        self,
+        days_after_last_access_greater_than: GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan = None,
+        days_after_last_modification_greater_than: GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan = None,
+        days_after_last_tier_modification_greater_than: GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan = None,
+    ):
+        self.days_after_last_access_greater_than = days_after_last_access_greater_than
+        self.days_after_last_modification_greater_than = days_after_last_modification_greater_than
+        self.days_after_last_tier_modification_greater_than = days_after_last_tier_modification_greater_than
+
+    def validate(self):
+        if self.days_after_last_access_greater_than:
+            self.days_after_last_access_greater_than.validate()
+        if self.days_after_last_modification_greater_than:
+            self.days_after_last_modification_greater_than.validate()
+        if self.days_after_last_tier_modification_greater_than:
+            self.days_after_last_tier_modification_greater_than.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.days_after_last_access_greater_than is not None:
+            result['daysAfterLastAccessGreaterThan'] = self.days_after_last_access_greater_than.to_map()
+        if self.days_after_last_modification_greater_than is not None:
+            result['daysAfterLastModificationGreaterThan'] = self.days_after_last_modification_greater_than.to_map()
+        if self.days_after_last_tier_modification_greater_than is not None:
+            result['daysAfterLastTierModificationGreaterThan'] = self.days_after_last_tier_modification_greater_than.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('daysAfterLastAccessGreaterThan') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan()
+            self.days_after_last_access_greater_than = temp_model.from_map(m['daysAfterLastAccessGreaterThan'])
+        if m.get('daysAfterLastModificationGreaterThan') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan()
+            self.days_after_last_modification_greater_than = temp_model.from_map(m['daysAfterLastModificationGreaterThan'])
+        if m.get('daysAfterLastTierModificationGreaterThan') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan()
+            self.days_after_last_tier_modification_greater_than = temp_model.from_map(m['daysAfterLastTierModificationGreaterThan'])
+        return self
+
+
+class GetProjectResponseBodyDataPropertiesTableLifecycleConfig(TeaModel):
+    def __init__(
+        self,
+        tier_to_longterm: GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm = None,
+        tier_to_low_frequency: GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency = None,
+    ):
+        self.tier_to_longterm = tier_to_longterm
+        self.tier_to_low_frequency = tier_to_low_frequency
+
+    def validate(self):
+        if self.tier_to_longterm:
+            self.tier_to_longterm.validate()
+        if self.tier_to_low_frequency:
+            self.tier_to_low_frequency.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tier_to_longterm is not None:
+            result['TierToLongterm'] = self.tier_to_longterm.to_map()
+        if self.tier_to_low_frequency is not None:
+            result['TierToLowFrequency'] = self.tier_to_low_frequency.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TierToLongterm') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm()
+            self.tier_to_longterm = temp_model.from_map(m['TierToLongterm'])
+        if m.get('TierToLowFrequency') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency()
+            self.tier_to_low_frequency = temp_model.from_map(m['TierToLowFrequency'])
+        return self
+
+
 class GetProjectResponseBodyDataProperties(TeaModel):
     def __init__(
         self,
@@ -1629,6 +1963,7 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         elder_tunnel_quota: str = None,
         enable_decimal_2: bool = None,
         enable_fdc_cache_force: bool = None,
+        enable_tiered_storage: bool = None,
         enable_tunnel_quota_route: bool = None,
         encryption: GetProjectResponseBodyDataPropertiesEncryption = None,
         fdc_quota: str = None,
@@ -1636,6 +1971,7 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         sql_metering_max: str = None,
         storage_tier_info: GetProjectResponseBodyDataPropertiesStorageTierInfo = None,
         table_lifecycle: GetProjectResponseBodyDataPropertiesTableLifecycle = None,
+        table_lifecycle_config: GetProjectResponseBodyDataPropertiesTableLifecycleConfig = None,
         timezone: str = None,
         tunnel_quota: str = None,
         type_system: str = None,
@@ -1647,6 +1983,7 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         # Indicates whether the DECIMAL data type in MaxCompute V2.0 is enabled.
         self.enable_decimal_2 = enable_decimal_2
         self.enable_fdc_cache_force = enable_fdc_cache_force
+        self.enable_tiered_storage = enable_tiered_storage
         # Indicates whether tunnel quota routing is enabled.
         self.enable_tunnel_quota_route = enable_tunnel_quota_route
         # The encryption information.
@@ -1660,6 +1997,7 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         self.storage_tier_info = storage_tier_info
         # The lifecycle of the table in the project.
         self.table_lifecycle = table_lifecycle
+        self.table_lifecycle_config = table_lifecycle_config
         # The time zone of the project.
         self.timezone = timezone
         # The name of the tunnel quota.
@@ -1674,6 +2012,8 @@ class GetProjectResponseBodyDataProperties(TeaModel):
             self.storage_tier_info.validate()
         if self.table_lifecycle:
             self.table_lifecycle.validate()
+        if self.table_lifecycle_config:
+            self.table_lifecycle_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1689,6 +2029,8 @@ class GetProjectResponseBodyDataProperties(TeaModel):
             result['enableDecimal2'] = self.enable_decimal_2
         if self.enable_fdc_cache_force is not None:
             result['enableFdcCacheForce'] = self.enable_fdc_cache_force
+        if self.enable_tiered_storage is not None:
+            result['enableTieredStorage'] = self.enable_tiered_storage
         if self.enable_tunnel_quota_route is not None:
             result['enableTunnelQuotaRoute'] = self.enable_tunnel_quota_route
         if self.encryption is not None:
@@ -1703,6 +2045,8 @@ class GetProjectResponseBodyDataProperties(TeaModel):
             result['storageTierInfo'] = self.storage_tier_info.to_map()
         if self.table_lifecycle is not None:
             result['tableLifecycle'] = self.table_lifecycle.to_map()
+        if self.table_lifecycle_config is not None:
+            result['tableLifecycleConfig'] = self.table_lifecycle_config.to_map()
         if self.timezone is not None:
             result['timezone'] = self.timezone
         if self.tunnel_quota is not None:
@@ -1721,6 +2065,8 @@ class GetProjectResponseBodyDataProperties(TeaModel):
             self.enable_decimal_2 = m.get('enableDecimal2')
         if m.get('enableFdcCacheForce') is not None:
             self.enable_fdc_cache_force = m.get('enableFdcCacheForce')
+        if m.get('enableTieredStorage') is not None:
+            self.enable_tiered_storage = m.get('enableTieredStorage')
         if m.get('enableTunnelQuotaRoute') is not None:
             self.enable_tunnel_quota_route = m.get('enableTunnelQuotaRoute')
         if m.get('encryption') is not None:
@@ -1738,6 +2084,9 @@ class GetProjectResponseBodyDataProperties(TeaModel):
         if m.get('tableLifecycle') is not None:
             temp_model = GetProjectResponseBodyDataPropertiesTableLifecycle()
             self.table_lifecycle = temp_model.from_map(m['tableLifecycle'])
+        if m.get('tableLifecycleConfig') is not None:
+            temp_model = GetProjectResponseBodyDataPropertiesTableLifecycleConfig()
+            self.table_lifecycle_config = temp_model.from_map(m['tableLifecycleConfig'])
         if m.get('timezone') is not None:
             self.timezone = m.get('timezone')
         if m.get('tunnelQuota') is not None:
@@ -4892,8 +5241,12 @@ class GetRoleAclOnObjectRequest(TeaModel):
         object_type: str = None,
     ):
         # The name of the object.
+        # 
+        # This parameter is required.
         self.object_name = object_name
         # The type of the object.
+        # 
+        # This parameter is required.
         self.object_type = object_type
 
     def validate(self):
@@ -5123,6 +5476,8 @@ class GetRunningJobsRequest(TeaModel):
         # 
         # *   The time range that is specified by the **from** and **to** request parameters is a closed interval. The start time and end time are included in the range. If the value of **from** is the same as the value of **to**, the time range is invalid, and a null value is returned.
         # *   The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The list of job executors.
         self.job_owner_list = job_owner_list
@@ -5136,6 +5491,8 @@ class GetRunningJobsRequest(TeaModel):
         # 
         # *   The time interval that is specified by the **from** and **to** request parameters is a closed interval. The start time and end time are included in the interval. If the value of **from** is the same as the value of **to**, the interval is invalid, and a null value is returned.
         # *   The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.to = to
 
     def validate(self):
@@ -5192,6 +5549,8 @@ class GetRunningJobsShrinkRequest(TeaModel):
         # 
         # *   The time range that is specified by the **from** and **to** request parameters is a closed interval. The start time and end time are included in the range. If the value of **from** is the same as the value of **to**, the time range is invalid, and a null value is returned.
         # *   The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The list of job executors.
         self.job_owner_list_shrink = job_owner_list_shrink
@@ -5205,6 +5564,8 @@ class GetRunningJobsShrinkRequest(TeaModel):
         # 
         # *   The time interval that is specified by the **from** and **to** request parameters is a closed interval. The start time and end time are included in the interval. If the value of **from** is the same as the value of **to**, the interval is invalid, and a null value is returned.
         # *   The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.to = to
 
     def validate(self):

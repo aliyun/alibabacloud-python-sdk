@@ -1,3 +1,7 @@
+2024-06-24 Version: 2.3.1
+- Update API GetProject: update response param.
+
+
 2024-04-17 Version: 2.3.0
 - Support API GetTableInfo.
 - Update API GetProject: update response param.
