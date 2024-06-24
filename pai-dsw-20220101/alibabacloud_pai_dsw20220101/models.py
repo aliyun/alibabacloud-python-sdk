@@ -523,9 +523,15 @@ class CreateInstanceRequestDatasets(TeaModel):
         self,
         dataset_id: str = None,
         mount_path: str = None,
+        option_type: str = None,
+        options: str = None,
+        uri: str = None,
     ):
         self.dataset_id = dataset_id
         self.mount_path = mount_path
+        self.option_type = option_type
+        self.options = options
+        self.uri = uri
 
     def validate(self):
         pass
@@ -540,6 +546,12 @@ class CreateInstanceRequestDatasets(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
+        if self.option_type is not None:
+            result['OptionType'] = self.option_type
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.uri is not None:
+            result['Uri'] = self.uri
         return result
 
     def from_map(self, m: dict = None):
@@ -548,6 +560,12 @@ class CreateInstanceRequestDatasets(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
+        if m.get('OptionType') is not None:
+            self.option_type = m.get('OptionType')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
         return self
 
 
@@ -1844,9 +1862,15 @@ class GetInstanceResponseBodyDatasets(TeaModel):
         self,
         dataset_id: str = None,
         mount_path: str = None,
+        option_type: str = None,
+        options: str = None,
+        uri: str = None,
     ):
         self.dataset_id = dataset_id
         self.mount_path = mount_path
+        self.option_type = option_type
+        self.options = options
+        self.uri = uri
 
     def validate(self):
         pass
@@ -1861,6 +1885,12 @@ class GetInstanceResponseBodyDatasets(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
+        if self.option_type is not None:
+            result['OptionType'] = self.option_type
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.uri is not None:
+            result['Uri'] = self.uri
         return result
 
     def from_map(self, m: dict = None):
@@ -1869,6 +1899,12 @@ class GetInstanceResponseBodyDatasets(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
+        if m.get('OptionType') is not None:
+            self.option_type = m.get('OptionType')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
         return self
 
 
@@ -6358,9 +6394,15 @@ class UpdateInstanceRequestDatasets(TeaModel):
         self,
         dataset_id: str = None,
         mount_path: str = None,
+        option_type: str = None,
+        options: str = None,
+        uri: str = None,
     ):
         self.dataset_id = dataset_id
         self.mount_path = mount_path
+        self.option_type = option_type
+        self.options = options
+        self.uri = uri
 
     def validate(self):
         pass
@@ -6375,6 +6417,12 @@ class UpdateInstanceRequestDatasets(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
+        if self.option_type is not None:
+            result['OptionType'] = self.option_type
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.uri is not None:
+            result['Uri'] = self.uri
         return result
 
     def from_map(self, m: dict = None):
@@ -6383,6 +6431,12 @@ class UpdateInstanceRequestDatasets(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
+        if m.get('OptionType') is not None:
+            self.option_type = m.get('OptionType')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
         return self
 
 

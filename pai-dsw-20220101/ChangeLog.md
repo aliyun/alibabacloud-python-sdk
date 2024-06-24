@@ -1,3 +1,9 @@
+2024-06-24 Version: 1.4.1
+- Update API CreateInstance: update param body.
+- Update API GetInstance: update response param.
+- Update API UpdateInstance: update param body.
+
+
 2024-06-07 Version: 1.4.0
 - Support API GetMetrics.
 
