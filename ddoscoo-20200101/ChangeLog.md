@@ -1,3 +1,7 @@
+2024-06-24 Version: 2.3.1
+- Update API DescribeNetworkRegionBlock: update response param.
+
+
 2024-06-20 Version: 2.3.0
 - Support API ConfigDomainSecurityProfile.
 - Support API ConfigL7UsKeepalive.

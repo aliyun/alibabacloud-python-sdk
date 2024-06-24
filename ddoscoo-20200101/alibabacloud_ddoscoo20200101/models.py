@@ -14967,8 +14967,8 @@ class DescribeNetworkRegionBlockRequest(TeaModel):
 class DescribeNetworkRegionBlockResponseBodyConfig(TeaModel):
     def __init__(
         self,
-        countries: List[str] = None,
-        provinces: List[str] = None,
+        countries: List[int] = None,
+        provinces: List[int] = None,
         region_block_switch: str = None,
     ):
         # An array consisting of the codes of the countries or areas from which the requests are blocked.
