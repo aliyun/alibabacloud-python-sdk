@@ -1,3 +1,7 @@
+2024-06-25 Version: 2.7.0
+- Support API AttachToPolicy.
+
+
 2024-06-21 Version: 2.6.0
 - Support API CreatePolicy.
 - Support API DeletePolicy.

@@ -387,6 +387,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_asset_group_to_instance_with_options_async(request, runtime)
 
+    def attach_to_policy_with_options(
+        self,
+        tmp_req: ddosbgp_20180720_models.AttachToPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.AttachToPolicyResponse:
+        """
+        @summary 策略绑定
+        
+        @param tmp_req: AttachToPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachToPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.AttachToPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_port_protocol_list):
+            request.ip_port_protocol_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_port_protocol_list, 'IpPortProtocolList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ip_port_protocol_list_shrink):
+            query['IpPortProtocolList'] = request.ip_port_protocol_list_shrink
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachToPolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.AttachToPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_to_policy_with_options_async(
+        self,
+        tmp_req: ddosbgp_20180720_models.AttachToPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddosbgp_20180720_models.AttachToPolicyResponse:
+        """
+        @summary 策略绑定
+        
+        @param tmp_req: AttachToPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachToPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ddosbgp_20180720_models.AttachToPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_port_protocol_list):
+            request.ip_port_protocol_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_port_protocol_list, 'IpPortProtocolList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ip_port_protocol_list_shrink):
+            query['IpPortProtocolList'] = request.ip_port_protocol_list_shrink
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachToPolicy',
+            version='2018-07-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddosbgp_20180720_models.AttachToPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_to_policy(
+        self,
+        request: ddosbgp_20180720_models.AttachToPolicyRequest,
+    ) -> ddosbgp_20180720_models.AttachToPolicyResponse:
+        """
+        @summary 策略绑定
+        
+        @param request: AttachToPolicyRequest
+        @return: AttachToPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_to_policy_with_options(request, runtime)
+
+    async def attach_to_policy_async(
+        self,
+        request: ddosbgp_20180720_models.AttachToPolicyRequest,
+    ) -> ddosbgp_20180720_models.AttachToPolicyResponse:
+        """
+        @summary 策略绑定
+        
+        @param request: AttachToPolicyRequest
+        @return: AttachToPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_to_policy_with_options_async(request, runtime)
+
     def check_access_log_auth_with_options(
         self,
         request: ddosbgp_20180720_models.CheckAccessLogAuthRequest,
