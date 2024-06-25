@@ -9664,7 +9664,7 @@ class GetTrafficControlTaskTrafficRequest(TeaModel):
         return self
 
 
-class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics(TeaModel):
+class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics(TeaModel):
     def __init__(
         self,
         data: List[Dict[str, Any]] = None,
@@ -9697,10 +9697,10 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTra
         return self
 
 
-class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic(TeaModel):
+class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo(TeaModel):
     def __init__(
         self,
-        target_traffics: List[GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics] = None,
+        target_traffics: List[GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics] = None,
         task_traffics: Dict[str, Any] = None,
     ):
         self.target_traffics = target_traffics
@@ -9731,7 +9731,7 @@ class GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic(TeaModel
         self.target_traffics = []
         if m.get('TargetTraffics') is not None:
             for k in m.get('TargetTraffics'):
-                temp_model = GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics()
+                temp_model = GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics()
                 self.target_traffics.append(temp_model.from_map(k))
         if m.get('TaskTraffics') is not None:
             self.task_traffics = m.get('TaskTraffics')
@@ -9742,14 +9742,14 @@ class GetTrafficControlTaskTrafficResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        traffic_control_task_traffic: GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic = None,
+        traffic_control_task_traffic_info: GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo = None,
     ):
         self.request_id = request_id
-        self.traffic_control_task_traffic = traffic_control_task_traffic
+        self.traffic_control_task_traffic_info = traffic_control_task_traffic_info
 
     def validate(self):
-        if self.traffic_control_task_traffic:
-            self.traffic_control_task_traffic.validate()
+        if self.traffic_control_task_traffic_info:
+            self.traffic_control_task_traffic_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9759,17 +9759,17 @@ class GetTrafficControlTaskTrafficResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.traffic_control_task_traffic is not None:
-            result['TrafficControlTaskTraffic'] = self.traffic_control_task_traffic.to_map()
+        if self.traffic_control_task_traffic_info is not None:
+            result['TrafficControlTaskTrafficInfo'] = self.traffic_control_task_traffic_info.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('TrafficControlTaskTraffic') is not None:
-            temp_model = GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic()
-            self.traffic_control_task_traffic = temp_model.from_map(m['TrafficControlTaskTraffic'])
+        if m.get('TrafficControlTaskTrafficInfo') is not None:
+            temp_model = GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo()
+            self.traffic_control_task_traffic_info = temp_model.from_map(m['TrafficControlTaskTrafficInfo'])
         return self
 
 
@@ -10816,12 +10816,16 @@ class ListExperimentGroupsRequest(TeaModel):
         layer_id: str = None,
         region_id: str = None,
         status: str = None,
+        time_range_end: str = None,
+        time_range_start: str = None,
     ):
         # This parameter is required.
         self.instance_id = instance_id
         self.layer_id = layer_id
         self.region_id = region_id
         self.status = status
+        self.time_range_end = time_range_end
+        self.time_range_start = time_range_start
 
     def validate(self):
         pass
@@ -10840,6 +10844,10 @@ class ListExperimentGroupsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.time_range_end is not None:
+            result['TimeRangeEnd'] = self.time_range_end
+        if self.time_range_start is not None:
+            result['TimeRangeStart'] = self.time_range_start
         return result
 
     def from_map(self, m: dict = None):
@@ -10852,6 +10860,10 @@ class ListExperimentGroupsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TimeRangeEnd') is not None:
+            self.time_range_end = m.get('TimeRangeEnd')
+        if m.get('TimeRangeStart') is not None:
+            self.time_range_start = m.get('TimeRangeStart')
         return self
 
 

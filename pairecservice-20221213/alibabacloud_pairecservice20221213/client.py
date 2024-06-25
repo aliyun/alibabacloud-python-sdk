@@ -5350,7 +5350,7 @@ class Client(OpenApiClient):
             action='GenerateTrafficControlTaskCode',
             version='2022-12-13',
             protocol='HTTPS',
-            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/code',
+            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/generatecode',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5389,7 +5389,7 @@ class Client(OpenApiClient):
             action='GenerateTrafficControlTaskCode',
             version='2022-12-13',
             protocol='HTTPS',
-            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/code',
+            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/generatecode',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5458,7 +5458,7 @@ class Client(OpenApiClient):
             action='GenerateTrafficControlTaskConfig',
             version='2022-12-13',
             protocol='HTTPS',
-            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/config',
+            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/generateconfig',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5497,7 +5497,7 @@ class Client(OpenApiClient):
             action='GenerateTrafficControlTaskConfig',
             version='2022-12-13',
             protocol='HTTPS',
-            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/config',
+            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/generateconfig',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7490,7 +7490,7 @@ class Client(OpenApiClient):
             action='GetTrafficControlTaskTraffic',
             version='2022-12-13',
             protocol='HTTPS',
-            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/traffic',
+            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/trafficinfo',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7531,7 +7531,7 @@ class Client(OpenApiClient):
             action='GetTrafficControlTaskTraffic',
             version='2022-12-13',
             protocol='HTTPS',
-            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/action/traffic',
+            pathname=f'/api/v1/trafficcontroltasks/{OpenApiUtilClient.get_encode_param(traffic_control_task_id)}/trafficinfo',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8189,6 +8189,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.time_range_end):
+            query['TimeRangeEnd'] = request.time_range_end
+        if not UtilClient.is_unset(request.time_range_start):
+            query['TimeRangeStart'] = request.time_range_start
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -8233,6 +8237,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.time_range_end):
+            query['TimeRangeEnd'] = request.time_range_end
+        if not UtilClient.is_unset(request.time_range_start):
+            query['TimeRangeStart'] = request.time_range_start
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -9982,7 +9990,7 @@ class Client(OpenApiClient):
             action='ListTrafficControlTargetTrafficHistory',
             version='2022-12-13',
             protocol='HTTPS',
-            pathname=f'/api/v1/trafficcontroltargets/{OpenApiUtilClient.get_encode_param(traffic_control_target_id)}/action/traffichistory',
+            pathname=f'/api/v1/trafficcontroltargets/{OpenApiUtilClient.get_encode_param(traffic_control_target_id)}/traffichistories',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -10035,7 +10043,7 @@ class Client(OpenApiClient):
             action='ListTrafficControlTargetTrafficHistory',
             version='2022-12-13',
             protocol='HTTPS',
-            pathname=f'/api/v1/trafficcontroltargets/{OpenApiUtilClient.get_encode_param(traffic_control_target_id)}/action/traffichistory',
+            pathname=f'/api/v1/trafficcontroltargets/{OpenApiUtilClient.get_encode_param(traffic_control_target_id)}/traffichistories',
             method='GET',
             auth_type='AK',
             style='ROA',

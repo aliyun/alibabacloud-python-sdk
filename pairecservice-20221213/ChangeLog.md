@@ -1,3 +1,9 @@
+2024-06-25 Version: 2.0.0
+- Update API GetTrafficControlTaskTraffic: update response param.
+- Update API ListExperimentGroups: add param TimeRangeEnd.
+- Update API ListExperimentGroups: add param TimeRangeStart.
+
+
 2024-06-07 Version: 1.5.0
 - Support API CloneTrafficControlTask.
 - Support API CreateTrafficControlTarget.
