@@ -1,3 +1,11 @@
+2024-06-25 Version: 3.1.0
+- Support API DescribeHdMonitorRegionConfig.
+- Support API SetHdMonitorRegionConfig.
+- Update API CreateServerGroup: update param HealthCheckConfig.
+- Update API ListServerGroups: update response param.
+- Update API UpdateServerGroupAttribute: update param HealthCheckConfig.
+
+
 2024-02-04 Version: 3.0.2
 - Update API CreateListenerupdate IdleTimeout param.
 - Update API CreateLoadBalancerupdate ZoneMappings param.

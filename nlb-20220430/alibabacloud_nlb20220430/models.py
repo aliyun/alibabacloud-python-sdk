@@ -16,7 +16,7 @@ class AddServersToServerGroupRequestServers(TeaModel):
     ):
         # The description of the servers.
         # 
-        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         # 
         # >  You can specify at most 40 servers in each call.
         self.description = description
@@ -28,6 +28,8 @@ class AddServersToServerGroupRequestServers(TeaModel):
         # 
         # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
         # *   If the server group type is **Ip**, set the ServerId parameter to an IP address.
+        # 
+        # This parameter is required.
         self.server_id = server_id
         # The IP address of the server. If the server group type is **Ip**, set the ServerId parameter to an IP address.
         # 
@@ -41,6 +43,8 @@ class AddServersToServerGroupRequestServers(TeaModel):
         # *   **Ip**: an IP address
         # 
         # >  You can specify at most 40 servers in each call.
+        # 
+        # This parameter is required.
         self.server_type = server_type
         # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
         # 
@@ -109,11 +113,15 @@ class AddServersToServerGroupRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the server group.
+        # 
+        # This parameter is required.
         self.server_group_id = server_group_id
         # A list of backend servers.
+        # 
+        # This parameter is required.
         self.servers = servers
 
     def validate(self):
@@ -253,6 +261,8 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
         region_id: str = None,
     ):
         # The additional certificates. You can associate up to 15 additional certificates with a listener in each request.
+        # 
+        # This parameter is required.
         self.additional_certificate_ids = additional_certificate_ids
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -266,10 +276,12 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The region ID of the Network Load Balancer (NLB) instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -394,6 +406,8 @@ class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the EIP bandwidth plan.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -407,10 +421,12 @@ class AttachCommonBandwidthPackageToLoadBalancerRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -532,12 +548,16 @@ class CancelShiftLoadBalancerZonesRequestZoneMappings(TeaModel):
         zone_id: str = None,
     ):
         # The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The zone ID of the NLB instance.
         # 
         # > You can add at most one zone in each call.
         # 
-        # You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -585,14 +605,18 @@ class CancelShiftLoadBalancerZonesRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The NLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The mappings between zones and vSwitches.
         # 
         # > You can add at most one zone in each call.
+        # 
+        # This parameter is required.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -873,15 +897,21 @@ class CreateListenerRequest(TeaModel):
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
-        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
         # The listener port. Valid values: **0** to **65535**.
         # 
         # If you set the value to **0**, the listener listens by port range. If you set the value to **0**, you must specify **StartPort** and **EndPort**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The listener protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+        # 
+        # This parameter is required.
         self.listener_protocol = listener_protocol
         # The ID of the Network Load Balancer (NLB) instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The maximum size of a TCP segment. Unit: bytes. Valid values: **0** to **1500**. **0** specifies that the maximum segment size remains unchanged.
         # 
@@ -896,7 +926,7 @@ class CreateListenerRequest(TeaModel):
         self.proxy_protocol_v2config = proxy_protocol_v2config
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # Specifies whether to enable fine-grained monitoring. Valid values:
         # 
@@ -905,11 +935,13 @@ class CreateListenerRequest(TeaModel):
         self.sec_sensor_enabled = sec_sensor_enabled
         # The security policy ID. System security policies and custom security policies are supported.
         # 
-        # Valid values: **tls_cipher_policy\_1\_0** (default), **tls_cipher_policy\_1\_1**, **tls_cipher_policy\_1\_2**, **tls_cipher_policy\_1\_2\_strict**, and **tls_cipher_policy\_1\_2\_strict_with\_1\_3**.
+        # Valid values: **tls_cipher_policy_1_0** (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
         # 
         # > This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
         # The server group ID.
+        # 
+        # This parameter is required.
         self.server_group_id = server_group_id
         # The first port in the listener port range. Valid values: **0** to **65535**.
         # 
@@ -1151,15 +1183,21 @@ class CreateListenerShrinkRequest(TeaModel):
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
-        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
         # The listener port. Valid values: **0** to **65535**.
         # 
         # If you set the value to **0**, the listener listens by port range. If you set the value to **0**, you must specify **StartPort** and **EndPort**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The listener protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+        # 
+        # This parameter is required.
         self.listener_protocol = listener_protocol
         # The ID of the Network Load Balancer (NLB) instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The maximum size of a TCP segment. Unit: bytes. Valid values: **0** to **1500**. **0** specifies that the maximum segment size remains unchanged.
         # 
@@ -1174,7 +1212,7 @@ class CreateListenerShrinkRequest(TeaModel):
         self.proxy_protocol_v2config_shrink = proxy_protocol_v2config_shrink
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # Specifies whether to enable fine-grained monitoring. Valid values:
         # 
@@ -1183,11 +1221,13 @@ class CreateListenerShrinkRequest(TeaModel):
         self.sec_sensor_enabled = sec_sensor_enabled
         # The security policy ID. System security policies and custom security policies are supported.
         # 
-        # Valid values: **tls_cipher_policy\_1\_0** (default), **tls_cipher_policy\_1\_1**, **tls_cipher_policy\_1\_2**, **tls_cipher_policy\_1\_2\_strict**, and **tls_cipher_policy\_1\_2\_strict_with\_1\_3**.
+        # Valid values: **tls_cipher_policy_1_0** (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
         # 
         # > This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
         # The server group ID.
+        # 
+        # This parameter is required.
         self.server_group_id = server_group_id
         # The first port in the listener port range. Valid values: **0** to **65535**.
         # 
@@ -1406,7 +1446,7 @@ class CreateLoadBalancerRequestDeletionProtectionConfig(TeaModel):
         # *   **true**: yes
         # *   **false** (default): no
         self.enabled = enabled
-        # The reason why the deletion protection feature is enabled or disabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+        # The reason why the deletion protection feature is enabled or disabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
         self.reason = reason
 
     def validate(self):
@@ -1469,7 +1509,7 @@ class CreateLoadBalancerRequestModificationProtectionConfig(TeaModel):
         reason: str = None,
         status: str = None,
     ):
-        # The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+        # The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
         # 
         # >  This parameter takes effect only if the **Status** parameter is set to **ConsoleProtection**.
         self.reason = reason
@@ -1563,10 +1603,14 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
         # The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
         self.private_ipv_4address = private_ipv_4address
         # The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
         # 
-        # You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1642,7 +1686,9 @@ class CreateLoadBalancerRequest(TeaModel):
         # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
         # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
         # 
-        # >  To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](~~445878~~) operation.
+        # >  To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://help.aliyun.com/document_detail/445878.html) operation.
+        # 
+        # This parameter is required.
         self.address_type = address_type
         # The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
         self.bandwidth_package_id = bandwidth_package_id
@@ -1663,7 +1709,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.load_balancer_billing_config = load_balancer_billing_config
         # The name of the NLB instance.
         # 
-        # The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+        # The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
         self.load_balancer_name = load_balancer_name
         # The type of the instance. Set the value to **network**, which specifies an NLB instance.
         self.load_balancer_type = load_balancer_type
@@ -1671,15 +1717,19 @@ class CreateLoadBalancerRequest(TeaModel):
         self.modification_protection_config = modification_protection_config
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The tags.
         self.tag = tag
         # The ID of the VPC where the NLB instance is deployed.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # The mappings between zones and vSwitches. You must add at least two zones. You can add a maximum of 10 zones.
+        # 
+        # This parameter is required.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -1954,11 +2004,13 @@ class CreateSecurityPolicyRequest(TeaModel):
         # 
         # TLS 1.3 supports the following cipher suites:
         # 
-        # *   **TLS_AES\_128\_GCM_SHA256**\
-        # *   **TLS_AES\_256\_GCM_SHA384**\
-        # *   **TLS_CHACHA20\_POLY1305\_SHA256**\
-        # *   **TLS_AES\_128\_CCM_SHA256**\
-        # *   **TLS_AES\_128\_CCM\_8\_SHA256**\
+        # *   **TLS_AES_128_GCM_SHA256**\
+        # *   **TLS_AES_256_GCM_SHA384**\
+        # *   **TLS_CHACHA20_POLY1305_SHA256**\
+        # *   **TLS_AES_128_CCM_SHA256**\
+        # *   **TLS_AES_128_CCM_8_SHA256**\
+        # 
+        # This parameter is required.
         self.ciphers = ciphers
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -1973,17 +2025,19 @@ class CreateSecurityPolicyRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The name of the security policy.
         # 
-        # The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.security_policy_name = security_policy_name
         # 标签列表。
         self.tag = tag
         # The supported versions of the Transport Layer Security (TLS) protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
+        # 
+        # This parameter is required.
         self.tls_versions = tls_versions
 
     def validate(self):
@@ -2132,8 +2186,10 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         health_check_connect_timeout: int = None,
         health_check_domain: str = None,
         health_check_enabled: bool = None,
+        health_check_exp: str = None,
         health_check_http_code: List[str] = None,
         health_check_interval: int = None,
+        health_check_req: str = None,
         health_check_type: str = None,
         health_check_url: str = None,
         healthy_threshold: int = None,
@@ -2160,7 +2216,8 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # *   **true** (default)
         # *   **false**\
         self.health_check_enabled = health_check_enabled
-        # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        self.health_check_exp = health_check_exp
+        # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx** (default), **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_http_code = health_check_http_code
@@ -2170,6 +2227,7 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # 
         # Default value: **10**.
         self.health_check_interval = health_check_interval
+        self.health_check_req = health_check_req
         # The protocol that you want to use for health checks. Valid values: **TCP** (default) and **HTTP**.
         self.health_check_type = health_check_type
         # The path to which health check requests are sent.
@@ -2212,10 +2270,14 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_enabled is not None:
             result['HealthCheckEnabled'] = self.health_check_enabled
+        if self.health_check_exp is not None:
+            result['HealthCheckExp'] = self.health_check_exp
         if self.health_check_http_code is not None:
             result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_req is not None:
+            result['HealthCheckReq'] = self.health_check_req
         if self.health_check_type is not None:
             result['HealthCheckType'] = self.health_check_type
         if self.health_check_url is not None:
@@ -2238,10 +2300,14 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckEnabled') is not None:
             self.health_check_enabled = m.get('HealthCheckEnabled')
+        if m.get('HealthCheckExp') is not None:
+            self.health_check_exp = m.get('HealthCheckExp')
         if m.get('HealthCheckHttpCode') is not None:
             self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckReq') is not None:
+            self.health_check_req = m.get('HealthCheckReq')
         if m.get('HealthCheckType') is not None:
             self.health_check_type = m.get('HealthCheckType')
         if m.get('HealthCheckUrl') is not None:
@@ -2357,7 +2423,7 @@ class CreateServerGroupRequest(TeaModel):
         self.protocol = protocol
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the server group belongs.
         self.resource_group_id = resource_group_id
@@ -2371,7 +2437,9 @@ class CreateServerGroupRequest(TeaModel):
         self.scheduler = scheduler
         # The name of the server group.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # 
+        # This parameter is required.
         self.server_group_name = server_group_name
         # The type of server group. Valid values:
         # 
@@ -2383,6 +2451,8 @@ class CreateServerGroupRequest(TeaModel):
         # The ID of the virtual private cloud (VPC) to which the server group belongs.
         # 
         # > If **ServerGroupType** is set to **Instance**, only servers in the specified VPC can be added to the server group.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2579,10 +2649,12 @@ class DeleteListenerRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the listener.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2713,10 +2785,12 @@ class DeleteLoadBalancerRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2848,9 +2922,11 @@ class DeleteSecurityPolicyRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the available regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the available regions.
         self.region_id = region_id
         # The ID of the TLS security policy.
+        # 
+        # This parameter is required.
         self.security_policy_id = security_policy_id
 
     def validate(self):
@@ -2975,9 +3051,11 @@ class DeleteServerGroupRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the server group.
+        # 
+        # This parameter is required.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -3084,6 +3162,119 @@ class DeleteServerGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteServerGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHdMonitorRegionConfigRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeHdMonitorRegionConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        log_project: str = None,
+        metric_store: str = None,
+        region_id: str = None,
+        request_id: str = None,
+    ):
+        self.log_project = log_project
+        self.metric_store = metric_store
+        self.region_id = region_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_project is not None:
+            result['LogProject'] = self.log_project
+        if self.metric_store is not None:
+            result['MetricStore'] = self.metric_store
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogProject') is not None:
+            self.log_project = m.get('LogProject')
+        if m.get('MetricStore') is not None:
+            self.metric_store = m.get('MetricStore')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeHdMonitorRegionConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHdMonitorRegionConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHdMonitorRegionConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3284,7 +3475,7 @@ class DescribeZonesRequest(TeaModel):
         # 
         # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The ID of the region to which the zone belongs. You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # The ID of the region to which the zone belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The service code. Set the value to **nlb**.
         self.service_code = service_code
@@ -3450,6 +3641,8 @@ class DetachCommonBandwidthPackageFromLoadBalancerRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the EIP bandwidth plan.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -3463,10 +3656,12 @@ class DetachCommonBandwidthPackageFromLoadBalancerRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3601,10 +3796,12 @@ class DisableLoadBalancerIpv6InternetRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3718,6 +3915,8 @@ class DisassociateAdditionalCertificatesWithListenerRequest(TeaModel):
         region_id: str = None,
     ):
         # The additional certificates. You can disassociate up to 15 additional certificates from a listener in each request.
+        # 
+        # This parameter is required.
         self.additional_certificate_ids = additional_certificate_ids
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -3731,10 +3930,12 @@ class DisassociateAdditionalCertificatesWithListenerRequest(TeaModel):
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The region ID of the Network Load Balancer (NLB) instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3869,10 +4070,12 @@ class EnableLoadBalancerIpv6InternetRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -3989,6 +4192,8 @@ class GetJobStatusRequest(TeaModel):
         # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** of each API request may be different.
         self.client_token = client_token
         # The ID of the asynchronous task.
+        # 
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -4114,10 +4319,12 @@ class GetListenerAttributeRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the listener.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The ID of the region where the Network Load Balancer (NLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4299,7 +4506,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
-        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
         # The ID of the listener.
         self.listener_id = listener_id
@@ -4342,7 +4549,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         self.sec_sensor_enabled = sec_sensor_enabled
         # The ID of the security policy. System security policies and custom security policies are supported.
         # 
-        # Valid values: **tls_cipher_policy\_1\_0**, **tls_cipher_policy\_1\_1**, **tls_cipher_policy\_1\_2**, **tls_cipher_policy\_1\_2\_strict**, and **tls_cipher_policy\_1\_2\_strict_with\_1\_3**.
+        # Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
         # 
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
@@ -4526,6 +4733,8 @@ class GetListenerHealthStatusRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the listener of the NLB instance.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
@@ -4536,7 +4745,7 @@ class GetListenerHealthStatusRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4907,10 +5116,12 @@ class GetLoadBalancerAttributeRequest(TeaModel):
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -4959,7 +5170,7 @@ class GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig(TeaModel):
         self.enabled = enabled
         # The time when the deletion protection feature was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.enabled_time = enabled_time
-        # The reason why the deletion protection feature is enabled or disabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+        # The reason why the deletion protection feature is enabled or disabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
         self.reason = reason
 
     def validate(self):
@@ -5027,7 +5238,7 @@ class GetLoadBalancerAttributeResponseBodyModificationProtectionConfig(TeaModel)
     ):
         # The time when the modification protection feature was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.enabled_time = enabled_time
-        # The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
+        # The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
         # 
         # >  This parameter takes effect only if the **Status** parameter is set to **ConsoleProtection**.
         self.reason = reason
@@ -5254,7 +5465,7 @@ class GetLoadBalancerAttributeResponseBodyZoneMappings(TeaModel):
         self.status = status
         # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
-        # The ID of the zone. You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        # The ID of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5370,7 +5581,7 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self.load_balancer_id = load_balancer_id
         # The NLB instance name.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
         # The NLB instance status. Valid values:
         # 
@@ -5604,6 +5815,8 @@ class ListListenerCertificatesRequest(TeaModel):
         # *   **Ca**: Certificate Authority Certificate
         self.cert_type = cert_type
         # The ID of the listener. Specify the ID of a listener that uses SSL over TCP.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
@@ -5614,7 +5827,7 @@ class ListListenerCertificatesRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where the Network Load Balancer (NLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -5892,7 +6105,7 @@ class ListListenersRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The tags.
         self.tag = tag
@@ -6095,7 +6308,7 @@ class ListListenersResponseBodyListeners(TeaModel):
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
-        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+        # The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
         # The listener ID.
         self.listener_id = listener_id
@@ -6477,7 +6690,7 @@ class ListLoadBalancersRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -6485,7 +6698,7 @@ class ListLoadBalancersRequest(TeaModel):
         self.tag = tag
         # The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify up to 10 VPC IDs at a time.
         self.vpc_ids = vpc_ids
-        # The name of the zone. You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        # The name of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6590,7 +6803,7 @@ class ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig(TeaMode
         self.enabled = enabled
         # The time when deletion protection was enabled. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
-        # The reason why the deletion protection feature is enabled or disabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # The reason why the deletion protection feature is enabled or disabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
         self.reason = reason
 
     def validate(self):
@@ -6658,7 +6871,7 @@ class ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig(Tea
     ):
         # The time when the configuration read-only mode was enabled. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         self.enabled_time = enabled_time
-        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
         # 
         # This parameter takes effect only if **Status** is set to **ConsoleProtection**.
         self.reason = reason
@@ -6860,7 +7073,7 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
         self.status = status
         # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
-        # The name of the zone. You can call the [DescribeZones](~~443890~~) operation to query the zones.
+        # The name of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7302,7 +7515,7 @@ class ListSecurityPolicyRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -7502,11 +7715,11 @@ class ListSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         # 
         # TLS 1.3 supports the following cipher suites:
         # 
-        # *   **TLS_AES\_128\_GCM_SHA256**\
-        # *   **TLS_AES\_256\_GCM_SHA384**\
-        # *   **TLS_CHACHA20\_POLY1305\_SHA256**\
-        # *   **TLS_AES\_128\_CCM_SHA256**\
-        # *   **TLS_AES\_128\_CCM\_8\_SHA256**\
+        # *   **TLS_AES_128_GCM_SHA256**\
+        # *   **TLS_AES_256_GCM_SHA384**\
+        # *   **TLS_CHACHA20_POLY1305_SHA256**\
+        # *   **TLS_AES_128_CCM_SHA256**\
+        # *   **TLS_AES_128_CCM_8_SHA256**\
         self.ciphers = ciphers
         # The region ID of the NLB instance.
         self.region_id = region_id
@@ -7724,7 +7937,7 @@ class ListServerGroupServersRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the server group.
         self.server_group_id = server_group_id
@@ -8036,7 +8249,7 @@ class ListServerGroupsRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the server group belongs.
         self.resource_group_id = resource_group_id
@@ -8121,8 +8334,10 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
         health_check_connect_timeout: int = None,
         health_check_domain: str = None,
         health_check_enabled: bool = None,
+        health_check_exp: str = None,
         health_check_http_code: List[str] = None,
         health_check_interval: int = None,
+        health_check_req: str = None,
         health_check_type: str = None,
         health_check_url: str = None,
         healthy_threshold: int = None,
@@ -8149,7 +8364,8 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
         # *   **true**\
         # *   **false**\
         self.health_check_enabled = health_check_enabled
-        # The HTTP status codes returned for health checks. Multiple HTTP status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        self.health_check_exp = health_check_exp
+        # The HTTP status codes returned for health checks. Multiple HTTP status codes are separated by commas (,). Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_http_code = health_check_http_code
@@ -8157,6 +8373,7 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
         # 
         # Valid values: **5** to **50**.
         self.health_check_interval = health_check_interval
+        self.health_check_req = health_check_req
         # The protocol that is used for health checks. Valid values: **TCP** and **HTTP**.
         self.health_check_type = health_check_type
         # The path to which health check probes are sent.
@@ -8193,10 +8410,14 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_enabled is not None:
             result['HealthCheckEnabled'] = self.health_check_enabled
+        if self.health_check_exp is not None:
+            result['HealthCheckExp'] = self.health_check_exp
         if self.health_check_http_code is not None:
             result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_req is not None:
+            result['HealthCheckReq'] = self.health_check_req
         if self.health_check_type is not None:
             result['HealthCheckType'] = self.health_check_type
         if self.health_check_url is not None:
@@ -8219,10 +8440,14 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckEnabled') is not None:
             self.health_check_enabled = m.get('HealthCheckEnabled')
+        if m.get('HealthCheckExp') is not None:
+            self.health_check_exp = m.get('HealthCheckExp')
         if m.get('HealthCheckHttpCode') is not None:
             self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckReq') is not None:
+            self.health_check_req = m.get('HealthCheckReq')
         if m.get('HealthCheckType') is not None:
             self.health_check_type = m.get('HealthCheckType')
         if m.get('HealthCheckUrl') is not None:
@@ -8582,7 +8807,7 @@ class ListSystemSecurityPolicyRequest(TeaModel):
     ):
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -8790,7 +9015,7 @@ class ListTagResourcesRequest(TeaModel):
         # *   You do not need to specify this parameter for the first request.
         # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resource ID.
         self.resource_id = resource_id
@@ -8800,6 +9025,8 @@ class ListTagResourcesRequest(TeaModel):
         # *   **securitypolicy**: a security policy
         # *   **servergroup**: a server group
         # *   **listener**: a listener
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         self.tag = tag
@@ -9066,12 +9293,16 @@ class LoadBalancerJoinSecurityGroupRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance to be associated with the security group.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The security group ID of the instance.
+        # 
+        # This parameter is required.
         self.security_group_ids = security_group_ids
 
     def validate(self):
@@ -9207,12 +9438,16 @@ class LoadBalancerLeaveSecurityGroupRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The NLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
         self.region_id = region_id
         # The ID of the security group to be disassociated.
+        # 
+        # This parameter is required.
         self.security_group_ids = security_group_ids
 
     def validate(self):
@@ -9338,20 +9573,28 @@ class MoveResourceGroupRequest(TeaModel):
         # The ID of the new resource group.
         # 
         # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the bastion host for which you want to change the resource group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   **loadbalancer**: a Network Load Balancer (NLB) instance
         # *   **securitypolicy**: a security policy
         # *   **servergroup**: a server group
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -9523,6 +9766,8 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         # 
         # *   If the server group type is **Instance**, set this parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. The backend servers are specified by **Ecs**, **Eni**, or **Eci**.
         # *   If the server group type is **Ip**, set this parameter to an IP address.
+        # 
+        # This parameter is required.
         self.server_id = server_id
         # The IP address of the backend server. If the server group type is **Ip**, you must specify an IP address.
         self.server_ip = server_ip
@@ -9532,6 +9777,8 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
         # *   **Eni**: ENI
         # *   **Eci**: elastic container instance
         # *   **Ip**: IP address
+        # 
+        # This parameter is required.
         self.server_type = server_type
 
     def validate(self):
@@ -9588,11 +9835,15 @@ class RemoveServersFromServerGroupRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The server group ID.
+        # 
+        # This parameter is required.
         self.server_group_id = server_group_id
         # The backend servers that you want to add to the server group. You can specify up to 40 servers in each call.
+        # 
+        # This parameter is required.
         self.servers = servers
 
     def validate(self):
@@ -9722,6 +9973,133 @@ class RemoveServersFromServerGroupResponse(TeaModel):
         return self
 
 
+class SetHdMonitorRegionConfigRequest(TeaModel):
+    def __init__(
+        self,
+        log_project: str = None,
+        metric_store: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.log_project = log_project
+        # This parameter is required.
+        self.metric_store = metric_store
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_project is not None:
+            result['LogProject'] = self.log_project
+        if self.metric_store is not None:
+            result['MetricStore'] = self.metric_store
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogProject') is not None:
+            self.log_project = m.get('LogProject')
+        if m.get('MetricStore') is not None:
+            self.metric_store = m.get('MetricStore')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class SetHdMonitorRegionConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        log_project: str = None,
+        metric_store: str = None,
+        region_id: str = None,
+        request_id: str = None,
+    ):
+        self.log_project = log_project
+        self.metric_store = metric_store
+        self.region_id = region_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_project is not None:
+            result['LogProject'] = self.log_project
+        if self.metric_store is not None:
+            result['MetricStore'] = self.metric_store
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogProject') is not None:
+            self.log_project = m.get('LogProject')
+        if m.get('MetricStore') is not None:
+            self.metric_store = m.get('MetricStore')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetHdMonitorRegionConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetHdMonitorRegionConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetHdMonitorRegionConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartListenerRequest(TeaModel):
     def __init__(
         self,
@@ -9745,7 +10123,7 @@ class StartListenerRequest(TeaModel):
         self.listener_id = listener_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -9863,12 +10241,16 @@ class StartShiftLoadBalancerZonesRequestZoneMappings(TeaModel):
         zone_id: str = None,
     ):
         # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The zone ID of the NLB instance.
         # 
         # > You can remove only one zone in each call.
         # 
-        # You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -9916,14 +10298,18 @@ class StartShiftLoadBalancerZonesRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The NLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The mappings between zones and vSwitches.
         # 
         # > You can remove only one zone in each call.
+        # 
+        # This parameter is required.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -10059,10 +10445,12 @@ class StopListenerRequest(TeaModel):
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The listener ID.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -10235,17 +10623,23 @@ class TagResourcesRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource. You can specify up to 50 resource IDs in each call.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   **loadbalancer**: a Network Load Balancer (NLB) instance
         # *   **securitypolicy**: a security policy
         # *   **servergroup**: a server group
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -10401,15 +10795,19 @@ class UntagResourcesRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource. You can specify up to 50 resource IDs in each call.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource from which you want to remove tags. Valid values:
         # 
         # *   **loadbalancer**: a Network Load Balancer (NLB) instance
         # *   **securitypolicy**: a security policy
         # *   **servergroup**: a server group
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The key of the tag that you want to remove. You can remove up to 20 tags in each call.
         self.tag_key = tag_key
@@ -10649,9 +11047,11 @@ class UpdateListenerAttributeRequest(TeaModel):
         self.idle_timeout = idle_timeout
         # Enter a name for the listener.
         # 
-        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
         # The ID of the listener.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The size of the largest TCP segment. Unit: bytes. Valid values: **0** to **1500**. **0** specifies that the maximum segment size remains unchanged. This parameter is supported only by listeners that use SSL over TCP.
         self.mss = mss
@@ -10664,7 +11064,7 @@ class UpdateListenerAttributeRequest(TeaModel):
         self.proxy_protocol_v2config = proxy_protocol_v2config
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # Specifies whether to enable fine-grained monitoring. Valid values:
         # 
@@ -10832,9 +11232,11 @@ class UpdateListenerAttributeShrinkRequest(TeaModel):
         self.idle_timeout = idle_timeout
         # Enter a name for the listener.
         # 
-        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.listener_description = listener_description
         # The ID of the listener.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The size of the largest TCP segment. Unit: bytes. Valid values: **0** to **1500**. **0** specifies that the maximum segment size remains unchanged. This parameter is supported only by listeners that use SSL over TCP.
         self.mss = mss
@@ -10847,7 +11249,7 @@ class UpdateListenerAttributeShrinkRequest(TeaModel):
         self.proxy_protocol_v2config_shrink = proxy_protocol_v2config_shrink
         # The ID of the region where the NLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # Specifies whether to enable fine-grained monitoring. Valid values:
         # 
@@ -11046,7 +11448,7 @@ class UpdateLoadBalancerAddressTypeConfigRequestZoneMappings(TeaModel):
         self.v_switch_id = v_switch_id
         # The zone ID of the NLB instance.
         # 
-        # You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -11095,6 +11497,8 @@ class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
         # 
         # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
         # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. In this case, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+        # 
+        # This parameter is required.
         self.address_type = address_type
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -11108,10 +11512,12 @@ class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The NLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The mappings between zones and vSwitches. You can specify at most 10 zones in each call.
         self.zone_mappings = zone_mappings
@@ -11270,14 +11676,16 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The NLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The NLB instance name.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.load_balancer_name = load_balancer_name
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -11423,7 +11831,7 @@ class UpdateLoadBalancerProtectionRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         self.deletion_protection_enabled = deletion_protection_enabled
-        # The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
         # 
         # > This parameter takes effect only when **DeletionProtectionEnabled** is set to **true**.
         self.deletion_protection_reason = deletion_protection_reason
@@ -11433,8 +11841,10 @@ class UpdateLoadBalancerProtectionRequest(TeaModel):
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The NLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
         # 
         # > This parameter takes effect only if **Status** is set to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
@@ -11447,7 +11857,7 @@ class UpdateLoadBalancerProtectionRequest(TeaModel):
         self.modification_protection_status = modification_protection_status
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -11588,8 +11998,12 @@ class UpdateLoadBalancerZonesRequestZoneMappings(TeaModel):
         # The private IP addresses.
         self.private_ipv_4address = private_ipv_4address
         # The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The zone ID. You can call the [DescribeZones](~~443890~~) operation to query the most recent zone list.
+        # The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -11649,12 +12063,16 @@ class UpdateLoadBalancerZonesRequest(TeaModel):
         # *   **false**: sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
         self.dry_run = dry_run
         # The NLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
         self.region_id = region_id
         # The mappings between zones and vSwitches. You can specify at most 10 zones.
+        # 
+        # This parameter is required.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -11824,11 +12242,11 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         # 
         # TLS 1.3 supports the following cipher suites:
         # 
-        # *   **TLS_AES\_128\_GCM_SHA256**\
-        # *   **TLS_AES\_256\_GCM_SHA384**\
-        # *   **TLS_CHACHA20\_POLY1305\_SHA256**\
-        # *   **TLS_AES\_128\_CCM_SHA256**\
-        # *   **TLS_AES\_128\_CCM\_8\_SHA256**\
+        # *   **TLS_AES_128_GCM_SHA256**\
+        # *   **TLS_AES_256_GCM_SHA384**\
+        # *   **TLS_CHACHA20_POLY1305_SHA256**\
+        # *   **TLS_AES_128_CCM_SHA256**\
+        # *   **TLS_AES_128_CCM_8_SHA256**\
         self.ciphers = ciphers
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -11843,13 +12261,15 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
         self.region_id = region_id
         # The ID of the TLS security policy.
+        # 
+        # This parameter is required.
         self.security_policy_id = security_policy_id
         # The name of the security policy.
         # 
-        # The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.security_policy_name = security_policy_name
         # The supported versions of the Transport Layer Security (TLS) protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**. You can specify at most four TLS protocol versions.
         self.tls_versions = tls_versions
@@ -11988,8 +12408,10 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         health_check_connect_timeout: int = None,
         health_check_domain: str = None,
         health_check_enabled: bool = None,
+        health_check_exp: str = None,
         health_check_http_code: List[str] = None,
         health_check_interval: int = None,
+        health_check_req: str = None,
         health_check_type: str = None,
         health_check_url: str = None,
         healthy_threshold: int = None,
@@ -12012,7 +12434,8 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         # *   **true**\
         # *   **false**\
         self.health_check_enabled = health_check_enabled
-        # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        self.health_check_exp = health_check_exp
+        # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx** (default), **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_http_code = health_check_http_code
@@ -12020,11 +12443,12 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         # 
         # Valid values: **5** to **50**.
         self.health_check_interval = health_check_interval
+        self.health_check_req = health_check_req
         # The protocol that you want to use for health checks. Valid values: **TCP** and **HTTP**.
         self.health_check_type = health_check_type
         # The path to which health check requests are sent.
         # 
-        # The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The path must start with a forward slash (/).
+        # The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \\" , +`. The path must start with a forward slash (/).
         # 
         # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_url = health_check_url
@@ -12054,10 +12478,14 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
             result['HealthCheckDomain'] = self.health_check_domain
         if self.health_check_enabled is not None:
             result['HealthCheckEnabled'] = self.health_check_enabled
+        if self.health_check_exp is not None:
+            result['HealthCheckExp'] = self.health_check_exp
         if self.health_check_http_code is not None:
             result['HealthCheckHttpCode'] = self.health_check_http_code
         if self.health_check_interval is not None:
             result['HealthCheckInterval'] = self.health_check_interval
+        if self.health_check_req is not None:
+            result['HealthCheckReq'] = self.health_check_req
         if self.health_check_type is not None:
             result['HealthCheckType'] = self.health_check_type
         if self.health_check_url is not None:
@@ -12080,10 +12508,14 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
             self.health_check_domain = m.get('HealthCheckDomain')
         if m.get('HealthCheckEnabled') is not None:
             self.health_check_enabled = m.get('HealthCheckEnabled')
+        if m.get('HealthCheckExp') is not None:
+            self.health_check_exp = m.get('HealthCheckExp')
         if m.get('HealthCheckHttpCode') is not None:
             self.health_check_http_code = m.get('HealthCheckHttpCode')
         if m.get('HealthCheckInterval') is not None:
             self.health_check_interval = m.get('HealthCheckInterval')
+        if m.get('HealthCheckReq') is not None:
+            self.health_check_req = m.get('HealthCheckReq')
         if m.get('HealthCheckType') is not None:
             self.health_check_type = m.get('HealthCheckType')
         if m.get('HealthCheckUrl') is not None:
@@ -12138,7 +12570,7 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
         self.region_id = region_id
         # The routing algorithm. Valid values:
         # 
@@ -12149,10 +12581,12 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         # *   **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
         self.scheduler = scheduler
         # The server group ID.
+        # 
+        # This parameter is required.
         self.server_group_id = server_group_id
         # The new name of the server group.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.server_group_name = server_group_name
 
     def validate(self):
@@ -12308,16 +12742,20 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
     ):
         # The description of the backend server.
         # 
-        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
         self.description = description
         # The port that is used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 backend servers in each call.
         # 
         # > This is parameter cannot be modified.
+        # 
+        # This parameter is required.
         self.port = port
         # The backend server ID. You can specify at most 40 backend servers in each call.
         # 
         # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
         # *   If the server group type is **Ip**, set this parameter to an IP address.
+        # 
+        # This parameter is required.
         self.server_id = server_id
         # The IP address of the backend server. If the server group type is **Ip**, you must specify an IP address.
         # 
@@ -12331,6 +12769,8 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
         # *   **Ip**: an IP address
         # 
         # > You can specify at most 40 backend servers in each call.
+        # 
+        # This parameter is required.
         self.server_type = server_type
         # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
         # 
@@ -12399,11 +12839,15 @@ class UpdateServerGroupServersAttributeRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](~~443657~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
         # The server group ID.
+        # 
+        # This parameter is required.
         self.server_group_id = server_group_id
         # The backend servers that you want to modify. You can specify up to 40 servers in each call.
+        # 
+        # This parameter is required.
         self.servers = servers
 
     def validate(self):

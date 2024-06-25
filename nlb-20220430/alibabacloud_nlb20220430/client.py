@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AddServersToServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AddServersToServerGroupResponse:
+        """
+        @summary Adds backend servers to a specified server group.
+        
+        @param request: AddServersToServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddServersToServerGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -85,6 +92,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AddServersToServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AddServersToServerGroupResponse:
+        """
+        @summary Adds backend servers to a specified server group.
+        
+        @param request: AddServersToServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddServersToServerGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -123,6 +137,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.AddServersToServerGroupRequest,
     ) -> nlb_20220430_models.AddServersToServerGroupResponse:
+        """
+        @summary Adds backend servers to a specified server group.
+        
+        @param request: AddServersToServerGroupRequest
+        @return: AddServersToServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_servers_to_server_group_with_options(request, runtime)
 
@@ -130,6 +150,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.AddServersToServerGroupRequest,
     ) -> nlb_20220430_models.AddServersToServerGroupResponse:
+        """
+        @summary Adds backend servers to a specified server group.
+        
+        @param request: AddServersToServerGroupRequest
+        @return: AddServersToServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_servers_to_server_group_with_options_async(request, runtime)
 
@@ -139,9 +165,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
         """
-        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
-        *   If the listener is in the **Associating** state, the additional certificates are being associated.
-        *   If the listener is in the **Associated** state, the additional certificates are associated.
+        @summary Associates additional certificates with a listener that uses SSL over TCP.
+        
+        @description *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+        If the listener is in the **Associating** state, the additional certificates are being associated.
+        If the listener is in the **Associated** state, the additional certificates are associated.
         
         @param request: AssociateAdditionalCertificatesWithListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -184,9 +212,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
         """
-        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
-        *   If the listener is in the **Associating** state, the additional certificates are being associated.
-        *   If the listener is in the **Associated** state, the additional certificates are associated.
+        @summary Associates additional certificates with a listener that uses SSL over TCP.
+        
+        @description *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+        If the listener is in the **Associating** state, the additional certificates are being associated.
+        If the listener is in the **Associated** state, the additional certificates are associated.
         
         @param request: AssociateAdditionalCertificatesWithListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -228,9 +258,11 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
     ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
         """
-        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
-        *   If the listener is in the **Associating** state, the additional certificates are being associated.
-        *   If the listener is in the **Associated** state, the additional certificates are associated.
+        @summary Associates additional certificates with a listener that uses SSL over TCP.
+        
+        @description *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+        If the listener is in the **Associating** state, the additional certificates are being associated.
+        If the listener is in the **Associated** state, the additional certificates are associated.
         
         @param request: AssociateAdditionalCertificatesWithListenerRequest
         @return: AssociateAdditionalCertificatesWithListenerResponse
@@ -243,9 +275,11 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AssociateAdditionalCertificatesWithListenerRequest,
     ) -> nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse:
         """
-        *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
-        *   If the listener is in the **Associating** state, the additional certificates are being associated.
-        *   If the listener is in the **Associated** state, the additional certificates are associated.
+        @summary Associates additional certificates with a listener that uses SSL over TCP.
+        
+        @description *AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+        If the listener is in the **Associating** state, the additional certificates are being associated.
+        If the listener is in the **Associated** state, the additional certificates are associated.
         
         @param request: AssociateAdditionalCertificatesWithListenerRequest
         @return: AssociateAdditionalCertificatesWithListenerResponse
@@ -258,6 +292,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
+        """
+        @summary 绑定带宽包
+        
+        @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachCommonBandwidthPackageToLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bandwidth_package_id):
@@ -294,6 +335,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
+        """
+        @summary 绑定带宽包
+        
+        @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachCommonBandwidthPackageToLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bandwidth_package_id):
@@ -329,6 +377,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
     ) -> nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
+        """
+        @summary 绑定带宽包
+        
+        @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
+        @return: AttachCommonBandwidthPackageToLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_common_bandwidth_package_to_load_balancer_with_options(request, runtime)
 
@@ -336,6 +390,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
     ) -> nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
+        """
+        @summary 绑定带宽包
+        
+        @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
+        @return: AttachCommonBandwidthPackageToLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_common_bandwidth_package_to_load_balancer_with_options_async(request, runtime)
 
@@ -345,7 +405,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CancelShiftLoadBalancerZonesResponse:
         """
-        Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](~~2411999~~) API operation.
+        @summary Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to the DNS record.
+        
+        @description Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](https://help.aliyun.com/document_detail/2411999.html) API operation.
         
         @param request: CancelShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -388,7 +450,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CancelShiftLoadBalancerZonesResponse:
         """
-        Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](~~2411999~~) API operation.
+        @summary Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to the DNS record.
+        
+        @description Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](https://help.aliyun.com/document_detail/2411999.html) API operation.
         
         @param request: CancelShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -430,7 +494,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CancelShiftLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.CancelShiftLoadBalancerZonesResponse:
         """
-        Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](~~2411999~~) API operation.
+        @summary Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to the DNS record.
+        
+        @description Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](https://help.aliyun.com/document_detail/2411999.html) API operation.
         
         @param request: CancelShiftLoadBalancerZonesRequest
         @return: CancelShiftLoadBalancerZonesResponse
@@ -443,7 +509,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CancelShiftLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.CancelShiftLoadBalancerZonesResponse:
         """
-        Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](~~2411999~~) API operation.
+        @summary Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to the DNS record.
+        
+        @description Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](https://help.aliyun.com/document_detail/2411999.html) API operation.
         
         @param request: CancelShiftLoadBalancerZonesRequest
         @return: CancelShiftLoadBalancerZonesResponse
@@ -456,6 +524,13 @@ class Client(OpenApiClient):
         tmp_req: nlb_20220430_models.CreateListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateListenerResponse:
+        """
+        @summary Creates a TCP or UDP listener, or a listener that uses SSL over TCP for a Network Load Balancer (NLB) instance.
+        
+        @param tmp_req: CreateListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateListenerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nlb_20220430_models.CreateListenerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -532,6 +607,13 @@ class Client(OpenApiClient):
         tmp_req: nlb_20220430_models.CreateListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateListenerResponse:
+        """
+        @summary Creates a TCP or UDP listener, or a listener that uses SSL over TCP for a Network Load Balancer (NLB) instance.
+        
+        @param tmp_req: CreateListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateListenerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nlb_20220430_models.CreateListenerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -607,6 +689,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.CreateListenerRequest,
     ) -> nlb_20220430_models.CreateListenerResponse:
+        """
+        @summary Creates a TCP or UDP listener, or a listener that uses SSL over TCP for a Network Load Balancer (NLB) instance.
+        
+        @param request: CreateListenerRequest
+        @return: CreateListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_listener_with_options(request, runtime)
 
@@ -614,6 +702,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.CreateListenerRequest,
     ) -> nlb_20220430_models.CreateListenerResponse:
+        """
+        @summary Creates a TCP or UDP listener, or a listener that uses SSL over TCP for a Network Load Balancer (NLB) instance.
+        
+        @param request: CreateListenerRequest
+        @return: CreateListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_listener_with_options_async(request, runtime)
 
@@ -623,10 +717,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateLoadBalancerResponse:
         """
-        When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
-        *   **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~445873~~) to query the status of an NLB instance.
-        *   If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
-        *   If an NLB instance is in the **Active** state, the NLB instance is created.
+        @summary Creates a Network Load Balancer (NLB) instance in a specified region.
+        
+        @description    When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+        **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
+        If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
+        If an NLB instance is in the **Active** state, the NLB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -692,10 +788,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateLoadBalancerResponse:
         """
-        When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
-        *   **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~445873~~) to query the status of an NLB instance.
-        *   If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
-        *   If an NLB instance is in the **Active** state, the NLB instance is created.
+        @summary Creates a Network Load Balancer (NLB) instance in a specified region.
+        
+        @description    When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+        **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
+        If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
+        If an NLB instance is in the **Active** state, the NLB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -760,10 +858,12 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateLoadBalancerRequest,
     ) -> nlb_20220430_models.CreateLoadBalancerResponse:
         """
-        When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
-        *   **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~445873~~) to query the status of an NLB instance.
-        *   If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
-        *   If an NLB instance is in the **Active** state, the NLB instance is created.
+        @summary Creates a Network Load Balancer (NLB) instance in a specified region.
+        
+        @description    When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+        **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
+        If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
+        If an NLB instance is in the **Active** state, the NLB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -776,10 +876,12 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateLoadBalancerRequest,
     ) -> nlb_20220430_models.CreateLoadBalancerResponse:
         """
-        When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
-        *   **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~445873~~) to query the status of an NLB instance.
-        *   If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
-        *   If an NLB instance is in the **Active** state, the NLB instance is created.
+        @summary Creates a Network Load Balancer (NLB) instance in a specified region.
+        
+        @description    When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+        **CreateLoadBalancer** is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
+        If an NLB instance is in the **Provisioning** state, the NLB instance is being created.
+        If an NLB instance is in the **Active** state, the NLB instance is created.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -792,6 +894,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateSecurityPolicyResponse:
+        """
+        @summary Creates a custom security policy for a Network Load Balancer (NLB) instance.
+        
+        @param request: CreateSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -834,6 +943,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateSecurityPolicyResponse:
+        """
+        @summary Creates a custom security policy for a Network Load Balancer (NLB) instance.
+        
+        @param request: CreateSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -875,6 +991,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.CreateSecurityPolicyRequest,
     ) -> nlb_20220430_models.CreateSecurityPolicyResponse:
+        """
+        @summary Creates a custom security policy for a Network Load Balancer (NLB) instance.
+        
+        @param request: CreateSecurityPolicyRequest
+        @return: CreateSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_security_policy_with_options(request, runtime)
 
@@ -882,6 +1004,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.CreateSecurityPolicyRequest,
     ) -> nlb_20220430_models.CreateSecurityPolicyResponse:
+        """
+        @summary Creates a custom security policy for a Network Load Balancer (NLB) instance.
+        
+        @param request: CreateSecurityPolicyRequest
+        @return: CreateSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_security_policy_with_options_async(request, runtime)
 
@@ -891,11 +1019,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateServerGroupResponse:
         """
-        **protocol** specifies the protocol used to forward requests to the backend servers.
-        *   NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
-        *   **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the creation status of the task.
-        *   If the task is in the **Succeeded** status, the server group is created.
-        *   If the task is in the **Processing** status, the server group is being created.
+        @summary Creates a server group in a region.
+        
+        @description    **protocol** specifies the protocol used to forward requests to the backend servers.
+        NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+        **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+        If the task is in the **Succeeded** status, the server group is created.
+        If the task is in the **Processing** status, the server group is being created.
         
         @param request: CreateServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -963,11 +1093,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateServerGroupResponse:
         """
-        **protocol** specifies the protocol used to forward requests to the backend servers.
-        *   NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
-        *   **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the creation status of the task.
-        *   If the task is in the **Succeeded** status, the server group is created.
-        *   If the task is in the **Processing** status, the server group is being created.
+        @summary Creates a server group in a region.
+        
+        @description    **protocol** specifies the protocol used to forward requests to the backend servers.
+        NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+        **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+        If the task is in the **Succeeded** status, the server group is created.
+        If the task is in the **Processing** status, the server group is being created.
         
         @param request: CreateServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1034,11 +1166,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateServerGroupRequest,
     ) -> nlb_20220430_models.CreateServerGroupResponse:
         """
-        **protocol** specifies the protocol used to forward requests to the backend servers.
-        *   NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
-        *   **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the creation status of the task.
-        *   If the task is in the **Succeeded** status, the server group is created.
-        *   If the task is in the **Processing** status, the server group is being created.
+        @summary Creates a server group in a region.
+        
+        @description    **protocol** specifies the protocol used to forward requests to the backend servers.
+        NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+        **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+        If the task is in the **Succeeded** status, the server group is created.
+        If the task is in the **Processing** status, the server group is being created.
         
         @param request: CreateServerGroupRequest
         @return: CreateServerGroupResponse
@@ -1051,11 +1185,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateServerGroupRequest,
     ) -> nlb_20220430_models.CreateServerGroupResponse:
         """
-        **protocol** specifies the protocol used to forward requests to the backend servers.
-        *   NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
-        *   **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the creation status of the task.
-        *   If the task is in the **Succeeded** status, the server group is created.
-        *   If the task is in the **Processing** status, the server group is being created.
+        @summary Creates a server group in a region.
+        
+        @description    **protocol** specifies the protocol used to forward requests to the backend servers.
+        NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+        **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+        If the task is in the **Succeeded** status, the server group is created.
+        If the task is in the **Processing** status, the server group is being created.
         
         @param request: CreateServerGroupRequest
         @return: CreateServerGroupResponse
@@ -1068,6 +1204,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteListenerResponse:
+        """
+        @summary 删除监听
+        
+        @param request: DeleteListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1102,6 +1245,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteListenerResponse:
+        """
+        @summary 删除监听
+        
+        @param request: DeleteListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1135,6 +1285,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DeleteListenerRequest,
     ) -> nlb_20220430_models.DeleteListenerResponse:
+        """
+        @summary 删除监听
+        
+        @param request: DeleteListenerRequest
+        @return: DeleteListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_listener_with_options(request, runtime)
 
@@ -1142,6 +1298,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DeleteListenerRequest,
     ) -> nlb_20220430_models.DeleteListenerResponse:
+        """
+        @summary 删除监听
+        
+        @param request: DeleteListenerRequest
+        @return: DeleteListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_listener_with_options_async(request, runtime)
 
@@ -1150,6 +1312,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteLoadBalancerResponse:
+        """
+        @summary 删除负载均衡
+        
+        @param request: DeleteLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1184,6 +1353,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteLoadBalancerResponse:
+        """
+        @summary 删除负载均衡
+        
+        @param request: DeleteLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1217,6 +1393,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DeleteLoadBalancerRequest,
     ) -> nlb_20220430_models.DeleteLoadBalancerResponse:
+        """
+        @summary 删除负载均衡
+        
+        @param request: DeleteLoadBalancerRequest
+        @return: DeleteLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_load_balancer_with_options(request, runtime)
 
@@ -1224,6 +1406,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DeleteLoadBalancerRequest,
     ) -> nlb_20220430_models.DeleteLoadBalancerResponse:
+        """
+        @summary 删除负载均衡
+        
+        @param request: DeleteLoadBalancerRequest
+        @return: DeleteLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_load_balancer_with_options_async(request, runtime)
 
@@ -1232,6 +1420,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteSecurityPolicyResponse:
+        """
+        @summary 删除安全策略
+        
+        @param request: DeleteSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1266,6 +1461,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteSecurityPolicyResponse:
+        """
+        @summary 删除安全策略
+        
+        @param request: DeleteSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1299,6 +1501,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DeleteSecurityPolicyRequest,
     ) -> nlb_20220430_models.DeleteSecurityPolicyResponse:
+        """
+        @summary 删除安全策略
+        
+        @param request: DeleteSecurityPolicyRequest
+        @return: DeleteSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_security_policy_with_options(request, runtime)
 
@@ -1306,6 +1514,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DeleteSecurityPolicyRequest,
     ) -> nlb_20220430_models.DeleteSecurityPolicyResponse:
+        """
+        @summary 删除安全策略
+        
+        @param request: DeleteSecurityPolicyRequest
+        @return: DeleteSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_policy_with_options_async(request, runtime)
 
@@ -1315,7 +1529,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
         """
-        You can delete server groups that are not associated with listeners.
+        @summary DeleteServerGroup
+        
+        @description You can delete server groups that are not associated with listeners.
         
         @param request: DeleteServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1356,7 +1572,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
         """
-        You can delete server groups that are not associated with listeners.
+        @summary DeleteServerGroup
+        
+        @description You can delete server groups that are not associated with listeners.
         
         @param request: DeleteServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1396,7 +1614,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteServerGroupRequest,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
         """
-        You can delete server groups that are not associated with listeners.
+        @summary DeleteServerGroup
+        
+        @description You can delete server groups that are not associated with listeners.
         
         @param request: DeleteServerGroupRequest
         @return: DeleteServerGroupResponse
@@ -1409,7 +1629,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteServerGroupRequest,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
         """
-        You can delete server groups that are not associated with listeners.
+        @summary DeleteServerGroup
+        
+        @description You can delete server groups that are not associated with listeners.
         
         @param request: DeleteServerGroupRequest
         @return: DeleteServerGroupResponse
@@ -1417,11 +1639,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_server_group_with_options_async(request, runtime)
 
+    def describe_hd_monitor_region_config_with_options(
+        self,
+        request: nlb_20220430_models.DescribeHdMonitorRegionConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.DescribeHdMonitorRegionConfigResponse:
+        """
+        @summary 查询秒级监控存储配置
+        
+        @param request: DescribeHdMonitorRegionConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHdMonitorRegionConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHdMonitorRegionConfig',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.DescribeHdMonitorRegionConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hd_monitor_region_config_with_options_async(
+        self,
+        request: nlb_20220430_models.DescribeHdMonitorRegionConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.DescribeHdMonitorRegionConfigResponse:
+        """
+        @summary 查询秒级监控存储配置
+        
+        @param request: DescribeHdMonitorRegionConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHdMonitorRegionConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHdMonitorRegionConfig',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.DescribeHdMonitorRegionConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hd_monitor_region_config(
+        self,
+        request: nlb_20220430_models.DescribeHdMonitorRegionConfigRequest,
+    ) -> nlb_20220430_models.DescribeHdMonitorRegionConfigResponse:
+        """
+        @summary 查询秒级监控存储配置
+        
+        @param request: DescribeHdMonitorRegionConfigRequest
+        @return: DescribeHdMonitorRegionConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hd_monitor_region_config_with_options(request, runtime)
+
+    async def describe_hd_monitor_region_config_async(
+        self,
+        request: nlb_20220430_models.DescribeHdMonitorRegionConfigRequest,
+    ) -> nlb_20220430_models.DescribeHdMonitorRegionConfigResponse:
+        """
+        @summary 查询秒级监控存储配置
+        
+        @param request: DescribeHdMonitorRegionConfigRequest
+        @return: DescribeHdMonitorRegionConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hd_monitor_region_config_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: nlb_20220430_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DescribeRegionsResponse:
+        """
+        @summary Queries regions that support Network Load Balancer (NLB) instances.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1456,6 +1781,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DescribeRegionsResponse:
+        """
+        @summary Queries regions that support Network Load Balancer (NLB) instances.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1489,6 +1821,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DescribeRegionsRequest,
     ) -> nlb_20220430_models.DescribeRegionsResponse:
+        """
+        @summary Queries regions that support Network Load Balancer (NLB) instances.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -1496,6 +1834,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DescribeRegionsRequest,
     ) -> nlb_20220430_models.DescribeRegionsResponse:
+        """
+        @summary Queries regions that support Network Load Balancer (NLB) instances.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -1504,6 +1848,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region that supports Network Load Balancer (NLB).
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1538,6 +1889,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region that supports Network Load Balancer (NLB).
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1571,6 +1929,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DescribeZonesRequest,
     ) -> nlb_20220430_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region that supports Network Load Balancer (NLB).
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -1578,6 +1942,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DescribeZonesRequest,
     ) -> nlb_20220430_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region that supports Network Load Balancer (NLB).
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -1586,6 +1956,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
+        """
+        @summary 解绑带宽包
+        
+        @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachCommonBandwidthPackageFromLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bandwidth_package_id):
@@ -1622,6 +1999,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
+        """
+        @summary 解绑带宽包
+        
+        @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachCommonBandwidthPackageFromLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bandwidth_package_id):
@@ -1657,6 +2041,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
     ) -> nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
+        """
+        @summary 解绑带宽包
+        
+        @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
+        @return: DetachCommonBandwidthPackageFromLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_common_bandwidth_package_from_load_balancer_with_options(request, runtime)
 
@@ -1664,6 +2054,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
     ) -> nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
+        """
+        @summary 解绑带宽包
+        
+        @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
+        @return: DetachCommonBandwidthPackageFromLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_common_bandwidth_package_from_load_balancer_with_options_async(request, runtime)
 
@@ -1672,6 +2068,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DisableLoadBalancerIpv6InternetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse:
+        """
+        @summary Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+        
+        @param request: DisableLoadBalancerIpv6InternetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableLoadBalancerIpv6InternetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1706,6 +2109,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DisableLoadBalancerIpv6InternetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse:
+        """
+        @summary Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+        
+        @param request: DisableLoadBalancerIpv6InternetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableLoadBalancerIpv6InternetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1739,6 +2149,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DisableLoadBalancerIpv6InternetRequest,
     ) -> nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse:
+        """
+        @summary Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+        
+        @param request: DisableLoadBalancerIpv6InternetRequest
+        @return: DisableLoadBalancerIpv6InternetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_load_balancer_ipv_6internet_with_options(request, runtime)
 
@@ -1746,6 +2162,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.DisableLoadBalancerIpv6InternetRequest,
     ) -> nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse:
+        """
+        @summary Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+        
+        @param request: DisableLoadBalancerIpv6InternetRequest
+        @return: DisableLoadBalancerIpv6InternetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_load_balancer_ipv_6internet_with_options_async(request, runtime)
 
@@ -1755,9 +2177,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
         """
-        *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
-        *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
-        *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        @summary Disassociates additional certificates from a listener that uses SSL over TCP.
+        
+        @description *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+        If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+        If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
         
         @param request: DisassociateAdditionalCertificatesWithListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1800,9 +2224,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
         """
-        *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
-        *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
-        *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        @summary Disassociates additional certificates from a listener that uses SSL over TCP.
+        
+        @description *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+        If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+        If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
         
         @param request: DisassociateAdditionalCertificatesWithListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1844,9 +2270,11 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
     ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
         """
-        *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
-        *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
-        *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        @summary Disassociates additional certificates from a listener that uses SSL over TCP.
+        
+        @description *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+        If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+        If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
         
         @param request: DisassociateAdditionalCertificatesWithListenerRequest
         @return: DisassociateAdditionalCertificatesWithListenerResponse
@@ -1859,9 +2287,11 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerRequest,
     ) -> nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse:
         """
-        *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~615175~~) operation to query the status of the task:
-        *   If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
-        *   If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
+        @summary Disassociates additional certificates from a listener that uses SSL over TCP.
+        
+        @description *DisassociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+        If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated.
+        If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
         
         @param request: DisassociateAdditionalCertificatesWithListenerRequest
         @return: DisassociateAdditionalCertificatesWithListenerResponse
@@ -1874,6 +2304,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.EnableLoadBalancerIpv6InternetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse:
+        """
+        @summary Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+        
+        @param request: EnableLoadBalancerIpv6InternetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableLoadBalancerIpv6InternetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1908,6 +2345,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.EnableLoadBalancerIpv6InternetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse:
+        """
+        @summary Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+        
+        @param request: EnableLoadBalancerIpv6InternetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableLoadBalancerIpv6InternetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1941,6 +2385,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.EnableLoadBalancerIpv6InternetRequest,
     ) -> nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse:
+        """
+        @summary Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+        
+        @param request: EnableLoadBalancerIpv6InternetRequest
+        @return: EnableLoadBalancerIpv6InternetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_load_balancer_ipv_6internet_with_options(request, runtime)
 
@@ -1948,6 +2398,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.EnableLoadBalancerIpv6InternetRequest,
     ) -> nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse:
+        """
+        @summary Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+        
+        @param request: EnableLoadBalancerIpv6InternetRequest
+        @return: EnableLoadBalancerIpv6InternetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_load_balancer_ipv_6internet_with_options_async(request, runtime)
 
@@ -1956,6 +2412,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetJobStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetJobStatusResponse:
+        """
+        @summary 获取工作流状态
+        
+        @param request: GetJobStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1986,6 +2449,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetJobStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetJobStatusResponse:
+        """
+        @summary 获取工作流状态
+        
+        @param request: GetJobStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2015,6 +2485,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.GetJobStatusRequest,
     ) -> nlb_20220430_models.GetJobStatusResponse:
+        """
+        @summary 获取工作流状态
+        
+        @param request: GetJobStatusRequest
+        @return: GetJobStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_job_status_with_options(request, runtime)
 
@@ -2022,6 +2498,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.GetJobStatusRequest,
     ) -> nlb_20220430_models.GetJobStatusResponse:
+        """
+        @summary 获取工作流状态
+        
+        @param request: GetJobStatusRequest
+        @return: GetJobStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_job_status_with_options_async(request, runtime)
 
@@ -2030,6 +2512,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetListenerAttributeResponse:
+        """
+        @summary Queries the details of a Network Load Balancer (NLB) listener.
+        
+        @param request: GetListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2064,6 +2553,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetListenerAttributeResponse:
+        """
+        @summary Queries the details of a Network Load Balancer (NLB) listener.
+        
+        @param request: GetListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2097,6 +2593,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.GetListenerAttributeRequest,
     ) -> nlb_20220430_models.GetListenerAttributeResponse:
+        """
+        @summary Queries the details of a Network Load Balancer (NLB) listener.
+        
+        @param request: GetListenerAttributeRequest
+        @return: GetListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_listener_attribute_with_options(request, runtime)
 
@@ -2104,6 +2606,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.GetListenerAttributeRequest,
     ) -> nlb_20220430_models.GetListenerAttributeResponse:
+        """
+        @summary Queries the details of a Network Load Balancer (NLB) listener.
+        
+        @param request: GetListenerAttributeRequest
+        @return: GetListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_listener_attribute_with_options_async(request, runtime)
 
@@ -2112,6 +2620,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetListenerHealthStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetListenerHealthStatusResponse:
+        """
+        @summary Queries the health check status of a Network Load Balancer (NLB) instance.
+        
+        @param request: GetListenerHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetListenerHealthStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_id):
@@ -2146,6 +2661,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetListenerHealthStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetListenerHealthStatusResponse:
+        """
+        @summary Queries the health check status of a Network Load Balancer (NLB) instance.
+        
+        @param request: GetListenerHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetListenerHealthStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_id):
@@ -2179,6 +2701,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.GetListenerHealthStatusRequest,
     ) -> nlb_20220430_models.GetListenerHealthStatusResponse:
+        """
+        @summary Queries the health check status of a Network Load Balancer (NLB) instance.
+        
+        @param request: GetListenerHealthStatusRequest
+        @return: GetListenerHealthStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_listener_health_status_with_options(request, runtime)
 
@@ -2186,6 +2714,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.GetListenerHealthStatusRequest,
     ) -> nlb_20220430_models.GetListenerHealthStatusResponse:
+        """
+        @summary Queries the health check status of a Network Load Balancer (NLB) instance.
+        
+        @param request: GetListenerHealthStatusRequest
+        @return: GetListenerHealthStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_listener_health_status_with_options_async(request, runtime)
 
@@ -2194,6 +2728,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetLoadBalancerAttributeResponse:
+        """
+        @summary Queries the details about a Network Load Balancer (NLB) instance.
+        
+        @param request: GetLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2228,6 +2769,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetLoadBalancerAttributeResponse:
+        """
+        @summary Queries the details about a Network Load Balancer (NLB) instance.
+        
+        @param request: GetLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2261,6 +2809,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.GetLoadBalancerAttributeRequest,
     ) -> nlb_20220430_models.GetLoadBalancerAttributeResponse:
+        """
+        @summary Queries the details about a Network Load Balancer (NLB) instance.
+        
+        @param request: GetLoadBalancerAttributeRequest
+        @return: GetLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_load_balancer_attribute_with_options(request, runtime)
 
@@ -2268,6 +2822,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.GetLoadBalancerAttributeRequest,
     ) -> nlb_20220430_models.GetLoadBalancerAttributeResponse:
+        """
+        @summary Queries the details about a Network Load Balancer (NLB) instance.
+        
+        @param request: GetLoadBalancerAttributeRequest
+        @return: GetLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_load_balancer_attribute_with_options_async(request, runtime)
 
@@ -2276,6 +2836,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListListenerCertificatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
+        """
+        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        
+        @param request: ListListenerCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenerCertificatesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cert_type):
@@ -2312,6 +2879,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListListenerCertificatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
+        """
+        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        
+        @param request: ListListenerCertificatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenerCertificatesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cert_type):
@@ -2347,6 +2921,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListListenerCertificatesRequest,
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
+        """
+        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        
+        @param request: ListListenerCertificatesRequest
+        @return: ListListenerCertificatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_listener_certificates_with_options(request, runtime)
 
@@ -2354,6 +2934,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListListenerCertificatesRequest,
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
+        """
+        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        
+        @param request: ListListenerCertificatesRequest
+        @return: ListListenerCertificatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_listener_certificates_with_options_async(request, runtime)
 
@@ -2362,6 +2948,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListListenersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListListenersResponse:
+        """
+        @summary Queries listeners added to a Network Load Balancer (NLB) instance.
+        
+        @param request: ListListenersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_ids):
@@ -2402,6 +2995,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListListenersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListListenersResponse:
+        """
+        @summary Queries listeners added to a Network Load Balancer (NLB) instance.
+        
+        @param request: ListListenersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_ids):
@@ -2441,6 +3041,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListListenersRequest,
     ) -> nlb_20220430_models.ListListenersResponse:
+        """
+        @summary Queries listeners added to a Network Load Balancer (NLB) instance.
+        
+        @param request: ListListenersRequest
+        @return: ListListenersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_listeners_with_options(request, runtime)
 
@@ -2448,6 +3054,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListListenersRequest,
     ) -> nlb_20220430_models.ListListenersResponse:
+        """
+        @summary Queries listeners added to a Network Load Balancer (NLB) instance.
+        
+        @param request: ListListenersRequest
+        @return: ListListenersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_listeners_with_options_async(request, runtime)
 
@@ -2456,6 +3068,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
+        """
+        @summary Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+        
+        @param request: ListLoadBalancersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLoadBalancersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_ip_version):
@@ -2514,6 +3133,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
+        """
+        @summary Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+        
+        @param request: ListLoadBalancersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLoadBalancersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_ip_version):
@@ -2571,6 +3197,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListLoadBalancersRequest,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
+        """
+        @summary Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+        
+        @param request: ListLoadBalancersRequest
+        @return: ListLoadBalancersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_load_balancers_with_options(request, runtime)
 
@@ -2578,6 +3210,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListLoadBalancersRequest,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
+        """
+        @summary Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+        
+        @param request: ListLoadBalancersRequest
+        @return: ListLoadBalancersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_load_balancers_with_options_async(request, runtime)
 
@@ -2586,6 +3224,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListSecurityPolicyResponse:
+        """
+        @summary Queries the TLS security policies set for a Network Load Balancer (NLB) instance.
+        
+        @param request: ListSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag):
@@ -2628,6 +3273,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListSecurityPolicyResponse:
+        """
+        @summary Queries the TLS security policies set for a Network Load Balancer (NLB) instance.
+        
+        @param request: ListSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag):
@@ -2669,6 +3321,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListSecurityPolicyRequest,
     ) -> nlb_20220430_models.ListSecurityPolicyResponse:
+        """
+        @summary Queries the TLS security policies set for a Network Load Balancer (NLB) instance.
+        
+        @param request: ListSecurityPolicyRequest
+        @return: ListSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_security_policy_with_options(request, runtime)
 
@@ -2676,6 +3334,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListSecurityPolicyRequest,
     ) -> nlb_20220430_models.ListSecurityPolicyResponse:
+        """
+        @summary Queries the TLS security policies set for a Network Load Balancer (NLB) instance.
+        
+        @param request: ListSecurityPolicyRequest
+        @return: ListSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_security_policy_with_options_async(request, runtime)
 
@@ -2684,6 +3348,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListServerGroupServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListServerGroupServersResponse:
+        """
+        @summary Queries the backend servers in a specified server group.
+        
+        @param request: ListServerGroupServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerGroupServersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2722,6 +3393,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListServerGroupServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListServerGroupServersResponse:
+        """
+        @summary Queries the backend servers in a specified server group.
+        
+        @param request: ListServerGroupServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerGroupServersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2759,6 +3437,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListServerGroupServersRequest,
     ) -> nlb_20220430_models.ListServerGroupServersResponse:
+        """
+        @summary Queries the backend servers in a specified server group.
+        
+        @param request: ListServerGroupServersRequest
+        @return: ListServerGroupServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_server_group_servers_with_options(request, runtime)
 
@@ -2766,6 +3450,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListServerGroupServersRequest,
     ) -> nlb_20220430_models.ListServerGroupServersResponse:
+        """
+        @summary Queries the backend servers in a specified server group.
+        
+        @param request: ListServerGroupServersRequest
+        @return: ListServerGroupServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_server_group_servers_with_options_async(request, runtime)
 
@@ -2774,6 +3464,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListServerGroupsResponse:
+        """
+        @summary Queries the server groups of a Network Load Balancer (NLB) instance.
+        
+        @param request: ListServerGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag):
@@ -2820,6 +3517,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListServerGroupsResponse:
+        """
+        @summary Queries the server groups of a Network Load Balancer (NLB) instance.
+        
+        @param request: ListServerGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServerGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag):
@@ -2865,6 +3569,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListServerGroupsRequest,
     ) -> nlb_20220430_models.ListServerGroupsResponse:
+        """
+        @summary Queries the server groups of a Network Load Balancer (NLB) instance.
+        
+        @param request: ListServerGroupsRequest
+        @return: ListServerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_server_groups_with_options(request, runtime)
 
@@ -2872,6 +3582,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListServerGroupsRequest,
     ) -> nlb_20220430_models.ListServerGroupsResponse:
+        """
+        @summary Queries the server groups of a Network Load Balancer (NLB) instance.
+        
+        @param request: ListServerGroupsRequest
+        @return: ListServerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_server_groups_with_options_async(request, runtime)
 
@@ -2880,6 +3596,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListSystemSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListSystemSecurityPolicyResponse:
+        """
+        @summary Queries the default TLS policy.
+        
+        @param request: ListSystemSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSystemSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2908,6 +3631,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListSystemSecurityPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListSystemSecurityPolicyResponse:
+        """
+        @summary Queries the default TLS policy.
+        
+        @param request: ListSystemSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSystemSecurityPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2935,6 +3665,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListSystemSecurityPolicyRequest,
     ) -> nlb_20220430_models.ListSystemSecurityPolicyResponse:
+        """
+        @summary Queries the default TLS policy.
+        
+        @param request: ListSystemSecurityPolicyRequest
+        @return: ListSystemSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_system_security_policy_with_options(request, runtime)
 
@@ -2942,6 +3678,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListSystemSecurityPolicyRequest,
     ) -> nlb_20220430_models.ListSystemSecurityPolicyResponse:
+        """
+        @summary Queries the default TLS policy.
+        
+        @param request: ListSystemSecurityPolicyRequest
+        @return: ListSystemSecurityPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_system_security_policy_with_options_async(request, runtime)
 
@@ -2950,6 +3692,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of a resource.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2991,6 +3740,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of a resource.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.max_results):
@@ -3031,6 +3787,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListTagResourcesRequest,
     ) -> nlb_20220430_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of a resource.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -3038,6 +3800,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.ListTagResourcesRequest,
     ) -> nlb_20220430_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of a resource.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -3047,12 +3815,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
         """
-        Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](~~25553~~).
-        *   An NLB instance can be associated with up to four security groups.
-        *   You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](~~214362~~) operation.
-        *   LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
-        *   If the task is in the **Succeeded** state, the security group is associated.
-        *   If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
+        @summary Associates a security group with a Network Load Balancer (NLB) instance.
+        
+        @description    Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/25553.html).
+        An NLB instance can be associated with up to four security groups.
+        You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation.
+        LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+        If the task is in the **Succeeded** state, the security group is associated.
+        If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
         
         @param request: LoadBalancerJoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3095,12 +3865,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
         """
-        Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](~~25553~~).
-        *   An NLB instance can be associated with up to four security groups.
-        *   You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](~~214362~~) operation.
-        *   LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
-        *   If the task is in the **Succeeded** state, the security group is associated.
-        *   If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
+        @summary Associates a security group with a Network Load Balancer (NLB) instance.
+        
+        @description    Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/25553.html).
+        An NLB instance can be associated with up to four security groups.
+        You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation.
+        LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+        If the task is in the **Succeeded** state, the security group is associated.
+        If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
         
         @param request: LoadBalancerJoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3142,12 +3914,14 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
         """
-        Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](~~25553~~).
-        *   An NLB instance can be associated with up to four security groups.
-        *   You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](~~214362~~) operation.
-        *   LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
-        *   If the task is in the **Succeeded** state, the security group is associated.
-        *   If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
+        @summary Associates a security group with a Network Load Balancer (NLB) instance.
+        
+        @description    Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/25553.html).
+        An NLB instance can be associated with up to four security groups.
+        You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation.
+        LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+        If the task is in the **Succeeded** state, the security group is associated.
+        If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
         
         @param request: LoadBalancerJoinSecurityGroupRequest
         @return: LoadBalancerJoinSecurityGroupResponse
@@ -3160,12 +3934,14 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
         """
-        Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](~~25553~~).
-        *   An NLB instance can be associated with up to four security groups.
-        *   You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](~~214362~~) operation.
-        *   LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
-        *   If the task is in the **Succeeded** state, the security group is associated.
-        *   If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
+        @summary Associates a security group with a Network Load Balancer (NLB) instance.
+        
+        @description    Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/25553.html).
+        An NLB instance can be associated with up to four security groups.
+        You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation.
+        LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+        If the task is in the **Succeeded** state, the security group is associated.
+        If the task is in the **Processing** state, the security group is being associated. In this case, you can perform only query operations.
         
         @param request: LoadBalancerJoinSecurityGroupRequest
         @return: LoadBalancerJoinSecurityGroupResponse
@@ -3179,9 +3955,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
         """
-        LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
-        *   If the task is in the **Succeeded** state, the security group is disassociated.
-        *   If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
+        @summary Disassociates a security group from a Network Load Balancer (NLB) instance.
+        
+        @description LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+        If the task is in the **Succeeded** state, the security group is disassociated.
+        If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
         
         @param request: LoadBalancerLeaveSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3224,9 +4002,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
         """
-        LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
-        *   If the task is in the **Succeeded** state, the security group is disassociated.
-        *   If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
+        @summary Disassociates a security group from a Network Load Balancer (NLB) instance.
+        
+        @description LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+        If the task is in the **Succeeded** state, the security group is disassociated.
+        If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
         
         @param request: LoadBalancerLeaveSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3268,9 +4048,11 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
         """
-        LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
-        *   If the task is in the **Succeeded** state, the security group is disassociated.
-        *   If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
+        @summary Disassociates a security group from a Network Load Balancer (NLB) instance.
+        
+        @description LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+        If the task is in the **Succeeded** state, the security group is disassociated.
+        If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
         
         @param request: LoadBalancerLeaveSecurityGroupRequest
         @return: LoadBalancerLeaveSecurityGroupResponse
@@ -3283,9 +4065,11 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
         """
-        LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the status of a task.
-        *   If the task is in the **Succeeded** state, the security group is disassociated.
-        *   If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
+        @summary Disassociates a security group from a Network Load Balancer (NLB) instance.
+        
+        @description LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+        If the task is in the **Succeeded** state, the security group is disassociated.
+        If the task is in the **Processing** state, the security group is being disassociated. In this case, you can perform only query operations.
         
         @param request: LoadBalancerLeaveSecurityGroupRequest
         @return: LoadBalancerLeaveSecurityGroupResponse
@@ -3298,6 +4082,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.MoveResourceGroupResponse:
+        """
+        @summary Modify the group of resource.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -3332,6 +4123,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.MoveResourceGroupResponse:
+        """
+        @summary Modify the group of resource.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -3365,6 +4163,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.MoveResourceGroupRequest,
     ) -> nlb_20220430_models.MoveResourceGroupResponse:
+        """
+        @summary Modify the group of resource.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
@@ -3372,6 +4176,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.MoveResourceGroupRequest,
     ) -> nlb_20220430_models.MoveResourceGroupResponse:
+        """
+        @summary Modify the group of resource.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
@@ -3380,6 +4190,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.RemoveServersFromServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.RemoveServersFromServerGroupResponse:
+        """
+        @summary Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+        
+        @param request: RemoveServersFromServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveServersFromServerGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3416,6 +4233,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.RemoveServersFromServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.RemoveServersFromServerGroupResponse:
+        """
+        @summary Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+        
+        @param request: RemoveServersFromServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveServersFromServerGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3451,6 +4275,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.RemoveServersFromServerGroupRequest,
     ) -> nlb_20220430_models.RemoveServersFromServerGroupResponse:
+        """
+        @summary Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+        
+        @param request: RemoveServersFromServerGroupRequest
+        @return: RemoveServersFromServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_servers_from_server_group_with_options(request, runtime)
 
@@ -3458,14 +4288,131 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.RemoveServersFromServerGroupRequest,
     ) -> nlb_20220430_models.RemoveServersFromServerGroupResponse:
+        """
+        @summary Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+        
+        @param request: RemoveServersFromServerGroupRequest
+        @return: RemoveServersFromServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_servers_from_server_group_with_options_async(request, runtime)
+
+    def set_hd_monitor_region_config_with_options(
+        self,
+        request: nlb_20220430_models.SetHdMonitorRegionConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.SetHdMonitorRegionConfigResponse:
+        """
+        @summary 配置秒级监控存储
+        
+        @param request: SetHdMonitorRegionConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetHdMonitorRegionConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.log_project):
+            query['LogProject'] = request.log_project
+        if not UtilClient.is_unset(request.metric_store):
+            query['MetricStore'] = request.metric_store
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetHdMonitorRegionConfig',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.SetHdMonitorRegionConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_hd_monitor_region_config_with_options_async(
+        self,
+        request: nlb_20220430_models.SetHdMonitorRegionConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.SetHdMonitorRegionConfigResponse:
+        """
+        @summary 配置秒级监控存储
+        
+        @param request: SetHdMonitorRegionConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetHdMonitorRegionConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.log_project):
+            query['LogProject'] = request.log_project
+        if not UtilClient.is_unset(request.metric_store):
+            query['MetricStore'] = request.metric_store
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetHdMonitorRegionConfig',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.SetHdMonitorRegionConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_hd_monitor_region_config(
+        self,
+        request: nlb_20220430_models.SetHdMonitorRegionConfigRequest,
+    ) -> nlb_20220430_models.SetHdMonitorRegionConfigResponse:
+        """
+        @summary 配置秒级监控存储
+        
+        @param request: SetHdMonitorRegionConfigRequest
+        @return: SetHdMonitorRegionConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_hd_monitor_region_config_with_options(request, runtime)
+
+    async def set_hd_monitor_region_config_async(
+        self,
+        request: nlb_20220430_models.SetHdMonitorRegionConfigRequest,
+    ) -> nlb_20220430_models.SetHdMonitorRegionConfigResponse:
+        """
+        @summary 配置秒级监控存储
+        
+        @param request: SetHdMonitorRegionConfigRequest
+        @return: SetHdMonitorRegionConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_hd_monitor_region_config_with_options_async(request, runtime)
 
     def start_listener_with_options(
         self,
         request: nlb_20220430_models.StartListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartListenerResponse:
+        """
+        @summary Enables a listener for a Network Load Balancer (NLB) instance.
+        
+        @param request: StartListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3500,6 +4447,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StartListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartListenerResponse:
+        """
+        @summary Enables a listener for a Network Load Balancer (NLB) instance.
+        
+        @param request: StartListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3533,6 +4487,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.StartListenerRequest,
     ) -> nlb_20220430_models.StartListenerResponse:
+        """
+        @summary Enables a listener for a Network Load Balancer (NLB) instance.
+        
+        @param request: StartListenerRequest
+        @return: StartListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_listener_with_options(request, runtime)
 
@@ -3540,6 +4500,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.StartListenerRequest,
     ) -> nlb_20220430_models.StartListenerResponse:
+        """
+        @summary Enables a listener for a Network Load Balancer (NLB) instance.
+        
+        @param request: StartListenerRequest
+        @return: StartListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_listener_with_options_async(request, runtime)
 
@@ -3549,7 +4515,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        
+        @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3592,7 +4560,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        
+        @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3634,7 +4604,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StartShiftLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        
+        @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @return: StartShiftLoadBalancerZonesResponse
@@ -3647,7 +4619,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StartShiftLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        
+        @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
         
         @param request: StartShiftLoadBalancerZonesRequest
         @return: StartShiftLoadBalancerZonesResponse
@@ -3660,6 +4634,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StopListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StopListenerResponse:
+        """
+        @summary Disables a listener for a Network Load Balancer (NLB) instance.
+        
+        @param request: StopListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3694,6 +4675,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StopListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StopListenerResponse:
+        """
+        @summary Disables a listener for a Network Load Balancer (NLB) instance.
+        
+        @param request: StopListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopListenerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3727,6 +4715,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.StopListenerRequest,
     ) -> nlb_20220430_models.StopListenerResponse:
+        """
+        @summary Disables a listener for a Network Load Balancer (NLB) instance.
+        
+        @param request: StopListenerRequest
+        @return: StopListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_listener_with_options(request, runtime)
 
@@ -3734,6 +4728,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.StopListenerRequest,
     ) -> nlb_20220430_models.StopListenerResponse:
+        """
+        @summary Disables a listener for a Network Load Balancer (NLB) instance.
+        
+        @param request: StopListenerRequest
+        @return: StopListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_listener_with_options_async(request, runtime)
 
@@ -3742,6 +4742,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.TagResourcesResponse:
+        """
+        @summary Adds tags to specified resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3783,6 +4790,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.TagResourcesResponse:
+        """
+        @summary Adds tags to specified resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3823,6 +4837,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.TagResourcesRequest,
     ) -> nlb_20220430_models.TagResourcesResponse:
+        """
+        @summary Adds tags to specified resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -3830,6 +4850,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.TagResourcesRequest,
     ) -> nlb_20220430_models.TagResourcesResponse:
+        """
+        @summary Adds tags to specified resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -3838,6 +4864,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.all):
@@ -3881,6 +4914,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.all):
@@ -3923,6 +4963,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UntagResourcesRequest,
     ) -> nlb_20220430_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -3930,6 +4976,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UntagResourcesRequest,
     ) -> nlb_20220430_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -3938,6 +4990,13 @@ class Client(OpenApiClient):
         tmp_req: nlb_20220430_models.UpdateListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateListenerAttributeResponse:
+        """
+        @summary Updates the attributes of a listener, such as the name and the idle connection timeout period.
+        
+        @param tmp_req: UpdateListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateListenerAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nlb_20220430_models.UpdateListenerAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4004,6 +5063,13 @@ class Client(OpenApiClient):
         tmp_req: nlb_20220430_models.UpdateListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateListenerAttributeResponse:
+        """
+        @summary Updates the attributes of a listener, such as the name and the idle connection timeout period.
+        
+        @param tmp_req: UpdateListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateListenerAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nlb_20220430_models.UpdateListenerAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4069,6 +5135,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateListenerAttributeRequest,
     ) -> nlb_20220430_models.UpdateListenerAttributeResponse:
+        """
+        @summary Updates the attributes of a listener, such as the name and the idle connection timeout period.
+        
+        @param request: UpdateListenerAttributeRequest
+        @return: UpdateListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_listener_attribute_with_options(request, runtime)
 
@@ -4076,6 +5148,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateListenerAttributeRequest,
     ) -> nlb_20220430_models.UpdateListenerAttributeResponse:
+        """
+        @summary Updates the attributes of a listener, such as the name and the idle connection timeout period.
+        
+        @param request: UpdateListenerAttributeRequest
+        @return: UpdateListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_listener_attribute_with_options_async(request, runtime)
 
@@ -4085,11 +5163,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
-        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the **AddressType** value of an NLB instance after you change the network type.
-        *   **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the task status:
-        *   If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
-        *   If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+        @summary Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+        
+        @description    Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+        You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType** value of an NLB instance after you change the network type.
+        **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the task status:
+        If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
+        If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
         
         @param request: UpdateLoadBalancerAddressTypeConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4134,11 +5214,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
-        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the **AddressType** value of an NLB instance after you change the network type.
-        *   **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the task status:
-        *   If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
-        *   If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+        @summary Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+        
+        @description    Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+        You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType** value of an NLB instance after you change the network type.
+        **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the task status:
+        If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
+        If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
         
         @param request: UpdateLoadBalancerAddressTypeConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4182,11 +5264,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
-        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the **AddressType** value of an NLB instance after you change the network type.
-        *   **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the task status:
-        *   If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
-        *   If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+        @summary Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+        
+        @description    Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+        You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType** value of an NLB instance after you change the network type.
+        **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the task status:
+        If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
+        If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
         
         @param request: UpdateLoadBalancerAddressTypeConfigRequest
         @return: UpdateLoadBalancerAddressTypeConfigResponse
@@ -4199,11 +5283,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
-        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the **AddressType** value of an NLB instance after you change the network type.
-        *   **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation to query the task status:
-        *   If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
-        *   If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+        @summary Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+        
+        @description    Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+        You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType** value of an NLB instance after you change the network type.
+        **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the task status:
+        If the task is in the **Succeeded** state, the network type of the IPv4 address of the NLB instance is changed.
+        If the task is in the **Processing** state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
         
         @param request: UpdateLoadBalancerAddressTypeConfigRequest
         @return: UpdateLoadBalancerAddressTypeConfigResponse
@@ -4216,6 +5302,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerAttributeResponse:
+        """
+        @summary Updates the attributes, including the name, of a Network Load Balancer (NLB) instance.
+        
+        @param request: UpdateLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4256,6 +5349,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerAttributeResponse:
+        """
+        @summary Updates the attributes, including the name, of a Network Load Balancer (NLB) instance.
+        
+        @param request: UpdateLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4295,6 +5395,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateLoadBalancerAttributeRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerAttributeResponse:
+        """
+        @summary Updates the attributes, including the name, of a Network Load Balancer (NLB) instance.
+        
+        @param request: UpdateLoadBalancerAttributeRequest
+        @return: UpdateLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_load_balancer_attribute_with_options(request, runtime)
 
@@ -4302,6 +5408,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateLoadBalancerAttributeRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerAttributeResponse:
+        """
+        @summary Updates the attributes, including the name, of a Network Load Balancer (NLB) instance.
+        
+        @param request: UpdateLoadBalancerAttributeRequest
+        @return: UpdateLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_load_balancer_attribute_with_options_async(request, runtime)
 
@@ -4311,7 +5423,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
         """
-        > You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details about deletion protection and the configuration read-only mode.
+        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        
+        @description > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
         
         @param request: UpdateLoadBalancerProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4360,7 +5474,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
         """
-        > You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details about deletion protection and the configuration read-only mode.
+        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        
+        @description > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
         
         @param request: UpdateLoadBalancerProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4408,7 +5524,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
         """
-        > You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details about deletion protection and the configuration read-only mode.
+        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        
+        @description > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
         
         @param request: UpdateLoadBalancerProtectionRequest
         @return: UpdateLoadBalancerProtectionResponse
@@ -4421,7 +5539,9 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
         """
-        > You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the details about deletion protection and the configuration read-only mode.
+        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        
+        @description > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
         
         @param request: UpdateLoadBalancerProtectionRequest
         @return: UpdateLoadBalancerProtectionResponse
@@ -4435,13 +5555,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerZonesResponse:
         """
-        When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
+        @summary Modifies the zones and zone attributes of a Network Load Balancer (NLB) instance.
+        
+        @description When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
         Prerequisites
-        *   An NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
-        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the zones and zone attributes of an NLB instance.
-        *   **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation query to query the status of a task:
-        *   If the task is in the **Succeeded** state, the zones and zone attributes are modified.
-        *   If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+        An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+        You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
+        **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
+        If the task is in the **Succeeded** state, the zones and zone attributes are modified.
+        If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
         
         @param request: UpdateLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4484,13 +5606,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerZonesResponse:
         """
-        When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
+        @summary Modifies the zones and zone attributes of a Network Load Balancer (NLB) instance.
+        
+        @description When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
         Prerequisites
-        *   An NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
-        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the zones and zone attributes of an NLB instance.
-        *   **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation query to query the status of a task:
-        *   If the task is in the **Succeeded** state, the zones and zone attributes are modified.
-        *   If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+        An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+        You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
+        **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
+        If the task is in the **Succeeded** state, the zones and zone attributes are modified.
+        If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
         
         @param request: UpdateLoadBalancerZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4532,13 +5656,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerZonesResponse:
         """
-        When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
+        @summary Modifies the zones and zone attributes of a Network Load Balancer (NLB) instance.
+        
+        @description When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
         Prerequisites
-        *   An NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
-        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the zones and zone attributes of an NLB instance.
-        *   **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation query to query the status of a task:
-        *   If the task is in the **Succeeded** state, the zones and zone attributes are modified.
-        *   If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+        An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+        You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
+        **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
+        If the task is in the **Succeeded** state, the zones and zone attributes are modified.
+        If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
         
         @param request: UpdateLoadBalancerZonesRequest
         @return: UpdateLoadBalancerZonesResponse
@@ -4551,13 +5677,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerZonesResponse:
         """
-        When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
+        @summary Modifies the zones and zone attributes of a Network Load Balancer (NLB) instance.
+        
+        @description When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
         Prerequisites
-        *   An NLB instance is created. For more information, see [CreateLoadBalancer](~~445868~~).
-        *   You can call the [GetLoadBalancerAttribute](~~445873~~) operation to query the zones and zone attributes of an NLB instance.
-        *   **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](~~445904~~) operation query to query the status of a task:
-        *   If the task is in the **Succeeded** state, the zones and zone attributes are modified.
-        *   If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+        An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+        You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
+        **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
+        If the task is in the **Succeeded** state, the zones and zone attributes are modified.
+        If the task is in the **Processing** state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
         
         @param request: UpdateLoadBalancerZonesRequest
         @return: UpdateLoadBalancerZonesResponse
@@ -4570,6 +5698,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateSecurityPolicyAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateSecurityPolicyAttributeResponse:
+        """
+        @summary Modifies the configurations of a security policy for a Network Load Balancer (NLB) instance.
+        
+        @param request: UpdateSecurityPolicyAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecurityPolicyAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -4610,6 +5745,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateSecurityPolicyAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateSecurityPolicyAttributeResponse:
+        """
+        @summary Modifies the configurations of a security policy for a Network Load Balancer (NLB) instance.
+        
+        @param request: UpdateSecurityPolicyAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecurityPolicyAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -4649,6 +5791,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateSecurityPolicyAttributeRequest,
     ) -> nlb_20220430_models.UpdateSecurityPolicyAttributeResponse:
+        """
+        @summary Modifies the configurations of a security policy for a Network Load Balancer (NLB) instance.
+        
+        @param request: UpdateSecurityPolicyAttributeRequest
+        @return: UpdateSecurityPolicyAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_security_policy_attribute_with_options(request, runtime)
 
@@ -4656,6 +5804,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateSecurityPolicyAttributeRequest,
     ) -> nlb_20220430_models.UpdateSecurityPolicyAttributeResponse:
+        """
+        @summary Modifies the configurations of a security policy for a Network Load Balancer (NLB) instance.
+        
+        @param request: UpdateSecurityPolicyAttributeRequest
+        @return: UpdateSecurityPolicyAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_security_policy_attribute_with_options_async(request, runtime)
 
@@ -4664,6 +5818,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateServerGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupAttributeResponse:
+        """
+        @summary Modifies the configurations of a server group of Network Load Balancer (NLB).
+        
+        @param request: UpdateServerGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServerGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4713,6 +5874,13 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateServerGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupAttributeResponse:
+        """
+        @summary Modifies the configurations of a server group of Network Load Balancer (NLB).
+        
+        @param request: UpdateServerGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServerGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4761,6 +5929,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateServerGroupAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupAttributeResponse:
+        """
+        @summary Modifies the configurations of a server group of Network Load Balancer (NLB).
+        
+        @param request: UpdateServerGroupAttributeRequest
+        @return: UpdateServerGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_server_group_attribute_with_options(request, runtime)
 
@@ -4768,6 +5942,12 @@ class Client(OpenApiClient):
         self,
         request: nlb_20220430_models.UpdateServerGroupAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupAttributeResponse:
+        """
+        @summary Modifies the configurations of a server group of Network Load Balancer (NLB).
+        
+        @param request: UpdateServerGroupAttributeRequest
+        @return: UpdateServerGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_server_group_attribute_with_options_async(request, runtime)
 
@@ -4777,13 +5957,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
         """
-        *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~445895~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, the server group is being modified.
-        *   If a server group is in the **Available** state, the server group is running.
-        2.  You can call the [ListServerGroupServers](~~445896~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
-        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        @summary Modifies the configurations of backend servers in a server group, such as the weight and description.
+        
+        @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, the server group is being modified.
+        If a server group is in the **Available** state, the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/445896.html) operation to query the status of a backend server.
+        If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        If a backend server is in the **Available** state, it indicates that the backend server is running.
         
         @param request: UpdateServerGroupServersAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4826,13 +6008,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
         """
-        *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~445895~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, the server group is being modified.
-        *   If a server group is in the **Available** state, the server group is running.
-        2.  You can call the [ListServerGroupServers](~~445896~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
-        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        @summary Modifies the configurations of backend servers in a server group, such as the weight and description.
+        
+        @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, the server group is being modified.
+        If a server group is in the **Available** state, the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/445896.html) operation to query the status of a backend server.
+        If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        If a backend server is in the **Available** state, it indicates that the backend server is running.
         
         @param request: UpdateServerGroupServersAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4874,13 +6058,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateServerGroupServersAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
         """
-        *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~445895~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, the server group is being modified.
-        *   If a server group is in the **Available** state, the server group is running.
-        2.  You can call the [ListServerGroupServers](~~445896~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
-        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        @summary Modifies the configurations of backend servers in a server group, such as the weight and description.
+        
+        @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, the server group is being modified.
+        If a server group is in the **Available** state, the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/445896.html) operation to query the status of a backend server.
+        If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        If a backend server is in the **Available** state, it indicates that the backend server is running.
         
         @param request: UpdateServerGroupServersAttributeRequest
         @return: UpdateServerGroupServersAttributeResponse
@@ -4893,13 +6079,15 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateServerGroupServersAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
         """
-        *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-        1.  You can call the [ListServerGroups](~~445895~~) operation to query the status of a server group.
-        *   If a server group is in the **Configuring** state, the server group is being modified.
-        *   If a server group is in the **Available** state, the server group is running.
-        2.  You can call the [ListServerGroupServers](~~445896~~) operation to query the status of a backend server.
-        *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
-        *   If a backend server is in the **Available** state, it indicates that the backend server is running.
+        @summary Modifies the configurations of backend servers in a server group, such as the weight and description.
+        
+        @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+        1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
+        If a server group is in the **Configuring** state, the server group is being modified.
+        If a server group is in the **Available** state, the server group is running.
+        2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/445896.html) operation to query the status of a backend server.
+        If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
+        If a backend server is in the **Available** state, it indicates that the backend server is running.
         
         @param request: UpdateServerGroupServersAttributeRequest
         @return: UpdateServerGroupServersAttributeResponse
