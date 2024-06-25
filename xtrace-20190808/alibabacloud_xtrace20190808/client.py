@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.CheckCommercialStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.CheckCommercialStatusResponse:
+        """
+        @summary 检查商业化状态
+        
+        @param request: CheckCommercialStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCommercialStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -76,6 +83,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.CheckCommercialStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.CheckCommercialStatusResponse:
+        """
+        @summary 检查商业化状态
+        
+        @param request: CheckCommercialStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCommercialStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -105,6 +119,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.CheckCommercialStatusRequest,
     ) -> xtrace_20190808_models.CheckCommercialStatusResponse:
+        """
+        @summary 检查商业化状态
+        
+        @param request: CheckCommercialStatusRequest
+        @return: CheckCommercialStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_commercial_status_with_options(request, runtime)
 
@@ -112,6 +132,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.CheckCommercialStatusRequest,
     ) -> xtrace_20190808_models.CheckCommercialStatusResponse:
+        """
+        @summary 检查商业化状态
+        
+        @param request: CheckCommercialStatusRequest
+        @return: CheckCommercialStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_commercial_status_with_options_async(request, runtime)
 
@@ -120,6 +146,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.GetTagKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTagKeyResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: GetTagKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTagKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -156,6 +189,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.GetTagKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTagKeyResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: GetTagKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTagKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -191,6 +231,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.GetTagKeyRequest,
     ) -> xtrace_20190808_models.GetTagKeyResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: GetTagKeyRequest
+        @return: GetTagKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_tag_key_with_options(request, runtime)
 
@@ -198,6 +244,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.GetTagKeyRequest,
     ) -> xtrace_20190808_models.GetTagKeyResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: GetTagKeyRequest
+        @return: GetTagKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_tag_key_with_options_async(request, runtime)
 
@@ -206,6 +258,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.GetTagValRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTagValResponse:
+        """
+        @summary Queries the tag values that correspond to a tag key.
+        
+        @param request: GetTagValRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTagValResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -244,6 +303,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.GetTagValRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTagValResponse:
+        """
+        @summary Queries the tag values that correspond to a tag key.
+        
+        @param request: GetTagValRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTagValResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -281,6 +347,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.GetTagValRequest,
     ) -> xtrace_20190808_models.GetTagValResponse:
+        """
+        @summary Queries the tag values that correspond to a tag key.
+        
+        @param request: GetTagValRequest
+        @return: GetTagValResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_tag_val_with_options(request, runtime)
 
@@ -288,6 +360,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.GetTagValRequest,
     ) -> xtrace_20190808_models.GetTagValResponse:
+        """
+        @summary Queries the tag values that correspond to a tag key.
+        
+        @param request: GetTagValRequest
+        @return: GetTagValResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_tag_val_with_options_async(request, runtime)
 
@@ -296,6 +374,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.GetTraceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTraceResponse:
+        """
+        @summary Queries the details of a trace.
+        
+        @param request: GetTraceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTraceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -328,6 +413,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.GetTraceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.GetTraceResponse:
+        """
+        @summary Queries the details of a trace.
+        
+        @param request: GetTraceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTraceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -359,6 +451,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.GetTraceRequest,
     ) -> xtrace_20190808_models.GetTraceResponse:
+        """
+        @summary Queries the details of a trace.
+        
+        @param request: GetTraceRequest
+        @return: GetTraceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_trace_with_options(request, runtime)
 
@@ -366,6 +464,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.GetTraceRequest,
     ) -> xtrace_20190808_models.GetTraceResponse:
+        """
+        @summary Queries the details of a trace.
+        
+        @param request: GetTraceRequest
+        @return: GetTraceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_trace_with_options_async(request, runtime)
 
@@ -374,6 +478,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.ListIpOrHostsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
+        """
+        @summary Queries the IP addresses of an application.
+        
+        @param request: ListIpOrHostsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIpOrHostsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -408,6 +519,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.ListIpOrHostsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
+        """
+        @summary Queries the IP addresses of an application.
+        
+        @param request: ListIpOrHostsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIpOrHostsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -441,6 +559,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.ListIpOrHostsRequest,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
+        """
+        @summary Queries the IP addresses of an application.
+        
+        @param request: ListIpOrHostsRequest
+        @return: ListIpOrHostsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ip_or_hosts_with_options(request, runtime)
 
@@ -448,6 +572,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.ListIpOrHostsRequest,
     ) -> xtrace_20190808_models.ListIpOrHostsResponse:
+        """
+        @summary Queries the IP addresses of an application.
+        
+        @param request: ListIpOrHostsRequest
+        @return: ListIpOrHostsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ip_or_hosts_with_options_async(request, runtime)
 
@@ -456,6 +586,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.ListServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListServicesResponse:
+        """
+        @summary Queries applications.
+        
+        @param request: ListServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -486,6 +623,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.ListServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListServicesResponse:
+        """
+        @summary Queries applications.
+        
+        @param request: ListServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -515,6 +659,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.ListServicesRequest,
     ) -> xtrace_20190808_models.ListServicesResponse:
+        """
+        @summary Queries applications.
+        
+        @param request: ListServicesRequest
+        @return: ListServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_services_with_options(request, runtime)
 
@@ -522,6 +672,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.ListServicesRequest,
     ) -> xtrace_20190808_models.ListServicesResponse:
+        """
+        @summary Queries applications.
+        
+        @param request: ListServicesRequest
+        @return: ListServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_services_with_options_async(request, runtime)
 
@@ -530,6 +686,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.ListSpanNamesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListSpanNamesResponse:
+        """
+        @summary Queries all span names in a specified region or all span names of a microservice.
+        
+        @param request: ListSpanNamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSpanNamesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -564,6 +727,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.ListSpanNamesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.ListSpanNamesResponse:
+        """
+        @summary Queries all span names in a specified region or all span names of a microservice.
+        
+        @param request: ListSpanNamesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSpanNamesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -597,6 +767,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.ListSpanNamesRequest,
     ) -> xtrace_20190808_models.ListSpanNamesResponse:
+        """
+        @summary Queries all span names in a specified region or all span names of a microservice.
+        
+        @param request: ListSpanNamesRequest
+        @return: ListSpanNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_span_names_with_options(request, runtime)
 
@@ -604,6 +780,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.ListSpanNamesRequest,
     ) -> xtrace_20190808_models.ListSpanNamesResponse:
+        """
+        @summary Queries all span names in a specified region or all span names of a microservice.
+        
+        @param request: ListSpanNamesRequest
+        @return: ListSpanNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_span_names_with_options_async(request, runtime)
 
@@ -612,6 +794,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.OpenXtraceServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
+        """
+        @summary 开通xtrace和对应的sls
+        
+        @param request: OpenXtraceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenXtraceServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -640,6 +829,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.OpenXtraceServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
+        """
+        @summary 开通xtrace和对应的sls
+        
+        @param request: OpenXtraceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenXtraceServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -667,6 +863,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.OpenXtraceServiceRequest,
     ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
+        """
+        @summary 开通xtrace和对应的sls
+        
+        @param request: OpenXtraceServiceRequest
+        @return: OpenXtraceServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_xtrace_service_with_options(request, runtime)
 
@@ -674,6 +876,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.OpenXtraceServiceRequest,
     ) -> xtrace_20190808_models.OpenXtraceServiceResponse:
+        """
+        @summary 开通xtrace和对应的sls
+        
+        @param request: OpenXtraceServiceRequest
+        @return: OpenXtraceServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_xtrace_service_with_options_async(request, runtime)
 
@@ -682,6 +890,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.QueryMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.QueryMetricResponse:
+        """
+        @summary Queries a metric.
+        
+        @param request: QueryMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -730,6 +945,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.QueryMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.QueryMetricResponse:
+        """
+        @summary Queries a metric.
+        
+        @param request: QueryMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dimensions):
@@ -777,6 +999,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.QueryMetricRequest,
     ) -> xtrace_20190808_models.QueryMetricResponse:
+        """
+        @summary Queries a metric.
+        
+        @param request: QueryMetricRequest
+        @return: QueryMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_metric_with_options(request, runtime)
 
@@ -784,6 +1012,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.QueryMetricRequest,
     ) -> xtrace_20190808_models.QueryMetricResponse:
+        """
+        @summary Queries a metric.
+        
+        @param request: QueryMetricRequest
+        @return: QueryMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_metric_with_options_async(request, runtime)
 
@@ -792,6 +1026,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.SearchTracesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.SearchTracesResponse:
+        """
+        @summary Queries traces by time, application name, IP address, span name, and tag.
+        
+        @param request: SearchTracesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchTracesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -842,6 +1083,13 @@ class Client(OpenApiClient):
         request: xtrace_20190808_models.SearchTracesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtrace_20190808_models.SearchTracesResponse:
+        """
+        @summary Queries traces by time, application name, IP address, span name, and tag.
+        
+        @param request: SearchTracesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchTracesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -891,6 +1139,12 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.SearchTracesRequest,
     ) -> xtrace_20190808_models.SearchTracesResponse:
+        """
+        @summary Queries traces by time, application name, IP address, span name, and tag.
+        
+        @param request: SearchTracesRequest
+        @return: SearchTracesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_traces_with_options(request, runtime)
 
@@ -898,5 +1152,11 @@ class Client(OpenApiClient):
         self,
         request: xtrace_20190808_models.SearchTracesRequest,
     ) -> xtrace_20190808_models.SearchTracesResponse:
+        """
+        @summary Queries traces by time, application name, IP address, span name, and tag.
+        
+        @param request: SearchTracesRequest
+        @return: SearchTracesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_traces_with_options_async(request, runtime)

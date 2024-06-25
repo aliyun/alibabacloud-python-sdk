@@ -11,6 +11,7 @@ class CheckCommercialStatusRequest(TeaModel):
         service: str = None,
     ):
         self.region_id = region_id
+        # This parameter is required.
         self.service = service
 
     def validate(self):
@@ -83,9 +84,6 @@ class CheckCommercialStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -127,6 +125,8 @@ class GetTagKeyRequest(TeaModel):
         # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
         self.end_time = end_time
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the application.
         self.service_name = service_name
@@ -247,9 +247,6 @@ class GetTagKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -300,6 +297,8 @@ class GetTagValRequest(TeaModel):
         # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
         self.start_time = start_time
         # The tag key.
+        # 
+        # This parameter is required.
         self.tag_key = tag_key
 
     def validate(self):
@@ -418,9 +417,6 @@ class GetTagValResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -460,8 +456,12 @@ class GetTraceRequest(TeaModel):
         # The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
         self.app_type = app_type
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The unique ID of the trace.
+        # 
+        # This parameter is required.
         self.trace_id = trace_id
 
     def validate(self):
@@ -908,9 +908,6 @@ class GetTraceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -951,6 +948,8 @@ class ListIpOrHostsRequest(TeaModel):
         # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
         self.end_time = end_time
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the application. If you do not set this parameter, the IP addresses of all applications in the specified region are returned.
         self.service_name = service_name
@@ -1065,9 +1064,6 @@ class ListIpOrHostsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1106,6 +1102,8 @@ class ListServicesRequest(TeaModel):
         # The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
         self.app_type = app_type
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1258,9 +1256,6 @@ class ListServicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1301,6 +1296,8 @@ class ListSpanNamesRequest(TeaModel):
         # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
         self.end_time = end_time
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the application.
         self.service_name = service_name
@@ -1415,9 +1412,6 @@ class ListSpanNamesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1525,9 +1519,6 @@ class OpenXtraceServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1610,6 +1601,8 @@ class QueryMetricRequest(TeaModel):
         # The dimensions of the metric that you want to query.
         self.dimensions = dimensions
         # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The filter conditions.
         self.filters = filters
@@ -1620,11 +1613,15 @@ class QueryMetricRequest(TeaModel):
         # The maximum number of entries that you want to return.
         self.limit = limit
         # The measures of the metric that you want to query.
+        # 
+        # This parameter is required.
         self.measures = measures
         # The name of the metric. Valid values:
         # 
         # - `appstat.incall`: trace statistics 
         # - `appstat.sql`: SQL statistics
+        # 
+        # This parameter is required.
         self.metric = metric
         # The order in which you want to sort the returned entries. Valid values:
         # 
@@ -1636,6 +1633,8 @@ class QueryMetricRequest(TeaModel):
         # The ID of the proxy user.
         self.proxy_user_id = proxy_user_id
         # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -1753,9 +1752,6 @@ class QueryMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1839,6 +1835,8 @@ class SearchTracesRequest(TeaModel):
         # The type of the application. You can set the value to **XTRACE** or leave this parameter unspecified.
         self.app_type = app_type
         # The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The time more than which is used to call the trace. Unit: milliseconds. For example, a value of 100 specifies to return the traces that more than 100 milliseconds are used to call.
         self.min_duration = min_duration
@@ -1849,6 +1847,8 @@ class SearchTracesRequest(TeaModel):
         # The number of entries to return on each page.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to sort the query results in chronological order or reverse chronological order. Default value: false. Valid values:
         # 
@@ -1860,6 +1860,8 @@ class SearchTracesRequest(TeaModel):
         # The name of the application.
         self.service_name = service_name
         # The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The list of the tags.
         self.tag = tag
@@ -2141,9 +2143,6 @@ class SearchTracesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
