@@ -2,6 +2,10 @@
 - Update API CheckCommercialStatus: update param Service.
 
 
+2024-06-25 Version: 1.3.1
+- Update API CheckCommercialStatus: update param Service.
+
+
 2023-11-27 Version: 1.3.0
 - Generated python 2019-08-08 for xtrace.
 
