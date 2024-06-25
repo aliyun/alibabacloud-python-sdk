@@ -358,11 +358,13 @@ class MaintenanceWindow(TeaModel):
         duration: str = None,
         enable: bool = None,
         maintenance_time: str = None,
+        recurrence: str = None,
         weekly_period: str = None,
     ):
         self.duration = duration
         self.enable = enable
         self.maintenance_time = maintenance_time
+        self.recurrence = recurrence
         self.weekly_period = weekly_period
 
     def validate(self):
@@ -380,6 +382,8 @@ class MaintenanceWindow(TeaModel):
             result['enable'] = self.enable
         if self.maintenance_time is not None:
             result['maintenance_time'] = self.maintenance_time
+        if self.recurrence is not None:
+            result['recurrence'] = self.recurrence
         if self.weekly_period is not None:
             result['weekly_period'] = self.weekly_period
         return result
@@ -392,6 +396,8 @@ class MaintenanceWindow(TeaModel):
             self.enable = m.get('enable')
         if m.get('maintenance_time') is not None:
             self.maintenance_time = m.get('maintenance_time')
+        if m.get('recurrence') is not None:
+            self.recurrence = m.get('recurrence')
         if m.get('weekly_period') is not None:
             self.weekly_period = m.get('weekly_period')
         return self
@@ -13416,11 +13422,13 @@ class DescribeClustersRequest(TeaModel):
         self,
         cluster_type: str = None,
         name: str = None,
+        resource_group_id: str = None,
     ):
         # The cluster type.
         self.cluster_type = cluster_type
         # The cluster name based on which the system performs fuzzy searches among the clusters that belong to the current Alibaba Cloud account.
         self.name = name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -13435,6 +13443,8 @@ class DescribeClustersRequest(TeaModel):
             result['clusterType'] = self.cluster_type
         if self.name is not None:
             result['name'] = self.name
+        if self.resource_group_id is not None:
+            result['resource_group_id'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13443,6 +13453,8 @@ class DescribeClustersRequest(TeaModel):
             self.cluster_type = m.get('clusterType')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
         return self
 
 

@@ -5893,6 +5893,8 @@ class Client(OpenApiClient):
             query['clusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resource_group_id'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -5936,6 +5938,8 @@ class Client(OpenApiClient):
             query['clusterType'] = request.cluster_type
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resource_group_id'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

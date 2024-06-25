@@ -1,3 +1,7 @@
+2024-06-25 Version: 4.3.2
+- Update API DescribeClusters: add param resource_group_id.
+
+
 2024-06-25 Version: 4.3.1
 - Update API DescribeNodePoolVuls: update response param.
 
