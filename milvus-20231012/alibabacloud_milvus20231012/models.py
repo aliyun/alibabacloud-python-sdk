@@ -478,6 +478,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         open_public_net: bool = None,
         package_type: str = None,
         pay_type: int = None,
+        product_code: str = None,
         region_id: str = None,
         running_time: int = None,
         sg_id: str = None,
@@ -500,6 +501,7 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         self.open_public_net = open_public_net
         self.package_type = package_type
         self.pay_type = pay_type
+        self.product_code = product_code
         self.region_id = region_id
         self.running_time = running_time
         self.sg_id = sg_id
@@ -544,6 +546,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             result['PackageType'] = self.package_type
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.running_time is not None:
@@ -591,6 +595,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             self.package_type = m.get('PackageType')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RunningTime') is not None:
@@ -903,6 +909,7 @@ class ListInstancesResponseBodyData(TeaModel):
         open_public_net: bool = None,
         package_type: str = None,
         pay_type: int = None,
+        product_code: str = None,
         region_id: str = None,
         running_time: int = None,
         sg_id: str = None,
@@ -919,6 +926,7 @@ class ListInstancesResponseBodyData(TeaModel):
         self.open_public_net = open_public_net
         self.package_type = package_type
         self.pay_type = pay_type
+        self.product_code = product_code
         self.region_id = region_id
         self.running_time = running_time
         self.sg_id = sg_id
@@ -954,6 +962,8 @@ class ListInstancesResponseBodyData(TeaModel):
             result['PackageType'] = self.package_type
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.running_time is not None:
@@ -989,6 +999,8 @@ class ListInstancesResponseBodyData(TeaModel):
             self.package_type = m.get('PackageType')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RunningTime') is not None:
