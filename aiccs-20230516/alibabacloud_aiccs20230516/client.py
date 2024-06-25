@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.AddBlacklistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.AddBlacklistResponse:
+        """
+        @summary 添加黑名单接口
+        
+        @param tmp_req: AddBlacklistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBlacklistResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.AddBlacklistShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -88,6 +95,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.AddBlacklistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.AddBlacklistResponse:
+        """
+        @summary 添加黑名单接口
+        
+        @param tmp_req: AddBlacklistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBlacklistResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.AddBlacklistShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -129,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.AddBlacklistRequest,
     ) -> aiccs_20230516_models.AddBlacklistResponse:
+        """
+        @summary 添加黑名单接口
+        
+        @param request: AddBlacklistRequest
+        @return: AddBlacklistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_blacklist_with_options(request, runtime)
 
@@ -136,6 +156,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.AddBlacklistRequest,
     ) -> aiccs_20230516_models.AddBlacklistResponse:
+        """
+        @summary 添加黑名单接口
+        
+        @param request: AddBlacklistRequest
+        @return: AddBlacklistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_blacklist_with_options_async(request, runtime)
 
@@ -144,6 +170,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.AddTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.AddTaskResponse:
+        """
+        @summary 创建任务接口
+        
+        @param tmp_req: AddTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.AddTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -220,6 +253,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.AddTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.AddTaskResponse:
+        """
+        @summary 创建任务接口
+        
+        @param tmp_req: AddTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.AddTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -295,6 +335,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.AddTaskRequest,
     ) -> aiccs_20230516_models.AddTaskResponse:
+        """
+        @summary 创建任务接口
+        
+        @param request: AddTaskRequest
+        @return: AddTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_task_with_options(request, runtime)
 
@@ -302,6 +348,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.AddTaskRequest,
     ) -> aiccs_20230516_models.AddTaskResponse:
+        """
+        @summary 创建任务接口
+        
+        @param request: AddTaskRequest
+        @return: AddTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_task_with_options_async(request, runtime)
 
@@ -310,6 +362,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.AgentCancelCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.AgentCancelCallResponse:
+        """
+        @summary 坐席取消号码外呼
+        
+        @param tmp_req: AgentCancelCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AgentCancelCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.AgentCancelCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -356,6 +415,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.AgentCancelCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.AgentCancelCallResponse:
+        """
+        @summary 坐席取消号码外呼
+        
+        @param tmp_req: AgentCancelCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AgentCancelCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.AgentCancelCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -401,6 +467,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.AgentCancelCallRequest,
     ) -> aiccs_20230516_models.AgentCancelCallResponse:
+        """
+        @summary 坐席取消号码外呼
+        
+        @param request: AgentCancelCallRequest
+        @return: AgentCancelCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.agent_cancel_call_with_options(request, runtime)
 
@@ -408,6 +480,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.AgentCancelCallRequest,
     ) -> aiccs_20230516_models.AgentCancelCallResponse:
+        """
+        @summary 坐席取消号码外呼
+        
+        @param request: AgentCancelCallRequest
+        @return: AgentCancelCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.agent_cancel_call_with_options_async(request, runtime)
 
@@ -416,6 +494,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.AgentRecoverCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.AgentRecoverCallResponse:
+        """
+        @summary 坐席任务恢复号码
+        
+        @param tmp_req: AgentRecoverCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AgentRecoverCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.AgentRecoverCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -466,6 +551,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.AgentRecoverCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.AgentRecoverCallResponse:
+        """
+        @summary 坐席任务恢复号码
+        
+        @param tmp_req: AgentRecoverCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AgentRecoverCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.AgentRecoverCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -515,6 +607,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.AgentRecoverCallRequest,
     ) -> aiccs_20230516_models.AgentRecoverCallResponse:
+        """
+        @summary 坐席任务恢复号码
+        
+        @param request: AgentRecoverCallRequest
+        @return: AgentRecoverCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.agent_recover_call_with_options(request, runtime)
 
@@ -522,6 +620,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.AgentRecoverCallRequest,
     ) -> aiccs_20230516_models.AgentRecoverCallResponse:
+        """
+        @summary 坐席任务恢复号码
+        
+        @param request: AgentRecoverCallRequest
+        @return: AgentRecoverCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.agent_recover_call_with_options_async(request, runtime)
 
@@ -530,6 +634,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.DetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.DetailsResponse:
+        """
+        @summary AI批量任务查询号码状态接口
+        
+        @param tmp_req: DetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetailsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.DetailsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -582,6 +693,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.DetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.DetailsResponse:
+        """
+        @summary AI批量任务查询号码状态接口
+        
+        @param tmp_req: DetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetailsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.DetailsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -633,6 +751,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.DetailsRequest,
     ) -> aiccs_20230516_models.DetailsResponse:
+        """
+        @summary AI批量任务查询号码状态接口
+        
+        @param request: DetailsRequest
+        @return: DetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.details_with_options(request, runtime)
 
@@ -640,6 +764,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.DetailsRequest,
     ) -> aiccs_20230516_models.DetailsResponse:
+        """
+        @summary AI批量任务查询号码状态接口
+        
+        @param request: DetailsRequest
+        @return: DetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.details_with_options_async(request, runtime)
 
@@ -648,6 +778,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.EditTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.EditTaskResponse:
+        """
+        @summary 编辑任务接口
+        
+        @param tmp_req: EditTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.EditTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -724,6 +861,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.EditTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.EditTaskResponse:
+        """
+        @summary 编辑任务接口
+        
+        @param tmp_req: EditTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.EditTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -799,6 +943,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.EditTaskRequest,
     ) -> aiccs_20230516_models.EditTaskResponse:
+        """
+        @summary 编辑任务接口
+        
+        @param request: EditTaskRequest
+        @return: EditTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.edit_task_with_options(request, runtime)
 
@@ -806,6 +956,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.EditTaskRequest,
     ) -> aiccs_20230516_models.EditTaskResponse:
+        """
+        @summary 编辑任务接口
+        
+        @param request: EditTaskRequest
+        @return: EditTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.edit_task_with_options_async(request, runtime)
 
@@ -814,6 +970,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.ImportNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.ImportNumberResponse:
+        """
+        @summary 导入号码
+        
+        @param tmp_req: ImportNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportNumberResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.ImportNumberShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -858,6 +1021,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.ImportNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.ImportNumberResponse:
+        """
+        @summary 导入号码
+        
+        @param tmp_req: ImportNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportNumberResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.ImportNumberShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -901,6 +1071,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.ImportNumberRequest,
     ) -> aiccs_20230516_models.ImportNumberResponse:
+        """
+        @summary 导入号码
+        
+        @param request: ImportNumberRequest
+        @return: ImportNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_number_with_options(request, runtime)
 
@@ -908,6 +1084,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.ImportNumberRequest,
     ) -> aiccs_20230516_models.ImportNumberResponse:
+        """
+        @summary 导入号码
+        
+        @param request: ImportNumberRequest
+        @return: ImportNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_number_with_options_async(request, runtime)
 
@@ -916,6 +1098,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.PageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.PageResponse:
+        """
+        @summary 查询企业黑名单
+        
+        @param tmp_req: PageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.PageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -958,6 +1147,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.PageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.PageResponse:
+        """
+        @summary 查询企业黑名单
+        
+        @param tmp_req: PageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.PageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -999,6 +1195,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.PageRequest,
     ) -> aiccs_20230516_models.PageResponse:
+        """
+        @summary 查询企业黑名单
+        
+        @param request: PageRequest
+        @return: PageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.page_with_options(request, runtime)
 
@@ -1006,6 +1208,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.PageRequest,
     ) -> aiccs_20230516_models.PageResponse:
+        """
+        @summary 查询企业黑名单
+        
+        @param request: PageRequest
+        @return: PageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.page_with_options_async(request, runtime)
 
@@ -1014,6 +1222,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.SmsTemplateCreateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.SmsTemplateCreateResponse:
+        """
+        @summary 短信模板创建
+        
+        @param request: SmsTemplateCreateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmsTemplateCreateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -1056,6 +1271,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.SmsTemplateCreateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.SmsTemplateCreateResponse:
+        """
+        @summary 短信模板创建
+        
+        @param request: SmsTemplateCreateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmsTemplateCreateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -1097,6 +1319,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.SmsTemplateCreateRequest,
     ) -> aiccs_20230516_models.SmsTemplateCreateResponse:
+        """
+        @summary 短信模板创建
+        
+        @param request: SmsTemplateCreateRequest
+        @return: SmsTemplateCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sms_template_create_with_options(request, runtime)
 
@@ -1104,6 +1332,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.SmsTemplateCreateRequest,
     ) -> aiccs_20230516_models.SmsTemplateCreateResponse:
+        """
+        @summary 短信模板创建
+        
+        @param request: SmsTemplateCreateRequest
+        @return: SmsTemplateCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sms_template_create_with_options_async(request, runtime)
 
@@ -1112,6 +1346,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.SmsTemplatePageListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.SmsTemplatePageListResponse:
+        """
+        @summary 短信模板列表查询
+        
+        @param request: SmsTemplatePageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmsTemplatePageListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1158,6 +1399,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.SmsTemplatePageListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.SmsTemplatePageListResponse:
+        """
+        @summary 短信模板列表查询
+        
+        @param request: SmsTemplatePageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmsTemplatePageListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1203,6 +1451,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.SmsTemplatePageListRequest,
     ) -> aiccs_20230516_models.SmsTemplatePageListResponse:
+        """
+        @summary 短信模板列表查询
+        
+        @param request: SmsTemplatePageListRequest
+        @return: SmsTemplatePageListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sms_template_page_list_with_options(request, runtime)
 
@@ -1210,6 +1464,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.SmsTemplatePageListRequest,
     ) -> aiccs_20230516_models.SmsTemplatePageListResponse:
+        """
+        @summary 短信模板列表查询
+        
+        @param request: SmsTemplatePageListRequest
+        @return: SmsTemplatePageListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sms_template_page_list_with_options_async(request, runtime)
 
@@ -1218,6 +1478,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.TaskCallChatsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskCallChatsResponse:
+        """
+        @summary 查询聊天记录接口
+        
+        @param request: TaskCallChatsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskCallChatsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -1258,6 +1525,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.TaskCallChatsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskCallChatsResponse:
+        """
+        @summary 查询聊天记录接口
+        
+        @param request: TaskCallChatsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskCallChatsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -1297,6 +1571,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskCallChatsRequest,
     ) -> aiccs_20230516_models.TaskCallChatsResponse:
+        """
+        @summary 查询聊天记录接口
+        
+        @param request: TaskCallChatsRequest
+        @return: TaskCallChatsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.task_call_chats_with_options(request, runtime)
 
@@ -1304,6 +1584,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskCallChatsRequest,
     ) -> aiccs_20230516_models.TaskCallChatsResponse:
+        """
+        @summary 查询聊天记录接口
+        
+        @param request: TaskCallChatsRequest
+        @return: TaskCallChatsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.task_call_chats_with_options_async(request, runtime)
 
@@ -1312,6 +1598,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.TaskCallInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskCallInfoResponse:
+        """
+        @summary 获取任务外呼情况接口
+        
+        @param request: TaskCallInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskCallInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1346,6 +1639,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.TaskCallInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskCallInfoResponse:
+        """
+        @summary 获取任务外呼情况接口
+        
+        @param request: TaskCallInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskCallInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1379,6 +1679,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskCallInfoRequest,
     ) -> aiccs_20230516_models.TaskCallInfoResponse:
+        """
+        @summary 获取任务外呼情况接口
+        
+        @param request: TaskCallInfoRequest
+        @return: TaskCallInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.task_call_info_with_options(request, runtime)
 
@@ -1386,6 +1692,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskCallInfoRequest,
     ) -> aiccs_20230516_models.TaskCallInfoResponse:
+        """
+        @summary 获取任务外呼情况接口
+        
+        @param request: TaskCallInfoRequest
+        @return: TaskCallInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.task_call_info_with_options_async(request, runtime)
 
@@ -1394,6 +1706,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.TaskCallListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskCallListResponse:
+        """
+        @summary AI批量任务查询外呼记录接口
+        
+        @param tmp_req: TaskCallListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskCallListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.TaskCallListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1448,6 +1767,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.TaskCallListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskCallListResponse:
+        """
+        @summary AI批量任务查询外呼记录接口
+        
+        @param tmp_req: TaskCallListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskCallListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.TaskCallListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1501,6 +1827,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskCallListRequest,
     ) -> aiccs_20230516_models.TaskCallListResponse:
+        """
+        @summary AI批量任务查询外呼记录接口
+        
+        @param request: TaskCallListRequest
+        @return: TaskCallListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.task_call_list_with_options(request, runtime)
 
@@ -1508,6 +1840,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskCallListRequest,
     ) -> aiccs_20230516_models.TaskCallListResponse:
+        """
+        @summary AI批量任务查询外呼记录接口
+        
+        @param request: TaskCallListRequest
+        @return: TaskCallListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.task_call_list_with_options_async(request, runtime)
 
@@ -1516,6 +1854,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.TaskCancelCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskCancelCallResponse:
+        """
+        @summary 批量任务取消号码外呼
+        
+        @param tmp_req: TaskCancelCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskCancelCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.TaskCancelCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1560,6 +1905,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.TaskCancelCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskCancelCallResponse:
+        """
+        @summary 批量任务取消号码外呼
+        
+        @param tmp_req: TaskCancelCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskCancelCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.TaskCancelCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1603,6 +1955,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskCancelCallRequest,
     ) -> aiccs_20230516_models.TaskCancelCallResponse:
+        """
+        @summary 批量任务取消号码外呼
+        
+        @param request: TaskCancelCallRequest
+        @return: TaskCancelCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.task_cancel_call_with_options(request, runtime)
 
@@ -1610,6 +1968,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskCancelCallRequest,
     ) -> aiccs_20230516_models.TaskCancelCallResponse:
+        """
+        @summary 批量任务取消号码外呼
+        
+        @param request: TaskCancelCallRequest
+        @return: TaskCancelCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.task_cancel_call_with_options_async(request, runtime)
 
@@ -1618,6 +1982,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.TaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskListResponse:
+        """
+        @summary 查询任务列表接口
+        
+        @param request: TaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time):
@@ -1630,6 +2001,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -1656,6 +2029,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.TaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskListResponse:
+        """
+        @summary 查询任务列表接口
+        
+        @param request: TaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time):
@@ -1668,6 +2048,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
@@ -1693,6 +2075,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskListRequest,
     ) -> aiccs_20230516_models.TaskListResponse:
+        """
+        @summary 查询任务列表接口
+        
+        @param request: TaskListRequest
+        @return: TaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.task_list_with_options(request, runtime)
 
@@ -1700,6 +2088,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskListRequest,
     ) -> aiccs_20230516_models.TaskListResponse:
+        """
+        @summary 查询任务列表接口
+        
+        @param request: TaskListRequest
+        @return: TaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.task_list_with_options_async(request, runtime)
 
@@ -1708,6 +2102,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.TaskRecoverCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskRecoverCallResponse:
+        """
+        @summary 批量任务恢复号码
+        
+        @param tmp_req: TaskRecoverCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskRecoverCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.TaskRecoverCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1756,6 +2157,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.TaskRecoverCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TaskRecoverCallResponse:
+        """
+        @summary 批量任务恢复号码
+        
+        @param tmp_req: TaskRecoverCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TaskRecoverCallResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.TaskRecoverCallShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1803,6 +2211,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskRecoverCallRequest,
     ) -> aiccs_20230516_models.TaskRecoverCallResponse:
+        """
+        @summary 批量任务恢复号码
+        
+        @param request: TaskRecoverCallRequest
+        @return: TaskRecoverCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.task_recover_call_with_options(request, runtime)
 
@@ -1810,6 +2224,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TaskRecoverCallRequest,
     ) -> aiccs_20230516_models.TaskRecoverCallResponse:
+        """
+        @summary 批量任务恢复号码
+        
+        @param request: TaskRecoverCallRequest
+        @return: TaskRecoverCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.task_recover_call_with_options_async(request, runtime)
 
@@ -1818,6 +2238,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.TemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TemplateListResponse:
+        """
+        @summary 话术模板列表查询接口
+        
+        @param request: TemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TemplateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1852,6 +2279,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.TemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.TemplateListResponse:
+        """
+        @summary 话术模板列表查询接口
+        
+        @param request: TemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TemplateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1885,6 +2319,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TemplateListRequest,
     ) -> aiccs_20230516_models.TemplateListResponse:
+        """
+        @summary 话术模板列表查询接口
+        
+        @param request: TemplateListRequest
+        @return: TemplateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.template_list_with_options(request, runtime)
 
@@ -1892,6 +2332,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.TemplateListRequest,
     ) -> aiccs_20230516_models.TemplateListResponse:
+        """
+        @summary 话术模板列表查询接口
+        
+        @param request: TemplateListRequest
+        @return: TemplateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.template_list_with_options_async(request, runtime)
 
@@ -1900,6 +2346,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.UpdateAgentStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.UpdateAgentStatusResponse:
+        """
+        @summary 修改坐席状态
+        
+        @param request: UpdateAgentStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAgentStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -1938,6 +2391,13 @@ class Client(OpenApiClient):
         request: aiccs_20230516_models.UpdateAgentStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.UpdateAgentStatusResponse:
+        """
+        @summary 修改坐席状态
+        
+        @param request: UpdateAgentStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAgentStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -1975,6 +2435,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.UpdateAgentStatusRequest,
     ) -> aiccs_20230516_models.UpdateAgentStatusResponse:
+        """
+        @summary 修改坐席状态
+        
+        @param request: UpdateAgentStatusRequest
+        @return: UpdateAgentStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_agent_status_with_options(request, runtime)
 
@@ -1982,6 +2448,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.UpdateAgentStatusRequest,
     ) -> aiccs_20230516_models.UpdateAgentStatusResponse:
+        """
+        @summary 修改坐席状态
+        
+        @param request: UpdateAgentStatusRequest
+        @return: UpdateAgentStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_agent_status_with_options_async(request, runtime)
 
@@ -1990,6 +2462,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.UpdateTaskCustomerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.UpdateTaskCustomerResponse:
+        """
+        @summary 更新当天导入的号码
+        
+        @param tmp_req: UpdateTaskCustomerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskCustomerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.UpdateTaskCustomerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2030,6 +2509,13 @@ class Client(OpenApiClient):
         tmp_req: aiccs_20230516_models.UpdateTaskCustomerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> aiccs_20230516_models.UpdateTaskCustomerResponse:
+        """
+        @summary 更新当天导入的号码
+        
+        @param tmp_req: UpdateTaskCustomerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskCustomerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aiccs_20230516_models.UpdateTaskCustomerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2069,6 +2555,12 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.UpdateTaskCustomerRequest,
     ) -> aiccs_20230516_models.UpdateTaskCustomerResponse:
+        """
+        @summary 更新当天导入的号码
+        
+        @param request: UpdateTaskCustomerRequest
+        @return: UpdateTaskCustomerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_customer_with_options(request, runtime)
 
@@ -2076,5 +2568,11 @@ class Client(OpenApiClient):
         self,
         request: aiccs_20230516_models.UpdateTaskCustomerRequest,
     ) -> aiccs_20230516_models.UpdateTaskCustomerResponse:
+        """
+        @summary 更新当天导入的号码
+        
+        @param request: UpdateTaskCustomerRequest
+        @return: UpdateTaskCustomerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_customer_with_options_async(request, runtime)

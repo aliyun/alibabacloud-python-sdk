@@ -15,11 +15,17 @@ class AddBlacklistRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # 有效天数
+        # 
+        # This parameter is required.
         self.expired_day = expired_day
         # 号码列表
+        # 
+        # This parameter is required.
         self.numbers = numbers
         self.owner_id = owner_id
         # 备注
+        # 
+        # This parameter is required.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -75,11 +81,17 @@ class AddBlacklistShrinkRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # 有效天数
+        # 
+        # This parameter is required.
         self.expired_day = expired_day
         # 号码列表
+        # 
+        # This parameter is required.
         self.numbers_shrink = numbers_shrink
         self.owner_id = owner_id
         # 备注
+        # 
+        # This parameter is required.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -223,9 +235,6 @@ class AddBlacklistResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -348,6 +357,8 @@ class AddTaskRequest(TeaModel):
         # 并发数
         self.max_concurrency = max_concurrency
         # 任务名称
+        # 
+        # This parameter is required.
         self.name = name
         self.owner_id = owner_id
         # 播放间隔时长
@@ -373,6 +384,8 @@ class AddTaskRequest(TeaModel):
         # 任务启动日期
         self.start_time = start_time
         # 任务类型
+        # 
+        # This parameter is required.
         self.task_type = task_type
         # 话术模板ID
         self.template_id = template_id
@@ -523,6 +536,8 @@ class AddTaskShrinkRequest(TeaModel):
         # 并发数
         self.max_concurrency = max_concurrency
         # 任务名称
+        # 
+        # This parameter is required.
         self.name = name
         self.owner_id = owner_id
         # 播放间隔时长
@@ -548,6 +563,8 @@ class AddTaskShrinkRequest(TeaModel):
         # 任务启动日期
         self.start_time = start_time
         # 任务类型
+        # 
+        # This parameter is required.
         self.task_type = task_type
         # 话术模板ID
         self.template_id = template_id
@@ -749,9 +766,6 @@ class AddTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1014,9 +1028,6 @@ class AgentCancelCallResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1308,9 +1319,6 @@ class AgentRecoverCallResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1367,12 +1375,16 @@ class DetailsRequest(TeaModel):
         # 页数
         self.page_no = page_no
         # 每页条数
+        # 
+        # This parameter is required.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # 开始导入时间
         self.start_time = start_time
         # 任务id
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -1462,12 +1474,16 @@ class DetailsShrinkRequest(TeaModel):
         # 页数
         self.page_no = page_no
         # 每页条数
+        # 
+        # This parameter is required.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # 开始导入时间
         self.start_time = start_time
         # 任务id
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -1772,9 +1788,6 @@ class DetailsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1922,6 +1935,8 @@ class EditTaskRequest(TeaModel):
         # 任务状态
         self.status = status
         # 任务id
+        # 
+        # This parameter is required.
         self.task_id = task_id
         # 话术模板ID
         self.template_id = template_id
@@ -2097,6 +2112,8 @@ class EditTaskShrinkRequest(TeaModel):
         # 任务状态
         self.status = status
         # 任务id
+        # 
+        # This parameter is required.
         self.task_id = task_id
         # 话术模板ID
         self.template_id = template_id
@@ -2298,9 +2315,6 @@ class EditTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2392,12 +2406,15 @@ class ImportNumberRequest(TeaModel):
         resource_owner_id: int = None,
         task_id: int = None,
     ):
+        # This parameter is required.
         self.customers = customers
         self.fail_return = fail_return
+        # This parameter is required.
         self.out_id = out_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -2463,12 +2480,15 @@ class ImportNumberShrinkRequest(TeaModel):
         resource_owner_id: int = None,
         task_id: int = None,
     ):
+        # This parameter is required.
         self.customers_shrink = customers_shrink
         self.fail_return = fail_return
+        # This parameter is required.
         self.out_id = out_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -2637,9 +2657,6 @@ class ImportNumberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2969,9 +2986,6 @@ class PageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3014,15 +3028,21 @@ class SmsTemplateCreateRequest(TeaModel):
         template_type: int = None,
     ):
         # 短信内容
+        # 
+        # This parameter is required.
         self.content = content
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # 短信签名
+        # 
+        # This parameter is required.
         self.sign = sign
         # 短信类型
         self.sms_type = sms_type
         # 模板名称
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # 模板类型
         self.template_type = template_type
@@ -3144,9 +3164,6 @@ class SmsTemplateCreateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3485,9 +3502,6 @@ class SmsTemplatePageListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3533,6 +3547,8 @@ class TaskCallChatsRequest(TeaModel):
         # 坐席标签
         self.agent_tag = agent_tag
         # 外呼ID
+        # 
+        # This parameter is required.
         self.call_id = call_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -3703,9 +3719,6 @@ class TaskCallChatsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3746,6 +3759,7 @@ class TaskCallInfoRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -3890,9 +3904,6 @@ class TaskCallInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3940,8 +3951,12 @@ class TaskCallListRequest(TeaModel):
         # 导入号码时返回的批次号
         self.batch_id = batch_id
         # 开始外呼时间
+        # 
+        # This parameter is required.
         self.call_date = call_date
         # 结束外呼时间
+        # 
+        # This parameter is required.
         self.end_call_date = end_call_date
         # 意向标签
         self.intent_tags = intent_tags
@@ -3949,12 +3964,16 @@ class TaskCallListRequest(TeaModel):
         self.numbers = numbers
         self.owner_id = owner_id
         # 页数
+        # 
+        # This parameter is required.
         self.page = page
         # 每页外呼记录数,正整数，默认10000
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # 任务ID
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -4035,8 +4054,12 @@ class TaskCallListShrinkRequest(TeaModel):
         # 导入号码时返回的批次号
         self.batch_id = batch_id
         # 开始外呼时间
+        # 
+        # This parameter is required.
         self.call_date = call_date
         # 结束外呼时间
+        # 
+        # This parameter is required.
         self.end_call_date = end_call_date
         # 意向标签
         self.intent_tags_shrink = intent_tags_shrink
@@ -4044,12 +4067,16 @@ class TaskCallListShrinkRequest(TeaModel):
         self.numbers_shrink = numbers_shrink
         self.owner_id = owner_id
         # 页数
+        # 
+        # This parameter is required.
         self.page = page
         # 每页外呼记录数,正整数，默认10000
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # 任务ID
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -4550,9 +4577,6 @@ class TaskCallListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4598,6 +4622,8 @@ class TaskCancelCallRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.tags = tags
         # 任务ID
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -4656,6 +4682,8 @@ class TaskCancelCallShrinkRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.tags_shrink = tags_shrink
         # 任务ID
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -4797,9 +4825,6 @@ class TaskCancelCallResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4837,6 +4862,7 @@ class TaskListRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        status: int = None,
         task_id: int = None,
     ):
         # 创建时间
@@ -4846,6 +4872,8 @@ class TaskListRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # 任务状态。1 未启用，2 启用中，4 已停止
+        self.status = status
         # 任务ID
         self.task_id = task_id
 
@@ -4868,6 +4896,8 @@ class TaskListRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -4884,6 +4914,8 @@ class TaskListRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -4946,6 +4978,7 @@ class TaskListResponseBodyModel(TeaModel):
         status: int = None,
         task_id: int = None,
         task_name: str = None,
+        template_id: str = None,
         template_name: str = None,
     ):
         # 外呼时间段
@@ -4986,6 +5019,8 @@ class TaskListResponseBodyModel(TeaModel):
         self.task_id = task_id
         # 任务名称
         self.task_name = task_name
+        # 话术模板Id
+        self.template_id = template_id
         # 话术模板名称
         self.template_name = template_name
 
@@ -5041,6 +5076,8 @@ class TaskListResponseBodyModel(TeaModel):
             result['TaskId'] = self.task_id
         if self.task_name is not None:
             result['TaskName'] = self.task_name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
         return result
@@ -5088,6 +5125,8 @@ class TaskListResponseBodyModel(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
         return self
@@ -5096,6 +5135,7 @@ class TaskListResponseBodyModel(TeaModel):
 class TaskListResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         message: str = None,
         model: List[TaskListResponseBodyModel] = None,
@@ -5103,6 +5143,7 @@ class TaskListResponseBody(TeaModel):
         success: bool = None,
         timestamp: int = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.code = code
         self.message = message
         self.model = model
@@ -5122,6 +5163,8 @@ class TaskListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -5140,6 +5183,8 @@ class TaskListResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -5170,9 +5215,6 @@ class TaskListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5226,6 +5268,8 @@ class TaskRecoverCallRequest(TeaModel):
         # 用户自定义标签列表
         self.tags = tags
         # 任务ID
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -5300,6 +5344,8 @@ class TaskRecoverCallShrinkRequest(TeaModel):
         # 用户自定义标签列表
         self.tags_shrink = tags_shrink
         # 任务ID
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -5419,9 +5465,6 @@ class TaskRecoverCallResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5637,9 +5680,6 @@ class TemplateListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5798,9 +5838,6 @@ class UpdateAgentStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5889,11 +5926,15 @@ class UpdateTaskCustomerRequest(TeaModel):
         task_id: int = None,
     ):
         # 外呼客户
+        # 
+        # This parameter is required.
         self.customers = customers
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # 任务ID
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -5950,11 +5991,15 @@ class UpdateTaskCustomerShrinkRequest(TeaModel):
         task_id: int = None,
     ):
         # 外呼客户
+        # 
+        # This parameter is required.
         self.customers_shrink = customers_shrink
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # 任务ID
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -6092,9 +6137,6 @@ class UpdateTaskCustomerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
