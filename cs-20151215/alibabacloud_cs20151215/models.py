@@ -15713,6 +15713,7 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
         cve_list: List[str] = None,
         name: str = None,
         necessity: str = None,
+        need_reboot: bool = None,
     ):
         # The alias of the vulnerability.
         self.alias_name = alias_name
@@ -15728,6 +15729,7 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
         # *   later: You can fix the vulnerability later
         # *   asap: You need to fix the vulnerability at the earliest opportunity
         self.necessity = necessity
+        self.need_reboot = need_reboot
 
     def validate(self):
         pass
@@ -15746,6 +15748,8 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
             result['name'] = self.name
         if self.necessity is not None:
             result['necessity'] = self.necessity
+        if self.need_reboot is not None:
+            result['need_reboot'] = self.need_reboot
         return result
 
     def from_map(self, m: dict = None):
@@ -15758,6 +15762,8 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
             self.name = m.get('name')
         if m.get('necessity') is not None:
             self.necessity = m.get('necessity')
+        if m.get('need_reboot') is not None:
+            self.need_reboot = m.get('need_reboot')
         return self
 
 

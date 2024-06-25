@@ -1,3 +1,7 @@
+2024-06-25 Version: 4.3.1
+- Update API DescribeNodePoolVuls: update response param.
+
+
 2024-06-13 Version: 4.3.0
 - Support API DescribeResourcesDeleteProtection.
 - Support API UpdateResourcesDeleteProtection.

@@ -464,11 +464,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
         """
+        @deprecated OpenAPI CancelComponentUpgrade is deprecated
+        
         @summary You can call the CancelComponentUpgrade operation to cancel the update of a component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelComponentUpgradeResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -497,11 +500,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
         """
+        @deprecated OpenAPI CancelComponentUpgrade is deprecated
+        
         @summary You can call the CancelComponentUpgrade operation to cancel the update of a component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelComponentUpgradeResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -528,9 +534,12 @@ class Client(OpenApiClient):
         component_id: str,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
         """
+        @deprecated OpenAPI CancelComponentUpgrade is deprecated
+        
         @summary You can call the CancelComponentUpgrade operation to cancel the update of a component.
         
         @return: CancelComponentUpgradeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -542,9 +551,12 @@ class Client(OpenApiClient):
         component_id: str,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
         """
+        @deprecated OpenAPI CancelComponentUpgrade is deprecated
+        
         @summary You can call the CancelComponentUpgrade operation to cancel the update of a component.
         
         @return: CancelComponentUpgradeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -9233,11 +9245,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
         """
+        @deprecated OpenAPI GetUpgradeStatus is deprecated
+        
         @summary You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetUpgradeStatusResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -9265,11 +9280,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
         """
+        @deprecated OpenAPI GetUpgradeStatus is deprecated
+        
         @summary You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetUpgradeStatusResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -9295,9 +9313,12 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
         """
+        @deprecated OpenAPI GetUpgradeStatus is deprecated
+        
         @summary You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
         
         @return: GetUpgradeStatusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -9308,9 +9329,12 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
         """
+        @deprecated OpenAPI GetUpgradeStatus is deprecated
+        
         @summary You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
         
         @return: GetUpgradeStatusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -11338,11 +11362,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
         """
+        @deprecated OpenAPI PauseComponentUpgrade is deprecated
+        
         @summary You can call the PauseComponentUpgrade operation to pause the update of a component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: PauseComponentUpgradeResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -11371,11 +11398,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
         """
+        @deprecated OpenAPI PauseComponentUpgrade is deprecated
+        
         @summary You can call the PauseComponentUpgrade operation to pause the update of a component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: PauseComponentUpgradeResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -11402,9 +11432,12 @@ class Client(OpenApiClient):
         componentid: str,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
         """
+        @deprecated OpenAPI PauseComponentUpgrade is deprecated
+        
         @summary You can call the PauseComponentUpgrade operation to pause the update of a component.
         
         @return: PauseComponentUpgradeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -11416,9 +11449,12 @@ class Client(OpenApiClient):
         componentid: str,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
         """
+        @deprecated OpenAPI PauseComponentUpgrade is deprecated
+        
         @summary You can call the PauseComponentUpgrade operation to pause the update of a component.
         
         @return: PauseComponentUpgradeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -12052,11 +12088,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
         """
+        @deprecated OpenAPI ResumeComponentUpgrade is deprecated
+        
         @summary You can call the ResumeComponentUpgrade operation to resume the update of a component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResumeComponentUpgradeResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -12085,11 +12124,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
         """
+        @deprecated OpenAPI ResumeComponentUpgrade is deprecated
+        
         @summary You can call the ResumeComponentUpgrade operation to resume the update of a component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResumeComponentUpgradeResponse
+        Deprecated
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
@@ -12116,9 +12158,12 @@ class Client(OpenApiClient):
         componentid: str,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
         """
+        @deprecated OpenAPI ResumeComponentUpgrade is deprecated
+        
         @summary You can call the ResumeComponentUpgrade operation to resume the update of a component.
         
         @return: ResumeComponentUpgradeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -12130,9 +12175,12 @@ class Client(OpenApiClient):
         componentid: str,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
         """
+        @deprecated OpenAPI ResumeComponentUpgrade is deprecated
+        
         @summary You can call the ResumeComponentUpgrade operation to resume the update of a component.
         
         @return: ResumeComponentUpgradeResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
