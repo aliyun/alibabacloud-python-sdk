@@ -10551,6 +10551,8 @@ class Client(OpenApiClient):
             query['DBName'] = request.dbname
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -10610,6 +10612,8 @@ class Client(OpenApiClient):
             query['DBName'] = request.dbname
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -14295,7 +14299,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse:
         """
-        @summary Modifies the primary zone of a PolarDB cluster.
+        @summary Changes the primary zone of a PolarDB cluster.
         
         @param request: ModifyDBClusterPrimaryZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14354,7 +14358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse:
         """
-        @summary Modifies the primary zone of a PolarDB cluster.
+        @summary Changes the primary zone of a PolarDB cluster.
         
         @param request: ModifyDBClusterPrimaryZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14412,7 +14416,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterPrimaryZoneRequest,
     ) -> polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse:
         """
-        @summary Modifies the primary zone of a PolarDB cluster.
+        @summary Changes the primary zone of a PolarDB cluster.
         
         @param request: ModifyDBClusterPrimaryZoneRequest
         @return: ModifyDBClusterPrimaryZoneResponse
@@ -14425,7 +14429,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterPrimaryZoneRequest,
     ) -> polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse:
         """
-        @summary Modifies the primary zone of a PolarDB cluster.
+        @summary Changes the primary zone of a PolarDB cluster.
         
         @param request: ModifyDBClusterPrimaryZoneRequest
         @return: ModifyDBClusterPrimaryZoneResponse
@@ -17415,7 +17419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RestartDBLinkResponse:
         """
-        @summary 重启代理
+        @summary Restarts database links.
         
         @param request: RestartDBLinkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17460,7 +17464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RestartDBLinkResponse:
         """
-        @summary 重启代理
+        @summary Restarts database links.
         
         @param request: RestartDBLinkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17504,7 +17508,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.RestartDBLinkRequest,
     ) -> polardb_20170801_models.RestartDBLinkResponse:
         """
-        @summary 重启代理
+        @summary Restarts database links.
         
         @param request: RestartDBLinkRequest
         @return: RestartDBLinkResponse
@@ -17517,7 +17521,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.RestartDBLinkRequest,
     ) -> polardb_20170801_models.RestartDBLinkResponse:
         """
-        @summary 重启代理
+        @summary Restarts database links.
         
         @param request: RestartDBLinkRequest
         @return: RestartDBLinkResponse

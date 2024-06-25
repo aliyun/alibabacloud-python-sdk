@@ -1596,6 +1596,10 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # > This parameter is valid only for serverless clusters.
         self.allow_shut_down = allow_shut_down
+        # The CPU architecture. Valid values:
+        # 
+        # *   X86
+        # *   ARM
         self.architecture = architecture
         # Specifies whether to enable automatic renewal. Valid values:
         # 
@@ -1697,7 +1701,6 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbnode_class = dbnode_class
-        # 标准版节点个数。
         self.dbnode_num = dbnode_num
         # The type of the database engine. Valid values:
         # 
@@ -1733,20 +1736,14 @@ class CreateDBClusterRequest(TeaModel):
         # > This parameter is required only when the **CreationOption** parameter is set to **CreateGdnStandby**.
         self.gdnid = gdnid
         self.hot_standby_cluster = hot_standby_cluster
-        # 开启Binlog功能，取值范围如下：
-        # 
-        # - **ON**：集群开启Binlog功能
-        # - **OFF**：集群关闭Binlog功能
-        # > 当参数**DBType**为**MySQL**时，该参数才生效。
         self.loose_polar_log_bin = loose_polar_log_bin
-        # 开启X-Engine存储引擎功能，取值范围如下：
+        # Specifies whether to enable X-Engine. Valid values:
         # 
-        # - **ON**：集群开启X-Engine引擎
-        # - **OFF**：集群关闭X-Engine引擎
-        # > 当参数**CreationOption**不等于**CreateGdnStandby**，**DBType**为**MySQL**且**DBVersion**为**8.0**时，该参数才生效。开启X-Engine引擎的节点内存规格必须大于等于16 GB。
+        # *   **ON**\
+        # *   **OFF**\
+        # 
+        # >  This parameter takes effect only if you do not set **CreationOption** to **CreateGdnStandby** and you set **DBType** to **MySQL** and **DBVersion** to **8.0**. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
         self.loose_xengine = loose_xengine
-        # 设置开启X-Engine存储引擎比例，取值范围10~90的整数。
-        # > 当参数**LooseXEngine**为**ON**时，该参数才生效。
         self.loose_xengine_use_memory_pct = loose_xengine_use_memory_pct
         # Specifies whether the table names are case-sensitive. Valid values:
         # 
@@ -1775,13 +1772,13 @@ class CreateDBClusterRequest(TeaModel):
         # *   **Year**: annual subscription. Unit: years.
         # *   **Month**: monthly subscription. Unit: months.
         self.period = period
-        self.provisioned_iops = provisioned_iops
-        # 标准版数据库代理规格。
-        self.proxy_class = proxy_class
-        # 数据库代理类型，取值范围如下：
+        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
         # 
-        # - **Exclusive**：企业独享版
-        # - **General**：企业通用版
+        # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
+        # 
+        # >  This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+        self.provisioned_iops = provisioned_iops
+        self.proxy_class = proxy_class
         self.proxy_type = proxy_type
         # The region ID of the cluster.
         # 
@@ -1822,9 +1819,6 @@ class CreateDBClusterRequest(TeaModel):
         # *   If the **CreationOption** parameter is set to **MigrationFromRDS** or **CloneFromRDS**, you must set this parameter to the ID of the source ApsaraDB RDS instance. The source ApsaraDB RDS instance must use ApsaraDB RDS for MySQL 5.6, 5.7, or 8.0 High-availability Edition.
         # *   If the **CreationOption** parameter is set to **CloneFromPolarDB**, you must set this parameter to the ID of the source PolarDB cluster. By default, the value of DBType of the destination cluster must be the same as that of the source cluster. For example, if a MySQL 8.0 cluster is used as the source cluster, you must set the **DBType** parameter to **MySQL** and the **DBVersion** parameter to **8.0** for the destination cluster.
         self.source_resource_id = source_resource_id
-        # 存储热备集群的可用区。适用于标准版3AZ场景。
-        # 
-        # > 开启了多可用区数据强一致，该参数才生效。
         self.standby_az = standby_az
         self.storage_auto_scale = storage_auto_scale
         self.storage_pay_type = storage_pay_type
@@ -1836,19 +1830,19 @@ class CreateDBClusterRequest(TeaModel):
         # *   **PSL4**\
         # 
         # Valid values for Standard Edition:
-        # 
+        # *   **ESSDPL0**\
         # *   **ESSDPL1**\
         # *   **ESSDPL2**\
         # *   **ESSDPL3**\
+        # *   **ESSDAUTOPL**\
         # 
         # > This parameter is invalid for serverless clusters.
         self.storage_type = storage_type
         self.storage_upper_bound = storage_upper_bound
-        # 集群是否开启了多可用区数据强一致。取值范围：
+        # Specifies whether to enable multi-zone data consistency. Valid values:
         # 
-        # - **ON**：表示开启了多可用区数据强一致，适用于标准版3AZ场景。
-        # 
-        # - **OFF**：表示未开启多可用区数据强一致。
+        # *   **ON**: enables multi-zone data consistency. Set this parameter to ON for Standard Edition clusters of Multi-zone Edition.
+        # *   **OFF**: disables multi-zone data consistency.
         self.strict_consistency = strict_consistency
         # Specifies whether to enable transparent data encryption (TDE). Default value: false. Valid values:
         # 
@@ -13238,9 +13232,9 @@ class DescribeDBClustersRequest(TeaModel):
         self.expired = expired
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return per page. Valid values: **30**, **50**, or **100**.
+        # The number of entries per page. Valid values: **30**, **50**, or **100**.
         # 
         # Default value: **30**.
         self.page_size = page_size
@@ -13392,8 +13386,10 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(TeaModel):
         self.dbnode_id = dbnode_id
         # The role of the node. Valid values:
         # 
-        # *   **Writer**: The node is the primary node.
-        # *   **Reader**: The node is the read-only node.
+        # *   **Writer**: primary node
+        # *   **Reader**: read-only node
+        # *   **ColumnReader**: column store read-only node
+        # *   **AI**: AI node
         self.dbnode_role = dbnode_role
         # Indicates whether the hot standby feature is enabled. Valid values:
         # 
@@ -13405,14 +13401,14 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(TeaModel):
         # *   **ON**\
         # *   **OFF**\
         self.imci_switch = imci_switch
-        # The ID of the region in which the node resides.
+        # The region ID of the node.
         self.region_id = region_id
-        # Indicates whether the serverless feature is enabled for the current node.
+        # Indicates whether the serverless feature is enabled for the node.
         # 
         # *   **ON** indicates that the serverless feature is enabled.
-        # *   An empty value indicates that the serverless feature is disabled.
+        # *   No value is returned if the serverless feature is disabled.
         self.serverless = serverless
-        # The zone ID of the node.
+        # The zone ID of node.
         self.zone_id = zone_id
 
     def validate(self):
@@ -13597,6 +13593,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         serverless_type: str = None,
         storage_pay_type: str = None,
         storage_space: int = None,
+        storage_type: str = None,
         storage_used: int = None,
         strict_consistency: str = None,
         sub_category: str = None,
@@ -13607,94 +13604,108 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
     ):
         # The type of the AI node. Valid values:
         # 
-        # *   SearchNode: search node.
-        # *   DLNode: AI node.
+        # *   SearchNode: search node
+        # *   DLNode: AI node
+        # 
+        # Enumeration values:
+        # 
+        # *   SearchNode | DLNode: both
+        # *   DLNode: AI node
+        # *   SearchNode: search node
         self.ai_type = ai_type
         # The edition of the cluster. Valid values:
         # 
         # *   **Normal**: Cluster Edition
         # *   **Basic**: Single Node Edition
         # *   **Archive**: X-Engine Edition
-        # *   **NormalMultimaster**: Multi-master Cluster (Database/Table)
+        # *   **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition
         self.category = category
+        # The number of CPU cores.
         self.cpu_cores = cpu_cores
         # The time when the cluster was created.
         self.create_time = create_time
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
-        # The status of the cluster.
+        # The state of the cluster.
         self.dbcluster_status = dbcluster_status
-        # The specifications of the node.
+        # The node specifications.
         self.dbnode_class = dbnode_class
         # The number of nodes.
         self.dbnode_number = dbnode_number
-        # The nodes of the cluster.
+        # The information about the nodes.
         self.dbnodes = dbnodes
         # The type of the database engine.
         self.dbtype = dbtype
-        # The version of the database.
+        # The version of the database engine.
         self.dbversion = dbversion
         # Indicates whether the cluster is protected from deletion. Valid values:
         # 
-        # *   **0**: The cluster is not locked.
-        # *   **1**: The cluster is locked.
+        # *   **0**: The cluster is not protected from deletion.
+        # *   **1**: The cluster is protected from deletion.
         # 
-        # > You cannot delete clusters that are locked.
+        # >  You cannot delete clusters that are protected from deletion.
         self.deletion_lock = deletion_lock
-        # The engine of the cluster.
+        # The database engine of the cluster.
         self.engine = engine
         # The expiration time of the cluster.
         # 
-        # > A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string is returned.
+        # >  A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, no value is returned.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # > A specific value is returned only for subscription (**Prepaid**) clusters.
+        # >  A specific value is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
         # The lock state of the cluster. Valid values:
         # 
-        # *   **Unlock**: The cluster is not locked.
+        # *   **Unlock**: The cluster is unlocked.
         # *   **ManualLock**: The cluster is manually locked.
-        # *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
+        # *   **LockByExpiration**: The cluster is locked due to cluster expiration.
         self.lock_mode = lock_mode
+        # The memory size for local operations. Unit: MB.
         self.memory_size = memory_size
         # The billing method of the cluster. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
         self.pay_type = pay_type
-        # The ID of the region in which the node resides.
+        # The region ID of the cluster.
         self.region_id = region_id
+        # The memory size for distributed operations. Unit: MB.
         self.remote_memory_size = remote_memory_size
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates a serverless cluster. An empty value indicates a common cluster.
+        # Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates a serverless cluster. No value is returned for a common cluster.
         self.serverless_type = serverless_type
-        # The billing method of the storage space. Valid values:
+        # The storage billing method of the cluster. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
         self.storage_pay_type = storage_pay_type
-        # The storage capacity that is billed based on the subscription billing method. Unit: byte.
+        # The storage that is billed based on the subscription billing method. Unit: bytes.
         self.storage_space = storage_space
-        # The storage space this is occupied by the cluster. Unit: bytes.
+        self.storage_type = storage_type
+        # The used storage. Unit: bytes.
         self.storage_used = storage_used
         # Indicates whether multi-zone data consistency is enabled for the cluster. Valid values:
         # 
-        # *   **ON**: multi-zone data consistency is enabled, which is suitable for Standard Edition clusters of Multi-zone Edition.
-        # *   **OFF**: multi-zone data consistency is disabled.
+        # *   **ON**: Multi-zone data consistency is enabled. For Standard Edition clusters of Multi-zone Edition, this value is returned.
+        # *   **OFF**: Multi-zone data consistency is disabled.
         self.strict_consistency = strict_consistency
+        # The specification type of the compute node. Valid values:
+        # 
+        # *   **Exclusive**: dedicated.
+        # *   **General**: general-purpose.
         self.sub_category = sub_category
-        # The tags of the cluster.
+        # The information about the tags.
         self.tags = tags
-        # The VPC ID of the cluster.
+        # The virtual private cloud (VPC) ID of the cluster.
         self.vpc_id = vpc_id
         # The vSwitch ID of the cluster.
         self.vswitch_id = vswitch_id
@@ -13765,6 +13776,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['StoragePayType'] = self.storage_pay_type
         if self.storage_space is not None:
             result['StorageSpace'] = self.storage_space
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.storage_used is not None:
             result['StorageUsed'] = self.storage_used
         if self.strict_consistency is not None:
@@ -13836,6 +13849,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.storage_pay_type = m.get('StoragePayType')
         if m.get('StorageSpace') is not None:
             self.storage_space = m.get('StorageSpace')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('StorageUsed') is not None:
             self.storage_used = m.get('StorageUsed')
         if m.get('StrictConsistency') is not None:
@@ -13898,7 +13913,7 @@ class DescribeDBClustersResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details of the cluster.
+        # The information about the clusters.
         self.items = items
         # The number of the page to return.
         self.page_number = page_number
@@ -21051,6 +21066,7 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         dbcluster_id: str = None,
         dbname: str = None,
         end_time: str = None,
+        node_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -21075,6 +21091,7 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of the page to return. The value must be an integer that is larger than 0.
@@ -21125,6 +21142,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             result['DBName'] = self.dbname
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -21153,6 +21172,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             self.dbname = m.get('DBName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -24423,19 +24444,18 @@ class ModifyAutoRenewAttributeRequest(TeaModel):
         self.dbcluster_ids = dbcluster_ids
         # The automatic renewal period.
         # 
-        #  
-        # *   Valid values when **PeriodUnit** is set to **Month**: `1, 2, 3, 6, and 12`.
-        # *   Valid values when **PeriodUnit** is set to **Year**: `1, 2, and 3`.
-        #  
+        # *   Valid values when you set the **PeriodUnit** parameter to **Month**: `1, 2, 3, 6, and 12`.
+        # *   Valid values when you set the **PeriodUnit** parameter to **Year**: `1, 2, and 3`.
+        # 
         # Default value: **1**.
         self.duration = duration
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The unit of the renewal period. Valid values:
-        #  
+        # 
         # *   **Year**\
         # *   **Month**\
-        #  
+        # 
         # Default value: **Month**.
         self.period_unit = period_unit
         # The ID of the region. The region ID can be up to 50 characters in length.
@@ -24445,15 +24465,15 @@ class ModifyAutoRenewAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The auto-renewal state of the cluster. Valid values:
-        #  
-        # *   **AutoRenewal:** The cluster are automatically renewed.
+        # The auto-renewal status of the cluster. Valid values:
+        # 
+        # *   **AutoRenewal:** The cluster is automatically renewed.
         # *   **Normal**: The cluster is manually renewed.
         # *   **NotRenewal:** The cluster is not renewed after expiration.
-        #  
+        # 
         # Default value: **AutoRenewal**.
-        #  
-        # >  If this parameter is set to **NotRenewal**, the system does not send a text message for the cluster expiration, but only sends a message three days before the cluster expires to remind you that the cluster is not renewed.
+        # 
+        # >  If you set this parameter to **NotRenewal**, the system sends a notification that indicates the cluster is not renewed three days before the cluster expires. After the cluster expires, the system no longer sends a notification.
         self.renewal_status = renewal_status
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -26749,49 +26769,47 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies an immediate or scheduled task to switch the primary zone. Valid values:
+        # Specifies whether to change the primary zone immediately. Valid values:
         # 
-        # *   false: scheduled task
-        # *   true: immediate task
+        # *   false (default): changes the primary zone as scheduled.
+        # *   true: changes the primary zone immediately.
         self.from_time_service = from_time_service
-        # Specifies whether to switch back over to the original primary zone. Valid values: true: Switch over back to the original primary zone. false: Do not switch back over to the original primary zone. If this parameter is set to false, the primary zone of the cluster is changed to the specified destination zone.
+        # Specifies whether to switch back to the original primary zone.
+        # 
+        # *   true: switches back to the original primary zone.
+        # *   false: does not switch back to the original primary zone.
         self.is_switch_over_for_disaster = is_switch_over_for_disaster
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The latest start time to switch the primary zone within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
         # 
-        # > 
-        # 
-        # *   The latest start time must be at least 30 minutes later than the earliest start time.
-        # 
-        # *   If you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by `the value of the PlannedEndTime parameter + 30 minutes` by default. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+        # > *   The latest start time must be at least 30 minutes later than the earliest start time.
+        # >*   If you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by `the value of the PlannedEndTime parameter + 30 minutes` by default. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
-        # The earliest start time to switch the primary zone within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # The start time to change the primary zone within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
         # 
-        # > 
-        # 
-        # *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-        # 
-        # *   If you left this parameter empty, the primary zone is immediately switched.
+        # > *   The start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # >*   If you leave this parameter empty, the primary zone is immediately changed.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The virtual private cloud (VPC) ID of the destination primary zone.
         self.vpcid = vpcid
-        # The ID of vSwitch in the destination primary zone.
+        # The ID of the vSwitch in the destination primary zone.
         # 
-        # > 
-        # 
-        # *   For a PolarDB for Oracle or PolarDB for PostgreSQL cluster, this parameter is required.
-        # 
-        # *   For a PolarDB for MySQL cluster: - This parameter is optional if no vSwitches have been created in the destination zone. The default vSwitch is used. - This parameter is required if a vSwitch has been created in the destination zone.
+        # > *   For a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, this parameter is required.
+        # >*   For a PolarDB for MySQL cluster, the default vSwitch is used if no vSwitches are created in the destination zone. If a vSwitch is in the destination zone, this parameter is required.
         self.v_switch_id = v_switch_id
         # The ID of the destination primary zone.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
+        # >  You can call the DescribeRegions operation to query available zones.[](~~98041~~)
         # 
         # This parameter is required.
         self.zone_id = zone_id
+        # The type of the zone. Valid values:
+        # 
+        # *   **Primary**: primary zone
+        # *   **Standby**: secondary zone
         self.zone_type = zone_type
 
     def validate(self):
@@ -31012,6 +31030,10 @@ class RestartDBLinkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the IDs of all clusters in an Alibaba Cloud account.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
@@ -31067,8 +31089,11 @@ class RestartDBLinkResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

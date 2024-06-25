@@ -1,3 +1,8 @@
+2024-06-25 Version: 5.1.4
+- Update API DescribeDBClusters: update response param.
+- Update API DescribeSlowLogRecords: add param NodeId.
+
+
 2024-06-06 Version: 5.1.3
 - Update API DescribeDBClusterAttribute: update response param.
 - Update API ModifyDBCluster: add param DBNodeCrashList.
