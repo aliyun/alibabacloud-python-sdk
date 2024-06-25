@@ -28,7 +28,7 @@ pip install alibabacloud_acm20200206
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/acm-20200206/ChangeLog.md).
 
 ## References
 
