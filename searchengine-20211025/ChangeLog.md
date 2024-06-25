@@ -1,3 +1,20 @@
+2024-06-25 Version: 4.0.0
+- Support API CloneSqlInstance.
+- Support API CreateFolder.
+- Support API CreateSqlInstance.
+- Support API DeleteFolder.
+- Support API DeleteSqlInstance.
+- Support API ExecuteSqlInstance.
+- Support API GetDatabaseSchema.
+- Support API GetSqlInstance.
+- Support API ListDatabases.
+- Support API RenameFolder.
+- Support API UpdateSqlInstanceContent.
+- Support API UpdateSqlInstanceName.
+- Support API UpdateSqlInstanceParams.
+- Delete API ModifyDataSource.
+
+
 2024-06-24 Version: 3.2.0
 - Support API ChangeResourceGroup.
 - Support API ListTagResources.

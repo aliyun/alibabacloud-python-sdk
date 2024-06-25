@@ -76,6 +76,39 @@ class ResultClusterValue(TeaModel):
         return self
 
 
+class ResultDatabasesFunctionsValue(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        signatures: str = None,
+    ):
+        self.name = name
+        self.signatures = signatures
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.signatures is not None:
+            result['signatures'] = self.signatures
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('signatures') is not None:
+            self.signatures = m.get('signatures')
+        return self
+
+
 class ResultValue(TeaModel):
     def __init__(
         self,
@@ -773,6 +806,195 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CloneSqlInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        target_folder_id: int = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.target_folder_id = target_folder_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.target_folder_id is not None:
+            result['targetFolderId'] = self.target_folder_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('targetFolderId') is not None:
+            self.target_folder_id = m.get('targetFolderId')
+        return self
+
+
+class CloneSqlInstanceResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CloneSqlInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: CloneSqlInstanceResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # NodeVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CloneSqlInstanceResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class CloneSqlInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloneSqlInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloneSqlInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateClusterRequestDataNode(TeaModel):
     def __init__(
         self,
@@ -1453,6 +1675,204 @@ class CreateDataSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDataSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFolderRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        parent: int = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.parent = parent
+        # table, instance, template, function
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateFolderResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: CreateFolderResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # NodeVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CreateFolderResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class CreateFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFolderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2138,6 +2558,195 @@ class CreatePublicUrlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePublicUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSqlInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        parent: int = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.parent = parent
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        return self
+
+
+class CreateSqlInstanceResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateSqlInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: CreateSqlInstanceResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # NodeVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CreateSqlInstanceResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class CreateSqlInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSqlInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSqlInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3060,6 +3669,117 @@ class DeleteDataSourceResponse(TeaModel):
         return self
 
 
+class DeleteFolderResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: Dict[str, str] = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class DeleteFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: DeleteFolderResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # Response<Map<String, String>>
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = DeleteFolderResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class DeleteFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFolderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteIndexRequest(TeaModel):
     def __init__(
         self,
@@ -3400,6 +4120,117 @@ class DeletePublicUrlResponse(TeaModel):
         return self
 
 
+class DeleteSqlInstanceResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: Dict[str, str] = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class DeleteSqlInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: DeleteSqlInstanceResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # Response<Map<String, String>>
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = DeleteSqlInstanceResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class DeleteSqlInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSqlInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSqlInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteTableResponseBody(TeaModel):
     def __init__(
         self,
@@ -3620,6 +4451,224 @@ class DescribeRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteSqlInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        combine_param: Dict[str, Any] = None,
+        content: str = None,
+        domain: str = None,
+        dynamic_param: Dict[str, Any] = None,
+        kvpair: Dict[str, Any] = None,
+        params: Dict[str, Any] = None,
+        static_param: Dict[str, Any] = None,
+    ):
+        self.combine_param = combine_param
+        # This parameter is required.
+        self.content = content
+        self.domain = domain
+        self.dynamic_param = dynamic_param
+        self.kvpair = kvpair
+        self.params = params
+        self.static_param = static_param
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.combine_param is not None:
+            result['combineParam'] = self.combine_param
+        if self.content is not None:
+            result['content'] = self.content
+        if self.domain is not None:
+            result['domain'] = self.domain
+        if self.dynamic_param is not None:
+            result['dynamicParam'] = self.dynamic_param
+        if self.kvpair is not None:
+            result['kvpair'] = self.kvpair
+        if self.params is not None:
+            result['params'] = self.params
+        if self.static_param is not None:
+            result['staticParam'] = self.static_param
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('combineParam') is not None:
+            self.combine_param = m.get('combineParam')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
+        if m.get('dynamicParam') is not None:
+            self.dynamic_param = m.get('dynamicParam')
+        if m.get('kvpair') is not None:
+            self.kvpair = m.get('kvpair')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('staticParam') is not None:
+            self.static_param = m.get('staticParam')
+        return self
+
+
+class ExecuteSqlInstanceResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ExecuteSqlInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: ExecuteSqlInstanceResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # NodeVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = ExecuteSqlInstanceResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class ExecuteSqlInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteSqlInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteSqlInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5605,6 +6654,141 @@ class GetDataSourceDeployResponse(TeaModel):
         return self
 
 
+class GetDatabaseSchemaResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        field_name: str = None,
+        field_type: str = None,
+        field_type_detail: Dict[str, Any] = None,
+        index_name: str = None,
+        index_type: str = None,
+    ):
+        self.field_name = field_name
+        self.field_type = field_type
+        self.field_type_detail = field_type_detail
+        self.index_name = index_name
+        self.index_type = index_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_name is not None:
+            result['fieldName'] = self.field_name
+        if self.field_type is not None:
+            result['fieldType'] = self.field_type
+        if self.field_type_detail is not None:
+            result['fieldTypeDetail'] = self.field_type_detail
+        if self.index_name is not None:
+            result['indexName'] = self.index_name
+        if self.index_type is not None:
+            result['indexType'] = self.index_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldName') is not None:
+            self.field_name = m.get('fieldName')
+        if m.get('fieldType') is not None:
+            self.field_type = m.get('fieldType')
+        if m.get('fieldTypeDetail') is not None:
+            self.field_type_detail = m.get('fieldTypeDetail')
+        if m.get('indexName') is not None:
+            self.index_name = m.get('indexName')
+        if m.get('indexType') is not None:
+            self.index_type = m.get('indexType')
+        return self
+
+
+class GetDatabaseSchemaResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[GetDatabaseSchemaResponseBodyResult] = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # List
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = GetDatabaseSchemaResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        return self
+
+
+class GetDatabaseSchemaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDatabaseSchemaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDatabaseSchemaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDeployGraphResponseBodyResultGraphIndexMetas(TeaModel):
     def __init__(
         self,
@@ -7419,6 +8603,204 @@ class GetNodeConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNodeConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSqlInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        version: int = None,
+    ):
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class GetSqlInstanceResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        combine_params: str = None,
+        comment: str = None,
+        content: str = None,
+        dynamic_params: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        instance_id: int = None,
+        kvpairs: str = None,
+        related_template_id: int = None,
+        static_params: str = None,
+        template_params: str = None,
+        version: int = None,
+    ):
+        self.combine_params = combine_params
+        self.comment = comment
+        self.content = content
+        self.dynamic_params = dynamic_params
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.instance_id = instance_id
+        self.kvpairs = kvpairs
+        self.related_template_id = related_template_id
+        self.static_params = static_params
+        self.template_params = template_params
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.combine_params is not None:
+            result['combineParams'] = self.combine_params
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.content is not None:
+            result['content'] = self.content
+        if self.dynamic_params is not None:
+            result['dynamicParams'] = self.dynamic_params
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.kvpairs is not None:
+            result['kvpairs'] = self.kvpairs
+        if self.related_template_id is not None:
+            result['relatedTemplateId'] = self.related_template_id
+        if self.static_params is not None:
+            result['staticParams'] = self.static_params
+        if self.template_params is not None:
+            result['templateParams'] = self.template_params
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('combineParams') is not None:
+            self.combine_params = m.get('combineParams')
+        if m.get('comment') is not None:
+            self.comment = m.get('comment')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('dynamicParams') is not None:
+            self.dynamic_params = m.get('dynamicParams')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('kvpairs') is not None:
+            self.kvpairs = m.get('kvpairs')
+        if m.get('relatedTemplateId') is not None:
+            self.related_template_id = m.get('relatedTemplateId')
+        if m.get('staticParams') is not None:
+            self.static_params = m.get('staticParams')
+        if m.get('templateParams') is not None:
+            self.template_params = m.get('templateParams')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class GetSqlInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: GetSqlInstanceResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # InstanceVersionVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetSqlInstanceResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class GetSqlInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSqlInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSqlInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9854,6 +11236,422 @@ class ListDataSourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDataSourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDatabasesResponseBodyResultDatabasesSqlInstances(TeaModel):
+    def __init__(
+        self,
+        children: List[Any] = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.children = children
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.children is not None:
+            result['children'] = self.children
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('children') is not None:
+            self.children = m.get('children')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListDatabasesResponseBodyResultDatabasesTables(TeaModel):
+    def __init__(
+        self,
+        children: List[Any] = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.children = children
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.children is not None:
+            result['children'] = self.children
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('children') is not None:
+            self.children = m.get('children')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListDatabasesResponseBodyResultDatabasesTemplates(TeaModel):
+    def __init__(
+        self,
+        children: List[Any] = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.children = children
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.children is not None:
+            result['children'] = self.children
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('children') is not None:
+            self.children = m.get('children')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListDatabasesResponseBodyResultDatabases(TeaModel):
+    def __init__(
+        self,
+        database: str = None,
+        functions: Dict[str, List[ResultDatabasesFunctionsValue]] = None,
+        sql_instances: List[ListDatabasesResponseBodyResultDatabasesSqlInstances] = None,
+        tables: List[ListDatabasesResponseBodyResultDatabasesTables] = None,
+        templates: List[ListDatabasesResponseBodyResultDatabasesTemplates] = None,
+    ):
+        self.database = database
+        self.functions = functions
+        self.sql_instances = sql_instances
+        self.tables = tables
+        self.templates = templates
+
+    def validate(self):
+        if self.functions:
+            for v in self.functions.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+        if self.sql_instances:
+            for k in self.sql_instances:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database is not None:
+            result['database'] = self.database
+        result['functions'] = {}
+        if self.functions is not None:
+            for k, v in self.functions.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['functions'][k] = l1
+        result['sqlInstances'] = []
+        if self.sql_instances is not None:
+            for k in self.sql_instances:
+                result['sqlInstances'].append(k.to_map() if k else None)
+        result['tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['tables'].append(k.to_map() if k else None)
+        result['templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['templates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('database') is not None:
+            self.database = m.get('database')
+        self.functions = {}
+        if m.get('functions') is not None:
+            for k, v in m.get('functions').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = ResultDatabasesFunctionsValue()
+                    l1.append(temp_model.from_map(k1))
+                self.functions['k'] = l1
+        self.sql_instances = []
+        if m.get('sqlInstances') is not None:
+            for k in m.get('sqlInstances'):
+                temp_model = ListDatabasesResponseBodyResultDatabasesSqlInstances()
+                self.sql_instances.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('tables') is not None:
+            for k in m.get('tables'):
+                temp_model = ListDatabasesResponseBodyResultDatabasesTables()
+                self.tables.append(temp_model.from_map(k))
+        self.templates = []
+        if m.get('templates') is not None:
+            for k in m.get('templates'):
+                temp_model = ListDatabasesResponseBodyResultDatabasesTemplates()
+                self.templates.append(temp_model.from_map(k))
+        return self
+
+
+class ListDatabasesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        databases: List[ListDatabasesResponseBodyResultDatabases] = None,
+    ):
+        self.databases = databases
+
+    def validate(self):
+        if self.databases:
+            for k in self.databases:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['databases'] = []
+        if self.databases is not None:
+            for k in self.databases:
+                result['databases'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.databases = []
+        if m.get('databases') is not None:
+            for k in m.get('databases'):
+                temp_model = ListDatabasesResponseBodyResultDatabases()
+                self.databases.append(temp_model.from_map(k))
+        return self
+
+
+class ListDatabasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: ListDatabasesResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # NodeTreeVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = ListDatabasesResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class ListDatabasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDatabasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDatabasesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13496,117 +15294,6 @@ class ModifyClusterOnlineConfigResponse(TeaModel):
         return self
 
 
-class ModifyDataSourceRequest(TeaModel):
-    def __init__(
-        self,
-        body: Dict[str, Any] = None,
-        dry_run: bool = None,
-    ):
-        # The request body.
-        self.body = body
-        # Specifies whether the data source is created by using the dryRun feature. This parameter only checks whether the data source is valid. Valid values: true and false. true indicates that the data source is created by using the dryRun feature, and false indicates that the data source is not created by using the dryRun feature.
-        self.dry_run = dry_run
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.body is not None:
-            result['body'] = self.body
-        if self.dry_run is not None:
-            result['dryRun'] = self.dry_run
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('body') is not None:
-            self.body = m.get('body')
-        if m.get('dryRun') is not None:
-            self.dry_run = m.get('dryRun')
-        return self
-
-
-class ModifyDataSourceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result: Dict[str, Any] = None,
-    ):
-        # The ID of the request
-        self.request_id = request_id
-        # The result returned
-        self.result = result
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result is not None:
-            result['result'] = self.result
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('result') is not None:
-            self.result = m.get('result')
-        return self
-
-
-class ModifyDataSourceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyDataSourceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyDataSourceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ModifyDataSourceDeployRequestExtendHdfs(TeaModel):
     def __init__(
         self,
@@ -16903,6 +18590,188 @@ class RemoveClusterResponse(TeaModel):
         return self
 
 
+class RenameFolderRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class RenameFolderResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class RenameFolderResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: RenameFolderResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # NodeVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = RenameFolderResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class RenameFolderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenameFolderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenameFolderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartIndexResponseBody(TeaModel):
     def __init__(
         self,
@@ -17700,6 +19569,609 @@ class UpdateInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSqlInstanceContentRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        return self
+
+
+class UpdateSqlInstanceContentResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        combine_params: str = None,
+        comment: str = None,
+        content: str = None,
+        dynamic_params: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        instance_id: int = None,
+        kvpairs: str = None,
+        related_template_id: int = None,
+        static_params: str = None,
+        template_params: str = None,
+        version: int = None,
+    ):
+        self.combine_params = combine_params
+        self.comment = comment
+        self.content = content
+        self.dynamic_params = dynamic_params
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.instance_id = instance_id
+        self.kvpairs = kvpairs
+        self.related_template_id = related_template_id
+        self.static_params = static_params
+        self.template_params = template_params
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.combine_params is not None:
+            result['combineParams'] = self.combine_params
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.content is not None:
+            result['content'] = self.content
+        if self.dynamic_params is not None:
+            result['dynamicParams'] = self.dynamic_params
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.kvpairs is not None:
+            result['kvpairs'] = self.kvpairs
+        if self.related_template_id is not None:
+            result['relatedTemplateId'] = self.related_template_id
+        if self.static_params is not None:
+            result['staticParams'] = self.static_params
+        if self.template_params is not None:
+            result['templateParams'] = self.template_params
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('combineParams') is not None:
+            self.combine_params = m.get('combineParams')
+        if m.get('comment') is not None:
+            self.comment = m.get('comment')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('dynamicParams') is not None:
+            self.dynamic_params = m.get('dynamicParams')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('kvpairs') is not None:
+            self.kvpairs = m.get('kvpairs')
+        if m.get('relatedTemplateId') is not None:
+            self.related_template_id = m.get('relatedTemplateId')
+        if m.get('staticParams') is not None:
+            self.static_params = m.get('staticParams')
+        if m.get('templateParams') is not None:
+            self.template_params = m.get('templateParams')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class UpdateSqlInstanceContentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: UpdateSqlInstanceContentResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # InstanceVersionVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdateSqlInstanceContentResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class UpdateSqlInstanceContentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSqlInstanceContentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSqlInstanceContentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSqlInstanceNameRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateSqlInstanceNameResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        instance_id: int = None,
+        is_dir: int = None,
+        name: str = None,
+        parent: int = None,
+        template_id: int = None,
+        type: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.instance_id = instance_id
+        self.is_dir = is_dir
+        self.name = name
+        self.parent = parent
+        self.template_id = template_id
+        # table, instance, template, function
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_dir is not None:
+            result['isDir'] = self.is_dir
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent is not None:
+            result['parent'] = self.parent
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isDir') is not None:
+            self.is_dir = m.get('isDir')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parent') is not None:
+            self.parent = m.get('parent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class UpdateSqlInstanceNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: UpdateSqlInstanceNameResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # NodeVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdateSqlInstanceNameResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class UpdateSqlInstanceNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSqlInstanceNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSqlInstanceNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSqlInstanceParamsRequest(TeaModel):
+    def __init__(
+        self,
+        combine_param: Dict[str, Any] = None,
+        dynamic_param: Dict[str, Any] = None,
+        kvpair: Dict[str, Any] = None,
+        params: Dict[str, Any] = None,
+        static_param: Dict[str, Any] = None,
+    ):
+        self.combine_param = combine_param
+        self.dynamic_param = dynamic_param
+        self.kvpair = kvpair
+        self.params = params
+        self.static_param = static_param
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.combine_param is not None:
+            result['combineParam'] = self.combine_param
+        if self.dynamic_param is not None:
+            result['dynamicParam'] = self.dynamic_param
+        if self.kvpair is not None:
+            result['kvpair'] = self.kvpair
+        if self.params is not None:
+            result['params'] = self.params
+        if self.static_param is not None:
+            result['staticParam'] = self.static_param
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('combineParam') is not None:
+            self.combine_param = m.get('combineParam')
+        if m.get('dynamicParam') is not None:
+            self.dynamic_param = m.get('dynamicParam')
+        if m.get('kvpair') is not None:
+            self.kvpair = m.get('kvpair')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('staticParam') is not None:
+            self.static_param = m.get('staticParam')
+        return self
+
+
+class UpdateSqlInstanceParamsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        combine_params: str = None,
+        comment: str = None,
+        content: str = None,
+        dynamic_params: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        instance_id: int = None,
+        kvpairs: str = None,
+        related_template_id: int = None,
+        static_params: str = None,
+        template_params: str = None,
+        version: int = None,
+    ):
+        self.combine_params = combine_params
+        self.comment = comment
+        self.content = content
+        self.dynamic_params = dynamic_params
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.instance_id = instance_id
+        self.kvpairs = kvpairs
+        self.related_template_id = related_template_id
+        self.static_params = static_params
+        self.template_params = template_params
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.combine_params is not None:
+            result['combineParams'] = self.combine_params
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.content is not None:
+            result['content'] = self.content
+        if self.dynamic_params is not None:
+            result['dynamicParams'] = self.dynamic_params
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.kvpairs is not None:
+            result['kvpairs'] = self.kvpairs
+        if self.related_template_id is not None:
+            result['relatedTemplateId'] = self.related_template_id
+        if self.static_params is not None:
+            result['staticParams'] = self.static_params
+        if self.template_params is not None:
+            result['templateParams'] = self.template_params
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('combineParams') is not None:
+            self.combine_params = m.get('combineParams')
+        if m.get('comment') is not None:
+            self.comment = m.get('comment')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('dynamicParams') is not None:
+            self.dynamic_params = m.get('dynamicParams')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('kvpairs') is not None:
+            self.kvpairs = m.get('kvpairs')
+        if m.get('relatedTemplateId') is not None:
+            self.related_template_id = m.get('relatedTemplateId')
+        if m.get('staticParams') is not None:
+            self.static_params = m.get('staticParams')
+        if m.get('templateParams') is not None:
+            self.template_params = m.get('templateParams')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class UpdateSqlInstanceParamsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: UpdateSqlInstanceParamsResponseBodyResult = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # InstanceVersionVO
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdateSqlInstanceParamsResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class UpdateSqlInstanceParamsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSqlInstanceParamsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSqlInstanceParamsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

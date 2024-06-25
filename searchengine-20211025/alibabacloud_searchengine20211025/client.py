@@ -305,6 +305,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.change_resource_group_with_options_async(instance_id, request, headers, runtime)
 
+    def clone_sql_instance_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.CloneSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CloneSqlInstanceResponse:
+        """
+        @param request: CloneSqlInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneSqlInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.target_folder_id):
+            body['targetFolderId'] = request.target_folder_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloneSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/actions/clone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CloneSqlInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clone_sql_instance_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.CloneSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CloneSqlInstanceResponse:
+        """
+        @param request: CloneSqlInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneSqlInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.target_folder_id):
+            body['targetFolderId'] = request.target_folder_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloneSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/actions/clone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CloneSqlInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clone_sql_instance(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.CloneSqlInstanceRequest,
+    ) -> searchengine_20211025_models.CloneSqlInstanceResponse:
+        """
+        @param request: CloneSqlInstanceRequest
+        @return: CloneSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.clone_sql_instance_with_options(instance_id, database, sql_instance_id, request, headers, runtime)
+
+    async def clone_sql_instance_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.CloneSqlInstanceRequest,
+    ) -> searchengine_20211025_models.CloneSqlInstanceResponse:
+        """
+        @param request: CloneSqlInstanceRequest
+        @return: CloneSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.clone_sql_instance_with_options_async(instance_id, database, sql_instance_id, request, headers, runtime)
+
     def create_cluster_with_options(
         self,
         instance_id: str,
@@ -805,6 +917,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_data_source_with_options_async(instance_id, request, headers, runtime)
 
+    def create_folder_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        request: searchengine_20211025_models.CreateFolderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateFolderResponse:
+        """
+        @param request: CreateFolderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.parent):
+            body['parent'] = request.parent
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFolder',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/folders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_folder_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        request: searchengine_20211025_models.CreateFolderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateFolderResponse:
+        """
+        @param request: CreateFolderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.parent):
+            body['parent'] = request.parent
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFolder',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/folders',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_folder(
+        self,
+        instance_id: str,
+        database: str,
+        request: searchengine_20211025_models.CreateFolderRequest,
+    ) -> searchengine_20211025_models.CreateFolderResponse:
+        """
+        @param request: CreateFolderRequest
+        @return: CreateFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_folder_with_options(instance_id, database, request, headers, runtime)
+
+    async def create_folder_async(
+        self,
+        instance_id: str,
+        database: str,
+        request: searchengine_20211025_models.CreateFolderRequest,
+    ) -> searchengine_20211025_models.CreateFolderResponse:
+        """
+        @param request: CreateFolderRequest
+        @return: CreateFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_folder_with_options_async(instance_id, database, request, headers, runtime)
+
     def create_index_with_options(
         self,
         instance_id: str,
@@ -1210,6 +1434,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_public_url_with_options_async(instance_id, headers, runtime)
+
+    def create_sql_instance_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        request: searchengine_20211025_models.CreateSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateSqlInstanceResponse:
+        """
+        @param request: CreateSqlInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSqlInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.parent):
+            body['parent'] = request.parent
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateSqlInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sql_instance_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        request: searchengine_20211025_models.CreateSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateSqlInstanceResponse:
+        """
+        @param request: CreateSqlInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSqlInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.parent):
+            body['parent'] = request.parent
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateSqlInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sql_instance(
+        self,
+        instance_id: str,
+        database: str,
+        request: searchengine_20211025_models.CreateSqlInstanceRequest,
+    ) -> searchengine_20211025_models.CreateSqlInstanceResponse:
+        """
+        @param request: CreateSqlInstanceRequest
+        @return: CreateSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_sql_instance_with_options(instance_id, database, request, headers, runtime)
+
+    async def create_sql_instance_async(
+        self,
+        instance_id: str,
+        database: str,
+        request: searchengine_20211025_models.CreateSqlInstanceRequest,
+    ) -> searchengine_20211025_models.CreateSqlInstanceResponse:
+        """
+        @param request: CreateSqlInstanceRequest
+        @return: CreateSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_sql_instance_with_options_async(instance_id, database, request, headers, runtime)
 
     def create_table_with_options(
         self,
@@ -1803,6 +2135,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_data_source_with_options_async(instance_id, data_source_name, headers, runtime)
 
+    def delete_folder_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        folder_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteFolderResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteFolder',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/folders/{OpenApiUtilClient.get_encode_param(folder_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_folder_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        folder_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteFolderResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteFolder',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/folders/{OpenApiUtilClient.get_encode_param(folder_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_folder(
+        self,
+        instance_id: str,
+        database: str,
+        folder_id: str,
+    ) -> searchengine_20211025_models.DeleteFolderResponse:
+        """
+        @return: DeleteFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_folder_with_options(instance_id, database, folder_id, headers, runtime)
+
+    async def delete_folder_async(
+        self,
+        instance_id: str,
+        database: str,
+        folder_id: str,
+    ) -> searchengine_20211025_models.DeleteFolderResponse:
+        """
+        @return: DeleteFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_folder_with_options_async(instance_id, database, folder_id, headers, runtime)
+
     def delete_index_with_options(
         self,
         instance_id: str,
@@ -2257,6 +2679,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_public_url_with_options_async(instance_id, headers, runtime)
 
+    def delete_sql_instance_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteSqlInstanceResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSqlInstanceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteSqlInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sql_instance_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteSqlInstanceResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSqlInstanceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteSqlInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sql_instance(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+    ) -> searchengine_20211025_models.DeleteSqlInstanceResponse:
+        """
+        @return: DeleteSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_sql_instance_with_options(instance_id, database, sql_instance_id, headers, runtime)
+
+    async def delete_sql_instance_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+    ) -> searchengine_20211025_models.DeleteSqlInstanceResponse:
+        """
+        @return: DeleteSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_sql_instance_with_options_async(instance_id, database, sql_instance_id, headers, runtime)
+
     def delete_table_with_options(
         self,
         instance_id: str,
@@ -2446,6 +2958,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(request, headers, runtime)
+
+    def execute_sql_instance_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.ExecuteSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ExecuteSqlInstanceResponse:
+        """
+        @param request: ExecuteSqlInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSqlInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.combine_param):
+            body['combineParam'] = request.combine_param
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.domain):
+            body['domain'] = request.domain
+        if not UtilClient.is_unset(request.dynamic_param):
+            body['dynamicParam'] = request.dynamic_param
+        if not UtilClient.is_unset(request.kvpair):
+            body['kvpair'] = request.kvpair
+        if not UtilClient.is_unset(request.params):
+            body['params'] = request.params
+        if not UtilClient.is_unset(request.static_param):
+            body['staticParam'] = request.static_param
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/actions/execution',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ExecuteSqlInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_sql_instance_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.ExecuteSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ExecuteSqlInstanceResponse:
+        """
+        @param request: ExecuteSqlInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSqlInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.combine_param):
+            body['combineParam'] = request.combine_param
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.domain):
+            body['domain'] = request.domain
+        if not UtilClient.is_unset(request.dynamic_param):
+            body['dynamicParam'] = request.dynamic_param
+        if not UtilClient.is_unset(request.kvpair):
+            body['kvpair'] = request.kvpair
+        if not UtilClient.is_unset(request.params):
+            body['params'] = request.params
+        if not UtilClient.is_unset(request.static_param):
+            body['staticParam'] = request.static_param
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/actions/execution',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ExecuteSqlInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_sql_instance(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.ExecuteSqlInstanceRequest,
+    ) -> searchengine_20211025_models.ExecuteSqlInstanceResponse:
+        """
+        @param request: ExecuteSqlInstanceRequest
+        @return: ExecuteSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_sql_instance_with_options(instance_id, database, sql_instance_id, request, headers, runtime)
+
+    async def execute_sql_instance_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.ExecuteSqlInstanceRequest,
+    ) -> searchengine_20211025_models.ExecuteSqlInstanceResponse:
+        """
+        @param request: ExecuteSqlInstanceRequest
+        @return: ExecuteSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_sql_instance_with_options_async(instance_id, database, sql_instance_id, request, headers, runtime)
 
     def force_switch_with_options(
         self,
@@ -3277,6 +3921,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_data_source_deploy_with_options_async(instance_id, deploy_name, data_source_name, headers, runtime)
 
+    def get_database_schema_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetDatabaseSchemaResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseSchemaResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseSchema',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}/schema',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetDatabaseSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_database_schema_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetDatabaseSchemaResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseSchemaResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseSchema',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}/schema',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetDatabaseSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_database_schema(
+        self,
+        instance_id: str,
+        database: str,
+        table_name: str,
+    ) -> searchengine_20211025_models.GetDatabaseSchemaResponse:
+        """
+        @return: GetDatabaseSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_database_schema_with_options(instance_id, database, table_name, headers, runtime)
+
+    async def get_database_schema_async(
+        self,
+        instance_id: str,
+        database: str,
+        table_name: str,
+    ) -> searchengine_20211025_models.GetDatabaseSchemaResponse:
+        """
+        @return: GetDatabaseSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_database_schema_with_options_async(instance_id, database, table_name, headers, runtime)
+
     def get_deploy_graph_with_options(
         self,
         instance_id: str,
@@ -4066,6 +4800,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_node_config_with_options_async(instance_id, request, headers, runtime)
+
+    def get_sql_instance_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.GetSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetSqlInstanceResponse:
+        """
+        @param request: GetSqlInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSqlInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetSqlInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sql_instance_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.GetSqlInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetSqlInstanceResponse:
+        """
+        @param request: GetSqlInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSqlInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSqlInstance',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetSqlInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sql_instance(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.GetSqlInstanceRequest,
+    ) -> searchengine_20211025_models.GetSqlInstanceResponse:
+        """
+        @param request: GetSqlInstanceRequest
+        @return: GetSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_sql_instance_with_options(instance_id, database, sql_instance_id, request, headers, runtime)
+
+    async def get_sql_instance_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.GetSqlInstanceRequest,
+    ) -> searchengine_20211025_models.GetSqlInstanceResponse:
+        """
+        @param request: GetSqlInstanceRequest
+        @return: GetSqlInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_sql_instance_with_options_async(instance_id, database, sql_instance_id, request, headers, runtime)
 
     def get_table_with_options(
         self,
@@ -5226,6 +6068,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_data_sources_with_options_async(instance_id, headers, runtime)
+
+    def list_databases_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListDatabasesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_databases_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListDatabasesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_databases(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.ListDatabasesResponse:
+        """
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_databases_with_options(instance_id, headers, runtime)
+
+    async def list_databases_async(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.ListDatabasesResponse:
+        """
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_databases_with_options_async(instance_id, headers, runtime)
 
     def list_date_source_generations_with_options(
         self,
@@ -7829,146 +8753,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_cluster_online_config_with_options_async(instance_id, request, headers, runtime)
 
-    def modify_data_source_with_options(
-        self,
-        instance_id: str,
-        data_source_name: str,
-        request: searchengine_20211025_models.ModifyDataSourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> searchengine_20211025_models.ModifyDataSourceResponse:
-        """
-        @summary Modifies a data source.
-        
-        @description ## Method
-        `PUT`
-        ## URI
-        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
-        
-        @param request: ModifyDataSourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDataSourceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dry_run):
-            query['dryRun'] = request.dry_run
-        body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ModifyDataSource',
-            version='2021-10-25',
-            protocol='HTTPS',
-            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            searchengine_20211025_models.ModifyDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_data_source_with_options_async(
-        self,
-        instance_id: str,
-        data_source_name: str,
-        request: searchengine_20211025_models.ModifyDataSourceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> searchengine_20211025_models.ModifyDataSourceResponse:
-        """
-        @summary Modifies a data source.
-        
-        @description ## Method
-        `PUT`
-        ## URI
-        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
-        
-        @param request: ModifyDataSourceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDataSourceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dry_run):
-            query['dryRun'] = request.dry_run
-        body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='ModifyDataSource',
-            version='2021-10-25',
-            protocol='HTTPS',
-            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-sources/{OpenApiUtilClient.get_encode_param(data_source_name)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            searchengine_20211025_models.ModifyDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_data_source(
-        self,
-        instance_id: str,
-        data_source_name: str,
-        request: searchengine_20211025_models.ModifyDataSourceRequest,
-    ) -> searchengine_20211025_models.ModifyDataSourceResponse:
-        """
-        @summary Modifies a data source.
-        
-        @description ## Method
-        `PUT`
-        ## URI
-        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
-        
-        @param request: ModifyDataSourceRequest
-        @return: ModifyDataSourceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.modify_data_source_with_options(instance_id, data_source_name, request, headers, runtime)
-
-    async def modify_data_source_async(
-        self,
-        instance_id: str,
-        data_source_name: str,
-        request: searchengine_20211025_models.ModifyDataSourceRequest,
-    ) -> searchengine_20211025_models.ModifyDataSourceResponse:
-        """
-        @summary Modifies a data source.
-        
-        @description ## Method
-        `PUT`
-        ## URI
-        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
-        
-        @param request: ModifyDataSourceRequest
-        @return: ModifyDataSourceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.modify_data_source_with_options_async(instance_id, data_source_name, request, headers, runtime)
-
     def modify_data_source_deploy_with_options(
         self,
         instance_id: str,
@@ -10403,6 +11187,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.remove_cluster_with_options_async(instance_id, cluster_name, headers, runtime)
 
+    def rename_folder_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        folder_id: str,
+        request: searchengine_20211025_models.RenameFolderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.RenameFolderResponse:
+        """
+        @param request: RenameFolderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenameFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenameFolder',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/folders/{OpenApiUtilClient.get_encode_param(folder_id)}/name',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.RenameFolderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rename_folder_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        folder_id: str,
+        request: searchengine_20211025_models.RenameFolderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.RenameFolderResponse:
+        """
+        @param request: RenameFolderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenameFolderResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenameFolder',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/folders/{OpenApiUtilClient.get_encode_param(folder_id)}/name',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.RenameFolderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rename_folder(
+        self,
+        instance_id: str,
+        database: str,
+        folder_id: str,
+        request: searchengine_20211025_models.RenameFolderRequest,
+    ) -> searchengine_20211025_models.RenameFolderResponse:
+        """
+        @param request: RenameFolderRequest
+        @return: RenameFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.rename_folder_with_options(instance_id, database, folder_id, request, headers, runtime)
+
+    async def rename_folder_async(
+        self,
+        instance_id: str,
+        database: str,
+        folder_id: str,
+        request: searchengine_20211025_models.RenameFolderRequest,
+    ) -> searchengine_20211025_models.RenameFolderResponse:
+        """
+        @param request: RenameFolderRequest
+        @return: RenameFolderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.rename_folder_with_options_async(instance_id, database, folder_id, request, headers, runtime)
+
     def start_index_with_options(
         self,
         instance_id: str,
@@ -11080,3 +11972,343 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
+
+    def update_sql_instance_content_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceContentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceContentResponse:
+        """
+        @param request: UpdateSqlInstanceContentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSqlInstanceContentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSqlInstanceContent',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/content',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.UpdateSqlInstanceContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sql_instance_content_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceContentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceContentResponse:
+        """
+        @param request: UpdateSqlInstanceContentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSqlInstanceContentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSqlInstanceContent',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/content',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.UpdateSqlInstanceContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sql_instance_content(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceContentRequest,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceContentResponse:
+        """
+        @param request: UpdateSqlInstanceContentRequest
+        @return: UpdateSqlInstanceContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_sql_instance_content_with_options(instance_id, database, sql_instance_id, request, headers, runtime)
+
+    async def update_sql_instance_content_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceContentRequest,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceContentResponse:
+        """
+        @param request: UpdateSqlInstanceContentRequest
+        @return: UpdateSqlInstanceContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_sql_instance_content_with_options_async(instance_id, database, sql_instance_id, request, headers, runtime)
+
+    def update_sql_instance_name_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceNameRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceNameResponse:
+        """
+        @param request: UpdateSqlInstanceNameRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSqlInstanceNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSqlInstanceName',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/name',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.UpdateSqlInstanceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sql_instance_name_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceNameRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceNameResponse:
+        """
+        @param request: UpdateSqlInstanceNameRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSqlInstanceNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSqlInstanceName',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/name',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.UpdateSqlInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sql_instance_name(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceNameRequest,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceNameResponse:
+        """
+        @param request: UpdateSqlInstanceNameRequest
+        @return: UpdateSqlInstanceNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_sql_instance_name_with_options(instance_id, database, sql_instance_id, request, headers, runtime)
+
+    async def update_sql_instance_name_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceNameRequest,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceNameResponse:
+        """
+        @param request: UpdateSqlInstanceNameRequest
+        @return: UpdateSqlInstanceNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_sql_instance_name_with_options_async(instance_id, database, sql_instance_id, request, headers, runtime)
+
+    def update_sql_instance_params_with_options(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceParamsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceParamsResponse:
+        """
+        @param request: UpdateSqlInstanceParamsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSqlInstanceParamsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.combine_param):
+            body['combineParam'] = request.combine_param
+        if not UtilClient.is_unset(request.dynamic_param):
+            body['dynamicParam'] = request.dynamic_param
+        if not UtilClient.is_unset(request.kvpair):
+            body['kvpair'] = request.kvpair
+        if not UtilClient.is_unset(request.params):
+            body['params'] = request.params
+        if not UtilClient.is_unset(request.static_param):
+            body['staticParam'] = request.static_param
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSqlInstanceParams',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/params',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.UpdateSqlInstanceParamsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sql_instance_params_with_options_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceParamsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceParamsResponse:
+        """
+        @param request: UpdateSqlInstanceParamsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSqlInstanceParamsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.combine_param):
+            body['combineParam'] = request.combine_param
+        if not UtilClient.is_unset(request.dynamic_param):
+            body['dynamicParam'] = request.dynamic_param
+        if not UtilClient.is_unset(request.kvpair):
+            body['kvpair'] = request.kvpair
+        if not UtilClient.is_unset(request.params):
+            body['params'] = request.params
+        if not UtilClient.is_unset(request.static_param):
+            body['staticParam'] = request.static_param
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSqlInstanceParams',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sql-studio/databases/{OpenApiUtilClient.get_encode_param(database)}/sql-instances/{OpenApiUtilClient.get_encode_param(sql_instance_id)}/params',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.UpdateSqlInstanceParamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sql_instance_params(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceParamsRequest,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceParamsResponse:
+        """
+        @param request: UpdateSqlInstanceParamsRequest
+        @return: UpdateSqlInstanceParamsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_sql_instance_params_with_options(instance_id, database, sql_instance_id, request, headers, runtime)
+
+    async def update_sql_instance_params_async(
+        self,
+        instance_id: str,
+        database: str,
+        sql_instance_id: str,
+        request: searchengine_20211025_models.UpdateSqlInstanceParamsRequest,
+    ) -> searchengine_20211025_models.UpdateSqlInstanceParamsResponse:
+        """
+        @param request: UpdateSqlInstanceParamsRequest
+        @return: UpdateSqlInstanceParamsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_sql_instance_params_with_options_async(instance_id, database, sql_instance_id, request, headers, runtime)
