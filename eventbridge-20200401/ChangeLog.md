@@ -1,3 +1,6 @@
+2024-06-25 Version: 4.1.3
+- Generated python 2020-04-01 for eventbridge.
+
 2024-06-24 Version: 4.1.2
 - Update API CreateEventSource: add param ExternalSourceConfig.
 - Update API CreateEventSource: add param ExternalSourceType.
