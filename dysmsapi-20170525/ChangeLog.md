@@ -1,3 +1,26 @@
+2024-06-25 Version: 3.0.0
+- Support API CreateSmsSign.
+- Support API CreateSmsTemplate.
+- Support API GetOSSInfoForUploadFile.
+- Support API GetSmsSign.
+- Support API GetSmsTemplate.
+- Support API UpdateSmsSign.
+- Support API UpdateSmsTemplate.
+- Update API CreateSmartShortUrl: add param OutId.
+- Update API CreateSmartShortUrl: delete param Expiration.
+- Update API CreateSmartShortUrl: delete param SourceName.
+- Update API CreateSmartShortUrl: update param PhoneNumbers.
+- Update API CreateSmartShortUrl: update param SourceUrl.
+- Update API QueryPageSmartShortUrlLog: delete param ClickState.
+- Update API QueryPageSmartShortUrlLog: delete param EndId.
+- Update API QueryPageSmartShortUrlLog: delete param ShortName.
+- Update API QueryPageSmartShortUrlLog: delete param StartId.
+- Update API QueryPageSmartShortUrlLog: update param CreateDateEnd.
+- Update API QueryPageSmartShortUrlLog: update param CreateDateStart.
+- Update API QueryPageSmartShortUrlLog: update param PageNo.
+- Update API QueryPageSmartShortUrlLog: update param PageSize.
+
+
 2023-07-04 Version: 2.0.24
 - Add CreateSmartShortUrl api.
 

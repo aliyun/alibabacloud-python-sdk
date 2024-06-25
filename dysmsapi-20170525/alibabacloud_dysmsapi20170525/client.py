@@ -54,6 +54,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.AddShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddShortUrlResponse:
+        """
+        @summary Creates a short URL.
+        
+        @description    Before you call this operation, you must register the primary domain name of the source URL in the Short Message Service (SMS) console. After the domain name is registered, you can call this operation to create a short URL. For more information, see [Domain name registration](https://help.aliyun.com/document_detail/302325.html#title-mau-zdh-hd0).
+        You can create up to 3,000 short URLs within a natural day.
+        After a short URL is generated, a security review is required. Generally, the review takes 10 minutes to 2 hours to complete. Before the security review is passed, the short URL cannot be directly accessed.
+        
+        @param request: AddShortUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddShortUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -94,6 +105,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.AddShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddShortUrlResponse:
+        """
+        @summary Creates a short URL.
+        
+        @description    Before you call this operation, you must register the primary domain name of the source URL in the Short Message Service (SMS) console. After the domain name is registered, you can call this operation to create a short URL. For more information, see [Domain name registration](https://help.aliyun.com/document_detail/302325.html#title-mau-zdh-hd0).
+        You can create up to 3,000 short URLs within a natural day.
+        After a short URL is generated, a security review is required. Generally, the review takes 10 minutes to 2 hours to complete. Before the security review is passed, the short URL cannot be directly accessed.
+        
+        @param request: AddShortUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddShortUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -133,6 +155,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.AddShortUrlRequest,
     ) -> dysmsapi_20170525_models.AddShortUrlResponse:
+        """
+        @summary Creates a short URL.
+        
+        @description    Before you call this operation, you must register the primary domain name of the source URL in the Short Message Service (SMS) console. After the domain name is registered, you can call this operation to create a short URL. For more information, see [Domain name registration](https://help.aliyun.com/document_detail/302325.html#title-mau-zdh-hd0).
+        You can create up to 3,000 short URLs within a natural day.
+        After a short URL is generated, a security review is required. Generally, the review takes 10 minutes to 2 hours to complete. Before the security review is passed, the short URL cannot be directly accessed.
+        
+        @param request: AddShortUrlRequest
+        @return: AddShortUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_short_url_with_options(request, runtime)
 
@@ -140,6 +172,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.AddShortUrlRequest,
     ) -> dysmsapi_20170525_models.AddShortUrlResponse:
+        """
+        @summary Creates a short URL.
+        
+        @description    Before you call this operation, you must register the primary domain name of the source URL in the Short Message Service (SMS) console. After the domain name is registered, you can call this operation to create a short URL. For more information, see [Domain name registration](https://help.aliyun.com/document_detail/302325.html#title-mau-zdh-hd0).
+        You can create up to 3,000 short URLs within a natural day.
+        After a short URL is generated, a security review is required. Generally, the review takes 10 minutes to 2 hours to complete. Before the security review is passed, the short URL cannot be directly accessed.
+        
+        @param request: AddShortUrlRequest
+        @return: AddShortUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_short_url_with_options_async(request, runtime)
 
@@ -148,6 +190,24 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.AddSmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddSmsSignResponse:
+        """
+        @summary Creates a signature.
+        
+        @description You can call the AddSmsSign operation or use the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm#/overview) to create an SMS signature. The signature must comply with the [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html). You can call the QuerySmsSign operation or use the SMS console to query the review status of the signature.
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limit
+        You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        >
+        You cannot cancel the review of a signature.
+        Individual users can create only one verification code signature, and can create only one general-purpose signature within a natural day. If you need to apply for multiple signatures, we recommend that you upgrade your account to an enterprise user.
+        If you need to use the same signature for messages sent to recipients both in and outside the Chinese mainland, the signature must be a general-purpose signature.
+        If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+        An SMS signature must undergo a thorough review process before it can be approved for use.
+        
+        @param request: AddSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSmsSignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -192,6 +252,24 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.AddSmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddSmsSignResponse:
+        """
+        @summary Creates a signature.
+        
+        @description You can call the AddSmsSign operation or use the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm#/overview) to create an SMS signature. The signature must comply with the [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html). You can call the QuerySmsSign operation or use the SMS console to query the review status of the signature.
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limit
+        You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        >
+        You cannot cancel the review of a signature.
+        Individual users can create only one verification code signature, and can create only one general-purpose signature within a natural day. If you need to apply for multiple signatures, we recommend that you upgrade your account to an enterprise user.
+        If you need to use the same signature for messages sent to recipients both in and outside the Chinese mainland, the signature must be a general-purpose signature.
+        If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+        An SMS signature must undergo a thorough review process before it can be approved for use.
+        
+        @param request: AddSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSmsSignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -235,6 +313,23 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.AddSmsSignRequest,
     ) -> dysmsapi_20170525_models.AddSmsSignResponse:
+        """
+        @summary Creates a signature.
+        
+        @description You can call the AddSmsSign operation or use the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm#/overview) to create an SMS signature. The signature must comply with the [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html). You can call the QuerySmsSign operation or use the SMS console to query the review status of the signature.
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limit
+        You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        >
+        You cannot cancel the review of a signature.
+        Individual users can create only one verification code signature, and can create only one general-purpose signature within a natural day. If you need to apply for multiple signatures, we recommend that you upgrade your account to an enterprise user.
+        If you need to use the same signature for messages sent to recipients both in and outside the Chinese mainland, the signature must be a general-purpose signature.
+        If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+        An SMS signature must undergo a thorough review process before it can be approved for use.
+        
+        @param request: AddSmsSignRequest
+        @return: AddSmsSignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_sms_sign_with_options(request, runtime)
 
@@ -242,6 +337,23 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.AddSmsSignRequest,
     ) -> dysmsapi_20170525_models.AddSmsSignResponse:
+        """
+        @summary Creates a signature.
+        
+        @description You can call the AddSmsSign operation or use the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm#/overview) to create an SMS signature. The signature must comply with the [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html). You can call the QuerySmsSign operation or use the SMS console to query the review status of the signature.
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limit
+        You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        >
+        You cannot cancel the review of a signature.
+        Individual users can create only one verification code signature, and can create only one general-purpose signature within a natural day. If you need to apply for multiple signatures, we recommend that you upgrade your account to an enterprise user.
+        If you need to use the same signature for messages sent to recipients both in and outside the Chinese mainland, the signature must be a general-purpose signature.
+        If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+        An SMS signature must undergo a thorough review process before it can be approved for use.
+        
+        @param request: AddSmsSignRequest
+        @return: AddSmsSignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_sms_sign_with_options_async(request, runtime)
 
@@ -250,6 +362,24 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.AddSmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddSmsTemplateResponse:
+        """
+        @summary Creates a message template.
+        
+        @description You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to apply for a message template. The template must comply with the [message template specifications](https://help.aliyun.com/document_detail/108253.html). You can call the [QuerySmsTemplate](https://help.aliyun.com/document_detail/419289.html) operation or use the Alibaba Cloud SMS console to check whether the message template is approved.
+        >
+        Message templates pending approval can be withdrawn. You can withdraw a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        If you call the AddSmsTemplate operation, you can apply for a maximum of 100 message templates in a calendar day. After you apply for a message template, we recommend that you wait for at least 30 seconds before you apply for another one. If you use the Alibaba Cloud SMS console, you can apply for an unlimited number of message templates.
+        Messages sent to the Chinese mainland and messages sent to countries or regions outside the Chinese mainland use separate message templates. Create message templates based on your needs.
+        If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+        A signature must undergo a thorough review process before it can be approved for use. For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -290,6 +420,24 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.AddSmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.AddSmsTemplateResponse:
+        """
+        @summary Creates a message template.
+        
+        @description You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to apply for a message template. The template must comply with the [message template specifications](https://help.aliyun.com/document_detail/108253.html). You can call the [QuerySmsTemplate](https://help.aliyun.com/document_detail/419289.html) operation or use the Alibaba Cloud SMS console to check whether the message template is approved.
+        >
+        Message templates pending approval can be withdrawn. You can withdraw a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        If you call the AddSmsTemplate operation, you can apply for a maximum of 100 message templates in a calendar day. After you apply for a message template, we recommend that you wait for at least 30 seconds before you apply for another one. If you use the Alibaba Cloud SMS console, you can apply for an unlimited number of message templates.
+        Messages sent to the Chinese mainland and messages sent to countries or regions outside the Chinese mainland use separate message templates. Create message templates based on your needs.
+        If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+        A signature must undergo a thorough review process before it can be approved for use. For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -329,6 +477,23 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.AddSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.AddSmsTemplateResponse:
+        """
+        @summary Creates a message template.
+        
+        @description You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to apply for a message template. The template must comply with the [message template specifications](https://help.aliyun.com/document_detail/108253.html). You can call the [QuerySmsTemplate](https://help.aliyun.com/document_detail/419289.html) operation or use the Alibaba Cloud SMS console to check whether the message template is approved.
+        >
+        Message templates pending approval can be withdrawn. You can withdraw a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        If you call the AddSmsTemplate operation, you can apply for a maximum of 100 message templates in a calendar day. After you apply for a message template, we recommend that you wait for at least 30 seconds before you apply for another one. If you use the Alibaba Cloud SMS console, you can apply for an unlimited number of message templates.
+        Messages sent to the Chinese mainland and messages sent to countries or regions outside the Chinese mainland use separate message templates. Create message templates based on your needs.
+        If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+        A signature must undergo a thorough review process before it can be approved for use. For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddSmsTemplateRequest
+        @return: AddSmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_sms_template_with_options(request, runtime)
 
@@ -336,6 +501,23 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.AddSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.AddSmsTemplateResponse:
+        """
+        @summary Creates a message template.
+        
+        @description You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to apply for a message template. The template must comply with the [message template specifications](https://help.aliyun.com/document_detail/108253.html). You can call the [QuerySmsTemplate](https://help.aliyun.com/document_detail/419289.html) operation or use the Alibaba Cloud SMS console to check whether the message template is approved.
+        >
+        Message templates pending approval can be withdrawn. You can withdraw a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        If you call the AddSmsTemplate operation, you can apply for a maximum of 100 message templates in a calendar day. After you apply for a message template, we recommend that you wait for at least 30 seconds before you apply for another one. If you use the Alibaba Cloud SMS console, you can apply for an unlimited number of message templates.
+        Messages sent to the Chinese mainland and messages sent to countries or regions outside the Chinese mainland use separate message templates. Create message templates based on your needs.
+        If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+        A signature must undergo a thorough review process before it can be approved for use. For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddSmsTemplateRequest
+        @return: AddSmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_sms_template_with_options_async(request, runtime)
 
@@ -344,6 +526,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.CheckMobilesCardSupportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CheckMobilesCardSupportResponse:
+        """
+        @summary Checks whether a mobile phone number can receive card messages.
+        
+        @description ### QPS limit
+        You can call this operation up to 2,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CheckMobilesCardSupportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckMobilesCardSupportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mobiles):
@@ -374,6 +566,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.CheckMobilesCardSupportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CheckMobilesCardSupportResponse:
+        """
+        @summary Checks whether a mobile phone number can receive card messages.
+        
+        @description ### QPS limit
+        You can call this operation up to 2,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CheckMobilesCardSupportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckMobilesCardSupportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mobiles):
@@ -403,6 +605,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.CheckMobilesCardSupportRequest,
     ) -> dysmsapi_20170525_models.CheckMobilesCardSupportResponse:
+        """
+        @summary Checks whether a mobile phone number can receive card messages.
+        
+        @description ### QPS limit
+        You can call this operation up to 2,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CheckMobilesCardSupportRequest
+        @return: CheckMobilesCardSupportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_mobiles_card_support_with_options(request, runtime)
 
@@ -410,6 +621,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.CheckMobilesCardSupportRequest,
     ) -> dysmsapi_20170525_models.CheckMobilesCardSupportResponse:
+        """
+        @summary Checks whether a mobile phone number can receive card messages.
+        
+        @description ### QPS limit
+        You can call this operation up to 2,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CheckMobilesCardSupportRequest
+        @return: CheckMobilesCardSupportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_mobiles_card_support_with_options_async(request, runtime)
 
@@ -418,6 +638,13 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.ConversionDataIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ConversionDataIntlResponse:
+        """
+        @summary Sends conversion rate information to Alibaba Cloud SMS.
+        
+        @param request: ConversionDataIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConversionDataIntlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversion_rate):
@@ -454,6 +681,13 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.ConversionDataIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ConversionDataIntlResponse:
+        """
+        @summary Sends conversion rate information to Alibaba Cloud SMS.
+        
+        @param request: ConversionDataIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConversionDataIntlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversion_rate):
@@ -489,6 +723,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.ConversionDataIntlRequest,
     ) -> dysmsapi_20170525_models.ConversionDataIntlResponse:
+        """
+        @summary Sends conversion rate information to Alibaba Cloud SMS.
+        
+        @param request: ConversionDataIntlRequest
+        @return: ConversionDataIntlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.conversion_data_intl_with_options(request, runtime)
 
@@ -496,6 +736,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.ConversionDataIntlRequest,
     ) -> dysmsapi_20170525_models.ConversionDataIntlResponse:
+        """
+        @summary Sends conversion rate information to Alibaba Cloud SMS.
+        
+        @param request: ConversionDataIntlRequest
+        @return: ConversionDataIntlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.conversion_data_intl_with_options_async(request, runtime)
 
@@ -504,6 +750,19 @@ class Client(OpenApiClient):
         tmp_req: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        """
+        @summary Creates a card message template.
+        
+        @description    The CreateCardSmsTemplate operation saves the card message template information, submits it to the mobile phone manufacturer for approval, and returns the message template ID.
+        If the type of the message template is not supported or events that are not supported by the mobile phone manufacturer are specified, the template is not submitted. For more information, see [Supported message templates](https://help.aliyun.com/document_detail/434611.html).
+        For information about sample card message templates, see [Sample card message templates](https://help.aliyun.com/document_detail/435361.html).
+        ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param tmp_req: CreateCardSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCardSmsTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dysmsapi_20170525_models.CreateCardSmsTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -542,6 +801,19 @@ class Client(OpenApiClient):
         tmp_req: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        """
+        @summary Creates a card message template.
+        
+        @description    The CreateCardSmsTemplate operation saves the card message template information, submits it to the mobile phone manufacturer for approval, and returns the message template ID.
+        If the type of the message template is not supported or events that are not supported by the mobile phone manufacturer are specified, the template is not submitted. For more information, see [Supported message templates](https://help.aliyun.com/document_detail/434611.html).
+        For information about sample card message templates, see [Sample card message templates](https://help.aliyun.com/document_detail/435361.html).
+        ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param tmp_req: CreateCardSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCardSmsTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dysmsapi_20170525_models.CreateCardSmsTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -579,6 +851,18 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        """
+        @summary Creates a card message template.
+        
+        @description    The CreateCardSmsTemplate operation saves the card message template information, submits it to the mobile phone manufacturer for approval, and returns the message template ID.
+        If the type of the message template is not supported or events that are not supported by the mobile phone manufacturer are specified, the template is not submitted. For more information, see [Supported message templates](https://help.aliyun.com/document_detail/434611.html).
+        For information about sample card message templates, see [Sample card message templates](https://help.aliyun.com/document_detail/435361.html).
+        ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateCardSmsTemplateRequest
+        @return: CreateCardSmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_card_sms_template_with_options(request, runtime)
 
@@ -586,6 +870,18 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
+        """
+        @summary Creates a card message template.
+        
+        @description    The CreateCardSmsTemplate operation saves the card message template information, submits it to the mobile phone manufacturer for approval, and returns the message template ID.
+        If the type of the message template is not supported or events that are not supported by the mobile phone manufacturer are specified, the template is not submitted. For more information, see [Supported message templates](https://help.aliyun.com/document_detail/434611.html).
+        For information about sample card message templates, see [Sample card message templates](https://help.aliyun.com/document_detail/435361.html).
+        ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateCardSmsTemplateRequest
+        @return: CreateCardSmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_card_sms_template_with_options_async(request, runtime)
 
@@ -594,10 +890,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.CreateSmartShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CreateSmartShortUrlResponse:
+        """
+        @summary 创建短链
+        
+        @param request: CreateSmartShortUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmartShortUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.expiration):
-            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_numbers):
@@ -606,8 +909,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_name):
-            query['SourceName'] = request.source_name
         if not UtilClient.is_unset(request.source_url):
             query['SourceUrl'] = request.source_url
         req = open_api_models.OpenApiRequest(
@@ -634,10 +935,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.CreateSmartShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.CreateSmartShortUrlResponse:
+        """
+        @summary 创建短链
+        
+        @param request: CreateSmartShortUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmartShortUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.expiration):
-            query['Expiration'] = request.expiration
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_numbers):
@@ -646,8 +954,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_name):
-            query['SourceName'] = request.source_name
         if not UtilClient.is_unset(request.source_url):
             query['SourceUrl'] = request.source_url
         req = open_api_models.OpenApiRequest(
@@ -673,6 +979,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.CreateSmartShortUrlRequest,
     ) -> dysmsapi_20170525_models.CreateSmartShortUrlResponse:
+        """
+        @summary 创建短链
+        
+        @param request: CreateSmartShortUrlRequest
+        @return: CreateSmartShortUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_smart_short_url_with_options(request, runtime)
 
@@ -680,14 +992,322 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.CreateSmartShortUrlRequest,
     ) -> dysmsapi_20170525_models.CreateSmartShortUrlResponse:
+        """
+        @summary 创建短链
+        
+        @param request: CreateSmartShortUrlRequest
+        @return: CreateSmartShortUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_smart_short_url_with_options_async(request, runtime)
+
+    def create_sms_sign_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateSmsSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateSmsSignResponse:
+        """
+        @summary 创建短信签名
+        
+        @param tmp_req: CreateSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmsSignResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateSmsSignShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.more_data):
+            request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_scene_content):
+            query['ApplySceneContent'] = request.apply_scene_content
+        if not UtilClient.is_unset(request.more_data_shrink):
+            query['MoreData'] = request.more_data_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sign_source):
+            query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.sign_type):
+            query['SignType'] = request.sign_type
+        if not UtilClient.is_unset(request.third_party):
+            query['ThirdParty'] = request.third_party
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateSmsSignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sms_sign_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateSmsSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateSmsSignResponse:
+        """
+        @summary 创建短信签名
+        
+        @param tmp_req: CreateSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmsSignResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateSmsSignShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.more_data):
+            request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_scene_content):
+            query['ApplySceneContent'] = request.apply_scene_content
+        if not UtilClient.is_unset(request.more_data_shrink):
+            query['MoreData'] = request.more_data_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sign_source):
+            query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.sign_type):
+            query['SignType'] = request.sign_type
+        if not UtilClient.is_unset(request.third_party):
+            query['ThirdParty'] = request.third_party
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateSmsSignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sms_sign(
+        self,
+        request: dysmsapi_20170525_models.CreateSmsSignRequest,
+    ) -> dysmsapi_20170525_models.CreateSmsSignResponse:
+        """
+        @summary 创建短信签名
+        
+        @param request: CreateSmsSignRequest
+        @return: CreateSmsSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sms_sign_with_options(request, runtime)
+
+    async def create_sms_sign_async(
+        self,
+        request: dysmsapi_20170525_models.CreateSmsSignRequest,
+    ) -> dysmsapi_20170525_models.CreateSmsSignResponse:
+        """
+        @summary 创建短信签名
+        
+        @param request: CreateSmsSignRequest
+        @return: CreateSmsSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sms_sign_with_options_async(request, runtime)
+
+    def create_sms_template_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateSmsTemplateResponse:
+        """
+        @summary 创建短信模板
+        
+        @param tmp_req: CreateSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmsTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateSmsTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.more_data):
+            request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_scene_content):
+            query['ApplySceneContent'] = request.apply_scene_content
+        if not UtilClient.is_unset(request.intl_type):
+            query['IntlType'] = request.intl_type
+        if not UtilClient.is_unset(request.more_data_shrink):
+            query['MoreData'] = request.more_data_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.related_sign_name):
+            query['RelatedSignName'] = request.related_sign_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_rule):
+            query['TemplateRule'] = request.template_rule
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateSmsTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sms_template_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.CreateSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.CreateSmsTemplateResponse:
+        """
+        @summary 创建短信模板
+        
+        @param tmp_req: CreateSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSmsTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.CreateSmsTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.more_data):
+            request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_scene_content):
+            query['ApplySceneContent'] = request.apply_scene_content
+        if not UtilClient.is_unset(request.intl_type):
+            query['IntlType'] = request.intl_type
+        if not UtilClient.is_unset(request.more_data_shrink):
+            query['MoreData'] = request.more_data_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.related_sign_name):
+            query['RelatedSignName'] = request.related_sign_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_rule):
+            query['TemplateRule'] = request.template_rule
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.CreateSmsTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sms_template(
+        self,
+        request: dysmsapi_20170525_models.CreateSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.CreateSmsTemplateResponse:
+        """
+        @summary 创建短信模板
+        
+        @param request: CreateSmsTemplateRequest
+        @return: CreateSmsTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sms_template_with_options(request, runtime)
+
+    async def create_sms_template_async(
+        self,
+        request: dysmsapi_20170525_models.CreateSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.CreateSmsTemplateResponse:
+        """
+        @summary 创建短信模板
+        
+        @param request: CreateSmsTemplateRequest
+        @return: CreateSmsTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sms_template_with_options_async(request, runtime)
 
     def delete_short_url_with_options(
         self,
         request: dysmsapi_20170525_models.DeleteShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
+        """
+        @summary Deletes a short URL. After you delete a short URL, it cannot be changed to its original state.
+        
+        @description ### QPS limits
+        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteShortUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteShortUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -724,6 +1344,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.DeleteShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
+        """
+        @summary Deletes a short URL. After you delete a short URL, it cannot be changed to its original state.
+        
+        @description ### QPS limits
+        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteShortUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteShortUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -759,6 +1389,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.DeleteShortUrlRequest,
     ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
+        """
+        @summary Deletes a short URL. After you delete a short URL, it cannot be changed to its original state.
+        
+        @description ### QPS limits
+        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteShortUrlRequest
+        @return: DeleteShortUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_short_url_with_options(request, runtime)
 
@@ -766,6 +1405,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.DeleteShortUrlRequest,
     ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
+        """
+        @summary Deletes a short URL. After you delete a short URL, it cannot be changed to its original state.
+        
+        @description ### QPS limits
+        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteShortUrlRequest
+        @return: DeleteShortUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_short_url_with_options_async(request, runtime)
 
@@ -774,6 +1422,18 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.DeleteSmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteSmsSignResponse:
+        """
+        @summary Deletes a signature.
+        
+        @description    You cannot delete a signature that has not been approved.
+        After you delete a signature, you cannot recover it. Proceed with caution.
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSmsSignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -808,6 +1468,18 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.DeleteSmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteSmsSignResponse:
+        """
+        @summary Deletes a signature.
+        
+        @description    You cannot delete a signature that has not been approved.
+        After you delete a signature, you cannot recover it. Proceed with caution.
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSmsSignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -841,6 +1513,17 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.DeleteSmsSignRequest,
     ) -> dysmsapi_20170525_models.DeleteSmsSignResponse:
+        """
+        @summary Deletes a signature.
+        
+        @description    You cannot delete a signature that has not been approved.
+        After you delete a signature, you cannot recover it. Proceed with caution.
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSmsSignRequest
+        @return: DeleteSmsSignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_sms_sign_with_options(request, runtime)
 
@@ -848,6 +1531,17 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.DeleteSmsSignRequest,
     ) -> dysmsapi_20170525_models.DeleteSmsSignResponse:
+        """
+        @summary Deletes a signature.
+        
+        @description    You cannot delete a signature that has not been approved.
+        After you delete a signature, you cannot recover it. Proceed with caution.
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSmsSignRequest
+        @return: DeleteSmsSignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_sms_sign_with_options_async(request, runtime)
 
@@ -856,6 +1550,19 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.DeleteSmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
+        """
+        @summary Deletes a message template.
+        
+        @description    Message templates pending approval can be withdrawn. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        You cannot recover deleted message templates. Proceed with caution.
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -890,6 +1597,19 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.DeleteSmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
+        """
+        @summary Deletes a message template.
+        
+        @description    Message templates pending approval can be withdrawn. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        You cannot recover deleted message templates. Proceed with caution.
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -923,6 +1643,18 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.DeleteSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
+        """
+        @summary Deletes a message template.
+        
+        @description    Message templates pending approval can be withdrawn. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        You cannot recover deleted message templates. Proceed with caution.
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSmsTemplateRequest
+        @return: DeleteSmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_sms_template_with_options(request, runtime)
 
@@ -930,6 +1662,18 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.DeleteSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
+        """
+        @summary Deletes a message template.
+        
+        @description    Message templates pending approval can be withdrawn. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+        You cannot recover deleted message templates. Proceed with caution.
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteSmsTemplateRequest
+        @return: DeleteSmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_sms_template_with_options_async(request, runtime)
 
@@ -938,6 +1682,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetCardSmsLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetCardSmsLinkResponse:
+        """
+        @summary Queries the short URLs of a card messages template.
+        
+        @description ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetCardSmsLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCardSmsLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.card_code_type):
@@ -982,6 +1736,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetCardSmsLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetCardSmsLinkResponse:
+        """
+        @summary Queries the short URLs of a card messages template.
+        
+        @description ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetCardSmsLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCardSmsLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.card_code_type):
@@ -1025,6 +1789,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.GetCardSmsLinkRequest,
     ) -> dysmsapi_20170525_models.GetCardSmsLinkResponse:
+        """
+        @summary Queries the short URLs of a card messages template.
+        
+        @description ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetCardSmsLinkRequest
+        @return: GetCardSmsLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_card_sms_link_with_options(request, runtime)
 
@@ -1032,6 +1805,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.GetCardSmsLinkRequest,
     ) -> dysmsapi_20170525_models.GetCardSmsLinkResponse:
+        """
+        @summary Queries the short URLs of a card messages template.
+        
+        @description ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetCardSmsLinkRequest
+        @return: GetCardSmsLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_card_sms_link_with_options_async(request, runtime)
 
@@ -1040,6 +1822,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        """
+        @summary Converts a resource uploaded to the specified Object Storage Service (OSS) bucket for unified management. Then, a resource ID is returned. You can manage the resource based on the ID.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetMediaResourceIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaResourceIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extend_info):
@@ -1076,6 +1868,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        """
+        @summary Converts a resource uploaded to the specified Object Storage Service (OSS) bucket for unified management. Then, a resource ID is returned. You can manage the resource based on the ID.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetMediaResourceIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaResourceIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extend_info):
@@ -1111,6 +1913,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
     ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        """
+        @summary Converts a resource uploaded to the specified Object Storage Service (OSS) bucket for unified management. Then, a resource ID is returned. You can manage the resource based on the ID.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetMediaResourceIdRequest
+        @return: GetMediaResourceIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_media_resource_id_with_options(request, runtime)
 
@@ -1118,6 +1929,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
     ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
+        """
+        @summary Converts a resource uploaded to the specified Object Storage Service (OSS) bucket for unified management. Then, a resource ID is returned. You can manage the resource based on the ID.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetMediaResourceIdRequest
+        @return: GetMediaResourceIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_media_resource_id_with_options_async(request, runtime)
 
@@ -1125,6 +1945,17 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        """
+        @summary Queries the OSS configuration information about card messages.
+        
+        @description Resources such as images and videos used for card message templates can be uploaded to Object Storage Service (OSS) buckets for storage. For more information, see [Upload files to OSS](https://help.aliyun.com/document_detail/437303.html).
+        ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetOSSInfoForCardTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOSSInfoForCardTemplateResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetOSSInfoForCardTemplate',
@@ -1146,6 +1977,17 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        """
+        @summary Queries the OSS configuration information about card messages.
+        
+        @description Resources such as images and videos used for card message templates can be uploaded to Object Storage Service (OSS) buckets for storage. For more information, see [Upload files to OSS](https://help.aliyun.com/document_detail/437303.html).
+        ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetOSSInfoForCardTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOSSInfoForCardTemplateResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetOSSInfoForCardTemplate',
@@ -1164,18 +2006,370 @@ class Client(OpenApiClient):
         )
 
     def get_ossinfo_for_card_template(self) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        """
+        @summary Queries the OSS configuration information about card messages.
+        
+        @description Resources such as images and videos used for card message templates can be uploaded to Object Storage Service (OSS) buckets for storage. For more information, see [Upload files to OSS](https://help.aliyun.com/document_detail/437303.html).
+        ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @return: GetOSSInfoForCardTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ossinfo_for_card_template_with_options(runtime)
 
     async def get_ossinfo_for_card_template_async(self) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
+        """
+        @summary Queries the OSS configuration information about card messages.
+        
+        @description Resources such as images and videos used for card message templates can be uploaded to Object Storage Service (OSS) buckets for storage. For more information, see [Upload files to OSS](https://help.aliyun.com/document_detail/437303.html).
+        ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @return: GetOSSInfoForCardTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ossinfo_for_card_template_with_options_async(runtime)
+
+    def get_ossinfo_for_upload_file_with_options(
+        self,
+        request: dysmsapi_20170525_models.GetOSSInfoForUploadFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse:
+        """
+        @summary 短信上传文件，获取授权信息
+        
+        @param request: GetOSSInfoForUploadFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOSSInfoForUploadFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOSSInfoForUploadFile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ossinfo_for_upload_file_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.GetOSSInfoForUploadFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse:
+        """
+        @summary 短信上传文件，获取授权信息
+        
+        @param request: GetOSSInfoForUploadFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOSSInfoForUploadFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOSSInfoForUploadFile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ossinfo_for_upload_file(
+        self,
+        request: dysmsapi_20170525_models.GetOSSInfoForUploadFileRequest,
+    ) -> dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse:
+        """
+        @summary 短信上传文件，获取授权信息
+        
+        @param request: GetOSSInfoForUploadFileRequest
+        @return: GetOSSInfoForUploadFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ossinfo_for_upload_file_with_options(request, runtime)
+
+    async def get_ossinfo_for_upload_file_async(
+        self,
+        request: dysmsapi_20170525_models.GetOSSInfoForUploadFileRequest,
+    ) -> dysmsapi_20170525_models.GetOSSInfoForUploadFileResponse:
+        """
+        @summary 短信上传文件，获取授权信息
+        
+        @param request: GetOSSInfoForUploadFileRequest
+        @return: GetOSSInfoForUploadFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ossinfo_for_upload_file_with_options_async(request, runtime)
+
+    def get_sms_sign_with_options(
+        self,
+        request: dysmsapi_20170525_models.GetSmsSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetSmsSignResponse:
+        """
+        @summary 查询短信签名详情
+        
+        @param request: GetSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmsSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetSmsSignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sms_sign_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.GetSmsSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetSmsSignResponse:
+        """
+        @summary 查询短信签名详情
+        
+        @param request: GetSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmsSignResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetSmsSignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sms_sign(
+        self,
+        request: dysmsapi_20170525_models.GetSmsSignRequest,
+    ) -> dysmsapi_20170525_models.GetSmsSignResponse:
+        """
+        @summary 查询短信签名详情
+        
+        @param request: GetSmsSignRequest
+        @return: GetSmsSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_sms_sign_with_options(request, runtime)
+
+    async def get_sms_sign_async(
+        self,
+        request: dysmsapi_20170525_models.GetSmsSignRequest,
+    ) -> dysmsapi_20170525_models.GetSmsSignResponse:
+        """
+        @summary 查询短信签名详情
+        
+        @param request: GetSmsSignRequest
+        @return: GetSmsSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sms_sign_with_options_async(request, runtime)
+
+    def get_sms_template_with_options(
+        self,
+        request: dysmsapi_20170525_models.GetSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetSmsTemplateResponse:
+        """
+        @summary 查询文本短信模板详情
+        
+        @param request: GetSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmsTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetSmsTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sms_template_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.GetSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.GetSmsTemplateResponse:
+        """
+        @summary 查询文本短信模板详情
+        
+        @param request: GetSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmsTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.GetSmsTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sms_template(
+        self,
+        request: dysmsapi_20170525_models.GetSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.GetSmsTemplateResponse:
+        """
+        @summary 查询文本短信模板详情
+        
+        @param request: GetSmsTemplateRequest
+        @return: GetSmsTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_sms_template_with_options(request, runtime)
+
+    async def get_sms_template_async(
+        self,
+        request: dysmsapi_20170525_models.GetSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.GetSmsTemplateResponse:
+        """
+        @summary 查询文本短信模板详情
+        
+        @param request: GetSmsTemplateRequest
+        @return: GetSmsTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sms_template_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
         request: dysmsapi_20170525_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -1222,6 +2416,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -1267,6 +2471,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.ListTagResourcesRequest,
     ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -1274,6 +2487,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.ListTagResourcesRequest,
     ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -1282,6 +2504,22 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.ModifySmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ModifySmsSignResponse:
+        """
+        @summary Modifies a rejected signature and submit it for approval. Signatures that are pending approval or have been approved cannot be modified.
+        
+        @description You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to modify an existing signature and submit the signature for approval. The signature must comply with the [signature specifications](https://help.aliyun.com/document_detail/108076.html).
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        >
+        Signatures pending approval cannot be modified.
+        You cannot modify a signature after it is approved. If you no longer need the signature, you can delete it.
+        If you are an individual user, you cannot apply for a new signature on the same day that your signature is rejected or deleted. We recommend that you modify the rejected signature and submit it again.
+        
+        @param request: ModifySmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySmsSignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1326,6 +2564,22 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.ModifySmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ModifySmsSignResponse:
+        """
+        @summary Modifies a rejected signature and submit it for approval. Signatures that are pending approval or have been approved cannot be modified.
+        
+        @description You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to modify an existing signature and submit the signature for approval. The signature must comply with the [signature specifications](https://help.aliyun.com/document_detail/108076.html).
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        >
+        Signatures pending approval cannot be modified.
+        You cannot modify a signature after it is approved. If you no longer need the signature, you can delete it.
+        If you are an individual user, you cannot apply for a new signature on the same day that your signature is rejected or deleted. We recommend that you modify the rejected signature and submit it again.
+        
+        @param request: ModifySmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySmsSignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1369,6 +2623,21 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.ModifySmsSignRequest,
     ) -> dysmsapi_20170525_models.ModifySmsSignResponse:
+        """
+        @summary Modifies a rejected signature and submit it for approval. Signatures that are pending approval or have been approved cannot be modified.
+        
+        @description You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to modify an existing signature and submit the signature for approval. The signature must comply with the [signature specifications](https://help.aliyun.com/document_detail/108076.html).
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        >
+        Signatures pending approval cannot be modified.
+        You cannot modify a signature after it is approved. If you no longer need the signature, you can delete it.
+        If you are an individual user, you cannot apply for a new signature on the same day that your signature is rejected or deleted. We recommend that you modify the rejected signature and submit it again.
+        
+        @param request: ModifySmsSignRequest
+        @return: ModifySmsSignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_sms_sign_with_options(request, runtime)
 
@@ -1376,6 +2645,21 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.ModifySmsSignRequest,
     ) -> dysmsapi_20170525_models.ModifySmsSignResponse:
+        """
+        @summary Modifies a rejected signature and submit it for approval. Signatures that are pending approval or have been approved cannot be modified.
+        
+        @description You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to modify an existing signature and submit the signature for approval. The signature must comply with the [signature specifications](https://help.aliyun.com/document_detail/108076.html).
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        >
+        Signatures pending approval cannot be modified.
+        You cannot modify a signature after it is approved. If you no longer need the signature, you can delete it.
+        If you are an individual user, you cannot apply for a new signature on the same day that your signature is rejected or deleted. We recommend that you modify the rejected signature and submit it again.
+        
+        @param request: ModifySmsSignRequest
+        @return: ModifySmsSignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_sms_sign_with_options_async(request, runtime)
 
@@ -1384,6 +2668,19 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.ModifySmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ModifySmsTemplateResponse:
+        """
+        @summary Modifies the information of an unapproved message template and submits it for review again.
+        
+        @description After you apply for a message template, if the template fails to pass the review, you can call this operation to modify the template and submit the template again. You can call this operation to modify only a template for a specific message type.
+        The template content must comply with the [SMS template specifications](https://help.aliyun.com/document_detail/108253.html).
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifySmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1426,6 +2723,19 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.ModifySmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.ModifySmsTemplateResponse:
+        """
+        @summary Modifies the information of an unapproved message template and submits it for review again.
+        
+        @description After you apply for a message template, if the template fails to pass the review, you can call this operation to modify the template and submit the template again. You can call this operation to modify only a template for a specific message type.
+        The template content must comply with the [SMS template specifications](https://help.aliyun.com/document_detail/108253.html).
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifySmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1467,6 +2777,18 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.ModifySmsTemplateRequest,
     ) -> dysmsapi_20170525_models.ModifySmsTemplateResponse:
+        """
+        @summary Modifies the information of an unapproved message template and submits it for review again.
+        
+        @description After you apply for a message template, if the template fails to pass the review, you can call this operation to modify the template and submit the template again. You can call this operation to modify only a template for a specific message type.
+        The template content must comply with the [SMS template specifications](https://help.aliyun.com/document_detail/108253.html).
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifySmsTemplateRequest
+        @return: ModifySmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_sms_template_with_options(request, runtime)
 
@@ -1474,6 +2796,18 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.ModifySmsTemplateRequest,
     ) -> dysmsapi_20170525_models.ModifySmsTemplateResponse:
+        """
+        @summary Modifies the information of an unapproved message template and submits it for review again.
+        
+        @description After you apply for a message template, if the template fails to pass the review, you can call this operation to modify the template and submit the template again. You can call this operation to modify only a template for a specific message type.
+        The template content must comply with the [SMS template specifications](https://help.aliyun.com/document_detail/108253.html).
+        For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ModifySmsTemplateRequest
+        @return: ModifySmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_sms_template_with_options_async(request, runtime)
 
@@ -1482,6 +2816,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        """
+        @summary Queries the review status of a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryCardSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCardSmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_code):
@@ -1510,6 +2854,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        """
+        @summary Queries the review status of a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryCardSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCardSmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_code):
@@ -1537,6 +2891,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        """
+        @summary Queries the review status of a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryCardSmsTemplateRequest
+        @return: QueryCardSmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_card_sms_template_with_options(request, runtime)
 
@@ -1544,6 +2907,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
     ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
+        """
+        @summary Queries the review status of a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryCardSmsTemplateRequest
+        @return: QueryCardSmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_card_sms_template_with_options_async(request, runtime)
 
@@ -1552,6 +2924,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QueryCardSmsTemplateReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryCardSmsTemplateReportResponse:
+        """
+        @summary Queries sent card messages.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryCardSmsTemplateReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCardSmsTemplateReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -1584,6 +2966,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QueryCardSmsTemplateReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryCardSmsTemplateReportResponse:
+        """
+        @summary Queries sent card messages.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryCardSmsTemplateReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCardSmsTemplateReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -1615,6 +3007,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryCardSmsTemplateReportRequest,
     ) -> dysmsapi_20170525_models.QueryCardSmsTemplateReportResponse:
+        """
+        @summary Queries sent card messages.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryCardSmsTemplateReportRequest
+        @return: QueryCardSmsTemplateReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_card_sms_template_report_with_options(request, runtime)
 
@@ -1622,6 +3023,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryCardSmsTemplateReportRequest,
     ) -> dysmsapi_20170525_models.QueryCardSmsTemplateReportResponse:
+        """
+        @summary Queries sent card messages.
+        
+        @description ### QPS limit
+        You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryCardSmsTemplateReportRequest
+        @return: QueryCardSmsTemplateReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_card_sms_template_report_with_options_async(request, runtime)
 
@@ -1630,6 +3040,13 @@ class Client(OpenApiClient):
         tmp_req: dysmsapi_20170525_models.QueryMobilesCardSupportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryMobilesCardSupportResponse:
+        """
+        @summary Checks whether a mobile phone number can receive card messages.
+        
+        @param tmp_req: QueryMobilesCardSupportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMobilesCardSupportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dysmsapi_20170525_models.QueryMobilesCardSupportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1664,6 +3081,13 @@ class Client(OpenApiClient):
         tmp_req: dysmsapi_20170525_models.QueryMobilesCardSupportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryMobilesCardSupportResponse:
+        """
+        @summary Checks whether a mobile phone number can receive card messages.
+        
+        @param tmp_req: QueryMobilesCardSupportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMobilesCardSupportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dysmsapi_20170525_models.QueryMobilesCardSupportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1697,6 +3121,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryMobilesCardSupportRequest,
     ) -> dysmsapi_20170525_models.QueryMobilesCardSupportResponse:
+        """
+        @summary Checks whether a mobile phone number can receive card messages.
+        
+        @param request: QueryMobilesCardSupportRequest
+        @return: QueryMobilesCardSupportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mobiles_card_support_with_options(request, runtime)
 
@@ -1704,6 +3134,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryMobilesCardSupportRequest,
     ) -> dysmsapi_20170525_models.QueryMobilesCardSupportResponse:
+        """
+        @summary Checks whether a mobile phone number can receive card messages.
+        
+        @param request: QueryMobilesCardSupportRequest
+        @return: QueryMobilesCardSupportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mobiles_card_support_with_options_async(request, runtime)
 
@@ -1712,16 +3148,19 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QueryPageSmartShortUrlLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryPageSmartShortUrlLogResponse:
+        """
+        @summary 点击明细查询
+        
+        @param request: QueryPageSmartShortUrlLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPageSmartShortUrlLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.click_state):
-            query['ClickState'] = request.click_state
         if not UtilClient.is_unset(request.create_date_end):
             query['CreateDateEnd'] = request.create_date_end
         if not UtilClient.is_unset(request.create_date_start):
             query['CreateDateStart'] = request.create_date_start
-        if not UtilClient.is_unset(request.end_id):
-            query['EndId'] = request.end_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_no):
@@ -1734,12 +3173,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.short_name):
-            query['ShortName'] = request.short_name
         if not UtilClient.is_unset(request.short_url):
             query['ShortUrl'] = request.short_url
-        if not UtilClient.is_unset(request.start_id):
-            query['StartId'] = request.start_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1764,16 +3199,19 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QueryPageSmartShortUrlLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryPageSmartShortUrlLogResponse:
+        """
+        @summary 点击明细查询
+        
+        @param request: QueryPageSmartShortUrlLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPageSmartShortUrlLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.click_state):
-            query['ClickState'] = request.click_state
         if not UtilClient.is_unset(request.create_date_end):
             query['CreateDateEnd'] = request.create_date_end
         if not UtilClient.is_unset(request.create_date_start):
             query['CreateDateStart'] = request.create_date_start
-        if not UtilClient.is_unset(request.end_id):
-            query['EndId'] = request.end_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_no):
@@ -1786,12 +3224,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.short_name):
-            query['ShortName'] = request.short_name
         if not UtilClient.is_unset(request.short_url):
             query['ShortUrl'] = request.short_url
-        if not UtilClient.is_unset(request.start_id):
-            query['StartId'] = request.start_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1815,6 +3249,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryPageSmartShortUrlLogRequest,
     ) -> dysmsapi_20170525_models.QueryPageSmartShortUrlLogResponse:
+        """
+        @summary 点击明细查询
+        
+        @param request: QueryPageSmartShortUrlLogRequest
+        @return: QueryPageSmartShortUrlLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_page_smart_short_url_log_with_options(request, runtime)
 
@@ -1822,6 +3262,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryPageSmartShortUrlLogRequest,
     ) -> dysmsapi_20170525_models.QueryPageSmartShortUrlLogResponse:
+        """
+        @summary 点击明细查询
+        
+        @param request: QueryPageSmartShortUrlLogRequest
+        @return: QueryPageSmartShortUrlLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_page_smart_short_url_log_with_options_async(request, runtime)
 
@@ -1830,6 +3276,13 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySendDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
+        """
+        @summary Queries the information about a message.
+        
+        @param request: QuerySendDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySendDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1872,6 +3325,13 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySendDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
+        """
+        @summary Queries the information about a message.
+        
+        @param request: QuerySendDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySendDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1913,6 +3373,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySendDetailsRequest,
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
+        """
+        @summary Queries the information about a message.
+        
+        @param request: QuerySendDetailsRequest
+        @return: QuerySendDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_send_details_with_options(request, runtime)
 
@@ -1920,6 +3386,12 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySendDetailsRequest,
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
+        """
+        @summary Queries the information about a message.
+        
+        @param request: QuerySendDetailsRequest
+        @return: QuerySendDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_send_details_with_options_async(request, runtime)
 
@@ -1928,6 +3400,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySendStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySendStatisticsResponse:
+        """
+        @summary Queries message delivery details.
+        
+        @description You can call the operation to query message delivery details, including the number of delivered messages, the number of messages with delivery receipts, and the time that a message is sent. If a large number of messages are sent on the specified date, you can specify the number of items displayed on each page and the number of pages to view the details by page.
+        ### QPS limits
+        You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySendStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySendStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -1974,6 +3457,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySendStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySendStatisticsResponse:
+        """
+        @summary Queries message delivery details.
+        
+        @description You can call the operation to query message delivery details, including the number of delivered messages, the number of messages with delivery receipts, and the time that a message is sent. If a large number of messages are sent on the specified date, you can specify the number of items displayed on each page and the number of pages to view the details by page.
+        ### QPS limits
+        You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySendStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySendStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -2019,6 +3513,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySendStatisticsRequest,
     ) -> dysmsapi_20170525_models.QuerySendStatisticsResponse:
+        """
+        @summary Queries message delivery details.
+        
+        @description You can call the operation to query message delivery details, including the number of delivered messages, the number of messages with delivery receipts, and the time that a message is sent. If a large number of messages are sent on the specified date, you can specify the number of items displayed on each page and the number of pages to view the details by page.
+        ### QPS limits
+        You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySendStatisticsRequest
+        @return: QuerySendStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_send_statistics_with_options(request, runtime)
 
@@ -2026,6 +3530,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySendStatisticsRequest,
     ) -> dysmsapi_20170525_models.QuerySendStatisticsResponse:
+        """
+        @summary Queries message delivery details.
+        
+        @description You can call the operation to query message delivery details, including the number of delivered messages, the number of messages with delivery receipts, and the time that a message is sent. If a large number of messages are sent on the specified date, you can specify the number of items displayed on each page and the number of pages to view the details by page.
+        ### QPS limits
+        You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySendStatisticsRequest
+        @return: QuerySendStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_send_statistics_with_options_async(request, runtime)
 
@@ -2034,6 +3548,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QueryShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
+        """
+        @summary Queries the status of a short URL.
+        
+        @description ### QPS limits
+        You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryShortUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryShortUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2070,6 +3594,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QueryShortUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
+        """
+        @summary Queries the status of a short URL.
+        
+        @description ### QPS limits
+        You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryShortUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryShortUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2105,6 +3639,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryShortUrlRequest,
     ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
+        """
+        @summary Queries the status of a short URL.
+        
+        @description ### QPS limits
+        You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryShortUrlRequest
+        @return: QueryShortUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_short_url_with_options(request, runtime)
 
@@ -2112,6 +3655,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QueryShortUrlRequest,
     ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
+        """
+        @summary Queries the status of a short URL.
+        
+        @description ### QPS limits
+        You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryShortUrlRequest
+        @return: QueryShortUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_short_url_with_options_async(request, runtime)
 
@@ -2120,6 +3672,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsSignResponse:
+        """
+        @summary Queries the status of a signature.
+        
+        @description After you apply for an SMS signature, you can query its status by using the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm) or calling the operation. If the signature is rejected, you can modify the signature based on the reason why it is rejected.
+        ### QPS limits
+        You can call this API operation up to 500 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsSignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2154,6 +3717,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySmsSignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsSignResponse:
+        """
+        @summary Queries the status of a signature.
+        
+        @description After you apply for an SMS signature, you can query its status by using the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm) or calling the operation. If the signature is rejected, you can modify the signature based on the reason why it is rejected.
+        ### QPS limits
+        You can call this API operation up to 500 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsSignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2187,6 +3761,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySmsSignRequest,
     ) -> dysmsapi_20170525_models.QuerySmsSignResponse:
+        """
+        @summary Queries the status of a signature.
+        
+        @description After you apply for an SMS signature, you can query its status by using the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm) or calling the operation. If the signature is rejected, you can modify the signature based on the reason why it is rejected.
+        ### QPS limits
+        You can call this API operation up to 500 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsSignRequest
+        @return: QuerySmsSignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sms_sign_with_options(request, runtime)
 
@@ -2194,6 +3778,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySmsSignRequest,
     ) -> dysmsapi_20170525_models.QuerySmsSignResponse:
+        """
+        @summary Queries the status of a signature.
+        
+        @description After you apply for an SMS signature, you can query its status by using the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm) or calling the operation. If the signature is rejected, you can modify the signature based on the reason why it is rejected.
+        ### QPS limits
+        You can call this API operation up to 500 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsSignRequest
+        @return: QuerySmsSignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_sign_with_options_async(request, runtime)
 
@@ -2202,6 +3796,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySmsSignListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsSignListResponse:
+        """
+        @summary Queries message signatures by page.
+        
+        @description You can call this operation to query the details of message signatures, including the name, creation time, and approval status of each signature. If a message template is rejected, the reason is returned. Modify the message signature based on the reason.
+        ### QPS limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsSignListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsSignListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2238,6 +3843,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySmsSignListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsSignListResponse:
+        """
+        @summary Queries message signatures by page.
+        
+        @description You can call this operation to query the details of message signatures, including the name, creation time, and approval status of each signature. If a message template is rejected, the reason is returned. Modify the message signature based on the reason.
+        ### QPS limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsSignListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsSignListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2273,6 +3889,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySmsSignListRequest,
     ) -> dysmsapi_20170525_models.QuerySmsSignListResponse:
+        """
+        @summary Queries message signatures by page.
+        
+        @description You can call this operation to query the details of message signatures, including the name, creation time, and approval status of each signature. If a message template is rejected, the reason is returned. Modify the message signature based on the reason.
+        ### QPS limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsSignListRequest
+        @return: QuerySmsSignListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sms_sign_list_with_options(request, runtime)
 
@@ -2280,6 +3906,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySmsSignListRequest,
     ) -> dysmsapi_20170525_models.QuerySmsSignListResponse:
+        """
+        @summary Queries message signatures by page.
+        
+        @description You can call this operation to query the details of message signatures, including the name, creation time, and approval status of each signature. If a message template is rejected, the reason is returned. Modify the message signature based on the reason.
+        ### QPS limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsSignListRequest
+        @return: QuerySmsSignListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_sign_list_with_options_async(request, runtime)
 
@@ -2288,6 +3924,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateResponse:
+        """
+        @summary Queries the approval status of a message template.
+        
+        @description After you create a message template, you can call this operation to query the approval status of the template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+        ### QPS limit
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2322,6 +3969,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySmsTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateResponse:
+        """
+        @summary Queries the approval status of a message template.
+        
+        @description After you create a message template, you can call this operation to query the approval status of the template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+        ### QPS limit
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2355,6 +4013,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySmsTemplateRequest,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateResponse:
+        """
+        @summary Queries the approval status of a message template.
+        
+        @description After you create a message template, you can call this operation to query the approval status of the template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+        ### QPS limit
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsTemplateRequest
+        @return: QuerySmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sms_template_with_options(request, runtime)
 
@@ -2362,6 +4030,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySmsTemplateRequest,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateResponse:
+        """
+        @summary Queries the approval status of a message template.
+        
+        @description After you create a message template, you can call this operation to query the approval status of the template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+        ### QPS limit
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsTemplateRequest
+        @return: QuerySmsTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_template_with_options_async(request, runtime)
 
@@ -2370,6 +4048,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySmsTemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateListResponse:
+        """
+        @summary Queries message templates.
+        
+        @description You can call this operation to query the details of message templates, including the name, creation time, and approval status of each template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+        ### QPS limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsTemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsTemplateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2406,6 +4095,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.QuerySmsTemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateListResponse:
+        """
+        @summary Queries message templates.
+        
+        @description You can call this operation to query the details of message templates, including the name, creation time, and approval status of each template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+        ### QPS limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsTemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmsTemplateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2441,6 +4141,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySmsTemplateListRequest,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateListResponse:
+        """
+        @summary Queries message templates.
+        
+        @description You can call this operation to query the details of message templates, including the name, creation time, and approval status of each template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+        ### QPS limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsTemplateListRequest
+        @return: QuerySmsTemplateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sms_template_list_with_options(request, runtime)
 
@@ -2448,6 +4158,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.QuerySmsTemplateListRequest,
     ) -> dysmsapi_20170525_models.QuerySmsTemplateListResponse:
+        """
+        @summary Queries message templates.
+        
+        @description You can call this operation to query the details of message templates, including the name, creation time, and approval status of each template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+        ### QPS limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QuerySmsTemplateListRequest
+        @return: QuerySmsTemplateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_template_list_with_options_async(request, runtime)
 
@@ -2456,6 +4176,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SendBatchCardSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendBatchCardSmsResponse:
+        """
+        @summary Sends multiple card messages at a time.
+        
+        @description You can call the operation to send multiple card messages to a maximum of mobile phone numbers at a time. Different signatures and rollback settings can be specified for the mobile phone numbers.
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: SendBatchCardSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendBatchCardSmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.card_template_code):
@@ -2508,6 +4239,17 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SendBatchCardSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendBatchCardSmsResponse:
+        """
+        @summary Sends multiple card messages at a time.
+        
+        @description You can call the operation to send multiple card messages to a maximum of mobile phone numbers at a time. Different signatures and rollback settings can be specified for the mobile phone numbers.
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: SendBatchCardSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendBatchCardSmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.card_template_code):
@@ -2559,6 +4301,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SendBatchCardSmsRequest,
     ) -> dysmsapi_20170525_models.SendBatchCardSmsResponse:
+        """
+        @summary Sends multiple card messages at a time.
+        
+        @description You can call the operation to send multiple card messages to a maximum of mobile phone numbers at a time. Different signatures and rollback settings can be specified for the mobile phone numbers.
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: SendBatchCardSmsRequest
+        @return: SendBatchCardSmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_batch_card_sms_with_options(request, runtime)
 
@@ -2566,6 +4318,16 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SendBatchCardSmsRequest,
     ) -> dysmsapi_20170525_models.SendBatchCardSmsResponse:
+        """
+        @summary Sends multiple card messages at a time.
+        
+        @description You can call the operation to send multiple card messages to a maximum of mobile phone numbers at a time. Different signatures and rollback settings can be specified for the mobile phone numbers.
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: SendBatchCardSmsRequest
+        @return: SendBatchCardSmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_batch_card_sms_with_options_async(request, runtime)
 
@@ -2574,6 +4336,15 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SendBatchSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
+        """
+        @summary Uses a single message template and multiple signatures to send messages to multiple recipients.
+        
+        @description You can call the operation to send messages to a maximum of 100 recipients at a time.
+        
+        @param request: SendBatchSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendBatchSmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.out_id):
@@ -2620,6 +4391,15 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SendBatchSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
+        """
+        @summary Uses a single message template and multiple signatures to send messages to multiple recipients.
+        
+        @description You can call the operation to send messages to a maximum of 100 recipients at a time.
+        
+        @param request: SendBatchSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendBatchSmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.out_id):
@@ -2665,6 +4445,14 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SendBatchSmsRequest,
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
+        """
+        @summary Uses a single message template and multiple signatures to send messages to multiple recipients.
+        
+        @description You can call the operation to send messages to a maximum of 100 recipients at a time.
+        
+        @param request: SendBatchSmsRequest
+        @return: SendBatchSmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_batch_sms_with_options(request, runtime)
 
@@ -2672,6 +4460,14 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SendBatchSmsRequest,
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
+        """
+        @summary Uses a single message template and multiple signatures to send messages to multiple recipients.
+        
+        @description You can call the operation to send messages to a maximum of 100 recipients at a time.
+        
+        @param request: SendBatchSmsRequest
+        @return: SendBatchSmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_batch_sms_with_options_async(request, runtime)
 
@@ -2680,6 +4476,18 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SendCardSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        """
+        @summary Sends a card message.
+        
+        @description    Make sure that the message template that you want to use has been approved. If the mobile phone number of a recipient does not support card messages, the SendCardSms operation allows the rollback feature to ensure successful delivery.
+        When you call the SendCardSms operation to send card messages, the operation checks whether the mobile phone numbers of the recipients support card messages. If the mobile phone numbers do not support card messages, you can specify whether to enable rollback. Otherwise, the card message cannot be delivered.
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: SendCardSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendCardSmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.card_objects):
@@ -2730,6 +4538,18 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SendCardSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        """
+        @summary Sends a card message.
+        
+        @description    Make sure that the message template that you want to use has been approved. If the mobile phone number of a recipient does not support card messages, the SendCardSms operation allows the rollback feature to ensure successful delivery.
+        When you call the SendCardSms operation to send card messages, the operation checks whether the mobile phone numbers of the recipients support card messages. If the mobile phone numbers do not support card messages, you can specify whether to enable rollback. Otherwise, the card message cannot be delivered.
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: SendCardSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendCardSmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.card_objects):
@@ -2779,6 +4599,17 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SendCardSmsRequest,
     ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        """
+        @summary Sends a card message.
+        
+        @description    Make sure that the message template that you want to use has been approved. If the mobile phone number of a recipient does not support card messages, the SendCardSms operation allows the rollback feature to ensure successful delivery.
+        When you call the SendCardSms operation to send card messages, the operation checks whether the mobile phone numbers of the recipients support card messages. If the mobile phone numbers do not support card messages, you can specify whether to enable rollback. Otherwise, the card message cannot be delivered.
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: SendCardSmsRequest
+        @return: SendCardSmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_card_sms_with_options(request, runtime)
 
@@ -2786,6 +4617,17 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SendCardSmsRequest,
     ) -> dysmsapi_20170525_models.SendCardSmsResponse:
+        """
+        @summary Sends a card message.
+        
+        @description    Make sure that the message template that you want to use has been approved. If the mobile phone number of a recipient does not support card messages, the SendCardSms operation allows the rollback feature to ensure successful delivery.
+        When you call the SendCardSms operation to send card messages, the operation checks whether the mobile phone numbers of the recipients support card messages. If the mobile phone numbers do not support card messages, you can specify whether to enable rollback. Otherwise, the card message cannot be delivered.
+        ### QPS limit
+        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: SendCardSmsRequest
+        @return: SendCardSmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_card_sms_with_options_async(request, runtime)
 
@@ -2794,6 +4636,18 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SendSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendSmsResponse:
+        """
+        @summary Sends a message. Before you call this operation, submit a message signature and message template, and make sure that the signature and template are approved.
+        
+        @description    This operation is mainly used to send a single message. In special scenarios, you can send multiple messages with the same content to a maximum of 1,000 mobile numbers. Note that group sending may be delayed.
+        To send messages with different signatures and template content to multiple mobile numbers in a single request, call the [SendBatchSms](https://help.aliyun.com/document_detail/102364.html) operation.
+        You are charged for using Alibaba Cloud Short Message Service (SMS) based on the amount of messages sent. For more information, see [Pricing](https://www.aliyun.com/price/product#/sms/detail).
+        If your verification code signature and general-purpose signature have the same name, the system uses the general-purpose signature to send messages by default.
+        
+        @param request: SendSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.out_id):
@@ -2838,6 +4692,18 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SendSmsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SendSmsResponse:
+        """
+        @summary Sends a message. Before you call this operation, submit a message signature and message template, and make sure that the signature and template are approved.
+        
+        @description    This operation is mainly used to send a single message. In special scenarios, you can send multiple messages with the same content to a maximum of 1,000 mobile numbers. Note that group sending may be delayed.
+        To send messages with different signatures and template content to multiple mobile numbers in a single request, call the [SendBatchSms](https://help.aliyun.com/document_detail/102364.html) operation.
+        You are charged for using Alibaba Cloud Short Message Service (SMS) based on the amount of messages sent. For more information, see [Pricing](https://www.aliyun.com/price/product#/sms/detail).
+        If your verification code signature and general-purpose signature have the same name, the system uses the general-purpose signature to send messages by default.
+        
+        @param request: SendSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.out_id):
@@ -2881,6 +4747,17 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SendSmsRequest,
     ) -> dysmsapi_20170525_models.SendSmsResponse:
+        """
+        @summary Sends a message. Before you call this operation, submit a message signature and message template, and make sure that the signature and template are approved.
+        
+        @description    This operation is mainly used to send a single message. In special scenarios, you can send multiple messages with the same content to a maximum of 1,000 mobile numbers. Note that group sending may be delayed.
+        To send messages with different signatures and template content to multiple mobile numbers in a single request, call the [SendBatchSms](https://help.aliyun.com/document_detail/102364.html) operation.
+        You are charged for using Alibaba Cloud Short Message Service (SMS) based on the amount of messages sent. For more information, see [Pricing](https://www.aliyun.com/price/product#/sms/detail).
+        If your verification code signature and general-purpose signature have the same name, the system uses the general-purpose signature to send messages by default.
+        
+        @param request: SendSmsRequest
+        @return: SendSmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_sms_with_options(request, runtime)
 
@@ -2888,6 +4765,17 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SendSmsRequest,
     ) -> dysmsapi_20170525_models.SendSmsResponse:
+        """
+        @summary Sends a message. Before you call this operation, submit a message signature and message template, and make sure that the signature and template are approved.
+        
+        @description    This operation is mainly used to send a single message. In special scenarios, you can send multiple messages with the same content to a maximum of 1,000 mobile numbers. Note that group sending may be delayed.
+        To send messages with different signatures and template content to multiple mobile numbers in a single request, call the [SendBatchSms](https://help.aliyun.com/document_detail/102364.html) operation.
+        You are charged for using Alibaba Cloud Short Message Service (SMS) based on the amount of messages sent. For more information, see [Pricing](https://www.aliyun.com/price/product#/sms/detail).
+        If your verification code signature and general-purpose signature have the same name, the system uses the general-purpose signature to send messages by default.
+        
+        @param request: SendSmsRequest
+        @return: SendSmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_sms_with_options_async(request, runtime)
 
@@ -2896,6 +4784,19 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SmsConversionIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SmsConversionIntlResponse:
+        """
+        @summary Reports the status of an OTP message to Alibaba Cloud SMS.
+        
+        @description Metrics:
+        Requested OTP messages
+        Verified OTP messages
+        An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+        > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations: 1. Call the SmsConversion operation in an asynchronous manner by configuring queues or events. 2. Manually degrade your services or use a circuit breaker to automatically degrade services.
+        
+        @param request: SmsConversionIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmsConversionIntlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversion_time):
@@ -2934,6 +4835,19 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.SmsConversionIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.SmsConversionIntlResponse:
+        """
+        @summary Reports the status of an OTP message to Alibaba Cloud SMS.
+        
+        @description Metrics:
+        Requested OTP messages
+        Verified OTP messages
+        An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+        > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations: 1. Call the SmsConversion operation in an asynchronous manner by configuring queues or events. 2. Manually degrade your services or use a circuit breaker to automatically degrade services.
+        
+        @param request: SmsConversionIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SmsConversionIntlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversion_time):
@@ -2971,6 +4885,18 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SmsConversionIntlRequest,
     ) -> dysmsapi_20170525_models.SmsConversionIntlResponse:
+        """
+        @summary Reports the status of an OTP message to Alibaba Cloud SMS.
+        
+        @description Metrics:
+        Requested OTP messages
+        Verified OTP messages
+        An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+        > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations: 1. Call the SmsConversion operation in an asynchronous manner by configuring queues or events. 2. Manually degrade your services or use a circuit breaker to automatically degrade services.
+        
+        @param request: SmsConversionIntlRequest
+        @return: SmsConversionIntlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sms_conversion_intl_with_options(request, runtime)
 
@@ -2978,6 +4904,18 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.SmsConversionIntlRequest,
     ) -> dysmsapi_20170525_models.SmsConversionIntlResponse:
+        """
+        @summary Reports the status of an OTP message to Alibaba Cloud SMS.
+        
+        @description Metrics:
+        Requested OTP messages
+        Verified OTP messages
+        An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+        > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations: 1. Call the SmsConversion operation in an asynchronous manner by configuring queues or events. 2. Manually degrade your services or use a circuit breaker to automatically degrade services.
+        
+        @param request: SmsConversionIntlRequest
+        @return: SmsConversionIntlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sms_conversion_intl_with_options_async(request, runtime)
 
@@ -2986,6 +4924,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.TagResourcesResponse:
+        """
+        @summary Attaches tags to a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -3028,6 +4976,16 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.TagResourcesResponse:
+        """
+        @summary Attaches tags to a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -3069,6 +5027,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.TagResourcesRequest,
     ) -> dysmsapi_20170525_models.TagResourcesResponse:
+        """
+        @summary Attaches tags to a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -3076,6 +5043,15 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.TagResourcesRequest,
     ) -> dysmsapi_20170525_models.TagResourcesResponse:
+        """
+        @summary Attaches tags to a message template.
+        
+        @description ### QPS limit
+        You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -3084,6 +5060,11 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -3128,6 +5109,11 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -3171,6 +5157,10 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.UntagResourcesRequest,
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -3178,5 +5168,305 @@ class Client(OpenApiClient):
         self,
         request: dysmsapi_20170525_models.UntagResourcesRequest,
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_sms_sign_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.UpdateSmsSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UpdateSmsSignResponse:
+        """
+        @summary 修改文本短信签名
+        
+        @param tmp_req: UpdateSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSmsSignResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.UpdateSmsSignShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.more_data):
+            request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_scene_content):
+            query['ApplySceneContent'] = request.apply_scene_content
+        if not UtilClient.is_unset(request.more_data_shrink):
+            query['MoreData'] = request.more_data_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sign_source):
+            query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.sign_type):
+            query['SignType'] = request.sign_type
+        if not UtilClient.is_unset(request.third_party):
+            query['ThirdParty'] = request.third_party
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UpdateSmsSignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sms_sign_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.UpdateSmsSignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UpdateSmsSignResponse:
+        """
+        @summary 修改文本短信签名
+        
+        @param tmp_req: UpdateSmsSignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSmsSignResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.UpdateSmsSignShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.more_data):
+            request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_scene_content):
+            query['ApplySceneContent'] = request.apply_scene_content
+        if not UtilClient.is_unset(request.more_data_shrink):
+            query['MoreData'] = request.more_data_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sign_source):
+            query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.sign_type):
+            query['SignType'] = request.sign_type
+        if not UtilClient.is_unset(request.third_party):
+            query['ThirdParty'] = request.third_party
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmsSign',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UpdateSmsSignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sms_sign(
+        self,
+        request: dysmsapi_20170525_models.UpdateSmsSignRequest,
+    ) -> dysmsapi_20170525_models.UpdateSmsSignResponse:
+        """
+        @summary 修改文本短信签名
+        
+        @param request: UpdateSmsSignRequest
+        @return: UpdateSmsSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_sms_sign_with_options(request, runtime)
+
+    async def update_sms_sign_async(
+        self,
+        request: dysmsapi_20170525_models.UpdateSmsSignRequest,
+    ) -> dysmsapi_20170525_models.UpdateSmsSignResponse:
+        """
+        @summary 修改文本短信签名
+        
+        @param request: UpdateSmsSignRequest
+        @return: UpdateSmsSignResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_sms_sign_with_options_async(request, runtime)
+
+    def update_sms_template_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.UpdateSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UpdateSmsTemplateResponse:
+        """
+        @summary 修改文本短信模板
+        
+        @param tmp_req: UpdateSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSmsTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.UpdateSmsTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.more_data):
+            request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_scene_content):
+            query['ApplySceneContent'] = request.apply_scene_content
+        if not UtilClient.is_unset(request.intl_type):
+            query['IntlType'] = request.intl_type
+        if not UtilClient.is_unset(request.more_data_shrink):
+            query['MoreData'] = request.more_data_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.related_sign_name):
+            query['RelatedSignName'] = request.related_sign_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_rule):
+            query['TemplateRule'] = request.template_rule
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UpdateSmsTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sms_template_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.UpdateSmsTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.UpdateSmsTemplateResponse:
+        """
+        @summary 修改文本短信模板
+        
+        @param tmp_req: UpdateSmsTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSmsTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.UpdateSmsTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.more_data):
+            request.more_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.more_data, 'MoreData', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.apply_scene_content):
+            query['ApplySceneContent'] = request.apply_scene_content
+        if not UtilClient.is_unset(request.intl_type):
+            query['IntlType'] = request.intl_type
+        if not UtilClient.is_unset(request.more_data_shrink):
+            query['MoreData'] = request.more_data_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.related_sign_name):
+            query['RelatedSignName'] = request.related_sign_name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_rule):
+            query['TemplateRule'] = request.template_rule
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmsTemplate',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.UpdateSmsTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sms_template(
+        self,
+        request: dysmsapi_20170525_models.UpdateSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.UpdateSmsTemplateResponse:
+        """
+        @summary 修改文本短信模板
+        
+        @param request: UpdateSmsTemplateRequest
+        @return: UpdateSmsTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_sms_template_with_options(request, runtime)
+
+    async def update_sms_template_async(
+        self,
+        request: dysmsapi_20170525_models.UpdateSmsTemplateRequest,
+    ) -> dysmsapi_20170525_models.UpdateSmsTemplateResponse:
+        """
+        @summary 修改文本短信模板
+        
+        @param request: UpdateSmsTemplateRequest
+        @return: UpdateSmsTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_sms_template_with_options_async(request, runtime)
