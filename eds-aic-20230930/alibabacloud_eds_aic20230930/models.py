@@ -781,6 +781,7 @@ class CreateAppRequest(TeaModel):
     def __init__(
         self,
         app_name: str = None,
+        biz_region_id: str = None,
         description: str = None,
         file_name: str = None,
         file_path: str = None,
@@ -790,6 +791,7 @@ class CreateAppRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_name = app_name
+        self.biz_region_id = biz_region_id
         self.description = description
         self.file_name = file_name
         self.file_path = file_path
@@ -808,6 +810,8 @@ class CreateAppRequest(TeaModel):
         result = dict()
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
         if self.description is not None:
             result['Description'] = self.description
         if self.file_name is not None:
@@ -826,6 +830,8 @@ class CreateAppRequest(TeaModel):
         m = m or dict()
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('FileName') is not None:
@@ -2528,6 +2534,7 @@ class DescribeAppsRequest(TeaModel):
         self,
         app_id_list: List[str] = None,
         app_name: str = None,
+        biz_region_id: str = None,
         installation_status: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -2535,6 +2542,7 @@ class DescribeAppsRequest(TeaModel):
     ):
         self.app_id_list = app_id_list
         self.app_name = app_name
+        self.biz_region_id = biz_region_id
         self.installation_status = installation_status
         self.max_results = max_results
         self.next_token = next_token
@@ -2553,6 +2561,8 @@ class DescribeAppsRequest(TeaModel):
             result['AppIdList'] = self.app_id_list
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
         if self.installation_status is not None:
             result['InstallationStatus'] = self.installation_status
         if self.max_results is not None:
@@ -2569,6 +2579,8 @@ class DescribeAppsRequest(TeaModel):
             self.app_id_list = m.get('AppIdList')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
         if m.get('InstallationStatus') is not None:
             self.installation_status = m.get('InstallationStatus')
         if m.get('MaxResults') is not None:
@@ -2586,6 +2598,7 @@ class DescribeAppsResponseBodyData(TeaModel):
         android_app_version: str = None,
         app_id: int = None,
         app_name: str = None,
+        biz_region_id: str = None,
         description: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -2597,6 +2610,7 @@ class DescribeAppsResponseBodyData(TeaModel):
         self.android_app_version = android_app_version
         self.app_id = app_id
         self.app_name = app_name
+        self.biz_region_id = biz_region_id
         self.description = description
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
@@ -2620,6 +2634,8 @@ class DescribeAppsResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
         if self.description is not None:
             result['Description'] = self.description
         if self.gmt_create is not None:
@@ -2644,6 +2660,8 @@ class DescribeAppsResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('GmtCreate') is not None:

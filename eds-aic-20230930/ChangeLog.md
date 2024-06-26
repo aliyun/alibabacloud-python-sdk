@@ -1,3 +1,9 @@
+2024-06-26 Version: 1.2.1
+- Update API CreateApp: add param BizRegionId.
+- Update API DescribeApps: add param BizRegionId.
+- Update API DescribeApps: update response param.
+
+
 2024-06-13 Version: 1.2.0
 - Support API DescribeImageList.
 - Support API RebootAndroidInstancesInGroup.

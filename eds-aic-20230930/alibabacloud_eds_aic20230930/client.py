@@ -616,6 +616,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.file_name):
@@ -661,6 +663,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.file_name):
@@ -1788,6 +1792,8 @@ class Client(OpenApiClient):
             query['AppIdList'] = request.app_id_list
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.installation_status):
             query['InstallationStatus'] = request.installation_status
         if not UtilClient.is_unset(request.max_results):
@@ -1833,6 +1839,8 @@ class Client(OpenApiClient):
             query['AppIdList'] = request.app_id_list
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.installation_status):
             query['InstallationStatus'] = request.installation_status
         if not UtilClient.is_unset(request.max_results):
