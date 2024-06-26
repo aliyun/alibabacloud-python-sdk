@@ -611,6 +611,7 @@ class CreateAppGroupRequest(TeaModel):
         app_key: str = None,
         app_name: str = None,
         app_type: int = None,
+        app_version: int = None,
         description: str = None,
         enable_log: bool = None,
         group_id: str = None,
@@ -622,7 +623,6 @@ class CreateAppGroupRequest(TeaModel):
         namespace_source: str = None,
         region_id: str = None,
         schedule_busy_workers: bool = None,
-        version: int = None,
     ):
         # The AppKey for the application.
         self.app_key = app_key
@@ -635,6 +635,7 @@ class CreateAppGroupRequest(TeaModel):
         # - 1、普通应用。
         # - 2、k8s应用。
         self.app_type = app_type
+        self.app_version = app_version
         # The description of the application.
         self.description = description
         # 是否开启日志。
@@ -665,7 +666,6 @@ class CreateAppGroupRequest(TeaModel):
         self.region_id = region_id
         # Specifies whether to schedule a busy worker.
         self.schedule_busy_workers = schedule_busy_workers
-        self.version = version
 
     def validate(self):
         pass
@@ -682,6 +682,8 @@ class CreateAppGroupRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.app_type is not None:
             result['AppType'] = self.app_type
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
         if self.description is not None:
             result['Description'] = self.description
         if self.enable_log is not None:
@@ -704,8 +706,6 @@ class CreateAppGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.schedule_busy_workers is not None:
             result['ScheduleBusyWorkers'] = self.schedule_busy_workers
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -716,6 +716,8 @@ class CreateAppGroupRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('EnableLog') is not None:
@@ -738,8 +740,6 @@ class CreateAppGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ScheduleBusyWorkers') is not None:
             self.schedule_busy_workers = m.get('ScheduleBusyWorkers')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -1836,6 +1836,8 @@ class CreateWorkflowRequest(TeaModel):
         # 
         # *   1: cron
         # *   100: api
+        # 
+        # This parameter is required.
         self.time_type = time_type
         # The time zone.
         self.timezone = timezone
@@ -2617,6 +2619,33 @@ class DeleteWorkflowResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DeleteWorkflowResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4047,6 +4076,7 @@ class GetAppGroupResponseBodyData(TeaModel):
         self,
         app_key: str = None,
         app_name: str = None,
+        app_version: str = None,
         cur_jobs: int = None,
         description: str = None,
         group_id: str = None,
@@ -4055,6 +4085,7 @@ class GetAppGroupResponseBodyData(TeaModel):
     ):
         self.app_key = app_key
         self.app_name = app_name
+        self.app_version = app_version
         self.cur_jobs = cur_jobs
         self.description = description
         self.group_id = group_id
@@ -4074,6 +4105,8 @@ class GetAppGroupResponseBodyData(TeaModel):
             result['AppKey'] = self.app_key
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
         if self.cur_jobs is not None:
             result['CurJobs'] = self.cur_jobs
         if self.description is not None:
@@ -4092,6 +4125,8 @@ class GetAppGroupResponseBodyData(TeaModel):
             self.app_key = m.get('AppKey')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
         if m.get('CurJobs') is not None:
             self.cur_jobs = m.get('CurJobs')
         if m.get('Description') is not None:
@@ -7321,9 +7356,9 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         app_group_id: int = None,
         app_key: str = None,
         app_name: str = None,
+        app_version: int = None,
         description: str = None,
         group_id: str = None,
-        version: int = None,
     ):
         # The application group ID.
         self.app_group_id = app_group_id
@@ -7331,11 +7366,11 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         self.app_key = app_key
         # The name of the application.
         self.app_name = app_name
+        self.app_version = app_version
         # The description of the application.
         self.description = description
         # The application ID.
         self.group_id = group_id
-        self.version = version
 
     def validate(self):
         pass
@@ -7352,12 +7387,12 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
             result['AppKey'] = self.app_key
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
         if self.description is not None:
             result['Description'] = self.description
         if self.group_id is not None:
             result['GroupId'] = self.group_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7368,12 +7403,12 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
             self.app_key = m.get('AppKey')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -9680,13 +9715,14 @@ class StopInstanceResponse(TeaModel):
 class UpdateAppGroupRequest(TeaModel):
     def __init__(
         self,
+        app_version: int = None,
         description: str = None,
         group_id: str = None,
         max_concurrency: int = None,
         namespace: str = None,
         region_id: str = None,
-        version: int = None,
     ):
+        self.app_version = app_version
         self.description = description
         # This parameter is required.
         self.group_id = group_id
@@ -9695,7 +9731,6 @@ class UpdateAppGroupRequest(TeaModel):
         self.namespace = namespace
         # This parameter is required.
         self.region_id = region_id
-        self.version = version
 
     def validate(self):
         pass
@@ -9706,6 +9741,8 @@ class UpdateAppGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
         if self.description is not None:
             result['Description'] = self.description
         if self.group_id is not None:
@@ -9716,12 +9753,12 @@ class UpdateAppGroupRequest(TeaModel):
             result['Namespace'] = self.namespace
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('GroupId') is not None:
@@ -9732,8 +9769,6 @@ class UpdateAppGroupRequest(TeaModel):
             self.namespace = m.get('Namespace')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 

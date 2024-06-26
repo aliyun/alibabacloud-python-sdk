@@ -1,3 +1,14 @@
+2024-06-26 Version: 2.0.0
+- Update API CreateAppGroup: add param AppVersion.
+- Update API CreateAppGroup: delete param Version.
+- Update API CreateWorkflow: update param TimeType.
+- Update API DescribeRegions: update param RegionId.
+- Update API GetAppGroup: update response param.
+- Update API ListGroups: update response param.
+- Update API UpdateAppGroup: add param AppVersion.
+- Update API UpdateAppGroup: delete param Version.
+
+
 2024-05-30 Version: 1.1.15
 - Generated python 2019-04-30 for schedulerx2.
 

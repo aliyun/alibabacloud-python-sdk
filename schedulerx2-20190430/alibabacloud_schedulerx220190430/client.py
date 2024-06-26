@@ -1713,6 +1713,7 @@ class Client(OpenApiClient):
 
     def describe_regions_with_options(
         self,
+        request: schedulerx_220190430_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DescribeRegionsResponse:
         """
@@ -1722,7 +1723,13 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRegionsResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeRegions',
             version='2019-04-30',
@@ -1741,6 +1748,7 @@ class Client(OpenApiClient):
 
     async def describe_regions_with_options_async(
         self,
+        request: schedulerx_220190430_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DescribeRegionsResponse:
         """
@@ -1750,7 +1758,13 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeRegionsResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='DescribeRegions',
             version='2019-04-30',
@@ -1767,23 +1781,31 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(self) -> schedulerx_220190430_models.DescribeRegionsResponse:
+    def describe_regions(
+        self,
+        request: schedulerx_220190430_models.DescribeRegionsRequest,
+    ) -> schedulerx_220190430_models.DescribeRegionsResponse:
         """
         @summary Returns available regions.
         
+        @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.describe_regions_with_options(runtime)
+        return self.describe_regions_with_options(request, runtime)
 
-    async def describe_regions_async(self) -> schedulerx_220190430_models.DescribeRegionsResponse:
+    async def describe_regions_async(
+        self,
+        request: schedulerx_220190430_models.DescribeRegionsRequest,
+    ) -> schedulerx_220190430_models.DescribeRegionsResponse:
         """
         @summary Returns available regions.
         
+        @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_regions_with_options_async(runtime)
+        return await self.describe_regions_with_options_async(request, runtime)
 
     def designate_workers_with_options(
         self,
@@ -4607,6 +4629,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_version):
+            query['AppVersion'] = request.app_version
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
@@ -4617,8 +4641,6 @@ class Client(OpenApiClient):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4652,6 +4674,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_version):
+            query['AppVersion'] = request.app_version
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.group_id):
@@ -4662,8 +4686,6 @@ class Client(OpenApiClient):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
