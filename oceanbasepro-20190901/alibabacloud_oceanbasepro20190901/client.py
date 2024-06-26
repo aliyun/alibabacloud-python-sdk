@@ -757,6 +757,8 @@ class Client(OpenApiClient):
             body['Schema'] = request.schema
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
+        if not UtilClient.is_unset(request.use_ssl):
+            body['UseSsl'] = request.use_ssl
         if not UtilClient.is_unset(request.user_name):
             body['UserName'] = request.user_name
         if not UtilClient.is_unset(request.vpc_id):
@@ -812,6 +814,8 @@ class Client(OpenApiClient):
             body['Schema'] = request.schema
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
+        if not UtilClient.is_unset(request.use_ssl):
+            body['UseSsl'] = request.use_ssl
         if not UtilClient.is_unset(request.user_name):
             body['UserName'] = request.user_name
         if not UtilClient.is_unset(request.vpc_id):
@@ -14176,6 +14180,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.UpdateProjectConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.common_transfer_config):
+            request.common_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.common_transfer_config, 'CommonTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.full_transfer_config):
             request.full_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.full_transfer_config, 'FullTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.incr_transfer_config):
@@ -14183,6 +14189,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.reverse_incr_transfer_config):
             request.reverse_incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reverse_incr_transfer_config, 'ReverseIncrTransferConfig', 'json')
         body = {}
+        if not UtilClient.is_unset(request.common_transfer_config_shrink):
+            body['CommonTransferConfig'] = request.common_transfer_config_shrink
         if not UtilClient.is_unset(request.full_transfer_config_shrink):
             body['FullTransferConfig'] = request.full_transfer_config_shrink
         if not UtilClient.is_unset(request.id):
@@ -14225,6 +14233,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.UpdateProjectConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.common_transfer_config):
+            request.common_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.common_transfer_config, 'CommonTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.full_transfer_config):
             request.full_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.full_transfer_config, 'FullTransferConfig', 'json')
         if not UtilClient.is_unset(tmp_req.incr_transfer_config):
@@ -14232,6 +14242,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.reverse_incr_transfer_config):
             request.reverse_incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reverse_incr_transfer_config, 'ReverseIncrTransferConfig', 'json')
         body = {}
+        if not UtilClient.is_unset(request.common_transfer_config_shrink):
+            body['CommonTransferConfig'] = request.common_transfer_config_shrink
         if not UtilClient.is_unset(request.full_transfer_config_shrink):
             body['FullTransferConfig'] = request.full_transfer_config_shrink
         if not UtilClient.is_unset(request.id):

@@ -1621,6 +1621,7 @@ class CreateMySqlDataSourceRequest(TeaModel):
         port: int = None,
         schema: str = None,
         type: str = None,
+        use_ssl: bool = None,
         user_name: str = None,
         vpc_id: str = None,
     ):
@@ -1636,6 +1637,7 @@ class CreateMySqlDataSourceRequest(TeaModel):
         self.schema = schema
         # This parameter is required.
         self.type = type
+        self.use_ssl = use_ssl
         # This parameter is required.
         self.user_name = user_name
         self.vpc_id = vpc_id
@@ -1667,6 +1669,8 @@ class CreateMySqlDataSourceRequest(TeaModel):
             result['Schema'] = self.schema
         if self.type is not None:
             result['Type'] = self.type
+        if self.use_ssl is not None:
+            result['UseSsl'] = self.use_ssl
         if self.user_name is not None:
             result['UserName'] = self.user_name
         if self.vpc_id is not None:
@@ -1693,6 +1697,8 @@ class CreateMySqlDataSourceRequest(TeaModel):
             self.schema = m.get('Schema')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UseSsl') is not None:
+            self.use_ssl = m.get('UseSsl')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
         if m.get('VpcId') is not None:
@@ -2559,6 +2565,8 @@ class CreateProjectRequestCommonTransferConfig(TeaModel):
         rocket_mq_msg_tags: str = None,
         rocket_mq_producer_group: str = None,
         rocket_mq_send_msg_timeout: int = None,
+        sink_store_format: str = None,
+        source_store_format: str = None,
         sync_schema: bool = None,
         sync_schema_column_name: str = None,
         table_category: str = None,
@@ -2574,6 +2582,8 @@ class CreateProjectRequestCommonTransferConfig(TeaModel):
         self.rocket_mq_msg_tags = rocket_mq_msg_tags
         self.rocket_mq_producer_group = rocket_mq_producer_group
         self.rocket_mq_send_msg_timeout = rocket_mq_send_msg_timeout
+        self.sink_store_format = sink_store_format
+        self.source_store_format = source_store_format
         self.sync_schema = sync_schema
         self.sync_schema_column_name = sync_schema_column_name
         self.table_category = table_category
@@ -2614,6 +2624,10 @@ class CreateProjectRequestCommonTransferConfig(TeaModel):
             result['RocketMqProducerGroup'] = self.rocket_mq_producer_group
         if self.rocket_mq_send_msg_timeout is not None:
             result['RocketMqSendMsgTimeout'] = self.rocket_mq_send_msg_timeout
+        if self.sink_store_format is not None:
+            result['SinkStoreFormat'] = self.sink_store_format
+        if self.source_store_format is not None:
+            result['SourceStoreFormat'] = self.source_store_format
         if self.sync_schema is not None:
             result['SyncSchema'] = self.sync_schema
         if self.sync_schema_column_name is not None:
@@ -2649,6 +2663,10 @@ class CreateProjectRequestCommonTransferConfig(TeaModel):
             self.rocket_mq_producer_group = m.get('RocketMqProducerGroup')
         if m.get('RocketMqSendMsgTimeout') is not None:
             self.rocket_mq_send_msg_timeout = m.get('RocketMqSendMsgTimeout')
+        if m.get('SinkStoreFormat') is not None:
+            self.sink_store_format = m.get('SinkStoreFormat')
+        if m.get('SourceStoreFormat') is not None:
+            self.source_store_format = m.get('SourceStoreFormat')
         if m.get('SyncSchema') is not None:
             self.sync_schema = m.get('SyncSchema')
         if m.get('SyncSchemaColumnName') is not None:
@@ -21769,6 +21787,8 @@ class DescribeProjectResponseBodyDataCommonTransferConfig(TeaModel):
         rocket_mq_msg_tags: str = None,
         rocket_mq_producer_group: str = None,
         rocket_mq_send_msg_timeout: int = None,
+        sink_store_format: str = None,
+        source_store_format: str = None,
         table_category: str = None,
     ):
         self.active_active = active_active
@@ -21781,6 +21801,8 @@ class DescribeProjectResponseBodyDataCommonTransferConfig(TeaModel):
         self.rocket_mq_msg_tags = rocket_mq_msg_tags
         self.rocket_mq_producer_group = rocket_mq_producer_group
         self.rocket_mq_send_msg_timeout = rocket_mq_send_msg_timeout
+        self.sink_store_format = sink_store_format
+        self.source_store_format = source_store_format
         self.table_category = table_category
 
     def validate(self):
@@ -21812,6 +21834,10 @@ class DescribeProjectResponseBodyDataCommonTransferConfig(TeaModel):
             result['RocketMqProducerGroup'] = self.rocket_mq_producer_group
         if self.rocket_mq_send_msg_timeout is not None:
             result['RocketMqSendMsgTimeout'] = self.rocket_mq_send_msg_timeout
+        if self.sink_store_format is not None:
+            result['SinkStoreFormat'] = self.sink_store_format
+        if self.source_store_format is not None:
+            result['SourceStoreFormat'] = self.source_store_format
         if self.table_category is not None:
             result['TableCategory'] = self.table_category
         return result
@@ -21838,6 +21864,10 @@ class DescribeProjectResponseBodyDataCommonTransferConfig(TeaModel):
             self.rocket_mq_producer_group = m.get('RocketMqProducerGroup')
         if m.get('RocketMqSendMsgTimeout') is not None:
             self.rocket_mq_send_msg_timeout = m.get('RocketMqSendMsgTimeout')
+        if m.get('SinkStoreFormat') is not None:
+            self.sink_store_format = m.get('SinkStoreFormat')
+        if m.get('SourceStoreFormat') is not None:
+            self.source_store_format = m.get('SourceStoreFormat')
         if m.get('TableCategory') is not None:
             self.table_category = m.get('TableCategory')
         return self
@@ -47280,6 +47310,39 @@ class SwitchoverInstanceResponse(TeaModel):
         return self
 
 
+class UpdateProjectConfigRequestCommonTransferConfig(TeaModel):
+    def __init__(
+        self,
+        sink_store_format: str = None,
+        source_store_format: str = None,
+    ):
+        self.sink_store_format = sink_store_format
+        self.source_store_format = source_store_format
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sink_store_format is not None:
+            result['SinkStoreFormat'] = self.sink_store_format
+        if self.source_store_format is not None:
+            result['SourceStoreFormat'] = self.source_store_format
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SinkStoreFormat') is not None:
+            self.sink_store_format = m.get('SinkStoreFormat')
+        if m.get('SourceStoreFormat') is not None:
+            self.source_store_format = m.get('SourceStoreFormat')
+        return self
+
+
 class UpdateProjectConfigRequestFullTransferConfig(TeaModel):
     def __init__(
         self,
@@ -47430,11 +47493,13 @@ class UpdateProjectConfigRequestReverseIncrTransferConfig(TeaModel):
 class UpdateProjectConfigRequest(TeaModel):
     def __init__(
         self,
+        common_transfer_config: UpdateProjectConfigRequestCommonTransferConfig = None,
         full_transfer_config: UpdateProjectConfigRequestFullTransferConfig = None,
         id: str = None,
         incr_transfer_config: UpdateProjectConfigRequestIncrTransferConfig = None,
         reverse_incr_transfer_config: UpdateProjectConfigRequestReverseIncrTransferConfig = None,
     ):
+        self.common_transfer_config = common_transfer_config
         self.full_transfer_config = full_transfer_config
         # This parameter is required.
         self.id = id
@@ -47442,6 +47507,8 @@ class UpdateProjectConfigRequest(TeaModel):
         self.reverse_incr_transfer_config = reverse_incr_transfer_config
 
     def validate(self):
+        if self.common_transfer_config:
+            self.common_transfer_config.validate()
         if self.full_transfer_config:
             self.full_transfer_config.validate()
         if self.incr_transfer_config:
@@ -47455,6 +47522,8 @@ class UpdateProjectConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.common_transfer_config is not None:
+            result['CommonTransferConfig'] = self.common_transfer_config.to_map()
         if self.full_transfer_config is not None:
             result['FullTransferConfig'] = self.full_transfer_config.to_map()
         if self.id is not None:
@@ -47467,6 +47536,9 @@ class UpdateProjectConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommonTransferConfig') is not None:
+            temp_model = UpdateProjectConfigRequestCommonTransferConfig()
+            self.common_transfer_config = temp_model.from_map(m['CommonTransferConfig'])
         if m.get('FullTransferConfig') is not None:
             temp_model = UpdateProjectConfigRequestFullTransferConfig()
             self.full_transfer_config = temp_model.from_map(m['FullTransferConfig'])
@@ -47484,11 +47556,13 @@ class UpdateProjectConfigRequest(TeaModel):
 class UpdateProjectConfigShrinkRequest(TeaModel):
     def __init__(
         self,
+        common_transfer_config_shrink: str = None,
         full_transfer_config_shrink: str = None,
         id: str = None,
         incr_transfer_config_shrink: str = None,
         reverse_incr_transfer_config_shrink: str = None,
     ):
+        self.common_transfer_config_shrink = common_transfer_config_shrink
         self.full_transfer_config_shrink = full_transfer_config_shrink
         # This parameter is required.
         self.id = id
@@ -47504,6 +47578,8 @@ class UpdateProjectConfigShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.common_transfer_config_shrink is not None:
+            result['CommonTransferConfig'] = self.common_transfer_config_shrink
         if self.full_transfer_config_shrink is not None:
             result['FullTransferConfig'] = self.full_transfer_config_shrink
         if self.id is not None:
@@ -47516,6 +47592,8 @@ class UpdateProjectConfigShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommonTransferConfig') is not None:
+            self.common_transfer_config_shrink = m.get('CommonTransferConfig')
         if m.get('FullTransferConfig') is not None:
             self.full_transfer_config_shrink = m.get('FullTransferConfig')
         if m.get('Id') is not None:

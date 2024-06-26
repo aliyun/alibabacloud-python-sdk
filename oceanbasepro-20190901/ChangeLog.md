@@ -1,3 +1,10 @@
+2024-06-26 Version: 5.0.1
+- Update API CreateMySqlDataSource: add param UseSsl.
+- Update API CreateProject: update param CommonTransferConfig.
+- Update API DescribeProject: update response param.
+- Update API UpdateProjectConfig: add param CommonTransferConfig.
+
+
 2024-06-14 Version: 5.0.0
 - Support API DescribeTenantReadableScn.
 - Support API ModifyInstanceSSL.
