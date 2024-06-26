@@ -1,3 +1,7 @@
+2024-06-26 Version: 2.7.0
+- Support API GetStorageList.
+
+
 2024-06-24 Version: 2.6.0
 - Support API SubmitVideoTranslationJob.
 

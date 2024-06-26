@@ -8972,6 +8972,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_snapshot_urls_with_options_async(request, runtime)
 
+    def get_storage_list_with_options(
+        self,
+        request: ice20201109_models.GetStorageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetStorageListResponse:
+        """
+        @summary 获取存储地址列表
+        
+        @param request: GetStorageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetStorageListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_storage_list_with_options_async(
+        self,
+        request: ice20201109_models.GetStorageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetStorageListResponse:
+        """
+        @summary 获取存储地址列表
+        
+        @param request: GetStorageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetStorageListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_storage_list(
+        self,
+        request: ice20201109_models.GetStorageListRequest,
+    ) -> ice20201109_models.GetStorageListResponse:
+        """
+        @summary 获取存储地址列表
+        
+        @param request: GetStorageListRequest
+        @return: GetStorageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_storage_list_with_options(request, runtime)
+
+    async def get_storage_list_async(
+        self,
+        request: ice20201109_models.GetStorageListRequest,
+    ) -> ice20201109_models.GetStorageListResponse:
+        """
+        @summary 获取存储地址列表
+        
+        @param request: GetStorageListRequest
+        @return: GetStorageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_storage_list_with_options_async(request, runtime)
+
     def get_system_template_with_options(
         self,
         request: ice20201109_models.GetSystemTemplateRequest,

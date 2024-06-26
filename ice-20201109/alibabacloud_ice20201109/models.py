@@ -18384,6 +18384,203 @@ class GetSnapshotUrlsResponse(TeaModel):
         return self
 
 
+class GetStorageListRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        status: str = None,
+        storage_type: str = None,
+    ):
+        self.app_id = app_id
+        self.status = status
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        return self
+
+
+class GetStorageListResponseBodyStorageInfoList(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        creation_time: str = None,
+        default_storage: bool = None,
+        editing_temp_file_storage: bool = None,
+        modified_time: str = None,
+        path: str = None,
+        status: str = None,
+        storage_location: str = None,
+        storage_type: str = None,
+    ):
+        self.app_id = app_id
+        self.creation_time = creation_time
+        self.default_storage = default_storage
+        self.editing_temp_file_storage = editing_temp_file_storage
+        self.modified_time = modified_time
+        self.path = path
+        self.status = status
+        self.storage_location = storage_location
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.default_storage is not None:
+            result['DefaultStorage'] = self.default_storage
+        if self.editing_temp_file_storage is not None:
+            result['EditingTempFileStorage'] = self.editing_temp_file_storage
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.storage_location is not None:
+            result['StorageLocation'] = self.storage_location
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DefaultStorage') is not None:
+            self.default_storage = m.get('DefaultStorage')
+        if m.get('EditingTempFileStorage') is not None:
+            self.editing_temp_file_storage = m.get('EditingTempFileStorage')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorageLocation') is not None:
+            self.storage_location = m.get('StorageLocation')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        return self
+
+
+class GetStorageListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        storage_info_list: List[GetStorageListResponseBodyStorageInfoList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.storage_info_list = storage_info_list
+
+    def validate(self):
+        if self.storage_info_list:
+            for k in self.storage_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['StorageInfoList'] = []
+        if self.storage_info_list is not None:
+            for k in self.storage_info_list:
+                result['StorageInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.storage_info_list = []
+        if m.get('StorageInfoList') is not None:
+            for k in m.get('StorageInfoList'):
+                temp_model = GetStorageListResponseBodyStorageInfoList()
+                self.storage_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetStorageListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStorageListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStorageListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSystemTemplateRequest(TeaModel):
     def __init__(
         self,
