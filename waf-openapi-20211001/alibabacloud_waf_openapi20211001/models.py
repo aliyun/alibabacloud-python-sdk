@@ -991,7 +991,7 @@ class CreateDomainRequestRedirect(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.cname_enabled = cname_enabled
-        # The timeout period of connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period for connections. Unit: seconds. Valid values: 1 to 3600.
         self.connect_timeout = connect_timeout
         # Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
@@ -1007,9 +1007,9 @@ class CreateDomainRequestRedirect(TeaModel):
         # 
         # >  This parameter specifies the number of reused persistent connections after you enable the persistent connection feature.
         self.keepalive_requests = keepalive_requests
-        # The timeout period of idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+        # The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
         # 
-        # >  This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
+        # >  This parameter specifies the time for which a reused persistent connection can remain in the Idle state before the persistent connection is closed.
         self.keepalive_timeout = keepalive_timeout
         # The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
         # 
@@ -1019,7 +1019,7 @@ class CreateDomainRequestRedirect(TeaModel):
         # 
         # This parameter is required.
         self.loadbalance = loadbalance
-        # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
         # The custom header field that you want to use to label requests that are processed by WAF.
         # 
@@ -1043,11 +1043,11 @@ class CreateDomainRequestRedirect(TeaModel):
         self.sni_enabled = sni_enabled
         # The value of the SNI field. If you do not specify this parameter, the value of the **Host** field is automatically used. This parameter is optional. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
         # 
-        # >  This parameter is required only if you set **SniEnalbed** to **true**.
+        # >  This parameter is required only if you set **SniEnabled** to **true**.
         self.sni_host = sni_host
-        # The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
-        # Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+        # Specifies whether to use X-Forward-For-Proto to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
@@ -12137,6 +12137,120 @@ class DescribeMemberAccountsResponse(TeaModel):
         return self
 
 
+class DescribePauseProtectionStatusRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribePauseProtectionStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        pause_status: int = None,
+        request_id: str = None,
+    ):
+        self.pause_status = pause_status
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pause_status is not None:
+            result['PauseStatus'] = self.pause_status
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PauseStatus') is not None:
+            self.pause_status = m.get('PauseStatus')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribePauseProtectionStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribePauseProtectionStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribePauseProtectionStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePeakTrendRequest(TeaModel):
     def __init__(
         self,
@@ -20066,6 +20180,121 @@ class ModifyMemberAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyMemberAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyPauseProtectionStatusRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        pause_status: int = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.pause_status = pause_status
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.pause_status is not None:
+            result['PauseStatus'] = self.pause_status
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PauseStatus') is not None:
+            self.pause_status = m.get('PauseStatus')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class ModifyPauseProtectionStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyPauseProtectionStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyPauseProtectionStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyPauseProtectionStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

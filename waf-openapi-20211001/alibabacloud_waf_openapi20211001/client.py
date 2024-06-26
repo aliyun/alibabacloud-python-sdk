@@ -6131,6 +6131,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_member_accounts_with_options_async(request, runtime)
 
+    def describe_pause_protection_status_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribePauseProtectionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribePauseProtectionStatusResponse:
+        """
+        @summary 获取用户暂停防护状态
+        
+        @param request: DescribePauseProtectionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePauseProtectionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePauseProtectionStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribePauseProtectionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pause_protection_status_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribePauseProtectionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribePauseProtectionStatusResponse:
+        """
+        @summary 获取用户暂停防护状态
+        
+        @param request: DescribePauseProtectionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePauseProtectionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePauseProtectionStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribePauseProtectionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pause_protection_status(
+        self,
+        request: waf_openapi_20211001_models.DescribePauseProtectionStatusRequest,
+    ) -> waf_openapi_20211001_models.DescribePauseProtectionStatusResponse:
+        """
+        @summary 获取用户暂停防护状态
+        
+        @param request: DescribePauseProtectionStatusRequest
+        @return: DescribePauseProtectionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pause_protection_status_with_options(request, runtime)
+
+    async def describe_pause_protection_status_async(
+        self,
+        request: waf_openapi_20211001_models.DescribePauseProtectionStatusRequest,
+    ) -> waf_openapi_20211001_models.DescribePauseProtectionStatusResponse:
+        """
+        @summary 获取用户暂停防护状态
+        
+        @param request: DescribePauseProtectionStatusRequest
+        @return: DescribePauseProtectionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pause_protection_status_with_options_async(request, runtime)
+
     def describe_peak_trend_with_options(
         self,
         request: waf_openapi_20211001_models.DescribePeakTrendRequest,
@@ -11018,6 +11122,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_member_account_with_options_async(request, runtime)
+
+    def modify_pause_protection_status_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyPauseProtectionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse:
+        """
+        @summary 修改用户暂停防护状态
+        
+        @param request: ModifyPauseProtectionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPauseProtectionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.pause_status):
+            query['PauseStatus'] = request.pause_status
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPauseProtectionStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_pause_protection_status_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyPauseProtectionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse:
+        """
+        @summary 修改用户暂停防护状态
+        
+        @param request: ModifyPauseProtectionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPauseProtectionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.pause_status):
+            query['PauseStatus'] = request.pause_status
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPauseProtectionStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_pause_protection_status(
+        self,
+        request: waf_openapi_20211001_models.ModifyPauseProtectionStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse:
+        """
+        @summary 修改用户暂停防护状态
+        
+        @param request: ModifyPauseProtectionStatusRequest
+        @return: ModifyPauseProtectionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_pause_protection_status_with_options(request, runtime)
+
+    async def modify_pause_protection_status_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyPauseProtectionStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyPauseProtectionStatusResponse:
+        """
+        @summary 修改用户暂停防护状态
+        
+        @param request: ModifyPauseProtectionStatusRequest
+        @return: ModifyPauseProtectionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_pause_protection_status_with_options_async(request, runtime)
 
     def modify_resource_log_status_with_options(
         self,
