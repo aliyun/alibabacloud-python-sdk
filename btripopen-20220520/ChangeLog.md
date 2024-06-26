@@ -1,3 +1,6 @@
+2024-06-26 Version: 3.2.2
+- Generated python 2022-05-20 for btripOpen.
+
 2024-06-24 Version: 3.2.1
 - Update API CarApplyQuery: update response param.
 - Update API FlightExceedApplyQuery: update response param.
