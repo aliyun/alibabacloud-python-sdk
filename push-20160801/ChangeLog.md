@@ -1,3 +1,24 @@
+2024-06-26 Version: 1.0.10
+- Update API MassPush: update param PushTask.
+- Update API Push: add param HarmonyAction.
+- Update API Push: add param HarmonyActionType.
+- Update API Push: add param HarmonyCategory.
+- Update API Push: add param HarmonyExtParameters.
+- Update API Push: add param HarmonyImageUrl.
+- Update API Push: add param HarmonyInboxContent.
+- Update API Push: add param HarmonyNotificationSlotType.
+- Update API Push: add param HarmonyNotifyId.
+- Update API Push: add param HarmonyReceiptId.
+- Update API Push: add param HarmonyRemind.
+- Update API Push: add param HarmonyRemindBody.
+- Update API Push: add param HarmonyRemindTitle.
+- Update API Push: add param HarmonyRenderStyle.
+- Update API Push: add param HarmonyTestMessage.
+- Update API Push: add param HarmonyUri.
+- Update API Push: update param DeviceType.
+- Update API QueryPushRecords: update param Source.
+
+
 2023-12-18 Version: 1.0.9
 - Generated python 2016-08-01 for Push.
 

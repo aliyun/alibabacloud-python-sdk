@@ -11,8 +11,11 @@ class BindAliasRequest(TeaModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # This parameter is required.
         self.alias_name = alias_name
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
 
     def validate(self):
@@ -82,9 +85,6 @@ class BindAliasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -121,8 +121,11 @@ class BindPhoneRequest(TeaModel):
         device_id: str = None,
         phone_number: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -192,9 +195,6 @@ class BindPhoneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -232,9 +232,13 @@ class BindTagRequest(TeaModel):
         key_type: str = None,
         tag_name: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.client_key = client_key
+        # This parameter is required.
         self.key_type = key_type
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -308,9 +312,6 @@ class BindTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -346,7 +347,9 @@ class CancelPushRequest(TeaModel):
         app_key: int = None,
         message_id: int = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.message_id = message_id
 
     def validate(self):
@@ -412,9 +415,6 @@ class CancelPushResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -449,6 +449,7 @@ class CheckCertificateRequest(TeaModel):
         self,
         app_key: int = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
 
     def validate(self):
@@ -605,9 +606,6 @@ class CheckCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -643,7 +641,9 @@ class CheckDeviceRequest(TeaModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
 
     def validate(self):
@@ -715,9 +715,6 @@ class CheckDeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -753,7 +750,9 @@ class CheckDevicesRequest(TeaModel):
         app_key: int = None,
         device_ids: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_ids = device_ids
 
     def validate(self):
@@ -895,9 +894,6 @@ class CheckDevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -933,7 +929,9 @@ class CompleteContinuouslyPushRequest(TeaModel):
         app_key: int = None,
         message_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.message_id = message_id
 
     def validate(self):
@@ -1005,9 +1003,6 @@ class CompleteContinuouslyPushResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1045,9 +1040,13 @@ class ContinuouslyPushRequest(TeaModel):
         target: str = None,
         target_value: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.message_id = message_id
+        # This parameter is required.
         self.target = target
+        # This parameter is required.
         self.target_value = target_value
 
     def validate(self):
@@ -1127,9 +1126,6 @@ class ContinuouslyPushResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1274,9 +1270,6 @@ class ListSummaryAppsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1311,6 +1304,7 @@ class ListTagsRequest(TeaModel):
         self,
         app_key: int = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
 
     def validate(self):
@@ -1442,9 +1436,6 @@ class ListTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1519,6 +1510,21 @@ class MassPushRequestPushTask(TeaModel):
         body: str = None,
         device_type: str = None,
         expire_time: str = None,
+        harmony_action: str = None,
+        harmony_action_type: str = None,
+        harmony_category: str = None,
+        harmony_ext_parameters: str = None,
+        harmony_image_url: str = None,
+        harmony_inbox_content: str = None,
+        harmony_notification_slot_type: str = None,
+        harmony_notify_id: int = None,
+        harmony_receipt_id: str = None,
+        harmony_remind: bool = None,
+        harmony_remind_body: str = None,
+        harmony_remind_title: str = None,
+        harmony_render_style: str = None,
+        harmony_test_message: bool = None,
+        harmony_uri: str = None,
         job_key: str = None,
         push_time: str = None,
         push_type: str = None,
@@ -1584,16 +1590,36 @@ class MassPushRequestPushTask(TeaModel):
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
         self.android_xiaomi_big_picture_url = android_xiaomi_big_picture_url
         self.android_xiaomi_image_url = android_xiaomi_image_url
+        # This parameter is required.
         self.body = body
+        # This parameter is required.
         self.device_type = device_type
         self.expire_time = expire_time
+        self.harmony_action = harmony_action
+        self.harmony_action_type = harmony_action_type
+        self.harmony_category = harmony_category
+        self.harmony_ext_parameters = harmony_ext_parameters
+        self.harmony_image_url = harmony_image_url
+        self.harmony_inbox_content = harmony_inbox_content
+        self.harmony_notification_slot_type = harmony_notification_slot_type
+        self.harmony_notify_id = harmony_notify_id
+        self.harmony_receipt_id = harmony_receipt_id
+        self.harmony_remind = harmony_remind
+        self.harmony_remind_body = harmony_remind_body
+        self.harmony_remind_title = harmony_remind_title
+        self.harmony_render_style = harmony_render_style
+        self.harmony_test_message = harmony_test_message
+        self.harmony_uri = harmony_uri
         self.job_key = job_key
         self.push_time = push_time
+        # This parameter is required.
         self.push_type = push_type
         self.send_channels = send_channels
         self.send_speed = send_speed
         self.store_offline = store_offline
+        # This parameter is required.
         self.target = target
+        # This parameter is required.
         self.target_value = target_value
         self.title = title
         self.trim = trim
@@ -1706,6 +1732,36 @@ class MassPushRequestPushTask(TeaModel):
             result['DeviceType'] = self.device_type
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.harmony_action is not None:
+            result['HarmonyAction'] = self.harmony_action
+        if self.harmony_action_type is not None:
+            result['HarmonyActionType'] = self.harmony_action_type
+        if self.harmony_category is not None:
+            result['HarmonyCategory'] = self.harmony_category
+        if self.harmony_ext_parameters is not None:
+            result['HarmonyExtParameters'] = self.harmony_ext_parameters
+        if self.harmony_image_url is not None:
+            result['HarmonyImageUrl'] = self.harmony_image_url
+        if self.harmony_inbox_content is not None:
+            result['HarmonyInboxContent'] = self.harmony_inbox_content
+        if self.harmony_notification_slot_type is not None:
+            result['HarmonyNotificationSlotType'] = self.harmony_notification_slot_type
+        if self.harmony_notify_id is not None:
+            result['HarmonyNotifyId'] = self.harmony_notify_id
+        if self.harmony_receipt_id is not None:
+            result['HarmonyReceiptId'] = self.harmony_receipt_id
+        if self.harmony_remind is not None:
+            result['HarmonyRemind'] = self.harmony_remind
+        if self.harmony_remind_body is not None:
+            result['HarmonyRemindBody'] = self.harmony_remind_body
+        if self.harmony_remind_title is not None:
+            result['HarmonyRemindTitle'] = self.harmony_remind_title
+        if self.harmony_render_style is not None:
+            result['HarmonyRenderStyle'] = self.harmony_render_style
+        if self.harmony_test_message is not None:
+            result['HarmonyTestMessage'] = self.harmony_test_message
+        if self.harmony_uri is not None:
+            result['HarmonyUri'] = self.harmony_uri
         if self.job_key is not None:
             result['JobKey'] = self.job_key
         if self.push_time is not None:
@@ -1844,6 +1900,36 @@ class MassPushRequestPushTask(TeaModel):
             self.device_type = m.get('DeviceType')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('HarmonyAction') is not None:
+            self.harmony_action = m.get('HarmonyAction')
+        if m.get('HarmonyActionType') is not None:
+            self.harmony_action_type = m.get('HarmonyActionType')
+        if m.get('HarmonyCategory') is not None:
+            self.harmony_category = m.get('HarmonyCategory')
+        if m.get('HarmonyExtParameters') is not None:
+            self.harmony_ext_parameters = m.get('HarmonyExtParameters')
+        if m.get('HarmonyImageUrl') is not None:
+            self.harmony_image_url = m.get('HarmonyImageUrl')
+        if m.get('HarmonyInboxContent') is not None:
+            self.harmony_inbox_content = m.get('HarmonyInboxContent')
+        if m.get('HarmonyNotificationSlotType') is not None:
+            self.harmony_notification_slot_type = m.get('HarmonyNotificationSlotType')
+        if m.get('HarmonyNotifyId') is not None:
+            self.harmony_notify_id = m.get('HarmonyNotifyId')
+        if m.get('HarmonyReceiptId') is not None:
+            self.harmony_receipt_id = m.get('HarmonyReceiptId')
+        if m.get('HarmonyRemind') is not None:
+            self.harmony_remind = m.get('HarmonyRemind')
+        if m.get('HarmonyRemindBody') is not None:
+            self.harmony_remind_body = m.get('HarmonyRemindBody')
+        if m.get('HarmonyRemindTitle') is not None:
+            self.harmony_remind_title = m.get('HarmonyRemindTitle')
+        if m.get('HarmonyRenderStyle') is not None:
+            self.harmony_render_style = m.get('HarmonyRenderStyle')
+        if m.get('HarmonyTestMessage') is not None:
+            self.harmony_test_message = m.get('HarmonyTestMessage')
+        if m.get('HarmonyUri') is not None:
+            self.harmony_uri = m.get('HarmonyUri')
         if m.get('JobKey') is not None:
             self.job_key = m.get('JobKey')
         if m.get('PushTime') is not None:
@@ -1903,7 +1989,9 @@ class MassPushRequest(TeaModel):
         app_key: int = None,
         push_task: List[MassPushRequestPushTask] = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.push_task = push_task
 
     def validate(self):
@@ -2012,9 +2100,6 @@ class MassPushResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2090,6 +2175,21 @@ class PushRequest(TeaModel):
         body: str = None,
         device_type: str = None,
         expire_time: str = None,
+        harmony_action: str = None,
+        harmony_action_type: str = None,
+        harmony_category: str = None,
+        harmony_ext_parameters: str = None,
+        harmony_image_url: str = None,
+        harmony_inbox_content: str = None,
+        harmony_notification_slot_type: str = None,
+        harmony_notify_id: int = None,
+        harmony_receipt_id: str = None,
+        harmony_remind: bool = None,
+        harmony_remind_body: str = None,
+        harmony_remind_title: str = None,
+        harmony_render_style: str = None,
+        harmony_test_message: bool = None,
+        harmony_uri: str = None,
         job_key: str = None,
         push_time: str = None,
         push_type: str = None,
@@ -2160,12 +2260,31 @@ class PushRequest(TeaModel):
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
         self.android_xiaomi_big_picture_url = android_xiaomi_big_picture_url
         self.android_xiaomi_image_url = android_xiaomi_image_url
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.body = body
+        # This parameter is required.
         self.device_type = device_type
         self.expire_time = expire_time
+        self.harmony_action = harmony_action
+        self.harmony_action_type = harmony_action_type
+        self.harmony_category = harmony_category
+        self.harmony_ext_parameters = harmony_ext_parameters
+        self.harmony_image_url = harmony_image_url
+        self.harmony_inbox_content = harmony_inbox_content
+        self.harmony_notification_slot_type = harmony_notification_slot_type
+        self.harmony_notify_id = harmony_notify_id
+        self.harmony_receipt_id = harmony_receipt_id
+        self.harmony_remind = harmony_remind
+        self.harmony_remind_body = harmony_remind_body
+        self.harmony_remind_title = harmony_remind_title
+        self.harmony_render_style = harmony_render_style
+        self.harmony_test_message = harmony_test_message
+        self.harmony_uri = harmony_uri
         self.job_key = job_key
         self.push_time = push_time
+        # This parameter is required.
         self.push_type = push_type
         self.send_channels = send_channels
         self.send_speed = send_speed
@@ -2175,7 +2294,9 @@ class PushRequest(TeaModel):
         self.sms_sign_name = sms_sign_name
         self.sms_template_name = sms_template_name
         self.store_offline = store_offline
+        # This parameter is required.
         self.target = target
+        # This parameter is required.
         self.target_value = target_value
         self.title = title
         self.trim = trim
@@ -2290,6 +2411,36 @@ class PushRequest(TeaModel):
             result['DeviceType'] = self.device_type
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.harmony_action is not None:
+            result['HarmonyAction'] = self.harmony_action
+        if self.harmony_action_type is not None:
+            result['HarmonyActionType'] = self.harmony_action_type
+        if self.harmony_category is not None:
+            result['HarmonyCategory'] = self.harmony_category
+        if self.harmony_ext_parameters is not None:
+            result['HarmonyExtParameters'] = self.harmony_ext_parameters
+        if self.harmony_image_url is not None:
+            result['HarmonyImageUrl'] = self.harmony_image_url
+        if self.harmony_inbox_content is not None:
+            result['HarmonyInboxContent'] = self.harmony_inbox_content
+        if self.harmony_notification_slot_type is not None:
+            result['HarmonyNotificationSlotType'] = self.harmony_notification_slot_type
+        if self.harmony_notify_id is not None:
+            result['HarmonyNotifyId'] = self.harmony_notify_id
+        if self.harmony_receipt_id is not None:
+            result['HarmonyReceiptId'] = self.harmony_receipt_id
+        if self.harmony_remind is not None:
+            result['HarmonyRemind'] = self.harmony_remind
+        if self.harmony_remind_body is not None:
+            result['HarmonyRemindBody'] = self.harmony_remind_body
+        if self.harmony_remind_title is not None:
+            result['HarmonyRemindTitle'] = self.harmony_remind_title
+        if self.harmony_render_style is not None:
+            result['HarmonyRenderStyle'] = self.harmony_render_style
+        if self.harmony_test_message is not None:
+            result['HarmonyTestMessage'] = self.harmony_test_message
+        if self.harmony_uri is not None:
+            result['HarmonyUri'] = self.harmony_uri
         if self.job_key is not None:
             result['JobKey'] = self.job_key
         if self.push_time is not None:
@@ -2440,6 +2591,36 @@ class PushRequest(TeaModel):
             self.device_type = m.get('DeviceType')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('HarmonyAction') is not None:
+            self.harmony_action = m.get('HarmonyAction')
+        if m.get('HarmonyActionType') is not None:
+            self.harmony_action_type = m.get('HarmonyActionType')
+        if m.get('HarmonyCategory') is not None:
+            self.harmony_category = m.get('HarmonyCategory')
+        if m.get('HarmonyExtParameters') is not None:
+            self.harmony_ext_parameters = m.get('HarmonyExtParameters')
+        if m.get('HarmonyImageUrl') is not None:
+            self.harmony_image_url = m.get('HarmonyImageUrl')
+        if m.get('HarmonyInboxContent') is not None:
+            self.harmony_inbox_content = m.get('HarmonyInboxContent')
+        if m.get('HarmonyNotificationSlotType') is not None:
+            self.harmony_notification_slot_type = m.get('HarmonyNotificationSlotType')
+        if m.get('HarmonyNotifyId') is not None:
+            self.harmony_notify_id = m.get('HarmonyNotifyId')
+        if m.get('HarmonyReceiptId') is not None:
+            self.harmony_receipt_id = m.get('HarmonyReceiptId')
+        if m.get('HarmonyRemind') is not None:
+            self.harmony_remind = m.get('HarmonyRemind')
+        if m.get('HarmonyRemindBody') is not None:
+            self.harmony_remind_body = m.get('HarmonyRemindBody')
+        if m.get('HarmonyRemindTitle') is not None:
+            self.harmony_remind_title = m.get('HarmonyRemindTitle')
+        if m.get('HarmonyRenderStyle') is not None:
+            self.harmony_render_style = m.get('HarmonyRenderStyle')
+        if m.get('HarmonyTestMessage') is not None:
+            self.harmony_test_message = m.get('HarmonyTestMessage')
+        if m.get('HarmonyUri') is not None:
+            self.harmony_uri = m.get('HarmonyUri')
         if m.get('JobKey') is not None:
             self.job_key = m.get('JobKey')
         if m.get('PushTime') is not None:
@@ -2548,9 +2729,6 @@ class PushResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2591,12 +2769,17 @@ class PushMessageToAndroidRequest(TeaModel):
         target_value: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.body = body
         self.job_key = job_key
         self.store_offline = store_offline
+        # This parameter is required.
         self.target = target
+        # This parameter is required.
         self.target_value = target_value
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -2688,9 +2871,6 @@ class PushMessageToAndroidResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2731,12 +2911,17 @@ class PushMessageToiOSRequest(TeaModel):
         target_value: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.body = body
         self.job_key = job_key
         self.store_offline = store_offline
+        # This parameter is required.
         self.target = target
+        # This parameter is required.
         self.target_value = target_value
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -2828,9 +3013,6 @@ class PushMessageToiOSResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2872,13 +3054,18 @@ class PushNoticeToAndroidRequest(TeaModel):
         target_value: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.body = body
         self.ext_parameters = ext_parameters
         self.job_key = job_key
         self.store_offline = store_offline
+        # This parameter is required.
         self.target = target
+        # This parameter is required.
         self.target_value = target_value
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -2974,9 +3161,6 @@ class PushNoticeToAndroidResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3018,12 +3202,17 @@ class PushNoticeToiOSRequest(TeaModel):
         target_value: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.apns_env = apns_env
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.body = body
         self.ext_parameters = ext_parameters
         self.job_key = job_key
+        # This parameter is required.
         self.target = target
+        # This parameter is required.
         self.target_value = target_value
         self.title = title
 
@@ -3120,9 +3309,6 @@ class PushNoticeToiOSResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3158,7 +3344,9 @@ class QueryAliasesRequest(TeaModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
 
     def validate(self):
@@ -3294,9 +3482,6 @@ class QueryAliasesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3332,7 +3517,9 @@ class QueryDeviceInfoRequest(TeaModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
 
     def validate(self):
@@ -3499,9 +3686,6 @@ class QueryDeviceInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3540,10 +3724,15 @@ class QueryDeviceStatRequest(TeaModel):
         query_type: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_type = device_type
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.query_type = query_type
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -3703,9 +3892,6 @@ class QueryDeviceStatResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3741,7 +3927,9 @@ class QueryDevicesByAccountRequest(TeaModel):
         account: str = None,
         app_key: int = None,
     ):
+        # This parameter is required.
         self.account = account
+        # This parameter is required.
         self.app_key = app_key
 
     def validate(self):
@@ -3842,9 +4030,6 @@ class QueryDevicesByAccountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3880,7 +4065,9 @@ class QueryDevicesByAliasRequest(TeaModel):
         alias: str = None,
         app_key: int = None,
     ):
+        # This parameter is required.
         self.alias = alias
+        # This parameter is required.
         self.app_key = app_key
 
     def validate(self):
@@ -3981,9 +4168,6 @@ class QueryDevicesByAliasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4027,7 +4211,9 @@ class QueryPushRecordsRequest(TeaModel):
         start_time: str = None,
         target: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.end_time = end_time
         self.keyword = keyword
         self.next_token = next_token
@@ -4035,6 +4221,7 @@ class QueryPushRecordsRequest(TeaModel):
         self.page_size = page_size
         self.push_type = push_type
         self.source = source
+        # This parameter is required.
         self.start_time = start_time
         self.target = target
 
@@ -4281,9 +4468,6 @@ class QueryPushRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4321,9 +4505,13 @@ class QueryPushStatByAppRequest(TeaModel):
         granularity: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.granularity = granularity
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -4527,9 +4715,6 @@ class QueryPushStatByAppResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4565,7 +4750,9 @@ class QueryPushStatByMsgRequest(TeaModel):
         app_key: int = None,
         message_id: int = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.message_id = message_id
 
     def validate(self):
@@ -4761,9 +4948,6 @@ class QueryPushStatByMsgResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4800,8 +4984,11 @@ class QueryTagsRequest(TeaModel):
         client_key: str = None,
         key_type: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.client_key = client_key
+        # This parameter is required.
         self.key_type = key_type
 
     def validate(self):
@@ -4941,9 +5128,6 @@ class QueryTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4981,9 +5165,13 @@ class QueryUniqueDeviceStatRequest(TeaModel):
         granularity: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.granularity = granularity
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -5133,9 +5321,6 @@ class QueryUniqueDeviceStatResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5171,7 +5356,9 @@ class RemoveTagRequest(TeaModel):
         app_key: int = None,
         tag_name: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -5237,9 +5424,6 @@ class RemoveTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5278,7 +5462,9 @@ class UnbindAliasRequest(TeaModel):
         unbind_all: bool = None,
     ):
         self.alias_name = alias_name
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
         self.unbind_all = unbind_all
 
@@ -5353,9 +5539,6 @@ class UnbindAliasResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5391,7 +5574,9 @@ class UnbindPhoneRequest(TeaModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
 
     def validate(self):
@@ -5457,9 +5642,6 @@ class UnbindPhoneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5497,9 +5679,13 @@ class UnbindTagRequest(TeaModel):
         key_type: str = None,
         tag_name: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.client_key = client_key
+        # This parameter is required.
         self.key_type = key_type
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -5573,9 +5759,6 @@ class UnbindTagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

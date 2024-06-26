@@ -102,6 +102,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindAliasResponse:
+        """
+        @param request: BindAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_name):
@@ -134,6 +139,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindAliasResponse:
+        """
+        @param request: BindAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_name):
@@ -165,6 +175,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.BindAliasRequest,
     ) -> push_20160801_models.BindAliasResponse:
+        """
+        @param request: BindAliasRequest
+        @return: BindAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_alias_with_options(request, runtime)
 
@@ -172,6 +186,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.BindAliasRequest,
     ) -> push_20160801_models.BindAliasResponse:
+        """
+        @param request: BindAliasRequest
+        @return: BindAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_alias_with_options_async(request, runtime)
 
@@ -180,6 +198,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindPhoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindPhoneResponse:
+        """
+        @param request: BindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindPhoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -212,6 +235,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindPhoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindPhoneResponse:
+        """
+        @param request: BindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindPhoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -243,6 +271,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.BindPhoneRequest,
     ) -> push_20160801_models.BindPhoneResponse:
+        """
+        @param request: BindPhoneRequest
+        @return: BindPhoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_phone_with_options(request, runtime)
 
@@ -250,6 +282,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.BindPhoneRequest,
     ) -> push_20160801_models.BindPhoneResponse:
+        """
+        @param request: BindPhoneRequest
+        @return: BindPhoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_phone_with_options_async(request, runtime)
 
@@ -258,6 +294,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindTagResponse:
+        """
+        @param request: BindTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -292,6 +333,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.BindTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.BindTagResponse:
+        """
+        @param request: BindTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -325,6 +371,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.BindTagRequest,
     ) -> push_20160801_models.BindTagResponse:
+        """
+        @param request: BindTagRequest
+        @return: BindTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_tag_with_options(request, runtime)
 
@@ -332,6 +382,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.BindTagRequest,
     ) -> push_20160801_models.BindTagResponse:
+        """
+        @param request: BindTagRequest
+        @return: BindTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_tag_with_options_async(request, runtime)
 
@@ -340,6 +394,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.CancelPushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CancelPushResponse:
+        """
+        @param request: CancelPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -370,6 +429,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.CancelPushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CancelPushResponse:
+        """
+        @param request: CancelPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -399,6 +463,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.CancelPushRequest,
     ) -> push_20160801_models.CancelPushResponse:
+        """
+        @param request: CancelPushRequest
+        @return: CancelPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_push_with_options(request, runtime)
 
@@ -406,6 +474,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.CancelPushRequest,
     ) -> push_20160801_models.CancelPushResponse:
+        """
+        @param request: CancelPushRequest
+        @return: CancelPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_push_with_options_async(request, runtime)
 
@@ -414,6 +486,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckCertificateResponse:
+        """
+        @param request: CheckCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -442,6 +519,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckCertificateResponse:
+        """
+        @param request: CheckCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -469,6 +551,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.CheckCertificateRequest,
     ) -> push_20160801_models.CheckCertificateResponse:
+        """
+        @param request: CheckCertificateRequest
+        @return: CheckCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_certificate_with_options(request, runtime)
 
@@ -476,6 +562,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.CheckCertificateRequest,
     ) -> push_20160801_models.CheckCertificateResponse:
+        """
+        @param request: CheckCertificateRequest
+        @return: CheckCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_certificate_with_options_async(request, runtime)
 
@@ -485,7 +575,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckDeviceResponse:
         """
-        @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
+        @deprecated OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
         @param request: CheckDeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -523,7 +613,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckDeviceResponse:
         """
-        @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
+        @deprecated OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
         @param request: CheckDeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -560,7 +650,7 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckDeviceRequest,
     ) -> push_20160801_models.CheckDeviceResponse:
         """
-        @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
+        @deprecated OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
         @param request: CheckDeviceRequest
         @return: CheckDeviceResponse
@@ -574,7 +664,7 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckDeviceRequest,
     ) -> push_20160801_models.CheckDeviceResponse:
         """
-        @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
+        @deprecated OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
         @param request: CheckDeviceRequest
         @return: CheckDeviceResponse
@@ -588,6 +678,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckDevicesResponse:
+        """
+        @param request: CheckDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -618,6 +713,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckDevicesResponse:
+        """
+        @param request: CheckDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -647,6 +747,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.CheckDevicesRequest,
     ) -> push_20160801_models.CheckDevicesResponse:
+        """
+        @param request: CheckDevicesRequest
+        @return: CheckDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_devices_with_options(request, runtime)
 
@@ -654,6 +758,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.CheckDevicesRequest,
     ) -> push_20160801_models.CheckDevicesResponse:
+        """
+        @param request: CheckDevicesRequest
+        @return: CheckDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_devices_with_options_async(request, runtime)
 
@@ -662,6 +770,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.CompleteContinuouslyPushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CompleteContinuouslyPushResponse:
+        """
+        @param request: CompleteContinuouslyPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompleteContinuouslyPushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -692,6 +805,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.CompleteContinuouslyPushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CompleteContinuouslyPushResponse:
+        """
+        @param request: CompleteContinuouslyPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompleteContinuouslyPushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -721,6 +839,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.CompleteContinuouslyPushRequest,
     ) -> push_20160801_models.CompleteContinuouslyPushResponse:
+        """
+        @param request: CompleteContinuouslyPushRequest
+        @return: CompleteContinuouslyPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.complete_continuously_push_with_options(request, runtime)
 
@@ -728,6 +850,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.CompleteContinuouslyPushRequest,
     ) -> push_20160801_models.CompleteContinuouslyPushResponse:
+        """
+        @param request: CompleteContinuouslyPushRequest
+        @return: CompleteContinuouslyPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.complete_continuously_push_with_options_async(request, runtime)
 
@@ -736,6 +862,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.ContinuouslyPushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ContinuouslyPushResponse:
+        """
+        @param request: ContinuouslyPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinuouslyPushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -770,6 +901,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.ContinuouslyPushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ContinuouslyPushResponse:
+        """
+        @param request: ContinuouslyPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinuouslyPushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -803,6 +939,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.ContinuouslyPushRequest,
     ) -> push_20160801_models.ContinuouslyPushResponse:
+        """
+        @param request: ContinuouslyPushRequest
+        @return: ContinuouslyPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.continuously_push_with_options(request, runtime)
 
@@ -810,6 +950,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.ContinuouslyPushRequest,
     ) -> push_20160801_models.ContinuouslyPushResponse:
+        """
+        @param request: ContinuouslyPushRequest
+        @return: ContinuouslyPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.continuously_push_with_options_async(request, runtime)
 
@@ -818,7 +962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListSummaryAppsResponse:
         """
-        @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+        @deprecated OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
         @param request: ListSummaryAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -847,7 +991,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListSummaryAppsResponse:
         """
-        @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+        @deprecated OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
         @param request: ListSummaryAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -873,7 +1017,7 @@ class Client(OpenApiClient):
 
     def list_summary_apps(self) -> push_20160801_models.ListSummaryAppsResponse:
         """
-        @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+        @deprecated OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
         @return: ListSummaryAppsResponse
         Deprecated
@@ -883,7 +1027,7 @@ class Client(OpenApiClient):
 
     async def list_summary_apps_async(self) -> push_20160801_models.ListSummaryAppsResponse:
         """
-        @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+        @deprecated OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
         @return: ListSummaryAppsResponse
         Deprecated
@@ -896,6 +1040,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.ListTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListTagsResponse:
+        """
+        @param request: ListTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -924,6 +1073,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.ListTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListTagsResponse:
+        """
+        @param request: ListTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -951,6 +1105,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.ListTagsRequest,
     ) -> push_20160801_models.ListTagsResponse:
+        """
+        @param request: ListTagsRequest
+        @return: ListTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tags_with_options(request, runtime)
 
@@ -958,6 +1116,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.ListTagsRequest,
     ) -> push_20160801_models.ListTagsResponse:
+        """
+        @param request: ListTagsRequest
+        @return: ListTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tags_with_options_async(request, runtime)
 
@@ -966,6 +1128,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.MassPushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.MassPushResponse:
+        """
+        @param request: MassPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MassPushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -998,6 +1165,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.MassPushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.MassPushResponse:
+        """
+        @param request: MassPushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MassPushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1029,6 +1201,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.MassPushRequest,
     ) -> push_20160801_models.MassPushResponse:
+        """
+        @param request: MassPushRequest
+        @return: MassPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.mass_push_with_options(request, runtime)
 
@@ -1036,6 +1212,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.MassPushRequest,
     ) -> push_20160801_models.MassPushResponse:
+        """
+        @param request: MassPushRequest
+        @return: MassPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.mass_push_with_options_async(request, runtime)
 
@@ -1044,6 +1224,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushResponse:
+        """
+        @param request: PushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.android_activity):
@@ -1132,6 +1317,36 @@ class Client(OpenApiClient):
             query['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.expire_time):
             query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.harmony_action):
+            query['HarmonyAction'] = request.harmony_action
+        if not UtilClient.is_unset(request.harmony_action_type):
+            query['HarmonyActionType'] = request.harmony_action_type
+        if not UtilClient.is_unset(request.harmony_category):
+            query['HarmonyCategory'] = request.harmony_category
+        if not UtilClient.is_unset(request.harmony_ext_parameters):
+            query['HarmonyExtParameters'] = request.harmony_ext_parameters
+        if not UtilClient.is_unset(request.harmony_image_url):
+            query['HarmonyImageUrl'] = request.harmony_image_url
+        if not UtilClient.is_unset(request.harmony_inbox_content):
+            query['HarmonyInboxContent'] = request.harmony_inbox_content
+        if not UtilClient.is_unset(request.harmony_notification_slot_type):
+            query['HarmonyNotificationSlotType'] = request.harmony_notification_slot_type
+        if not UtilClient.is_unset(request.harmony_notify_id):
+            query['HarmonyNotifyId'] = request.harmony_notify_id
+        if not UtilClient.is_unset(request.harmony_receipt_id):
+            query['HarmonyReceiptId'] = request.harmony_receipt_id
+        if not UtilClient.is_unset(request.harmony_remind):
+            query['HarmonyRemind'] = request.harmony_remind
+        if not UtilClient.is_unset(request.harmony_remind_body):
+            query['HarmonyRemindBody'] = request.harmony_remind_body
+        if not UtilClient.is_unset(request.harmony_remind_title):
+            query['HarmonyRemindTitle'] = request.harmony_remind_title
+        if not UtilClient.is_unset(request.harmony_render_style):
+            query['HarmonyRenderStyle'] = request.harmony_render_style
+        if not UtilClient.is_unset(request.harmony_test_message):
+            query['HarmonyTestMessage'] = request.harmony_test_message
+        if not UtilClient.is_unset(request.harmony_uri):
+            query['HarmonyUri'] = request.harmony_uri
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
         if not UtilClient.is_unset(request.push_time):
@@ -1216,6 +1431,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushResponse:
+        """
+        @param request: PushRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.android_activity):
@@ -1304,6 +1524,36 @@ class Client(OpenApiClient):
             query['DeviceType'] = request.device_type
         if not UtilClient.is_unset(request.expire_time):
             query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.harmony_action):
+            query['HarmonyAction'] = request.harmony_action
+        if not UtilClient.is_unset(request.harmony_action_type):
+            query['HarmonyActionType'] = request.harmony_action_type
+        if not UtilClient.is_unset(request.harmony_category):
+            query['HarmonyCategory'] = request.harmony_category
+        if not UtilClient.is_unset(request.harmony_ext_parameters):
+            query['HarmonyExtParameters'] = request.harmony_ext_parameters
+        if not UtilClient.is_unset(request.harmony_image_url):
+            query['HarmonyImageUrl'] = request.harmony_image_url
+        if not UtilClient.is_unset(request.harmony_inbox_content):
+            query['HarmonyInboxContent'] = request.harmony_inbox_content
+        if not UtilClient.is_unset(request.harmony_notification_slot_type):
+            query['HarmonyNotificationSlotType'] = request.harmony_notification_slot_type
+        if not UtilClient.is_unset(request.harmony_notify_id):
+            query['HarmonyNotifyId'] = request.harmony_notify_id
+        if not UtilClient.is_unset(request.harmony_receipt_id):
+            query['HarmonyReceiptId'] = request.harmony_receipt_id
+        if not UtilClient.is_unset(request.harmony_remind):
+            query['HarmonyRemind'] = request.harmony_remind
+        if not UtilClient.is_unset(request.harmony_remind_body):
+            query['HarmonyRemindBody'] = request.harmony_remind_body
+        if not UtilClient.is_unset(request.harmony_remind_title):
+            query['HarmonyRemindTitle'] = request.harmony_remind_title
+        if not UtilClient.is_unset(request.harmony_render_style):
+            query['HarmonyRenderStyle'] = request.harmony_render_style
+        if not UtilClient.is_unset(request.harmony_test_message):
+            query['HarmonyTestMessage'] = request.harmony_test_message
+        if not UtilClient.is_unset(request.harmony_uri):
+            query['HarmonyUri'] = request.harmony_uri
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
         if not UtilClient.is_unset(request.push_time):
@@ -1387,6 +1637,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushRequest,
     ) -> push_20160801_models.PushResponse:
+        """
+        @param request: PushRequest
+        @return: PushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_with_options(request, runtime)
 
@@ -1394,6 +1648,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushRequest,
     ) -> push_20160801_models.PushResponse:
+        """
+        @param request: PushRequest
+        @return: PushResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_with_options_async(request, runtime)
 
@@ -1402,6 +1660,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushMessageToAndroidRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushMessageToAndroidResponse:
+        """
+        @param request: PushMessageToAndroidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushMessageToAndroidResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1442,6 +1705,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushMessageToAndroidRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushMessageToAndroidResponse:
+        """
+        @param request: PushMessageToAndroidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushMessageToAndroidResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1481,6 +1749,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushMessageToAndroidRequest,
     ) -> push_20160801_models.PushMessageToAndroidResponse:
+        """
+        @param request: PushMessageToAndroidRequest
+        @return: PushMessageToAndroidResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_message_to_android_with_options(request, runtime)
 
@@ -1488,6 +1760,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushMessageToAndroidRequest,
     ) -> push_20160801_models.PushMessageToAndroidResponse:
+        """
+        @param request: PushMessageToAndroidRequest
+        @return: PushMessageToAndroidResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_message_to_android_with_options_async(request, runtime)
 
@@ -1496,6 +1772,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushMessageToiOSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushMessageToiOSResponse:
+        """
+        @param request: PushMessageToiOSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushMessageToiOSResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1536,6 +1817,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushMessageToiOSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushMessageToiOSResponse:
+        """
+        @param request: PushMessageToiOSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushMessageToiOSResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1575,6 +1861,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushMessageToiOSRequest,
     ) -> push_20160801_models.PushMessageToiOSResponse:
+        """
+        @param request: PushMessageToiOSRequest
+        @return: PushMessageToiOSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_message_toi_oswith_options(request, runtime)
 
@@ -1582,6 +1872,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushMessageToiOSRequest,
     ) -> push_20160801_models.PushMessageToiOSResponse:
+        """
+        @param request: PushMessageToiOSRequest
+        @return: PushMessageToiOSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_message_toi_oswith_options_async(request, runtime)
 
@@ -1590,6 +1884,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushNoticeToAndroidRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushNoticeToAndroidResponse:
+        """
+        @param request: PushNoticeToAndroidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushNoticeToAndroidResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1632,6 +1931,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushNoticeToAndroidRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushNoticeToAndroidResponse:
+        """
+        @param request: PushNoticeToAndroidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushNoticeToAndroidResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1673,6 +1977,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushNoticeToAndroidRequest,
     ) -> push_20160801_models.PushNoticeToAndroidResponse:
+        """
+        @param request: PushNoticeToAndroidRequest
+        @return: PushNoticeToAndroidResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_notice_to_android_with_options(request, runtime)
 
@@ -1680,6 +1988,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushNoticeToAndroidRequest,
     ) -> push_20160801_models.PushNoticeToAndroidResponse:
+        """
+        @param request: PushNoticeToAndroidRequest
+        @return: PushNoticeToAndroidResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_notice_to_android_with_options_async(request, runtime)
 
@@ -1688,6 +2000,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushNoticeToiOSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushNoticeToiOSResponse:
+        """
+        @param request: PushNoticeToiOSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushNoticeToiOSResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apns_env):
@@ -1730,6 +2047,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.PushNoticeToiOSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushNoticeToiOSResponse:
+        """
+        @param request: PushNoticeToiOSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushNoticeToiOSResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apns_env):
@@ -1771,6 +2093,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushNoticeToiOSRequest,
     ) -> push_20160801_models.PushNoticeToiOSResponse:
+        """
+        @param request: PushNoticeToiOSRequest
+        @return: PushNoticeToiOSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_notice_toi_oswith_options(request, runtime)
 
@@ -1778,6 +2104,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.PushNoticeToiOSRequest,
     ) -> push_20160801_models.PushNoticeToiOSResponse:
+        """
+        @param request: PushNoticeToiOSRequest
+        @return: PushNoticeToiOSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_notice_toi_oswith_options_async(request, runtime)
 
@@ -1786,6 +2116,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryAliasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryAliasesResponse:
+        """
+        @param request: QueryAliasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAliasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1816,6 +2151,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryAliasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryAliasesResponse:
+        """
+        @param request: QueryAliasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAliasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1845,6 +2185,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryAliasesRequest,
     ) -> push_20160801_models.QueryAliasesResponse:
+        """
+        @param request: QueryAliasesRequest
+        @return: QueryAliasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_aliases_with_options(request, runtime)
 
@@ -1852,6 +2196,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryAliasesRequest,
     ) -> push_20160801_models.QueryAliasesResponse:
+        """
+        @param request: QueryAliasesRequest
+        @return: QueryAliasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_aliases_with_options_async(request, runtime)
 
@@ -1860,6 +2208,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDeviceInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDeviceInfoResponse:
+        """
+        @param request: QueryDeviceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1890,6 +2243,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDeviceInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDeviceInfoResponse:
+        """
+        @param request: QueryDeviceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1919,6 +2277,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryDeviceInfoRequest,
     ) -> push_20160801_models.QueryDeviceInfoResponse:
+        """
+        @param request: QueryDeviceInfoRequest
+        @return: QueryDeviceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_info_with_options(request, runtime)
 
@@ -1926,6 +2288,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryDeviceInfoRequest,
     ) -> push_20160801_models.QueryDeviceInfoResponse:
+        """
+        @param request: QueryDeviceInfoRequest
+        @return: QueryDeviceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_info_with_options_async(request, runtime)
 
@@ -1934,6 +2300,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDeviceStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDeviceStatResponse:
+        """
+        @param request: QueryDeviceStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceStatResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1970,6 +2341,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDeviceStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDeviceStatResponse:
+        """
+        @param request: QueryDeviceStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceStatResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2005,6 +2381,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryDeviceStatRequest,
     ) -> push_20160801_models.QueryDeviceStatResponse:
+        """
+        @param request: QueryDeviceStatRequest
+        @return: QueryDeviceStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_device_stat_with_options(request, runtime)
 
@@ -2012,6 +2392,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryDeviceStatRequest,
     ) -> push_20160801_models.QueryDeviceStatResponse:
+        """
+        @param request: QueryDeviceStatRequest
+        @return: QueryDeviceStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_device_stat_with_options_async(request, runtime)
 
@@ -2020,6 +2404,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDevicesByAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDevicesByAccountResponse:
+        """
+        @param request: QueryDevicesByAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicesByAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account):
@@ -2050,6 +2439,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDevicesByAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDevicesByAccountResponse:
+        """
+        @param request: QueryDevicesByAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicesByAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account):
@@ -2079,6 +2473,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryDevicesByAccountRequest,
     ) -> push_20160801_models.QueryDevicesByAccountResponse:
+        """
+        @param request: QueryDevicesByAccountRequest
+        @return: QueryDevicesByAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_devices_by_account_with_options(request, runtime)
 
@@ -2086,6 +2484,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryDevicesByAccountRequest,
     ) -> push_20160801_models.QueryDevicesByAccountResponse:
+        """
+        @param request: QueryDevicesByAccountRequest
+        @return: QueryDevicesByAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_devices_by_account_with_options_async(request, runtime)
 
@@ -2094,6 +2496,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDevicesByAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDevicesByAliasResponse:
+        """
+        @param request: QueryDevicesByAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicesByAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias):
@@ -2124,6 +2531,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryDevicesByAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryDevicesByAliasResponse:
+        """
+        @param request: QueryDevicesByAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDevicesByAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias):
@@ -2153,6 +2565,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryDevicesByAliasRequest,
     ) -> push_20160801_models.QueryDevicesByAliasResponse:
+        """
+        @param request: QueryDevicesByAliasRequest
+        @return: QueryDevicesByAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_devices_by_alias_with_options(request, runtime)
 
@@ -2160,6 +2576,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryDevicesByAliasRequest,
     ) -> push_20160801_models.QueryDevicesByAliasResponse:
+        """
+        @param request: QueryDevicesByAliasRequest
+        @return: QueryDevicesByAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_devices_by_alias_with_options_async(request, runtime)
 
@@ -2168,6 +2588,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushRecordsResponse:
+        """
+        @param request: QueryPushRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2214,6 +2639,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushRecordsResponse:
+        """
+        @param request: QueryPushRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2259,6 +2689,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryPushRecordsRequest,
     ) -> push_20160801_models.QueryPushRecordsResponse:
+        """
+        @param request: QueryPushRecordsRequest
+        @return: QueryPushRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_push_records_with_options(request, runtime)
 
@@ -2266,6 +2700,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryPushRecordsRequest,
     ) -> push_20160801_models.QueryPushRecordsResponse:
+        """
+        @param request: QueryPushRecordsRequest
+        @return: QueryPushRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_push_records_with_options_async(request, runtime)
 
@@ -2274,6 +2712,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushStatByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushStatByAppResponse:
+        """
+        @param request: QueryPushStatByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushStatByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2308,6 +2751,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushStatByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushStatByAppResponse:
+        """
+        @param request: QueryPushStatByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushStatByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2341,6 +2789,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryPushStatByAppRequest,
     ) -> push_20160801_models.QueryPushStatByAppResponse:
+        """
+        @param request: QueryPushStatByAppRequest
+        @return: QueryPushStatByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_push_stat_by_app_with_options(request, runtime)
 
@@ -2348,6 +2800,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryPushStatByAppRequest,
     ) -> push_20160801_models.QueryPushStatByAppResponse:
+        """
+        @param request: QueryPushStatByAppRequest
+        @return: QueryPushStatByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_push_stat_by_app_with_options_async(request, runtime)
 
@@ -2356,6 +2812,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushStatByMsgRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushStatByMsgResponse:
+        """
+        @param request: QueryPushStatByMsgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushStatByMsgResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2386,6 +2847,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryPushStatByMsgRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryPushStatByMsgResponse:
+        """
+        @param request: QueryPushStatByMsgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushStatByMsgResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2415,6 +2881,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryPushStatByMsgRequest,
     ) -> push_20160801_models.QueryPushStatByMsgResponse:
+        """
+        @param request: QueryPushStatByMsgRequest
+        @return: QueryPushStatByMsgResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_push_stat_by_msg_with_options(request, runtime)
 
@@ -2422,6 +2892,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryPushStatByMsgRequest,
     ) -> push_20160801_models.QueryPushStatByMsgResponse:
+        """
+        @param request: QueryPushStatByMsgRequest
+        @return: QueryPushStatByMsgResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_push_stat_by_msg_with_options_async(request, runtime)
 
@@ -2430,6 +2904,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryTagsResponse:
+        """
+        @param request: QueryTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2462,6 +2941,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryTagsResponse:
+        """
+        @param request: QueryTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2493,6 +2977,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryTagsRequest,
     ) -> push_20160801_models.QueryTagsResponse:
+        """
+        @param request: QueryTagsRequest
+        @return: QueryTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_tags_with_options(request, runtime)
 
@@ -2500,6 +2988,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryTagsRequest,
     ) -> push_20160801_models.QueryTagsResponse:
+        """
+        @param request: QueryTagsRequest
+        @return: QueryTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_tags_with_options_async(request, runtime)
 
@@ -2508,6 +3000,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryUniqueDeviceStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryUniqueDeviceStatResponse:
+        """
+        @param request: QueryUniqueDeviceStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUniqueDeviceStatResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2542,6 +3039,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.QueryUniqueDeviceStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.QueryUniqueDeviceStatResponse:
+        """
+        @param request: QueryUniqueDeviceStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUniqueDeviceStatResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2575,6 +3077,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryUniqueDeviceStatRequest,
     ) -> push_20160801_models.QueryUniqueDeviceStatResponse:
+        """
+        @param request: QueryUniqueDeviceStatRequest
+        @return: QueryUniqueDeviceStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_unique_device_stat_with_options(request, runtime)
 
@@ -2582,6 +3088,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.QueryUniqueDeviceStatRequest,
     ) -> push_20160801_models.QueryUniqueDeviceStatResponse:
+        """
+        @param request: QueryUniqueDeviceStatRequest
+        @return: QueryUniqueDeviceStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_unique_device_stat_with_options_async(request, runtime)
 
@@ -2590,6 +3100,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.RemoveTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.RemoveTagResponse:
+        """
+        @param request: RemoveTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2620,6 +3135,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.RemoveTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.RemoveTagResponse:
+        """
+        @param request: RemoveTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2649,6 +3169,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.RemoveTagRequest,
     ) -> push_20160801_models.RemoveTagResponse:
+        """
+        @param request: RemoveTagRequest
+        @return: RemoveTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_tag_with_options(request, runtime)
 
@@ -2656,6 +3180,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.RemoveTagRequest,
     ) -> push_20160801_models.RemoveTagResponse:
+        """
+        @param request: RemoveTagRequest
+        @return: RemoveTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_tag_with_options_async(request, runtime)
 
@@ -2664,6 +3192,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindAliasResponse:
+        """
+        @param request: UnbindAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_name):
@@ -2698,6 +3231,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindAliasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindAliasResponse:
+        """
+        @param request: UnbindAliasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindAliasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alias_name):
@@ -2731,6 +3269,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.UnbindAliasRequest,
     ) -> push_20160801_models.UnbindAliasResponse:
+        """
+        @param request: UnbindAliasRequest
+        @return: UnbindAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_alias_with_options(request, runtime)
 
@@ -2738,6 +3280,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.UnbindAliasRequest,
     ) -> push_20160801_models.UnbindAliasResponse:
+        """
+        @param request: UnbindAliasRequest
+        @return: UnbindAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_alias_with_options_async(request, runtime)
 
@@ -2746,6 +3292,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindPhoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindPhoneResponse:
+        """
+        @param request: UnbindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindPhoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2776,6 +3327,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindPhoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindPhoneResponse:
+        """
+        @param request: UnbindPhoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindPhoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2805,6 +3361,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.UnbindPhoneRequest,
     ) -> push_20160801_models.UnbindPhoneResponse:
+        """
+        @param request: UnbindPhoneRequest
+        @return: UnbindPhoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_phone_with_options(request, runtime)
 
@@ -2812,6 +3372,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.UnbindPhoneRequest,
     ) -> push_20160801_models.UnbindPhoneResponse:
+        """
+        @param request: UnbindPhoneRequest
+        @return: UnbindPhoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_phone_with_options_async(request, runtime)
 
@@ -2820,6 +3384,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindTagResponse:
+        """
+        @param request: UnbindTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2854,6 +3423,11 @@ class Client(OpenApiClient):
         request: push_20160801_models.UnbindTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.UnbindTagResponse:
+        """
+        @param request: UnbindTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -2887,6 +3461,10 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.UnbindTagRequest,
     ) -> push_20160801_models.UnbindTagResponse:
+        """
+        @param request: UnbindTagRequest
+        @return: UnbindTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_tag_with_options(request, runtime)
 
@@ -2894,5 +3472,9 @@ class Client(OpenApiClient):
         self,
         request: push_20160801_models.UnbindTagRequest,
     ) -> push_20160801_models.UnbindTagResponse:
+        """
+        @param request: UnbindTagRequest
+        @return: UnbindTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_tag_with_options_async(request, runtime)
