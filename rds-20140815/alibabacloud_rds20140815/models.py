@@ -2268,11 +2268,8 @@ class CloneDBInstanceRequestServerlessConfig(TeaModel):
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**\
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 12**\
         # 
-        # > 
-        # 
-        # *   The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
-        # 
-        # *   This parameter is available only on the China site (aliyun.com).
+        # > *   The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
+        # > *   This parameter is available only on the China site (aliyun.com).
         self.max_capacity = max_capacity
         # The minimum number of RCUs. Valid values:
         # 
@@ -2280,11 +2277,8 @@ class CloneDBInstanceRequestServerlessConfig(TeaModel):
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 12**.
         # 
-        # > 
-        # 
-        # *   The value of this parameter must be less than or equal to the value of **MaxCapacity**.
-        # 
-        # *   This parameter is available only on the China site (aliyun.com).
+        # > *   The value of this parameter must be less than or equal to the value of **MaxCapacity**.
+        # > *   This parameter is available only on the China site (aliyun.com).
         self.min_capacity = min_capacity
         # Specifies whether to enable the forced scaling feature for the serverless ApsaraDB RDS for MySQL instance. In most cases, ApsaraDB RDS automatically scales in or out the RCUs of a serverless instance based on business requirements in real time. In rare cases, the scaling does not take effect in real time. You can enable the forced scaling feature to forcefully scales in or out the RCUs of the instance. Valid values:
         # 
@@ -69287,10 +69281,9 @@ class RecoveryDBInstanceRequest(TeaModel):
         # *   **cloud_ssd**: standard SSD.
         # *   **cloud_essd**: enhanced SSD (ESSD)
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The name of the database.
+        # The name of the database. When you restore data to a new instance, the format of the database name is `Original database name 1,New database name 2`.
         # 
-        # *   If you want to restore databases to a new instance, the value is in the format of `Original database name 1,New database name 2`.
-        # *   If you want to restore databases to an existing instance, the value is in the format of `{"Original database name 1":"New database name 1","Original database name 2":"New database name 2"`.
+        # >  For more information about how to restore data to an existing instance, see [CopyDatabaseBetweenInstances](https://help.aliyun.com/document_detail/2628854.html).
         # 
         # This parameter is required.
         self.db_names = db_names

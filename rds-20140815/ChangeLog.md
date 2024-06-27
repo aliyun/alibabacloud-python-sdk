@@ -1,3 +1,7 @@
+2024-06-27 Version: 5.0.3
+- Update API ModifyDBInstanceSpec: update param ServerlessConfiguration.
+
+
 2024-06-18 Version: 5.0.2
 - Update API DescribeDiagnosticReportList: update param AccessKeyId.
 
