@@ -1438,7 +1438,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeColumnsV2Response:
         """
-        @summary 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+        @summary Queries the columns of tables in instances, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
         
         @param request: DescribeColumnsV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -1497,7 +1497,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeColumnsV2Response:
         """
-        @summary 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+        @summary Queries the columns of tables in instances, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
         
         @param request: DescribeColumnsV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -1555,7 +1555,7 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeColumnsV2Request,
     ) -> sddp_20190103_models.DescribeColumnsV2Response:
         """
-        @summary 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+        @summary Queries the columns of tables in instances, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
         
         @param request: DescribeColumnsV2Request
         @return: DescribeColumnsV2Response
@@ -1568,7 +1568,7 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeColumnsV2Request,
     ) -> sddp_20190103_models.DescribeColumnsV2Response:
         """
-        @summary 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+        @summary Queries the columns of tables in instances, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
         
         @param request: DescribeColumnsV2Request
         @return: DescribeColumnsV2Response

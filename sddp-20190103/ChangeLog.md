@@ -1,3 +1,7 @@
+2024-06-27 Version: 1.2.4
+- Update API DescribeParentInstance: update response param.
+
+
 2024-06-03 Version: 1.2.3
 - Update API DescribeDataObjects: update response param.
 - Update API DescribeOssObjects: update response param.
