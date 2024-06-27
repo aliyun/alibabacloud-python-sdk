@@ -1,3 +1,9 @@
+2024-06-27 Version: 1.2.2
+- Update API CreateApp: add param BizRegionId.
+- Update API DescribeApps: add param BizRegionId.
+- Update API DescribeApps: update response param.
+
+
 2024-06-26 Version: 1.2.1
 - Update API CreateApp: add param BizRegionId.
 - Update API DescribeApps: add param BizRegionId.
