@@ -2169,6 +2169,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_user_group_with_options_async(request, runtime)
 
+    def data_set_blood_with_options(
+        self,
+        request: quickbi_public_20220101_models.DataSetBloodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.DataSetBloodResponse:
+        """
+        @summary 查询引用指定数据集下的作品信息
+        
+        @param request: DataSetBloodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DataSetBloodResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_set_ids):
+            query['DataSetIds'] = request.data_set_ids
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.works_type):
+            query['WorksType'] = request.works_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DataSetBlood',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.DataSetBloodResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def data_set_blood_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.DataSetBloodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.DataSetBloodResponse:
+        """
+        @summary 查询引用指定数据集下的作品信息
+        
+        @param request: DataSetBloodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DataSetBloodResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_set_ids):
+            query['DataSetIds'] = request.data_set_ids
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.works_type):
+            query['WorksType'] = request.works_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DataSetBlood',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.DataSetBloodResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def data_set_blood(
+        self,
+        request: quickbi_public_20220101_models.DataSetBloodRequest,
+    ) -> quickbi_public_20220101_models.DataSetBloodResponse:
+        """
+        @summary 查询引用指定数据集下的作品信息
+        
+        @param request: DataSetBloodRequest
+        @return: DataSetBloodResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.data_set_blood_with_options(request, runtime)
+
+    async def data_set_blood_async(
+        self,
+        request: quickbi_public_20220101_models.DataSetBloodRequest,
+    ) -> quickbi_public_20220101_models.DataSetBloodResponse:
+        """
+        @summary 查询引用指定数据集下的作品信息
+        
+        @param request: DataSetBloodRequest
+        @return: DataSetBloodResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.data_set_blood_with_options_async(request, runtime)
+
+    def data_source_blood_with_options(
+        self,
+        request: quickbi_public_20220101_models.DataSourceBloodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.DataSourceBloodResponse:
+        """
+        @summary 查询引用指定数据源下的数据集信息
+        
+        @param request: DataSourceBloodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DataSourceBloodResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DataSourceBlood',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.DataSourceBloodResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def data_source_blood_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.DataSourceBloodRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.DataSourceBloodResponse:
+        """
+        @summary 查询引用指定数据源下的数据集信息
+        
+        @param request: DataSourceBloodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DataSourceBloodResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DataSourceBlood',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.DataSourceBloodResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def data_source_blood(
+        self,
+        request: quickbi_public_20220101_models.DataSourceBloodRequest,
+    ) -> quickbi_public_20220101_models.DataSourceBloodResponse:
+        """
+        @summary 查询引用指定数据源下的数据集信息
+        
+        @param request: DataSourceBloodRequest
+        @return: DataSourceBloodResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.data_source_blood_with_options(request, runtime)
+
+    async def data_source_blood_async(
+        self,
+        request: quickbi_public_20220101_models.DataSourceBloodRequest,
+    ) -> quickbi_public_20220101_models.DataSourceBloodResponse:
+        """
+        @summary 查询引用指定数据源下的数据集信息
+        
+        @param request: DataSourceBloodRequest
+        @return: DataSourceBloodResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.data_source_blood_with_options_async(request, runtime)
+
     def delay_ticket_expire_time_with_options(
         self,
         request: quickbi_public_20220101_models.DelayTicketExpireTimeRequest,
@@ -4883,6 +5083,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_datasource_parameters_with_options_async(request, runtime)
 
+    def query_approval_info_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
+        """
+        @summary 根据审批人获取相应的审批流信息
+        
+        @param request: QueryApprovalInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryApprovalInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryApprovalInfo',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryApprovalInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_approval_info_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
+        """
+        @summary 根据审批人获取相应的审批流信息
+        
+        @param request: QueryApprovalInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryApprovalInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryApprovalInfo',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryApprovalInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_approval_info(
+        self,
+        request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
+    ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
+        """
+        @summary 根据审批人获取相应的审批流信息
+        
+        @param request: QueryApprovalInfoRequest
+        @return: QueryApprovalInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_approval_info_with_options(request, runtime)
+
+    async def query_approval_info_async(
+        self,
+        request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
+    ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
+        """
+        @summary 根据审批人获取相应的审批流信息
+        
+        @param request: QueryApprovalInfoRequest
+        @return: QueryApprovalInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_approval_info_with_options_async(request, runtime)
+
+    def query_audit_log_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryAuditLogResponse:
+        """
+        @summary 查询审计日志信息
+        
+        @param request: QueryAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAuditLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.log_type):
+            query['LogType'] = request.log_type
+        if not UtilClient.is_unset(request.operator_id):
+            query['OperatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.operator_types):
+            query['OperatorTypes'] = request.operator_types
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAuditLog',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryAuditLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_audit_log_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryAuditLogResponse:
+        """
+        @summary 查询审计日志信息
+        
+        @param request: QueryAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAuditLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.log_type):
+            query['LogType'] = request.log_type
+        if not UtilClient.is_unset(request.operator_id):
+            query['OperatorId'] = request.operator_id
+        if not UtilClient.is_unset(request.operator_types):
+            query['OperatorTypes'] = request.operator_types
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAuditLog',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryAuditLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_audit_log(
+        self,
+        request: quickbi_public_20220101_models.QueryAuditLogRequest,
+    ) -> quickbi_public_20220101_models.QueryAuditLogResponse:
+        """
+        @summary 查询审计日志信息
+        
+        @param request: QueryAuditLogRequest
+        @return: QueryAuditLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_audit_log_with_options(request, runtime)
+
+    async def query_audit_log_async(
+        self,
+        request: quickbi_public_20220101_models.QueryAuditLogRequest,
+    ) -> quickbi_public_20220101_models.QueryAuditLogResponse:
+        """
+        @summary 查询审计日志信息
+        
+        @param request: QueryAuditLogRequest
+        @return: QueryAuditLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_audit_log_with_options_async(request, runtime)
+
     def query_component_performance_with_options(
         self,
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
@@ -5326,6 +5754,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_data_service_with_options_async(request, runtime)
+
+    def query_data_service_list_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryDataServiceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
+        """
+        @summary 查询数据服务API列表
+        
+        @param request: QueryDataServiceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataServiceListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDataServiceList',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDataServiceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_data_service_list_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDataServiceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
+        """
+        @summary 查询数据服务API列表
+        
+        @param request: QueryDataServiceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataServiceListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDataServiceList',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDataServiceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_data_service_list(
+        self,
+        request: quickbi_public_20220101_models.QueryDataServiceListRequest,
+    ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
+        """
+        @summary 查询数据服务API列表
+        
+        @param request: QueryDataServiceListRequest
+        @return: QueryDataServiceListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_data_service_list_with_options(request, runtime)
+
+    async def query_data_service_list_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDataServiceListRequest,
+    ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
+        """
+        @summary 查询数据服务API列表
+        
+        @param request: QueryDataServiceListRequest
+        @return: QueryDataServiceListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_data_service_list_with_options_async(request, runtime)
 
     def query_dataset_detail_info_with_options(
         self,
@@ -8797,6 +9333,8 @@ class Client(OpenApiClient):
             query['AdminUser'] = request.admin_user
         if not UtilClient.is_unset(request.auth_admin_user):
             query['AuthAdminUser'] = request.auth_admin_user
+        if not UtilClient.is_unset(request.is_deleted):
+            query['IsDeleted'] = request.is_deleted
         if not UtilClient.is_unset(request.nick_name):
             query['NickName'] = request.nick_name
         if not UtilClient.is_unset(request.role_ids):
@@ -8842,6 +9380,8 @@ class Client(OpenApiClient):
             query['AdminUser'] = request.admin_user
         if not UtilClient.is_unset(request.auth_admin_user):
             query['AuthAdminUser'] = request.auth_admin_user
+        if not UtilClient.is_unset(request.is_deleted):
+            query['IsDeleted'] = request.is_deleted
         if not UtilClient.is_unset(request.nick_name):
             query['NickName'] = request.nick_name
         if not UtilClient.is_unset(request.role_ids):

@@ -1,3 +1,16 @@
+2024-06-27 Version: 1.5.0
+- Support API DataSetBlood.
+- Support API DataSourceBlood.
+- Support API QueryApprovalInfo.
+- Support API QueryAuditLog.
+- Support API QueryDataServiceList.
+- Update API QueryUserList: update response param.
+- Update API QueryWorks: update response param.
+- Update API QueryWorksByOrganization: update response param.
+- Update API QueryWorksByWorkspace: update response param.
+- Update API UpdateUser: add param IsDeleted.
+
+
 2024-05-22 Version: 1.4.0
 - Support API CreateTicket4Copilot.
 - Support API ListOrganizationRoleUsers.
