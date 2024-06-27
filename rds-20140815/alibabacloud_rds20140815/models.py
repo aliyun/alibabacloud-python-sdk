@@ -23036,9 +23036,11 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaMo
     def __init__(
         self,
         dbinstance_ids: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds = None,
+        recovery_model: str = None,
     ):
         # The instance IDs.
         self.dbinstance_ids = dbinstance_ids
+        self.recovery_model = recovery_model
 
     def validate(self):
         if self.dbinstance_ids:
@@ -23052,6 +23054,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaMo
         result = dict()
         if self.dbinstance_ids is not None:
             result['DBInstanceIds'] = self.dbinstance_ids.to_map()
+        if self.recovery_model is not None:
+            result['RecoveryModel'] = self.recovery_model
         return result
 
     def from_map(self, m: dict = None):
@@ -23059,6 +23063,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaMo
         if m.get('DBInstanceIds') is not None:
             temp_model = DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds()
             self.dbinstance_ids = temp_model.from_map(m['DBInstanceIds'])
+        if m.get('RecoveryModel') is not None:
+            self.recovery_model = m.get('RecoveryModel')
         return self
 
 
@@ -44344,16 +44350,20 @@ class DescribeParametersResponseBodyParamGroupInfo(TeaModel):
 class DescribeParametersResponseBodyRunningParametersDBInstanceParameter(TeaModel):
     def __init__(
         self,
+        parameter_default_value: str = None,
         parameter_description: str = None,
         parameter_name: str = None,
         parameter_value: str = None,
+        parameter_value_range: str = None,
     ):
+        self.parameter_default_value = parameter_default_value
         # The description of the parameter.
         self.parameter_description = parameter_description
         # The name of the parameter.
         self.parameter_name = parameter_name
         # The value of the parameter.
         self.parameter_value = parameter_value
+        self.parameter_value_range = parameter_value_range
 
     def validate(self):
         pass
@@ -44364,22 +44374,30 @@ class DescribeParametersResponseBodyRunningParametersDBInstanceParameter(TeaMode
             return _map
 
         result = dict()
+        if self.parameter_default_value is not None:
+            result['ParameterDefaultValue'] = self.parameter_default_value
         if self.parameter_description is not None:
             result['ParameterDescription'] = self.parameter_description
         if self.parameter_name is not None:
             result['ParameterName'] = self.parameter_name
         if self.parameter_value is not None:
             result['ParameterValue'] = self.parameter_value
+        if self.parameter_value_range is not None:
+            result['ParameterValueRange'] = self.parameter_value_range
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ParameterDefaultValue') is not None:
+            self.parameter_default_value = m.get('ParameterDefaultValue')
         if m.get('ParameterDescription') is not None:
             self.parameter_description = m.get('ParameterDescription')
         if m.get('ParameterName') is not None:
             self.parameter_name = m.get('ParameterName')
         if m.get('ParameterValue') is not None:
             self.parameter_value = m.get('ParameterValue')
+        if m.get('ParameterValueRange') is not None:
+            self.parameter_value_range = m.get('ParameterValueRange')
         return self
 
 

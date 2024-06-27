@@ -1,3 +1,8 @@
+2024-06-27 Version: 5.0.4
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeParameters: update response param.
+
+
 2024-06-27 Version: 5.0.3
 - Update API ModifyDBInstanceSpec: update param ServerlessConfiguration.
 
