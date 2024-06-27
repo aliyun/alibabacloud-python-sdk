@@ -17038,6 +17038,7 @@ class DescribeDtsJobsRequest(TeaModel):
     def __init__(
         self,
         dedicated_cluster_id: str = None,
+        dest_product_type: str = None,
         dts_bis_label: str = None,
         dts_instance_id: str = None,
         dts_job_id: str = None,
@@ -17054,6 +17055,7 @@ class DescribeDtsJobsRequest(TeaModel):
         region: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        src_product_type: str = None,
         status: str = None,
         tags: str = None,
         type: str = None,
@@ -17062,6 +17064,7 @@ class DescribeDtsJobsRequest(TeaModel):
     ):
         # The ID of the DTS dedicated cluster on which the task runs.
         self.dedicated_cluster_id = dedicated_cluster_id
+        self.dest_product_type = dest_product_type
         # The environment tag of the DTS instance. Valid values:
         # 
         # - **normal**\
@@ -17111,6 +17114,7 @@ class DescribeDtsJobsRequest(TeaModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        self.src_product_type = src_product_type
         # The state of the DTS task.
         # 
         # Valid values for a data migration task:
@@ -17194,6 +17198,8 @@ class DescribeDtsJobsRequest(TeaModel):
         result = dict()
         if self.dedicated_cluster_id is not None:
             result['DedicatedClusterId'] = self.dedicated_cluster_id
+        if self.dest_product_type is not None:
+            result['DestProductType'] = self.dest_product_type
         if self.dts_bis_label is not None:
             result['DtsBisLabel'] = self.dts_bis_label
         if self.dts_instance_id is not None:
@@ -17226,6 +17232,8 @@ class DescribeDtsJobsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.src_product_type is not None:
+            result['SrcProductType'] = self.src_product_type
         if self.status is not None:
             result['Status'] = self.status
         if self.tags is not None:
@@ -17242,6 +17250,8 @@ class DescribeDtsJobsRequest(TeaModel):
         m = m or dict()
         if m.get('DedicatedClusterId') is not None:
             self.dedicated_cluster_id = m.get('DedicatedClusterId')
+        if m.get('DestProductType') is not None:
+            self.dest_product_type = m.get('DestProductType')
         if m.get('DtsBisLabel') is not None:
             self.dts_bis_label = m.get('DtsBisLabel')
         if m.get('DtsInstanceId') is not None:
@@ -17274,6 +17284,8 @@ class DescribeDtsJobsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SrcProductType') is not None:
+            self.src_product_type = m.get('SrcProductType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tags') is not None:

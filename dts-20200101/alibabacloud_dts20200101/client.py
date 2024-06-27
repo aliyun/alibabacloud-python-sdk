@@ -5795,6 +5795,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dedicated_cluster_id):
             query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dest_product_type):
+            query['DestProductType'] = request.dest_product_type
         if not UtilClient.is_unset(request.dts_bis_label):
             query['DtsBisLabel'] = request.dts_bis_label
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -5827,6 +5829,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.src_product_type):
+            query['SrcProductType'] = request.src_product_type
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags):
@@ -5875,6 +5879,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dedicated_cluster_id):
             query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dest_product_type):
+            query['DestProductType'] = request.dest_product_type
         if not UtilClient.is_unset(request.dts_bis_label):
             query['DtsBisLabel'] = request.dts_bis_label
         if not UtilClient.is_unset(request.dts_instance_id):
@@ -5907,6 +5913,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.src_product_type):
+            query['SrcProductType'] = request.src_product_type
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags):
