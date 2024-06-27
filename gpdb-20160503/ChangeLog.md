@@ -1,3 +1,8 @@
+2024-06-27 Version: 3.8.1
+- Update API DescribeStreamingDataService: update response param.
+- Update API ListStreamingDataServices: update response param.
+
+
 2024-05-28 Version: 3.8.0
 - Support API BindDBResourceGroupWithRole.
 - Support API CreateDBResourceGroup.

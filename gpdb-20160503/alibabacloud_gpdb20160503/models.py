@@ -163,11 +163,19 @@ class BindDBResourceGroupWithRoleRequest(TeaModel):
         resource_group_name: str = None,
         role_list: List[str] = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The name of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_name = resource_group_name
+        # The roles.
+        # 
         # This parameter is required.
         self.role_list = role_list
 
@@ -211,11 +219,19 @@ class BindDBResourceGroupWithRoleShrinkRequest(TeaModel):
         resource_group_name: str = None,
         role_list_shrink: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The name of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_name = resource_group_name
+        # The roles.
+        # 
         # This parameter is required.
         self.role_list_shrink = role_list_shrink
 
@@ -256,6 +272,7 @@ class BindDBResourceGroupWithRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -330,16 +347,35 @@ class CancelUploadDocumentJobRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the document collection.
+        # 
+        # >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The ID of the instance for which vector engine optimization is enabled.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The ID of the document upload job. You can call the `UploadDocumentAsync` operation to query the job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  The value of this parameter is specified when you call the CreateNamespace operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -394,8 +430,14 @@ class CancelUploadDocumentJobResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -478,16 +520,35 @@ class CancelUpsertCollectionDataJobRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
+        # 
+        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The ID of the vector data upload job. You can call the `UpsertCollectionDataAsync` operation to query the job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  The value of this parameter is specified when you call the CreateNamespace operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -542,8 +603,14 @@ class CancelUpsertCollectionDataJobResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -623,12 +690,21 @@ class CheckHadoopDataSourceRequest(TeaModel):
         data_source_id: str = None,
         region_id: str = None,
     ):
+        # The Hadoop path that you want to check.
+        # 
         # This parameter is required.
         self.check_dir = check_dir
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -670,8 +746,14 @@ class CheckHadoopDataSourceResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The returned message. If the service failed, an error message is returned. Otherwise, a pair of double quotation marks ("") is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The status of the service. Valid values:
+        # 
+        # *   Running
+        # *   Failed
         self.status = status
 
     def validate(self):
@@ -750,8 +832,12 @@ class CheckHadoopNetConnectionRequest(TeaModel):
         emr_instance_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The E-MapReduce (EMR) Hadoop cluster ID.
+        # 
         # This parameter is required.
         self.emr_instance_id = emr_instance_id
         self.region_id = region_id
@@ -791,8 +877,11 @@ class CheckHadoopNetConnectionResponseBody(TeaModel):
         connection_status: str = None,
         request_id: str = None,
     ):
+        # The returned message. If the connection failed, an error message is returned. Otherwise, a pair of double quotation marks ("") is returned.
         self.connection_message = connection_message
+        # The connection status. Valid values: Success and Failed.
         self.connection_status = connection_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -871,8 +960,12 @@ class CheckJDBCSourceNetConnectionRequest(TeaModel):
         jdbc_connection_string: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The JDBC connection string.
+        # 
         # This parameter is required.
         self.jdbc_connection_string = jdbc_connection_string
         self.region_id = region_id
@@ -912,8 +1005,14 @@ class CheckJDBCSourceNetConnectionResponseBody(TeaModel):
         connection_status: str = None,
         request_id: str = None,
     ):
+        # The returned message. If the connection failed, an error message is returned. Otherwise, a pair of double quotation marks ("") is returned.
         self.connection_message = connection_message
+        # The connection status. Valid values:
+        # 
+        # *   Success
+        # *   Failed
         self.connection_status = connection_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1270,25 +1369,65 @@ class CreateCollectionRequest(TeaModel):
         pq_enable: int = None,
         region_id: str = None,
     ):
+        # The name of the collection that you want to create.
+        # 
+        # >  The name must comply with the naming conventions of PostgreSQL objects.
+        # 
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The number of vector dimensions.
+        # 
+        # >  If you specify this parameter, an index is created. When you call the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation, make sure that the length of the Rows.Vector parameter is the same as the value of this parameter. If you do not specify this parameter, you can call the [CreateVectorIndex](https://help.aliyun.com/document_detail/2401499.html) operation to create an index.
         self.dimension = dimension
+        # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+        # 
+        # > 
+        # 
+        # *   0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+        # 
+        # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
         self.external_storage = external_storage
         self.full_text_retrieval_fields = full_text_retrieval_fields
+        # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+        # 
+        # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+        # 
+        # *If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+        # 
+        # *If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+        # 
+        # *If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+        # 
+        # *If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
         self.hnsw_m = hnsw_m
         # This parameter is required.
         self.manager_account = manager_account
         # This parameter is required.
         self.manager_account_password = manager_account_password
+        # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+        # 
+        # **\
+        # 
+        # **Warning**Reserved fields such as id, vector, to_tsvector, and source cannot be used.
+        # 
         # This parameter is required.
         self.metadata = metadata
         self.metrics = metrics
+        # The name of the namespace.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         self.owner_id = owner_id
         self.parser = parser
+        # Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+        # 
+        # *   0: no.
+        # *   1 (default): yes.
         self.pq_enable = pq_enable
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -1377,6 +1516,10 @@ class CreateCollectionResponseBody(TeaModel):
     ):
         self.message = message
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -1673,7 +1816,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The IP address whitelist of the instance.
         # 
-        # A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
+        # A value of 127.0.0.1 denies access from any external IP address. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
         self.security_iplist = security_iplist
         # The performance level of ESSDs. Valid values:
         # 
@@ -2274,11 +2417,31 @@ class CreateDBResourceGroupRequest(TeaModel):
         resource_group_config: str = None,
         resource_group_name: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The configurations of the resource group.
+        # 
+        # > 
+        # 
+        # *   CpuRateLimit: the percentage of CPU resources that are available for the resource group. Unit: %.
+        # 
+        # *   MemoryLimit: the percentage of memory resources that are available for the resource group. Unit: %.
+        # 
+        # *   MemorySharedQuota: the percentage of memory resources shared among transactions that are submitted to the resource group. Unit: %. Default value: 80.
+        # 
+        # *   MemorySpillRatio: the memory spill ratio for memory-intensive transactions. When the memory that is used by memory-intensive transactions reaches this value, data is spilled to disks. Unit: %. Default value: 0.
+        # 
+        # *   Concurrency: the maximum number of concurrent transactions or parallel queries that are allowed for a resource group. Default value: 20.
+        # 
         # This parameter is required.
         self.resource_group_config = resource_group_config
+        # The name of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_name = resource_group_name
 
@@ -2319,6 +2482,7 @@ class CreateDBResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2405,9 +2569,60 @@ class CreateDocumentCollectionRequest(TeaModel):
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The vectorization algorithm.
+        # 
+        # >  Valid values:
+        # 
+        # *   text-embedding-v1: the algorithm that produces 1536-dimensional vectors.
+        # 
+        # *   text-embedding-v2: the algorithm that produces 1536-dimensional vectors.
+        # 
+        # *   text2vec: the algorithm that produces 1024-dimensional vectors.
+        # 
+        # *   m3e-base: the algorithm that produces 768-dimensional vectors.
+        # 
+        # *   m3e-small: the algorithm that produces 512-dimensional vectors.
+        # 
+        # *   multimodal-embedding-one-peace-v1: the image vectorization algorithm that produces 1536-dimensional vectors.
+        # 
+        # *   clip-vit-b-32: the image vectorization algorithm that uses the Contrastive Language-Image Pre-Training (CLIP) ViT-B/32 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-vit-b-16: the image vectorization algorithm that uses the CLIP ViT-B/16 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-vit-l-14: the image vectorization algorithm that uses the CLIP ViT-L/14 model and produces 768-dimensional vectors.
+        # 
+        # *   clip-vit-l-14-336px: the image vectorization algorithm that uses the CLIP ViT-L/14@336px model and produces 768-dimensional vectors.
+        # 
+        # *   clip-rn50: the image vectorization algorithm that uses the CLIP RN50 model and produces 1024-dimensional vectors.
+        # 
+        # *   clip-rn101: the image vectorization algorithm that uses the CLIP RN101 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-rn50x4: the image vectorization algorithm that uses the CLIP RN50x4 model and produces 640-dimensional vectors.
+        # 
+        # *   clip-rn50x16: the image vectorization algorithm that uses the CLIP RN50x16 model and produces 768-dimensional vectors.
+        # 
+        # *   clip-rn50x64: the image vectorization algorithm that uses the CLIP RN50x64 model and produces 1024-dimensional vectors.
         self.embedding_model = embedding_model
+        # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+        # 
+        # > 
+        # 
+        # *   0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+        # 
+        # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
         self.external_storage = external_storage
         self.full_text_retrieval_fields = full_text_retrieval_fields
+        # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+        # 
+        # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+        # 
+        # *   If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+        # 
+        # *   If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+        # 
+        # *   If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+        # 
+        # *   If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
         self.hnsw_m = hnsw_m
         # This parameter is required.
         self.manager_account = manager_account
@@ -2418,6 +2633,10 @@ class CreateDocumentCollectionRequest(TeaModel):
         self.namespace = namespace
         self.owner_id = owner_id
         self.parser = parser
+        # Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+        # 
+        # *   0: no.
+        # *   1 (default): yes.
         self.pq_enable = pq_enable
         # This parameter is required.
         self.region_id = region_id
@@ -2586,12 +2805,23 @@ class CreateExtensionsRequest(TeaModel):
         extensions: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.dbnames = dbnames
+        # The name of the extension that you want to install. Separate multiple extension names with commas (,).
+        # 
         # This parameter is required.
         self.extensions = extensions
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -2632,7 +2862,9 @@ class CreateExtensionsResponseBody(TeaModel):
         extensions: str = None,
         request_id: str = None,
     ):
+        # The name of the extension that you want to install. Multiple extension names are separated with commas (,).
         self.extensions = extensions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2711,10 +2943,16 @@ class CreateExternalDataServiceRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The description of the service.
         self.service_description = service_description
         # This parameter is required.
         self.service_name = service_name
+        # The specifications of the service. Unit: compute units (CUs). Valid values:
+        # 
+        # *   8
+        # 
         # This parameter is required.
         self.service_spec = service_spec
 
@@ -2851,13 +3089,21 @@ class CreateHadoopDataSourceRequest(TeaModel):
         self.data_source_name = data_source_name
         self.data_source_type = data_source_type
         self.emr_instance_id = emr_instance_id
+        # The string that specifies the content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         self.hdfsconf = hdfsconf
+        # The string that specifies the content of the Hadoop core-site.xml file.
         self.hadoop_core_conf = hadoop_core_conf
         self.hadoop_create_type = hadoop_create_type
+        # The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
         self.hadoop_hosts_address = hadoop_hosts_address
+        # The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
         self.hive_conf = hive_conf
         self.map_reduce_conf = map_reduce_conf
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         self.yarn_conf = yarn_conf
 
     def validate(self):
@@ -3019,9 +3265,13 @@ class CreateJDBCDataSourceRequest(TeaModel):
         self.data_source_description = data_source_description
         self.data_source_name = data_source_name
         self.data_source_type = data_source_type
+        # The JDBC connection string.
         self.jdbcconnection_string = jdbcconnection_string
+        # The password of the database account.
         self.jdbcpassword = jdbcpassword
+        # The name of the database account.
         self.jdbcuser_name = jdbcuser_name
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -3165,13 +3415,17 @@ class CreateNamespaceRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
+        # >  You can create an account on the Account Management page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+        # 
         # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
         # 
         # This parameter is required.
         self.manager_account_password = manager_account_password
-        # The name of the namespace.
+        # The name of the namespace. After the namespace is created, the system automatically creates an account that has the same name.
+        # 
+        # >  The name must comply with the naming conventions of PostgreSQL objects.
         self.namespace = namespace
         # The password of the namespace.
         # 
@@ -3179,8 +3433,6 @@ class CreateNamespaceRequest(TeaModel):
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -3562,6 +3814,9 @@ class CreateStreamingDataServiceRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
         self.service_description = service_description
         # This parameter is required.
@@ -3612,6 +3867,7 @@ class CreateStreamingDataServiceResponseBody(TeaModel):
         service_id: int = None,
     ):
         self.request_id = request_id
+        # The real-time data service ID.
         self.service_id = service_id
 
     def validate(self):
@@ -3700,6 +3956,8 @@ class CreateStreamingDataSourceRequest(TeaModel):
         # This parameter is required.
         self.data_source_type = data_source_type
         self.region_id = region_id
+        # The real-time data service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
 
@@ -4229,7 +4487,25 @@ class CreateVectorIndexRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # This parameter is required.
         self.dimension = dimension
+        # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+        # 
+        # > 
+        # 
+        # *   0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+        # 
+        # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
         self.external_storage = external_storage
+        # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+        # 
+        # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+        # 
+        # *   If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+        # 
+        # *   If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+        # 
+        # *   If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+        # 
+        # *   If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
         self.hnsw_m = hnsw_m
         # This parameter is required.
         self.manager_account = manager_account
@@ -4239,6 +4515,10 @@ class CreateVectorIndexRequest(TeaModel):
         self.metrics = metrics
         self.namespace = namespace
         self.owner_id = owner_id
+        # Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+        # 
+        # *   0: no.
+        # *   1 (default): yes.
         self.pq_enable = pq_enable
         # This parameter is required.
         self.region_id = region_id
@@ -4416,7 +4696,7 @@ class DeleteCollectionRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -4565,7 +4845,7 @@ class DeleteCollectionDataRequest(TeaModel):
         self.collection = collection
         # The data that you want to delete.
         self.collection_data = collection_data
-        # The data filter to delete.
+        # The filter conditions for the data to be deleted.
         self.collection_data_filter = collection_data_filter
         # The instance ID.
         # 
@@ -4582,7 +4862,7 @@ class DeleteCollectionDataRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -5006,9 +5286,15 @@ class DeleteDBResourceGroupRequest(TeaModel):
         owner_id: int = None,
         resource_group_name: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The name of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_name = resource_group_name
 
@@ -5045,6 +5331,7 @@ class DeleteDBResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5119,13 +5406,28 @@ class DeleteDocumentRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the document collection.
+        # 
+        # >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+        # 
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the document.
+        # 
+        # >  You can call the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) operation to query a list of documents.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
@@ -5270,10 +5572,19 @@ class DeleteDocumentCollectionRequest(TeaModel):
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -5326,6 +5637,10 @@ class DeleteDocumentCollectionResponseBody(TeaModel):
     ):
         self.message = message
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -5405,12 +5720,21 @@ class DeleteExtensionRequest(TeaModel):
         extension: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.dbnames = dbnames
+        # The name of the extension.
+        # 
         # This parameter is required.
         self.extension = extension
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -5450,6 +5774,7 @@ class DeleteExtensionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5629,8 +5954,12 @@ class DeleteHadoopDataSourceRequest(TeaModel):
         data_source_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
         self.region_id = region_id
@@ -5668,6 +5997,7 @@ class DeleteHadoopDataSourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5740,8 +6070,13 @@ class DeleteJDBCDataSourceRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -5858,6 +6193,8 @@ class DeleteNamespaceRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
+        # >  You can create an account on the Account Management page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+        # 
         # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
@@ -5866,12 +6203,12 @@ class DeleteNamespaceRequest(TeaModel):
         self.manager_account_password = manager_account_password
         # The name of the namespace.
         # 
+        # >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+        # 
         # This parameter is required.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -6009,9 +6346,13 @@ class DeleteStreamingDataServiceRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
 
@@ -6050,8 +6391,16 @@ class DeleteStreamingDataServiceResponseBody(TeaModel):
         request_id: str = None,
         status: bool = None,
     ):
+        # The error message returned if the operation fails.
+        # 
+        # This parameter is returned only when the return value of **Status** is **false**.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **false**: The operation fails.
+        # *   **true**: The operation is successful.
         self.status = status
 
     def validate(self):
@@ -6130,8 +6479,12 @@ class DeleteStreamingDataSourceRequest(TeaModel):
         data_source_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
         self.region_id = region_id
@@ -6169,6 +6522,7 @@ class DeleteStreamingDataSourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6239,8 +6593,12 @@ class DeleteStreamingJobRequest(TeaModel):
         job_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
         self.region_id = region_id
@@ -6278,6 +6636,7 @@ class DeleteStreamingJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6354,6 +6713,8 @@ class DeleteVectorIndexRequest(TeaModel):
     ):
         # The name of the collection.
         # 
+        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # 
         # This parameter is required.
         self.collection = collection
         # The instance ID.
@@ -6364,18 +6725,20 @@ class DeleteVectorIndexRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
+        # >  You can create an account on the **Account Management** page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+        # 
         # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
         # 
         # This parameter is required.
         self.manager_account_password = manager_account_password
-        # The name of the namespace.
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -6728,6 +7091,10 @@ class DescribeActiveSQLRecordsRequest(TeaModel):
         start_time: str = None,
         user: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.database = database
@@ -6737,6 +7104,7 @@ class DescribeActiveSQLRecordsRequest(TeaModel):
         self.min_duration = min_duration
         self.order = order
         self.start_time = start_time
+        # The name of the database account.
         self.user = user
 
     def validate(self):
@@ -6806,16 +7174,33 @@ class DescribeActiveSQLRecordsResponseBodyQueries(TeaModel):
         state: str = None,
         user: str = None,
     ):
+        # The IP address of the client.
         self.client_addr = client_addr
+        # The name of the database.
         self.database = database
+        # The progress ID.
         self.pid = pid
+        # The SQL statement of the query.
         self.query = query
+        # The execution duration of the query. Unit: seconds.
         self.query_duration = query_duration
+        # The start time of the query.
         self.query_start = query_start
+        # The session ID.
         self.session_id = session_id
+        # Indicates whether the SQL statement is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.sql_truncated = sql_truncated
+        # The threshold that is used to truncate the SQL statement.
         self.sql_truncated_threshold = sql_truncated_threshold
+        # The status of the asynchronous request. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **BLOCK**\
         self.state = state
+        # The name of the database account.
         self.user = user
 
     def validate(self):
@@ -6885,7 +7270,9 @@ class DescribeActiveSQLRecordsResponseBody(TeaModel):
         queries: List[DescribeActiveSQLRecordsResponseBodyQueries] = None,
         request_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The queried SQL records.
         self.queries = queries
         self.request_id = request_id
 
@@ -7538,6 +7925,8 @@ class DescribeCollectionRequest(TeaModel):
     ):
         # The name of the collection.
         # 
+        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # 
         # This parameter is required.
         self.collection = collection
         # The instance ID.
@@ -7547,6 +7936,8 @@ class DescribeCollectionRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
+        # 
+        # >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         # The password of the namespace.
         # 
@@ -7554,8 +7945,6 @@ class DescribeCollectionRequest(TeaModel):
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -8503,7 +8892,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.encryption_type = encryption_type
         # The database engine of the instance.
         self.engine = engine
-        # The version of the database engine.
+        # The database engine version of the instance.
         self.engine_version = engine_version
         # The expiration time of the instance. The time is displayed in UTC.
         # 
@@ -8531,13 +8920,13 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **ManualLock**: The instance is manually locked.
         # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
         # *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
-        # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
+        # *   **LockByDiskQuota**: The instance is a read-only instance and is automatically locked when the disk space is full.
         self.lock_mode = lock_mode
         # An invalid parameter. It is no longer returned when you call this operation.
         self.lock_reason = lock_reason
-        # The end time of the maintenance window of the instance.
+        # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window of the instance.
+        # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
         # The amount of coordinator node resources.
         self.master_cu = master_cu
@@ -8628,7 +9017,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **true**\
         # *   **false**\
         self.support_restore = support_restore
-        # The tags of the instance. Each tag is a key-value pair.
+        # The tags that are added to the instance.
         self.tags = tags
         # The vSwitch ID of the instance.
         self.v_switch_id = v_switch_id
@@ -11580,6 +11969,8 @@ class DescribeDBInstanceSupportMaxPerformanceRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
@@ -11616,9 +12007,13 @@ class DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance
         unit: str = None,
         value: str = None,
     ):
+        # The performance bottleneck type.
         self.bottleneck = bottleneck
+        # The name of the performance metric.
         self.key = key
+        # The unit of the performance metric.
         self.unit = unit
+        # The value of the performance metric.
         self.value = value
 
     def validate(self):
@@ -11695,8 +12090,10 @@ class DescribeDBInstanceSupportMaxPerformanceResponseBody(TeaModel):
         performances: DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances = None,
         request_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.performances = performances
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11861,8 +12258,9 @@ class DescribeDBInstancesRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The tag value.
+        # The tags.
         self.tag = tag
+        # The VPC ID. You can use this parameter to filter instances that reside in the specified VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -12036,8 +12434,9 @@ class DescribeDBInstancesShrinkRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The tag value.
+        # The tags.
         self.tag = tag
+        # The VPC ID. You can use this parameter to filter instances that reside in the specified VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -12250,15 +12649,15 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         # *   **1**: internal network.
         # *   **2**: VPC.
         self.dbinstance_net_type = dbinstance_net_type
-        # The state of the instance. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/86944.html).
+        # The status of the instance. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/86944.html).
         self.dbinstance_status = dbinstance_status
         # The database engine of the instance.
         self.engine = engine
-        # The version of the database engine.
+        # The database engine version of the instance.
         self.engine_version = engine_version
         # The expiration time of the instance. The time is displayed in UTC.
         # 
-        # > The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
+        # >  The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
         self.expire_time = expire_time
         # The resource type of the instance. Valid values:
         # 
@@ -12277,7 +12676,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
         # *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
         # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
-        # *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked due to exhausted storage.
+        # *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked when the disk space is full.
         self.lock_mode = lock_mode
         # The reason why the instance is locked. Valid values:
         # 
@@ -12287,7 +12686,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         # *   **3**: The instance is automatically locked due to instance restoration.
         # *   **4**: The instance is automatically locked due to exhausted storage.
         # 
-        # > If the instance is in reserved storage mode and unlocked, null is returned.
+        # >  If the instance is in reserved storage mode and is not locked, null is returned.
         self.lock_reason = lock_reason
         # The number of coordinator nodes.
         self.master_node_num = master_node_num
@@ -12308,7 +12707,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         # *   **Manual**: manual scheduling.
         # *   **Auto**: automatic scheduling.
         # 
-        # > This parameter is returned only for instances in Serverless mode.
+        # >  This parameter is returned only for instances in Serverless mode.
         self.serverless_mode = serverless_mode
         # The storage capacity of the instance. Unit: GB.
         self.storage_size = storage_size
@@ -12321,7 +12720,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The VPC ID of the instance.
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id
@@ -12597,9 +12996,16 @@ class DescribeDBResourceGroupRequest(TeaModel):
         owner_id: int = None,
         resource_group_name: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The name of the resource group.
+        # 
+        # >  If you specify this parameter, the information about the specified resource group is returned. If you do not specify this parameter, the information about all resource groups is returned.
         self.resource_group_name = resource_group_name
 
     def validate(self):
@@ -12664,8 +13070,23 @@ class DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem(Tea
         resource_group_name: str = None,
         role_list: DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList = None,
     ):
+        # The configurations of the resource group.
+        # 
+        # > 
+        # 
+        # *   CpuRateLimit: the percentage of CPU resources that are available for the resource group. Unit: %.
+        # 
+        # *   MemoryLimit: the percentage of memory resources that are available for the resource group. Unit: %.
+        # 
+        # *   MemorySharedQuota: the percentage of memory resources shared among transactions that are submitted to the resource group. Unit: %. Default value: 80.
+        # 
+        # *   MemorySpillRatio: the memory spill ratio for memory-intensive transactions. When the memory that is used by memory-intensive transactions reaches this value, data is spilled to disks. Unit: %. Default value: 0.
+        # 
+        # *   Concurrency: the maximum number of concurrent transactions or parallel queries that are allowed for a resource group. Default value: 20.
         self.resource_group_config = resource_group_config
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
+        # The roles.
         self.role_list = role_list
 
     def validate(self):
@@ -12739,7 +13160,9 @@ class DescribeDBResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         resource_group_items: DescribeDBResourceGroupResponseBodyResourceGroupItems = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The queried resource group information.
         self.resource_group_items = resource_group_items
 
     def validate(self):
@@ -12815,6 +13238,10 @@ class DescribeDBResourceManagementModeRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
@@ -12849,7 +13276,12 @@ class DescribeDBResourceManagementModeResponseBody(TeaModel):
         request_id: str = None,
         resource_management_mode: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The resource management mode. Valid values:
+        # 
+        # *   resourceGroup: resource group management.
+        # *   resourceQueue: resource queue management.
         self.resource_management_mode = resource_management_mode
 
     def validate(self):
@@ -15100,13 +15532,28 @@ class DescribeDocumentRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the document collection.
+        # 
+        # >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+        # 
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the document.
+        # 
+        # >  You can call the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) operation to query a list of documents.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
@@ -15797,8 +16244,11 @@ class DescribeHadoopClustersInSameNetRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -15832,6 +16282,7 @@ class DescribeHadoopClustersInSameNetResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.clusters = clusters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15907,10 +16358,22 @@ class DescribeHadoopConfigsRequest(TeaModel):
         emr_instance_id: str = None,
         region_id: str = None,
     ):
+        # The name of the configuration file. Valid values:
+        # 
+        # *   hdfs-site
+        # *   core-site
+        # *   yarn-site
+        # *   mapred-site
+        # *   hive-site
+        # 
         # This parameter is required.
         self.config_name = config_name
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The E-MapReduce (EMR) Hadoop cluster ID.
+        # 
         # This parameter is required.
         self.emr_instance_id = emr_instance_id
         self.region_id = region_id
@@ -15954,8 +16417,16 @@ class DescribeHadoopConfigsResponseBody(TeaModel):
         config_value: str = None,
         request_id: str = None,
     ):
+        # The name of the configuration file. Valid values:
+        # 
+        # *   hdfs-site
+        # *   core-site
+        # *   yarn-site
+        # *   mapred-site
+        # *   hive-site
         self.config_name = config_name
         self.config_value = config_value
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16034,8 +16505,11 @@ class DescribeHadoopDataSourceRequest(TeaModel):
         data_source_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The data source ID.
         self.data_source_id = data_source_id
         self.region_id = region_id
 
@@ -16088,22 +16562,46 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
         status_message: str = None,
         yarn_conf: str = None,
     ):
+        # The time when the service was created.
         self.create_time = create_time
+        # The description of the service. The description can be up to 256 characters in length.
         self.data_source_description = data_source_description
+        # The service directory in which Hadoop-related configuration files are stored.
         self.data_source_dir = data_source_dir
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The name of the service.
         self.data_source_name = data_source_name
+        # The status of the service. Valid values:
+        # 
+        # *   init
+        # *   running
+        # *   exception
         self.data_source_status = data_source_status
         self.data_source_type = data_source_type
+        # The E-MapReduce (EMR) Hadoop cluster ID.
         self.emr_instance_id = emr_instance_id
+        # The content of the Hadoop hdfs-site.xml file.
         self.hdfsconf = hdfsconf
+        # The content of the Hadoop core-site.xml file.
         self.hadoop_core_conf = hadoop_core_conf
+        # The type of the external service. Valid values:
+        # 
+        # *   HDFS
+        # *   HIVE
         self.hadoop_create_type = hadoop_create_type
+        # *   The address and hostname of the Hadoop cluster (data source) in the /etc/hosts directory.
+        # *\
         self.hadoop_hosts_address = hadoop_hosts_address
+        # The content of the Hadoop hive-site.xml file.
         self.hive_conf = hive_conf
+        # The content of the Hadoop MapReduceConf file.
         self.map_reduce_conf = map_reduce_conf
+        # The request ID.
         self.request_id = request_id
+        # The information about the service status. For example, if the service is in the exception state, the cause of the exception is displayed. If the service is in the running state, this parameter is left empty.
         self.status_message = status_message
+        # The content of the Hadoop yarn-site.xml file.
         self.yarn_conf = yarn_conf
 
     def validate(self):
@@ -17165,8 +17663,11 @@ class DescribeIMVInfosResponseBodyImvInfos(TeaModel):
         detail_info: str = None,
         mv: str = None,
     ):
+        # The name of the table based on which the materialized view is created.
         self.base = base
+        # The dependency between the materialized view and the base table and all metric values, which can be used to build a lineage graph.
         self.detail_info = detail_info
+        # The name of the materialized view.
         self.mv = mv
 
     def validate(self):
@@ -17205,6 +17706,7 @@ class DescribeIMVInfosResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.dbinstance_id = dbinstance_id
+        # The queried materialized views.
         self.imv_infos = imv_infos
         self.request_id = request_id
 
@@ -17293,6 +17795,8 @@ class DescribeJDBCDataSourceRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
 
@@ -17336,13 +17840,23 @@ class DescribeJDBCDataSourceResponseBody(TeaModel):
         status_message: str = None,
     ):
         self.create_time = create_time
+        # The description of the service. The description can be up to 256 characters in length.
         self.data_source_description = data_source_description
         self.data_source_id = data_source_id
         self.data_source_name = data_source_name
+        # The status of the service. Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Exception
         self.data_source_status = data_source_status
+        # The type of the data source.
         self.data_source_type = data_source_type
+        # The JDBC connection string.
         self.jdbcconnection_string = jdbcconnection_string
+        # The password of the database account.
         self.jdbcpassword = jdbcpassword
+        # The name of the database account.
         self.jdbcuser_name = jdbcuser_name
         self.request_id = request_id
         self.status_message = status_message
@@ -17897,20 +18411,22 @@ class DescribeNamespaceRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
+        # >  You can create an account on the Account Management page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+        # 
         # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
         # 
         # This parameter is required.
         self.manager_account_password = manager_account_password
-        # The name of the namespace.
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         # 
         # This parameter is required.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -18583,7 +19099,7 @@ class DescribeRdsVpcsRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
+        # This parameter is no longer used.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18666,7 +19182,7 @@ class DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs(TeaModel):
         self.iz_no = iz_no
         # The state of the vSwitch. If **Available** is returned, the vSwitch is available.
         self.status = status
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         self.v_switch_name = v_switch_name
@@ -18749,13 +19265,13 @@ class DescribeRdsVpcsResponseBodyVpcsVpc(TeaModel):
         # *   **true**\
         # *   **false**\
         self.is_default = is_default
-        # The ID of the region.
+        # The region ID of the instance.
         self.region_no = region_no
         # The state of the VPC. If **Available** is returned, the VPC is available.
         self.status = status
-        # Details of the vSwitches.
+        # The queried vSwitches.
         self.v_switchs = v_switchs
-        # The ID of VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The name of the VPC.
         self.vpc_name = vpc_name
@@ -18833,7 +19349,7 @@ class DescribeRdsVpcsResponseBodyVpcs(TeaModel):
         self,
         vpc: List[DescribeRdsVpcsResponseBodyVpcsVpc] = None,
     ):
-        # Details of the VPC.
+        # The queried VPC.
         self.vpc = vpc
 
     def validate(self):
@@ -18872,7 +19388,7 @@ class DescribeRdsVpcsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # Details of the VPCs.
+        # The queried VPCs.
         self.vpcs = vpcs
 
     def validate(self):
@@ -19201,6 +19717,10 @@ class DescribeRolesRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
@@ -19262,7 +19782,9 @@ class DescribeRolesResponseBody(TeaModel):
         request_id: str = None,
         role_list: DescribeRolesResponseBodyRoleList = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The roles.
         self.role_list = role_list
 
     def validate(self):
@@ -20494,6 +21016,11 @@ class DescribeSampleDataResponseBody(TeaModel):
         self.has_sample_data = has_sample_data
         # The ID of the request.
         self.request_id = request_id
+        # The loading status of the sample dataset. Valid values:
+        # 
+        # *   **loaded**\
+        # *   **loading**\
+        # *   **unload**\
         self.sample_data_status = sample_data_status
 
     def validate(self):
@@ -20580,9 +21107,13 @@ class DescribeStreamingDataServiceRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
 
@@ -20623,20 +21154,39 @@ class DescribeStreamingDataServiceResponseBody(TeaModel):
         service_description: str = None,
         service_id: str = None,
         service_ip: str = None,
+        service_managed: bool = None,
         service_name: str = None,
+        service_owner_id: str = None,
         service_port: int = None,
         service_spec: str = None,
         status: str = None,
     ):
+        # The time when the service was created.
         self.create_time = create_time
+        # The time when the service was last modified.
         self.modify_time = modify_time
+        # The request ID.
         self.request_id = request_id
+        # The description of the service.
         self.service_description = service_description
+        # The service ID.
         self.service_id = service_id
+        # The IP address of the service.
         self.service_ip = service_ip
+        self.service_managed = service_managed
+        # The name of the service.
         self.service_name = service_name
+        self.service_owner_id = service_owner_id
+        # The port number of the service.
         self.service_port = service_port
+        # The specifications of the service.
         self.service_spec = service_spec
+        # The status of the service. Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Exception
+        # *   Paused
         self.status = status
 
     def validate(self):
@@ -20660,8 +21210,12 @@ class DescribeStreamingDataServiceResponseBody(TeaModel):
             result['ServiceId'] = self.service_id
         if self.service_ip is not None:
             result['ServiceIp'] = self.service_ip
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.service_owner_id is not None:
+            result['ServiceOwnerId'] = self.service_owner_id
         if self.service_port is not None:
             result['ServicePort'] = self.service_port
         if self.service_spec is not None:
@@ -20684,8 +21238,12 @@ class DescribeStreamingDataServiceResponseBody(TeaModel):
             self.service_id = m.get('ServiceId')
         if m.get('ServiceIp') is not None:
             self.service_ip = m.get('ServiceIp')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('ServiceOwnerId') is not None:
+            self.service_owner_id = m.get('ServiceOwnerId')
         if m.get('ServicePort') is not None:
             self.service_port = m.get('ServicePort')
         if m.get('ServiceSpec') is not None:
@@ -20800,6 +21358,11 @@ class DescribeStreamingDataSourceResponseBody(TeaModel):
         self.error_message = error_message
         self.request_id = request_id
         self.service_id = service_id
+        # The status of the service. Valid values:
+        # 
+        # *   init
+        # *   running
+        # *   exception
         self.status = status
 
     def validate(self):
@@ -20906,8 +21469,12 @@ class DescribeStreamingJobRequest(TeaModel):
         job_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
         self.region_id = region_id
@@ -20970,33 +21537,56 @@ class DescribeStreamingJobResponseBody(TeaModel):
         update_columns: List[str] = None,
         write_mode: str = None,
     ):
+        # The username of the account.
         self.account = account
         self.consistency = consistency
+        # The time when the job was created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The name of the data source.
         self.data_source_id = data_source_id
         self.data_source_name = data_source_name
+        # The destination fields.
         self.dest_columns = dest_columns
+        # The name of the destination database.
         self.dest_database = dest_database
         self.dest_schema = dest_schema
+        # The name of the destination table.
         self.dest_table = dest_table
         self.error_limit_count = error_limit_count
+        # The information about the job status. For example, if the job is in the Exception state, the cause of the exception is displayed. If the job is in the Running state, this parameter is left empty.
         self.error_message = error_message
         self.fallback_offset = fallback_offset
         self.group_name = group_name
         self.job_config = job_config
+        # The description of the job.
         self.job_description = job_description
+        # The job ID.
         self.job_id = job_id
+        # The name of the job.
         self.job_name = job_name
         self.match_columns = match_columns
         self.mode = mode
+        # The time when the job was last modified.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.modify_time = modify_time
+        # The password of the account.
         self.password = password
+        # The request ID.
         self.request_id = request_id
+        # The source fields.
         self.src_columns = src_columns
+        # The status of the job. Valid values:
+        # 
+        # *   Init: The job is being initialized.
+        # *   Running: The job is running.
+        # *   Exception: The job encounters an exception.
+        # *   Paused: The job is paused.
         self.status = status
         self.update_columns = update_columns
+        # The write mode.
         self.write_mode = write_mode
 
     def validate(self):
@@ -22164,6 +22754,10 @@ class DisableDBResourceGroupRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
@@ -22197,6 +22791,7 @@ class DisableDBResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22676,6 +23271,10 @@ class EnableDBResourceGroupRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
@@ -22709,6 +23308,7 @@ class EnableDBResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22783,16 +23383,35 @@ class GetUploadDocumentJobRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the document collection.
+        # 
+        # >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The ID of the instance for which vector engine optimization is enabled.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The ID of the document upload job. You can call the `UploadDocumentAsync` operation to query the job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  The value of this parameter is specified when you call the CreateNamespace operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -22846,7 +23465,9 @@ class GetUploadDocumentJobResponseBodyChunkResult(TeaModel):
         chunk_file_url: str = None,
         plain_chunk_file_url: str = None,
     ):
+        # The URL of the file after chunking. The validity period of the URL is 2 hours. The file is in the JSONL format. Each line is in the `{"page_content":"*****", "metadata": {"**":"***","**":"***"}` format.
         self.chunk_file_url = chunk_file_url
+        # The URL of the file that does not contain metadata after chunking. The validity period of the URL is 2 hours. The file is in the TXT format. Each line is a chunk. The file can be easily used for embedding.
         self.plain_chunk_file_url = plain_chunk_file_url
 
     def validate(self):
@@ -22884,13 +23505,27 @@ class GetUploadDocumentJobResponseBodyJob(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # Indicates whether the operation is complete.
         self.completed = completed
+        # The time when the job was created.
         self.create_time = create_time
+        # The error message.
         self.error = error
-        # Job ID。
+        # The job ID.
         self.id = id
+        # The progress of the document upload job. Unit: %. A value of 100 indicates that the job is complete.
         self.progress = progress
+        # The status of the job. Valid values: Valid values:
+        # 
+        # *   Success
+        # *   Failed (See the Error parameter for failure reasons.)
+        # *   Cancelling
+        # *   Cancelled
+        # *   Start
+        # *   Running
+        # *   Pending
         self.status = status
+        # The time when the job was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -22944,6 +23579,9 @@ class GetUploadDocumentJobResponseBodyUsage(TeaModel):
         embedding_tokens: int = None,
     ):
         self.embedding_entries = embedding_entries
+        # The number of tokens that are used for vectorization.
+        # 
+        # >  A token is the minimum unit for splitting text. A token can be a word, phrase, punctuation, or character.
         self.embedding_tokens = embedding_tokens
 
     def validate(self):
@@ -22980,11 +23618,20 @@ class GetUploadDocumentJobResponseBody(TeaModel):
         status: str = None,
         usage: GetUploadDocumentJobResponseBodyUsage = None,
     ):
+        # The chunking result.
         self.chunk_result = chunk_result
+        # The information about the document upload job.
         self.job = job
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
+        # The number of tokens that are used for document understanding or embedding.
         self.usage = usage
 
     def validate(self):
@@ -23087,16 +23734,35 @@ class GetUpsertCollectionDataJobRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
+        # 
+        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The ID of the vector data upload job. You can call the `UpsertCollectionDataAsync` operation to query the job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  The value of this parameter is specified when you call the CreateNamespace operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -23155,13 +23821,33 @@ class GetUpsertCollectionDataJobResponseBodyJob(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # Indicates whether the operation is complete.
         self.completed = completed
+        # The time when the job was created.
         self.create_time = create_time
+        # The error message.
         self.error = error
-        # Job ID。
+        # The job ID.
         self.id = id
+        # The progress of the vector data upload job. The value of this parameter indicates the number of data entries that have been uploaded.
         self.progress = progress
+        # The status of the job.
+        # 
+        # >  Valid values:
+        # 
+        # *   Success
+        # 
+        # *   Failed (See the Error parameter for failure reasons.)
+        # 
+        # *   Cancelling
+        # 
+        # *   Cancelled
+        # 
+        # *   Start
+        # 
+        # *   Running
         self.status = status
+        # The time when the job was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -23216,9 +23902,16 @@ class GetUpsertCollectionDataJobResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The information about the vector data upload job.
         self.job = job
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -23311,6 +24004,8 @@ class GrantCollectionRequest(TeaModel):
     ):
         # The name of the collection.
         # 
+        # >  You can call the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation to create a vector collection and call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of vector collections.
+        # 
         # This parameter is required.
         self.collection = collection
         # The ID of the instance in reserved storage mode.
@@ -23333,6 +24028,8 @@ class GrantCollectionRequest(TeaModel):
         self.grant_type = grant_type
         # The name of the manager account that has the rds_superuser permission.
         # 
+        # >  You can create an account on the Account Management page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+        # 
         # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
@@ -23340,11 +24037,11 @@ class GrantCollectionRequest(TeaModel):
         # This parameter is required.
         self.manager_account_password = manager_account_password
         # The name of the namespace.
+        # 
+        # >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -23494,9 +24191,18 @@ class HandleActiveSQLRecordRequest(TeaModel):
         operate_type: int = None,
         pids: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The type of the operation on the process ID. Valid values:
+        # 
+        # *   **0**: cancel.
+        # *   **1**: terminate.
+        # *   **2**: forcefully terminate.
         self.operate_type = operate_type
+        # The process IDs. A process ID is a unique identifier of a query.
+        # 
         # This parameter is required.
         self.pids = pids
 
@@ -23534,7 +24240,12 @@ class HandleActiveSQLRecordResponseBodyResults(TeaModel):
         pid: str = None,
         status: str = None,
     ):
+        # The process ID, which is a unique identifier of the query.
         self.pid = pid
+        # Indicates whether the processing was successful. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.status = status
 
     def validate(self):
@@ -23569,9 +24280,16 @@ class HandleActiveSQLRecordResponseBody(TeaModel):
         results: List[HandleActiveSQLRecordResponseBodyResults] = None,
         status: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The request ID.
         self.request_id = request_id
+        # The processing result of the active query.
         self.results = results
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.status = status
 
     def validate(self):
@@ -23670,7 +24388,9 @@ class InitVectorDatabaseRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database account that has the rds_superuser permission.
+        # The name of the manager account that has the rds_superuser permission.
+        # 
+        # >  You can create an account on the Account Management page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
         # 
         # This parameter is required.
         self.manager_account = manager_account
@@ -23679,9 +24399,9 @@ class InitVectorDatabaseRequest(TeaModel):
         # This parameter is required.
         self.manager_account_password = manager_account_password
         self.owner_id = owner_id
-        # The region ID.
+        # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -23832,7 +24552,7 @@ class ListCollectionsRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -24032,12 +24752,25 @@ class ListDocumentCollectionsRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  This value is specified when you call the CreateNamespace operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -24088,12 +24821,19 @@ class ListDocumentCollectionsResponseBodyItemsCollectionList(TeaModel):
         metrics: str = None,
         parser: str = None,
     ):
+        # The name of the document collection.
         self.collection_name = collection_name
+        # The number of vector dimensions.
         self.dimension = dimension
+        # The name of the vector algorithm.
         self.embedding_model = embedding_model
+        # The fields that are used for full-text search. Multiple fields are separated by commas (,).
         self.full_text_retrieval_fields = full_text_retrieval_fields
+        # The metadata.
         self.metadata = metadata
+        # The vector similarity algorithm.
         self.metrics = metrics
+        # The analyzer that is used for full-text search.
         self.parser = parser
 
     def validate(self):
@@ -24184,10 +24924,18 @@ class ListDocumentCollectionsResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The total number of entries returned.
         self.count = count
+        # The queried document collections.
         self.items = items
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -24279,14 +25027,27 @@ class ListDocumentsRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the document collection.
+        # 
+        # >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+        # 
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -24336,7 +25097,9 @@ class ListDocumentsResponseBodyItemsDocumentList(TeaModel):
         file_name: str = None,
         source: str = None,
     ):
+        # The name of the document.
         self.file_name = file_name
+        # The source of the document.
         self.source = source
 
     def validate(self):
@@ -24409,6 +25172,10 @@ class ListDocumentsResponseBody(TeaModel):
         self.items = items
         self.message = message
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -24498,6 +25265,7 @@ class ListExternalDataServicesRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.page_number = page_number
         self.page_size = page_size
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -24544,13 +25312,28 @@ class ListExternalDataServicesResponseBodyServiceItems(TeaModel):
         service_type: str = None,
         status: str = None,
     ):
+        # The time when the service was created.
         self.create_time = create_time
+        # The time when the service was last modified.
         self.modify_time = modify_time
+        # The description of the service.
         self.service_description = service_description
+        # The service ID.
         self.service_id = service_id
+        # The name of the service.
         self.service_name = service_name
+        # The specifications of the service. Unit: compute units (CUs).
         self.service_spec = service_spec
+        # The type of the service. Valid values:
+        # 
+        # *   pxf
         self.service_type = service_type
+        # The status of the service. Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Exception
+        # *   Paused
         self.status = status
 
     def validate(self):
@@ -24611,6 +25394,7 @@ class ListExternalDataServicesResponseBody(TeaModel):
     ):
         self.page_number = page_number
         self.request_id = request_id
+        # The queried services.
         self.service_items = service_items
         self.total_record_count = total_record_count
 
@@ -24703,9 +25487,19 @@ class ListExternalDataSourcesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: 30.
         self.page_size = page_size
         self.region_id = region_id
 
@@ -24755,15 +25549,28 @@ class ListExternalDataSourcesResponseBodyItems(TeaModel):
         modify_time: str = None,
         status_message: str = None,
     ):
+        # The time when the service was created.
         self.create_time = create_time
+        # The description of the data source.
         self.data_source_description = data_source_description
+        # The service directory in which Hadoop-related configuration files are stored.
         self.data_source_dir = data_source_dir
+        # The service ID.
         self.data_source_id = data_source_id
+        # The name of the service.
         self.data_source_name = data_source_name
+        # The status of the service. Valid values:
+        # 
+        # *   init
+        # *   running
+        # *   exception
         self.data_source_status = data_source_status
+        # The type of the data source.
         self.data_source_type = data_source_type
         self.external_data_service_id = external_data_service_id
+        # The time when the service was last modified.
         self.modify_time = modify_time
+        # The information about the service status. For example, if the service is in the exception state, the cause of the exception is displayed. If the service is in the running state, this parameter is left empty.
         self.status_message = status_message
 
     def validate(self):
@@ -24830,9 +25637,13 @@ class ListExternalDataSourcesResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The Hadoop external table services.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -24926,12 +25737,31 @@ class ListInstanceExtensionsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the extension.
         self.extension = extension
+        # The installation status of the extension. Valid values:
+        # 
+        # *   installed
+        # *   installing
+        # *   uninstalled
         self.install_status = install_status
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -24986,13 +25816,21 @@ class ListInstanceExtensionsResponseBodyItems(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # The current version.
         self.current_version = current_version
+        # The description of the extension.
         self.description = description
+        # The extension ID.
         self.extension_id = extension_id
+        # The names of the databases in which the extension is installed.
         self.installed_databases = installed_databases
+        # Indicates whether an instance restart is required after you install the extension for the extension to take effect.
         self.is_install_need_restart = is_install_need_restart
+        # The latest version.
         self.latest_version = latest_version
+        # The name of the extension.
         self.name = name
+        # The status of the extension.
         self.status = status
 
     def validate(self):
@@ -25053,9 +25891,13 @@ class ListInstanceExtensionsResponseBody(TeaModel):
         total_record_count: int = None,
     ):
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -25160,6 +26002,8 @@ class ListNamespacesRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
+        # >  You can create an account on the Account Management page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+        # 
         # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
@@ -25168,8 +26012,6 @@ class ListNamespacesRequest(TeaModel):
         self.manager_account_password = manager_account_password
         self.owner_id = owner_id
         # The region ID of the instance.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -25365,6 +26207,7 @@ class ListStreamingDataServicesRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.page_number = page_number
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -25407,7 +26250,9 @@ class ListStreamingDataServicesResponseBodyServiceItems(TeaModel):
         service_description: str = None,
         service_id: str = None,
         service_ip: str = None,
+        service_managed: bool = None,
         service_name: str = None,
+        service_owner_id: str = None,
         service_port: str = None,
         service_spec: str = None,
         service_type: str = None,
@@ -25418,7 +26263,9 @@ class ListStreamingDataServicesResponseBodyServiceItems(TeaModel):
         self.service_description = service_description
         self.service_id = service_id
         self.service_ip = service_ip
+        self.service_managed = service_managed
         self.service_name = service_name
+        self.service_owner_id = service_owner_id
         self.service_port = service_port
         self.service_spec = service_spec
         self.service_type = service_type
@@ -25443,8 +26290,12 @@ class ListStreamingDataServicesResponseBodyServiceItems(TeaModel):
             result['ServiceId'] = self.service_id
         if self.service_ip is not None:
             result['ServiceIp'] = self.service_ip
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.service_owner_id is not None:
+            result['ServiceOwnerId'] = self.service_owner_id
         if self.service_port is not None:
             result['ServicePort'] = self.service_port
         if self.service_spec is not None:
@@ -25467,8 +26318,12 @@ class ListStreamingDataServicesResponseBodyServiceItems(TeaModel):
             self.service_id = m.get('ServiceId')
         if m.get('ServiceIp') is not None:
             self.service_ip = m.get('ServiceIp')
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('ServiceOwnerId') is not None:
+            self.service_owner_id = m.get('ServiceOwnerId')
         if m.get('ServicePort') is not None:
             self.service_port = m.get('ServicePort')
         if m.get('ServiceSpec') is not None:
@@ -25576,10 +26431,23 @@ class ListStreamingDataSourcesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -25628,15 +26496,31 @@ class ListStreamingDataSourcesResponseBodyDataSourceItems(TeaModel):
         service_id: int = None,
         status: str = None,
     ):
+        # The time when the data source was created.
         self.create_time = create_time
+        # The configurations of the data source.
         self.data_source_config = data_source_config
+        # The description of the data source.
         self.data_source_description = data_source_description
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The name of the data source.
         self.data_source_name = data_source_name
+        # The type of the data source. Valid values:
+        # 
+        # *   kafka
         self.data_source_type = data_source_type
+        # The information about the service status. For example, if the service is in the exception state, the cause of the exception is displayed. If the service is in the running state, this parameter is left empty.
         self.error_message = error_message
+        # The time when the data source was last modified.
         self.modify_time = modify_time
+        # The service ID.
         self.service_id = service_id
+        # The status of the service. Valid values:
+        # 
+        # *   init
+        # *   running
+        # *   exception
         self.status = status
 
     def validate(self):
@@ -25703,9 +26587,13 @@ class ListStreamingDataSourcesResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The queried data sources.
         self.data_source_items = data_source_items
+        # The page number.
         self.page_number = page_number
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -25801,6 +26689,9 @@ class ListStreamingJobsRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.page_number = page_number
         self.page_size = page_size
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -25861,27 +26752,61 @@ class ListStreamingJobsResponseBodyJobItems(TeaModel):
         update_columns: List[str] = None,
         write_mode: str = None,
     ):
+        # The name of the database account.
         self.account = account
+        # The delivery guarantee setting.
         self.consistency = consistency
+        # The time when the job was created.
         self.create_time = create_time
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The name of the data source.
         self.data_source_name = data_source_name
+        # The mapped fields in the destination table.
         self.dest_columns = dest_columns
+        # The name of the destination database.
         self.dest_database = dest_database
+        # The name of the destination namespace.
         self.dest_schema = dest_schema
+        # The name of the destination table.
         self.dest_table = dest_table
+        # The error message returned.
+        # 
+        # This parameter is returned only when the return value of **Status** is **false**.
         self.error_message = error_message
+        # The fallback offset for data consumption.
+        # 
+        # *   This parameter indicates the starting offset from which data consumption resumes when a consumer does not request a consumption offset or requests a consumption offset that is beyond the range of the offset information recorded in the current Kafka cluster. Valid values: EARLIEST and LATEST.
         self.fallback_offset = fallback_offset
+        # The description of the job.
         self.job_description = job_description
+        # The job ID.
         self.job_id = job_id
+        # The name of the job.
         self.job_name = job_name
+        # The update condition columns that are used to join the source data and the destination table. Typically, the columns are all the primary key columns of the destination table. If the values of all columns specified by this parameter in different rows are the same, the rows are considered duplicates.
         self.match_columns = match_columns
+        # The configuration mode. Valid values:
+        # 
+        # 1.  basic: In basic mode, you must configure the configuration parameters.
+        # 2.  professional: In professional mode, you can submit a YAML configuration file.
         self.mode = mode
+        # The time when the job was last modified.
         self.modify_time = modify_time
+        # The password of the database account.
         self.password = password
+        # The source fields.
         self.src_columns = src_columns
+        # The status of the job. Valid values:
+        # 
+        # *   Init
+        # *   Running
+        # *   Exception
+        # *   Paused
         self.status = status
+        # The columns to be updated if a row of data meets the update condition. Typically, the columns are all non-primary key columns of the destination table. When the columns specified by the MatchColumns parameter are used as conditions to join the source data and the destination table, data in columns of the UpdateColumns type is updated if data is matched.
         self.update_columns = update_columns
+        # The write mode.
         self.write_mode = write_mode
 
     def validate(self):
@@ -25997,6 +26922,7 @@ class ListStreamingJobsResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The queried jobs.
         self.job_items = job_items
         self.page_number = page_number
         self.page_record_count = page_record_count
@@ -27469,8 +28395,24 @@ class ModifyDBResourceGroupRequestResourceGroupItems(TeaModel):
         resource_group_config: str = None,
         resource_group_name: str = None,
     ):
+        # The configurations of the resource group to which you want to modify.
+        # 
+        # > 
+        # 
+        # *   CpuRateLimit: the percentage of CPU resources that are available for the resource group. Unit: %.
+        # 
+        # *   MemoryLimit: the percentage of memory resources that are available for the resource group. Unit: %.
+        # 
+        # *   MemorySharedQuota: the percentage of memory resources shared among transactions that are submitted to the resource group. Unit: %. Default value: 80.
+        # 
+        # *   MemorySpillRatio: the memory spill ratio for memory-intensive transactions. When the memory that is used by memory-intensive transactions reaches this value, data is spilled to disks. Unit: %. Default value: 0.
+        # 
+        # *   Concurrency: the maximum number of concurrent transactions or parallel queries that are allowed for a resource group. Default value: 20.
+        # 
         # This parameter is required.
         self.resource_group_config = resource_group_config
+        # The name of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_name = resource_group_name
 
@@ -27505,9 +28447,15 @@ class ModifyDBResourceGroupRequest(TeaModel):
         owner_id: int = None,
         resource_group_items: List[ModifyDBResourceGroupRequestResourceGroupItems] = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The information about the resource group.
+        # 
         # This parameter is required.
         self.resource_group_items = resource_group_items
 
@@ -27554,9 +28502,15 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         owner_id: int = None,
         resource_group_items_shrink: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The information about the resource group.
+        # 
         # This parameter is required.
         self.resource_group_items_shrink = resource_group_items_shrink
 
@@ -27593,6 +28547,7 @@ class ModifyDBResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27667,10 +28622,18 @@ class ModifyExternalDataServiceRequest(TeaModel):
     ):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The description of the service.
         self.service_description = service_description
         # This parameter is required.
         self.service_id = service_id
+        # The specifications of the service. Unit: compute units (CUs). Valid values:
+        # 
+        # *   8
+        # 
         # This parameter is required.
         self.service_spec = service_spec
 
@@ -27798,16 +28761,39 @@ class ModifyHadoopDataSourceRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.data_source_description = data_source_description
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The type of the data source. Valid values:
+        # 
+        # *   mysql
+        # 
+        # - postgresql
+        # 
+        # *   hdfs
+        # 
+        # - hive
         self.data_source_type = data_source_type
         self.emr_instance_id = emr_instance_id
+        # The content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         self.hdfsconf = hdfsconf
+        # The content of the Hadoop core-site.xml file.
         self.hadoop_core_conf = hadoop_core_conf
+        # The type of the external service. Valid values:
+        # 
+        # *   emr: E-MapReduce (EMR) Hadoop cluster.
+        # *   selfCreate: self-managed Hadoop cluster.
         self.hadoop_create_type = hadoop_create_type
+        # The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
         self.hadoop_hosts_address = hadoop_hosts_address
+        # The content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
         self.hive_conf = hive_conf
+        # The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         self.map_reduce_conf = map_reduce_conf
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         self.yarn_conf = yarn_conf
 
     def validate(self):
@@ -27964,9 +28950,13 @@ class ModifyJDBCDataSourceRequest(TeaModel):
         # This parameter is required.
         self.data_source_id = data_source_id
         self.data_source_type = data_source_type
+        # The JDBC connection string.
         self.jdbcconnection_string = jdbcconnection_string
+        # The password of the database account.
         self.jdbcpassword = jdbcpassword
+        # The name of the database account.
         self.jdbcuser_name = jdbcuser_name
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -28093,10 +29083,25 @@ class ModifyMasterSpecRequest(TeaModel):
         master_cu: int = None,
         resource_group_id: str = None,
     ):
+        # The description of the instance.
         self.dbinstance_description = dbinstance_description
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The specifications of coordinator node resources. Valid values:
+        # 
+        # *   2 CU
+        # *   4 CU
+        # *   8 CU
+        # *   16 CU
+        # *   32 CU
+        # 
+        # >  You are charged for coordinator node resources of more than 8 compute units (CUs).
         self.master_cu = master_cu
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -28139,9 +29144,18 @@ class ModifyMasterSpecResponseBody(TeaModel):
         request_id: str = None,
         status: bool = None,
     ):
+        # The instance ID.
         self.db_instance_id = db_instance_id
+        # The returned message.
+        # 
+        # This parameter is returned only if the request fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.status = status
 
     def validate(self):
@@ -28607,12 +29621,26 @@ class ModifyStreamingDataServiceRequest(TeaModel):
         service_id: str = None,
         service_spec: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.region_id = region_id
+        # The description of the service.
         self.service_description = service_description
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The specifications of the service. Unit: capacity units (CUs). Valid values:
+        # 
+        # *   2
+        # *   4
+        # *   8
+        # *   16
+        # 
         # This parameter is required.
         self.service_spec = service_spec
 
@@ -28657,6 +29685,7 @@ class ModifyStreamingDataServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28729,12 +29758,23 @@ class ModifyStreamingDataSourceRequest(TeaModel):
         data_source_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The configurations of the data source.
         self.data_source_config = data_source_config
+        # The description of the data source.
         self.data_source_description = data_source_description
+        # The data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -28778,6 +29818,7 @@ class ModifyStreamingDataSourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28865,27 +29906,58 @@ class ModifyStreamingJobRequest(TeaModel):
         update_columns: List[str] = None,
         write_mode: str = None,
     ):
+        # The name of the database account.
         self.account = account
+        # The delivery guarantee setting.
+        # 
+        # Valid values:
+        # 
+        # *   ATLEAST
+        # *   EXACTLY
         self.consistency = consistency
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The destination fields.
         self.dest_columns = dest_columns
+        # The name of the destination database.
         self.dest_database = dest_database
         self.dest_schema = dest_schema
+        # The name of the destination table.
         self.dest_table = dest_table
         self.error_limit_count = error_limit_count
         self.fallback_offset = fallback_offset
         self.group_name = group_name
+        # The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
         self.job_config = job_config
+        # The description of the job.
         self.job_description = job_description
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
         self.match_columns = match_columns
+        # The password of the database account.
         self.password = password
         self.region_id = region_id
+        # The source fields.
         self.src_columns = src_columns
+        # Specifies whether to test the real-time job. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.try_run = try_run
         self.update_columns = update_columns
+        # The write mode.
+        # 
+        # Valid values:
+        # 
+        # *   insert
+        # *   update
+        # *   merge
         self.write_mode = write_mode
 
     def validate(self):
@@ -29008,27 +30080,58 @@ class ModifyStreamingJobShrinkRequest(TeaModel):
         update_columns_shrink: str = None,
         write_mode: str = None,
     ):
+        # The name of the database account.
         self.account = account
+        # The delivery guarantee setting.
+        # 
+        # Valid values:
+        # 
+        # *   ATLEAST
+        # *   EXACTLY
         self.consistency = consistency
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The destination fields.
         self.dest_columns_shrink = dest_columns_shrink
+        # The name of the destination database.
         self.dest_database = dest_database
         self.dest_schema = dest_schema
+        # The name of the destination table.
         self.dest_table = dest_table
         self.error_limit_count = error_limit_count
         self.fallback_offset = fallback_offset
         self.group_name = group_name
+        # The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
         self.job_config = job_config
+        # The description of the job.
         self.job_description = job_description
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
         self.match_columns_shrink = match_columns_shrink
+        # The password of the database account.
         self.password = password
         self.region_id = region_id
+        # The source fields.
         self.src_columns_shrink = src_columns_shrink
+        # Specifies whether to test the real-time job. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.try_run = try_run
         self.update_columns_shrink = update_columns_shrink
+        # The write mode.
+        # 
+        # Valid values:
+        # 
+        # *   insert
+        # *   update
+        # *   merge
         self.write_mode = write_mode
 
     def validate(self):
@@ -29132,6 +30235,7 @@ class ModifyStreamingJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29345,6 +30449,10 @@ class PauseDataRedistributeRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
@@ -29378,6 +30486,7 @@ class PauseDataRedistributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29595,27 +30704,96 @@ class QueryCollectionDataRequest(TeaModel):
         top_k: int = None,
         vector: List[float] = None,
     ):
+        # The name of the collection.
+        # 
+        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The content that is used for full-text search. If you leave this parameter empty, only vector search is used. If you do not leave this parameter empty, two-way retrieval based on vector search and full-text search is used.
+        # 
+        # >  You must specify at least one of the Content and Vector parameters.
         self.content = content
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.filter = filter
+        # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+        # 
+        # Valid values:
+        # 
+        # *   RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Cascaded: This algorithm performs first full-text search and then vector search.
         self.hybrid_search = hybrid_search
+        # The parameters of the two-way retrieval algorithm. The following parameters are supported:
+        # 
+        # *   When HybridSearch is set to RRF, the scores are calculated by using the `1/(k+rank_i)` formula. The constant k is a positive integer that is greater than 1.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "RRF": {
+        #         "k": 60
+        #        }
+        #     }
+        # 
+        # *   When HybridSearch is set to Weight, the scores are calculated by using the `alpha * vector_score + (1-alpha) * text_score` formula. The alpha parameter specifies the proportion of the vector search score and the full-text search score and ranges from 0 to 1. A value of 0 specifies full-text search and a value of 1 specifies vector search.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "Weight": {
+        #         "alpha": 0.5
+        #        }
+        #     }
         self.hybrid_search_args = hybrid_search_args
+        # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
         self.include_metadata_fields = include_metadata_fields
+        # Specifies whether to return vector data. Valid values:
+        # 
+        # *   **true**: returns vector data.
+        # *   **false**: does not return vector data. In full-text search scenarios, set this parameter to false.
         self.include_values = include_values
+        # The similarity algorithm for search. Valid values:
+        # 
+        # *   **l2**: Euclidean distance.
+        # *   **ip**: inner product distance.
+        # *   **cosine**: cosine similarity.
+        # 
+        # >  If you leave this parameter empty, the l2, ip, or cosine algorithm that is specified when you create an index is used.
         self.metrics = metrics
+        # The name of the namespace.
+        # 
+        # >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         # This parameter is required.
         self.namespace_password = namespace_password
+        # The starting point for paginated queries. This parameter is empty by default. This parameter does not support two-way retrieval scenarios.
+        # 
+        # The value must be greater than or equal to 0. If you do not leave this parameter empty, the Total parameter is returned to indicate the total number of matched entries. You must specify this parameter and the TopK parameter in pairs. For example, to paginate 20 chunks at a time for a total of 45 chunks whose chunk_id values are 0 to 44, three requests are involved:
+        # 
+        # *   First request: Set the Offset value to 0 and the TopK value to 20. The chunks whose chunk_id values are 0 to 19 are returned.
+        # *   Second request: Set the Offset value to 20 and the TopK value to 20. The chunks whose chunk_id values are 20 to 39 are returned.
+        # *   Third request: Set the Offset value to 30 and the TopK value to 20. The chunks whose chunk_id values are 40 to 44 are returned.
         self.offset = offset
+        # The fields by which to sort the results. This parameter is empty by default. This parameter does not support two-way retrieval scenarios.
+        # 
+        # You must specify the default fields in the metadata or the table, such as id. You can specify the following number of fields:
+        # 
+        # *   One field, such as chunk_id.
+        # *   Multiple fields that are sorted in ascending order and separated by commas (,), such as block_id and chunk_id.
+        # *   Multiple fields that are sorted in descending order and separated by commas (,), such as block_id DESC, chunk_id DESC.
         self.order_by = order_by
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
         # This parameter is required.
         self.top_k = top_k
+        # The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
+        # 
+        # >  If you leave this parameter empty, only full-text search results are returned.
         self.vector = vector
 
     def validate(self):
@@ -29723,27 +30901,96 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         top_k: int = None,
         vector_shrink: str = None,
     ):
+        # The name of the collection.
+        # 
+        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The content that is used for full-text search. If you leave this parameter empty, only vector search is used. If you do not leave this parameter empty, two-way retrieval based on vector search and full-text search is used.
+        # 
+        # >  You must specify at least one of the Content and Vector parameters.
         self.content = content
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.filter = filter
+        # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+        # 
+        # Valid values:
+        # 
+        # *   RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Cascaded: This algorithm performs first full-text search and then vector search.
         self.hybrid_search = hybrid_search
+        # The parameters of the two-way retrieval algorithm. The following parameters are supported:
+        # 
+        # *   When HybridSearch is set to RRF, the scores are calculated by using the `1/(k+rank_i)` formula. The constant k is a positive integer that is greater than 1.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "RRF": {
+        #         "k": 60
+        #        }
+        #     }
+        # 
+        # *   When HybridSearch is set to Weight, the scores are calculated by using the `alpha * vector_score + (1-alpha) * text_score` formula. The alpha parameter specifies the proportion of the vector search score and the full-text search score and ranges from 0 to 1. A value of 0 specifies full-text search and a value of 1 specifies vector search.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "Weight": {
+        #         "alpha": 0.5
+        #        }
+        #     }
         self.hybrid_search_args_shrink = hybrid_search_args_shrink
+        # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
         self.include_metadata_fields = include_metadata_fields
+        # Specifies whether to return vector data. Valid values:
+        # 
+        # *   **true**: returns vector data.
+        # *   **false**: does not return vector data. In full-text search scenarios, set this parameter to false.
         self.include_values = include_values
+        # The similarity algorithm for search. Valid values:
+        # 
+        # *   **l2**: Euclidean distance.
+        # *   **ip**: inner product distance.
+        # *   **cosine**: cosine similarity.
+        # 
+        # >  If you leave this parameter empty, the l2, ip, or cosine algorithm that is specified when you create an index is used.
         self.metrics = metrics
+        # The name of the namespace.
+        # 
+        # >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         # This parameter is required.
         self.namespace_password = namespace_password
+        # The starting point for paginated queries. This parameter is empty by default. This parameter does not support two-way retrieval scenarios.
+        # 
+        # The value must be greater than or equal to 0. If you do not leave this parameter empty, the Total parameter is returned to indicate the total number of matched entries. You must specify this parameter and the TopK parameter in pairs. For example, to paginate 20 chunks at a time for a total of 45 chunks whose chunk_id values are 0 to 44, three requests are involved:
+        # 
+        # *   First request: Set the Offset value to 0 and the TopK value to 20. The chunks whose chunk_id values are 0 to 19 are returned.
+        # *   Second request: Set the Offset value to 20 and the TopK value to 20. The chunks whose chunk_id values are 20 to 39 are returned.
+        # *   Third request: Set the Offset value to 30 and the TopK value to 20. The chunks whose chunk_id values are 40 to 44 are returned.
         self.offset = offset
+        # The fields by which to sort the results. This parameter is empty by default. This parameter does not support two-way retrieval scenarios.
+        # 
+        # You must specify the default fields in the metadata or the table, such as id. You can specify the following number of fields:
+        # 
+        # *   One field, such as chunk_id.
+        # *   Multiple fields that are sorted in ascending order and separated by commas (,), such as block_id and chunk_id.
+        # *   Multiple fields that are sorted in descending order and separated by commas (,), such as block_id DESC, chunk_id DESC.
         self.order_by = order_by
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
         # This parameter is required.
         self.top_k = top_k
+        # The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
+        # 
+        # >  If you leave this parameter empty, only full-text search results are returned.
         self.vector_shrink = vector_shrink
 
     def validate(self):
@@ -29865,9 +31112,13 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
         score: float = None,
         values: QueryCollectionDataResponseBodyMatchesMatchValues = None,
     ):
+        # The unique ID of the vector data.
         self.id = id
+        # The metadata.
         self.metadata = metadata
+        # The similarity score of the data. It is related to the `l2, ip, or cosine` algorithm that is specified when you create an index.
         self.score = score
+        # The retrieved vector data.
         self.values = values
 
     def validate(self):
@@ -29948,10 +31199,12 @@ class QueryCollectionDataResponseBody(TeaModel):
         status: str = None,
         total: int = None,
     ):
+        # The retrieved data.
         self.matches = matches
         self.message = message
         self.request_id = request_id
         self.status = status
+        # The total number of entries that match the search conditions. This parameter is returned only when the Offset parameter is not 0.
         self.total = total
 
     def validate(self):
@@ -31248,8 +32501,14 @@ class ResetIMVMonitorDataRequest(TeaModel):
         dbinstance_id: str = None,
         database: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.database = database
 
@@ -31283,7 +32542,12 @@ class ResetIMVMonitorDataResponseBody(TeaModel):
         request_id: str = None,
         status: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.status = status
 
     def validate(self):
@@ -31465,6 +32729,10 @@ class ResumeDataRedistributeRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
@@ -31498,6 +32766,7 @@ class ResumeDataRedistributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32387,11 +33656,19 @@ class UnbindDBResourceGroupWithRoleRequest(TeaModel):
         resource_group_name: str = None,
         role_list: List[str] = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The name of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_name = resource_group_name
+        # The roles.
+        # 
         # This parameter is required.
         self.role_list = role_list
 
@@ -32435,11 +33712,19 @@ class UnbindDBResourceGroupWithRoleShrinkRequest(TeaModel):
         resource_group_name: str = None,
         role_list_shrink: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The name of the resource group.
+        # 
         # This parameter is required.
         self.resource_group_name = resource_group_name
+        # The roles.
+        # 
         # This parameter is required.
         self.role_list_shrink = role_list_shrink
 
@@ -32480,6 +33765,7 @@ class UnbindDBResourceGroupWithRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32847,22 +34133,34 @@ class UpdateCollectionDataMetadataRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause. You cannot leave both this parameter and Ids empty.
         self.filter = filter
-        # The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
+        # The row IDs of the data to be updated. You cannot leave both this parameter and Filter empty.
         self.ids = ids
-        # The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
+        # The data to be updated, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
         # 
         # This parameter is required.
         self.metadata = metadata
+        # The name of the namespace.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
-        # The region ID of the instance.
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -32932,22 +34230,34 @@ class UpdateCollectionDataMetadataShrinkRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause. You cannot leave both this parameter and Ids empty.
         self.filter = filter
-        # The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
+        # The row IDs of the data to be updated. You cannot leave both this parameter and Filter empty.
         self.ids_shrink = ids_shrink
-        # The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
+        # The data to be updated, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
         # 
         # This parameter is required.
         self.metadata_shrink = metadata_shrink
+        # The name of the namespace.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
-        # The region ID of the instance.
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -33012,9 +34322,16 @@ class UpdateCollectionDataMetadataResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The number of effective rows.
         self.applied_rows = applied_rows
+        # The error message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -33338,7 +34655,7 @@ class UpgradeDBInstanceRequest(TeaModel):
         self.seg_storage_type = seg_storage_type
         # The storage capacity of each compute node. Unit: GB. Valid values: 50 to 6000, in 50 increments.
         # 
-        # > This parameter is available only for instances in elastic storage mode.
+        # >  This parameter is available only for instances in elastic storage mode.
         self.storage_size = storage_size
         # The type of the instance configuration change. Valid values:
         # 
@@ -33679,10 +34996,17 @@ class UpgradeExtensionsRequest(TeaModel):
         extensions: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The extensions that you want to update. Separate multiple extensions with commas (,).
+        # 
         # This parameter is required.
         self.extensions = extensions
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -33718,6 +35042,7 @@ class UpgradeExtensionsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33801,27 +35126,74 @@ class UploadDocumentAsyncRequest(TeaModel):
         text_splitter_name: str = None,
         zh_title_enhance: bool = None,
     ):
+        # The size of data that is overlapped between consecutive chunks. The maximum value of this parameter cannot be greater than the value of the ChunkSize parameter.
+        # 
+        # >  This parameter is used to prevent context missing that may occur due to data truncation. For example, when you upload a long text, you can retain specific overlapped text content between consecutive chunks to better understand the context.
         self.chunk_overlap = chunk_overlap
         self.chunk_size = chunk_size
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the document loader. You do not need to specify this parameter. A document loader is automatically specified based on the file extension. Valid values:
+        # 
+        # *   UnstructuredHTMLLoader: `.html`
+        # *   UnstructuredMarkdownLoader: `.md`
+        # *   PyMuPDFLoader: `.pdf`
+        # *   PyPDFLoader: `.pdf`
+        # *   RapidOCRPDFLoader: `.pdf`
+        # *   PDFWithImageRefLoader: `.pdf` (with the text-image association feature)
+        # *   JSONLoader: `.json`
+        # *   CSVLoader: `.csv`
+        # *   RapidOCRLoader: `.png`, `.jpg`, `.jpeg`, and `.bmp`
+        # *   UnstructuredFileLoader: `.eml`, `.msg`, `.rst`, `.txt`, `.docx`, `.epub`, `.odt`, `.pptx`, and `.tsv`
         self.document_loader_name = document_loader_name
+        # Specifies whether to perform only document understanding and chunking, but not vectorization and storage. Default value: false.
+        # 
+        # >  You can set this parameter to true, check the chunking effect, and then perform optimization if needed.
         self.dry_run = dry_run
+        # The file name of the document.
+        # 
+        # > 
+        # 
+        # *   We recommend that you add an extension to the file name. Examples: `.json`, `.md`, and `.pdf`. If you do not add an extension, the default loader designed for unstructured data is used.
+        # 
+        # *   If an image file is involved, the file name must contain an extension. The following extensions are supported: `.bmp`, `.jpg`, `.jpeg`, `.png`, and `.tiff`.
+        # 
+        # *   You can use a compressed package to upload images. The package file name must contain an extension. Supported package file extensions: `.tar`, `.gz`, and `.zip`.
+        # 
         # This parameter is required.
         self.file_name = file_name
         # This parameter is required.
         self.file_url = file_url
+        # The metadata. The value of this parameter must be the same as the Metadata parameter that is specified when you call the CreateDocumentCollection operation.
         self.metadata = metadata
         self.namespace = namespace
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The separators that are used to split large amounts of data.
+        # 
+        # > 
+        # 
+        # *   This is an important parameter that determines the chunking effect. This parameter is related to the splitter that is specified by the TextSplitterName parameter.
+        # 
+        # *   In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
         self.separators = separators
+        # The name of the splitter. Valid values:
+        # 
+        # *   **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
+        # *   **RecursiveCharacterTextSplitter**: uses `["\\n\\n", "\\n", " ", ""]` as separators by default. The splitter supports splitting code in languages such as `C++, Go, Java, JS, PHP, Proto, Python, RST, Ruby, Rust, Scala, Swift, Markdown, LaTeX, HTML, Sol, and C Sharp`.
+        # *   **SpacyTextSplitter**: uses `\\n\\n` as separators by default and uses the en_core_web_sm model of spaCy. The splitter can obtain better splitting effect.
+        # *   **MarkdownHeaderTextSplitter**: splits text in the `[("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4")]` format. The splitter is suitable for Markdown text.
         self.text_splitter_name = text_splitter_name
+        # Specifies whether to enable title enhancement.
+        # 
+        # >  You can determine the title text, mark the text in the metadata, and then combine the text with the upper-level title to implement text enhancement.
         self.zh_title_enhance = zh_title_enhance
 
     def validate(self):
@@ -33924,27 +35296,74 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
         text_splitter_name: str = None,
         zh_title_enhance: bool = None,
     ):
+        # The size of data that is overlapped between consecutive chunks. The maximum value of this parameter cannot be greater than the value of the ChunkSize parameter.
+        # 
+        # >  This parameter is used to prevent context missing that may occur due to data truncation. For example, when you upload a long text, you can retain specific overlapped text content between consecutive chunks to better understand the context.
         self.chunk_overlap = chunk_overlap
         self.chunk_size = chunk_size
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the document loader. You do not need to specify this parameter. A document loader is automatically specified based on the file extension. Valid values:
+        # 
+        # *   UnstructuredHTMLLoader: `.html`
+        # *   UnstructuredMarkdownLoader: `.md`
+        # *   PyMuPDFLoader: `.pdf`
+        # *   PyPDFLoader: `.pdf`
+        # *   RapidOCRPDFLoader: `.pdf`
+        # *   PDFWithImageRefLoader: `.pdf` (with the text-image association feature)
+        # *   JSONLoader: `.json`
+        # *   CSVLoader: `.csv`
+        # *   RapidOCRLoader: `.png`, `.jpg`, `.jpeg`, and `.bmp`
+        # *   UnstructuredFileLoader: `.eml`, `.msg`, `.rst`, `.txt`, `.docx`, `.epub`, `.odt`, `.pptx`, and `.tsv`
         self.document_loader_name = document_loader_name
+        # Specifies whether to perform only document understanding and chunking, but not vectorization and storage. Default value: false.
+        # 
+        # >  You can set this parameter to true, check the chunking effect, and then perform optimization if needed.
         self.dry_run = dry_run
+        # The file name of the document.
+        # 
+        # > 
+        # 
+        # *   We recommend that you add an extension to the file name. Examples: `.json`, `.md`, and `.pdf`. If you do not add an extension, the default loader designed for unstructured data is used.
+        # 
+        # *   If an image file is involved, the file name must contain an extension. The following extensions are supported: `.bmp`, `.jpg`, `.jpeg`, `.png`, and `.tiff`.
+        # 
+        # *   You can use a compressed package to upload images. The package file name must contain an extension. Supported package file extensions: `.tar`, `.gz`, and `.zip`.
+        # 
         # This parameter is required.
         self.file_name = file_name
         # This parameter is required.
         self.file_url_object = file_url_object
+        # The metadata. The value of this parameter must be the same as the Metadata parameter that is specified when you call the CreateDocumentCollection operation.
         self.metadata = metadata
         self.namespace = namespace
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The separators that are used to split large amounts of data.
+        # 
+        # > 
+        # 
+        # *   This is an important parameter that determines the chunking effect. This parameter is related to the splitter that is specified by the TextSplitterName parameter.
+        # 
+        # *   In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
         self.separators = separators
+        # The name of the splitter. Valid values:
+        # 
+        # *   **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
+        # *   **RecursiveCharacterTextSplitter**: uses `["\\n\\n", "\\n", " ", ""]` as separators by default. The splitter supports splitting code in languages such as `C++, Go, Java, JS, PHP, Proto, Python, RST, Ruby, Rust, Scala, Swift, Markdown, LaTeX, HTML, Sol, and C Sharp`.
+        # *   **SpacyTextSplitter**: uses `\\n\\n` as separators by default and uses the en_core_web_sm model of spaCy. The splitter can obtain better splitting effect.
+        # *   **MarkdownHeaderTextSplitter**: splits text in the `[("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4")]` format. The splitter is suitable for Markdown text.
         self.text_splitter_name = text_splitter_name
+        # Specifies whether to enable title enhancement.
+        # 
+        # >  You can determine the title text, mark the text in the metadata, and then combine the text with the upper-level title to implement text enhancement.
         self.zh_title_enhance = zh_title_enhance
 
     def validate(self):
@@ -34047,27 +35466,74 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
         text_splitter_name: str = None,
         zh_title_enhance: bool = None,
     ):
+        # The size of data that is overlapped between consecutive chunks. The maximum value of this parameter cannot be greater than the value of the ChunkSize parameter.
+        # 
+        # >  This parameter is used to prevent context missing that may occur due to data truncation. For example, when you upload a long text, you can retain specific overlapped text content between consecutive chunks to better understand the context.
         self.chunk_overlap = chunk_overlap
         self.chunk_size = chunk_size
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the document loader. You do not need to specify this parameter. A document loader is automatically specified based on the file extension. Valid values:
+        # 
+        # *   UnstructuredHTMLLoader: `.html`
+        # *   UnstructuredMarkdownLoader: `.md`
+        # *   PyMuPDFLoader: `.pdf`
+        # *   PyPDFLoader: `.pdf`
+        # *   RapidOCRPDFLoader: `.pdf`
+        # *   PDFWithImageRefLoader: `.pdf` (with the text-image association feature)
+        # *   JSONLoader: `.json`
+        # *   CSVLoader: `.csv`
+        # *   RapidOCRLoader: `.png`, `.jpg`, `.jpeg`, and `.bmp`
+        # *   UnstructuredFileLoader: `.eml`, `.msg`, `.rst`, `.txt`, `.docx`, `.epub`, `.odt`, `.pptx`, and `.tsv`
         self.document_loader_name = document_loader_name
+        # Specifies whether to perform only document understanding and chunking, but not vectorization and storage. Default value: false.
+        # 
+        # >  You can set this parameter to true, check the chunking effect, and then perform optimization if needed.
         self.dry_run = dry_run
+        # The file name of the document.
+        # 
+        # > 
+        # 
+        # *   We recommend that you add an extension to the file name. Examples: `.json`, `.md`, and `.pdf`. If you do not add an extension, the default loader designed for unstructured data is used.
+        # 
+        # *   If an image file is involved, the file name must contain an extension. The following extensions are supported: `.bmp`, `.jpg`, `.jpeg`, `.png`, and `.tiff`.
+        # 
+        # *   You can use a compressed package to upload images. The package file name must contain an extension. Supported package file extensions: `.tar`, `.gz`, and `.zip`.
+        # 
         # This parameter is required.
         self.file_name = file_name
         # This parameter is required.
         self.file_url = file_url
+        # The metadata. The value of this parameter must be the same as the Metadata parameter that is specified when you call the CreateDocumentCollection operation.
         self.metadata_shrink = metadata_shrink
         self.namespace = namespace
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The separators that are used to split large amounts of data.
+        # 
+        # > 
+        # 
+        # *   This is an important parameter that determines the chunking effect. This parameter is related to the splitter that is specified by the TextSplitterName parameter.
+        # 
+        # *   In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
         self.separators_shrink = separators_shrink
+        # The name of the splitter. Valid values:
+        # 
+        # *   **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
+        # *   **RecursiveCharacterTextSplitter**: uses `["\\n\\n", "\\n", " ", ""]` as separators by default. The splitter supports splitting code in languages such as `C++, Go, Java, JS, PHP, Proto, Python, RST, Ruby, Rust, Scala, Swift, Markdown, LaTeX, HTML, Sol, and C Sharp`.
+        # *   **SpacyTextSplitter**: uses `\\n\\n` as separators by default and uses the en_core_web_sm model of spaCy. The splitter can obtain better splitting effect.
+        # *   **MarkdownHeaderTextSplitter**: splits text in the `[("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4")]` format. The splitter is suitable for Markdown text.
         self.text_splitter_name = text_splitter_name
+        # Specifies whether to enable title enhancement.
+        # 
+        # >  You can determine the title text, mark the text in the metadata, and then combine the text with the upper-level title to implement text enhancement.
         self.zh_title_enhance = zh_title_enhance
 
     def validate(self):
@@ -34282,12 +35748,23 @@ class UpsertChunksRequest(TeaModel):
         region_id: str = None,
         text_chunks: List[UpsertChunksRequestTextChunks] = None,
     ):
+        # The name of the document collection.
+        # 
+        # >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+        # 
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
@@ -34363,12 +35840,23 @@ class UpsertChunksShrinkRequest(TeaModel):
         region_id: str = None,
         text_chunks_shrink: str = None,
     ):
+        # The name of the document collection.
+        # 
+        # >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+        # 
         # This parameter is required.
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
@@ -34580,7 +36068,7 @@ class UpsertCollectionDataRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -34668,7 +36156,7 @@ class UpsertCollectionDataShrinkRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -34815,16 +36303,43 @@ class UpsertCollectionDataAsyncRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
+        # 
+        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The Internet-accessible vector data file URL.
+        # 
+        # > 
+        # 
+        # *   The file content must be in the JSONL format. Each line consists of a list of JSON data, which specifies a set of vector data.
+        # 
+        # *   Data format of each line: `{String Id; Map<String, Object> Metadata; List<Double> Vector}`. Example: `{"Id":"myid", "Metadata": {"my_meta_key": "my_meta_value"}, "Vector": [1.234, -0.123]}`.
+        # 
+        # *   We recommend that you SDKs to call this operation. SDKs encapsulate the UpsertCollectionDataAsyncAdvance method to upload on-premises files as data sources.
+        # 
         # This parameter is required.
         self.file_url = file_url
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  The value of this parameter is specified when you call the CreateNamespace operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -34883,16 +36398,43 @@ class UpsertCollectionDataAsyncAdvanceRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The name of the collection.
+        # 
+        # >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+        # 
         # This parameter is required.
         self.collection = collection
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The Internet-accessible vector data file URL.
+        # 
+        # > 
+        # 
+        # *   The file content must be in the JSONL format. Each line consists of a list of JSON data, which specifies a set of vector data.
+        # 
+        # *   Data format of each line: `{String Id; Map<String, Object> Metadata; List<Double> Vector}`. Example: `{"Id":"myid", "Metadata": {"my_meta_key": "my_meta_value"}, "Vector": [1.234, -0.123]}`.
+        # 
+        # *   We recommend that you SDKs to call this operation. SDKs encapsulate the UpsertCollectionDataAsyncAdvance method to upload on-premises files as data sources.
+        # 
         # This parameter is required.
         self.file_url_object = file_url_object
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
         self.namespace = namespace
+        # The password of the namespace.
+        # 
+        # >  The value of this parameter is specified when you call the CreateNamespace operation.
+        # 
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -34948,9 +36490,16 @@ class UpsertCollectionDataAsyncResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The job ID. It can be used to query the job status or cancel the job.
         self.job_id = job_id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
