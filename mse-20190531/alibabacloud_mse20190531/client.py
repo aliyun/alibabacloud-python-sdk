@@ -1570,6 +1570,8 @@ class Client(OpenApiClient):
             query['ProjectDesc'] = request.project_desc
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.sync_type):
+            query['SyncType'] = request.sync_type
         if not UtilClient.is_unset(request.target_cluster_name):
             query['TargetClusterName'] = request.target_cluster_name
         if not UtilClient.is_unset(request.target_cluster_url):
@@ -1623,6 +1625,8 @@ class Client(OpenApiClient):
             query['ProjectDesc'] = request.project_desc
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.sync_type):
+            query['SyncType'] = request.sync_type
         if not UtilClient.is_unset(request.target_cluster_name):
             query['TargetClusterName'] = request.target_cluster_name
         if not UtilClient.is_unset(request.target_cluster_url):
@@ -12401,7 +12405,27 @@ class Client(OpenApiClient):
         @return: ListAnsInstancesResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12410,7 +12434,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -12436,7 +12460,27 @@ class Client(OpenApiClient):
         @return: ListAnsInstancesResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12445,7 +12489,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -25296,6 +25340,8 @@ class Client(OpenApiClient):
             query['ProjectDesc'] = request.project_desc
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.sync_type):
+            query['SyncType'] = request.sync_type
         if not UtilClient.is_unset(request.target_cluster_name):
             query['TargetClusterName'] = request.target_cluster_name
         if not UtilClient.is_unset(request.target_cluster_url):
@@ -25351,6 +25397,8 @@ class Client(OpenApiClient):
             query['ProjectDesc'] = request.project_desc
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.sync_type):
+            query['SyncType'] = request.sync_type
         if not UtilClient.is_unset(request.target_cluster_name):
             query['TargetClusterName'] = request.target_cluster_name
         if not UtilClient.is_unset(request.target_cluster_url):

@@ -1,3 +1,26 @@
+2024-06-27 Version: 6.8.2
+- Update API AddMigrationTask: add param SyncType.
+- Update API AddMigrationTask: update response param.
+- Update API GetServiceListeners: update param ClusterId.
+- Update API ImportNacosConfig: update response param.
+- Update API ListAnsInstances: update param ClusterId.
+- Update API ListAnsServiceClusters: update param ClusterId.
+- Update API ListAnsServices: update param ClusterId.
+- Update API ListAnsServices: update param InstanceId.
+- Update API ListMigrationTask: update response param.
+- Update API UpdateConfig: update param AutopurgePurgeInterval.
+- Update API UpdateConfig: update param AutopurgeSnapRetainCount.
+- Update API UpdateConfig: update param ConfigType.
+- Update API UpdateConfig: update param InitLimit.
+- Update API UpdateConfig: update param JuteMaxbuffer.
+- Update API UpdateConfig: update param MaxClientCnxns.
+- Update API UpdateConfig: update param OpenSuperAcl.
+- Update API UpdateConfig: update param SyncLimit.
+- Update API UpdateConfig: update param TickTime.
+- Update API UpdateMigrationTask: add param SyncType.
+- Update API UpdateMigrationTask: update response param.
+
+
 2024-06-21 Version: 6.8.1
 - Update API AddGateway: add param ClbNetworkType.
 - Update API AddGateway: update param NlbNetworkType.

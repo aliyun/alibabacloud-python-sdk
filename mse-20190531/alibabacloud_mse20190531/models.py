@@ -5341,6 +5341,7 @@ class AddMigrationTaskRequest(TeaModel):
         origin_instance_namespace: str = None,
         project_desc: str = None,
         request_pars: str = None,
+        sync_type: str = None,
         target_cluster_name: str = None,
         target_cluster_url: str = None,
         target_instance_id: str = None,
@@ -5366,6 +5367,7 @@ class AddMigrationTaskRequest(TeaModel):
         self.project_desc = project_desc
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
+        self.sync_type = sync_type
         # The name of the destination instance.
         self.target_cluster_name = target_cluster_name
         # The URL of the destination instance.
@@ -5396,6 +5398,8 @@ class AddMigrationTaskRequest(TeaModel):
             result['ProjectDesc'] = self.project_desc
         if self.request_pars is not None:
             result['RequestPars'] = self.request_pars
+        if self.sync_type is not None:
+            result['SyncType'] = self.sync_type
         if self.target_cluster_name is not None:
             result['TargetClusterName'] = self.target_cluster_name
         if self.target_cluster_url is not None:
@@ -5420,6 +5424,8 @@ class AddMigrationTaskRequest(TeaModel):
             self.project_desc = m.get('ProjectDesc')
         if m.get('RequestPars') is not None:
             self.request_pars = m.get('RequestPars')
+        if m.get('SyncType') is not None:
+            self.sync_type = m.get('SyncType')
         if m.get('TargetClusterName') is not None:
             self.target_cluster_name = m.get('TargetClusterName')
         if m.get('TargetClusterUrl') is not None:
@@ -5438,6 +5444,7 @@ class AddMigrationTaskResponseBodyData(TeaModel):
         origin_instance_name: str = None,
         origin_instance_namespace: str = None,
         project_desc: str = None,
+        sync_type: str = None,
         target_cluster_name: str = None,
         target_cluster_url: str = None,
         target_instance_id: str = None,
@@ -5459,6 +5466,7 @@ class AddMigrationTaskResponseBodyData(TeaModel):
         self.origin_instance_namespace = origin_instance_namespace
         # The description.
         self.project_desc = project_desc
+        self.sync_type = sync_type
         # The name of the destination instance.
         self.target_cluster_name = target_cluster_name
         # The URL of the destination instance.
@@ -5489,6 +5497,8 @@ class AddMigrationTaskResponseBodyData(TeaModel):
             result['OriginInstanceNamespace'] = self.origin_instance_namespace
         if self.project_desc is not None:
             result['ProjectDesc'] = self.project_desc
+        if self.sync_type is not None:
+            result['SyncType'] = self.sync_type
         if self.target_cluster_name is not None:
             result['TargetClusterName'] = self.target_cluster_name
         if self.target_cluster_url is not None:
@@ -5513,6 +5523,8 @@ class AddMigrationTaskResponseBodyData(TeaModel):
             self.origin_instance_namespace = m.get('OriginInstanceNamespace')
         if m.get('ProjectDesc') is not None:
             self.project_desc = m.get('ProjectDesc')
+        if m.get('SyncType') is not None:
+            self.sync_type = m.get('SyncType')
         if m.get('TargetClusterName') is not None:
             self.target_cluster_name = m.get('TargetClusterName')
         if m.get('TargetClusterUrl') is not None:
@@ -29802,10 +29814,12 @@ class ImportNacosConfigResponseBodyDataFailData(TeaModel):
         self,
         data_id: str = None,
         group: str = None,
+        reason: str = None,
     ):
         # The ID of the group.
         self.data_id = data_id
         self.group = group
+        self.reason = reason
 
     def validate(self):
         pass
@@ -29820,6 +29834,8 @@ class ImportNacosConfigResponseBodyDataFailData(TeaModel):
             result['DataId'] = self.data_id
         if self.group is not None:
             result['Group'] = self.group
+        if self.reason is not None:
+            result['Reason'] = self.reason
         return result
 
     def from_map(self, m: dict = None):
@@ -29828,6 +29844,8 @@ class ImportNacosConfigResponseBodyDataFailData(TeaModel):
             self.data_id = m.get('DataId')
         if m.get('Group') is not None:
             self.group = m.get('Group')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         return self
 
 
@@ -44997,6 +45015,7 @@ class ListMigrationTaskResponseBodyData(TeaModel):
         origin_instance_name: str = None,
         origin_instance_namespace: str = None,
         project_desc: str = None,
+        sync_type: str = None,
         target_cluster_name: str = None,
         target_cluster_url: str = None,
         target_instance_id: str = None,
@@ -45022,6 +45041,7 @@ class ListMigrationTaskResponseBodyData(TeaModel):
         self.origin_instance_namespace = origin_instance_namespace
         # The description.
         self.project_desc = project_desc
+        self.sync_type = sync_type
         # The name of the destination instance.
         self.target_cluster_name = target_cluster_name
         # The URL of the destination instance.
@@ -45056,6 +45076,8 @@ class ListMigrationTaskResponseBodyData(TeaModel):
             result['OriginInstanceNamespace'] = self.origin_instance_namespace
         if self.project_desc is not None:
             result['ProjectDesc'] = self.project_desc
+        if self.sync_type is not None:
+            result['SyncType'] = self.sync_type
         if self.target_cluster_name is not None:
             result['TargetClusterName'] = self.target_cluster_name
         if self.target_cluster_url is not None:
@@ -45084,6 +45106,8 @@ class ListMigrationTaskResponseBodyData(TeaModel):
             self.origin_instance_namespace = m.get('OriginInstanceNamespace')
         if m.get('ProjectDesc') is not None:
             self.project_desc = m.get('ProjectDesc')
+        if m.get('SyncType') is not None:
+            self.sync_type = m.get('SyncType')
         if m.get('TargetClusterName') is not None:
             self.target_cluster_name = m.get('TargetClusterName')
         if m.get('TargetClusterUrl') is not None:
@@ -65998,6 +66022,7 @@ class UpdateMigrationTaskRequest(TeaModel):
         origin_instance_namespace: str = None,
         project_desc: str = None,
         request_pars: str = None,
+        sync_type: str = None,
         target_cluster_name: str = None,
         target_cluster_url: str = None,
         target_instance_id: str = None,
@@ -66025,6 +66050,7 @@ class UpdateMigrationTaskRequest(TeaModel):
         self.project_desc = project_desc
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
+        self.sync_type = sync_type
         # The name of the destination instance.
         self.target_cluster_name = target_cluster_name
         # The URL of the destination instance.
@@ -66057,6 +66083,8 @@ class UpdateMigrationTaskRequest(TeaModel):
             result['ProjectDesc'] = self.project_desc
         if self.request_pars is not None:
             result['RequestPars'] = self.request_pars
+        if self.sync_type is not None:
+            result['SyncType'] = self.sync_type
         if self.target_cluster_name is not None:
             result['TargetClusterName'] = self.target_cluster_name
         if self.target_cluster_url is not None:
@@ -66083,6 +66111,8 @@ class UpdateMigrationTaskRequest(TeaModel):
             self.project_desc = m.get('ProjectDesc')
         if m.get('RequestPars') is not None:
             self.request_pars = m.get('RequestPars')
+        if m.get('SyncType') is not None:
+            self.sync_type = m.get('SyncType')
         if m.get('TargetClusterName') is not None:
             self.target_cluster_name = m.get('TargetClusterName')
         if m.get('TargetClusterUrl') is not None:
@@ -66103,6 +66133,7 @@ class UpdateMigrationTaskResponseBodyData(TeaModel):
         origin_instance_name: str = None,
         origin_instance_namespace: str = None,
         project_desc: str = None,
+        sync_type: str = None,
         target_cluster_name: str = None,
         target_cluster_url: str = None,
         target_instance_id: str = None,
@@ -66128,6 +66159,7 @@ class UpdateMigrationTaskResponseBodyData(TeaModel):
         self.origin_instance_namespace = origin_instance_namespace
         # The description.
         self.project_desc = project_desc
+        self.sync_type = sync_type
         # The name of the destination instance.
         self.target_cluster_name = target_cluster_name
         # The URL of the destination instance.
@@ -66162,6 +66194,8 @@ class UpdateMigrationTaskResponseBodyData(TeaModel):
             result['OriginInstanceNamespace'] = self.origin_instance_namespace
         if self.project_desc is not None:
             result['ProjectDesc'] = self.project_desc
+        if self.sync_type is not None:
+            result['SyncType'] = self.sync_type
         if self.target_cluster_name is not None:
             result['TargetClusterName'] = self.target_cluster_name
         if self.target_cluster_url is not None:
@@ -66190,6 +66224,8 @@ class UpdateMigrationTaskResponseBodyData(TeaModel):
             self.origin_instance_namespace = m.get('OriginInstanceNamespace')
         if m.get('ProjectDesc') is not None:
             self.project_desc = m.get('ProjectDesc')
+        if m.get('SyncType') is not None:
+            self.sync_type = m.get('SyncType')
         if m.get('TargetClusterName') is not None:
             self.target_cluster_name = m.get('TargetClusterName')
         if m.get('TargetClusterUrl') is not None:
