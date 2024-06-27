@@ -1,3 +1,8 @@
+2024-06-27 Version: 4.1.4
+- Update API CreateEventStreaming: update param Sink.
+- Update API UpdateEventStreaming: update param Sink.
+
+
 2024-06-25 Version: 4.1.3
 - Generated python 2020-04-01 for eventbridge.
 

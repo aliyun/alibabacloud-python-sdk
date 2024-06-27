@@ -4139,6 +4139,45 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersData(TeaModel):
         return self
 
 
+class CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateEventStreamingRequestSinkSinkPrometheusParametersNetworkType(TeaModel):
     def __init__(
         self,
@@ -4438,6 +4477,7 @@ class CreateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
         self,
         authorization_type: CreateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType = None,
         data: CreateEventStreamingRequestSinkSinkPrometheusParametersData = None,
+        header_parameters: CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters = None,
         network_type: CreateEventStreamingRequestSinkSinkPrometheusParametersNetworkType = None,
         password: CreateEventStreamingRequestSinkSinkPrometheusParametersPassword = None,
         security_group_id: CreateEventStreamingRequestSinkSinkPrometheusParametersSecurityGroupId = None,
@@ -4450,6 +4490,7 @@ class CreateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
         self.authorization_type = authorization_type
         # The metric data.
         self.data = data
+        self.header_parameters = header_parameters
         # The network type.
         self.network_type = network_type
         # The password.
@@ -4470,6 +4511,8 @@ class CreateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
             self.authorization_type.validate()
         if self.data:
             self.data.validate()
+        if self.header_parameters:
+            self.header_parameters.validate()
         if self.network_type:
             self.network_type.validate()
         if self.password:
@@ -4495,6 +4538,8 @@ class CreateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
             result['AuthorizationType'] = self.authorization_type.to_map()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.header_parameters is not None:
+            result['HeaderParameters'] = self.header_parameters.to_map()
         if self.network_type is not None:
             result['NetworkType'] = self.network_type.to_map()
         if self.password is not None:
@@ -4519,6 +4564,9 @@ class CreateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
         if m.get('Data') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkPrometheusParametersData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('HeaderParameters') is not None:
+            temp_model = CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters()
+            self.header_parameters = temp_model.from_map(m['HeaderParameters'])
         if m.get('NetworkType') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkPrometheusParametersNetworkType()
             self.network_type = temp_model.from_map(m['NetworkType'])
@@ -30137,6 +30185,45 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersData(TeaModel):
         return self
 
 
+class UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters(TeaModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.form is not None:
+            result['Form'] = self.form
+        if self.template is not None:
+            result['Template'] = self.template
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType(TeaModel):
     def __init__(
         self,
@@ -30436,6 +30523,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
         self,
         authorization_type: UpdateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType = None,
         data: UpdateEventStreamingRequestSinkSinkPrometheusParametersData = None,
+        header_parameters: UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters = None,
         network_type: UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType = None,
         password: UpdateEventStreamingRequestSinkSinkPrometheusParametersPassword = None,
         security_group_id: UpdateEventStreamingRequestSinkSinkPrometheusParametersSecurityGroupId = None,
@@ -30448,6 +30536,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
         self.authorization_type = authorization_type
         # The metric data.
         self.data = data
+        self.header_parameters = header_parameters
         # The network type.
         self.network_type = network_type
         # The password.
@@ -30468,6 +30557,8 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
             self.authorization_type.validate()
         if self.data:
             self.data.validate()
+        if self.header_parameters:
+            self.header_parameters.validate()
         if self.network_type:
             self.network_type.validate()
         if self.password:
@@ -30493,6 +30584,8 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
             result['AuthorizationType'] = self.authorization_type.to_map()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.header_parameters is not None:
+            result['HeaderParameters'] = self.header_parameters.to_map()
         if self.network_type is not None:
             result['NetworkType'] = self.network_type.to_map()
         if self.password is not None:
@@ -30517,6 +30610,9 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
         if m.get('Data') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkPrometheusParametersData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('HeaderParameters') is not None:
+            temp_model = UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters()
+            self.header_parameters = temp_model.from_map(m['HeaderParameters'])
         if m.get('NetworkType') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType()
             self.network_type = temp_model.from_map(m['NetworkType'])
