@@ -1,3 +1,15 @@
+2024-06-28 Version: 6.7.0
+- Support API GetPublicIpAddressPoolServiceStatus.
+- Support API OpenPublicIpAddressPoolService.
+- Update API AllocateIpv6Address: add param AddressType.
+- Update API CreateBgpGroup: update response param.
+- Update API DescribeIpv6Addresses: add param AddressType.
+- Update API DescribeIpv6Addresses: update response param.
+- Update API DescribeIpv6EgressOnlyRules: update response param.
+- Update API ModifyBgpGroupAttribute: update response param.
+- Update API ModifyRouteTableAttributes: add param RoutePropagationEnable.
+
+
 2024-06-14 Version: 6.6.8
 - Update API DeleteIpv4Gateway: add param InternetMode.
 

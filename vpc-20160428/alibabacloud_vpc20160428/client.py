@@ -1897,6 +1897,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -1958,6 +1960,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -10645,6 +10649,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse:
         """
+        @summary 创建端口初装费订单
+        
         @param request: CreatePhysicalConnectionSetupOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePhysicalConnectionSetupOrderResponse
@@ -10700,6 +10706,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse:
         """
+        @summary 创建端口初装费订单
+        
         @param request: CreatePhysicalConnectionSetupOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePhysicalConnectionSetupOrderResponse
@@ -10754,6 +10762,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreatePhysicalConnectionSetupOrderRequest,
     ) -> vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse:
         """
+        @summary 创建端口初装费订单
+        
         @param request: CreatePhysicalConnectionSetupOrderRequest
         @return: CreatePhysicalConnectionSetupOrderResponse
         """
@@ -10765,6 +10775,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreatePhysicalConnectionSetupOrderRequest,
     ) -> vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse:
         """
+        @summary 创建端口初装费订单
+        
         @param request: CreatePhysicalConnectionSetupOrderRequest
         @return: CreatePhysicalConnectionSetupOrderResponse
         """
@@ -27079,6 +27091,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.associated_instance_id):
             query['AssociatedInstanceId'] = request.associated_instance_id
         if not UtilClient.is_unset(request.associated_instance_type):
@@ -27154,6 +27168,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.associated_instance_id):
             query['AssociatedInstanceId'] = request.associated_instance_id
         if not UtilClient.is_unset(request.associated_instance_type):
@@ -27247,6 +27263,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         """
+        @summary 查询创建的仅主动出规则。
+        
         @param request: DescribeIpv6EgressOnlyRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeIpv6EgressOnlyRulesResponse
@@ -27304,6 +27322,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         """
+        @summary 查询创建的仅主动出规则。
+        
         @param request: DescribeIpv6EgressOnlyRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeIpv6EgressOnlyRulesResponse
@@ -27360,6 +27380,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIpv6EgressOnlyRulesRequest,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         """
+        @summary 查询创建的仅主动出规则。
+        
         @param request: DescribeIpv6EgressOnlyRulesRequest
         @return: DescribeIpv6EgressOnlyRulesResponse
         """
@@ -27371,6 +27393,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIpv6EgressOnlyRulesRequest,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         """
+        @summary 查询创建的仅主动出规则。
+        
         @param request: DescribeIpv6EgressOnlyRulesRequest
         @return: DescribeIpv6EgressOnlyRulesResponse
         """
@@ -35556,6 +35580,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_physical_connection_service_status_with_options_async(request, runtime)
+
+    def get_public_ip_address_pool_service_status_with_options(
+        self,
+        request: vpc_20160428_models.GetPublicIpAddressPoolServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse:
+        """
+        @summary 查询IP地址池功能的开通状态。
+        
+        @param request: GetPublicIpAddressPoolServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublicIpAddressPoolServiceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPublicIpAddressPoolServiceStatus',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_public_ip_address_pool_service_status_with_options_async(
+        self,
+        request: vpc_20160428_models.GetPublicIpAddressPoolServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse:
+        """
+        @summary 查询IP地址池功能的开通状态。
+        
+        @param request: GetPublicIpAddressPoolServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublicIpAddressPoolServiceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPublicIpAddressPoolServiceStatus',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_public_ip_address_pool_service_status(
+        self,
+        request: vpc_20160428_models.GetPublicIpAddressPoolServiceStatusRequest,
+    ) -> vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse:
+        """
+        @summary 查询IP地址池功能的开通状态。
+        
+        @param request: GetPublicIpAddressPoolServiceStatusRequest
+        @return: GetPublicIpAddressPoolServiceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_public_ip_address_pool_service_status_with_options(request, runtime)
+
+    async def get_public_ip_address_pool_service_status_async(
+        self,
+        request: vpc_20160428_models.GetPublicIpAddressPoolServiceStatusRequest,
+    ) -> vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse:
+        """
+        @summary 查询IP地址池功能的开通状态。
+        
+        @param request: GetPublicIpAddressPoolServiceStatusRequest
+        @return: GetPublicIpAddressPoolServiceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_public_ip_address_pool_service_status_with_options_async(request, runtime)
 
     def get_traffic_mirror_service_status_with_options(
         self,
@@ -44575,6 +44719,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_propagation_enable):
+            query['RoutePropagationEnable'] = request.route_propagation_enable
         if not UtilClient.is_unset(request.route_table_id):
             query['RouteTableId'] = request.route_table_id
         if not UtilClient.is_unset(request.route_table_name):
@@ -44626,6 +44772,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_propagation_enable):
+            query['RoutePropagationEnable'] = request.route_propagation_enable
         if not UtilClient.is_unset(request.route_table_id):
             query['RouteTableId'] = request.route_table_id
         if not UtilClient.is_unset(request.route_table_name):
@@ -48444,6 +48592,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.open_physical_connection_service_with_options_async(request, runtime)
+
+    def open_public_ip_address_pool_service_with_options(
+        self,
+        request: vpc_20160428_models.OpenPublicIpAddressPoolServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse:
+        """
+        @summary 开通IP地址池功能。
+        
+        @param request: OpenPublicIpAddressPoolServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenPublicIpAddressPoolServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenPublicIpAddressPoolService',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_public_ip_address_pool_service_with_options_async(
+        self,
+        request: vpc_20160428_models.OpenPublicIpAddressPoolServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse:
+        """
+        @summary 开通IP地址池功能。
+        
+        @param request: OpenPublicIpAddressPoolServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenPublicIpAddressPoolServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenPublicIpAddressPoolService',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_public_ip_address_pool_service(
+        self,
+        request: vpc_20160428_models.OpenPublicIpAddressPoolServiceRequest,
+    ) -> vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse:
+        """
+        @summary 开通IP地址池功能。
+        
+        @param request: OpenPublicIpAddressPoolServiceRequest
+        @return: OpenPublicIpAddressPoolServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.open_public_ip_address_pool_service_with_options(request, runtime)
+
+    async def open_public_ip_address_pool_service_async(
+        self,
+        request: vpc_20160428_models.OpenPublicIpAddressPoolServiceRequest,
+    ) -> vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse:
+        """
+        @summary 开通IP地址池功能。
+        
+        @param request: OpenPublicIpAddressPoolServiceRequest
+        @return: OpenPublicIpAddressPoolServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.open_public_ip_address_pool_service_with_options_async(request, runtime)
 
     def open_traffic_mirror_service_with_options(
         self,

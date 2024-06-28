@@ -2359,6 +2359,7 @@ class AllocateIpv6AddressRequestTag(TeaModel):
 class AllocateIpv6AddressRequest(TeaModel):
     def __init__(
         self,
+        address_type: str = None,
         client_token: str = None,
         dry_run: bool = None,
         ipv_6address: str = None,
@@ -2373,6 +2374,7 @@ class AllocateIpv6AddressRequest(TeaModel):
         tag: List[AllocateIpv6AddressRequestTag] = None,
         v_switch_id: str = None,
     ):
+        self.address_type = address_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
@@ -2417,6 +2419,8 @@ class AllocateIpv6AddressRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -2449,6 +2453,8 @@ class AllocateIpv6AddressRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -30505,7 +30511,7 @@ class DeleteVpnAttachmentRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
-        # The ID of the region where the IPsec-VPN connection is established.
+        # The region ID of the IPsec-VPN connection.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
@@ -42401,6 +42407,7 @@ class DescribeIpv6AddressesRequestTag(TeaModel):
 class DescribeIpv6AddressesRequest(TeaModel):
     def __init__(
         self,
+        address_type: str = None,
         associated_instance_id: str = None,
         associated_instance_type: str = None,
         include_reservation_data: bool = None,
@@ -42422,6 +42429,7 @@ class DescribeIpv6AddressesRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.address_type = address_type
         # The ID of the instance that is assigned the IPv6 address.
         self.associated_instance_id = associated_instance_id
         # The type of instance associated with the IPv6 address. Valid values:
@@ -42489,6 +42497,8 @@ class DescribeIpv6AddressesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
         if self.associated_instance_id is not None:
             result['AssociatedInstanceId'] = self.associated_instance_id
         if self.associated_instance_type is not None:
@@ -42535,6 +42545,8 @@ class DescribeIpv6AddressesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
         if m.get('AssociatedInstanceId') is not None:
             self.associated_instance_id = m.get('AssociatedInstanceId')
         if m.get('AssociatedInstanceType') is not None:
@@ -42766,6 +42778,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags(TeaModel):
 class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
     def __init__(
         self,
+        address_type: str = None,
         allocation_time: str = None,
         associated_instance_id: str = None,
         associated_instance_type: str = None,
@@ -42785,6 +42798,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.address_type = address_type
         # The time when the IPv6 address was created.
         self.allocation_time = allocation_time
         # The ID of the instance associated with the IPv6 address.
@@ -42848,6 +42862,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
             return _map
 
         result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
         if self.allocation_time is not None:
             result['AllocationTime'] = self.allocation_time
         if self.associated_instance_id is not None:
@@ -42888,6 +42904,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
         if m.get('AllocationTime') is not None:
             self.allocation_time = m.get('AllocationTime')
         if m.get('AssociatedInstanceId') is not None:
@@ -54847,6 +54865,12 @@ class DescribeVSwitchesRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # Specifies whether to query vSwitches with IPv6 enabled in the region. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # If you do not set this parameter, the system queries all vSwitches in the specified region by default.
         self.enable_ipv_6 = enable_ipv_6
         # Specifies whether to query the default vSwitches in the specified region. Valid values:
         # 
@@ -54857,9 +54881,9 @@ class DescribeVSwitchesRequest(TeaModel):
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the vSwitch. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
@@ -62543,9 +62567,9 @@ class DescribeVpnGatewayResponseBodyTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The tag key.
         self.key = key
-        # The value of tag N.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -62676,6 +62700,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The ENIs created by the system for the VPN gateway.
         self.eni_instance_ids = eni_instance_ids
         # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
         # 
@@ -63365,9 +63390,9 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData(TeaMod
         self.reservation_ipsec = reservation_ipsec
         # The maximum number of concurrent SSL-VPN connections of the pending order.
         self.reservation_max_connections = reservation_max_connections
-        # The type of the pending order. Valid values:
+        # The type of the order that has not taken effect. Valid values:
         # 
-        # *   **RENEWCHANGE**: renewal with a specification change
+        # *   **RENEWCHANGE**: renewal with upgrade or downgrade
         # *   **TEMP_UPGRADE**: temporary upgrade
         # *   **RENEW**: renewal
         self.reservation_order_type = reservation_order_type
@@ -63380,8 +63405,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData(TeaMod
         self.reservation_ssl = reservation_ssl
         # The status of the pending order.
         # 
-        # *   **1**: indicates that the order is an order for renewal or renewal with a specification change and the order has not taken effect.
-        # *   **2**: indicates that the order is an order for temporary upgrade and the order has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, the values of **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specifications of the VPN gateway.
+        # *   **1**: indicates that the order for renewal or the order for renewal with a specification change has not taken effect.
+        # *   **2**: indicates that the order of the temporary upgrade has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, the values of **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specifications of the VPN gateway.
         self.status = status
 
     def validate(self):
@@ -63529,15 +63554,15 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         vpn_gateway_id: str = None,
         vpn_type: str = None,
     ):
-        # Indicates whether Border Gateway Protocol (BGP) routes are automatically advertised to the VPC. Valid values:
+        # Indicates whether BGP routes are automatically advertised to the VPC.
         # 
         # *   **true**\
         # *   **false**\
         self.auto_propagate = auto_propagate
-        # The payment status of the VPN gateway. Valid values:
+        # The payment status of the VPN gateway.
         # 
-        # *   **Normal**: The VPN gateway runs as expected.
-        # *   **FinancialLocked**: The VPN gateway is locked due to overdue payments.
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.business_status = business_status
         # The billing method of the VPN gateway.
         # 
@@ -63559,13 +63584,14 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # The BGP status of the VPN gateway. Valid values:
         # 
-        # *   **true**: The feature is enabled.
-        # *   **false**: The feature is disabled.
+        # *   **true**\
+        # *   **false**\
         self.enable_bgp = enable_bgp
         # The timestamp generated when the VPN gateway expires. Unit: milliseconds.
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The ENIs created by the system for the VPN gateway.
         self.eni_instance_ids = eni_instance_ids
         # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the value of this parameter is the IP address of the VPN gateway, which can be used to create IPsec-VPN or SSL-VPN connections.
         # 
@@ -63585,9 +63611,9 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # *   **public**\
         # *   **private**\
         self.network_type = network_type
-        # The pending orders.
+        # The information about pending orders.
         # 
-        # >  This parameter is returned only if **IncludeReservationData** is set to **true**.
+        # > This parameter is returned only if **IncludeReservationData** is set to **true**.
         self.reservation_data = reservation_data
         # The ID of the resource group to which the VPN gateway belongs.
         # 
@@ -63634,11 +63660,11 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # *   **VpnNewImage**: indicates whether the VPN gateway is upgraded. Valid values:
         # 
         #     *   **true**\
-        #     *   **false**\
+        #     *   **false**: does not query only SQL statements that need to be optimized.
         # 
         # *   **description**: the description of the VPN gateway. This parameter is only for internal use.
         # 
-        # *   **VpnVersion**: the version number of the VPN gateway.
+        # *   **VpnVersion**: the version of the VPN gateway.
         self.tag = tag
         # The tags that are added to the VPN gateway.
         self.tags = tags
@@ -63648,7 +63674,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         self.vpc_id = vpc_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
-        # The type of the VPN gateway.
+        # The type of VPN gateway.
         # 
         # Only **Normal** may be returned, which indicates a standard VPN gateway.
         self.vpn_type = vpn_type
@@ -69135,6 +69161,138 @@ class GetPhysicalConnectionServiceStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPhysicalConnectionServiceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPublicIpAddressPoolServiceStatusRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class GetPublicIpAddressPoolServiceStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        request_id: str = None,
+    ):
+        self.enabled = enabled
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPublicIpAddressPoolServiceStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPublicIpAddressPoolServiceStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPublicIpAddressPoolServiceStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -79733,7 +79891,7 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         # Specifies whether to clear the secret key. Valid values:
         # 
         # *   **true**\
-        # *   **false**\
+        # *   **false** (default)
         self.clear_auth_key = clear_auth_key
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -79745,12 +79903,12 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         # 
         # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to use a fake ASN. Valid values:
+        # Specifies whether to use a fake AS number. Valid values:
         # 
         # *   **false** (default)
         # *   **true**\
         # 
-        # >  A router that runs BGP typically belongs only to one AS. If you need to replace an existing ASN with a new ASN and you cannot immediately modify BGP configurations, you can use fake ASNs to ensure service continuity.
+        # > A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
         self.is_fake_asn = is_fake_asn
         # The custom autonomous system number (ASN) of the BGP on the Alibaba Cloud side. Valid values:
         # 
@@ -85638,6 +85796,7 @@ class ModifyRouteTableAttributesRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        route_propagation_enable: bool = None,
         route_table_id: str = None,
         route_table_name: str = None,
     ):
@@ -85655,6 +85814,7 @@ class ModifyRouteTableAttributesRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.route_propagation_enable = route_propagation_enable
         # The ID of the route table.
         # 
         # This parameter is required.
@@ -85685,6 +85845,8 @@ class ModifyRouteTableAttributesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.route_propagation_enable is not None:
+            result['RoutePropagationEnable'] = self.route_propagation_enable
         if self.route_table_id is not None:
             result['RouteTableId'] = self.route_table_id
         if self.route_table_name is not None:
@@ -85705,6 +85867,8 @@ class ModifyRouteTableAttributesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RoutePropagationEnable') is not None:
+            self.route_propagation_enable = m.get('RoutePropagationEnable')
         if m.get('RouteTableId') is not None:
             self.route_table_id = m.get('RouteTableId')
         if m.get('RouteTableName') is not None:
@@ -93139,6 +93303,144 @@ class OpenPhysicalConnectionServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OpenPhysicalConnectionServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OpenPublicIpAddressPoolServiceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.client_token = client_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class OpenPublicIpAddressPoolServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class OpenPublicIpAddressPoolServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OpenPublicIpAddressPoolServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OpenPublicIpAddressPoolServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
