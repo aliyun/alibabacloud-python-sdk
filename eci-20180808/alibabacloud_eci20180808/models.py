@@ -4899,6 +4899,7 @@ class DeleteContainerGroupRequest(TeaModel):
         self,
         client_token: str = None,
         container_group_id: str = None,
+        force: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -4911,6 +4912,7 @@ class DeleteContainerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.container_group_id = container_group_id
+        self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
@@ -4933,6 +4935,8 @@ class DeleteContainerGroupRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.container_group_id is not None:
             result['ContainerGroupId'] = self.container_group_id
+        if self.force is not None:
+            result['Force'] = self.force
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -4951,6 +4955,8 @@ class DeleteContainerGroupRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('ContainerGroupId') is not None:
             self.container_group_id = m.get('ContainerGroupId')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:

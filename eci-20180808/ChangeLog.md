@@ -1,3 +1,7 @@
+2024-06-28 Version: 2.0.7
+- Update API DeleteContainerGroup: add param Force.
+
+
 2024-06-19 Version: 2.1.0
 - Support API ListTagResources.
 - Support API TagResources.
