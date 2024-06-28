@@ -1,3 +1,13 @@
+2024-06-28 Version: 4.0.0
+- Delete API EnableBillGeneration.
+- Update API CreateResourcePackage: update response param.
+- Update API DescribeResourcePackageProduct: update response param.
+- Update API DescribeSplitItemBill: add param PipCode.
+- Update API QueryCostUnitResource: update response param.
+- Update API SubscribeBillToOSS: add param UsingSsl.
+- Update API SubscribeBillToOSS: update response param.
+
+
 2024-03-29 Version: 3.0.2
 - Generated python 2017-12-14 for BssOpenApi.
 

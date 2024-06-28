@@ -107,7 +107,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.AddAccountRelationResponse:
         """
-        1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+        @summary Creates a financial relationship.
+        
+        @description 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -154,7 +156,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.AddAccountRelationResponse:
         """
-        1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+        @summary Creates a financial relationship.
+        
+        @description 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -200,7 +204,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.AddAccountRelationRequest,
     ) -> bss_open_api_20171214_models.AddAccountRelationResponse:
         """
-        1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+        @summary Creates a financial relationship.
+        
+        @description 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
         @return: AddAccountRelationResponse
@@ -213,7 +219,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.AddAccountRelationRequest,
     ) -> bss_open_api_20171214_models.AddAccountRelationResponse:
         """
-        1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+        @summary Creates a financial relationship.
+        
+        @description 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
         @return: AddAccountRelationResponse
@@ -226,6 +234,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.AllocateCostUnitResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.AllocateCostUnitResourceResponse:
+        """
+        @summary Transfers resource instances from the source cost center to the destination cost center.
+        
+        @param request: AllocateCostUnitResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateCostUnitResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_unit_id):
@@ -262,6 +277,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.AllocateCostUnitResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.AllocateCostUnitResourceResponse:
+        """
+        @summary Transfers resource instances from the source cost center to the destination cost center.
+        
+        @param request: AllocateCostUnitResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateCostUnitResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_unit_id):
@@ -297,6 +319,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.AllocateCostUnitResourceRequest,
     ) -> bss_open_api_20171214_models.AllocateCostUnitResourceResponse:
+        """
+        @summary Transfers resource instances from the source cost center to the destination cost center.
+        
+        @param request: AllocateCostUnitResourceRequest
+        @return: AllocateCostUnitResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.allocate_cost_unit_resource_with_options(request, runtime)
 
@@ -304,6 +332,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.AllocateCostUnitResourceRequest,
     ) -> bss_open_api_20171214_models.AllocateCostUnitResourceResponse:
+        """
+        @summary Transfers resource instances from the source cost center to the destination cost center.
+        
+        @param request: AllocateCostUnitResourceRequest
+        @return: AllocateCostUnitResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_cost_unit_resource_with_options_async(request, runtime)
 
@@ -312,6 +346,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ApplyInvoiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ApplyInvoiceResponse:
+        """
+        @summary Submits an application for an invoice.
+        
+        @param request: ApplyInvoiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyInvoiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_id):
@@ -358,6 +399,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ApplyInvoiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ApplyInvoiceResponse:
+        """
+        @summary Submits an application for an invoice.
+        
+        @param request: ApplyInvoiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyInvoiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_id):
@@ -403,6 +451,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ApplyInvoiceRequest,
     ) -> bss_open_api_20171214_models.ApplyInvoiceResponse:
+        """
+        @summary Submits an application for an invoice.
+        
+        @param request: ApplyInvoiceRequest
+        @return: ApplyInvoiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_invoice_with_options(request, runtime)
 
@@ -410,6 +464,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ApplyInvoiceRequest,
     ) -> bss_open_api_20171214_models.ApplyInvoiceResponse:
+        """
+        @summary Submits an application for an invoice.
+        
+        @param request: ApplyInvoiceRequest
+        @return: ApplyInvoiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_invoice_with_options_async(request, runtime)
 
@@ -418,6 +478,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CancelOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CancelOrderResponse:
+        """
+        @summary Cancels an unpaid order.
+        
+        @param request: CancelOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -448,6 +515,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CancelOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CancelOrderResponse:
+        """
+        @summary Cancels an unpaid order.
+        
+        @param request: CancelOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -477,6 +551,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CancelOrderRequest,
     ) -> bss_open_api_20171214_models.CancelOrderResponse:
+        """
+        @summary Cancels an unpaid order.
+        
+        @param request: CancelOrderRequest
+        @return: CancelOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_order_with_options(request, runtime)
 
@@ -484,6 +564,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CancelOrderRequest,
     ) -> bss_open_api_20171214_models.CancelOrderResponse:
+        """
+        @summary Cancels an unpaid order.
+        
+        @param request: CancelOrderRequest
+        @return: CancelOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_order_with_options_async(request, runtime)
 
@@ -492,6 +578,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ChangeResellerConsumeAmountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse:
+        """
+        @param request: ChangeResellerConsumeAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResellerConsumeAmountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.adjust_type):
@@ -534,6 +625,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ChangeResellerConsumeAmountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse:
+        """
+        @param request: ChangeResellerConsumeAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResellerConsumeAmountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.adjust_type):
@@ -575,6 +671,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ChangeResellerConsumeAmountRequest,
     ) -> bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse:
+        """
+        @param request: ChangeResellerConsumeAmountRequest
+        @return: ChangeResellerConsumeAmountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_reseller_consume_amount_with_options(request, runtime)
 
@@ -582,6 +682,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ChangeResellerConsumeAmountRequest,
     ) -> bss_open_api_20171214_models.ChangeResellerConsumeAmountResponse:
+        """
+        @param request: ChangeResellerConsumeAmountRequest
+        @return: ChangeResellerConsumeAmountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_reseller_consume_amount_with_options_async(request, runtime)
 
@@ -591,7 +695,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ConfirmRelationResponse:
         """
-        1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
+        @summary Confirms the invitation initiated by the master account.
+        
+        @description 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
         
         @param request: ConfirmRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -638,7 +744,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ConfirmRelationResponse:
         """
-        1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
+        @summary Confirms the invitation initiated by the master account.
+        
+        @description 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
         
         @param request: ConfirmRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -684,7 +792,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ConfirmRelationRequest,
     ) -> bss_open_api_20171214_models.ConfirmRelationResponse:
         """
-        1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
+        @summary Confirms the invitation initiated by the master account.
+        
+        @description 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
         
         @param request: ConfirmRelationRequest
         @return: ConfirmRelationResponse
@@ -697,7 +807,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ConfirmRelationRequest,
     ) -> bss_open_api_20171214_models.ConfirmRelationResponse:
         """
-        1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
+        @summary Confirms the invitation initiated by the master account.
+        
+        @description 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
         
         @param request: ConfirmRelationRequest
         @return: ConfirmRelationResponse
@@ -710,6 +822,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ConvertChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ConvertChargeTypeResponse:
+        """
+        @summary Changes the billing method of an instance. You can call this operation to switch the billing method from pay-as-you-go to subscription for Server Load Balancer (SLB) instances, elastic IP addresses (EIPs), and NAT gateways, and switch the billing method from subscription to pay-as-you-go for SLB instances and EIPs.
+        
+        @param request: ConvertChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -748,6 +867,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ConvertChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ConvertChargeTypeResponse:
+        """
+        @summary Changes the billing method of an instance. You can call this operation to switch the billing method from pay-as-you-go to subscription for Server Load Balancer (SLB) instances, elastic IP addresses (EIPs), and NAT gateways, and switch the billing method from subscription to pay-as-you-go for SLB instances and EIPs.
+        
+        @param request: ConvertChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -785,6 +911,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ConvertChargeTypeRequest,
     ) -> bss_open_api_20171214_models.ConvertChargeTypeResponse:
+        """
+        @summary Changes the billing method of an instance. You can call this operation to switch the billing method from pay-as-you-go to subscription for Server Load Balancer (SLB) instances, elastic IP addresses (EIPs), and NAT gateways, and switch the billing method from subscription to pay-as-you-go for SLB instances and EIPs.
+        
+        @param request: ConvertChargeTypeRequest
+        @return: ConvertChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.convert_charge_type_with_options(request, runtime)
 
@@ -792,6 +924,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ConvertChargeTypeRequest,
     ) -> bss_open_api_20171214_models.ConvertChargeTypeResponse:
+        """
+        @summary Changes the billing method of an instance. You can call this operation to switch the billing method from pay-as-you-go to subscription for Server Load Balancer (SLB) instances, elastic IP addresses (EIPs), and NAT gateways, and switch the billing method from subscription to pay-as-you-go for SLB instances and EIPs.
+        
+        @param request: ConvertChargeTypeRequest
+        @return: ConvertChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.convert_charge_type_with_options_async(request, runtime)
 
@@ -801,7 +939,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateAgAccountResponse:
         """
-        You can call this operation to create an account so as to establish a master-member financial relationship.
+        @summary Creates an account to establish a financial relationship.
+        
+        @description You can call this operation to create an account so as to establish a master-member financial relationship.
         
         @param request: CreateAgAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -852,7 +992,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateAgAccountResponse:
         """
-        You can call this operation to create an account so as to establish a master-member financial relationship.
+        @summary Creates an account to establish a financial relationship.
+        
+        @description You can call this operation to create an account so as to establish a master-member financial relationship.
         
         @param request: CreateAgAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -902,7 +1044,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateAgAccountRequest,
     ) -> bss_open_api_20171214_models.CreateAgAccountResponse:
         """
-        You can call this operation to create an account so as to establish a master-member financial relationship.
+        @summary Creates an account to establish a financial relationship.
+        
+        @description You can call this operation to create an account so as to establish a master-member financial relationship.
         
         @param request: CreateAgAccountRequest
         @return: CreateAgAccountResponse
@@ -915,7 +1059,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateAgAccountRequest,
     ) -> bss_open_api_20171214_models.CreateAgAccountResponse:
         """
-        You can call this operation to create an account so as to establish a master-member financial relationship.
+        @summary Creates an account to establish a financial relationship.
+        
+        @description You can call this operation to create an account so as to establish a master-member financial relationship.
         
         @param request: CreateAgAccountRequest
         @return: CreateAgAccountResponse
@@ -928,6 +1074,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateCostUnitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateCostUnitResponse:
+        """
+        @summary Creates a cost center. You can create multiple cost centers at a time.
+        
+        @param request: CreateCostUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCostUnitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.unit_entity_list):
@@ -956,6 +1109,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateCostUnitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateCostUnitResponse:
+        """
+        @summary Creates a cost center. You can create multiple cost centers at a time.
+        
+        @param request: CreateCostUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCostUnitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.unit_entity_list):
@@ -983,6 +1143,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateCostUnitRequest,
     ) -> bss_open_api_20171214_models.CreateCostUnitResponse:
+        """
+        @summary Creates a cost center. You can create multiple cost centers at a time.
+        
+        @param request: CreateCostUnitRequest
+        @return: CreateCostUnitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cost_unit_with_options(request, runtime)
 
@@ -990,6 +1156,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateCostUnitRequest,
     ) -> bss_open_api_20171214_models.CreateCostUnitResponse:
+        """
+        @summary Creates a cost center. You can create multiple cost centers at a time.
+        
+        @param request: CreateCostUnitRequest
+        @return: CreateCostUnitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cost_unit_with_options_async(request, runtime)
 
@@ -998,6 +1170,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateInstanceResponse:
+        """
+        @summary Creates an instance. If you call this operation, an order for a new instance is created and the order is automatically paid for. You cannot create Elastic Compute Service (ECS) instances or ApsaraDB RDS instances by calling the operation.
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1044,6 +1223,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateInstanceResponse:
+        """
+        @summary Creates an instance. If you call this operation, an order for a new instance is created and the order is automatically paid for. You cannot create Elastic Compute Service (ECS) instances or ApsaraDB RDS instances by calling the operation.
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1089,6 +1275,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateInstanceRequest,
     ) -> bss_open_api_20171214_models.CreateInstanceResponse:
+        """
+        @summary Creates an instance. If you call this operation, an order for a new instance is created and the order is automatically paid for. You cannot create Elastic Compute Service (ECS) instances or ApsaraDB RDS instances by calling the operation.
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -1096,6 +1288,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateInstanceRequest,
     ) -> bss_open_api_20171214_models.CreateInstanceResponse:
+        """
+        @summary Creates an instance. If you call this operation, an order for a new instance is created and the order is automatically paid for. You cannot create Elastic Compute Service (ECS) instances or ApsaraDB RDS instances by calling the operation.
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -1104,6 +1302,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateResellerUserQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateResellerUserQuotaResponse:
+        """
+        @summary Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        
+        @param request: CreateResellerUserQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResellerUserQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -1138,6 +1343,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateResellerUserQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateResellerUserQuotaResponse:
+        """
+        @summary Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        
+        @param request: CreateResellerUserQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResellerUserQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -1171,6 +1383,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateResellerUserQuotaRequest,
     ) -> bss_open_api_20171214_models.CreateResellerUserQuotaResponse:
+        """
+        @summary Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        
+        @param request: CreateResellerUserQuotaRequest
+        @return: CreateResellerUserQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_reseller_user_quota_with_options(request, runtime)
 
@@ -1178,6 +1396,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateResellerUserQuotaRequest,
     ) -> bss_open_api_20171214_models.CreateResellerUserQuotaResponse:
+        """
+        @summary Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        
+        @param request: CreateResellerUserQuotaRequest
+        @return: CreateResellerUserQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_reseller_user_quota_with_options_async(request, runtime)
 
@@ -1186,6 +1410,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateResourcePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateResourcePackageResponse:
+        """
+        @summary Creates a resource plan.
+        
+        @param request: CreateResourcePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourcePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -1226,6 +1457,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.CreateResourcePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateResourcePackageResponse:
+        """
+        @summary Creates a resource plan.
+        
+        @param request: CreateResourcePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourcePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -1265,6 +1503,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateResourcePackageRequest,
     ) -> bss_open_api_20171214_models.CreateResourcePackageResponse:
+        """
+        @summary Creates a resource plan.
+        
+        @param request: CreateResourcePackageRequest
+        @return: CreateResourcePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_resource_package_with_options(request, runtime)
 
@@ -1272,6 +1516,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateResourcePackageRequest,
     ) -> bss_open_api_20171214_models.CreateResourcePackageResponse:
+        """
+        @summary Creates a resource plan.
+        
+        @param request: CreateResourcePackageRequest
+        @return: CreateResourcePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_resource_package_with_options_async(request, runtime)
 
@@ -1280,6 +1530,13 @@ class Client(OpenApiClient):
         tmp_req: bss_open_api_20171214_models.CreateSavingsPlansInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse:
+        """
+        @summary Creates a savings plan. After you call this operation, a savings plan is purchased and paid for.
+        
+        @param tmp_req: CreateSavingsPlansInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSavingsPlansInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bss_open_api_20171214_models.CreateSavingsPlansInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1332,6 +1589,13 @@ class Client(OpenApiClient):
         tmp_req: bss_open_api_20171214_models.CreateSavingsPlansInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse:
+        """
+        @summary Creates a savings plan. After you call this operation, a savings plan is purchased and paid for.
+        
+        @param tmp_req: CreateSavingsPlansInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSavingsPlansInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bss_open_api_20171214_models.CreateSavingsPlansInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1383,6 +1647,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateSavingsPlansInstanceRequest,
     ) -> bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse:
+        """
+        @summary Creates a savings plan. After you call this operation, a savings plan is purchased and paid for.
+        
+        @param request: CreateSavingsPlansInstanceRequest
+        @return: CreateSavingsPlansInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_savings_plans_instance_with_options(request, runtime)
 
@@ -1390,6 +1660,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.CreateSavingsPlansInstanceRequest,
     ) -> bss_open_api_20171214_models.CreateSavingsPlansInstanceResponse:
+        """
+        @summary Creates a savings plan. After you call this operation, a savings plan is purchased and paid for.
+        
+        @param request: CreateSavingsPlansInstanceRequest
+        @return: CreateSavingsPlansInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_savings_plans_instance_with_options_async(request, runtime)
 
@@ -1398,6 +1674,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DeleteCostUnitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DeleteCostUnitResponse:
+        """
+        @summary Deletes a cost center.
+        
+        @param request: DeleteCostUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCostUnitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_uid):
@@ -1428,6 +1711,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DeleteCostUnitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DeleteCostUnitResponse:
+        """
+        @summary Deletes a cost center.
+        
+        @param request: DeleteCostUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCostUnitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_uid):
@@ -1457,6 +1747,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DeleteCostUnitRequest,
     ) -> bss_open_api_20171214_models.DeleteCostUnitResponse:
+        """
+        @summary Deletes a cost center.
+        
+        @param request: DeleteCostUnitRequest
+        @return: DeleteCostUnitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cost_unit_with_options(request, runtime)
 
@@ -1464,6 +1760,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DeleteCostUnitRequest,
     ) -> bss_open_api_20171214_models.DeleteCostUnitResponse:
+        """
+        @summary Deletes a cost center.
+        
+        @param request: DeleteCostUnitRequest
+        @return: DeleteCostUnitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cost_unit_with_options_async(request, runtime)
 
@@ -1473,7 +1775,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeCostBudgetsSummaryResponse:
         """
-        This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+        @summary Query the summary information of the user "Cost Management-Budget".
+        
+        @description This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
         
         @param request: DescribeCostBudgetsSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1516,7 +1820,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeCostBudgetsSummaryResponse:
         """
-        This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+        @summary Query the summary information of the user "Cost Management-Budget".
+        
+        @description This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
         
         @param request: DescribeCostBudgetsSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1558,7 +1864,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeCostBudgetsSummaryRequest,
     ) -> bss_open_api_20171214_models.DescribeCostBudgetsSummaryResponse:
         """
-        This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+        @summary Query the summary information of the user "Cost Management-Budget".
+        
+        @description This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
         
         @param request: DescribeCostBudgetsSummaryRequest
         @return: DescribeCostBudgetsSummaryResponse
@@ -1571,7 +1879,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeCostBudgetsSummaryRequest,
     ) -> bss_open_api_20171214_models.DescribeCostBudgetsSummaryResponse:
         """
-        This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+        @summary Query the summary information of the user "Cost Management-Budget".
+        
+        @description This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
         
         @param request: DescribeCostBudgetsSummaryRequest
         @return: DescribeCostBudgetsSummaryResponse
@@ -1585,7 +1895,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodResponse:
         """
-        You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+        @summary Queries the monthly allocated costs of instances by allocation month.
+        
+        @description You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
         
         @param request: DescribeInstanceAmortizedCostByAmortizationPeriodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1640,7 +1952,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodResponse:
         """
-        You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+        @summary Queries the monthly allocated costs of instances by allocation month.
+        
+        @description You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
         
         @param request: DescribeInstanceAmortizedCostByAmortizationPeriodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1694,7 +2008,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodResponse:
         """
-        You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+        @summary Queries the monthly allocated costs of instances by allocation month.
+        
+        @description You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
         
         @param request: DescribeInstanceAmortizedCostByAmortizationPeriodRequest
         @return: DescribeInstanceAmortizedCostByAmortizationPeriodResponse
@@ -1707,7 +2023,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodResponse:
         """
-        You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+        @summary Queries the monthly allocated costs of instances by allocation month.
+        
+        @description You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
         
         @param request: DescribeInstanceAmortizedCostByAmortizationPeriodRequest
         @return: DescribeInstanceAmortizedCostByAmortizationPeriodResponse
@@ -1720,6 +2038,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse:
+        """
+        @summary 实例摊销日摊销成本
+        
+        @param request: DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amortization_date_end):
@@ -1770,6 +2095,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse:
+        """
+        @summary 实例摊销日摊销成本
+        
+        @param request: DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amortization_date_end):
@@ -1819,6 +2151,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse:
+        """
+        @summary 实例摊销日摊销成本
+        
+        @param request: DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest
+        @return: DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_amortized_cost_by_amortization_period_date_with_options(request, runtime)
 
@@ -1826,6 +2164,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse:
+        """
+        @summary 实例摊销日摊销成本
+        
+        @param request: DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest
+        @return: DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_amortized_cost_by_amortization_period_date_with_options_async(request, runtime)
 
@@ -1834,6 +2178,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByConsumePeriodRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByConsumePeriodResponse:
+        """
+        @summary 实例账期月摊销成本
+        
+        @param request: DescribeInstanceAmortizedCostByConsumePeriodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAmortizedCostByConsumePeriodResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amortization_period_filter):
@@ -1882,6 +2233,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByConsumePeriodRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByConsumePeriodResponse:
+        """
+        @summary 实例账期月摊销成本
+        
+        @param request: DescribeInstanceAmortizedCostByConsumePeriodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAmortizedCostByConsumePeriodResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amortization_period_filter):
@@ -1929,6 +2287,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByConsumePeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByConsumePeriodResponse:
+        """
+        @summary 实例账期月摊销成本
+        
+        @param request: DescribeInstanceAmortizedCostByConsumePeriodRequest
+        @return: DescribeInstanceAmortizedCostByConsumePeriodResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_amortized_cost_by_consume_period_with_options(request, runtime)
 
@@ -1936,6 +2300,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeInstanceAmortizedCostByConsumePeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceAmortizedCostByConsumePeriodResponse:
+        """
+        @summary 实例账期月摊销成本
+        
+        @param request: DescribeInstanceAmortizedCostByConsumePeriodRequest
+        @return: DescribeInstanceAmortizedCostByConsumePeriodResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_amortized_cost_by_consume_period_with_options_async(request, runtime)
 
@@ -1945,9 +2315,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         """
-        Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
-        *   The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
-        *   You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
+        @summary Queries the billing information about instances or billable items in a billing cycle.
+        
+        @description    Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
+        The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
+        You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
         
         @param request: DescribeInstanceBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2008,9 +2380,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         """
-        Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
-        *   The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
-        *   You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
+        @summary Queries the billing information about instances or billable items in a billing cycle.
+        
+        @description    Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
+        The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
+        You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
         
         @param request: DescribeInstanceBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2070,9 +2444,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceBillRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         """
-        Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
-        *   The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
-        *   You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
+        @summary Queries the billing information about instances or billable items in a billing cycle.
+        
+        @description    Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
+        The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
+        You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
         
         @param request: DescribeInstanceBillRequest
         @return: DescribeInstanceBillResponse
@@ -2085,9 +2461,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceBillRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceBillResponse:
         """
-        Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
-        *   The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
-        *   You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
+        @summary Queries the billing information about instances or billable items in a billing cycle.
+        
+        @description    Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
+        The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
+        You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
         
         @param request: DescribeInstanceBillRequest
         @return: DescribeInstanceBillResponse
@@ -2100,6 +2478,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse:
+        """
+        @summary 实例摊销日抵扣还原摊销成本
+        
+        @param request: DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bill_owner_id_list):
@@ -2146,6 +2531,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse:
+        """
+        @summary 实例摊销日抵扣还原摊销成本
+        
+        @param request: DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bill_owner_id_list):
@@ -2191,6 +2583,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse:
+        """
+        @summary 实例摊销日抵扣还原摊销成本
+        
+        @param request: DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest
+        @return: DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_deduct_amortized_cost_by_amortization_period_with_options(request, runtime)
 
@@ -2198,6 +2596,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse:
+        """
+        @summary 实例摊销日抵扣还原摊销成本
+        
+        @param request: DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest
+        @return: DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_deduct_amortized_cost_by_amortization_period_with_options_async(request, runtime)
 
@@ -2206,6 +2610,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribePricingModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        """
+        @summary Queries the pricing information about an Alibaba Cloud service.
+        
+        @param request: DescribePricingModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePricingModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2240,6 +2651,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribePricingModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        """
+        @summary Queries the pricing information about an Alibaba Cloud service.
+        
+        @param request: DescribePricingModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePricingModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2273,6 +2691,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribePricingModuleRequest,
     ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        """
+        @summary Queries the pricing information about an Alibaba Cloud service.
+        
+        @param request: DescribePricingModuleRequest
+        @return: DescribePricingModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pricing_module_with_options(request, runtime)
 
@@ -2280,6 +2704,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribePricingModuleRequest,
     ) -> bss_open_api_20171214_models.DescribePricingModuleResponse:
+        """
+        @summary Queries the pricing information about an Alibaba Cloud service.
+        
+        @param request: DescribePricingModuleRequest
+        @return: DescribePricingModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pricing_module_with_options_async(request, runtime)
 
@@ -2289,7 +2719,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeProductAmortizedCostByAmortizationPeriodResponse:
         """
-        You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+        @summary Queries the allocated costs of services by allocation month.
+        
+        @description You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
         
         @param request: DescribeProductAmortizedCostByAmortizationPeriodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2342,7 +2774,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeProductAmortizedCostByAmortizationPeriodResponse:
         """
-        You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+        @summary Queries the allocated costs of services by allocation month.
+        
+        @description You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
         
         @param request: DescribeProductAmortizedCostByAmortizationPeriodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2394,7 +2828,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeProductAmortizedCostByAmortizationPeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeProductAmortizedCostByAmortizationPeriodResponse:
         """
-        You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+        @summary Queries the allocated costs of services by allocation month.
+        
+        @description You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
         
         @param request: DescribeProductAmortizedCostByAmortizationPeriodRequest
         @return: DescribeProductAmortizedCostByAmortizationPeriodResponse
@@ -2407,7 +2843,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeProductAmortizedCostByAmortizationPeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeProductAmortizedCostByAmortizationPeriodResponse:
         """
-        You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+        @summary Queries the allocated costs of services by allocation month.
+        
+        @description You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
         
         @param request: DescribeProductAmortizedCostByAmortizationPeriodRequest
         @return: DescribeProductAmortizedCostByAmortizationPeriodResponse
@@ -2420,6 +2858,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeProductAmortizedCostByConsumePeriodRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeProductAmortizedCostByConsumePeriodResponse:
+        """
+        @summary 产品账期月摊销成本
+        
+        @param request: DescribeProductAmortizedCostByConsumePeriodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductAmortizedCostByConsumePeriodResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amortization_period_filter):
@@ -2466,6 +2911,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeProductAmortizedCostByConsumePeriodRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeProductAmortizedCostByConsumePeriodResponse:
+        """
+        @summary 产品账期月摊销成本
+        
+        @param request: DescribeProductAmortizedCostByConsumePeriodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductAmortizedCostByConsumePeriodResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amortization_period_filter):
@@ -2511,6 +2963,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeProductAmortizedCostByConsumePeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeProductAmortizedCostByConsumePeriodResponse:
+        """
+        @summary 产品账期月摊销成本
+        
+        @param request: DescribeProductAmortizedCostByConsumePeriodRequest
+        @return: DescribeProductAmortizedCostByConsumePeriodResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_product_amortized_cost_by_consume_period_with_options(request, runtime)
 
@@ -2518,6 +2976,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeProductAmortizedCostByConsumePeriodRequest,
     ) -> bss_open_api_20171214_models.DescribeProductAmortizedCostByConsumePeriodResponse:
+        """
+        @summary 产品账期月摊销成本
+        
+        @param request: DescribeProductAmortizedCostByConsumePeriodRequest
+        @return: DescribeProductAmortizedCostByConsumePeriodResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_product_amortized_cost_by_consume_period_with_options_async(request, runtime)
 
@@ -2527,7 +2991,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         """
-        1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+        @summary Queries the coverage details of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @description 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
         2\\. You can call this operation to query the coverage details of RIs or SCUs.
         3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
         
@@ -2576,7 +3042,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         """
-        1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+        @summary Queries the coverage details of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @description 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
         2\\. You can call this operation to query the coverage details of RIs or SCUs.
         3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
         
@@ -2624,7 +3092,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceCoverageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         """
-        1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+        @summary Queries the coverage details of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @description 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
         2\\. You can call this operation to query the coverage details of RIs or SCUs.
         3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
         
@@ -2639,7 +3109,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceCoverageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageDetailResponse:
         """
-        1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+        @summary Queries the coverage details of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @description 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
         2\\. You can call this operation to query the coverage details of RIs or SCUs.
         3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
         
@@ -2655,7 +3127,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         """
-        The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+        @summary Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @description The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
         You can call this operation to query the total coverage data of RIs or SCUs.
         
         @param request: DescribeResourceCoverageTotalRequest
@@ -2699,7 +3173,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         """
-        The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+        @summary Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @description The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
         You can call this operation to query the total coverage data of RIs or SCUs.
         
         @param request: DescribeResourceCoverageTotalRequest
@@ -2742,7 +3218,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceCoverageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         """
-        The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+        @summary Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @description The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
         You can call this operation to query the total coverage data of RIs or SCUs.
         
         @param request: DescribeResourceCoverageTotalRequest
@@ -2756,7 +3234,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceCoverageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceCoverageTotalResponse:
         """
-        The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+        @summary Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @description The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
         You can call this operation to query the total coverage data of RIs or SCUs.
         
         @param request: DescribeResourceCoverageTotalRequest
@@ -2770,6 +3250,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourcePackageProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourcePackageProductResponse:
+        """
+        @summary Queries the information about resource plans of an Alibaba Cloud service.
+        
+        @param request: DescribeResourcePackageProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourcePackageProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.product_code):
@@ -2798,6 +3285,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourcePackageProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourcePackageProductResponse:
+        """
+        @summary Queries the information about resource plans of an Alibaba Cloud service.
+        
+        @param request: DescribeResourcePackageProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourcePackageProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.product_code):
@@ -2825,6 +3319,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeResourcePackageProductRequest,
     ) -> bss_open_api_20171214_models.DescribeResourcePackageProductResponse:
+        """
+        @summary Queries the information about resource plans of an Alibaba Cloud service.
+        
+        @param request: DescribeResourcePackageProductRequest
+        @return: DescribeResourcePackageProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resource_package_product_with_options(request, runtime)
 
@@ -2832,6 +3332,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeResourcePackageProductRequest,
     ) -> bss_open_api_20171214_models.DescribeResourcePackageProductResponse:
+        """
+        @summary Queries the information about resource plans of an Alibaba Cloud service.
+        
+        @param request: DescribeResourcePackageProductRequest
+        @return: DescribeResourcePackageProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_package_product_with_options_async(request, runtime)
 
@@ -2840,6 +3346,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceUsageDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageDetailResponse:
+        """
+        @summary Queries the usage details of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @param request: DescribeResourceUsageDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceUsageDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -2880,6 +3393,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceUsageDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageDetailResponse:
+        """
+        @summary Queries the usage details of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @param request: DescribeResourceUsageDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceUsageDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -2919,6 +3439,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeResourceUsageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageDetailResponse:
+        """
+        @summary Queries the usage details of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @param request: DescribeResourceUsageDetailRequest
+        @return: DescribeResourceUsageDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resource_usage_detail_with_options(request, runtime)
 
@@ -2926,6 +3452,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeResourceUsageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageDetailResponse:
+        """
+        @summary Queries the usage details of reserved instances (RIs) or storage capacity units (SCUs).
+        
+        @param request: DescribeResourceUsageDetailRequest
+        @return: DescribeResourceUsageDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_usage_detail_with_options_async(request, runtime)
 
@@ -2934,6 +3466,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceUsageTotalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageTotalResponse:
+        """
+        @summary Queries the total usage data of reserved instances or storage capacity units (SCUs).
+        
+        @param request: DescribeResourceUsageTotalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceUsageTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -2970,6 +3509,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeResourceUsageTotalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageTotalResponse:
+        """
+        @summary Queries the total usage data of reserved instances or storage capacity units (SCUs).
+        
+        @param request: DescribeResourceUsageTotalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceUsageTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3005,6 +3551,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeResourceUsageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageTotalResponse:
+        """
+        @summary Queries the total usage data of reserved instances or storage capacity units (SCUs).
+        
+        @param request: DescribeResourceUsageTotalRequest
+        @return: DescribeResourceUsageTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resource_usage_total_with_options(request, runtime)
 
@@ -3012,6 +3564,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeResourceUsageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeResourceUsageTotalResponse:
+        """
+        @summary Queries the total usage data of reserved instances or storage capacity units (SCUs).
+        
+        @param request: DescribeResourceUsageTotalRequest
+        @return: DescribeResourceUsageTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_usage_total_with_options_async(request, runtime)
 
@@ -3020,6 +3578,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
+        """
+        @summary Queries the coverage details of savings plans.
+        
+        @param request: DescribeSavingsPlansCoverageDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSavingsPlansCoverageDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3058,6 +3623,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
+        """
+        @summary Queries the coverage details of savings plans.
+        
+        @param request: DescribeSavingsPlansCoverageDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSavingsPlansCoverageDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3095,6 +3667,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
+        """
+        @summary Queries the coverage details of savings plans.
+        
+        @param request: DescribeSavingsPlansCoverageDetailRequest
+        @return: DescribeSavingsPlansCoverageDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_savings_plans_coverage_detail_with_options(request, runtime)
 
@@ -3102,6 +3680,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageDetailResponse:
+        """
+        @summary Queries the coverage details of savings plans.
+        
+        @param request: DescribeSavingsPlansCoverageDetailRequest
+        @return: DescribeSavingsPlansCoverageDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_savings_plans_coverage_detail_with_options_async(request, runtime)
 
@@ -3110,6 +3694,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
+        """
+        @summary Queries the coverage summary of savings plans.
+        
+        @param request: DescribeSavingsPlansCoverageTotalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSavingsPlansCoverageTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3144,6 +3735,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
+        """
+        @summary Queries the coverage summary of savings plans.
+        
+        @param request: DescribeSavingsPlansCoverageTotalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSavingsPlansCoverageTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3177,6 +3775,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
+        """
+        @summary Queries the coverage summary of savings plans.
+        
+        @param request: DescribeSavingsPlansCoverageTotalRequest
+        @return: DescribeSavingsPlansCoverageTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_savings_plans_coverage_total_with_options(request, runtime)
 
@@ -3184,6 +3788,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansCoverageTotalResponse:
+        """
+        @summary Queries the coverage summary of savings plans.
+        
+        @param request: DescribeSavingsPlansCoverageTotalRequest
+        @return: DescribeSavingsPlansCoverageTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_savings_plans_coverage_total_with_options_async(request, runtime)
 
@@ -3192,6 +3802,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
+        """
+        @param request: DescribeSavingsPlansUsageDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSavingsPlansUsageDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3230,6 +3845,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
+        """
+        @param request: DescribeSavingsPlansUsageDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSavingsPlansUsageDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3267,6 +3887,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
+        """
+        @param request: DescribeSavingsPlansUsageDetailRequest
+        @return: DescribeSavingsPlansUsageDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_savings_plans_usage_detail_with_options(request, runtime)
 
@@ -3274,6 +3898,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
+        """
+        @param request: DescribeSavingsPlansUsageDetailRequest
+        @return: DescribeSavingsPlansUsageDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_savings_plans_usage_detail_with_options_async(request, runtime)
 
@@ -3282,6 +3910,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
+        """
+        @summary Queries the usage summary of savings plans.
+        
+        @param request: DescribeSavingsPlansUsageTotalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSavingsPlansUsageTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3316,6 +3951,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
+        """
+        @summary Queries the usage summary of savings plans.
+        
+        @param request: DescribeSavingsPlansUsageTotalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSavingsPlansUsageTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -3349,6 +3991,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
+        """
+        @summary Queries the usage summary of savings plans.
+        
+        @param request: DescribeSavingsPlansUsageTotalRequest
+        @return: DescribeSavingsPlansUsageTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_savings_plans_usage_total_with_options(request, runtime)
 
@@ -3356,6 +4004,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageTotalResponse:
+        """
+        @summary Queries the usage summary of savings plans.
+        
+        @param request: DescribeSavingsPlansUsageTotalRequest
+        @return: DescribeSavingsPlansUsageTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_savings_plans_usage_total_with_options_async(request, runtime)
 
@@ -3365,9 +4019,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
         """
-        The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
-        *   You can query split bills that were generated within the last 12 months by calling this operation.
-        *   You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+        @summary Queries split bills.
+        
+        @description    The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+        You can query split bills that were generated within the last 12 months by calling this operation.
+        You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
         
         @param request: DescribeSplitItemBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3393,6 +4049,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pip_code):
+            query['PipCode'] = request.pip_code
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_type):
@@ -3428,9 +4086,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
         """
-        The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
-        *   You can query split bills that were generated within the last 12 months by calling this operation.
-        *   You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+        @summary Queries split bills.
+        
+        @description    The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+        You can query split bills that were generated within the last 12 months by calling this operation.
+        You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
         
         @param request: DescribeSplitItemBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3456,6 +4116,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pip_code):
+            query['PipCode'] = request.pip_code
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_type):
@@ -3490,9 +4152,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSplitItemBillRequest,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
         """
-        The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
-        *   You can query split bills that were generated within the last 12 months by calling this operation.
-        *   You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+        @summary Queries split bills.
+        
+        @description    The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+        You can query split bills that were generated within the last 12 months by calling this operation.
+        You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
         
         @param request: DescribeSplitItemBillRequest
         @return: DescribeSplitItemBillResponse
@@ -3505,9 +4169,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSplitItemBillRequest,
     ) -> bss_open_api_20171214_models.DescribeSplitItemBillResponse:
         """
-        The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
-        *   You can query split bills that were generated within the last 12 months by calling this operation.
-        *   You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+        @summary Queries split bills.
+        
+        @description    The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+        You can query split bills that were generated within the last 12 months by calling this operation.
+        You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
         
         @param request: DescribeSplitItemBillRequest
         @return: DescribeSplitItemBillResponse
@@ -3515,85 +4181,18 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_split_item_bill_with_options_async(request, runtime)
 
-    def enable_bill_generation_with_options(
-        self,
-        request: bss_open_api_20171214_models.EnableBillGenerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.EnableBillGenerationResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.product_code):
-            query['ProductCode'] = request.product_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='EnableBillGeneration',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            bss_open_api_20171214_models.EnableBillGenerationResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def enable_bill_generation_with_options_async(
-        self,
-        request: bss_open_api_20171214_models.EnableBillGenerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> bss_open_api_20171214_models.EnableBillGenerationResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.product_code):
-            query['ProductCode'] = request.product_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='EnableBillGeneration',
-            version='2017-12-14',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            bss_open_api_20171214_models.EnableBillGenerationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def enable_bill_generation(
-        self,
-        request: bss_open_api_20171214_models.EnableBillGenerationRequest,
-    ) -> bss_open_api_20171214_models.EnableBillGenerationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.enable_bill_generation_with_options(request, runtime)
-
-    async def enable_bill_generation_async(
-        self,
-        request: bss_open_api_20171214_models.EnableBillGenerationRequest,
-    ) -> bss_open_api_20171214_models.EnableBillGenerationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.enable_bill_generation_with_options_async(request, runtime)
-
     def get_account_relation_with_options(
         self,
         request: bss_open_api_20171214_models.GetAccountRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetAccountRelationResponse:
+        """
+        @summary Queries the details of a financial relationship.
+        
+        @param request: GetAccountRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountRelationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3620,6 +4219,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetAccountRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetAccountRelationResponse:
+        """
+        @summary Queries the details of a financial relationship.
+        
+        @param request: GetAccountRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountRelationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3645,6 +4251,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.GetAccountRelationRequest,
     ) -> bss_open_api_20171214_models.GetAccountRelationResponse:
+        """
+        @summary Queries the details of a financial relationship.
+        
+        @param request: GetAccountRelationRequest
+        @return: GetAccountRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_relation_with_options(request, runtime)
 
@@ -3652,6 +4264,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.GetAccountRelationRequest,
     ) -> bss_open_api_20171214_models.GetAccountRelationResponse:
+        """
+        @summary Queries the details of a financial relationship.
+        
+        @param request: GetAccountRelationRequest
+        @return: GetAccountRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_relation_with_options_async(request, runtime)
 
@@ -3660,6 +4278,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetCustomerAccountInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerAccountInfoResponse:
+        """
+        @summary Queries the account information about a customer of a virtual network operator (VNO).
+        
+        @param request: GetCustomerAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomerAccountInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -3688,6 +4313,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetCustomerAccountInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerAccountInfoResponse:
+        """
+        @summary Queries the account information about a customer of a virtual network operator (VNO).
+        
+        @param request: GetCustomerAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomerAccountInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -3715,6 +4347,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.GetCustomerAccountInfoRequest,
     ) -> bss_open_api_20171214_models.GetCustomerAccountInfoResponse:
+        """
+        @summary Queries the account information about a customer of a virtual network operator (VNO).
+        
+        @param request: GetCustomerAccountInfoRequest
+        @return: GetCustomerAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_customer_account_info_with_options(request, runtime)
 
@@ -3722,6 +4360,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.GetCustomerAccountInfoRequest,
     ) -> bss_open_api_20171214_models.GetCustomerAccountInfoResponse:
+        """
+        @summary Queries the account information about a customer of a virtual network operator (VNO).
+        
+        @param request: GetCustomerAccountInfoRequest
+        @return: GetCustomerAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_customer_account_info_with_options_async(request, runtime)
 
@@ -3730,7 +4374,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+        @summary Queries the IDs of customers of a virtual network operator (VNO).
+        
+        @description The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
         
         @param request: GetCustomerListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3758,7 +4404,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+        @summary Queries the IDs of customers of a virtual network operator (VNO).
+        
+        @description The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
         
         @param request: GetCustomerListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3783,7 +4431,9 @@ class Client(OpenApiClient):
 
     def get_customer_list(self) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+        @summary Queries the IDs of customers of a virtual network operator (VNO).
+        
+        @description The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
         
         @return: GetCustomerListResponse
         """
@@ -3792,7 +4442,9 @@ class Client(OpenApiClient):
 
     async def get_customer_list_async(self) -> bss_open_api_20171214_models.GetCustomerListResponse:
         """
-        The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+        @summary Queries the IDs of customers of a virtual network operator (VNO).
+        
+        @description The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
         
         @return: GetCustomerListResponse
         """
@@ -3804,6 +4456,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetOrderDetailResponse:
+        """
+        @summary Queries the details of an order that belongs to your Alibaba Cloud account or distributors.
+        
+        @param request: GetOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -3834,6 +4493,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetOrderDetailResponse:
+        """
+        @summary Queries the details of an order that belongs to your Alibaba Cloud account or distributors.
+        
+        @param request: GetOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -3863,6 +4529,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.GetOrderDetailRequest,
     ) -> bss_open_api_20171214_models.GetOrderDetailResponse:
+        """
+        @summary Queries the details of an order that belongs to your Alibaba Cloud account or distributors.
+        
+        @param request: GetOrderDetailRequest
+        @return: GetOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_order_detail_with_options(request, runtime)
 
@@ -3870,6 +4542,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.GetOrderDetailRequest,
     ) -> bss_open_api_20171214_models.GetOrderDetailResponse:
+        """
+        @summary Queries the details of an order that belongs to your Alibaba Cloud account or distributors.
+        
+        @param request: GetOrderDetailRequest
+        @return: GetOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_order_detail_with_options_async(request, runtime)
 
@@ -3879,9 +4557,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetPayAsYouGoPriceResponse:
         """
-        ### Usage notes
-        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
-        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
+        @summary Queries the pay-as-you-go price of an Alibaba Cloud service.
+        
+        @description ### Usage notes
+        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
         
         @param request: GetPayAsYouGoPriceRequest
@@ -3927,9 +4607,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetPayAsYouGoPriceResponse:
         """
-        ### Usage notes
-        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
-        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
+        @summary Queries the pay-as-you-go price of an Alibaba Cloud service.
+        
+        @description ### Usage notes
+        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
         
         @param request: GetPayAsYouGoPriceRequest
@@ -3974,9 +4656,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetPayAsYouGoPriceRequest,
     ) -> bss_open_api_20171214_models.GetPayAsYouGoPriceResponse:
         """
-        ### Usage notes
-        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
-        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
+        @summary Queries the pay-as-you-go price of an Alibaba Cloud service.
+        
+        @description ### Usage notes
+        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
         
         @param request: GetPayAsYouGoPriceRequest
@@ -3990,9 +4674,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetPayAsYouGoPriceRequest,
     ) -> bss_open_api_20171214_models.GetPayAsYouGoPriceResponse:
         """
-        ### Usage notes
-        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
-        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
+        @summary Queries the pay-as-you-go price of an Alibaba Cloud service.
+        
+        @description ### Usage notes
+        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
         
         @param request: GetPayAsYouGoPriceRequest
@@ -4006,6 +4692,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetResourcePackagePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetResourcePackagePriceResponse:
+        """
+        @summary Queries the price of a resource plan.
+        
+        @param request: GetResourcePackagePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourcePackagePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -4050,6 +4743,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetResourcePackagePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetResourcePackagePriceResponse:
+        """
+        @summary Queries the price of a resource plan.
+        
+        @param request: GetResourcePackagePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourcePackagePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -4093,6 +4793,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.GetResourcePackagePriceRequest,
     ) -> bss_open_api_20171214_models.GetResourcePackagePriceResponse:
+        """
+        @summary Queries the price of a resource plan.
+        
+        @param request: GetResourcePackagePriceRequest
+        @return: GetResourcePackagePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_package_price_with_options(request, runtime)
 
@@ -4100,6 +4806,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.GetResourcePackagePriceRequest,
     ) -> bss_open_api_20171214_models.GetResourcePackagePriceResponse:
+        """
+        @summary Queries the price of a resource plan.
+        
+        @param request: GetResourcePackagePriceRequest
+        @return: GetResourcePackagePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_package_price_with_options_async(request, runtime)
 
@@ -4109,8 +4821,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetSubscriptionPriceResponse:
         """
-        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
-        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
+        @summary Queries the subscription price of an Alibaba Cloud service.
+        
+        @description 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
         
         @param request: GetSubscriptionPriceRequest
@@ -4166,8 +4880,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.GetSubscriptionPriceResponse:
         """
-        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
-        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
+        @summary Queries the subscription price of an Alibaba Cloud service.
+        
+        @description 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
         
         @param request: GetSubscriptionPriceRequest
@@ -4222,8 +4938,10 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetSubscriptionPriceRequest,
     ) -> bss_open_api_20171214_models.GetSubscriptionPriceResponse:
         """
-        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
-        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
+        @summary Queries the subscription price of an Alibaba Cloud service.
+        
+        @description 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
         
         @param request: GetSubscriptionPriceRequest
@@ -4237,8 +4955,10 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.GetSubscriptionPriceRequest,
     ) -> bss_open_api_20171214_models.GetSubscriptionPriceResponse:
         """
-        1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
-        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
+        @summary Queries the subscription price of an Alibaba Cloud service.
+        
+        @description 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+        2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
         
         @param request: GetSubscriptionPriceRequest
@@ -4253,7 +4973,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.InquiryPriceRefundInstanceResponse:
         """
-        1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
+        @summary Queries the refundable amount for an instance from which you want to unsubscribe.
+        
+        @description 1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
@@ -4296,7 +5018,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.InquiryPriceRefundInstanceResponse:
         """
-        1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
+        @summary Queries the refundable amount for an instance from which you want to unsubscribe.
+        
+        @description 1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
@@ -4338,7 +5062,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.InquiryPriceRefundInstanceRequest,
     ) -> bss_open_api_20171214_models.InquiryPriceRefundInstanceResponse:
         """
-        1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
+        @summary Queries the refundable amount for an instance from which you want to unsubscribe.
+        
+        @description 1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
@@ -4353,7 +5079,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.InquiryPriceRefundInstanceRequest,
     ) -> bss_open_api_20171214_models.InquiryPriceRefundInstanceResponse:
         """
-        1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
+        @summary Queries the refundable amount for an instance from which you want to unsubscribe.
+        
+        @description 1.  *Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**\
         2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
@@ -4368,6 +5096,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ModifyAccountRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyAccountRelationResponse:
+        """
+        @summary Adds or removes permissions granted to a member in a financial relationship.
+        
+        @param request: ModifyAccountRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.child_nick):
@@ -4412,6 +5147,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ModifyAccountRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyAccountRelationResponse:
+        """
+        @summary Adds or removes permissions granted to a member in a financial relationship.
+        
+        @param request: ModifyAccountRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.child_nick):
@@ -4455,6 +5197,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ModifyAccountRelationRequest,
     ) -> bss_open_api_20171214_models.ModifyAccountRelationResponse:
+        """
+        @summary Adds or removes permissions granted to a member in a financial relationship.
+        
+        @param request: ModifyAccountRelationRequest
+        @return: ModifyAccountRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_account_relation_with_options(request, runtime)
 
@@ -4462,6 +5210,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ModifyAccountRelationRequest,
     ) -> bss_open_api_20171214_models.ModifyAccountRelationResponse:
+        """
+        @summary Adds or removes permissions granted to a member in a financial relationship.
+        
+        @param request: ModifyAccountRelationRequest
+        @return: ModifyAccountRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_relation_with_options_async(request, runtime)
 
@@ -4470,6 +5224,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ModifyCostUnitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyCostUnitResponse:
+        """
+        @summary Modifies one or more cost centers.
+        
+        @param request: ModifyCostUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCostUnitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.unit_entity_list):
@@ -4498,6 +5259,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ModifyCostUnitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyCostUnitResponse:
+        """
+        @summary Modifies one or more cost centers.
+        
+        @param request: ModifyCostUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCostUnitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.unit_entity_list):
@@ -4525,6 +5293,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ModifyCostUnitRequest,
     ) -> bss_open_api_20171214_models.ModifyCostUnitResponse:
+        """
+        @summary Modifies one or more cost centers.
+        
+        @param request: ModifyCostUnitRequest
+        @return: ModifyCostUnitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cost_unit_with_options(request, runtime)
 
@@ -4532,6 +5306,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ModifyCostUnitRequest,
     ) -> bss_open_api_20171214_models.ModifyCostUnitResponse:
+        """
+        @summary Modifies one or more cost centers.
+        
+        @param request: ModifyCostUnitRequest
+        @return: ModifyCostUnitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cost_unit_with_options_async(request, runtime)
 
@@ -4540,6 +5320,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ModifyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyInstanceResponse:
+        """
+        @summary Modifies the configurations of an instance. When you call this operation, the system generates a modification order and automatically completes the payment. You cannot call this operation to modify the configurations of an Elastic Compute Service (ECS) instance or ApsaraDB RDS instance. To modify the configurations of an ECS or ApsaraDB RDS instance, call the dedicated operation of the corresponding service.
+        
+        @param request: ModifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4582,6 +5369,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ModifyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ModifyInstanceResponse:
+        """
+        @summary Modifies the configurations of an instance. When you call this operation, the system generates a modification order and automatically completes the payment. You cannot call this operation to modify the configurations of an Elastic Compute Service (ECS) instance or ApsaraDB RDS instance. To modify the configurations of an ECS or ApsaraDB RDS instance, call the dedicated operation of the corresponding service.
+        
+        @param request: ModifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4623,6 +5417,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ModifyInstanceRequest,
     ) -> bss_open_api_20171214_models.ModifyInstanceResponse:
+        """
+        @summary Modifies the configurations of an instance. When you call this operation, the system generates a modification order and automatically completes the payment. You cannot call this operation to modify the configurations of an Elastic Compute Service (ECS) instance or ApsaraDB RDS instance. To modify the configurations of an ECS or ApsaraDB RDS instance, call the dedicated operation of the corresponding service.
+        
+        @param request: ModifyInstanceRequest
+        @return: ModifyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_with_options(request, runtime)
 
@@ -4630,6 +5430,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.ModifyInstanceRequest,
     ) -> bss_open_api_20171214_models.ModifyInstanceResponse:
+        """
+        @summary Modifies the configurations of an instance. When you call this operation, the system generates a modification order and automatically completes the payment. You cannot call this operation to modify the configurations of an Elastic Compute Service (ECS) instance or ApsaraDB RDS instance. To modify the configurations of an ECS or ApsaraDB RDS instance, call the dedicated operation of the corresponding service.
+        
+        @param request: ModifyInstanceRequest
+        @return: ModifyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_with_options_async(request, runtime)
 
@@ -4637,6 +5443,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
+        """
+        @summary Queries the balance of your account.
+        
+        @param request: QueryAccountBalanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAccountBalanceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryAccountBalance',
@@ -4658,6 +5471,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
+        """
+        @summary Queries the balance of your account.
+        
+        @param request: QueryAccountBalanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAccountBalanceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryAccountBalance',
@@ -4676,10 +5496,20 @@ class Client(OpenApiClient):
         )
 
     def query_account_balance(self) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
+        """
+        @summary Queries the balance of your account.
+        
+        @return: QueryAccountBalanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_account_balance_with_options(runtime)
 
     async def query_account_balance_async(self) -> bss_open_api_20171214_models.QueryAccountBalanceResponse:
+        """
+        @summary Queries the balance of your account.
+        
+        @return: QueryAccountBalanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_account_balance_with_options_async(runtime)
 
@@ -4689,9 +5519,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
-        *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
+        @summary Queries the bills of your Alibaba Cloud account within a billing cycle. You can summarize the bills by resource owner.
+        
+        @description Before you call this operation, take note of the following items:
+        Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
+        You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
         
         @param request: QueryAccountBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4742,9 +5574,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
-        *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
+        @summary Queries the bills of your Alibaba Cloud account within a billing cycle. You can summarize the bills by resource owner.
+        
+        @description Before you call this operation, take note of the following items:
+        Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
+        You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
         
         @param request: QueryAccountBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4794,9 +5628,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAccountBillRequest,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
-        *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
+        @summary Queries the bills of your Alibaba Cloud account within a billing cycle. You can summarize the bills by resource owner.
+        
+        @description Before you call this operation, take note of the following items:
+        Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
+        You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
         
         @param request: QueryAccountBillRequest
         @return: QueryAccountBillResponse
@@ -4809,9 +5645,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAccountBillRequest,
     ) -> bss_open_api_20171214_models.QueryAccountBillResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
-        *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
+        @summary Queries the bills of your Alibaba Cloud account within a billing cycle. You can summarize the bills by resource owner.
+        
+        @description Before you call this operation, take note of the following items:
+        Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
+        You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
         
         @param request: QueryAccountBillRequest
         @return: QueryAccountBillResponse
@@ -4824,6 +5662,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAccountTransactionDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse:
+        """
+        @summary Queries the details of transactions within your account.
+        
+        @param request: QueryAccountTransactionDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAccountTransactionDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time_end):
@@ -4868,6 +5713,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAccountTransactionDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse:
+        """
+        @summary Queries the details of transactions within your account.
+        
+        @param request: QueryAccountTransactionDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAccountTransactionDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time_end):
@@ -4911,6 +5763,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryAccountTransactionDetailsRequest,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse:
+        """
+        @summary Queries the details of transactions within your account.
+        
+        @param request: QueryAccountTransactionDetailsRequest
+        @return: QueryAccountTransactionDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_account_transaction_details_with_options(request, runtime)
 
@@ -4918,6 +5776,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryAccountTransactionDetailsRequest,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionDetailsResponse:
+        """
+        @summary Queries the details of transactions within your account.
+        
+        @param request: QueryAccountTransactionDetailsRequest
+        @return: QueryAccountTransactionDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_account_transaction_details_with_options_async(request, runtime)
 
@@ -4926,6 +5790,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAccountTransactionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionsResponse:
+        """
+        @summary Queries transactions within your Alibaba Cloud account.
+        
+        @param request: QueryAccountTransactionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAccountTransactionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time_end):
@@ -4972,6 +5843,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAccountTransactionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionsResponse:
+        """
+        @summary Queries transactions within your Alibaba Cloud account.
+        
+        @param request: QueryAccountTransactionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAccountTransactionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time_end):
@@ -5017,6 +5895,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryAccountTransactionsRequest,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionsResponse:
+        """
+        @summary Queries transactions within your Alibaba Cloud account.
+        
+        @param request: QueryAccountTransactionsRequest
+        @return: QueryAccountTransactionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_account_transactions_with_options(request, runtime)
 
@@ -5024,6 +5908,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryAccountTransactionsRequest,
     ) -> bss_open_api_20171214_models.QueryAccountTransactionsResponse:
+        """
+        @summary Queries transactions within your Alibaba Cloud account.
+        
+        @param request: QueryAccountTransactionsRequest
+        @return: QueryAccountTransactionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_account_transactions_with_options_async(request, runtime)
 
@@ -5032,6 +5922,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAvailableInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAvailableInstancesResponse:
+        """
+        @summary Queries available instances.
+        
+        @param request: QueryAvailableInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAvailableInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time_end):
@@ -5084,6 +5981,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryAvailableInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryAvailableInstancesResponse:
+        """
+        @summary Queries available instances.
+        
+        @param request: QueryAvailableInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAvailableInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time_end):
@@ -5135,6 +6039,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryAvailableInstancesRequest,
     ) -> bss_open_api_20171214_models.QueryAvailableInstancesResponse:
+        """
+        @summary Queries available instances.
+        
+        @param request: QueryAvailableInstancesRequest
+        @return: QueryAvailableInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_available_instances_with_options(request, runtime)
 
@@ -5142,6 +6052,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryAvailableInstancesRequest,
     ) -> bss_open_api_20171214_models.QueryAvailableInstancesResponse:
+        """
+        @summary Queries available instances.
+        
+        @param request: QueryAvailableInstancesRequest
+        @return: QueryAvailableInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_available_instances_with_options_async(request, runtime)
 
@@ -5150,6 +6066,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillResponse:
+        """
+        @summary Queries the bills in a billing cycle.
+        
+        @param request: QueryBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -5198,6 +6121,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillResponse:
+        """
+        @summary Queries the bills in a billing cycle.
+        
+        @param request: QueryBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -5245,6 +6175,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryBillRequest,
     ) -> bss_open_api_20171214_models.QueryBillResponse:
+        """
+        @summary Queries the bills in a billing cycle.
+        
+        @param request: QueryBillRequest
+        @return: QueryBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_bill_with_options(request, runtime)
 
@@ -5252,6 +6188,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryBillRequest,
     ) -> bss_open_api_20171214_models.QueryBillResponse:
+        """
+        @summary Queries the bills in a billing cycle.
+        
+        @param request: QueryBillRequest
+        @return: QueryBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_bill_with_options_async(request, runtime)
 
@@ -5260,6 +6202,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryBillOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillOverviewResponse:
+        """
+        @summary Queries the bill overview information in a billing cycle.
+        
+        @param request: QueryBillOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBillOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -5296,6 +6245,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryBillOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillOverviewResponse:
+        """
+        @summary Queries the bill overview information in a billing cycle.
+        
+        @param request: QueryBillOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBillOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -5331,6 +6287,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryBillOverviewRequest,
     ) -> bss_open_api_20171214_models.QueryBillOverviewResponse:
+        """
+        @summary Queries the bill overview information in a billing cycle.
+        
+        @param request: QueryBillOverviewRequest
+        @return: QueryBillOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_bill_overview_with_options(request, runtime)
 
@@ -5338,6 +6300,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryBillOverviewRequest,
     ) -> bss_open_api_20171214_models.QueryBillOverviewResponse:
+        """
+        @summary Queries the bill overview information in a billing cycle.
+        
+        @param request: QueryBillOverviewRequest
+        @return: QueryBillOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_bill_overview_with_options_async(request, runtime)
 
@@ -5345,6 +6313,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
+        """
+        @summary Queries the subscribed bills that are stored in Object Storage Service (OSS) bucket.
+        
+        @param request: QueryBillToOSSSubscriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBillToOSSSubscriptionResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryBillToOSSSubscription',
@@ -5366,6 +6341,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
+        """
+        @summary Queries the subscribed bills that are stored in Object Storage Service (OSS) bucket.
+        
+        @param request: QueryBillToOSSSubscriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBillToOSSSubscriptionResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryBillToOSSSubscription',
@@ -5384,10 +6366,20 @@ class Client(OpenApiClient):
         )
 
     def query_bill_to_osssubscription(self) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
+        """
+        @summary Queries the subscribed bills that are stored in Object Storage Service (OSS) bucket.
+        
+        @return: QueryBillToOSSSubscriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_bill_to_osssubscription_with_options(runtime)
 
     async def query_bill_to_osssubscription_async(self) -> bss_open_api_20171214_models.QueryBillToOSSSubscriptionResponse:
+        """
+        @summary Queries the subscribed bills that are stored in Object Storage Service (OSS) bucket.
+        
+        @return: QueryBillToOSSSubscriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_bill_to_osssubscription_with_options_async(runtime)
 
@@ -5396,6 +6388,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCashCouponsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCashCouponsResponse:
+        """
+        @summary Queries the information about vouchers.
+        
+        @param request: QueryCashCouponsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCashCouponsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_or_not):
@@ -5428,6 +6427,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCashCouponsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCashCouponsResponse:
+        """
+        @summary Queries the information about vouchers.
+        
+        @param request: QueryCashCouponsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCashCouponsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_or_not):
@@ -5459,6 +6465,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCashCouponsRequest,
     ) -> bss_open_api_20171214_models.QueryCashCouponsResponse:
+        """
+        @summary Queries the information about vouchers.
+        
+        @param request: QueryCashCouponsRequest
+        @return: QueryCashCouponsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cash_coupons_with_options(request, runtime)
 
@@ -5466,6 +6478,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCashCouponsRequest,
     ) -> bss_open_api_20171214_models.QueryCashCouponsResponse:
+        """
+        @summary Queries the information about vouchers.
+        
+        @param request: QueryCashCouponsRequest
+        @return: QueryCashCouponsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cash_coupons_with_options_async(request, runtime)
 
@@ -5475,7 +6493,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCommodityListResponse:
         """
-        You can call this operation to query the information about a service based on the service code.
+        @summary Queries the information about a service based on the service code.
+        
+        @description You can call this operation to query the information about a service based on the service code.
         
         @param request: QueryCommodityListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5508,7 +6528,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCommodityListResponse:
         """
-        You can call this operation to query the information about a service based on the service code.
+        @summary Queries the information about a service based on the service code.
+        
+        @description You can call this operation to query the information about a service based on the service code.
         
         @param request: QueryCommodityListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5540,7 +6562,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCommodityListRequest,
     ) -> bss_open_api_20171214_models.QueryCommodityListResponse:
         """
-        You can call this operation to query the information about a service based on the service code.
+        @summary Queries the information about a service based on the service code.
+        
+        @description You can call this operation to query the information about a service based on the service code.
         
         @param request: QueryCommodityListRequest
         @return: QueryCommodityListResponse
@@ -5553,7 +6577,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCommodityListRequest,
     ) -> bss_open_api_20171214_models.QueryCommodityListResponse:
         """
-        You can call this operation to query the information about a service based on the service code.
+        @summary Queries the information about a service based on the service code.
+        
+        @description You can call this operation to query the information about a service based on the service code.
         
         @param request: QueryCommodityListRequest
         @return: QueryCommodityListResponse
@@ -5566,6 +6592,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCostUnitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCostUnitResponse:
+        """
+        @summary Queries all cost centers within the current node of the cost center tree. If the ParentUnitId parameter is set to -1, all cost centers are queried.
+        
+        @param request: QueryCostUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostUnitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_uid):
@@ -5600,6 +6633,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCostUnitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCostUnitResponse:
+        """
+        @summary Queries all cost centers within the current node of the cost center tree. If the ParentUnitId parameter is set to -1, all cost centers are queried.
+        
+        @param request: QueryCostUnitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostUnitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_uid):
@@ -5633,6 +6673,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCostUnitRequest,
     ) -> bss_open_api_20171214_models.QueryCostUnitResponse:
+        """
+        @summary Queries all cost centers within the current node of the cost center tree. If the ParentUnitId parameter is set to -1, all cost centers are queried.
+        
+        @param request: QueryCostUnitRequest
+        @return: QueryCostUnitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cost_unit_with_options(request, runtime)
 
@@ -5640,6 +6686,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCostUnitRequest,
     ) -> bss_open_api_20171214_models.QueryCostUnitResponse:
+        """
+        @summary Queries all cost centers within the current node of the cost center tree. If the ParentUnitId parameter is set to -1, all cost centers are queried.
+        
+        @param request: QueryCostUnitRequest
+        @return: QueryCostUnitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cost_unit_with_options_async(request, runtime)
 
@@ -5648,6 +6700,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCostUnitResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCostUnitResourceResponse:
+        """
+        @summary Queries the resource instances that are allocated to a cost center. If the unitId parameter is set to 0, the unallocated primary resource instances and sub-resource instances are queried.
+        
+        @param request: QueryCostUnitResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostUnitResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_uid):
@@ -5682,6 +6741,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCostUnitResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCostUnitResourceResponse:
+        """
+        @summary Queries the resource instances that are allocated to a cost center. If the unitId parameter is set to 0, the unallocated primary resource instances and sub-resource instances are queried.
+        
+        @param request: QueryCostUnitResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostUnitResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_uid):
@@ -5715,6 +6781,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCostUnitResourceRequest,
     ) -> bss_open_api_20171214_models.QueryCostUnitResourceResponse:
+        """
+        @summary Queries the resource instances that are allocated to a cost center. If the unitId parameter is set to 0, the unallocated primary resource instances and sub-resource instances are queried.
+        
+        @param request: QueryCostUnitResourceRequest
+        @return: QueryCostUnitResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cost_unit_resource_with_options(request, runtime)
 
@@ -5722,6 +6794,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCostUnitResourceRequest,
     ) -> bss_open_api_20171214_models.QueryCostUnitResourceResponse:
+        """
+        @summary Queries the resource instances that are allocated to a cost center. If the unitId parameter is set to 0, the unallocated primary resource instances and sub-resource instances are queried.
+        
+        @param request: QueryCostUnitResourceRequest
+        @return: QueryCostUnitResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cost_unit_resource_with_options_async(request, runtime)
 
@@ -5730,6 +6808,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCustomerAddressListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCustomerAddressListResponse:
+        """
+        @summary Queries the addresses to which invoices are mailed.
+        
+        @param request: QueryCustomerAddressListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCustomerAddressListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -5758,6 +6843,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryCustomerAddressListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryCustomerAddressListResponse:
+        """
+        @summary Queries the addresses to which invoices are mailed.
+        
+        @param request: QueryCustomerAddressListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCustomerAddressListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -5785,6 +6877,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCustomerAddressListRequest,
     ) -> bss_open_api_20171214_models.QueryCustomerAddressListResponse:
+        """
+        @summary Queries the addresses to which invoices are mailed.
+        
+        @param request: QueryCustomerAddressListRequest
+        @return: QueryCustomerAddressListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_customer_address_list_with_options(request, runtime)
 
@@ -5792,6 +6890,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryCustomerAddressListRequest,
     ) -> bss_open_api_20171214_models.QueryCustomerAddressListResponse:
+        """
+        @summary Queries the addresses to which invoices are mailed.
+        
+        @param request: QueryCustomerAddressListRequest
+        @return: QueryCustomerAddressListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_customer_address_list_with_options_async(request, runtime)
 
@@ -5801,8 +6905,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         """
-        Limits:
-        *   Only the usage records within the past year can be queried.
+        @summary Queries the usage of resource plans, including reserved instances (RIs) and storage capacity units (SCUs).
+        
+        @description Limits:
+        Only the usage records within the past year can be queried.
         
         @param request: QueryDPUtilizationDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5855,8 +6961,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         """
-        Limits:
-        *   Only the usage records within the past year can be queried.
+        @summary Queries the usage of resource plans, including reserved instances (RIs) and storage capacity units (SCUs).
+        
+        @description Limits:
+        Only the usage records within the past year can be queried.
         
         @param request: QueryDPUtilizationDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5908,8 +7016,10 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryDPUtilizationDetailRequest,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         """
-        Limits:
-        *   Only the usage records within the past year can be queried.
+        @summary Queries the usage of resource plans, including reserved instances (RIs) and storage capacity units (SCUs).
+        
+        @description Limits:
+        Only the usage records within the past year can be queried.
         
         @param request: QueryDPUtilizationDetailRequest
         @return: QueryDPUtilizationDetailResponse
@@ -5922,8 +7032,10 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryDPUtilizationDetailRequest,
     ) -> bss_open_api_20171214_models.QueryDPUtilizationDetailResponse:
         """
-        Limits:
-        *   Only the usage records within the past year can be queried.
+        @summary Queries the usage of resource plans, including reserved instances (RIs) and storage capacity units (SCUs).
+        
+        @description Limits:
+        Only the usage records within the past year can be queried.
         
         @param request: QueryDPUtilizationDetailRequest
         @return: QueryDPUtilizationDetailResponse
@@ -5936,6 +7048,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryEvaluateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryEvaluateListResponse:
+        """
+        @summary Queries the information about the orders for which you want to apply for invoices.
+        
+        @param request: QueryEvaluateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEvaluateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_cycle):
@@ -5990,6 +7109,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryEvaluateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryEvaluateListResponse:
+        """
+        @summary Queries the information about the orders for which you want to apply for invoices.
+        
+        @param request: QueryEvaluateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEvaluateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_cycle):
@@ -6043,6 +7169,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryEvaluateListRequest,
     ) -> bss_open_api_20171214_models.QueryEvaluateListResponse:
+        """
+        @summary Queries the information about the orders for which you want to apply for invoices.
+        
+        @param request: QueryEvaluateListRequest
+        @return: QueryEvaluateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_evaluate_list_with_options(request, runtime)
 
@@ -6050,6 +7182,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryEvaluateListRequest,
     ) -> bss_open_api_20171214_models.QueryEvaluateListResponse:
+        """
+        @summary Queries the information about the orders for which you want to apply for invoices.
+        
+        @param request: QueryEvaluateListRequest
+        @return: QueryEvaluateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_evaluate_list_with_options_async(request, runtime)
 
@@ -6058,6 +7196,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryFinancialAccountInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryFinancialAccountInfoResponse:
+        """
+        @summary Queries the information about a financial account.
+        
+        @param request: QueryFinancialAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFinancialAccountInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -6086,6 +7231,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryFinancialAccountInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryFinancialAccountInfoResponse:
+        """
+        @summary Queries the information about a financial account.
+        
+        @param request: QueryFinancialAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFinancialAccountInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -6113,6 +7265,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryFinancialAccountInfoRequest,
     ) -> bss_open_api_20171214_models.QueryFinancialAccountInfoResponse:
+        """
+        @summary Queries the information about a financial account.
+        
+        @param request: QueryFinancialAccountInfoRequest
+        @return: QueryFinancialAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_financial_account_info_with_options(request, runtime)
 
@@ -6120,6 +7278,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryFinancialAccountInfoRequest,
     ) -> bss_open_api_20171214_models.QueryFinancialAccountInfoResponse:
+        """
+        @summary Queries the information about a financial account.
+        
+        @param request: QueryFinancialAccountInfoRequest
+        @return: QueryFinancialAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_financial_account_info_with_options_async(request, runtime)
 
@@ -6129,11 +7293,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceBillResponse:
         """
-        ##
-        *   This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](~~209402~~) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
-        *   Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
-        *   The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
-        *   You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
+        @summary Queries the bills of instances or billable items in a billing cycle.
+        
+        @description ##
+        This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
+        Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
+        The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
+        You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
         
         @param request: QueryInstanceBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6190,11 +7356,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceBillResponse:
         """
-        ##
-        *   This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](~~209402~~) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
-        *   Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
-        *   The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
-        *   You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
+        @summary Queries the bills of instances or billable items in a billing cycle.
+        
+        @description ##
+        This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
+        Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
+        The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
+        You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
         
         @param request: QueryInstanceBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6250,11 +7418,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryInstanceBillRequest,
     ) -> bss_open_api_20171214_models.QueryInstanceBillResponse:
         """
-        ##
-        *   This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](~~209402~~) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
-        *   Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
-        *   The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
-        *   You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
+        @summary Queries the bills of instances or billable items in a billing cycle.
+        
+        @description ##
+        This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
+        Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
+        The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
+        You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
         
         @param request: QueryInstanceBillRequest
         @return: QueryInstanceBillResponse
@@ -6267,11 +7437,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryInstanceBillRequest,
     ) -> bss_open_api_20171214_models.QueryInstanceBillResponse:
         """
-        ##
-        *   This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](~~209402~~) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
-        *   Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
-        *   The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
-        *   You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
+        @summary Queries the bills of instances or billable items in a billing cycle.
+        
+        @description ##
+        This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
+        Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
+        The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
+        You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
         
         @param request: QueryInstanceBillRequest
         @return: QueryInstanceBillResponse
@@ -6284,6 +7456,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryInstanceByTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceByTagResponse:
+        """
+        @summary Queries instances by tag.
+        
+        @param request: QueryInstanceByTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstanceByTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -6316,6 +7495,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryInstanceByTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceByTagResponse:
+        """
+        @summary Queries instances by tag.
+        
+        @param request: QueryInstanceByTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstanceByTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -6347,6 +7533,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryInstanceByTagRequest,
     ) -> bss_open_api_20171214_models.QueryInstanceByTagResponse:
+        """
+        @summary Queries instances by tag.
+        
+        @param request: QueryInstanceByTagRequest
+        @return: QueryInstanceByTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_instance_by_tag_with_options(request, runtime)
 
@@ -6354,6 +7546,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryInstanceByTagRequest,
     ) -> bss_open_api_20171214_models.QueryInstanceByTagResponse:
+        """
+        @summary Queries instances by tag.
+        
+        @param request: QueryInstanceByTagRequest
+        @return: QueryInstanceByTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_instance_by_tag_with_options_async(request, runtime)
 
@@ -6362,6 +7560,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryInstanceGaapCostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceGaapCostResponse:
+        """
+        @summary The code of the service.
+        
+        @param request: QueryInstanceGaapCostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstanceGaapCostResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.billing_cycle):
@@ -6400,6 +7605,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryInstanceGaapCostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInstanceGaapCostResponse:
+        """
+        @summary The code of the service.
+        
+        @param request: QueryInstanceGaapCostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstanceGaapCostResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.billing_cycle):
@@ -6437,6 +7649,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryInstanceGaapCostRequest,
     ) -> bss_open_api_20171214_models.QueryInstanceGaapCostResponse:
+        """
+        @summary The code of the service.
+        
+        @param request: QueryInstanceGaapCostRequest
+        @return: QueryInstanceGaapCostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_instance_gaap_cost_with_options(request, runtime)
 
@@ -6444,6 +7662,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryInstanceGaapCostRequest,
     ) -> bss_open_api_20171214_models.QueryInstanceGaapCostResponse:
+        """
+        @summary The code of the service.
+        
+        @param request: QueryInstanceGaapCostRequest
+        @return: QueryInstanceGaapCostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_instance_gaap_cost_with_options_async(request, runtime)
 
@@ -6452,6 +7676,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryInvoicingCustomerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInvoicingCustomerListResponse:
+        """
+        @summary Queries the information about invoice titles.
+        
+        @param request: QueryInvoicingCustomerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInvoicingCustomerListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -6480,6 +7711,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryInvoicingCustomerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryInvoicingCustomerListResponse:
+        """
+        @summary Queries the information about invoice titles.
+        
+        @param request: QueryInvoicingCustomerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInvoicingCustomerListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -6507,6 +7745,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryInvoicingCustomerListRequest,
     ) -> bss_open_api_20171214_models.QueryInvoicingCustomerListResponse:
+        """
+        @summary Queries the information about invoice titles.
+        
+        @param request: QueryInvoicingCustomerListRequest
+        @return: QueryInvoicingCustomerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_invoicing_customer_list_with_options(request, runtime)
 
@@ -6514,6 +7758,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryInvoicingCustomerListRequest,
     ) -> bss_open_api_20171214_models.QueryInvoicingCustomerListResponse:
+        """
+        @summary Queries the information about invoice titles.
+        
+        @param request: QueryInvoicingCustomerListRequest
+        @return: QueryInvoicingCustomerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_invoicing_customer_list_with_options_async(request, runtime)
 
@@ -6522,6 +7772,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryOrdersResponse:
+        """
+        @summary Queries the orders of your Alibaba Cloud account or distributors. By default, orders within the last hour are queried. To query earlier orders, specify the CreateTimeStart and CreateTimeEnd parameters.
+        
+        @param request: QueryOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time_end):
@@ -6568,6 +7825,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryOrdersResponse:
+        """
+        @summary Queries the orders of your Alibaba Cloud account or distributors. By default, orders within the last hour are queried. To query earlier orders, specify the CreateTimeStart and CreateTimeEnd parameters.
+        
+        @param request: QueryOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_time_end):
@@ -6613,6 +7877,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryOrdersRequest,
     ) -> bss_open_api_20171214_models.QueryOrdersResponse:
+        """
+        @summary Queries the orders of your Alibaba Cloud account or distributors. By default, orders within the last hour are queried. To query earlier orders, specify the CreateTimeStart and CreateTimeEnd parameters.
+        
+        @param request: QueryOrdersRequest
+        @return: QueryOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_orders_with_options(request, runtime)
 
@@ -6620,6 +7890,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryOrdersRequest,
     ) -> bss_open_api_20171214_models.QueryOrdersResponse:
+        """
+        @summary Queries the orders of your Alibaba Cloud account or distributors. By default, orders within the last hour are queried. To query earlier orders, specify the CreateTimeStart and CreateTimeEnd parameters.
+        
+        @param request: QueryOrdersRequest
+        @return: QueryOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_orders_with_options_async(request, runtime)
 
@@ -6628,6 +7904,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryPermissionListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPermissionListResponse:
+        """
+        @summary Queries, by relationship ID, permissions granted to accounts between which a management-member relationship is established.
+        
+        @param request: QueryPermissionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPermissionListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.relation_id):
@@ -6656,6 +7939,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryPermissionListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPermissionListResponse:
+        """
+        @summary Queries, by relationship ID, permissions granted to accounts between which a management-member relationship is established.
+        
+        @param request: QueryPermissionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPermissionListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.relation_id):
@@ -6683,6 +7973,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryPermissionListRequest,
     ) -> bss_open_api_20171214_models.QueryPermissionListResponse:
+        """
+        @summary Queries, by relationship ID, permissions granted to accounts between which a management-member relationship is established.
+        
+        @param request: QueryPermissionListRequest
+        @return: QueryPermissionListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_permission_list_with_options(request, runtime)
 
@@ -6690,6 +7986,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryPermissionListRequest,
     ) -> bss_open_api_20171214_models.QueryPermissionListResponse:
+        """
+        @summary Queries, by relationship ID, permissions granted to accounts between which a management-member relationship is established.
+        
+        @param request: QueryPermissionListRequest
+        @return: QueryPermissionListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_permission_list_with_options_async(request, runtime)
 
@@ -6698,6 +8000,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryPrepaidCardsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPrepaidCardsResponse:
+        """
+        @summary Queries prepaid cards.
+        
+        @param request: QueryPrepaidCardsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPrepaidCardsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_or_not):
@@ -6730,6 +8039,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryPrepaidCardsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPrepaidCardsResponse:
+        """
+        @summary Queries prepaid cards.
+        
+        @param request: QueryPrepaidCardsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPrepaidCardsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_or_not):
@@ -6761,6 +8077,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryPrepaidCardsRequest,
     ) -> bss_open_api_20171214_models.QueryPrepaidCardsResponse:
+        """
+        @summary Queries prepaid cards.
+        
+        @param request: QueryPrepaidCardsRequest
+        @return: QueryPrepaidCardsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_prepaid_cards_with_options(request, runtime)
 
@@ -6768,6 +8090,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryPrepaidCardsRequest,
     ) -> bss_open_api_20171214_models.QueryPrepaidCardsResponse:
+        """
+        @summary Queries prepaid cards.
+        
+        @param request: QueryPrepaidCardsRequest
+        @return: QueryPrepaidCardsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_prepaid_cards_with_options_async(request, runtime)
 
@@ -6777,7 +8105,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPriceEntityListResponse:
         """
-        You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+        @summary Queries the billable items of a service.
+        
+        @description You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
         
         @param request: QueryPriceEntityListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6810,7 +8140,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryPriceEntityListResponse:
         """
-        You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+        @summary Queries the billable items of a service.
+        
+        @description You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
         
         @param request: QueryPriceEntityListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6842,7 +8174,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryPriceEntityListRequest,
     ) -> bss_open_api_20171214_models.QueryPriceEntityListResponse:
         """
-        You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+        @summary Queries the billable items of a service.
+        
+        @description You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
         
         @param request: QueryPriceEntityListRequest
         @return: QueryPriceEntityListResponse
@@ -6855,7 +8189,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryPriceEntityListRequest,
     ) -> bss_open_api_20171214_models.QueryPriceEntityListResponse:
         """
-        You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+        @summary Queries the billable items of a service.
+        
+        @description You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
         
         @param request: QueryPriceEntityListRequest
         @return: QueryPriceEntityListResponse
@@ -6868,6 +8204,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryProductListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryProductListResponse:
+        """
+        @summary Queries the information about all Alibaba Cloud services.
+        
+        @param request: QueryProductListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -6900,6 +8243,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryProductListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryProductListResponse:
+        """
+        @summary Queries the information about all Alibaba Cloud services.
+        
+        @param request: QueryProductListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryProductListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -6931,6 +8281,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryProductListRequest,
     ) -> bss_open_api_20171214_models.QueryProductListResponse:
+        """
+        @summary Queries the information about all Alibaba Cloud services.
+        
+        @param request: QueryProductListRequest
+        @return: QueryProductListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_product_list_with_options(request, runtime)
 
@@ -6938,6 +8294,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryProductListRequest,
     ) -> bss_open_api_20171214_models.QueryProductListResponse:
+        """
+        @summary Queries the information about all Alibaba Cloud services.
+        
+        @param request: QueryProductListRequest
+        @return: QueryProductListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_product_list_with_options_async(request, runtime)
 
@@ -6946,6 +8308,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryRIUtilizationDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRIUtilizationDetailResponse:
+        """
+        @summary Queries the usage details of a reserved instance (RI).
+        
+        @param request: QueryRIUtilizationDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRIUtilizationDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.deducted_instance_id):
@@ -6988,6 +8357,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryRIUtilizationDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRIUtilizationDetailResponse:
+        """
+        @summary Queries the usage details of a reserved instance (RI).
+        
+        @param request: QueryRIUtilizationDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRIUtilizationDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.deducted_instance_id):
@@ -7029,6 +8405,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryRIUtilizationDetailRequest,
     ) -> bss_open_api_20171214_models.QueryRIUtilizationDetailResponse:
+        """
+        @summary Queries the usage details of a reserved instance (RI).
+        
+        @param request: QueryRIUtilizationDetailRequest
+        @return: QueryRIUtilizationDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_riutilization_detail_with_options(request, runtime)
 
@@ -7036,6 +8418,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryRIUtilizationDetailRequest,
     ) -> bss_open_api_20171214_models.QueryRIUtilizationDetailResponse:
+        """
+        @summary Queries the usage details of a reserved instance (RI).
+        
+        @param request: QueryRIUtilizationDetailRequest
+        @return: QueryRIUtilizationDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_riutilization_detail_with_options_async(request, runtime)
 
@@ -7044,6 +8432,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryRedeemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRedeemResponse:
+        """
+        @summary Queries the information about a redemption coupon.
+        
+        @param request: QueryRedeemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRedeemResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7070,6 +8465,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryRedeemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRedeemResponse:
+        """
+        @summary Queries the information about a redemption coupon.
+        
+        @param request: QueryRedeemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRedeemResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7095,6 +8497,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryRedeemRequest,
     ) -> bss_open_api_20171214_models.QueryRedeemResponse:
+        """
+        @summary Queries the information about a redemption coupon.
+        
+        @param request: QueryRedeemRequest
+        @return: QueryRedeemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_redeem_with_options(request, runtime)
 
@@ -7102,6 +8510,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryRedeemRequest,
     ) -> bss_open_api_20171214_models.QueryRedeemResponse:
+        """
+        @summary Queries the information about a redemption coupon.
+        
+        @param request: QueryRedeemRequest
+        @return: QueryRedeemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_redeem_with_options_async(request, runtime)
 
@@ -7110,6 +8524,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryRelationListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRelationListResponse:
+        """
+        @summary Queries the members of a management account.
+        
+        @param request: QueryRelationListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRelationListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -7144,6 +8565,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryRelationListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryRelationListResponse:
+        """
+        @summary Queries the members of a management account.
+        
+        @param request: QueryRelationListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRelationListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -7177,6 +8605,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryRelationListRequest,
     ) -> bss_open_api_20171214_models.QueryRelationListResponse:
+        """
+        @summary Queries the members of a management account.
+        
+        @param request: QueryRelationListRequest
+        @return: QueryRelationListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_relation_list_with_options(request, runtime)
 
@@ -7184,6 +8618,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryRelationListRequest,
     ) -> bss_open_api_20171214_models.QueryRelationListResponse:
+        """
+        @summary Queries the members of a management account.
+        
+        @param request: QueryRelationListRequest
+        @return: QueryRelationListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_relation_list_with_options_async(request, runtime)
 
@@ -7192,6 +8632,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryResellerAvailableQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse:
+        """
+        @summary Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        
+        @param request: QueryResellerAvailableQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryResellerAvailableQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.item_codes):
@@ -7222,6 +8669,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryResellerAvailableQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse:
+        """
+        @summary Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        
+        @param request: QueryResellerAvailableQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryResellerAvailableQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.item_codes):
@@ -7251,6 +8705,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryResellerAvailableQuotaRequest,
     ) -> bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse:
+        """
+        @summary Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        
+        @param request: QueryResellerAvailableQuotaRequest
+        @return: QueryResellerAvailableQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_reseller_available_quota_with_options(request, runtime)
 
@@ -7258,6 +8718,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryResellerAvailableQuotaRequest,
     ) -> bss_open_api_20171214_models.QueryResellerAvailableQuotaResponse:
+        """
+        @summary Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        
+        @param request: QueryResellerAvailableQuotaRequest
+        @return: QueryResellerAvailableQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_reseller_available_quota_with_options_async(request, runtime)
 
@@ -7266,6 +8732,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryResellerUserAlarmThresholdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResellerUserAlarmThresholdResponse:
+        """
+        @summary 查询用户的信控预警阀值,该接口暂未测试启用
+        
+        @param request: QueryResellerUserAlarmThresholdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryResellerUserAlarmThresholdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_type):
@@ -7296,6 +8769,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryResellerUserAlarmThresholdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResellerUserAlarmThresholdResponse:
+        """
+        @summary 查询用户的信控预警阀值,该接口暂未测试启用
+        
+        @param request: QueryResellerUserAlarmThresholdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryResellerUserAlarmThresholdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_type):
@@ -7325,6 +8805,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryResellerUserAlarmThresholdRequest,
     ) -> bss_open_api_20171214_models.QueryResellerUserAlarmThresholdResponse:
+        """
+        @summary 查询用户的信控预警阀值,该接口暂未测试启用
+        
+        @param request: QueryResellerUserAlarmThresholdRequest
+        @return: QueryResellerUserAlarmThresholdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_reseller_user_alarm_threshold_with_options(request, runtime)
 
@@ -7332,6 +8818,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryResellerUserAlarmThresholdRequest,
     ) -> bss_open_api_20171214_models.QueryResellerUserAlarmThresholdResponse:
+        """
+        @summary 查询用户的信控预警阀值,该接口暂未测试启用
+        
+        @param request: QueryResellerUserAlarmThresholdRequest
+        @return: QueryResellerUserAlarmThresholdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_reseller_user_alarm_threshold_with_options_async(request, runtime)
 
@@ -7340,6 +8832,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        """
+        @summary Queries the instances of a resource plan. You can query the resource plans that are expired within one year.
+        
+        @param request: QueryResourcePackageInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryResourcePackageInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expiry_time_end):
@@ -7380,6 +8879,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        """
+        @summary Queries the instances of a resource plan. You can query the resource plans that are expired within one year.
+        
+        @param request: QueryResourcePackageInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryResourcePackageInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expiry_time_end):
@@ -7419,6 +8925,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
     ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        """
+        @summary Queries the instances of a resource plan. You can query the resource plans that are expired within one year.
+        
+        @param request: QueryResourcePackageInstancesRequest
+        @return: QueryResourcePackageInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_resource_package_instances_with_options(request, runtime)
 
@@ -7426,6 +8938,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QueryResourcePackageInstancesRequest,
     ) -> bss_open_api_20171214_models.QueryResourcePackageInstancesResponse:
+        """
+        @summary Queries the instances of a resource plan. You can query the resource plans that are expired within one year.
+        
+        @param request: QueryResourcePackageInstancesRequest
+        @return: QueryResourcePackageInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_resource_package_instances_with_options_async(request, runtime)
 
@@ -7434,6 +8952,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySavingsPlansDeductLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse:
+        """
+        @summary Queries the deduction details of savings plans.
+        
+        @param request: QuerySavingsPlansDeductLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySavingsPlansDeductLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7474,6 +8999,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySavingsPlansDeductLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse:
+        """
+        @summary Queries the deduction details of savings plans.
+        
+        @param request: QuerySavingsPlansDeductLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySavingsPlansDeductLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7513,6 +9045,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySavingsPlansDeductLogRequest,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse:
+        """
+        @summary Queries the deduction details of savings plans.
+        
+        @param request: QuerySavingsPlansDeductLogRequest
+        @return: QuerySavingsPlansDeductLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_savings_plans_deduct_log_with_options(request, runtime)
 
@@ -7520,6 +9058,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySavingsPlansDeductLogRequest,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDeductLogResponse:
+        """
+        @summary Queries the deduction details of savings plans.
+        
+        @param request: QuerySavingsPlansDeductLogRequest
+        @return: QuerySavingsPlansDeductLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_savings_plans_deduct_log_with_options_async(request, runtime)
 
@@ -7528,6 +9072,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySavingsPlansDiscountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDiscountResponse:
+        """
+        @summary Queries discounts on savings plans.
+        
+        @param request: QuerySavingsPlansDiscountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySavingsPlansDiscountResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7554,6 +9105,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySavingsPlansDiscountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDiscountResponse:
+        """
+        @summary Queries discounts on savings plans.
+        
+        @param request: QuerySavingsPlansDiscountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySavingsPlansDiscountResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7579,6 +9137,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySavingsPlansDiscountRequest,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDiscountResponse:
+        """
+        @summary Queries discounts on savings plans.
+        
+        @param request: QuerySavingsPlansDiscountRequest
+        @return: QuerySavingsPlansDiscountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_savings_plans_discount_with_options(request, runtime)
 
@@ -7586,6 +9150,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySavingsPlansDiscountRequest,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansDiscountResponse:
+        """
+        @summary Queries discounts on savings plans.
+        
+        @param request: QuerySavingsPlansDiscountRequest
+        @return: QuerySavingsPlansDiscountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_savings_plans_discount_with_options_async(request, runtime)
 
@@ -7594,6 +9164,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySavingsPlansInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse:
+        """
+        @summary Queries the information about savings plan instances of the current user.
+        
+        @param request: QuerySavingsPlansInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySavingsPlansInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7636,6 +9213,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySavingsPlansInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse:
+        """
+        @summary Queries the information about savings plan instances of the current user.
+        
+        @param request: QuerySavingsPlansInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySavingsPlansInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7677,6 +9261,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySavingsPlansInstanceRequest,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse:
+        """
+        @summary Queries the information about savings plan instances of the current user.
+        
+        @param request: QuerySavingsPlansInstanceRequest
+        @return: QuerySavingsPlansInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_savings_plans_instance_with_options(request, runtime)
 
@@ -7684,6 +9274,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySavingsPlansInstanceRequest,
     ) -> bss_open_api_20171214_models.QuerySavingsPlansInstanceResponse:
+        """
+        @summary Queries the information about savings plan instances of the current user.
+        
+        @param request: QuerySavingsPlansInstanceRequest
+        @return: QuerySavingsPlansInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_savings_plans_instance_with_options_async(request, runtime)
 
@@ -7692,6 +9288,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySettleBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySettleBillResponse:
+        """
+        @summary The code of the service.
+        
+        @param request: QuerySettleBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySettleBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -7742,6 +9345,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySettleBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySettleBillResponse:
+        """
+        @summary The code of the service.
+        
+        @param request: QuerySettleBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySettleBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner_id):
@@ -7791,6 +9401,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySettleBillRequest,
     ) -> bss_open_api_20171214_models.QuerySettleBillResponse:
+        """
+        @summary The code of the service.
+        
+        @param request: QuerySettleBillRequest
+        @return: QuerySettleBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_settle_bill_with_options(request, runtime)
 
@@ -7798,6 +9414,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySettleBillRequest,
     ) -> bss_open_api_20171214_models.QuerySettleBillResponse:
+        """
+        @summary The code of the service.
+        
+        @param request: QuerySettleBillRequest
+        @return: QuerySettleBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_settle_bill_with_options_async(request, runtime)
 
@@ -7806,6 +9428,13 @@ class Client(OpenApiClient):
         tmp_req: bss_open_api_20171214_models.QuerySkuPriceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySkuPriceListResponse:
+        """
+        @summary Queries the stock keeping units (SKUs) of a service. In most cases, a service has one or more SKUs. A service may even have tens of thousands of SKUs. You can call this operation to query the SKUs of a specific service and the prices of the SKUs. You can configure request parameters to query the specified SKUs based on the configurations of the SKUs.
+        
+        @param tmp_req: QuerySkuPriceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySkuPriceListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bss_open_api_20171214_models.QuerySkuPriceListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7836,6 +9465,13 @@ class Client(OpenApiClient):
         tmp_req: bss_open_api_20171214_models.QuerySkuPriceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySkuPriceListResponse:
+        """
+        @summary Queries the stock keeping units (SKUs) of a service. In most cases, a service has one or more SKUs. A service may even have tens of thousands of SKUs. You can call this operation to query the SKUs of a specific service and the prices of the SKUs. You can configure request parameters to query the specified SKUs based on the configurations of the SKUs.
+        
+        @param tmp_req: QuerySkuPriceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySkuPriceListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bss_open_api_20171214_models.QuerySkuPriceListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7865,6 +9501,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySkuPriceListRequest,
     ) -> bss_open_api_20171214_models.QuerySkuPriceListResponse:
+        """
+        @summary Queries the stock keeping units (SKUs) of a service. In most cases, a service has one or more SKUs. A service may even have tens of thousands of SKUs. You can call this operation to query the SKUs of a specific service and the prices of the SKUs. You can configure request parameters to query the specified SKUs based on the configurations of the SKUs.
+        
+        @param request: QuerySkuPriceListRequest
+        @return: QuerySkuPriceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sku_price_list_with_options(request, runtime)
 
@@ -7872,6 +9514,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.QuerySkuPriceListRequest,
     ) -> bss_open_api_20171214_models.QuerySkuPriceListResponse:
+        """
+        @summary Queries the stock keeping units (SKUs) of a service. In most cases, a service has one or more SKUs. A service may even have tens of thousands of SKUs. You can call this operation to query the SKUs of a specific service and the prices of the SKUs. You can configure request parameters to query the specified SKUs based on the configurations of the SKUs.
+        
+        @param request: QuerySkuPriceListRequest
+        @return: QuerySkuPriceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sku_price_list_with_options_async(request, runtime)
 
@@ -7881,10 +9529,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySplitItemBillResponse:
         """
-        This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](~~208169~~) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
-        *   The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
-        *   You can call this operation to query split bills generated within the last 12 months.
-        *   This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
+        @summary Queries split bills.
+        
+        @description    This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
+        The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
+        You can call this operation to query split bills generated within the last 12 months.
+        This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
         
         @param request: QuerySplitItemBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7933,10 +9583,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QuerySplitItemBillResponse:
         """
-        This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](~~208169~~) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
-        *   The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
-        *   You can call this operation to query split bills generated within the last 12 months.
-        *   This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
+        @summary Queries split bills.
+        
+        @description    This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
+        The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
+        You can call this operation to query split bills generated within the last 12 months.
+        This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
         
         @param request: QuerySplitItemBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7984,10 +9636,12 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySplitItemBillRequest,
     ) -> bss_open_api_20171214_models.QuerySplitItemBillResponse:
         """
-        This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](~~208169~~) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
-        *   The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
-        *   You can call this operation to query split bills generated within the last 12 months.
-        *   This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
+        @summary Queries split bills.
+        
+        @description    This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
+        The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
+        You can call this operation to query split bills generated within the last 12 months.
+        This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
         
         @param request: QuerySplitItemBillRequest
         @return: QuerySplitItemBillResponse
@@ -8000,10 +9654,12 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QuerySplitItemBillRequest,
     ) -> bss_open_api_20171214_models.QuerySplitItemBillResponse:
         """
-        This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](~~208169~~) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
-        *   The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
-        *   You can call this operation to query split bills generated within the last 12 months.
-        *   This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
+        @summary Queries split bills.
+        
+        @description    This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
+        The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
+        You can call this operation to query split bills generated within the last 12 months.
+        This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
         
         @param request: QuerySplitItemBillRequest
         @return: QuerySplitItemBillResponse
@@ -8017,11 +9673,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryUserOmsDataResponse:
         """
-        You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
-        *   The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
-        *   The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
-        *   Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
-        *   You can query the usage data that is recorded in the last quarter.
+        @summary Queries the usage data of an Alibaba Cloud service.
+        
+        @description You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
+        The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
+        The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
+        You can query the usage data that is recorded in the last quarter.
         
         @param request: QueryUserOmsDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8068,11 +9726,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.QueryUserOmsDataResponse:
         """
-        You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
-        *   The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
-        *   The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
-        *   Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
-        *   You can query the usage data that is recorded in the last quarter.
+        @summary Queries the usage data of an Alibaba Cloud service.
+        
+        @description You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
+        The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
+        The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
+        You can query the usage data that is recorded in the last quarter.
         
         @param request: QueryUserOmsDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8118,11 +9778,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryUserOmsDataRequest,
     ) -> bss_open_api_20171214_models.QueryUserOmsDataResponse:
         """
-        You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
-        *   The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
-        *   The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
-        *   Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
-        *   You can query the usage data that is recorded in the last quarter.
+        @summary Queries the usage data of an Alibaba Cloud service.
+        
+        @description You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
+        The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
+        The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
+        You can query the usage data that is recorded in the last quarter.
         
         @param request: QueryUserOmsDataRequest
         @return: QueryUserOmsDataResponse
@@ -8135,11 +9797,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.QueryUserOmsDataRequest,
     ) -> bss_open_api_20171214_models.QueryUserOmsDataResponse:
         """
-        You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
-        *   The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
-        *   The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
-        *   Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
-        *   You can query the usage data that is recorded in the last quarter.
+        @summary Queries the usage data of an Alibaba Cloud service.
+        
+        @description You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
+        The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
+        The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
+        You can query the usage data that is recorded in the last quarter.
         
         @param request: QueryUserOmsDataRequest
         @return: QueryUserOmsDataResponse
@@ -8153,7 +9817,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RefundInstanceResponse:
         """
-        1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        @summary Unsubscribes from an instance that is no longer needed.
+        
+        @description 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
         3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
@@ -8198,7 +9864,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RefundInstanceResponse:
         """
-        1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        @summary Unsubscribes from an instance that is no longer needed.
+        
+        @description 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
         3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
@@ -8242,7 +9910,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RefundInstanceRequest,
     ) -> bss_open_api_20171214_models.RefundInstanceResponse:
         """
-        1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        @summary Unsubscribes from an instance that is no longer needed.
+        
+        @description 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
         3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
@@ -8257,7 +9927,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RefundInstanceRequest,
     ) -> bss_open_api_20171214_models.RefundInstanceResponse:
         """
-        1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+        @summary Unsubscribes from an instance that is no longer needed.
+        
+        @description 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
         2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
         3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
         
@@ -8273,7 +9945,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
         """
-        This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
+        @summary Releases instances by Virtual Network Operators (VNOs).
+        
+        @description This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
         
         @param request: ReleaseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8320,7 +9994,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
         """
-        This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
+        @summary Releases instances by Virtual Network Operators (VNOs).
+        
+        @description This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
         
         @param request: ReleaseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8366,7 +10042,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ReleaseInstanceRequest,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
         """
-        This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
+        @summary Releases instances by Virtual Network Operators (VNOs).
+        
+        @description This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
         
         @param request: ReleaseInstanceRequest
         @return: ReleaseInstanceResponse
@@ -8379,7 +10057,9 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.ReleaseInstanceRequest,
     ) -> bss_open_api_20171214_models.ReleaseInstanceResponse:
         """
-        This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
+        @summary Releases instances by Virtual Network Operators (VNOs).
+        
+        @description This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
         
         @param request: ReleaseInstanceRequest
         @return: ReleaseInstanceResponse
@@ -8392,6 +10072,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RelieveAccountRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RelieveAccountRelationResponse:
+        """
+        @summary Terminates a financial relationship between the management account and a member.
+        
+        @param request: RelieveAccountRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RelieveAccountRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.child_user_id):
@@ -8428,6 +10115,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RelieveAccountRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RelieveAccountRelationResponse:
+        """
+        @summary Terminates a financial relationship between the management account and a member.
+        
+        @param request: RelieveAccountRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RelieveAccountRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.child_user_id):
@@ -8463,6 +10157,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RelieveAccountRelationRequest,
     ) -> bss_open_api_20171214_models.RelieveAccountRelationResponse:
+        """
+        @summary Terminates a financial relationship between the management account and a member.
+        
+        @param request: RelieveAccountRelationRequest
+        @return: RelieveAccountRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.relieve_account_relation_with_options(request, runtime)
 
@@ -8470,6 +10170,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RelieveAccountRelationRequest,
     ) -> bss_open_api_20171214_models.RelieveAccountRelationResponse:
+        """
+        @summary Terminates a financial relationship between the management account and a member.
+        
+        @param request: RelieveAccountRelationRequest
+        @return: RelieveAccountRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.relieve_account_relation_with_options_async(request, runtime)
 
@@ -8478,6 +10184,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RenewChangeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewChangeInstanceResponse:
+        """
+        @summary 续费变配接口
+        
+        @param request: RenewChangeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewChangeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -8518,6 +10231,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RenewChangeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewChangeInstanceResponse:
+        """
+        @summary 续费变配接口
+        
+        @param request: RenewChangeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewChangeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -8557,6 +10277,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RenewChangeInstanceRequest,
     ) -> bss_open_api_20171214_models.RenewChangeInstanceResponse:
+        """
+        @summary 续费变配接口
+        
+        @param request: RenewChangeInstanceRequest
+        @return: RenewChangeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_change_instance_with_options(request, runtime)
 
@@ -8564,6 +10290,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RenewChangeInstanceRequest,
     ) -> bss_open_api_20171214_models.RenewChangeInstanceResponse:
+        """
+        @summary 续费变配接口
+        
+        @param request: RenewChangeInstanceRequest
+        @return: RenewChangeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_change_instance_with_options_async(request, runtime)
 
@@ -8572,6 +10304,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewInstanceResponse:
+        """
+        @summary Renews a specified instance. You cannot call this operation to renew Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, or ApsaraDB for Redis instances. To renew these types of instances, call the dedicated operation of the corresponding service.
+        
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -8610,6 +10349,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewInstanceResponse:
+        """
+        @summary Renews a specified instance. You cannot call this operation to renew Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, or ApsaraDB for Redis instances. To renew these types of instances, call the dedicated operation of the corresponding service.
+        
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -8647,6 +10393,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RenewInstanceRequest,
     ) -> bss_open_api_20171214_models.RenewInstanceResponse:
+        """
+        @summary Renews a specified instance. You cannot call this operation to renew Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, or ApsaraDB for Redis instances. To renew these types of instances, call the dedicated operation of the corresponding service.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_instance_with_options(request, runtime)
 
@@ -8654,6 +10406,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RenewInstanceRequest,
     ) -> bss_open_api_20171214_models.RenewInstanceResponse:
+        """
+        @summary Renews a specified instance. You cannot call this operation to renew Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, or ApsaraDB for Redis instances. To renew these types of instances, call the dedicated operation of the corresponding service.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_instance_with_options_async(request, runtime)
 
@@ -8662,6 +10420,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RenewResourcePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewResourcePackageResponse:
+        """
+        @summary Renews a resource plan.
+        
+        @param request: RenewResourcePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewResourcePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -8698,6 +10463,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.RenewResourcePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.RenewResourcePackageResponse:
+        """
+        @summary Renews a resource plan.
+        
+        @param request: RenewResourcePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewResourcePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.duration):
@@ -8733,6 +10505,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RenewResourcePackageRequest,
     ) -> bss_open_api_20171214_models.RenewResourcePackageResponse:
+        """
+        @summary Renews a resource plan.
+        
+        @param request: RenewResourcePackageRequest
+        @return: RenewResourcePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_resource_package_with_options(request, runtime)
 
@@ -8740,6 +10518,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.RenewResourcePackageRequest,
     ) -> bss_open_api_20171214_models.RenewResourcePackageResponse:
+        """
+        @summary Renews a resource plan.
+        
+        @param request: RenewResourcePackageRequest
+        @return: RenewResourcePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_resource_package_with_options_async(request, runtime)
 
@@ -8748,6 +10532,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetAllExpirationDayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetAllExpirationDayResponse:
+        """
+        @summary Sets an expiration date for all Elastic Compute Service (ECS) instances.
+        
+        @param request: SetAllExpirationDayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAllExpirationDayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -8778,6 +10569,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetAllExpirationDayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetAllExpirationDayResponse:
+        """
+        @summary Sets an expiration date for all Elastic Compute Service (ECS) instances.
+        
+        @param request: SetAllExpirationDayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAllExpirationDayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -8807,6 +10605,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetAllExpirationDayRequest,
     ) -> bss_open_api_20171214_models.SetAllExpirationDayResponse:
+        """
+        @summary Sets an expiration date for all Elastic Compute Service (ECS) instances.
+        
+        @param request: SetAllExpirationDayRequest
+        @return: SetAllExpirationDayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_all_expiration_day_with_options(request, runtime)
 
@@ -8814,6 +10618,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetAllExpirationDayRequest,
     ) -> bss_open_api_20171214_models.SetAllExpirationDayResponse:
+        """
+        @summary Sets an expiration date for all Elastic Compute Service (ECS) instances.
+        
+        @param request: SetAllExpirationDayRequest
+        @return: SetAllExpirationDayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_all_expiration_day_with_options_async(request, runtime)
 
@@ -8822,6 +10632,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetRenewalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetRenewalResponse:
+        """
+        @summary Enables auto-renewal for an instance.
+        
+        @param request: SetRenewalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetRenewalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -8864,6 +10681,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetRenewalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetRenewalResponse:
+        """
+        @summary Enables auto-renewal for an instance.
+        
+        @param request: SetRenewalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetRenewalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -8905,6 +10729,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetRenewalRequest,
     ) -> bss_open_api_20171214_models.SetRenewalResponse:
+        """
+        @summary Enables auto-renewal for an instance.
+        
+        @param request: SetRenewalRequest
+        @return: SetRenewalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_renewal_with_options(request, runtime)
 
@@ -8912,6 +10742,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetRenewalRequest,
     ) -> bss_open_api_20171214_models.SetRenewalResponse:
+        """
+        @summary Enables auto-renewal for an instance.
+        
+        @param request: SetRenewalRequest
+        @return: SetRenewalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_renewal_with_options_async(request, runtime)
 
@@ -8920,6 +10756,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetResellerUserAlarmThresholdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse:
+        """
+        @param request: SetResellerUserAlarmThresholdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetResellerUserAlarmThresholdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_thresholds):
@@ -8952,6 +10793,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetResellerUserAlarmThresholdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse:
+        """
+        @param request: SetResellerUserAlarmThresholdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetResellerUserAlarmThresholdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_thresholds):
@@ -8983,6 +10829,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetResellerUserAlarmThresholdRequest,
     ) -> bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse:
+        """
+        @param request: SetResellerUserAlarmThresholdRequest
+        @return: SetResellerUserAlarmThresholdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_reseller_user_alarm_threshold_with_options(request, runtime)
 
@@ -8990,6 +10840,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetResellerUserAlarmThresholdRequest,
     ) -> bss_open_api_20171214_models.SetResellerUserAlarmThresholdResponse:
+        """
+        @param request: SetResellerUserAlarmThresholdRequest
+        @return: SetResellerUserAlarmThresholdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_reseller_user_alarm_threshold_with_options_async(request, runtime)
 
@@ -8998,6 +10852,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetResellerUserQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
+        """
+        @param request: SetResellerUserQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetResellerUserQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -9032,6 +10891,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetResellerUserQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
+        """
+        @param request: SetResellerUserQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetResellerUserQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -9065,6 +10929,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetResellerUserQuotaRequest,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
+        """
+        @param request: SetResellerUserQuotaRequest
+        @return: SetResellerUserQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_reseller_user_quota_with_options(request, runtime)
 
@@ -9072,6 +10940,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetResellerUserQuotaRequest,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
+        """
+        @param request: SetResellerUserQuotaRequest
+        @return: SetResellerUserQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_reseller_user_quota_with_options_async(request, runtime)
 
@@ -9080,6 +10952,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetResellerUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserStatusResponse:
+        """
+        @param request: SetResellerUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetResellerUserStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -9114,6 +10991,11 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetResellerUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserStatusResponse:
+        """
+        @param request: SetResellerUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetResellerUserStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -9147,6 +11029,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetResellerUserStatusRequest,
     ) -> bss_open_api_20171214_models.SetResellerUserStatusResponse:
+        """
+        @param request: SetResellerUserStatusRequest
+        @return: SetResellerUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_reseller_user_status_with_options(request, runtime)
 
@@ -9154,6 +11040,10 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.SetResellerUserStatusRequest,
     ) -> bss_open_api_20171214_models.SetResellerUserStatusResponse:
+        """
+        @param request: SetResellerUserStatusRequest
+        @return: SetResellerUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_reseller_user_status_with_options_async(request, runtime)
 
@@ -9163,33 +11053,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   You can subscribe to only one type of bill at a time.
-        *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-        *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-        *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-        *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+        @summary Subscribes to the bills that are stored in Object Storage Service (OSS) buckets.
+        
+        @description Before you call this operation, take note of the following items:
+        You can subscribe to only one type of bill at a time.
+        The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+        The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+        The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+        To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
         1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
         2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
         3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
         4.  4.  The directory name must be 1 to 254 characters in length.
-        *   File names:
-        *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
-        *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-        *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
-        *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-        *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **SplitItemDetailDaily** (Split bills summarized by day)
-        *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **MonthBill** (Monthly bill in the PDF format)
-        *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-        *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+        File names:
+        **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
+        File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+        File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+        **InstanceDetailForBillingPeriod** (Detailed bills of instances)
+        File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+        File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+        **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
+        File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
+        File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **SplitItemDetailDaily** (Split bills summarized by day)
+        File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **MonthBill** (Monthly bill in the PDF format)
+        File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+        The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
         
         @param request: SubscribeBillToOSSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9211,6 +11103,8 @@ class Client(OpenApiClient):
             query['SubscribeBucket'] = request.subscribe_bucket
         if not UtilClient.is_unset(request.subscribe_type):
             query['SubscribeType'] = request.subscribe_type
+        if not UtilClient.is_unset(request.using_ssl):
+            query['UsingSsl'] = request.using_ssl
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9236,33 +11130,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   You can subscribe to only one type of bill at a time.
-        *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-        *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-        *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-        *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+        @summary Subscribes to the bills that are stored in Object Storage Service (OSS) buckets.
+        
+        @description Before you call this operation, take note of the following items:
+        You can subscribe to only one type of bill at a time.
+        The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+        The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+        The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+        To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
         1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
         2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
         3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
         4.  4.  The directory name must be 1 to 254 characters in length.
-        *   File names:
-        *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
-        *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-        *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
-        *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-        *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **SplitItemDetailDaily** (Split bills summarized by day)
-        *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **MonthBill** (Monthly bill in the PDF format)
-        *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-        *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+        File names:
+        **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
+        File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+        File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+        **InstanceDetailForBillingPeriod** (Detailed bills of instances)
+        File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+        File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+        **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
+        File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
+        File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **SplitItemDetailDaily** (Split bills summarized by day)
+        File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **MonthBill** (Monthly bill in the PDF format)
+        File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+        The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
         
         @param request: SubscribeBillToOSSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9284,6 +11180,8 @@ class Client(OpenApiClient):
             query['SubscribeBucket'] = request.subscribe_bucket
         if not UtilClient.is_unset(request.subscribe_type):
             query['SubscribeType'] = request.subscribe_type
+        if not UtilClient.is_unset(request.using_ssl):
+            query['UsingSsl'] = request.using_ssl
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9308,33 +11206,35 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SubscribeBillToOSSRequest,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   You can subscribe to only one type of bill at a time.
-        *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-        *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-        *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-        *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+        @summary Subscribes to the bills that are stored in Object Storage Service (OSS) buckets.
+        
+        @description Before you call this operation, take note of the following items:
+        You can subscribe to only one type of bill at a time.
+        The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+        The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+        The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+        To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
         1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
         2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
         3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
         4.  4.  The directory name must be 1 to 254 characters in length.
-        *   File names:
-        *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
-        *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-        *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
-        *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-        *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **SplitItemDetailDaily** (Split bills summarized by day)
-        *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **MonthBill** (Monthly bill in the PDF format)
-        *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-        *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+        File names:
+        **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
+        File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+        File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+        **InstanceDetailForBillingPeriod** (Detailed bills of instances)
+        File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+        File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+        **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
+        File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
+        File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **SplitItemDetailDaily** (Split bills summarized by day)
+        File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **MonthBill** (Monthly bill in the PDF format)
+        File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+        The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
         
         @param request: SubscribeBillToOSSRequest
         @return: SubscribeBillToOSSResponse
@@ -9347,33 +11247,35 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SubscribeBillToOSSRequest,
     ) -> bss_open_api_20171214_models.SubscribeBillToOSSResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   You can subscribe to only one type of bill at a time.
-        *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-        *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-        *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-        *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+        @summary Subscribes to the bills that are stored in Object Storage Service (OSS) buckets.
+        
+        @description Before you call this operation, take note of the following items:
+        You can subscribe to only one type of bill at a time.
+        The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+        The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+        The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+        To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
         1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
         2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
         3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
         4.  4.  The directory name must be 1 to 254 characters in length.
-        *   File names:
-        *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
-        *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-        *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
-        *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-        *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-        *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
-        *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **SplitItemDetailDaily** (Split bills summarized by day)
-        *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-        *   **MonthBill** (Monthly bill in the PDF format)
-        *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-        *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+        File names:
+        **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
+        File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+        File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+        **InstanceDetailForBillingPeriod** (Detailed bills of instances)
+        File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+        File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+        **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
+        File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
+        File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **SplitItemDetailDaily** (Split bills summarized by day)
+        File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+        **MonthBill** (Monthly bill in the PDF format)
+        File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+        The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
         
         @param request: SubscribeBillToOSSRequest
         @return: SubscribeBillToOSSResponse
@@ -9386,6 +11288,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.TagResourcesResponse:
+        """
+        @summary Add tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -9418,6 +11327,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.TagResourcesResponse:
+        """
+        @summary Add tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -9449,6 +11365,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.TagResourcesRequest,
     ) -> bss_open_api_20171214_models.TagResourcesResponse:
+        """
+        @summary Add tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -9456,6 +11378,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.TagResourcesRequest,
     ) -> bss_open_api_20171214_models.TagResourcesResponse:
+        """
+        @summary Add tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -9464,6 +11392,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.UnsubscribeBillToOSSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UnsubscribeBillToOSSResponse:
+        """
+        @summary Unsubscribes from the bills that are stored in Object Storage Service (OSS) buckets.
+        
+        @param request: UnsubscribeBillToOSSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnsubscribeBillToOSSResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mult_account_rel_subscribe):
@@ -9494,6 +11429,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.UnsubscribeBillToOSSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UnsubscribeBillToOSSResponse:
+        """
+        @summary Unsubscribes from the bills that are stored in Object Storage Service (OSS) buckets.
+        
+        @param request: UnsubscribeBillToOSSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnsubscribeBillToOSSResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mult_account_rel_subscribe):
@@ -9523,6 +11465,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.UnsubscribeBillToOSSRequest,
     ) -> bss_open_api_20171214_models.UnsubscribeBillToOSSResponse:
+        """
+        @summary Unsubscribes from the bills that are stored in Object Storage Service (OSS) buckets.
+        
+        @param request: UnsubscribeBillToOSSRequest
+        @return: UnsubscribeBillToOSSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unsubscribe_bill_to_osswith_options(request, runtime)
 
@@ -9530,6 +11478,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.UnsubscribeBillToOSSRequest,
     ) -> bss_open_api_20171214_models.UnsubscribeBillToOSSResponse:
+        """
+        @summary Unsubscribes from the bills that are stored in Object Storage Service (OSS) buckets.
+        
+        @param request: UnsubscribeBillToOSSRequest
+        @return: UnsubscribeBillToOSSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unsubscribe_bill_to_osswith_options_async(request, runtime)
 
@@ -9538,6 +11492,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -9572,6 +11533,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -9605,6 +11573,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.UntagResourcesRequest,
     ) -> bss_open_api_20171214_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -9612,6 +11586,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.UntagResourcesRequest,
     ) -> bss_open_api_20171214_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -9620,6 +11600,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.UpgradeResourcePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UpgradeResourcePackageResponse:
+        """
+        @summary Upgrades a resource plan.
+        
+        @param request: UpgradeResourcePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeResourcePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_date):
@@ -9654,6 +11641,13 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.UpgradeResourcePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.UpgradeResourcePackageResponse:
+        """
+        @summary Upgrades a resource plan.
+        
+        @param request: UpgradeResourcePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeResourcePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.effective_date):
@@ -9687,6 +11681,12 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.UpgradeResourcePackageRequest,
     ) -> bss_open_api_20171214_models.UpgradeResourcePackageResponse:
+        """
+        @summary Upgrades a resource plan.
+        
+        @param request: UpgradeResourcePackageRequest
+        @return: UpgradeResourcePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_resource_package_with_options(request, runtime)
 
@@ -9694,5 +11694,11 @@ class Client(OpenApiClient):
         self,
         request: bss_open_api_20171214_models.UpgradeResourcePackageRequest,
     ) -> bss_open_api_20171214_models.UpgradeResourcePackageResponse:
+        """
+        @summary Upgrades a resource plan.
+        
+        @param request: UpgradeResourcePackageRequest
+        @return: UpgradeResourcePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_resource_package_with_options_async(request, runtime)
