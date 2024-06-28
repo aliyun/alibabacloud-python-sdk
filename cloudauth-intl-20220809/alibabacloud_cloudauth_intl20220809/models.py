@@ -2788,6 +2788,7 @@ class DocOcrRequest(TeaModel):
         id_face_quality: str = None,
         id_ocr_picture_base_64: str = None,
         id_ocr_picture_url: str = None,
+        id_threshold: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         ocr: str = None,
@@ -2798,6 +2799,7 @@ class DocOcrRequest(TeaModel):
         self.id_face_quality = id_face_quality
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
         self.id_ocr_picture_url = id_ocr_picture_url
+        self.id_threshold = id_threshold
         self.merchant_biz_id = merchant_biz_id
         self.merchant_user_id = merchant_user_id
         self.ocr = ocr
@@ -2821,6 +2823,8 @@ class DocOcrRequest(TeaModel):
             result['IdOcrPictureBase64'] = self.id_ocr_picture_base_64
         if self.id_ocr_picture_url is not None:
             result['IdOcrPictureUrl'] = self.id_ocr_picture_url
+        if self.id_threshold is not None:
+            result['IdThreshold'] = self.id_threshold
         if self.merchant_biz_id is not None:
             result['MerchantBizId'] = self.merchant_biz_id
         if self.merchant_user_id is not None:
@@ -2843,6 +2847,8 @@ class DocOcrRequest(TeaModel):
             self.id_ocr_picture_base_64 = m.get('IdOcrPictureBase64')
         if m.get('IdOcrPictureUrl') is not None:
             self.id_ocr_picture_url = m.get('IdOcrPictureUrl')
+        if m.get('IdThreshold') is not None:
+            self.id_threshold = m.get('IdThreshold')
         if m.get('MerchantBizId') is not None:
             self.merchant_biz_id = m.get('MerchantBizId')
         if m.get('MerchantUserId') is not None:
@@ -3002,6 +3008,7 @@ class EkycVerifyRequest(TeaModel):
         face_picture_url: str = None,
         id_ocr_picture_base_64: str = None,
         id_ocr_picture_url: str = None,
+        id_threshold: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         product_code: str = None,
@@ -3015,6 +3022,7 @@ class EkycVerifyRequest(TeaModel):
         self.face_picture_url = face_picture_url
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
         self.id_ocr_picture_url = id_ocr_picture_url
+        self.id_threshold = id_threshold
         self.merchant_biz_id = merchant_biz_id
         self.merchant_user_id = merchant_user_id
         self.product_code = product_code
@@ -3046,6 +3054,8 @@ class EkycVerifyRequest(TeaModel):
             result['IdOcrPictureBase64'] = self.id_ocr_picture_base_64
         if self.id_ocr_picture_url is not None:
             result['IdOcrPictureUrl'] = self.id_ocr_picture_url
+        if self.id_threshold is not None:
+            result['IdThreshold'] = self.id_threshold
         if self.merchant_biz_id is not None:
             result['MerchantBizId'] = self.merchant_biz_id
         if self.merchant_user_id is not None:
@@ -3074,6 +3084,8 @@ class EkycVerifyRequest(TeaModel):
             self.id_ocr_picture_base_64 = m.get('IdOcrPictureBase64')
         if m.get('IdOcrPictureUrl') is not None:
             self.id_ocr_picture_url = m.get('IdOcrPictureUrl')
+        if m.get('IdThreshold') is not None:
+            self.id_threshold = m.get('IdThreshold')
         if m.get('MerchantBizId') is not None:
             self.merchant_biz_id = m.get('MerchantBizId')
         if m.get('MerchantUserId') is not None:
@@ -3945,15 +3957,18 @@ class InitializeRequest(TeaModel):
         crop: str = None,
         doc_scan_mode: str = None,
         doc_type: str = None,
+        doc_video: str = None,
         experience_code: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
         id_face_quality: str = None,
         id_spoof: str = None,
+        id_threshold: str = None,
         language_config: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         meta_info: str = None,
+        model: str = None,
         ocr: str = None,
         product_code: str = None,
         product_flow: str = None,
@@ -3968,15 +3983,18 @@ class InitializeRequest(TeaModel):
         self.crop = crop
         self.doc_scan_mode = doc_scan_mode
         self.doc_type = doc_type
+        self.doc_video = doc_video
         self.experience_code = experience_code
         self.face_picture_base_64 = face_picture_base_64
         self.face_picture_url = face_picture_url
         self.id_face_quality = id_face_quality
         self.id_spoof = id_spoof
+        self.id_threshold = id_threshold
         self.language_config = language_config
         self.merchant_biz_id = merchant_biz_id
         self.merchant_user_id = merchant_user_id
         self.meta_info = meta_info
+        self.model = model
         # OCR。
         self.ocr = ocr
         self.product_code = product_code
@@ -4007,6 +4025,8 @@ class InitializeRequest(TeaModel):
             result['DocScanMode'] = self.doc_scan_mode
         if self.doc_type is not None:
             result['DocType'] = self.doc_type
+        if self.doc_video is not None:
+            result['DocVideo'] = self.doc_video
         if self.experience_code is not None:
             result['ExperienceCode'] = self.experience_code
         if self.face_picture_base_64 is not None:
@@ -4017,6 +4037,8 @@ class InitializeRequest(TeaModel):
             result['IdFaceQuality'] = self.id_face_quality
         if self.id_spoof is not None:
             result['IdSpoof'] = self.id_spoof
+        if self.id_threshold is not None:
+            result['IdThreshold'] = self.id_threshold
         if self.language_config is not None:
             result['LanguageConfig'] = self.language_config
         if self.merchant_biz_id is not None:
@@ -4025,6 +4047,8 @@ class InitializeRequest(TeaModel):
             result['MerchantUserId'] = self.merchant_user_id
         if self.meta_info is not None:
             result['MetaInfo'] = self.meta_info
+        if self.model is not None:
+            result['Model'] = self.model
         if self.ocr is not None:
             result['Ocr'] = self.ocr
         if self.product_code is not None:
@@ -4055,6 +4079,8 @@ class InitializeRequest(TeaModel):
             self.doc_scan_mode = m.get('DocScanMode')
         if m.get('DocType') is not None:
             self.doc_type = m.get('DocType')
+        if m.get('DocVideo') is not None:
+            self.doc_video = m.get('DocVideo')
         if m.get('ExperienceCode') is not None:
             self.experience_code = m.get('ExperienceCode')
         if m.get('FacePictureBase64') is not None:
@@ -4065,6 +4091,8 @@ class InitializeRequest(TeaModel):
             self.id_face_quality = m.get('IdFaceQuality')
         if m.get('IdSpoof') is not None:
             self.id_spoof = m.get('IdSpoof')
+        if m.get('IdThreshold') is not None:
+            self.id_threshold = m.get('IdThreshold')
         if m.get('LanguageConfig') is not None:
             self.language_config = m.get('LanguageConfig')
         if m.get('MerchantBizId') is not None:
@@ -4073,6 +4101,8 @@ class InitializeRequest(TeaModel):
             self.merchant_user_id = m.get('MerchantUserId')
         if m.get('MetaInfo') is not None:
             self.meta_info = m.get('MetaInfo')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
         if m.get('Ocr') is not None:
             self.ocr = m.get('Ocr')
         if m.get('ProductCode') is not None:

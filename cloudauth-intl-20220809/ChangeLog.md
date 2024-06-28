@@ -1,3 +1,11 @@
+2024-06-28 Version: 2.0.2
+- Update API DocOcr: add param IdThreshold.
+- Update API EkycVerify: add param IdThreshold.
+- Update API Initialize: add param DocVideo.
+- Update API Initialize: add param IdThreshold.
+- Update API Initialize: add param Model.
+
+
 2024-06-20 Version: 2.0.1
 - Update API Initialize: add param ExperienceCode.
 
