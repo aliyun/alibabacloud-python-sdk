@@ -47,6 +47,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse:
         """
+        @summary Adds a shared account of a service.
+        
         @param request: AddServiceSharedAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddServiceSharedAccountsResponse
@@ -88,6 +90,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse:
         """
+        @summary Adds a shared account of a service.
+        
         @param request: AddServiceSharedAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddServiceSharedAccountsResponse
@@ -128,6 +132,8 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.AddServiceSharedAccountsRequest,
     ) -> compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse:
         """
+        @summary Adds a shared account of a service.
+        
         @param request: AddServiceSharedAccountsRequest
         @return: AddServiceSharedAccountsResponse
         """
@@ -139,6 +145,8 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.AddServiceSharedAccountsRequest,
     ) -> compute_nest_supplier_20210521_models.AddServiceSharedAccountsResponse:
         """
+        @summary Adds a shared account of a service.
+        
         @param request: AddServiceSharedAccountsRequest
         @return: AddServiceSharedAccountsResponse
         """
@@ -839,6 +847,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.DeleteServiceResponse:
         """
+        @summary Deletes a service.
+        
         @param request: DeleteServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteServiceResponse
@@ -878,6 +888,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.DeleteServiceResponse:
         """
+        @summary Deletes a service.
+        
         @param request: DeleteServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteServiceResponse
@@ -916,6 +928,8 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.DeleteServiceRequest,
     ) -> compute_nest_supplier_20210521_models.DeleteServiceResponse:
         """
+        @summary Deletes a service.
+        
         @param request: DeleteServiceRequest
         @return: DeleteServiceResponse
         """
@@ -927,6 +941,8 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.DeleteServiceRequest,
     ) -> compute_nest_supplier_20210521_models.DeleteServiceResponse:
         """
+        @summary Deletes a service.
+        
         @param request: DeleteServiceRequest
         @return: DeleteServiceResponse
         """
@@ -1819,6 +1835,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.file_name):
             query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.visibility):
+            query['Visibility'] = request.visibility
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1852,6 +1870,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.file_name):
             query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.visibility):
+            query['Visibility'] = request.visibility
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2963,7 +2983,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ReleaseArtifactResponse:
         """
-        @summary 发布部署物
+        @summary Publishes an artifact.
         
         @param request: ReleaseArtifactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2998,7 +3018,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ReleaseArtifactResponse:
         """
-        @summary 发布部署物
+        @summary Publishes an artifact.
         
         @param request: ReleaseArtifactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3032,7 +3052,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ReleaseArtifactRequest,
     ) -> compute_nest_supplier_20210521_models.ReleaseArtifactResponse:
         """
-        @summary 发布部署物
+        @summary Publishes an artifact.
         
         @param request: ReleaseArtifactRequest
         @return: ReleaseArtifactResponse
@@ -3045,7 +3065,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ReleaseArtifactRequest,
     ) -> compute_nest_supplier_20210521_models.ReleaseArtifactResponse:
         """
-        @summary 发布部署物
+        @summary Publishes an artifact.
         
         @param request: ReleaseArtifactRequest
         @return: ReleaseArtifactResponse
@@ -3779,7 +3799,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse:
         """
-        @summary 变配服务实例
+        @summary Updates the configurations of a service instance.
         
         @param tmp_req: UpdateServiceInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3828,7 +3848,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse:
         """
-        @summary 变配服务实例
+        @summary Updates the configurations of a service instance.
         
         @param tmp_req: UpdateServiceInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3876,7 +3896,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecRequest,
     ) -> compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse:
         """
-        @summary 变配服务实例
+        @summary Updates the configurations of a service instance.
         
         @param request: UpdateServiceInstanceSpecRequest
         @return: UpdateServiceInstanceSpecResponse
@@ -3889,7 +3909,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecRequest,
     ) -> compute_nest_supplier_20210521_models.UpdateServiceInstanceSpecResponse:
         """
-        @summary 变配服务实例
+        @summary Updates the configurations of a service instance.
         
         @param request: UpdateServiceInstanceSpecRequest
         @return: UpdateServiceInstanceSpecResponse

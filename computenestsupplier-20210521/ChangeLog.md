@@ -1,3 +1,7 @@
+2024-06-28 Version: 2.4.2
+- Update API GetUploadCredentials: add param Visibility.
+
+
 2024-06-20 Version: 2.4.1
 - Update API UpdateService: add param ApprovalType.
 - Update API UpdateService: add param ShareType.

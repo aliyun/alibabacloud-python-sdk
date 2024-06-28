@@ -10,8 +10,15 @@ class AddServiceSharedAccountsRequestSharedAccounts(TeaModel):
         permission: str = None,
         user_ali_uid: str = None,
     ):
+        # The permissions on the service. Valid values:
+        # 
+        # *   Deployable: Permissions to deploy the service.
+        # *   Accessible: Permissions to access the service.
+        # 
         # This parameter is required.
         self.permission = permission
+        # The Alibaba Cloud account ID of the user.
+        # 
         # This parameter is required.
         self.user_ali_uid = user_ali_uid
 
@@ -48,13 +55,24 @@ class AddServiceSharedAccountsRequest(TeaModel):
         shared_accounts: List[AddServiceSharedAccountsRequestSharedAccounts] = None,
         type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The shared account and permissions of the service.
+        # 
         # This parameter is required.
         self.shared_accounts = shared_accounts
+        # The share type of the service. Default value: SharedAccount. Valid values:
+        # 
+        # *   SharedAccount: The service is shared by multiple accounts.
+        # *   Reseller: The service is distributed.
         self.type = type
 
     def validate(self):
@@ -106,6 +124,7 @@ class AddServiceSharedAccountsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1690,11 +1709,18 @@ class DeleteServiceRequest(TeaModel):
         service_id: str = None,
         service_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service version.
+        # 
         # This parameter is required.
         self.service_version = service_version
 
@@ -1735,6 +1761,7 @@ class DeleteServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5006,9 +5033,11 @@ class GetUploadCredentialsRequest(TeaModel):
     def __init__(
         self,
         file_name: str = None,
+        visibility: str = None,
     ):
         # This parameter is required.
         self.file_name = file_name
+        self.visibility = visibility
 
     def validate(self):
         pass
@@ -5021,12 +5050,16 @@ class GetUploadCredentialsRequest(TeaModel):
         result = dict()
         if self.file_name is not None:
             result['FileName'] = self.file_name
+        if self.visibility is not None:
+            result['Visibility'] = self.visibility
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
+        if m.get('Visibility') is not None:
+            self.visibility = m.get('Visibility')
         return self
 
 
@@ -7982,6 +8015,8 @@ class ReleaseArtifactRequest(TeaModel):
         self,
         artifact_id: str = None,
     ):
+        # The ID of the artifact.
+        # 
         # This parameter is required.
         self.artifact_id = artifact_id
 
@@ -8018,14 +8053,30 @@ class ReleaseArtifactResponseBody(TeaModel):
         status: str = None,
         version_name: str = None,
     ):
+        # The ID of the artifact.
         self.artifact_id = artifact_id
+        # The content of the artifact.
         self.artifact_property = artifact_property
+        # The type of the artifact.
         self.artifact_type = artifact_type
+        # The version of the artifact.
         self.artifact_version = artifact_version
+        # The description of the artifact.
         self.description = description
+        # The time when the artifact was modified.
         self.gmt_modified = gmt_modified
+        # The request ID.
         self.request_id = request_id
+        # The state of the artifact. Valid values:
+        # 
+        # *   Created: The artifact is created.
+        # *   Scanning: The artifact is being scanned.
+        # *   ScanFailed: The artifact failed to be scanned.
+        # *   Delivering: The artifact is being distributed.
+        # *   Available: The artifact is available.
+        # *   Deleted: The artifact is deleted.
         self.status = status
+        # The version name of the artifact.
         self.version_name = version_name
 
     def validate(self):
@@ -9495,11 +9546,20 @@ class UpdateServiceInstanceSpecRequest(TeaModel):
         predefined_parameters_name: str = None,
         service_instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to enable Prometheus on the customer side. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_user_prometheus = enable_user_prometheus
+        # The name of the configuration update operation.
         self.operation_name = operation_name
+        # The configuration parameters of the service instance.
         self.parameters = parameters
+        # The name of the specification package.
         self.predefined_parameters_name = predefined_parameters_name
+        # The service instance ID.
         self.service_instance_id = service_instance_id
 
     def validate(self):
@@ -9552,11 +9612,20 @@ class UpdateServiceInstanceSpecShrinkRequest(TeaModel):
         predefined_parameters_name: str = None,
         service_instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to enable Prometheus on the customer side. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_user_prometheus = enable_user_prometheus
+        # The name of the configuration update operation.
         self.operation_name = operation_name
+        # The configuration parameters of the service instance.
         self.parameters_shrink = parameters_shrink
+        # The name of the specification package.
         self.predefined_parameters_name = predefined_parameters_name
+        # The service instance ID.
         self.service_instance_id = service_instance_id
 
     def validate(self):
@@ -9605,7 +9674,9 @@ class UpdateServiceInstanceSpecResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
