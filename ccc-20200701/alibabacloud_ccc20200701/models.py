@@ -1880,6 +1880,166 @@ class AddSkillGroupsToUserResponse(TeaModel):
         return self
 
 
+class AddTicketTaskRequest(TeaModel):
+    def __init__(
+        self,
+        assignee: str = None,
+        comment: str = None,
+        instance_id: str = None,
+        position: str = None,
+        task_id: str = None,
+        ticket_id: str = None,
+    ):
+        # This parameter is required.
+        self.assignee = assignee
+        # This parameter is required.
+        self.comment = comment
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.position = position
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assignee is not None:
+            result['Assignee'] = self.assignee
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Assignee') is not None:
+            self.assignee = m.get('Assignee')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class AddTicketTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddTicketTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddTicketTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddTicketTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddUsersToSkillGroupRequest(TeaModel):
     def __init__(
         self,
@@ -8190,6 +8350,162 @@ class CreateSkillGroupResponse(TeaModel):
         return self
 
 
+class CreateTicketRequest(TeaModel):
+    def __init__(
+        self,
+        contact_id: str = None,
+        context: str = None,
+        customer_id: str = None,
+        instance_id: str = None,
+        source: str = None,
+        template_id: str = None,
+        title: str = None,
+    ):
+        self.contact_id = contact_id
+        self.context = context
+        self.customer_id = customer_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.source = source
+        self.template_id = template_id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
+        if self.context is not None:
+            result['Context'] = self.context
+        if self.customer_id is not None:
+            result['CustomerId'] = self.customer_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        if m.get('CustomerId') is not None:
+            self.customer_id = m.get('CustomerId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUserRequest(TeaModel):
     def __init__(
         self,
@@ -9689,6 +10005,269 @@ class DeleteSkillGroupResponse(TeaModel):
         return self
 
 
+class DeleteTicketRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        ticket_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class DeleteTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTicketTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        template_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteTicketTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTicketTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTicketTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTicketTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableSchemaPropertyRequest(TeaModel):
     def __init__(
         self,
@@ -9827,6 +10406,138 @@ class DisableSchemaPropertyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableSchemaPropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableTicketTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DisableTicketTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableTicketTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableTicketTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableTicketTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10097,6 +10808,138 @@ class EnableSchemaPropertyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableSchemaPropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableTicketTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class EnableTicketTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableTicketTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableTicketTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableTicketTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17521,6 +18364,903 @@ class GetSkillGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSkillGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTicketRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        ticket_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class GetTicketResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        assignee: str = None,
+        assignee_name: str = None,
+        category_id: str = None,
+        category_name: str = None,
+        close_code: str = None,
+        comment: str = None,
+        context: str = None,
+        created_time: int = None,
+        creator: str = None,
+        creator_name: str = None,
+        current_task_id: str = None,
+        current_task_name: str = None,
+        current_task_start_time: int = None,
+        customer_id: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        job_id: str = None,
+        source: str = None,
+        start_time: int = None,
+        state: str = None,
+        template_id: str = None,
+        template_version: str = None,
+        ticket_id: str = None,
+        title: str = None,
+        updated_time: int = None,
+    ):
+        self.assignee = assignee
+        self.assignee_name = assignee_name
+        self.category_id = category_id
+        self.category_name = category_name
+        self.close_code = close_code
+        self.comment = comment
+        self.context = context
+        self.created_time = created_time
+        self.creator = creator
+        self.creator_name = creator_name
+        self.current_task_id = current_task_id
+        self.current_task_name = current_task_name
+        self.current_task_start_time = current_task_start_time
+        self.customer_id = customer_id
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.job_id = job_id
+        self.source = source
+        self.start_time = start_time
+        self.state = state
+        self.template_id = template_id
+        self.template_version = template_version
+        self.ticket_id = ticket_id
+        self.title = title
+        self.updated_time = updated_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assignee is not None:
+            result['Assignee'] = self.assignee
+        if self.assignee_name is not None:
+            result['AssigneeName'] = self.assignee_name
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.close_code is not None:
+            result['CloseCode'] = self.close_code
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.context is not None:
+            result['Context'] = self.context
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_name is not None:
+            result['CreatorName'] = self.creator_name
+        if self.current_task_id is not None:
+            result['CurrentTaskId'] = self.current_task_id
+        if self.current_task_name is not None:
+            result['CurrentTaskName'] = self.current_task_name
+        if self.current_task_start_time is not None:
+            result['CurrentTaskStartTime'] = self.current_task_start_time
+        if self.customer_id is not None:
+            result['CustomerId'] = self.customer_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.state is not None:
+            result['State'] = self.state
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Assignee') is not None:
+            self.assignee = m.get('Assignee')
+        if m.get('AssigneeName') is not None:
+            self.assignee_name = m.get('AssigneeName')
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('CloseCode') is not None:
+            self.close_code = m.get('CloseCode')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorName') is not None:
+            self.creator_name = m.get('CreatorName')
+        if m.get('CurrentTaskId') is not None:
+            self.current_task_id = m.get('CurrentTaskId')
+        if m.get('CurrentTaskName') is not None:
+            self.current_task_name = m.get('CurrentTaskName')
+        if m.get('CurrentTaskStartTime') is not None:
+            self.current_task_start_time = m.get('CurrentTaskStartTime')
+        if m.get('CustomerId') is not None:
+            self.customer_id = m.get('CustomerId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class GetTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetTicketResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetTicketResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTicketSummaryReportRequest(TeaModel):
+    def __init__(
+        self,
+        assignee: str = None,
+        assignee_type: str = None,
+        category_id: str = None,
+        creator: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        participant: str = None,
+        start_time: int = None,
+        state: str = None,
+    ):
+        self.assignee = assignee
+        self.assignee_type = assignee_type
+        self.category_id = category_id
+        self.creator = creator
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.participant = participant
+        self.start_time = start_time
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assignee is not None:
+            result['Assignee'] = self.assignee
+        if self.assignee_type is not None:
+            result['AssigneeType'] = self.assignee_type
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.participant is not None:
+            result['Participant'] = self.participant
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Assignee') is not None:
+            self.assignee = m.get('Assignee')
+        if m.get('AssigneeType') is not None:
+            self.assignee_type = m.get('AssigneeType')
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Participant') is not None:
+            self.participant = m.get('Participant')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class GetTicketSummaryReportResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        tickets_assigned: str = None,
+        tickets_created: str = None,
+        tickets_participated: str = None,
+    ):
+        self.tickets_assigned = tickets_assigned
+        self.tickets_created = tickets_created
+        self.tickets_participated = tickets_participated
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tickets_assigned is not None:
+            result['TicketsAssigned'] = self.tickets_assigned
+        if self.tickets_created is not None:
+            result['TicketsCreated'] = self.tickets_created
+        if self.tickets_participated is not None:
+            result['TicketsParticipated'] = self.tickets_participated
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TicketsAssigned') is not None:
+            self.tickets_assigned = m.get('TicketsAssigned')
+        if m.get('TicketsCreated') is not None:
+            self.tickets_created = m.get('TicketsCreated')
+        if m.get('TicketsParticipated') is not None:
+            self.tickets_participated = m.get('TicketsParticipated')
+        return self
+
+
+class GetTicketSummaryReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetTicketSummaryReportResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetTicketSummaryReportResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTicketSummaryReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTicketSummaryReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTicketSummaryReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTicketTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        template_id: str = None,
+        template_version: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.template_id = template_id
+        self.template_version = template_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        return self
+
+
+class GetTicketTemplateResponseBodyDataTicketFields(TeaModel):
+    def __init__(
+        self,
+        array: bool = None,
+        attributes: str = None,
+        created_time: int = None,
+        creator: str = None,
+        data_type: str = None,
+        description: str = None,
+        disabled: bool = None,
+        display_name: str = None,
+        display_order: int = None,
+        editor_type: str = None,
+        max_length: int = None,
+        maximum: float = None,
+        min_length: int = None,
+        minimum: float = None,
+        name: str = None,
+        pattern: str = None,
+        pattern_error_message: str = None,
+        read_only: bool = None,
+        required: bool = None,
+        system: bool = None,
+        updated_time: int = None,
+    ):
+        self.array = array
+        self.attributes = attributes
+        self.created_time = created_time
+        self.creator = creator
+        self.data_type = data_type
+        self.description = description
+        self.disabled = disabled
+        self.display_name = display_name
+        self.display_order = display_order
+        self.editor_type = editor_type
+        self.max_length = max_length
+        self.maximum = maximum
+        self.min_length = min_length
+        self.minimum = minimum
+        self.name = name
+        self.pattern = pattern
+        self.pattern_error_message = pattern_error_message
+        self.read_only = read_only
+        self.required = required
+        self.system = system
+        self.updated_time = updated_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.array is not None:
+            result['Array'] = self.array
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.display_order is not None:
+            result['DisplayOrder'] = self.display_order
+        if self.editor_type is not None:
+            result['EditorType'] = self.editor_type
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.min_length is not None:
+            result['MinLength'] = self.min_length
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+        if self.pattern_error_message is not None:
+            result['PatternErrorMessage'] = self.pattern_error_message
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        if self.required is not None:
+            result['Required'] = self.required
+        if self.system is not None:
+            result['System'] = self.system
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Array') is not None:
+            self.array = m.get('Array')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('DisplayOrder') is not None:
+            self.display_order = m.get('DisplayOrder')
+        if m.get('EditorType') is not None:
+            self.editor_type = m.get('EditorType')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('MinLength') is not None:
+            self.min_length = m.get('MinLength')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+        if m.get('PatternErrorMessage') is not None:
+            self.pattern_error_message = m.get('PatternErrorMessage')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        if m.get('System') is not None:
+            self.system = m.get('System')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class GetTicketTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        editor: str = None,
+        instance_id: str = None,
+        name: str = None,
+        process_definition: str = None,
+        state: str = None,
+        template_id: str = None,
+        ticket_fields: List[GetTicketTemplateResponseBodyDataTicketFields] = None,
+        updated_time: int = None,
+    ):
+        self.category_id = category_id
+        self.editor = editor
+        self.instance_id = instance_id
+        self.name = name
+        self.process_definition = process_definition
+        self.state = state
+        self.template_id = template_id
+        self.ticket_fields = ticket_fields
+        self.updated_time = updated_time
+
+    def validate(self):
+        if self.ticket_fields:
+            for k in self.ticket_fields:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.editor is not None:
+            result['Editor'] = self.editor
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.process_definition is not None:
+            result['ProcessDefinition'] = self.process_definition
+        if self.state is not None:
+            result['State'] = self.state
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        result['TicketFields'] = []
+        if self.ticket_fields is not None:
+            for k in self.ticket_fields:
+                result['TicketFields'].append(k.to_map() if k else None)
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('Editor') is not None:
+            self.editor = m.get('Editor')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProcessDefinition') is not None:
+            self.process_definition = m.get('ProcessDefinition')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        self.ticket_fields = []
+        if m.get('TicketFields') is not None:
+            for k in m.get('TicketFields'):
+                temp_model = GetTicketTemplateResponseBodyDataTicketFields()
+                self.ticket_fields.append(temp_model.from_map(k))
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class GetTicketTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetTicketTemplateResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetTicketTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTicketTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTicketTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTicketTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25815,6 +27555,194 @@ class ListCasesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCommonTicketFieldsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ListCommonTicketFieldsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        id: str = None,
+        instance_id: str = None,
+        properties: Dict[str, DataPropertiesValue] = None,
+        updated_time: str = None,
+    ):
+        self.created_time = created_time
+        # Schema ID。
+        self.id = id
+        self.instance_id = instance_id
+        self.properties = properties
+        self.updated_time = updated_time
+
+    def validate(self):
+        if self.properties:
+            for v in self.properties.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['Properties'] = {}
+        if self.properties is not None:
+            for k, v in self.properties.items():
+                result['Properties'][k] = v.to_map()
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.properties = {}
+        if m.get('Properties') is not None:
+            for k, v in m.get('Properties').items():
+                temp_model = DataPropertiesValue()
+                self.properties[k] = temp_model.from_map(v)
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class ListCommonTicketFieldsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListCommonTicketFieldsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListCommonTicketFieldsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCommonTicketFieldsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCommonTicketFieldsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCommonTicketFieldsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42641,6 +44569,683 @@ class ListSkillLevelsOfUserResponse(TeaModel):
         return self
 
 
+class ListTicketTasksRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        ticket_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class ListTicketTasksResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        assignee: str = None,
+        assignee_name: str = None,
+        comment: str = None,
+        end_time: int = None,
+        file_keys: List[str] = None,
+        file_urls: List[str] = None,
+        instance_id: str = None,
+        start_time: int = None,
+        task_definition_node_id: str = None,
+        task_definition_node_type: str = None,
+        task_id: str = None,
+        task_name: str = None,
+        ticket_id: str = None,
+    ):
+        self.action = action
+        self.assignee = assignee
+        self.assignee_name = assignee_name
+        self.comment = comment
+        self.end_time = end_time
+        self.file_keys = file_keys
+        self.file_urls = file_urls
+        self.instance_id = instance_id
+        self.start_time = start_time
+        self.task_definition_node_id = task_definition_node_id
+        self.task_definition_node_type = task_definition_node_type
+        self.task_id = task_id
+        self.task_name = task_name
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.assignee is not None:
+            result['Assignee'] = self.assignee
+        if self.assignee_name is not None:
+            result['AssigneeName'] = self.assignee_name
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.file_keys is not None:
+            result['FileKeys'] = self.file_keys
+        if self.file_urls is not None:
+            result['FileUrls'] = self.file_urls
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.task_definition_node_id is not None:
+            result['TaskDefinitionNodeId'] = self.task_definition_node_id
+        if self.task_definition_node_type is not None:
+            result['TaskDefinitionNodeType'] = self.task_definition_node_type
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Assignee') is not None:
+            self.assignee = m.get('Assignee')
+        if m.get('AssigneeName') is not None:
+            self.assignee_name = m.get('AssigneeName')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FileKeys') is not None:
+            self.file_keys = m.get('FileKeys')
+        if m.get('FileUrls') is not None:
+            self.file_urls = m.get('FileUrls')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TaskDefinitionNodeId') is not None:
+            self.task_definition_node_id = m.get('TaskDefinitionNodeId')
+        if m.get('TaskDefinitionNodeType') is not None:
+            self.task_definition_node_type = m.get('TaskDefinitionNodeType')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class ListTicketTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListTicketTasksResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListTicketTasksResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTicketTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTicketTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTicketTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTicketsRequest(TeaModel):
+    def __init__(
+        self,
+        assignee: str = None,
+        assignee_type: str = None,
+        category_id: str = None,
+        creator: str = None,
+        customer_id: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        job_id_list: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        participant: str = None,
+        start_time: int = None,
+        state: str = None,
+        ticket_id: str = None,
+        title: str = None,
+    ):
+        self.assignee = assignee
+        self.assignee_type = assignee_type
+        self.category_id = category_id
+        self.creator = creator
+        self.customer_id = customer_id
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.job_id_list = job_id_list
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.participant = participant
+        self.start_time = start_time
+        self.state = state
+        self.ticket_id = ticket_id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assignee is not None:
+            result['Assignee'] = self.assignee
+        if self.assignee_type is not None:
+            result['AssigneeType'] = self.assignee_type
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.customer_id is not None:
+            result['CustomerId'] = self.customer_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id_list is not None:
+            result['JobIdList'] = self.job_id_list
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.participant is not None:
+            result['Participant'] = self.participant
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.state is not None:
+            result['State'] = self.state
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Assignee') is not None:
+            self.assignee = m.get('Assignee')
+        if m.get('AssigneeType') is not None:
+            self.assignee_type = m.get('AssigneeType')
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CustomerId') is not None:
+            self.customer_id = m.get('CustomerId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobIdList') is not None:
+            self.job_id_list = m.get('JobIdList')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Participant') is not None:
+            self.participant = m.get('Participant')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class ListTicketsResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        assignee: str = None,
+        assignee_name: str = None,
+        category_id: str = None,
+        category_name: str = None,
+        close_code: str = None,
+        comment: str = None,
+        context: str = None,
+        created_time: str = None,
+        creator: str = None,
+        creator_name: str = None,
+        current_task_id: str = None,
+        current_task_name: str = None,
+        current_task_start_time: int = None,
+        customer_id: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        job_id: str = None,
+        source: str = None,
+        start_time: int = None,
+        state: str = None,
+        template_id: str = None,
+        template_version: str = None,
+        ticket_id: str = None,
+        title: str = None,
+        updated_time: str = None,
+    ):
+        self.assignee = assignee
+        self.assignee_name = assignee_name
+        self.category_id = category_id
+        self.category_name = category_name
+        self.close_code = close_code
+        self.comment = comment
+        self.context = context
+        self.created_time = created_time
+        self.creator = creator
+        self.creator_name = creator_name
+        self.current_task_id = current_task_id
+        self.current_task_name = current_task_name
+        self.current_task_start_time = current_task_start_time
+        self.customer_id = customer_id
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.job_id = job_id
+        self.source = source
+        self.start_time = start_time
+        self.state = state
+        self.template_id = template_id
+        self.template_version = template_version
+        self.ticket_id = ticket_id
+        self.title = title
+        self.updated_time = updated_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assignee is not None:
+            result['Assignee'] = self.assignee
+        if self.assignee_name is not None:
+            result['AssigneeName'] = self.assignee_name
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.close_code is not None:
+            result['CloseCode'] = self.close_code
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.context is not None:
+            result['Context'] = self.context
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_name is not None:
+            result['CreatorName'] = self.creator_name
+        if self.current_task_id is not None:
+            result['CurrentTaskId'] = self.current_task_id
+        if self.current_task_name is not None:
+            result['CurrentTaskName'] = self.current_task_name
+        if self.current_task_start_time is not None:
+            result['CurrentTaskStartTime'] = self.current_task_start_time
+        if self.customer_id is not None:
+            result['CustomerId'] = self.customer_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.state is not None:
+            result['State'] = self.state
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Assignee') is not None:
+            self.assignee = m.get('Assignee')
+        if m.get('AssigneeName') is not None:
+            self.assignee_name = m.get('AssigneeName')
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('CloseCode') is not None:
+            self.close_code = m.get('CloseCode')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorName') is not None:
+            self.creator_name = m.get('CreatorName')
+        if m.get('CurrentTaskId') is not None:
+            self.current_task_id = m.get('CurrentTaskId')
+        if m.get('CurrentTaskName') is not None:
+            self.current_task_name = m.get('CurrentTaskName')
+        if m.get('CurrentTaskStartTime') is not None:
+            self.current_task_start_time = m.get('CurrentTaskStartTime')
+        if m.get('CustomerId') is not None:
+            self.customer_id = m.get('CustomerId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class ListTicketsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListTicketsResponseBodyDataList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.list = list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListTicketsResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTicketsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListTicketsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListTicketsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTicketsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTicketsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTicketsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUnassignedNumbersRequest(TeaModel):
     def __init__(
         self,
@@ -48627,6 +51232,265 @@ class RegisterDevicesResponse(TeaModel):
         return self
 
 
+class RejectChatRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class RejectChatResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RejectChatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RejectChatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RejectChatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RejectTicketRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        instance_id: str = None,
+        ticket_id: str = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class RejectTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RejectTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RejectTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RejectTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReleaseCallRequest(TeaModel):
     def __init__(
         self,
@@ -49041,6 +51905,145 @@ class ReleaseCallResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReleaseCallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReleaseChatRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_id: str = None,
+        token: str = None,
+        user_id: str = None,
+        user_type: str = None,
+    ):
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.job_id = job_id
+        self.token = token
+        self.user_id = user_id
+        # This parameter is required.
+        self.user_type = user_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        return self
+
+
+class ReleaseChatResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReleaseChatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReleaseChatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReleaseChatResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -50758,6 +53761,145 @@ class RestoreArchivedRecordingsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RestoreArchivedRecordingsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResubmitTicketRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        instance_id: str = None,
+        ticket_id: str = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class ResubmitTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResubmitTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResubmitTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResubmitTicketResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -55812,6 +58954,295 @@ class TakeBreakResponse(TeaModel):
         return self
 
 
+class TerminateTicketRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        instance_id: str = None,
+        ticket_id: str = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class TerminateTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TerminateTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TerminateTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TerminateTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TransferTicketTaskRequest(TeaModel):
+    def __init__(
+        self,
+        assignee: str = None,
+        comment: str = None,
+        instance_id: str = None,
+        task_id: str = None,
+        ticket_id: str = None,
+    ):
+        # This parameter is required.
+        self.assignee = assignee
+        self.comment = comment
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.task_id = task_id
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assignee is not None:
+            result['Assignee'] = self.assignee
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Assignee') is not None:
+            self.assignee = m.get('Assignee')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class TransferTicketTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TransferTicketTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TransferTicketTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TransferTicketTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UnmuteCallRequest(TeaModel):
     def __init__(
         self,
@@ -56984,6 +60415,297 @@ class UpdateSchemaPropertyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSchemaPropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTicketRequest(TeaModel):
+    def __init__(
+        self,
+        context: str = None,
+        customer_id: str = None,
+        instance_id: str = None,
+        ticket_id: str = None,
+        title: str = None,
+    ):
+        self.context = context
+        self.customer_id = customer_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.ticket_id = ticket_id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['Context'] = self.context
+        if self.customer_id is not None:
+            result['CustomerId'] = self.customer_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
+        if m.get('CustomerId') is not None:
+            self.customer_id = m.get('CustomerId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class WithdrawTicketRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        instance_id: str = None,
+        ticket_id: str = None,
+    ):
+        # This parameter is required.
+        self.comment = comment
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.ticket_id = ticket_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ticket_id is not None:
+            result['TicketId'] = self.ticket_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TicketId') is not None:
+            self.ticket_id = m.get('TicketId')
+        return self
+
+
+class WithdrawTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class WithdrawTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WithdrawTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WithdrawTicketResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

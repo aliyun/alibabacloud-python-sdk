@@ -1073,6 +1073,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_skill_groups_to_user_with_options_async(request, runtime)
 
+    def add_ticket_task_with_options(
+        self,
+        request: ccc20200701_models.AddTicketTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AddTicketTaskResponse:
+        """
+        @param request: AddTicketTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTicketTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assignee):
+            query['Assignee'] = request.assignee
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.position):
+            query['Position'] = request.position
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTicketTask',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AddTicketTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_ticket_task_with_options_async(
+        self,
+        request: ccc20200701_models.AddTicketTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AddTicketTaskResponse:
+        """
+        @param request: AddTicketTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTicketTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assignee):
+            query['Assignee'] = request.assignee
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.position):
+            query['Position'] = request.position
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTicketTask',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AddTicketTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_ticket_task(
+        self,
+        request: ccc20200701_models.AddTicketTaskRequest,
+    ) -> ccc20200701_models.AddTicketTaskResponse:
+        """
+        @param request: AddTicketTaskRequest
+        @return: AddTicketTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_ticket_task_with_options(request, runtime)
+
+    async def add_ticket_task_async(
+        self,
+        request: ccc20200701_models.AddTicketTaskRequest,
+    ) -> ccc20200701_models.AddTicketTaskResponse:
+        """
+        @param request: AddTicketTaskRequest
+        @return: AddTicketTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_ticket_task_with_options_async(request, runtime)
+
     def add_users_to_skill_group_with_options(
         self,
         request: ccc20200701_models.AddUsersToSkillGroupRequest,
@@ -3593,6 +3701,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_skill_group_with_options_async(request, runtime)
 
+    def create_ticket_with_options(
+        self,
+        request: ccc20200701_models.CreateTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CreateTicketResponse:
+        """
+        @param request: CreateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CreateTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ticket_with_options_async(
+        self,
+        request: ccc20200701_models.CreateTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CreateTicketResponse:
+        """
+        @param request: CreateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CreateTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ticket(
+        self,
+        request: ccc20200701_models.CreateTicketRequest,
+    ) -> ccc20200701_models.CreateTicketResponse:
+        """
+        @param request: CreateTicketRequest
+        @return: CreateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ticket_with_options(request, runtime)
+
+    async def create_ticket_async(
+        self,
+        request: ccc20200701_models.CreateTicketRequest,
+    ) -> ccc20200701_models.CreateTicketResponse:
+        """
+        @param request: CreateTicketRequest
+        @return: CreateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ticket_with_options_async(request, runtime)
+
     def create_user_with_options(
         self,
         request: ccc20200701_models.CreateUserRequest,
@@ -4609,6 +4829,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_skill_group_with_options_async(request, runtime)
 
+    def delete_ticket_with_options(
+        self,
+        request: ccc20200701_models.DeleteTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteTicketResponse:
+        """
+        @param request: DeleteTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ticket_with_options_async(
+        self,
+        request: ccc20200701_models.DeleteTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteTicketResponse:
+        """
+        @param request: DeleteTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ticket(
+        self,
+        request: ccc20200701_models.DeleteTicketRequest,
+    ) -> ccc20200701_models.DeleteTicketResponse:
+        """
+        @param request: DeleteTicketRequest
+        @return: DeleteTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ticket_with_options(request, runtime)
+
+    async def delete_ticket_async(
+        self,
+        request: ccc20200701_models.DeleteTicketRequest,
+    ) -> ccc20200701_models.DeleteTicketResponse:
+        """
+        @param request: DeleteTicketRequest
+        @return: DeleteTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ticket_with_options_async(request, runtime)
+
+    def delete_ticket_template_with_options(
+        self,
+        request: ccc20200701_models.DeleteTicketTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteTicketTemplateResponse:
+        """
+        @param request: DeleteTicketTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTicketTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTicketTemplate',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteTicketTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ticket_template_with_options_async(
+        self,
+        request: ccc20200701_models.DeleteTicketTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteTicketTemplateResponse:
+        """
+        @param request: DeleteTicketTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTicketTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTicketTemplate',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteTicketTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ticket_template(
+        self,
+        request: ccc20200701_models.DeleteTicketTemplateRequest,
+    ) -> ccc20200701_models.DeleteTicketTemplateResponse:
+        """
+        @param request: DeleteTicketTemplateRequest
+        @return: DeleteTicketTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ticket_template_with_options(request, runtime)
+
+    async def delete_ticket_template_async(
+        self,
+        request: ccc20200701_models.DeleteTicketTemplateRequest,
+    ) -> ccc20200701_models.DeleteTicketTemplateResponse:
+        """
+        @param request: DeleteTicketTemplateRequest
+        @return: DeleteTicketTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ticket_template_with_options_async(request, runtime)
+
     def disable_schema_property_with_options(
         self,
         request: ccc20200701_models.DisableSchemaPropertyRequest,
@@ -4708,6 +5112,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.disable_schema_property_with_options_async(request, runtime)
+
+    def disable_ticket_template_with_options(
+        self,
+        request: ccc20200701_models.DisableTicketTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DisableTicketTemplateResponse:
+        """
+        @param request: DisableTicketTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableTicketTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableTicketTemplate',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DisableTicketTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_ticket_template_with_options_async(
+        self,
+        request: ccc20200701_models.DisableTicketTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DisableTicketTemplateResponse:
+        """
+        @param request: DisableTicketTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableTicketTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableTicketTemplate',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DisableTicketTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_ticket_template(
+        self,
+        request: ccc20200701_models.DisableTicketTemplateRequest,
+    ) -> ccc20200701_models.DisableTicketTemplateResponse:
+        """
+        @param request: DisableTicketTemplateRequest
+        @return: DisableTicketTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_ticket_template_with_options(request, runtime)
+
+    async def disable_ticket_template_async(
+        self,
+        request: ccc20200701_models.DisableTicketTemplateRequest,
+    ) -> ccc20200701_models.DisableTicketTemplateResponse:
+        """
+        @param request: DisableTicketTemplateRequest
+        @return: DisableTicketTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_ticket_template_with_options_async(request, runtime)
 
     def discard_editing_contact_flow_with_options(
         self,
@@ -4904,6 +5400,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_schema_property_with_options_async(request, runtime)
+
+    def enable_ticket_template_with_options(
+        self,
+        request: ccc20200701_models.EnableTicketTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.EnableTicketTemplateResponse:
+        """
+        @param request: EnableTicketTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableTicketTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableTicketTemplate',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.EnableTicketTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_ticket_template_with_options_async(
+        self,
+        request: ccc20200701_models.EnableTicketTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.EnableTicketTemplateResponse:
+        """
+        @param request: EnableTicketTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableTicketTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableTicketTemplate',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.EnableTicketTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_ticket_template(
+        self,
+        request: ccc20200701_models.EnableTicketTemplateRequest,
+    ) -> ccc20200701_models.EnableTicketTemplateResponse:
+        """
+        @param request: EnableTicketTemplateRequest
+        @return: EnableTicketTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_ticket_template_with_options(request, runtime)
+
+    async def enable_ticket_template_async(
+        self,
+        request: ccc20200701_models.EnableTicketTemplateRequest,
+    ) -> ccc20200701_models.EnableTicketTemplateResponse:
+        """
+        @param request: EnableTicketTemplateRequest
+        @return: EnableTicketTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_ticket_template_with_options_async(request, runtime)
 
     def end_conference_with_options(
         self,
@@ -7692,6 +8280,322 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_skill_group_with_options_async(request, runtime)
+
+    def get_ticket_with_options(
+        self,
+        request: ccc20200701_models.GetTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetTicketResponse:
+        """
+        @param request: GetTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ticket_with_options_async(
+        self,
+        request: ccc20200701_models.GetTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetTicketResponse:
+        """
+        @param request: GetTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ticket(
+        self,
+        request: ccc20200701_models.GetTicketRequest,
+    ) -> ccc20200701_models.GetTicketResponse:
+        """
+        @param request: GetTicketRequest
+        @return: GetTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ticket_with_options(request, runtime)
+
+    async def get_ticket_async(
+        self,
+        request: ccc20200701_models.GetTicketRequest,
+    ) -> ccc20200701_models.GetTicketResponse:
+        """
+        @param request: GetTicketRequest
+        @return: GetTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ticket_with_options_async(request, runtime)
+
+    def get_ticket_summary_report_with_options(
+        self,
+        request: ccc20200701_models.GetTicketSummaryReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetTicketSummaryReportResponse:
+        """
+        @param request: GetTicketSummaryReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTicketSummaryReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assignee):
+            query['Assignee'] = request.assignee
+        if not UtilClient.is_unset(request.assignee_type):
+            query['AssigneeType'] = request.assignee_type
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.participant):
+            query['Participant'] = request.participant
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTicketSummaryReport',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetTicketSummaryReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ticket_summary_report_with_options_async(
+        self,
+        request: ccc20200701_models.GetTicketSummaryReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetTicketSummaryReportResponse:
+        """
+        @param request: GetTicketSummaryReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTicketSummaryReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assignee):
+            query['Assignee'] = request.assignee
+        if not UtilClient.is_unset(request.assignee_type):
+            query['AssigneeType'] = request.assignee_type
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.participant):
+            query['Participant'] = request.participant
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTicketSummaryReport',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetTicketSummaryReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ticket_summary_report(
+        self,
+        request: ccc20200701_models.GetTicketSummaryReportRequest,
+    ) -> ccc20200701_models.GetTicketSummaryReportResponse:
+        """
+        @param request: GetTicketSummaryReportRequest
+        @return: GetTicketSummaryReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ticket_summary_report_with_options(request, runtime)
+
+    async def get_ticket_summary_report_async(
+        self,
+        request: ccc20200701_models.GetTicketSummaryReportRequest,
+    ) -> ccc20200701_models.GetTicketSummaryReportResponse:
+        """
+        @param request: GetTicketSummaryReportRequest
+        @return: GetTicketSummaryReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ticket_summary_report_with_options_async(request, runtime)
+
+    def get_ticket_template_with_options(
+        self,
+        request: ccc20200701_models.GetTicketTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetTicketTemplateResponse:
+        """
+        @param request: GetTicketTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTicketTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTicketTemplate',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetTicketTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ticket_template_with_options_async(
+        self,
+        request: ccc20200701_models.GetTicketTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetTicketTemplateResponse:
+        """
+        @param request: GetTicketTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTicketTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTicketTemplate',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetTicketTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ticket_template(
+        self,
+        request: ccc20200701_models.GetTicketTemplateRequest,
+    ) -> ccc20200701_models.GetTicketTemplateResponse:
+        """
+        @param request: GetTicketTemplateRequest
+        @return: GetTicketTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ticket_template_with_options(request, runtime)
+
+    async def get_ticket_template_async(
+        self,
+        request: ccc20200701_models.GetTicketTemplateRequest,
+    ) -> ccc20200701_models.GetTicketTemplateResponse:
+        """
+        @param request: GetTicketTemplateRequest
+        @return: GetTicketTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ticket_template_with_options_async(request, runtime)
 
     def get_turn_credentials_with_options(
         self,
@@ -10812,6 +11716,94 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_cases_with_options_async(request, runtime)
+
+    def list_common_ticket_fields_with_options(
+        self,
+        request: ccc20200701_models.ListCommonTicketFieldsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListCommonTicketFieldsResponse:
+        """
+        @param request: ListCommonTicketFieldsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCommonTicketFieldsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCommonTicketFields',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListCommonTicketFieldsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_common_ticket_fields_with_options_async(
+        self,
+        request: ccc20200701_models.ListCommonTicketFieldsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListCommonTicketFieldsResponse:
+        """
+        @param request: ListCommonTicketFieldsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCommonTicketFieldsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCommonTicketFields',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListCommonTicketFieldsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_common_ticket_fields(
+        self,
+        request: ccc20200701_models.ListCommonTicketFieldsRequest,
+    ) -> ccc20200701_models.ListCommonTicketFieldsResponse:
+        """
+        @param request: ListCommonTicketFieldsRequest
+        @return: ListCommonTicketFieldsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_common_ticket_fields_with_options(request, runtime)
+
+    async def list_common_ticket_fields_async(
+        self,
+        request: ccc20200701_models.ListCommonTicketFieldsRequest,
+    ) -> ccc20200701_models.ListCommonTicketFieldsResponse:
+        """
+        @param request: ListCommonTicketFieldsRequest
+        @return: ListCommonTicketFieldsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_common_ticket_fields_with_options_async(request, runtime)
 
     def list_config_items_with_options(
         self,
@@ -14681,6 +15673,242 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_skill_levels_of_user_with_options_async(request, runtime)
 
+    def list_ticket_tasks_with_options(
+        self,
+        request: ccc20200701_models.ListTicketTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListTicketTasksResponse:
+        """
+        @param request: ListTicketTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTicketTasks',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListTicketTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ticket_tasks_with_options_async(
+        self,
+        request: ccc20200701_models.ListTicketTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListTicketTasksResponse:
+        """
+        @param request: ListTicketTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTicketTasks',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListTicketTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ticket_tasks(
+        self,
+        request: ccc20200701_models.ListTicketTasksRequest,
+    ) -> ccc20200701_models.ListTicketTasksResponse:
+        """
+        @param request: ListTicketTasksRequest
+        @return: ListTicketTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_ticket_tasks_with_options(request, runtime)
+
+    async def list_ticket_tasks_async(
+        self,
+        request: ccc20200701_models.ListTicketTasksRequest,
+    ) -> ccc20200701_models.ListTicketTasksResponse:
+        """
+        @param request: ListTicketTasksRequest
+        @return: ListTicketTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ticket_tasks_with_options_async(request, runtime)
+
+    def list_tickets_with_options(
+        self,
+        request: ccc20200701_models.ListTicketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListTicketsResponse:
+        """
+        @param request: ListTicketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assignee):
+            query['Assignee'] = request.assignee
+        if not UtilClient.is_unset(request.assignee_type):
+            query['AssigneeType'] = request.assignee_type
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id_list):
+            query['JobIdList'] = request.job_id_list
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.participant):
+            query['Participant'] = request.participant
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTickets',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListTicketsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tickets_with_options_async(
+        self,
+        request: ccc20200701_models.ListTicketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListTicketsResponse:
+        """
+        @param request: ListTicketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assignee):
+            query['Assignee'] = request.assignee
+        if not UtilClient.is_unset(request.assignee_type):
+            query['AssigneeType'] = request.assignee_type
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id_list):
+            query['JobIdList'] = request.job_id_list
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.participant):
+            query['Participant'] = request.participant
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTickets',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListTicketsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tickets(
+        self,
+        request: ccc20200701_models.ListTicketsRequest,
+    ) -> ccc20200701_models.ListTicketsResponse:
+        """
+        @param request: ListTicketsRequest
+        @return: ListTicketsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tickets_with_options(request, runtime)
+
+    async def list_tickets_async(
+        self,
+        request: ccc20200701_models.ListTicketsRequest,
+    ) -> ccc20200701_models.ListTicketsResponse:
+        """
+        @param request: ListTicketsRequest
+        @return: ListTicketsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tickets_with_options_async(request, runtime)
+
     def list_unassigned_numbers_with_options(
         self,
         request: ccc20200701_models.ListUnassignedNumbersRequest,
@@ -17173,6 +18401,194 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.register_devices_with_options_async(request, runtime)
 
+    def reject_chat_with_options(
+        self,
+        request: ccc20200701_models.RejectChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.RejectChatResponse:
+        """
+        @param request: RejectChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RejectChatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.RejectChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reject_chat_with_options_async(
+        self,
+        request: ccc20200701_models.RejectChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.RejectChatResponse:
+        """
+        @param request: RejectChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RejectChatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.RejectChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reject_chat(
+        self,
+        request: ccc20200701_models.RejectChatRequest,
+    ) -> ccc20200701_models.RejectChatResponse:
+        """
+        @param request: RejectChatRequest
+        @return: RejectChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reject_chat_with_options(request, runtime)
+
+    async def reject_chat_async(
+        self,
+        request: ccc20200701_models.RejectChatRequest,
+    ) -> ccc20200701_models.RejectChatResponse:
+        """
+        @param request: RejectChatRequest
+        @return: RejectChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reject_chat_with_options_async(request, runtime)
+
+    def reject_ticket_with_options(
+        self,
+        request: ccc20200701_models.RejectTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.RejectTicketResponse:
+        """
+        @param request: RejectTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RejectTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.RejectTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reject_ticket_with_options_async(
+        self,
+        request: ccc20200701_models.RejectTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.RejectTicketResponse:
+        """
+        @param request: RejectTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RejectTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.RejectTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reject_ticket(
+        self,
+        request: ccc20200701_models.RejectTicketRequest,
+    ) -> ccc20200701_models.RejectTicketResponse:
+        """
+        @param request: RejectTicketRequest
+        @return: RejectTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reject_ticket_with_options(request, runtime)
+
+    async def reject_ticket_async(
+        self,
+        request: ccc20200701_models.RejectTicketRequest,
+    ) -> ccc20200701_models.RejectTicketResponse:
+        """
+        @param request: RejectTicketRequest
+        @return: RejectTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reject_ticket_with_options_async(request, runtime)
+
     def release_call_with_options(
         self,
         request: ccc20200701_models.ReleaseCallRequest,
@@ -17276,6 +18692,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.release_call_with_options_async(request, runtime)
+
+    def release_chat_with_options(
+        self,
+        request: ccc20200701_models.ReleaseChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ReleaseChatResponse:
+        """
+        @param request: ReleaseChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseChatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ReleaseChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_chat_with_options_async(
+        self,
+        request: ccc20200701_models.ReleaseChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ReleaseChatResponse:
+        """
+        @param request: ReleaseChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseChatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseChat',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ReleaseChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_chat(
+        self,
+        request: ccc20200701_models.ReleaseChatRequest,
+    ) -> ccc20200701_models.ReleaseChatResponse:
+        """
+        @param request: ReleaseChatRequest
+        @return: ReleaseChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.release_chat_with_options(request, runtime)
+
+    async def release_chat_async(
+        self,
+        request: ccc20200701_models.ReleaseChatRequest,
+    ) -> ccc20200701_models.ReleaseChatResponse:
+        """
+        @param request: ReleaseChatRequest
+        @return: ReleaseChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.release_chat_with_options_async(request, runtime)
 
     def remove_blacklist_call_tagging_with_options(
         self,
@@ -18452,6 +19972,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.restore_archived_recordings_with_options_async(request, runtime)
+
+    def resubmit_ticket_with_options(
+        self,
+        request: ccc20200701_models.ResubmitTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ResubmitTicketResponse:
+        """
+        @param request: ResubmitTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResubmitTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResubmitTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ResubmitTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resubmit_ticket_with_options_async(
+        self,
+        request: ccc20200701_models.ResubmitTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ResubmitTicketResponse:
+        """
+        @param request: ResubmitTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResubmitTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResubmitTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ResubmitTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resubmit_ticket(
+        self,
+        request: ccc20200701_models.ResubmitTicketRequest,
+    ) -> ccc20200701_models.ResubmitTicketResponse:
+        """
+        @param request: ResubmitTicketRequest
+        @return: ResubmitTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.resubmit_ticket_with_options(request, runtime)
+
+    async def resubmit_ticket_async(
+        self,
+        request: ccc20200701_models.ResubmitTicketRequest,
+    ) -> ccc20200701_models.ResubmitTicketResponse:
+        """
+        @param request: ResubmitTicketRequest
+        @return: ResubmitTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.resubmit_ticket_with_options_async(request, runtime)
 
     def resume_campaign_with_options(
         self,
@@ -20457,6 +22073,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.take_break_with_options_async(request, runtime)
 
+    def terminate_ticket_with_options(
+        self,
+        request: ccc20200701_models.TerminateTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.TerminateTicketResponse:
+        """
+        @param request: TerminateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TerminateTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TerminateTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.TerminateTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def terminate_ticket_with_options_async(
+        self,
+        request: ccc20200701_models.TerminateTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.TerminateTicketResponse:
+        """
+        @param request: TerminateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TerminateTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TerminateTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.TerminateTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def terminate_ticket(
+        self,
+        request: ccc20200701_models.TerminateTicketRequest,
+    ) -> ccc20200701_models.TerminateTicketResponse:
+        """
+        @param request: TerminateTicketRequest
+        @return: TerminateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.terminate_ticket_with_options(request, runtime)
+
+    async def terminate_ticket_async(
+        self,
+        request: ccc20200701_models.TerminateTicketRequest,
+    ) -> ccc20200701_models.TerminateTicketResponse:
+        """
+        @param request: TerminateTicketRequest
+        @return: TerminateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.terminate_ticket_with_options_async(request, runtime)
+
+    def transfer_ticket_task_with_options(
+        self,
+        request: ccc20200701_models.TransferTicketTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.TransferTicketTaskResponse:
+        """
+        @param request: TransferTicketTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferTicketTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assignee):
+            query['Assignee'] = request.assignee
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferTicketTask',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.TransferTicketTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_ticket_task_with_options_async(
+        self,
+        request: ccc20200701_models.TransferTicketTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.TransferTicketTaskResponse:
+        """
+        @param request: TransferTicketTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferTicketTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.assignee):
+            query['Assignee'] = request.assignee
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferTicketTask',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.TransferTicketTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_ticket_task(
+        self,
+        request: ccc20200701_models.TransferTicketTaskRequest,
+    ) -> ccc20200701_models.TransferTicketTaskResponse:
+        """
+        @param request: TransferTicketTaskRequest
+        @return: TransferTicketTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.transfer_ticket_task_with_options(request, runtime)
+
+    async def transfer_ticket_task_async(
+        self,
+        request: ccc20200701_models.TransferTicketTaskRequest,
+    ) -> ccc20200701_models.TransferTicketTaskResponse:
+        """
+        @param request: TransferTicketTaskRequest
+        @return: TransferTicketTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.transfer_ticket_task_with_options_async(request, runtime)
+
     def unmute_call_with_options(
         self,
         request: ccc20200701_models.UnmuteCallRequest,
@@ -20992,3 +22808,203 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_schema_property_with_options_async(request, runtime)
+
+    def update_ticket_with_options(
+        self,
+        request: ccc20200701_models.UpdateTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.UpdateTicketResponse:
+        """
+        @param request: UpdateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.UpdateTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ticket_with_options_async(
+        self,
+        request: ccc20200701_models.UpdateTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.UpdateTicketResponse:
+        """
+        @param request: UpdateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.UpdateTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ticket(
+        self,
+        request: ccc20200701_models.UpdateTicketRequest,
+    ) -> ccc20200701_models.UpdateTicketResponse:
+        """
+        @param request: UpdateTicketRequest
+        @return: UpdateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_ticket_with_options(request, runtime)
+
+    async def update_ticket_async(
+        self,
+        request: ccc20200701_models.UpdateTicketRequest,
+    ) -> ccc20200701_models.UpdateTicketResponse:
+        """
+        @param request: UpdateTicketRequest
+        @return: UpdateTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ticket_with_options_async(request, runtime)
+
+    def withdraw_ticket_with_options(
+        self,
+        request: ccc20200701_models.WithdrawTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.WithdrawTicketResponse:
+        """
+        @param request: WithdrawTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WithdrawTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WithdrawTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.WithdrawTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def withdraw_ticket_with_options_async(
+        self,
+        request: ccc20200701_models.WithdrawTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.WithdrawTicketResponse:
+        """
+        @param request: WithdrawTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WithdrawTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WithdrawTicket',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.WithdrawTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def withdraw_ticket(
+        self,
+        request: ccc20200701_models.WithdrawTicketRequest,
+    ) -> ccc20200701_models.WithdrawTicketResponse:
+        """
+        @param request: WithdrawTicketRequest
+        @return: WithdrawTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.withdraw_ticket_with_options(request, runtime)
+
+    async def withdraw_ticket_async(
+        self,
+        request: ccc20200701_models.WithdrawTicketRequest,
+    ) -> ccc20200701_models.WithdrawTicketResponse:
+        """
+        @param request: WithdrawTicketRequest
+        @return: WithdrawTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.withdraw_ticket_with_options_async(request, runtime)

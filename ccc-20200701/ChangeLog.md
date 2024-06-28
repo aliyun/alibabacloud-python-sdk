@@ -1,3 +1,26 @@
+2024-06-28 Version: 2.21.0
+- Support API AddTicketTask.
+- Support API CreateTicket.
+- Support API DeleteTicket.
+- Support API DeleteTicketTemplate.
+- Support API DisableTicketTemplate.
+- Support API EnableTicketTemplate.
+- Support API GetTicket.
+- Support API GetTicketSummaryReport.
+- Support API GetTicketTemplate.
+- Support API ListCommonTicketFields.
+- Support API ListTicketTasks.
+- Support API ListTickets.
+- Support API RejectChat.
+- Support API RejectTicket.
+- Support API ReleaseChat.
+- Support API ResubmitTicket.
+- Support API TerminateTicket.
+- Support API TransferTicketTask.
+- Support API UpdateTicket.
+- Support API WithdrawTicket.
+
+
 2024-06-21 Version: 2.20.1
 - Update API LaunchSurvey: add param SurveyTemplateId.
 - Update API LaunchSurvey: add param SurveyTemplateVariables.
