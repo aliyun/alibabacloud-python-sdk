@@ -1,3 +1,6 @@
+2024-06-28 Version: 5.1.5
+- Generated python 2017-08-01 for polardb.
+
 2024-06-25 Version: 5.1.4
 - Update API DescribeDBClusters: update response param.
 - Update API DescribeSlowLogRecords: add param NodeId.
