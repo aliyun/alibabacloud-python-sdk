@@ -1,3 +1,12 @@
+2024-06-28 Version: 2.0.0
+- Update API CreatePlaybook: add param TaskflowType.
+- Update API DescribeDistinctReleases: update response param.
+- Update API DescribePlaybooks: add param Order.
+- Update API DescribePlaybooks: add param Sort.
+- Update API DescribePlaybooks: update response param.
+- Update API DescribeProcessTasks: update response param.
+
+
 2024-03-22 Version: 1.0.3
 - Update API DescribeExecutePlaybooks: add param InputMode.
 - Update API DescribePlaybook: update response param.

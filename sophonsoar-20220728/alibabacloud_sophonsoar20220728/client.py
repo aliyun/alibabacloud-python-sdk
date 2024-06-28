@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.BatchModifyInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.BatchModifyInstanceStatusResponse:
+        """
+        @summary Modifies the statuses of playbooks at a time.
+        
+        @param request: BatchModifyInstanceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchModifyInstanceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -80,6 +87,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.BatchModifyInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.BatchModifyInstanceStatusResponse:
+        """
+        @summary Modifies the statuses of playbooks at a time.
+        
+        @param request: BatchModifyInstanceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchModifyInstanceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -113,6 +127,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.BatchModifyInstanceStatusRequest,
     ) -> sophonsoar_20220728_models.BatchModifyInstanceStatusResponse:
+        """
+        @summary Modifies the statuses of playbooks at a time.
+        
+        @param request: BatchModifyInstanceStatusRequest
+        @return: BatchModifyInstanceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_modify_instance_status_with_options(request, runtime)
 
@@ -120,6 +140,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.BatchModifyInstanceStatusRequest,
     ) -> sophonsoar_20220728_models.BatchModifyInstanceStatusResponse:
+        """
+        @summary Modifies the statuses of playbooks at a time.
+        
+        @param request: BatchModifyInstanceStatusRequest
+        @return: BatchModifyInstanceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_modify_instance_status_with_options_async(request, runtime)
 
@@ -128,6 +154,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ComparePlaybooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ComparePlaybooksResponse:
+        """
+        @summary Compares configurations between two versions of a published playbook.
+        
+        @param request: ComparePlaybooksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ComparePlaybooksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -162,6 +195,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ComparePlaybooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ComparePlaybooksResponse:
+        """
+        @summary Compares configurations between two versions of a published playbook.
+        
+        @param request: ComparePlaybooksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ComparePlaybooksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -195,6 +235,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ComparePlaybooksRequest,
     ) -> sophonsoar_20220728_models.ComparePlaybooksResponse:
+        """
+        @summary Compares configurations between two versions of a published playbook.
+        
+        @param request: ComparePlaybooksRequest
+        @return: ComparePlaybooksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.compare_playbooks_with_options(request, runtime)
 
@@ -202,6 +248,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ComparePlaybooksRequest,
     ) -> sophonsoar_20220728_models.ComparePlaybooksResponse:
+        """
+        @summary Compares configurations between two versions of a published playbook.
+        
+        @param request: ComparePlaybooksRequest
+        @return: ComparePlaybooksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.compare_playbooks_with_options_async(request, runtime)
 
@@ -210,6 +262,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.CreatePlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.CreatePlaybookResponse:
+        """
+        @summary Creates a playbook.
+        
+        @param request: CreatePlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -218,6 +277,8 @@ class Client(OpenApiClient):
             body['DisplayName'] = request.display_name
         if not UtilClient.is_unset(request.lang):
             body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.taskflow_type):
+            body['TaskflowType'] = request.taskflow_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -242,6 +303,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.CreatePlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.CreatePlaybookResponse:
+        """
+        @summary Creates a playbook.
+        
+        @param request: CreatePlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -250,6 +318,8 @@ class Client(OpenApiClient):
             body['DisplayName'] = request.display_name
         if not UtilClient.is_unset(request.lang):
             body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.taskflow_type):
+            body['TaskflowType'] = request.taskflow_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -273,6 +343,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.CreatePlaybookRequest,
     ) -> sophonsoar_20220728_models.CreatePlaybookResponse:
+        """
+        @summary Creates a playbook.
+        
+        @param request: CreatePlaybookRequest
+        @return: CreatePlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_playbook_with_options(request, runtime)
 
@@ -280,6 +356,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.CreatePlaybookRequest,
     ) -> sophonsoar_20220728_models.CreatePlaybookResponse:
+        """
+        @summary Creates a playbook.
+        
+        @param request: CreatePlaybookRequest
+        @return: CreatePlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_playbook_with_options_async(request, runtime)
 
@@ -288,6 +370,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DebugPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DebugPlaybookResponse:
+        """
+        @summary Debugs a playbook.
+        
+        @param request: DebugPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lang):
@@ -322,6 +411,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DebugPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DebugPlaybookResponse:
+        """
+        @summary Debugs a playbook.
+        
+        @param request: DebugPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lang):
@@ -355,6 +451,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DebugPlaybookRequest,
     ) -> sophonsoar_20220728_models.DebugPlaybookResponse:
+        """
+        @summary Debugs a playbook.
+        
+        @param request: DebugPlaybookRequest
+        @return: DebugPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.debug_playbook_with_options(request, runtime)
 
@@ -362,6 +464,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DebugPlaybookRequest,
     ) -> sophonsoar_20220728_models.DebugPlaybookResponse:
+        """
+        @summary Debugs a playbook.
+        
+        @param request: DebugPlaybookRequest
+        @return: DebugPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.debug_playbook_with_options_async(request, runtime)
 
@@ -370,6 +478,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DeleteComponentAssetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DeleteComponentAssetResponse:
+        """
+        @summary Deletes the assets in a component.
+        
+        @param request: DeleteComponentAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComponentAssetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asset_id):
@@ -400,6 +515,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DeleteComponentAssetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DeleteComponentAssetResponse:
+        """
+        @summary Deletes the assets in a component.
+        
+        @param request: DeleteComponentAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComponentAssetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asset_id):
@@ -429,6 +551,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DeleteComponentAssetRequest,
     ) -> sophonsoar_20220728_models.DeleteComponentAssetResponse:
+        """
+        @summary Deletes the assets in a component.
+        
+        @param request: DeleteComponentAssetRequest
+        @return: DeleteComponentAssetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_component_asset_with_options(request, runtime)
 
@@ -436,6 +564,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DeleteComponentAssetRequest,
     ) -> sophonsoar_20220728_models.DeleteComponentAssetResponse:
+        """
+        @summary Deletes the assets in a component.
+        
+        @param request: DeleteComponentAssetRequest
+        @return: DeleteComponentAssetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_component_asset_with_options_async(request, runtime)
 
@@ -444,6 +578,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DeletePlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DeletePlaybookResponse:
+        """
+        @summary Deletes a custom playbook.
+        
+        @param request: DeletePlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lang):
@@ -474,6 +615,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DeletePlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DeletePlaybookResponse:
+        """
+        @summary Deletes a custom playbook.
+        
+        @param request: DeletePlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lang):
@@ -503,6 +651,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DeletePlaybookRequest,
     ) -> sophonsoar_20220728_models.DeletePlaybookResponse:
+        """
+        @summary Deletes a custom playbook.
+        
+        @param request: DeletePlaybookRequest
+        @return: DeletePlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_playbook_with_options(request, runtime)
 
@@ -510,6 +664,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DeletePlaybookRequest,
     ) -> sophonsoar_20220728_models.DeletePlaybookResponse:
+        """
+        @summary Deletes a custom playbook.
+        
+        @param request: DeletePlaybookRequest
+        @return: DeletePlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_playbook_with_options_async(request, runtime)
 
@@ -518,6 +678,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeApiListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeApiListResponse:
+        """
+        @summary Queries the API operations of the cloud service.
+        
+        @param request: DescribeApiListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -544,6 +711,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeApiListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeApiListResponse:
+        """
+        @summary Queries the API operations of the cloud service.
+        
+        @param request: DescribeApiListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -569,6 +743,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeApiListRequest,
     ) -> sophonsoar_20220728_models.DescribeApiListResponse:
+        """
+        @summary Queries the API operations of the cloud service.
+        
+        @param request: DescribeApiListRequest
+        @return: DescribeApiListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_api_list_with_options(request, runtime)
 
@@ -576,6 +756,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeApiListRequest,
     ) -> sophonsoar_20220728_models.DescribeApiListResponse:
+        """
+        @summary Queries the API operations of the cloud service.
+        
+        @param request: DescribeApiListRequest
+        @return: DescribeApiListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_api_list_with_options_async(request, runtime)
 
@@ -584,6 +770,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentAssetFormRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentAssetFormResponse:
+        """
+        @summary Queries the metadata of assets in a component. The metadata of an asset refers to the fields that describe the asset.
+        
+        @param request: DescribeComponentAssetFormRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentAssetFormResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -610,6 +803,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentAssetFormRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentAssetFormResponse:
+        """
+        @summary Queries the metadata of assets in a component. The metadata of an asset refers to the fields that describe the asset.
+        
+        @param request: DescribeComponentAssetFormRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentAssetFormResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -635,6 +835,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentAssetFormRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentAssetFormResponse:
+        """
+        @summary Queries the metadata of assets in a component. The metadata of an asset refers to the fields that describe the asset.
+        
+        @param request: DescribeComponentAssetFormRequest
+        @return: DescribeComponentAssetFormResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_component_asset_form_with_options(request, runtime)
 
@@ -642,6 +848,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentAssetFormRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentAssetFormResponse:
+        """
+        @summary Queries the metadata of assets in a component. The metadata of an asset refers to the fields that describe the asset.
+        
+        @param request: DescribeComponentAssetFormRequest
+        @return: DescribeComponentAssetFormResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_component_asset_form_with_options_async(request, runtime)
 
@@ -650,6 +862,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentAssetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentAssetsResponse:
+        """
+        @summary Queries a list of assets in a component.
+        
+        @param request: DescribeComponentAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentAssetsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -676,6 +895,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentAssetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentAssetsResponse:
+        """
+        @summary Queries a list of assets in a component.
+        
+        @param request: DescribeComponentAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentAssetsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -701,6 +927,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentAssetsRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentAssetsResponse:
+        """
+        @summary Queries a list of assets in a component.
+        
+        @param request: DescribeComponentAssetsRequest
+        @return: DescribeComponentAssetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_component_assets_with_options(request, runtime)
 
@@ -708,6 +940,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentAssetsRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentAssetsResponse:
+        """
+        @summary Queries a list of assets in a component.
+        
+        @param request: DescribeComponentAssetsRequest
+        @return: DescribeComponentAssetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_component_assets_with_options_async(request, runtime)
 
@@ -716,6 +954,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentListResponse:
+        """
+        @summary Queries a list of common components that are available.
+        
+        @param request: DescribeComponentListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -742,6 +987,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentListResponse:
+        """
+        @summary Queries a list of common components that are available.
+        
+        @param request: DescribeComponentListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -767,6 +1019,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentListRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentListResponse:
+        """
+        @summary Queries a list of common components that are available.
+        
+        @param request: DescribeComponentListRequest
+        @return: DescribeComponentListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_component_list_with_options(request, runtime)
 
@@ -774,6 +1032,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentListRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentListResponse:
+        """
+        @summary Queries a list of common components that are available.
+        
+        @param request: DescribeComponentListRequest
+        @return: DescribeComponentListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_component_list_with_options_async(request, runtime)
 
@@ -782,6 +1046,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentPlaybookResponse:
+        """
+        @summary Queries a list of predefined components that are available.
+        
+        @param request: DescribeComponentPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentPlaybookResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -808,6 +1079,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentPlaybookResponse:
+        """
+        @summary Queries a list of predefined components that are available.
+        
+        @param request: DescribeComponentPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentPlaybookResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -833,6 +1111,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentPlaybookRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentPlaybookResponse:
+        """
+        @summary Queries a list of predefined components that are available.
+        
+        @param request: DescribeComponentPlaybookRequest
+        @return: DescribeComponentPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_component_playbook_with_options(request, runtime)
 
@@ -840,6 +1124,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentPlaybookRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentPlaybookResponse:
+        """
+        @summary Queries a list of predefined components that are available.
+        
+        @param request: DescribeComponentPlaybookRequest
+        @return: DescribeComponentPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_component_playbook_with_options_async(request, runtime)
 
@@ -848,6 +1138,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentsJsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentsJsResponse:
+        """
+        @summary Queries the JavaScript file of a component. The component uses the returned JavaScript file for page rendering.
+        
+        @param request: DescribeComponentsJsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentsJsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -874,6 +1171,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeComponentsJsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeComponentsJsResponse:
+        """
+        @summary Queries the JavaScript file of a component. The component uses the returned JavaScript file for page rendering.
+        
+        @param request: DescribeComponentsJsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentsJsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -899,6 +1203,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentsJsRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentsJsResponse:
+        """
+        @summary Queries the JavaScript file of a component. The component uses the returned JavaScript file for page rendering.
+        
+        @param request: DescribeComponentsJsRequest
+        @return: DescribeComponentsJsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_components_js_with_options(request, runtime)
 
@@ -906,6 +1216,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeComponentsJsRequest,
     ) -> sophonsoar_20220728_models.DescribeComponentsJsResponse:
+        """
+        @summary Queries the JavaScript file of a component. The component uses the returned JavaScript file for page rendering.
+        
+        @param request: DescribeComponentsJsRequest
+        @return: DescribeComponentsJsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_components_js_with_options_async(request, runtime)
 
@@ -914,6 +1230,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeDistinctReleasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeDistinctReleasesResponse:
+        """
+        @summary Queries the information about the published versions of a playbook after deduplication.
+        
+        @param request: DescribeDistinctReleasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDistinctReleasesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -940,6 +1263,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeDistinctReleasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeDistinctReleasesResponse:
+        """
+        @summary Queries the information about the published versions of a playbook after deduplication.
+        
+        @param request: DescribeDistinctReleasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDistinctReleasesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -965,6 +1295,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeDistinctReleasesRequest,
     ) -> sophonsoar_20220728_models.DescribeDistinctReleasesResponse:
+        """
+        @summary Queries the information about the published versions of a playbook after deduplication.
+        
+        @param request: DescribeDistinctReleasesRequest
+        @return: DescribeDistinctReleasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_distinct_releases_with_options(request, runtime)
 
@@ -972,6 +1308,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeDistinctReleasesRequest,
     ) -> sophonsoar_20220728_models.DescribeDistinctReleasesResponse:
+        """
+        @summary Queries the information about the published versions of a playbook after deduplication.
+        
+        @param request: DescribeDistinctReleasesRequest
+        @return: DescribeDistinctReleasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_distinct_releases_with_options_async(request, runtime)
 
@@ -980,6 +1322,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeEnumItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeEnumItemsResponse:
+        """
+        @summary Queries enumeration items that are required by a cloud service.
+        
+        @param request: DescribeEnumItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnumItemsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1006,6 +1355,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeEnumItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeEnumItemsResponse:
+        """
+        @summary Queries enumeration items that are required by a cloud service.
+        
+        @param request: DescribeEnumItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnumItemsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1031,6 +1387,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeEnumItemsRequest,
     ) -> sophonsoar_20220728_models.DescribeEnumItemsResponse:
+        """
+        @summary Queries enumeration items that are required by a cloud service.
+        
+        @param request: DescribeEnumItemsRequest
+        @return: DescribeEnumItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_enum_items_with_options(request, runtime)
 
@@ -1038,6 +1400,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeEnumItemsRequest,
     ) -> sophonsoar_20220728_models.DescribeEnumItemsResponse:
+        """
+        @summary Queries enumeration items that are required by a cloud service.
+        
+        @param request: DescribeEnumItemsRequest
+        @return: DescribeEnumItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_enum_items_with_options_async(request, runtime)
 
@@ -1046,6 +1414,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeExecutePlaybooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeExecutePlaybooksResponse:
+        """
+        @summary Queries the playbooks that are available for an automatic response plan.
+        
+        @param request: DescribeExecutePlaybooksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExecutePlaybooksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1072,6 +1447,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeExecutePlaybooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeExecutePlaybooksResponse:
+        """
+        @summary Queries the playbooks that are available for an automatic response plan.
+        
+        @param request: DescribeExecutePlaybooksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExecutePlaybooksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1097,6 +1479,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeExecutePlaybooksRequest,
     ) -> sophonsoar_20220728_models.DescribeExecutePlaybooksResponse:
+        """
+        @summary Queries the playbooks that are available for an automatic response plan.
+        
+        @param request: DescribeExecutePlaybooksRequest
+        @return: DescribeExecutePlaybooksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_execute_playbooks_with_options(request, runtime)
 
@@ -1104,6 +1492,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeExecutePlaybooksRequest,
     ) -> sophonsoar_20220728_models.DescribeExecutePlaybooksResponse:
+        """
+        @summary Queries the playbooks that are available for an automatic response plan.
+        
+        @param request: DescribeExecutePlaybooksRequest
+        @return: DescribeExecutePlaybooksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_execute_playbooks_with_options_async(request, runtime)
 
@@ -1112,6 +1506,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeFieldRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeFieldResponse:
+        """
+        @summary Queries the global configuration information about a cloud service.
+        
+        @param request: DescribeFieldRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFieldResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1138,6 +1539,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeFieldRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeFieldResponse:
+        """
+        @summary Queries the global configuration information about a cloud service.
+        
+        @param request: DescribeFieldRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFieldResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1163,6 +1571,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeFieldRequest,
     ) -> sophonsoar_20220728_models.DescribeFieldResponse:
+        """
+        @summary Queries the global configuration information about a cloud service.
+        
+        @param request: DescribeFieldRequest
+        @return: DescribeFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_field_with_options(request, runtime)
 
@@ -1170,6 +1584,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeFieldRequest,
     ) -> sophonsoar_20220728_models.DescribeFieldResponse:
+        """
+        @summary Queries the global configuration information about a cloud service.
+        
+        @param request: DescribeFieldRequest
+        @return: DescribeFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_field_with_options_async(request, runtime)
 
@@ -1178,6 +1598,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeLatestRecordSchemaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse:
+        """
+        @summary Queries the output structure information of each node in a playbook based on the most recent running record of the playbook.
+        
+        @param request: DescribeLatestRecordSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLatestRecordSchemaResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1204,6 +1631,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeLatestRecordSchemaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse:
+        """
+        @summary Queries the output structure information of each node in a playbook based on the most recent running record of the playbook.
+        
+        @param request: DescribeLatestRecordSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLatestRecordSchemaResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1229,6 +1663,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeLatestRecordSchemaRequest,
     ) -> sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse:
+        """
+        @summary Queries the output structure information of each node in a playbook based on the most recent running record of the playbook.
+        
+        @param request: DescribeLatestRecordSchemaRequest
+        @return: DescribeLatestRecordSchemaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_latest_record_schema_with_options(request, runtime)
 
@@ -1236,6 +1676,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeLatestRecordSchemaRequest,
     ) -> sophonsoar_20220728_models.DescribeLatestRecordSchemaResponse:
+        """
+        @summary Queries the output structure information of each node in a playbook based on the most recent running record of the playbook.
+        
+        @param request: DescribeLatestRecordSchemaRequest
+        @return: DescribeLatestRecordSchemaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_latest_record_schema_with_options_async(request, runtime)
 
@@ -1244,6 +1690,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeNodeParamTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeNodeParamTagsResponse:
+        """
+        @summary Queries recommended dynamic input parameters of a component for playbook orchestration.
+        
+        @param request: DescribeNodeParamTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeParamTagsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1270,6 +1723,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeNodeParamTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeNodeParamTagsResponse:
+        """
+        @summary Queries recommended dynamic input parameters of a component for playbook orchestration.
+        
+        @param request: DescribeNodeParamTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeParamTagsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1295,6 +1755,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeNodeParamTagsRequest,
     ) -> sophonsoar_20220728_models.DescribeNodeParamTagsResponse:
+        """
+        @summary Queries recommended dynamic input parameters of a component for playbook orchestration.
+        
+        @param request: DescribeNodeParamTagsRequest
+        @return: DescribeNodeParamTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_node_param_tags_with_options(request, runtime)
 
@@ -1302,6 +1768,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeNodeParamTagsRequest,
     ) -> sophonsoar_20220728_models.DescribeNodeParamTagsResponse:
+        """
+        @summary Queries recommended dynamic input parameters of a component for playbook orchestration.
+        
+        @param request: DescribeNodeParamTagsRequest
+        @return: DescribeNodeParamTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_node_param_tags_with_options_async(request, runtime)
 
@@ -1310,6 +1782,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeNodeUsedInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeNodeUsedInfosResponse:
+        """
+        @summary Queries the nodes that reference the same node in a playbook.
+        
+        @param request: DescribeNodeUsedInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeUsedInfosResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1336,6 +1815,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeNodeUsedInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeNodeUsedInfosResponse:
+        """
+        @summary Queries the nodes that reference the same node in a playbook.
+        
+        @param request: DescribeNodeUsedInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeUsedInfosResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1361,6 +1847,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeNodeUsedInfosRequest,
     ) -> sophonsoar_20220728_models.DescribeNodeUsedInfosResponse:
+        """
+        @summary Queries the nodes that reference the same node in a playbook.
+        
+        @param request: DescribeNodeUsedInfosRequest
+        @return: DescribeNodeUsedInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_node_used_infos_with_options(request, runtime)
 
@@ -1368,6 +1860,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeNodeUsedInfosRequest,
     ) -> sophonsoar_20220728_models.DescribeNodeUsedInfosResponse:
+        """
+        @summary Queries the nodes that reference the same node in a playbook.
+        
+        @param request: DescribeNodeUsedInfosRequest
+        @return: DescribeNodeUsedInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_node_used_infos_with_options_async(request, runtime)
 
@@ -1376,6 +1874,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookResponse:
+        """
+        @summary Queries the XML configuration of a playbook.
+        
+        @param request: DescribePlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1402,6 +1907,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookResponse:
+        """
+        @summary Queries the XML configuration of a playbook.
+        
+        @param request: DescribePlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1427,6 +1939,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookResponse:
+        """
+        @summary Queries the XML configuration of a playbook.
+        
+        @param request: DescribePlaybookRequest
+        @return: DescribePlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_playbook_with_options(request, runtime)
 
@@ -1434,6 +1952,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookResponse:
+        """
+        @summary Queries the XML configuration of a playbook.
+        
+        @param request: DescribePlaybookRequest
+        @return: DescribePlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_playbook_with_options_async(request, runtime)
 
@@ -1442,6 +1966,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookInputOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookInputOutputResponse:
+        """
+        @summary Queries the input and output parameter configurations of a playbook.
+        
+        @param request: DescribePlaybookInputOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookInputOutputResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1468,6 +1999,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookInputOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookInputOutputResponse:
+        """
+        @summary Queries the input and output parameter configurations of a playbook.
+        
+        @param request: DescribePlaybookInputOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookInputOutputResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1493,6 +2031,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookInputOutputRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookInputOutputResponse:
+        """
+        @summary Queries the input and output parameter configurations of a playbook.
+        
+        @param request: DescribePlaybookInputOutputRequest
+        @return: DescribePlaybookInputOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_playbook_input_output_with_options(request, runtime)
 
@@ -1500,6 +2044,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookInputOutputRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookInputOutputResponse:
+        """
+        @summary Queries the input and output parameter configurations of a playbook.
+        
+        @param request: DescribePlaybookInputOutputRequest
+        @return: DescribePlaybookInputOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_playbook_input_output_with_options_async(request, runtime)
 
@@ -1508,6 +2058,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookMetricsResponse:
+        """
+        @summary Queries the metrics of a playbook. The metrics include the playbook name, playbook description, the number of times that the playbook is run, and the failure rate of the playbook.
+        
+        @param request: DescribePlaybookMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1534,6 +2091,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookMetricsResponse:
+        """
+        @summary Queries the metrics of a playbook. The metrics include the playbook name, playbook description, the number of times that the playbook is run, and the failure rate of the playbook.
+        
+        @param request: DescribePlaybookMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1559,6 +2123,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookMetricsRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookMetricsResponse:
+        """
+        @summary Queries the metrics of a playbook. The metrics include the playbook name, playbook description, the number of times that the playbook is run, and the failure rate of the playbook.
+        
+        @param request: DescribePlaybookMetricsRequest
+        @return: DescribePlaybookMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_playbook_metrics_with_options(request, runtime)
 
@@ -1566,6 +2136,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookMetricsRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookMetricsResponse:
+        """
+        @summary Queries the metrics of a playbook. The metrics include the playbook name, playbook description, the number of times that the playbook is run, and the failure rate of the playbook.
+        
+        @param request: DescribePlaybookMetricsRequest
+        @return: DescribePlaybookMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_playbook_metrics_with_options_async(request, runtime)
 
@@ -1574,6 +2150,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookNodesOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse:
+        """
+        @summary Queries the historical output data of a component node.
+        
+        @param request: DescribePlaybookNodesOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookNodesOutputResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1600,6 +2183,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookNodesOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse:
+        """
+        @summary Queries the historical output data of a component node.
+        
+        @param request: DescribePlaybookNodesOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookNodesOutputResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1625,6 +2215,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookNodesOutputRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse:
+        """
+        @summary Queries the historical output data of a component node.
+        
+        @param request: DescribePlaybookNodesOutputRequest
+        @return: DescribePlaybookNodesOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_playbook_nodes_output_with_options(request, runtime)
 
@@ -1632,6 +2228,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookNodesOutputRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookNodesOutputResponse:
+        """
+        @summary Queries the historical output data of a component node.
+        
+        @param request: DescribePlaybookNodesOutputRequest
+        @return: DescribePlaybookNodesOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_playbook_nodes_output_with_options_async(request, runtime)
 
@@ -1640,6 +2242,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookNumberMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse:
+        """
+        @summary Queries the statistics of Security Orchestration Automation Response (SOAR), such as the numbers of created and enabled playbooks.
+        
+        @param request: DescribePlaybookNumberMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookNumberMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1666,6 +2275,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookNumberMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse:
+        """
+        @summary Queries the statistics of Security Orchestration Automation Response (SOAR), such as the numbers of created and enabled playbooks.
+        
+        @param request: DescribePlaybookNumberMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookNumberMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1691,6 +2307,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookNumberMetricsRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse:
+        """
+        @summary Queries the statistics of Security Orchestration Automation Response (SOAR), such as the numbers of created and enabled playbooks.
+        
+        @param request: DescribePlaybookNumberMetricsRequest
+        @return: DescribePlaybookNumberMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_playbook_number_metrics_with_options(request, runtime)
 
@@ -1698,6 +2320,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookNumberMetricsRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookNumberMetricsResponse:
+        """
+        @summary Queries the statistics of Security Orchestration Automation Response (SOAR), such as the numbers of created and enabled playbooks.
+        
+        @param request: DescribePlaybookNumberMetricsRequest
+        @return: DescribePlaybookNumberMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_playbook_number_metrics_with_options_async(request, runtime)
 
@@ -1706,6 +2334,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookReleasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookReleasesResponse:
+        """
+        @summary Queries the information about the published versions of a playbook.
+        
+        @param request: DescribePlaybookReleasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookReleasesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1732,6 +2367,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybookReleasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybookReleasesResponse:
+        """
+        @summary Queries the information about the published versions of a playbook.
+        
+        @param request: DescribePlaybookReleasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybookReleasesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1757,6 +2399,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookReleasesRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookReleasesResponse:
+        """
+        @summary Queries the information about the published versions of a playbook.
+        
+        @param request: DescribePlaybookReleasesRequest
+        @return: DescribePlaybookReleasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_playbook_releases_with_options(request, runtime)
 
@@ -1764,6 +2412,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybookReleasesRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybookReleasesResponse:
+        """
+        @summary Queries the information about the published versions of a playbook.
+        
+        @param request: DescribePlaybookReleasesRequest
+        @return: DescribePlaybookReleasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_playbook_releases_with_options_async(request, runtime)
 
@@ -1772,6 +2426,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybooksResponse:
+        """
+        @summary Queries playbooks.
+        
+        @param request: DescribePlaybooksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybooksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1798,6 +2459,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePlaybooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePlaybooksResponse:
+        """
+        @summary Queries playbooks.
+        
+        @param request: DescribePlaybooksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlaybooksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1823,6 +2491,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybooksRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybooksResponse:
+        """
+        @summary Queries playbooks.
+        
+        @param request: DescribePlaybooksRequest
+        @return: DescribePlaybooksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_playbooks_with_options(request, runtime)
 
@@ -1830,6 +2504,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePlaybooksRequest,
     ) -> sophonsoar_20220728_models.DescribePlaybooksResponse:
+        """
+        @summary Queries playbooks.
+        
+        @param request: DescribePlaybooksRequest
+        @return: DescribePlaybooksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_playbooks_with_options_async(request, runtime)
 
@@ -1838,6 +2518,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePopApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePopApiResponse:
+        """
+        @summary Queries the details of an API operation.
+        
+        @param request: DescribePopApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePopApiResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1864,6 +2551,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePopApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePopApiResponse:
+        """
+        @summary Queries the details of an API operation.
+        
+        @param request: DescribePopApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePopApiResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1889,6 +2583,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePopApiRequest,
     ) -> sophonsoar_20220728_models.DescribePopApiResponse:
+        """
+        @summary Queries the details of an API operation.
+        
+        @param request: DescribePopApiRequest
+        @return: DescribePopApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pop_api_with_options(request, runtime)
 
@@ -1896,6 +2596,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePopApiRequest,
     ) -> sophonsoar_20220728_models.DescribePopApiResponse:
+        """
+        @summary Queries the details of an API operation.
+        
+        @param request: DescribePopApiRequest
+        @return: DescribePopApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pop_api_with_options_async(request, runtime)
 
@@ -1904,6 +2610,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePopApiItemListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePopApiItemListResponse:
+        """
+        @summary Queries a list of API operations for an Alibaba Cloud service.
+        
+        @param request: DescribePopApiItemListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePopApiItemListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1930,6 +2643,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePopApiItemListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePopApiItemListResponse:
+        """
+        @summary Queries a list of API operations for an Alibaba Cloud service.
+        
+        @param request: DescribePopApiItemListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePopApiItemListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1955,6 +2675,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePopApiItemListRequest,
     ) -> sophonsoar_20220728_models.DescribePopApiItemListResponse:
+        """
+        @summary Queries a list of API operations for an Alibaba Cloud service.
+        
+        @param request: DescribePopApiItemListRequest
+        @return: DescribePopApiItemListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pop_api_item_list_with_options(request, runtime)
 
@@ -1962,6 +2688,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePopApiItemListRequest,
     ) -> sophonsoar_20220728_models.DescribePopApiItemListResponse:
+        """
+        @summary Queries a list of API operations for an Alibaba Cloud service.
+        
+        @param request: DescribePopApiItemListRequest
+        @return: DescribePopApiItemListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pop_api_item_list_with_options_async(request, runtime)
 
@@ -1970,6 +2702,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePopApiVersionListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePopApiVersionListResponse:
+        """
+        @summary Queries the version information of API operations for an Alibaba Cloud service.
+        
+        @param request: DescribePopApiVersionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePopApiVersionListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1996,6 +2735,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribePopApiVersionListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribePopApiVersionListResponse:
+        """
+        @summary Queries the version information of API operations for an Alibaba Cloud service.
+        
+        @param request: DescribePopApiVersionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePopApiVersionListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2021,6 +2767,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePopApiVersionListRequest,
     ) -> sophonsoar_20220728_models.DescribePopApiVersionListResponse:
+        """
+        @summary Queries the version information of API operations for an Alibaba Cloud service.
+        
+        @param request: DescribePopApiVersionListRequest
+        @return: DescribePopApiVersionListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pop_api_version_list_with_options(request, runtime)
 
@@ -2028,6 +2780,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribePopApiVersionListRequest,
     ) -> sophonsoar_20220728_models.DescribePopApiVersionListResponse:
+        """
+        @summary Queries the version information of API operations for an Alibaba Cloud service.
+        
+        @param request: DescribePopApiVersionListRequest
+        @return: DescribePopApiVersionListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pop_api_version_list_with_options_async(request, runtime)
 
@@ -2036,6 +2794,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeProcessTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeProcessTasksResponse:
+        """
+        @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+        
+        @param request: DescribeProcessTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProcessTasksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2062,6 +2827,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeProcessTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeProcessTasksResponse:
+        """
+        @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+        
+        @param request: DescribeProcessTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProcessTasksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2087,6 +2859,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeProcessTasksRequest,
     ) -> sophonsoar_20220728_models.DescribeProcessTasksResponse:
+        """
+        @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+        
+        @param request: DescribeProcessTasksRequest
+        @return: DescribeProcessTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_process_tasks_with_options(request, runtime)
 
@@ -2094,6 +2872,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeProcessTasksRequest,
     ) -> sophonsoar_20220728_models.DescribeProcessTasksResponse:
+        """
+        @summary Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+        
+        @param request: DescribeProcessTasksRequest
+        @return: DescribeProcessTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_process_tasks_with_options_async(request, runtime)
 
@@ -2102,6 +2886,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSoarRecordActionOutputListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse:
+        """
+        @summary Queries the data that is returned when a component initiates an action in a playbook task.
+        
+        @param request: DescribeSoarRecordActionOutputListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarRecordActionOutputListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2128,6 +2919,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSoarRecordActionOutputListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse:
+        """
+        @summary Queries the data that is returned when a component initiates an action in a playbook task.
+        
+        @param request: DescribeSoarRecordActionOutputListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarRecordActionOutputListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2153,6 +2951,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSoarRecordActionOutputListRequest,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse:
+        """
+        @summary Queries the data that is returned when a component initiates an action in a playbook task.
+        
+        @param request: DescribeSoarRecordActionOutputListRequest
+        @return: DescribeSoarRecordActionOutputListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_soar_record_action_output_list_with_options(request, runtime)
 
@@ -2160,6 +2964,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSoarRecordActionOutputListRequest,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordActionOutputListResponse:
+        """
+        @summary Queries the data that is returned when a component initiates an action in a playbook task.
+        
+        @param request: DescribeSoarRecordActionOutputListRequest
+        @return: DescribeSoarRecordActionOutputListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_soar_record_action_output_list_with_options_async(request, runtime)
 
@@ -2168,6 +2978,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSoarRecordInOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse:
+        """
+        @summary Queries the input and output data of a component action. You can call this operation after a playbook is run.
+        
+        @param request: DescribeSoarRecordInOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarRecordInOutputResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2194,6 +3011,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSoarRecordInOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse:
+        """
+        @summary Queries the input and output data of a component action. You can call this operation after a playbook is run.
+        
+        @param request: DescribeSoarRecordInOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarRecordInOutputResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2219,6 +3043,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSoarRecordInOutputRequest,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse:
+        """
+        @summary Queries the input and output data of a component action. You can call this operation after a playbook is run.
+        
+        @param request: DescribeSoarRecordInOutputRequest
+        @return: DescribeSoarRecordInOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_soar_record_in_output_with_options(request, runtime)
 
@@ -2226,6 +3056,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSoarRecordInOutputRequest,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordInOutputResponse:
+        """
+        @summary Queries the input and output data of a component action. You can call this operation after a playbook is run.
+        
+        @param request: DescribeSoarRecordInOutputRequest
+        @return: DescribeSoarRecordInOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_soar_record_in_output_with_options_async(request, runtime)
 
@@ -2234,6 +3070,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSoarRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordsResponse:
+        """
+        @summary Queries the execution records of a playbook.
+        
+        @param request: DescribeSoarRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2260,6 +3103,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSoarRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordsResponse:
+        """
+        @summary Queries the execution records of a playbook.
+        
+        @param request: DescribeSoarRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2285,6 +3135,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSoarRecordsRequest,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordsResponse:
+        """
+        @summary Queries the execution records of a playbook.
+        
+        @param request: DescribeSoarRecordsRequest
+        @return: DescribeSoarRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_soar_records_with_options(request, runtime)
 
@@ -2292,6 +3148,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSoarRecordsRequest,
     ) -> sophonsoar_20220728_models.DescribeSoarRecordsResponse:
+        """
+        @summary Queries the execution records of a playbook.
+        
+        @param request: DescribeSoarRecordsRequest
+        @return: DescribeSoarRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_soar_records_with_options_async(request, runtime)
 
@@ -2300,6 +3162,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSoarTaskAndActionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse:
+        """
+        @summary Queries the execution records of a component during the running of a playbook.
+        
+        @param request: DescribeSoarTaskAndActionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarTaskAndActionsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2326,6 +3195,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSoarTaskAndActionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse:
+        """
+        @summary Queries the execution records of a component during the running of a playbook.
+        
+        @param request: DescribeSoarTaskAndActionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarTaskAndActionsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2351,6 +3227,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSoarTaskAndActionsRequest,
     ) -> sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse:
+        """
+        @summary Queries the execution records of a component during the running of a playbook.
+        
+        @param request: DescribeSoarTaskAndActionsRequest
+        @return: DescribeSoarTaskAndActionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_soar_task_and_actions_with_options(request, runtime)
 
@@ -2358,6 +3240,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSoarTaskAndActionsRequest,
     ) -> sophonsoar_20220728_models.DescribeSoarTaskAndActionsResponse:
+        """
+        @summary Queries the execution records of a component during the running of a playbook.
+        
+        @param request: DescribeSoarTaskAndActionsRequest
+        @return: DescribeSoarTaskAndActionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_soar_task_and_actions_with_options_async(request, runtime)
 
@@ -2366,6 +3254,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSophonCommandsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSophonCommandsResponse:
+        """
+        @summary Queries the commands that can be run to obtain objects.
+        
+        @param request: DescribeSophonCommandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSophonCommandsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2394,6 +3289,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescribeSophonCommandsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescribeSophonCommandsResponse:
+        """
+        @summary Queries the commands that can be run to obtain objects.
+        
+        @param request: DescribeSophonCommandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSophonCommandsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2421,6 +3323,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSophonCommandsRequest,
     ) -> sophonsoar_20220728_models.DescribeSophonCommandsResponse:
+        """
+        @summary Queries the commands that can be run to obtain objects.
+        
+        @param request: DescribeSophonCommandsRequest
+        @return: DescribeSophonCommandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sophon_commands_with_options(request, runtime)
 
@@ -2428,6 +3336,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescribeSophonCommandsRequest,
     ) -> sophonsoar_20220728_models.DescribeSophonCommandsResponse:
+        """
+        @summary Queries the commands that can be run to obtain objects.
+        
+        @param request: DescribeSophonCommandsRequest
+        @return: DescribeSophonCommandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sophon_commands_with_options_async(request, runtime)
 
@@ -2436,6 +3350,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescriberPython3ScriptLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse:
+        """
+        @summary Queries the operational logs of a Python3 script by using the UUID that is returned when the script is run. The UUID is specified by requestUuid.
+        
+        @param request: DescriberPython3ScriptLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescriberPython3ScriptLogsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2462,6 +3383,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.DescriberPython3ScriptLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse:
+        """
+        @summary Queries the operational logs of a Python3 script by using the UUID that is returned when the script is run. The UUID is specified by requestUuid.
+        
+        @param request: DescriberPython3ScriptLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescriberPython3ScriptLogsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2487,6 +3415,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescriberPython3ScriptLogsRequest,
     ) -> sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse:
+        """
+        @summary Queries the operational logs of a Python3 script by using the UUID that is returned when the script is run. The UUID is specified by requestUuid.
+        
+        @param request: DescriberPython3ScriptLogsRequest
+        @return: DescriberPython3ScriptLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describer_python_3script_logs_with_options(request, runtime)
 
@@ -2494,6 +3428,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.DescriberPython3ScriptLogsRequest,
     ) -> sophonsoar_20220728_models.DescriberPython3ScriptLogsResponse:
+        """
+        @summary Queries the operational logs of a Python3 script by using the UUID that is returned when the script is run. The UUID is specified by requestUuid.
+        
+        @param request: DescriberPython3ScriptLogsRequest
+        @return: DescriberPython3ScriptLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describer_python_3script_logs_with_options_async(request, runtime)
 
@@ -2502,6 +3442,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ModifyComponentAssetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ModifyComponentAssetResponse:
+        """
+        @summary Modifies the information about the asset that is configured for a component.
+        
+        @param request: ModifyComponentAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyComponentAssetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asset_config):
@@ -2532,6 +3479,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ModifyComponentAssetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ModifyComponentAssetResponse:
+        """
+        @summary Modifies the information about the asset that is configured for a component.
+        
+        @param request: ModifyComponentAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyComponentAssetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asset_config):
@@ -2561,6 +3515,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ModifyComponentAssetRequest,
     ) -> sophonsoar_20220728_models.ModifyComponentAssetResponse:
+        """
+        @summary Modifies the information about the asset that is configured for a component.
+        
+        @param request: ModifyComponentAssetRequest
+        @return: ModifyComponentAssetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_component_asset_with_options(request, runtime)
 
@@ -2568,6 +3528,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ModifyComponentAssetRequest,
     ) -> sophonsoar_20220728_models.ModifyComponentAssetResponse:
+        """
+        @summary Modifies the information about the asset that is configured for a component.
+        
+        @param request: ModifyComponentAssetRequest
+        @return: ModifyComponentAssetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_component_asset_with_options_async(request, runtime)
 
@@ -2576,6 +3542,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ModifyPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ModifyPlaybookResponse:
+        """
+        @summary Modifies the configuration of a playbook.
+        
+        @param request: ModifyPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2612,6 +3585,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ModifyPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ModifyPlaybookResponse:
+        """
+        @summary Modifies the configuration of a playbook.
+        
+        @param request: ModifyPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2647,6 +3627,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ModifyPlaybookRequest,
     ) -> sophonsoar_20220728_models.ModifyPlaybookResponse:
+        """
+        @summary Modifies the configuration of a playbook.
+        
+        @param request: ModifyPlaybookRequest
+        @return: ModifyPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_playbook_with_options(request, runtime)
 
@@ -2654,6 +3640,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ModifyPlaybookRequest,
     ) -> sophonsoar_20220728_models.ModifyPlaybookResponse:
+        """
+        @summary Modifies the configuration of a playbook.
+        
+        @param request: ModifyPlaybookRequest
+        @return: ModifyPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_playbook_with_options_async(request, runtime)
 
@@ -2662,6 +3654,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ModifyPlaybookInputOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse:
+        """
+        @summary Modifies the input and output parameters of a playbook.
+        
+        @param request: ModifyPlaybookInputOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPlaybookInputOutputResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exe_config):
@@ -2700,6 +3699,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ModifyPlaybookInputOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse:
+        """
+        @summary Modifies the input and output parameters of a playbook.
+        
+        @param request: ModifyPlaybookInputOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPlaybookInputOutputResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exe_config):
@@ -2737,6 +3743,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ModifyPlaybookInputOutputRequest,
     ) -> sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse:
+        """
+        @summary Modifies the input and output parameters of a playbook.
+        
+        @param request: ModifyPlaybookInputOutputRequest
+        @return: ModifyPlaybookInputOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_playbook_input_output_with_options(request, runtime)
 
@@ -2744,6 +3756,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ModifyPlaybookInputOutputRequest,
     ) -> sophonsoar_20220728_models.ModifyPlaybookInputOutputResponse:
+        """
+        @summary Modifies the input and output parameters of a playbook.
+        
+        @param request: ModifyPlaybookInputOutputRequest
+        @return: ModifyPlaybookInputOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_playbook_input_output_with_options_async(request, runtime)
 
@@ -2752,6 +3770,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ModifyPlaybookInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse:
+        """
+        @summary Modifies the status of a playbook.
+        
+        @param request: ModifyPlaybookInstanceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPlaybookInstanceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2786,6 +3811,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.ModifyPlaybookInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse:
+        """
+        @summary Modifies the status of a playbook.
+        
+        @param request: ModifyPlaybookInstanceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPlaybookInstanceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2819,6 +3851,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ModifyPlaybookInstanceStatusRequest,
     ) -> sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse:
+        """
+        @summary Modifies the status of a playbook.
+        
+        @param request: ModifyPlaybookInstanceStatusRequest
+        @return: ModifyPlaybookInstanceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_playbook_instance_status_with_options(request, runtime)
 
@@ -2826,6 +3864,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.ModifyPlaybookInstanceStatusRequest,
     ) -> sophonsoar_20220728_models.ModifyPlaybookInstanceStatusResponse:
+        """
+        @summary Modifies the status of a playbook.
+        
+        @param request: ModifyPlaybookInstanceStatusRequest
+        @return: ModifyPlaybookInstanceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_playbook_instance_status_with_options_async(request, runtime)
 
@@ -2834,6 +3878,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.PublishPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.PublishPlaybookResponse:
+        """
+        @summary Publishes the playbook. After the playbook is published, the playbook runs based on the new logic.
+        
+        @param request: PublishPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2864,6 +3915,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.PublishPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.PublishPlaybookResponse:
+        """
+        @summary Publishes the playbook. After the playbook is published, the playbook runs based on the new logic.
+        
+        @param request: PublishPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2893,6 +3951,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.PublishPlaybookRequest,
     ) -> sophonsoar_20220728_models.PublishPlaybookResponse:
+        """
+        @summary Publishes the playbook. After the playbook is published, the playbook runs based on the new logic.
+        
+        @param request: PublishPlaybookRequest
+        @return: PublishPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.publish_playbook_with_options(request, runtime)
 
@@ -2900,6 +3964,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.PublishPlaybookRequest,
     ) -> sophonsoar_20220728_models.PublishPlaybookResponse:
+        """
+        @summary Publishes the playbook. After the playbook is published, the playbook runs based on the new logic.
+        
+        @param request: PublishPlaybookRequest
+        @return: PublishPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.publish_playbook_with_options_async(request, runtime)
 
@@ -2908,6 +3978,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.QueryTreeDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.QueryTreeDataResponse:
+        """
+        @summary Queries all playbooks at a time.
+        
+        @param request: QueryTreeDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTreeDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2934,6 +4011,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.QueryTreeDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.QueryTreeDataResponse:
+        """
+        @summary Queries all playbooks at a time.
+        
+        @param request: QueryTreeDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTreeDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2959,6 +4043,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.QueryTreeDataRequest,
     ) -> sophonsoar_20220728_models.QueryTreeDataResponse:
+        """
+        @summary Queries all playbooks at a time.
+        
+        @param request: QueryTreeDataRequest
+        @return: QueryTreeDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_tree_data_with_options(request, runtime)
 
@@ -2966,6 +4056,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.QueryTreeDataRequest,
     ) -> sophonsoar_20220728_models.QueryTreeDataResponse:
+        """
+        @summary Queries all playbooks at a time.
+        
+        @param request: QueryTreeDataRequest
+        @return: QueryTreeDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_tree_data_with_options_async(request, runtime)
 
@@ -2974,6 +4070,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RenamePlaybookNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RenamePlaybookNodeResponse:
+        """
+        @summary Changes the name of a node in a playbook. You can call this operation during playbook orchestration. After the name of the node is changed, the reference path of the node also changes.
+        
+        @param request: RenamePlaybookNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenamePlaybookNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3008,6 +4111,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RenamePlaybookNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RenamePlaybookNodeResponse:
+        """
+        @summary Changes the name of a node in a playbook. You can call this operation during playbook orchestration. After the name of the node is changed, the reference path of the node also changes.
+        
+        @param request: RenamePlaybookNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenamePlaybookNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3041,6 +4151,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.RenamePlaybookNodeRequest,
     ) -> sophonsoar_20220728_models.RenamePlaybookNodeResponse:
+        """
+        @summary Changes the name of a node in a playbook. You can call this operation during playbook orchestration. After the name of the node is changed, the reference path of the node also changes.
+        
+        @param request: RenamePlaybookNodeRequest
+        @return: RenamePlaybookNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rename_playbook_node_with_options(request, runtime)
 
@@ -3048,6 +4164,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.RenamePlaybookNodeRequest,
     ) -> sophonsoar_20220728_models.RenamePlaybookNodeResponse:
+        """
+        @summary Changes the name of a node in a playbook. You can call this operation during playbook orchestration. After the name of the node is changed, the reference path of the node also changes.
+        
+        @param request: RenamePlaybookNodeRequest
+        @return: RenamePlaybookNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rename_playbook_node_with_options_async(request, runtime)
 
@@ -3056,6 +4178,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RevertPlaybookReleaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RevertPlaybookReleaseResponse:
+        """
+        @summary Rolls back a playbook to a specific version. You can determine whether to publish the new playbook version during the rollback.
+        
+        @param request: RevertPlaybookReleaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevertPlaybookReleaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.is_publish):
@@ -3088,6 +4217,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RevertPlaybookReleaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RevertPlaybookReleaseResponse:
+        """
+        @summary Rolls back a playbook to a specific version. You can determine whether to publish the new playbook version during the rollback.
+        
+        @param request: RevertPlaybookReleaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevertPlaybookReleaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.is_publish):
@@ -3119,6 +4255,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.RevertPlaybookReleaseRequest,
     ) -> sophonsoar_20220728_models.RevertPlaybookReleaseResponse:
+        """
+        @summary Rolls back a playbook to a specific version. You can determine whether to publish the new playbook version during the rollback.
+        
+        @param request: RevertPlaybookReleaseRequest
+        @return: RevertPlaybookReleaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revert_playbook_release_with_options(request, runtime)
 
@@ -3126,6 +4268,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.RevertPlaybookReleaseRequest,
     ) -> sophonsoar_20220728_models.RevertPlaybookReleaseResponse:
+        """
+        @summary Rolls back a playbook to a specific version. You can determine whether to publish the new playbook version during the rollback.
+        
+        @param request: RevertPlaybookReleaseRequest
+        @return: RevertPlaybookReleaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revert_playbook_release_with_options_async(request, runtime)
 
@@ -3135,7 +4283,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunPython3ScriptResponse:
         """
-        Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Submits and runs a Python3 script. You can call this operation only for data processing.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunPython3ScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3176,7 +4326,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.RunPython3ScriptResponse:
         """
-        Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Submits and runs a Python3 script. You can call this operation only for data processing.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunPython3ScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3216,7 +4368,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RunPython3ScriptRequest,
     ) -> sophonsoar_20220728_models.RunPython3ScriptResponse:
         """
-        Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Submits and runs a Python3 script. You can call this operation only for data processing.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunPython3ScriptRequest
         @return: RunPython3ScriptResponse
@@ -3229,7 +4383,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.RunPython3ScriptRequest,
     ) -> sophonsoar_20220728_models.RunPython3ScriptResponse:
         """
-        Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Submits and runs a Python3 script. You can call this operation only for data processing.
+        
+        @description Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: RunPython3ScriptRequest
         @return: RunPython3ScriptResponse
@@ -3243,7 +4399,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerPlaybookResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Triggers an enabled custom playbook or a predefined playbook.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: TriggerPlaybookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3280,7 +4438,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerPlaybookResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Triggers an enabled custom playbook or a predefined playbook.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: TriggerPlaybookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3316,7 +4476,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerPlaybookRequest,
     ) -> sophonsoar_20220728_models.TriggerPlaybookResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Triggers an enabled custom playbook or a predefined playbook.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: TriggerPlaybookRequest
         @return: TriggerPlaybookResponse
@@ -3329,7 +4491,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerPlaybookRequest,
     ) -> sophonsoar_20220728_models.TriggerPlaybookResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Triggers an enabled custom playbook or a predefined playbook.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: TriggerPlaybookRequest
         @return: TriggerPlaybookResponse
@@ -3342,6 +4506,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerProcessTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerProcessTaskResponse:
+        """
+        @summary Performs an action on a handling task that is generated by the handling center when an event is handled by using Security Orchestration Automation Response (SOAR). For example, you can call this operation to cancel blocking or isolation, or retry blocking.
+        
+        @param request: TriggerProcessTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerProcessTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -3374,6 +4545,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerProcessTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerProcessTaskResponse:
+        """
+        @summary Performs an action on a handling task that is generated by the handling center when an event is handled by using Security Orchestration Automation Response (SOAR). For example, you can call this operation to cancel blocking or isolation, or retry blocking.
+        
+        @param request: TriggerProcessTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerProcessTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -3405,6 +4583,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.TriggerProcessTaskRequest,
     ) -> sophonsoar_20220728_models.TriggerProcessTaskResponse:
+        """
+        @summary Performs an action on a handling task that is generated by the handling center when an event is handled by using Security Orchestration Automation Response (SOAR). For example, you can call this operation to cancel blocking or isolation, or retry blocking.
+        
+        @param request: TriggerProcessTaskRequest
+        @return: TriggerProcessTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.trigger_process_task_with_options(request, runtime)
 
@@ -3412,6 +4596,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.TriggerProcessTaskRequest,
     ) -> sophonsoar_20220728_models.TriggerProcessTaskResponse:
+        """
+        @summary Performs an action on a handling task that is generated by the handling center when an event is handled by using Security Orchestration Automation Response (SOAR). For example, you can call this operation to cancel blocking or isolation, or retry blocking.
+        
+        @param request: TriggerProcessTaskRequest
+        @return: TriggerProcessTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.trigger_process_task_with_options_async(request, runtime)
 
@@ -3421,7 +4611,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerSophonPlaybookResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Triggers a playbook or a command.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: TriggerSophonPlaybookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3464,7 +4656,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.TriggerSophonPlaybookResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Triggers a playbook or a command.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: TriggerSophonPlaybookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3506,7 +4700,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerSophonPlaybookRequest,
     ) -> sophonsoar_20220728_models.TriggerSophonPlaybookResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Triggers a playbook or a command.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: TriggerSophonPlaybookRequest
         @return: TriggerSophonPlaybookResponse
@@ -3519,7 +4715,9 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.TriggerSophonPlaybookRequest,
     ) -> sophonsoar_20220728_models.TriggerSophonPlaybookResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+        @summary Triggers a playbook or a command.
+        
+        @description Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
         
         @param request: TriggerSophonPlaybookRequest
         @return: TriggerSophonPlaybookResponse
@@ -3532,6 +4730,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.VerifyPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.VerifyPlaybookResponse:
+        """
+        @summary Checks whether the configuration of the playbook is correct and whether the logic of the orchestration is reasonable.
+        
+        @param request: VerifyPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.playbook_uuid):
@@ -3562,6 +4767,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.VerifyPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.VerifyPlaybookResponse:
+        """
+        @summary Checks whether the configuration of the playbook is correct and whether the logic of the orchestration is reasonable.
+        
+        @param request: VerifyPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.playbook_uuid):
@@ -3591,6 +4803,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.VerifyPlaybookRequest,
     ) -> sophonsoar_20220728_models.VerifyPlaybookResponse:
+        """
+        @summary Checks whether the configuration of the playbook is correct and whether the logic of the orchestration is reasonable.
+        
+        @param request: VerifyPlaybookRequest
+        @return: VerifyPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_playbook_with_options(request, runtime)
 
@@ -3598,6 +4816,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.VerifyPlaybookRequest,
     ) -> sophonsoar_20220728_models.VerifyPlaybookResponse:
+        """
+        @summary Checks whether the configuration of the playbook is correct and whether the logic of the orchestration is reasonable.
+        
+        @param request: VerifyPlaybookRequest
+        @return: VerifyPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_playbook_with_options_async(request, runtime)
 
@@ -3606,6 +4830,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.VerifyPythonFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.VerifyPythonFileResponse:
+        """
+        @summary Checks whether the syntax of a Python code snippet is correct.
+        
+        @param request: VerifyPythonFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyPythonFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -3634,6 +4865,13 @@ class Client(OpenApiClient):
         request: sophonsoar_20220728_models.VerifyPythonFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sophonsoar_20220728_models.VerifyPythonFileResponse:
+        """
+        @summary Checks whether the syntax of a Python code snippet is correct.
+        
+        @param request: VerifyPythonFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyPythonFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -3661,6 +4899,12 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.VerifyPythonFileRequest,
     ) -> sophonsoar_20220728_models.VerifyPythonFileResponse:
+        """
+        @summary Checks whether the syntax of a Python code snippet is correct.
+        
+        @param request: VerifyPythonFileRequest
+        @return: VerifyPythonFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_python_file_with_options(request, runtime)
 
@@ -3668,5 +4912,11 @@ class Client(OpenApiClient):
         self,
         request: sophonsoar_20220728_models.VerifyPythonFileRequest,
     ) -> sophonsoar_20220728_models.VerifyPythonFileResponse:
+        """
+        @summary Checks whether the syntax of a Python code snippet is correct.
+        
+        @param request: VerifyPythonFileRequest
+        @return: VerifyPythonFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_python_file_with_options_async(request, runtime)
