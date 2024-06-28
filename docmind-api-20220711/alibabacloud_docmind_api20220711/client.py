@@ -13,9 +13,9 @@ from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
 class Client(OpenApiClient):
@@ -110,6 +110,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse:
+        """
+        @summary 整票识别
+        
+        @param tmp_req: AyncTradeDocumentPackageExtractSmartAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AyncTradeDocumentPackageExtractSmartAppResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -150,6 +157,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse:
+        """
+        @summary 整票识别
+        
+        @param tmp_req: AyncTradeDocumentPackageExtractSmartAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AyncTradeDocumentPackageExtractSmartAppResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -189,6 +203,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppRequest,
     ) -> docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse:
+        """
+        @summary 整票识别
+        
+        @param request: AyncTradeDocumentPackageExtractSmartAppRequest
+        @return: AyncTradeDocumentPackageExtractSmartAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.aync_trade_document_package_extract_smart_app_with_options(request, runtime)
 
@@ -196,6 +216,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppRequest,
     ) -> docmind_api_20220711_models.AyncTradeDocumentPackageExtractSmartAppResponse:
+        """
+        @summary 整票识别
+        
+        @param request: AyncTradeDocumentPackageExtractSmartAppRequest
+        @return: AyncTradeDocumentPackageExtractSmartAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.aync_trade_document_package_extract_smart_app_with_options_async(request, runtime)
 
@@ -204,6 +230,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetDocStructureResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetDocStructureResultResponse:
+        """
+        @summary 文档智能解析结果查询
+        
+        @param request: GetDocStructureResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocStructureResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -236,6 +269,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetDocStructureResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetDocStructureResultResponse:
+        """
+        @summary 文档智能解析结果查询
+        
+        @param request: GetDocStructureResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocStructureResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -267,6 +307,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetDocStructureResultRequest,
     ) -> docmind_api_20220711_models.GetDocStructureResultResponse:
+        """
+        @summary 文档智能解析结果查询
+        
+        @param request: GetDocStructureResultRequest
+        @return: GetDocStructureResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_doc_structure_result_with_options(request, runtime)
 
@@ -274,6 +320,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetDocStructureResultRequest,
     ) -> docmind_api_20220711_models.GetDocStructureResultResponse:
+        """
+        @summary 文档智能解析结果查询
+        
+        @param request: GetDocStructureResultRequest
+        @return: GetDocStructureResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_doc_structure_result_with_options_async(request, runtime)
 
@@ -282,6 +334,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetDocumentCompareResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetDocumentCompareResultResponse:
+        """
+        @summary 文档对比结果查询
+        
+        @param request: GetDocumentCompareResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentCompareResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -310,6 +369,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetDocumentCompareResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetDocumentCompareResultResponse:
+        """
+        @summary 文档对比结果查询
+        
+        @param request: GetDocumentCompareResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentCompareResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -337,6 +403,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetDocumentCompareResultRequest,
     ) -> docmind_api_20220711_models.GetDocumentCompareResultResponse:
+        """
+        @summary 文档对比结果查询
+        
+        @param request: GetDocumentCompareResultRequest
+        @return: GetDocumentCompareResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_document_compare_result_with_options(request, runtime)
 
@@ -344,6 +416,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetDocumentCompareResultRequest,
     ) -> docmind_api_20220711_models.GetDocumentCompareResultResponse:
+        """
+        @summary 文档对比结果查询
+        
+        @param request: GetDocumentCompareResultRequest
+        @return: GetDocumentCompareResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_document_compare_result_with_options_async(request, runtime)
 
@@ -352,6 +430,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetDocumentConvertResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetDocumentConvertResultResponse:
+        """
+        @summary 文档转换结果查询
+        
+        @param request: GetDocumentConvertResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentConvertResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -380,6 +465,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetDocumentConvertResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetDocumentConvertResultResponse:
+        """
+        @summary 文档转换结果查询
+        
+        @param request: GetDocumentConvertResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentConvertResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -407,6 +499,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetDocumentConvertResultRequest,
     ) -> docmind_api_20220711_models.GetDocumentConvertResultResponse:
+        """
+        @summary 文档转换结果查询
+        
+        @param request: GetDocumentConvertResultRequest
+        @return: GetDocumentConvertResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_document_convert_result_with_options(request, runtime)
 
@@ -414,6 +512,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetDocumentConvertResultRequest,
     ) -> docmind_api_20220711_models.GetDocumentConvertResultResponse:
+        """
+        @summary 文档转换结果查询
+        
+        @param request: GetDocumentConvertResultRequest
+        @return: GetDocumentConvertResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_document_convert_result_with_options_async(request, runtime)
 
@@ -422,6 +526,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetDocumentExtractResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetDocumentExtractResultResponse:
+        """
+        @summary 文档抽取结果查询
+        
+        @param request: GetDocumentExtractResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentExtractResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -450,6 +561,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetDocumentExtractResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetDocumentExtractResultResponse:
+        """
+        @summary 文档抽取结果查询
+        
+        @param request: GetDocumentExtractResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentExtractResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -477,6 +595,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetDocumentExtractResultRequest,
     ) -> docmind_api_20220711_models.GetDocumentExtractResultResponse:
+        """
+        @summary 文档抽取结果查询
+        
+        @param request: GetDocumentExtractResultRequest
+        @return: GetDocumentExtractResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_document_extract_result_with_options(request, runtime)
 
@@ -484,6 +608,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetDocumentExtractResultRequest,
     ) -> docmind_api_20220711_models.GetDocumentExtractResultResponse:
+        """
+        @summary 文档抽取结果查询
+        
+        @param request: GetDocumentExtractResultRequest
+        @return: GetDocumentExtractResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_document_extract_result_with_options_async(request, runtime)
 
@@ -492,6 +622,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetPageNumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetPageNumResponse:
+        """
+        @summary openmind
+        
+        @param request: GetPageNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPageNumResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -520,6 +657,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetPageNumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetPageNumResponse:
+        """
+        @summary openmind
+        
+        @param request: GetPageNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPageNumResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -547,6 +691,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetPageNumRequest,
     ) -> docmind_api_20220711_models.GetPageNumResponse:
+        """
+        @summary openmind
+        
+        @param request: GetPageNumRequest
+        @return: GetPageNumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_page_num_with_options(request, runtime)
 
@@ -554,6 +704,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetPageNumRequest,
     ) -> docmind_api_20220711_models.GetPageNumResponse:
+        """
+        @summary openmind
+        
+        @param request: GetPageNumRequest
+        @return: GetPageNumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_page_num_with_options_async(request, runtime)
 
@@ -562,6 +718,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetTableUnderstandingResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetTableUnderstandingResultResponse:
+        """
+        @summary 表格智能解析结果查询
+        
+        @param request: GetTableUnderstandingResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableUnderstandingResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -590,6 +753,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.GetTableUnderstandingResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.GetTableUnderstandingResultResponse:
+        """
+        @summary 表格智能解析结果查询
+        
+        @param request: GetTableUnderstandingResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableUnderstandingResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -617,6 +787,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetTableUnderstandingResultRequest,
     ) -> docmind_api_20220711_models.GetTableUnderstandingResultResponse:
+        """
+        @summary 表格智能解析结果查询
+        
+        @param request: GetTableUnderstandingResultRequest
+        @return: GetTableUnderstandingResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_table_understanding_result_with_options(request, runtime)
 
@@ -624,6 +800,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.GetTableUnderstandingResultRequest,
     ) -> docmind_api_20220711_models.GetTableUnderstandingResultResponse:
+        """
+        @summary 表格智能解析结果查询
+        
+        @param request: GetTableUnderstandingResultRequest
+        @return: GetTableUnderstandingResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_table_understanding_result_with_options_async(request, runtime)
 
@@ -632,6 +814,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.SubmitConvertImageToExcelJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse:
+        """
+        @summary 图片转excel
+        
+        @param tmp_req: SubmitConvertImageToExcelJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertImageToExcelJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.SubmitConvertImageToExcelJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -672,6 +861,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.SubmitConvertImageToExcelJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse:
+        """
+        @summary 图片转excel
+        
+        @param tmp_req: SubmitConvertImageToExcelJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertImageToExcelJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.SubmitConvertImageToExcelJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -711,6 +907,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertImageToExcelJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse:
+        """
+        @summary 图片转excel
+        
+        @param request: SubmitConvertImageToExcelJobRequest
+        @return: SubmitConvertImageToExcelJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_convert_image_to_excel_job_with_options(request, runtime)
 
@@ -718,6 +920,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertImageToExcelJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertImageToExcelJobResponse:
+        """
+        @summary 图片转excel
+        
+        @param request: SubmitConvertImageToExcelJobRequest
+        @return: SubmitConvertImageToExcelJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_convert_image_to_excel_job_with_options_async(request, runtime)
 
@@ -726,6 +934,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.SubmitConvertImageToMarkdownJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse:
+        """
+        @summary 图片转markdown
+        
+        @param tmp_req: SubmitConvertImageToMarkdownJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertImageToMarkdownJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.SubmitConvertImageToMarkdownJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -764,6 +979,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.SubmitConvertImageToMarkdownJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse:
+        """
+        @summary 图片转markdown
+        
+        @param tmp_req: SubmitConvertImageToMarkdownJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertImageToMarkdownJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.SubmitConvertImageToMarkdownJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -801,6 +1023,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertImageToMarkdownJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse:
+        """
+        @summary 图片转markdown
+        
+        @param request: SubmitConvertImageToMarkdownJobRequest
+        @return: SubmitConvertImageToMarkdownJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_convert_image_to_markdown_job_with_options(request, runtime)
 
@@ -808,6 +1036,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertImageToMarkdownJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertImageToMarkdownJobResponse:
+        """
+        @summary 图片转markdown
+        
+        @param request: SubmitConvertImageToMarkdownJobRequest
+        @return: SubmitConvertImageToMarkdownJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_convert_image_to_markdown_job_with_options_async(request, runtime)
 
@@ -816,6 +1050,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.SubmitConvertImageToPdfJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse:
+        """
+        @summary 图片转pdf
+        
+        @param tmp_req: SubmitConvertImageToPdfJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertImageToPdfJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.SubmitConvertImageToPdfJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -854,6 +1095,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.SubmitConvertImageToPdfJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse:
+        """
+        @summary 图片转pdf
+        
+        @param tmp_req: SubmitConvertImageToPdfJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertImageToPdfJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.SubmitConvertImageToPdfJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -891,6 +1139,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertImageToPdfJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse:
+        """
+        @summary 图片转pdf
+        
+        @param request: SubmitConvertImageToPdfJobRequest
+        @return: SubmitConvertImageToPdfJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_convert_image_to_pdf_job_with_options(request, runtime)
 
@@ -898,6 +1152,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertImageToPdfJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertImageToPdfJobResponse:
+        """
+        @summary 图片转pdf
+        
+        @param request: SubmitConvertImageToPdfJobRequest
+        @return: SubmitConvertImageToPdfJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_convert_image_to_pdf_job_with_options_async(request, runtime)
 
@@ -906,6 +1166,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.SubmitConvertImageToWordJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertImageToWordJobResponse:
+        """
+        @summary 图片转word
+        
+        @param tmp_req: SubmitConvertImageToWordJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertImageToWordJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.SubmitConvertImageToWordJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -944,6 +1211,13 @@ class Client(OpenApiClient):
         tmp_req: docmind_api_20220711_models.SubmitConvertImageToWordJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertImageToWordJobResponse:
+        """
+        @summary 图片转word
+        
+        @param tmp_req: SubmitConvertImageToWordJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertImageToWordJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = docmind_api_20220711_models.SubmitConvertImageToWordJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -981,6 +1255,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertImageToWordJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertImageToWordJobResponse:
+        """
+        @summary 图片转word
+        
+        @param request: SubmitConvertImageToWordJobRequest
+        @return: SubmitConvertImageToWordJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_convert_image_to_word_job_with_options(request, runtime)
 
@@ -988,6 +1268,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertImageToWordJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertImageToWordJobResponse:
+        """
+        @summary 图片转word
+        
+        @param request: SubmitConvertImageToWordJobRequest
+        @return: SubmitConvertImageToWordJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_convert_image_to_word_job_with_options_async(request, runtime)
 
@@ -996,6 +1282,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitConvertPdfToExcelJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse:
+        """
+        @summary pdf转excel
+        
+        @param request: SubmitConvertPdfToExcelJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertPdfToExcelJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1030,6 +1323,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitConvertPdfToExcelJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse:
+        """
+        @summary pdf转excel
+        
+        @param request: SubmitConvertPdfToExcelJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertPdfToExcelJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1063,6 +1363,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertPdfToExcelJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse:
+        """
+        @summary pdf转excel
+        
+        @param request: SubmitConvertPdfToExcelJobRequest
+        @return: SubmitConvertPdfToExcelJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_convert_pdf_to_excel_job_with_options(request, runtime)
 
@@ -1070,6 +1376,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertPdfToExcelJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToExcelJobResponse:
+        """
+        @summary pdf转excel
+        
+        @param request: SubmitConvertPdfToExcelJobRequest
+        @return: SubmitConvertPdfToExcelJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_convert_pdf_to_excel_job_with_options_async(request, runtime)
 
@@ -1084,7 +1396,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1104,12 +1416,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1155,7 +1468,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1175,12 +1488,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1220,6 +1534,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitConvertPdfToImageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse:
+        """
+        @summary pdf转图片
+        
+        @param request: SubmitConvertPdfToImageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertPdfToImageJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1250,6 +1571,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitConvertPdfToImageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse:
+        """
+        @summary pdf转图片
+        
+        @param request: SubmitConvertPdfToImageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertPdfToImageJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1279,6 +1607,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertPdfToImageJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse:
+        """
+        @summary pdf转图片
+        
+        @param request: SubmitConvertPdfToImageJobRequest
+        @return: SubmitConvertPdfToImageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_convert_pdf_to_image_job_with_options(request, runtime)
 
@@ -1286,6 +1620,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertPdfToImageJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToImageJobResponse:
+        """
+        @summary pdf转图片
+        
+        @param request: SubmitConvertPdfToImageJobRequest
+        @return: SubmitConvertPdfToImageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_convert_pdf_to_image_job_with_options_async(request, runtime)
 
@@ -1300,7 +1640,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1320,12 +1660,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1371,7 +1712,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1391,12 +1732,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1436,6 +1778,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse:
+        """
+        @summary pdf转markdown
+        
+        @param request: SubmitConvertPdfToMarkdownJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertPdfToMarkdownJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1466,6 +1815,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse:
+        """
+        @summary pdf转markdown
+        
+        @param request: SubmitConvertPdfToMarkdownJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertPdfToMarkdownJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1495,6 +1851,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse:
+        """
+        @summary pdf转markdown
+        
+        @param request: SubmitConvertPdfToMarkdownJobRequest
+        @return: SubmitConvertPdfToMarkdownJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_convert_pdf_to_markdown_job_with_options(request, runtime)
 
@@ -1502,6 +1864,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToMarkdownJobResponse:
+        """
+        @summary pdf转markdown
+        
+        @param request: SubmitConvertPdfToMarkdownJobRequest
+        @return: SubmitConvertPdfToMarkdownJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_convert_pdf_to_markdown_job_with_options_async(request, runtime)
 
@@ -1516,7 +1884,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1536,12 +1904,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1587,7 +1956,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1607,12 +1976,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1652,6 +2022,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitConvertPdfToWordJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse:
+        """
+        @summary pdf转word
+        
+        @param request: SubmitConvertPdfToWordJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertPdfToWordJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1684,6 +2061,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitConvertPdfToWordJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse:
+        """
+        @summary pdf转word
+        
+        @param request: SubmitConvertPdfToWordJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitConvertPdfToWordJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1715,6 +2099,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertPdfToWordJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse:
+        """
+        @summary pdf转word
+        
+        @param request: SubmitConvertPdfToWordJobRequest
+        @return: SubmitConvertPdfToWordJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_convert_pdf_to_word_job_with_options(request, runtime)
 
@@ -1722,6 +2112,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitConvertPdfToWordJobRequest,
     ) -> docmind_api_20220711_models.SubmitConvertPdfToWordJobResponse:
+        """
+        @summary pdf转word
+        
+        @param request: SubmitConvertPdfToWordJobRequest
+        @return: SubmitConvertPdfToWordJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_convert_pdf_to_word_job_with_options_async(request, runtime)
 
@@ -1736,7 +2132,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1756,12 +2152,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1807,7 +2204,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1827,12 +2224,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1872,6 +2270,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitDigitalDocStructureJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse:
+        """
+        @summary 电子解析
+        
+        @param request: SubmitDigitalDocStructureJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDigitalDocStructureJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1908,6 +2313,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitDigitalDocStructureJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse:
+        """
+        @summary 电子解析
+        
+        @param request: SubmitDigitalDocStructureJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDigitalDocStructureJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -1943,6 +2355,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitDigitalDocStructureJobRequest,
     ) -> docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse:
+        """
+        @summary 电子解析
+        
+        @param request: SubmitDigitalDocStructureJobRequest
+        @return: SubmitDigitalDocStructureJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_digital_doc_structure_job_with_options(request, runtime)
 
@@ -1950,6 +2368,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitDigitalDocStructureJobRequest,
     ) -> docmind_api_20220711_models.SubmitDigitalDocStructureJobResponse:
+        """
+        @summary 电子解析
+        
+        @param request: SubmitDigitalDocStructureJobRequest
+        @return: SubmitDigitalDocStructureJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_digital_doc_structure_job_with_options_async(request, runtime)
 
@@ -1964,7 +2388,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1984,12 +2408,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2035,7 +2460,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2055,12 +2480,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2100,8 +2526,17 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitDocStructureJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitDocStructureJobResponse:
+        """
+        @summary 文档智能解析
+        
+        @param request: SubmitDocStructureJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocStructureJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.allow_ppt_format):
+            query['AllowPptFormat'] = request.allow_ppt_format
         if not UtilClient.is_unset(request.file_name):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_name_extension):
@@ -2136,8 +2571,17 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitDocStructureJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitDocStructureJobResponse:
+        """
+        @summary 文档智能解析
+        
+        @param request: SubmitDocStructureJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocStructureJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.allow_ppt_format):
+            query['AllowPptFormat'] = request.allow_ppt_format
         if not UtilClient.is_unset(request.file_name):
             query['FileName'] = request.file_name
         if not UtilClient.is_unset(request.file_name_extension):
@@ -2171,6 +2615,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitDocStructureJobRequest,
     ) -> docmind_api_20220711_models.SubmitDocStructureJobResponse:
+        """
+        @summary 文档智能解析
+        
+        @param request: SubmitDocStructureJobRequest
+        @return: SubmitDocStructureJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_doc_structure_job_with_options(request, runtime)
 
@@ -2178,6 +2628,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitDocStructureJobRequest,
     ) -> docmind_api_20220711_models.SubmitDocStructureJobResponse:
+        """
+        @summary 文档智能解析
+        
+        @param request: SubmitDocStructureJobRequest
+        @return: SubmitDocStructureJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_doc_structure_job_with_options_async(request, runtime)
 
@@ -2192,7 +2648,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2212,12 +2668,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2263,7 +2720,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2283,12 +2740,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2323,93 +2781,18 @@ class Client(OpenApiClient):
         submit_doc_structure_job_resp = await self.submit_doc_structure_job_with_options_async(submit_doc_structure_job_req, runtime)
         return submit_doc_structure_job_resp
 
-    def submit_document_compare_job_with_options(
-        self,
-        request: docmind_api_20220711_models.SubmitDocumentCompareJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> docmind_api_20220711_models.SubmitDocumentCompareJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.compare_file_name):
-            query['CompareFileName'] = request.compare_file_name
-        if not UtilClient.is_unset(request.compare_file_url):
-            query['CompareFileUrl'] = request.compare_file_url
-        if not UtilClient.is_unset(request.origin_file_name):
-            query['OriginFileName'] = request.origin_file_name
-        if not UtilClient.is_unset(request.origin_file_url):
-            query['OriginFileUrl'] = request.origin_file_url
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitDocumentCompareJob',
-            version='2022-07-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDocumentCompareJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_document_compare_job_with_options_async(
-        self,
-        request: docmind_api_20220711_models.SubmitDocumentCompareJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> docmind_api_20220711_models.SubmitDocumentCompareJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.compare_file_name):
-            query['CompareFileName'] = request.compare_file_name
-        if not UtilClient.is_unset(request.compare_file_url):
-            query['CompareFileUrl'] = request.compare_file_url
-        if not UtilClient.is_unset(request.origin_file_name):
-            query['OriginFileName'] = request.origin_file_name
-        if not UtilClient.is_unset(request.origin_file_url):
-            query['OriginFileUrl'] = request.origin_file_url
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitDocumentCompareJob',
-            version='2022-07-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            docmind_api_20220711_models.SubmitDocumentCompareJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_document_compare_job(
-        self,
-        request: docmind_api_20220711_models.SubmitDocumentCompareJobRequest,
-    ) -> docmind_api_20220711_models.SubmitDocumentCompareJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_document_compare_job_with_options(request, runtime)
-
-    async def submit_document_compare_job_async(
-        self,
-        request: docmind_api_20220711_models.SubmitDocumentCompareJobRequest,
-    ) -> docmind_api_20220711_models.SubmitDocumentCompareJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_document_compare_job_with_options_async(request, runtime)
-
     def submit_document_extract_job_with_options(
         self,
         request: docmind_api_20220711_models.SubmitDocumentExtractJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitDocumentExtractJobResponse:
+        """
+        @summary 文档抽取
+        
+        @param request: SubmitDocumentExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocumentExtractJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -2442,6 +2825,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitDocumentExtractJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitDocumentExtractJobResponse:
+        """
+        @summary 文档抽取
+        
+        @param request: SubmitDocumentExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocumentExtractJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -2473,6 +2863,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitDocumentExtractJobRequest,
     ) -> docmind_api_20220711_models.SubmitDocumentExtractJobResponse:
+        """
+        @summary 文档抽取
+        
+        @param request: SubmitDocumentExtractJobRequest
+        @return: SubmitDocumentExtractJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_document_extract_job_with_options(request, runtime)
 
@@ -2480,6 +2876,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitDocumentExtractJobRequest,
     ) -> docmind_api_20220711_models.SubmitDocumentExtractJobResponse:
+        """
+        @summary 文档抽取
+        
+        @param request: SubmitDocumentExtractJobRequest
+        @return: SubmitDocumentExtractJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_document_extract_job_with_options_async(request, runtime)
 
@@ -2494,7 +2896,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2514,12 +2916,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2565,7 +2968,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2585,12 +2988,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2630,6 +3034,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitTableUnderstandingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitTableUnderstandingJobResponse:
+        """
+        @summary 表格智能解析
+        
+        @param request: SubmitTableUnderstandingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTableUnderstandingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -2662,6 +3073,13 @@ class Client(OpenApiClient):
         request: docmind_api_20220711_models.SubmitTableUnderstandingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> docmind_api_20220711_models.SubmitTableUnderstandingJobResponse:
+        """
+        @summary 表格智能解析
+        
+        @param request: SubmitTableUnderstandingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTableUnderstandingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -2693,6 +3111,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitTableUnderstandingJobRequest,
     ) -> docmind_api_20220711_models.SubmitTableUnderstandingJobResponse:
+        """
+        @summary 表格智能解析
+        
+        @param request: SubmitTableUnderstandingJobRequest
+        @return: SubmitTableUnderstandingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_table_understanding_job_with_options(request, runtime)
 
@@ -2700,6 +3124,12 @@ class Client(OpenApiClient):
         self,
         request: docmind_api_20220711_models.SubmitTableUnderstandingJobRequest,
     ) -> docmind_api_20220711_models.SubmitTableUnderstandingJobResponse:
+        """
+        @summary 表格智能解析
+        
+        @param request: SubmitTableUnderstandingJobRequest
+        @return: SubmitTableUnderstandingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_table_understanding_job_with_options_async(request, runtime)
 
@@ -2714,7 +3144,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2734,12 +3164,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2785,7 +3216,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2805,12 +3236,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()

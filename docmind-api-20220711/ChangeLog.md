@@ -1,3 +1,8 @@
+2024-06-28 Version: 1.3.1
+- Delete API SubmitDocumentCompareJob.
+- Update API SubmitDocStructureJob: add param AllowPptFormat.
+
+
 2024-05-09 Version: 1.3.0
 - Support API SubmitConvertImageToMarkdownJob.
 - Support API SubmitConvertPdfToMarkdownJob.

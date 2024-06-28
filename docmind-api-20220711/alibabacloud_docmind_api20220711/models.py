@@ -15,6 +15,7 @@ class AyncTradeDocumentPackageExtractSmartAppRequest(TeaModel):
     ):
         self.custom_extraction_range = custom_extraction_range
         self.file_name = file_name
+        # This parameter is required.
         self.file_url = file_url
         self.option = option
         self.template_name = template_name
@@ -66,6 +67,7 @@ class AyncTradeDocumentPackageExtractSmartAppShrinkRequest(TeaModel):
     ):
         self.custom_extraction_range_shrink = custom_extraction_range_shrink
         self.file_name = file_name
+        # This parameter is required.
         self.file_url = file_url
         self.option = option
         self.template_name = template_name
@@ -549,10 +551,12 @@ class GetDocumentConvertResultResponseBody(TeaModel):
         status: str = None,
     ):
         self.code = code
+        # This parameter is required.
         self.completed = completed
         self.data = data
         self.message = message
         self.request_id = request_id
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -2795,12 +2799,14 @@ class SubmitDigitalDocStructureJobResponse(TeaModel):
 class SubmitDocStructureJobRequest(TeaModel):
     def __init__(
         self,
+        allow_ppt_format: bool = None,
         file_name: str = None,
         file_name_extension: str = None,
         file_url: str = None,
         formula_enhancement: bool = None,
         structure_type: str = None,
     ):
+        self.allow_ppt_format = allow_ppt_format
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
@@ -2816,6 +2822,8 @@ class SubmitDocStructureJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_ppt_format is not None:
+            result['AllowPptFormat'] = self.allow_ppt_format
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.file_name_extension is not None:
@@ -2830,6 +2838,8 @@ class SubmitDocStructureJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowPptFormat') is not None:
+            self.allow_ppt_format = m.get('AllowPptFormat')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('FileNameExtension') is not None:
@@ -2846,12 +2856,14 @@ class SubmitDocStructureJobRequest(TeaModel):
 class SubmitDocStructureJobAdvanceRequest(TeaModel):
     def __init__(
         self,
+        allow_ppt_format: bool = None,
         file_name: str = None,
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
         formula_enhancement: bool = None,
         structure_type: str = None,
     ):
+        self.allow_ppt_format = allow_ppt_format
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
@@ -2867,6 +2879,8 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_ppt_format is not None:
+            result['AllowPptFormat'] = self.allow_ppt_format
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.file_name_extension is not None:
@@ -2881,6 +2895,8 @@ class SubmitDocStructureJobAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowPptFormat') is not None:
+            self.allow_ppt_format = m.get('AllowPptFormat')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('FileNameExtension') is not None:
@@ -3005,166 +3021,6 @@ class SubmitDocStructureJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitDocStructureJobResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SubmitDocumentCompareJobRequest(TeaModel):
-    def __init__(
-        self,
-        compare_file_name: str = None,
-        compare_file_url: str = None,
-        origin_file_name: str = None,
-        origin_file_url: str = None,
-    ):
-        self.compare_file_name = compare_file_name
-        self.compare_file_url = compare_file_url
-        self.origin_file_name = origin_file_name
-        self.origin_file_url = origin_file_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.compare_file_name is not None:
-            result['CompareFileName'] = self.compare_file_name
-        if self.compare_file_url is not None:
-            result['CompareFileUrl'] = self.compare_file_url
-        if self.origin_file_name is not None:
-            result['OriginFileName'] = self.origin_file_name
-        if self.origin_file_url is not None:
-            result['OriginFileUrl'] = self.origin_file_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CompareFileName') is not None:
-            self.compare_file_name = m.get('CompareFileName')
-        if m.get('CompareFileUrl') is not None:
-            self.compare_file_url = m.get('CompareFileUrl')
-        if m.get('OriginFileName') is not None:
-            self.origin_file_name = m.get('OriginFileName')
-        if m.get('OriginFileUrl') is not None:
-            self.origin_file_url = m.get('OriginFileUrl')
-        return self
-
-
-class SubmitDocumentCompareJobResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-    ):
-        self.id = id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        return self
-
-
-class SubmitDocumentCompareJobResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: SubmitDocumentCompareJobResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = SubmitDocumentCompareJobResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SubmitDocumentCompareJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SubmitDocumentCompareJobResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SubmitDocumentCompareJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
