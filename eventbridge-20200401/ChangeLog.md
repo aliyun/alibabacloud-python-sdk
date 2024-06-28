@@ -1,3 +1,9 @@
+2024-06-28 Version: 4.1.5
+- Update API CreateEventStreaming: update param Sink.
+- Update API ListEventStreamings: update response param.
+- Update API UpdateEventStreaming: update param Sink.
+
+
 2024-06-27 Version: 4.1.4
 - Update API CreateEventStreaming: update param Sink.
 - Update API UpdateEventStreaming: update param Sink.
