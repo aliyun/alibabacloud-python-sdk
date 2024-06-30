@@ -1,3 +1,18 @@
+2024-06-30 Version: 1.2.0
+- Support API GetQuotaApplicationApproval.
+- Support API RemindQuotaApplicationApproval.
+- Update API GetProductQuota: update param Dimensions.
+- Update API GetProductQuota: update response param.
+- Update API ListAlarmHistories: add param AlarmId.
+- Update API ListProductQuotaDimensions: update response param.
+- Update API ListProductQuotas: update param Dimensions.
+- Update API ListProductQuotas: update param KeyWord.
+- Update API ListProductQuotas: update param MaxResults.
+- Update API ListProductQuotas: update param NextToken.
+- Update API ListProductQuotas: update param QuotaActionCode.
+- Update API ListProductQuotas: update response param.
+
+
 2024-01-12 Version: 1.1.4
 - Generated python 2020-05-10 for quotas.
 
