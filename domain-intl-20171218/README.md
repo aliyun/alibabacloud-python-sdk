@@ -28,7 +28,7 @@ pip install alibabacloud_domain_intl20171218
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/domain-intl-20171218/ChangeLog.md).
 
 ## References
 

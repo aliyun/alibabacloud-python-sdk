@@ -12,6 +12,7 @@ class AcknowledgeTaskResultRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.task_detail_no = task_detail_no
         self.user_client_ip = user_client_ip
 
@@ -88,9 +89,6 @@ class AcknowledgeTaskResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -127,6 +125,7 @@ class BatchFuzzyMatchDomainSensitiveWordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -344,9 +343,6 @@ class BatchFuzzyMatchDomainSensitiveWordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -384,7 +380,9 @@ class CancelDomainVerificationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.action_type = action_type
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -460,9 +458,6 @@ class CancelDomainVerificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -500,6 +495,7 @@ class CancelTaskRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.task_no = task_no
         self.user_client_ip = user_client_ip
 
@@ -570,9 +566,6 @@ class CancelTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -612,6 +605,7 @@ class CheckDomainRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.fee_command = fee_command
         self.fee_currency = fee_currency
@@ -734,9 +728,6 @@ class CheckDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -773,6 +764,7 @@ class CheckDomainSunriseClaimRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -856,9 +848,6 @@ class CheckDomainSunriseClaimResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -896,6 +885,7 @@ class CheckTransferInFeasibilityRequest(TeaModel):
         transfer_authorization_code: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.transfer_authorization_code = transfer_authorization_code
@@ -996,9 +986,6 @@ class CheckTransferInFeasibilityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1036,7 +1023,9 @@ class ConfirmTransferInEmailRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -1183,9 +1172,6 @@ class ConfirmTransferInEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1222,6 +1208,7 @@ class DeleteEmailVerificationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -1400,9 +1387,6 @@ class DeleteEmailVerificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1440,6 +1424,7 @@ class DeleteRegistrantProfileRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -1510,9 +1495,6 @@ class DeleteRegistrantProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1549,6 +1531,7 @@ class EmailVerifiedRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -1620,9 +1603,6 @@ class EmailVerifiedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1659,6 +1639,7 @@ class FuzzyMatchDomainSensitiveWordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -1812,9 +1793,6 @@ class FuzzyMatchDomainSensitiveWordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2083,9 +2061,6 @@ class ListEmailVerificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2122,6 +2097,7 @@ class LookupTmchNoticeRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.claim_key = claim_key
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -2765,9 +2741,6 @@ class LookupTmchNoticeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2812,7 +2785,9 @@ class PollTaskResultRequest(TeaModel):
         self.domain_name = domain_name
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.task_no = task_no
         self.task_result_status = task_result_status
@@ -3083,9 +3058,6 @@ class PollTaskResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3122,6 +3094,7 @@ class QueryArtExtensionRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -3253,9 +3226,6 @@ class QueryArtExtensionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3299,7 +3269,9 @@ class QueryChangeLogListRequest(TeaModel):
         self.domain_name = domain_name
         self.end_date = end_date
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.start_date = start_date
         self.user_client_ip = user_client_ip
@@ -3529,9 +3501,6 @@ class QueryChangeLogListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3569,7 +3538,9 @@ class QueryContactInfoRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.contact_type = contact_type
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -3717,9 +3688,6 @@ class QueryContactInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3756,6 +3724,7 @@ class QueryDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -3886,9 +3855,6 @@ class QueryDSRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3925,6 +3891,7 @@ class QueryDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -4043,9 +4010,6 @@ class QueryDnsHostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4082,6 +4046,7 @@ class QueryDomainByDomainNameRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -4314,9 +4279,6 @@ class QueryDomainByDomainNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4353,6 +4315,7 @@ class QueryDomainByInstanceIdRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -4585,9 +4548,6 @@ class QueryDomainByInstanceIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4620,6 +4580,7 @@ class QueryDomainByInstanceIdResponse(TeaModel):
 class QueryDomainListRequest(TeaModel):
     def __init__(
         self,
+        ccompany: str = None,
         domain_name: str = None,
         end_expiration_date: int = None,
         end_registration_date: int = None,
@@ -4634,13 +4595,16 @@ class QueryDomainListRequest(TeaModel):
         start_registration_date: int = None,
         user_client_ip: str = None,
     ):
+        self.ccompany = ccompany
         self.domain_name = domain_name
         self.end_expiration_date = end_expiration_date
         self.end_registration_date = end_registration_date
         self.lang = lang
         self.order_by_type = order_by_type
         self.order_key_type = order_key_type
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.product_domain_type = product_domain_type
         self.query_type = query_type
@@ -4657,6 +4621,8 @@ class QueryDomainListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ccompany is not None:
+            result['Ccompany'] = self.ccompany
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.end_expiration_date is not None:
@@ -4687,6 +4653,8 @@ class QueryDomainListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ccompany') is not None:
+            self.ccompany = m.get('Ccompany')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('EndExpirationDate') is not None:
@@ -4945,9 +4913,6 @@ class QueryDomainListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4985,6 +4950,7 @@ class QueryDomainRealNameVerificationInfoRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.fetch_image = fetch_image
         self.lang = lang
@@ -5103,9 +5069,6 @@ class QueryDomainRealNameVerificationInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5142,6 +5105,7 @@ class QueryEnsAssociationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -5219,9 +5183,6 @@ class QueryEnsAssociationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5259,8 +5220,10 @@ class QueryFailReasonForDomainRealNameVerificationRequest(TeaModel):
         real_name_verification_action: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.real_name_verification_action = real_name_verification_action
         self.user_client_ip = user_client_ip
 
@@ -5382,9 +5345,6 @@ class QueryFailReasonForDomainRealNameVerificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5422,6 +5382,7 @@ class QueryFailReasonForRegistrantProfileRealNameVerificationRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -5539,9 +5500,6 @@ class QueryFailReasonForRegistrantProfileRealNameVerificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5578,6 +5536,7 @@ class QueryLocalEnsAssociationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -5655,9 +5614,6 @@ class QueryLocalEnsAssociationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5697,6 +5653,7 @@ class QueryRegistrantProfileRealNameVerificationInfoRequest(TeaModel):
     ):
         self.fetch_image = fetch_image
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -5813,9 +5770,6 @@ class QueryRegistrantProfileRealNameVerificationInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6185,9 +6139,6 @@ class QueryRegistrantProfilesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6232,8 +6183,10 @@ class QueryTaskDetailHistoryRequest(TeaModel):
         self.domain_name = domain_name
         self.domain_name_cursor = domain_name_cursor
         self.lang = lang
+        # This parameter is required.
         self.page_size = page_size
         self.task_detail_no_cursor = task_detail_no_cursor
+        # This parameter is required.
         self.task_no = task_no
         self.task_status = task_status
         self.user_client_ip = user_client_ip
@@ -6744,9 +6697,6 @@ class QueryTaskDetailHistoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6791,8 +6741,11 @@ class QueryTaskDetailListRequest(TeaModel):
         self.domain_name = domain_name
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.task_no = task_no
         self.task_status = task_status
         self.user_client_ip = user_client_ip
@@ -7062,9 +7015,6 @@ class QueryTaskDetailListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7109,6 +7059,7 @@ class QueryTaskInfoHistoryRequest(TeaModel):
         self.create_time_cursor = create_time_cursor
         self.end_create_time = end_create_time
         self.lang = lang
+        # This parameter is required.
         self.page_size = page_size
         self.task_no_cursor = task_no_cursor
         self.user_client_ip = user_client_ip
@@ -7543,9 +7494,6 @@ class QueryTaskInfoHistoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7588,7 +7536,9 @@ class QueryTaskListRequest(TeaModel):
         self.begin_create_time = begin_create_time
         self.end_create_time = end_create_time
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.user_client_ip = user_client_ip
 
@@ -7831,9 +7781,6 @@ class QueryTaskListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7870,6 +7817,7 @@ class QueryTransferInByInstanceIdRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -8067,9 +8015,6 @@ class QueryTransferInByInstanceIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8113,7 +8058,9 @@ class QueryTransferInListRequest(TeaModel):
     ):
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.simple_transfer_in_status = simple_transfer_in_status
         self.submission_end_date = submission_end_date
@@ -8433,9 +8380,6 @@ class QueryTransferInListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8472,6 +8416,7 @@ class QueryTransferOutInfoRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -8585,9 +8530,6 @@ class QueryTransferOutInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8627,10 +8569,14 @@ class RegistrantProfileRealNameVerificationRequest(TeaModel):
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.identity_credential = identity_credential
+        # This parameter is required.
         self.identity_credential_no = identity_credential_no
+        # This parameter is required.
         self.identity_credential_type = identity_credential_type
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -8713,9 +8659,6 @@ class RegistrantProfileRealNameVerificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8752,6 +8695,7 @@ class ResendEmailVerificationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -8930,9 +8874,6 @@ class ResendEmailVerificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9122,6 +9063,7 @@ class SaveBatchTaskForCreatingOrderActivateRequest(TeaModel):
     ):
         self.coupon_no = coupon_no
         self.lang = lang
+        # This parameter is required.
         self.order_activate_param = order_activate_param
         self.promotion_no = promotion_no
         self.use_coupon = use_coupon
@@ -9225,9 +9167,6 @@ class SaveBatchTaskForCreatingOrderActivateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9303,6 +9242,7 @@ class SaveBatchTaskForCreatingOrderRedeemRequest(TeaModel):
     ):
         self.coupon_no = coupon_no
         self.lang = lang
+        # This parameter is required.
         self.order_redeem_param = order_redeem_param
         self.promotion_no = promotion_no
         self.use_coupon = use_coupon
@@ -9406,9 +9346,6 @@ class SaveBatchTaskForCreatingOrderRedeemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9490,6 +9427,7 @@ class SaveBatchTaskForCreatingOrderRenewRequest(TeaModel):
     ):
         self.coupon_no = coupon_no
         self.lang = lang
+        # This parameter is required.
         self.order_renew_param = order_renew_param
         self.promotion_no = promotion_no
         self.use_coupon = use_coupon
@@ -9593,9 +9531,6 @@ class SaveBatchTaskForCreatingOrderRenewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9683,6 +9618,7 @@ class SaveBatchTaskForCreatingOrderTransferRequest(TeaModel):
     ):
         self.coupon_no = coupon_no
         self.lang = lang
+        # This parameter is required.
         self.order_transfer_param = order_transfer_param
         self.promotion_no = promotion_no
         self.use_coupon = use_coupon
@@ -9786,9 +9722,6 @@ class SaveBatchTaskForCreatingOrderTransferResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9826,9 +9759,11 @@ class SaveBatchTaskForDomainNameProxyServiceRequest(TeaModel):
         user_client_ip: str = None,
         status: bool = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -9908,9 +9843,6 @@ class SaveBatchTaskForDomainNameProxyServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9949,7 +9881,9 @@ class SaveBatchTaskForModifyingDomainDnsRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.aliyun_dns = aliyun_dns
+        # This parameter is required.
         self.domain_name = domain_name
         self.domain_name_server = domain_name_server
         self.lang = lang
@@ -10036,9 +9970,6 @@ class SaveBatchTaskForModifyingDomainDnsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10071,8 +10002,13 @@ class SaveBatchTaskForModifyingDomainDnsResponse(TeaModel):
 class SaveBatchTaskForReserveDropListDomainRequestDomains(TeaModel):
     def __init__(
         self,
+        dns_1: str = None,
+        dns_2: str = None,
         domain_name: str = None,
     ):
+        self.dns_1 = dns_1
+        self.dns_2 = dns_2
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -10084,12 +10020,20 @@ class SaveBatchTaskForReserveDropListDomainRequestDomains(TeaModel):
             return _map
 
         result = dict()
+        if self.dns_1 is not None:
+            result['Dns1'] = self.dns_1
+        if self.dns_2 is not None:
+            result['Dns2'] = self.dns_2
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Dns1') is not None:
+            self.dns_1 = m.get('Dns1')
+        if m.get('Dns2') is not None:
+            self.dns_2 = m.get('Dns2')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         return self
@@ -10101,7 +10045,9 @@ class SaveBatchTaskForReserveDropListDomainRequest(TeaModel):
         contact_template_id: str = None,
         domains: List[SaveBatchTaskForReserveDropListDomainRequestDomains] = None,
     ):
+        # This parameter is required.
         self.contact_template_id = contact_template_id
+        # This parameter is required.
         self.domains = domains
 
     def validate(self):
@@ -10181,9 +10127,6 @@ class SaveBatchTaskForReserveDropListDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10221,8 +10164,10 @@ class SaveBatchTaskForTransferProhibitionLockRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -10303,9 +10248,6 @@ class SaveBatchTaskForTransferProhibitionLockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10343,8 +10285,10 @@ class SaveBatchTaskForUpdateProhibitionLockRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -10425,9 +10369,6 @@ class SaveBatchTaskForUpdateProhibitionLockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10468,9 +10409,12 @@ class SaveBatchTaskForUpdatingContactInfoRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.add_transfer_lock = add_transfer_lock
+        # This parameter is required.
         self.contact_type = contact_type
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -10559,9 +10503,6 @@ class SaveBatchTaskForUpdatingContactInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10613,8 +10554,10 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest(TeaModel):
     ):
         self.address = address
         self.city = city
+        # This parameter is required.
         self.contact_type = contact_type
         self.country = country
+        # This parameter is required.
         self.domain_name = domain_name
         self.email = email
         self.lang = lang
@@ -10753,9 +10696,6 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10953,9 +10893,6 @@ class SaveRegistrantProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10996,10 +10933,15 @@ class SaveSingleTaskForAddingDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.algorithm = algorithm
+        # This parameter is required.
         self.digest = digest
+        # This parameter is required.
         self.digest_type = digest_type
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.key_tag = key_tag
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -11093,9 +11035,6 @@ class SaveSingleTaskForAddingDSRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11132,6 +11071,7 @@ class SaveSingleTaskForApprovingTransferOutRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -11209,9 +11149,6 @@ class SaveSingleTaskForApprovingTransferOutResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11249,7 +11186,9 @@ class SaveSingleTaskForAssociatingEnsRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.address = address
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -11331,9 +11270,6 @@ class SaveSingleTaskForAssociatingEnsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11370,6 +11306,7 @@ class SaveSingleTaskForCancelingTransferInRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -11447,9 +11384,6 @@ class SaveSingleTaskForCancelingTransferInResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11486,6 +11420,7 @@ class SaveSingleTaskForCancelingTransferOutRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -11563,9 +11498,6 @@ class SaveSingleTaskForCancelingTransferOutResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11604,8 +11536,11 @@ class SaveSingleTaskForCreatingDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.dns_name = dns_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.ip = ip
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -11691,9 +11626,6 @@ class SaveSingleTaskForCreatingDnsHostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11761,6 +11693,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest(TeaModel):
         self.coupon_no = coupon_no
         self.dns_1 = dns_1
         self.dns_2 = dns_2
+        # This parameter is required.
         self.domain_name = domain_name
         self.email = email
         self.enable_domain_proxy = enable_domain_proxy
@@ -11951,9 +11884,6 @@ class SaveSingleTaskForCreatingOrderActivateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11996,7 +11926,9 @@ class SaveSingleTaskForCreatingOrderRedeemRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.coupon_no = coupon_no
+        # This parameter is required.
         self.current_expiration_date = current_expiration_date
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.promotion_no = promotion_no
@@ -12097,9 +12029,6 @@ class SaveSingleTaskForCreatingOrderRedeemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12143,10 +12072,13 @@ class SaveSingleTaskForCreatingOrderRenewRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.coupon_no = coupon_no
+        # This parameter is required.
         self.current_expiration_date = current_expiration_date
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.promotion_no = promotion_no
+        # This parameter is required.
         self.subscription_duration = subscription_duration
         self.use_coupon = use_coupon
         self.use_promotion = use_promotion
@@ -12249,9 +12181,6 @@ class SaveSingleTaskForCreatingOrderRenewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12295,12 +12224,15 @@ class SaveSingleTaskForCreatingOrderTransferRequest(TeaModel):
         use_promotion: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.authorization_code = authorization_code
         self.coupon_no = coupon_no
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.permit_premium_transfer = permit_premium_transfer
         self.promotion_no = promotion_no
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.use_coupon = use_coupon
         self.use_promotion = use_promotion
@@ -12407,9 +12339,6 @@ class SaveSingleTaskForCreatingOrderTransferResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12447,7 +12376,9 @@ class SaveSingleTaskForDeletingDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.key_tag = key_tag
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -12529,9 +12460,6 @@ class SaveSingleTaskForDeletingDSRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12570,8 +12498,11 @@ class SaveSingleTaskForDeletingDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.dns_name = dns_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.ip = ip
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -12657,9 +12588,6 @@ class SaveSingleTaskForDeletingDnsHostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12696,6 +12624,7 @@ class SaveSingleTaskForDisassociatingEnsRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -12773,9 +12702,6 @@ class SaveSingleTaskForDisassociatingEnsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12813,8 +12739,10 @@ class SaveSingleTaskForDomainNameProxyServiceRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -12895,9 +12823,6 @@ class SaveSingleTaskForDomainNameProxyServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12938,10 +12863,15 @@ class SaveSingleTaskForModifyingDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.algorithm = algorithm
+        # This parameter is required.
         self.digest = digest
+        # This parameter is required.
         self.digest_type = digest_type
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.key_tag = key_tag
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -13035,9 +12965,6 @@ class SaveSingleTaskForModifyingDSRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13076,8 +13003,11 @@ class SaveSingleTaskForModifyingDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.dns_name = dns_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.ip = ip
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -13163,9 +13093,6 @@ class SaveSingleTaskForModifyingDnsHostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13202,6 +13129,7 @@ class SaveSingleTaskForQueryingTransferAuthorizationCodeRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -13279,9 +13207,6 @@ class SaveSingleTaskForQueryingTransferAuthorizationCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13329,6 +13254,7 @@ class SaveSingleTaskForSaveArtExtensionRequest(TeaModel):
     ):
         self.date_or_period = date_or_period
         self.dimensions = dimensions
+        # This parameter is required.
         self.domain_name = domain_name
         self.features = features
         self.inscriptions_and_markings = inscriptions_and_markings
@@ -13449,9 +13375,6 @@ class SaveSingleTaskForSaveArtExtensionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13488,6 +13411,7 @@ class SaveSingleTaskForSynchronizingDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -13565,9 +13489,6 @@ class SaveSingleTaskForSynchronizingDSRecordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13604,6 +13525,7 @@ class SaveSingleTaskForSynchronizingDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -13681,9 +13603,6 @@ class SaveSingleTaskForSynchronizingDnsHostResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13721,8 +13640,10 @@ class SaveSingleTaskForTransferProhibitionLockRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -13803,9 +13724,6 @@ class SaveSingleTaskForTransferProhibitionLockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13843,8 +13761,10 @@ class SaveSingleTaskForUpdateProhibitionLockRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -13925,9 +13845,6 @@ class SaveSingleTaskForUpdateProhibitionLockResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13969,10 +13886,13 @@ class SaveSingleTaskForUpdatingContactInfoRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.add_transfer_lock = add_transfer_lock
+        # This parameter is required.
         self.contact_type = contact_type
+        # This parameter is required.
         self.domain_name = domain_name
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -14065,9 +13985,6 @@ class SaveSingleTaskForUpdatingContactInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14104,6 +14021,7 @@ class SaveTaskForSubmittingDomainDeleteRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -14181,9 +14099,6 @@ class SaveTaskForSubmittingDomainDeleteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14223,9 +14138,13 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.identity_credential = identity_credential
+        # This parameter is required.
         self.identity_credential_no = identity_credential_no
+        # This parameter is required.
         self.identity_credential_type = identity_credential_type
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -14315,9 +14234,6 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRespons
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14356,9 +14272,12 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -14443,9 +14362,6 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRespon
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14501,20 +14417,28 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest(TeaModel):
         self.address = address
         self.city = city
         self.country = country
+        # This parameter is required.
         self.domain_name = domain_name
         self.email = email
+        # This parameter is required.
         self.identity_credential = identity_credential
+        # This parameter is required.
         self.identity_credential_no = identity_credential_no
+        # This parameter is required.
         self.identity_credential_type = identity_credential_type
         self.lang = lang
         self.postal_code = postal_code
         self.province = province
         self.registrant_name = registrant_name
         self.registrant_organization = registrant_organization
+        # This parameter is required.
         self.registrant_type = registrant_type
+        # This parameter is required.
         self.tel_area = tel_area
         self.tel_ext = tel_ext
+        # This parameter is required.
         self.telephone = telephone
+        # This parameter is required.
         self.transfer_out_prohibited = transfer_out_prohibited
         self.user_client_ip = user_client_ip
 
@@ -14655,9 +14579,6 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14696,9 +14617,12 @@ class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest(TeaModel):
         transfer_out_prohibited: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
+        # This parameter is required.
         self.transfer_out_prohibited = transfer_out_prohibited
         self.user_client_ip = user_client_ip
 
@@ -14783,9 +14707,6 @@ class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14823,6 +14744,7 @@ class SubmitEmailVerificationRequest(TeaModel):
         send_if_exist: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.send_if_exist = send_if_exist
@@ -15060,9 +14982,6 @@ class SubmitEmailVerificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15100,6 +15019,7 @@ class TransferInCheckMailTokenRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.token = token
         self.user_client_ip = user_client_ip
 
@@ -15241,9 +15161,6 @@ class TransferInCheckMailTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15281,8 +15198,10 @@ class TransferInReenterTransferAuthorizationCodeRequest(TeaModel):
         transfer_authorization_code: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.transfer_authorization_code = transfer_authorization_code
         self.user_client_ip = user_client_ip
 
@@ -15357,9 +15276,6 @@ class TransferInReenterTransferAuthorizationCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15396,6 +15312,7 @@ class TransferInRefetchWhoisEmailRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -15467,9 +15384,6 @@ class TransferInRefetchWhoisEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15506,6 +15420,7 @@ class TransferInResendMailTokenRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -15577,9 +15492,6 @@ class TransferInResendMailTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15759,9 +15671,6 @@ class VerifyContactFieldResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15799,6 +15708,7 @@ class VerifyEmailRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.token = token
         self.user_client_ip = user_client_ip
 
@@ -15869,9 +15779,6 @@ class VerifyEmailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
