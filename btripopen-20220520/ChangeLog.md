@@ -1,3 +1,28 @@
+2024-07-01 Version: 3.3.0
+- Support API AddDepartment.
+- Support API AddEmployee.
+- Support API DeleteDepartment.
+- Support API ExternalUserAdd.
+- Support API ExternalUserDelete.
+- Support API ExternalUserUpdate.
+- Support API HotelSuggest.
+- Support API UpdateDepartment.
+- Support API UpdateEmployee.
+- Support API UpdateEmployeeLeaveStatus.
+- Update API CarOrderListQuery: update response param.
+- Update API CarOrderQuery: update response param.
+- Update API FlightModifyOtaSearchV2: update response param.
+- Update API FlightOrderListQuery: update response param.
+- Update API FlightOrderQuery: update response param.
+- Update API FlightOtaItemDetail: update response param.
+- Update API HotelBillSettlementQuery: update response param.
+- Update API HotelOrderListQuery: update response param.
+- Update API HotelOrderQuery: update response param.
+- Update API TrainOrderListQuery: update response param.
+- Update API TrainOrderQueryV2: update response param.
+- Update API VatInvoiceScanQuery: update response param.
+
+
 2024-06-26 Version: 3.2.2
 - Generated python 2022-05-20 for btripOpen.
 

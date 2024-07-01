@@ -145,6 +145,350 @@ class Client(OpenApiClient):
         headers = {}
         return await self.access_token_with_options_async(request, headers, runtime)
 
+    def add_department_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.AddDepartmentRequest,
+        headers: btrip_open_20220520_models.AddDepartmentHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AddDepartmentResponse:
+        """
+        @summary 创建企业部门
+        
+        @param tmp_req: AddDepartmentRequest
+        @param headers: AddDepartmentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDepartmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.AddDepartmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.manager_employee_id_list):
+            request.manager_employee_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.manager_employee_id_list, 'manager_employee_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dept_name):
+            body['dept_name'] = request.dept_name
+        if not UtilClient.is_unset(request.manager_employee_id_list_shrink):
+            body['manager_employee_id_list'] = request.manager_employee_id_list_shrink
+        if not UtilClient.is_unset(request.out_dept_id):
+            body['out_dept_id'] = request.out_dept_id
+        if not UtilClient.is_unset(request.out_dept_pid):
+            body['out_dept_pid'] = request.out_dept_pid
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDepartment',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/department/v2/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AddDepartmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_department_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.AddDepartmentRequest,
+        headers: btrip_open_20220520_models.AddDepartmentHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AddDepartmentResponse:
+        """
+        @summary 创建企业部门
+        
+        @param tmp_req: AddDepartmentRequest
+        @param headers: AddDepartmentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDepartmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.AddDepartmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.manager_employee_id_list):
+            request.manager_employee_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.manager_employee_id_list, 'manager_employee_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dept_name):
+            body['dept_name'] = request.dept_name
+        if not UtilClient.is_unset(request.manager_employee_id_list_shrink):
+            body['manager_employee_id_list'] = request.manager_employee_id_list_shrink
+        if not UtilClient.is_unset(request.out_dept_id):
+            body['out_dept_id'] = request.out_dept_id
+        if not UtilClient.is_unset(request.out_dept_pid):
+            body['out_dept_pid'] = request.out_dept_pid
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDepartment',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/department/v2/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AddDepartmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_department(
+        self,
+        request: btrip_open_20220520_models.AddDepartmentRequest,
+    ) -> btrip_open_20220520_models.AddDepartmentResponse:
+        """
+        @summary 创建企业部门
+        
+        @param request: AddDepartmentRequest
+        @return: AddDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AddDepartmentHeaders()
+        return self.add_department_with_options(request, headers, runtime)
+
+    async def add_department_async(
+        self,
+        request: btrip_open_20220520_models.AddDepartmentRequest,
+    ) -> btrip_open_20220520_models.AddDepartmentResponse:
+        """
+        @summary 创建企业部门
+        
+        @param request: AddDepartmentRequest
+        @return: AddDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AddDepartmentHeaders()
+        return await self.add_department_with_options_async(request, headers, runtime)
+
+    def add_employee_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.AddEmployeeRequest,
+        headers: btrip_open_20220520_models.AddEmployeeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AddEmployeeResponse:
+        """
+        @summary 添加员工
+        
+        @param tmp_req: AddEmployeeRequest
+        @param headers: AddEmployeeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddEmployeeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.AddEmployeeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.base_city_code_list):
+            request.base_city_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_city_code_list, 'base_city_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.cert_list):
+            request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_role_code_list):
+            request.custom_role_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_role_code_list, 'custom_role_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.out_dept_id_list):
+            request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.avatar):
+            body['avatar'] = request.avatar
+        if not UtilClient.is_unset(request.base_city_code_list_shrink):
+            body['base_city_code_list'] = request.base_city_code_list_shrink
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_list_shrink):
+            body['cert_list'] = request.cert_list_shrink
+        if not UtilClient.is_unset(request.custom_role_code_list_shrink):
+            body['custom_role_code_list'] = request.custom_role_code_list_shrink
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
+        if not UtilClient.is_unset(request.is_admin):
+            body['is_admin'] = request.is_admin
+        if not UtilClient.is_unset(request.is_boss):
+            body['is_boss'] = request.is_boss
+        if not UtilClient.is_unset(request.is_dept_leader):
+            body['is_dept_leader'] = request.is_dept_leader
+        if not UtilClient.is_unset(request.job_no):
+            body['job_no'] = request.job_no
+        if not UtilClient.is_unset(request.manager_user_id):
+            body['manager_user_id'] = request.manager_user_id
+        if not UtilClient.is_unset(request.out_dept_id_list_shrink):
+            body['out_dept_id_list'] = request.out_dept_id_list_shrink
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.position_level):
+            body['position_level'] = request.position_level
+        if not UtilClient.is_unset(request.real_name):
+            body['real_name'] = request.real_name
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.union_id):
+            body['union_id'] = request.union_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_nick):
+            body['user_nick'] = request.user_nick
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddEmployee',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/employee/v2/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AddEmployeeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_employee_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.AddEmployeeRequest,
+        headers: btrip_open_20220520_models.AddEmployeeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AddEmployeeResponse:
+        """
+        @summary 添加员工
+        
+        @param tmp_req: AddEmployeeRequest
+        @param headers: AddEmployeeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddEmployeeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.AddEmployeeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.base_city_code_list):
+            request.base_city_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_city_code_list, 'base_city_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.cert_list):
+            request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_role_code_list):
+            request.custom_role_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_role_code_list, 'custom_role_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.out_dept_id_list):
+            request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.avatar):
+            body['avatar'] = request.avatar
+        if not UtilClient.is_unset(request.base_city_code_list_shrink):
+            body['base_city_code_list'] = request.base_city_code_list_shrink
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_list_shrink):
+            body['cert_list'] = request.cert_list_shrink
+        if not UtilClient.is_unset(request.custom_role_code_list_shrink):
+            body['custom_role_code_list'] = request.custom_role_code_list_shrink
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
+        if not UtilClient.is_unset(request.is_admin):
+            body['is_admin'] = request.is_admin
+        if not UtilClient.is_unset(request.is_boss):
+            body['is_boss'] = request.is_boss
+        if not UtilClient.is_unset(request.is_dept_leader):
+            body['is_dept_leader'] = request.is_dept_leader
+        if not UtilClient.is_unset(request.job_no):
+            body['job_no'] = request.job_no
+        if not UtilClient.is_unset(request.manager_user_id):
+            body['manager_user_id'] = request.manager_user_id
+        if not UtilClient.is_unset(request.out_dept_id_list_shrink):
+            body['out_dept_id_list'] = request.out_dept_id_list_shrink
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.position_level):
+            body['position_level'] = request.position_level
+        if not UtilClient.is_unset(request.real_name):
+            body['real_name'] = request.real_name
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.union_id):
+            body['union_id'] = request.union_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_nick):
+            body['user_nick'] = request.user_nick
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddEmployee',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/employee/v2/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AddEmployeeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_employee(
+        self,
+        request: btrip_open_20220520_models.AddEmployeeRequest,
+    ) -> btrip_open_20220520_models.AddEmployeeResponse:
+        """
+        @summary 添加员工
+        
+        @param request: AddEmployeeRequest
+        @return: AddEmployeeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AddEmployeeHeaders()
+        return self.add_employee_with_options(request, headers, runtime)
+
+    async def add_employee_async(
+        self,
+        request: btrip_open_20220520_models.AddEmployeeRequest,
+    ) -> btrip_open_20220520_models.AddEmployeeResponse:
+        """
+        @summary 添加员工
+        
+        @param request: AddEmployeeRequest
+        @return: AddEmployeeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AddEmployeeHeaders()
+        return await self.add_employee_with_options_async(request, headers, runtime)
+
     def add_employees_to_custom_role_with_options(
         self,
         tmp_req: btrip_open_20220520_models.AddEmployeesToCustomRoleRequest,
@@ -5065,6 +5409,120 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.DeleteCustomRoleHeaders()
         return await self.delete_custom_role_with_options_async(request, headers, runtime)
 
+    def delete_department_with_options(
+        self,
+        request: btrip_open_20220520_models.DeleteDepartmentRequest,
+        headers: btrip_open_20220520_models.DeleteDepartmentHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.DeleteDepartmentResponse:
+        """
+        @summary 删除企业部门
+        
+        @param request: DeleteDepartmentRequest
+        @param headers: DeleteDepartmentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDepartmentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_dept_id):
+            body['out_dept_id'] = request.out_dept_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDepartment',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/department/v2/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.DeleteDepartmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_department_with_options_async(
+        self,
+        request: btrip_open_20220520_models.DeleteDepartmentRequest,
+        headers: btrip_open_20220520_models.DeleteDepartmentHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.DeleteDepartmentResponse:
+        """
+        @summary 删除企业部门
+        
+        @param request: DeleteDepartmentRequest
+        @param headers: DeleteDepartmentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDepartmentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.out_dept_id):
+            body['out_dept_id'] = request.out_dept_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDepartment',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/department/v2/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.DeleteDepartmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_department(
+        self,
+        request: btrip_open_20220520_models.DeleteDepartmentRequest,
+    ) -> btrip_open_20220520_models.DeleteDepartmentResponse:
+        """
+        @summary 删除企业部门
+        
+        @param request: DeleteDepartmentRequest
+        @return: DeleteDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.DeleteDepartmentHeaders()
+        return self.delete_department_with_options(request, headers, runtime)
+
+    async def delete_department_async(
+        self,
+        request: btrip_open_20220520_models.DeleteDepartmentRequest,
+    ) -> btrip_open_20220520_models.DeleteDepartmentResponse:
+        """
+        @summary 删除企业部门
+        
+        @param request: DeleteDepartmentRequest
+        @return: DeleteDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.DeleteDepartmentHeaders()
+        return await self.delete_department_with_options_async(request, headers, runtime)
+
     def delete_employees_from_custom_role_with_options(
         self,
         tmp_req: btrip_open_20220520_models.DeleteEmployeesFromCustomRoleRequest,
@@ -6104,6 +6562,402 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ExceedApplySyncHeaders()
         return await self.exceed_apply_sync_with_options_async(request, headers, runtime)
+
+    def external_user_add_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.ExternalUserAddRequest,
+        headers: btrip_open_20220520_models.ExternalUserAddHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ExternalUserAddResponse:
+        """
+        @summary 添加外部出行人与证件信息
+        
+        @param tmp_req: ExternalUserAddRequest
+        @param headers: ExternalUserAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExternalUserAddResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.ExternalUserAddShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cert_request_list):
+            request.cert_request_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_request_list, 'cert_request_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_request_list_shrink):
+            body['cert_request_list'] = request.cert_request_list_shrink
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.external_user_id):
+            body['external_user_id'] = request.external_user_id
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.real_name):
+            body['real_name'] = request.real_name
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.user_type):
+            body['user_type'] = request.user_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExternalUserAdd',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/externalUsers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ExternalUserAddResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def external_user_add_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.ExternalUserAddRequest,
+        headers: btrip_open_20220520_models.ExternalUserAddHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ExternalUserAddResponse:
+        """
+        @summary 添加外部出行人与证件信息
+        
+        @param tmp_req: ExternalUserAddRequest
+        @param headers: ExternalUserAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExternalUserAddResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.ExternalUserAddShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cert_request_list):
+            request.cert_request_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_request_list, 'cert_request_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_request_list_shrink):
+            body['cert_request_list'] = request.cert_request_list_shrink
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.external_user_id):
+            body['external_user_id'] = request.external_user_id
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.real_name):
+            body['real_name'] = request.real_name
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.user_type):
+            body['user_type'] = request.user_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExternalUserAdd',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/externalUsers',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ExternalUserAddResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def external_user_add(
+        self,
+        request: btrip_open_20220520_models.ExternalUserAddRequest,
+    ) -> btrip_open_20220520_models.ExternalUserAddResponse:
+        """
+        @summary 添加外部出行人与证件信息
+        
+        @param request: ExternalUserAddRequest
+        @return: ExternalUserAddResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ExternalUserAddHeaders()
+        return self.external_user_add_with_options(request, headers, runtime)
+
+    async def external_user_add_async(
+        self,
+        request: btrip_open_20220520_models.ExternalUserAddRequest,
+    ) -> btrip_open_20220520_models.ExternalUserAddResponse:
+        """
+        @summary 添加外部出行人与证件信息
+        
+        @param request: ExternalUserAddRequest
+        @return: ExternalUserAddResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ExternalUserAddHeaders()
+        return await self.external_user_add_with_options_async(request, headers, runtime)
+
+    def external_user_delete_with_options(
+        self,
+        external_user_id: str,
+        headers: btrip_open_20220520_models.ExternalUserDeleteHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ExternalUserDeleteResponse:
+        """
+        @summary 删除外部出行人
+        
+        @param headers: ExternalUserDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExternalUserDeleteResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ExternalUserDelete',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/externalUsers/{OpenApiUtilClient.get_encode_param(external_user_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ExternalUserDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def external_user_delete_with_options_async(
+        self,
+        external_user_id: str,
+        headers: btrip_open_20220520_models.ExternalUserDeleteHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ExternalUserDeleteResponse:
+        """
+        @summary 删除外部出行人
+        
+        @param headers: ExternalUserDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExternalUserDeleteResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ExternalUserDelete',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/externalUsers/{OpenApiUtilClient.get_encode_param(external_user_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ExternalUserDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def external_user_delete(
+        self,
+        external_user_id: str,
+    ) -> btrip_open_20220520_models.ExternalUserDeleteResponse:
+        """
+        @summary 删除外部出行人
+        
+        @return: ExternalUserDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ExternalUserDeleteHeaders()
+        return self.external_user_delete_with_options(external_user_id, headers, runtime)
+
+    async def external_user_delete_async(
+        self,
+        external_user_id: str,
+    ) -> btrip_open_20220520_models.ExternalUserDeleteResponse:
+        """
+        @summary 删除外部出行人
+        
+        @return: ExternalUserDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ExternalUserDeleteHeaders()
+        return await self.external_user_delete_with_options_async(external_user_id, headers, runtime)
+
+    def external_user_update_with_options(
+        self,
+        external_user_id: str,
+        tmp_req: btrip_open_20220520_models.ExternalUserUpdateRequest,
+        headers: btrip_open_20220520_models.ExternalUserUpdateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ExternalUserUpdateResponse:
+        """
+        @summary 修改外部出行人与证件信息
+        
+        @param tmp_req: ExternalUserUpdateRequest
+        @param headers: ExternalUserUpdateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExternalUserUpdateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.ExternalUserUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cert_request_list):
+            request.cert_request_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_request_list, 'cert_request_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_request_list_shrink):
+            body['cert_request_list'] = request.cert_request_list_shrink
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.real_name):
+            body['real_name'] = request.real_name
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExternalUserUpdate',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/externalUsers/{OpenApiUtilClient.get_encode_param(external_user_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ExternalUserUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def external_user_update_with_options_async(
+        self,
+        external_user_id: str,
+        tmp_req: btrip_open_20220520_models.ExternalUserUpdateRequest,
+        headers: btrip_open_20220520_models.ExternalUserUpdateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ExternalUserUpdateResponse:
+        """
+        @summary 修改外部出行人与证件信息
+        
+        @param tmp_req: ExternalUserUpdateRequest
+        @param headers: ExternalUserUpdateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExternalUserUpdateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.ExternalUserUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cert_request_list):
+            request.cert_request_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_request_list, 'cert_request_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_request_list_shrink):
+            body['cert_request_list'] = request.cert_request_list_shrink
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.real_name):
+            body['real_name'] = request.real_name
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExternalUserUpdate',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/externalUsers/{OpenApiUtilClient.get_encode_param(external_user_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ExternalUserUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def external_user_update(
+        self,
+        external_user_id: str,
+        request: btrip_open_20220520_models.ExternalUserUpdateRequest,
+    ) -> btrip_open_20220520_models.ExternalUserUpdateResponse:
+        """
+        @summary 修改外部出行人与证件信息
+        
+        @param request: ExternalUserUpdateRequest
+        @return: ExternalUserUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ExternalUserUpdateHeaders()
+        return self.external_user_update_with_options(external_user_id, request, headers, runtime)
+
+    async def external_user_update_async(
+        self,
+        external_user_id: str,
+        request: btrip_open_20220520_models.ExternalUserUpdateRequest,
+    ) -> btrip_open_20220520_models.ExternalUserUpdateResponse:
+        """
+        @summary 修改外部出行人与证件信息
+        
+        @param request: ExternalUserUpdateRequest
+        @return: ExternalUserUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ExternalUserUpdateHeaders()
+        return await self.external_user_update_with_options_async(external_user_id, request, headers, runtime)
 
     def flight_bill_settlement_query_with_options(
         self,
@@ -13374,6 +14228,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelStaticInfoHeaders()
         return await self.hotel_static_info_with_options_async(request, headers, runtime)
+
+    def hotel_suggest_with_options(
+        self,
+        request: btrip_open_20220520_models.HotelSuggestRequest,
+        headers: btrip_open_20220520_models.HotelSuggestHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelSuggestResponse:
+        """
+        @summary 酒店关键词搜索
+        
+        @param request: HotelSuggestRequest
+        @param headers: HotelSuggestHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelSuggestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.check_in):
+            query['check_in'] = request.check_in
+        if not UtilClient.is_unset(request.check_out):
+            query['check_out'] = request.check_out
+        if not UtilClient.is_unset(request.city_code):
+            query['city_code'] = request.city_code
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.search_type):
+            query['search_type'] = request.search_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='HotelSuggest',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v1/suggest-infos',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelSuggestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def hotel_suggest_with_options_async(
+        self,
+        request: btrip_open_20220520_models.HotelSuggestRequest,
+        headers: btrip_open_20220520_models.HotelSuggestHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelSuggestResponse:
+        """
+        @summary 酒店关键词搜索
+        
+        @param request: HotelSuggestRequest
+        @param headers: HotelSuggestHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelSuggestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.check_in):
+            query['check_in'] = request.check_in
+        if not UtilClient.is_unset(request.check_out):
+            query['check_out'] = request.check_out
+        if not UtilClient.is_unset(request.city_code):
+            query['city_code'] = request.city_code
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.search_type):
+            query['search_type'] = request.search_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='HotelSuggest',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v1/suggest-infos',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelSuggestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def hotel_suggest(
+        self,
+        request: btrip_open_20220520_models.HotelSuggestRequest,
+    ) -> btrip_open_20220520_models.HotelSuggestResponse:
+        """
+        @summary 酒店关键词搜索
+        
+        @param request: HotelSuggestRequest
+        @return: HotelSuggestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelSuggestHeaders()
+        return self.hotel_suggest_with_options(request, headers, runtime)
+
+    async def hotel_suggest_async(
+        self,
+        request: btrip_open_20220520_models.HotelSuggestRequest,
+    ) -> btrip_open_20220520_models.HotelSuggestResponse:
+        """
+        @summary 酒店关键词搜索
+        
+        @param request: HotelSuggestRequest
+        @return: HotelSuggestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelSuggestHeaders()
+        return await self.hotel_suggest_with_options_async(request, headers, runtime)
 
     def ie_flight_bill_settlement_query_with_options(
         self,
@@ -23226,6 +24214,464 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.UpdateCustomRoleHeaders()
         return await self.update_custom_role_with_options_async(request, headers, runtime)
+
+    def update_department_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.UpdateDepartmentRequest,
+        headers: btrip_open_20220520_models.UpdateDepartmentHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UpdateDepartmentResponse:
+        """
+        @summary 修改企业部门
+        
+        @param tmp_req: UpdateDepartmentRequest
+        @param headers: UpdateDepartmentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDepartmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.UpdateDepartmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.manager_employee_id_list):
+            request.manager_employee_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.manager_employee_id_list, 'manager_employee_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dept_name):
+            body['dept_name'] = request.dept_name
+        if not UtilClient.is_unset(request.manager_employee_id_list_shrink):
+            body['manager_employee_id_list'] = request.manager_employee_id_list_shrink
+        if not UtilClient.is_unset(request.out_dept_id):
+            body['out_dept_id'] = request.out_dept_id
+        if not UtilClient.is_unset(request.out_dept_pid):
+            body['out_dept_pid'] = request.out_dept_pid
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDepartment',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/department/v2/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UpdateDepartmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_department_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.UpdateDepartmentRequest,
+        headers: btrip_open_20220520_models.UpdateDepartmentHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UpdateDepartmentResponse:
+        """
+        @summary 修改企业部门
+        
+        @param tmp_req: UpdateDepartmentRequest
+        @param headers: UpdateDepartmentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDepartmentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.UpdateDepartmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.manager_employee_id_list):
+            request.manager_employee_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.manager_employee_id_list, 'manager_employee_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dept_name):
+            body['dept_name'] = request.dept_name
+        if not UtilClient.is_unset(request.manager_employee_id_list_shrink):
+            body['manager_employee_id_list'] = request.manager_employee_id_list_shrink
+        if not UtilClient.is_unset(request.out_dept_id):
+            body['out_dept_id'] = request.out_dept_id
+        if not UtilClient.is_unset(request.out_dept_pid):
+            body['out_dept_pid'] = request.out_dept_pid
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDepartment',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/department/v2/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UpdateDepartmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_department(
+        self,
+        request: btrip_open_20220520_models.UpdateDepartmentRequest,
+    ) -> btrip_open_20220520_models.UpdateDepartmentResponse:
+        """
+        @summary 修改企业部门
+        
+        @param request: UpdateDepartmentRequest
+        @return: UpdateDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.UpdateDepartmentHeaders()
+        return self.update_department_with_options(request, headers, runtime)
+
+    async def update_department_async(
+        self,
+        request: btrip_open_20220520_models.UpdateDepartmentRequest,
+    ) -> btrip_open_20220520_models.UpdateDepartmentResponse:
+        """
+        @summary 修改企业部门
+        
+        @param request: UpdateDepartmentRequest
+        @return: UpdateDepartmentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.UpdateDepartmentHeaders()
+        return await self.update_department_with_options_async(request, headers, runtime)
+
+    def update_employee_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.UpdateEmployeeRequest,
+        headers: btrip_open_20220520_models.UpdateEmployeeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UpdateEmployeeResponse:
+        """
+        @summary 更新员工信息
+        
+        @param tmp_req: UpdateEmployeeRequest
+        @param headers: UpdateEmployeeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEmployeeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.UpdateEmployeeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.base_city_code_list):
+            request.base_city_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_city_code_list, 'base_city_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.cert_list):
+            request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_role_code_list):
+            request.custom_role_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_role_code_list, 'custom_role_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.out_dept_id_list):
+            request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.avatar):
+            body['avatar'] = request.avatar
+        if not UtilClient.is_unset(request.base_city_code_list_shrink):
+            body['base_city_code_list'] = request.base_city_code_list_shrink
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_list_shrink):
+            body['cert_list'] = request.cert_list_shrink
+        if not UtilClient.is_unset(request.custom_role_code_list_shrink):
+            body['custom_role_code_list'] = request.custom_role_code_list_shrink
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
+        if not UtilClient.is_unset(request.is_admin):
+            body['is_admin'] = request.is_admin
+        if not UtilClient.is_unset(request.is_boss):
+            body['is_boss'] = request.is_boss
+        if not UtilClient.is_unset(request.is_dept_leader):
+            body['is_dept_leader'] = request.is_dept_leader
+        if not UtilClient.is_unset(request.job_no):
+            body['job_no'] = request.job_no
+        if not UtilClient.is_unset(request.manager_user_id):
+            body['manager_user_id'] = request.manager_user_id
+        if not UtilClient.is_unset(request.out_dept_id_list_shrink):
+            body['out_dept_id_list'] = request.out_dept_id_list_shrink
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.position_level):
+            body['position_level'] = request.position_level
+        if not UtilClient.is_unset(request.real_name):
+            body['real_name'] = request.real_name
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_nick):
+            body['user_nick'] = request.user_nick
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEmployee',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/employee/v2/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UpdateEmployeeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_employee_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.UpdateEmployeeRequest,
+        headers: btrip_open_20220520_models.UpdateEmployeeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UpdateEmployeeResponse:
+        """
+        @summary 更新员工信息
+        
+        @param tmp_req: UpdateEmployeeRequest
+        @param headers: UpdateEmployeeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEmployeeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.UpdateEmployeeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.base_city_code_list):
+            request.base_city_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.base_city_code_list, 'base_city_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.cert_list):
+            request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_role_code_list):
+            request.custom_role_code_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_role_code_list, 'custom_role_code_list', 'json')
+        if not UtilClient.is_unset(tmp_req.out_dept_id_list):
+            request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.avatar):
+            body['avatar'] = request.avatar
+        if not UtilClient.is_unset(request.base_city_code_list_shrink):
+            body['base_city_code_list'] = request.base_city_code_list_shrink
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_list_shrink):
+            body['cert_list'] = request.cert_list_shrink
+        if not UtilClient.is_unset(request.custom_role_code_list_shrink):
+            body['custom_role_code_list'] = request.custom_role_code_list_shrink
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
+        if not UtilClient.is_unset(request.is_admin):
+            body['is_admin'] = request.is_admin
+        if not UtilClient.is_unset(request.is_boss):
+            body['is_boss'] = request.is_boss
+        if not UtilClient.is_unset(request.is_dept_leader):
+            body['is_dept_leader'] = request.is_dept_leader
+        if not UtilClient.is_unset(request.job_no):
+            body['job_no'] = request.job_no
+        if not UtilClient.is_unset(request.manager_user_id):
+            body['manager_user_id'] = request.manager_user_id
+        if not UtilClient.is_unset(request.out_dept_id_list_shrink):
+            body['out_dept_id_list'] = request.out_dept_id_list_shrink
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.position_level):
+            body['position_level'] = request.position_level
+        if not UtilClient.is_unset(request.real_name):
+            body['real_name'] = request.real_name
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_nick):
+            body['user_nick'] = request.user_nick
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEmployee',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/employee/v2/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UpdateEmployeeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_employee(
+        self,
+        request: btrip_open_20220520_models.UpdateEmployeeRequest,
+    ) -> btrip_open_20220520_models.UpdateEmployeeResponse:
+        """
+        @summary 更新员工信息
+        
+        @param request: UpdateEmployeeRequest
+        @return: UpdateEmployeeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.UpdateEmployeeHeaders()
+        return self.update_employee_with_options(request, headers, runtime)
+
+    async def update_employee_async(
+        self,
+        request: btrip_open_20220520_models.UpdateEmployeeRequest,
+    ) -> btrip_open_20220520_models.UpdateEmployeeResponse:
+        """
+        @summary 更新员工信息
+        
+        @param request: UpdateEmployeeRequest
+        @return: UpdateEmployeeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.UpdateEmployeeHeaders()
+        return await self.update_employee_with_options_async(request, headers, runtime)
+
+    def update_employee_leave_status_with_options(
+        self,
+        request: btrip_open_20220520_models.UpdateEmployeeLeaveStatusRequest,
+        headers: btrip_open_20220520_models.UpdateEmployeeLeaveStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UpdateEmployeeLeaveStatusResponse:
+        """
+        @summary 更新员工在职状态
+        
+        @param request: UpdateEmployeeLeaveStatusRequest
+        @param headers: UpdateEmployeeLeaveStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEmployeeLeaveStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_leave):
+            body['is_leave'] = request.is_leave
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEmployeeLeaveStatus',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/employee/v2/updateLeaveStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UpdateEmployeeLeaveStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_employee_leave_status_with_options_async(
+        self,
+        request: btrip_open_20220520_models.UpdateEmployeeLeaveStatusRequest,
+        headers: btrip_open_20220520_models.UpdateEmployeeLeaveStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UpdateEmployeeLeaveStatusResponse:
+        """
+        @summary 更新员工在职状态
+        
+        @param request: UpdateEmployeeLeaveStatusRequest
+        @param headers: UpdateEmployeeLeaveStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEmployeeLeaveStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_leave):
+            body['is_leave'] = request.is_leave
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEmployeeLeaveStatus',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/employee/v2/updateLeaveStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UpdateEmployeeLeaveStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_employee_leave_status(
+        self,
+        request: btrip_open_20220520_models.UpdateEmployeeLeaveStatusRequest,
+    ) -> btrip_open_20220520_models.UpdateEmployeeLeaveStatusResponse:
+        """
+        @summary 更新员工在职状态
+        
+        @param request: UpdateEmployeeLeaveStatusRequest
+        @return: UpdateEmployeeLeaveStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.UpdateEmployeeLeaveStatusHeaders()
+        return self.update_employee_leave_status_with_options(request, headers, runtime)
+
+    async def update_employee_leave_status_async(
+        self,
+        request: btrip_open_20220520_models.UpdateEmployeeLeaveStatusRequest,
+    ) -> btrip_open_20220520_models.UpdateEmployeeLeaveStatusResponse:
+        """
+        @summary 更新员工在职状态
+        
+        @param request: UpdateEmployeeLeaveStatusRequest
+        @return: UpdateEmployeeLeaveStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.UpdateEmployeeLeaveStatusHeaders()
+        return await self.update_employee_leave_status_with_options_async(request, headers, runtime)
 
     def user_query_with_options(
         self,
