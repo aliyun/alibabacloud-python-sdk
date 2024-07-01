@@ -441,6 +441,7 @@ class CreateServiceInstanceRequest(TeaModel):
         operation_metadata: CreateServiceInstanceRequestOperationMetadata = None,
         parameters: Dict[str, Any] = None,
         region_id: str = None,
+        resource_auto_pay: bool = None,
         resource_group_id: str = None,
         service_id: str = None,
         service_version: str = None,
@@ -467,6 +468,7 @@ class CreateServiceInstanceRequest(TeaModel):
         self.parameters = parameters
         # This parameter is required.
         self.region_id = region_id
+        self.resource_auto_pay = resource_auto_pay
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.service_id = service_id
@@ -520,6 +522,8 @@ class CreateServiceInstanceRequest(TeaModel):
             result['Parameters'] = self.parameters
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_auto_pay is not None:
+            result['ResourceAutoPay'] = self.resource_auto_pay
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.service_id is not None:
@@ -564,6 +568,8 @@ class CreateServiceInstanceRequest(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceAutoPay') is not None:
+            self.resource_auto_pay = m.get('ResourceAutoPay')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceId') is not None:
@@ -730,6 +736,7 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         operation_metadata: CreateServiceInstanceShrinkRequestOperationMetadata = None,
         parameters_shrink: str = None,
         region_id: str = None,
+        resource_auto_pay: bool = None,
         resource_group_id: str = None,
         service_id: str = None,
         service_version: str = None,
@@ -756,6 +763,7 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         self.parameters_shrink = parameters_shrink
         # This parameter is required.
         self.region_id = region_id
+        self.resource_auto_pay = resource_auto_pay
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.service_id = service_id
@@ -809,6 +817,8 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
             result['Parameters'] = self.parameters_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_auto_pay is not None:
+            result['ResourceAutoPay'] = self.resource_auto_pay
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.service_id is not None:
@@ -853,6 +863,8 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
             self.parameters_shrink = m.get('Parameters')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceAutoPay') is not None:
+            self.resource_auto_pay = m.get('ResourceAutoPay')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceId') is not None:

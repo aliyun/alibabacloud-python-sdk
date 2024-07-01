@@ -1,3 +1,7 @@
+2024-07-01 Version: 3.1.1
+- Update API CreateServiceInstance: add param ResourceAutoPay.
+
+
 2024-06-21 Version: 3.1.0
 - Support API UpdateServiceInstanceSpec.
 

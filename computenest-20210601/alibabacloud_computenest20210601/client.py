@@ -301,6 +301,8 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_auto_pay):
+            query['ResourceAutoPay'] = request.resource_auto_pay
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.service_id):
@@ -372,6 +374,8 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_auto_pay):
+            query['ResourceAutoPay'] = request.resource_auto_pay
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.service_id):
