@@ -95,7 +95,7 @@ class Client(OpenApiClient):
         """
         @summary Applies for a public endpoint for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: AllocateClusterPublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -107,6 +107,8 @@ class Client(OpenApiClient):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -134,7 +136,7 @@ class Client(OpenApiClient):
         """
         @summary Applies for a public endpoint for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: AllocateClusterPublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -146,6 +148,8 @@ class Client(OpenApiClient):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -172,7 +176,7 @@ class Client(OpenApiClient):
         """
         @summary Applies for a public endpoint for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: AllocateClusterPublicConnectionRequest
         @return: AllocateClusterPublicConnectionResponse
@@ -187,7 +191,7 @@ class Client(OpenApiClient):
         """
         @summary Applies for a public endpoint for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: AllocateClusterPublicConnectionRequest
         @return: AllocateClusterPublicConnectionResponse
@@ -753,6 +757,8 @@ class Client(OpenApiClient):
             query['AccountType'] = request.account_type
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -798,6 +804,8 @@ class Client(OpenApiClient):
             query['AccountType'] = request.account_type
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -873,8 +881,12 @@ class Client(OpenApiClient):
             query['DBClusterNetworkType'] = request.dbcluster_network_type
         if not UtilClient.is_unset(request.dbcluster_version):
             query['DBClusterVersion'] = request.dbcluster_version
+        if not UtilClient.is_unset(request.disk_encryption):
+            query['DiskEncryption'] = request.disk_encryption
         if not UtilClient.is_unset(request.enable_default_resource_pool):
             query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
+        if not UtilClient.is_unset(request.kms_id):
+            query['KmsId'] = request.kms_id
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -952,8 +964,12 @@ class Client(OpenApiClient):
             query['DBClusterNetworkType'] = request.dbcluster_network_type
         if not UtilClient.is_unset(request.dbcluster_version):
             query['DBClusterVersion'] = request.dbcluster_version
+        if not UtilClient.is_unset(request.disk_encryption):
+            query['DiskEncryption'] = request.disk_encryption
         if not UtilClient.is_unset(request.enable_default_resource_pool):
             query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
+        if not UtilClient.is_unset(request.kms_id):
+            query['KmsId'] = request.kms_id
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -1043,7 +1059,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a resource group for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param tmp_req: CreateDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1106,7 +1122,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a resource group for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param tmp_req: CreateDBResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1168,7 +1184,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a resource group for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: CreateDBResourceGroupRequest
         @return: CreateDBResourceGroupResponse
@@ -1183,7 +1199,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a resource group for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: CreateDBResourceGroupRequest
         @return: CreateDBResourceGroupResponse
@@ -1447,6 +1463,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_oss_sub_directory_with_options_async(request, runtime)
 
+    def create_performance_view_with_options(
+        self,
+        tmp_req: adb_20211201_models.CreatePerformanceViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreatePerformanceViewResponse:
+        """
+        @param tmp_req: CreatePerformanceViewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePerformanceViewResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreatePerformanceViewShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.view_detail):
+            request.view_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.view_detail, 'ViewDetail', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.create_from_view_type):
+            query['CreateFromViewType'] = request.create_from_view_type
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.fill_origin_view_keys):
+            query['FillOriginViewKeys'] = request.fill_origin_view_keys
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_detail_shrink):
+            query['ViewDetail'] = request.view_detail_shrink
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePerformanceView',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreatePerformanceViewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_performance_view_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.CreatePerformanceViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreatePerformanceViewResponse:
+        """
+        @param tmp_req: CreatePerformanceViewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePerformanceViewResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreatePerformanceViewShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.view_detail):
+            request.view_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.view_detail, 'ViewDetail', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.create_from_view_type):
+            query['CreateFromViewType'] = request.create_from_view_type
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.fill_origin_view_keys):
+            query['FillOriginViewKeys'] = request.fill_origin_view_keys
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_detail_shrink):
+            query['ViewDetail'] = request.view_detail_shrink
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePerformanceView',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreatePerformanceViewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_performance_view(
+        self,
+        request: adb_20211201_models.CreatePerformanceViewRequest,
+    ) -> adb_20211201_models.CreatePerformanceViewResponse:
+        """
+        @param request: CreatePerformanceViewRequest
+        @return: CreatePerformanceViewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_performance_view_with_options(request, runtime)
+
+    async def create_performance_view_async(
+        self,
+        request: adb_20211201_models.CreatePerformanceViewRequest,
+    ) -> adb_20211201_models.CreatePerformanceViewResponse:
+        """
+        @param request: CreatePerformanceViewRequest
+        @return: CreatePerformanceViewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_performance_view_with_options_async(request, runtime)
+
     def create_spark_template_with_options(
         self,
         request: adb_20211201_models.CreateSparkTemplateRequest,
@@ -1583,6 +1731,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a database account from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAccountResponse
@@ -1593,6 +1743,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1620,6 +1772,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a database account from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAccountResponse
@@ -1630,6 +1784,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1656,6 +1812,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a database account from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
         """
@@ -1668,6 +1826,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DeleteAccountResponse:
         """
         @summary Deletes a database account from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -2003,6 +2163,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_elastic_plan_with_options_async(request, runtime)
 
+    def delete_performance_view_with_options(
+        self,
+        request: adb_20211201_models.DeletePerformanceViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeletePerformanceViewResponse:
+        """
+        @param request: DeletePerformanceViewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePerformanceViewResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePerformanceView',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DeletePerformanceViewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_performance_view_with_options_async(
+        self,
+        request: adb_20211201_models.DeletePerformanceViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeletePerformanceViewResponse:
+        """
+        @param request: DeletePerformanceViewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePerformanceViewResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePerformanceView',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DeletePerformanceViewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_performance_view(
+        self,
+        request: adb_20211201_models.DeletePerformanceViewRequest,
+    ) -> adb_20211201_models.DeletePerformanceViewResponse:
+        """
+        @param request: DeletePerformanceViewRequest
+        @return: DeletePerformanceViewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_performance_view_with_options(request, runtime)
+
+    async def delete_performance_view_async(
+        self,
+        request: adb_20211201_models.DeletePerformanceViewRequest,
+    ) -> adb_20211201_models.DeletePerformanceViewResponse:
+        """
+        @param request: DeletePerformanceViewRequest
+        @return: DeletePerformanceViewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_performance_view_with_options_async(request, runtime)
+
     def delete_process_instance_with_options(
         self,
         request: adb_20211201_models.DeleteProcessInstanceRequest,
@@ -2247,6 +2519,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes Spark template files.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DeleteSparkTemplateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSparkTemplateFileResponse
@@ -2284,6 +2560,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes Spark template files.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DeleteSparkTemplateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSparkTemplateFileResponse
@@ -2320,6 +2600,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes Spark template files.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DeleteSparkTemplateFileRequest
         @return: DeleteSparkTemplateFileResponse
         """
@@ -2332,6 +2616,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DeleteSparkTemplateFileResponse:
         """
         @summary Deletes Spark template files.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DeleteSparkTemplateFileRequest
         @return: DeleteSparkTemplateFileResponse
@@ -2739,6 +3027,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
@@ -2780,6 +3070,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
@@ -2837,7 +3129,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAdbMySqlColumnsResponse:
         """
-        @summary 用于查询ADB for MySQL实例下某个数据库某个表的列的列表
+        @summary Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAdbMySqlColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2878,7 +3173,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAdbMySqlColumnsResponse:
         """
-        @summary 用于查询ADB for MySQL实例下某个数据库某个表的列的列表
+        @summary Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAdbMySqlColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2918,7 +3216,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAdbMySqlColumnsRequest,
     ) -> adb_20211201_models.DescribeAdbMySqlColumnsResponse:
         """
-        @summary 用于查询ADB for MySQL实例下某个数据库某个表的列的列表
+        @summary Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAdbMySqlColumnsRequest
         @return: DescribeAdbMySqlColumnsResponse
@@ -2931,7 +3232,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAdbMySqlColumnsRequest,
     ) -> adb_20211201_models.DescribeAdbMySqlColumnsResponse:
         """
-        @summary 用于查询ADB for MySQL实例下某个数据库某个表的列的列表
+        @summary Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAdbMySqlColumnsRequest
         @return: DescribeAdbMySqlColumnsResponse
@@ -2946,6 +3250,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeAdbMySqlSchemasResponse:
         """
         @summary Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAdbMySqlSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2984,6 +3291,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeAdbMySqlSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAdbMySqlSchemasResponse
@@ -3020,6 +3330,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeAdbMySqlSchemasRequest
         @return: DescribeAdbMySqlSchemasResponse
         """
@@ -3032,6 +3345,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeAdbMySqlSchemasResponse:
         """
         @summary Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAdbMySqlSchemasRequest
         @return: DescribeAdbMySqlSchemasResponse
@@ -3046,6 +3362,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeAdbMySqlTablesResponse:
         """
         @summary Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAdbMySqlTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3086,6 +3405,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeAdbMySqlTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAdbMySqlTablesResponse
@@ -3124,6 +3446,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeAdbMySqlTablesRequest
         @return: DescribeAdbMySqlTablesResponse
         """
@@ -3136,6 +3461,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeAdbMySqlTablesResponse:
         """
         @summary Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAdbMySqlTablesRequest
         @return: DescribeAdbMySqlTablesResponse
@@ -3150,6 +3478,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeAllDataSourceResponse:
         """
         @summary Queries a list of databases, tables, and columns in an AnalyticDB for MySQL cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAllDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3192,6 +3523,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of databases, tables, and columns in an AnalyticDB for MySQL cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeAllDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAllDataSourceResponse
@@ -3232,6 +3566,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of databases, tables, and columns in an AnalyticDB for MySQL cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeAllDataSourceRequest
         @return: DescribeAllDataSourceResponse
         """
@@ -3245,6 +3582,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of databases, tables, and columns in an AnalyticDB for MySQL cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeAllDataSourceRequest
         @return: DescribeAllDataSourceResponse
         """
@@ -3257,6 +3597,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsActionLogsResponse:
         """
+        @summary Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeApsActionLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeApsActionLogsResponse
@@ -3316,6 +3662,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsActionLogsResponse:
         """
+        @summary Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeApsActionLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeApsActionLogsResponse
@@ -3374,6 +3726,12 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsActionLogsRequest,
     ) -> adb_20211201_models.DescribeApsActionLogsResponse:
         """
+        @summary Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeApsActionLogsRequest
         @return: DescribeApsActionLogsResponse
         """
@@ -3385,6 +3743,12 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsActionLogsRequest,
     ) -> adb_20211201_models.DescribeApsActionLogsResponse:
         """
+        @summary Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeApsActionLogsRequest
         @return: DescribeApsActionLogsResponse
         """
@@ -3397,7 +3761,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
         """
-        @summary Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the resource metrics.
+        @summary Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3439,7 +3803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
         """
-        @summary Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the resource metrics.
+        @summary Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3480,7 +3844,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsResourceGroupsRequest,
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
         """
-        @summary Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the resource metrics.
+        @summary Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3496,7 +3860,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsResourceGroupsRequest,
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
         """
-        @summary Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the resource metrics.
+        @summary Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -3516,9 +3880,7 @@ class Client(OpenApiClient):
         @summary Queries the SQL audit logs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @description    SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
-        General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeAuditLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3592,9 +3954,7 @@ class Client(OpenApiClient):
         @summary Queries the SQL audit logs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @description    SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
-        General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeAuditLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3667,9 +4027,7 @@ class Client(OpenApiClient):
         @summary Queries the SQL audit logs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @description    SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
-        General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeAuditLogRecordsRequest
         @return: DescribeAuditLogRecordsResponse
@@ -3685,9 +4043,7 @@ class Client(OpenApiClient):
         @summary Queries the SQL audit logs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
         @description    SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
-        General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeAuditLogRecordsRequest
         @return: DescribeAuditLogRecordsResponse
@@ -4065,6 +4421,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4102,6 +4460,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4347,6 +4707,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of columns in a table.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeColumnsResponse
@@ -4388,6 +4751,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of columns in a table.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeColumnsResponse
@@ -4428,6 +4794,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of columns in a table.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeColumnsRequest
         @return: DescribeColumnsResponse
         """
@@ -4440,6 +4809,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeColumnsResponse:
         """
         @summary Queries a list of columns in a table.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeColumnsRequest
         @return: DescribeColumnsResponse
@@ -4775,9 +5147,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the performance data of an AnalyticDB for MySQL cluster.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeDBClusterPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4824,9 +5194,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the performance data of an AnalyticDB for MySQL cluster.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeDBClusterPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4872,9 +5240,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the performance data of an AnalyticDB for MySQL cluster.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeDBClusterPerformanceRequest
         @return: DescribeDBClusterPerformanceResponse
@@ -4889,9 +5255,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the performance data of an AnalyticDB for MySQL cluster.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeDBClusterPerformanceRequest
         @return: DescribeDBClusterPerformanceResponse
@@ -5811,6 +6175,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the last five SQL query download tasks of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
         @param request: DescribeDownloadRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDownloadRecordsResponse
@@ -5850,6 +6216,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the last five SQL query download tasks of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
         @param request: DescribeDownloadRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDownloadRecordsResponse
@@ -5888,6 +6256,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the last five SQL query download tasks of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
         @param request: DescribeDownloadRecordsRequest
         @return: DescribeDownloadRecordsResponse
         """
@@ -5900,6 +6270,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeDownloadRecordsResponse:
         """
         @summary Queries the last five SQL query download tasks of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeDownloadRecordsRequest
         @return: DescribeDownloadRecordsResponse
@@ -6023,7 +6395,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of scaling plan jobs for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeElasticPlanJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6072,7 +6444,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of scaling plan jobs for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeElasticPlanJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6120,7 +6492,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of scaling plan jobs for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeElasticPlanJobsRequest
         @return: DescribeElasticPlanJobsResponse
@@ -6135,7 +6507,7 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of scaling plan jobs for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: DescribeElasticPlanJobsRequest
         @return: DescribeElasticPlanJobsResponse
@@ -6149,7 +6521,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeElasticPlanSpecificationsResponse:
         """
-        @summary Queries the resource specifications that can be scaled for different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the resource specifications that are supported by different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeElasticPlanSpecificationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6188,7 +6562,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeElasticPlanSpecificationsResponse:
         """
-        @summary Queries the resource specifications that can be scaled for different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the resource specifications that are supported by different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeElasticPlanSpecificationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6226,7 +6602,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeElasticPlanSpecificationsRequest,
     ) -> adb_20211201_models.DescribeElasticPlanSpecificationsResponse:
         """
-        @summary Queries the resource specifications that can be scaled for different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the resource specifications that are supported by different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeElasticPlanSpecificationsRequest
         @return: DescribeElasticPlanSpecificationsResponse
@@ -6239,7 +6617,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeElasticPlanSpecificationsRequest,
     ) -> adb_20211201_models.DescribeElasticPlanSpecificationsResponse:
         """
-        @summary Queries the resource specifications that can be scaled for different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the resource specifications that are supported by different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeElasticPlanSpecificationsRequest
         @return: DescribeElasticPlanSpecificationsResponse
@@ -6459,6 +6839,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_enabled_privileges_with_options_async(request, runtime)
 
+    def describe_excessive_primary_keys_with_options(
+        self,
+        request: adb_20211201_models.DescribeExcessivePrimaryKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeExcessivePrimaryKeysResponse:
+        """
+        @summary Queries the information about tables that have excessive primary key fields in an AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
+        
+        @param request: DescribeExcessivePrimaryKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExcessivePrimaryKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExcessivePrimaryKeys',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeExcessivePrimaryKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_excessive_primary_keys_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeExcessivePrimaryKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeExcessivePrimaryKeysResponse:
+        """
+        @summary Queries the information about tables that have excessive primary key fields in an AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
+        
+        @param request: DescribeExcessivePrimaryKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExcessivePrimaryKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExcessivePrimaryKeys',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeExcessivePrimaryKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_excessive_primary_keys(
+        self,
+        request: adb_20211201_models.DescribeExcessivePrimaryKeysRequest,
+    ) -> adb_20211201_models.DescribeExcessivePrimaryKeysResponse:
+        """
+        @summary Queries the information about tables that have excessive primary key fields in an AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
+        
+        @param request: DescribeExcessivePrimaryKeysRequest
+        @return: DescribeExcessivePrimaryKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_excessive_primary_keys_with_options(request, runtime)
+
+    async def describe_excessive_primary_keys_async(
+        self,
+        request: adb_20211201_models.DescribeExcessivePrimaryKeysRequest,
+    ) -> adb_20211201_models.DescribeExcessivePrimaryKeysResponse:
+        """
+        @summary Queries the information about tables that have excessive primary key fields in an AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
+        
+        @param request: DescribeExcessivePrimaryKeysRequest
+        @return: DescribeExcessivePrimaryKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_excessive_primary_keys_with_options_async(request, runtime)
+
     def describe_job_resource_usage_with_options(
         self,
         request: adb_20211201_models.DescribeJobResourceUsageRequest,
@@ -6571,7 +7091,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribePatternPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6616,7 +7138,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribePatternPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6660,7 +7184,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribePatternPerformanceRequest
         @return: DescribePatternPerformanceResponse
@@ -6675,13 +7201,235 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribePatternPerformanceRequest
         @return: DescribePatternPerformanceResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pattern_performance_with_options_async(request, runtime)
+
+    def describe_performance_view_attribute_with_options(
+        self,
+        request: adb_20211201_models.DescribePerformanceViewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribePerformanceViewAttributeResponse:
+        """
+        @param request: DescribePerformanceViewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePerformanceViewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePerformanceViewAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribePerformanceViewAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_performance_view_attribute_with_options_async(
+        self,
+        request: adb_20211201_models.DescribePerformanceViewAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribePerformanceViewAttributeResponse:
+        """
+        @param request: DescribePerformanceViewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePerformanceViewAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePerformanceViewAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribePerformanceViewAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_performance_view_attribute(
+        self,
+        request: adb_20211201_models.DescribePerformanceViewAttributeRequest,
+    ) -> adb_20211201_models.DescribePerformanceViewAttributeResponse:
+        """
+        @param request: DescribePerformanceViewAttributeRequest
+        @return: DescribePerformanceViewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_performance_view_attribute_with_options(request, runtime)
+
+    async def describe_performance_view_attribute_async(
+        self,
+        request: adb_20211201_models.DescribePerformanceViewAttributeRequest,
+    ) -> adb_20211201_models.DescribePerformanceViewAttributeResponse:
+        """
+        @param request: DescribePerformanceViewAttributeRequest
+        @return: DescribePerformanceViewAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_performance_view_attribute_with_options_async(request, runtime)
+
+    def describe_performance_views_with_options(
+        self,
+        request: adb_20211201_models.DescribePerformanceViewsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribePerformanceViewsResponse:
+        """
+        @param request: DescribePerformanceViewsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePerformanceViewsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePerformanceViews',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribePerformanceViewsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_performance_views_with_options_async(
+        self,
+        request: adb_20211201_models.DescribePerformanceViewsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribePerformanceViewsResponse:
+        """
+        @param request: DescribePerformanceViewsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePerformanceViewsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePerformanceViews',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribePerformanceViewsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_performance_views(
+        self,
+        request: adb_20211201_models.DescribePerformanceViewsRequest,
+    ) -> adb_20211201_models.DescribePerformanceViewsResponse:
+        """
+        @param request: DescribePerformanceViewsRequest
+        @return: DescribePerformanceViewsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_performance_views_with_options(request, runtime)
+
+    async def describe_performance_views_async(
+        self,
+        request: adb_20211201_models.DescribePerformanceViewsRequest,
+    ) -> adb_20211201_models.DescribePerformanceViewsResponse:
+        """
+        @param request: DescribePerformanceViewsRequest
+        @return: DescribePerformanceViewsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_performance_views_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -6811,6 +7559,10 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSQLPatternsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSQLPatternsResponse
@@ -6862,6 +7614,10 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSQLPatternsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSQLPatternsResponse
@@ -6912,6 +7668,10 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSQLPatternsRequest
         @return: DescribeSQLPatternsResponse
         """
@@ -6924,6 +7684,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeSQLPatternsResponse:
         """
         @summary Queries a list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeSQLPatternsRequest
         @return: DescribeSQLPatternsResponse
@@ -6938,6 +7702,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeSchemasResponse:
         """
         @summary Queries a list of databases in an AnalyticDB for MySQL cluster.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6976,6 +7743,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of databases in an AnalyticDB for MySQL cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSchemasResponse
@@ -7012,6 +7782,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of databases in an AnalyticDB for MySQL cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSchemasRequest
         @return: DescribeSchemasResponse
         """
@@ -7025,6 +7798,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of databases in an AnalyticDB for MySQL cluster.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSchemasRequest
         @return: DescribeSchemasResponse
         """
@@ -7037,7 +7813,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkCodeLogResponse:
         """
-        @summary 查询Spark code的执行日志
+        @summary Queries the execution logs of Spark code.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeSparkCodeLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7076,7 +7855,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkCodeLogResponse:
         """
-        @summary 查询Spark code的执行日志
+        @summary Queries the execution logs of Spark code.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeSparkCodeLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7114,7 +7896,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkCodeLogRequest,
     ) -> adb_20211201_models.DescribeSparkCodeLogResponse:
         """
-        @summary 查询Spark code的执行日志
+        @summary Queries the execution logs of Spark code.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeSparkCodeLogRequest
         @return: DescribeSparkCodeLogResponse
@@ -7127,7 +7912,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkCodeLogRequest,
     ) -> adb_20211201_models.DescribeSparkCodeLogResponse:
         """
-        @summary 查询Spark code的执行日志
+        @summary Queries the execution logs of Spark code.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeSparkCodeLogRequest
         @return: DescribeSparkCodeLogResponse
@@ -7259,6 +8047,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the URL of the web UI for a Spark application.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSparkCodeWebUiRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSparkCodeWebUiResponse
@@ -7298,6 +8089,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the URL of the web UI for a Spark application.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSparkCodeWebUiRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSparkCodeWebUiResponse
@@ -7336,6 +8130,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the URL of the web UI for a Spark application.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeSparkCodeWebUiRequest
         @return: DescribeSparkCodeWebUiResponse
         """
@@ -7348,6 +8145,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeSparkCodeWebUiResponse:
         """
         @summary Queries the URL of the web UI for a Spark application.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeSparkCodeWebUiRequest
         @return: DescribeSparkCodeWebUiResponse
@@ -7735,6 +8535,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of tables in a database.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTablesResponse
@@ -7774,6 +8577,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of tables in a database.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTablesResponse
@@ -7812,6 +8618,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of tables in a database.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: DescribeTablesRequest
         @return: DescribeTablesResponse
         """
@@ -7824,6 +8633,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeTablesResponse:
         """
         @summary Queries a list of tables in a database.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeTablesRequest
         @return: DescribeTablesResponse
@@ -8419,6 +9231,10 @@ class Client(OpenApiClient):
         """
         @summary Queries whether a running SQL engine exists.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: ExistRunningSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExistRunningSQLEngineResponse
@@ -8456,6 +9272,10 @@ class Client(OpenApiClient):
         """
         @summary Queries whether a running SQL engine exists.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: ExistRunningSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExistRunningSQLEngineResponse
@@ -8492,6 +9312,10 @@ class Client(OpenApiClient):
         """
         @summary Queries whether a running SQL engine exists.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: ExistRunningSQLEngineRequest
         @return: ExistRunningSQLEngineResponse
         """
@@ -8504,6 +9328,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
         """
         @summary Queries whether a running SQL engine exists.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: ExistRunningSQLEngineRequest
         @return: ExistRunningSQLEngineResponse
@@ -8779,6 +9607,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about an Spark application.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
         @param request: GetSparkAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSparkAppInfoResponse
@@ -8818,6 +9650,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about an Spark application.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
         @param request: GetSparkAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSparkAppInfoResponse
@@ -8856,6 +9692,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about an Spark application.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
         @param request: GetSparkAppInfoRequest
         @return: GetSparkAppInfoResponse
         """
@@ -8868,6 +9708,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.GetSparkAppInfoResponse:
         """
         @summary Queries the information about an Spark application.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkAppInfoRequest
         @return: GetSparkAppInfoResponse
@@ -9487,9 +10331,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the common definitions of Spark applications.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkDefinitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9526,9 +10370,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the common definitions of Spark applications.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkDefinitionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9564,9 +10408,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the common definitions of Spark applications.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkDefinitionsRequest
         @return: GetSparkDefinitionsResponse
@@ -9581,9 +10425,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the common definitions of Spark applications.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkDefinitionsRequest
         @return: GetSparkDefinitionsResponse
@@ -9711,6 +10555,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the state information about the Spark SQL engine.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: GetSparkSQLEngineStateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSparkSQLEngineStateResponse
@@ -9748,6 +10596,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the state information about the Spark SQL engine.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: GetSparkSQLEngineStateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSparkSQLEngineStateResponse
@@ -9784,6 +10636,10 @@ class Client(OpenApiClient):
         """
         @summary Queries the state information about the Spark SQL engine.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: GetSparkSQLEngineStateRequest
         @return: GetSparkSQLEngineStateResponse
         """
@@ -9796,6 +10652,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.GetSparkSQLEngineStateResponse:
         """
         @summary Queries the state information about the Spark SQL engine.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetSparkSQLEngineStateRequest
         @return: GetSparkSQLEngineStateResponse
@@ -10153,14 +11013,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetTableResponse:
         """
-        @deprecated OpenAPI GetTable is deprecated
-        
         @summary 获取表
         
         @param request: GetTableRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTableResponse
-        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -10197,14 +11054,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetTableResponse:
         """
-        @deprecated OpenAPI GetTable is deprecated
-        
         @summary 获取表
         
         @param request: GetTableRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTableResponse
-        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -10240,13 +11094,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetTableRequest,
     ) -> adb_20211201_models.GetTableResponse:
         """
-        @deprecated OpenAPI GetTable is deprecated
-        
         @summary 获取表
         
         @param request: GetTableRequest
         @return: GetTableResponse
-        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_table_with_options(request, runtime)
@@ -10256,13 +11107,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetTableRequest,
     ) -> adb_20211201_models.GetTableResponse:
         """
-        @deprecated OpenAPI GetTable is deprecated
-        
         @summary 获取表
         
         @param request: GetTableRequest
         @return: GetTableResponse
-        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_table_with_options_async(request, runtime)
@@ -10274,6 +11122,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.GetTableColumnsResponse:
         """
         @summary Queries the information about columns.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetTableColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10322,6 +11173,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about columns.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: GetTableColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTableColumnsResponse
@@ -10368,6 +11222,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about columns.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: GetTableColumnsRequest
         @return: GetTableColumnsResponse
         """
@@ -10380,6 +11237,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.GetTableColumnsResponse:
         """
         @summary Queries the information about columns.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetTableColumnsRequest
         @return: GetTableColumnsResponse
@@ -10394,6 +11254,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.GetTableDDLResponse:
         """
         @summary Queries the statement that is used to create a table.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetTableDDLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10436,6 +11299,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the statement that is used to create a table.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: GetTableDDLRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTableDDLResponse
@@ -10476,6 +11342,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the statement that is used to create a table.
         
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: GetTableDDLRequest
         @return: GetTableDDLResponse
         """
@@ -10488,6 +11357,9 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.GetTableDDLResponse:
         """
         @summary Queries the statement that is used to create a table.
+        
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetTableDDLRequest
         @return: GetTableDDLResponse
@@ -11811,7 +12683,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the description of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyAccountDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11825,6 +12697,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11852,7 +12726,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the description of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyAccountDescriptionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11866,6 +12740,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11892,7 +12768,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the description of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyAccountDescriptionRequest
         @return: ModifyAccountDescriptionResponse
@@ -11907,7 +12783,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the description of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyAccountDescriptionRequest
         @return: ModifyAccountDescriptionResponse
@@ -11921,7 +12797,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyAccountPrivilegesResponse:
         """
-        @summary 修改某一用户的权限
+        @summary Modifies the permissions of a database account.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param tmp_req: ModifyAccountPrivilegesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11966,7 +12844,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyAccountPrivilegesResponse:
         """
-        @summary 修改某一用户的权限
+        @summary Modifies the permissions of a database account.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param tmp_req: ModifyAccountPrivilegesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12010,7 +12890,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyAccountPrivilegesRequest,
     ) -> adb_20211201_models.ModifyAccountPrivilegesResponse:
         """
-        @summary 修改某一用户的权限
+        @summary Modifies the permissions of a database account.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyAccountPrivilegesRequest
         @return: ModifyAccountPrivilegesResponse
@@ -12023,7 +12905,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyAccountPrivilegesRequest,
     ) -> adb_20211201_models.ModifyAccountPrivilegesResponse:
         """
-        @summary 修改某一用户的权限
+        @summary Modifies the permissions of a database account.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyAccountPrivilegesRequest
         @return: ModifyAccountPrivilegesResponse
@@ -12038,6 +12922,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ModifyAuditLogConfigResponse:
         """
         @summary Modifies the SQL audit configuration of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12086,6 +12972,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the SQL audit configuration of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ModifyAuditLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAuditLogConfigResponse
@@ -12132,6 +13020,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies the SQL audit configuration of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ModifyAuditLogConfigRequest
         @return: ModifyAuditLogConfigResponse
         """
@@ -12144,6 +13034,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ModifyAuditLogConfigResponse:
         """
         @summary Modifies the SQL audit configuration of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ModifyAuditLogConfigRequest
         @return: ModifyAuditLogConfigResponse
@@ -12299,7 +13191,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the IP address whitelist of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyClusterAccessWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12344,7 +13236,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the IP address whitelist of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyClusterAccessWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12388,7 +13280,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the IP address whitelist of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyClusterAccessWhiteListRequest
         @return: ModifyClusterAccessWhiteListResponse
@@ -12403,7 +13295,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies the IP address whitelist of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyClusterAccessWhiteListRequest
         @return: ModifyClusterAccessWhiteListResponse
@@ -12537,10 +13429,10 @@ class Client(OpenApiClient):
         
         @description ### [](#)
         During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
-        When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+        When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
         If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
-        When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
-        You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+        When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+        You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition. For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12597,10 +13489,10 @@ class Client(OpenApiClient):
         
         @description ### [](#)
         During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
-        When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+        When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
         If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
-        When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
-        You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+        When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+        You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition. For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12656,10 +13548,10 @@ class Client(OpenApiClient):
         
         @description ### [](#)
         During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
-        When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+        When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
         If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
-        When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
-        You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+        When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+        You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition. For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyDBClusterRequest
         @return: ModifyDBClusterResponse
@@ -12676,10 +13568,10 @@ class Client(OpenApiClient):
         
         @description ### [](#)
         During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
-        When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+        When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
         If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
-        When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
-        You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+        When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+        You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition. For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyDBClusterRequest
         @return: ModifyDBClusterResponse
@@ -13067,7 +13959,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling plan for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyElasticPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13114,7 +14006,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling plan for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyElasticPlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13160,7 +14052,7 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling plan for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyElasticPlanRequest
         @return: ModifyElasticPlanResponse
@@ -13175,13 +14067,137 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling plan for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
         
         @param request: ModifyElasticPlanRequest
         @return: ModifyElasticPlanResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_elastic_plan_with_options_async(request, runtime)
+
+    def modify_performance_view_with_options(
+        self,
+        tmp_req: adb_20211201_models.ModifyPerformanceViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyPerformanceViewResponse:
+        """
+        @param tmp_req: ModifyPerformanceViewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPerformanceViewResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyPerformanceViewShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.view_detail):
+            request.view_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.view_detail, 'ViewDetail', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_detail_shrink):
+            query['ViewDetail'] = request.view_detail_shrink
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPerformanceView',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyPerformanceViewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_performance_view_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.ModifyPerformanceViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyPerformanceViewResponse:
+        """
+        @param tmp_req: ModifyPerformanceViewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPerformanceViewResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyPerformanceViewShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.view_detail):
+            request.view_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.view_detail, 'ViewDetail', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.view_detail_shrink):
+            query['ViewDetail'] = request.view_detail_shrink
+        if not UtilClient.is_unset(request.view_name):
+            query['ViewName'] = request.view_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPerformanceView',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyPerformanceViewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_performance_view(
+        self,
+        request: adb_20211201_models.ModifyPerformanceViewRequest,
+    ) -> adb_20211201_models.ModifyPerformanceViewResponse:
+        """
+        @param request: ModifyPerformanceViewRequest
+        @return: ModifyPerformanceViewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_performance_view_with_options(request, runtime)
+
+    async def modify_performance_view_async(
+        self,
+        request: adb_20211201_models.ModifyPerformanceViewRequest,
+    ) -> adb_20211201_models.ModifyPerformanceViewResponse:
+        """
+        @param request: ModifyPerformanceViewRequest
+        @return: ModifyPerformanceViewResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_performance_view_with_options_async(request, runtime)
 
     def preload_spark_app_metrics_with_options(
         self,
@@ -13190,6 +14206,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.PreloadSparkAppMetricsResponse:
         """
         @summary Preloads metrics for a Spark application.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: PreloadSparkAppMetricsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13230,6 +14250,10 @@ class Client(OpenApiClient):
         """
         @summary Preloads metrics for a Spark application.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: PreloadSparkAppMetricsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PreloadSparkAppMetricsResponse
@@ -13268,6 +14292,10 @@ class Client(OpenApiClient):
         """
         @summary Preloads metrics for a Spark application.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: PreloadSparkAppMetricsRequest
         @return: PreloadSparkAppMetricsResponse
         """
@@ -13280,6 +14308,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.PreloadSparkAppMetricsResponse:
         """
         @summary Preloads metrics for a Spark application.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: PreloadSparkAppMetricsRequest
         @return: PreloadSparkAppMetricsResponse
@@ -13301,6 +14333,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13334,6 +14368,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13383,6 +14419,10 @@ class Client(OpenApiClient):
         """
         @summary Renames a Spark template file.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: RenameSparkTemplateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RenameSparkTemplateFileResponse
@@ -13422,6 +14462,10 @@ class Client(OpenApiClient):
         """
         @summary Renames a Spark template file.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: RenameSparkTemplateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RenameSparkTemplateFileResponse
@@ -13460,6 +14504,10 @@ class Client(OpenApiClient):
         """
         @summary Renames a Spark template file.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: RenameSparkTemplateFileRequest
         @return: RenameSparkTemplateFileResponse
         """
@@ -13472,6 +14520,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
         """
         @summary Renames a Spark template file.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: RenameSparkTemplateFileRequest
         @return: RenameSparkTemplateFileResponse
@@ -13487,6 +14539,8 @@ class Client(OpenApiClient):
         """
         @summary Resets the password of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResetAccountPasswordResponse
@@ -13501,6 +14555,8 @@ class Client(OpenApiClient):
             query['AccountPassword'] = request.account_password
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13528,6 +14584,8 @@ class Client(OpenApiClient):
         """
         @summary Resets the password of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResetAccountPasswordResponse
@@ -13542,6 +14600,8 @@ class Client(OpenApiClient):
             query['AccountPassword'] = request.account_password
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13568,6 +14628,8 @@ class Client(OpenApiClient):
         """
         @summary Resets the password of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
         """
@@ -13580,6 +14642,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ResetAccountPasswordResponse:
         """
         @summary Resets the password of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -13715,9 +14779,9 @@ class Client(OpenApiClient):
         """
         @summary Starts the Spark SQL engine.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: StartSparkSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13766,9 +14830,9 @@ class Client(OpenApiClient):
         """
         @summary Starts the Spark SQL engine.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: StartSparkSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13816,9 +14880,9 @@ class Client(OpenApiClient):
         """
         @summary Starts the Spark SQL engine.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: StartSparkSQLEngineRequest
         @return: StartSparkSQLEngineResponse
@@ -13833,9 +14897,9 @@ class Client(OpenApiClient):
         """
         @summary Starts the Spark SQL engine.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: StartSparkSQLEngineRequest
         @return: StartSparkSQLEngineResponse
@@ -13991,6 +15055,10 @@ class Client(OpenApiClient):
         """
         @summary Submits a Spark log analysis task and queries the analysis results.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: SubmitSparkLogAnalyzeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitSparkLogAnalyzeTaskResponse
@@ -14026,6 +15094,10 @@ class Client(OpenApiClient):
         """
         @summary Submits a Spark log analysis task and queries the analysis results.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: SubmitSparkLogAnalyzeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubmitSparkLogAnalyzeTaskResponse
@@ -14060,6 +15132,10 @@ class Client(OpenApiClient):
         """
         @summary Submits a Spark log analysis task and queries the analysis results.
         
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
         @param request: SubmitSparkLogAnalyzeTaskRequest
         @return: SubmitSparkLogAnalyzeTaskResponse
         """
@@ -14072,6 +15148,10 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.SubmitSparkLogAnalyzeTaskResponse:
         """
         @summary Submits a Spark log analysis task and queries the analysis results.
+        
+        @description    General endpoint: `adb.aliyuncs.com`.
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: SubmitSparkLogAnalyzeTaskRequest
         @return: SubmitSparkLogAnalyzeTaskResponse

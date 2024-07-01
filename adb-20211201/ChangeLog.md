@@ -1,3 +1,33 @@
+2024-07-01 Version: 2.0.0
+- Support API CreatePerformanceView.
+- Support API DeletePerformanceView.
+- Support API DescribeExcessivePrimaryKeys.
+- Support API DescribePerformanceViewAttribute.
+- Support API DescribePerformanceViews.
+- Support API ModifyPerformanceView.
+- Update API AllocateClusterPublicConnection: add param Engine.
+- Update API CreateAccount: add param Engine.
+- Update API CreateDBCluster: add param DiskEncryption.
+- Update API CreateDBCluster: add param KmsId.
+- Update API DeleteAccount: add param Engine.
+- Update API DescribeAccounts: add param Engine.
+- Update API DescribeAccounts: update response param.
+- Update API DescribeApsActionLogs: delete param Action.
+- Update API DescribeApsActionLogs: update response param.
+- Update API DescribeClusterNetInfo: add param Engine.
+- Update API DescribeClusterNetInfo: update response param.
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API DescribeDBClusterHealthStatus: update response param.
+- Update API DescribeDBClusters: update response param.
+- Update API DescribeDownloadRecords: update response param.
+- Update API DescribeJobResourceUsage: update response param.
+- Update API DescribeSQLPatterns: update response param.
+- Update API ModifyAccountDescription: add param Engine.
+- Update API ReleaseClusterPublicConnection: add param Engine.
+- Update API ResetAccountPassword: add param Engine.
+- Update API SubmitSparkApp: update param AppName.
+
+
 2024-05-10 Version: 1.3.5
 - Update API CreateOssSubDirectory: update param DBClusterId.
 
