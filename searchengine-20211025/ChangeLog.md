@@ -1,3 +1,9 @@
+2024-07-02 Version: 4.1.0
+- Support API ListLogs.
+- Update API CreateInstance: update response param.
+- Update API ListInstances: update response param.
+
+
 2024-06-25 Version: 4.0.0
 - Support API CloneSqlInstance.
 - Support API CreateFolder.

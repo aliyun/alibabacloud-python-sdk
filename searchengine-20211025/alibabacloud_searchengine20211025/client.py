@@ -6785,6 +6785,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
 
+    def list_logs_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListLogsResponse:
+        """
+        @param request: ListLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLogs',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_logs_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListLogsResponse:
+        """
+        @param request: ListLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_num):
+            query['pageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['query'] = request.query
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLogs',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_logs(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListLogsRequest,
+    ) -> searchengine_20211025_models.ListLogsResponse:
+        """
+        @param request: ListLogsRequest
+        @return: ListLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_logs_with_options(instance_id, request, headers, runtime)
+
+    async def list_logs_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListLogsRequest,
+    ) -> searchengine_20211025_models.ListLogsResponse:
+        """
+        @param request: ListLogsRequest
+        @return: ListLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_logs_with_options_async(instance_id, request, headers, runtime)
+
     def list_online_configs_with_options(
         self,
         instance_id: str,
