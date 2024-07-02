@@ -1,3 +1,13 @@
+2024-07-02 Version: 2.31.0
+- Support API CreateHybridProxyCluster.
+- Update API DescribeAffectedMaliciousFileImages: update response param.
+- Update API DescribeBackupPolicies: update response param.
+- Update API DescribeImageInstances: update response param.
+- Update API DescribeImageSensitiveFileList: update response param.
+- Update API DescribeInstanceStatistics: update response param.
+- Update API DescribeSuspEventUserSetting: update response param.
+
+
 2024-06-21 Version: 2.30.2
 - Update API DescribeSuspEvents: update response param.
 - Update API GetCheckDetail: update response param.

@@ -5462,6 +5462,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_honeypot_probe_bind_with_options_async(request, runtime)
 
+    def create_hybrid_proxy_cluster_with_options(
+        self,
+        request: sas_20181203_models.CreateHybridProxyClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateHybridProxyClusterResponse:
+        """
+        @summary 创建代理集群
+        
+        @param request: CreateHybridProxyClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridProxyClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridProxyCluster',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateHybridProxyClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hybrid_proxy_cluster_with_options_async(
+        self,
+        request: sas_20181203_models.CreateHybridProxyClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateHybridProxyClusterResponse:
+        """
+        @summary 创建代理集群
+        
+        @param request: CreateHybridProxyClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridProxyClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridProxyCluster',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateHybridProxyClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hybrid_proxy_cluster(
+        self,
+        request: sas_20181203_models.CreateHybridProxyClusterRequest,
+    ) -> sas_20181203_models.CreateHybridProxyClusterResponse:
+        """
+        @summary 创建代理集群
+        
+        @param request: CreateHybridProxyClusterRequest
+        @return: CreateHybridProxyClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_hybrid_proxy_cluster_with_options(request, runtime)
+
+    async def create_hybrid_proxy_cluster_async(
+        self,
+        request: sas_20181203_models.CreateHybridProxyClusterRequest,
+    ) -> sas_20181203_models.CreateHybridProxyClusterResponse:
+        """
+        @summary 创建代理集群
+        
+        @param request: CreateHybridProxyClusterRequest
+        @return: CreateHybridProxyClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hybrid_proxy_cluster_with_options_async(request, runtime)
+
     def create_interception_rule_with_options(
         self,
         tmp_req: sas_20181203_models.CreateInterceptionRuleRequest,
@@ -11448,7 +11552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DeleteVulAutoRepairConfigResponse:
         """
-        @summary Delete a list of vulnerabilities that can be automatically fixed. After the list is deleted, you can not select the list when you create a vulnerability fixing task on the Playbook page.
+        @summary Deletes configurations of of an automatic vulnerability fixing task at a time on the Playbook page.
         
         @param request: DeleteVulAutoRepairConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11487,7 +11591,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DeleteVulAutoRepairConfigResponse:
         """
-        @summary Delete a list of vulnerabilities that can be automatically fixed. After the list is deleted, you can not select the list when you create a vulnerability fixing task on the Playbook page.
+        @summary Deletes configurations of of an automatic vulnerability fixing task at a time on the Playbook page.
         
         @param request: DeleteVulAutoRepairConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11525,7 +11629,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DeleteVulAutoRepairConfigRequest,
     ) -> sas_20181203_models.DeleteVulAutoRepairConfigResponse:
         """
-        @summary Delete a list of vulnerabilities that can be automatically fixed. After the list is deleted, you can not select the list when you create a vulnerability fixing task on the Playbook page.
+        @summary Deletes configurations of of an automatic vulnerability fixing task at a time on the Playbook page.
         
         @param request: DeleteVulAutoRepairConfigRequest
         @return: DeleteVulAutoRepairConfigResponse
@@ -11538,7 +11642,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DeleteVulAutoRepairConfigRequest,
     ) -> sas_20181203_models.DeleteVulAutoRepairConfigResponse:
         """
-        @summary Delete a list of vulnerabilities that can be automatically fixed. After the list is deleted, you can not select the list when you create a vulnerability fixing task on the Playbook page.
+        @summary Deletes configurations of of an automatic vulnerability fixing task at a time on the Playbook page.
         
         @param request: DeleteVulAutoRepairConfigRequest
         @return: DeleteVulAutoRepairConfigResponse
@@ -34606,7 +34710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVulDefendCountStatisticsResponse:
         """
-        @summary 查询漏洞rasp防御统计
+        @summary Queries the vulnerability defense statistics in Security Center.
         
         @param request: DescribeVulDefendCountStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34641,7 +34745,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVulDefendCountStatisticsResponse:
         """
-        @summary 查询漏洞rasp防御统计
+        @summary Queries the vulnerability defense statistics in Security Center.
         
         @param request: DescribeVulDefendCountStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34675,7 +34779,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribeVulDefendCountStatisticsRequest,
     ) -> sas_20181203_models.DescribeVulDefendCountStatisticsResponse:
         """
-        @summary 查询漏洞rasp防御统计
+        @summary Queries the vulnerability defense statistics in Security Center.
         
         @param request: DescribeVulDefendCountStatisticsRequest
         @return: DescribeVulDefendCountStatisticsResponse
@@ -34688,7 +34792,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribeVulDefendCountStatisticsRequest,
     ) -> sas_20181203_models.DescribeVulDefendCountStatisticsResponse:
         """
-        @summary 查询漏洞rasp防御统计
+        @summary Queries the vulnerability defense statistics in Security Center.
         
         @param request: DescribeVulDefendCountStatisticsRequest
         @return: DescribeVulDefendCountStatisticsResponse
@@ -35271,7 +35375,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVulMetaCountStatisticsResponse:
         """
-        @summary 查询漏洞库信息统计
+        @summary Queries the statistics of vulnerabilities in Security Center.
         
         @param request: DescribeVulMetaCountStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35299,7 +35403,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeVulMetaCountStatisticsResponse:
         """
-        @summary 查询漏洞库信息统计
+        @summary Queries the statistics of vulnerabilities in Security Center.
         
         @param request: DescribeVulMetaCountStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35324,7 +35428,7 @@ class Client(OpenApiClient):
 
     def describe_vul_meta_count_statistics(self) -> sas_20181203_models.DescribeVulMetaCountStatisticsResponse:
         """
-        @summary 查询漏洞库信息统计
+        @summary Queries the statistics of vulnerabilities in Security Center.
         
         @return: DescribeVulMetaCountStatisticsResponse
         """
@@ -35333,7 +35437,7 @@ class Client(OpenApiClient):
 
     async def describe_vul_meta_count_statistics_async(self) -> sas_20181203_models.DescribeVulMetaCountStatisticsResponse:
         """
-        @summary 查询漏洞库信息统计
+        @summary Queries the statistics of vulnerabilities in Security Center.
         
         @return: DescribeVulMetaCountStatisticsResponse
         """
