@@ -1,3 +1,12 @@
+2024-07-02 Version: 5.1.0
+- Support API BatchKillSessionList.
+- Support API DescribeSessionList.
+- Update API CreateMySqlDataSource: add param UseSsl.
+- Update API CreateProject: update param CommonTransferConfig.
+- Update API DescribeProject: update response param.
+- Update API UpdateProjectConfig: add param CommonTransferConfig.
+
+
 2024-06-26 Version: 5.0.1
 - Update API CreateMySqlDataSource: add param UseSsl.
 - Update API CreateProject: update param CommonTransferConfig.

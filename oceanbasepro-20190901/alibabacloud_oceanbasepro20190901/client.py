@@ -145,6 +145,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_kill_process_list_with_options_async(request, runtime)
 
+    def batch_kill_session_list_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.BatchKillSessionListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.BatchKillSessionListResponse:
+        """
+        @summary 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+        
+        @param request: BatchKillSessionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchKillSessionListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.session_list):
+            body['SessionList'] = request.session_list
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchKillSessionList',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.BatchKillSessionListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_kill_session_list_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.BatchKillSessionListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.BatchKillSessionListResponse:
+        """
+        @summary 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+        
+        @param request: BatchKillSessionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchKillSessionListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.session_list):
+            body['SessionList'] = request.session_list
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchKillSessionList',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.BatchKillSessionListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_kill_session_list(
+        self,
+        request: ocean_base_pro_20190901_models.BatchKillSessionListRequest,
+    ) -> ocean_base_pro_20190901_models.BatchKillSessionListResponse:
+        """
+        @summary 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+        
+        @param request: BatchKillSessionListRequest
+        @return: BatchKillSessionListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_kill_session_list_with_options(request, runtime)
+
+    async def batch_kill_session_list_async(
+        self,
+        request: ocean_base_pro_20190901_models.BatchKillSessionListRequest,
+    ) -> ocean_base_pro_20190901_models.BatchKillSessionListResponse:
+        """
+        @summary 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+        
+        @param request: BatchKillSessionListRequest
+        @return: BatchKillSessionListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_kill_session_list_with_options_async(request, runtime)
+
     def cancel_project_modify_record_with_options(
         self,
         request: ocean_base_pro_20190901_models.CancelProjectModifyRecordRequest,
@@ -8133,6 +8237,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_ip_groups_with_options_async(request, runtime)
 
+    def describe_session_list_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSessionListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeSessionListResponse:
+        """
+        @summary 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+        
+        @param request: DescribeSessionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSessionListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeSessionList',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSessionListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_session_list_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSessionListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeSessionListResponse:
+        """
+        @summary 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+        
+        @param request: DescribeSessionListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSessionListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeSessionList',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSessionListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_session_list(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSessionListRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeSessionListResponse:
+        """
+        @summary 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+        
+        @param request: DescribeSessionListRequest
+        @return: DescribeSessionListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_session_list_with_options(request, runtime)
+
+    async def describe_session_list_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSessionListRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeSessionListResponse:
+        """
+        @summary 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+        
+        @param request: DescribeSessionListRequest
+        @return: DescribeSessionListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_session_list_with_options_async(request, runtime)
+
     def describe_slow_sqlhistory_list_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListRequest,
@@ -8851,7 +9055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse:
         """
-        @summary 查询租户同步位点信息
+        @summary You can call this operation to query the maximum readable timestamp of a tenant.
         
         @param request: DescribeTenantReadableScnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8888,7 +9092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse:
         """
-        @summary 查询租户同步位点信息
+        @summary You can call this operation to query the maximum readable timestamp of a tenant.
         
         @param request: DescribeTenantReadableScnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8924,7 +9128,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantReadableScnRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse:
         """
-        @summary 查询租户同步位点信息
+        @summary You can call this operation to query the maximum readable timestamp of a tenant.
         
         @param request: DescribeTenantReadableScnRequest
         @return: DescribeTenantReadableScnResponse
@@ -8937,7 +9141,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantReadableScnRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantReadableScnResponse:
         """
-        @summary 查询租户同步位点信息
+        @summary You can call this operation to query the maximum readable timestamp of a tenant.
         
         @param request: DescribeTenantReadableScnRequest
         @return: DescribeTenantReadableScnResponse
