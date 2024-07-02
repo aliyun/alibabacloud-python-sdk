@@ -1,3 +1,7 @@
+2024-07-02 Version: 2.7.1
+- Update API InitFaceVerify: add param VideoEvidence.
+
+
 2024-06-19 Version: 2.7.0
 - Support API DeepfakeDetect.
 

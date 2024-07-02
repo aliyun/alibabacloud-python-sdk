@@ -2383,6 +2383,8 @@ class Client(OpenApiClient):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.validity_date):
             query['ValidityDate'] = request.validity_date
+        if not UtilClient.is_unset(request.video_evidence):
+            query['VideoEvidence'] = request.video_evidence
         if not UtilClient.is_unset(request.voluntary_customized_content):
             query['VoluntaryCustomizedContent'] = request.voluntary_customized_content
         body = {}
@@ -2484,6 +2486,8 @@ class Client(OpenApiClient):
             query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.validity_date):
             query['ValidityDate'] = request.validity_date
+        if not UtilClient.is_unset(request.video_evidence):
+            query['VideoEvidence'] = request.video_evidence
         if not UtilClient.is_unset(request.voluntary_customized_content):
             query['VoluntaryCustomizedContent'] = request.voluntary_customized_content
         body = {}

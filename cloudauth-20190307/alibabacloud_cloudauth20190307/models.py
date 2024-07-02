@@ -4190,6 +4190,7 @@ class InitFaceVerifyRequest(TeaModel):
         ui_custom_url: str = None,
         user_id: str = None,
         validity_date: str = None,
+        video_evidence: str = None,
         voluntary_customized_content: str = None,
     ):
         self.auth_id = auth_id
@@ -4225,6 +4226,7 @@ class InitFaceVerifyRequest(TeaModel):
         self.ui_custom_url = ui_custom_url
         self.user_id = user_id
         self.validity_date = validity_date
+        self.video_evidence = video_evidence
         self.voluntary_customized_content = voluntary_customized_content
 
     def validate(self):
@@ -4302,6 +4304,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['UserId'] = self.user_id
         if self.validity_date is not None:
             result['ValidityDate'] = self.validity_date
+        if self.video_evidence is not None:
+            result['VideoEvidence'] = self.video_evidence
         if self.voluntary_customized_content is not None:
             result['VoluntaryCustomizedContent'] = self.voluntary_customized_content
         return result
@@ -4374,6 +4378,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.user_id = m.get('UserId')
         if m.get('ValidityDate') is not None:
             self.validity_date = m.get('ValidityDate')
+        if m.get('VideoEvidence') is not None:
+            self.video_evidence = m.get('VideoEvidence')
         if m.get('VoluntaryCustomizedContent') is not None:
             self.voluntary_customized_content = m.get('VoluntaryCustomizedContent')
         return self
