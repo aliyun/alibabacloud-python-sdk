@@ -472,6 +472,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -531,6 +533,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -1524,7 +1528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeAndroidInstanceGroupsResponse:
         """
-        @summary 查询安卓实例组
+        @summary 查询实例组
         
         @param request: DescribeAndroidInstanceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1577,7 +1581,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeAndroidInstanceGroupsResponse:
         """
-        @summary 查询安卓实例组
+        @summary 查询实例组
         
         @param request: DescribeAndroidInstanceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1629,7 +1633,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DescribeAndroidInstanceGroupsRequest,
     ) -> eds_aic_20230930_models.DescribeAndroidInstanceGroupsResponse:
         """
-        @summary 查询安卓实例组
+        @summary 查询实例组
         
         @param request: DescribeAndroidInstanceGroupsRequest
         @return: DescribeAndroidInstanceGroupsResponse
@@ -1642,7 +1646,7 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DescribeAndroidInstanceGroupsRequest,
     ) -> eds_aic_20230930_models.DescribeAndroidInstanceGroupsResponse:
         """
-        @summary 查询安卓实例组
+        @summary 查询实例组
         
         @param request: DescribeAndroidInstanceGroupsRequest
         @return: DescribeAndroidInstanceGroupsResponse
@@ -3880,6 +3884,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_ids):
             query['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3915,6 +3921,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_ids):
             query['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4688,6 +4696,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_ids):
             query['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4723,6 +4733,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_ids):
             query['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

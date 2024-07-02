@@ -1,3 +1,10 @@
+2024-07-02 Version: 1.2.3
+- Update API CreateAndroidInstanceGroup: add param Amount.
+- Update API DescribeAndroidInstanceGroups: update response param.
+- Update API RebootAndroidInstancesInGroup: add param ForceStop.
+- Update API StopAndroidInstance: add param ForceStop.
+
+
 2024-06-27 Version: 1.2.2
 - Update API CreateApp: add param BizRegionId.
 - Update API DescribeApps: add param BizRegionId.

@@ -597,6 +597,7 @@ class CheckResourceStockResponse(TeaModel):
 class CreateAndroidInstanceGroupRequest(TeaModel):
     def __init__(
         self,
+        amount: int = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
         biz_region_id: str = None,
@@ -611,6 +612,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         policy_group_id: str = None,
         v_switch_id: str = None,
     ):
+        self.amount = amount
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         # This parameter is required.
@@ -638,6 +640,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
@@ -668,6 +672,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
@@ -1984,6 +1990,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         charge_type: str = None,
         cpu: str = None,
         disks: List[DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks] = None,
+        error_code: str = None,
         gmt_create: str = None,
         gmt_expired: str = None,
         gmt_modified: str = None,
@@ -2010,6 +2017,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.charge_type = charge_type
         self.cpu = cpu
         self.disks = disks
+        self.error_code = error_code
         self.gmt_create = gmt_create
         self.gmt_expired = gmt_expired
         self.gmt_modified = gmt_modified
@@ -2055,6 +2063,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         if self.disks is not None:
             for k in self.disks:
                 result['Disks'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_expired is not None:
@@ -2112,6 +2122,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             for k in m.get('Disks'):
                 temp_model = DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks()
                 self.disks.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtExpired') is not None:
@@ -5696,8 +5708,10 @@ class RebootAndroidInstancesInGroupRequest(TeaModel):
     def __init__(
         self,
         android_instance_ids: List[str] = None,
+        force_stop: bool = None,
     ):
         self.android_instance_ids = android_instance_ids
+        self.force_stop = force_stop
 
     def validate(self):
         pass
@@ -5710,12 +5724,16 @@ class RebootAndroidInstancesInGroupRequest(TeaModel):
         result = dict()
         if self.android_instance_ids is not None:
             result['AndroidInstanceIds'] = self.android_instance_ids
+        if self.force_stop is not None:
+            result['ForceStop'] = self.force_stop
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AndroidInstanceIds') is not None:
             self.android_instance_ids = m.get('AndroidInstanceIds')
+        if m.get('ForceStop') is not None:
+            self.force_stop = m.get('ForceStop')
         return self
 
 
@@ -6620,8 +6638,10 @@ class StopAndroidInstanceRequest(TeaModel):
     def __init__(
         self,
         android_instance_ids: List[str] = None,
+        force_stop: bool = None,
     ):
         self.android_instance_ids = android_instance_ids
+        self.force_stop = force_stop
 
     def validate(self):
         pass
@@ -6634,12 +6654,16 @@ class StopAndroidInstanceRequest(TeaModel):
         result = dict()
         if self.android_instance_ids is not None:
             result['AndroidInstanceIds'] = self.android_instance_ids
+        if self.force_stop is not None:
+            result['ForceStop'] = self.force_stop
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AndroidInstanceIds') is not None:
             self.android_instance_ids = m.get('AndroidInstanceIds')
+        if m.get('ForceStop') is not None:
+            self.force_stop = m.get('ForceStop')
         return self
 
 
