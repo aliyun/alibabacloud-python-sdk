@@ -1,3 +1,10 @@
+2024-07-02 Version: 4.20.0
+- Support API ListAllReleaseWorkflows.
+- Support API ListAppReleaseStageExecutionIntegratedMetadata.
+- Support API ListAppReleaseStageExecutions.
+- Support API UpdateOrganizationMember.
+
+
 2024-05-28 Version: 4.19.0
 - Support API ExportInsightCustomValue.
 - Support API ExportInsightExpectedWorkTime.

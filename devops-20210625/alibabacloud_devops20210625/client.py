@@ -14751,6 +14751,374 @@ class Client(OpenApiClient):
         headers = {}
         return await self.link_merge_request_label_with_options_async(request, headers, runtime)
 
+    def list_all_release_workflows_with_options(
+        self,
+        app_name: str,
+        request: devops_20210625_models.ListAllReleaseWorkflowsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListAllReleaseWorkflowsResponse:
+        """
+        @summary 查找应用下所有的研发流程
+        
+        @param request: ListAllReleaseWorkflowsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllReleaseWorkflowsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllReleaseWorkflows',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListAllReleaseWorkflowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_all_release_workflows_with_options_async(
+        self,
+        app_name: str,
+        request: devops_20210625_models.ListAllReleaseWorkflowsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListAllReleaseWorkflowsResponse:
+        """
+        @summary 查找应用下所有的研发流程
+        
+        @param request: ListAllReleaseWorkflowsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllReleaseWorkflowsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllReleaseWorkflows',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListAllReleaseWorkflowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_all_release_workflows(
+        self,
+        app_name: str,
+        request: devops_20210625_models.ListAllReleaseWorkflowsRequest,
+    ) -> devops_20210625_models.ListAllReleaseWorkflowsResponse:
+        """
+        @summary 查找应用下所有的研发流程
+        
+        @param request: ListAllReleaseWorkflowsRequest
+        @return: ListAllReleaseWorkflowsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_all_release_workflows_with_options(app_name, request, headers, runtime)
+
+    async def list_all_release_workflows_async(
+        self,
+        app_name: str,
+        request: devops_20210625_models.ListAllReleaseWorkflowsRequest,
+    ) -> devops_20210625_models.ListAllReleaseWorkflowsResponse:
+        """
+        @summary 查找应用下所有的研发流程
+        
+        @param request: ListAllReleaseWorkflowsRequest
+        @return: ListAllReleaseWorkflowsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_all_release_workflows_with_options_async(app_name, request, headers, runtime)
+
+    def list_app_release_stage_execution_integrated_metadata_with_options(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataResponse:
+        """
+        @summary 查询研发阶段执行记录集成变更信息
+        
+        @param request: ListAppReleaseStageExecutionIntegratedMetadataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppReleaseStageExecutionIntegratedMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppReleaseStageExecutionIntegratedMetadata',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}/integratedMetadata',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_release_stage_execution_integrated_metadata_with_options_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataResponse:
+        """
+        @summary 查询研发阶段执行记录集成变更信息
+        
+        @param request: ListAppReleaseStageExecutionIntegratedMetadataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppReleaseStageExecutionIntegratedMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppReleaseStageExecutionIntegratedMetadata',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}/integratedMetadata',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='array'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_release_stage_execution_integrated_metadata(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataRequest,
+    ) -> devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataResponse:
+        """
+        @summary 查询研发阶段执行记录集成变更信息
+        
+        @param request: ListAppReleaseStageExecutionIntegratedMetadataRequest
+        @return: ListAppReleaseStageExecutionIntegratedMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_app_release_stage_execution_integrated_metadata_with_options(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
+
+    async def list_app_release_stage_execution_integrated_metadata_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataRequest,
+    ) -> devops_20210625_models.ListAppReleaseStageExecutionIntegratedMetadataResponse:
+        """
+        @summary 查询研发阶段执行记录集成变更信息
+        
+        @param request: ListAppReleaseStageExecutionIntegratedMetadataRequest
+        @return: ListAppReleaseStageExecutionIntegratedMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_app_release_stage_execution_integrated_metadata_with_options_async(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
+
+    def list_app_release_stage_executions_with_options(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        request: devops_20210625_models.ListAppReleaseStageExecutionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListAppReleaseStageExecutionsResponse:
+        """
+        @summary 批量查询研发阶段执行记录
+        
+        @param request: ListAppReleaseStageExecutionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppReleaseStageExecutionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.pagination):
+            query['pagination'] = request.pagination
+        if not UtilClient.is_unset(request.per_page):
+            query['perPage'] = request.per_page
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppReleaseStageExecutions',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListAppReleaseStageExecutionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_release_stage_executions_with_options_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        request: devops_20210625_models.ListAppReleaseStageExecutionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListAppReleaseStageExecutionsResponse:
+        """
+        @summary 批量查询研发阶段执行记录
+        
+        @param request: ListAppReleaseStageExecutionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppReleaseStageExecutionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.pagination):
+            query['pagination'] = request.pagination
+        if not UtilClient.is_unset(request.per_page):
+            query['perPage'] = request.per_page
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppReleaseStageExecutions',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListAppReleaseStageExecutionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_release_stage_executions(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        request: devops_20210625_models.ListAppReleaseStageExecutionsRequest,
+    ) -> devops_20210625_models.ListAppReleaseStageExecutionsResponse:
+        """
+        @summary 批量查询研发阶段执行记录
+        
+        @param request: ListAppReleaseStageExecutionsRequest
+        @return: ListAppReleaseStageExecutionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_app_release_stage_executions_with_options(app_name, release_workflow_sn, release_stage_sn, request, headers, runtime)
+
+    async def list_app_release_stage_executions_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        request: devops_20210625_models.ListAppReleaseStageExecutionsRequest,
+    ) -> devops_20210625_models.ListAppReleaseStageExecutionsResponse:
+        """
+        @summary 批量查询研发阶段执行记录
+        
+        @param request: ListAppReleaseStageExecutionsRequest
+        @return: ListAppReleaseStageExecutionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_app_release_stage_executions_with_options_async(app_name, release_workflow_sn, release_stage_sn, request, headers, runtime)
+
     def list_application_members_with_options(
         self,
         app_name: str,
@@ -25438,6 +25806,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_merge_request_personnel_with_options_async(repository_id, local_id, person_type, request, headers, runtime)
+
+    def update_organization_member_with_options(
+        self,
+        organization_id: str,
+        account_id: str,
+        request: devops_20210625_models.UpdateOrganizationMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateOrganizationMemberResponse:
+        """
+        @summary 当前用户加入的企业列表
+        
+        @param request: UpdateOrganizationMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOrganizationMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_member_name):
+            query['organizationMemberName'] = request.organization_member_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOrganizationMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/members/{OpenApiUtilClient.get_encode_param(account_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateOrganizationMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_organization_member_with_options_async(
+        self,
+        organization_id: str,
+        account_id: str,
+        request: devops_20210625_models.UpdateOrganizationMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateOrganizationMemberResponse:
+        """
+        @summary 当前用户加入的企业列表
+        
+        @param request: UpdateOrganizationMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOrganizationMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_member_name):
+            query['organizationMemberName'] = request.organization_member_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOrganizationMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/members/{OpenApiUtilClient.get_encode_param(account_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateOrganizationMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_organization_member(
+        self,
+        organization_id: str,
+        account_id: str,
+        request: devops_20210625_models.UpdateOrganizationMemberRequest,
+    ) -> devops_20210625_models.UpdateOrganizationMemberResponse:
+        """
+        @summary 当前用户加入的企业列表
+        
+        @param request: UpdateOrganizationMemberRequest
+        @return: UpdateOrganizationMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_organization_member_with_options(organization_id, account_id, request, headers, runtime)
+
+    async def update_organization_member_async(
+        self,
+        organization_id: str,
+        account_id: str,
+        request: devops_20210625_models.UpdateOrganizationMemberRequest,
+    ) -> devops_20210625_models.UpdateOrganizationMemberResponse:
+        """
+        @summary 当前用户加入的企业列表
+        
+        @param request: UpdateOrganizationMemberRequest
+        @return: UpdateOrganizationMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_organization_member_with_options_async(organization_id, account_id, request, headers, runtime)
 
     def update_pipeline_with_options(
         self,

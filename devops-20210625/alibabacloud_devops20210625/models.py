@@ -30831,6 +30831,653 @@ class LinkMergeRequestLabelResponse(TeaModel):
         return self
 
 
+class ListAllReleaseWorkflowsRequest(TeaModel):
+    def __init__(
+        self,
+        organization_id: str = None,
+    ):
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ListAllReleaseWorkflowsResponseBodyReleaseStagesVariableGroups(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        display_name: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.display_name = display_name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListAllReleaseWorkflowsResponseBodyReleaseStages(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        name: str = None,
+        sn: str = None,
+        release_workflow_sn: str = None,
+        order: str = None,
+        variable_groups: List[ListAllReleaseWorkflowsResponseBodyReleaseStagesVariableGroups] = None,
+    ):
+        self.app_name = app_name
+        self.name = name
+        self.sn = sn
+        self.release_workflow_sn = release_workflow_sn
+        self.order = order
+        self.variable_groups = variable_groups
+
+    def validate(self):
+        if self.variable_groups:
+            for k in self.variable_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['appName'] = self.app_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.sn is not None:
+            result['sn'] = self.sn
+        if self.release_workflow_sn is not None:
+            result['releaseWorkflowSn'] = self.release_workflow_sn
+        if self.order is not None:
+            result['order'] = self.order
+        result['variableGroups'] = []
+        if self.variable_groups is not None:
+            for k in self.variable_groups:
+                result['variableGroups'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appName') is not None:
+            self.app_name = m.get('appName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sn') is not None:
+            self.sn = m.get('sn')
+        if m.get('releaseWorkflowSn') is not None:
+            self.release_workflow_sn = m.get('releaseWorkflowSn')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        self.variable_groups = []
+        if m.get('variableGroups') is not None:
+            for k in m.get('variableGroups'):
+                temp_model = ListAllReleaseWorkflowsResponseBodyReleaseStagesVariableGroups()
+                self.variable_groups.append(temp_model.from_map(k))
+        return self
+
+
+class ListAllReleaseWorkflowsResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        sn: str = None,
+        name: str = None,
+        order: str = None,
+        release_stages: List[ListAllReleaseWorkflowsResponseBodyReleaseStages] = None,
+        note: str = None,
+    ):
+        self.app_name = app_name
+        self.sn = sn
+        self.name = name
+        self.order = order
+        self.release_stages = release_stages
+        self.note = note
+
+    def validate(self):
+        if self.release_stages:
+            for k in self.release_stages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['appName'] = self.app_name
+        if self.sn is not None:
+            result['sn'] = self.sn
+        if self.name is not None:
+            result['name'] = self.name
+        if self.order is not None:
+            result['order'] = self.order
+        result['releaseStages'] = []
+        if self.release_stages is not None:
+            for k in self.release_stages:
+                result['releaseStages'].append(k.to_map() if k else None)
+        if self.note is not None:
+            result['note'] = self.note
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appName') is not None:
+            self.app_name = m.get('appName')
+        if m.get('sn') is not None:
+            self.sn = m.get('sn')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('order') is not None:
+            self.order = m.get('order')
+        self.release_stages = []
+        if m.get('releaseStages') is not None:
+            for k in m.get('releaseStages'):
+                temp_model = ListAllReleaseWorkflowsResponseBodyReleaseStages()
+                self.release_stages.append(temp_model.from_map(k))
+        if m.get('note') is not None:
+            self.note = m.get('note')
+        return self
+
+
+class ListAllReleaseWorkflowsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: List[ListAllReleaseWorkflowsResponseBody] = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = ListAllReleaseWorkflowsResponseBody()
+                self.body.append(temp_model.from_map(k))
+        return self
+
+
+class ListAppReleaseStageExecutionIntegratedMetadataRequest(TeaModel):
+    def __init__(
+        self,
+        organization_id: str = None,
+    ):
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ListAppReleaseStageExecutionIntegratedMetadataResponseBodyChangeRequests(TeaModel):
+    def __init__(
+        self,
+        sn: str = None,
+        name: str = None,
+        branch_name: str = None,
+        commit_id: str = None,
+        owner_account_id: str = None,
+    ):
+        self.sn = sn
+        self.name = name
+        self.branch_name = branch_name
+        self.commit_id = commit_id
+        self.owner_account_id = owner_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sn is not None:
+            result['sn'] = self.sn
+        if self.name is not None:
+            result['name'] = self.name
+        if self.branch_name is not None:
+            result['branchName'] = self.branch_name
+        if self.commit_id is not None:
+            result['commitId'] = self.commit_id
+        if self.owner_account_id is not None:
+            result['ownerAccountId'] = self.owner_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sn') is not None:
+            self.sn = m.get('sn')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('branchName') is not None:
+            self.branch_name = m.get('branchName')
+        if m.get('commitId') is not None:
+            self.commit_id = m.get('commitId')
+        if m.get('ownerAccountId') is not None:
+            self.owner_account_id = m.get('ownerAccountId')
+        return self
+
+
+class ListAppReleaseStageExecutionIntegratedMetadataResponseBody(TeaModel):
+    def __init__(
+        self,
+        release_branch: str = None,
+        release_revision: str = None,
+        repo_url: str = None,
+        repo_type: str = None,
+        change_requests: List[ListAppReleaseStageExecutionIntegratedMetadataResponseBodyChangeRequests] = None,
+    ):
+        self.release_branch = release_branch
+        self.release_revision = release_revision
+        self.repo_url = repo_url
+        self.repo_type = repo_type
+        self.change_requests = change_requests
+
+    def validate(self):
+        if self.change_requests:
+            for k in self.change_requests:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.release_branch is not None:
+            result['releaseBranch'] = self.release_branch
+        if self.release_revision is not None:
+            result['releaseRevision'] = self.release_revision
+        if self.repo_url is not None:
+            result['repoUrl'] = self.repo_url
+        if self.repo_type is not None:
+            result['repoType'] = self.repo_type
+        result['changeRequests'] = []
+        if self.change_requests is not None:
+            for k in self.change_requests:
+                result['changeRequests'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('releaseBranch') is not None:
+            self.release_branch = m.get('releaseBranch')
+        if m.get('releaseRevision') is not None:
+            self.release_revision = m.get('releaseRevision')
+        if m.get('repoUrl') is not None:
+            self.repo_url = m.get('repoUrl')
+        if m.get('repoType') is not None:
+            self.repo_type = m.get('repoType')
+        self.change_requests = []
+        if m.get('changeRequests') is not None:
+            for k in m.get('changeRequests'):
+                temp_model = ListAppReleaseStageExecutionIntegratedMetadataResponseBodyChangeRequests()
+                self.change_requests.append(temp_model.from_map(k))
+        return self
+
+
+class ListAppReleaseStageExecutionIntegratedMetadataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: List[ListAppReleaseStageExecutionIntegratedMetadataResponseBody] = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = ListAppReleaseStageExecutionIntegratedMetadataResponseBody()
+                self.body.append(temp_model.from_map(k))
+        return self
+
+
+class ListAppReleaseStageExecutionsRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        order_by: str = None,
+        organization_id: str = None,
+        page: int = None,
+        pagination: str = None,
+        per_page: int = None,
+        sort: str = None,
+    ):
+        self.next_token = next_token
+        self.order_by = order_by
+        self.organization_id = organization_id
+        self.page = page
+        self.pagination = pagination
+        self.per_page = per_page
+        self.sort = sort
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.page is not None:
+            result['page'] = self.page
+        if self.pagination is not None:
+            result['pagination'] = self.pagination
+        if self.per_page is not None:
+            result['perPage'] = self.per_page
+        if self.sort is not None:
+            result['sort'] = self.sort
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pagination') is not None:
+            self.pagination = m.get('pagination')
+        if m.get('perPage') is not None:
+            self.per_page = m.get('perPage')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        return self
+
+
+class ListAppReleaseStageExecutionsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        number: str = None,
+        start_time: str = None,
+        state: str = None,
+        trigger_mode: str = None,
+    ):
+        self.end_time = end_time
+        self.number = number
+        self.start_time = start_time
+        self.state = state
+        self.trigger_mode = trigger_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.number is not None:
+            result['number'] = self.number
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.state is not None:
+            result['state'] = self.state
+        if self.trigger_mode is not None:
+            result['triggerMode'] = self.trigger_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('number') is not None:
+            self.number = m.get('number')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('triggerMode') is not None:
+            self.trigger_mode = m.get('triggerMode')
+        return self
+
+
+class ListAppReleaseStageExecutionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        data: List[ListAppReleaseStageExecutionsResponseBodyData] = None,
+        next_token: str = None,
+        pages: int = None,
+        per_page: int = None,
+        total: int = None,
+    ):
+        self.current = current
+        self.data = data
+        self.next_token = next_token
+        self.pages = pages
+        self.per_page = per_page
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['current'] = self.current
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.pages is not None:
+            result['pages'] = self.pages
+        if self.per_page is not None:
+            result['perPage'] = self.per_page
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('current') is not None:
+            self.current = m.get('current')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListAppReleaseStageExecutionsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('pages') is not None:
+            self.pages = m.get('pages')
+        if m.get('perPage') is not None:
+            self.per_page = m.get('perPage')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAppReleaseStageExecutionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAppReleaseStageExecutionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAppReleaseStageExecutionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListApplicationMembersRequest(TeaModel):
     def __init__(
         self,
@@ -52969,6 +53616,161 @@ class UpdateMergeRequestPersonnelResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateMergeRequestPersonnelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateOrganizationMemberRequest(TeaModel):
+    def __init__(
+        self,
+        organization_member_name: str = None,
+    ):
+        # This parameter is required.
+        self.organization_member_name = organization_member_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_member_name is not None:
+            result['organizationMemberName'] = self.organization_member_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationMemberName') is not None:
+            self.organization_member_name = m.get('organizationMemberName')
+        return self
+
+
+class UpdateOrganizationMemberResponseBodyMember(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        organization_member_name: str = None,
+    ):
+        self.account_id = account_id
+        self.organization_member_name = organization_member_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.organization_member_name is not None:
+            result['organizationMemberName'] = self.organization_member_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('organizationMemberName') is not None:
+            self.organization_member_name = m.get('organizationMemberName')
+        return self
+
+
+class UpdateOrganizationMemberResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        member: UpdateOrganizationMemberResponseBodyMember = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.member = member
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.member:
+            self.member.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.member is not None:
+            result['member'] = self.member.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('member') is not None:
+            temp_model = UpdateOrganizationMemberResponseBodyMember()
+            self.member = temp_model.from_map(m['member'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateOrganizationMemberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOrganizationMemberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOrganizationMemberResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
