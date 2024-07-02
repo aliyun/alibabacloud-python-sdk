@@ -61,12 +61,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dialogue):
             body['Dialogue'] = request.dialogue
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.fields):
             body['Fields'] = request.fields
         if not UtilClient.is_unset(request.model_code):
             body['ModelCode'] = request.model_code
+        if not UtilClient.is_unset(request.service_inspection):
+            body['ServiceInspection'] = request.service_inspection
         if not UtilClient.is_unset(request.stream):
             body['Stream'] = request.stream
         if not UtilClient.is_unset(request.template_ids):
@@ -111,12 +111,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dialogue):
             body['Dialogue'] = request.dialogue
-        if not UtilClient.is_unset(request.dimensions):
-            body['Dimensions'] = request.dimensions
         if not UtilClient.is_unset(request.fields):
             body['Fields'] = request.fields
         if not UtilClient.is_unset(request.model_code):
             body['ModelCode'] = request.model_code
+        if not UtilClient.is_unset(request.service_inspection):
+            body['ServiceInspection'] = request.service_inspection
         if not UtilClient.is_unset(request.stream):
             body['Stream'] = request.stream
         if not UtilClient.is_unset(request.template_ids):

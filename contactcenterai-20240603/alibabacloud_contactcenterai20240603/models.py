@@ -86,15 +86,15 @@ class RunCompletionRequestDialogue(TeaModel):
         return self
 
 
-class RunCompletionRequestDimensions(TeaModel):
+class RunCompletionRequestFieldsEnumValues(TeaModel):
     def __init__(
         self,
         desc: str = None,
-        name: str = None,
+        enum_value: str = None,
     ):
         self.desc = desc
         # This parameter is required.
-        self.name = name
+        self.enum_value = enum_value
 
     def validate(self):
         pass
@@ -107,16 +107,16 @@ class RunCompletionRequestDimensions(TeaModel):
         result = dict()
         if self.desc is not None:
             result['Desc'] = self.desc
-        if self.name is not None:
-            result['Name'] = self.name
+        if self.enum_value is not None:
+            result['EnumValue'] = self.enum_value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
+        if m.get('EnumValue') is not None:
+            self.enum_value = m.get('EnumValue')
         return self
 
 
@@ -125,17 +125,20 @@ class RunCompletionRequestFields(TeaModel):
         self,
         code: str = None,
         desc: str = None,
-        enums: List[str] = None,
+        enum_values: List[RunCompletionRequestFieldsEnumValues] = None,
         name: str = None,
     ):
         self.code = code
         self.desc = desc
-        self.enums = enums
+        self.enum_values = enum_values
         # This parameter is required.
         self.name = name
 
     def validate(self):
-        pass
+        if self.enum_values:
+            for k in self.enum_values:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -147,8 +150,10 @@ class RunCompletionRequestFields(TeaModel):
             result['Code'] = self.code
         if self.desc is not None:
             result['Desc'] = self.desc
-        if self.enums is not None:
-            result['Enums'] = self.enums
+        result['EnumValues'] = []
+        if self.enum_values is not None:
+            for k in self.enum_values:
+                result['EnumValues'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         return result
@@ -159,41 +164,64 @@ class RunCompletionRequestFields(TeaModel):
             self.code = m.get('Code')
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')
-        if m.get('Enums') is not None:
-            self.enums = m.get('Enums')
+        self.enum_values = []
+        if m.get('EnumValues') is not None:
+            for k in m.get('EnumValues'):
+                temp_model = RunCompletionRequestFieldsEnumValues()
+                self.enum_values.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
 
 
-class RunCompletionRequest(TeaModel):
+class RunCompletionRequestServiceInspectionInspectionContents(TeaModel):
     def __init__(
         self,
-        dialogue: RunCompletionRequestDialogue = None,
-        dimensions: List[RunCompletionRequestDimensions] = None,
-        fields: List[RunCompletionRequestFields] = None,
-        model_code: str = None,
-        stream: bool = None,
-        template_ids: List[int] = None,
+        content: str = None,
+        title: str = None,
     ):
+        self.content = content
         # This parameter is required.
-        self.dialogue = dialogue
-        self.dimensions = dimensions
-        self.fields = fields
-        self.model_code = model_code
-        self.stream = stream
-        # This parameter is required.
-        self.template_ids = template_ids
+        self.title = title
 
     def validate(self):
-        if self.dialogue:
-            self.dialogue.validate()
-        if self.dimensions:
-            for k in self.dimensions:
-                if k:
-                    k.validate()
-        if self.fields:
-            for k in self.fields:
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class RunCompletionRequestServiceInspection(TeaModel):
+    def __init__(
+        self,
+        inspection_contents: List[RunCompletionRequestServiceInspectionInspectionContents] = None,
+        inspection_introduction: str = None,
+        scene_introduction: str = None,
+    ):
+        self.inspection_contents = inspection_contents
+        self.inspection_introduction = inspection_introduction
+        self.scene_introduction = scene_introduction
+
+    def validate(self):
+        if self.inspection_contents:
+            for k in self.inspection_contents:
                 if k:
                     k.validate()
 
@@ -203,18 +231,75 @@ class RunCompletionRequest(TeaModel):
             return _map
 
         result = dict()
+        result['InspectionContents'] = []
+        if self.inspection_contents is not None:
+            for k in self.inspection_contents:
+                result['InspectionContents'].append(k.to_map() if k else None)
+        if self.inspection_introduction is not None:
+            result['InspectionIntroduction'] = self.inspection_introduction
+        if self.scene_introduction is not None:
+            result['SceneIntroduction'] = self.scene_introduction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inspection_contents = []
+        if m.get('InspectionContents') is not None:
+            for k in m.get('InspectionContents'):
+                temp_model = RunCompletionRequestServiceInspectionInspectionContents()
+                self.inspection_contents.append(temp_model.from_map(k))
+        if m.get('InspectionIntroduction') is not None:
+            self.inspection_introduction = m.get('InspectionIntroduction')
+        if m.get('SceneIntroduction') is not None:
+            self.scene_introduction = m.get('SceneIntroduction')
+        return self
+
+
+class RunCompletionRequest(TeaModel):
+    def __init__(
+        self,
+        dialogue: RunCompletionRequestDialogue = None,
+        fields: List[RunCompletionRequestFields] = None,
+        model_code: str = None,
+        service_inspection: RunCompletionRequestServiceInspection = None,
+        stream: bool = None,
+        template_ids: List[int] = None,
+    ):
+        # This parameter is required.
+        self.dialogue = dialogue
+        self.fields = fields
+        self.model_code = model_code
+        self.service_inspection = service_inspection
+        self.stream = stream
+        # This parameter is required.
+        self.template_ids = template_ids
+
+    def validate(self):
+        if self.dialogue:
+            self.dialogue.validate()
+        if self.fields:
+            for k in self.fields:
+                if k:
+                    k.validate()
+        if self.service_inspection:
+            self.service_inspection.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.dialogue is not None:
             result['Dialogue'] = self.dialogue.to_map()
-        result['Dimensions'] = []
-        if self.dimensions is not None:
-            for k in self.dimensions:
-                result['Dimensions'].append(k.to_map() if k else None)
         result['Fields'] = []
         if self.fields is not None:
             for k in self.fields:
                 result['Fields'].append(k.to_map() if k else None)
         if self.model_code is not None:
             result['ModelCode'] = self.model_code
+        if self.service_inspection is not None:
+            result['ServiceInspection'] = self.service_inspection.to_map()
         if self.stream is not None:
             result['Stream'] = self.stream
         if self.template_ids is not None:
@@ -226,11 +311,6 @@ class RunCompletionRequest(TeaModel):
         if m.get('Dialogue') is not None:
             temp_model = RunCompletionRequestDialogue()
             self.dialogue = temp_model.from_map(m['Dialogue'])
-        self.dimensions = []
-        if m.get('Dimensions') is not None:
-            for k in m.get('Dimensions'):
-                temp_model = RunCompletionRequestDimensions()
-                self.dimensions.append(temp_model.from_map(k))
         self.fields = []
         if m.get('Fields') is not None:
             for k in m.get('Fields'):
@@ -238,6 +318,9 @@ class RunCompletionRequest(TeaModel):
                 self.fields.append(temp_model.from_map(k))
         if m.get('ModelCode') is not None:
             self.model_code = m.get('ModelCode')
+        if m.get('ServiceInspection') is not None:
+            temp_model = RunCompletionRequestServiceInspection()
+            self.service_inspection = temp_model.from_map(m['ServiceInspection'])
         if m.get('Stream') is not None:
             self.stream = m.get('Stream')
         if m.get('TemplateIds') is not None:
