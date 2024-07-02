@@ -1,3 +1,7 @@
+2024-07-02 Version: 1.2.5
+- Update API CreateDataLimit: add param InstantlyScan.
+
+
 2024-06-27 Version: 1.2.4
 - Update API DescribeParentInstance: update response param.
 

@@ -208,6 +208,8 @@ class Client(OpenApiClient):
             query['EventStatus'] = request.event_status
         if not UtilClient.is_unset(request.feature_type):
             query['FeatureType'] = request.feature_type
+        if not UtilClient.is_unset(request.instantly_scan):
+            query['InstantlyScan'] = request.instantly_scan
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.log_store_day):
@@ -281,6 +283,8 @@ class Client(OpenApiClient):
             query['EventStatus'] = request.event_status
         if not UtilClient.is_unset(request.feature_type):
             query['FeatureType'] = request.feature_type
+        if not UtilClient.is_unset(request.instantly_scan):
+            query['InstantlyScan'] = request.instantly_scan
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.log_store_day):

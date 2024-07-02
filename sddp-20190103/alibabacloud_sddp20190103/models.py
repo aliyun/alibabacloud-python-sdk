@@ -164,6 +164,7 @@ class CreateDataLimitRequest(TeaModel):
         engine_type: str = None,
         event_status: int = None,
         feature_type: int = None,
+        instantly_scan: bool = None,
         lang: str = None,
         log_store_day: int = None,
         ocr_status: int = None,
@@ -212,6 +213,7 @@ class CreateDataLimitRequest(TeaModel):
         self.event_status = event_status
         # This parameter is deprecated.
         self.feature_type = feature_type
+        self.instantly_scan = instantly_scan
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
         # *   **zh_cn**: Chinese
@@ -289,6 +291,8 @@ class CreateDataLimitRequest(TeaModel):
             result['EventStatus'] = self.event_status
         if self.feature_type is not None:
             result['FeatureType'] = self.feature_type
+        if self.instantly_scan is not None:
+            result['InstantlyScan'] = self.instantly_scan
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.log_store_day is not None:
@@ -329,6 +333,8 @@ class CreateDataLimitRequest(TeaModel):
             self.event_status = m.get('EventStatus')
         if m.get('FeatureType') is not None:
             self.feature_type = m.get('FeatureType')
+        if m.get('InstantlyScan') is not None:
+            self.instantly_scan = m.get('InstantlyScan')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('LogStoreDay') is not None:
