@@ -937,10 +937,14 @@ class Good(TeaModel):
         good_name: str = None,
         product_id: str = None,
         quantity: int = None,
+        sku_id: str = None,
+        sku_title: str = None,
     ):
         self.good_name = good_name
         self.product_id = product_id
         self.quantity = quantity
+        self.sku_id = sku_id
+        self.sku_title = sku_title
 
     def validate(self):
         pass
@@ -957,6 +961,10 @@ class Good(TeaModel):
             result['productId'] = self.product_id
         if self.quantity is not None:
             result['quantity'] = self.quantity
+        if self.sku_id is not None:
+            result['skuId'] = self.sku_id
+        if self.sku_title is not None:
+            result['skuTitle'] = self.sku_title
         return result
 
     def from_map(self, m: dict = None):
@@ -967,6 +975,10 @@ class Good(TeaModel):
             self.product_id = m.get('productId')
         if m.get('quantity') is not None:
             self.quantity = m.get('quantity')
+        if m.get('skuId') is not None:
+            self.sku_id = m.get('skuId')
+        if m.get('skuTitle') is not None:
+            self.sku_title = m.get('skuTitle')
         return self
 
 
@@ -1792,9 +1804,11 @@ class ProductSpecValue(TeaModel):
     def __init__(
         self,
         value: str = None,
+        value_alias: str = None,
         value_id: int = None,
     ):
         self.value = value
+        self.value_alias = value_alias
         self.value_id = value_id
 
     def validate(self):
@@ -1808,6 +1822,8 @@ class ProductSpecValue(TeaModel):
         result = dict()
         if self.value is not None:
             result['value'] = self.value
+        if self.value_alias is not None:
+            result['valueAlias'] = self.value_alias
         if self.value_id is not None:
             result['valueId'] = self.value_id
         return result
@@ -1816,6 +1832,8 @@ class ProductSpecValue(TeaModel):
         m = m or dict()
         if m.get('value') is not None:
             self.value = m.get('value')
+        if m.get('valueAlias') is not None:
+            self.value_alias = m.get('valueAlias')
         if m.get('valueId') is not None:
             self.value_id = m.get('valueId')
         return self
@@ -1907,11 +1925,13 @@ class SkuSpec(TeaModel):
         key: str = None,
         key_id: int = None,
         value: str = None,
+        value_alias: str = None,
         value_id: int = None,
     ):
         self.key = key
         self.key_id = key_id
         self.value = value
+        self.value_alias = value_alias
         self.value_id = value_id
 
     def validate(self):
@@ -1929,6 +1949,8 @@ class SkuSpec(TeaModel):
             result['keyId'] = self.key_id
         if self.value is not None:
             result['value'] = self.value
+        if self.value_alias is not None:
+            result['valueAlias'] = self.value_alias
         if self.value_id is not None:
             result['valueId'] = self.value_id
         return result
@@ -1941,6 +1963,8 @@ class SkuSpec(TeaModel):
             self.key_id = m.get('keyId')
         if m.get('value') is not None:
             self.value = m.get('value')
+        if m.get('valueAlias') is not None:
+            self.value_alias = m.get('valueAlias')
         if m.get('valueId') is not None:
             self.value_id = m.get('valueId')
         return self
