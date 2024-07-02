@@ -1,3 +1,7 @@
+2024-07-02 Version: 2.22.0
+- Support API ListTicketTemplates.
+
+
 2024-06-28 Version: 2.21.0
 - Support API AddTicketTask.
 - Support API CreateTicket.

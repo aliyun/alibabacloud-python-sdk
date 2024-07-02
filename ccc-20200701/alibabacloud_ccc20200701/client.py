@@ -15765,6 +15765,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_ticket_tasks_with_options_async(request, runtime)
 
+    def list_ticket_templates_with_options(
+        self,
+        request: ccc20200701_models.ListTicketTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListTicketTemplatesResponse:
+        """
+        @param request: ListTicketTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTicketTemplates',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListTicketTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ticket_templates_with_options_async(
+        self,
+        request: ccc20200701_models.ListTicketTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListTicketTemplatesResponse:
+        """
+        @param request: ListTicketTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTicketTemplates',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListTicketTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ticket_templates(
+        self,
+        request: ccc20200701_models.ListTicketTemplatesRequest,
+    ) -> ccc20200701_models.ListTicketTemplatesResponse:
+        """
+        @param request: ListTicketTemplatesRequest
+        @return: ListTicketTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_ticket_templates_with_options(request, runtime)
+
+    async def list_ticket_templates_async(
+        self,
+        request: ccc20200701_models.ListTicketTemplatesRequest,
+    ) -> ccc20200701_models.ListTicketTemplatesResponse:
+        """
+        @param request: ListTicketTemplatesRequest
+        @return: ListTicketTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ticket_templates_with_options_async(request, runtime)
+
     def list_tickets_with_options(
         self,
         request: ccc20200701_models.ListTicketsRequest,
