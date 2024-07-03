@@ -500,8 +500,11 @@ class CertConfig(TeaModel):
         certificate: str = None,
         private_key: str = None,
     ):
+        # This parameter is required.
         self.cert_name = cert_name
+        # This parameter is required.
         self.certificate = certificate
+        # This parameter is required.
         self.private_key = private_key
 
     def validate(self):
@@ -574,8 +577,10 @@ class CreateAliasInput(TeaModel):
         version_id: str = None,
     ):
         self.additional_version_weight = additional_version_weight
+        # This parameter is required.
         self.alias_name = alias_name
         self.description = description
+        # This parameter is required.
         self.version_id = version_id
 
     def validate(self):
@@ -616,7 +621,9 @@ class EqualRule(TeaModel):
         match: str = None,
         replacement: str = None,
     ):
+        # This parameter is required.
         self.match = match
+        # This parameter is required.
         self.replacement = replacement
 
     def validate(self):
@@ -649,7 +656,9 @@ class RegexRule(TeaModel):
         match: str = None,
         replacement: str = None,
     ):
+        # This parameter is required.
         self.match = match
+        # This parameter is required.
         self.replacement = replacement
 
     def validate(self):
@@ -682,7 +691,9 @@ class WildcardRule(TeaModel):
         match: str = None,
         replacement: str = None,
     ):
+        # This parameter is required.
         self.match = match
+        # This parameter is required.
         self.replacement = replacement
 
     def validate(self):
@@ -783,8 +794,10 @@ class PathConfig(TeaModel):
         qualifier: str = None,
         rewrite_config: RewriteConfig = None,
     ):
+        # This parameter is required.
         self.function_name = function_name
         self.methods = methods
+        # This parameter is required.
         self.path = path
         self.qualifier = qualifier
         self.rewrite_config = rewrite_config
@@ -869,8 +882,10 @@ class TLSConfig(TeaModel):
         max_version: str = None,
         min_version: str = None,
     ):
+        # This parameter is required.
         self.cipher_suites = cipher_suites
         self.max_version = max_version
+        # This parameter is required.
         self.min_version = min_version
 
     def validate(self):
@@ -941,6 +956,7 @@ class CreateCustomDomainInput(TeaModel):
     ):
         self.auth_config = auth_config
         self.cert_config = cert_config
+        # This parameter is required.
         self.domain_name = domain_name
         self.protocol = protocol
         self.route_config = route_config
@@ -1749,8 +1765,10 @@ class CreateFunctionInput(TeaModel):
         self.description = description
         self.disk_size = disk_size
         self.environment_variables = environment_variables
+        # This parameter is required.
         self.function_name = function_name
         self.gpu_config = gpu_config
+        # This parameter is required.
         self.handler = handler
         self.instance_concurrency = instance_concurrency
         self.instance_lifecycle_config = instance_lifecycle_config
@@ -1761,6 +1779,7 @@ class CreateFunctionInput(TeaModel):
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
         self.role = role
+        # This parameter is required.
         self.runtime = runtime
         self.timeout = timeout
         self.tracing_config = tracing_config
@@ -1972,8 +1991,11 @@ class CreateTriggerInput(TeaModel):
         self.invocation_role = invocation_role
         self.qualifier = qualifier
         self.source_arn = source_arn
+        # This parameter is required.
         self.trigger_config = trigger_config
+        # This parameter is required.
         self.trigger_name = trigger_name
+        # This parameter is required.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -2025,6 +2047,7 @@ class CreateVpcBindingInput(TeaModel):
         self,
         vpc_id: str = None,
     ):
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3534,6 +3557,7 @@ class Layer(TeaModel):
         self.compatible_runtime = compatible_runtime
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.layer_name = layer_name
         self.layer_version_arn = layer_version_arn
         self.license = license
@@ -3974,9 +3998,12 @@ class ScheduledAction(TeaModel):
         target: int = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.schedule_expression = schedule_expression
         self.start_time = start_time
+        # This parameter is required.
         self.target = target
 
     def validate(self):
@@ -4027,10 +4054,15 @@ class TargetTrackingPolicy(TeaModel):
         start_time: str = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.max_capacity = max_capacity
+        # This parameter is required.
         self.metric_target = metric_target
+        # This parameter is required.
         self.metric_type = metric_type
+        # This parameter is required.
         self.min_capacity = min_capacity
+        # This parameter is required.
         self.name = name
         self.start_time = start_time
 
@@ -4818,6 +4850,7 @@ class PutConcurrencyInput(TeaModel):
         self,
         reserved_concurrency: int = None,
     ):
+        # This parameter is required.
         self.reserved_concurrency = reserved_concurrency
 
     def validate(self):
@@ -4850,6 +4883,7 @@ class PutProvisionConfigInput(TeaModel):
     ):
         self.always_allocate_cpu = always_allocate_cpu
         self.scheduled_actions = scheduled_actions
+        # This parameter is required.
         self.target = target
         self.target_tracking_policies = target_tracking_policies
 
@@ -5066,7 +5100,9 @@ class TagResourceInput(TeaModel):
         resource_arn: str = None,
         tags: Dict[str, str] = None,
     ):
+        # This parameter is required.
         self.resource_arn = resource_arn
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -5100,8 +5136,10 @@ class TagResourcesInput(TeaModel):
         resource_type: str = None,
         tag: List[Tag] = None,
     ):
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -5531,6 +5569,8 @@ class CreateAliasRequest(TeaModel):
         body: CreateAliasInput = None,
     ):
         # The request parameters for creating an alias.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -5602,6 +5642,8 @@ class CreateCustomDomainRequest(TeaModel):
         body: CreateCustomDomainInput = None,
     ):
         # The information about the custom domain name.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -5673,6 +5715,8 @@ class CreateFunctionRequest(TeaModel):
         body: CreateFunctionInput = None,
     ):
         # The information about function configurations.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -5744,6 +5788,8 @@ class CreateLayerVersionRequest(TeaModel):
         body: CreateLayerVersionInput = None,
     ):
         # The information about layer configurations.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -5815,6 +5861,8 @@ class CreateTriggerRequest(TeaModel):
         body: CreateTriggerInput = None,
     ):
         # The trigger configurations.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -5886,6 +5934,8 @@ class CreateVpcBindingRequest(TeaModel):
         body: CreateVpcBindingInput = None,
     ):
         # The configurations of the virtual private cloud (VPC) binding.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -6444,6 +6494,7 @@ class GetAsyncTaskRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
+        # The function version or alias.
         self.qualifier = qualifier
 
     def validate(self):
@@ -7219,14 +7270,41 @@ class ListAsyncTasksRequest(TeaModel):
         started_time_end: int = None,
         status: str = None,
     ):
+        # Specifies whether to return input parameters of the asynchronous tasks. Valid values:
+        # 
+        # *   true: returns the `invocationPayload` parameter in the response.
+        # *   false: does not return the `invocationPayload` parameter in the response.
+        # 
+        # >  The `invocationPayload` parameter indicates the input parameters of an asynchronous task.
         self.include_payload = include_payload
+        # The number of asynchronous tasks to return. Valid values: [1,100]. Default value: 50.
         self.limit = limit
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID prefix of asynchronous tasks. If this parameter is specified, a list of asynchronous tasks whose IDs match the prefix is returned.
         self.prefix = prefix
+        # The function version or alias.
         self.qualifier = qualifier
+        # The order in which the returned asynchronous tasks are sorted.
+        # 
+        # *   asc: in ascending order.
+        # *   desc: in descending order.
         self.sort_order_by_time = sort_order_by_time
+        # The start time of the period in which the asynchronous tasks are launched.
         self.started_time_begin = started_time_begin
+        # The end time of the period in which the asynchronous tasks are launched.
         self.started_time_end = started_time_end
+        # The state of asynchronous tasks. The following items list the states of an asynchronous task:
+        # 
+        # *   Enqueued: The asynchronous invocation is enqueued and is waiting to be executed.
+        # *   Succeeded: The invocation is successful.
+        # *   Failed: The invocation fails.
+        # *   Running: The invocation is being executed.
+        # *   Stopped: The invocation is terminated.
+        # *   Stopping: The invocation is being terminated.
+        # *   Invalid: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
+        # *   Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period has elapsed.
+        # *   Retrying: The asynchronous invocation is being retried due to an execution error.
         self.status = status
 
     def validate(self):
@@ -8041,6 +8119,8 @@ class ListTagResourcesRequest(TeaModel):
         # The resource IDs.
         self.resource_id = resource_id
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         # 
@@ -8107,6 +8187,8 @@ class ListTagResourcesShrinkRequest(TeaModel):
         # The resource IDs.
         self.resource_id_shrink = resource_id_shrink
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         # 
@@ -8320,6 +8402,8 @@ class PublishFunctionVersionRequest(TeaModel):
         body: PublishVersionInput = None,
     ):
         # The information about the function version.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -8392,6 +8476,8 @@ class PutAsyncInvokeConfigRequest(TeaModel):
         qualifier: str = None,
     ):
         # The configurations of asynchronous function invocation.
+        # 
+        # This parameter is required.
         self.body = body
         # The version or alias of the function.
         self.qualifier = qualifier
@@ -8469,6 +8555,8 @@ class PutConcurrencyConfigRequest(TeaModel):
         body: PutConcurrencyInput = None,
     ):
         # The concurrency configurations.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -8537,8 +8625,10 @@ class PutConcurrencyConfigResponse(TeaModel):
 class PutLayerACLRequest(TeaModel):
     def __init__(
         self,
+        acl: str = None,
         public: str = None,
     ):
+        self.acl = acl
         # Specifies whether the layer is a public layer. Valid values: true and false.
         self.public = public
 
@@ -8551,12 +8641,16 @@ class PutLayerACLRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.acl is not None:
+            result['acl'] = self.acl
         if self.public is not None:
             result['public'] = self.public
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('acl') is not None:
+            self.acl = m.get('acl')
         if m.get('public') is not None:
             self.public = m.get('public')
         return self
@@ -8602,6 +8696,8 @@ class PutProvisionConfigRequest(TeaModel):
         qualifier: str = None,
     ):
         # The information about the provisioned configuration.
+        # 
+        # This parameter is required.
         self.body = body
         # The function alias or LATEST.
         self.qualifier = qualifier
@@ -8678,6 +8774,7 @@ class StopAsyncTaskRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
+        # The function version or alias.
         self.qualifier = qualifier
 
     def validate(self):
@@ -8739,6 +8836,8 @@ class TagResourcesRequest(TeaModel):
         body: TagResourcesInput = None,
     ):
         # The configuration of the resource tag.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -8807,8 +8906,12 @@ class UntagResourcesRequest(TeaModel):
         # Specifies whether to delete all tags.
         self.all = all
         # The resource identifiers.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag to remove. You can specify a maximum of 50 tags.
         self.tag_key = tag_key
@@ -8856,8 +8959,12 @@ class UntagResourcesShrinkRequest(TeaModel):
         # Specifies whether to delete all tags.
         self.all = all
         # The resource identifiers.
+        # 
+        # This parameter is required.
         self.resource_id_shrink = resource_id_shrink
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag to remove. You can specify a maximum of 50 tags.
         self.tag_key_shrink = tag_key_shrink
@@ -8933,6 +9040,8 @@ class UpdateAliasRequest(TeaModel):
         body: UpdateAliasInput = None,
     ):
         # The alias information to be updated.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -9004,6 +9113,8 @@ class UpdateCustomDomainRequest(TeaModel):
         body: UpdateCustomDomainInput = None,
     ):
         # The information about the custom domain name.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -9075,6 +9186,8 @@ class UpdateFunctionRequest(TeaModel):
         body: UpdateFunctionInput = None,
     ):
         # The function information
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -9146,6 +9259,8 @@ class UpdateTriggerRequest(TeaModel):
         body: UpdateTriggerInput = None,
     ):
         # The trigger configurations.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):

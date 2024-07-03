@@ -48,6 +48,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateAliasResponse:
+        """
+        @summary 创建函数别名。
+        
+        @param request: CreateAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAliasResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -76,6 +84,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateAliasResponse:
+        """
+        @summary 创建函数别名。
+        
+        @param request: CreateAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAliasResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -102,6 +118,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.CreateAliasRequest,
     ) -> fc20230330_models.CreateAliasResponse:
+        """
+        @summary 创建函数别名。
+        
+        @param request: CreateAliasRequest
+        @return: CreateAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_alias_with_options(function_name, request, headers, runtime)
@@ -111,6 +133,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.CreateAliasRequest,
     ) -> fc20230330_models.CreateAliasResponse:
+        """
+        @summary 创建函数别名。
+        
+        @param request: CreateAliasRequest
+        @return: CreateAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_alias_with_options_async(function_name, request, headers, runtime)
@@ -121,6 +149,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateCustomDomainResponse:
+        """
+        @summary 创建自定义域名。
+        
+        @param request: CreateCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomDomainResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -148,6 +184,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateCustomDomainResponse:
+        """
+        @summary 创建自定义域名。
+        
+        @param request: CreateCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomDomainResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -173,6 +217,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.CreateCustomDomainRequest,
     ) -> fc20230330_models.CreateCustomDomainResponse:
+        """
+        @summary 创建自定义域名。
+        
+        @param request: CreateCustomDomainRequest
+        @return: CreateCustomDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_custom_domain_with_options(request, headers, runtime)
@@ -181,6 +231,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.CreateCustomDomainRequest,
     ) -> fc20230330_models.CreateCustomDomainResponse:
+        """
+        @summary 创建自定义域名。
+        
+        @param request: CreateCustomDomainRequest
+        @return: CreateCustomDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_custom_domain_with_options_async(request, headers, runtime)
@@ -191,6 +247,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateFunctionResponse:
+        """
+        @summary Creates a function.
+        
+        @param request: CreateFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -218,6 +282,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateFunctionResponse:
+        """
+        @summary Creates a function.
+        
+        @param request: CreateFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -243,6 +315,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.CreateFunctionRequest,
     ) -> fc20230330_models.CreateFunctionResponse:
+        """
+        @summary Creates a function.
+        
+        @param request: CreateFunctionRequest
+        @return: CreateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_function_with_options(request, headers, runtime)
@@ -251,6 +329,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.CreateFunctionRequest,
     ) -> fc20230330_models.CreateFunctionResponse:
+        """
+        @summary Creates a function.
+        
+        @param request: CreateFunctionRequest
+        @return: CreateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_function_with_options_async(request, headers, runtime)
@@ -262,6 +346,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateLayerVersionResponse:
+        """
+        @summary 创建层版本。
+        
+        @param request: CreateLayerVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLayerVersionResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -290,6 +382,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateLayerVersionResponse:
+        """
+        @summary 创建层版本。
+        
+        @param request: CreateLayerVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLayerVersionResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -316,6 +416,12 @@ class Client(OpenApiClient):
         layer_name: str,
         request: fc20230330_models.CreateLayerVersionRequest,
     ) -> fc20230330_models.CreateLayerVersionResponse:
+        """
+        @summary 创建层版本。
+        
+        @param request: CreateLayerVersionRequest
+        @return: CreateLayerVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_layer_version_with_options(layer_name, request, headers, runtime)
@@ -325,6 +431,12 @@ class Client(OpenApiClient):
         layer_name: str,
         request: fc20230330_models.CreateLayerVersionRequest,
     ) -> fc20230330_models.CreateLayerVersionResponse:
+        """
+        @summary 创建层版本。
+        
+        @param request: CreateLayerVersionRequest
+        @return: CreateLayerVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_layer_version_with_options_async(layer_name, request, headers, runtime)
@@ -336,6 +448,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateTriggerResponse:
+        """
+        @summary 创建函数触发器。
+        
+        @param request: CreateTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTriggerResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -364,6 +484,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateTriggerResponse:
+        """
+        @summary 创建函数触发器。
+        
+        @param request: CreateTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTriggerResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -390,6 +518,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.CreateTriggerRequest,
     ) -> fc20230330_models.CreateTriggerResponse:
+        """
+        @summary 创建函数触发器。
+        
+        @param request: CreateTriggerRequest
+        @return: CreateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_trigger_with_options(function_name, request, headers, runtime)
@@ -399,6 +533,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.CreateTriggerRequest,
     ) -> fc20230330_models.CreateTriggerResponse:
+        """
+        @summary 创建函数触发器。
+        
+        @param request: CreateTriggerRequest
+        @return: CreateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_trigger_with_options_async(function_name, request, headers, runtime)
@@ -410,6 +550,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateVpcBindingResponse:
+        """
+        @summary Creates a VPC connection.
+        
+        @param request: CreateVpcBindingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVpcBindingResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -438,6 +586,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateVpcBindingResponse:
+        """
+        @summary Creates a VPC connection.
+        
+        @param request: CreateVpcBindingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVpcBindingResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -464,6 +620,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.CreateVpcBindingRequest,
     ) -> fc20230330_models.CreateVpcBindingResponse:
+        """
+        @summary Creates a VPC connection.
+        
+        @param request: CreateVpcBindingRequest
+        @return: CreateVpcBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_vpc_binding_with_options(function_name, request, headers, runtime)
@@ -473,6 +635,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.CreateVpcBindingRequest,
     ) -> fc20230330_models.CreateVpcBindingResponse:
+        """
+        @summary Creates a VPC connection.
+        
+        @param request: CreateVpcBindingRequest
+        @return: CreateVpcBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_vpc_binding_with_options_async(function_name, request, headers, runtime)
@@ -484,6 +652,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteAliasResponse:
+        """
+        @summary Deletes an alias.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAliasResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -510,6 +685,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteAliasResponse:
+        """
+        @summary Deletes an alias.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAliasResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -534,6 +716,11 @@ class Client(OpenApiClient):
         function_name: str,
         alias_name: str,
     ) -> fc20230330_models.DeleteAliasResponse:
+        """
+        @summary Deletes an alias.
+        
+        @return: DeleteAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_alias_with_options(function_name, alias_name, headers, runtime)
@@ -543,6 +730,11 @@ class Client(OpenApiClient):
         function_name: str,
         alias_name: str,
     ) -> fc20230330_models.DeleteAliasResponse:
+        """
+        @summary Deletes an alias.
+        
+        @return: DeleteAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_alias_with_options_async(function_name, alias_name, headers, runtime)
@@ -554,6 +746,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteAsyncInvokeConfigResponse:
+        """
+        @summary Deletes an asynchronous invocation configuration.
+        
+        @param request: DeleteAsyncInvokeConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -585,6 +785,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteAsyncInvokeConfigResponse:
+        """
+        @summary Deletes an asynchronous invocation configuration.
+        
+        @param request: DeleteAsyncInvokeConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -614,6 +822,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.DeleteAsyncInvokeConfigRequest,
     ) -> fc20230330_models.DeleteAsyncInvokeConfigResponse:
+        """
+        @summary Deletes an asynchronous invocation configuration.
+        
+        @param request: DeleteAsyncInvokeConfigRequest
+        @return: DeleteAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_async_invoke_config_with_options(function_name, request, headers, runtime)
@@ -623,6 +837,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.DeleteAsyncInvokeConfigRequest,
     ) -> fc20230330_models.DeleteAsyncInvokeConfigResponse:
+        """
+        @summary Deletes an asynchronous invocation configuration.
+        
+        @param request: DeleteAsyncInvokeConfigRequest
+        @return: DeleteAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_async_invoke_config_with_options_async(function_name, request, headers, runtime)
@@ -633,6 +853,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteConcurrencyConfigResponse:
+        """
+        @summary Deletes a concurrency configuration.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConcurrencyConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -658,6 +885,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteConcurrencyConfigResponse:
+        """
+        @summary Deletes a concurrency configuration.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConcurrencyConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -681,6 +915,11 @@ class Client(OpenApiClient):
         self,
         function_name: str,
     ) -> fc20230330_models.DeleteConcurrencyConfigResponse:
+        """
+        @summary Deletes a concurrency configuration.
+        
+        @return: DeleteConcurrencyConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_concurrency_config_with_options(function_name, headers, runtime)
@@ -689,6 +928,11 @@ class Client(OpenApiClient):
         self,
         function_name: str,
     ) -> fc20230330_models.DeleteConcurrencyConfigResponse:
+        """
+        @summary Deletes a concurrency configuration.
+        
+        @return: DeleteConcurrencyConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_concurrency_config_with_options_async(function_name, headers, runtime)
@@ -699,6 +943,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteCustomDomainResponse:
+        """
+        @summary Deletes a custom domain name.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomDomainResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -724,6 +975,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteCustomDomainResponse:
+        """
+        @summary Deletes a custom domain name.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomDomainResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -747,6 +1005,11 @@ class Client(OpenApiClient):
         self,
         domain_name: str,
     ) -> fc20230330_models.DeleteCustomDomainResponse:
+        """
+        @summary Deletes a custom domain name.
+        
+        @return: DeleteCustomDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_custom_domain_with_options(domain_name, headers, runtime)
@@ -755,6 +1018,11 @@ class Client(OpenApiClient):
         self,
         domain_name: str,
     ) -> fc20230330_models.DeleteCustomDomainResponse:
+        """
+        @summary Deletes a custom domain name.
+        
+        @return: DeleteCustomDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_custom_domain_with_options_async(domain_name, headers, runtime)
@@ -765,6 +1033,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionResponse:
+        """
+        @summary Deletes a function.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -790,6 +1065,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionResponse:
+        """
+        @summary Deletes a function.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -813,6 +1095,11 @@ class Client(OpenApiClient):
         self,
         function_name: str,
     ) -> fc20230330_models.DeleteFunctionResponse:
+        """
+        @summary Deletes a function.
+        
+        @return: DeleteFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_function_with_options(function_name, headers, runtime)
@@ -821,6 +1108,11 @@ class Client(OpenApiClient):
         self,
         function_name: str,
     ) -> fc20230330_models.DeleteFunctionResponse:
+        """
+        @summary Deletes a function.
+        
+        @return: DeleteFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_function_with_options_async(function_name, headers, runtime)
@@ -832,6 +1124,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
+        """
+        @summary Deletes a function version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -858,6 +1157,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
+        """
+        @summary Deletes a function version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -882,6 +1188,11 @@ class Client(OpenApiClient):
         function_name: str,
         version_id: str,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
+        """
+        @summary Deletes a function version.
+        
+        @return: DeleteFunctionVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_function_version_with_options(function_name, version_id, headers, runtime)
@@ -891,6 +1202,11 @@ class Client(OpenApiClient):
         function_name: str,
         version_id: str,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
+        """
+        @summary Deletes a function version.
+        
+        @return: DeleteFunctionVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_function_version_with_options_async(function_name, version_id, headers, runtime)
@@ -902,6 +1218,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteLayerVersionResponse:
+        """
+        @summary Deletes a layer version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLayerVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -928,6 +1251,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteLayerVersionResponse:
+        """
+        @summary Deletes a layer version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLayerVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -952,6 +1282,11 @@ class Client(OpenApiClient):
         layer_name: str,
         version: str,
     ) -> fc20230330_models.DeleteLayerVersionResponse:
+        """
+        @summary Deletes a layer version.
+        
+        @return: DeleteLayerVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_layer_version_with_options(layer_name, version, headers, runtime)
@@ -961,6 +1296,11 @@ class Client(OpenApiClient):
         layer_name: str,
         version: str,
     ) -> fc20230330_models.DeleteLayerVersionResponse:
+        """
+        @summary Deletes a layer version.
+        
+        @return: DeleteLayerVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_layer_version_with_options_async(layer_name, version, headers, runtime)
@@ -972,6 +1312,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteProvisionConfigResponse:
+        """
+        @summary Deletes a provisioned configuration.
+        
+        @param request: DeleteProvisionConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProvisionConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1003,6 +1351,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteProvisionConfigResponse:
+        """
+        @summary Deletes a provisioned configuration.
+        
+        @param request: DeleteProvisionConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProvisionConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1032,6 +1388,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.DeleteProvisionConfigRequest,
     ) -> fc20230330_models.DeleteProvisionConfigResponse:
+        """
+        @summary Deletes a provisioned configuration.
+        
+        @param request: DeleteProvisionConfigRequest
+        @return: DeleteProvisionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_provision_config_with_options(function_name, request, headers, runtime)
@@ -1041,6 +1403,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.DeleteProvisionConfigRequest,
     ) -> fc20230330_models.DeleteProvisionConfigResponse:
+        """
+        @summary Deletes a provisioned configuration.
+        
+        @param request: DeleteProvisionConfigRequest
+        @return: DeleteProvisionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_provision_config_with_options_async(function_name, request, headers, runtime)
@@ -1052,6 +1420,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteTriggerResponse:
+        """
+        @summary Deletes a trigger.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTriggerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1078,6 +1453,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteTriggerResponse:
+        """
+        @summary Deletes a trigger.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTriggerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1102,6 +1484,11 @@ class Client(OpenApiClient):
         function_name: str,
         trigger_name: str,
     ) -> fc20230330_models.DeleteTriggerResponse:
+        """
+        @summary Deletes a trigger.
+        
+        @return: DeleteTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_trigger_with_options(function_name, trigger_name, headers, runtime)
@@ -1111,6 +1498,11 @@ class Client(OpenApiClient):
         function_name: str,
         trigger_name: str,
     ) -> fc20230330_models.DeleteTriggerResponse:
+        """
+        @summary Deletes a trigger.
+        
+        @return: DeleteTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_trigger_with_options_async(function_name, trigger_name, headers, runtime)
@@ -1122,6 +1514,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteVpcBindingResponse:
+        """
+        @summary Deletes an access control policy from a specified policy group for a VPC firewall.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVpcBindingResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1148,6 +1547,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteVpcBindingResponse:
+        """
+        @summary Deletes an access control policy from a specified policy group for a VPC firewall.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVpcBindingResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1172,6 +1578,11 @@ class Client(OpenApiClient):
         function_name: str,
         vpc_id: str,
     ) -> fc20230330_models.DeleteVpcBindingResponse:
+        """
+        @summary Deletes an access control policy from a specified policy group for a VPC firewall.
+        
+        @return: DeleteVpcBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_vpc_binding_with_options(function_name, vpc_id, headers, runtime)
@@ -1181,6 +1592,11 @@ class Client(OpenApiClient):
         function_name: str,
         vpc_id: str,
     ) -> fc20230330_models.DeleteVpcBindingResponse:
+        """
+        @summary Deletes an access control policy from a specified policy group for a VPC firewall.
+        
+        @return: DeleteVpcBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_vpc_binding_with_options_async(function_name, vpc_id, headers, runtime)
@@ -1192,6 +1608,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAliasResponse:
+        """
+        @summary Queries information about an alias.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAliasResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1218,6 +1641,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAliasResponse:
+        """
+        @summary Queries information about an alias.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAliasResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1242,6 +1672,11 @@ class Client(OpenApiClient):
         function_name: str,
         alias_name: str,
     ) -> fc20230330_models.GetAliasResponse:
+        """
+        @summary Queries information about an alias.
+        
+        @return: GetAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_alias_with_options(function_name, alias_name, headers, runtime)
@@ -1251,6 +1686,11 @@ class Client(OpenApiClient):
         function_name: str,
         alias_name: str,
     ) -> fc20230330_models.GetAliasResponse:
+        """
+        @summary Queries information about an alias.
+        
+        @return: GetAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_alias_with_options_async(function_name, alias_name, headers, runtime)
@@ -1262,6 +1702,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAsyncInvokeConfigResponse:
+        """
+        @summary Gets asynchronous invocation configurations of a function.
+        
+        @param request: GetAsyncInvokeConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1293,6 +1741,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAsyncInvokeConfigResponse:
+        """
+        @summary Gets asynchronous invocation configurations of a function.
+        
+        @param request: GetAsyncInvokeConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1322,6 +1778,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.GetAsyncInvokeConfigRequest,
     ) -> fc20230330_models.GetAsyncInvokeConfigResponse:
+        """
+        @summary Gets asynchronous invocation configurations of a function.
+        
+        @param request: GetAsyncInvokeConfigRequest
+        @return: GetAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_async_invoke_config_with_options(function_name, request, headers, runtime)
@@ -1331,6 +1793,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.GetAsyncInvokeConfigRequest,
     ) -> fc20230330_models.GetAsyncInvokeConfigResponse:
+        """
+        @summary Gets asynchronous invocation configurations of a function.
+        
+        @param request: GetAsyncInvokeConfigRequest
+        @return: GetAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_async_invoke_config_with_options_async(function_name, request, headers, runtime)
@@ -1343,6 +1811,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAsyncTaskResponse:
+        """
+        @summary Queries the information about an asynchronous task.
+        
+        @param request: GetAsyncTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1375,6 +1851,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAsyncTaskResponse:
+        """
+        @summary Queries the information about an asynchronous task.
+        
+        @param request: GetAsyncTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1405,6 +1889,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: fc20230330_models.GetAsyncTaskRequest,
     ) -> fc20230330_models.GetAsyncTaskResponse:
+        """
+        @summary Queries the information about an asynchronous task.
+        
+        @param request: GetAsyncTaskRequest
+        @return: GetAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_async_task_with_options(function_name, task_id, request, headers, runtime)
@@ -1415,6 +1905,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: fc20230330_models.GetAsyncTaskRequest,
     ) -> fc20230330_models.GetAsyncTaskResponse:
+        """
+        @summary Queries the information about an asynchronous task.
+        
+        @param request: GetAsyncTaskRequest
+        @return: GetAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_async_task_with_options_async(function_name, task_id, request, headers, runtime)
@@ -1425,6 +1921,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetConcurrencyConfigResponse:
+        """
+        @summary Obtains a concurrency configuration.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConcurrencyConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1450,6 +1953,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetConcurrencyConfigResponse:
+        """
+        @summary Obtains a concurrency configuration.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConcurrencyConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1473,6 +1983,11 @@ class Client(OpenApiClient):
         self,
         function_name: str,
     ) -> fc20230330_models.GetConcurrencyConfigResponse:
+        """
+        @summary Obtains a concurrency configuration.
+        
+        @return: GetConcurrencyConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_concurrency_config_with_options(function_name, headers, runtime)
@@ -1481,6 +1996,11 @@ class Client(OpenApiClient):
         self,
         function_name: str,
     ) -> fc20230330_models.GetConcurrencyConfigResponse:
+        """
+        @summary Obtains a concurrency configuration.
+        
+        @return: GetConcurrencyConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_concurrency_config_with_options_async(function_name, headers, runtime)
@@ -1491,6 +2011,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetCustomDomainResponse:
+        """
+        @summary Queries information about a custom domain name.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomDomainResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1516,6 +2043,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetCustomDomainResponse:
+        """
+        @summary Queries information about a custom domain name.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomDomainResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1539,6 +2073,11 @@ class Client(OpenApiClient):
         self,
         domain_name: str,
     ) -> fc20230330_models.GetCustomDomainResponse:
+        """
+        @summary Queries information about a custom domain name.
+        
+        @return: GetCustomDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_custom_domain_with_options(domain_name, headers, runtime)
@@ -1547,6 +2086,11 @@ class Client(OpenApiClient):
         self,
         domain_name: str,
     ) -> fc20230330_models.GetCustomDomainResponse:
+        """
+        @summary Queries information about a custom domain name.
+        
+        @return: GetCustomDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_custom_domain_with_options_async(domain_name, headers, runtime)
@@ -1558,6 +2102,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetFunctionResponse:
+        """
+        @summary Queries information about a function.
+        
+        @param request: GetFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1589,6 +2141,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetFunctionResponse:
+        """
+        @summary Queries information about a function.
+        
+        @param request: GetFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1618,6 +2178,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.GetFunctionRequest,
     ) -> fc20230330_models.GetFunctionResponse:
+        """
+        @summary Queries information about a function.
+        
+        @param request: GetFunctionRequest
+        @return: GetFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_with_options(function_name, request, headers, runtime)
@@ -1627,6 +2193,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.GetFunctionRequest,
     ) -> fc20230330_models.GetFunctionResponse:
+        """
+        @summary Queries information about a function.
+        
+        @param request: GetFunctionRequest
+        @return: GetFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_with_options_async(function_name, request, headers, runtime)
@@ -1638,6 +2210,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetFunctionCodeResponse:
+        """
+        @summary Queries a code package of a function.
+        
+        @param request: GetFunctionCodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1669,6 +2249,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetFunctionCodeResponse:
+        """
+        @summary Queries a code package of a function.
+        
+        @param request: GetFunctionCodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1698,6 +2286,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.GetFunctionCodeRequest,
     ) -> fc20230330_models.GetFunctionCodeResponse:
+        """
+        @summary Queries a code package of a function.
+        
+        @param request: GetFunctionCodeRequest
+        @return: GetFunctionCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_code_with_options(function_name, request, headers, runtime)
@@ -1707,6 +2301,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.GetFunctionCodeRequest,
     ) -> fc20230330_models.GetFunctionCodeResponse:
+        """
+        @summary Queries a code package of a function.
+        
+        @param request: GetFunctionCodeRequest
+        @return: GetFunctionCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_code_with_options_async(function_name, request, headers, runtime)
@@ -1718,6 +2318,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetLayerVersionResponse:
+        """
+        @summary Queries versions of a layer.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLayerVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1744,6 +2351,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetLayerVersionResponse:
+        """
+        @summary Queries versions of a layer.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLayerVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1768,6 +2382,11 @@ class Client(OpenApiClient):
         layer_name: str,
         version: str,
     ) -> fc20230330_models.GetLayerVersionResponse:
+        """
+        @summary Queries versions of a layer.
+        
+        @return: GetLayerVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_layer_version_with_options(layer_name, version, headers, runtime)
@@ -1777,6 +2396,11 @@ class Client(OpenApiClient):
         layer_name: str,
         version: str,
     ) -> fc20230330_models.GetLayerVersionResponse:
+        """
+        @summary Queries versions of a layer.
+        
+        @return: GetLayerVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_layer_version_with_options_async(layer_name, version, headers, runtime)
@@ -1787,6 +2411,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetLayerVersionByArnResponse:
+        """
+        @summary Obtain version information of a layer by using ARNs.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLayerVersionByArnResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1812,6 +2443,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetLayerVersionByArnResponse:
+        """
+        @summary Obtain version information of a layer by using ARNs.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLayerVersionByArnResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1835,6 +2473,11 @@ class Client(OpenApiClient):
         self,
         arn: str,
     ) -> fc20230330_models.GetLayerVersionByArnResponse:
+        """
+        @summary Obtain version information of a layer by using ARNs.
+        
+        @return: GetLayerVersionByArnResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_layer_version_by_arn_with_options(arn, headers, runtime)
@@ -1843,6 +2486,11 @@ class Client(OpenApiClient):
         self,
         arn: str,
     ) -> fc20230330_models.GetLayerVersionByArnResponse:
+        """
+        @summary Obtain version information of a layer by using ARNs.
+        
+        @return: GetLayerVersionByArnResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_layer_version_by_arn_with_options_async(arn, headers, runtime)
@@ -1854,6 +2502,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetProvisionConfigResponse:
+        """
+        @summary Queries provisioned configurations.
+        
+        @param request: GetProvisionConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProvisionConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1885,6 +2541,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetProvisionConfigResponse:
+        """
+        @summary Queries provisioned configurations.
+        
+        @param request: GetProvisionConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProvisionConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -1914,6 +2578,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.GetProvisionConfigRequest,
     ) -> fc20230330_models.GetProvisionConfigResponse:
+        """
+        @summary Queries provisioned configurations.
+        
+        @param request: GetProvisionConfigRequest
+        @return: GetProvisionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_provision_config_with_options(function_name, request, headers, runtime)
@@ -1923,6 +2593,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.GetProvisionConfigRequest,
     ) -> fc20230330_models.GetProvisionConfigResponse:
+        """
+        @summary Queries provisioned configurations.
+        
+        @param request: GetProvisionConfigRequest
+        @return: GetProvisionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_provision_config_with_options_async(function_name, request, headers, runtime)
@@ -1934,6 +2610,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetTriggerResponse:
+        """
+        @summary Queries information about a trigger.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTriggerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1960,6 +2643,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetTriggerResponse:
+        """
+        @summary Queries information about a trigger.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTriggerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1984,6 +2674,11 @@ class Client(OpenApiClient):
         function_name: str,
         trigger_name: str,
     ) -> fc20230330_models.GetTriggerResponse:
+        """
+        @summary Queries information about a trigger.
+        
+        @return: GetTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_trigger_with_options(function_name, trigger_name, headers, runtime)
@@ -1993,6 +2688,11 @@ class Client(OpenApiClient):
         function_name: str,
         trigger_name: str,
     ) -> fc20230330_models.GetTriggerResponse:
+        """
+        @summary Queries information about a trigger.
+        
+        @return: GetTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_trigger_with_options_async(function_name, trigger_name, headers, runtime)
@@ -2004,6 +2704,14 @@ class Client(OpenApiClient):
         headers: fc20230330_models.InvokeFunctionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.InvokeFunctionResponse:
+        """
+        @summary Invokes a function.
+        
+        @param request: InvokeFunctionRequest
+        @param headers: InvokeFunctionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeFunctionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -2054,6 +2762,14 @@ class Client(OpenApiClient):
         headers: fc20230330_models.InvokeFunctionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.InvokeFunctionResponse:
+        """
+        @summary Invokes a function.
+        
+        @param request: InvokeFunctionRequest
+        @param headers: InvokeFunctionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeFunctionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -2102,6 +2818,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.InvokeFunctionRequest,
     ) -> fc20230330_models.InvokeFunctionResponse:
+        """
+        @summary Invokes a function.
+        
+        @param request: InvokeFunctionRequest
+        @return: InvokeFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = fc20230330_models.InvokeFunctionHeaders()
         return self.invoke_function_with_options(function_name, request, headers, runtime)
@@ -2111,6 +2833,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.InvokeFunctionRequest,
     ) -> fc20230330_models.InvokeFunctionResponse:
+        """
+        @summary Invokes a function.
+        
+        @param request: InvokeFunctionRequest
+        @return: InvokeFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = fc20230330_models.InvokeFunctionHeaders()
         return await self.invoke_function_with_options_async(function_name, request, headers, runtime)
@@ -2122,6 +2850,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAliasesResponse:
+        """
+        @summary Queries aliases.
+        
+        @param request: ListAliasesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAliasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2157,6 +2893,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAliasesResponse:
+        """
+        @summary Queries aliases.
+        
+        @param request: ListAliasesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAliasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2190,6 +2934,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListAliasesRequest,
     ) -> fc20230330_models.ListAliasesResponse:
+        """
+        @summary Queries aliases.
+        
+        @param request: ListAliasesRequest
+        @return: ListAliasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_aliases_with_options(function_name, request, headers, runtime)
@@ -2199,6 +2949,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListAliasesRequest,
     ) -> fc20230330_models.ListAliasesResponse:
+        """
+        @summary Queries aliases.
+        
+        @param request: ListAliasesRequest
+        @return: ListAliasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_aliases_with_options_async(function_name, request, headers, runtime)
@@ -2209,6 +2965,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAsyncInvokeConfigsResponse:
+        """
+        @summary Queries all asynchronous configurations of a function.
+        
+        @param request: ListAsyncInvokeConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAsyncInvokeConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_name):
@@ -2243,6 +3007,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAsyncInvokeConfigsResponse:
+        """
+        @summary Queries all asynchronous configurations of a function.
+        
+        @param request: ListAsyncInvokeConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAsyncInvokeConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_name):
@@ -2275,6 +3047,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListAsyncInvokeConfigsRequest,
     ) -> fc20230330_models.ListAsyncInvokeConfigsResponse:
+        """
+        @summary Queries all asynchronous configurations of a function.
+        
+        @param request: ListAsyncInvokeConfigsRequest
+        @return: ListAsyncInvokeConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_async_invoke_configs_with_options(request, headers, runtime)
@@ -2283,6 +3061,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListAsyncInvokeConfigsRequest,
     ) -> fc20230330_models.ListAsyncInvokeConfigsResponse:
+        """
+        @summary Queries all asynchronous configurations of a function.
+        
+        @param request: ListAsyncInvokeConfigsRequest
+        @return: ListAsyncInvokeConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_async_invoke_configs_with_options_async(request, headers, runtime)
@@ -2294,6 +3078,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAsyncTasksResponse:
+        """
+        @summary Lists asynchronous tasks.
+        
+        @param request: ListAsyncTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAsyncTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_payload):
@@ -2341,6 +3133,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAsyncTasksResponse:
+        """
+        @summary Lists asynchronous tasks.
+        
+        @param request: ListAsyncTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAsyncTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_payload):
@@ -2386,6 +3186,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListAsyncTasksRequest,
     ) -> fc20230330_models.ListAsyncTasksResponse:
+        """
+        @summary Lists asynchronous tasks.
+        
+        @param request: ListAsyncTasksRequest
+        @return: ListAsyncTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_async_tasks_with_options(function_name, request, headers, runtime)
@@ -2395,6 +3201,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListAsyncTasksRequest,
     ) -> fc20230330_models.ListAsyncTasksResponse:
+        """
+        @summary Lists asynchronous tasks.
+        
+        @param request: ListAsyncTasksRequest
+        @return: ListAsyncTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_async_tasks_with_options_async(function_name, request, headers, runtime)
@@ -2405,6 +3217,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListConcurrencyConfigsResponse:
+        """
+        @summary 列出函数并发度配置。
+        
+        @param request: ListConcurrencyConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConcurrencyConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_name):
@@ -2439,6 +3259,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListConcurrencyConfigsResponse:
+        """
+        @summary 列出函数并发度配置。
+        
+        @param request: ListConcurrencyConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConcurrencyConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_name):
@@ -2471,6 +3299,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListConcurrencyConfigsRequest,
     ) -> fc20230330_models.ListConcurrencyConfigsResponse:
+        """
+        @summary 列出函数并发度配置。
+        
+        @param request: ListConcurrencyConfigsRequest
+        @return: ListConcurrencyConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_concurrency_configs_with_options(request, headers, runtime)
@@ -2479,6 +3313,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListConcurrencyConfigsRequest,
     ) -> fc20230330_models.ListConcurrencyConfigsResponse:
+        """
+        @summary 列出函数并发度配置。
+        
+        @param request: ListConcurrencyConfigsRequest
+        @return: ListConcurrencyConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_concurrency_configs_with_options_async(request, headers, runtime)
@@ -2489,6 +3329,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListCustomDomainsResponse:
+        """
+        @summary Queries custom domain names.
+        
+        @param request: ListCustomDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2523,6 +3371,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListCustomDomainsResponse:
+        """
+        @summary Queries custom domain names.
+        
+        @param request: ListCustomDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2555,6 +3411,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListCustomDomainsRequest,
     ) -> fc20230330_models.ListCustomDomainsResponse:
+        """
+        @summary Queries custom domain names.
+        
+        @param request: ListCustomDomainsRequest
+        @return: ListCustomDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_custom_domains_with_options(request, headers, runtime)
@@ -2563,6 +3425,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListCustomDomainsRequest,
     ) -> fc20230330_models.ListCustomDomainsResponse:
+        """
+        @summary Queries custom domain names.
+        
+        @param request: ListCustomDomainsRequest
+        @return: ListCustomDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_custom_domains_with_options_async(request, headers, runtime)
@@ -2574,6 +3442,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionVersionsResponse:
+        """
+        @summary Queries versions of a function.
+        
+        @param request: ListFunctionVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -2609,6 +3485,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionVersionsResponse:
+        """
+        @summary Queries versions of a function.
+        
+        @param request: ListFunctionVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -2642,6 +3526,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListFunctionVersionsRequest,
     ) -> fc20230330_models.ListFunctionVersionsResponse:
+        """
+        @summary Queries versions of a function.
+        
+        @param request: ListFunctionVersionsRequest
+        @return: ListFunctionVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_function_versions_with_options(function_name, request, headers, runtime)
@@ -2651,6 +3541,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListFunctionVersionsRequest,
     ) -> fc20230330_models.ListFunctionVersionsResponse:
+        """
+        @summary Queries versions of a function.
+        
+        @param request: ListFunctionVersionsRequest
+        @return: ListFunctionVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_function_versions_with_options_async(function_name, request, headers, runtime)
@@ -2661,6 +3557,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionsResponse:
+        """
+        @summary 列出函数。
+        
+        @param request: ListFunctionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2695,6 +3599,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionsResponse:
+        """
+        @summary 列出函数。
+        
+        @param request: ListFunctionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2727,6 +3639,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListFunctionsRequest,
     ) -> fc20230330_models.ListFunctionsResponse:
+        """
+        @summary 列出函数。
+        
+        @param request: ListFunctionsRequest
+        @return: ListFunctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_functions_with_options(request, headers, runtime)
@@ -2735,6 +3653,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListFunctionsRequest,
     ) -> fc20230330_models.ListFunctionsResponse:
+        """
+        @summary 列出函数。
+        
+        @param request: ListFunctionsRequest
+        @return: ListFunctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_functions_with_options_async(request, headers, runtime)
@@ -2746,6 +3670,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListInstancesResponse:
+        """
+        @summary Queries a list of function instances.
+        
+        @param request: ListInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -2779,6 +3711,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListInstancesResponse:
+        """
+        @summary Queries a list of function instances.
+        
+        @param request: ListInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -2810,6 +3750,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListInstancesRequest,
     ) -> fc20230330_models.ListInstancesResponse:
+        """
+        @summary Queries a list of function instances.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_instances_with_options(function_name, request, headers, runtime)
@@ -2819,6 +3765,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListInstancesRequest,
     ) -> fc20230330_models.ListInstancesResponse:
+        """
+        @summary Queries a list of function instances.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instances_with_options_async(function_name, request, headers, runtime)
@@ -2830,6 +3782,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListLayerVersionsResponse:
+        """
+        @summary Gets a list of layer versions.
+        
+        @param request: ListLayerVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLayerVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2863,6 +3823,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListLayerVersionsResponse:
+        """
+        @summary Gets a list of layer versions.
+        
+        @param request: ListLayerVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLayerVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2894,6 +3862,12 @@ class Client(OpenApiClient):
         layer_name: str,
         request: fc20230330_models.ListLayerVersionsRequest,
     ) -> fc20230330_models.ListLayerVersionsResponse:
+        """
+        @summary Gets a list of layer versions.
+        
+        @param request: ListLayerVersionsRequest
+        @return: ListLayerVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_layer_versions_with_options(layer_name, request, headers, runtime)
@@ -2903,6 +3877,12 @@ class Client(OpenApiClient):
         layer_name: str,
         request: fc20230330_models.ListLayerVersionsRequest,
     ) -> fc20230330_models.ListLayerVersionsResponse:
+        """
+        @summary Gets a list of layer versions.
+        
+        @param request: ListLayerVersionsRequest
+        @return: ListLayerVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_layer_versions_with_options_async(layer_name, request, headers, runtime)
@@ -2913,6 +3893,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListLayersResponse:
+        """
+        @summary Gets a list of layers.
+        
+        @param request: ListLayersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLayersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2951,6 +3939,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListLayersResponse:
+        """
+        @summary Gets a list of layers.
+        
+        @param request: ListLayersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLayersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -2987,6 +3983,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListLayersRequest,
     ) -> fc20230330_models.ListLayersResponse:
+        """
+        @summary Gets a list of layers.
+        
+        @param request: ListLayersRequest
+        @return: ListLayersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_layers_with_options(request, headers, runtime)
@@ -2995,6 +3997,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListLayersRequest,
     ) -> fc20230330_models.ListLayersResponse:
+        """
+        @summary Gets a list of layers.
+        
+        @param request: ListLayersRequest
+        @return: ListLayersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_layers_with_options_async(request, headers, runtime)
@@ -3005,6 +4013,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListProvisionConfigsResponse:
+        """
+        @summary Queries a list of provisioned configurations.
+        
+        @param request: ListProvisionConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProvisionConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_name):
@@ -3039,6 +4055,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListProvisionConfigsResponse:
+        """
+        @summary Queries a list of provisioned configurations.
+        
+        @param request: ListProvisionConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProvisionConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_name):
@@ -3071,6 +4095,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListProvisionConfigsRequest,
     ) -> fc20230330_models.ListProvisionConfigsResponse:
+        """
+        @summary Queries a list of provisioned configurations.
+        
+        @param request: ListProvisionConfigsRequest
+        @return: ListProvisionConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_provision_configs_with_options(request, headers, runtime)
@@ -3079,6 +4109,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListProvisionConfigsRequest,
     ) -> fc20230330_models.ListProvisionConfigsResponse:
+        """
+        @summary Queries a list of provisioned configurations.
+        
+        @param request: ListProvisionConfigsRequest
+        @return: ListProvisionConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_provision_configs_with_options_async(request, headers, runtime)
@@ -3089,6 +4125,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListTagResourcesResponse:
+        """
+        @summary Lists all tagged resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = fc20230330_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3133,6 +4177,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListTagResourcesResponse:
+        """
+        @summary Lists all tagged resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = fc20230330_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3175,6 +4227,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListTagResourcesRequest,
     ) -> fc20230330_models.ListTagResourcesResponse:
+        """
+        @summary Lists all tagged resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tag_resources_with_options(request, headers, runtime)
@@ -3183,6 +4241,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.ListTagResourcesRequest,
     ) -> fc20230330_models.ListTagResourcesResponse:
+        """
+        @summary Lists all tagged resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
@@ -3194,6 +4258,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListTriggersResponse:
+        """
+        @summary Queries the triggers of a function.
+        
+        @param request: ListTriggersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTriggersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -3229,6 +4301,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListTriggersResponse:
+        """
+        @summary Queries the triggers of a function.
+        
+        @param request: ListTriggersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTriggersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -3262,6 +4342,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListTriggersRequest,
     ) -> fc20230330_models.ListTriggersResponse:
+        """
+        @summary Queries the triggers of a function.
+        
+        @param request: ListTriggersRequest
+        @return: ListTriggersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_triggers_with_options(function_name, request, headers, runtime)
@@ -3271,6 +4357,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.ListTriggersRequest,
     ) -> fc20230330_models.ListTriggersResponse:
+        """
+        @summary Queries the triggers of a function.
+        
+        @param request: ListTriggersRequest
+        @return: ListTriggersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_triggers_with_options_async(function_name, request, headers, runtime)
@@ -3281,6 +4373,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListVpcBindingsResponse:
+        """
+        @summary Queries a list of existing VPC connections.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcBindingsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3306,6 +4405,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListVpcBindingsResponse:
+        """
+        @summary Queries a list of existing VPC connections.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcBindingsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3329,6 +4435,11 @@ class Client(OpenApiClient):
         self,
         function_name: str,
     ) -> fc20230330_models.ListVpcBindingsResponse:
+        """
+        @summary Queries a list of existing VPC connections.
+        
+        @return: ListVpcBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_vpc_bindings_with_options(function_name, headers, runtime)
@@ -3337,6 +4448,11 @@ class Client(OpenApiClient):
         self,
         function_name: str,
     ) -> fc20230330_models.ListVpcBindingsResponse:
+        """
+        @summary Queries a list of existing VPC connections.
+        
+        @return: ListVpcBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_vpc_bindings_with_options_async(function_name, headers, runtime)
@@ -3348,6 +4464,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PublishFunctionVersionResponse:
+        """
+        @summary Publishes a function version.
+        
+        @param request: PublishFunctionVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishFunctionVersionResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -3376,6 +4500,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PublishFunctionVersionResponse:
+        """
+        @summary Publishes a function version.
+        
+        @param request: PublishFunctionVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishFunctionVersionResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -3402,6 +4534,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.PublishFunctionVersionRequest,
     ) -> fc20230330_models.PublishFunctionVersionResponse:
+        """
+        @summary Publishes a function version.
+        
+        @param request: PublishFunctionVersionRequest
+        @return: PublishFunctionVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.publish_function_version_with_options(function_name, request, headers, runtime)
@@ -3411,6 +4549,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.PublishFunctionVersionRequest,
     ) -> fc20230330_models.PublishFunctionVersionResponse:
+        """
+        @summary Publishes a function version.
+        
+        @param request: PublishFunctionVersionRequest
+        @return: PublishFunctionVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.publish_function_version_with_options_async(function_name, request, headers, runtime)
@@ -3422,6 +4566,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutAsyncInvokeConfigResponse:
+        """
+        @summary Creates or modifies an asynchronous invocation configuration for a function.
+        
+        @param request: PutAsyncInvokeConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -3454,6 +4606,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutAsyncInvokeConfigResponse:
+        """
+        @summary Creates or modifies an asynchronous invocation configuration for a function.
+        
+        @param request: PutAsyncInvokeConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -3484,6 +4644,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.PutAsyncInvokeConfigRequest,
     ) -> fc20230330_models.PutAsyncInvokeConfigResponse:
+        """
+        @summary Creates or modifies an asynchronous invocation configuration for a function.
+        
+        @param request: PutAsyncInvokeConfigRequest
+        @return: PutAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.put_async_invoke_config_with_options(function_name, request, headers, runtime)
@@ -3493,6 +4659,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.PutAsyncInvokeConfigRequest,
     ) -> fc20230330_models.PutAsyncInvokeConfigResponse:
+        """
+        @summary Creates or modifies an asynchronous invocation configuration for a function.
+        
+        @param request: PutAsyncInvokeConfigRequest
+        @return: PutAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_async_invoke_config_with_options_async(function_name, request, headers, runtime)
@@ -3504,6 +4676,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutConcurrencyConfigResponse:
+        """
+        @summary Configures concurrency of a function.
+        
+        @param request: PutConcurrencyConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutConcurrencyConfigResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -3532,6 +4712,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutConcurrencyConfigResponse:
+        """
+        @summary Configures concurrency of a function.
+        
+        @param request: PutConcurrencyConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutConcurrencyConfigResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -3558,6 +4746,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.PutConcurrencyConfigRequest,
     ) -> fc20230330_models.PutConcurrencyConfigResponse:
+        """
+        @summary Configures concurrency of a function.
+        
+        @param request: PutConcurrencyConfigRequest
+        @return: PutConcurrencyConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.put_concurrency_config_with_options(function_name, request, headers, runtime)
@@ -3567,6 +4761,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.PutConcurrencyConfigRequest,
     ) -> fc20230330_models.PutConcurrencyConfigResponse:
+        """
+        @summary Configures concurrency of a function.
+        
+        @param request: PutConcurrencyConfigRequest
+        @return: PutConcurrencyConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_concurrency_config_with_options_async(function_name, request, headers, runtime)
@@ -3578,8 +4778,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutLayerACLResponse:
+        """
+        @summary Modifies permissions of a layer.
+        
+        @param request: PutLayerACLRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutLayerACLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acl):
+            query['acl'] = request.acl
         if not UtilClient.is_unset(request.public):
             query['public'] = request.public
         req = open_api_models.OpenApiRequest(
@@ -3609,8 +4819,18 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutLayerACLResponse:
+        """
+        @summary Modifies permissions of a layer.
+        
+        @param request: PutLayerACLRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutLayerACLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acl):
+            query['acl'] = request.acl
         if not UtilClient.is_unset(request.public):
             query['public'] = request.public
         req = open_api_models.OpenApiRequest(
@@ -3638,6 +4858,12 @@ class Client(OpenApiClient):
         layer_name: str,
         request: fc20230330_models.PutLayerACLRequest,
     ) -> fc20230330_models.PutLayerACLResponse:
+        """
+        @summary Modifies permissions of a layer.
+        
+        @param request: PutLayerACLRequest
+        @return: PutLayerACLResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.put_layer_aclwith_options(layer_name, request, headers, runtime)
@@ -3647,6 +4873,12 @@ class Client(OpenApiClient):
         layer_name: str,
         request: fc20230330_models.PutLayerACLRequest,
     ) -> fc20230330_models.PutLayerACLResponse:
+        """
+        @summary Modifies permissions of a layer.
+        
+        @param request: PutLayerACLRequest
+        @return: PutLayerACLResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_layer_aclwith_options_async(layer_name, request, headers, runtime)
@@ -3658,6 +4890,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutProvisionConfigResponse:
+        """
+        @summary Creates provisioned configurations.
+        
+        @param request: PutProvisionConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutProvisionConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -3690,6 +4930,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutProvisionConfigResponse:
+        """
+        @summary Creates provisioned configurations.
+        
+        @param request: PutProvisionConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutProvisionConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -3720,6 +4968,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.PutProvisionConfigRequest,
     ) -> fc20230330_models.PutProvisionConfigResponse:
+        """
+        @summary Creates provisioned configurations.
+        
+        @param request: PutProvisionConfigRequest
+        @return: PutProvisionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.put_provision_config_with_options(function_name, request, headers, runtime)
@@ -3729,6 +4983,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.PutProvisionConfigRequest,
     ) -> fc20230330_models.PutProvisionConfigResponse:
+        """
+        @summary Creates provisioned configurations.
+        
+        @param request: PutProvisionConfigRequest
+        @return: PutProvisionConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_provision_config_with_options_async(function_name, request, headers, runtime)
@@ -3741,6 +5001,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.StopAsyncTaskResponse:
+        """
+        @summary Stops an asynchronous task.
+        
+        @param request: StopAsyncTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -3773,6 +5041,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.StopAsyncTaskResponse:
+        """
+        @summary Stops an asynchronous task.
+        
+        @param request: StopAsyncTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -3803,6 +5079,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: fc20230330_models.StopAsyncTaskRequest,
     ) -> fc20230330_models.StopAsyncTaskResponse:
+        """
+        @summary Stops an asynchronous task.
+        
+        @param request: StopAsyncTaskRequest
+        @return: StopAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_async_task_with_options(function_name, task_id, request, headers, runtime)
@@ -3813,6 +5095,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: fc20230330_models.StopAsyncTaskRequest,
     ) -> fc20230330_models.StopAsyncTaskResponse:
+        """
+        @summary Stops an asynchronous task.
+        
+        @param request: StopAsyncTaskRequest
+        @return: StopAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_async_task_with_options_async(function_name, task_id, request, headers, runtime)
@@ -3823,6 +5111,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.TagResourcesResponse:
+        """
+        @summary Adds tags to a resource.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -3850,6 +5146,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.TagResourcesResponse:
+        """
+        @summary Adds tags to a resource.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -3875,6 +5179,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.TagResourcesRequest,
     ) -> fc20230330_models.TagResourcesResponse:
+        """
+        @summary Adds tags to a resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.tag_resources_with_options(request, headers, runtime)
@@ -3883,6 +5193,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.TagResourcesRequest,
     ) -> fc20230330_models.TagResourcesResponse:
+        """
+        @summary Adds tags to a resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
@@ -3893,6 +5209,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a resource.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = fc20230330_models.UntagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3935,6 +5259,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a resource.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = fc20230330_models.UntagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3975,6 +5307,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.UntagResourcesRequest,
     ) -> fc20230330_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a resource.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.untag_resources_with_options(request, headers, runtime)
@@ -3983,6 +5321,12 @@ class Client(OpenApiClient):
         self,
         request: fc20230330_models.UntagResourcesRequest,
     ) -> fc20230330_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from a resource.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
@@ -3995,6 +5339,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateAliasResponse:
+        """
+        @summary Updates an alias.
+        
+        @param request: UpdateAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAliasResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4024,6 +5376,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateAliasResponse:
+        """
+        @summary Updates an alias.
+        
+        @param request: UpdateAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAliasResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4051,6 +5411,12 @@ class Client(OpenApiClient):
         alias_name: str,
         request: fc20230330_models.UpdateAliasRequest,
     ) -> fc20230330_models.UpdateAliasResponse:
+        """
+        @summary Updates an alias.
+        
+        @param request: UpdateAliasRequest
+        @return: UpdateAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_alias_with_options(function_name, alias_name, request, headers, runtime)
@@ -4061,6 +5427,12 @@ class Client(OpenApiClient):
         alias_name: str,
         request: fc20230330_models.UpdateAliasRequest,
     ) -> fc20230330_models.UpdateAliasResponse:
+        """
+        @summary Updates an alias.
+        
+        @param request: UpdateAliasRequest
+        @return: UpdateAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_alias_with_options_async(function_name, alias_name, request, headers, runtime)
@@ -4072,6 +5444,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateCustomDomainResponse:
+        """
+        @summary Update a custom domain name.
+        
+        @param request: UpdateCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomDomainResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4100,6 +5480,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateCustomDomainResponse:
+        """
+        @summary Update a custom domain name.
+        
+        @param request: UpdateCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomDomainResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4126,6 +5514,12 @@ class Client(OpenApiClient):
         domain_name: str,
         request: fc20230330_models.UpdateCustomDomainRequest,
     ) -> fc20230330_models.UpdateCustomDomainResponse:
+        """
+        @summary Update a custom domain name.
+        
+        @param request: UpdateCustomDomainRequest
+        @return: UpdateCustomDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_custom_domain_with_options(domain_name, request, headers, runtime)
@@ -4135,6 +5529,12 @@ class Client(OpenApiClient):
         domain_name: str,
         request: fc20230330_models.UpdateCustomDomainRequest,
     ) -> fc20230330_models.UpdateCustomDomainResponse:
+        """
+        @summary Update a custom domain name.
+        
+        @param request: UpdateCustomDomainRequest
+        @return: UpdateCustomDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_custom_domain_with_options_async(domain_name, request, headers, runtime)
@@ -4146,6 +5546,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateFunctionResponse:
+        """
+        @summary Updates the information about a function.
+        
+        @param request: UpdateFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4174,6 +5582,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateFunctionResponse:
+        """
+        @summary Updates the information about a function.
+        
+        @param request: UpdateFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4200,6 +5616,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.UpdateFunctionRequest,
     ) -> fc20230330_models.UpdateFunctionResponse:
+        """
+        @summary Updates the information about a function.
+        
+        @param request: UpdateFunctionRequest
+        @return: UpdateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_function_with_options(function_name, request, headers, runtime)
@@ -4209,6 +5631,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc20230330_models.UpdateFunctionRequest,
     ) -> fc20230330_models.UpdateFunctionResponse:
+        """
+        @summary Updates the information about a function.
+        
+        @param request: UpdateFunctionRequest
+        @return: UpdateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_function_with_options_async(function_name, request, headers, runtime)
@@ -4221,6 +5649,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateTriggerResponse:
+        """
+        @summary Modifies a trigger.
+        
+        @param request: UpdateTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTriggerResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4250,6 +5686,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateTriggerResponse:
+        """
+        @summary Modifies a trigger.
+        
+        @param request: UpdateTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTriggerResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4277,6 +5721,12 @@ class Client(OpenApiClient):
         trigger_name: str,
         request: fc20230330_models.UpdateTriggerRequest,
     ) -> fc20230330_models.UpdateTriggerResponse:
+        """
+        @summary Modifies a trigger.
+        
+        @param request: UpdateTriggerRequest
+        @return: UpdateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_trigger_with_options(function_name, trigger_name, request, headers, runtime)
@@ -4287,6 +5737,12 @@ class Client(OpenApiClient):
         trigger_name: str,
         request: fc20230330_models.UpdateTriggerRequest,
     ) -> fc20230330_models.UpdateTriggerResponse:
+        """
+        @summary Modifies a trigger.
+        
+        @param request: UpdateTriggerRequest
+        @return: UpdateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_trigger_with_options_async(function_name, trigger_name, request, headers, runtime)

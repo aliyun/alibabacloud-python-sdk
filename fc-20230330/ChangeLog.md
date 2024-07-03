@@ -1,3 +1,8 @@
+2024-07-03 Version: 4.1.1
+- Update API PutLayerACL: add param acl.
+- Update API PutLayerACL: update param public.
+
+
 2024-04-23 Version: 4.1.0
 - Support API GetAsyncTask.
 - Support API ListAsyncTasks.
