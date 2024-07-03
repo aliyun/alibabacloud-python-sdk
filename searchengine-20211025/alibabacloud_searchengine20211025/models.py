@@ -995,6 +995,121 @@ class CloneSqlInstanceResponse(TeaModel):
         return self
 
 
+class CreateAliasRequest(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        index: str = None,
+        new_mode: bool = None,
+    ):
+        self.alias = alias
+        self.index = index
+        self.new_mode = new_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.index is not None:
+            result['index'] = self.index
+        if self.new_mode is not None:
+            result['newMode'] = self.new_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('newMode') is not None:
+            self.new_mode = m.get('newMode')
+        return self
+
+
+class CreateAliasResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: Dict[str, Any] = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # Map
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class CreateAliasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAliasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAliasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateClusterRequestDataNode(TeaModel):
     def __init__(
         self,
@@ -3367,6 +3482,82 @@ class DeleteAdvanceConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAdvanceConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAliasResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: Dict[str, Any] = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # Map
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class DeleteAliasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAliasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAliasResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9905,6 +10096,123 @@ class ListAdvanceConfigsResponse(TeaModel):
         return self
 
 
+class ListAliasesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        index: str = None,
+    ):
+        self.alias = alias
+        self.index = index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.index is not None:
+            result['index'] = self.index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        return self
+
+
+class ListAliasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[ListAliasesResponseBodyResult] = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # List
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListAliasesResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        return self
+
+
+class ListAliasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAliasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAliasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListClusterNamesResponseBodyResult(TeaModel):
     def __init__(
         self,
@@ -15084,6 +15392,115 @@ class ModifyAdvanceConfigFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAdvanceConfigFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAliasRequest(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        index: str = None,
+    ):
+        self.alias = alias
+        self.index = index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.index is not None:
+            result['index'] = self.index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        return self
+
+
+class ModifyAliasResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: Dict[str, Any] = None,
+    ):
+        # id of request
+        self.request_id = request_id
+        # Map
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        return self
+
+
+class ModifyAliasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAliasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAliasResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

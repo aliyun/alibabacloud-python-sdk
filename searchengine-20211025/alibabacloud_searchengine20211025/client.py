@@ -417,6 +417,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.clone_sql_instance_with_options_async(instance_id, database, sql_instance_id, request, headers, runtime)
 
+    def create_alias_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateAliasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateAliasResponse:
+        """
+        @param request: CreateAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAliasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_mode):
+            query['newMode'] = request.new_mode
+        body = {}
+        if not UtilClient.is_unset(request.alias):
+            body['alias'] = request.alias
+        if not UtilClient.is_unset(request.index):
+            body['index'] = request.index
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlias',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliases',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_alias_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateAliasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateAliasResponse:
+        """
+        @param request: CreateAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAliasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_mode):
+            query['newMode'] = request.new_mode
+        body = {}
+        if not UtilClient.is_unset(request.alias):
+            body['alias'] = request.alias
+        if not UtilClient.is_unset(request.index):
+            body['index'] = request.index
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlias',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliases',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_alias(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateAliasRequest,
+    ) -> searchengine_20211025_models.CreateAliasResponse:
+        """
+        @param request: CreateAliasRequest
+        @return: CreateAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_alias_with_options(instance_id, request, headers, runtime)
+
+    async def create_alias_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateAliasRequest,
+    ) -> searchengine_20211025_models.CreateAliasResponse:
+        """
+        @param request: CreateAliasRequest
+        @return: CreateAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_alias_with_options_async(instance_id, request, headers, runtime)
+
     def create_cluster_with_options(
         self,
         instance_id: str,
@@ -1804,6 +1916,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_advance_config_with_options_async(instance_id, config_name, headers, runtime)
+
+    def delete_alias_with_options(
+        self,
+        instance_id: str,
+        alias: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteAliasResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAliasResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlias',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliases/{OpenApiUtilClient.get_encode_param(alias)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alias_with_options_async(
+        self,
+        instance_id: str,
+        alias: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteAliasResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAliasResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlias',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliases/{OpenApiUtilClient.get_encode_param(alias)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alias(
+        self,
+        instance_id: str,
+        alias: str,
+    ) -> searchengine_20211025_models.DeleteAliasResponse:
+        """
+        @return: DeleteAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_alias_with_options(instance_id, alias, headers, runtime)
+
+    async def delete_alias_async(
+        self,
+        instance_id: str,
+        alias: str,
+    ) -> searchengine_20211025_models.DeleteAliasResponse:
+        """
+        @return: DeleteAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_alias_with_options_async(instance_id, alias, headers, runtime)
 
     def delete_config_dir_with_options(
         self,
@@ -5365,6 +5563,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_advance_configs_with_options_async(instance_id, request, headers, runtime)
 
+    def list_aliases_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListAliasesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAliasesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAliases',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListAliasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aliases_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListAliasesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAliasesResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAliases',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListAliasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aliases(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.ListAliasesResponse:
+        """
+        @return: ListAliasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_aliases_with_options(instance_id, headers, runtime)
+
+    async def list_aliases_async(
+        self,
+        instance_id: str,
+    ) -> searchengine_20211025_models.ListAliasesResponse:
+        """
+        @return: ListAliasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_aliases_with_options_async(instance_id, headers, runtime)
+
     def list_cluster_names_with_options(
         self,
         headers: Dict[str, str],
@@ -8456,6 +8736,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_advance_config_file_with_options_async(instance_id, config_name, request, headers, runtime)
+
+    def modify_alias_with_options(
+        self,
+        instance_id: str,
+        alias: str,
+        request: searchengine_20211025_models.ModifyAliasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyAliasResponse:
+        """
+        @param request: ModifyAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAliasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alias):
+            body['alias'] = request.alias
+        if not UtilClient.is_unset(request.index):
+            body['index'] = request.index
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyAlias',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliases/{OpenApiUtilClient.get_encode_param(alias)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_alias_with_options_async(
+        self,
+        instance_id: str,
+        alias: str,
+        request: searchengine_20211025_models.ModifyAliasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyAliasResponse:
+        """
+        @param request: ModifyAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAliasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alias):
+            body['alias'] = request.alias
+        if not UtilClient.is_unset(request.index):
+            body['index'] = request.index
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyAlias',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliases/{OpenApiUtilClient.get_encode_param(alias)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_alias(
+        self,
+        instance_id: str,
+        alias: str,
+        request: searchengine_20211025_models.ModifyAliasRequest,
+    ) -> searchengine_20211025_models.ModifyAliasResponse:
+        """
+        @param request: ModifyAliasRequest
+        @return: ModifyAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_alias_with_options(instance_id, alias, request, headers, runtime)
+
+    async def modify_alias_async(
+        self,
+        instance_id: str,
+        alias: str,
+        request: searchengine_20211025_models.ModifyAliasRequest,
+    ) -> searchengine_20211025_models.ModifyAliasResponse:
+        """
+        @param request: ModifyAliasRequest
+        @return: ModifyAliasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_alias_with_options_async(instance_id, alias, request, headers, runtime)
 
     def modify_cluster_desc_with_options(
         self,

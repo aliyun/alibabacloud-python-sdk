@@ -1,3 +1,10 @@
+2024-07-03 Version: 4.2.0
+- Support API CreateAlias.
+- Support API DeleteAlias.
+- Support API ListAliases.
+- Support API ModifyAlias.
+
+
 2024-07-02 Version: 4.1.0
 - Support API ListLogs.
 - Update API CreateInstance: update response param.
