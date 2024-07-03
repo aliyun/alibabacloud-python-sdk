@@ -1408,9 +1408,7 @@ class CreateCollectionRequest(TeaModel):
         self.manager_account_password = manager_account_password
         # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
         # 
-        # **\
-        # 
-        # **Warning**Reserved fields such as id, vector, to_tsvector, and source cannot be used.
+        # >Warning: Reserved fields such as id, vector, to_tsvector, and source cannot be used.
         # 
         # This parameter is required.
         self.metadata = metadata
@@ -4489,8 +4487,6 @@ class CreateVectorIndexRequest(TeaModel):
         self.dimension = dimension
         # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
         # 
-        # > 
-        # 
         # *   0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
         # 
         # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
@@ -4511,7 +4507,13 @@ class CreateVectorIndexRequest(TeaModel):
         self.manager_account = manager_account
         # This parameter is required.
         self.manager_account_password = manager_account_password
-        # Distance Metrics。
+        # The method that is used to create vector indexes.Valid values:
+        # 
+        # - l2: Euclidean distance.
+        # 
+        # - ip: inner product distance.
+        # 
+        # - cosine: cosine similarity.
         self.metrics = metrics
         self.namespace = namespace
         self.owner_id = owner_id
@@ -15607,6 +15609,7 @@ class DescribeDocumentRequest(TeaModel):
 class DescribeDocumentResponseBody(TeaModel):
     def __init__(
         self,
+        chunk_file_url: str = None,
         docs_count: int = None,
         document_loader: str = None,
         file_ext: str = None,
@@ -15614,13 +15617,16 @@ class DescribeDocumentResponseBody(TeaModel):
         file_mtime: str = None,
         file_name: str = None,
         file_size: int = None,
+        file_url: str = None,
         file_version: int = None,
         message: str = None,
+        plain_chunk_file_url: str = None,
         request_id: str = None,
         source: str = None,
         status: str = None,
         text_splitter: str = None,
     ):
+        self.chunk_file_url = chunk_file_url
         self.docs_count = docs_count
         self.document_loader = document_loader
         self.file_ext = file_ext
@@ -15628,8 +15634,10 @@ class DescribeDocumentResponseBody(TeaModel):
         self.file_mtime = file_mtime
         self.file_name = file_name
         self.file_size = file_size
+        self.file_url = file_url
         self.file_version = file_version
         self.message = message
+        self.plain_chunk_file_url = plain_chunk_file_url
         self.request_id = request_id
         self.source = source
         self.status = status
@@ -15644,6 +15652,8 @@ class DescribeDocumentResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.chunk_file_url is not None:
+            result['ChunkFileUrl'] = self.chunk_file_url
         if self.docs_count is not None:
             result['DocsCount'] = self.docs_count
         if self.document_loader is not None:
@@ -15658,10 +15668,14 @@ class DescribeDocumentResponseBody(TeaModel):
             result['FileName'] = self.file_name
         if self.file_size is not None:
             result['FileSize'] = self.file_size
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
         if self.file_version is not None:
             result['FileVersion'] = self.file_version
         if self.message is not None:
             result['Message'] = self.message
+        if self.plain_chunk_file_url is not None:
+            result['PlainChunkFileUrl'] = self.plain_chunk_file_url
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.source is not None:
@@ -15674,6 +15688,8 @@ class DescribeDocumentResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChunkFileUrl') is not None:
+            self.chunk_file_url = m.get('ChunkFileUrl')
         if m.get('DocsCount') is not None:
             self.docs_count = m.get('DocsCount')
         if m.get('DocumentLoader') is not None:
@@ -15688,10 +15704,14 @@ class DescribeDocumentResponseBody(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('FileSize') is not None:
             self.file_size = m.get('FileSize')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
         if m.get('FileVersion') is not None:
             self.file_version = m.get('FileVersion')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('PlainChunkFileUrl') is not None:
+            self.plain_chunk_file_url = m.get('PlainChunkFileUrl')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Source') is not None:

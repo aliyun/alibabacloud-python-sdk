@@ -1,3 +1,7 @@
+2024-07-03 Version: 3.8.2
+- Update API DescribeDocument: update response param.
+
+
 2024-06-27 Version: 3.8.1
 - Update API DescribeStreamingDataService: update response param.
 - Update API ListStreamingDataServices: update response param.
