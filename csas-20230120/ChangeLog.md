@@ -1,3 +1,8 @@
+2024-07-03 Version: 1.8.0
+- Support API ListNacUserCert.
+- Support API UpdateNacUserCertStatus.
+
+
 2024-06-20 Version: 1.7.0
 - Support API CreateWmBaseImage.
 - Support API CreateWmEmbedTask.

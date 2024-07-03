@@ -8568,6 +8568,256 @@ class ListIdpDepartmentsResponse(TeaModel):
         return self
 
 
+class ListNacUserCertRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        department: str = None,
+        device_type: str = None,
+        end_time: int = None,
+        page_size: str = None,
+        start_time: int = None,
+        status: str = None,
+        username: str = None,
+    ):
+        self.current_page = current_page
+        self.department = department
+        self.device_type = device_type
+        self.end_time = end_time
+        self.page_size = page_size
+        self.start_time = start_time
+        self.status = status
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListNacUserCertResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        aliuid: str = None,
+        department: str = None,
+        dev_tag: str = None,
+        device_type: str = None,
+        expired_time: str = None,
+        hostname: str = None,
+        mac: str = None,
+        status: str = None,
+        user_id: str = None,
+        username: str = None,
+    ):
+        self.aliuid = aliuid
+        self.department = department
+        self.dev_tag = dev_tag
+        self.device_type = device_type
+        self.expired_time = expired_time
+        self.hostname = hostname
+        self.mac = mac
+        self.status = status
+        self.user_id = user_id
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliuid is not None:
+            result['Aliuid'] = self.aliuid
+        if self.department is not None:
+            result['Department'] = self.department
+        if self.dev_tag is not None:
+            result['DevTag'] = self.dev_tag
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Aliuid') is not None:
+            self.aliuid = m.get('Aliuid')
+        if m.get('Department') is not None:
+            self.department = m.get('Department')
+        if m.get('DevTag') is not None:
+            self.dev_tag = m.get('DevTag')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListNacUserCertResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data_list: List[ListNacUserCertResponseBodyDataList] = None,
+        message: str = None,
+        request_id: str = None,
+        total_num: int = None,
+    ):
+        self.code = code
+        self.data_list = data_list
+        self.message = message
+        self.request_id = request_id
+        self.total_num = total_num
+
+    def validate(self):
+        if self.data_list:
+            for k in self.data_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['DataList'] = []
+        if self.data_list is not None:
+            for k in self.data_list:
+                result['DataList'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data_list = []
+        if m.get('DataList') is not None:
+            for k in m.get('DataList'):
+                temp_model = ListNacUserCertResponseBodyDataList()
+                self.data_list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ListNacUserCertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNacUserCertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNacUserCertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPolicesForPrivateAccessApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -14542,6 +14792,160 @@ class UpdateIdpDepartmentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateIdpDepartmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateNacUserCertStatusRequestIdList(TeaModel):
+    def __init__(
+        self,
+        dev_tag: str = None,
+        user_id: str = None,
+    ):
+        self.dev_tag = dev_tag
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dev_tag is not None:
+            result['DevTag'] = self.dev_tag
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DevTag') is not None:
+            self.dev_tag = m.get('DevTag')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class UpdateNacUserCertStatusRequest(TeaModel):
+    def __init__(
+        self,
+        id_list: List[UpdateNacUserCertStatusRequestIdList] = None,
+        status: str = None,
+    ):
+        self.id_list = id_list
+        self.status = status
+
+    def validate(self):
+        if self.id_list:
+            for k in self.id_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IdList'] = []
+        if self.id_list is not None:
+            for k in self.id_list:
+                result['IdList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.id_list = []
+        if m.get('IdList') is not None:
+            for k in m.get('IdList'):
+                temp_model = UpdateNacUserCertStatusRequestIdList()
+                self.id_list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateNacUserCertStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateNacUserCertStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateNacUserCertStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateNacUserCertStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -4589,6 +4589,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_idp_departments_with_options_async(request, runtime)
 
+    def list_nac_user_cert_with_options(
+        self,
+        request: csas_20230120_models.ListNacUserCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListNacUserCertResponse:
+        """
+        @summary 入网用户列表
+        
+        @param request: ListNacUserCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNacUserCertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.department):
+            query['Department'] = request.department
+        if not UtilClient.is_unset(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNacUserCert',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListNacUserCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_nac_user_cert_with_options_async(
+        self,
+        request: csas_20230120_models.ListNacUserCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.ListNacUserCertResponse:
+        """
+        @summary 入网用户列表
+        
+        @param request: ListNacUserCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNacUserCertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.department):
+            query['Department'] = request.department
+        if not UtilClient.is_unset(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNacUserCert',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.ListNacUserCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_nac_user_cert(
+        self,
+        request: csas_20230120_models.ListNacUserCertRequest,
+    ) -> csas_20230120_models.ListNacUserCertResponse:
+        """
+        @summary 入网用户列表
+        
+        @param request: ListNacUserCertRequest
+        @return: ListNacUserCertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_nac_user_cert_with_options(request, runtime)
+
+    async def list_nac_user_cert_async(
+        self,
+        request: csas_20230120_models.ListNacUserCertRequest,
+    ) -> csas_20230120_models.ListNacUserCertResponse:
+        """
+        @summary 入网用户列表
+        
+        @param request: ListNacUserCertRequest
+        @return: ListNacUserCertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_nac_user_cert_with_options_async(request, runtime)
+
     def list_polices_for_private_access_application_with_options(
         self,
         request: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
@@ -7200,6 +7324,112 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_idp_department_with_options_async(request, runtime)
+
+    def update_nac_user_cert_status_with_options(
+        self,
+        request: csas_20230120_models.UpdateNacUserCertStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateNacUserCertStatusResponse:
+        """
+        @summary 更新NAC User 状态
+        
+        @param request: UpdateNacUserCertStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacUserCertStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.id_list):
+            body_flat['IdList'] = request.id_list
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateNacUserCertStatus',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateNacUserCertStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_nac_user_cert_status_with_options_async(
+        self,
+        request: csas_20230120_models.UpdateNacUserCertStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> csas_20230120_models.UpdateNacUserCertStatusResponse:
+        """
+        @summary 更新NAC User 状态
+        
+        @param request: UpdateNacUserCertStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacUserCertStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.id_list):
+            body_flat['IdList'] = request.id_list
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateNacUserCertStatus',
+            version='2023-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            csas_20230120_models.UpdateNacUserCertStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_nac_user_cert_status(
+        self,
+        request: csas_20230120_models.UpdateNacUserCertStatusRequest,
+    ) -> csas_20230120_models.UpdateNacUserCertStatusResponse:
+        """
+        @summary 更新NAC User 状态
+        
+        @param request: UpdateNacUserCertStatusRequest
+        @return: UpdateNacUserCertStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_nac_user_cert_status_with_options(request, runtime)
+
+    async def update_nac_user_cert_status_async(
+        self,
+        request: csas_20230120_models.UpdateNacUserCertStatusRequest,
+    ) -> csas_20230120_models.UpdateNacUserCertStatusResponse:
+        """
+        @summary 更新NAC User 状态
+        
+        @param request: UpdateNacUserCertStatusRequest
+        @return: UpdateNacUserCertStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_nac_user_cert_status_with_options_async(request, runtime)
 
     def update_private_access_application_with_options(
         self,
