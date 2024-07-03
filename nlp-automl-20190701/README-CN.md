@@ -4,6 +4,10 @@
 
 ## Alibaba Cloud nlp-automl SDK for Python
 
+## 要求
+
+- Python >= 3.6
+
 ## 安装
 
 - **使用 pip 安装(推荐)**
@@ -17,15 +21,19 @@ pip install alibabacloud_nlp_automl20190701
 
 ## 问题
 
-[提交 Issue](https://github.com/aliyun/alibabacloud-sdk/issues/new)，不符合指南的问题可能会立即关闭。
+[提交 Issue](https://github.com/aliyun/alibabacloud-python-sdk/issues/new)，不符合指南的问题可能会立即关闭。
+
+## 使用说明
+
+[快速使用](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/docs/0-Usage-CN.md#%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8)
 
 ## 发行说明
 
-每个版本的详细更改记录在[发行说明](./ChangeLog.md)中。
+每个版本的详细更改记录在[发行说明](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/nlp-automl-20190701/ChangeLog.md)中。
 
 ## 相关
 
-- [最新源码](https://github.com/aliyun/alibabacloud-sdk/tree/master/python)
+- [最新源码](https://github.com/aliyun/alibabacloud-python-sdk/)
 
 ## 许可证
 
