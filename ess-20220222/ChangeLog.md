@@ -3,6 +3,11 @@
 - Update API ModifyScalingConfiguration: add param Password.
 
 
+2024-07-03 Version: 1.7.1
+- Update API DescribeScalingConfigurations: update response param.
+- Update API ModifyScalingConfiguration: add param Password.
+
+
 2024-06-14 Version: 1.7.0
 - Support API DescribeAlertConfiguration.
 - Support API ModifyAlertConfiguration.
