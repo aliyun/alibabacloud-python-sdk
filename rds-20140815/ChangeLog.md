@@ -1,3 +1,13 @@
+2024-07-03 Version: 5.1.0
+- Support API CreateDBInstanceSecurityGroupRule.
+- Support API DeleteDBInstanceSecurityGroupRule.
+- Support API DescribeDBInstanceSecurityGroupRule.
+- Support API ModifyDBInstanceSecurityGroupRule.
+- Update API DescribeBackups: update response param.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeParameters: update response param.
+
+
 2024-06-27 Version: 5.0.4
 - Update API DescribeDBInstanceAttribute: update response param.
 - Update API DescribeParameters: update response param.

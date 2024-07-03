@@ -4516,6 +4516,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dbinstance_for_rebuild_with_options_async(request, runtime)
 
+    def create_dbinstance_security_group_rule_with_options(
+        self,
+        request: rds_20140815_models.CreateDBInstanceSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 创建实例主机安全组规则
+        
+        @param request: CreateDBInstanceSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBInstanceSecurityGroupRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range):
+            query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_cidr_ip):
+            query['SourceCidrIp'] = request.source_cidr_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBInstanceSecurityGroupRule',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dbinstance_security_group_rule_with_options_async(
+        self,
+        request: rds_20140815_models.CreateDBInstanceSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 创建实例主机安全组规则
+        
+        @param request: CreateDBInstanceSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBInstanceSecurityGroupRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range):
+            query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_cidr_ip):
+            query['SourceCidrIp'] = request.source_cidr_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBInstanceSecurityGroupRule',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dbinstance_security_group_rule(
+        self,
+        request: rds_20140815_models.CreateDBInstanceSecurityGroupRuleRequest,
+    ) -> rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 创建实例主机安全组规则
+        
+        @param request: CreateDBInstanceSecurityGroupRuleRequest
+        @return: CreateDBInstanceSecurityGroupRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dbinstance_security_group_rule_with_options(request, runtime)
+
+    async def create_dbinstance_security_group_rule_async(
+        self,
+        request: rds_20140815_models.CreateDBInstanceSecurityGroupRuleRequest,
+    ) -> rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 创建实例主机安全组规则
+        
+        @param request: CreateDBInstanceSecurityGroupRuleRequest
+        @return: CreateDBInstanceSecurityGroupRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dbinstance_security_group_rule_with_options_async(request, runtime)
+
     def create_dbnodes_with_options(
         self,
         tmp_req: rds_20140815_models.CreateDBNodesRequest,
@@ -8539,6 +8667,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_endpoint_address_with_options_async(request, runtime)
+
+    def delete_dbinstance_security_group_rule_with_options(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 删除实例主机安全组规则
+        
+        @param request: DeleteDBInstanceSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBInstanceSecurityGroupRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_rule_ids):
+            query['SecurityGroupRuleIds'] = request.security_group_rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBInstanceSecurityGroupRule',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dbinstance_security_group_rule_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 删除实例主机安全组规则
+        
+        @param request: DeleteDBInstanceSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBInstanceSecurityGroupRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_rule_ids):
+            query['SecurityGroupRuleIds'] = request.security_group_rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBInstanceSecurityGroupRule',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dbinstance_security_group_rule(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceSecurityGroupRuleRequest,
+    ) -> rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 删除实例主机安全组规则
+        
+        @param request: DeleteDBInstanceSecurityGroupRuleRequest
+        @return: DeleteDBInstanceSecurityGroupRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dbinstance_security_group_rule_with_options(request, runtime)
+
+    async def delete_dbinstance_security_group_rule_async(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceSecurityGroupRuleRequest,
+    ) -> rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 删除实例主机安全组规则
+        
+        @param request: DeleteDBInstanceSecurityGroupRuleRequest
+        @return: DeleteDBInstanceSecurityGroupRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dbinstance_security_group_rule_with_options_async(request, runtime)
 
     def delete_dbnodes_with_options(
         self,
@@ -16479,6 +16731,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_sslwith_options_async(request, runtime)
+
+    def describe_dbinstance_security_group_rule_with_options(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 描述实例主机安全组规则
+        
+        @param request: DescribeDBInstanceSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSecurityGroupRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceSecurityGroupRule',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_security_group_rule_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 描述实例主机安全组规则
+        
+        @param request: DescribeDBInstanceSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSecurityGroupRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceSecurityGroupRule',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_security_group_rule(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceSecurityGroupRuleRequest,
+    ) -> rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 描述实例主机安全组规则
+        
+        @param request: DescribeDBInstanceSecurityGroupRuleRequest
+        @return: DescribeDBInstanceSecurityGroupRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_security_group_rule_with_options(request, runtime)
+
+    async def describe_dbinstance_security_group_rule_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceSecurityGroupRuleRequest,
+    ) -> rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 描述实例主机安全组规则
+        
+        @param request: DescribeDBInstanceSecurityGroupRuleRequest
+        @return: DescribeDBInstanceSecurityGroupRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_security_group_rule_with_options_async(request, runtime)
 
     def describe_dbinstance_tdewith_options(
         self,
@@ -26293,16 +26657,17 @@ class Client(OpenApiClient):
         @summary Queries the statistics on slow query logs.
         
         @description ### [](#)Supported database engines
-        MySQL
+        RDS MySQL
         *\
         *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
-        SQL Server
+        RDS SQL Server
         *\
         *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
-        MariaDB
+        RDS MariaDB
         ### [](#)Precautions
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
-        If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
+        If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
+        Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash** values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
         
         @param request: DescribeSlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26360,16 +26725,17 @@ class Client(OpenApiClient):
         @summary Queries the statistics on slow query logs.
         
         @description ### [](#)Supported database engines
-        MySQL
+        RDS MySQL
         *\
         *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
-        SQL Server
+        RDS SQL Server
         *\
         *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
-        MariaDB
+        RDS MariaDB
         ### [](#)Precautions
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
-        If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
+        If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
+        Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash** values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
         
         @param request: DescribeSlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26426,16 +26792,17 @@ class Client(OpenApiClient):
         @summary Queries the statistics on slow query logs.
         
         @description ### [](#)Supported database engines
-        MySQL
+        RDS MySQL
         *\
         *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
-        SQL Server
+        RDS SQL Server
         *\
         *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
-        MariaDB
+        RDS MariaDB
         ### [](#)Precautions
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
-        If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
+        If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
+        Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash** values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
         
         @param request: DescribeSlowLogsRequest
         @return: DescribeSlowLogsResponse
@@ -26451,16 +26818,17 @@ class Client(OpenApiClient):
         @summary Queries the statistics on slow query logs.
         
         @description ### [](#)Supported database engines
-        MySQL
+        RDS MySQL
         *\
         *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
-        SQL Server
+        RDS SQL Server
         *\
         *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
-        MariaDB
+        RDS MariaDB
         ### [](#)Precautions
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
-        If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
+        If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
+        Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash** values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
         
         @param request: DescribeSlowLogsRequest
         @return: DescribeSlowLogsResponse
@@ -26898,12 +27266,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskResponse:
         """
-        @summary Queries the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance.
+        @summary Queries the check report for a major engine version upgrade of an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance.
         
         @description ### [](#)Supported database engines
+        MySQL
         PostgreSQL
         ### [](#)References
-        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Check report for the major engine version upgrade of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2794383.html)
         [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
         [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/218391.html)
         
@@ -26956,12 +27326,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskResponse:
         """
-        @summary Queries the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance.
+        @summary Queries the check report for a major engine version upgrade of an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance.
         
         @description ### [](#)Supported database engines
+        MySQL
         PostgreSQL
         ### [](#)References
-        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Check report for the major engine version upgrade of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2794383.html)
         [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
         [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/218391.html)
         
@@ -27013,12 +27385,14 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskRequest,
     ) -> rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskResponse:
         """
-        @summary Queries the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance.
+        @summary Queries the check report for a major engine version upgrade of an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance.
         
         @description ### [](#)Supported database engines
+        MySQL
         PostgreSQL
         ### [](#)References
-        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Check report for the major engine version upgrade of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2794383.html)
         [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
         [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/218391.html)
         
@@ -27033,12 +27407,14 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskRequest,
     ) -> rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskResponse:
         """
-        @summary Queries the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance.
+        @summary Queries the check report for a major engine version upgrade of an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance.
         
         @description ### [](#)Supported database engines
+        MySQL
         PostgreSQL
         ### [](#)References
-        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Check report for the major engine version upgrade of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2794383.html)
         [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
         [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/218391.html)
         
@@ -34191,6 +34567,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_sslwith_options_async(request, runtime)
+
+    def modify_dbinstance_security_group_rule_with_options(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 修改实例主机安全组规则
+        
+        @param request: ModifyDBInstanceSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceSecurityGroupRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range):
+            query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_rule_id):
+            query['SecurityGroupRuleId'] = request.security_group_rule_id
+        if not UtilClient.is_unset(request.source_cidr_ip):
+            query['SourceCidrIp'] = request.source_cidr_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceSecurityGroupRule',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_security_group_rule_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 修改实例主机安全组规则
+        
+        @param request: ModifyDBInstanceSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceSecurityGroupRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_range):
+            query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_rule_id):
+            query['SecurityGroupRuleId'] = request.security_group_rule_id
+        if not UtilClient.is_unset(request.source_cidr_ip):
+            query['SourceCidrIp'] = request.source_cidr_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceSecurityGroupRule',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_security_group_rule(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceSecurityGroupRuleRequest,
+    ) -> rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 修改实例主机安全组规则
+        
+        @param request: ModifyDBInstanceSecurityGroupRuleRequest
+        @return: ModifyDBInstanceSecurityGroupRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_security_group_rule_with_options(request, runtime)
+
+    async def modify_dbinstance_security_group_rule_async(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceSecurityGroupRuleRequest,
+    ) -> rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse:
+        """
+        @summary 修改实例主机安全组规则
+        
+        @param request: ModifyDBInstanceSecurityGroupRuleRequest
+        @return: ModifyDBInstanceSecurityGroupRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_security_group_rule_with_options_async(request, runtime)
 
     def modify_dbinstance_spec_with_options(
         self,

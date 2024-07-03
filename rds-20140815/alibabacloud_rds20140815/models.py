@@ -4573,19 +4573,21 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   Regular RDS instance
         # 
-        #     *   **Basic**: RDS Basic Edition.
-        #     *   **HighAvailability**: RDS High-availability Edition.
-        #     *   **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
-        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
-        #     *   **Finance**: RDS Enterprise Edition.
+        #     *   **Basic**: RDS Basic Edition
+        #     *   **HighAvailability**: RDS High-availability Edition
+        #     *   **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL or PostgreSQL
+        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
+        #     *   **Finance**: RDS Basic Edition for serverless instances
         # 
         # *   Serverless instance
         # 
-        #     *   **serverless_basic**: RDS Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL.
-        #     *   **serverless_standard**: RDS High-availability Edition. This edition is available only for instances that run MySQL and PostgreSQL.
-        #     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
+        #     *   **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+        #     *   **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+        #     *   **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
         # 
-        # > This parameter is required when you create a serverless instance.
+        #     **\
+        # 
+        #     **Note** This parameter is required when you create a serverless instance.
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -5300,19 +5302,21 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # *   Regular RDS instance
         # 
-        #     *   **Basic**: RDS Basic Edition.
-        #     *   **HighAvailability**: RDS High-availability Edition.
-        #     *   **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
-        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
-        #     *   **Finance**: RDS Enterprise Edition.
+        #     *   **Basic**: RDS Basic Edition
+        #     *   **HighAvailability**: RDS High-availability Edition
+        #     *   **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL or PostgreSQL
+        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
+        #     *   **Finance**: RDS Basic Edition for serverless instances
         # 
         # *   Serverless instance
         # 
-        #     *   **serverless_basic**: RDS Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL.
-        #     *   **serverless_standard**: RDS High-availability Edition. This edition is available only for instances that run MySQL and PostgreSQL.
-        #     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
+        #     *   **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+        #     *   **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
+        #     *   **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
         # 
-        # > This parameter is required when you create a serverless instance.
+        #     **\
+        # 
+        #     **Note** This parameter is required when you create a serverless instance.
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -6973,6 +6977,163 @@ class CreateDBInstanceForRebuildResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDBInstanceForRebuildResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDBInstanceSecurityGroupRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        description: str = None,
+        ip_protocol: str = None,
+        owner_account: str = None,
+        owner_id: str = None,
+        port_range: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        source_cidr_ip: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.description = description
+        self.ip_protocol = ip_protocol
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.port_range = port_range
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class CreateDBInstanceSecurityGroupRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDBInstanceSecurityGroupRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDBInstanceSecurityGroupRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDBInstanceSecurityGroupRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12594,6 +12755,157 @@ class DeleteDBInstanceEndpointAddressResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDBInstanceEndpointAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDBInstanceSecurityGroupRuleRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_group_rule_ids: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.security_group_rule_ids = security_group_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_group_rule_ids is not None:
+            result['SecurityGroupRuleIds'] = self.security_group_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityGroupRuleIds') is not None:
+            self.security_group_rule_ids = m.get('SecurityGroupRuleIds')
+        return self
+
+
+class DeleteDBInstanceSecurityGroupRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDBInstanceSecurityGroupRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDBInstanceSecurityGroupRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDBInstanceSecurityGroupRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18769,6 +19081,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         copy_only_backup: str = None,
         dbinstance_id: str = None,
         encryption: str = None,
+        engine: str = None,
+        engine_version: str = None,
         host_instance_id: str = None,
         is_avail: int = None,
         meta_status: str = None,
@@ -18834,6 +19148,8 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The encryption information about the backup set.
         self.encryption = encryption
+        self.engine = engine
+        self.engine_version = engine_version
         # The ID of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance.
         self.host_instance_id = host_instance_id
         # Indicates whether the backup set is available. Valid values:
@@ -18906,6 +19222,10 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.encryption is not None:
             result['Encryption'] = self.encryption
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.host_instance_id is not None:
             result['HostInstanceID'] = self.host_instance_id
         if self.is_avail is not None:
@@ -18957,6 +19277,10 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('Encryption') is not None:
             self.encryption = m.get('Encryption')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('HostInstanceID') is not None:
             self.host_instance_id = m.get('HostInstanceID')
         if m.get('IsAvail') is not None:
@@ -22799,8 +23123,8 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # Specifies whether the instance expires. Valid values:
         # 
-        # *   **True**: The instance expires.
-        # *   **False:** The instance does not expire.
+        # *   **True**\
+        # *   **False**\
         self.expired = expired
         self.resource_owner_id = resource_owner_id
 
@@ -22909,7 +23233,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNo
         self.node_role = node_role
         # The zone ID.
         self.node_zone_id = node_zone_id
-        # The node status. Default value: true. Valid values:
+        # The node status. Valid values:
         # 
         # *   active
         # *   creating
@@ -23355,6 +23679,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.bpe_enabled = bpe_enabled
         # An invalid parameter. You do not need to specify this parameter.
         self.bursting_enabled = bursting_enabled
+        # Indicates whether the conditions for a temporary upgrade are met.
+        # 
+        # >  Pay-as-you-go instances do not support temporary upgrades.
         self.can_temp_upgrade = can_temp_upgrade
         # The RDS edition. Valid values:
         # 
@@ -23365,7 +23692,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **Finance**: RDS Enterprise Edition
         # *   **Serverless_basic**: RDS Basic Edition for serverless instances
         self.category = category
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
         # The character set collation of the instance.
         self.collation = collation
@@ -23421,10 +23748,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # *   **local_ssd** or **ephemeral_ssd**: local SSD
         # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: Enterprise SSD (ESSD)
+        # *   **cloud_essd**: Enterprise SSD (ESSD).
         # *   **general_essd**: general ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The instance type. Valid values:
+        # The type of the instance. Valid values:
         # 
         # *   **Primary**: primary instance
         # *   **Readonly**: read-only instance
@@ -23433,7 +23760,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_type = dbinstance_type
         # The maximum number of databases that can be created on the instance.
         self.dbmax_quantity = dbmax_quantity
-        # The ID of the dedicated cluster to which the instances belong.
+        # The ID of the dedicated cluster to which the instance belongs.
         self.dedicated_host_group_id = dedicated_host_group_id
         # Indicates whether the release protection feature is enabled. Valid values:
         # 
@@ -23510,7 +23837,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
-        # *   **SERVERLESS**: serverless
+        # *   **SERVERLESS**\
         self.pay_type = pay_type
         # The port that is used to connect to the instance over an internal network.
         self.port = port
@@ -23546,7 +23873,13 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.super_permission_mode = super_permission_mode
         # The ID of the temporary instance that is attached to the primary instance.
         self.temp_dbinstance_id = temp_dbinstance_id
+        # The end time of the temporary upgrade of the instance.
+        # 
+        # >  This parameter is unavailable for pay-as-you-go instances.
         self.temp_upgrade_time_end = temp_upgrade_time_end
+        # The start time of the temporary upgrade of the instance.
+        # 
+        # >  This parameter is unavailable for pay-as-you-go instances.
         self.temp_upgrade_time_start = temp_upgrade_time_start
         # The time zone.
         self.time_zone = time_zone
@@ -23559,7 +23892,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.tips_level = tips_level
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the instance. This parameter is returned only when the instance resides in a VPC.
+        # The ID of the VPC. This parameter is returned only when the instance resides in a VPC.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -28528,6 +28861,144 @@ class DescribeDBInstanceSSLResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDBInstanceSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDBInstanceSecurityGroupRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeDBInstanceSecurityGroupRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDBInstanceSecurityGroupRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBInstanceSecurityGroupRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBInstanceSecurityGroupRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -50127,7 +50598,7 @@ class DescribeSlotsRequest(TeaModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -50806,6 +51277,8 @@ class DescribeSlowLogsRequest(TeaModel):
         self.dbname = dbname
         # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*Z format. The time must be in UTC.
         # 
+        # >  If the end date of the query is the same as the start date of the query, you can query the logs that are generated at 08:00 on the start date of the query. You can query the slow logs within a maximum time range of 24 hours.
+        # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
@@ -50945,29 +51418,27 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
     ):
         # The average execution duration per SQL statement in the query. Unit: seconds.
         # 
-        # **\
-        # 
-        # ****\
+        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_execution_time = avg_execution_time
         # The average number of I/O writes per SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_iowrite_counts = avg_iowrite_counts
         # The average number of rows that were affected by the last SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_last_rows_affected_counts = avg_last_rows_affected_counts
         # The average number of logical reads per SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_logical_read_counts = avg_logical_read_counts
         # The average number of physical reads per SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_physical_read_counts = avg_physical_read_counts
         # The average number of rows that were affected per SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_rows_affected_counts = avg_rows_affected_counts
         # The date when the data was generated.
         self.create_time = create_time
@@ -50979,11 +51450,11 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
         self.max_execution_time_ms = max_execution_time_ms
         # The largest number of I/O writes that were performed by a specific SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.max_iowrite_counts = max_iowrite_counts
         # The largest number of rows that were affected by the last SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.max_last_rows_affected_counts = max_last_rows_affected_counts
         # The longest lock duration that was caused by a specific SQL statement in the query. Unit: seconds.
         self.max_lock_time = max_lock_time
@@ -50991,35 +51462,35 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
         self.max_lock_time_ms = max_lock_time_ms
         # The largest number of logical reads that were performed by a specific SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.max_logical_read_counts = max_logical_read_counts
         # The largest number of physical reads that were performed by a specific SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.max_physical_read_counts = max_physical_read_counts
         # The largest number of rows that were affected by a specific SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.max_rows_affected_counts = max_rows_affected_counts
         # The smallest number of I/O writes that were performed by a specific SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.min_iowrite_counts = min_iowrite_counts
         # The smallest number of rows that were affected by the last SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.min_last_rows_affected_counts = min_last_rows_affected_counts
         # The smallest number of logical reads that were performed by a specific SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.min_logical_read_counts = min_logical_read_counts
         # The smallest number of physical reads that were performed by a specific SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.min_physical_read_counts = min_physical_read_counts
         # The smallest number of rows that were affected by a specific SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.min_rows_affected_counts = min_rows_affected_counts
         # The total number of SQL statements that were executed in the query. This parameter is returned only for instances that run MySQL.
         self.my_sqltotal_execution_counts = my_sqltotal_execution_counts
@@ -51041,27 +51512,27 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
         self.sqlid_str = sqlid_str
         # The average amount of CPU time per SQL statement in the query. Unit: seconds.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_avg_cpu_time = sqlserver_avg_cpu_time
         # The average execution duration per SQL statement in the query. Unit: seconds.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_avg_execution_time = sqlserver_avg_execution_time
         # The largest amount of CPU time that was used by a specific SQL statement in the query. Unit: seconds.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_max_cpu_time = sqlserver_max_cpu_time
-        # The smallest amount of CPU time that was used by a specific SQL statement. Unit: seconds.
+        # The smallest amount of CPU time that was used by a specific SQL statement in the query. Unit: seconds.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_min_cpu_time = sqlserver_min_cpu_time
         # The smallest execution duration of a specific SQL statement in the query. Unit: seconds.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_min_execution_time = sqlserver_min_execution_time
         # The total amount of CPU time that was used by all SQL statements in the query. Unit: seconds.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_total_cpu_time = sqlserver_total_cpu_time
         # The total number of SQL statements that were executed in the query. This parameter is returned only for instances that run SQL Server.
         self.sqlserver_total_execution_counts = sqlserver_total_execution_counts
@@ -51073,17 +51544,17 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(TeaModel):
         self.slow_log_id = slow_log_id
         # The total number of I/O writes that were performed by all SQL statements in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.total_iowrite_counts = total_iowrite_counts
         # The total number of rows that were affected by the last SQL statement in the query.
         # 
-        # > This parameter is returned only for instances that run SQL Server.
+        # >  This parameter is returned only for instances that run SQL Server.
         self.total_last_rows_affected_counts = total_last_rows_affected_counts
         # The total lock duration that was caused by all SQL statements in the query. Unit: seconds.
         self.total_lock_times = total_lock_times
         # The total number of logical reads that were performed by all SQL statements in the query.
         self.total_logical_read_counts = total_logical_read_counts
-        # The total number of physical reads that were performed by all SQL statements in the query .
+        # The total number of physical reads that were performed by all SQL statements in the query.
         self.total_physical_read_counts = total_physical_read_counts
         # The total number of rows that were affected by all SQL statements in the query.
         self.total_rows_affected_counts = total_rows_affected_counts
@@ -61755,6 +62226,173 @@ class ModifyDBInstanceSSLResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDBInstanceSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBInstanceSecurityGroupRuleRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        description: str = None,
+        ip_protocol: str = None,
+        owner_account: str = None,
+        owner_id: str = None,
+        port_range: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_group_rule_id: str = None,
+        source_cidr_ip: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.description = description
+        # This parameter is required.
+        self.ip_protocol = ip_protocol
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.port_range = port_range
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.security_group_rule_id = security_group_rule_id
+        # This parameter is required.
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_group_rule_id is not None:
+            result['SecurityGroupRuleId'] = self.security_group_rule_id
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityGroupRuleId') is not None:
+            self.security_group_rule_id = m.get('SecurityGroupRuleId')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class ModifyDBInstanceSecurityGroupRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBInstanceSecurityGroupRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBInstanceSecurityGroupRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBInstanceSecurityGroupRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
