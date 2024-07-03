@@ -1736,7 +1736,7 @@ class CreatePostpaidInstanceRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
@@ -1840,6 +1840,149 @@ class CreatePostpaidInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePostpaidInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSM2CertRequest(TeaModel):
+    def __init__(
+        self,
+        cert_name: str = None,
+        encrypt_certificate: str = None,
+        encrypt_private_key: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        sign_certificate: str = None,
+        sign_private_key: str = None,
+    ):
+        self.cert_name = cert_name
+        self.encrypt_certificate = encrypt_certificate
+        self.encrypt_private_key = encrypt_private_key
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.sign_certificate = sign_certificate
+        self.sign_private_key = sign_private_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_name is not None:
+            result['CertName'] = self.cert_name
+        if self.encrypt_certificate is not None:
+            result['EncryptCertificate'] = self.encrypt_certificate
+        if self.encrypt_private_key is not None:
+            result['EncryptPrivateKey'] = self.encrypt_private_key
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.sign_certificate is not None:
+            result['SignCertificate'] = self.sign_certificate
+        if self.sign_private_key is not None:
+            result['SignPrivateKey'] = self.sign_private_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertName') is not None:
+            self.cert_name = m.get('CertName')
+        if m.get('EncryptCertificate') is not None:
+            self.encrypt_certificate = m.get('EncryptCertificate')
+        if m.get('EncryptPrivateKey') is not None:
+            self.encrypt_private_key = m.get('EncryptPrivateKey')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('SignCertificate') is not None:
+            self.sign_certificate = m.get('SignCertificate')
+        if m.get('SignPrivateKey') is not None:
+            self.sign_private_key = m.get('SignPrivateKey')
+        return self
+
+
+class CreateSM2CertResponseBody(TeaModel):
+    def __init__(
+        self,
+        cert_identifier: str = None,
+        request_id: str = None,
+    ):
+        self.cert_identifier = cert_identifier
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSM2CertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSM2CertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSM2CertResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3703,9 +3846,18 @@ class DescribeApisecLogDeliveriesRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -3745,10 +3897,22 @@ class DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs(TeaModel):
         project_name: str = None,
         status: bool = None,
     ):
+        # The type of the log subscription. Valid values:
+        # 
+        # *   **risk**: risk information.
+        # *   **event**: attack event information.
+        # *   **asset**: asset information.
         self.assert_key = assert_key
+        # The ID of the region where logs are stored.
         self.log_region_id = log_region_id
+        # The name of the Logstore in Simple Log Service.
         self.log_store_name = log_store_name
+        # The name of the project in Simple Log Service.
         self.project_name = project_name
+        # The status of API security log subscription. Valid values:
+        # 
+        # *   **true**: enabled.
+        # *   **false**: disabled.
         self.status = status
 
     def validate(self):
@@ -3793,7 +3957,9 @@ class DescribeApisecLogDeliveriesResponseBody(TeaModel):
         delivery_configs: List[DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs] = None,
         request_id: str = None,
     ):
+        # The configurations of API security log subscription.
         self.delivery_configs = delivery_configs
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4106,13 +4272,28 @@ class DescribeApisecSlsLogStoresRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where logs are stored.
+        # 
+        # >  You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+        # 
         # This parameter is required.
         self.log_region_id = log_region_id
+        # The name of the project in Simple Log Service.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -4157,7 +4338,9 @@ class DescribeApisecSlsLogStoresResponseBody(TeaModel):
         log_stores: List[str] = None,
         request_id: str = None,
     ):
+        # The names of the Logstores in Simple Log Service.
         self.log_stores = log_stores
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4233,11 +4416,24 @@ class DescribeApisecSlsProjectsRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where logs are stored.
+        # 
+        # >  You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+        # 
         # This parameter is required.
         self.log_region_id = log_region_id
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -4278,7 +4474,9 @@ class DescribeApisecSlsProjectsResponseBody(TeaModel):
         projects: List[str] = None,
         request_id: str = None,
     ):
+        # The names of the projects in Simple Log Service.
         self.projects = projects
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5100,6 +5298,179 @@ class DescribeCloudResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCloudResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDDoSStatusRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The ID of the WAF instance that you want to query.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region in which the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeDDoSStatusResponseBodyDDoSStatus(TeaModel):
+    def __init__(
+        self,
+        event_type: str = None,
+        status: str = None,
+    ):
+        # The type of events that are triggered by DDoS attacks. Valid values:
+        # 
+        # *   defense: traffic scrubbing events.
+        # *   blackhole: blackhole filtering events.
+        self.event_type = event_type
+        # Indicates whether DDoS attacks occur on specific domain names. Valid value:
+        # 
+        # *   **doing**: DDoS attacks occur on specific domain names.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeDDoSStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        ddo_sstatus: List[DescribeDDoSStatusResponseBodyDDoSStatus] = None,
+        request_id: str = None,
+    ):
+        # Indicates whether DDoS attacks occur on specific domain names.
+        self.ddo_sstatus = ddo_sstatus
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ddo_sstatus:
+            for k in self.ddo_sstatus:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DDoSStatus'] = []
+        if self.ddo_sstatus is not None:
+            for k in self.ddo_sstatus:
+                result['DDoSStatus'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ddo_sstatus = []
+        if m.get('DDoSStatus') is not None:
+            for k in m.get('DDoSStatus'):
+                temp_model = DescribeDDoSStatusResponseBodyDDoSStatus()
+                self.ddo_sstatus.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDDoSStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDDoSStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDDoSStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17662,17 +18033,44 @@ class ModifyApisecLogDeliveryRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The type of the log subscription. Valid values:
+        # 
+        # *   **risk**: risk information.
+        # *   **event**: attack event information.
+        # *   **asset**: asset information.
+        # 
         # This parameter is required.
         self.assert_key = assert_key
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where logs are stored.
+        # 
+        # >  You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+        # 
         # This parameter is required.
         self.log_region_id = log_region_id
+        # The name of the Logstore in Simple Log Service.
+        # 
+        # >  API security logs can be delivered only to Logstores whose names start with apisec-.
+        # 
         # This parameter is required.
         self.log_store_name = log_store_name
+        # The name of the project in Simple Log Service.
+        # 
+        # >  API security logs can be delivered only to projects whose names start with apisec-.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -17724,6 +18122,7 @@ class ModifyApisecLogDeliveryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -17796,12 +18195,32 @@ class ModifyApisecLogDeliveryStatusRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
         status: bool = None,
     ):
+        # The type of the log subscription. Valid values:
+        # 
+        # *   **risk**: risk information.
+        # *   **event**: attack event information.
+        # *   **asset**: asset information.
+        # 
         # This parameter is required.
         self.assert_key = assert_key
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The status of API security log subscription. Valid values:
+        # 
+        # *   **true**: enabled.
+        # *   **false**: disabled.
+        # 
         # This parameter is required.
         self.status = status
 
@@ -17846,6 +18265,7 @@ class ModifyApisecLogDeliveryStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

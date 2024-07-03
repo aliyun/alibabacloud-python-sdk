@@ -1,3 +1,10 @@
+2024-07-03 Version: 4.2.0
+- Support API CreateSM2Cert.
+- Support API DescribeDDoSStatus.
+- Support API DescribePauseProtectionStatus.
+- Support API ModifyPauseProtectionStatus.
+
+
 2024-06-26 Version: 4.1.0
 - Support API DescribePauseProtectionStatus.
 - Support API ModifyPauseProtectionStatus.

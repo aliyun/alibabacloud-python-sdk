@@ -1123,6 +1123,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_postpaid_instance_with_options_async(request, runtime)
 
+    def create_sm2cert_with_options(
+        self,
+        request: waf_openapi_20211001_models.CreateSM2CertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateSM2CertResponse:
+        """
+        @summary 上传国密证书
+        
+        @param request: CreateSM2CertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSM2CertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.encrypt_certificate):
+            query['EncryptCertificate'] = request.encrypt_certificate
+        if not UtilClient.is_unset(request.encrypt_private_key):
+            query['EncryptPrivateKey'] = request.encrypt_private_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sign_certificate):
+            query['SignCertificate'] = request.sign_certificate
+        if not UtilClient.is_unset(request.sign_private_key):
+            query['SignPrivateKey'] = request.sign_private_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSM2Cert',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateSM2CertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sm2cert_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.CreateSM2CertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateSM2CertResponse:
+        """
+        @summary 上传国密证书
+        
+        @param request: CreateSM2CertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSM2CertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.encrypt_certificate):
+            query['EncryptCertificate'] = request.encrypt_certificate
+        if not UtilClient.is_unset(request.encrypt_private_key):
+            query['EncryptPrivateKey'] = request.encrypt_private_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.sign_certificate):
+            query['SignCertificate'] = request.sign_certificate
+        if not UtilClient.is_unset(request.sign_private_key):
+            query['SignPrivateKey'] = request.sign_private_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSM2Cert',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateSM2CertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sm2cert(
+        self,
+        request: waf_openapi_20211001_models.CreateSM2CertRequest,
+    ) -> waf_openapi_20211001_models.CreateSM2CertResponse:
+        """
+        @summary 上传国密证书
+        
+        @param request: CreateSM2CertRequest
+        @return: CreateSM2CertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sm2cert_with_options(request, runtime)
+
+    async def create_sm2cert_async(
+        self,
+        request: waf_openapi_20211001_models.CreateSM2CertRequest,
+    ) -> waf_openapi_20211001_models.CreateSM2CertResponse:
+        """
+        @summary 上传国密证书
+        
+        @param request: CreateSM2CertRequest
+        @return: CreateSM2CertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sm2cert_with_options_async(request, runtime)
+
     def delete_apisec_abnormal_with_options(
         self,
         request: waf_openapi_20211001_models.DeleteApisecAbnormalRequest,
@@ -2517,7 +2641,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse:
         """
-        @summary 获取API安全日志订阅列表
+        @summary Queries the configurations of API security log subscription.
         
         @param request: DescribeApisecLogDeliveriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2556,7 +2680,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse:
         """
-        @summary 获取API安全日志订阅列表
+        @summary Queries the configurations of API security log subscription.
         
         @param request: DescribeApisecLogDeliveriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2594,7 +2718,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecLogDeliveriesRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse:
         """
-        @summary 获取API安全日志订阅列表
+        @summary Queries the configurations of API security log subscription.
         
         @param request: DescribeApisecLogDeliveriesRequest
         @return: DescribeApisecLogDeliveriesResponse
@@ -2607,7 +2731,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecLogDeliveriesRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecLogDeliveriesResponse:
         """
-        @summary 获取API安全日志订阅列表
+        @summary Queries the configurations of API security log subscription.
         
         @param request: DescribeApisecLogDeliveriesRequest
         @return: DescribeApisecLogDeliveriesResponse
@@ -2757,7 +2881,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse:
         """
-        @summary 查询日志服务SLS的LogStore列表
+        @summary Queries the Logstores whose names start with apisec- in Simple Log Service.
         
         @param request: DescribeApisecSlsLogStoresRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2800,7 +2924,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse:
         """
-        @summary 查询日志服务SLS的LogStore列表
+        @summary Queries the Logstores whose names start with apisec- in Simple Log Service.
         
         @param request: DescribeApisecSlsLogStoresRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2842,7 +2966,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecSlsLogStoresRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse:
         """
-        @summary 查询日志服务SLS的LogStore列表
+        @summary Queries the Logstores whose names start with apisec- in Simple Log Service.
         
         @param request: DescribeApisecSlsLogStoresRequest
         @return: DescribeApisecSlsLogStoresResponse
@@ -2855,7 +2979,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecSlsLogStoresRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecSlsLogStoresResponse:
         """
-        @summary 查询日志服务SLS的LogStore列表
+        @summary Queries the Logstores whose names start with apisec- in Simple Log Service.
         
         @param request: DescribeApisecSlsLogStoresRequest
         @return: DescribeApisecSlsLogStoresResponse
@@ -2869,7 +2993,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse:
         """
-        @summary 查询日志服务SLS的Project列表
+        @summary Queries the projects whose names start with apisec- in Simple Log Service.
         
         @param request: DescribeApisecSlsProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2910,7 +3034,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse:
         """
-        @summary 查询日志服务SLS的Project列表
+        @summary Queries the projects whose names start with apisec- in Simple Log Service.
         
         @param request: DescribeApisecSlsProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2950,7 +3074,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecSlsProjectsRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse:
         """
-        @summary 查询日志服务SLS的Project列表
+        @summary Queries the projects whose names start with apisec- in Simple Log Service.
         
         @param request: DescribeApisecSlsProjectsRequest
         @return: DescribeApisecSlsProjectsResponse
@@ -2963,7 +3087,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeApisecSlsProjectsRequest,
     ) -> waf_openapi_20211001_models.DescribeApisecSlsProjectsResponse:
         """
-        @summary 查询日志服务SLS的Project列表
+        @summary Queries the projects whose names start with apisec- in Simple Log Service.
         
         @param request: DescribeApisecSlsProjectsRequest
         @return: DescribeApisecSlsProjectsResponse
@@ -3342,6 +3466,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_resources_with_options_async(request, runtime)
+
+    def describe_ddo_sstatus_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeDDoSStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDDoSStatusResponse:
+        """
+        @summary Checks whether DDoS attacks occur on specific domain names protected by a Web Application Firewall (WAF) instance.
+        
+        @param request: DescribeDDoSStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDDoSStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDDoSStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDDoSStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddo_sstatus_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDDoSStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDDoSStatusResponse:
+        """
+        @summary Checks whether DDoS attacks occur on specific domain names protected by a Web Application Firewall (WAF) instance.
+        
+        @param request: DescribeDDoSStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDDoSStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDDoSStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDDoSStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddo_sstatus(
+        self,
+        request: waf_openapi_20211001_models.DescribeDDoSStatusRequest,
+    ) -> waf_openapi_20211001_models.DescribeDDoSStatusResponse:
+        """
+        @summary Checks whether DDoS attacks occur on specific domain names protected by a Web Application Firewall (WAF) instance.
+        
+        @param request: DescribeDDoSStatusRequest
+        @return: DescribeDDoSStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ddo_sstatus_with_options(request, runtime)
+
+    async def describe_ddo_sstatus_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDDoSStatusRequest,
+    ) -> waf_openapi_20211001_models.DescribeDDoSStatusResponse:
+        """
+        @summary Checks whether DDoS attacks occur on specific domain names protected by a Web Application Firewall (WAF) instance.
+        
+        @param request: DescribeDDoSStatusRequest
+        @return: DescribeDDoSStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ddo_sstatus_with_options_async(request, runtime)
 
     def describe_defense_resource_with_options(
         self,
@@ -9497,7 +9725,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse:
         """
-        @summary 修改API安全日志订阅
+        @summary Modifies the configurations of API security log subscription.
         
         @param request: ModifyApisecLogDeliveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9544,7 +9772,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse:
         """
-        @summary 修改API安全日志订阅
+        @summary Modifies the configurations of API security log subscription.
         
         @param request: ModifyApisecLogDeliveryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9590,7 +9818,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyApisecLogDeliveryRequest,
     ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse:
         """
-        @summary 修改API安全日志订阅
+        @summary Modifies the configurations of API security log subscription.
         
         @param request: ModifyApisecLogDeliveryRequest
         @return: ModifyApisecLogDeliveryResponse
@@ -9603,7 +9831,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyApisecLogDeliveryRequest,
     ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryResponse:
         """
-        @summary 修改API安全日志订阅
+        @summary Modifies the configurations of API security log subscription.
         
         @param request: ModifyApisecLogDeliveryRequest
         @return: ModifyApisecLogDeliveryResponse
@@ -9617,7 +9845,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse:
         """
-        @summary 修改API安全日志订阅状态
+        @summary Modifies the status of API security log subscription.
         
         @param request: ModifyApisecLogDeliveryStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9660,7 +9888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse:
         """
-        @summary 修改API安全日志订阅状态
+        @summary Modifies the status of API security log subscription.
         
         @param request: ModifyApisecLogDeliveryStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9702,7 +9930,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusRequest,
     ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse:
         """
-        @summary 修改API安全日志订阅状态
+        @summary Modifies the status of API security log subscription.
         
         @param request: ModifyApisecLogDeliveryStatusRequest
         @return: ModifyApisecLogDeliveryStatusResponse
@@ -9715,7 +9943,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusRequest,
     ) -> waf_openapi_20211001_models.ModifyApisecLogDeliveryStatusResponse:
         """
-        @summary 修改API安全日志订阅状态
+        @summary Modifies the status of API security log subscription.
         
         @param request: ModifyApisecLogDeliveryStatusRequest
         @return: ModifyApisecLogDeliveryStatusResponse
