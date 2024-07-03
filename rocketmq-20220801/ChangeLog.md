@@ -1,3 +1,7 @@
+2024-07-03 Version: 1.4.4
+- Update API CreateInstance: update param body.
+
+
 2024-05-31 Version: 1.4.3
 - Update API ListInstances: update param pageNumber.
 - Update API ListInstances: update param pageSize.

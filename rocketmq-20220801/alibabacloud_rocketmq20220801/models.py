@@ -478,11 +478,39 @@ class CreateInstanceRequestNetworkInfoInternetInfo(TeaModel):
         return self
 
 
+class CreateInstanceRequestNetworkInfoVpcInfoVSwitches(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+    ):
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        return self
+
+
 class CreateInstanceRequestNetworkInfoVpcInfo(TeaModel):
     def __init__(
         self,
         security_group_ids: str = None,
         v_switch_id: str = None,
+        v_switches: List[CreateInstanceRequestNetworkInfoVpcInfoVSwitches] = None,
         vpc_id: str = None,
     ):
         # The ID of the security group to which the instance belongs.
@@ -490,9 +518,8 @@ class CreateInstanceRequestNetworkInfoVpcInfo(TeaModel):
         # The ID of the vSwitch with which you want to associate the instance, If there are multiple vSwitchs, please concatenate them using the "|" character.
         # 
         # >  After an ApsaraMQ for RocketMQ instance is created, you cannot change the vSwitch with which the instance is associated. If you want to change the vSwitch with which the instance is associated, you must release the instance and purchase a new instance.
-        # 
-        # This parameter is required.
         self.v_switch_id = v_switch_id
+        self.v_switches = v_switches
         # The ID of the VPC in which you want to deploy the instance.
         # 
         # >  After an ApsaraMQ for RocketMQ instance is created, you cannot change the VPC in which the instance is deployed. If you want to change the VPC in which the instance is deployed, you must release the instance and create a new instance.
@@ -501,7 +528,10 @@ class CreateInstanceRequestNetworkInfoVpcInfo(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.v_switches:
+            for k in self.v_switches:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -513,6 +543,10 @@ class CreateInstanceRequestNetworkInfoVpcInfo(TeaModel):
             result['securityGroupIds'] = self.security_group_ids
         if self.v_switch_id is not None:
             result['vSwitchId'] = self.v_switch_id
+        result['vSwitches'] = []
+        if self.v_switches is not None:
+            for k in self.v_switches:
+                result['vSwitches'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['vpcId'] = self.vpc_id
         return result
@@ -523,6 +557,11 @@ class CreateInstanceRequestNetworkInfoVpcInfo(TeaModel):
             self.security_group_ids = m.get('securityGroupIds')
         if m.get('vSwitchId') is not None:
             self.v_switch_id = m.get('vSwitchId')
+        self.v_switches = []
+        if m.get('vSwitches') is not None:
+            for k in m.get('vSwitches'):
+                temp_model = CreateInstanceRequestNetworkInfoVpcInfoVSwitches()
+                self.v_switches.append(temp_model.from_map(k))
         if m.get('vpcId') is not None:
             self.vpc_id = m.get('vpcId')
         return self
