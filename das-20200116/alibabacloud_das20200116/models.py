@@ -2628,7 +2628,7 @@ class CreateStorageAnalysisTaskRequest(TeaModel):
         # *   If you set this parameter to a value in the **InsName** format, such as `d-bp1872fa24d5****`, you can call this operation to analyze the hidden node that corresponds to the node ID.
         # *   If you set this parameter to a value in the `InsName#RoleId` format, such as `d-bp1872fa24d5****#299****5`, you can call this operation to analyze the specified node.
         # 
-        # >  If you run a storage analysis task on an ApsaraDB for MongoDB replica set instances and you do not specify this parameter, only the hidden node of the instance is analyzed by default. If you run a storage analysis task on an ApsaraDB for MongoDB sharded cluster instance, we recommend that you set this parameter to specify a node.
+        # >  If you run a storage analysis task on an ApsaraDB for MongoDB replica set instance and you do not specify this parameter, only the hidden node of the instance is analyzed by default. If you run a storage analysis task on an ApsaraDB for MongoDB sharded cluster instance, we recommend that you set this parameter to specify a node.
         self.node_id = node_id
         # The table name. If you specify a table in the specified database, the operation analyzes the storage usage of the specified table. If you specify a table, you must also specify the database to which the table belongs by using **DbName**.
         self.table_name = table_name
@@ -8077,9 +8077,9 @@ class DescribeSqlLogRecordsRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The name of the filter parameter.
+        # The filter parameter.
         # 
-        # >  For more information about the supported filter parameters and their valid values, see the following **supplement about the Key parameter**.
+        # >  For more information about the supported filter parameters and their valid values, see the **Supported parameters and values for Key** section of this topic.
         self.key = key
         # The value of the filter parameter.
         self.value = value
@@ -8120,29 +8120,29 @@ class DescribeSqlLogRecordsRequest(TeaModel):
         role: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
         self.end_time = end_time
         # The filter conditions.
         self.filters = filters
-        # The ID of the database instance.
+        # The database instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
-        # *   For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter is available only for Cluster Edition instances. By default, if this parameter is not specified, the information about the logs of the primary node is returned.
-        # *   Set this parameter to **polarx_cn** or **polarx_dn** if the node that you want to query belongs to a PolarDB-X 2.0 database instance. A value of polarx_cn indicates a compute node. A value of polarx_dn indicates a data node.
+        # *   For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter is valid only for instances of the Cluster Edition. If you do not specify this parameter, the log details of the primary node is queried by default.
+        # *   For PolarDB-X 2.0 instances, set this parameter to **polarx_cn** if the node is a compute node, or **polarx_dn** if the node is a data node.
         self.node_id = node_id
         # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The role of the node of the PolarDB-X 2.0 database instance. Valid values:
+        # The role of the node of the PolarDB-X 2.0 instance. Valid values:
         # 
         # *   \\*\\*polarx_cn\\*\\*: compute node
         # *   \\*\\*polarx_dn\\*\\*: data node
         self.role = role
-        # The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
         self.start_time = start_time
 
     def validate(self):
@@ -8240,47 +8240,47 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(TeaModel):
     ):
         # The account of the database.
         self.account_name = account_name
-        # This is a reserved parameter.
+        # A reserved parameter.
         self.collection = collection
-        # The duration of the query. Unit: milliseconds.
+        # The amount of time that is consumed to execute the SQL statement. Unit: millisecond.
         self.consume = consume
-        # The CPU execution duration. Unit: microseconds.
+        # The CPU execution duration. Unit: microsecond.
         self.cpu_time = cpu_time
-        # The name of the database.
+        # The database name.
         self.dbname = dbname
-        # The time when the query was performed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The time when the SQL statement was executed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.execute_time = execute_time
         # The extended information. This parameter is a reserved parameter.
         self.ext = ext
-        # The number of rows that are pulled by the compute nodes of the PolarDB-X 2.0 database instance.
+        # The number of rows that are pulled by the compute nodes of the PolarDB-X 2.0 instance.
         self.frows = frows
         # The IP address of the client.
         self.host_address = host_address
-        # The lock wait duration. Unit: milliseconds.
+        # The lock wait duration. Unit: millisecond.
         self.lock_time = lock_time
         # The number of logical reads.
         self.logic_read = logic_read
         # The node ID.
         self.node_id = node_id
-        # The time when the query was performed. The value of this parameter is a UNIX timestamp. Unit: milliseconds.
+        # The timestamp generated when the SQL statement was executed. The value of this parameter is a UNIX timestamp. Unit: millisecond.
         self.origin_time = origin_time
-        # The parallel queue time of the PolarDB for MySQL instance. Unit: milliseconds.
+        # The parallel queue time of the PolarDB for MySQL instance. Unit: millisecond.
         self.parallel_degree = parallel_degree
-        # The parallelism of the PolarDB for MySQL instance.
+        # The parallelism of the PolarDB for MySQL cluster.
         self.parallel_queue_time = parallel_queue_time
         # The number of physical asynchronous reads.
         self.physic_async_read = physic_async_read
-        # The number of physical reads.
+        # The total number of physical reads.
         self.physic_read = physic_read
         # The number of physical synchronous reads.
         self.physic_sync_read = physic_sync_read
-        # The number of rows that are returned.
+        # The number of rows returned by the SQL statement.
         self.return_rows = return_rows
-        # The total number of rows that are updated or returned by the compute nodes of the PolarDB-X 2.0 database instance.
+        # The total number of rows that are updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
         self.rows = rows
-        # The number of rows that are scanned.
+        # The number of scanned rows.
         self.scan_rows = scan_rows
-        # The number of requests that are sent to the data nodes by the compute nodes of the PolarDB-X 2.0 database instance.
+        # The number of requests that are sent from the compute nodes to the data nodes of the PolarDB-X 2.0 instance.
         self.scnt = scnt
         # The SQL statement ID.
         self.sql_id = sql_id
@@ -8288,27 +8288,27 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(TeaModel):
         self.sql_text = sql_text
         # The type of the SQL statement.
         self.sql_type = sql_type
-        # The state of the query. Valid values:
+        # The execution status of the SQL statement.
         # 
-        # *   **0**: The query was successful.
-        # *   **1**: The query failed to be performed.
+        # *   **0**: The execution was successful.
+        # *   **1**: The execution failed.
         self.state = state
         # The thread ID.
         self.thread_id = thread_id
-        # The trace ID of the PolarDB-X 2.0 database instance. The value is the execution ID of the SQL statement on the data nodes.
+        # The trace ID of the PolarDB-X 2.0 instance. The value is the execution ID of the SQL statement on the data node.
         self.trace_id = trace_id
         # The transaction ID.
         self.trx_id = trx_id
         # The number of rows that are updated.
         self.update_rows = update_rows
-        # Indicates whether the In-Memory Column Index (IMCI) feature is enabled for the PolarDB for MySQL instance. Valid values:
+        # Indicates whether the In-Memory Column Index (IMCI) feature is enabled for the PolarDB for MySQL cluster. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.use_imci_engine = use_imci_engine
         # The IP address that is resolved from the endpoint of the query link.
         self.vip = vip
-        # The number of writes that are performed by the ApsaraDB RDS for SQL Server engine.
+        # The number of writes to the ApsaraDB RDS for SQL Server instance.
         self.writes = writes
 
     def validate(self):
@@ -8505,22 +8505,22 @@ class DescribeSqlLogRecordsResponseBodyData(TeaModel):
         start_time: int = None,
         total_records: int = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
         self.end_time = end_time
         # Indicates whether the task was complete. Valid values:
         # 
-        # *   **0**: The task failed.
-        # *   **1**: The task was complete.
+        # *   **0**: no
+        # *   **1**: yes
         # 
-        # >  If the value of **Finish** is 0 and the value of **JobId** is returned, the request is an asynchronous request and the return result cannot be directly obtained. You must query the return result by using the value of **JobId**. Specify JobId as the key of **Filters** and the value of **JobId** as the value of Filters. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
+        # >  If the value of **Finish** is 0 and the value of **JobId** is returned, the request is an asynchronous request and the return result cannot be directly obtained. You must query the return result based on the value of **JobId**. Specify JobId as the key of **Filters** and the value of **JobId** as the value of Filters. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
         self.finish = finish
         # The data.
         self.items = items
         # The ID of the asynchronous task.
         self.job_id = job_id
-        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
         self.start_time = start_time
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_records = total_records
 
     def validate(self):
@@ -8574,13 +8574,13 @@ class DescribeSqlLogRecordsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The response code.
+        # The HTTP status code that is returned.
         self.code = code
-        # The returned data.
+        # The data that is returned.
         self.data = data
-        # The returned message.
+        # The message that is returned.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, error information such as an error code is returned.
+        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -8956,6 +8956,7 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        collection: str = None,
         consume: int = None,
         cpu_time: int = None,
         dbname: str = None,
@@ -8990,6 +8991,7 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
     ):
         # The database account.
         self.account_name = account_name
+        self.collection = collection
         # The execution duration. Unit: millisecond.
         self.consume = consume
         # The CPU execution time. Unit: microsecond.
@@ -9074,6 +9076,8 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.collection is not None:
+            result['Collection'] = self.collection
         if self.consume is not None:
             result['Consume'] = self.consume
         if self.cpu_time is not None:
@@ -9142,6 +9146,8 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
         if m.get('Consume') is not None:
             self.consume = m.get('Consume')
         if m.get('CpuTime') is not None:
@@ -28842,25 +28848,36 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeI
         self.db_name = db_name
         # The optimization suggestion. Valid values:
         # 
-        # *   **NEED_ANALYZE_TABLE**: Execute the `ANALYZE TABLE` statement on the table during off-peak hours.
-        # *   **NEED_OPTIMIZE_TABLE**: Reclaim space fragments during off-peak hours.
-        # *   **CHANGE_TABLE_ENGINE_IF_NECESSARY**: Change the storage engine type of a table after risk assessment.
-        # *   **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: Pay attention to the usage of auto-increment IDs.
-        # *   **DUPLICATE_INDEX**: Optimize indexes of tables.
-        # *   **TABLE_SIZE**: Pay attention to the table size.
-        # *   **TABLE_ROWS_AND_AVG_ROW_LENGTH**: Pay attention to the number of rows in a table and the average row length.
+        # *   **NEED_ANALYZE_TABLE**: You can execute the `ANALYZE TABLE` statement on the table during off-peak hours. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # *   **NEED_OPTIMIZE_TABLE**: You can reclaim fragments during off-peak hours.
+        # *   **CHANGE_TABLE_ENGINE_IF_NECESSARY**: Change the storage engine type of a table after risk assessment. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # *   **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: Pay attention to the usage of auto-increment IDs. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # *   **DUPLICATE_INDEX**: Optimize indexes of tables. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # *   **TABLE_SIZE**: Pay attention to the table size. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # *   **TABLE_ROWS_AND_AVG_ROW_LENGTH**: Pay attention to the number of rows in a table and the average row length. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
         # *   **STORAGE_USED_PERCENT**: Pay attention to the space usage to prevent the instance from being locked if the instance is full.
         self.optimize_advice = optimize_advice
         # The item to be optimized. Valid values:
         # 
-        # *   **NEED_ANALYZE_TABLE**: tables whose storage statistics obtained from `information_schema.tables` are 50 GB larger or smaller than the physical file sizes.
-        # *   **NEED_OPTIMIZE_TABLE**: tables whose space fragments are larger than 6 GB and whose fragmentation rates are greater than 30%. The fragmentation rate of a table is generally calculated based on the following formula: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, PhyTotalSize = DataSize + IndexSize + DataFree. Thus, the fragmentation rate can be calculated based on the following formula: `Fragmentation rate = DataFree/PhyTotalSize`.
-        # *   **TABLE_ENGINE**: tables whose storage engines are not InnoDB or XEngine.
-        # *   **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: tables whose usages of auto-increment IDs exceed 80%.
-        # *   **DUPLICATE_INDEX**: tables whose indexes are redundant or duplicate.
-        # *   **TABLE_SIZE**: single tables whose sizes are larger than 50 GB.
-        # *   **TABLE_ROWS_AND_AVG_ROW_LENGTH**: single tables that contain more than 5 million rows and whose average row lengths exceed 10 KB.
-        # *   **TOTAL_DATA_FREE**: instances whose reclaimable spaces are larger than 60 GB and whose total fragmentation rate is larger than 5%.
+        # *   **NEED_ANALYZE_TABLE**: tables whose storage statistics obtained from `information_schema.tables` are 50 GB larger or smaller than the physical file sizes. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # 
+        # *   **NEED_OPTIMIZE_TABLE**: tables whose space fragments are larger than 6 GB and whose fragmentation rates are greater than 30%. The fragmentation rate of a table is generally calculated based on the following formulas:
+        # 
+        #     *   ApsaraDB RDS for MySQL and PolarDB for MySQL: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, PhyTotalSize = DataSize + IndexSize + DataFree. Thus, the fragmentation rate can be calculated based on the following formula: `Fragmentation rate = DataFree/PhyTotalSize`.
+        #     *   ApsaraDB for MongoDB: `Fragmentation rate = FragmentSize/PhyTotalSize`.
+        # 
+        # *   **TABLE_ENGINE**: tables whose storage engines are not InnoDB or XEngine. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # 
+        # *   **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: tables whose usages of auto-increment IDs exceed 80%. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # 
+        # *   **DUPLICATE_INDEX**: tables whose indexes are redundant or duplicate. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # 
+        # *   **TABLE_SIZE**: single tables whose sizes are larger than 50 GB. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # 
+        # *   **TABLE_ROWS_AND_AVG_ROW_LENGTH**: single tables that contain more than 5 million rows and whose average row lengths exceed 10 KB. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        # 
+        # *   **TOTAL_DATA_FREE**: instances whose reclaimable space is larger than 60 GB and whose total fragmentation rate is larger than 5%.
+        # 
         # *   **STORAGE_USED_PERCENT**: instances whose space usage is larger than 90%.
         self.optimize_item_name = optimize_item_name
         # The name of the table.
@@ -28922,36 +28939,42 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats(Te
         # The average length of rows. Unit: bytes.
         self.avg_row_length = avg_row_length
         # The size of space fragments. Unit: bytes.
+        # 
+        # >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters. The fragmentation rate of a table is generally calculated based on the following formula: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, `Fragmentation rate = DataFree/PhyTotalSize`.
         self.data_free = data_free
-        # The storage space occupied by data. Unit: bytes.
+        # *   For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter indicates the amount of space occupied by data. Unit: bytes.
+        # *   For ApsaraDB for MongoDB instances, this parameter indicates the size of uncompressed data, that is, the amount of data. Unit: bytes.
         self.data_size = data_size
         # The name of the database.
         self.db_name = db_name
         # The type of the storage engine used by the table.
-        self.engine = engine
-        # 可回收空间大小（碎片空间大小），单位为Byte。
         # 
-        # > 该参数仅适用于MongoDB实例。表碎片率计算方式为：`FragmentSize/PhyTotalSize`。
+        # >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        self.engine = engine
+        # The size of space that can be reclaimed. Unit: bytes.
+        # 
+        # >  This parameter is applicable only to ApsaraDB for MongoDB instances. `Fragmentation rate = FragmentSize/PhyTotalSize`.
         self.fragment_size = fragment_size
         # The storage space occupied by indexes. Unit: bytes.
         self.index_size = index_size
         # The storage space of the table. Unit: bytes.
         # 
-        # >  The value of this parameter is the sum of the values of **DataSize**, **IndexSize**, and **DataFree**.
+        # >  For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, the value of the parameter is the sum of **DataSize**, **IndexSize**, and **DataFree**. For ApsaraDB for MongoDB instances, the value of this parameter is the sum of **DataSize** and **IndexSize**.
         self.phy_total_size = phy_total_size
         # The physical file size of the table. Unit: bytes.
         # 
-        # >  You may fail to obtain the physical file size because of the deployment mode of the database instance.
+        # >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters. Data of specific database instances cannot be obtained due to deployment mode.
         self.physical_file_size = physical_file_size
         # The name of the table.
         self.table_name = table_name
         # The number of rows in the table.
         self.table_rows = table_rows
         # The type of the table.
-        self.table_type = table_type
-        # The storage space occupied by table data and indexes. Unit: bytes.
         # 
-        # >  The value of this parameter is the sum of the values of **DataSize** and **IndexSize**.
+        # >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+        self.table_type = table_type
+        # *   For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter indicates the amount of space occupied by table data and indexes. Unit: bytes. The value is the sum of **DataSize** and **IndexSize**.
+        # *   For ApsaraDB for MongoDB instances, this parameter indicates the actual size of space allocated by Block Manager. Unit: Bytes. The compression ratio of an ApsaraDB for MongoDB instance is calculated based on the following formula: `Compression ratio = TotalSize/DataSize`.
         self.total_size = total_size
 
     def validate(self):
@@ -29232,7 +29255,7 @@ class GetStorageAnalysisResultResponseBody(TeaModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         # 

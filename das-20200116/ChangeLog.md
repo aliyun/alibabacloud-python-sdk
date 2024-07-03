@@ -1,3 +1,7 @@
+2024-07-03 Version: 2.4.3
+- Update API DescribeSqlLogTask: update response param.
+
+
 2024-06-13 Version: 2.4.2
 - Update API DescribeCacheAnalysisJob: update response param.
 - Update API DescribeSqlLogRecords: update response param.
