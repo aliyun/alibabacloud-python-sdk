@@ -512,12 +512,14 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
         frame_num: int = None,
         req_id: str = None,
         result: List[DescribeImageModerationResultResponseBodyDataResult] = None,
+        risk_level: str = None,
     ):
         self.data_id = data_id
         self.frame = frame
         self.frame_num = frame_num
         self.req_id = req_id
         self.result = result
+        self.risk_level = risk_level
 
     def validate(self):
         if self.result:
@@ -543,6 +545,8 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
         if self.result is not None:
             for k in self.result:
                 result['Result'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -560,6 +564,8 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
             for k in m.get('Result'):
                 temp_model = DescribeImageModerationResultResponseBodyDataResult()
                 self.result.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -2348,10 +2354,12 @@ class ImageModerationResponseBodyData(TeaModel):
         data_id: str = None,
         ext: ImageModerationResponseBodyDataExt = None,
         result: List[ImageModerationResponseBodyDataResult] = None,
+        risk_level: str = None,
     ):
         self.data_id = data_id
         self.ext = ext
         self.result = result
+        self.risk_level = risk_level
 
     def validate(self):
         if self.ext:
@@ -2375,6 +2383,8 @@ class ImageModerationResponseBodyData(TeaModel):
         if self.result is not None:
             for k in self.result:
                 result['Result'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -2389,6 +2399,8 @@ class ImageModerationResponseBodyData(TeaModel):
             for k in m.get('Result'):
                 temp_model = ImageModerationResponseBodyDataResult()
                 self.result.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -2809,10 +2821,12 @@ class TextModerationPlusResponseBodyData(TeaModel):
         self,
         advice: List[TextModerationPlusResponseBodyDataAdvice] = None,
         result: List[TextModerationPlusResponseBodyDataResult] = None,
+        risk_level: str = None,
         score: float = None,
     ):
         self.advice = advice
         self.result = result
+        self.risk_level = risk_level
         self.score = score
 
     def validate(self):
@@ -2839,6 +2853,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
         if self.result is not None:
             for k in self.result:
                 result['Result'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         if self.score is not None:
             result['Score'] = self.score
         return result
@@ -2855,6 +2871,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
             for k in m.get('Result'):
                 temp_model = TextModerationPlusResponseBodyDataResult()
                 self.result.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         if m.get('Score') is not None:
             self.score = m.get('Score')
         return self

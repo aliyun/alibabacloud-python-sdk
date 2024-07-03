@@ -1,3 +1,9 @@
+2024-07-03 Version: 2.2.8
+- Update API DescribeImageModerationResult: update response param.
+- Update API ImageModeration: update response param.
+- Update API TextModerationPlus: update response param.
+
+
 2024-05-30 Version: 2.2.7
 - Update API ImageModeration: update response param.
 
